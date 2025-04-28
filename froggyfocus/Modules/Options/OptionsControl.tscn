@@ -8,9 +8,20 @@
 font_size = 20
 font_color = Color(1, 0.764706, 0, 1)
 
-[node name="Options" type="VBoxContainer"]
+[node name="Options" type="VBoxContainer" node_paths=PackedStringArray("BackButton", "Tabs", "MasterSlider", "SFXSlider", "BGMSlider", "WindowModeDropdown", "Resolution", "ResolutionDropdown", "VSyncDropdown", "FPSLimitDropdown", "Keys")]
 theme_override_constants/separation = 25
 script = ExtResource("1_xgqu1")
+BackButton = NodePath("VBoxContainer/BackButton")
+Tabs = NodePath("TabContainer")
+MasterSlider = NodePath("TabContainer/Audio/VBoxContainer/MasterSlider")
+SFXSlider = NodePath("TabContainer/Audio/VBoxContainer/SFXSlider")
+BGMSlider = NodePath("TabContainer/Audio/VBoxContainer/BGMSlider")
+WindowModeDropdown = NodePath("TabContainer/Video/HBoxContainer/WindowMode/Right/WindowModeDropdown")
+Resolution = NodePath("TabContainer/Video/HBoxContainer/Resolution")
+ResolutionDropdown = NodePath("TabContainer/Video/HBoxContainer/Resolution/Right/ResolutionDropdown")
+VSyncDropdown = NodePath("TabContainer/Video/HBoxContainer/VSync/Right/VSyncDropdown")
+FPSLimitDropdown = NodePath("TabContainer/Video/HBoxContainer/FPSLimit/Right/FPSLimitDropdown")
+Keys = NodePath("TabContainer/Keys")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 custom_minimum_size = Vector2(500, 400)
@@ -170,7 +181,7 @@ size_flags_vertical = 4
 max_value = 6.0
 step = 0.1
 
-[node name="Keys" type="MarginContainer" parent="TabContainer"]
+[node name="Keys" type="MarginContainer" parent="TabContainer" node_paths=PackedStringArray("TempKeyRebindControl", "ResetAllButton")]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
@@ -179,6 +190,8 @@ theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 script = ExtResource("1_m2unh")
 Actions = PackedStringArray("Forward", "Left", "Back", "Right", "Run", "Interact", "UseItem", "Rotate", "PickUp", "DropInventory")
+TempKeyRebindControl = NodePath("VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp")
+ResetAllButton = NodePath("VBoxContainer/ResetAllButton")
 metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Keys"]
@@ -196,9 +209,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="KeyRebindTemp" type="HBoxContainer" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="KeyRebindTemp" type="HBoxContainer" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("RebindLabel", "WaitingForInputLabel", "DuplicateWarningLabel", "RebindButton", "ResetButton")]
 layout_mode = 2
 script = ExtResource("2_b02h4")
+RebindLabel = NodePath("Left/RebindLabel")
+WaitingForInputLabel = NodePath("Right/WaitingForInputLabel")
+DuplicateWarningLabel = NodePath("DuplicateWarningLabel")
+RebindButton = NodePath("Right/RebindButton")
+ResetButton = NodePath("ResetButton")
 
 [node name="Left" type="HBoxContainer" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp"]
 layout_mode = 2
