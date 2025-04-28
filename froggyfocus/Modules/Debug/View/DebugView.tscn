@@ -1,0 +1,334 @@
+[gd_scene load_steps=10 format=3 uid="uid://vqmou3q71vox"]
+
+[ext_resource type="Script" uid="uid://4idh7p88nrin" path="res://Modules/Debug/View/DebugView.cs" id="1_7hao7"]
+[ext_resource type="Theme" uid="uid://brrs1nf6nb7c7" path="res://Modules/Debug/Theme/DebugTheme.tres" id="1_di162"]
+[ext_resource type="Script" uid="uid://jpvfexd10573" path="res://Modules/Debug/View/DebugCategoryControl.cs" id="2_4cytp"]
+[ext_resource type="Script" uid="uid://bciiy2gwoobil" path="res://Modules/Debug/View/DebugContentSearch.cs" id="2_fggti"]
+[ext_resource type="Script" uid="uid://da0n63rty1g0r" path="res://Modules/Debug/View/DebugContentList.cs" id="3_42i5k"]
+[ext_resource type="AudioStream" uid="uid://uh3r80m3q205" path="res://Modules/Debug/Sounds/debug_click.wav" id="4_dnfps"]
+[ext_resource type="Script" uid="uid://khdai7j1ec0h" path="res://Modules/Debug/View/DebugInputPopup.cs" id="4_vivle"]
+[ext_resource type="Script" uid="uid://cvsnyfss63mlv" path="res://Modules/Debug/View/DebugInputString.cs" id="5_7vbeg"]
+[ext_resource type="AudioStream" uid="uid://b244yejtrn8we" path="res://Modules/Debug/Sounds/debug_hover.wav" id="5_btliy"]
+
+[node name="DebugView" type="Control" node_paths=PackedStringArray("CategoryTemplate")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_di162")
+script = ExtResource("1_7hao7")
+CategoryTemplate = NodePath("Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate")
+ChildOrder = -999
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 450
+dragger_visibility = 1
+
+[node name="Left" type="Control" parent="Main/HSplitContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="Control" parent="Main/HSplitContainer/Left"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 25
+
+[node name="ColorRect" type="ColorRect" parent="Main/HSplitContainer/Left/Buttons/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer"]
+layout_mode = 2
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="CategoryTemplate" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("View", "CategoryLabel", "ExpandButton", "ButtonsParent", "ActionButtonTemplate", "SfxButtonHover", "SfxButtonPress")]
+layout_mode = 2
+script = ExtResource("2_4cytp")
+View = NodePath("../../../../../../../../../..")
+CategoryLabel = NodePath("MarginContainer/VBoxContainer/Category/CategoryLabel")
+ExpandButton = NodePath("MarginContainer/VBoxContainer/Category/ExpandButton")
+ButtonsParent = NodePath("MarginContainer/VBoxContainer/Buttons")
+ActionButtonTemplate = NodePath("MarginContainer/VBoxContainer/Buttons/ActionButtonTemplate")
+SfxButtonHover = NodePath("../../../../../../../../../../SfxHover")
+SfxButtonPress = NodePath("../../../../../../../../../../SfxClick")
+
+[node name="ColorRect" type="ColorRect" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer"]
+layout_mode = 2
+
+[node name="Category" type="HBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CategoryLabel" type="Label" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer/Category"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CATEGORY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExpandButton" type="Button" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer/Category"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = ">"
+
+[node name="Buttons" type="VBoxContainer" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ActionButtonTemplate" type="Button" parent="Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+text = "PREFAB"
+
+[node name="Right" type="Control" parent="Main/HSplitContainer"]
+layout_mode = 2
+
+[node name="Content" type="Control" parent="Main/HSplitContainer/Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Right/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="ColorRect" type="ColorRect" parent="Main/HSplitContainer/Right/Content/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="MarginContainer" type="MarginContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ContentContainer" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ContentSearch" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_fggti")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 75
+dragger_visibility = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/VBoxContainer"]
+layout_mode = 2
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SearchField" type="LineEdit" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+placeholder_text = "Search..."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResultButtonPrefab" type="Button" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch/VSplitContainer/ScrollContainer/VBoxContainer"]
+auto_translate_mode = 2
+layout_mode = 2
+text = "PREFAB"
+
+[node name="ContentList" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_42i5k")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+text = "Text"
+autowrap_mode = 2
+
+[node name="InputPopup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_vivle")
+
+[node name="MarginContainer" type="MarginContainer" parent="InputPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="InputPopup/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.490196)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InputPopup/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="InputPopup/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StringInput" type="HBoxContainer" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 15
+script = ExtResource("5_7vbeg")
+
+[node name="StringLabel" type="Label" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/StringInput"]
+layout_mode = 2
+text = "Input:"
+
+[node name="StringText" type="LineEdit" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/StringInput"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="AcceptButton" type="Button" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "OK"
+
+[node name="CancelButton" type="Button" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="SfxClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dnfps")
+
+[node name="SfxHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_btliy")
+
+[node name="SfxOpen" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_btliy")
