@@ -3,14 +3,10 @@ using System;
 
 public partial class CameraController : Camera3D
 {
-    [Export]
-    public Node3D Target;
-
-    [Export]
-    public float Speed;
-
-    [Export]
-    public Vector3 Offset;
+    public float Speed { get; set; }
+    public Node3D Target { get; set; }
+    public Vector3 Offset { get; set; }
+    public Vector3 TargetRotation { get; set; }
 
     public static CameraController Instance { get; private set; }
 
@@ -33,5 +29,6 @@ public partial class CameraController : Camera3D
 
         var target_position = Target.GlobalPosition + Offset;
         GlobalPosition = GlobalPosition.Lerp(target_position, Speed * delta);
+        GlobalRotationDegrees = GlobalRotationDegrees.LerpEulerAngles(TargetRotation, Speed * delta);
     }
 }

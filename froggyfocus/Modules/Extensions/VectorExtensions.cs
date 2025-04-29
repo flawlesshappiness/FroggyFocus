@@ -39,6 +39,13 @@ public static class VectorExtensions
     {
         return EulerMath.ClosestEulerAngles(from.WrappedEulerAngles(), to.WrappedEulerAngles());
     }
+
+    public static Vector3 LerpEulerAngles(this Vector3 from, Vector3 to, float t)
+    {
+        to = EulerMath.WrappedEulerAngles(to);
+        from = EulerMath.ClosestEulerAngles(from.WrappedEulerAngles(), to);
+        return from.Lerp(to, t);
+    }
     #endregion
 
     #region VECTOR2

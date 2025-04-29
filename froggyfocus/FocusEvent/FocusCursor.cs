@@ -41,7 +41,7 @@ public partial class FocusCursor : Area3D
         mesh.BottomRadius = Radius;
         mesh.TopRadius = Radius;
 
-        FocusSpeed = 0.1f;
+        FocusSpeed = 0.3f;
         MoveSpeed = 0.1f;
         MoveFocusSpeed = MoveSpeed * 0.25f;
     }

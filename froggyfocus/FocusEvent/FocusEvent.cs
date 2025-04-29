@@ -37,9 +37,9 @@ public partial class FocusEvent : Area3D, IInteractable
         var info = FocusEventController.Instance.Collection.Resources.Random();
 
         // Hijack camera
-        CameraController.Instance.Target = null;
-        CameraController.Instance.GlobalPosition = CameraMarker.GlobalPosition;
-        CameraController.Instance.GlobalRotationDegrees = CameraMarker.GlobalRotationDegrees;
+        CameraController.Instance.Target = this;
+        CameraController.Instance.Offset = CameraMarker.Position;
+        CameraController.Instance.TargetRotation = CameraMarker.GlobalRotationDegrees;
 
         // Disable player
         Player.SetAllLocks(nameof(FocusEvent), true);
