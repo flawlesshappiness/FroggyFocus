@@ -18,6 +18,7 @@ public partial class FocusCursor : Area3D
     private bool Focusing => PlayerInput.Interact.Held;
     private float FocusValue { get; set; }
     private float FocusSpeed { get; set; }
+    private float DecaySpeed { get; set; }
     private float MoveSpeed { get; set; }
     private float MoveFocusSpeed { get; set; }
     private bool Filled { get; set; }
@@ -42,6 +43,7 @@ public partial class FocusCursor : Area3D
         mesh.TopRadius = Radius;
 
         FocusSpeed = 0.3f;
+        DecaySpeed = 0.25f;
         MoveSpeed = 0.1f;
         MoveFocusSpeed = MoveSpeed * 0.25f;
     }
@@ -84,11 +86,15 @@ public partial class FocusCursor : Area3D
         {
             SetFocusValue(FocusValue + delta * FocusSpeed);
         }
+        else
+        {
+            SetFocusValue(FocusValue - delta * DecaySpeed);
+        }
     }
 
     private void SetFocusValue(float value)
     {
-        FocusValue = value;
+        FocusValue = Mathf.Clamp(value, 0f, 1f);
         FillLabel.Text = $"{(int)(FocusValue * 100)}%";
 
         if (FocusValue >= 1)

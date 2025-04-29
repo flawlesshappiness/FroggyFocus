@@ -103,6 +103,7 @@ public partial class FocusEvent : Area3D, IInteractable
             yield return LerpEnumerator.Lerp01(duration, f =>
             {
                 player.GlobalPosition = start.Lerp(end, f);
+                player.RotateToDirection(-end.DirectionTo(Target.GlobalPosition));
             });
         }
     }

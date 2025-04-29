@@ -5,7 +5,7 @@
 
 [node name="DebugFocusTarget" type="Node3D"]
 script = ExtResource("1_xaa35")
-SizeRange = Vector2(0.1, 0.4)
+SizeRange = Vector2(0.1, 0.3)
 
 [node name="Bug" parent="." instance=ExtResource("2_7nmix")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0.24612)

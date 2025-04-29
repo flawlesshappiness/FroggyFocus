@@ -1,12 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://gynma7nbhrbe"]
+[gd_scene load_steps=12 format=3 uid="uid://gynma7nbhrbe"]
 
 [ext_resource type="Material" uid="uid://63r6pqx6t2ej" path="res://Materials/Frog_Primary.tres" id="1_vr2dq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_c7gfj"]
 size = Vector3(0.6, 0.5, 0.8)
 
+[sub_resource type="BoxMesh" id="BoxMesh_ps7tr"]
+size = Vector3(0.2, 0.25, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iqfu1"]
+size = Vector3(0.4, 0.05, 0.4)
+
 [sub_resource type="BoxMesh" id="BoxMesh_vr2dq"]
-size = Vector3(0.4, 0.3, 0.4)
+size = Vector3(0.4, 0.2, 0.4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_db7or"]
 size = Vector3(0.1, 0.1, 0.1)
@@ -19,8 +25,11 @@ size = Vector3(0.05, 0.05, 0.05)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr2dq"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ps7tr"]
-size = Vector3(0.2, 0.25, 0.4)
+[sub_resource type="BoxMesh" id="BoxMesh_81ysc"]
+size = Vector3(0.15, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7gfj"]
+albedo_color = Color(0.6, 0.402, 0.402, 1)
 
 [node name="Frog" type="Node3D"]
 
@@ -28,33 +37,6 @@ size = Vector3(0.2, 0.25, 0.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("BoxMesh_c7gfj")
 surface_material_override/0 = ExtResource("1_vr2dq")
-
-[node name="Head" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.4)
-mesh = SubResource("BoxMesh_vr2dq")
-surface_material_override/0 = ExtResource("1_vr2dq")
-
-[node name="Eye_R" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.57, -0.4)
-mesh = SubResource("BoxMesh_db7or")
-surface_material_override/0 = SubResource("StandardMaterial3D_ai43q")
-
-[node name="Pupil" type="MeshInstance3D" parent="Eye_R"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038807, 0, 0)
-mesh = SubResource("BoxMesh_ai43q")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_vr2dq")
-
-[node name="Eye_L" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.57, -0.4)
-mesh = SubResource("BoxMesh_db7or")
-surface_material_override/0 = SubResource("StandardMaterial3D_ai43q")
-
-[node name="Pupil" type="MeshInstance3D" parent="Eye_L"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035426, 0, 0)
-mesh = SubResource("BoxMesh_ai43q")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_vr2dq")
 
 [node name="Leg_R" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.125, 0.3)
@@ -75,3 +57,54 @@ surface_material_override/0 = ExtResource("1_vr2dq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.125, -0.38234)
 mesh = SubResource("BoxMesh_ps7tr")
 surface_material_override/0 = ExtResource("1_vr2dq")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, 0.51472, -0.321348)
+
+[node name="Mouth_Bottom" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, -0.131024, -0.197317)
+mesh = SubResource("BoxMesh_iqfu1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_vr2dq")
+
+[node name="Top" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118443, 0)
+
+[node name="Mouth_Top" type="MeshInstance3D" parent="Head/Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.111228, -0.197317)
+mesh = SubResource("BoxMesh_vr2dq")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("1_vr2dq")
+
+[node name="Eye_R" type="MeshInstance3D" parent="Head/Top/Mouth_Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.0261703, 0)
+mesh = SubResource("BoxMesh_db7or")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ai43q")
+
+[node name="Pupil" type="MeshInstance3D" parent="Head/Top/Mouth_Top/Eye_R"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038807, 0, 0)
+mesh = SubResource("BoxMesh_ai43q")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vr2dq")
+
+[node name="Eye_L" type="MeshInstance3D" parent="Head/Top/Mouth_Top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.0261703, 0)
+mesh = SubResource("BoxMesh_db7or")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ai43q")
+
+[node name="Pupil" type="MeshInstance3D" parent="Head/Top/Mouth_Top/Eye_L"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.035426, 0, 0)
+mesh = SubResource("BoxMesh_ai43q")
+skeleton = NodePath("../../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vr2dq")
+
+[node name="Tongue" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0765112, 0)
+
+[node name="Tongue_Mesh" type="MeshInstance3D" parent="Head/Tongue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_81ysc")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_c7gfj")
