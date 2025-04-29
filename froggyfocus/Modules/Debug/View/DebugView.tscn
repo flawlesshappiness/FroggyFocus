@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://cvsnyfss63mlv" path="res://Modules/Debug/View/DebugInputString.cs" id="5_7vbeg"]
 [ext_resource type="AudioStream" uid="uid://b244yejtrn8we" path="res://Modules/Debug/Sounds/debug_hover.wav" id="5_btliy"]
 
-[node name="DebugView" type="Control" node_paths=PackedStringArray("CategoryTemplate")]
+[node name="DebugView" type="Control" node_paths=PackedStringArray("CategoryTemplate", "Main", "Content", "InputPopup", "ContentSearch", "ContentList", "SfxClick", "SfxHover", "SfxOpen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,14 @@ grow_vertical = 2
 theme = ExtResource("1_di162")
 script = ExtResource("1_7hao7")
 CategoryTemplate = NodePath("Main/HSplitContainer/Left/Buttons/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/CategoryTemplate")
+Main = NodePath("Main")
+Content = NodePath("Main/HSplitContainer/Right/Content")
+InputPopup = NodePath("InputPopup")
+ContentSearch = NodePath("Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch")
+ContentList = NodePath("Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList")
+SfxClick = NodePath("SfxClick")
+SfxHover = NodePath("SfxHover")
+SfxOpen = NodePath("SfxOpen")
 ChildOrder = -999
 
 [node name="Main" type="Control" parent="."]
@@ -180,7 +188,7 @@ theme_override_constants/margin_bottom = 20
 [node name="ContentContainer" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ContentSearch" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer"]
+[node name="ContentSearch" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer" node_paths=PackedStringArray("TitleLabel", "SearchField", "ResultButtonPrefab")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,6 +196,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_fggti")
+TitleLabel = NodePath("VSplitContainer/VBoxContainer/Title")
+SearchField = NodePath("VSplitContainer/VBoxContainer/SearchField")
+ResultButtonPrefab = NodePath("VSplitContainer/ScrollContainer/VBoxContainer/ResultButtonPrefab")
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentSearch"]
 layout_mode = 1
@@ -226,7 +237,7 @@ auto_translate_mode = 2
 layout_mode = 2
 text = "PREFAB"
 
-[node name="ContentList" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer"]
+[node name="ContentList" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer" node_paths=PackedStringArray("Label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -234,6 +245,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_42i5k")
+Label = NodePath("ScrollContainer/VBoxContainer/Label")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList"]
 layout_mode = 1
@@ -252,7 +264,7 @@ layout_mode = 2
 text = "Text"
 autowrap_mode = 2
 
-[node name="InputPopup" type="Control" parent="."]
+[node name="InputPopup" type="Control" parent="." node_paths=PackedStringArray("StringInput", "AcceptButton", "CancelButton")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -262,6 +274,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_vivle")
+StringInput = NodePath("MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/StringInput")
+AcceptButton = NodePath("MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/AcceptButton")
+CancelButton = NodePath("MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/CancelButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="InputPopup"]
 layout_mode = 1
@@ -296,11 +311,13 @@ theme_override_constants/separation = 15
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="StringInput" type="HBoxContainer" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="StringInput" type="HBoxContainer" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" node_paths=PackedStringArray("Label", "Text")]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/separation = 15
 script = ExtResource("5_7vbeg")
+Label = NodePath("StringLabel")
+Text = NodePath("StringText")
 
 [node name="StringLabel" type="Label" parent="InputPopup/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/StringInput"]
 layout_mode = 2

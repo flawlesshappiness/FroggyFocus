@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://dv5luqtp3xbwh"]
+
+[ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
+[ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
+[ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
+[ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="3_3y7c2"]
+[ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/bug.tscn" id="4_0ky7s"]
+[ext_resource type="Script" uid="uid://bpbdt4x46g0ir" path="res://FocusEvent/FocusCursor.cs" id="5_1p1c6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5ajpj"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ajpj"]
+albedo_color = Color(0.132, 0.3, 0.1572, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wsqb"]
+size = Vector3(20, 1, 20)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qjw4w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1eh1j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1eh1j"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.0980392)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1eh1j"]
+material = SubResource("StandardMaterial3D_1eh1j")
+height = 0.01
+
+[node name="SwampScene" type="Node3D"]
+script = ExtResource("1_qfos7")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="World"]
+mesh = SubResource("PlaneMesh_5ajpj")
+surface_material_override/0 = SubResource("StandardMaterial3D_5ajpj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_0wsqb")
+debug_fill = false
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("Target")]
+transform = Transform3D(1, 0, 0, 0, 0.335353, 0.942093, 0, -0.942093, 0.335353, 0, 5.23246, 1.40213)
+script = ExtResource("1_bn4uc")
+Target = NodePath("../Player")
+Speed = 1.5
+Offset = Vector3(0, 0, 1.5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.94813, 0.0638651, 0.311402, -0.317884, 0.190486, 0.928798, 0, -0.97961, 0.200907, 0, 5.72245, 3.27611)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_qfos7")]
+
+[node name="FocusEvent" type="Area3D" parent="." node_paths=PackedStringArray("CameraMarker", "PlayerMarker", "TargetMarker", "Cursor", "MockTarget")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.512189, 2.38419e-07, -2.59445)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_3y7c2")
+CameraMarker = NodePath("CameraMarker")
+PlayerMarker = NodePath("PlayerMarker")
+TargetMarker = NodePath("TargetMarker")
+Cursor = NodePath("Cursor")
+MockTarget = NodePath("Bug")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEvent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_qjw4w")
+
+[node name="Bug" parent="FocusEvent" instance=ExtResource("4_0ky7s")]
+transform = Transform3D(0.199879, 0, -0.34648, 0, 0.4, 0, 0.34648, 0, 0.199879, 0, 0, 0)
+
+[node name="CameraMarker" type="Marker3D" parent="FocusEvent"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.294, 0)
+
+[node name="PlayerMarker" type="Marker3D" parent="FocusEvent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3807)
+
+[node name="TargetMarker" type="Marker3D" parent="FocusEvent"]
+
+[node name="Cursor" type="Area3D" parent="FocusEvent" node_paths=PackedStringArray("FillLabel")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5_1p1c6")
+CollisionShape = SubResource("CylinderShape3D_1eh1j")
+FillLabel = NodePath("FillLabel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEvent/Cursor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_1eh1j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FocusEvent/Cursor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
+mesh = SubResource("CylinderMesh_1eh1j")
+
+[node name="FillLabel" type="Label3D" parent="FocusEvent/Cursor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00914194, -0.64592)
+text = "30%"

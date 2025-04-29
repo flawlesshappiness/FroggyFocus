@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://4t23pgixusyd"]
+
+[ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/bug.tscn" id="1_6vhcj"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="1_cnwwf"]
+
+[resource]
+script = ExtResource("1_cnwwf")
+Target = ExtResource("1_6vhcj")
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

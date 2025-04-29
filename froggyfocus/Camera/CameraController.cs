@@ -12,6 +12,14 @@ public partial class CameraController : Camera3D
     [Export]
     public Vector3 Offset;
 
+    public static CameraController Instance { get; private set; }
+
+    public override void _Ready()
+    {
+        base._Ready();
+        Instance = this;
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -21,7 +29,9 @@ public partial class CameraController : Camera3D
 
     private void PhysicsProcess_Follow(float delta)
     {
-        var target_position = Target.GlobalPosition.Set(y: GlobalPosition.Y) + Offset;
+        if (Target == null) return;
+
+        var target_position = Target.GlobalPosition + Offset;
         GlobalPosition = GlobalPosition.Lerp(target_position, Speed * delta);
     }
 }
