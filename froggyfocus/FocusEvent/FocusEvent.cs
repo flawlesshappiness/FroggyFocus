@@ -18,7 +18,7 @@ public partial class FocusEvent : Area3D, IInteractable
     public Node3D MockTarget;
 
     private bool EventStarted { get; set; }
-    private Node3D Target { get; set; }
+    private FocusTarget Target { get; set; }
 
     public override void _Ready()
     {
@@ -51,7 +51,7 @@ public partial class FocusEvent : Area3D, IInteractable
         MockTarget.Disable();
 
         // Create target
-        Target = info.Target.Instantiate<Node3D>();
+        Target = info.Target.Instantiate<FocusTarget>();
         Target.SetParent(this);
         Target.GlobalPosition = TargetMarker.GlobalPosition;
 

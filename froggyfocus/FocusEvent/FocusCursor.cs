@@ -10,10 +10,10 @@ public partial class FocusCursor : Area3D
     public Label3D FillLabel;
 
     public bool InputEnabled { get; set; }
-    public Node3D Target { get; set; }
+    public FocusTarget Target { get; set; }
     private Vector3 DesiredVelocity { get; set; }
     private float Radius { get; set; }
-    private float DistanceToTarget => Target == null ? 0f : GlobalPosition.DistanceTo(Target.GlobalPosition);
+    private float DistanceToTarget => Target == null ? 0f : GlobalPosition.DistanceTo(Target.GlobalPosition) - Target.Radius;
     private bool IsTargetInRange => DistanceToTarget < Radius;
     private bool Focusing => PlayerInput.Interact.Held;
     private float FocusValue { get; set; }
@@ -79,7 +79,7 @@ public partial class FocusCursor : Area3D
 
         if (IsTargetInRange && Focusing)
         {
-            SetFocusValue(FocusValue + delta);
+            SetFocusValue(FocusValue + delta * FocusSpeed);
         }
     }
 
