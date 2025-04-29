@@ -4,7 +4,7 @@ using System;
 public partial class FocusCursor : Area3D
 {
     [Export]
-    public CylinderShape3D CollisionShape;
+    public MeshInstance3D MeshInstance;
 
     [Export]
     public Label3D FillLabel;
@@ -36,11 +36,14 @@ public partial class FocusCursor : Area3D
     public void Load()
     {
         // TODO: Load data
-        Radius = 1;
+        Radius = 0.4f;
+        var mesh = MeshInstance.Mesh as CylinderMesh;
+        mesh.BottomRadius = Radius;
+        mesh.TopRadius = Radius;
+
         FocusSpeed = 0.1f;
         MoveSpeed = 0.1f;
         MoveFocusSpeed = MoveSpeed * 0.25f;
-        CollisionShape.Radius = Radius;
     }
 
     public override void _Process(double delta)

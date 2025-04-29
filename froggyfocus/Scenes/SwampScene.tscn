@@ -84,11 +84,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3807)
 
 [node name="TargetMarker" type="Marker3D" parent="FocusEvent"]
 
-[node name="Cursor" type="Area3D" parent="FocusEvent" node_paths=PackedStringArray("FillLabel")]
+[node name="Cursor" type="Area3D" parent="FocusEvent" node_paths=PackedStringArray("MeshInstance", "FillLabel")]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("5_1p1c6")
-CollisionShape = SubResource("CylinderShape3D_1eh1j")
+MeshInstance = NodePath("MeshInstance3D")
 FillLabel = NodePath("FillLabel")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEvent/Cursor"]
