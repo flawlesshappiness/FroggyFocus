@@ -3,7 +3,8 @@ using System;
 
 public partial class CameraController : Camera3D
 {
-    public float Speed { get; set; }
+    [Export]
+    public float Speed;
     public Node3D Target { get; set; }
     public Vector3 Offset { get; set; }
     public Vector3 TargetRotation { get; set; }
