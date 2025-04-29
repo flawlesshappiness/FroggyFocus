@@ -8,6 +8,9 @@ public partial class Player : TopDownController
     [Export]
     public PlayerInteract PlayerInteract;
 
+    [Export]
+    public FrogCharacter Character;
+
     public static Player Instance { get; private set; }
 
     public static MultiLock MovementLock = new();

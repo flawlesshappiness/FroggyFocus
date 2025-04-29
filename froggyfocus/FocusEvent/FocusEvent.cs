@@ -55,36 +55,50 @@ public partial class FocusEvent : Area3D, IInteractable
 
         // Position target
 
-        // Enable cursor
-        Cursor.Initialize();
-        Cursor.Target = Target;
 
         this.StartCoroutine(Cr, nameof(StartEvent));
         IEnumerator Cr()
         {
             AnimatePlayerToPosition(PlayerMarker, 1f);
             yield return new WaitForSeconds(1f);
+
+            // Enable cursor
+            Cursor.Initialize();
+            Cursor.Target = Target;
+
+            // Start
             EventStarted = true;
         }
     }
 
     protected virtual void EndEvent()
     {
-        // Camera target player
-        Player.Instance.SetCameraTarget();
+        this.StartCoroutine(Cr, nameof(EndEvent));
+        IEnumerator Cr()
+        {
+            yield return Player.Instance.Character.AnimateTongueTowards(Target);
 
-        // Enable player
-        Player.SetAllLocks(nameof(FocusEvent), false);
+            // Disable target
+            Target.QueueFree();
 
-        // Disable cursor
-        Cursor.Disable();
-        Cursor.InputEnabled = false;
+            yield return Player.Instance.Character.AnimageTongueBack();
 
-        // Disable target
-        Target.QueueFree();
-        MockTarget.Enable();
+            // Camera target player
+            Player.Instance.SetCameraTarget();
 
-        EventStarted = false;
+            // Enable player
+            Player.SetAllLocks(nameof(FocusEvent), false);
+
+            // Disable cursor
+            Cursor.Disable();
+            Cursor.InputEnabled = false;
+
+            // Debug
+            MockTarget.Enable();
+
+            // End
+            EventStarted = false;
+        }
     }
 
     private void FocusFilled()

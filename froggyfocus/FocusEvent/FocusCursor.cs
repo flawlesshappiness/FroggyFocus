@@ -45,7 +45,7 @@ public partial class FocusCursor : Area3D
         FocusSpeed = 0.3f;
         DecaySpeed = 0.25f;
         MoveSpeed = 0.1f;
-        MoveFocusSpeed = MoveSpeed * 0.25f;
+        MoveFocusSpeed = MoveSpeed * 0f;
     }
 
     public override void _Process(double delta)
