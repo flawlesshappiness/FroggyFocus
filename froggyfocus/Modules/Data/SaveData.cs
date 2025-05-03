@@ -6,6 +6,8 @@ public abstract class SaveData
     public string Version { get; set; } = string.Empty;
     public bool IsRelease { get; set; } = false;
     public string TimeUpdated { get; set; } = string.Empty;
+    public int? Profile { get; set; } = null;
+    public bool Deleted { get; set; } = false;
 
     public void UpdateVersion() => Version = ApplicationInfo.Instance.Version;
     public void UpdateRelease() => IsRelease = ApplicationInfo.Instance.Release;
@@ -14,8 +16,8 @@ public abstract class SaveData
     [JsonIgnore]
     public DateTime DateTimeUpdated => DateTime.TryParse(TimeUpdated, out var result) ? result : new DateTime();
 
-    [JsonIgnore]
-    public Action OnBeforeSave;
+    public event Action OnBeforeSave;
+    public event Action OnAfterSave;
 
     public void Update()
     {
@@ -27,8 +29,7 @@ public abstract class SaveData
     public void Save()
     {
         OnBeforeSave?.Invoke();
-
-        var type = GetType();
-        SaveDataController.Instance.Save(type);
+        SaveDataController.Instance.Save(this);
+        OnAfterSave?.Invoke();
     }
 }

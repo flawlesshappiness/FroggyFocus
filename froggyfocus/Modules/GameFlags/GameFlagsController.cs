@@ -8,14 +8,7 @@ public partial class GameFlagsController : SingletonController
 
     private Dictionary<string, GameFlagData> _flags = new();
 
-    protected override void Initialize()
-    {
-        base.Initialize();
-        Data.Game.OnBeforeSave += BeforeSave;
-        LoadData();
-    }
-
-    private void LoadData()
+    public void Load()
     {
         _flags.Clear();
         foreach (var data in Data.Game.GameFlags)
@@ -24,7 +17,7 @@ public partial class GameFlagsController : SingletonController
         }
     }
 
-    private void BeforeSave()
+    private void UpdateData()
     {
         Data.Game.GameFlags = _flags.Values.ToList();
     }
@@ -52,5 +45,6 @@ public partial class GameFlagsController : SingletonController
     public void SetFlag(string id, int value)
     {
         GetOrCreateFlag(id).Value = value;
+        UpdateData();
     }
 }

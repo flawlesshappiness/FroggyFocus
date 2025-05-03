@@ -1,4 +1,4 @@
 public static partial class Data
 {
-    public static GameSaveData Game => SaveDataController.Instance.Get<GameSaveData>();
+    public static GameSaveData Game => GameProfileController.Instance.GetSelectedGameProfile();
 }

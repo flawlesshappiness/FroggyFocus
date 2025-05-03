@@ -62,8 +62,8 @@ public partial class Player : TopDownController
     public void SetCameraTarget()
     {
         CameraController.Instance.Target = this;
-        CameraController.Instance.Offset = new Vector3(0, 5, 1.4f);
-        CameraController.Instance.TargetRotation = new Vector3(-70, 0, 0);
+        CameraController.Instance.Offset = new Vector3(0, 5, 1.6f);
+        CameraController.Instance.TargetRotation = new Vector3(-60, 0, 0);
     }
 
     public static void SetAllLocks(string key, bool locked)

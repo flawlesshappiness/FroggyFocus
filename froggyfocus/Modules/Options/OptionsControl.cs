@@ -19,9 +19,6 @@ public partial class OptionsControl : ControlScript
     public Slider BGMSlider;
 
     [Export]
-    public Slider MouseSensitivitySlider;
-
-    [Export]
     public Label MouseSensitivityLabel;
 
     [Export]
@@ -57,7 +54,6 @@ public partial class OptionsControl : ControlScript
         MasterSlider.Value = Data.Options.VolumeMaster;
         SFXSlider.Value = Data.Options.VolumeSFX;
         BGMSlider.Value = Data.Options.VolumeBGM;
-        MouseSensitivitySlider.Value = Data.Options.MouseSensitivity;
         WindowModeDropdown.Selected = Data.Options.WindowMode;
         ResolutionDropdown.Selected = Data.Options.Resolution;
         VSyncDropdown.Selected = Data.Options.VSync;
@@ -67,7 +63,6 @@ public partial class OptionsControl : ControlScript
         MasterSlider.ValueChanged += MasterSlider_ValueChanged;
         SFXSlider.ValueChanged += SFXSlider_ValueChanged;
         BGMSlider.ValueChanged += BGMSlider_ValueChanged;
-        MouseSensitivitySlider.ValueChanged += MouseSensitivitySlider_ValueChanged;
         WindowModeDropdown.ItemSelected += WindowMode_SelectionChanged;
         ResolutionDropdown.ItemSelected += Resolution_SelectionChanged;
         VSyncDropdown.ItemSelected += VSync_SelectionChanged;
@@ -122,13 +117,6 @@ public partial class OptionsControl : ControlScript
         var f = Convert.ToSingle(v);
         OptionsController.Instance.UpdateVolume("BGM", f);
         Data.Options.VolumeBGM = f;
-    }
-
-    private void MouseSensitivitySlider_ValueChanged(double v)
-    {
-        var f = Convert.ToSingle(v);
-        MouseSensitivityLabel.Text = $"{f.ToString("0.00")}";
-        Data.Options.MouseSensitivity = f;
     }
 
     private void WindowMode_AddItems()
