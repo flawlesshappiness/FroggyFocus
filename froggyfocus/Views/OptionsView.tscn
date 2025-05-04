@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt0j3g7sdyob2"]
+
+[ext_resource type="Script" uid="uid://dyau1bm7cj17p" path="res://Views/OptionsView.cs" id="1_bs00f"]
+[ext_resource type="PackedScene" uid="uid://dk5e5unescpcn" path="res://Modules/Options/OptionsControl.tscn" id="2_b8ik5"]
+
+[node name="OptionsView" type="Control" node_paths=PackedStringArray("OptionsControl")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bs00f")
+OptionsControl = NodePath("CenterContainer/Options")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" parent="CenterContainer" instance=ExtResource("2_b8ik5")]
+layout_mode = 2

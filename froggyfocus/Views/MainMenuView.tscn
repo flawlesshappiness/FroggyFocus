@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmuxgxi24ysym"]
+
+[ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView.cs" id="1_qib6v"]
+
+[node name="MainMenuView" type="Control" node_paths=PackedStringArray("ContinueButton", "OptionsButton", "QuitButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qib6v")
+ContinueButton = NodePath("MarginContainer/HSplitContainer/Left/VBoxContainer/Continue")
+OptionsButton = NodePath("MarginContainer/HSplitContainer/Left/VBoxContainer/OptionsButton")
+QuitButton = NodePath("MarginContainer/HSplitContainer/Left/VBoxContainer/QuitButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="Left" type="Control" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HSplitContainer/Left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 107.0
+offset_right = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Continue" type="Button" parent="MarginContainer/HSplitContainer/Left/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Continue"
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/HSplitContainer/Left/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/HSplitContainer/Left/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
+[node name="Right" type="Control" parent="MarginContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

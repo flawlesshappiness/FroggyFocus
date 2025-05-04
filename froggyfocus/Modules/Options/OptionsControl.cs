@@ -19,9 +19,6 @@ public partial class OptionsControl : ControlScript
     public Slider BGMSlider;
 
     [Export]
-    public Label MouseSensitivityLabel;
-
-    [Export]
     public OptionButton WindowModeDropdown;
 
     [Export]
