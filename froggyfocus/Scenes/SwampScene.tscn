@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=12 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
+[ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
+[ext_resource type="Material" uid="uid://cpnberbwo70x8" path="res://Materials/Grass.tres" id="2_3y7c2"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="3_3y7c2"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="6_3y7c2"]
@@ -9,9 +11,6 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5ajpj"]
 size = Vector2(20, 20)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ajpj"]
-albedo_color = Color(0.132, 0.3, 0.1572, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wsqb"]
 size = Vector3(20, 1, 20)
@@ -21,11 +20,18 @@ size = Vector3(20, 1, 20)
 [node name="SwampScene" type="Node3D"]
 script = ExtResource("1_qfos7")
 
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.363072, 0.931761, 0, -0.931761, 0.363072, 0, 9.01286, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_0ky7s")
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="Floor" type="MeshInstance3D" parent="World"]
 mesh = SubResource("PlaneMesh_5ajpj")
-surface_material_override/0 = SubResource("StandardMaterial3D_5ajpj")
+surface_material_override/0 = ExtResource("2_3y7c2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World"]
 
@@ -45,35 +51,6 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_qfos7")]
 
-[node name="FocusEventXZ" type="Area3D" parent="." node_paths=PackedStringArray("CameraMarker", "PlayerMarker", "TargetMarker", "Cursor", "Target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56201, 2.38419e-07, -4.4725)
-collision_layer = 4
-collision_mask = 0
-script = ExtResource("3_3y7c2")
-Axis = 1
-Size = Vector2(5, 5)
-CameraMarker = NodePath("CameraMarker")
-PlayerMarker = NodePath("PlayerMarker")
-TargetMarker = NodePath("TargetMarker")
-Cursor = NodePath("FocusCursor")
-Target = NodePath("FocusTarget")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventXZ"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_qjw4w")
-
-[node name="CameraMarker" type="Marker3D" parent="FocusEventXZ"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.294, 0)
-
-[node name="PlayerMarker" type="Marker3D" parent="FocusEventXZ"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-
-[node name="TargetMarker" type="Marker3D" parent="FocusEventXZ"]
-
-[node name="FocusCursor" parent="FocusEventXZ" instance=ExtResource("6_3y7c2")]
-
-[node name="FocusTarget" parent="FocusEventXZ" instance=ExtResource("7_3y7c2")]
-
 [node name="FocusEventX" type="Area3D" parent="." node_paths=PackedStringArray("CameraMarker", "PlayerMarker", "TargetMarker", "Cursor", "Target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09558, 2.38419e-07, -4.4725)
 collision_layer = 4
@@ -91,10 +68,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_qjw4w")
 
 [node name="CameraMarker" type="Marker3D" parent="FocusEventX"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 5.96157e-08, 0.726594, 2.55866)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 5.96157e-08, 1.57125, 3.09984)
 
 [node name="PlayerMarker" type="Marker3D" parent="FocusEventX"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -3)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -7.8135e-08, 0, 2.55312)
 
 [node name="TargetMarker" type="Marker3D" parent="FocusEventX"]
 
@@ -132,3 +109,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.77869)
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.66235e-08, -0.380301)
 
 [node name="FocusTarget" parent="FocusEventXY" instance=ExtResource("7_3y7c2")]
+
+[node name="FocusEventXZ" type="Area3D" parent="." node_paths=PackedStringArray("CameraMarker", "PlayerMarker", "TargetMarker", "Cursor", "Target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.56201, 2.38419e-07, -4.4725)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_3y7c2")
+Axis = 1
+Size = Vector2(5, 2)
+CameraMarker = NodePath("CameraMarker")
+PlayerMarker = NodePath("PlayerMarker")
+TargetMarker = NodePath("TargetMarker")
+Cursor = NodePath("FocusCursor")
+Target = NodePath("FocusTarget")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventXZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_qjw4w")
+
+[node name="CameraMarker" type="Marker3D" parent="FocusEventXZ"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.294, 0)
+
+[node name="PlayerMarker" type="Marker3D" parent="FocusEventXZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="TargetMarker" type="Marker3D" parent="FocusEventXZ"]
+
+[node name="FocusCursor" parent="FocusEventXZ" instance=ExtResource("6_3y7c2")]
+
+[node name="FocusTarget" parent="FocusEventXZ" instance=ExtResource("7_3y7c2")]

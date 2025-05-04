@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://dclfilqvmuilh"]
+[gd_scene load_steps=6 format=3 uid="uid://dclfilqvmuilh"]
 
 [ext_resource type="Script" uid="uid://chh8ncpnh214i" path="res://Scenes/MainMenuScene.cs" id="1_sb72h"]
+[ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_gmxq7"]
+[ext_resource type="Material" uid="uid://cpnberbwo70x8" path="res://Materials/Grass.tres" id="2_mxhvt"]
+[ext_resource type="PackedScene" uid="uid://gynma7nbhrbe" path="res://Prefabs/Characters/frog.tscn" id="4_gmxq7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sb72h"]
+material = ExtResource("2_mxhvt")
+size = Vector2(500, 500)
 
 [node name="MainMenuScene" type="Node3D"]
 script = ExtResource("1_sb72h")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.363072, 0.931761, 0, -0.931761, 0.363072, 0, 9.01286, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_gmxq7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.961694, 0.274127, 0, -0.274127, 0.961694, -1.74717, 1.01917, 1.64653)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+mesh = SubResource("PlaneMesh_sb72h")
+
+[node name="Frog" parent="World" instance=ExtResource("4_gmxq7")]
+transform = Transform3D(-0.121298, 0, 0.992616, 0, 1, 0, -0.992616, 0, -0.121298, -0.596843, 0, 0.0729342)
