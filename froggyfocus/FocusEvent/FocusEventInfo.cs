@@ -5,5 +5,8 @@ using Godot.Collections;
 public partial class FocusEventInfo : Resource
 {
     [Export]
+    public FocusEventAxis Axis;
+
+    [Export]
     public Array<FocusCharacterInfo> Characters;
 }

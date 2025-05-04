@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://c6vbp2rauxhm5"]
+
+[ext_resource type="Resource" uid="uid://dtaq1s53cx6bt" path="res://FocusCharacter/Resources/DebugCharacterXY.tres" id="1_j1toa"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_5gvd4"]
+
+[resource]
+script = ExtResource("2_5gvd4")
+Axis = 2
+Characters = Array[Object]([ExtResource("1_j1toa")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

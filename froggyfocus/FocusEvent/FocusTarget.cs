@@ -8,8 +8,14 @@ public partial class FocusTarget : Node3D
     public float Size { get; private set; }
     public float Radius => Size * 0.5f;
 
-    private Vector3 _center;
     private Coroutine _cr_moving;
+    private FocusEvent _event;
+    private RandomNumberGenerator _rng = new();
+
+    public void Initialize(FocusEvent focus_event)
+    {
+        _event = focus_event;
+    }
 
     public void SetCharacter(FocusCharacterInfo info)
     {
@@ -45,9 +51,8 @@ public partial class FocusTarget : Node3D
         Scale = Vector3.One * size;
     }
 
-    public void StartMoving(Vector3 center)
+    public void StartMoving()
     {
-        _center = center;
         _cr_moving = this.StartCoroutine(MovingCr, "moving");
     }
 
@@ -56,17 +61,12 @@ public partial class FocusTarget : Node3D
         Coroutine.Stop(_cr_moving);
     }
 
-    protected virtual IEnumerator MovingCr()
+    private IEnumerator MovingCr()
     {
-        var rng = new RandomNumberGenerator();
-
         while (true)
         {
             // Select position
-            var radius = 5f;
-            var x = rng.RandfRange(-radius, radius);
-            var z = rng.RandfRange(-radius, radius);
-            var position = _center + new Vector3(x, 0, z);
+            var position = GetRandomPosition(Info.MoveAxis);
             var dir_to_position = GlobalPosition.DirectionTo(position);
             var length = dir_to_position.Length();
             var dir_to_position_clamped = dir_to_position.ClampMagnitude(Info.MoveLengthRange.X, Info.MoveLengthRange.Y);
@@ -82,7 +82,7 @@ public partial class FocusTarget : Node3D
             }
 
             // Wait
-            var delay = rng.RandfRange(Info.MoveDelayRange.X, Info.MoveDelayRange.Y);
+            var delay = _rng.RandfRange(Info.MoveDelayRange.X, Info.MoveDelayRange.Y);
             yield return new WaitForSeconds(delay);
         }
     }
@@ -90,5 +90,25 @@ public partial class FocusTarget : Node3D
     private void Move(Vector3 velocity)
     {
         GlobalPosition += velocity;
+    }
+
+    private Vector3 GetRandomPosition(FocusEventAxis axis) => axis switch
+    {
+        FocusEventAxis.XZ => GetRandomPosition(1, 0, 1),
+        FocusEventAxis.XY => GetRandomPosition(1, 1, 0),
+        FocusEventAxis.X => GetRandomPosition(1, 0, 0),
+        _ => Vector3.Zero
+    };
+
+    private Vector3 GetRandomPosition(int x, int y, int z) => GetRandomPosition(new Vector3I(x, y, z));
+    private Vector3 GetRandomPosition(Vector3I mul)
+    {
+        var rx = _event.Size.X;
+        var ry = _event.Size.Y;
+        var x = mul.X * _rng.RandfRange(-rx, rx);
+        var y = mul.Y * _rng.RandfRange(-ry, ry);
+        var z = mul.Z * _rng.RandfRange(-ry, ry);
+        var position = _event.GlobalPosition + _event.Offset + new Vector3(x, y, z);
+        return position;
     }
 }

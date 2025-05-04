@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://mxm2dprettou"]
+
+[ext_resource type="Resource" uid="uid://inwyiv20wmwr" path="res://FocusCharacter/Resources/DebugCharacterX.tres" id="1_amdo7"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_sbi3t"]
+
+[resource]
+script = ExtResource("2_sbi3t")
+Characters = Array[Object]([ExtResource("1_amdo7")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

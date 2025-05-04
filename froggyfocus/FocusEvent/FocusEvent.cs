@@ -1,8 +1,18 @@
 using Godot;
 using System.Collections;
+using System.Linq;
 
 public partial class FocusEvent : Area3D, IInteractable
 {
+    [Export]
+    public FocusEventAxis Axis;
+
+    [Export]
+    public Vector2 Size;
+
+    [Export]
+    public Vector3 Offset;
+
     [Export]
     public Marker3D CameraMarker;
 
@@ -16,9 +26,6 @@ public partial class FocusEvent : Area3D, IInteractable
     public FocusCursor Cursor;
 
     [Export]
-    public Node3D MockTarget;
-
-    [Export]
     public FocusTarget Target;
 
     private bool EventStarted { get; set; }
@@ -26,9 +33,12 @@ public partial class FocusEvent : Area3D, IInteractable
     public override void _Ready()
     {
         base._Ready();
-        Cursor.Disable();
         Cursor.OnFocusFilled += FocusFilled;
         Cursor.OnFocusTarget += FocusTarget;
+        Cursor.Initialize(Target, Axis);
+
+        Target.Initialize(this);
+        CreateTarget();
     }
 
     public void Interact()
@@ -36,10 +46,18 @@ public partial class FocusEvent : Area3D, IInteractable
         StartEvent();
     }
 
+    private void CreateTarget()
+    {
+        var info = FocusEventController.Instance.Collection.Resources
+            .Where(x => x.Axis == Axis)
+            .ToList().Random();
+        Target.GlobalPosition = TargetMarker.GlobalPosition;
+        Target.SetCharacter(info.Characters.PickRandom());
+        Target.Enable();
+    }
+
     protected virtual void StartEvent()
     {
-        var info = FocusEventController.Instance.Collection.Resources.Random();
-
         // Hijack camera
         CameraController.Instance.Target = this;
         CameraController.Instance.Offset = CameraMarker.Position;
@@ -48,14 +66,6 @@ public partial class FocusEvent : Area3D, IInteractable
         // Disable player
         Player.SetAllLocks(nameof(FocusEvent), true);
 
-        // Disable mock target
-        MockTarget.Disable();
-
-        // Initialize target
-        Target.GlobalPosition = TargetMarker.GlobalPosition;
-        Target.SetCharacter(info.Characters.PickRandom());
-        Target.Enable();
-
         this.StartCoroutine(Cr, nameof(StartEvent));
         IEnumerator Cr()
         {
@@ -63,11 +73,11 @@ public partial class FocusEvent : Area3D, IInteractable
             yield return new WaitForSeconds(1f);
 
             // Initialize cursor
-            Cursor.Initialize(Target);
-            Cursor.Position = Vector3.Zero;
+            Cursor.Position = Offset;
+            Cursor.Start(Target);
 
             // Start target
-            Target.StartMoving(GlobalPosition);
+            Target.StartMoving();
 
             // Start
             EventStarted = true;
@@ -98,8 +108,8 @@ public partial class FocusEvent : Area3D, IInteractable
             Cursor.Disable();
             Cursor.InputEnabled = false;
 
-            // Debug
-            MockTarget.Enable();
+            // New target
+            CreateTarget();
 
             // End
             EventStarted = false;
