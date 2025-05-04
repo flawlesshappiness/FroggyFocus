@@ -29,6 +29,7 @@ public partial class FocusEvent : Area3D, IInteractable
     public FocusTarget Target;
 
     private bool EventStarted { get; set; }
+    private bool EventEnabled { get; set; }
 
     public override void _Ready()
     {
@@ -38,11 +39,30 @@ public partial class FocusEvent : Area3D, IInteractable
         Cursor.Initialize(Target, Axis);
 
         Target.Initialize(this);
-        CreateTarget();
+    }
+
+    public void EnableEvent() => SetEventEnabled(true);
+    public void DisableEvent() => SetEventEnabled(false);
+    public void SetEventEnabled(bool enabled)
+    {
+        EventEnabled = enabled;
+
+        if (enabled)
+        {
+            CreateTarget();
+            FocusEventController.Instance.EnableEvent(this);
+        }
+        else
+        {
+            Target.Hide();
+            FocusEventController.Instance.DisableEvent(this);
+        }
     }
 
     public void Interact()
     {
+        if (!EventEnabled) return;
+
         StartEvent();
     }
 
@@ -53,7 +73,7 @@ public partial class FocusEvent : Area3D, IInteractable
             .ToList().Random();
         Target.GlobalPosition = TargetMarker.GlobalPosition;
         Target.SetCharacter(info.Characters.PickRandom());
-        Target.Enable();
+        Target.Show();
     }
 
     protected virtual void StartEvent()
@@ -95,8 +115,8 @@ public partial class FocusEvent : Area3D, IInteractable
             // Eat target
             yield return Player.Instance.Character.AnimateEatTarget(Target.Character);
 
-            // Remove target
-            Target.Character.Disable();
+            // Hide target
+            Target.Hide();
 
             // Camera target player
             Player.Instance.SetCameraTarget();
@@ -108,11 +128,9 @@ public partial class FocusEvent : Area3D, IInteractable
             Cursor.Disable();
             Cursor.InputEnabled = false;
 
-            // New target
-            CreateTarget();
-
             // End
             EventStarted = false;
+            DisableEvent();
         }
     }
 

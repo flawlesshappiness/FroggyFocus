@@ -1,3 +1,3 @@
-public partial class SwampScene : Scene
+public partial class SwampScene : GameScene
 {
 }

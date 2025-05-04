@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2p1s64vlogjj"]
+
+[ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_g0t0b"]
+[ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_wb8k1"]
+[ext_resource type="PackedScene" uid="uid://c7v778qpl5v6w" path="res://Prefabs/FocusEvent/FocusTarget.tscn" id="3_irk3i"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qjw4w"]
+
+[node name="FocusEventXY" type="Area3D" node_paths=PackedStringArray("CameraMarker", "PlayerMarker", "TargetMarker", "Cursor", "Target")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_g0t0b")
+Axis = 2
+Size = Vector2(5, 2)
+Offset = Vector3(0, 2, 0)
+CameraMarker = NodePath("CameraMarker")
+PlayerMarker = NodePath("PlayerMarker")
+TargetMarker = NodePath("TargetMarker")
+Cursor = NodePath("FocusCursor")
+Target = NodePath("FocusTarget")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_qjw4w")
+
+[node name="CameraMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+
+[node name="PlayerMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.77869)
+
+[node name="TargetMarker" type="Marker3D" parent="."]
+
+[node name="FocusCursor" parent="." instance=ExtResource("2_wb8k1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.66235e-08, -0.380301)
+
+[node name="FocusTarget" parent="." instance=ExtResource("3_irk3i")]
