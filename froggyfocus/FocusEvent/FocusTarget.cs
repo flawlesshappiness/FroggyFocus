@@ -3,30 +3,25 @@ using System.Collections;
 
 public partial class FocusTarget : Node3D
 {
-    [Export]
-    public Vector2 SizeRange = new Vector2(1, 1);
-
-    public FocusCharacter Character { get; set; }
-    public float Size { get; set; }
+    public FocusCharacterInfo Info { get; private set; }
+    public FocusCharacter Character { get; private set; }
+    public float Size { get; private set; }
     public float Radius => Size * 0.5f;
 
     private Vector3 _center;
     private Coroutine _cr_moving;
 
-    public override void _Ready()
-    {
-        base._Ready();
-        SetRandomSize();
-    }
-
     public void SetCharacter(FocusCharacterInfo info)
     {
         RemoveCharacter();
 
+        Info = info;
         Character = info.Scene.Instantiate<FocusCharacter>();
         Character.SetParent(this);
         Character.Position = Vector3.Zero;
         Character.Rotation = Vector3.Zero;
+
+        RandomizeSize();
     }
 
     private void RemoveCharacter()
@@ -37,10 +32,10 @@ public partial class FocusTarget : Node3D
         Character = null;
     }
 
-    public void SetRandomSize()
+    public void RandomizeSize()
     {
         var rng = new RandomNumberGenerator();
-        var size = rng.RandfRange(SizeRange.X, SizeRange.Y);
+        var size = rng.RandfRange(Info.SizeRange.X, Info.SizeRange.Y);
         SetSize(size);
     }
 
@@ -63,8 +58,6 @@ public partial class FocusTarget : Node3D
 
     protected virtual IEnumerator MovingCr()
     {
-        var move_speed = 1f;
-        var delay_duration = 1f;
         var rng = new RandomNumberGenerator();
 
         while (true)
@@ -76,7 +69,7 @@ public partial class FocusTarget : Node3D
             var position = _center + new Vector3(x, 0, z);
             var dir_to_position = GlobalPosition.DirectionTo(position);
             var length = dir_to_position.Length();
-            var dir_to_position_clamped = dir_to_position.ClampMagnitude(1f, 2f);
+            var dir_to_position_clamped = dir_to_position.ClampMagnitude(Info.MoveLengthRange.X, Info.MoveLengthRange.Y);
             position = GlobalPosition + dir_to_position_clamped;
 
             // Move to position
@@ -84,12 +77,13 @@ public partial class FocusTarget : Node3D
 
             while (GlobalPosition.DistanceTo(position) > 0.1f)
             {
-                Move(dir_to_position.Normalized() * move_speed * GameTime.DeltaTime);
+                Move(dir_to_position.Normalized() * Info.MoveSpeed * GameTime.DeltaTime);
                 yield return null;
             }
 
             // Wait
-            yield return new WaitForSeconds(delay_duration);
+            var delay = rng.RandfRange(Info.MoveDelayRange.X, Info.MoveDelayRange.Y);
+            yield return new WaitForSeconds(delay);
         }
     }
 

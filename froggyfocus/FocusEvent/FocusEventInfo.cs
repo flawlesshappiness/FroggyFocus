@@ -1,8 +1,9 @@
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class FocusEventInfo : Resource
 {
     [Export]
-    public FocusCharacterInfo Character;
+    public Array<FocusCharacterInfo> Characters;
 }

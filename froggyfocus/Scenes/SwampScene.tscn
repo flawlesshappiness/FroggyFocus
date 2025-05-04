@@ -69,7 +69,7 @@ transform = Transform3D(0.199879, 0, -0.34648, 0, 0.4, 0, 0.34648, 0, 0.199879, 
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.294, 0)
 
 [node name="PlayerMarker" type="Marker3D" parent="FocusEvent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
 [node name="TargetMarker" type="Marker3D" parent="FocusEvent"]
 

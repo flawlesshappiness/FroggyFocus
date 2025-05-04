@@ -122,9 +122,10 @@ _data = {
 &"open": SubResource("Animation_vr2dq")
 }
 
-[node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "AnimationPlayer")]
+[node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "TongueTargetMarker", "AnimationPlayer")]
 script = ExtResource("1_c7gfj")
 Tongue = NodePath("Head/Tongue")
+TongueTargetMarker = NodePath("Head/Tongue/TongueTargetMarker")
 AnimationPlayer = NodePath("AnimationPlayer")
 
 [node name="Body" type="MeshInstance3D" parent="."]
@@ -205,6 +206,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 mesh = SubResource("BoxMesh_81ysc")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_c7gfj")
+
+[node name="TongueTargetMarker" type="Marker3D" parent="Head/Tongue"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

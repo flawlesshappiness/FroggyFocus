@@ -62,9 +62,6 @@ public abstract partial class View : ControlScript, IComparable<View>
         }
     }
 
-    protected virtual void OnShow() { }
-    protected virtual void OnHide() { }
-
     public int CompareTo(View other)
     {
         return GetType().Name.CompareTo(other.GetType().Name);

@@ -53,7 +53,7 @@ public partial class FocusEvent : Area3D, IInteractable
 
         // Initialize target
         Target.GlobalPosition = TargetMarker.GlobalPosition;
-        Target.SetCharacter(info.Character);
+        Target.SetCharacter(info.Characters.PickRandom());
         Target.Enable();
 
         this.StartCoroutine(Cr, nameof(StartEvent));
@@ -82,12 +82,11 @@ public partial class FocusEvent : Area3D, IInteractable
             // Stop target
             Target.StopMoving();
 
-            yield return Player.Instance.Character.AnimateTongueTowards(Target);
+            // Eat target
+            yield return Player.Instance.Character.AnimateEatTarget(Target.Character);
 
-            // Disable target
-            Target.Disable();
-
-            yield return Player.Instance.Character.AnimageTongueBack();
+            // Remove target
+            Target.Character.Disable();
 
             // Camera target player
             Player.Instance.SetCameraTarget();
