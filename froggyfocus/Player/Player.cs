@@ -36,7 +36,7 @@ public partial class Player : TopDownController
         if (input.Length() > 0 && !MovementLock.IsLocked)
         {
             Move(input, MoveSpeed);
-            RotateToDirection(-DesiredMoveVelocity);
+            Character.StartFacingDirection(DesiredMoveVelocity);
         }
         else
         {
@@ -62,7 +62,7 @@ public partial class Player : TopDownController
     public void SetCameraTarget()
     {
         CameraController.Instance.Target = this;
-        CameraController.Instance.Offset = new Vector3(0, 5, 1.6f);
+        CameraController.Instance.Offset = new Vector3(0, 5, 2.0f);
         CameraController.Instance.TargetRotation = new Vector3(-60, 0, 0);
     }
 

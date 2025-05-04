@@ -99,11 +99,4 @@ public partial class TopDownController : CharacterBody3D
     {
         DesiredMoveVelocity = Vector3.Zero;
     }
-
-    public void RotateToDirection(Vector3 direction)
-    {
-        var rotation_speed = 10f;
-        var ry = Mathf.LerpAngle(Rotation.Y, Mathf.Atan2(direction.X, direction.Z), rotation_speed * GameTime.DeltaTime);
-        Rotation = new Vector3(0, ry, 0);
-    }
 }

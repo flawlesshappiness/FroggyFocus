@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=12 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="3_3y7c2"]
 [ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/bug.tscn" id="4_0ky7s"]
-[ext_resource type="Script" uid="uid://bpbdt4x46g0ir" path="res://FocusEvent/FocusCursor.cs" id="5_1p1c6"]
+[ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="6_3y7c2"]
+[ext_resource type="PackedScene" uid="uid://c7v778qpl5v6w" path="res://Prefabs/FocusEvent/FocusTarget.tscn" id="7_3y7c2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5ajpj"]
 size = Vector2(20, 20)
@@ -17,17 +18,6 @@ albedo_color = Color(0.132, 0.3, 0.1572, 1)
 size = Vector3(20, 1, 20)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qjw4w"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1eh1j"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1eh1j"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 1, 1, 0.0980392)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_1eh1j"]
-material = SubResource("StandardMaterial3D_1eh1j")
-height = 0.01
 
 [node name="SwampScene" type="Node3D"]
 script = ExtResource("1_qfos7")
@@ -56,7 +46,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_qfos7")]
 
-[node name="FocusEvent" type="Area3D" parent="." node_paths=PackedStringArray("CameraMarker", "PlayerMarker", "TargetMarker", "Cursor", "MockTarget")]
+[node name="FocusEvent" type="Area3D" parent="." node_paths=PackedStringArray("CameraMarker", "PlayerMarker", "TargetMarker", "Cursor", "MockTarget", "Target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.512189, 2.38419e-07, -2.59445)
 collision_layer = 4
 collision_mask = 0
@@ -64,8 +54,9 @@ script = ExtResource("3_3y7c2")
 CameraMarker = NodePath("CameraMarker")
 PlayerMarker = NodePath("PlayerMarker")
 TargetMarker = NodePath("TargetMarker")
-Cursor = NodePath("Cursor")
+Cursor = NodePath("FocusCursor")
 MockTarget = NodePath("Bug")
+Target = NodePath("FocusTarget")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEvent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -82,21 +73,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.3807)
 
 [node name="TargetMarker" type="Marker3D" parent="FocusEvent"]
 
-[node name="Cursor" type="Area3D" parent="FocusEvent" node_paths=PackedStringArray("MeshInstance", "FillLabel")]
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("5_1p1c6")
-MeshInstance = NodePath("MeshInstance3D")
-FillLabel = NodePath("FillLabel")
+[node name="FocusCursor" parent="FocusEvent" instance=ExtResource("6_3y7c2")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEvent/Cursor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_1eh1j")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FocusEvent/Cursor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
-mesh = SubResource("CylinderMesh_1eh1j")
-
-[node name="FillLabel" type="Label3D" parent="FocusEvent/Cursor"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00914194, -0.64592)
-text = "30%"
+[node name="FocusTarget" parent="FocusEvent" instance=ExtResource("7_3y7c2")]

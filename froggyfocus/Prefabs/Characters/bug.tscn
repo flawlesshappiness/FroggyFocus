@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://pwngct2tt8w"]
+[gd_scene load_steps=6 format=3 uid="uid://pwngct2tt8w"]
 
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_5vs15"]
 [ext_resource type="Material" uid="uid://dbtlkxua44gry" path="res://Materials/Bug_Primary.tres" id="1_h64wh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v6ljn"]
@@ -12,6 +13,7 @@ size = Vector3(0.3, 0.2, 0.3)
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Bug" type="Node3D"]
+script = ExtResource("1_5vs15")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)

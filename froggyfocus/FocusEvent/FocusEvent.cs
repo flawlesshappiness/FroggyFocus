@@ -18,14 +18,17 @@ public partial class FocusEvent : Area3D, IInteractable
     [Export]
     public Node3D MockTarget;
 
+    [Export]
+    public FocusTarget Target;
+
     private bool EventStarted { get; set; }
-    private FocusTarget Target { get; set; }
 
     public override void _Ready()
     {
         base._Ready();
         Cursor.Disable();
         Cursor.OnFocusFilled += FocusFilled;
+        Cursor.OnFocusTarget += FocusTarget;
     }
 
     public void Interact()
@@ -48,13 +51,10 @@ public partial class FocusEvent : Area3D, IInteractable
         // Disable mock target
         MockTarget.Disable();
 
-        // Create target
-        Target = info.Target.Instantiate<FocusTarget>();
-        Target.SetParent(this);
+        // Initialize target
         Target.GlobalPosition = TargetMarker.GlobalPosition;
-
-        // Position target
-
+        Target.SetCharacter(info.Character);
+        Target.Enable();
 
         this.StartCoroutine(Cr, nameof(StartEvent));
         IEnumerator Cr()
@@ -62,9 +62,12 @@ public partial class FocusEvent : Area3D, IInteractable
             AnimatePlayerToPosition(PlayerMarker, 1f);
             yield return new WaitForSeconds(1f);
 
-            // Enable cursor
-            Cursor.Initialize();
-            Cursor.Target = Target;
+            // Initialize cursor
+            Cursor.Initialize(Target);
+            Cursor.Position = Vector3.Zero;
+
+            // Start target
+            Target.StartMoving(GlobalPosition);
 
             // Start
             EventStarted = true;
@@ -76,10 +79,13 @@ public partial class FocusEvent : Area3D, IInteractable
         this.StartCoroutine(Cr, nameof(EndEvent));
         IEnumerator Cr()
         {
+            // Stop target
+            Target.StopMoving();
+
             yield return Player.Instance.Character.AnimateTongueTowards(Target);
 
             // Disable target
-            Target.QueueFree();
+            Target.Disable();
 
             yield return Player.Instance.Character.AnimageTongueBack();
 
@@ -106,6 +112,11 @@ public partial class FocusEvent : Area3D, IInteractable
         EndEvent();
     }
 
+    private void FocusTarget()
+    {
+        Player.Instance.Character.StartFacingPosition(Target.GlobalPosition);
+    }
+
     private Coroutine AnimatePlayerToPosition(Node3D node, float duration)
     {
         return this.StartCoroutine(Cr, nameof(AnimatePlayerToPosition));
@@ -117,7 +128,7 @@ public partial class FocusEvent : Area3D, IInteractable
             yield return LerpEnumerator.Lerp01(duration, f =>
             {
                 player.GlobalPosition = start.Lerp(end, f);
-                player.RotateToDirection(-end.DirectionTo(Target.GlobalPosition));
+                player.Character.StartFacingDirection(end.DirectionTo(Target.GlobalPosition));
             });
         }
     }

@@ -4,5 +4,5 @@ using Godot;
 public partial class FocusEventInfo : Resource
 {
     [Export]
-    public PackedScene Target;
+    public FocusCharacterInfo Character;
 }

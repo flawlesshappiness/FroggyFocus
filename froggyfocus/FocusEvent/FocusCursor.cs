@@ -18,19 +18,28 @@ public partial class FocusCursor : Area3D
     private bool Focusing => PlayerInput.Interact.Held;
     private float FocusValue { get; set; }
     private float FocusSpeed { get; set; }
-    private float DecaySpeed { get; set; }
+    private float FocusDecay { get; set; }
     private float MoveSpeed { get; set; }
     private float MoveFocusSpeed { get; set; }
     private bool Filled { get; set; }
 
+    private bool _is_focusing;
+    private bool _is_focusing_on_target;
+
+    public event Action OnFocusStarted;
+    public event Action OnFocusStopped;
+    public event Action OnFocusTarget;
+    public event Action OnFocusTargetEnter;
+    public event Action OnFocusTargetExit;
     public event Action OnFocusFilled;
 
-    public void Initialize()
+    public void Initialize(FocusTarget target)
     {
         Load();
         Filled = false;
         SetFocusValue(0);
         this.Enable();
+        Target = target;
         InputEnabled = true;
     }
 
@@ -43,9 +52,25 @@ public partial class FocusCursor : Area3D
         mesh.TopRadius = Radius;
 
         FocusSpeed = 0.3f;
-        DecaySpeed = 0.25f;
-        MoveSpeed = 0.1f;
-        MoveFocusSpeed = MoveSpeed * 0f;
+        FocusDecay = 0.1f;
+        MoveSpeed = 0.05f;
+        MoveFocusSpeed = MoveSpeed * 0.1f;
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (Focusing && !_is_focusing)
+        {
+            _is_focusing = true;
+            OnFocusStarted?.Invoke();
+        }
+        else if (!Focusing && _is_focusing)
+        {
+            _is_focusing = false;
+            OnFocusStopped?.Invoke();
+        }
     }
 
     public override void _Process(double delta)
@@ -85,10 +110,26 @@ public partial class FocusCursor : Area3D
         if (IsTargetInRange && Focusing)
         {
             SetFocusValue(FocusValue + delta * FocusSpeed);
+            FillLabel.Modulate = Colors.White;
+
+            if (!_is_focusing_on_target)
+            {
+                _is_focusing_on_target = true;
+                OnFocusTargetEnter?.Invoke();
+            }
+
+            OnFocusTarget?.Invoke();
         }
         else
         {
-            SetFocusValue(FocusValue - delta * DecaySpeed);
+            SetFocusValue(FocusValue - delta * FocusDecay);
+            FillLabel.Modulate = Colors.Red;
+
+            if (_is_focusing_on_target)
+            {
+                _is_focusing_on_target = false;
+                OnFocusTargetExit?.Invoke();
+            }
         }
     }
 

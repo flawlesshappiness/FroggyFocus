@@ -26,7 +26,6 @@ public partial class Boot : Node
     private void Initialize()
     {
         Debug.TraceMethod();
-        Debug.Indent++;
 
         InitializeTree();
         SingletonController.CreateAll();
@@ -34,29 +33,21 @@ public partial class Boot : Node
         LoadScene();
 
         _initialized = true;
-        Debug.Indent--;
     }
 
     private void InitializeTree()
     {
         Debug.TraceMethod();
-        Debug.Indent++;
 
         Scene.Tree = GetTree();
         Scene.Root = Scene.Tree.Root;
         Scene.PauseLock.OnLocked += () => Scene.Tree.Paused = true;
         Scene.PauseLock.OnFree += () => Scene.Tree.Paused = false;
-
-        Debug.Indent--;
     }
 
     private void LoadScene()
     {
         Debug.TraceMethod();
-        Debug.Indent++;
-
         Scene.Goto(ApplicationInfo.Instance.StartScene);
-
-        Debug.Indent--;
     }
 }

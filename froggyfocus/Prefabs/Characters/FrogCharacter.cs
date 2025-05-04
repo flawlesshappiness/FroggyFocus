@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections;
 
-public partial class FrogCharacter : Node3D
+public partial class FrogCharacter : Character
 {
     [Export]
     public Node3D Tongue;

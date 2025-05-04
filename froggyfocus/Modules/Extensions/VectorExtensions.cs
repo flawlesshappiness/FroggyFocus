@@ -46,6 +46,12 @@ public static class VectorExtensions
         from = EulerMath.ClosestEulerAngles(from.WrappedEulerAngles(), to);
         return from.Lerp(to, t);
     }
+
+    public static Vector3 ClampMagnitude(this Vector3 v, float min, float max)
+    {
+        var length = v.Length();
+        return v.Normalized() * Mathf.Clamp(length, min, max);
+    }
     #endregion
 
     #region VECTOR2
@@ -59,6 +65,12 @@ public static class VectorExtensions
     public static Vector3 ToVector3(this Vector2 v)
     {
         return new Vector3 { X = v.X, Y = v.Y };
+    }
+
+    public static Vector2 ClampMagnitude(this Vector2 v, float min, float max)
+    {
+        var length = v.Length();
+        return v.Normalized() * Mathf.Clamp(length, min, max);
     }
     #endregion
 
