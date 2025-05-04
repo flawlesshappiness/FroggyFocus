@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public partial class GameProfileController : SingletonController
@@ -6,6 +7,8 @@ public partial class GameProfileController : SingletonController
     public static GameProfileController Instance => Singleton.Get<GameProfileController>();
     private Dictionary<int, GameSaveData> Profiles { get; set; } = new();
     public bool GameProfilesLoaded { get; private set; }
+
+    public event Action<int> OnGameProfileSelected;
 
     protected override void Initialize()
     {
@@ -75,6 +78,12 @@ public partial class GameProfileController : SingletonController
         Debug.TraceMethod(profile);
         var data = SaveDataController.Instance.Create<GameSaveData>(profile);
         Profiles[profile] = data;
+    }
+
+    public void SelectGameProfile(int i)
+    {
+        Data.Options.SelectedGameProfile = i;
+        OnGameProfileSelected?.Invoke(i);
     }
 
     public GameSaveData GetSelectedGameProfile()

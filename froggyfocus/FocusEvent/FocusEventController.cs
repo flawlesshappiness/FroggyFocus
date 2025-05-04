@@ -9,6 +9,7 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
 
     public event Action OnFocusEventEnabled;
     public event Action OnFocusEventDisabled;
+    public event Action OnFocusEventCompleted;
 
     private List<FocusEvent> FocusEvents { get; set; } = new();
     private List<FocusEvent> ActiveEvents { get; set; } = new();
@@ -31,6 +32,11 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
     {
         var e = InactiveEvents.Random();
         e.EnableEvent();
+    }
+
+    public void FocusEventCompleted(FocusEvent e)
+    {
+        OnFocusEventCompleted?.Invoke();
     }
 
     public void DisableEvent(FocusEvent e)

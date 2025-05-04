@@ -136,6 +136,11 @@ public partial class FocusEvent : Area3D, IInteractable
 
     private void FocusFilled()
     {
+        Data.Game.TargetsCollected++;
+        Data.Game.Save();
+
+        FocusEventController.Instance.FocusEventCompleted(this);
+
         EndEvent();
     }
 

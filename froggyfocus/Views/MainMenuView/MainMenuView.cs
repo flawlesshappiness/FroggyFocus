@@ -2,7 +2,6 @@ using Godot;
 
 public partial class MainMenuView : View
 {
-    public override string Directory => $"{Paths.ViewDirectory}";
     public static MainMenuView Instance => Get<MainMenuView>();
 
     [Export]
@@ -32,6 +31,7 @@ public partial class MainMenuView : View
     {
         Hide();
         Scene.Goto<SwampScene>();
+        GameView.Instance.Show();
     }
 
     private void ClickOptions()

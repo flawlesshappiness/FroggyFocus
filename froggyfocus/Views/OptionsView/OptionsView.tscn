@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt0j3g7sdyob2"]
 
-[ext_resource type="Script" uid="uid://dyau1bm7cj17p" path="res://Views/OptionsView.cs" id="1_bs00f"]
+[ext_resource type="Script" uid="uid://dyau1bm7cj17p" path="res://Views/OptionsView/OptionsView.cs" id="1_bs00f"]
 [ext_resource type="PackedScene" uid="uid://dk5e5unescpcn" path="res://Modules/Options/OptionsControl.tscn" id="2_b8ik5"]
 
 [node name="OptionsView" type="Control" node_paths=PackedStringArray("OptionsControl")]

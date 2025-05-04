@@ -8,6 +8,17 @@ public partial class GameFlagsController : SingletonController
 
     private Dictionary<string, GameFlagData> _flags = new();
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+        GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
+    }
+
+    private void GameProfileSelected(int i)
+    {
+        Load();
+    }
+
     public void Load()
     {
         _flags.Clear();

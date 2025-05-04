@@ -8,7 +8,7 @@ public abstract partial class View : ControlScript, IComparable<View>
     [Export]
     public int ChildOrder;
 
-    public abstract string Directory { get; }
+    public virtual string Directory => $"{Paths.ViewDirectory}/{GetType().Name}";
     private View Create() => Singleton.LoadScene($"{Directory}/{GetType().Name}", GetType()) as View;
 
     public static void CreateAll()

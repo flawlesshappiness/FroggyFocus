@@ -2,7 +2,6 @@ using Godot;
 
 public partial class OptionsView : View
 {
-    public override string Directory => Paths.ViewDirectory;
     public static OptionsView Instance => Get<OptionsView>();
 
     [Export]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cmuxgxi24ysym"]
 
-[ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView.cs" id="1_qib6v"]
+[ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
 
 [node name="MainMenuView" type="Control" node_paths=PackedStringArray("ContinueButton", "OptionsButton", "QuitButton")]
 layout_mode = 3
