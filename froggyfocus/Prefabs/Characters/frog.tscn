@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://gynma7nbhrbe"]
+[gd_scene load_steps=18 format=3 uid="uid://gynma7nbhrbe"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Prefabs/Characters/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Material" uid="uid://63r6pqx6t2ej" path="res://Materials/Frog_Primary.tres" id="1_vr2dq"]
+[ext_resource type="Material" uid="uid://by40abwo43eg6" path="res://Materials/Frog_Primary_Toon.tres" id="2_ps7tr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_c7gfj"]
 size = Vector3(0.6, 0.5, 0.8)
@@ -130,26 +131,31 @@ AnimationPlayer = NodePath("AnimationPlayer")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+material_override = ExtResource("2_ps7tr")
 mesh = SubResource("BoxMesh_c7gfj")
 surface_material_override/0 = ExtResource("1_vr2dq")
 
 [node name="Leg_R" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.125, 0.3)
+material_override = ExtResource("2_ps7tr")
 mesh = SubResource("BoxMesh_ps7tr")
 surface_material_override/0 = ExtResource("1_vr2dq")
 
 [node name="Leg_L" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.125, 0.3)
+material_override = ExtResource("2_ps7tr")
 mesh = SubResource("BoxMesh_ps7tr")
 surface_material_override/0 = ExtResource("1_vr2dq")
 
 [node name="Arm_R" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.125, -0.38234)
+material_override = ExtResource("2_ps7tr")
 mesh = SubResource("BoxMesh_ps7tr")
 surface_material_override/0 = ExtResource("1_vr2dq")
 
 [node name="Arm_L" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.125, -0.38234)
+material_override = ExtResource("2_ps7tr")
 mesh = SubResource("BoxMesh_ps7tr")
 surface_material_override/0 = ExtResource("1_vr2dq")
 
@@ -161,6 +167,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118443, 0)
 
 [node name="Mouth_Top" type="MeshInstance3D" parent="Head/Top"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.111228, -0.197317)
+material_override = ExtResource("2_ps7tr")
 mesh = SubResource("BoxMesh_vr2dq")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("1_vr2dq")
@@ -194,6 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118443, 0)
 
 [node name="Mouth_Bottom" type="MeshInstance3D" parent="Head/Bottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, -0.012581, -0.197317)
+material_override = ExtResource("2_ps7tr")
 mesh = SubResource("BoxMesh_iqfu1")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("1_vr2dq")

@@ -39,15 +39,16 @@ public partial class FrogCharacter : Character
 
     public Coroutine AnimateTongueTowards(Node3D target)
     {
+        Tongue.LookAt(target.GlobalPosition);
         var dist = Tongue.GlobalPosition.DistanceTo(target.GlobalPosition);
         return this.StartCoroutine(Cr, nameof(AnimateTongueTowards));
         IEnumerator Cr()
         {
-            yield return AnimationPlayer.PlayAndWaitForAnimation("open");
+            AnimationPlayer.PlayAndWaitForAnimation("open");
 
             var start = Tongue.Scale.Z;
             var end = dist;
-            yield return LerpEnumerator.Lerp01(0.1f, f =>
+            yield return LerpEnumerator.Lerp01(0.05f, f =>
             {
                 var z = Mathf.Lerp(start, end, f);
                 Tongue.Scale = new Vector3(1, 1, z);
