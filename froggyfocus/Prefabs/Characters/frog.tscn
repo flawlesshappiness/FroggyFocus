@@ -1,15 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=14 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Prefabs/Characters/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ps7tr"]
 [ext_resource type="PackedScene" uid="uid://dmlnvb2o65uy1" path="res://Assets/FlawLizArt/Frog/tongue.fbx" id="4_ai43q"]
 [ext_resource type="PackedScene" uid="uid://dxfvux2lo6jac" path="res://Assets/FlawLizArt/Frog/frog.fbx" id="4_db7or"]
+[ext_resource type="AudioStream" uid="uid://r43hpifjwwab" path="res://Sounds/Raw/sfx_slap_skin_001.wav" id="5_ai43q"]
+[ext_resource type="AudioStream" uid="uid://da3dqxkhes46e" path="res://Sounds/Raw/sfx_rub_skin_001.wav" id="5_iqfu1"]
+[ext_resource type="AudioStream" uid="uid://dgxdg656niwoj" path="res://Sounds/Raw/sfx_rub_skin_002.wav" id="6_81ysc"]
+[ext_resource type="AudioStream" uid="uid://b0g6ilpk87mli" path="res://Sounds/Raw/sfx_rub_skin_double_001.wav" id="8_5vqex"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_81ysc"]
 size = Vector3(0.15, 0.05, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7gfj"]
 albedo_color = Color(0.6, 0.402, 0.402, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_81ysc"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_ai43q")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iqfu1"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("5_iqfu1")
+stream_1/stream = ExtResource("6_81ysc")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_br4g0"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_5vqex")
 
 [node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "TongueTargetMarker", "TongueStartMarker", "Animation")]
 script = ExtResource("1_c7gfj")
@@ -22,6 +42,7 @@ Animation = NodePath("AnimationStateMachine")
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 
 [node name="Skeleton3D" parent="frog/Armature" index="0"]
+bones/1/position = Vector3(1.5626e-18, -0.0124686, 0.017827)
 bones/1/rotation = Quaternion(0.248578, 1.15468e-07, 2.96328e-08, 0.968612)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(-3.87035e-17, 0.00822032, -1.32123e-09)
@@ -44,13 +65,13 @@ bones/10/position = Vector3(0.00232768, 0.0113658, -0.000727485)
 bones/10/rotation = Quaternion(-0.330732, 0.144434, -0.735472, 0.573442)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(-2.64186e-10, 0.00980287, -7.99452e-10)
-bones/11/rotation = Quaternion(0.154033, -0.00442807, -0.0090275, 0.988015)
+bones/11/rotation = Quaternion(-0.0843659, -0.253129, 0.338995, 0.902159)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/position = Vector3(-3.40389e-10, 0.00900364, -2.53415e-10)
-bones/12/rotation = Quaternion(-0.137326, 0.481871, 0.356519, 0.788566)
+bones/12/rotation = Quaternion(-0.151855, 0.472608, 0.394238, 0.773407)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/position = Vector3(3.25799e-10, 0.0081391, 8.77578e-10)
-bones/13/rotation = Quaternion(-0.059096, -0.637207, 0.144818, 0.754654)
+bones/13/rotation = Quaternion(-0.0133479, -0.449083, 0.127892, 0.884189)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/position = Vector3(-0.00234124, 0.00557515, 0.000548778)
 bones/14/rotation = Quaternion(-0.0305988, -0.0355796, 0.538982, 0.841009)
@@ -67,17 +88,16 @@ bones/22/position = Vector3(-0.00232768, 0.0113658, -0.000727483)
 bones/22/rotation = Quaternion(-0.330732, -0.144434, 0.735472, 0.573442)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/position = Vector3(9.06025e-11, 0.00980287, 2.45569e-09)
-bones/23/rotation = Quaternion(0.154355, 0.00528315, 0.00922031, 0.987958)
+bones/23/rotation = Quaternion(-0.0837252, 0.253783, -0.3391, 0.901995)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/position = Vector3(-2.1553e-10, 0.00900364, -2.18078e-09)
-bones/24/rotation = Quaternion(-0.137326, -0.481871, -0.356518, 0.788566)
+bones/24/rotation = Quaternion(-0.151855, -0.472608, -0.394238, 0.773407)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(9.87808e-10, 0.00813909, -1.36564e-10)
-bones/25/rotation = Quaternion(-0.0590958, 0.637207, -0.144818, 0.754654)
+bones/25/rotation = Quaternion(-0.0133477, 0.449083, -0.127892, 0.884189)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/position = Vector3(0.00234124, 0.00557515, 0.000548778)
 bones/26/rotation = Quaternion(-0.0305987, 0.0355796, -0.538982, 0.841009)
-bones/26/scale = Vector3(1, 1, 1)
 bones/28/position = Vector3(0.00092987, 0.00685302, 0.000620215)
 bones/28/rotation = Quaternion(-0.00303081, 0.00658709, -0.0916656, 0.995763)
 bones/28/scale = Vector3(1, 1, 1)
@@ -88,39 +108,37 @@ bones/32/position = Vector3(-0.00228591, 0.00549521, 0.000412753)
 bones/32/rotation = Quaternion(-0.0829108, -0.000720847, 0.573757, 0.814818)
 bones/32/scale = Vector3(1, 1, 1)
 bones/34/position = Vector3(0.00565839, 0.000784133, -0.000943161)
-bones/34/rotation = Quaternion(0.680959, 0.469755, 0.459817, -0.32279)
+bones/34/rotation = Quaternion(0.891889, 0.182025, 0.409774, -0.0590488)
 bones/34/scale = Vector3(1, 1, 1)
 bones/35/position = Vector3(4.41249e-10, 0.016364, 1.48474e-09)
-bones/35/rotation = Quaternion(-0.324792, 0.0344003, -0.0571986, 0.943427)
+bones/35/rotation = Quaternion(-0.228165, 0.0354474, -0.0401817, 0.972147)
 bones/35/scale = Vector3(1, 1, 1)
 bones/36/position = Vector3(9.7494e-10, 0.0155768, -4.49402e-09)
-bones/36/rotation = Quaternion(0.035499, 0.980733, 0.189781, 0.0297572)
+bones/36/rotation = Quaternion(0.0425063, 0.982389, 0.181194, -0.0165508)
 bones/36/scale = Vector3(1, 1, 1)
 bones/38/position = Vector3(-0.00565839, 0.000784133, -0.000943164)
-bones/38/rotation = Quaternion(0.699928, -0.471714, -0.436144, -0.312033)
+bones/38/rotation = Quaternion(0.905668, -0.176937, -0.381305, -0.0553638)
 bones/38/scale = Vector3(1, 1, 1)
 bones/39/position = Vector3(-1.03432e-09, 0.016364, -1.30296e-09)
-bones/39/rotation = Quaternion(-0.32479, -0.0344003, 0.0571982, 0.943428)
+bones/39/rotation = Quaternion(-0.228162, -0.0354475, 0.0401812, 0.972148)
 bones/39/scale = Vector3(1, 1, 1)
 bones/40/position = Vector3(-2.45857e-11, 0.0155768, -3.85395e-09)
-bones/40/rotation = Quaternion(-0.035499, 0.980733, 0.189781, -0.0297572)
+bones/40/rotation = Quaternion(-0.0425063, 0.982389, 0.181194, 0.0165508)
 bones/40/scale = Vector3(1, 1, 1)
-bones/42/position = Vector3(0.0242467, 0.00846009, 0.00173028)
+bones/42/position = Vector3(0.0122736, 0.0171983, 0.00931098)
 bones/42/rotation = Quaternion(0.692591, 0.142541, 0.142541, 0.692591)
 bones/42/scale = Vector3(0.619324, 1, 0.941337)
-bones/44/position = Vector3(0.0294793, -0.0292289, 0.00115202)
+bones/44/position = Vector3(0.0125942, -0.0404196, 0.00895087)
 bones/44/rotation = Quaternion(0.334369, 0.623055, 0.623055, 0.334369)
 bones/44/scale = Vector3(1, 1, 1)
-bones/48/position = Vector3(0.0185457, -0.00599798, 0.00173028)
 bones/48/rotation = Quaternion(0.692591, 0.142541, 0.142541, 0.692591)
-bones/50/position = Vector3(-0.0242467, 0.00846009, 0.00173028)
+bones/50/position = Vector3(-0.0122736, 0.0171983, 0.00931098)
 bones/50/rotation = Quaternion(0.692591, -0.142541, -0.142541, 0.692591)
 bones/50/scale = Vector3(0.619324, 1, 0.941337)
-bones/52/position = Vector3(-0.0294793, -0.0292289, 0.00115202)
+bones/52/position = Vector3(-0.0125942, -0.0404196, 0.00895087)
 bones/52/rotation = Quaternion(-0.334369, 0.623055, 0.623055, -0.334369)
 bones/52/scale = Vector3(1, 1, 1)
 bones/54/rotation = Quaternion(-0.334369, 0.623055, 0.623055, -0.334369)
-bones/56/position = Vector3(-0.0185457, -0.00599798, 0.00173028)
 bones/56/rotation = Quaternion(0.692591, -0.142541, -0.142541, 0.692591)
 
 [node name="AnimationPlayer" parent="frog" index="1"]
@@ -150,5 +168,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="tongue" parent="Tongue" instance=ExtResource("4_ai43q")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.5)
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="SfxLand" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_81ysc")
+volume_db = -15.0
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+
+[node name="SfxWalk" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_iqfu1")
+volume_db = -15.0
+max_polyphony = 3
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+
+[node name="SfxJump" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_br4g0")
+volume_db = -15.0
+max_polyphony = 3
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
 
 [editable path="frog"]

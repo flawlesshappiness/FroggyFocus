@@ -19,6 +19,7 @@ radius = 0.3
 height = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sysjd"]
+radius = 1.0
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character")]
 collision_layer = 2
@@ -36,7 +37,7 @@ shape = SubResource("CapsuleShape3D_hnwp3")
 [node name="Frog" parent="." instance=ExtResource("1_6dc14")]
 
 [node name="Interact" type="Area3D" parent="Frog"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.662138)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39572)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_sysjd")

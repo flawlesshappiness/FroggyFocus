@@ -43,6 +43,7 @@ public partial class Player : TopDownController
         Process_Move();
         Process_Interact();
         Process_Jump();
+        Process_CameraOffset();
     }
 
     private void Process_Move()
@@ -109,8 +110,17 @@ public partial class Player : TopDownController
     {
         CameraController.Instance.Speed = 1.0f;
         CameraController.Instance.Target = this;
-        CameraController.Instance.Offset = new Vector3(0, 5, 2.0f);
         CameraController.Instance.TargetRotation = new Vector3(-60, 0, 0);
+    }
+
+    private void Process_CameraOffset()
+    {
+        if (CameraController.Instance.Target != this) return;
+
+        var default_offset = new Vector3(0, 5, 3f);
+        var direction_offset = Character.Basis * Vector3.Forward * 2;
+        var offset = default_offset + direction_offset;
+        CameraController.Instance.Offset = offset;
     }
 
     public static void SetAllLocks(string key, bool locked)
