@@ -5,7 +5,8 @@ public partial class TopDownController : CharacterBody3D
 {
     public static MultiLock GravityLock = new();
     public Vector3 DesiredMoveVelocity { get; private set; }
-    private float Gravity => GravityLock.IsLocked ? 0 : _gravity;
+    public Vector3 DesiredJumpVelocity { get; private set; }
+    private float Gravity => GravityLock.IsLocked ? 0 : 20;
 
     private bool _moving;
     private bool _jumping;
@@ -28,44 +29,22 @@ public partial class TopDownController : CharacterBody3D
 
         if (grounded)
         {
-            if (_jumping)
+            if (DesiredMoveVelocity.Length() >= 0.01f)
             {
-                _jumping = false;
-                OnLand?.Invoke();
-            }
-
-            if (DesiredMoveVelocity != Vector3.Zero)
-            {
-                if (!_moving)
-                {
-                    _moving = true;
-                    OnMoveStart?.Invoke();
-                }
-
                 velocity.X = DesiredMoveVelocity.X;
                 velocity.Z = DesiredMoveVelocity.Z;
             }
             else
             {
-                if (_moving)
-                {
-                    _moving = false;
-                    OnMoveStop?.Invoke();
-                }
-
                 var decel = 15 * (float)delta;
                 velocity.X = Mathf.MoveToward(Velocity.X, 0, decel);
                 velocity.Z = Mathf.MoveToward(Velocity.Z, 0, decel);
             }
 
-            /*
-            if (DesiredJumpVelocity != Vector3.Zero)
+            if (DesiredJumpVelocity.Length() >= 0.01f)
             {
                 velocity += DesiredJumpVelocity;
-                _jumping = true;
-                OnJump?.Invoke();
             }
-            */
         }
         else
         {
@@ -74,6 +53,43 @@ public partial class TopDownController : CharacterBody3D
 
         Velocity = velocity;
         MoveAndSlide();
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Process_States();
+    }
+
+    private void Process_States()
+    {
+        var grounded = IsOnFloor();
+
+        var has_jump_velocity = Velocity.Y > 0.01f;
+        if (!_jumping && has_jump_velocity)
+        {
+            _jumping = true;
+            OnJump?.Invoke();
+        }
+        else if (_jumping && grounded)
+        {
+            _jumping = false;
+            Velocity = Vector3.Zero;
+            DesiredJumpVelocity = Vector3.Zero;
+            OnLand?.Invoke();
+        }
+
+        var has_move_velocity = Velocity.Length() >= 0.01f;
+        if (!_moving && has_move_velocity)
+        {
+            _moving = true;
+            OnMoveStart?.Invoke();
+        }
+        else if (_moving && !has_move_velocity)
+        {
+            _moving = false;
+            OnMoveStop?.Invoke();
+        }
     }
 
     protected void Move(Vector2 input, float speed)
@@ -98,5 +114,10 @@ public partial class TopDownController : CharacterBody3D
     protected void Stop()
     {
         DesiredMoveVelocity = Vector3.Zero;
+    }
+
+    protected void Jump(Vector3 velocity)
+    {
+        DesiredJumpVelocity = velocity;
     }
 }

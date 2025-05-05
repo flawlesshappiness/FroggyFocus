@@ -12,7 +12,7 @@ collision_mask = 0
 script = ExtResource("1_g0t0b")
 Axis = 2
 Size = Vector2(5, 2)
-Offset = Vector3(0, 2, 0)
+Offset = Vector3(0, 3, 0)
 CameraMarker = NodePath("CameraMarker")
 PlayerMarker = NodePath("PlayerMarker")
 TargetMarker = NodePath("TargetMarker")
@@ -24,7 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_qjw4w")
 
 [node name="CameraMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25603, 4.43918)
 
 [node name="PlayerMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.77869)

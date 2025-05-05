@@ -3,26 +3,23 @@
 [ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
-[ext_resource type="Material" uid="uid://cpnberbwo70x8" path="res://Materials/Grass.tres" id="2_3y7c2"]
+[ext_resource type="Material" uid="uid://c0dwjdrp2kmvd" path="res://Materials/Grass.tres" id="2_3y7c2"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
 [ext_resource type="PackedScene" uid="uid://lklghvcljr47" path="res://Prefabs/FocusEvent/FocusEventX.tscn" id="6_0ky7s"]
 [ext_resource type="PackedScene" uid="uid://d2p1s64vlogjj" path="res://Prefabs/FocusEvent/FocusEventXY.tscn" id="7_1p1c6"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEventXZ.tscn" id="8_kd8f8"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_5ajpj"]
+[sub_resource type="QuadMesh" id="QuadMesh_0ky7s"]
 size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wsqb"]
 size = Vector3(20, 1, 20)
 
-[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("FocusEventParent")]
+[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("Player", "FocusEventParent")]
 script = ExtResource("1_qfos7")
+Player = NodePath("Player")
 ActiveFocusEvents = 2
 FocusEventParent = NodePath("Events")
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.363072, 0.931761, 0, -0.931761, 0.363072, 0, 9.01286, 0)
-shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_0ky7s")
@@ -30,7 +27,8 @@ environment = ExtResource("2_0ky7s")
 [node name="World" type="Node3D" parent="."]
 
 [node name="Floor" type="MeshInstance3D" parent="World"]
-mesh = SubResource("PlaneMesh_5ajpj")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_0ky7s")
 surface_material_override/0 = ExtResource("2_3y7c2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World"]

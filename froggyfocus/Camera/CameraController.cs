@@ -32,4 +32,10 @@ public partial class CameraController : Camera3D
         GlobalPosition = GlobalPosition.Lerp(target_position, Speed * delta);
         GlobalRotationDegrees = GlobalRotationDegrees.LerpEulerAngles(TargetRotation, Speed * delta);
     }
+
+    public void TeleportCameraToTarget()
+    {
+        GlobalPosition = Target.GlobalPosition + Offset;
+        GlobalRotationDegrees = TargetRotation;
+    }
 }

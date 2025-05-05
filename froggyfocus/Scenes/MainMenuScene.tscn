@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://chh8ncpnh214i" path="res://Scenes/MainMenuScene.cs" id="1_sb72h"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_gmxq7"]
-[ext_resource type="Material" uid="uid://cpnberbwo70x8" path="res://Materials/Grass.tres" id="2_mxhvt"]
-[ext_resource type="PackedScene" uid="uid://gynma7nbhrbe" path="res://Prefabs/Characters/frog.tscn" id="4_gmxq7"]
+[ext_resource type="Material" uid="uid://c0dwjdrp2kmvd" path="res://Materials/Grass.tres" id="2_mxhvt"]
+[ext_resource type="PackedScene" uid="uid://dxfvux2lo6jac" path="res://Assets/FlawLizArt/Frog/frog.fbx" id="4_gmxq7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sb72h"]
-material = ExtResource("2_mxhvt")
 size = Vector2(500, 500)
 
 [node name="MainMenuScene" type="Node3D"]
@@ -26,6 +25,7 @@ transform = Transform3D(1, 0, 0, 0, 0.961694, 0.274127, 0, -0.274127, 0.961694, 
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
 mesh = SubResource("PlaneMesh_sb72h")
+surface_material_override/0 = ExtResource("2_mxhvt")
 
-[node name="Frog" parent="World" instance=ExtResource("4_gmxq7")]
-transform = Transform3D(-0.121298, 0, 0.992616, 0, 1, 0, -0.992616, 0, -0.121298, -0.596843, 0, 0.0729342)
+[node name="frog" parent="World" instance=ExtResource("4_gmxq7")]
+transform = Transform3D(-0.176041, 0, 0.302505, 0, 0.35, 0, -0.302505, 0, -0.176041, -0.873298, 0, -0.0297652)

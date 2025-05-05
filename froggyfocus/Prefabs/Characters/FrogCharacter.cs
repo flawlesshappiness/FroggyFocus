@@ -1,3 +1,4 @@
+using FlawLizArt.Animation.StateMachine;
 using Godot;
 using System.Collections;
 
@@ -7,17 +8,62 @@ public partial class FrogCharacter : Character
     public Node3D Tongue;
 
     [Export]
-    public Node3D TongueTargetMarker;
+    public Marker3D TongueTargetMarker;
 
     [Export]
-    public AnimationPlayer AnimationPlayer;
+    public Marker3D TongueStartMarker;
+
+    [Export]
+    public AnimationStateMachine Animation;
 
     private Node3D _attached_target;
+
+    private BoolParameter param_moving = new BoolParameter("moving", false);
+    private BoolParameter param_mouth_open = new BoolParameter("mouth_open", false);
+    private BoolParameter param_jumping = new BoolParameter("jumping", false);
+    private BoolParameter param_charging = new BoolParameter("charging", false);
 
     public override void _Ready()
     {
         base._Ready();
+        InitializeAnimations();
+        InitializeTongue();
+    }
+
+    private void InitializeTongue()
+    {
         Tongue.Scale = new Vector3(1, 1, 0);
+        Tongue.Hide();
+    }
+
+    private void InitializeAnimations()
+    {
+        var idle = Animation.CreateAnimation("Armature|idle", true);
+        var walking = Animation.CreateAnimation("Armature|walking", true);
+        var jump_start = Animation.CreateAnimation("Armature|jump_start", false);
+        var jump_end = Animation.CreateAnimation("Armature|jump_end", false);
+        var jump_charge = Animation.CreateAnimation("Armature|jump_charge", false);
+        var mouth_open = Animation.CreateAnimation("Armature|mouth_open", false);
+        var mouth_close = Animation.CreateAnimation("Armature|mouth_close", false);
+
+        Animation.Connect(idle, walking, param_moving.WhenTrue());
+        Animation.Connect(walking, idle, param_moving.WhenFalse());
+
+        Animation.Connect(idle, jump_charge, param_charging.WhenTrue());
+        Animation.Connect(walking, jump_charge, param_charging.WhenTrue());
+
+        Animation.Connect(idle, mouth_open, param_mouth_open.WhenTrue());
+        Animation.Connect(mouth_open, mouth_close, param_mouth_open.WhenFalse());
+        Animation.Connect(mouth_open, mouth_close, param_mouth_open.WhenFalse());
+        Animation.Connect(mouth_close, idle);
+
+        Animation.Connect(jump_charge, jump_start, param_jumping.WhenTrue());
+        Animation.Connect(idle, jump_start, param_jumping.WhenTrue());
+        Animation.Connect(walking, jump_start, param_jumping.WhenTrue());
+        Animation.Connect(jump_start, jump_end, param_jumping.WhenFalse());
+        Animation.Connect(jump_end, idle);
+
+        Animation.Start(idle.Node);
     }
 
     public override void _Process(double delta)
@@ -39,16 +85,19 @@ public partial class FrogCharacter : Character
 
     public Coroutine AnimateTongueTowards(Node3D target)
     {
+        Tongue.GlobalPosition = TongueStartMarker.GlobalPosition;
         Tongue.LookAt(target.GlobalPosition);
+        Tongue.Show();
+
         var dist = Tongue.GlobalPosition.DistanceTo(target.GlobalPosition);
         return this.StartCoroutine(Cr, nameof(AnimateTongueTowards));
         IEnumerator Cr()
         {
-            AnimationPlayer.PlayAndWaitForAnimation("open");
+            param_mouth_open.Set(true);
 
             var start = Tongue.Scale.Z;
             var end = dist;
-            yield return LerpEnumerator.Lerp01(0.05f, f =>
+            yield return LerpEnumerator.Lerp01(0.08f, f =>
             {
                 var z = Mathf.Lerp(start, end, f);
                 Tongue.Scale = new Vector3(1, 1, z);
@@ -70,8 +119,10 @@ public partial class FrogCharacter : Character
             });
 
             ClearTongueAttachement();
+            Tongue.Hide();
 
-            yield return AnimationPlayer.PlayAndWaitForAnimation("close");
+            param_mouth_open.Set(false);
+            yield return new WaitForSeconds(0.25f);
         }
     }
 
@@ -96,5 +147,20 @@ public partial class FrogCharacter : Character
         if (_attached_target == null) return;
 
         _attached_target.GlobalPosition = TongueTargetMarker.GlobalPosition;
+    }
+
+    public void SetMoving(bool moving)
+    {
+        param_moving.Set(moving);
+    }
+
+    public void SetJumping(bool jumping)
+    {
+        param_jumping.Set(jumping);
+    }
+
+    public void SetCharging(bool charging)
+    {
+        param_charging.Set(charging);
     }
 }
