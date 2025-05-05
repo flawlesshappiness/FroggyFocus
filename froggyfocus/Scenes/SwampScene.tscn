@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3444, 2.38419e-07, -17.44
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72721, -0.945117, -12.7212)
 
 [node name="FocusEventXZ" parent="Events" instance=ExtResource("8_kd8f8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47254, 2.38419e-07, 6.6433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47254, 2.38419e-07, 2.31835)
 
 [node name="World" type="Node3D" parent="."]
 

@@ -14,7 +14,7 @@ public abstract partial class ResourceController<C, R> : SingletonController
     {
         var collection_filename = $"{typeof(C).Name}.tres";
         var default_path = $"{Directory}/Resources/{collection_filename}";
-        var custom_path = $"{CustomResourceCollectionDirectory}/{collection_filename}";
+        var custom_path = $"{CustomResourceCollectionDirectory}/Resources/{collection_filename}";
         return string.IsNullOrEmpty(CustomResourceCollectionDirectory) ? default_path : custom_path;
     }
 }

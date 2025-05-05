@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://clyygqpwfqi2h"]
+
+[ext_resource type="Script" uid="uid://blrvdsv0elqy5" path="res://Modules/Sound/SoundInfo.cs" id="1_2v75s"]
+[ext_resource type="AudioStream" uid="uid://bvjirq5v14juj" path="res://Sounds/Raw/sfx_swallow_001.wav" id="1_bh3g3"]
+
+[resource]
+script = ExtResource("1_2v75s")
+AudioStreams = Array[AudioStream]([ExtResource("1_bh3g3")])
+Volume = -20.0
+Looping = false
+PitchRange = Vector2(0.95, 1)
+Bus = "SFX"
+Distance = 0
+Attenuation = 0
+metadata/_custom_type_script = "uid://blrvdsv0elqy5"

@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 
 public partial class Player : TopDownController
 {
@@ -103,7 +104,21 @@ public partial class Player : TopDownController
     {
         if (InteractLock.IsLocked) return;
 
-        PlayerInteract.TryInteract();
+        var interactable = PlayerInteract.GetInteractable();
+        var node = interactable as Node3D;
+
+        this.StartCoroutine(Cr, nameof(Interact));
+        IEnumerator Cr()
+        {
+            MovementLock.AddLock(nameof(Interact));
+            InteractLock.AddLock(nameof(Interact));
+
+            yield return Character.AnimateInteract(node);
+            interactable?.Interact();
+
+            MovementLock.RemoveLock(nameof(Interact));
+            InteractLock.RemoveLock(nameof(Interact));
+        }
     }
 
     public void SetCameraTarget()

@@ -23,7 +23,7 @@ public partial class PlayerInteract : Area3D
         _bodies.Remove(body);
     }
 
-    public bool TryInteract()
+    public IInteractable GetInteractable()
     {
         var nodes = _bodies.Select(x => x as Node3D)
             .Where(x => x != null)
@@ -34,10 +34,18 @@ public partial class PlayerInteract : Area3D
             var interactable = node as IInteractable;
             if (interactable == null) continue;
 
-            interactable.Interact();
-            return true;
+            return interactable;
         }
 
-        return false;
+        return null;
+    }
+
+    public bool TryInteract()
+    {
+        var interactable = GetInteractable();
+        if (interactable == null) return false;
+
+        interactable.Interact();
+        return true;
     }
 }

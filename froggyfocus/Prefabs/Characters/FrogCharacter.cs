@@ -16,6 +16,9 @@ public partial class FrogCharacter : Character
     [Export]
     public AnimationStateMachine Animation;
 
+    [Export]
+    public SoundInfo SfxSwallow;
+
     private Node3D _attached_target;
 
     private BoolParameter param_moving = new BoolParameter("moving", false);
@@ -77,23 +80,45 @@ public partial class FrogCharacter : Character
         return this.StartCoroutine(Cr, nameof(AnimateEatTarget));
         IEnumerator Cr()
         {
-            yield return AnimateTongueTowards(target);
+            yield return AnimateTongueTowards(target.GlobalPosition);
             AttachToTongue(target);
+            yield return AnimateTongueBack();
+            SfxSwallow.Play(GlobalPosition);
+        }
+    }
+
+    public Coroutine AnimateInteract(Node3D target)
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateEatTarget));
+        IEnumerator Cr()
+        {
+            var empty_length = 2.5f;
+            var empty_position = GlobalPosition + Basis * (Vector3.Forward * empty_length + Vector3.Up * 0.25f);
+            var position = target == null ? empty_position : target.GlobalPosition;
+
+            if (target != null)
+            {
+                StartFacingPosition(position);
+                yield return new WaitForSeconds(0.25f);
+            }
+
+            yield return AnimateTongueTowards(position);
             yield return AnimateTongueBack();
         }
     }
 
-    public Coroutine AnimateTongueTowards(Node3D target)
+    public Coroutine AnimateTongueTowards(Vector3 position)
     {
         Tongue.GlobalPosition = TongueStartMarker.GlobalPosition;
-        Tongue.LookAt(target.GlobalPosition);
+        Tongue.LookAt(position);
         Tongue.Show();
 
-        var dist = Tongue.GlobalPosition.DistanceTo(target.GlobalPosition);
+        var dist = Tongue.GlobalPosition.DistanceTo(position);
         return this.StartCoroutine(Cr, nameof(AnimateTongueTowards));
         IEnumerator Cr()
         {
             param_mouth_open.Set(true);
+            yield return new WaitForSeconds(0.2f);
 
             var start = Tongue.Scale.Z;
             var end = dist;

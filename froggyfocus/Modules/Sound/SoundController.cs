@@ -6,7 +6,7 @@ using System.Linq;
 public partial class SoundController : ResourceController<SoundCollection, SoundInfo>
 {
     public override string Directory => $"{Paths.Modules}/Sound";
-    protected override string CustomResourceCollectionDirectory => "Sound";
+    protected override string CustomResourceCollectionDirectory => "Sounds";
     public static SoundController Instance => Singleton.Get<SoundController>();
 
     public AudioStreamPlayer Play(SoundInfo info, SoundOverride settings = null) => Play(info.ResourcePath, settings);
