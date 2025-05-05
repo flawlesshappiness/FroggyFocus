@@ -8,6 +8,8 @@ public partial class TopDownController : CharacterBody3D
     public Vector3 DesiredJumpVelocity { get; private set; }
     private float Gravity => GravityLock.IsLocked ? 0 : 20;
 
+    public bool IsJumping => _jumping;
+
     private bool _moving;
     private bool _jumping;
     private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();

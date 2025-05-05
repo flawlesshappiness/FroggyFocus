@@ -39,6 +39,7 @@ public partial class Player : TopDownController
     public override void _Process(double delta)
     {
         base._Process(delta);
+        Process_Facing();
         Process_Move();
         Process_Interact();
         Process_Jump();
@@ -50,12 +51,22 @@ public partial class Player : TopDownController
         if (input.Length() > 0 && !MovementLock.IsLocked && !PlayerInput.Jump.Held)
         {
             Move(input, MoveSpeed);
-            Character.StartFacingDirection(DesiredMoveVelocity);
         }
         else
         {
             Stop();
         }
+    }
+
+    private void Process_Facing()
+    {
+        if (MovementLock.IsLocked) return;
+        if (IsJumping) return;
+
+        var input = PlayerInput.GetMoveInput();
+        if (input.Length() < 0.1f) return;
+
+        Character.StartFacingDirection(new Vector3(input.X, 0, input.Y));
     }
 
     private void Process_Jump()
@@ -66,12 +77,6 @@ public partial class Player : TopDownController
         {
             jump_charge += GameTime.DeltaTime * 0.5f;
             Character.SetCharging(true);
-
-            var input = PlayerInput.GetMoveInput();
-            if (input.Length() > 0.1f)
-            {
-                Character.StartFacingDirection(new Vector3(input.X, 0, input.Y));
-            }
         }
         else if (PlayerInput.Jump.Released)
         {

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://t518br3ynqum"]
+
+[ext_resource type="PackedScene" uid="uid://81i8koe64106" path="res://Assets/FlawLizArt/Nature/Toon/bush_002.fbx" id="1_dqwle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_640od"]
+size = Vector3(3.22754, 4, 1.69238)
+
+[node name="Bush_001" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_640od")
+
+[node name="bush_002" parent="." instance=ExtResource("1_dqwle")]

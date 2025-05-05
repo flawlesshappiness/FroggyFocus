@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw7xbxi3rwqgg"]
+
+[ext_resource type="PackedScene" uid="uid://h4do7woybbun" path="res://Assets/Quaternius/Nature/WoodLog.fbx" id="1_d2xsh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1yv56"]
+size = Vector3(0.510437, 0.519531, 2.70941)
+
+[node name="WoodLog" type="Node3D"]
+
+[node name="WoodLog" parent="." instance=ExtResource("1_d2xsh")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0401917, 0.261881, -0.171173)
+shape = SubResource("BoxShape3D_1yv56")
