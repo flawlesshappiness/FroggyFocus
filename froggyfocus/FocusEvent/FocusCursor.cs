@@ -140,12 +140,14 @@ public partial class FocusCursor : Node3D
         if (IsTargetInRange && Focusing)
         {
             SetFocusValue(FocusValue + FocusTickAmount);
+            GameView.Instance.FocusGained(FocusValue);
             Animation.Play("BounceIn");
             OnFocusTarget?.Invoke();
         }
         else
         {
             SetFocusValue(FocusValue - FocusTickDecay);
+            GameView.Instance.FocusLost(FocusValue);
         }
     }
 
@@ -172,7 +174,6 @@ public partial class FocusCursor : Node3D
     private void SetFocusValue(float value)
     {
         FocusValue = Mathf.Clamp(value, 0f, 1f);
-        GameView.Instance.FocusValueChanged(FocusValue);
 
         if (FocusValue >= 1)
         {

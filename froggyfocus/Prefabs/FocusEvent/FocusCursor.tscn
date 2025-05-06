@@ -50,10 +50,9 @@ _data = {
 &"RESET": SubResource("Animation_yd0hp")
 }
 
-[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("RadiusNode", "FillLabel", "Animation")]
+[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("RadiusNode", "Animation")]
 script = ExtResource("1_x77ch")
 RadiusNode = NodePath("Radius")
-FillLabel = NodePath("")
 Animation = NodePath("AnimationPlayer")
 
 [node name="Radius" type="Node3D" parent="."]
