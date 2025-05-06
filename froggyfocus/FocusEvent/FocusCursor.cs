@@ -1,13 +1,13 @@
 using Godot;
 using System;
 
-public partial class FocusCursor : Area3D
+public partial class FocusCursor : Node3D
 {
     [Export]
-    public MeshInstance3D MeshInstance;
+    public Node3D RadiusNode;
 
     [Export]
-    public Label3D FillLabel;
+    public AnimationPlayer Animation;
 
     public bool InputEnabled { get; set; }
     public FocusTarget Target { get; set; }
@@ -18,15 +18,17 @@ public partial class FocusCursor : Area3D
     private bool IsTargetInRange => DistanceToTarget < Radius;
     private bool Focusing => PlayerInput.Interact.Held;
     private float FocusValue { get; set; }
-    private float FocusSpeed { get; set; }
-    private float FocusDecay { get; set; }
+    private float FocusTickTime { get; set; }
+    private float FocusTickAmount { get; set; }
+    private float FocusTickDecay { get; set; }
     private float MoveSpeed { get; set; }
     private float MoveFocusSpeed { get; set; }
     private bool Filled { get; set; }
     private bool Empty { get; set; }
 
-    private bool _is_focusing;
-    private bool _is_focusing_on_target;
+    private bool is_focusing;
+    private bool is_focusing_on_target;
+    private float next_tick;
 
     public event Action OnFocusStarted;
     public event Action OnFocusStopped;
@@ -46,7 +48,6 @@ public partial class FocusCursor : Area3D
     public void Start(FocusTarget target)
     {
         Load();
-        UpdateFocusText();
         Filled = false;
         Empty = false;
         InputEnabled = true;
@@ -63,13 +64,12 @@ public partial class FocusCursor : Area3D
     {
         // TODO: Load data
         Radius = 0.4f;
-        var mesh = MeshInstance.Mesh as CylinderMesh;
-        mesh.BottomRadius = Radius;
-        mesh.TopRadius = Radius;
+        RadiusNode.Scale = Vector3.One * Radius;
 
         FocusValue = 0.25f;
-        FocusSpeed = 0.25f;
-        FocusDecay = 0.15f;
+        FocusTickTime = 0.25f;
+        FocusTickAmount = 0.03f;
+        FocusTickDecay = 0.01f;
         MoveSpeed = 0.02f;
         MoveFocusSpeed = MoveSpeed * 0.1f;
     }
@@ -78,14 +78,14 @@ public partial class FocusCursor : Area3D
     {
         base._Input(@event);
 
-        if (Focusing && !_is_focusing)
+        if (Focusing && !is_focusing)
         {
-            _is_focusing = true;
+            is_focusing = true;
             OnFocusStarted?.Invoke();
         }
-        else if (!Focusing && _is_focusing)
+        else if (!Focusing && is_focusing)
         {
-            _is_focusing = false;
+            is_focusing = false;
             OnFocusStopped?.Invoke();
         }
     }
@@ -95,7 +95,8 @@ public partial class FocusCursor : Area3D
         base._Process(delta);
         var fdelta = Convert.ToSingle(delta);
         Process_Input();
-        Process_Target(fdelta);
+        Process_Target();
+        Process_Graphic();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -127,33 +128,42 @@ public partial class FocusCursor : Area3D
         GlobalPosition += DesiredVelocity * speed;
     }
 
-    private void Process_Target(float delta)
+    private void Process_Target()
     {
         if (!InputEnabled) return;
         if (Filled) return;
         if (Empty) return;
 
+        if (GameTime.Time < next_tick) return;
+        next_tick = GameTime.Time + FocusTickTime;
+
         if (IsTargetInRange && Focusing)
         {
-            SetFocusValue(FocusValue + delta * FocusSpeed);
-            FillLabel.Modulate = Colors.White;
-
-            if (!_is_focusing_on_target)
-            {
-                _is_focusing_on_target = true;
-                OnFocusTargetEnter?.Invoke();
-            }
-
+            SetFocusValue(FocusValue + FocusTickAmount);
+            Animation.Play("BounceIn");
             OnFocusTarget?.Invoke();
         }
         else
         {
-            SetFocusValue(FocusValue - delta * FocusDecay);
-            FillLabel.Modulate = Colors.Red;
+            SetFocusValue(FocusValue - FocusTickDecay);
+        }
+    }
 
-            if (_is_focusing_on_target)
+    private void Process_Graphic()
+    {
+        if (IsTargetInRange && Focusing)
+        {
+            if (!is_focusing_on_target)
             {
-                _is_focusing_on_target = false;
+                is_focusing_on_target = true;
+                OnFocusTargetEnter?.Invoke();
+            }
+        }
+        else
+        {
+            if (is_focusing_on_target)
+            {
+                is_focusing_on_target = false;
                 OnFocusTargetExit?.Invoke();
             }
         }
@@ -162,7 +172,7 @@ public partial class FocusCursor : Area3D
     private void SetFocusValue(float value)
     {
         FocusValue = Mathf.Clamp(value, 0f, 1f);
-        UpdateFocusText();
+        GameView.Instance.FocusValueChanged(FocusValue);
 
         if (FocusValue >= 1)
         {
@@ -174,10 +184,5 @@ public partial class FocusCursor : Area3D
             Empty = true;
             OnFocusEmpty?.Invoke();
         }
-    }
-
-    private void UpdateFocusText()
-    {
-        FillLabel.Text = $"{(int)(FocusValue * 100)}%";
     }
 }

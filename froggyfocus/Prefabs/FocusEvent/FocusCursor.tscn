@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cta4lwmtk36u"]
+[gd_scene load_steps=7 format=3 uid="uid://cta4lwmtk36u"]
 
 [ext_resource type="Script" uid="uid://bpbdt4x46g0ir" path="res://FocusEvent/FocusCursor.cs" id="1_x77ch"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1eh1j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1eh1j"]
 transparency = 1
@@ -11,23 +9,63 @@ albedo_color = Color(1, 1, 1, 0.0980392)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_1eh1j"]
 material = SubResource("StandardMaterial3D_1eh1j")
+top_radius = 1.0
+bottom_radius = 1.0
 height = 0.01
 
-[node name="FocusCursor" type="Area3D" node_paths=PackedStringArray("MeshInstance", "FillLabel")]
-collision_layer = 0
-collision_mask = 4
+[sub_resource type="Animation" id="Animation_x77ch"]
+resource_name = "BounceIn"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.9, 0.9, 0.9), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yd0hp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rpbmh"]
+_data = {
+&"BounceIn": SubResource("Animation_x77ch"),
+&"RESET": SubResource("Animation_yd0hp")
+}
+
+[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("RadiusNode", "FillLabel", "Animation")]
 script = ExtResource("1_x77ch")
-MeshInstance = NodePath("MeshInstance3D")
-FillLabel = NodePath("FillLabel")
+RadiusNode = NodePath("Radius")
+FillLabel = NodePath("")
+Animation = NodePath("AnimationPlayer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_1eh1j")
+[node name="Radius" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Anim" type="Node3D" parent="Radius"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Radius/Anim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 mesh = SubResource("CylinderMesh_1eh1j")
+skeleton = NodePath("../../..")
 
-[node name="FillLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.009142, 0.632682)
-text = "30%"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rpbmh")
+}

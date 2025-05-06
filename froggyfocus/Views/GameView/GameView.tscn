@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
 
-[node name="GameView" type="Control" node_paths=PackedStringArray("BugsCollectedLabel")]
+[node name="GameView" type="Control" node_paths=PackedStringArray("BugsCollectedLabel", "FocusBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,13 +11,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v4b6a")
 BugsCollectedLabel = NodePath("MarginContainer/Control/BugsCollectedLabel")
+FocusBar = NodePath("MarginContainer/Control/FocusBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 25
@@ -33,3 +33,14 @@ layout_mode = 1
 offset_right = 1102.0
 offset_bottom = 23.0
 text = "Bugs collected: 999"
+
+[node name="FocusBar" type="ProgressBar" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0

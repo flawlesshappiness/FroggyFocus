@@ -102,6 +102,7 @@ public partial class FocusEvent : Area3D, IInteractable
 
             // Start
             EventStarted = true;
+            FocusEventController.Instance.FocusEventStarted(this);
         }
     }
 
