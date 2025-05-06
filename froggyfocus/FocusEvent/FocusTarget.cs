@@ -75,11 +75,15 @@ public partial class FocusTarget : Node3D
             // Move to position
             Character.StartFacingDirection(dir_to_position);
 
+            Character.SetMoving(true);
+
             while (GlobalPosition.DistanceTo(position) > 0.1f)
             {
                 Move(dir_to_position.Normalized() * Info.MoveSpeed * GameTime.DeltaTime);
                 yield return null;
             }
+
+            Character.SetMoving(false);
 
             // Wait
             var delay = _rng.RandfRange(Info.MoveDelayRange.X, Info.MoveDelayRange.Y);

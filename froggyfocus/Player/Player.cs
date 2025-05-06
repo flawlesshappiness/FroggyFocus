@@ -103,6 +103,8 @@ public partial class Player : TopDownController
     private void Interact()
     {
         if (InteractLock.IsLocked) return;
+        if (!IsOnFloor()) return;
+        if (PlayerInput.Jump.Held) return;
 
         var interactable = PlayerInteract.GetInteractable();
         var node = interactable as Node3D;
