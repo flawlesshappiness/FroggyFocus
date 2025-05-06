@@ -35,6 +35,7 @@ public partial class FocusEvent : Area3D, IInteractable
     {
         base._Ready();
         Cursor.OnFocusFilled += FocusFilled;
+        Cursor.OnFocusEmpty += FocusEmpty;
         Cursor.OnFocusTarget += FocusTarget;
         Cursor.Initialize(Target, Axis);
 
@@ -93,7 +94,7 @@ public partial class FocusEvent : Area3D, IInteractable
             yield return new WaitForSeconds(1f);
 
             // Initialize cursor
-            Cursor.Position = Offset;
+            Cursor.GlobalPosition = Target.GlobalPosition;
             Cursor.Start(Target);
 
             // Start target
@@ -104,16 +105,22 @@ public partial class FocusEvent : Area3D, IInteractable
         }
     }
 
-    protected virtual void EndEvent()
+    protected virtual void EndEvent(bool completed)
     {
         this.StartCoroutine(Cr, nameof(EndEvent));
         IEnumerator Cr()
         {
+            // Disable cursor
+            Cursor.Stop();
+
             // Stop target
             Target.StopMoving();
 
-            // Eat target
-            yield return Player.Instance.Character.AnimateEatTarget(Target.Character);
+            if (completed)
+            {
+                // Eat target
+                yield return Player.Instance.Character.AnimateEatTarget(Target.Character);
+            }
 
             // Hide target
             Target.Hide();
@@ -123,10 +130,6 @@ public partial class FocusEvent : Area3D, IInteractable
 
             // Enable player
             Player.SetAllLocks(nameof(FocusEvent), false);
-
-            // Disable cursor
-            Cursor.Disable();
-            Cursor.InputEnabled = false;
 
             // End
             EventStarted = false;
@@ -141,7 +144,14 @@ public partial class FocusEvent : Area3D, IInteractable
 
         FocusEventController.Instance.FocusEventCompleted(this);
 
-        EndEvent();
+        EndEvent(true);
+    }
+
+    private void FocusEmpty()
+    {
+        FocusEventController.Instance.FocusEventFailed(this);
+
+        EndEvent(false);
     }
 
     private void FocusTarget()

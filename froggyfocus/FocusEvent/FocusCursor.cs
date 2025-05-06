@@ -23,6 +23,7 @@ public partial class FocusCursor : Area3D
     private float MoveSpeed { get; set; }
     private float MoveFocusSpeed { get; set; }
     private bool Filled { get; set; }
+    private bool Empty { get; set; }
 
     private bool _is_focusing;
     private bool _is_focusing_on_target;
@@ -33,21 +34,29 @@ public partial class FocusCursor : Area3D
     public event Action OnFocusTargetEnter;
     public event Action OnFocusTargetExit;
     public event Action OnFocusFilled;
+    public event Action OnFocusEmpty;
 
     public void Initialize(FocusTarget target, FocusEventAxis axis)
     {
         Target = target;
         Axis = axis;
-        this.Disable();
+        Hide();
     }
 
     public void Start(FocusTarget target)
     {
         Load();
+        UpdateFocusText();
         Filled = false;
-        SetFocusValue(0);
-        this.Enable();
+        Empty = false;
         InputEnabled = true;
+        Show();
+    }
+
+    public void Stop()
+    {
+        Hide();
+        InputEnabled = false;
     }
 
     public void Load()
@@ -58,9 +67,10 @@ public partial class FocusCursor : Area3D
         mesh.BottomRadius = Radius;
         mesh.TopRadius = Radius;
 
-        FocusSpeed = 0.3f;
-        FocusDecay = 0.1f;
-        MoveSpeed = 0.05f;
+        FocusValue = 0.25f;
+        FocusSpeed = 0.25f;
+        FocusDecay = 0.15f;
+        MoveSpeed = 0.02f;
         MoveFocusSpeed = MoveSpeed * 0.1f;
     }
 
@@ -121,6 +131,7 @@ public partial class FocusCursor : Area3D
     {
         if (!InputEnabled) return;
         if (Filled) return;
+        if (Empty) return;
 
         if (IsTargetInRange && Focusing)
         {
@@ -151,12 +162,22 @@ public partial class FocusCursor : Area3D
     private void SetFocusValue(float value)
     {
         FocusValue = Mathf.Clamp(value, 0f, 1f);
-        FillLabel.Text = $"{(int)(FocusValue * 100)}%";
+        UpdateFocusText();
 
         if (FocusValue >= 1)
         {
             Filled = true;
             OnFocusFilled?.Invoke();
         }
+        else if (FocusValue <= 0)
+        {
+            Empty = true;
+            OnFocusEmpty?.Invoke();
+        }
+    }
+
+    private void UpdateFocusText()
+    {
+        FillLabel.Text = $"{(int)(FocusValue * 100)}%";
     }
 }
