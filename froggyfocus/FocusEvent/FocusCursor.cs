@@ -62,16 +62,15 @@ public partial class FocusCursor : Node3D
 
     public void Load()
     {
-        // TODO: Load data
-        Radius = 0.4f;
+        Radius = Data.Game.CursorRadius;
         RadiusNode.Scale = Vector3.One * Radius;
 
-        FocusValue = 0.25f;
+        FocusValue = Data.Game.CursorStartValue;
         FocusTickTime = 0.25f;
-        FocusTickAmount = 0.03f;
-        FocusTickDecay = 0.01f;
-        MoveSpeed = 0.02f;
-        MoveFocusSpeed = MoveSpeed * 0.1f;
+        FocusTickAmount = Data.Game.CursorTickAmount;
+        FocusTickDecay = Data.Game.CursorTickDecay;
+        MoveSpeed = Data.Game.CursorMoveSpeed;
+        MoveFocusSpeed = MoveSpeed * Data.Game.CursorFocusMoveSpeedMultiplier;
     }
 
     public override void _Input(InputEvent @event)
