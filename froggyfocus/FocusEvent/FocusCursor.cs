@@ -62,15 +62,15 @@ public partial class FocusCursor : Node3D
 
     public void Load()
     {
-        Radius = Data.Game.CursorRadius;
+        Radius = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorRadius);
         RadiusNode.Scale = Vector3.One * Radius;
 
-        FocusValue = Data.Game.CursorStartValue;
         FocusTickTime = 0.25f;
-        FocusTickAmount = Data.Game.CursorTickAmount;
-        FocusTickDecay = Data.Game.CursorTickDecay;
-        MoveSpeed = Data.Game.CursorMoveSpeed;
-        MoveFocusSpeed = MoveSpeed * Data.Game.CursorFocusMoveSpeedMultiplier;
+        FocusValue = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorStartValue);
+        FocusTickAmount = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorTickAmount);
+        FocusTickDecay = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorTickDecay);
+        MoveSpeed = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorMoveSpeed);
+        MoveFocusSpeed = MoveSpeed * StatsController.Instance.GetCurrentStatsValue(StatsType.CursorMoveSpeedMultiplierDuringFocus);
     }
 
     public override void _Input(InputEvent @event)

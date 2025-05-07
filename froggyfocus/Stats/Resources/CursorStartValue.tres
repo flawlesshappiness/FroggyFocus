@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatsInfo" load_steps=2 format=3 uid="uid://emmkkix64wdi"]
+
+[ext_resource type="Script" uid="uid://dct8ndrjlybm4" path="res://Stats/StatsInfo.cs" id="1_4whgn"]
+
+[resource]
+script = ExtResource("1_4whgn")
+Type = 5
+Name = "Target start value"
+Description = "Starting target value"
+metadata/_custom_type_script = "uid://dct8ndrjlybm4"

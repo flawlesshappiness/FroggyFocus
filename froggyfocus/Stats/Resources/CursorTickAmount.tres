@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatsInfo" load_steps=2 format=3 uid="uid://d1fkcy4c6by8o"]
+
+[ext_resource type="Script" uid="uid://dct8ndrjlybm4" path="res://Stats/StatsInfo.cs" id="1_3olj3"]
+
+[resource]
+script = ExtResource("1_3olj3")
+Type = 3
+Name = "Focus strength"
+Description = "How much target value "
+metadata/_custom_type_script = "uid://dct8ndrjlybm4"

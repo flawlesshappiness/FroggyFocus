@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlak7kns1125d"]
+
+[ext_resource type="Script" uid="uid://drufgigbk2tcl" path="res://Views/DebugStatsView/DebugStatsView.cs" id="1_w8j5v"]
+[ext_resource type="Script" uid="uid://d3dx6seqaqyi8" path="res://Views/DebugStatsView/DebugStatsSlider.cs" id="2_gpf1v"]
+
+[node name="DebugStatsView" type="Control" node_paths=PackedStringArray("CloseButton", "StatsSliderTemplate")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w8j5v")
+CloseButton = NodePath("MarginContainer/Control/VBoxContainer2/CloseButton")
+StatsSliderTemplate = NodePath("MarginContainer/Control/VBoxContainer2/ScrollContainer/VBoxContainer/StatTemplate")
+ChildOrder = 10
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.607843)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 298.0
+offset_right = -298.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Control/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/VBoxContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StatTemplate" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer2/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("NameLabel", "ValueLabel", "ValueSlider")]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+script = ExtResource("2_gpf1v")
+NameLabel = NodePath("MarginContainer/HBoxContainer/NameLabel")
+ValueLabel = NodePath("MarginContainer/HBoxContainer/ValueLabel")
+ValueSlider = NodePath("MarginContainer/HBoxContainer/ValueSlider")
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Control/VBoxContainer2/ScrollContainer/VBoxContainer/StatTemplate"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.607843)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/VBoxContainer2/ScrollContainer/VBoxContainer/StatTemplate"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/VBoxContainer2/ScrollContainer/VBoxContainer/StatTemplate/MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/Control/VBoxContainer2/ScrollContainer/VBoxContainer/StatTemplate/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stat template"
+
+[node name="ValueSlider" type="HSlider" parent="MarginContainer/Control/VBoxContainer2/ScrollContainer/VBoxContainer/StatTemplate/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="ValueLabel" type="Label" parent="MarginContainer/Control/VBoxContainer2/ScrollContainer/VBoxContainer/StatTemplate/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "0.10"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/Control/VBoxContainer2"]
+layout_mode = 2
+text = "Close"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatsInfo" load_steps=2 format=3 uid="uid://dltbus7a3gvt1"]
+
+[ext_resource type="Script" uid="uid://dct8ndrjlybm4" path="res://Stats/StatsInfo.cs" id="1_03yiy"]
+
+[resource]
+script = ExtResource("1_03yiy")
+Type = 0
+Name = "Pupil size"
+Description = "The radius of the area you can focus on"
+metadata/_custom_type_script = "uid://dct8ndrjlybm4"

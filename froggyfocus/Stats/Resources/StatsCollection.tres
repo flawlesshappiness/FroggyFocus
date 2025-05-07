@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="StatsCollection" load_steps=2 format=3 uid="uid://ck4ycv5asvxxo"]
+
+[ext_resource type="Script" uid="uid://bx0q3yb8rx2if" path="res://Stats/StatsCollection.cs" id="1_vyvtu"]
+
+[resource]
+script = ExtResource("1_vyvtu")
+metadata/_custom_type_script = "uid://bx0q3yb8rx2if"
