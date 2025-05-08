@@ -26,7 +26,7 @@ size = Vector3(1, 8, 41)
 [node name="SwampScene" type="Node3D" node_paths=PackedStringArray("Player", "FocusEventParent")]
 script = ExtResource("1_qfos7")
 Player = NodePath("Player")
-ActiveFocusEvents = 2
+ActiveFocusEvents = 5
 FocusEventParent = NodePath("Events")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -54,11 +54,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117083, -4.76837e-07, 2.934
 [node name="FocusEventX" parent="Events" instance=ExtResource("6_0ky7s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3444, 2.38419e-07, -17.4418)
 
+[node name="FocusEventX2" parent="Events" instance=ExtResource("6_0ky7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1423, 2.38419e-07, -14.3644)
+
+[node name="FocusEventX3" parent="Events" instance=ExtResource("6_0ky7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.86746, 2.38419e-07, 1.50699)
+
+[node name="FocusEventX4" parent="Events" instance=ExtResource("6_0ky7s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4141, 2.38419e-07, -2.50628)
+
 [node name="FocusEventXY" parent="Events" instance=ExtResource("7_1p1c6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72721, -0.945117, -12.7212)
 
 [node name="FocusEventXZ" parent="Events" instance=ExtResource("8_kd8f8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47254, 2.38419e-07, 2.31835)
+
+[node name="FocusEventXZ2" parent="Events" instance=ExtResource("8_kd8f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73618, 2.38419e-07, -4.33371)
+
+[node name="FocusEventXZ3" parent="Events" instance=ExtResource("8_kd8f8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68305, 2.38419e-07, -19.6334)
 
 [node name="World" type="Node3D" parent="."]
 

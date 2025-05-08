@@ -60,7 +60,7 @@ public partial class FocusEvent : Area3D, IInteractable
         {
             Target.Hide();
             FocusEventController.Instance.EventDisabled(this);
-            Coroutine.Stop(cr_active);
+            StopActiveCoroutine();
         }
     }
 
@@ -88,6 +88,11 @@ public partial class FocusEvent : Area3D, IInteractable
         }
     }
 
+    private void StopActiveCoroutine()
+    {
+        Coroutine.Stop(cr_active);
+    }
+
     public void Interact()
     {
         if (!EventEnabled) return;
@@ -107,6 +112,8 @@ public partial class FocusEvent : Area3D, IInteractable
 
     protected virtual void StartEvent()
     {
+        StopActiveCoroutine();
+
         // Hijack camera
         CameraController.Instance.Target = this;
         CameraController.Instance.Offset = CameraMarker.Position;
