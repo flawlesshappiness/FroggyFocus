@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=25 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
@@ -14,25 +14,26 @@
 [ext_resource type="PackedScene" uid="uid://tg34p1dkugx1" path="res://Prefabs/Ground/grass.tscn" id="10_yhwn0"]
 [ext_resource type="PackedScene" uid="uid://bkco54i0wshgh" path="res://Prefabs/Ground/pond_001.tscn" id="11_yhwn0"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad.tscn" id="12_5fuuy"]
+[ext_resource type="PackedScene" uid="uid://stvl4xxk6ii6" path="res://Prefabs/Ground/pond_straight_001.tscn" id="13_20fcr"]
 [ext_resource type="PackedScene" uid="uid://bl87dimpk2ufa" path="res://Assets/Quaternius/Nature/TreeStump.fbx" id="14_iu42u"]
 [ext_resource type="PackedScene" uid="uid://81i8koe64106" path="res://Assets/FlawLizArt/Nature/Toon/bush_002.fbx" id="15_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://h4do7woybbun" path="res://Assets/Quaternius/Nature/WoodLog.fbx" id="16_52an4"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
+[ext_resource type="Material" uid="uid://dfual12fudeg6" path="res://Materials/Water.tres" id="19_achss"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
+[ext_resource type="AudioStream" uid="uid://dcfaxoreoxkic" path="res://Sounds/Raw/amb_river_001.wav" id="21_yvk0y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5fuuy"]
-size = Vector3(1, 8, 41)
+size = Vector3(1, 8, 43.1504)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_20fcr"]
+size = Vector2(200, 200)
 
 [node name="SwampScene" type="Node3D" node_paths=PackedStringArray("Player", "FocusEventParent")]
 script = ExtResource("1_qfos7")
 Player = NodePath("Player")
 ActiveFocusEvents = 5
 FocusEventParent = NodePath("Events")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_qfnsp")
-autoplay = true
-bus = &"SFX"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_0ky7s")
@@ -80,11 +81,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68305, 2.38419e-07, -19.63
 [node name="TreeStump" parent="World" instance=ExtResource("9_1p1c6")]
 transform = Transform3D(2.20236, 0, -2.03706, 0, 3, 0, 2.03706, 0, 2.20236, 6.39143, 0.00649762, -10.685)
 
+[node name="TreeStump3" parent="World" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(2.20236, 0, -2.03706, 0, 3, 0, 2.03706, 0, 2.20236, -18.3725, 0.00649762, -7.48718)
+
 [node name="TreeStump2" parent="World" instance=ExtResource("9_1p1c6")]
 transform = Transform3D(-1.79048, 0, -2.40711, 0, 3, 0, 2.40711, 0, -1.79048, 4.79648, 0.00649762, 4.98206)
 
 [node name="WoodLog" parent="World" instance=ExtResource("10_kd8f8")]
 transform = Transform3D(2.97359, 0, 0.397187, 0, 3, 0, -0.397187, 0, 2.97359, -8.58189, 1.90735e-06, -3.65107)
+
+[node name="WoodLog3" parent="World" instance=ExtResource("10_kd8f8")]
+transform = Transform3D(-0.885785, -0.138761, 7.9496, 0, 7.99878, 0.139619, -7.95081, 0.0154591, -0.88565, -28.489, -0.296915, -12.1997)
 
 [node name="WoodLog2" parent="World" instance=ExtResource("10_kd8f8")]
 transform = Transform3D(0.908206, 0, 2.85923, 0, 3, 0, -2.85923, 0, 0.908206, 5.00979, 1.90735e-06, -18.7765)
@@ -140,13 +147,13 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 30, 0, -34)
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2, 0, -34)
 
 [node name="grass16" parent="World/Floor" instance=ExtResource("10_yhwn0")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -34, 0, -34)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -58, 0, -34)
 
 [node name="grass17" parent="World/Floor" instance=ExtResource("10_yhwn0")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -34, 0, -2)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -58, 0, -2)
 
 [node name="grass18" parent="World/Floor" instance=ExtResource("10_yhwn0")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -34, 0, 30)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -58, 0, 30)
 
 [node name="grass19" parent="World/Floor" instance=ExtResource("10_yhwn0")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2, 0, 30)
@@ -154,8 +161,83 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2, 0, 30)
 [node name="grass20" parent="World/Floor" instance=ExtResource("10_yhwn0")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 30, 0, 30)
 
-[node name="lilypad" parent="World" instance=ExtResource("12_5fuuy")]
+[node name="pond_straight_001" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 10)
+
+[node name="pond_straight_002" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 2)
+
+[node name="pond_straight_003" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -6)
+
+[node name="pond_straight_013" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, -6)
+
+[node name="pond_straight_014" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, 2)
+
+[node name="pond_straight_015" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, 10)
+
+[node name="pond_straight_016" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, 18)
+
+[node name="pond_straight_020" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, -38)
+
+[node name="pond_straight_024" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, -46)
+
+[node name="pond_straight_021" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, -30)
+
+[node name="pond_straight_022" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, -22)
+
+[node name="pond_straight_023" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, -14)
+
+[node name="pond_straight_017" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, 26)
+
+[node name="pond_straight_018" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, 34)
+
+[node name="pond_straight_019" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -38, 0, 42)
+
+[node name="pond_straight_009" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 34)
+
+[node name="pond_straight_012" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 42)
+
+[node name="pond_straight_010" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 26)
+
+[node name="pond_straight_011" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 18)
+
+[node name="pond_straight_004" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -14)
+
+[node name="pond_straight_005" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -22)
+
+[node name="pond_straight_006" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -30)
+
+[node name="pond_straight_007" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -38)
+
+[node name="pond_straight_008" parent="World/Floor" instance=ExtResource("13_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -46)
+
+[node name="lilypad" parent="World/Floor" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.42514, -0.974196, -9.68197)
+
+[node name="lilypad2" parent="World/Floor" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-1.01952, 0, 1.72063, 0, 2, 0, -1.72063, 0, -1.01952, -27.7526, -0.974196, 2.1491)
 
 [node name="Edges" type="Node3D" parent="World"]
 
@@ -165,16 +247,12 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.42514, -0.974196, -9.68197
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9768, 4, -6.00496)
 shape = SubResource("BoxShape3D_5fuuy")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Edges/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0835, 4, -6.00496)
-shape = SubResource("BoxShape3D_5fuuy")
-
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="World/Edges/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.400751, 4, 10.22)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.47595, 4, 10.22)
 shape = SubResource("BoxShape3D_5fuuy")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="World/Edges/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.400751, 4, -23.1456)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.91305, 4, -23.1456)
 shape = SubResource("BoxShape3D_5fuuy")
 
 [node name="bush_001" parent="World/Edges" instance=ExtResource("9_kd8f8")]
@@ -192,9 +270,6 @@ transform = Transform3D(0.357941, 0, -3.98395, 0, 4, 0, 3.98395, 0, 0.357941, 16
 [node name="bush_005" parent="World/Edges" instance=ExtResource("9_kd8f8")]
 transform = Transform3D(3.99708, 0, 0.152784, 0, 4, 0, -0.152784, 0, 3.99708, 6.04971, 0, 13.3354)
 
-[node name="bush_006" parent="World/Edges" instance=ExtResource("9_kd8f8")]
-transform = Transform3D(-0.128085, 0, 3.99795, 0, 4, 0, -3.99795, 0, -0.128085, -18.374, 0, -6.06287)
-
 [node name="TreeStump" parent="World/Edges" instance=ExtResource("14_iu42u")]
 transform = Transform3D(0.816785, 0, -7.9582, 0, 8, 0, 7.9582, 0, 0.816785, 13.7945, 0, 13.4837)
 
@@ -204,17 +279,11 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.79808, 0, -25.4608)
 [node name="bush_012" parent="World/Edges" instance=ExtResource("15_qfnsp")]
 transform = Transform3D(0.208643, 0, -2.99274, 0, 3, 0, 2.99274, 0, 0.208643, 16.0169, 0, -3.85755)
 
-[node name="bush_008" parent="World/Edges" instance=ExtResource("15_qfnsp")]
-transform = Transform3D(0.491579, 0, 2.95945, 0, 3, 0, -2.95945, 0, 0.491579, -17.7981, 0, -15.4608)
-
 [node name="bush_009" parent="World/Edges" instance=ExtResource("15_qfnsp")]
-transform = Transform3D(-0.813414, 0, -2.88762, 0, 3, 0, 2.88762, 0, -0.813414, -17.2946, 0, -22.725)
-
-[node name="bush_010" parent="World/Edges" instance=ExtResource("15_qfnsp")]
-transform = Transform3D(0.276799, 0, -2.9872, 0, 3, 0, 2.9872, 0, 0.276799, -18.0138, 0, 2.80769)
+transform = Transform3D(-2.97406, 0, -0.393655, 0, 3, 0, 0.393655, 0, -2.97406, -17.2946, 0, -24.7313)
 
 [node name="bush_011" parent="World/Edges" instance=ExtResource("15_qfnsp")]
-transform = Transform3D(2.4077, 0, -1.78968, 0, 3, 0, 1.78968, 0, 2.4077, -16.3876, 0, 9.246)
+transform = Transform3D(2.99583, 0, -0.158105, 0, 3, 0, 0.158105, 0, 2.99583, -18.4521, 0, 12.2859)
 
 [node name="WoodLog" parent="World/Edges" instance=ExtResource("16_52an4")]
 transform = Transform3D(0.219549, 0, 5.99598, 0, 6, 0, -5.99598, 0, 0.219549, -6.29497, 0, 11.5796)
@@ -222,7 +291,14 @@ transform = Transform3D(0.219549, 0, 5.99598, 0, 6, 0, -5.99598, 0, 0.219549, -6
 [node name="WoodLog2" parent="World/Edges" instance=ExtResource("16_52an4")]
 transform = Transform3D(5.97617, 0, 0.5342, 0, 6, 0, -0.5342, 0, 5.97617, 14.9337, 0, -14.0055)
 
-[node name="AmbLake" type="AudioStreamPlayer3D" parent="."]
+[node name="Water" type="MeshInstance3D" parent="World/Edges"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_20fcr")
+surface_material_override/0 = ExtResource("19_achss")
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="AmbLake" type="AudioStreamPlayer3D" parent="Sounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82729, 1.14535, -10.3414)
 stream = ExtResource("18_52an4")
 attenuation_model = 3
@@ -231,7 +307,7 @@ max_distance = 28.0
 panning_strength = 0.5
 bus = &"SFX"
 
-[node name="AmbWater" type="AudioStreamPlayer3D" parent="."]
+[node name="AmbWater" type="AudioStreamPlayer3D" parent="Sounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82729, 1.14535, -10.3414)
 stream = ExtResource("19_bmghv")
 attenuation_model = 3
@@ -239,4 +315,31 @@ volume_db = -5.0
 autoplay = true
 max_distance = 16.0
 panning_strength = 0.5
+bus = &"SFX"
+
+[node name="AmbRiver" type="AudioStreamPlayer3D" parent="Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9093, -0.451877, 2.14081)
+stream = ExtResource("21_yvk0y")
+attenuation_model = 3
+volume_db = -10.0
+autoplay = true
+max_distance = 20.0
+panning_strength = 0.6
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+
+[node name="AmbRiver2" type="AudioStreamPlayer3D" parent="Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.9093, -0.451877, -13.5518)
+stream = ExtResource("21_yvk0y")
+attenuation_model = 3
+volume_db = -10.0
+autoplay = true
+max_distance = 20.0
+panning_strength = 0.6
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("2_qfnsp")
+autoplay = true
 bus = &"SFX"
