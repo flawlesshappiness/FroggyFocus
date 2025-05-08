@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://bw7xbxi3rwqgg"]
 
-[ext_resource type="PackedScene" uid="uid://h4do7woybbun" path="res://Assets/Quaternius/Nature/WoodLog.fbx" id="1_d2xsh"]
+[ext_resource type="PackedScene" uid="uid://drtv3on3nfcbv" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled.fbx" id="1_hjqi4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1yv56"]
 size = Vector3(0.510437, 0.519531, 2.70941)
 
 [node name="WoodLog" type="Node3D"]
 
-[node name="WoodLog" parent="." instance=ExtResource("1_d2xsh")]
+[node name="WoodLog_NoDetails_Filled" parent="." instance=ExtResource("1_hjqi4")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

@@ -13,6 +13,9 @@ public partial class Player : TopDownController
     public FrogCharacter Character;
 
     [Export]
+    public PlayerMoneyGained MoneyGained;
+
+    [Export]
     public Godot.Curve JumpLengthCurve;
 
     [Export]
@@ -35,6 +38,18 @@ public partial class Player : TopDownController
         OnMoveStop += () => MoveChanged(false);
         OnJump += () => JumpChanged(true);
         OnLand += () => JumpChanged(false);
+    }
+
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        FocusEventController.Instance.OnFocusEventCompleted += FocusEventCompleted;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        FocusEventController.Instance.OnFocusEventCompleted -= FocusEventCompleted;
     }
 
     public override void _Process(double delta)
@@ -156,5 +171,15 @@ public partial class Player : TopDownController
         Character.SetJumping(jumping);
 
         CameraController.Instance.Speed = jumping ? 4.0f : 1.0f;
+    }
+
+    private void FocusEventCompleted(FocusEventCompletedResult result)
+    {
+        this.StartCoroutine(Cr, nameof(FocusEventCompleted));
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(1f);
+            yield return MoneyGained.AnimateMoneyGained(result.Character.CurrencyReward);
+        }
     }
 }

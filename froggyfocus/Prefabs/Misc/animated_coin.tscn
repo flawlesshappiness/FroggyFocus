@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh1dath2r8qya"]
+
+[ext_resource type="Script" uid="uid://cjbp50llpq7hy" path="res://Prefabs/Misc/AnimatedCoin.cs" id="1_00ru0"]
+[ext_resource type="PackedScene" uid="uid://db8ulp4y08cum" path="res://Assets/Quaternius/RPG/Coin.fbx" id="1_62man"]
+
+[sub_resource type="Animation" id="Animation_you5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coin:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_21ygf"]
+resource_name = "spinning"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Coin:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucnkw"]
+_data = {
+&"RESET": SubResource("Animation_you5p"),
+&"spinning": SubResource("Animation_21ygf")
+}
+
+[node name="AnimatedCoin" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
+script = ExtResource("1_00ru0")
+AnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="Coin" parent="." instance=ExtResource("1_62man")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ucnkw")
+}
+playback_default_blend_time = 0.25

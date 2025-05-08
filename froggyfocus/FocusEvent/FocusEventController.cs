@@ -10,8 +10,8 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
     public event Action OnFocusEventEnabled;
     public event Action OnFocusEventDisabled;
     public event Action OnFocusEventStarted;
-    public event Action OnFocusEventCompleted;
-    public event Action OnFocusEventFailed;
+    public event Action<FocusEventCompletedResult> OnFocusEventCompleted;
+    public event Action<FocusEventFailResult> OnFocusEventFailed;
 
     private List<FocusEvent> FocusEvents { get; set; } = new();
     private List<FocusEvent> ActiveEvents { get; set; } = new();
@@ -50,14 +50,18 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
         OnFocusEventStarted?.Invoke();
     }
 
-    public void FocusEventCompleted(FocusEvent e)
+    public void FocusEventCompleted(FocusEventCompletedResult result)
     {
-        OnFocusEventCompleted?.Invoke();
+        CurrencyController.Instance.AddValue(CurrencyType.Money, result.Character.CurrencyReward);
+
+        OnFocusEventCompleted?.Invoke(result);
+
+        Data.Game.Save();
     }
 
-    public void FocusEventFailed(FocusEvent e)
+    public void FocusEventFailed(FocusEventFailResult result)
     {
-        OnFocusEventFailed?.Invoke();
+        OnFocusEventFailed?.Invoke(result);
     }
 
     public void EventDisabled(FocusEvent e)
@@ -83,4 +87,26 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
         if (ActiveEvents.Contains(e)) ActiveEvents.Remove(e);
         if (!InactiveEvents.Contains(e)) InactiveEvents.Add(e);
     }
+}
+
+public class FocusEventResult
+{
+    public FocusEvent FocusEvent { get; set; }
+    public FocusCharacterInfo Character { get; set; }
+
+    public FocusEventResult(FocusEvent e)
+    {
+        FocusEvent = e;
+        Character = e.Target.Info;
+    }
+}
+
+public class FocusEventCompletedResult : FocusEventResult
+{
+    public FocusEventCompletedResult(FocusEvent e) : base(e) { }
+}
+
+public class FocusEventFailResult : FocusEventResult
+{
+    public FocusEventFailResult(FocusEvent e) : base(e) { }
 }

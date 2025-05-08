@@ -91,7 +91,7 @@ transform = Transform3D(-1.79048, 0, -2.40711, 0, 3, 0, 2.40711, 0, -1.79048, 4.
 transform = Transform3D(2.97359, 0, 0.397187, 0, 3, 0, -0.397187, 0, 2.97359, -8.58189, 1.90735e-06, -3.65107)
 
 [node name="WoodLog3" parent="World" instance=ExtResource("10_kd8f8")]
-transform = Transform3D(-0.885785, -0.138761, 7.9496, 0, 7.99878, 0.139619, -7.95081, 0.0154591, -0.88565, -28.489, -0.296915, -12.1997)
+transform = Transform3D(-0.891751, 0, 7.95014, 0, 8, 0, -7.95014, 0, -0.891751, -28.489, -0.219935, -12.1997)
 
 [node name="WoodLog2" parent="World" instance=ExtResource("10_kd8f8")]
 transform = Transform3D(0.908206, 0, 2.85923, 0, 3, 0, -2.85923, 0, 0.908206, 5.00979, 1.90735e-06, -18.7765)

@@ -149,6 +149,9 @@ public partial class FocusEvent : Area3D, IInteractable
             // Disable cursor
             Cursor.Stop();
 
+            // Camera target player
+            Player.Instance.SetCameraTarget();
+
             // Stop target
             Target.StopMoving();
 
@@ -160,9 +163,6 @@ public partial class FocusEvent : Area3D, IInteractable
 
             // Hide target
             Target.Hide();
-
-            // Camera target player
-            Player.Instance.SetCameraTarget();
 
             // Enable player
             Player.SetAllLocks(nameof(FocusEvent), false);
@@ -178,14 +178,14 @@ public partial class FocusEvent : Area3D, IInteractable
         Data.Game.TargetsCollected++;
         Data.Game.Save();
 
-        FocusEventController.Instance.FocusEventCompleted(this);
+        FocusEventController.Instance.FocusEventCompleted(new FocusEventCompletedResult(this));
 
         EndEvent(true);
     }
 
     private void FocusEmpty()
     {
-        FocusEventController.Instance.FocusEventFailed(this);
+        FocusEventController.Instance.FocusEventFailed(new FocusEventFailResult(this));
 
         EndEvent(false);
     }

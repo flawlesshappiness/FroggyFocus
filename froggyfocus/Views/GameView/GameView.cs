@@ -8,6 +8,9 @@ public partial class GameView : View
     public Label BugsCollectedLabel;
 
     [Export]
+    public Label MoneyLabel;
+
+    [Export]
     public ProgressBar FocusBar;
 
     [Export]
@@ -35,7 +38,7 @@ public partial class GameView : View
         FocusBar.Show();
     }
 
-    private void FocusEventEnded()
+    private void FocusEventEnded(FocusEventResult result)
     {
         UpdateLabel();
         FocusBar.Hide();
@@ -44,6 +47,7 @@ public partial class GameView : View
     private void UpdateLabel()
     {
         BugsCollectedLabel.Text = $"Bugs collected: {Data.Game.TargetsCollected}";
+        MoneyLabel.Text = $"Money: {CurrencyController.Instance.GetValue(CurrencyType.Money)}";
     }
 
     public void FocusGained(float value)

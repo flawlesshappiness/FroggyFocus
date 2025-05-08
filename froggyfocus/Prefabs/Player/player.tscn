@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhuic2i3dy7q5"]
+[gd_scene load_steps=9 format=3 uid="uid://bhuic2i3dy7q5"]
 
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="1_6dc14"]
 [ext_resource type="Script" uid="uid://c2ko138plrgx1" path="res://Player/Player.cs" id="1_hnwp3"]
 [ext_resource type="Script" uid="uid://xvqq6jouue22" path="res://Player/PlayerInteract.cs" id="3_sysjd"]
+[ext_resource type="PackedScene" uid="uid://cbnj34ngtuf0d" path="res://Prefabs/Player/player_money_gained.tscn" id="4_21ygf"]
 
 [sub_resource type="Curve" id="Curve_sysjd"]
 _limits = [0.0, 20.0, 0.0, 1.0]
@@ -21,12 +22,13 @@ height = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sysjd"]
 radius = 1.0
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "MoneyGained")]
 collision_layer = 2
 script = ExtResource("1_hnwp3")
 MoveSpeed = 2.0
 PlayerInteract = NodePath("Frog/Interact")
 Character = NodePath("Frog")
+MoneyGained = NodePath("PlayerMoneyGained")
 JumpLengthCurve = SubResource("Curve_sysjd")
 JumpHeightCurve = SubResource("Curve_21ygf")
 
@@ -45,3 +47,5 @@ script = ExtResource("3_sysjd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Frog/Interact"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_sysjd")
+
+[node name="PlayerMoneyGained" parent="." instance=ExtResource("4_21ygf")]

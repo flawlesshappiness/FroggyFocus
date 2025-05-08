@@ -20,4 +20,7 @@ public partial class FocusCharacterInfo : Resource
 
     [Export]
     public FocusEventAxis MoveAxis = FocusEventAxis.XZ;
+
+    [Export]
+    public int CurrencyReward = 1;
 }
