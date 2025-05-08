@@ -169,7 +169,7 @@ transform = Transform3D(3.96622, 0, 0.518782, 0, 4, 0, -0.518782, 0, 3.96622, -1
 transform = Transform3D(3.98988, 0, -0.284388, 0, 4, 0, 0.284388, 0, 3.98988, 6.64832, 0, -25.8756)
 
 [node name="bush_003" parent="World/Edges" instance=ExtResource("9_kd8f8")]
-transform = Transform3D(2.42479, 0, -3.18126, 0, 4, 0, 3.18126, 0, 2.42479, 15.5403, 0, -25.2399)
+transform = Transform3D(2.6187, 0, -3.02364, 0, 4, 0, 3.02364, 0, 2.6187, 14.5621, -9.53674e-07, -24.7827)
 
 [node name="bush_004" parent="World/Edges" instance=ExtResource("9_kd8f8")]
 transform = Transform3D(0.357941, 0, -3.98395, 0, 4, 0, 3.98395, 0, 0.357941, 16.8969, 0, 5.89965)
@@ -199,7 +199,7 @@ transform = Transform3D(-0.813414, 0, -2.88762, 0, 3, 0, 2.88762, 0, -0.813414, 
 transform = Transform3D(0.276799, 0, -2.9872, 0, 3, 0, 2.9872, 0, 0.276799, -18.0138, 0, 2.80769)
 
 [node name="bush_011" parent="World/Edges" instance=ExtResource("15_qfnsp")]
-transform = Transform3D(-0.941033, 0, 2.84859, 0, 3, 0, -2.84859, 0, -0.941033, -16.8332, 0, 9.3248)
+transform = Transform3D(2.4077, 0, -1.78968, 0, 3, 0, 1.78968, 0, 2.4077, -16.3876, 0, 9.246)
 
 [node name="WoodLog" parent="World/Edges" instance=ExtResource("16_52an4")]
 transform = Transform3D(0.219549, 0, 5.99598, 0, 6, 0, -5.99598, 0, 0.219549, -6.29497, 0, 11.5796)

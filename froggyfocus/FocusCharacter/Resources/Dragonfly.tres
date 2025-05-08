@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dtaq1s53cx6bt"]
+
+[ext_resource type="PackedScene" uid="uid://dwbma2eixbj5y" path="res://Prefabs/Characters/dragonfly.tscn" id="1_p4q1c"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_np2wo"]
+
+[resource]
+script = ExtResource("2_np2wo")
+Scene = ExtResource("1_p4q1c")
+SizeRange = Vector2(0.6, 0.8)
+MoveSpeed = 4.0
+MoveLengthRange = Vector2(2, 3)
+MoveDelayRange = Vector2(0.2, 2)
+MoveAxis = 2
+metadata/_custom_type_script = "uid://buqirimb2mf5"

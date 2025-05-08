@@ -72,7 +72,7 @@ public partial class DebugStatsView : View
             slider.SetParent(parent);
             slider.Show();
 
-            slider.NameLabel.Text = info.Name;
+            slider.NameLabel.Text = type.ToString();
             slider.ValueLabel.Text = values[data.Level].ToString();
             slider.ValueSlider.MinValue = 0;
             slider.ValueSlider.MaxValue = values.Length - 1;

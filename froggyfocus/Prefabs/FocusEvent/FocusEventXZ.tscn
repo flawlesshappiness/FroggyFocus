@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c7v778qpl5v6w" path="res://Prefabs/FocusEvent/FocusTarget.tscn" id="3_nfx77"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qjw4w"]
+height = 0.25
 
 [node name="FocusEventXZ" type="Area3D" node_paths=PackedStringArray("CameraMarker", "PlayerMarker", "TargetMarker", "Cursor", "Target")]
 collision_layer = 4
@@ -19,7 +20,7 @@ Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
 shape = SubResource("CylinderShape3D_qjw4w")
 
 [node name="CameraMarker" type="Marker3D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://pwngct2tt8w"]
 
 [ext_resource type="Script" uid="uid://mprr8qf7ddyj" path="res://Prefabs/Characters/BeetleCharacter.cs" id="1_4inbj"]
-[ext_resource type="PackedScene" uid="uid://dtmkufbgpcrfh" path="res://Assets/FlawLizArt/Nature/Toon/beetle.fbx" id="2_4inbj"]
+[ext_resource type="PackedScene" uid="uid://dtmkufbgpcrfh" path="res://Assets/FlawLizArt/Nature/Bugs/beetle.fbx" id="2_4inbj"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_4inbj"]
 
 [node name="Beetle" type="Node3D" node_paths=PackedStringArray("Animation")]
@@ -12,21 +12,12 @@ Animation = NodePath("AnimationStateMachine")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="beetle/Armature" index="0"]
-bones/1/rotation = Quaternion(0, 0, 0.0206596, 0.999787)
 bones/2/position = Vector3(0.00358692, 0.0106661, 0)
-bones/2/rotation = Quaternion(0, 0, -0.786447, 0.617658)
 bones/2/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(0.00358692, 0.00436774, 0)
-bones/4/rotation = Quaternion(0, 0, -0.684685, 0.728839)
 bones/4/scale = Vector3(1, 1, 1)
 bones/6/position = Vector3(0.00358692, -0.00288018, 0)
-bones/6/rotation = Quaternion(0, 0, -0.786706, 0.617328)
 bones/6/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(0, 0, 0.64211, 0.766612)
-bones/10/rotation = Quaternion(0, 0, 0.736397, 0.67655)
-bones/12/rotation = Quaternion(0, 0, 0.655714, 0.755009)
-bones/14/rotation = Quaternion(0, 0, -8.00937e-08, 1)
-bones/16/rotation = Quaternion(0, 0, 7.63685e-08, 1)
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_4inbj")

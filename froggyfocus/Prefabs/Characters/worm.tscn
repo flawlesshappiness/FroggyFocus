@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg616q05jikfw"]
+
+[ext_resource type="Script" uid="uid://cdvui40sgxj7o" path="res://Prefabs/Characters/WormCharacter.cs" id="1_4af5p"]
+[ext_resource type="PackedScene" uid="uid://dnt1owd6q6de1" path="res://Assets/FlawLizArt/Nature/Bugs/worm.fbx" id="2_4af5p"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ix3o5"]
+
+[node name="Worm" type="Node3D" node_paths=PackedStringArray("Animation")]
+script = ExtResource("1_4af5p")
+Animation = NodePath("AnimationStateMachine")
+
+[node name="worm" parent="." instance=ExtResource("2_4af5p")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="worm/Armature" index="0"]
+bones/1/position = Vector3(0, -0.053, 0.003)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
+bones/3/rotation = Quaternion(0, 0, 0, 1)
+bones/4/rotation = Quaternion(0, 0, 0, 1)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
+bones/6/rotation = Quaternion(0, 0, 0, 1)
+bones/7/rotation = Quaternion(0, 0, 0, 1)
+bones/8/rotation = Quaternion(0, 0, 0, 1)
+bones/9/rotation = Quaternion(0, 0, 0, 1)
+bones/10/rotation = Quaternion(0, 0, 0, 1)
+bones/11/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="AnimationPlayer" parent="worm" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_ix3o5")
+Animator = NodePath("../worm/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="worm"]
