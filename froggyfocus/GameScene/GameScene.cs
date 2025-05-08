@@ -17,6 +17,12 @@ public partial class GameScene : Scene
         InitializeFocusEvents();
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        FocusEventController.Instance.OnFocusEventDisabled -= FocusEventDisabled;
+    }
+
     private void InitializeFocusEvents()
     {
         FocusEvents = FocusEventParent.GetNodesInChildren<FocusEvent>();
@@ -31,7 +37,7 @@ public partial class GameScene : Scene
     {
         for (int i = 0; i < count; i++)
         {
-            FocusEventController.Instance.EnableInactiveEvent();
+            FocusEventController.Instance.EnableInactiveEvent(true);
         }
     }
 

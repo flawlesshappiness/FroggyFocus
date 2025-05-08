@@ -30,10 +30,19 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
         InactiveEvents = events.ToList();
     }
 
-    public void EnableInactiveEvent()
+    public void EnableInactiveEvent(bool immediate = false)
     {
         var e = InactiveEvents.Random();
-        e.EnableEvent();
+        SetEventActive(e);
+
+        if (immediate)
+        {
+            e.EnableEvent();
+        }
+        else
+        {
+            e.EnableEventAfterDelay();
+        }
     }
 
     public void FocusEventStarted(FocusEvent e)
@@ -51,17 +60,27 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
         OnFocusEventFailed?.Invoke();
     }
 
-    public void DisableEvent(FocusEvent e)
+    public void EventDisabled(FocusEvent e)
     {
-        ActiveEvents.Remove(e);
-        InactiveEvents.Add(e);
+        SetEventInactive(e);
         OnFocusEventDisabled?.Invoke();
     }
 
-    public void EnableEvent(FocusEvent e)
+    public void EventEnabled(FocusEvent e)
     {
-        ActiveEvents.Add(e);
-        InactiveEvents.Remove(e);
+        SetEventActive(e);
         OnFocusEventEnabled?.Invoke();
+    }
+
+    private void SetEventActive(FocusEvent e)
+    {
+        if (!ActiveEvents.Contains(e)) ActiveEvents.Add(e);
+        if (InactiveEvents.Contains(e)) InactiveEvents.Remove(e);
+    }
+
+    private void SetEventInactive(FocusEvent e)
+    {
+        if (ActiveEvents.Contains(e)) ActiveEvents.Remove(e);
+        if (!InactiveEvents.Contains(e)) InactiveEvents.Add(e);
     }
 }

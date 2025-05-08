@@ -31,6 +31,8 @@ public partial class FocusEvent : Area3D, IInteractable
     private bool EventStarted { get; set; }
     private bool EventEnabled { get; set; }
 
+    private Coroutine cr_active;
+
     public override void _Ready()
     {
         base._Ready();
@@ -51,12 +53,38 @@ public partial class FocusEvent : Area3D, IInteractable
         if (enabled)
         {
             CreateTarget();
-            FocusEventController.Instance.EnableEvent(this);
+            FocusEventController.Instance.EventEnabled(this);
+            DisableEventAfterDelay();
         }
         else
         {
             Target.Hide();
-            FocusEventController.Instance.DisableEvent(this);
+            FocusEventController.Instance.EventDisabled(this);
+            Coroutine.Stop(cr_active);
+        }
+    }
+
+    public void EnableEventAfterDelay()
+    {
+        cr_active = this.StartCoroutine(Cr, "active");
+        IEnumerator Cr()
+        {
+            var rng = new RandomNumberGenerator();
+            var delay = rng.RandfRange(10, 20);
+            yield return new WaitForSeconds(delay);
+            EnableEvent();
+        }
+    }
+
+    public void DisableEventAfterDelay()
+    {
+        cr_active = this.StartCoroutine(Cr, "active");
+        IEnumerator Cr()
+        {
+            var rng = new RandomNumberGenerator();
+            var delay = rng.RandfRange(60, 90);
+            yield return new WaitForSeconds(delay);
+            DisableEvent();
         }
     }
 
