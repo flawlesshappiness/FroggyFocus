@@ -23,6 +23,7 @@ public partial class GameView : View
         FocusEventController.Instance.OnFocusEventCompleted += FocusEventEnded;
         FocusEventController.Instance.OnFocusEventFailed += FocusEventEnded;
 
+
         FocusBar.Hide();
     }
 
@@ -30,6 +31,9 @@ public partial class GameView : View
     {
         base.OnShow();
         UpdateLabel();
+
+        CurrencyType.Money.Data.OnValueChanged += MoneyChanged;
+        MoneyChanged(0);
     }
 
     private void FocusEventStarted()
@@ -47,7 +51,6 @@ public partial class GameView : View
     private void UpdateLabel()
     {
         BugsCollectedLabel.Text = $"Bugs collected: {Data.Game.TargetsCollected}";
-        MoneyLabel.Text = $"Money: {CurrencyController.Instance.GetValue(CurrencyType.Money)}";
     }
 
     public void FocusGained(float value)
@@ -68,5 +71,10 @@ public partial class GameView : View
     private void FocusValueChanged(float value)
     {
         FocusBar.Value = value;
+    }
+
+    private void MoneyChanged(int amount)
+    {
+        MoneyLabel.Text = $"Money: {CurrencyController.Instance.GetValue(CurrencyType.Money)}";
     }
 }

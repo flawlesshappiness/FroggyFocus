@@ -14,6 +14,15 @@ public partial class UpgradeView : View
     [Export]
     public UpgradeControl UpgradeControlTemplate;
 
+    [Export]
+    public AudioStreamPlayer SfxPurchaseSuccess;
+
+    [Export]
+    public AudioStreamPlayer SfxPurchaseFail;
+
+    [Export]
+    public Control InputBlocker;
+
     private List<Control> upgrade_controls = new();
 
     public override void _Ready()
@@ -58,7 +67,9 @@ public partial class UpgradeView : View
         this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
+            InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("show");
+            InputBlocker.Hide();
         }
     }
 
@@ -67,7 +78,9 @@ public partial class UpgradeView : View
         this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
+            InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
+            InputBlocker.Hide();
             Hide();
         }
     }
@@ -91,9 +104,26 @@ public partial class UpgradeView : View
             var control = UpgradeControlTemplate.Duplicate() as UpgradeControl;
             control.SetParent(parent);
             control.Show();
-            control.SetUpgrade(type);
+            control.Initialize(type);
+            control.Update();
 
             upgrade_controls.Add(control);
+
+            control.UpgradeButton.Pressed += () =>
+            {
+                if (UpgradeController.Instance.TryPurchaseUpgrade(type))
+                {
+                    // Purchase success
+                    SfxPurchaseSuccess.Play();
+                }
+                else
+                {
+                    // Purchase fail
+                    SfxPurchaseFail.Play();
+                }
+
+                control.Update();
+            };
         }
 
         UpgradeControlTemplate.Hide();

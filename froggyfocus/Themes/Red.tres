@@ -1,0 +1,51 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://2stgn2l8fv6"]
+
+[ext_resource type="Texture2D" uid="uid://4jubrk26rblc" path="res://Assets/KenneyNL/UI/Yellow/button_square_depth_gradient.png" id="1_02kyc"]
+[ext_resource type="Texture2D" uid="uid://cchhv12dj8sir" path="res://Assets/KenneyNL/UI/Red/button_square_depth_gradient.png" id="1_34n73"]
+[ext_resource type="Texture2D" uid="uid://c1gakpy4lgm04" path="res://Assets/KenneyNL/UI/Red/button_square_depth_flat.png" id="2_n4w08"]
+[ext_resource type="Texture2D" uid="uid://cqrryy4nqk4b5" path="res://Assets/KenneyNL/UI/Red/button_square_flat.png" id="3_nhtou"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xy3c2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gspl"]
+texture = ExtResource("1_34n73")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy3c2"]
+texture = ExtResource("2_n4w08")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urxog"]
+texture = ExtResource("3_nhtou")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gmvox"]
+texture = ExtResource("1_02kyc")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.301961, 0, 0, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_xy3c2")
+Button/styles/hover = SubResource("StyleBoxTexture_3gspl")
+Button/styles/normal = SubResource("StyleBoxTexture_xy3c2")
+Button/styles/pressed = SubResource("StyleBoxTexture_urxog")
+Label/colors/font_color = Color(0.6, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+Panel/styles/panel = SubResource("StyleBoxTexture_gmvox")

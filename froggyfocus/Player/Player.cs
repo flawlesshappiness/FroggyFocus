@@ -89,6 +89,7 @@ public partial class Player : TopDownController
     private void Process_Jump()
     {
         if (MovementLock.IsLocked) return;
+        if (IsJumping) return;
 
         if (PlayerInput.Jump.Held)
         {
