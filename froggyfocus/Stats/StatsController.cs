@@ -1,4 +1,3 @@
-using Godot;
 using System.Linq;
 
 public partial class StatsController : ResourceController<StatsCollection, StatsInfo>
@@ -24,28 +23,14 @@ public partial class StatsController : ResourceController<StatsCollection, Stats
     public float GetCurrentStatsValue(StatsType type)
     {
         var data = GetOrCreateData(type);
-        var value = GetStatsValue(type, data.Level);
-        return value;
+        return GetStatsValue(type, data.Level);
     }
 
     public float GetStatsValue(StatsType type, int level)
     {
-        var array = GetStatsValueArray(type);
-        var idx = Mathf.Clamp(level, 0, array.Length);
-        var value = array[idx];
-        return value;
+        var upgrade = UpgradeController.Instance.GetInfo(type, level);
+        return upgrade?.Value ?? 0f;
     }
-
-    public float[] GetStatsValueArray(StatsType type) => type switch
-    {
-        StatsType.CursorStartValue => StatsValues.CursorStartValue,
-        StatsType.CursorTickAmount => StatsValues.CursorTickAmount,
-        StatsType.CursorTickDecay => StatsValues.CursorTickDecay,
-        StatsType.CursorRadius => StatsValues.CursorRadius,
-        StatsType.CursorMoveSpeed => StatsValues.CursorMoveSpeed,
-        StatsType.CursorMoveSpeedMultiplierDuringFocus => StatsValues.CursorMoveSpeedMultiplierDuringFocus,
-        _ => default,
-    };
 
     public StatsData GetOrCreateData(StatsType type)
     {

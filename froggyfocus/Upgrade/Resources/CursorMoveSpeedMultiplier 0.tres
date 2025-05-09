@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=2 format=3 uid="uid://cp1kwedjjhpmi"]
+
+[ext_resource type="Script" uid="uid://fxfoc46ir0al" path="res://Upgrade/UpgradeInfo.cs" id="1_q8455"]
+
+[resource]
+script = ExtResource("1_q8455")
+Type = 2
+Level = 0
+Value = 0.1
+Price = 10
+metadata/_custom_type_script = "uid://fxfoc46ir0al"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkqy5xspl4fmb"]
+
+[ext_resource type="Script" uid="uid://b0k3ltexya3gg" path="res://Views/UpgradeView/UpgradeLevelNode.cs" id="1_c5jvo"]
+[ext_resource type="Texture2D" uid="uid://xec3xfpghsge" path="res://Assets/KenneyNL/UI/Grey/button_square_flat.png" id="2_4c2nl"]
+[ext_resource type="Texture2D" uid="uid://4jubrk26rblc" path="res://Assets/KenneyNL/UI/Yellow/button_square_depth_gradient.png" id="3_af3bo"]
+
+[node name="UpgradeLevelNodeTemplate" type="MarginContainer" node_paths=PackedStringArray("Active", "Inactive")]
+custom_minimum_size = Vector2(20, 20)
+script = ExtResource("1_c5jvo")
+Active = NodePath("CenterContainer/Active")
+Inactive = NodePath("CenterContainer/Inactive")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="Inactive" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("2_4c2nl")
+expand_mode = 2
+
+[node name="Active" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("3_af3bo")
+expand_mode = 2

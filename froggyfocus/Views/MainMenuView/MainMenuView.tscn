@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmuxgxi24ysym"]
+[gd_scene load_steps=3 format=3 uid="uid://cmuxgxi24ysym"]
 
+[ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
 
 [node name="MainMenuView" type="Control" node_paths=PackedStringArray("ContinueButton", "OptionsButton", "QuitButton")]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5j84w")
 script = ExtResource("1_qib6v")
 ContinueButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/Continue")
 OptionsButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/OptionsButton")

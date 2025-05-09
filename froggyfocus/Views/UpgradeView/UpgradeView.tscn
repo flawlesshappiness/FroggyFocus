@@ -1,0 +1,178 @@
+[gd_scene load_steps=8 format=3 uid="uid://w7rjdy2elbei"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_f2gf6"]
+[ext_resource type="Script" uid="uid://b48kuv4pap1xp" path="res://Views/UpgradeView/UpgradeView.cs" id="2_idlmi"]
+[ext_resource type="PackedScene" uid="uid://bajaadt0hsp6w" path="res://Views/UpgradeView/upgrade_control_template.tscn" id="3_idlmi"]
+
+[sub_resource type="Animation" id="Animation_idlmi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/AnimContainer/AnimPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2000)]
+}
+
+[sub_resource type="Animation" id="Animation_xbrgb"]
+resource_name = "hide"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/AnimContainer/AnimPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 2000)]
+}
+
+[sub_resource type="Animation" id="Animation_f2gf6"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/AnimContainer/AnimPanel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(0, 2000), Vector2(0, -50), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_idlmi"]
+_data = {
+&"RESET": SubResource("Animation_idlmi"),
+&"hide": SubResource("Animation_xbrgb"),
+&"show": SubResource("Animation_f2gf6")
+}
+
+[node name="UpgradeView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "UpgradeControlTemplate")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_idlmi")
+AnimationPlayer = NodePath("AnimationPlayer")
+BackButton = NodePath("CenterContainer/AnimContainer/AnimPanel/Panel/MarginContainer/VBoxContainer/BackButton")
+UpgradeControlTemplate = NodePath("CenterContainer/AnimContainer/AnimPanel/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/UpgradeControlTemplate")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_idlmi")
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimContainer" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="AnimPanel" type="Control" parent="CenterContainer/AnimContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 2000.0
+offset_bottom = 2000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/AnimContainer/AnimPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_f2gf6")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UpgradeControlTemplate" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_idlmi")]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Panel" type="Panel" parent="CenterContainer/AnimContainer/AnimPanel/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = -53.0
+offset_right = 160.0
+offset_bottom = 24.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/AnimContainer/AnimPanel/Panel/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "UPGRADES"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,56 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dy3orii6kbqle"]
+
+[ext_resource type="Texture2D" uid="uid://dy5ullabgntkb" path="res://Assets/KenneyNL/UI/Grey/button_square_depth_gradient.png" id="1_dnsos"]
+[ext_resource type="Texture2D" uid="uid://xec3xfpghsge" path="res://Assets/KenneyNL/UI/Grey/button_square_flat.png" id="2_od6iw"]
+[ext_resource type="Texture2D" uid="uid://gwysqilp32qb" path="res://Assets/KenneyNL/UI/Grey/button_square_depth_flat.png" id="3_06bf6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xy3c2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gspl"]
+texture = ExtResource("1_dnsos")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6pcyk"]
+texture = ExtResource("2_od6iw")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xy3c2"]
+texture = ExtResource("3_06bf6")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_urxog"]
+texture = ExtResource("2_od6iw")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hn276"]
+texture = ExtResource("1_dnsos")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+Button/colors/font_color = Color(0.3, 0.3, 0.3, 1)
+Button/colors/font_disabled_color = Color(0.301961, 0.301961, 0.301961, 1)
+Button/colors/font_focus_color = Color(0.301961, 0.301961, 0.301961, 1)
+Button/colors/font_hover_color = Color(0.301961, 0.301961, 0.301961, 1)
+Button/colors/font_hover_pressed_color = Color(0.301961, 0.301961, 0.301961, 1)
+Button/colors/font_pressed_color = Color(0.301961, 0.301961, 0.301961, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_xy3c2")
+Button/styles/hover = SubResource("StyleBoxTexture_3gspl")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_6pcyk")
+Button/styles/normal = SubResource("StyleBoxTexture_xy3c2")
+Button/styles/pressed = SubResource("StyleBoxTexture_urxog")
+Panel/styles/panel = SubResource("StyleBoxTexture_hn276")

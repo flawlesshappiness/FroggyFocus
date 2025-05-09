@@ -67,21 +67,20 @@ public partial class DebugStatsView : View
         {
             var info = StatsController.Instance.GetInfo(type);
             var data = StatsController.Instance.GetOrCreateData(type);
-            var values = StatsController.Instance.GetStatsValueArray(type);
             var slider = StatsSliderTemplate.Duplicate() as DebugStatsSlider;
             slider.SetParent(parent);
             slider.Show();
 
             slider.NameLabel.Text = type.ToString();
-            slider.ValueLabel.Text = values[data.Level].ToString();
+            slider.ValueLabel.Text = StatsController.Instance.GetStatsValue(type, data.Level).ToString();
             slider.ValueSlider.MinValue = 0;
-            slider.ValueSlider.MaxValue = values.Length - 1;
+            slider.ValueSlider.MaxValue = UpgradeController.Instance.GetUpgradeMaxLevel(type);
             slider.ValueSlider.Value = data.Level;
             slider.ValueSlider.ValueChanged += d =>
             {
                 var level = (int)d;
                 data.Level = level;
-                slider.ValueLabel.Text = values[level].ToString();
+                slider.ValueLabel.Text = StatsController.Instance.GetStatsValue(type, data.Level).ToString();
             };
 
             sliders.Add(slider);
