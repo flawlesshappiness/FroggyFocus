@@ -108,6 +108,8 @@ public partial class FocusEvent : Area3D, IInteractable
         Target.GlobalPosition = TargetMarker.GlobalPosition;
         Target.SetCharacter(info.Characters.PickRandom());
         Target.Show();
+
+        Target.StartMoving(0.2f);
     }
 
     protected virtual void StartEvent()
