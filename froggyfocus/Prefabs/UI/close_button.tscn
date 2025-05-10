@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyllc4fs4op0o"]
+
+[ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="1_3jcb3"]
+[ext_resource type="Texture2D" uid="uid://rnr4g5bha2s0" path="res://Assets/KenneyNL/Cursor/Basic/cross_large.png" id="1_6yo6x"]
+[ext_resource type="Script" uid="uid://brkmo7edojrmf" path="res://Prefabs/UI/ButtonScript.cs" id="3_77l00"]
+[ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="4_1j3w2"]
+
+[node name="CloseButton" type="Button"]
+theme = ExtResource("1_3jcb3")
+icon = ExtResource("1_6yo6x")
+icon_alignment = 1
+script = ExtResource("3_77l00")
+SfxPressed = ExtResource("4_1j3w2")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmuxgxi24ysym"]
+[gd_scene load_steps=5 format=3 uid="uid://cmuxgxi24ysym"]
 
 [ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/simple_button.tscn" id="3_egmko"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="4_uvutn"]
 
 [node name="MainMenuView" type="Control" node_paths=PackedStringArray("ContinueButton", "OptionsButton", "QuitButton")]
 layout_mode = 3
@@ -12,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5j84w")
 script = ExtResource("1_qib6v")
-ContinueButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/Continue")
+ContinueButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/ContinueButton")
 OptionsButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/OptionsButton")
 QuitButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/QuitButton")
 
@@ -80,19 +82,19 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Continue" type="Button" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer"]
+[node name="ContinueButton" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("4_uvutn")
 text = "Continue"
 
-[node name="OptionsButton" type="Button" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer"]
+[node name="OptionsButton" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("4_uvutn")
 text = "Options"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer"]
+[node name="QuitButton" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme = ExtResource("4_uvutn")
 text = "Quit"
 
 [node name="Right" type="Control" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer"]

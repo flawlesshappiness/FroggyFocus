@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections;
+using System.Linq;
 
 public partial class Player : TopDownController
 {
@@ -199,7 +200,8 @@ public partial class Player : TopDownController
 
     public void Respawn()
     {
-        GlobalPosition = respawn_position;
+        var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), respawn_position);
+        GlobalPosition = nav_position;
         CameraController.Instance.TeleportCameraToTarget();
     }
 }

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bajaadt0hsp6w"]
+[gd_scene load_steps=7 format=3 uid="uid://bajaadt0hsp6w"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_u78tf"]
 [ext_resource type="Script" uid="uid://dhj4m042rcknd" path="res://Views/UpgradeView/UpgradeControl.cs" id="2_u78tf"]
 [ext_resource type="PackedScene" uid="uid://dkqy5xspl4fmb" path="res://Views/UpgradeView/upgrade_level_node_template.tscn" id="3_yaetq"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="4_u78tf"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="4_w18jm"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/simple_button.tscn" id="5_yaetq"]
 
 [node name="UpgradeControlTemplate" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "UpgradeButton", "UpgradeButtonLabel", "LevelNodesParent")]
 custom_minimum_size = Vector2(0, 50)
@@ -16,7 +17,7 @@ theme_override_constants/margin_bottom = 5
 script = ExtResource("2_u78tf")
 NameLabel = NodePath("HBoxContainer/VBoxContainer2/NameLabel")
 UpgradeButton = NodePath("HBoxContainer/VBoxContainer/MarginContainer/UpgradeButton")
-UpgradeButtonLabel = NodePath("HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/UpgradeButtonLabel")
+UpgradeButtonLabel = NodePath("HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/UpgradeButtonLabel")
 LevelNodesParent = NodePath("HBoxContainer/VBoxContainer2/UpgradeLevelNodes")
 UpgradeLevelNodeTemplate = ExtResource("3_yaetq")
 
@@ -51,24 +52,18 @@ vertical_alignment = 1
 layout_mode = 2
 theme = ExtResource("4_u78tf")
 
-[node name="UpgradeButton" type="Button" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="UpgradeButton" parent="HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("5_yaetq")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = " "
-expand_icon = true
+theme = ExtResource("4_u78tf")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-
-[node name="UpgradeButtonLabel" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
-layout_mode = 2
-text = "100"
-horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
@@ -84,17 +79,20 @@ expand_mode = 2
 modulate = Color(0, 0, 0, 0.196078)
 show_behind_parent = true
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.5
-offset_top = -10.5
-offset_right = 12.5
-offset_bottom = 12.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_w18jm")
 expand_mode = 2
+
+[node name="UpgradeButtonLabel" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1000"
+horizontal_alignment = 1

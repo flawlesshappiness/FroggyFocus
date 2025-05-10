@@ -1,12 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://w7rjdy2elbei"]
+[gd_scene load_steps=15 format=3 uid="uid://w7rjdy2elbei"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_f2gf6"]
 [ext_resource type="Script" uid="uid://b48kuv4pap1xp" path="res://Views/UpgradeView/UpgradeView.cs" id="2_idlmi"]
 [ext_resource type="PackedScene" uid="uid://bajaadt0hsp6w" path="res://Views/UpgradeView/upgrade_control_template.tscn" id="3_idlmi"]
 [ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="4_0oh7v"]
 [ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="4_xbrgb"]
-[ext_resource type="Texture2D" uid="uid://rnr4g5bha2s0" path="res://Assets/KenneyNL/Cursor/Basic/cross_large.png" id="5_hg4hd"]
+[ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/close_button.tscn" id="5_n8kem"]
 [ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="5_xfivi"]
+[ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="8_n8kem"]
 
 [sub_resource type="Animation" id="Animation_idlmi"]
 length = 0.001
@@ -21,6 +22,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 2000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSwipe:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_xbrgb"]
@@ -39,10 +52,23 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 2000)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSwipe:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_f2gf6"]
 resource_name = "show"
 length = 0.5
+step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,6 +80,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, -2, 1),
 "update": 0,
 "values": [Vector2(0, 2000), Vector2(0, -50), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSwipe:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_idlmi"]
@@ -68,6 +106,11 @@ random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("5_xfivi")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bsdmw"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("8_n8kem")
+
 [node name="UpgradeView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "UpgradeControlTemplate", "SfxPurchaseSuccess", "SfxPurchaseFail", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 15
@@ -77,7 +120,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_idlmi")
 AnimationPlayer = NodePath("AnimationPlayer")
-BackButton = NodePath("CenterContainer/AnimContainer/AnimPanel/Panel/BackContainer/BackButton")
+BackButton = NodePath("CenterContainer/AnimContainer/AnimPanel/Panel/BackContainer/CloseButton")
 UpgradeControlTemplate = NodePath("CenterContainer/AnimContainer/AnimPanel/Panel/MainContainer/VBoxContainer/ScrollContainer/VBoxContainer/UpgradeControlTemplate")
 SfxPurchaseSuccess = NodePath("SfxPurchaseSuccess")
 SfxPurchaseFail = NodePath("SfxPurchaseFail")
@@ -198,10 +241,8 @@ offset_bottom = 24.0
 grow_horizontal = 0
 theme = ExtResource("4_0oh7v")
 
-[node name="BackButton" type="Button" parent="CenterContainer/AnimContainer/AnimPanel/Panel/BackContainer"]
+[node name="CloseButton" parent="CenterContainer/AnimContainer/AnimPanel/Panel/BackContainer" instance=ExtResource("5_n8kem")]
 layout_mode = 2
-icon = ExtResource("5_hg4hd")
-icon_alignment = 1
 
 [node name="SfxPurchaseSuccess" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_xbrgb")
@@ -212,6 +253,11 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_xfivi")
 volume_db = -20.0
 max_polyphony = 3
+bus = &"SFX"
+
+[node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bsdmw")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="InputBlocker" type="Control" parent="."]

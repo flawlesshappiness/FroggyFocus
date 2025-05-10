@@ -103,7 +103,7 @@ public partial class FrogCharacter : Character
             }
 
             yield return AnimateTongueTowards(position);
-            yield return AnimateTongueBack();
+            AnimateTongueBack();
         }
     }
 

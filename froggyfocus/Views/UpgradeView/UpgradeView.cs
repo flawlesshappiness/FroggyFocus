@@ -5,6 +5,8 @@ using System.Linq;
 
 public partial class UpgradeView : View
 {
+    public static UpgradeView Instance => Get<UpgradeView>();
+
     [Export]
     public AnimationPlayer AnimationPlayer;
 
