@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=23 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cyyj6jthua7kn" path="res://Prefabs/Ground/pond_corner_concave_001.tscn" id="11_s6w6j"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad.tscn" id="12_5fuuy"]
 [ext_resource type="PackedScene" uid="uid://stvl4xxk6ii6" path="res://Prefabs/Ground/pond_straight_001.tscn" id="13_20fcr"]
+[ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
 
@@ -42,6 +43,22 @@ shader_parameter/foam_smoothness = 0.03
 shader_parameter/foam_distortion_speed = 0.5
 shader_parameter/foam_distortion_amount = 0.1
 
+[sub_resource type="Curve3D" id="Curve3D_bmghv"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 5, 0, 0, -5, -12.4084, 0, -0.9991, -5, 0, 0, 5, 0, 0, 0.38504, 0, -12.3052, 0, 0, -5, 0, 0, 5, 12.3906, 0, 1.17018, 5, 0, 0, -5, 0, 0, 0.0857086, 0, 12.7923),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_52an4"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 11.405, 0, 0, -9.645, -24.2556, 0, -4.17572, -11.27, 0, 0, 23.225, 0, 0, -3.09639, 0, -16.6623, 0, 0, -10.94, 0, 0, 9.415, 17.5557, 0, 4.62634, 13.05, 0, 0, -8.065, 0, 0, 5.26444, 0, 24.5166, 0, 0, 5.385, -4.73, 0, 0, -8.69915, 0, 9.54801),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="SwampScene" type="Node3D" node_paths=PackedStringArray("Player")]
 script = ExtResource("1_qfos7")
 Player = NodePath("Player")
@@ -64,6 +81,12 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117083, -4.76837e-07, 2.93445)
 
 [node name="World" type="Node3D" parent="."]
+
+[node name="Water" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_20fcr")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_2hsqb")
 
 [node name="Island_SmallRound" type="Node3D" parent="World"]
 
@@ -121,6 +144,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02022, 2.38419e-07, -1.5941
 
 [node name="FocusEventX5" parent="World/Island_SmallRound/Events" instance=ExtResource("6_0ky7s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125155, 2.38419e-07, 0.323193)
+
+[node name="PathWaterSFX" type="Path3D" parent="World/Island_SmallRound"]
+curve = SubResource("Curve3D_bmghv")
 
 [node name="Island_Corner" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.0417, 0, 7.00624)
@@ -185,11 +211,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668098, 0, 12.8898)
 [node name="FocusEventXZ3" parent="World/Island_Corner/Events2" instance=ExtResource("8_kd8f8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85659, 0, 1.08909)
 
-[node name="Water" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = SubResource("PlaneMesh_20fcr")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_2hsqb")
+[node name="PathWaterSFX 2" type="Path3D" parent="World/Island_Corner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.39692, 0, -12.2792)
+curve = SubResource("Curve3D_52an4")
 
 [node name="Sounds" type="Node3D" parent="."]
 
@@ -202,11 +226,14 @@ max_distance = 28.0
 panning_strength = 0.5
 bus = &"SFX"
 
-[node name="AmbWater" type="AudioStreamPlayer" parent="Sounds"]
+[node name="AmbWater" type="AudioStreamPlayer3D" parent="Sounds" node_paths=PackedStringArray("Paths")]
 stream = ExtResource("19_bmghv")
 volume_db = -5.0
 autoplay = true
+panning_strength = 0.75
 bus = &"SFX"
+script = ExtResource("17_52an4")
+Paths = [NodePath("../../World/Island_SmallRound/PathWaterSFX"), NodePath("../../World/Island_Corner/PathWaterSFX 2")]
 
 [node name="AmbWind" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("2_qfnsp")
