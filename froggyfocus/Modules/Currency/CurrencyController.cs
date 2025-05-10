@@ -48,7 +48,7 @@ public partial class CurrencyController : Node
         Debug.Indent++;
 
         var data = GetData(type);
-        var difference = data.Value - value;
+        var difference = value - data.Value;
         data.Value = Mathf.Clamp(value, 0, int.MaxValue);
 
         OnCurrencyChanged?.Invoke(type, difference);

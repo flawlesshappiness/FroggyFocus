@@ -48,13 +48,13 @@ public partial class Player : TopDownController
     public override void _EnterTree()
     {
         base._EnterTree();
-        FocusEventController.Instance.OnFocusEventCompleted += FocusEventCompleted;
+        Money.OnMoneyChanged += MoneyChanged;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        FocusEventController.Instance.OnFocusEventCompleted -= FocusEventCompleted;
+        Money.OnMoneyChanged -= MoneyChanged;
     }
 
     public override void _Process(double delta)
@@ -188,13 +188,15 @@ public partial class Player : TopDownController
         CameraController.Instance.Speed = jumping ? 4.0f : 1.0f;
     }
 
-    private void FocusEventCompleted(FocusEventCompletedResult result)
+    private void MoneyChanged(int amount)
     {
-        this.StartCoroutine(Cr, nameof(FocusEventCompleted));
+        if (amount <= 0) return;
+
+        this.StartCoroutine(Cr, nameof(MoneyChanged));
         IEnumerator Cr()
         {
             yield return new WaitForSeconds(1f);
-            yield return MoneyGained.AnimateMoneyGained(result.Character.CurrencyReward);
+            yield return MoneyGained.AnimateMoneyGained(amount);
         }
     }
 
