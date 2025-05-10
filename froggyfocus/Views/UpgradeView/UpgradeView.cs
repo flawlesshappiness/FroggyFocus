@@ -41,6 +41,14 @@ public partial class UpgradeView : View
         CreateUpgradeControls();
 
         Open();
+
+        Player.SetAllLocks(nameof(UpgradeView), true);
+    }
+
+    protected override void OnHide()
+    {
+        base.OnHide();
+        Player.SetAllLocks(nameof(UpgradeView), false);
     }
 
     private void RegisterDebugActions()

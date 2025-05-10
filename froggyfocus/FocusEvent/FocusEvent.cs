@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 using System.Linq;
 
@@ -28,6 +29,12 @@ public partial class FocusEvent : Area3D, IInteractable
     [Export]
     public FocusTarget Target;
 
+    public event Action<FocusEventCompletedResult> OnCompleted;
+    public event Action<FocusEventFailedResult> OnFailed;
+    public event Action OnStarted;
+    public event Action OnEnabled;
+    public event Action OnDisabled;
+
     private bool EventStarted { get; set; }
     private bool EventEnabled { get; set; }
 
@@ -53,14 +60,13 @@ public partial class FocusEvent : Area3D, IInteractable
         if (enabled)
         {
             CreateTarget();
-            FocusEventController.Instance.EventEnabled(this);
             DisableEventAfterDelay();
+            OnEnabled?.Invoke();
         }
         else
         {
             Target.Hide();
-            FocusEventController.Instance.EventDisabled(this);
-            StopActiveCoroutine();
+            OnDisabled?.Invoke();
         }
     }
 
@@ -139,7 +145,7 @@ public partial class FocusEvent : Area3D, IInteractable
 
             // Start
             EventStarted = true;
-            FocusEventController.Instance.FocusEventStarted(this);
+            OnStarted?.Invoke();
         }
     }
 
@@ -180,15 +186,13 @@ public partial class FocusEvent : Area3D, IInteractable
         Data.Game.TargetsCollected++;
         Data.Game.Save();
 
-        FocusEventController.Instance.FocusEventCompleted(new FocusEventCompletedResult(this));
-
+        OnCompleted?.Invoke(new FocusEventCompletedResult(this));
         EndEvent(true);
     }
 
     private void FocusEmpty()
     {
-        FocusEventController.Instance.FocusEventFailed(new FocusEventFailResult(this));
-
+        OnFailed?.Invoke(new FocusEventFailedResult(this));
         EndEvent(false);
     }
 

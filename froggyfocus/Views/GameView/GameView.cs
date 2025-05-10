@@ -77,4 +77,13 @@ public partial class GameView : View
     {
         MoneyLabel.Text = $"Money: {CurrencyController.Instance.GetValue(CurrencyType.Money)}";
     }
+
+    private void Process_PlayerBubble()
+    {
+        var player = Player.Instance;
+        if (player == null) return;
+
+        var world_position = player.PlayerBubbleMarker.GlobalPosition;
+        var viewport_position = CameraController.Instance.UnprojectPosition(world_position);
+    }
 }

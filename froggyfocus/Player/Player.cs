@@ -10,6 +10,9 @@ public partial class Player : TopDownController
     public PlayerInteract PlayerInteract;
 
     [Export]
+    public Marker3D PlayerBubbleMarker;
+
+    [Export]
     public FrogCharacter Character;
 
     [Export]

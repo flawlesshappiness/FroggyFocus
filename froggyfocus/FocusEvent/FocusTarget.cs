@@ -116,7 +116,7 @@ public partial class FocusTarget : Node3D
         var x = mul.X * rng.RandfRange(-rx, rx);
         var y = mul.Y * rng.RandfRange(-ry, ry);
         var z = mul.Z * rng.RandfRange(-ry, ry);
-        var position = focus_event.GlobalPosition + focus_event.Offset + new Vector3(x, y, z);
+        var position = focus_event.GlobalPosition + focus_event.Offset * move_mult + new Vector3(x, y, z);
         return position;
     }
 }
