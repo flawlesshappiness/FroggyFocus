@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://dgfd5f45fjde"]
 
-[ext_resource type="AudioStream" uid="uid://bdnq0v5lppyll" path="res://Sounds/Raw/sfx_button_click_001.wav" id="1_jkood"]
+[ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="1_jkood"]
 [ext_resource type="Script" uid="uid://blrvdsv0elqy5" path="res://Modules/Sound/SoundInfo.cs" id="2_g78nu"]
 
 [resource]
 script = ExtResource("2_g78nu")
 AudioStreams = Array[AudioStream]([ExtResource("1_jkood")])
-Volume = -20.0
+Volume = -10.0
 Looping = false
 PitchRange = Vector2(0.95, 1)
 Bus = "SFX"

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc1aqwgypdcw6"]
+
+[ext_resource type="Script" uid="uid://b7lifygaipukt" path="res://Prefabs/Misc/RespawnArea.cs" id="1_uem8o"]
+[ext_resource type="AudioStream" uid="uid://dtyxe06md632t" path="res://Sounds/Raw/sfx_impact_water_001.wav" id="2_0jsv0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_20fcr"]
+size = Vector3(1000, 1, 1000)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0jsv0"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("2_0jsv0")
+
+[node name="RespawnArea" type="Area3D" node_paths=PackedStringArray("SfxImpact")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_uem8o")
+SfxImpact = NodePath("SfxImpact")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+shape = SubResource("BoxShape3D_20fcr")
+
+[node name="SfxImpact" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_0jsv0")
+volume_db = -5.0
+bus = &"SFX"

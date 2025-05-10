@@ -179,7 +179,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_l7xr2")
 }
 
-[node name="SfxCoin" type="AudioStreamPlayer3D" parent="."]
+[node name="SfxCoin" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_thr5i")
-volume_db = -9.0
+volume_db = -20.0
 bus = &"SFX"
