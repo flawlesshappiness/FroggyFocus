@@ -19,6 +19,16 @@ public partial class CurrencyType
         return Id;
     }
 
+    public static bool operator ==(CurrencyType left, CurrencyType right)
+    {
+        return left.Equals(right);
+    }
+
+    public static bool operator !=(CurrencyType left, CurrencyType right)
+    {
+        return !left.Equals(right);
+    }
+
     public override bool Equals(object obj)
     {
         if (Id == null) return false;

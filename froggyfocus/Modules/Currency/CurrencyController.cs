@@ -1,9 +1,12 @@
 using Godot;
+using System;
 using System.Linq;
 
 public partial class CurrencyController : Node
 {
     public static CurrencyController Instance => Singleton.GetOrCreate<CurrencyController>($"{Paths.Modules}/Currency/{nameof(CurrencyController)}");
+
+    public event Action<CurrencyType, int> OnCurrencyChanged;
 
     public override void _Ready()
     {
@@ -48,7 +51,7 @@ public partial class CurrencyController : Node
         var difference = data.Value - value;
         data.Value = Mathf.Clamp(value, 0, int.MaxValue);
 
-        data.OnValueChanged?.Invoke(difference);
+        OnCurrencyChanged?.Invoke(type, difference);
 
         Debug.Indent--;
     }
@@ -60,15 +63,15 @@ public partial class CurrencyController : Node
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Clear ALL currency data",
-            Action = DebugClearAllCurrencyData
+            Text = "Adjust currency",
+            Action = DebugAdjustCurrency
         });
 
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Adjust currency",
-            Action = DebugAdjustCurrency
+            Text = "Clear ALL currency data",
+            Action = DebugClearAllCurrencyData
         });
     }
 

@@ -14,6 +14,7 @@ public partial class GameProfileController : SingletonController
     {
         base.Initialize();
         PreloadGameProfiles();
+        SelectGameProfile(Data.Options.SelectedGameProfile);
     }
 
     private void PreloadGameProfiles()
@@ -88,6 +89,7 @@ public partial class GameProfileController : SingletonController
 
     public GameSaveData GetSelectedGameProfile()
     {
+        Debug.TraceMethod();
         var profile = Data.Options.SelectedGameProfile;
         var data = GetGameProfile(profile);
         return data;
@@ -95,6 +97,7 @@ public partial class GameProfileController : SingletonController
 
     public GameSaveData GetGameProfile(int profile)
     {
+        Debug.TraceMethod(profile);
         return Profiles.TryGetValue(profile, out var data) ? data : null;
     }
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi33hifhhmwyo"]
+[gd_scene load_steps=4 format=3 uid="uid://bi33hifhhmwyo"]
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
+[ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/money_bar.tscn" id="2_nrlgi"]
 [ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="2_ydcvn"]
 
-[node name="GameView" type="Control" node_paths=PackedStringArray("BugsCollectedLabel", "MoneyLabel", "FocusBar", "SfxFocusGain")]
+[node name="GameView" type="Control" node_paths=PackedStringArray("FocusBar", "SfxFocusGain")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,8 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v4b6a")
-BugsCollectedLabel = NodePath("MarginContainer/Control/VBoxContainer/BugsCollectedLabel")
-MoneyLabel = NodePath("MarginContainer/Control/VBoxContainer/MoneyLabel")
 FocusBar = NodePath("MarginContainer/Control/FocusBar")
 SfxFocusGain = NodePath("SfxFocusGain")
 
@@ -31,22 +30,6 @@ theme_override_constants/margin_bottom = 25
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BugsCollectedLabel" type="Label" parent="MarginContainer/Control/VBoxContainer"]
-layout_mode = 2
-text = "Bugs collected: 999"
-
-[node name="MoneyLabel" type="Label" parent="MarginContainer/Control/VBoxContainer"]
-layout_mode = 2
-text = "Money: 999"
-
 [node name="FocusBar" type="ProgressBar" parent="MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = 12
@@ -57,6 +40,9 @@ offset_top = -27.0
 grow_horizontal = 2
 grow_vertical = 0
 max_value = 1.0
+
+[node name="MoneyBar" parent="MarginContainer/Control" instance=ExtResource("2_nrlgi")]
+layout_mode = 1
 
 [node name="SfxFocusGain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ydcvn")

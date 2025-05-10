@@ -1,8 +1,11 @@
 using Godot;
+using System;
 
 public partial class Boot : Node
 {
     private bool _initialized;
+
+    public static event Action OnControllersCreated;
 
     public override void _Process(double delta)
     {
@@ -28,11 +31,17 @@ public partial class Boot : Node
         Debug.TraceMethod();
 
         InitializeTree();
-        SingletonController.CreateAll();
+        InitializeControllers();
         View.CreateAll();
         LoadScene();
 
         _initialized = true;
+    }
+
+    private void InitializeControllers()
+    {
+        SingletonController.CreateAll();
+        OnControllersCreated?.Invoke();
     }
 
     private void InitializeTree()

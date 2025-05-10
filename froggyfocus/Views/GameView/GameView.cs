@@ -5,12 +5,6 @@ public partial class GameView : View
     public static GameView Instance => Get<GameView>();
 
     [Export]
-    public Label BugsCollectedLabel;
-
-    [Export]
-    public Label MoneyLabel;
-
-    [Export]
     public ProgressBar FocusBar;
 
     [Export]
@@ -23,17 +17,7 @@ public partial class GameView : View
         FocusEventController.Instance.OnFocusEventCompleted += FocusEventEnded;
         FocusEventController.Instance.OnFocusEventFailed += FocusEventEnded;
 
-
         FocusBar.Hide();
-    }
-
-    protected override void OnShow()
-    {
-        base.OnShow();
-        UpdateLabel();
-
-        CurrencyType.Money.Data.OnValueChanged += MoneyChanged;
-        MoneyChanged(0);
     }
 
     private void FocusEventStarted()
@@ -44,13 +28,7 @@ public partial class GameView : View
 
     private void FocusEventEnded(FocusEventResult result)
     {
-        UpdateLabel();
         FocusBar.Hide();
-    }
-
-    private void UpdateLabel()
-    {
-        BugsCollectedLabel.Text = $"Bugs collected: {Data.Game.TargetsCollected}";
     }
 
     public void FocusGained(float value)
@@ -71,11 +49,6 @@ public partial class GameView : View
     private void FocusValueChanged(float value)
     {
         FocusBar.Value = value;
-    }
-
-    private void MoneyChanged(int amount)
-    {
-        MoneyLabel.Text = $"Money: {CurrencyController.Instance.GetValue(CurrencyType.Money)}";
     }
 
     private void Process_PlayerBubble()
