@@ -16,7 +16,7 @@ public partial class SwampScene : GameScene
     {
         if (Player.GlobalPosition.Y < -10)
         {
-            Player.GlobalPosition = Vector3.Zero;
+            Player.Respawn();
             CameraController.Instance.TeleportCameraToTarget();
         }
     }

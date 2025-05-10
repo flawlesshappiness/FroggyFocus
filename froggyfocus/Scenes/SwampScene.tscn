@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=24 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="9_1p1c6"]
 [ext_resource type="Script" uid="uid://cca75ka0y8xbi" path="res://FocusEvent/FocusEventGroup.cs" id="9_iu42u"]
 [ext_resource type="Shader" uid="uid://babyxm8yext4w" path="res://Shaders/ToonWater.gdshader" id="10_e4xtd"]
+[ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="10_kd8f8"]
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://cyyj6jthua7kn" path="res://Prefabs/Ground/pond_corner_concave_001.tscn" id="11_s6w6j"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad.tscn" id="12_5fuuy"]
@@ -149,7 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125155, 2.38419e-07, 0.3231
 curve = SubResource("Curve3D_bmghv")
 
 [node name="Island_Corner" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.0417, 0, 7.00624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.0417, 0, -1.97551)
 
 [node name="Floor" type="Node3D" parent="World/Island_Corner"]
 
@@ -183,13 +184,49 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8, 0, -8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0417, 0, -7.00624)
 
 [node name="lilypad" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(0.186931, 0, -1.99125, 0, 2, 0, 1.99125, 0, 0.186931, -18.4893, -0.974196, -3.40021)
+transform = Transform3D(0.186931, 0, -1.99125, 0, 2, 0, 1.99125, 0, 0.186931, -18.4893, -0.974196, 6.74281)
+
+[node name="lilypad4" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-1.44234, 0, -1.38552, 0, 2, 0, 1.38552, 0, -1.44234, -16.9035, -0.974196, -2.29101)
+
+[node name="lilypad5" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-1.51763, 0, 1.30261, 0, 2, 0, -1.30261, 0, -1.51763, -19.7688, -0.974196, -11.7736)
+
+[node name="lilypad6" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(0.579634, 0, 1.91416, 0, 2, 0, -1.91416, 0, 0.579634, -19.1669, -0.974196, -18.0502)
+
+[node name="lilypad7" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.78992, 0, -0.892302, 0, 2, 0, 0.892302, 0, 1.78992, -31.3332, -0.974196, -20.8015)
+
+[node name="lilypad8" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.78992, 0, -0.892302, 0, 2, 0, 0.892302, 0, 1.78992, -34.9873, -0.974196, -23.338)
+
+[node name="lilypad9" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.78992, 0, -0.892302, 0, 2, 0, 0.892302, 0, 1.78992, -51.1087, -0.974196, -20.7586)
+
+[node name="lilypad10" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-0.5172, 0, -1.93197, 0, 2, 0, 1.93197, 0, -0.5172, -59.4325, -0.974196, -6.56786)
+
+[node name="lilypad11" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-1.98268, 0, -0.262609, 0, 2, 0, 0.262609, 0, -1.98268, -57.8108, -0.974196, -1.07614)
+
+[node name="lilypad12" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.8976, 0, 0.631761, 0, 2, 0, -0.631761, 0, 1.8976, -64.3345, -0.974196, -3.32442)
+
+[node name="lilypad13" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.8976, 0, 0.631761, 0, 2, 0, -0.631761, 0, 1.8976, -45.5015, -0.974196, 4.16201)
+
+[node name="lilypad14" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-1.10364, 0, -1.66793, 0, 2, 0, 1.66793, 0, -1.10364, -43.4375, -0.974196, 7.4423)
+
+[node name="lilypad15" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-1.79359, 0, 0.884891, 0, 2, 0, -0.884891, 0, -1.79359, -33.611, -0.974196, 19.2587)
 
 [node name="lilypad3" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(0.186931, 0, -1.99125, 0, 2, 0, 1.99125, 0, 0.186931, -15.0888, -0.974196, 1.51617)
+transform = Transform3D(0.186931, 0, -1.99125, 0, 2, 0, 1.99125, 0, 0.186931, -15.0888, -0.974196, 11.6592)
 
 [node name="lilypad2" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.4893, -0.974196, -3.40021)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.4893, -0.974196, 6.74281)
 
 [node name="Events2" type="Node3D" parent="World/Island_Corner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7996, 0, -13.6335)
@@ -214,6 +251,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85659, 0, 1.08909)
 [node name="PathWaterSFX 2" type="Path3D" parent="World/Island_Corner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.39692, 0, -12.2792)
 curve = SubResource("Curve3D_52an4")
+
+[node name="WoodLog" parent="World/Island_Corner" instance=ExtResource("10_kd8f8")]
+transform = Transform3D(0.0872619, 0, 4.99924, 0, 5, 0, -4.99924, 0, 0.0872619, 48.9909, -2.31306, 4.13477)
 
 [node name="Sounds" type="Node3D" parent="."]
 

@@ -30,6 +30,7 @@ public partial class Player : TopDownController
     public static MultiLock InteractLock = new();
 
     private float jump_charge;
+    private Vector3 respawn_position;
 
     public override void _Ready()
     {
@@ -63,6 +64,7 @@ public partial class Player : TopDownController
         Process_Interact();
         Process_Jump();
         Process_CameraOffset();
+        Process_RespawnPosition();
     }
 
     private void Process_Move()
@@ -117,6 +119,14 @@ public partial class Player : TopDownController
         {
             Interact();
         }
+    }
+
+    private void Process_RespawnPosition()
+    {
+        if (IsJumping) return;
+        if (!IsOnFloor()) return;
+
+        respawn_position = GlobalPosition;
     }
 
     private void Interact()
@@ -185,5 +195,11 @@ public partial class Player : TopDownController
             yield return new WaitForSeconds(1f);
             yield return MoneyGained.AnimateMoneyGained(result.Character.CurrencyReward);
         }
+    }
+
+    public void Respawn()
+    {
+        GlobalPosition = respawn_position;
+        CameraController.Instance.TeleportCameraToTarget();
     }
 }
