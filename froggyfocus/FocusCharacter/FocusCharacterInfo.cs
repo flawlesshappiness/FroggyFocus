@@ -23,4 +23,7 @@ public partial class FocusCharacterInfo : Resource
 
     [Export]
     public int CurrencyReward = 1;
+
+    [Export]
+    public bool Jumping;
 }

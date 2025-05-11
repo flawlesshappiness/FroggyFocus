@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv72vye2jwinf"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_oaq2l"]
+[ext_resource type="PackedScene" uid="uid://vewjq2s0xdwu" path="res://Assets/FlawLizArt/Nature/Bugs/waxworm.fbx" id="2_oaq2l"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_qbkpi"]
+
+[node name="Waxworm" type="Node3D" node_paths=PackedStringArray("Animation")]
+script = ExtResource("1_oaq2l")
+Animation = NodePath("AnimationStateMachine")
+
+[node name="waxworm" parent="." instance=ExtResource("2_oaq2l")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="waxworm/Armature" index="0"]
+bones/1/position = Vector3(0, -0.041, 0.00194417)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/3/position = Vector3(0, -0.031, 0.00390693)
+bones/3/rotation = Quaternion(0.0675036, 1.49888e-17, -7.48377e-26, 0.997719)
+bones/5/position = Vector3(0, -0.021, 0.0051252)
+bones/7/position = Vector3(0, -0.011, 0.00377157)
+bones/7/rotation = Quaternion(-0.067502, -1.49885e-17, -1.5751e-25, 0.997719)
+bones/9/position = Vector3(0, -0.000999997, 0.00194417)
+bones/11/position = Vector3(0, 0.009, 0.00343316)
+bones/11/rotation = Quaternion(0.0882262, 1.95901e-17, -4.99188e-25, 0.9961)
+bones/13/position = Vector3(0, 0.019, 0.00546361)
+bones/15/position = Vector3(0, 0.029, 0.0043807)
+bones/15/rotation = Quaternion(-0.0690713, -1.53369e-17, -2.83909e-25, 0.997612)
+bones/17/position = Vector3(0, 0.039, 0.00194417)
+
+[node name="AnimationPlayer" parent="waxworm" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_qbkpi")
+Animator = NodePath("../waxworm/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="waxworm"]

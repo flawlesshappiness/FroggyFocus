@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://ctcbxhnj4xrku"]
+
+[ext_resource type="PackedScene" uid="uid://bv72vye2jwinf" path="res://Prefabs/Characters/waxworm.tscn" id="1_j0pm6"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_dgrgb"]
+
+[resource]
+script = ExtResource("2_dgrgb")
+Scene = ExtResource("1_j0pm6")
+SizeRange = Vector2(0.6, 0.8)
+MoveSpeed = 0.25
+MoveLengthRange = Vector2(0.25, 0.5)
+MoveDelayRange = Vector2(0.5, 1)
+MoveAxis = 0
+CurrencyReward = 1
+metadata/_custom_type_script = "uid://buqirimb2mf5"
