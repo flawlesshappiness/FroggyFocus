@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bs00f")
 OptionsControl = NodePath("CenterContainer/Options")
+ChildOrder = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

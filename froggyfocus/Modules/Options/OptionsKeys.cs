@@ -101,6 +101,8 @@ public partial class OptionsKeys : NodeScript
                 var same = current_input.AsText() == other_input.AsText();
                 found_duplicate = same || found_duplicate;
                 current.Control.DuplicateWarningLabel.Visible = found_duplicate;
+
+                if (found_duplicate) break;
             }
         }
     }

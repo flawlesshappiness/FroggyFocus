@@ -10,7 +10,8 @@ public static class AnimationPlayerExtensions
 
         bool animation_finished = false;
         var id_cr = $"{nameof(PlayAndWaitForAnimation)}_{player.GetInstanceId()}_{GameTime.UnscaledTime}";
-        return Coroutine.Start(WaitForAnimationCr(), id_cr, player);
+        return Coroutine.Start(WaitForAnimationCr(), id_cr, player)
+            .SetRunWhilePaused();
 
         IEnumerator WaitForAnimationCr()
         {
