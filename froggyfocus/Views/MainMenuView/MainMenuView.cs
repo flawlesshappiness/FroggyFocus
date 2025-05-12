@@ -42,6 +42,8 @@ public partial class MainMenuView : View
         base.OnShow();
         MouseVisibility.Show(nameof(MainMenuView));
 
+        GameView.Instance.Hide();
+
         Overlay.Show();
         Overlay.Modulate = Overlay.Modulate.SetA(1);
         AnimationPlayer.Play("hide_overlay");
