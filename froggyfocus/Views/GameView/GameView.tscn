@@ -1,10 +1,98 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi33hifhhmwyo"]
+[gd_scene load_steps=8 format=3 uid="uid://bi33hifhhmwyo"]
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
 [ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/money_bar.tscn" id="2_nrlgi"]
 [ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="2_ydcvn"]
 
-[node name="GameView" type="Control" node_paths=PackedStringArray("FocusBar", "SfxFocusGain")]
+[sub_resource type="Animation" id="Animation_nrlgi"]
+resource_name = "show_overlay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b56qe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l7lip"]
+resource_name = "hide_overlay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7lip"]
+_data = {
+&"RESET": SubResource("Animation_b56qe"),
+&"hide_overlay": SubResource("Animation_l7lip"),
+&"show_overlay": SubResource("Animation_nrlgi")
+}
+
+[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "FocusBar", "SfxFocusGain")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +100,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v4b6a")
+AnimationPlayer = NodePath("AnimationPlayer")
+Overlay = NodePath("Overlay")
 FocusBar = NodePath("MarginContainer/Control/FocusBar")
 SfxFocusGain = NodePath("SfxFocusGain")
 
@@ -44,8 +134,22 @@ max_value = 1.0
 [node name="MoneyBar" parent="MarginContainer/Control" instance=ExtResource("2_nrlgi")]
 layout_mode = 1
 
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="SfxFocusGain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ydcvn")
 volume_db = -15.0
 max_polyphony = 6
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_l7lip")
+}

@@ -23,6 +23,9 @@ public partial class MainMenuView : View
     [Export]
     public Control InputBlocker;
 
+    [Export]
+    public ColorRect Overlay;
+
     public override void _Ready()
     {
         base._Ready();
@@ -38,13 +41,27 @@ public partial class MainMenuView : View
     {
         base.OnShow();
         MouseVisibility.Show(nameof(MainMenuView));
+
+        Overlay.Show();
+        Overlay.Modulate = Overlay.Modulate.SetA(1);
+        AnimationPlayer.Play("hide_overlay");
     }
 
     private void ClickContinue()
     {
-        Hide();
-        Scene.Goto<SwampScene>();
-        GameView.Instance.Show();
+        this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            InputBlocker.Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("show_overlay");
+
+            Hide();
+            Scene.Goto<SwampScene>();
+            GameView.Instance.Show();
+            GameView.Instance.AnimateHideOverlay();
+
+            InputBlocker.Hide();
+        }
     }
 
     private void ClickOptions()

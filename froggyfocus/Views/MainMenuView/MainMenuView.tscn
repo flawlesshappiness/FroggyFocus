@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmuxgxi24ysym"]
+[gd_scene load_steps=16 format=3 uid="uid://cmuxgxi24ysym"]
 
 [ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/simple_button.tscn" id="3_egmko"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="4_uvutn"]
 [ext_resource type="PackedScene" uid="uid://dk5e5unescpcn" path="res://Modules/Options/OptionsControl.tscn" id="5_qaoud"]
+[ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_7iof8"]
 
 [sub_resource type="Animation" id="Animation_qaoud"]
 resource_name = "show_main"
@@ -85,6 +86,42 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Overlay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Overlay:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SfxSwipe:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_cw4y5"]
 resource_name = "hide_main"
@@ -143,6 +180,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxSwipe:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_87cds"]
 resource_name = "hide_options"
@@ -172,17 +221,89 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxSwipe:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5370r"]
+resource_name = "show_overlay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cejkn"]
+resource_name = "hide_overlay"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7iof8"]
 _data = {
 &"RESET": SubResource("Animation_7iof8"),
 &"hide_main": SubResource("Animation_cw4y5"),
 &"hide_options": SubResource("Animation_87cds"),
+&"hide_overlay": SubResource("Animation_cejkn"),
 &"show_main": SubResource("Animation_qaoud"),
-&"show_options": SubResource("Animation_rmme1")
+&"show_options": SubResource("Animation_rmme1"),
+&"show_overlay": SubResource("Animation_5370r")
 }
 
-[node name="MainMenuView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "OptionsControl", "ContinueButton", "OptionsButton", "QuitButton", "InputBlocker")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7iof8"]
+streams_count = 1
+stream_0/stream = ExtResource("6_7iof8")
+
+[node name="MainMenuView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "OptionsControl", "ContinueButton", "OptionsButton", "QuitButton", "InputBlocker", "Overlay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,6 +318,7 @@ ContinueButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBox
 OptionsButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/OptionsButton")
 QuitButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/QuitButton")
 InputBlocker = NodePath("InputBlocker")
+Overlay = NodePath("Overlay")
 
 [node name="Main" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -305,8 +427,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 1000.0
-offset_bottom = 1000.0
+offset_top = 39.0625
+offset_bottom = 39.0625
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -325,6 +447,17 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_uvutn")
 
+[node name="Overlay" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="InputBlocker" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -337,3 +470,7 @@ grow_vertical = 2
 libraries = {
 &"": SubResource("AnimationLibrary_7iof8")
 }
+
+[node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7iof8")
+volume_db = -20.0

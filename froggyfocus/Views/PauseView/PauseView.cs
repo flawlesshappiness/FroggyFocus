@@ -21,6 +21,9 @@ public partial class PauseView : View
     [Export]
     public Button MainMenuButton;
 
+    [Export]
+    public ColorRect Overlay;
+
     private bool options_active;
 
     public override void _Ready()
@@ -58,7 +61,6 @@ public partial class PauseView : View
     {
         if (UpgradeView.Instance.Visible) return;
         if (MainMenuView.Instance.Visible) return;
-        if (OptionsView.Instance.Visible) return;
         if (options_active) return;
 
         if (Visible)
@@ -140,8 +142,14 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
-            yield return Close();
+            InputBlocker.Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
+            yield return AnimationPlayer.PlayAndWaitForAnimation("show_overlay");
             Scene.Goto<MainMenuScene>();
+
+            Overlay.Hide();
+            Hide();
+            InputBlocker.Hide();
         }
     }
 }
