@@ -19,19 +19,30 @@ public partial class AnimationStateMachine : BaseStateMachine
     /// <summary>
     /// Creates a StateNode, and an AnimationState using the given animation name
     /// </summary>
+    /// <param name="state">The state name</param>
+    /// <param name="animation">The animation name</param>
+    /// <param name="looping">Should the animation loop?</param>
+    public AnimationState CreateAnimation(string state, string animation, bool looping)
+    {
+        var animation_state = new AnimationState(animation)
+        {
+            Looping = looping,
+            Node = CreateNode(state)
+        };
+
+        Animations.Add(state, animation_state);
+
+        return animation_state;
+    }
+
+    /// <summary>
+    /// Creates a StateNode, and an AnimationState using the given animation name
+    /// </summary>
     /// <param name="animation">The animation name</param>
     /// <param name="looping">Should the animation loop?</param>
     public AnimationState CreateAnimation(string animation, bool looping)
     {
-        var state = new AnimationState(animation)
-        {
-            Looping = looping,
-            Node = CreateNode(animation)
-        };
-
-        Animations.Add(animation, state);
-
-        return state;
+        return CreateAnimation(animation, animation, looping);
     }
 
     public void Connect(AnimationState start, AnimationState end, params Condition[] conditions)
@@ -50,10 +61,9 @@ public partial class AnimationStateMachine : BaseStateMachine
 
         if (Animations.TryGetValue(node.Name, out var state))
         {
-            var animation = Animator.GetAnimation(node.Name);
+            var animation = Animator.GetAnimation(state.Animation);
             animation.LoopMode = state.Looping ? Animation.LoopModeEnum.Linear : Animation.LoopModeEnum.None;
+            Animator.Play(state.Animation);
         }
-
-        Animator.Play(node.Name);
     }
 }

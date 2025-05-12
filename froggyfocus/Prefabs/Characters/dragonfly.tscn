@@ -7,6 +7,7 @@
 [node name="Dragonfly" type="Node3D" node_paths=PackedStringArray("Animation")]
 script = ExtResource("1_lurul")
 Animation = NodePath("AnimationStateMachine")
+IdleAnimation = "Armature|flying"
 WalkingAnimation = "Armature|flying"
 
 [node name="dragonfly" parent="." instance=ExtResource("2_lurul")]

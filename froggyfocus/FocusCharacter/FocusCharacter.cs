@@ -22,8 +22,8 @@ public partial class FocusCharacter : Character
 
     private void InitializeAnimations()
     {
-        var idle = Animation.CreateAnimation(IdleAnimation, true);
-        var walking = Animation.CreateAnimation(WalkingAnimation, true);
+        var idle = Animation.CreateAnimation("idle", IdleAnimation, true);
+        var walking = Animation.CreateAnimation("walking", WalkingAnimation, true);
 
         Animation.Connect(idle, walking, param_moving.WhenTrue());
         Animation.Connect(walking, idle, param_moving.WhenFalse());

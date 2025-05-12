@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=29 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cyyj6jthua7kn" path="res://Prefabs/Ground/pond_corner_concave_001.tscn" id="11_s6w6j"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad.tscn" id="12_5fuuy"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/upgrade_shop.tscn" id="12_20fcr"]
+[ext_resource type="PackedScene" uid="uid://d2p1s64vlogjj" path="res://Prefabs/FocusEvent/FocusEventXY.tscn" id="12_yvk0y"]
 [ext_resource type="PackedScene" uid="uid://stvl4xxk6ii6" path="res://Prefabs/Ground/pond_straight_001.tscn" id="13_20fcr"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
 [ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="17_achss"]
@@ -155,6 +156,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02022, 2.38419e-07, -1.5941
 
 [node name="FocusEventX5" parent="World/Island_SmallRound/Events" instance=ExtResource("6_0ky7s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125155, 2.38419e-07, 0.323193)
+
+[node name="FocusEventXY" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.267, -1, -10.996)
 
 [node name="PathWaterSFX" type="Path3D" parent="World/Island_SmallRound"]
 curve = SubResource("Curve3D_bmghv")
