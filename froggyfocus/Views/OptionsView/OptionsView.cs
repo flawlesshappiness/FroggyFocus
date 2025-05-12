@@ -6,20 +6,4 @@ public partial class OptionsView : View
 
     [Export]
     public OptionsControl OptionsControl;
-
-    public View BackView { get; set; }
-
-    public override void _Ready()
-    {
-        base._Ready();
-        OptionsControl.OnBack += ClickBack;
-    }
-
-    private void ClickBack()
-    {
-        if (BackView == null) return;
-
-        Hide();
-        BackView.Show();
-    }
 }

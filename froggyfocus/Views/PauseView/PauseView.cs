@@ -26,10 +26,10 @@ public partial class PauseView : View
     public override void _Ready()
     {
         base._Ready();
-        ResumeButton.Pressed += ResumeClicked;
-        OptionsButton.Pressed += OptionsClicked;
-        MainMenuButton.Pressed += MainMenuClicked;
-        Options.OnBack += OptionsBackClicked;
+        ResumeButton.Pressed += ClickResume;
+        OptionsButton.Pressed += ClickOptions;
+        MainMenuButton.Pressed += ClickMainMenu;
+        Options.OnBack += ClickOptionsBack;
     }
 
     protected override void OnShow()
@@ -99,12 +99,12 @@ public partial class PauseView : View
         }
     }
 
-    private void ResumeClicked()
+    private void ClickResume()
     {
         Close();
     }
 
-    private void OptionsClicked()
+    private void ClickOptions()
     {
         options_active = true;
 
@@ -118,7 +118,7 @@ public partial class PauseView : View
         }
     }
 
-    private void OptionsBackClicked()
+    private void ClickOptionsBack()
     {
         if (!options_active) return;
 
@@ -134,7 +134,7 @@ public partial class PauseView : View
         }
     }
 
-    private void MainMenuClicked()
+    private void ClickMainMenu()
     {
         Coroutine.Start(Cr)
             .SetRunWhilePaused();

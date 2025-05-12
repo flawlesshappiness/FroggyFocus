@@ -1,8 +1,15 @@
 using Godot;
+using System.Collections;
 
 public partial class MainMenuView : View
 {
     public static MainMenuView Instance => Get<MainMenuView>();
+
+    [Export]
+    public AnimationPlayer AnimationPlayer;
+
+    [Export]
+    public OptionsControl OptionsControl;
 
     [Export]
     public Button ContinueButton;
@@ -13,12 +20,18 @@ public partial class MainMenuView : View
     [Export]
     public Button QuitButton;
 
+    [Export]
+    public Control InputBlocker;
+
     public override void _Ready()
     {
         base._Ready();
         ContinueButton.Pressed += ClickContinue;
         OptionsButton.Pressed += ClickOptions;
         QuitButton.Pressed += ClickQuit;
+        OptionsControl.OnBack += ClickOptionsBack;
+
+        InputBlocker.Hide();
     }
 
     protected override void OnShow()
@@ -36,9 +49,26 @@ public partial class MainMenuView : View
 
     private void ClickOptions()
     {
-        Hide();
-        OptionsView.Instance.BackView = this;
-        OptionsView.Instance.Show();
+        this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            InputBlocker.Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_main");
+            yield return AnimationPlayer.PlayAndWaitForAnimation("show_options");
+            InputBlocker.Hide();
+        }
+    }
+
+    private void ClickOptionsBack()
+    {
+        this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            InputBlocker.Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_options");
+            yield return AnimationPlayer.PlayAndWaitForAnimation("show_main");
+            InputBlocker.Hide();
+        }
     }
 
     private void ClickQuit()

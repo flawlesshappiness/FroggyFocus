@@ -1,11 +1,188 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmuxgxi24ysym"]
+[gd_scene load_steps=12 format=3 uid="uid://cmuxgxi24ysym"]
 
 [ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/simple_button.tscn" id="3_egmko"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="4_uvutn"]
+[ext_resource type="PackedScene" uid="uid://dk5e5unescpcn" path="res://Modules/Options/OptionsControl.tscn" id="5_qaoud"]
 
-[node name="MainMenuView" type="Control" node_paths=PackedStringArray("ContinueButton", "OptionsButton", "QuitButton")]
+[sub_resource type="Animation" id="Animation_qaoud"]
+resource_name = "show_main"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7iof8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/CenterContainer/Center/AnimOptions:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cw4y5"]
+resource_name = "hide_main"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Main:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rmme1"]
+resource_name = "show_options"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/CenterContainer/Center/AnimOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(0, 1000), Vector2(0, -25), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_87cds"]
+resource_name = "hide_options"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/CenterContainer/Center/AnimOptions:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 1000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7iof8"]
+_data = {
+&"RESET": SubResource("Animation_7iof8"),
+&"hide_main": SubResource("Animation_cw4y5"),
+&"hide_options": SubResource("Animation_87cds"),
+&"show_main": SubResource("Animation_qaoud"),
+&"show_options": SubResource("Animation_rmme1")
+}
+
+[node name="MainMenuView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "OptionsControl", "ContinueButton", "OptionsButton", "QuitButton", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,11 +191,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5j84w")
 script = ExtResource("1_qib6v")
-ContinueButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/ContinueButton")
-OptionsButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/OptionsButton")
-QuitButton = NodePath("MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/QuitButton")
+AnimationPlayer = NodePath("AnimationPlayer")
+OptionsControl = NodePath("CenterContainer/CenterContainer/Center/AnimOptions/Options")
+ContinueButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/ContinueButton")
+OptionsButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/OptionsButton")
+QuitButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/QuitButton")
+InputBlocker = NodePath("InputBlocker")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Main" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,15 +210,15 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="Main"]
 layout_mode = 2
 dragging_enabled = false
 
-[node name="Top" type="Control" parent="MarginContainer/VSplitContainer"]
+[node name="Top" type="Control" parent="Main/VSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VSplitContainer/Top"]
+[node name="CenterContainer" type="CenterContainer" parent="Main/VSplitContainer/Top"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +226,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VSplitContainer/Top/CenterContainer"]
+[node name="Label" type="Label" parent="Main/VSplitContainer/Top/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.490196)
 theme_override_constants/shadow_offset_x = 5
@@ -54,11 +234,11 @@ theme_override_constants/shadow_offset_y = 5
 theme_override_font_sizes/font_size = 100
 text = "FROGGY FOCUS"
 
-[node name="Bottom" type="Control" parent="MarginContainer/VSplitContainer"]
+[node name="Bottom" type="Control" parent="Main/VSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/VSplitContainer/Bottom"]
+[node name="HSplitContainer" type="HSplitContainer" parent="Main/VSplitContainer/Bottom"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,11 +248,11 @@ grow_vertical = 2
 dragging_enabled = false
 dragger_visibility = 1
 
-[node name="Left" type="Control" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer"]
+[node name="Left" type="Control" parent="Main/VSplitContainer/Bottom/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,21 +264,76 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="ContinueButton" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
+[node name="ContinueButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
 theme = ExtResource("4_uvutn")
 text = "Continue"
 
-[node name="OptionsButton" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
+[node name="OptionsButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
 theme = ExtResource("4_uvutn")
 text = "Options"
 
-[node name="QuitButton" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
+[node name="QuitButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
 theme = ExtResource("4_uvutn")
 text = "Quit"
 
-[node name="Right" type="Control" parent="MarginContainer/VSplitContainer/Bottom/HSplitContainer"]
+[node name="Right" type="Control" parent="Main/VSplitContainer/Bottom/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Center" type="Control" parent="CenterContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="AnimOptions" type="Control" parent="CenterContainer/CenterContainer/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" parent="CenterContainer/CenterContainer/Center/AnimOptions" instance=ExtResource("5_qaoud")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -229.0
+offset_right = 250.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_uvutn")
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7iof8")
+}
