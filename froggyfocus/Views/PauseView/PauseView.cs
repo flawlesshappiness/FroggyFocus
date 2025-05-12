@@ -25,6 +25,7 @@ public partial class PauseView : View
     public ColorRect Overlay;
 
     private bool options_active;
+    private bool transitioning;
 
     public override void _Ready()
     {
@@ -62,6 +63,7 @@ public partial class PauseView : View
         if (UpgradeView.Instance.Visible) return;
         if (MainMenuView.Instance.Visible) return;
         if (options_active) return;
+        if (transitioning) return;
 
         if (Visible)
         {
@@ -142,6 +144,8 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            transitioning = true;
+
             InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_overlay");
@@ -150,6 +154,8 @@ public partial class PauseView : View
             Overlay.Hide();
             Hide();
             InputBlocker.Hide();
+
+            transitioning = false;
         }
     }
 }
