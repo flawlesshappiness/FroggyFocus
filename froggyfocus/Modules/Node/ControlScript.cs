@@ -20,10 +20,11 @@ public partial class ControlScript : Control
 
     private void Process_Visible()
     {
-        if (Visible != _visible)
+        var visible = IsVisibleInTree();
+        if (visible != _visible)
         {
-            _visible = Visible;
-            if (Visible)
+            _visible = visible;
+            if (visible)
             {
                 OnShow();
             }

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OptionsKeysInfo" load_steps=2 format=3 uid="uid://cbygbmrq41sr8"]
+
+[ext_resource type="Script" uid="uid://dsem2cx8kh662" path="res://Modules/Options/OptionsKeysInfo.cs" id="1_bx8m7"]
+
+[resource]
+script = ExtResource("1_bx8m7")
+Actions = Array[String](["Forward", "Left", "Back", "Right", "Jump", "Interact"])
+metadata/_custom_type_script = "uid://dsem2cx8kh662"

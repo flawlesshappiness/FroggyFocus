@@ -17,6 +17,9 @@ public partial class OptionsKeyRebindControl : ControlScript
     [Export]
     public Button ResetButton;
 
+    public string Action { get; set; }
+    public OptionsKeyRebind Rebind { get; set; }
+
     public void SetWaitingForInput(bool waiting)
     {
         RebindButton.Visible = !waiting;

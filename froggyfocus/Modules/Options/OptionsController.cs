@@ -57,6 +57,26 @@ public partial class OptionsController : SingletonController
         base.Initialize();
 
         LoadData();
+        InitializeRebinds();
+    }
+
+    private void InitializeRebinds()
+    {
+        var actions = OptionsKeysInfo.Instance.Actions;
+        var key_overrides = Data.Options.KeyOverrides.Cast<InputEventData>();
+        var mouse_overrides = Data.Options.MouseButtonOverrides.Cast<InputEventData>();
+        var overrides = key_overrides.Concat(mouse_overrides);
+        foreach (var action in actions)
+        {
+            var data = overrides.FirstOrDefault(x => x.Action == action);
+            var rebind = new OptionsKeyRebind
+            {
+                Action = action,
+                Data = data
+            };
+
+            Rebinds.Add(rebind);
+        }
     }
 
     private void BeforeSave()

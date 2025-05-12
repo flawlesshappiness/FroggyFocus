@@ -1,30 +1,33 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class OptionsKeys : NodeScript
 {
-    [Export]
-    public string[] Actions;
-
     [Export]
     public OptionsKeyRebindControl TempKeyRebindControl;
 
     [Export]
     public Button ResetAllButton;
 
-    public bool IsRebinding => _current_rebind != null;
+    public bool IsRebinding => current_control != null;
 
     public event Action OnRebindStart, OnRebindEnd;
 
-    private OptionsKeyRebind _current_rebind;
+    private OptionsKeyRebindControl current_control;
+    private Dictionary<string, OptionsKeyRebindControl> rebind_controls = new();
 
     public override void _Ready()
     {
         base._Ready();
-        CreateKeys();
-
         ResetAllButton.Pressed += PressResetAllRebinds;
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        CreateKeys();
     }
 
     private void RebindStarted()
@@ -44,42 +47,33 @@ public partial class OptionsKeys : NodeScript
         TempKeyRebindControl.Visible = false;
 
         var parent = TempKeyRebindControl.GetParent();
-        foreach (var action in Actions)
+        foreach (var action in OptionsKeysInfo.Instance.Actions)
         {
             var control = TempKeyRebindControl.Duplicate() as OptionsKeyRebindControl;
             control.SetParent(parent);
-            control.Visible = true;
+            control.Show();
             control.RebindLabel.Text = action;
             control.SetWaitingForInput(false);
+            rebind_controls.Add(action, control);
 
-            var data_key = Data.Options.KeyOverrides.FirstOrDefault(x => x.Action == action) as InputEventData;
-            var data_mouse = Data.Options.MouseButtonOverrides.FirstOrDefault(x => x.Action == action) as InputEventData;
-            var data = data_key ?? data_mouse;
+            control.Action = action;
+            control.Rebind = OptionsController.Rebinds.First(x => x.Action == action);
 
-            var rebind = new OptionsKeyRebind
-            {
-                Control = control,
-                Action = action,
-                Data = data
-            };
-
-            OptionsController.Rebinds.Add(rebind);
-
-            control.RebindButton.Pressed += () => PressRebind(rebind);
-            control.ResetButton.Pressed += () => PressResetRebind(rebind);
+            control.RebindButton.Pressed += () => PressRebind(control);
+            control.ResetButton.Pressed += () => PressResetRebind(control);
         }
     }
 
     public void UpdateAllKeyStrings()
     {
-        OptionsController.Rebinds.ForEach(x => UpdateKeyString(x));
+        rebind_controls.Values.ForEach(UpdateKeyString);
     }
 
-    private void UpdateKeyString(OptionsKeyRebind rebind)
+    private void UpdateKeyString(OptionsKeyRebindControl control)
     {
-        var e = InputMap.ActionGetEvents(rebind.Action).First();
+        var e = InputMap.ActionGetEvents(control.Action).First();
         var text = e.AsText().Replace("(Physical)", "").Trim();
-        rebind.Control.RebindButton.Text = text;
+        control.RebindButton.Text = text;
     }
 
     public void UpdateDuplicateWarnings()
@@ -100,19 +94,23 @@ public partial class OptionsKeys : NodeScript
 
                 var same = current_input.AsText() == other_input.AsText();
                 found_duplicate = same || found_duplicate;
-                current.Control.DuplicateWarningLabel.Visible = found_duplicate;
+
+                if (rebind_controls.TryGetValue(current.Action, out var control))
+                {
+                    control.DuplicateWarningLabel.Visible = found_duplicate;
+                }
 
                 if (found_duplicate) break;
             }
         }
     }
 
-    private void PressRebind(OptionsKeyRebind rebind)
+    private void PressRebind(OptionsKeyRebindControl control)
     {
-        if (_current_rebind != null) return;
+        if (current_control != null) return;
 
-        _current_rebind = rebind;
-        _current_rebind.Control.SetWaitingForInput(true);
+        current_control = control;
+        control.SetWaitingForInput(true);
         RebindStarted();
     }
 
@@ -123,36 +121,34 @@ public partial class OptionsKeys : NodeScript
         Data.Game.Save();
     }
 
-    private void PressResetRebind(OptionsKeyRebind rebind)
+    private void PressResetRebind(OptionsKeyRebindControl control)
     {
-        ResetRebind(rebind);
+        ResetRebind(control);
         UpdateDuplicateWarnings();
         Data.Game.Save();
     }
 
     private void ResetAllRebinds()
     {
-        foreach (var rebind in OptionsController.Rebinds)
-        {
-            ResetRebind(rebind);
-        }
+        rebind_controls.Values.ForEach(ResetRebind);
     }
 
-    private void ResetRebind(OptionsKeyRebind rebind)
+    private void ResetRebind(OptionsKeyRebindControl control)
     {
-        var binding = OptionsController.DefaultBindings[rebind.Action];
-        InputMap.ActionEraseEvents(rebind.Action);
-        InputMap.ActionAddEvent(rebind.Action, binding);
-        rebind.Data = null;
+        var action = control.Action;
+        var binding = OptionsController.DefaultBindings[action];
+        InputMap.ActionEraseEvents(action);
+        InputMap.ActionAddEvent(action, binding);
+        control.Rebind.Data = null;
 
-        UpdateKeyString(rebind);
+        UpdateKeyString(control);
     }
 
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
 
-        if (_current_rebind == null) return;
+        if (current_control == null) return;
 
         if (IsCancelEvent(@event))
         {
@@ -172,15 +168,15 @@ public partial class OptionsKeys : NodeScript
 
     private void OverrideKey(InputEventKey e)
     {
-        var data = InputEventKeyData.Create(_current_rebind.Action, e);
-        _current_rebind.Data = data;
+        var data = InputEventKeyData.Create(current_control.Action, e);
+        current_control.Rebind.Data = data;
         OptionsController.Instance.UpdateKeyOverride(data);
     }
 
     private void OverrideMouseButton(InputEventMouseButton e)
     {
-        var data = InputEventMouseButtonData.Create(_current_rebind.Action, e);
-        _current_rebind.Data = data;
+        var data = InputEventMouseButtonData.Create(current_control.Action, e);
+        current_control.Rebind.Data = data;
         OptionsController.Instance.UpdateMouseButtonOverride(data);
     }
 
@@ -193,8 +189,8 @@ public partial class OptionsKeys : NodeScript
 
     private void StopRebinding()
     {
-        _current_rebind.Control.SetWaitingForInput(false);
-        _current_rebind = null;
+        current_control.SetWaitingForInput(false);
+        current_control = null;
         UpdateAllKeyStrings();
         UpdateDuplicateWarnings();
         RebindEnded();
@@ -202,10 +198,10 @@ public partial class OptionsKeys : NodeScript
 
     private void SetButtonsEnabled(bool enabled)
     {
-        foreach (var rebind in OptionsController.Rebinds)
+        foreach (var control in rebind_controls.Values)
         {
-            rebind.Control.RebindButton.Disabled = !enabled;
-            rebind.Control.ResetButton.Disabled = !enabled;
+            control.RebindButton.Disabled = !enabled;
+            control.ResetButton.Disabled = !enabled;
         }
 
         ResetAllButton.Disabled = !enabled;
