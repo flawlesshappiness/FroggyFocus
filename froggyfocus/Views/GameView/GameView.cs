@@ -58,15 +58,6 @@ public partial class GameView : View
         FocusBar.Value = value;
     }
 
-    private void Process_PlayerBubble()
-    {
-        var player = Player.Instance;
-        if (player == null) return;
-
-        var world_position = player.PlayerBubbleMarker.GlobalPosition;
-        var viewport_position = CameraController.Instance.UnprojectPosition(world_position);
-    }
-
     public void AnimateHideOverlay()
     {
         Overlay.Show();

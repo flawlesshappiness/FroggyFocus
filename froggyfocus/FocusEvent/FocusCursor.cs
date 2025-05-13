@@ -16,7 +16,6 @@ public partial class FocusCursor : Node3D
     private float Radius { get; set; }
     private float DistanceToTarget => Target == null ? 0f : GlobalPosition.DistanceTo(Target.GlobalPosition) - Target.Radius;
     private bool IsTargetInRange => DistanceToTarget < Radius;
-    private bool Focusing => PlayerInput.Interact.Held;
     private float FocusValue { get; set; }
     private float FocusTickTime { get; set; }
     private float FocusTickAmount { get; set; }
@@ -26,8 +25,6 @@ public partial class FocusCursor : Node3D
     private bool Filled { get; set; }
     private bool Empty { get; set; }
 
-    private bool is_focusing;
-    private bool is_focusing_on_target;
     private float next_tick;
 
     public event Action OnFocusStarted;
@@ -73,29 +70,12 @@ public partial class FocusCursor : Node3D
         MoveFocusSpeed = MoveSpeed * StatsController.Instance.GetCurrentStatsValue(StatsType.CursorMoveSpeedMultiplierDuringFocus);
     }
 
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-
-        if (Focusing && !is_focusing)
-        {
-            is_focusing = true;
-            OnFocusStarted?.Invoke();
-        }
-        else if (!Focusing && is_focusing)
-        {
-            is_focusing = false;
-            OnFocusStopped?.Invoke();
-        }
-    }
-
     public override void _Process(double delta)
     {
         base._Process(delta);
         var fdelta = Convert.ToSingle(delta);
         Process_Input();
         Process_Target();
-        Process_Graphic();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -123,8 +103,7 @@ public partial class FocusCursor : Node3D
     {
         if (!InputEnabled) return;
 
-        var speed = Focusing ? MoveFocusSpeed : MoveSpeed;
-        GlobalPosition += DesiredVelocity * speed;
+        GlobalPosition += DesiredVelocity * MoveSpeed;
     }
 
     private void Process_Target()
@@ -136,7 +115,7 @@ public partial class FocusCursor : Node3D
         if (GameTime.Time < next_tick) return;
         next_tick = GameTime.Time + FocusTickTime;
 
-        if (IsTargetInRange && Focusing)
+        if (IsTargetInRange)
         {
             SetFocusValue(FocusValue + FocusTickAmount);
             GameView.Instance.FocusGained(FocusValue);
@@ -147,26 +126,6 @@ public partial class FocusCursor : Node3D
         {
             SetFocusValue(FocusValue - FocusTickDecay);
             GameView.Instance.FocusLost(FocusValue);
-        }
-    }
-
-    private void Process_Graphic()
-    {
-        if (IsTargetInRange && Focusing)
-        {
-            if (!is_focusing_on_target)
-            {
-                is_focusing_on_target = true;
-                OnFocusTargetEnter?.Invoke();
-            }
-        }
-        else
-        {
-            if (is_focusing_on_target)
-            {
-                is_focusing_on_target = false;
-                OnFocusTargetExit?.Invoke();
-            }
         }
     }
 

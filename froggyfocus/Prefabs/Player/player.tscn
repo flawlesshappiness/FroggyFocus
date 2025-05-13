@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhuic2i3dy7q5"]
+[gd_scene load_steps=20 format=3 uid="uid://bhuic2i3dy7q5"]
 
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="1_6dc14"]
 [ext_resource type="Script" uid="uid://c2ko138plrgx1" path="res://Player/Player.cs" id="1_hnwp3"]
 [ext_resource type="Script" uid="uid://xvqq6jouue22" path="res://Player/PlayerInteract.cs" id="3_sysjd"]
 [ext_resource type="PackedScene" uid="uid://cbnj34ngtuf0d" path="res://Prefabs/Player/player_money_gained.tscn" id="4_21ygf"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="5_you5p"]
 
 [sub_resource type="Curve" id="Curve_sysjd"]
 _limits = [0.0, 20.0, 0.0, 1.0]
@@ -22,13 +23,73 @@ height = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sysjd"]
 radius = 1.0
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "MoneyGained")]
+[sub_resource type="Curve" id="Curve_ucnkw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_s7xov"]
+curve = SubResource("Curve_ucnkw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ine62"]
+direction = Vector3(0, 0, -1)
+spread = 5.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_s7xov")
+
+[sub_resource type="SphereMesh" id="SphereMesh_m5xj4"]
+material = ExtResource("5_you5p")
+
+[sub_resource type="Curve" id="Curve_you5p"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ucnkw"]
+curve = SubResource("Curve_you5p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m5xj4"]
+lifetime_randomness = 0.5
+direction = Vector3(0, 0, -1)
+flatness = 0.8
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_ucnkw")
+
+[sub_resource type="Curve" id="Curve_ine62"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_m5xj4"]
+curve = SubResource("Curve_ine62")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a00l3"]
+lifetime_randomness = 0.2
+direction = Vector3(0, 0, -1)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_m5xj4")
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "MoneyGained", "PsDustStream", "PsDustJump", "PsDustLand")]
 collision_layer = 2
 script = ExtResource("1_hnwp3")
 MoveSpeed = 2.0
 PlayerInteract = NodePath("Frog/Interact")
 Character = NodePath("Frog")
 MoneyGained = NodePath("PlayerMoneyGained")
+PsDustStream = NodePath("Frog/ps_dust_stream")
+PsDustJump = NodePath("Frog/ps_dust_jump")
+PsDustLand = NodePath("Frog/ps_dust_land")
 JumpLengthCurve = SubResource("Curve_sysjd")
 JumpHeightCurve = SubResource("Curve_21ygf")
 
@@ -47,5 +108,36 @@ script = ExtResource("3_sysjd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Frog/Interact"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_sysjd")
+
+[node name="ps_dust_stream" type="GPUParticles3D" parent="Frog"]
+transform = Transform3D(1, 0, 0, 0, -0.877431, 0.479703, 0, -0.479703, -0.877431, 0, 0.337921, 1.05057)
+emitting = false
+amount = 3
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ine62")
+draw_pass_1 = SubResource("SphereMesh_m5xj4")
+
+[node name="ps_dust_jump" type="GPUParticles3D" parent="Frog"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.143062, 0.21224)
+emitting = false
+amount = 5
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_m5xj4")
+draw_pass_1 = SubResource("SphereMesh_m5xj4")
+
+[node name="ps_dust_land" type="GPUParticles3D" parent="Frog"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110518, 0.129853)
+emitting = false
+amount = 5
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_a00l3")
+draw_pass_1 = SubResource("SphereMesh_m5xj4")
 
 [node name="PlayerMoneyGained" parent="." instance=ExtResource("4_21ygf")]

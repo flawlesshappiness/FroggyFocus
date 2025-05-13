@@ -11,13 +11,19 @@ public partial class Player : TopDownController
     public PlayerInteract PlayerInteract;
 
     [Export]
-    public Marker3D PlayerBubbleMarker;
-
-    [Export]
     public FrogCharacter Character;
 
     [Export]
     public PlayerMoneyGained MoneyGained;
+
+    [Export]
+    public GpuParticles3D PsDustStream;
+
+    [Export]
+    public GpuParticles3D PsDustJump;
+
+    [Export]
+    public GpuParticles3D PsDustLand;
 
     [Export]
     public Godot.Curve JumpLengthCurve;
@@ -186,6 +192,17 @@ public partial class Player : TopDownController
         Character.SetJumping(jumping);
 
         CameraController.Instance.Speed = jumping ? 4.0f : 1.0f;
+
+        if (jumping)
+        {
+            PsDustJump.Emitting = true;
+            PlayDustStreamPS(0.4f);
+        }
+        else
+        {
+            PsDustLand.Emitting = true;
+            StopDustStreamPS();
+        }
     }
 
     private void MoneyChanged(int amount)
@@ -205,5 +222,21 @@ public partial class Player : TopDownController
         var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), respawn_position);
         GlobalPosition = nav_position;
         CameraController.Instance.TeleportCameraToTarget();
+    }
+
+    private void PlayDustStreamPS(float duration)
+    {
+        this.StartCoroutine(Cr, nameof(PlayDustStreamPS));
+        IEnumerator Cr()
+        {
+            PsDustStream.Emitting = true;
+            yield return new WaitForSeconds(duration);
+            PsDustStream.Emitting = false;
+        }
+    }
+
+    private void StopDustStreamPS()
+    {
+        PsDustStream.Emitting = false;
     }
 }
