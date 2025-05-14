@@ -1,12 +1,11 @@
 using Godot;
 using System;
 using System.Collections;
-using System.Linq;
 
 public partial class FocusEvent : Area3D, IInteractable
 {
     [Export]
-    public FocusEventAxis Axis;
+    public FocusEventInfo Info;
 
     [Export]
     public Vector2 Size;
@@ -46,7 +45,7 @@ public partial class FocusEvent : Area3D, IInteractable
         Cursor.OnFocusFilled += FocusFilled;
         Cursor.OnFocusEmpty += FocusEmpty;
         Cursor.OnFocusTarget += FocusTarget;
-        Cursor.Initialize(Target, Axis);
+        Cursor.Initialize(Target);
 
         Target.Initialize(this);
     }
@@ -108,13 +107,9 @@ public partial class FocusEvent : Area3D, IInteractable
 
     private void CreateTarget()
     {
-        var info = FocusEventController.Instance.Collection.Resources
-            .Where(x => x.Axis == Axis)
-            .ToList().Random();
         Target.GlobalPosition = TargetMarker.GlobalPosition;
-        Target.SetCharacter(info.Characters.PickRandom());
+        Target.SetCharacter(Info.Characters.PickRandom());
         Target.Show();
-
         Target.StartMoving(0.2f);
     }
 

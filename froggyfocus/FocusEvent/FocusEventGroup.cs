@@ -66,6 +66,8 @@ public partial class FocusEventGroup : Node3D
     private void EnableInactiveEvent(bool immediate = false)
     {
         var e = InactiveEvents.Random();
+        if (e == null) return;
+
         SetEventActive(e);
 
         if (immediate)

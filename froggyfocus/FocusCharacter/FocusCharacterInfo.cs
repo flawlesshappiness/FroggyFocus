@@ -19,9 +19,6 @@ public partial class FocusCharacterInfo : Resource
     public Vector2 MoveDelayRange = new Vector2(1, 1);
 
     [Export]
-    public FocusEventAxis MoveAxis = FocusEventAxis.XZ;
-
-    [Export]
     public int CurrencyReward = 1;
 
     [Export]

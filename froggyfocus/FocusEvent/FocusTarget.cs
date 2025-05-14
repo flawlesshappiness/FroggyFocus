@@ -70,7 +70,7 @@ public partial class FocusTarget : Node3D
         while (true)
         {
             // Select position
-            var position = GetRandomPosition(Info.MoveAxis);
+            var position = GetRandomPosition(1, 0, 1);
             var dir_to_position = GlobalPosition.DirectionTo(position);
             var length = dir_to_position.Length();
             var dir_to_position_clamped = dir_to_position.ClampMagnitude(Info.MoveLengthRange.X, Info.MoveLengthRange.Y) * move_mult;
@@ -143,14 +143,6 @@ public partial class FocusTarget : Node3D
         GlobalPosition += velocity;
     }
 
-    private Vector3 GetRandomPosition(FocusEventAxis axis) => axis switch
-    {
-        FocusEventAxis.XZ => GetRandomPosition(1, 0, 1),
-        FocusEventAxis.XY => GetRandomPosition(1, 1, 0),
-        FocusEventAxis.X => GetRandomPosition(1, 0, 0),
-        _ => Vector3.Zero
-    };
-
     private Vector3 GetRandomPosition(int x, int y, int z) => GetRandomPosition(new Vector3I(x, y, z));
     private Vector3 GetRandomPosition(Vector3I mul)
     {
@@ -159,7 +151,9 @@ public partial class FocusTarget : Node3D
         var x = mul.X * rng.RandfRange(-rx, rx);
         var y = mul.Y * rng.RandfRange(-ry, ry);
         var z = mul.Z * rng.RandfRange(-ry, ry);
-        var position = focus_event.GlobalPosition + focus_event.Offset * move_mult + new Vector3(x, y, z);
+        var center = focus_event.TargetMarker.GlobalPosition;
+        var offset = focus_event.Offset * move_mult;
+        var position = center + offset + new Vector3(x, y, z);
         return position;
     }
 }

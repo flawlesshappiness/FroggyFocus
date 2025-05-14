@@ -11,7 +11,6 @@ public partial class FocusCursor : Node3D
 
     public bool InputEnabled { get; set; }
     public FocusTarget Target { get; set; }
-    private FocusEventAxis Axis { get; set; }
     private Vector3 DesiredVelocity { get; set; }
     private float Radius { get; set; }
     private float DistanceToTarget => Target == null ? 0f : GlobalPosition.DistanceTo(Target.GlobalPosition) - Target.Radius;
@@ -35,10 +34,9 @@ public partial class FocusCursor : Node3D
     public event Action OnFocusFilled;
     public event Action OnFocusEmpty;
 
-    public void Initialize(FocusTarget target, FocusEventAxis axis)
+    public void Initialize(FocusTarget target)
     {
         Target = target;
-        Axis = axis;
         Hide();
     }
 
@@ -88,16 +86,8 @@ public partial class FocusCursor : Node3D
     private void Process_Input()
     {
         var input = PlayerInput.GetMoveInput();
-        DesiredVelocity = GetInputVelocity(input);
+        DesiredVelocity = new Vector3(input.X, 0, input.Y);
     }
-
-    private Vector3 GetInputVelocity(Vector2 input) => Axis switch
-    {
-        FocusEventAxis.XZ => new Vector3(input.X, 0, input.Y),
-        FocusEventAxis.XY => new Vector3(input.X, -input.Y, 0),
-        FocusEventAxis.X => new Vector3(input.X, 0, 0),
-        _ => Vector3.Zero
-    };
 
     private void PhysicsProcess_MoveCursor(float delta)
     {
