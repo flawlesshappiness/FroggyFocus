@@ -80,20 +80,10 @@ public partial class FocusTarget : Node3D
             Character.StartFacingDirection(dir_to_position);
             Character.SetMoving(true);
 
-            if (Info.Jumping)
-            {
-                AnimateJumpStart();
-            }
-
             while (GlobalPosition.DistanceTo(position) > 0.1f)
             {
                 Move(dir_to_position.Normalized() * Info.MoveSpeed * move_mult * GameTime.DeltaTime);
                 yield return null;
-            }
-
-            if (Info.Jumping)
-            {
-                AnimateJumpEnd();
             }
 
             Character.SetMoving(false);
@@ -101,40 +91,6 @@ public partial class FocusTarget : Node3D
             // Wait
             var delay = rng.RandfRange(Info.MoveDelayRange.X, Info.MoveDelayRange.Y) * move_mult_inv;
             yield return new WaitForSeconds(delay);
-        }
-    }
-
-    private Coroutine AnimateJumpStart()
-    {
-        return this.StartCoroutine(Cr, "jump");
-        IEnumerator Cr()
-        {
-            var start_position = Character.Position;
-            var end_position = Vector3.Up * 4f * move_mult;
-            var curve = Curves.EaseOutQuad;
-            yield return LerpEnumerator.Lerp01(0.1f, f =>
-            {
-                var t = curve.Evaluate(f);
-                var position = start_position.Lerp(end_position, t);
-                Character.Position = position;
-            });
-        }
-    }
-
-    private Coroutine AnimateJumpEnd()
-    {
-        return this.StartCoroutine(Cr, "jump");
-        IEnumerator Cr()
-        {
-            var start_position = Character.Position;
-            var end_position = Vector3.Zero;
-            var curve = Curves.EaseInQuad;
-            yield return LerpEnumerator.Lerp01(0.1f, f =>
-            {
-                var t = curve.Evaluate(f);
-                var position = start_position.Lerp(end_position, t);
-                Character.Position = position;
-            });
         }
     }
 

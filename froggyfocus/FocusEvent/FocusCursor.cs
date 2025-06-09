@@ -7,7 +7,13 @@ public partial class FocusCursor : Node3D
     public Node3D RadiusNode;
 
     [Export]
+    public Node3D FillNode;
+
+    [Export]
     public AnimationPlayer Animation;
+
+    [Export]
+    public AudioStreamPlayer SfxFocusChanged;
 
     public bool InputEnabled { get; set; }
     public FocusTarget Target { get; set; }
@@ -108,20 +114,21 @@ public partial class FocusCursor : Node3D
         if (IsTargetInRange)
         {
             SetFocusValue(FocusValue + FocusTickAmount);
-            GameView.Instance.FocusGained(FocusValue);
+            PlayFocusChangedSFX(FocusValue);
             Animation.Play("BounceIn");
             OnFocusTarget?.Invoke();
         }
         else
         {
             SetFocusValue(FocusValue - FocusTickDecay);
-            GameView.Instance.FocusLost(FocusValue);
+            PlayFocusChangedSFX(0);
         }
     }
 
     private void SetFocusValue(float value)
     {
         FocusValue = Mathf.Clamp(value, 0f, 1f);
+        FillNode.Scale = Vector3.One * FocusValue;
 
         if (FocusValue >= 1)
         {
@@ -133,5 +140,13 @@ public partial class FocusCursor : Node3D
             Empty = true;
             OnFocusEmpty?.Invoke();
         }
+    }
+
+    public void PlayFocusChangedSFX(float value)
+    {
+        var pitch_min = 0.5f;
+        var pitch_max = 1.5f;
+        SfxFocusChanged.PitchScale = Mathf.Lerp(pitch_min, pitch_max, value);
+        SfxFocusChanged.Play();
     }
 }

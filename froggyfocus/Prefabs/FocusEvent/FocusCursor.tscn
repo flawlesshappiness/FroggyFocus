@@ -1,6 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cta4lwmtk36u"]
+[gd_scene load_steps=10 format=3 uid="uid://cta4lwmtk36u"]
 
 [ext_resource type="Script" uid="uid://bpbdt4x46g0ir" path="res://FocusEvent/FocusCursor.cs" id="1_x77ch"]
+[ext_resource type="Texture2D" uid="uid://6tevrdvf1tud" path="res://Assets/FlawLizArt/Textures/focus_circle.png" id="2_rpbmh"]
+[ext_resource type="Texture2D" uid="uid://cgvw1bv4nyiyt" path="res://Assets/FlawLizArt/Textures/focus_circle_outline.png" id="3_rptds"]
+[ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="4_rptds"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1eh1j"]
 transparency = 1
@@ -50,17 +53,33 @@ _data = {
 &"RESET": SubResource("Animation_yd0hp")
 }
 
-[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("RadiusNode", "Animation")]
+[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("RadiusNode", "FillNode", "Animation", "SfxFocusChanged")]
 script = ExtResource("1_x77ch")
 RadiusNode = NodePath("Radius")
+FillNode = NodePath("Radius/Anim/Fill")
 Animation = NodePath("AnimationPlayer")
+SfxFocusChanged = NodePath("SfxFocusGain")
 
 [node name="Radius" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 
 [node name="Anim" type="Node3D" parent="Radius"]
 
+[node name="Fill" type="Node3D" parent="Radius/Anim"]
+
+[node name="Circle" type="Sprite3D" parent="Radius/Anim/Fill"]
+transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, 0.8, 0, -0.8, -3.49691e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0.392157)
+texture = ExtResource("2_rpbmh")
+
+[node name="Outline" type="Sprite3D" parent="Radius/Anim"]
+transform = Transform3D(0.822222, 0, 0, 0, -3.59405e-08, 0.822222, 0, -0.822222, -3.59405e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0.392157)
+texture = ExtResource("3_rptds")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Radius/Anim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
+visible = false
 mesh = SubResource("CylinderMesh_1eh1j")
 skeleton = NodePath("../../..")
 
@@ -68,3 +87,9 @@ skeleton = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_rpbmh")
 }
+
+[node name="SfxFocusGain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rptds")
+volume_db = -15.0
+max_polyphony = 6
+bus = &"SFX"
