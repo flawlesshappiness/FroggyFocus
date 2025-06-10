@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://xj8mi6cxbljo"]
+
+[ext_resource type="PackedScene" uid="uid://dm2bc1qansiou" path="res://Assets/FlawLizArt/Other/Star.fbx" id="1_5jfc0"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="2_5jfc0"]
+
+[sub_resource type="Animation" id="Animation_5jfc0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_17bgj"]
+resource_name = "rotating"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5r7nm"]
+_data = {
+&"RESET": SubResource("Animation_5jfc0"),
+&"rotating": SubResource("Animation_17bgj")
+}
+
+[node name="StunnedStars" type="Node3D"]
+
+[node name="Anim" type="Node3D" parent="."]
+
+[node name="Star" parent="Anim" instance=ExtResource("1_5jfc0")]
+transform = Transform3D(0.25, 0, 0, 0, -1.09278e-08, 0.25, 0, -0.25, -1.09278e-08, -1, 0, 0)
+
+[node name="Star2" parent="Anim" instance=ExtResource("1_5jfc0")]
+transform = Transform3D(-0.25, 2.18557e-08, 9.55343e-16, 0, -1.09278e-08, 0.25, 2.18557e-08, 0.25, 1.09278e-08, 1, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5r7nm")
+}
+script = ExtResource("2_5jfc0")
+Animation = "rotating"

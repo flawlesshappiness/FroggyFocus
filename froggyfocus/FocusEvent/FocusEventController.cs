@@ -16,10 +16,7 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
 
     public void FocusEventCompleted(FocusEventCompletedResult result)
     {
-        CurrencyController.Instance.AddValue(CurrencyType.Money, result.Character.CurrencyReward);
-
         OnFocusEventCompleted?.Invoke(result);
-
         Data.Game.Save();
     }
 
@@ -32,12 +29,10 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
 public class FocusEventResult
 {
     public FocusEvent FocusEvent { get; set; }
-    public FocusCharacterInfo Character { get; set; }
 
     public FocusEventResult(FocusEvent e)
     {
         FocusEvent = e;
-        Character = e.Target.Info;
     }
 }
 

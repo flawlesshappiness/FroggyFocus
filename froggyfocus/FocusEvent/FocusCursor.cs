@@ -66,7 +66,7 @@ public partial class FocusCursor : Node3D
         Radius = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorRadius);
         RadiusNode.Scale = Vector3.One * Radius;
 
-        FocusTickTime = 0.25f;
+        FocusTickTime = 0.15f;
         FocusValue = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorStartValue);
         FocusTickAmount = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorTickAmount);
         FocusTickDecay = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorTickDecay);
@@ -91,6 +91,8 @@ public partial class FocusCursor : Node3D
 
     private void Process_Input()
     {
+        if (!InputEnabled) return;
+
         var input = PlayerInput.GetMoveInput();
         DesiredVelocity = new Vector3(input.X, 0, input.Y);
     }

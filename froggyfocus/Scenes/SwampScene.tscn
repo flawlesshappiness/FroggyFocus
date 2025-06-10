@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=32 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
 [ext_resource type="PackedScene" uid="uid://dg28gg150qhoy" path="res://Prefabs/Ground/pond_corner_convex_002.tscn" id="8_iu42u"]
 [ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="9_1p1c6"]
-[ext_resource type="Script" uid="uid://cca75ka0y8xbi" path="res://FocusEvent/FocusEventGroup.cs" id="9_iu42u"]
 [ext_resource type="Shader" uid="uid://babyxm8yext4w" path="res://Shaders/ToonWater.gdshader" id="10_e4xtd"]
 [ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="10_kd8f8"]
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
@@ -17,7 +16,6 @@
 [ext_resource type="Resource" uid="uid://4t23pgixusyd" path="res://FocusEvent/Resources/Swamp Land.tres" id="12_cmxon"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="12_yvk0y"]
 [ext_resource type="PackedScene" uid="uid://stvl4xxk6ii6" path="res://Prefabs/Ground/pond_straight_001.tscn" id="13_20fcr"]
-[ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Water.tres" id="13_xnl44"]
 [ext_resource type="PackedScene" uid="uid://cj4vim3s7ab2p" path="res://Prefabs/Nature/bush_001.tscn" id="15_xnl44"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
 [ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="17_achss"]
@@ -87,8 +85,13 @@ _data = {
 }
 point_count = 5
 
-[node name="SwampScene" type="Node3D"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_achss"]
+vertices = PackedVector3Array(-3.25, 0.25, -7.25, -6, 0.5, -5.5, -7.25, 0.5, -3.25, -0.5, 0.5, 0, 0, 0.5, -0.5, 0, 0.5, -7.5, -7.5, 0.5, 0, 7.25, 0.25, -3.25, 5.5, 0.5, -6, 3.25, 0.5, -7.25, 0.75, 0.5, 0, 7.5, 0.5, 0, -7.25, 0.25, 3.25, -5.5, 0.5, 6, -3.25, 0.5, 7.25, -0.5, 0.5, 0.5, 0.25, 0.25, 7.5, 0.25, 0.5, 0.75, 3.25, 0.25, 7.25, 6, 0.5, 5.5, 7.25, 0.5, 3.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 6, 4), PackedInt32Array(4, 6, 2), PackedInt32Array(4, 2, 0), PackedInt32Array(4, 0, 5), PackedInt32Array(9, 8, 7), PackedInt32Array(10, 4, 11), PackedInt32Array(11, 4, 7), PackedInt32Array(7, 4, 9), PackedInt32Array(9, 4, 5), PackedInt32Array(14, 13, 12), PackedInt32Array(6, 3, 15), PackedInt32Array(17, 16, 15), PackedInt32Array(15, 16, 14), PackedInt32Array(15, 14, 12), PackedInt32Array(15, 12, 6), PackedInt32Array(20, 19, 18), PackedInt32Array(10, 11, 17), PackedInt32Array(17, 11, 20), PackedInt32Array(17, 20, 18), PackedInt32Array(17, 18, 16)]
+
+[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("FocusEvent")]
 script = ExtResource("1_qfos7")
+FocusEvent = NodePath("World/FocusEvent_Land/FocusEvent")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_0ky7s")
@@ -156,50 +159,6 @@ transform = Transform3D(1.95269, 0, -0.432436, 0, 2, 0, 0.432436, 0, 1.95269, -3
 
 [node name="lilypad2" parent="World/Island_SmallRound/Lilypards" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.4893, -0.974196, -2.23894)
-
-[node name="Events" type="Node3D" parent="World/Island_SmallRound"]
-script = ExtResource("9_iu42u")
-ActiveCount = 5
-
-[node name="FocusEvent Land" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.53821, 0, 0.104064)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land2" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9387, 0, -3.20533)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land3" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04078, 0, -4.55918)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land4" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310871, 0, -0.572858)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land5" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43907, 0, 4.12799)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Water" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.86, -0.9, -14.421)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water2" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.24207, -0.9, -11.1408)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water3" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6669, -0.9, -8.04993)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water4" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6149, -0.9, 4.91301)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water5" parent="World/Island_SmallRound/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4541, -0.9, -5.33228)
-Info = ExtResource("13_xnl44")
 
 [node name="PathWaterSFX" type="Path3D" parent="World/Island_SmallRound"]
 curve = SubResource("Curve3D_bmghv")
@@ -270,58 +229,6 @@ transform = Transform3D(0.685515, 0, 1.87885, 0, 2, 0, -1.87885, 0, 0.685515, -4
 
 [node name="lilypad13" parent="World/Island_Long/Lilypards" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(1.79942, 0, -0.872974, 0, 2, 0, 0.872974, 0, 1.79942, 6.06111, -0.974194, -13.3967)
-
-[node name="Events" type="Node3D" parent="World/Island_Long"]
-script = ExtResource("9_iu42u")
-ActiveCount = 8
-
-[node name="FocusEvent Land" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2669, 0, -5.44188)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land2" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59659, 0, -1.12188)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land3" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.30501, 0, -3.16512)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land4" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.53096, 0, 2.36785)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land5" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89097, 0, -2.65269)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land6" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42903, 0, 2.54299)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land7" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1425, 0, 0.0327206)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Water" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.274, -0.9, -14.5961)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water2" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1324, -0.9, -5.37236)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water3" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8567, -0.9, -7.47398)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water4" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.12269, -0.9, -16.4059)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water5" parent="World/Island_Long/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.03746, -0.9, -20.0095)
-Info = ExtResource("13_xnl44")
 
 [node name="PathWaterSFX" type="Path3D" parent="World/Island_Long"]
 curve = SubResource("Curve3D_yvk0y")
@@ -415,83 +322,6 @@ transform = Transform3D(-1.79359, 0, 0.884891, 0, 2, 0, -0.884891, 0, -1.79359, 
 [node name="lilypad3" parent="World/Island_Corner/Lilypards" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(0.186931, 0, -1.99125, 0, 2, 0, 1.99125, 0, 0.186931, -15.0888, -0.974196, 11.6592)
 
-[node name="Events" type="Node3D" parent="World/Island_Corner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7996, 0, -13.6335)
-script = ExtResource("9_iu42u")
-ActiveCount = 8
-
-[node name="FocusEvent Land" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99365, 0, -7.18193)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land2" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1342, 0, -0.815894)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land3" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51355, 0, 1.73052)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land4" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62761, 0, -3.02279)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land5" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.48378, 0, -6.79997)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land6" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02225, 0, 2.11248)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land7" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83656, 0, 6.27162)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land8" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.590477, 0, 7.67215)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land9" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14427, 0, 11.1098)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Land10" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94001, 0, 14.0382)
-Info = ExtResource("12_cmxon")
-
-[node name="FocusEvent Water" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1971, -0.9, -16.9728)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water2" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112267, -0.9, -19.7314)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water3" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66492, -0.9, -17.2274)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water4" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6331, -0.9, -14.3415)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water5" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9229, -0.9, 1.55248)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water6" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5223, -0.9, 10.4649)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water7" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4829, -0.9, 0.321708)
-Info = ExtResource("13_xnl44")
-
-[node name="FocusEvent Water8" parent="World/Island_Corner/Events" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5174, -0.9, -2.90375)
-Info = ExtResource("13_xnl44")
-
 [node name="PathWaterSFX" type="Path3D" parent="World/Island_Corner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.39692, 0, -12.2792)
 curve = SubResource("Curve3D_52an4")
@@ -500,6 +330,29 @@ curve = SubResource("Curve3D_52an4")
 transform = Transform3D(4.99924, 0, -0.0872621, 0, 5, 0, 0.0872621, 0, 4.99924, 15.7921, -2.31306, 15.1815)
 
 [node name="RespawnArea" parent="World" instance=ExtResource("17_achss")]
+
+[node name="FocusEvent_Land" type="NavigationRegion3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)
+navigation_mesh = SubResource("NavigationMesh_achss")
+
+[node name="Floor" type="Node3D" parent="World/FocusEvent_Land"]
+
+[node name="pond_corner_convex_001" parent="World/FocusEvent_Land/Floor" instance=ExtResource("10_qfnsp")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8, 0, -8)
+
+[node name="pond_corner_convex_002" parent="World/FocusEvent_Land/Floor" instance=ExtResource("10_qfnsp")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 8, 0, -8)
+
+[node name="pond_corner_convex_003" parent="World/FocusEvent_Land/Floor" instance=ExtResource("10_qfnsp")]
+transform = Transform3D(-4, 0, 3.49691e-07, 0, 4, 0, -3.49691e-07, 0, -4, 8, 0, 8)
+
+[node name="pond_corner_convex_004" parent="World/FocusEvent_Land/Floor" instance=ExtResource("10_qfnsp")]
+transform = Transform3D(5.24537e-07, 0, 4, 0, 4, 0, -4, 0, 5.24537e-07, -8, 0, 8)
+
+[node name="FocusEvent" parent="World/FocusEvent_Land" instance=ExtResource("12_yvk0y")]
+Info = ExtResource("12_cmxon")
+Size = Vector2(5, 3)
+Offset = Vector3(0, 0, 0)
 
 [node name="Sounds" type="Node3D" parent="."]
 

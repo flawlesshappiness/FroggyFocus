@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections;
 
-public partial class FocusEvent : Area3D, IInteractable
+public partial class FocusEvent : Node3D
 {
     [Export]
     public FocusEventInfo Info;
@@ -37,8 +37,6 @@ public partial class FocusEvent : Area3D, IInteractable
     private bool EventStarted { get; set; }
     private bool EventEnabled { get; set; }
 
-    private Coroutine cr_active;
-
     public override void _Ready()
     {
         base._Ready();
@@ -50,103 +48,57 @@ public partial class FocusEvent : Area3D, IInteractable
         Target.Initialize(this);
     }
 
-    public void EnableEvent() => SetEventEnabled(true);
-    public void DisableEvent() => SetEventEnabled(false);
-    public void SetEventEnabled(bool enabled)
-    {
-        EventEnabled = enabled;
-
-        if (enabled)
-        {
-            CreateTarget();
-            DisableEventAfterDelay();
-            OnEnabled?.Invoke();
-        }
-        else
-        {
-            Target.Hide();
-            OnDisabled?.Invoke();
-        }
-    }
-
-    public void EnableEventAfterDelay()
-    {
-        cr_active = this.StartCoroutine(Cr, "active");
-        IEnumerator Cr()
-        {
-            var rng = new RandomNumberGenerator();
-            var delay = rng.RandfRange(10, 20);
-            yield return new WaitForSeconds(delay);
-            EnableEvent();
-        }
-    }
-
-    public void DisableEventAfterDelay()
-    {
-        cr_active = this.StartCoroutine(Cr, "active");
-        IEnumerator Cr()
-        {
-            var rng = new RandomNumberGenerator();
-            var delay = rng.RandfRange(60, 90);
-            yield return new WaitForSeconds(delay);
-            DisableEvent();
-        }
-    }
-
-    private void StopActiveCoroutine()
-    {
-        Coroutine.Stop(cr_active);
-    }
-
-    public void Interact()
-    {
-        if (!EventEnabled) return;
-
-        StartEvent();
-    }
-
     private void CreateTarget()
     {
         Target.GlobalPosition = TargetMarker.GlobalPosition;
         Target.SetCharacter(Info.Characters.PickRandom());
         Target.Show();
-        Target.StartMoving(0.2f);
     }
 
-    protected virtual void StartEvent()
+    private void HijackCamera()
     {
-        StopActiveCoroutine();
-
-        // Hijack camera
         CameraController.Instance.Target = this;
         CameraController.Instance.Offset = CameraMarker.Position;
         CameraController.Instance.TargetRotation = CameraMarker.GlobalRotationDegrees;
+        CameraController.Instance.TeleportCameraToTarget();
+    }
+
+    public virtual void StartEvent()
+    {
+        // Target
+        CreateTarget();
+
+        // Hijack camera
+        HijackCamera();
 
         // Disable player
         Player.SetAllLocks(nameof(FocusEvent), true);
 
-        this.StartCoroutine(Cr, nameof(StartEvent));
+        this.StartCoroutine(Cr, "event");
         IEnumerator Cr()
         {
-            AnimatePlayerToPosition(PlayerMarker, 1f);
-            yield return new WaitForSeconds(1f);
+            //AnimatePlayerToPosition(PlayerMarker, 1f);
 
             // Initialize cursor
             Cursor.GlobalPosition = Target.GlobalPosition;
             Cursor.Start(Target);
 
             // Start target
-            Target.StartMoving();
+            //Target.Start();
 
             // Start
             EventStarted = true;
             OnStarted?.Invoke();
+            FocusEventController.Instance.FocusEventStarted(this);
+            this.StartCoroutine(EventCr, "event");
+
+            yield return null;
         }
     }
 
     protected virtual void EndEvent(bool completed)
     {
-        this.StartCoroutine(Cr, nameof(EndEvent));
+        this.StartCoroutine(Cr, "event");
         IEnumerator Cr()
         {
             // Disable cursor
@@ -154,14 +106,16 @@ public partial class FocusEvent : Area3D, IInteractable
 
             // Camera target player
             Player.Instance.SetCameraTarget();
+            CameraController.Instance.TeleportCameraToTarget();
 
             // Stop target
-            Target.StopMoving();
+            //Target.Stop();
 
             if (completed)
             {
                 // Eat target
-                yield return Player.Instance.Character.AnimateEatTarget(Target.Character);
+                //yield return Player.Instance.Character.AnimateEatTarget(Target.Character);
+                CurrencyController.Instance.AddValue(CurrencyType.Money, Target.Info.CurrencyReward);
             }
 
             // Hide target
@@ -172,7 +126,32 @@ public partial class FocusEvent : Area3D, IInteractable
 
             // End
             EventStarted = false;
-            DisableEvent();
+            FocusEventController.Instance.FocusEventCompleted(new FocusEventCompletedResult(this));
+            yield return null;
+        }
+    }
+
+    IEnumerator EventCr()
+    {
+        var rng = new RandomNumberGenerator();
+
+        while (true)
+        {
+            // Move target
+            yield return Target.WaitForMoveToRandomPosition();
+
+            // Skill check / wait
+            var is_skill_check = rng.Randf() < 0.5f;
+            if (is_skill_check && false)
+            {
+                // Do skill check
+                yield return null;
+            }
+            else
+            {
+                var duration = rng.RandfRange(Target.Info.MoveDelayRange.X, Target.Info.MoveDelayRange.Y);
+                yield return new WaitForSeconds(duration);
+            }
         }
     }
 

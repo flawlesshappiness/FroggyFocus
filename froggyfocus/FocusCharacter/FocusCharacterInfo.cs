@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class FocusCharacterInfo : Resource
@@ -20,4 +21,7 @@ public partial class FocusCharacterInfo : Resource
 
     [Export]
     public int CurrencyReward = 1;
+
+    [Export]
+    public Array<FocusTargetActionType> Actions = new();
 }

@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=6 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
+[ext_resource type="PackedScene" uid="uid://depvd1cgtdpa3" path="res://Prefabs/Effects/exclamation_mark.tscn" id="2_a4ffy"]
+[ext_resource type="PackedScene" uid="uid://xj8mi6cxbljo" path="res://Prefabs/Effects/stunned_stars.tscn" id="3_mfarc"]
+[ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="4_mfarc"]
 
-[node name="FocusTarget" type="Node3D"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mk5ib"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_mfarc")
+
+[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("ExclamationMark", "StunnedStars", "SfxStun")]
 script = ExtResource("1_hmctk")
+ExclamationMark = NodePath("ExclamationMark")
+StunnedStars = NodePath("StunnedStars")
+SfxStun = NodePath("SfxStun")
+
+[node name="ExclamationMark" parent="." instance=ExtResource("2_a4ffy")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.25, 0)
+
+[node name="StunnedStars" parent="." instance=ExtResource("3_mfarc")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0.05, 0)
+
+[node name="SfxStun" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_mk5ib")
+volume_db = -25.0
+bus = &"SFX"

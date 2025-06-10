@@ -145,7 +145,16 @@ public partial class Player : TopDownController
         var interactable = PlayerInteract.GetInteractable();
         var node = interactable as Node3D;
 
-        this.StartCoroutine(Cr, nameof(Interact));
+        if (interactable == null)
+        {
+            GameScene.Instance.FocusEvent.StartEvent();
+        }
+        else
+        {
+            interactable?.Interact();
+        }
+
+        //this.StartCoroutine(Cr, nameof(Interact));
         IEnumerator Cr()
         {
             MovementLock.AddLock(nameof(Interact));
