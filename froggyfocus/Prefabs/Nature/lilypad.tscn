@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dbhbo27vieidm"]
 
-[ext_resource type="PackedScene" uid="uid://cg1klwhnjrbjm" path="res://Assets/Quaternius/Nature/Lilypad.fbx" id="1_ky0cl"]
+[ext_resource type="PackedScene" uid="uid://dtyc444jon3uy" path="res://Assets/Quaternius/Nature/Lilypad_NoFlower.fbx" id="1_ky0cl"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ky0cl"]
 height = 0.111816
@@ -8,7 +8,7 @@ radius = 0.64502
 
 [node name="lilypad" type="Node3D"]
 
-[node name="Lilypad" parent="." instance=ExtResource("1_ky0cl")]
+[node name="Lilypad_NoFlower" parent="." instance=ExtResource("1_ky0cl")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
