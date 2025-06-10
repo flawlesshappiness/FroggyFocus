@@ -4,6 +4,12 @@ using System.Collections;
 public partial class RespawnArea : Area3D
 {
     [Export]
+    public float MinCameraHeight;
+
+    [Export]
+    public Camera3D Camera;
+
+    [Export]
     public AudioStreamPlayer3D SfxImpact;
 
     private bool respawning;
@@ -27,7 +33,7 @@ public partial class RespawnArea : Area3D
         IEnumerator Cr()
         {
             respawning = true;
-            //CameraController.Instance.Target = null;
+            SetCamera(Player.Instance.Camera);
             SfxImpact.GlobalPosition = Player.Instance.GlobalPosition;
             SfxImpact.Play();
             yield return new WaitForSeconds(1f);
@@ -35,5 +41,15 @@ public partial class RespawnArea : Area3D
             Player.Instance.Respawn();
             respawning = false;
         }
+    }
+
+    private void SetCamera(Camera3D other)
+    {
+        Camera.GlobalTransform = other.GlobalTransform;
+        Camera.Current = true;
+
+        var cam_pos = Camera.GlobalPosition;
+        var y = Mathf.Max(Camera.GlobalPosition.Y, GlobalPosition.Y + MinCameraHeight);
+        Camera.GlobalPosition = new Vector3(cam_pos.X, y, cam_pos.Z);
     }
 }

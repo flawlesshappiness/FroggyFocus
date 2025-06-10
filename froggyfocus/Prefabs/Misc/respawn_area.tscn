@@ -11,10 +11,12 @@ random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("2_0jsv0")
 
-[node name="RespawnArea" type="Area3D" node_paths=PackedStringArray("SfxImpact")]
-collision_layer = 0
+[node name="RespawnArea" type="Area3D" node_paths=PackedStringArray("Camera", "SfxImpact")]
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_uem8o")
+MinCameraHeight = 0.25
+Camera = NodePath("Camera3D")
 SfxImpact = NodePath("SfxImpact")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -25,3 +27,6 @@ shape = SubResource("BoxShape3D_20fcr")
 stream = SubResource("AudioStreamRandomizer_0jsv0")
 volume_db = -5.0
 bus = &"SFX"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

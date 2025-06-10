@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=32 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
@@ -45,6 +45,9 @@ shader_parameter/foam_edge_softness = 0.05
 shader_parameter/foam_smoothness = 0.03
 shader_parameter/foam_distortion_speed = 0.5
 shader_parameter/foam_distortion_amount = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_achss"]
+size = Vector3(1000, 1, 1000)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_20fcr"]
 vertices = PackedVector3Array(-4.75, -0.5, -11.9182, -4.25, -0.5, -10.4182, -3, -0.5, -10.9182, -3.25, -0.5, -12.1682, 6.5, -0.5, -7.41817, 8, -0.5, -7.41817, 8.25, -0.5, -7.91817, 7.5, -0.5, -9.16817, 6.25, -0.5, -8.41817, 4.5, 0.5, -4.41817, 3.25, 0.5, -6.91817, 2.5, 0.5, -7.41817, -0.5, 0.25, -7.66817, 1.25, 0.25, 7.58183, 2.75, 0.5, 3.08183, 2.75, 0.5, 1.58183, -5, 0.5, 4.08183, -4, 0.5, 5.08183, 4.5, 0.5, 6.58183, 3.75, 0.5, 4.08183, -7.5, 0.5, -1.91817, -7.25, 0.25, 3.08183, 5.25, 0.5, 4.08183, 6.25, 0.5, 5.08183, 3.5, 0.5, 0.581833, 6.25, 0.5, 3.33183, 7.5, 0.5, 1.83183, 6.25, 0.5, 1.33183, 5.5, 0.5, 0.581833, 7.25, 0.25, -2.91817, -3.5, 0.25, -7.16817, -6, 0.5, -5.41817, -3, 0.5, 7.33183, 13.25, -0.5, -5.91817, 12.5, -0.5, -6.16817, 11.75, -0.5, -5.41817, 12, -0.5, -4.41817, 13.5, -0.5, -4.41817, 5, 1.5, 1.58183, 4, 1.5, 1.58183, 3.75, 1.5, 2.08183, 4.25, 1.5, 3.08183, 5.25, 1.5, 2.83183, 9.75, -0.5, 7.33183, 10.25, -0.5, 8.83183, 11.5, -0.5, 8.33183, 11.25, -0.5, 7.08183, -4.5, -0.5, 12.8318, -3.25, -0.5, 12.8318, -3, -0.5, 12.3318, -3.5, -0.5, 11.0818, -4.75, -0.5, 11.3318)
@@ -111,6 +114,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("PlaneMesh_20fcr")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_2hsqb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/Water"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Water/StaticBody3D"]
+shape = SubResource("BoxShape3D_achss")
 
 [node name="Island_SmallRound" type="NavigationRegion3D" parent="World"]
 navigation_mesh = SubResource("NavigationMesh_20fcr")
@@ -324,6 +334,7 @@ curve = SubResource("Curve3D_52an4")
 transform = Transform3D(4.99924, 0, -0.0872621, 0, 5, 0, 0.0872621, 0, 4.99924, 15.7921, -2.31306, 15.1815)
 
 [node name="RespawnArea" parent="World" instance=ExtResource("17_achss")]
+collision_layer = 0
 
 [node name="FocusEvent_Land" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)

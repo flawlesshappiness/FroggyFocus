@@ -168,6 +168,7 @@ Camera = NodePath("SpringArm3D/Camera3D")
 SpringArm = NodePath("SpringArm3D")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+collision_mask = 9
 spring_length = 2.5
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
