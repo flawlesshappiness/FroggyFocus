@@ -40,12 +40,14 @@ public partial class PauseView : View
     {
         base.OnShow();
         Scene.PauseLock.AddLock(nameof(PauseView));
+        MouseVisibility.Show(nameof(PauseView));
     }
 
     protected override void OnHide()
     {
         base.OnHide();
         Scene.PauseLock.RemoveLock(nameof(PauseView));
+        MouseVisibility.Hide(nameof(PauseView));
     }
 
     public override void _Input(InputEvent @event)

@@ -45,12 +45,14 @@ public partial class UpgradeView : View
         Open();
 
         Player.SetAllLocks(nameof(UpgradeView), true);
+        MouseVisibility.Show(nameof(UpgradeView));
     }
 
     protected override void OnHide()
     {
         base.OnHide();
         Player.SetAllLocks(nameof(UpgradeView), false);
+        MouseVisibility.Hide(nameof(UpgradeView));
     }
 
     private void RegisterDebugActions()
