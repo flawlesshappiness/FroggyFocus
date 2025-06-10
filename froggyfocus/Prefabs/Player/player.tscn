@@ -1,10 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhuic2i3dy7q5"]
+[gd_scene load_steps=24 format=3 uid="uid://bhuic2i3dy7q5"]
 
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="1_6dc14"]
 [ext_resource type="Script" uid="uid://c2ko138plrgx1" path="res://Player/Player.cs" id="1_hnwp3"]
 [ext_resource type="Script" uid="uid://xvqq6jouue22" path="res://Player/PlayerInteract.cs" id="3_sysjd"]
 [ext_resource type="PackedScene" uid="uid://cbnj34ngtuf0d" path="res://Prefabs/Player/player_money_gained.tscn" id="4_21ygf"]
 [ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="5_you5p"]
+[ext_resource type="PackedScene" uid="uid://depvd1cgtdpa3" path="res://Prefabs/Effects/exclamation_mark.tscn" id="6_ucnkw"]
+[ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="7_ine62"]
+[ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="8_m5xj4"]
+[ext_resource type="Script" uid="uid://t86h1rrv1tss" path="res://Camera/ThirdPersonCamera.cs" id="9_a00l3"]
 
 [sub_resource type="Curve" id="Curve_sysjd"]
 _limits = [0.0, 20.0, 0.0, 1.0]
@@ -80,18 +84,22 @@ scale_min = 0.2
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_m5xj4")
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "MoneyGained", "PsDustStream", "PsDustJump", "PsDustLand")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "MoneyGained", "ExclamationMark", "SfxFocusTargetFound", "SfxFocusTargetStarted", "PsDustStream", "PsDustJump", "PsDustLand", "Camera")]
 collision_layer = 2
 script = ExtResource("1_hnwp3")
 MoveSpeed = 2.0
 PlayerInteract = NodePath("Frog/Interact")
 Character = NodePath("Frog")
 MoneyGained = NodePath("PlayerMoneyGained")
+ExclamationMark = NodePath("Frog/ExclamationMark")
+SfxFocusTargetFound = NodePath("SfxFocusTargetFound")
+SfxFocusTargetStarted = NodePath("SfxFocusTargetStarted")
 PsDustStream = NodePath("Frog/ps_dust_stream")
 PsDustJump = NodePath("Frog/ps_dust_jump")
 PsDustLand = NodePath("Frog/ps_dust_land")
 JumpLengthCurve = SubResource("Curve_sysjd")
 JumpHeightCurve = SubResource("Curve_21ygf")
+Camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -140,4 +148,27 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_a00l3")
 draw_pass_1 = SubResource("SphereMesh_m5xj4")
 
+[node name="ExclamationMark" parent="Frog" instance=ExtResource("6_ucnkw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.946484, -0.547889)
+
 [node name="PlayerMoneyGained" parent="." instance=ExtResource("4_21ygf")]
+
+[node name="SfxFocusTargetFound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_ine62")
+bus = &"SFX"
+
+[node name="SfxFocusTargetStarted" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_m5xj4")
+bus = &"SFX"
+
+[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("Camera", "SpringArm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.655483, 0)
+script = ExtResource("9_a00l3")
+Camera = NodePath("SpringArm3D/Camera3D")
+SpringArm = NodePath("SpringArm3D")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+spring_length = 2.5
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+current = true

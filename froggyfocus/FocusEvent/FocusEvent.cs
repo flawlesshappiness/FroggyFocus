@@ -14,7 +14,7 @@ public partial class FocusEvent : Node3D
     public Vector3 Offset;
 
     [Export]
-    public Marker3D CameraMarker;
+    public Camera3D Camera;
 
     [Export]
     public Marker3D PlayerMarker;
@@ -57,10 +57,7 @@ public partial class FocusEvent : Node3D
 
     private void HijackCamera()
     {
-        CameraController.Instance.Target = this;
-        CameraController.Instance.Offset = CameraMarker.Position;
-        CameraController.Instance.TargetRotation = CameraMarker.GlobalRotationDegrees;
-        CameraController.Instance.TeleportCameraToTarget();
+        Camera.Current = true;
     }
 
     public virtual void StartEvent()
@@ -106,7 +103,6 @@ public partial class FocusEvent : Node3D
 
             // Camera target player
             Player.Instance.SetCameraTarget();
-            CameraController.Instance.TeleportCameraToTarget();
 
             // Stop target
             //Target.Stop();

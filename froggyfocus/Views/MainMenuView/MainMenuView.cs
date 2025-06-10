@@ -58,6 +58,7 @@ public partial class MainMenuView : View
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_overlay");
 
             Hide();
+            MouseVisibility.Hide(nameof(MainMenuView));
             Scene.Goto<SwampScene>();
             GameView.Instance.Show();
             GameView.Instance.AnimateHideOverlay();

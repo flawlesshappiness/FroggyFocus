@@ -9,6 +9,10 @@ public partial class PlayerInput : Node
     public static CustomInputAction Jump = new CustomInputAction("Jump");
     public static CustomInputAction Interact = new CustomInputAction("Interact");
     public static CustomInputAction Pause = new CustomInputAction("Pause");
+    public static CustomInputAction ZoomIn = new CustomInputAction("ZoomIn");
+    public static CustomInputAction ZoomOut = new CustomInputAction("ZoomOut");
+    public static CustomInputAction ZoomIn_Controller = new CustomInputAction("ZoomIn_Controller");
+    public static CustomInputAction ZoomOut_Controller = new CustomInputAction("ZoomOut_Controller");
 
     public static Vector2 GetMoveInput()
     {
@@ -17,5 +21,10 @@ public partial class PlayerInput : Node
             Right.Name,
             Forward.Name,
             Back.Name);
+    }
+
+    public static Vector2 GetLookInput()
+    {
+        return Input.GetVector("LookLeft", "LookRight", "LookUp", "LookDown");
     }
 }

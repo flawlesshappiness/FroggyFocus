@@ -1,6 +1,5 @@
-[gd_scene load_steps=32 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=31 format=3 uid="uid://dv5luqtp3xbwh"]
 
-[ext_resource type="Script" uid="uid://dmhg4thsgjovg" path="res://Camera/CameraController.cs" id="1_bn4uc"]
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
@@ -95,11 +94,6 @@ FocusEvent = NodePath("World/FocusEvent_Land/FocusEvent")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_0ky7s")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.335353, 0.942093, 0, -0.942093, 0.335353, 0, 5.23246, 1.40213)
-script = ExtResource("1_bn4uc")
-Speed = 1.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 5.72245, 3.27611)

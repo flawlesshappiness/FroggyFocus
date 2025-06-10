@@ -27,7 +27,7 @@ public partial class RespawnArea : Area3D
         IEnumerator Cr()
         {
             respawning = true;
-            CameraController.Instance.Target = null;
+            //CameraController.Instance.Target = null;
             SfxImpact.GlobalPosition = Player.Instance.GlobalPosition;
             SfxImpact.Play();
             yield return new WaitForSeconds(1f);

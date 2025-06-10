@@ -11,3 +11,5 @@ sky_material = SubResource("PanoramaSkyMaterial_mxhvt")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_gmxq7")
+fog_enabled = true
+fog_light_color = Color(0.308, 0.56, 0.5516, 1)

@@ -17,6 +17,15 @@ public partial class Player : TopDownController
     public PlayerMoneyGained MoneyGained;
 
     [Export]
+    public ExclamationMark ExclamationMark;
+
+    [Export]
+    public AudioStreamPlayer3D SfxFocusTargetFound;
+
+    [Export]
+    public AudioStreamPlayer3D SfxFocusTargetStarted;
+
+    [Export]
     public GpuParticles3D PsDustStream;
 
     [Export]
@@ -36,14 +45,19 @@ public partial class Player : TopDownController
     public static MultiLock MovementLock = new();
     public static MultiLock InteractLock = new();
 
+    private bool IsCharging { get; set; }
+
+    private bool has_focus_target;
     private float jump_charge;
     private Vector3 respawn_position;
+
+    private Coroutine cr_wait_focus_target;
 
     public override void _Ready()
     {
         base._Ready();
         Instance = this;
-        SetCameraTarget();
+        //SetCameraTarget();
 
         OnMoveStart += () => MoveChanged(true);
         OnMoveStop += () => MoveChanged(false);
@@ -92,10 +106,12 @@ public partial class Player : TopDownController
         if (MovementLock.IsLocked) return;
         if (IsJumping) return;
 
-        var input = PlayerInput.GetMoveInput();
-        if (input.Length() < 0.1f) return;
+        var input = PlayerInput.GetMoveInput().Normalized();
+        var dir = new Vector3(input.X, 0, input.Y);
+        if (dir.Length() < 0.1f) return;
+        if (dir == Vector3.Zero) return;
 
-        Character.StartFacingDirection(new Vector3(input.X, 0, input.Y));
+        Character.StartFacingDirection(Camera.GlobalBasis * dir);
     }
 
     private void Process_Jump()
@@ -105,11 +121,13 @@ public partial class Player : TopDownController
 
         if (PlayerInput.Jump.Held)
         {
+            IsCharging = true;
             jump_charge += GameTime.DeltaTime * 0.5f;
             Character.SetCharging(true);
         }
         else if (PlayerInput.Jump.Released)
         {
+            IsCharging = false;
             var t = Mathf.Clamp(jump_charge, 0, 1);
             jump_charge = 0;
             var height = JumpHeightCurve.Sample(t);
@@ -143,33 +161,22 @@ public partial class Player : TopDownController
         if (PlayerInput.Jump.Held) return;
 
         var interactable = PlayerInteract.GetInteractable();
-        var node = interactable as Node3D;
 
-        if (interactable == null)
+        if (has_focus_target)
         {
-            GameScene.Instance.FocusEvent.StartEvent();
+            StartFocusEvent();
         }
-        else
+        else if (interactable != null)
         {
             interactable?.Interact();
-        }
-
-        //this.StartCoroutine(Cr, nameof(Interact));
-        IEnumerator Cr()
-        {
-            MovementLock.AddLock(nameof(Interact));
-            InteractLock.AddLock(nameof(Interact));
-
-            yield return Character.AnimateInteract(node);
-            interactable?.Interact();
-
-            MovementLock.RemoveLock(nameof(Interact));
-            InteractLock.RemoveLock(nameof(Interact));
         }
     }
 
     public void SetCameraTarget()
     {
+        Camera.Current = true;
+        return;
+
         CameraController.Instance.Speed = 1.0f;
         CameraController.Instance.Target = this;
         CameraController.Instance.TargetRotation = new Vector3(-60, 0, 0);
@@ -177,6 +184,7 @@ public partial class Player : TopDownController
 
     private void Process_CameraOffset()
     {
+        if (CameraController.Instance == null) return;
         if (CameraController.Instance.Target != this) return;
 
         var default_offset = new Vector3(0, 5, 3f);
@@ -194,13 +202,22 @@ public partial class Player : TopDownController
     private void MoveChanged(bool moving)
     {
         Character.SetMoving(moving);
+
+        if (moving)
+        {
+            StopWaitForFocusTarget();
+        }
+        else
+        {
+            StartWaitForFocusTarget();
+        }
     }
 
     private void JumpChanged(bool jumping)
     {
         Character.SetJumping(jumping);
 
-        CameraController.Instance.Speed = jumping ? 4.0f : 1.0f;
+        //CameraController.Instance.Speed = jumping ? 4.0f : 1.0f;
 
         if (jumping)
         {
@@ -230,7 +247,7 @@ public partial class Player : TopDownController
     {
         var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), respawn_position);
         GlobalPosition = nav_position;
-        CameraController.Instance.TeleportCameraToTarget();
+        //CameraController.Instance.TeleportCameraToTarget();
     }
 
     private void PlayDustStreamPS(float duration)
@@ -247,5 +264,56 @@ public partial class Player : TopDownController
     private void StopDustStreamPS()
     {
         PsDustStream.Emitting = false;
+    }
+
+    private void StopWaitForFocusTarget()
+    {
+        Coroutine.Stop(cr_wait_focus_target);
+
+        if (has_focus_target)
+        {
+            ExclamationMark.AnimateHide();
+            has_focus_target = false;
+        }
+    }
+
+    private void StartWaitForFocusTarget()
+    {
+        cr_wait_focus_target = this.StartCoroutine(Cr, nameof(StartWaitForFocusTarget));
+        IEnumerator Cr()
+        {
+            var rng = new RandomNumberGenerator();
+
+            while (true)
+            {
+                var duration = rng.RandfRange(2f, 8f);
+                yield return new WaitForSeconds(duration);
+
+                has_focus_target = true;
+                ExclamationMark.AnimateShow();
+                SfxFocusTargetFound.Play();
+
+                yield return new WaitForSeconds(2f);
+
+                ExclamationMark.AnimateHide();
+                has_focus_target = false;
+            }
+        }
+    }
+
+    private void StartFocusEvent()
+    {
+        StopWaitForFocusTarget();
+
+        var id = nameof(StartFocusEvent);
+        this.StartCoroutine(Cr, id);
+        IEnumerator Cr()
+        {
+            Player.SetAllLocks(id, true);
+            SfxFocusTargetStarted.Play();
+            yield return ExclamationMark.AnimateBounce();
+            Player.SetAllLocks(id, false);
+            GameScene.Instance.FocusEvent.StartEvent();
+        }
     }
 }
