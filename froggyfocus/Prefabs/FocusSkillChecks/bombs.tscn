@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc86o50qja4fn"]
+
+[ext_resource type="Script" uid="uid://b1qcu2liwvoof" path="res://FocusSkillCheck/FocusSkillCheck_Bombs.cs" id="1_whlow"]
+[ext_resource type="PackedScene" uid="uid://d3em6nli2qht2" path="res://Prefabs/FocusSkillChecks/skill_check_bomb.tscn" id="2_enwqw"]
+
+[node name="Bombs" type="Node3D" node_paths=PackedStringArray("BombTemplate")]
+script = ExtResource("1_whlow")
+BombTemplate = NodePath("SkillCheckBomb")
+
+[node name="SkillCheckBomb" parent="." instance=ExtResource("2_enwqw")]

@@ -16,12 +16,14 @@ public partial class FocusCursor : Node3D
     public AudioStreamPlayer SfxFocusChanged;
 
     public bool InputEnabled { get; set; }
+    public bool TickEnabled { get; set; }
     public FocusTarget Target { get; set; }
+    public float Radius { get; private set; }
     private Vector3 DesiredVelocity { get; set; }
-    private float Radius { get; set; }
     private float DistanceToTarget => Target == null ? 0f : GlobalPosition.DistanceTo(Target.GlobalPosition) - Target.Radius;
     private bool IsTargetInRange => DistanceToTarget < Radius;
     private float FocusValue { get; set; }
+    private float FocusMax { get; set; }
     private float FocusTickTime { get; set; }
     private float FocusTickAmount { get; set; }
     private float FocusTickDecay { get; set; }
@@ -48,10 +50,11 @@ public partial class FocusCursor : Node3D
 
     public void Start(FocusTarget target)
     {
-        Load();
+        Load(target);
         Filled = false;
         Empty = false;
         InputEnabled = true;
+        TickEnabled = true;
         Show();
     }
 
@@ -61,13 +64,14 @@ public partial class FocusCursor : Node3D
         InputEnabled = false;
     }
 
-    public void Load()
+    public void Load(FocusTarget target)
     {
         Radius = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorRadius);
         RadiusNode.Scale = Vector3.One * Radius;
 
         FocusTickTime = 0.15f;
-        FocusValue = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorStartValue);
+        FocusMax = target.Info.FocusValue;
+        FocusValue = FocusMax * StatsController.Instance.GetCurrentStatsValue(StatsType.CursorStartValue);
         FocusTickAmount = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorTickAmount);
         FocusTickDecay = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorTickDecay);
         MoveSpeed = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorMoveSpeed);
@@ -107,6 +111,7 @@ public partial class FocusCursor : Node3D
     private void Process_Target()
     {
         if (!InputEnabled) return;
+        if (!TickEnabled) return;
         if (Filled) return;
         if (Empty) return;
 
@@ -127,12 +132,21 @@ public partial class FocusCursor : Node3D
         }
     }
 
+    public void AdjustFocusValue(float value)
+    {
+        SetFocusValue(FocusValue + value);
+    }
+
     private void SetFocusValue(float value)
     {
-        FocusValue = Mathf.Clamp(value, 0f, 1f);
-        FillNode.Scale = Vector3.One * FocusValue;
+        if (Filled) return;
+        if (Empty) return;
 
-        if (FocusValue >= 1)
+        FocusValue = Mathf.Clamp(value, 0f, FocusMax);
+        var t = FocusValue / FocusMax;
+        FillNode.Scale = Vector3.One * t;
+
+        if (FocusValue >= FocusMax)
         {
             Filled = true;
             OnFocusFilled?.Invoke();
@@ -148,7 +162,8 @@ public partial class FocusCursor : Node3D
     {
         var pitch_min = 0.5f;
         var pitch_max = 1.5f;
-        SfxFocusChanged.PitchScale = Mathf.Lerp(pitch_min, pitch_max, value);
+        var t = value / FocusMax;
+        SfxFocusChanged.PitchScale = Mathf.Lerp(pitch_min, pitch_max, t);
         SfxFocusChanged.Play();
     }
 }

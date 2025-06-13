@@ -8,6 +8,9 @@ public partial class FocusCharacterInfo : Resource
     public PackedScene Scene;
 
     [Export]
+    public float FocusValue = 50;
+
+    [Export]
     public Vector2 SizeRange = new Vector2(1, 1);
 
     [Export]
@@ -23,5 +26,5 @@ public partial class FocusCharacterInfo : Resource
     public int CurrencyReward = 1;
 
     [Export]
-    public Array<FocusTargetActionType> Actions = new();
+    public Array<FocusSkillCheckType> SkillChecks;
 }

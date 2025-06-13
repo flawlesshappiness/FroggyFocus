@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=7 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
 [ext_resource type="PackedScene" uid="uid://c7v778qpl5v6w" path="res://Prefabs/FocusEvent/FocusTarget.tscn" id="3_2i5pb"]
+[ext_resource type="PackedScene" uid="uid://bbebkriqvf8n1" path="res://Prefabs/FocusSkillChecks/Projectiles.tscn" id="5_2i5pb"]
+[ext_resource type="PackedScene" uid="uid://bc86o50qja4fn" path="res://Prefabs/FocusSkillChecks/bombs.tscn" id="6_dbk1m"]
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "PlayerMarker", "TargetMarker", "Cursor", "Target")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "PlayerMarker", "TargetMarker", "Cursor", "Target", "OverrideSkillCheck", "SkillChecks")]
 script = ExtResource("1_p778c")
 Info = ExtResource("2_2i5pb")
 Size = Vector2(5, 2)
@@ -15,6 +17,8 @@ PlayerMarker = NodePath("PlayerMarker")
 TargetMarker = NodePath("TargetMarker")
 Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
+OverrideSkillCheck = NodePath("SkillChecks/Bombs")
+SkillChecks = [NodePath("SkillChecks/Bombs")]
 
 [node name="CameraMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.294, 0)
@@ -29,3 +33,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 [node name="FocusCursor" parent="." instance=ExtResource("2_tceec")]
 
 [node name="FocusTarget" parent="." instance=ExtResource("3_2i5pb")]
+
+[node name="SkillChecks" type="Node3D" parent="."]
+
+[node name="Projectiles" parent="SkillChecks" instance=ExtResource("5_2i5pb")]
+
+[node name="Bombs" parent="SkillChecks" instance=ExtResource("6_dbk1m")]

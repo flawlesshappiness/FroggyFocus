@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbebkriqvf8n1"]
+
+[ext_resource type="Script" uid="uid://dqjofa36jp0vj" path="res://FocusSkillCheck/FocusSkillCheck_Projectiles.cs" id="1_ktgg5"]
+[ext_resource type="Texture2D" uid="uid://sddy6aynco30" path="res://Assets/KenneyNL/Cursor/Basic/target_round_b.png" id="2_3n6gm"]
+[ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="3_bwyey"]
+[ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="4_05ss5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3n6gm"]
+radius = 0.1
+height = 0.2
+
+[node name="Projectiles" type="Node3D" node_paths=PackedStringArray("TargetTemplate", "MoverTemplate", "SfxSuccess", "SfxFail")]
+script = ExtResource("1_ktgg5")
+TargetTemplate = NodePath("TargetTemplate")
+MoverTemplate = NodePath("MoverTemplate")
+SfxSuccess = NodePath("SfxSuccess")
+SfxFail = NodePath("SfxFail")
+
+[node name="TargetTemplate" type="Node3D" parent="."]
+
+[node name="Sprite" type="Sprite3D" parent="TargetTemplate"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.01, 0)
+modulate = Color(1, 1, 1, 0.392157)
+texture = ExtResource("2_3n6gm")
+
+[node name="MoverTemplate" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_3n6gm")
+
+[node name="SfxSuccess" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bwyey")
+bus = &"SFX"
+
+[node name="SfxFail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_05ss5")
+bus = &"SFX"

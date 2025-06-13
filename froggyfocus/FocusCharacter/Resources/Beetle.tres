@@ -6,10 +6,11 @@
 [resource]
 script = ExtResource("2_mcg1p")
 Scene = ExtResource("1_hx3bp")
+FocusValue = 200.0
 SizeRange = Vector2(0.4, 0.6)
 MoveSpeed = 1.0
 MoveLengthRange = Vector2(0.5, 1)
 MoveDelayRange = Vector2(0.5, 1)
 CurrencyReward = 25
-Actions = Array[int]([0])
+SkillChecks = Array[int]([0])
 metadata/_custom_type_script = "uid://buqirimb2mf5"

@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Collections;
 
@@ -28,6 +29,12 @@ public partial class FocusEvent : Node3D
     [Export]
     public FocusTarget Target;
 
+    [Export]
+    public FocusSkillCheck OverrideSkillCheck;
+
+    [Export]
+    public Array<FocusSkillCheck> SkillChecks;
+
     public event Action<FocusEventCompletedResult> OnCompleted;
     public event Action<FocusEventFailedResult> OnFailed;
     public event Action OnStarted;
@@ -36,6 +43,7 @@ public partial class FocusEvent : Node3D
 
     private bool EventStarted { get; set; }
     private bool EventEnabled { get; set; }
+    private FocusSkillCheck CurrentSkillCheck { get; set; }
 
     public override void _Ready()
     {
@@ -98,6 +106,9 @@ public partial class FocusEvent : Node3D
         this.StartCoroutine(Cr, "event");
         IEnumerator Cr()
         {
+            // Clear skill check
+            ClearSkillCheck();
+
             // Disable cursor
             Cursor.Stop();
 
@@ -127,7 +138,7 @@ public partial class FocusEvent : Node3D
         }
     }
 
-    IEnumerator EventCr()
+    private IEnumerator EventCr()
     {
         var rng = new RandomNumberGenerator();
 
@@ -138,10 +149,9 @@ public partial class FocusEvent : Node3D
 
             // Skill check / wait
             var is_skill_check = rng.Randf() < 0.5f;
-            if (is_skill_check && false)
+            if (is_skill_check)
             {
-                // Do skill check
-                yield return null;
+                yield return WaitForSkillCheck();
             }
             else
             {
@@ -149,6 +159,20 @@ public partial class FocusEvent : Node3D
                 yield return new WaitForSeconds(duration);
             }
         }
+    }
+
+    private IEnumerator WaitForSkillCheck()
+    {
+        CurrentSkillCheck = OverrideSkillCheck ?? SkillChecks.PickRandom();
+        yield return CurrentSkillCheck.Start(this);
+        CurrentSkillCheck = null;
+    }
+
+    private void ClearSkillCheck()
+    {
+        if (CurrentSkillCheck == null) return;
+        CurrentSkillCheck.Clear();
+        CurrentSkillCheck = null;
     }
 
     private void FocusFilled()
