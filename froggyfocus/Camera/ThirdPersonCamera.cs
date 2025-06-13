@@ -8,6 +8,8 @@ public partial class ThirdPersonCamera : Node3D
     [Export]
     public SpringArm3D SpringArm;
 
+    public static MultiLock InputLock = new();
+
     private float MouseSensitivity => 0.005f;
     private float ControllerSensitivity => 0.05f;
 
@@ -17,6 +19,9 @@ public partial class ThirdPersonCamera : Node3D
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
+
+        if (InputLock.IsLocked) return;
+
         if (@event is InputEventMouseMotion mouse_motion)
         {
             var relative = mouse_motion.Relative;

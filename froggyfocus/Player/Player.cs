@@ -197,6 +197,7 @@ public partial class Player : TopDownController
     {
         MovementLock.SetLock(key, locked);
         InteractLock.SetLock(key, locked);
+        ThirdPersonCamera.InputLock.SetLock(key, locked);
     }
 
     private void MoveChanged(bool moving)
