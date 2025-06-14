@@ -267,7 +267,7 @@ public partial class FrogCharacter : Character
         }
     }
 
-    private void SetHandsBack()
+    public void SetHandsBack()
     {
         param_right_hand_forward.Set(false);
         param_right_hand_right.Set(false);
@@ -277,28 +277,28 @@ public partial class FrogCharacter : Character
         IsHandOut = false;
     }
 
-    private void SetRightHandForward()
+    public void SetRightHandForward()
     {
         SetHandsBack();
         param_right_hand_forward.Set(true);
         IsHandOut = true;
     }
 
-    private void SetRightHandRight()
+    public void SetRightHandRight()
     {
         SetHandsBack();
         param_right_hand_right.Set(true);
         IsHandOut = true;
     }
 
-    private void SetLeftHandForward()
+    public void SetLeftHandForward()
     {
         SetHandsBack();
         param_left_hand_forward.Set(true);
         IsHandOut = true;
     }
 
-    private void SetLeftHandLeft()
+    public void SetLeftHandLeft()
     {
         SetHandsBack();
         param_left_hand_left.Set(true);

@@ -1,0 +1,147 @@
+[gd_scene load_steps=11 format=3 uid="uid://bklev6v828pf7"]
+
+[ext_resource type="Script" uid="uid://qluuhf5keo3r" path="res://Views/FocusOutroView/FocusOutroView.cs" id="1_ftjlc"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="2_q36ha"]
+[ext_resource type="AudioStream" uid="uid://cveebtv8pq815" path="res://Sounds/Raw/sfx_marimba_chord_c.wav" id="3_usddo"]
+[ext_resource type="AudioStream" uid="uid://co8y8prv2lgeu" path="res://Sounds/Raw/sfx_marimba_chord_d.wav" id="4_r3lkl"]
+[ext_resource type="AudioStream" uid="uid://csintuu1d7poa" path="res://Sounds/Raw/sfx_marimba_chord_f.wav" id="5_87eld"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q36ha"]
+viewport_path = NodePath("SubViewport_Frog")
+
+[sub_resource type="Animation" id="Animation_usddo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport_Frog/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.489592, 0.426302, -0.797361)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport_Frog/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.533163, -2.74907, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1gv4t"]
+resource_name = "eat_bug"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport_Frog/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.65, 1.25, 2),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
+"update": 0,
+"values": [Vector3(-0.489592, 0.426302, -0.797361), Vector3(-0.489592, 0.426302, -0.797361), Vector3(-0.207617, 0.0907945, -1.94924), Vector3(-0.207617, 0.0907945, -1.94924)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport_Frog/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.65, 1.25, 2),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
+"update": 0,
+"values": [Vector3(-0.533163, -2.74907, 0), Vector3(-0.533163, -2.74907, 0), Vector3(0.210155, -2.75469, -1.52364e-08), Vector3(0.210155, -2.75469, -1.52364e-08)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3lkl"]
+_data = {
+&"RESET": SubResource("Animation_usddo"),
+&"eat_bug": SubResource("Animation_1gv4t")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dv0nn"]
+streams_count = 3
+stream_0/stream = ExtResource("3_usddo")
+stream_1/stream = ExtResource("4_r3lkl")
+stream_2/stream = ExtResource("5_87eld")
+
+[node name="FocusOutroView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "SubViewport", "Frog", "TargetMarker", "SfxChord")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ftjlc")
+AnimationPlayer = NodePath("AnimationPlayer")
+SubViewport = NodePath("SubViewport_Frog")
+Frog = NodePath("SubViewport_Frog/Origin/Frog")
+TargetMarker = NodePath("SubViewport_Frog/Origin/TargetMarker")
+SfxChord = NodePath("SfxChord")
+ChildOrder = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_q36ha")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r3lkl")
+}
+
+[node name="SubViewport_Frog" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport_Frog"]
+transform = Transform3D(-0.923947, 0.19442, -0.329428, 0, 0.861204, 0.50826, 0.38252, 0.469605, -0.795707, -0.489592, 0.426302, -0.797361)
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport_Frog"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="Origin" type="Node3D" parent="SubViewport_Frog"]
+
+[node name="Frog" parent="SubViewport_Frog/Origin" instance=ExtResource("2_q36ha")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport_Frog/Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="TargetMarker" type="Marker3D" parent="SubViewport_Frog/Origin"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80245e-08, 0, -1.61868)
+
+[node name="SfxChord" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_dv0nn")
+bus = &"SFX"

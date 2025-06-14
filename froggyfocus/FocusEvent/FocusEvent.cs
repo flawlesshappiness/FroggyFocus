@@ -91,9 +91,6 @@ public partial class FocusEvent : Node3D
             Cursor.GlobalPosition = Target.GlobalPosition;
             Cursor.Start(Target);
 
-            // Start target
-            //Target.Start();
-
             // Start
             EventStarted = true;
             OnStarted?.Invoke();
@@ -115,18 +112,18 @@ public partial class FocusEvent : Node3D
             // Disable cursor
             Cursor.Stop();
 
-            // Camera target player
-            Player.Instance.SetCameraTarget();
-
-            // Stop target
-            //Target.Stop();
+            yield return new WaitForSeconds(0.5f);
 
             if (completed)
             {
                 // Eat target
-                //yield return Player.Instance.Character.AnimateEatTarget(Target.Character);
+                FocusOutroView.Instance.CreateTarget(Target.Info);
+                yield return FocusOutroView.Instance.EatBugSequence();
                 CurrencyController.Instance.AddValue(CurrencyType.Money, Target.Info.CurrencyReward);
             }
+
+            // Camera target player
+            Player.Instance.SetCameraTarget();
 
             // Hide target
             Target.Hide();

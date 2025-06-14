@@ -356,7 +356,6 @@ transform = Transform3D(5.24537e-07, 0, 4, 0, 4, 0, -4, 0, 5.24537e-07, -8, 0, 8
 [node name="FocusEvent" parent="World/FocusEvent_Land" instance=ExtResource("12_yvk0y")]
 Info = ExtResource("12_cmxon")
 Size = Vector2(5, 3)
-Offset = Vector3(0, 0, 0)
 
 [node name="Sounds" type="Node3D" parent="."]
 
