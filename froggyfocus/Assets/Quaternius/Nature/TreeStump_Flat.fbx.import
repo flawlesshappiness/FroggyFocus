@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://h4do7woybbun"
-path="res://.godot/imported/WoodLog.fbx-13e165e44912322b1b5285e15e52e07e.scn"
+uid="uid://bp74boiwwnt1p"
+path="res://.godot/imported/TreeStump_Flat.fbx-fe2d007fe318d2d39b9be199e0ec8e11.scn"
 
 [deps]
 
-source_file="res://Assets/Quaternius/Nature/WoodLog.fbx"
-dest_files=["res://.godot/imported/WoodLog.fbx-13e165e44912322b1b5285e15e52e07e.scn"]
+source_file="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx"
+dest_files=["res://.godot/imported/TreeStump_Flat.fbx-fe2d007fe318d2d39b9be199e0ec8e11.scn"]
 
 [params]
 
@@ -34,15 +34,15 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Mushroom_Bottom": {
+"Green": {
+"use_external/enabled": true,
+"use_external/path": "uid://yabsdnw7nro6"
+},
+"LightWood": {
 "use_external/enabled": true,
 "use_external/path": "uid://b0n6rjmrc8fwv"
 },
-"Mushroom_Top": {
-"use_external/enabled": true,
-"use_external/path": "uid://b0n6rjmrc8fwv"
-},
-"Wood": {
+"Wood.001": {
 "use_external/enabled": true,
 "use_external/path": "uid://b6om3ynl6u7pj"
 }

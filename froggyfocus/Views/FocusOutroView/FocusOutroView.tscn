@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bklev6v828pf7"]
+[gd_scene load_steps=12 format=3 uid="uid://bklev6v828pf7"]
 
 [ext_resource type="Script" uid="uid://qluuhf5keo3r" path="res://Views/FocusOutroView/FocusOutroView.cs" id="1_ftjlc"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="2_q36ha"]
+[ext_resource type="Texture2D" uid="uid://lfx3ye5e35df" path="res://Assets/FlawLizArt/Textures/background_gradient_circle.png" id="2_r3lkl"]
 [ext_resource type="AudioStream" uid="uid://cveebtv8pq815" path="res://Sounds/Raw/sfx_marimba_chord_c.wav" id="3_usddo"]
 [ext_resource type="AudioStream" uid="uid://co8y8prv2lgeu" path="res://Sounds/Raw/sfx_marimba_chord_d.wav" id="4_r3lkl"]
 [ext_resource type="AudioStream" uid="uid://csintuu1d7poa" path="res://Sounds/Raw/sfx_marimba_chord_f.wav" id="5_87eld"]
@@ -99,7 +100,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.069, 0.1095, 0.15, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.35, 0.989167, 1, 0.486275)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r3lkl")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://bw7xbxi3rwqgg"]
 
-[ext_resource type="PackedScene" uid="uid://drtv3on3nfcbv" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled.fbx" id="1_hjqi4"]
+[ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="1_hjqi4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1yv56"]
-size = Vector3(0.510437, 0.519531, 2.70941)
+size = Vector3(0.510437, 0.523926, 2.70941)
 
 [node name="WoodLog" type="Node3D"]
 
-[node name="WoodLog_NoDetails_Filled" parent="." instance=ExtResource("1_hjqi4")]
+[node name="WoodLog_NoDetails_Filled_Straight" parent="." instance=ExtResource("1_hjqi4")]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0401917, 0.261881, -0.171173)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0401917, 0.264078, -0.171173)
 shape = SubResource("BoxShape3D_1yv56")
