@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://chh8ncpnh214i" path="res://Scenes/MainMenuScene.cs" id="1_sb72h"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_gmxq7"]
 [ext_resource type="Material" uid="uid://c0dwjdrp2kmvd" path="res://Materials/Grass.tres" id="2_mxhvt"]
-[ext_resource type="PackedScene" uid="uid://dxfvux2lo6jac" path="res://Assets/FlawLizArt/Frog/frog.fbx" id="4_gmxq7"]
 [ext_resource type="PackedScene" uid="uid://d108tu8l4gbmx" path="res://Assets/FlawLizArt/Nature/Toon/bush_001.fbx" id="5_c7qge"]
 [ext_resource type="PackedScene" uid="uid://81i8koe64106" path="res://Assets/FlawLizArt/Nature/Toon/bush_002.fbx" id="6_6xh72"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="7_06svm"]
 [ext_resource type="PackedScene" uid="uid://crfqhh2qe7f8m" path="res://Assets/Quaternius/Nature/CommonTree_3.fbx" id="7_6xh72"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sb72h"]
@@ -29,9 +29,6 @@ transform = Transform3D(1, 0, 0, 0, 0.961694, 0.274127, 0, -0.274127, 0.961694, 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
 mesh = SubResource("PlaneMesh_sb72h")
 surface_material_override/0 = ExtResource("2_mxhvt")
-
-[node name="frog" parent="World" instance=ExtResource("4_gmxq7")]
-transform = Transform3D(-0.176041, 0, 0.302505, 0, 0.35, 0, -0.302505, 0, -0.176041, -0.873298, 0, -0.0297652)
 
 [node name="bush_001" parent="World" instance=ExtResource("5_c7qge")]
 transform = Transform3D(0.947233, 0, 0.320547, 0, 1, 0, -0.320547, 0, 0.947233, -4.13726, 0, -3.04494)
@@ -71,3 +68,6 @@ transform = Transform3D(-1.88991, 0, -2.32986, 0, 3, 0, 2.32986, 0, -1.88991, -1
 
 [node name="CommonTree_7" parent="World" instance=ExtResource("7_6xh72")]
 transform = Transform3D(-1.88991, 0, -2.32986, 0, 3, 0, 2.32986, 0, -1.88991, 12.7219, 9.53674e-07, -13.6746)
+
+[node name="Frog" parent="World" instance=ExtResource("7_06svm")]
+transform = Transform3D(-0.675165, 0, 0.737666, 0, 1, 0, -0.737666, 0, -0.675165, -0.794186, 0, -0.163415)

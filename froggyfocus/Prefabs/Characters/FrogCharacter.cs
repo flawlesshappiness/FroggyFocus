@@ -19,12 +19,20 @@ public partial class FrogCharacter : Character
     [Export]
     public SoundInfo SfxSwallow;
 
+    public bool IsHandOut { get; private set; }
+
+    private float time_hand_out;
     private Node3D _attached_target;
 
     private BoolParameter param_moving = new BoolParameter("moving", false);
     private BoolParameter param_mouth_open = new BoolParameter("mouth_open", false);
     private BoolParameter param_jumping = new BoolParameter("jumping", false);
     private BoolParameter param_charging = new BoolParameter("charging", false);
+
+    private BoolParameter param_right_hand_forward = new BoolParameter("right_hand_forward", false);
+    private BoolParameter param_left_hand_forward = new BoolParameter("left_hand_forward", false);
+    private BoolParameter param_right_hand_right = new BoolParameter("right_hand_right", false);
+    private BoolParameter param_left_hand_left = new BoolParameter("left_hand_left", false);
 
     public override void _Ready()
     {
@@ -49,6 +57,16 @@ public partial class FrogCharacter : Character
         var mouth_open = Animation.CreateAnimation("Armature|mouth_open", false);
         var mouth_close = Animation.CreateAnimation("Armature|mouth_close", false);
 
+        var left_hand_forward_out = Animation.CreateAnimation("Armature|left_hand_forward_out", false);
+        var left_hand_forward_in = Animation.CreateAnimation("Armature|left_hand_forward_in", false);
+        var right_hand_forward_out = Animation.CreateAnimation("Armature|right_hand_forward_out", false);
+        var right_hand_forward_in = Animation.CreateAnimation("Armature|right_hand_forward_in", false);
+
+        var right_hand_right_out = Animation.CreateAnimation("Armature|right_hand_right_out", false);
+        var right_hand_right_in = Animation.CreateAnimation("Armature|right_hand_right_in", false);
+        var left_hand_left_out = Animation.CreateAnimation("Armature|left_hand_left_out", false);
+        var left_hand_left_in = Animation.CreateAnimation("Armature|left_hand_left_in", false);
+
         Animation.Connect(idle, walking, param_moving.WhenTrue());
         Animation.Connect(walking, idle, param_moving.WhenFalse());
 
@@ -65,6 +83,21 @@ public partial class FrogCharacter : Character
         Animation.Connect(walking, jump_start, param_jumping.WhenTrue());
         Animation.Connect(jump_start, jump_end, param_jumping.WhenFalse());
         Animation.Connect(jump_end, idle);
+
+        Animation.Connect(idle, right_hand_forward_out, param_right_hand_forward.WhenTrue());
+        Animation.Connect(idle, left_hand_forward_out, param_left_hand_forward.WhenTrue());
+        Animation.Connect(idle, right_hand_right_out, param_right_hand_right.WhenTrue());
+        Animation.Connect(idle, left_hand_left_out, param_left_hand_left.WhenTrue());
+
+        Animation.Connect(right_hand_forward_out, right_hand_forward_in, param_right_hand_forward.WhenFalse());
+        Animation.Connect(left_hand_forward_out, left_hand_forward_in, param_left_hand_forward.WhenFalse());
+        Animation.Connect(right_hand_right_out, right_hand_right_in, param_right_hand_right.WhenFalse());
+        Animation.Connect(left_hand_left_out, left_hand_left_in, param_left_hand_left.WhenFalse());
+
+        Animation.Connect(right_hand_forward_in, idle);
+        Animation.Connect(left_hand_forward_in, idle);
+        Animation.Connect(right_hand_right_in, idle);
+        Animation.Connect(left_hand_left_in, idle);
 
         Animation.Start(idle.Node);
     }
@@ -187,5 +220,88 @@ public partial class FrogCharacter : Character
     public void SetCharging(bool charging)
     {
         param_charging.Set(charging);
+    }
+
+    public void SetMouthOpen(bool open)
+    {
+        param_mouth_open.Set(open);
+    }
+
+    public void SetHandToPosition(Vector3 position)
+    {
+        var dir = position - GlobalPosition;
+        var forward = GlobalBasis * Vector3.Forward;
+        var angle = Mathf.RadToDeg(forward.SignedAngleTo(dir, Vector3.Up));
+        var right = angle < 0;
+        var abs = Mathf.Abs(angle);
+        var far = abs > 50;
+
+        if (GameTime.Time < time_hand_out) return;
+        time_hand_out = GameTime.Time + 10f;
+
+        if (IsHandOut)
+        {
+            SetHandsBack();
+        }
+        else if (right)
+        {
+            if (far)
+            {
+                SetRightHandRight();
+            }
+            else
+            {
+                SetRightHandForward();
+            }
+        }
+        else
+        {
+            if (far)
+            {
+                SetLeftHandLeft();
+            }
+            else
+            {
+                SetLeftHandForward();
+            }
+        }
+    }
+
+    private void SetHandsBack()
+    {
+        param_right_hand_forward.Set(false);
+        param_right_hand_right.Set(false);
+        param_left_hand_forward.Set(false);
+        param_left_hand_left.Set(false);
+
+        IsHandOut = false;
+    }
+
+    private void SetRightHandForward()
+    {
+        SetHandsBack();
+        param_right_hand_forward.Set(true);
+        IsHandOut = true;
+    }
+
+    private void SetRightHandRight()
+    {
+        SetHandsBack();
+        param_right_hand_right.Set(true);
+        IsHandOut = true;
+    }
+
+    private void SetLeftHandForward()
+    {
+        SetHandsBack();
+        param_left_hand_forward.Set(true);
+        IsHandOut = true;
+    }
+
+    private void SetLeftHandLeft()
+    {
+        SetHandsBack();
+        param_left_hand_left.Set(true);
+        IsHandOut = true;
     }
 }

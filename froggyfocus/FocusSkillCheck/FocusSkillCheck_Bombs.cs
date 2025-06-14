@@ -7,6 +7,9 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     [Export]
     public SkillCheckBomb BombTemplate;
 
+    [Export]
+    public AudioStreamPlayer3D SfxCreateBomb;
+
     private List<Bomb> bombs = new();
 
     private class Bomb
@@ -72,6 +75,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             bomb.Node.GlobalPosition = start;
             bomb.Node.Show();
             bomb.Node.AnimateShow();
+            SfxCreateBomb.Play();
 
             yield return LerpEnumerator.Lerp01(0.5f, f =>
             {

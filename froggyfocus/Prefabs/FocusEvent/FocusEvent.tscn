@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=8 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -6,17 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://c7v778qpl5v6w" path="res://Prefabs/FocusEvent/FocusTarget.tscn" id="3_2i5pb"]
 [ext_resource type="PackedScene" uid="uid://bbebkriqvf8n1" path="res://Prefabs/FocusSkillChecks/Projectiles.tscn" id="5_2i5pb"]
 [ext_resource type="PackedScene" uid="uid://bc86o50qja4fn" path="res://Prefabs/FocusSkillChecks/bombs.tscn" id="6_dbk1m"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="7_yos1q"]
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "PlayerMarker", "TargetMarker", "Cursor", "Target", "OverrideSkillCheck", "SkillChecks")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "OverrideSkillCheck", "SkillChecks")]
 script = ExtResource("1_p778c")
 Info = ExtResource("2_2i5pb")
-Size = Vector2(5, 2)
-Offset = Vector3(0, 0, 1)
+Size = Vector2(10, 2)
 Camera = NodePath("CameraMarker/Camera3D")
-PlayerMarker = NodePath("PlayerMarker")
-TargetMarker = NodePath("TargetMarker")
 Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
+Frog = NodePath("Frog")
 OverrideSkillCheck = NodePath("SkillChecks/Bombs")
 SkillChecks = [NodePath("SkillChecks/Bombs")]
 
@@ -24,11 +23,6 @@ SkillChecks = [NodePath("SkillChecks/Bombs")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.294, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraMarker"]
-
-[node name="PlayerMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-
-[node name="TargetMarker" type="Marker3D" parent="."]
 
 [node name="FocusCursor" parent="." instance=ExtResource("2_tceec")]
 
@@ -39,3 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 [node name="Projectiles" parent="SkillChecks" instance=ExtResource("5_2i5pb")]
 
 [node name="Bombs" parent="SkillChecks" instance=ExtResource("6_dbk1m")]
+
+[node name="Frog" parent="." instance=ExtResource("7_yos1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)

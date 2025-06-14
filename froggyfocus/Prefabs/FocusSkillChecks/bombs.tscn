@@ -1,10 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc86o50qja4fn"]
+[gd_scene load_steps=5 format=3 uid="uid://bc86o50qja4fn"]
 
 [ext_resource type="Script" uid="uid://b1qcu2liwvoof" path="res://FocusSkillCheck/FocusSkillCheck_Bombs.cs" id="1_whlow"]
 [ext_resource type="PackedScene" uid="uid://d3em6nli2qht2" path="res://Prefabs/FocusSkillChecks/skill_check_bomb.tscn" id="2_enwqw"]
+[ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="3_mpjhp"]
 
-[node name="Bombs" type="Node3D" node_paths=PackedStringArray("BombTemplate")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_enwqw"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_mpjhp")
+
+[node name="Bombs" type="Node3D" node_paths=PackedStringArray("BombTemplate", "SfxCreateBomb")]
 script = ExtResource("1_whlow")
 BombTemplate = NodePath("SkillCheckBomb")
+SfxCreateBomb = NodePath("SfxCreateBomb")
 
 [node name="SkillCheckBomb" parent="." instance=ExtResource("2_enwqw")]
+
+[node name="SfxCreateBomb" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_enwqw")
+attenuation_model = 3
+volume_db = -10.0
+max_polyphony = 5
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 10000.0

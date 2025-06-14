@@ -18,16 +18,13 @@ public partial class FocusEvent : Node3D
     public Camera3D Camera;
 
     [Export]
-    public Marker3D PlayerMarker;
-
-    [Export]
-    public Marker3D TargetMarker;
-
-    [Export]
     public FocusCursor Cursor;
 
     [Export]
     public FocusTarget Target;
+
+    [Export]
+    public FrogCharacter Frog;
 
     [Export]
     public FocusSkillCheck OverrideSkillCheck;
@@ -58,7 +55,7 @@ public partial class FocusEvent : Node3D
 
     private void CreateTarget()
     {
-        Target.GlobalPosition = TargetMarker.GlobalPosition;
+        Target.GlobalPosition = GlobalPosition;
         Target.SetCharacter(Info.Characters.PickRandom());
         Target.Show();
     }
@@ -70,19 +67,25 @@ public partial class FocusEvent : Node3D
 
     public virtual void StartEvent()
     {
-        // Target
-        CreateTarget();
-
-        // Hijack camera
-        HijackCamera();
-
         // Disable player
         Player.SetAllLocks(nameof(FocusEvent), true);
 
         this.StartCoroutine(Cr, "event");
         IEnumerator Cr()
         {
-            //AnimatePlayerToPosition(PlayerMarker, 1f);
+            // Target
+            CreateTarget();
+
+            // Transition start
+            FocusIntroView.Instance.LoadTargetCharacter(Target.Info);
+            yield return FocusIntroView.Instance.AnimateShow();
+
+            // Hijack camera
+            HijackCamera();
+
+            // Transition end
+            yield return new WaitForSeconds(1.0f);
+            yield return FocusIntroView.Instance.AnimateHide();
 
             // Initialize cursor
             Cursor.GlobalPosition = Target.GlobalPosition;
@@ -192,7 +195,7 @@ public partial class FocusEvent : Node3D
 
     private void FocusTarget()
     {
-        Player.Instance.Character.StartFacingPosition(Target.GlobalPosition);
+        Frog.SetHandToPosition(Target.GlobalPosition);
     }
 
     private Coroutine AnimatePlayerToPosition(Node3D node, float duration)
