@@ -44,7 +44,6 @@ public partial class Player : TopDownController
 
     public static MultiLock MovementLock = new();
     public static MultiLock InteractLock = new();
-
     private bool IsCharging { get; set; }
 
     private bool has_focus_target;
@@ -63,6 +62,8 @@ public partial class Player : TopDownController
         OnMoveStop += () => MoveChanged(false);
         OnJump += () => JumpChanged(true);
         OnLand += () => JumpChanged(false);
+
+        InteractLock.OnLocked += InteractLocked;
     }
 
     public override void _EnterTree()
@@ -172,14 +173,14 @@ public partial class Player : TopDownController
         }
     }
 
+    private void InteractLocked()
+    {
+        StopWaitForFocusTarget();
+    }
+
     public void SetCameraTarget()
     {
         Camera.Current = true;
-        return;
-
-        CameraController.Instance.Speed = 1.0f;
-        CameraController.Instance.Target = this;
-        CameraController.Instance.TargetRotation = new Vector3(-60, 0, 0);
     }
 
     private void Process_CameraOffset()
@@ -217,8 +218,6 @@ public partial class Player : TopDownController
     private void JumpChanged(bool jumping)
     {
         Character.SetJumping(jumping);
-
-        //CameraController.Instance.Speed = jumping ? 4.0f : 1.0f;
 
         if (jumping)
         {

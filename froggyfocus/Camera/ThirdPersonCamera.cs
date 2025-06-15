@@ -34,6 +34,9 @@ public partial class ThirdPersonCamera : Node3D
     public override void _Process(double delta)
     {
         base._Process(delta);
+
+        if (InputLock.IsLocked) return;
+
         Process_Controller();
         Process_Zoom();
     }
