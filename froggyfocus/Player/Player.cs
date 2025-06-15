@@ -209,7 +209,7 @@ public partial class Player : TopDownController
         {
             StopWaitForFocusTarget();
         }
-        else
+        else if (!InteractLock.IsLocked)
         {
             StartWaitForFocusTarget();
         }
