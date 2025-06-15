@@ -26,6 +26,8 @@ public partial class MainMenuView : View
     [Export]
     public ColorRect Overlay;
 
+    private bool animating;
+
     public override void _Ready()
     {
         base._Ready();
@@ -44,13 +46,32 @@ public partial class MainMenuView : View
 
         GameView.Instance.Hide();
 
+        Open();
+    }
+
+    private void Open()
+    {
+        if (animating) return;
+        animating = true;
+
         Overlay.Show();
         Overlay.Modulate = Overlay.Modulate.SetA(1);
-        AnimationPlayer.Play("hide_overlay");
+
+        this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_overlay");
+
+            ContinueButton.GrabFocus();
+            animating = false;
+        }
     }
 
     private void ClickContinue()
     {
+        if (animating) return;
+        animating = true;
+
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
@@ -64,11 +85,15 @@ public partial class MainMenuView : View
             GameView.Instance.AnimateHideOverlay();
 
             InputBlocker.Hide();
+            animating = false;
         }
     }
 
     private void ClickOptions()
     {
+        if (animating) return;
+        animating = true;
+
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
@@ -76,11 +101,17 @@ public partial class MainMenuView : View
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide_main");
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_options");
             InputBlocker.Hide();
+
+            OptionsControl.Tabs.GetTabBar().GrabFocus();
+            animating = false;
         }
     }
 
     private void ClickOptionsBack()
     {
+        if (animating) return;
+        animating = true;
+
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
@@ -88,6 +119,9 @@ public partial class MainMenuView : View
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide_options");
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_main");
             InputBlocker.Hide();
+
+            OptionsButton.GrabFocus();
+            animating = false;
         }
     }
 

@@ -58,6 +58,10 @@ public partial class PauseView : View
         {
             Toggle();
         }
+        else if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
+        {
+            Toggle();
+        }
     }
 
     private void Toggle()
@@ -80,6 +84,7 @@ public partial class PauseView : View
     private Coroutine Open()
     {
         Show();
+        transitioning = true;
 
         return this.StartCoroutine(Cr, "transition")
             .SetRunWhilePaused();
@@ -88,11 +93,16 @@ public partial class PauseView : View
             InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("show");
             InputBlocker.Hide();
+            transitioning = false;
+
+            ResumeButton.GrabFocus();
         }
     }
 
     private Coroutine Close()
     {
+        transitioning = true;
+
         return this.StartCoroutine(Cr, "transition")
             .SetRunWhilePaused();
         IEnumerator Cr()
@@ -101,6 +111,7 @@ public partial class PauseView : View
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
             InputBlocker.Hide();
 
+            transitioning = false;
             Hide();
         }
     }
@@ -121,6 +132,8 @@ public partial class PauseView : View
             InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_options");
             InputBlocker.Hide();
+
+            Options.Tabs.GetTabBar().GrabFocus();
         }
     }
 
@@ -135,6 +148,8 @@ public partial class PauseView : View
             InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide_options");
             InputBlocker.Hide();
+
+            OptionsButton.GrabFocus();
 
             options_active = false;
         }

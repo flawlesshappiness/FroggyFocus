@@ -25,7 +25,8 @@ public partial class UpgradeView : View
     [Export]
     public Control InputBlocker;
 
-    private List<Control> upgrade_controls = new();
+    private bool animating;
+    private List<UpgradeControl> upgrade_controls = new();
 
     public override void _Ready()
     {
@@ -74,19 +75,38 @@ public partial class UpgradeView : View
         });
     }
 
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
+        {
+            Close();
+        }
+    }
+
     private void Open()
     {
+        if (animating) return;
+        animating = true;
+
         this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("show");
             InputBlocker.Hide();
+
+            upgrade_controls.First().UpgradeButton.GrabFocus();
+            animating = false;
         }
     }
 
     private void Close()
     {
+        if (animating) return;
+        animating = true;
+
         this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
@@ -94,6 +114,7 @@ public partial class UpgradeView : View
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
             InputBlocker.Hide();
             Hide();
+            animating = false;
         }
     }
 
@@ -123,6 +144,8 @@ public partial class UpgradeView : View
 
             control.UpgradeButton.Pressed += () =>
             {
+                if (animating) return;
+
                 if (UpgradeController.Instance.TryPurchaseUpgrade(type))
                 {
                     // Purchase success

@@ -40,8 +40,9 @@ public partial class FocusOutroView : View
         Frog.SetHandsBack();
         yield return AnimationPlayer.PlayAndWaitForAnimation("eat_bug");
         yield return Frog.AnimateEatTarget(current_target);
+        yield return new WaitForSeconds(0.25f);
         SfxChord.Play();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         SubViewport.AudioListenerEnable3D = false;
         Hide();
 

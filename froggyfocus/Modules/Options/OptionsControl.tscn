@@ -26,10 +26,9 @@ Keys = NodePath("TabContainer/Keys")
 [node name="TabContainer" type="TabContainer" parent="."]
 custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Audio" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -68,6 +67,7 @@ max_value = 1.0
 step = 0.01
 
 [node name="Video" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25

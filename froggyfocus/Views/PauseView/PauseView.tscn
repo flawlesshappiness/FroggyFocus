@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bviv37jaoxr1w" path="res://Views/PauseView/PauseView.cs" id="1_4uuhc"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_fpy4r"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/simple_button.tscn" id="3_33ygy"]
-[ext_resource type="PackedScene" uid="uid://dk5e5unescpcn" path="res://Modules/Options/OptionsControl.tscn" id="4_bcih6"]
+[ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://UI/Options/Options.tscn" id="4_bcih6"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="4_vwcev"]
 
 [sub_resource type="Animation" id="Animation_vwcev"]
@@ -103,6 +103,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CenterContainer/Center/AnimOptions:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_bcih6"]
@@ -206,6 +218,30 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/Center/AnimOptions:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterContainer/Center/AnimPause:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -316,6 +352,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/Center/AnimPause:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterContainer/Center/AnimOptions:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_8a3o8"]
 resource_name = "show_overlay"
@@ -370,7 +430,7 @@ grow_vertical = 2
 script = ExtResource("1_4uuhc")
 AnimationPlayer = NodePath("AnimationPlayer")
 InputBlocker = NodePath("InputBlocker")
-Options = NodePath("CenterContainer/Center/AnimOptions/Options")
+Options = NodePath("CenterContainer/Center/AnimOptions/Options/Options")
 ResumeButton = NodePath("CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/ResumeButton")
 OptionsButton = NodePath("CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/OptionsButton")
 MainMenuButton = NodePath("CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/MainMenuButton")
@@ -490,17 +550,6 @@ theme = ExtResource("2_fpy4r")
 
 [node name="Options" parent="CenterContainer/Center/AnimOptions" instance=ExtResource("4_bcih6")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -228.0
-offset_right = 250.0
-offset_bottom = 228.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Overlay" type="ColorRect" parent="."]
 visible = false
@@ -529,3 +578,5 @@ grow_vertical = 2
 [node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_vwcev")
 volume_db = -20.0
+
+[editable path="CenterContainer/Center/AnimOptions/Options"]

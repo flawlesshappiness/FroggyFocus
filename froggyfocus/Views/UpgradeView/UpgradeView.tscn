@@ -187,6 +187,7 @@ layout_mode = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MainContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MainContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2
