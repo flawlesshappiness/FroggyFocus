@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bi33hifhhmwyo"]
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
-[ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/money_bar.tscn" id="2_nrlgi"]
+[ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="2_nrlgi"]
 
 [sub_resource type="Animation" id="Animation_b56qe"]
 length = 0.001

@@ -1,15 +1,8 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://ru5cmmvv4gtr"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ru5cmmvv4gtr"]
 
 [ext_resource type="Texture2D" uid="uid://b2rkjdeswm13l" path="res://Assets/KenneyNL/UI/Yellow/button_square_depth_flat.png" id="2_7ankg"]
 [ext_resource type="Texture2D" uid="uid://e8yokh4nvkal" path="res://Assets/KenneyNL/UI/Yellow/button_square_flat.png" id="3_dlmy2"]
 [ext_resource type="Texture2D" uid="uid://4jubrk26rblc" path="res://Assets/KenneyNL/UI/Yellow/button_square_depth_gradient.png" id="4_3isvi"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8usy6"]
-texture = ExtResource("4_3isvi")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gspl"]
 texture = ExtResource("4_3isvi")
@@ -46,7 +39,6 @@ Button/colors/font_focus_color = Color(0.6, 0.4, 0, 1)
 Button/colors/font_hover_color = Color(0.6, 0.4, 0, 1)
 Button/colors/font_hover_pressed_color = Color(0.6, 0.4, 0, 1)
 Button/colors/font_pressed_color = Color(0.6, 0.4, 0, 1)
-Button/styles/focus = SubResource("StyleBoxTexture_8usy6")
 Button/styles/hover = SubResource("StyleBoxTexture_3gspl")
 Button/styles/normal = SubResource("StyleBoxTexture_xy3c2")
 Button/styles/pressed = SubResource("StyleBoxTexture_urxog")

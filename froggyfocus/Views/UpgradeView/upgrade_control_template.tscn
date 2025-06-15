@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dkqy5xspl4fmb" path="res://Views/UpgradeView/upgrade_level_node_template.tscn" id="3_yaetq"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="4_u78tf"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="4_w18jm"]
-[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/simple_button.tscn" id="5_yaetq"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_yaetq"]
 
 [node name="UpgradeControlTemplate" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "UpgradeButton", "UpgradeButtonLabel", "LevelNodesParent")]
 custom_minimum_size = Vector2(0, 50)

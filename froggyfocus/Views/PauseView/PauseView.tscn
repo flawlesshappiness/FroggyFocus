@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bviv37jaoxr1w" path="res://Views/PauseView/PauseView.cs" id="1_4uuhc"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_fpy4r"]
-[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/simple_button.tscn" id="3_33ygy"]
-[ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://UI/Options/Options.tscn" id="4_bcih6"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="3_33ygy"]
+[ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/Options.tscn" id="4_bcih6"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="4_vwcev"]
 
 [sub_resource type="Animation" id="Animation_vwcev"]
@@ -114,7 +114,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_bcih6"]
@@ -536,6 +536,7 @@ layout_mode = 2
 text = " Main menu"
 
 [node name="AnimOptions" type="Control" parent="CenterContainer/Center"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

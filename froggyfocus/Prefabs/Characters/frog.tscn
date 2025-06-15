@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://d1fokxnejbet4"]
 
-[ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Prefabs/Characters/FrogCharacter.cs" id="1_c7gfj"]
+[ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ps7tr"]
 [ext_resource type="PackedScene" uid="uid://dmlnvb2o65uy1" path="res://Assets/FlawLizArt/Frog/tongue.fbx" id="4_ai43q"]

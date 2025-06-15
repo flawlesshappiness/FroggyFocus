@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dgydt42vrge0g"]
 
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="1_7ctay"]
-[ext_resource type="Script" uid="uid://cahwtw1efy41" path="res://Prefabs/UI/MoneyBar.cs" id="1_v4b0e"]
+[ext_resource type="Script" uid="uid://cahwtw1efy41" path="res://Prefabs/UI/MoneyBar/MoneyBar.cs" id="1_v4b0e"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="2_v4b0e"]
 
 [sub_resource type="Animation" id="Animation_l7lip"]
