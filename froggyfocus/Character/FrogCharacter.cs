@@ -150,10 +150,8 @@ public partial class FrogCharacter : Character
 
     private void BodyColorChanged()
     {
-        var r = Data.Game.FrogAppearanceData.ColorR;
-        var g = Data.Game.FrogAppearanceData.ColorG;
-        var b = Data.Game.FrogAppearanceData.ColorB;
-        var c = new Color(r, g, b);
+        var type = Data.Game.FrogAppearanceData.BodyColor;
+        var c = AppearanceColorController.Instance.GetColor(type);
         body_material.SetShaderParameter("albedo", c);
         mouth_material.SetShaderParameter("albedo", c * 0.5f);
     }

@@ -11,19 +11,13 @@ public partial class CustomizeAppearanceControl : ControlScript
     public Slider PreviewRotationSlider;
 
     [Export]
-    public Slider ColorRedSlider;
-
-    [Export]
-    public Slider ColorGreenSlider;
-
-    [Export]
-    public Slider ColorBlueSlider;
-
-    [Export]
     public Button BackButton;
 
     [Export]
-    public AppearanceButton HatButtonTemplate;
+    public CustomizeAppearanceColorTab ColorTab;
+
+    [Export]
+    public AppearancePreviewButton HatButtonTemplate;
 
     [Export]
     public FrogCharacter Frog;
@@ -37,17 +31,19 @@ public partial class CustomizeAppearanceControl : ControlScript
     public static event Action OnHatChanged;
 
     private bool loading;
-    private List<AppearanceButton> hat_buttons = new();
+    private List<AppearancePreviewButton> hat_buttons = new();
 
     public override void _Ready()
     {
         base._Ready();
 
-        ColorRedSlider.ValueChanged += _ => ColorSlider_ValueChanged();
-        ColorGreenSlider.ValueChanged += _ => ColorSlider_ValueChanged();
-        ColorBlueSlider.ValueChanged += _ => ColorSlider_ValueChanged();
+        ColorTab.BodyColorContainer.OnColorPressed += BodyColor_Pressed;
+
+        ColorTab.HatPrimaryColorContainer.OnColorPressed += HatPrimaryColor_Pressed;
+        ColorTab.HatSecondaryColorContainer.OnColorPressed += HatSecondaryColor_Pressed;
 
         PreviewRotationSlider.ValueChanged += PreviewRotationSlider_ValueChanged;
+        PreviewRotationSlider_ValueChanged(PreviewRotationSlider.Value);
 
         BackButton.Pressed += BackPressed;
     }
@@ -83,9 +79,9 @@ public partial class CustomizeAppearanceControl : ControlScript
         }
     }
 
-    private AppearanceButton CreateHatButton()
+    private AppearancePreviewButton CreateHatButton()
     {
-        var button = HatButtonTemplate.Duplicate() as AppearanceButton;
+        var button = HatButtonTemplate.Duplicate() as AppearancePreviewButton;
         button.SetParent(HatButtonTemplate.GetParent());
         button.Show();
         hat_buttons.Add(button);
@@ -107,10 +103,6 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         loading = true;
 
-        ColorRedSlider.Value = Data.Game.FrogAppearanceData.ColorR;
-        ColorGreenSlider.Value = Data.Game.FrogAppearanceData.ColorG;
-        ColorBlueSlider.Value = Data.Game.FrogAppearanceData.ColorB;
-
         Frog.LoadAppearance();
 
         loading = false;
@@ -128,21 +120,31 @@ public partial class CustomizeAppearanceControl : ControlScript
         PreviewRotationNode.RotationDegrees = new Vector3(0, value, 0);
     }
 
-    private void ColorSlider_ValueChanged()
+    private void BodyColor_Pressed(AppearanceColorType type)
     {
         if (loading) return;
-
-        Data.Game.FrogAppearanceData.ColorR = (float)ColorRedSlider.Value;
-        Data.Game.FrogAppearanceData.ColorG = (float)ColorGreenSlider.Value;
-        Data.Game.FrogAppearanceData.ColorB = (float)ColorBlueSlider.Value;
-
+        Data.Game.FrogAppearanceData.BodyColor = type;
         OnBodyColorChanged?.Invoke();
+    }
+
+    private void HatPrimaryColor_Pressed(AppearanceColorType type)
+    {
+        if (loading) return;
+        Data.Game.FrogAppearanceData.HatPrimaryColor = type;
+        OnHatChanged?.Invoke();
+    }
+
+    private void HatSecondaryColor_Pressed(AppearanceColorType type)
+    {
+        if (loading) return;
+        Data.Game.FrogAppearanceData.HatSecondaryColor = type;
+        OnHatChanged?.Invoke();
     }
 
     private void HatButtonPressed(AppearanceHatType type)
     {
+        if (loading) return;
         Data.Game.FrogAppearanceData.Hat = type;
-
         OnHatChanged?.Invoke();
     }
 }

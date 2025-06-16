@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://7g3y8bn480iw"]
 
-[ext_resource type="Script" uid="uid://lvo1xk3ybdka" path="res://Prefabs/UI/CustomizeAppearance/AppearanceButton.cs" id="1_5km8g"]
+[ext_resource type="Script" uid="uid://lvo1xk3ybdka" path="res://Prefabs/UI/CustomizeAppearance/AppearancePreviewButton.cs" id="1_5km8g"]
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="2_5km8g"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5km8g"]
 viewport_path = NodePath("SubViewport")
 
-[node name="AppearanceButton" type="Button" node_paths=PackedStringArray("Origin", "TextureRect", "SubViewport")]
+[node name="AppearancePreviewButton" type="Button" node_paths=PackedStringArray("Origin", "TextureRect", "SubViewport")]
 custom_minimum_size = Vector2(65, 65)
 script = ExtResource("1_5km8g")
 Origin = NodePath("SubViewport/Origin")

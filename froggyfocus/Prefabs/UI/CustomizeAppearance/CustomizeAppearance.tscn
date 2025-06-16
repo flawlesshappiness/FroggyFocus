@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsiem2e7uxtnt"]
+[gd_scene load_steps=11 format=3 uid="uid://dsiem2e7uxtnt"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_c1ffu"]
 [ext_resource type="Texture2D" uid="uid://2iew501qnljl" path="res://Assets/KenneyNL/UI/Blue/button_square_flat.png" id="1_f2fty"]
 [ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="2_c1ffu"]
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_jjbel"]
-[ext_resource type="PackedScene" uid="uid://7g3y8bn480iw" path="res://Prefabs/UI/CustomizeAppearance/appearance_button.tscn" id="4_igo5n"]
+[ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/CustomizeAppearance/appearance_color_container.tscn" id="4_1uex8"]
+[ext_resource type="Script" uid="uid://c27021d5v4xh6" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceColorTab.cs" id="4_bhn8p"]
+[ext_resource type="PackedScene" uid="uid://7g3y8bn480iw" path="res://Prefabs/UI/CustomizeAppearance/appearance_preview_button.tscn" id="4_igo5n"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_ntf0j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_041x8"]
@@ -17,7 +19,7 @@ texture_margin_bottom = 10.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
 
-[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "ColorRedSlider", "ColorGreenSlider", "ColorBlueSlider", "BackButton", "HatButtonTemplate", "Frog", "PreviewRotationNode")]
+[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "ColorTab", "HatButtonTemplate", "Frog", "PreviewRotationNode")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,11 +36,9 @@ theme = ExtResource("1_c1ffu")
 script = ExtResource("2_jjbel")
 TabContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer")
 PreviewRotationSlider = NodePath("HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/RotationSlider")
-ColorRedSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorRed/ColorRedSlider")
-ColorGreenSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorGreen/ColorGreenSlider")
-ColorBlueSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorBlue/ColorBlueSlider")
 BackButton = NodePath("HBoxContainer/OptionsPanel/CloseButton")
-HatButtonTemplate = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/GridContainer/AppearanceButton")
+ColorTab = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color")
+HatButtonTemplate = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/GridContainer/AppearanceButton")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
 PreviewRotationNode = NodePath("SubViewport_Frog/Origin")
 
@@ -97,6 +97,7 @@ expand_mode = 1
 [node name="RotationSlider" type="HSlider" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 max_value = 360.0
+value = 25.0
 
 [node name="OptionsPanel" type="Control" parent="HBoxContainer"]
 layout_mode = 2
@@ -107,15 +108,18 @@ layout_mode = 2
 offset_right = 389.0
 offset_bottom = 400.0
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 0
 
-[node name="Color" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
-visible = false
+[node name="Color" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer" node_paths=PackedStringArray("BodyColorContainer", "HatPrimaryColorContainer", "HatSecondaryColorContainer")]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
+script = ExtResource("4_bhn8p")
+BodyColorContainer = NodePath("ScrollContainer/VBoxContainer/BodyColorContainer")
+HatPrimaryColorContainer = NodePath("ScrollContainer/VBoxContainer/HatPrimaryColorContainer")
+HatSecondaryColorContainer = NodePath("ScrollContainer/VBoxContainer/HatSecondaryColorContainer")
 metadata/_tab_index = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color"]
@@ -126,43 +130,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ColorRed" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer"]
+[node name="BodyLabel" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Body"
+
+[node name="BodyColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
 
-[node name="ColorRedLabel" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorRed"]
+[node name="HatLabel" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Red"
+text = "Hat"
 
-[node name="ColorRedSlider" type="HSlider" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorRed"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-
-[node name="ColorGreen" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer"]
+[node name="HatPrimaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
 
-[node name="ColorGreenLabel" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorGreen"]
+[node name="HatSecondaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
-text = "Green"
-
-[node name="ColorGreenSlider" type="HSlider" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorGreen"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-
-[node name="ColorBlue" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="ColorBlueLabel" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorBlue"]
-layout_mode = 2
-text = "Blue"
-
-[node name="ColorBlueSlider" type="HSlider" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorBlue"]
-layout_mode = 2
-max_value = 1.0
-step = 0.01
 
 [node name="Hats" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -170,11 +156,24 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 1
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats"]
+layout_mode = 2
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer"]
 layout_mode = 2
 columns = 5
 
-[node name="AppearanceButton" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/GridContainer" instance=ExtResource("4_igo5n")]
+[node name="AppearanceButton" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("4_igo5n")]
 layout_mode = 2
 
 [node name="CloseButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("2_c1ffu")]
@@ -239,5 +238,11 @@ transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694
 [node name="Frog" parent="SubViewport_Frog/Origin" instance=ExtResource("4_ntf0j")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewport_Frog/Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12786, -1.003, 0)
 light_energy = 0.1
+omni_range = 8.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewport_Frog/Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13974, -1.003, 0)
+light_energy = 0.1
+omni_range = 8.0

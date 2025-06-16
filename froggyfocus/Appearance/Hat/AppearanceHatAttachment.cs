@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class AppearanceHatAttachment : Node3D
+public partial class AppearanceHatAttachment : AppearanceAttachment
 {
     [Export]
     public AppearanceHatType Type;

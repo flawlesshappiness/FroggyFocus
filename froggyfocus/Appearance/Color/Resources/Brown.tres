@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppearanceColorInfo" load_steps=2 format=3 uid="uid://cgjljvii2h0kl"]
+
+[ext_resource type="Script" uid="uid://b38lj3fb5dsuv" path="res://Appearance/Color/AppearanceColorInfo.cs" id="1_0bomq"]
+
+[resource]
+script = ExtResource("1_0bomq")
+Type = 5
+Name = "Brown"
+Color = Color(0.6, 0.4, 0.3, 1)
+metadata/_custom_type_script = "uid://b38lj3fb5dsuv"

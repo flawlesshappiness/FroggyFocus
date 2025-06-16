@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class AppearanceButton : ButtonScript
+public partial class AppearancePreviewButton : ButtonScript
 {
     [Export]
     public Node3D Origin;

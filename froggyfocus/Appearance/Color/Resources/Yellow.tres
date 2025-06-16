@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppearanceColorInfo" load_steps=2 format=3 uid="uid://qdoywvahspac"]
+
+[ext_resource type="Script" uid="uid://b38lj3fb5dsuv" path="res://Appearance/Color/AppearanceColorInfo.cs" id="1_avra5"]
+
+[resource]
+script = ExtResource("1_avra5")
+Type = 3
+Name = "Yellow"
+Color = Color(0.9, 0.864, 0.63, 1)
+metadata/_custom_type_script = "uid://b38lj3fb5dsuv"

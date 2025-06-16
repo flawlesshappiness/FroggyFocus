@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=21 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -6,12 +6,11 @@
 [ext_resource type="Script" uid="uid://uq2o0quxjtxh" path="res://Appearance/Hat/AppearanceHatAttachmentGroup.cs" id="4_4vdn2"]
 [ext_resource type="PackedScene" uid="uid://dmlnvb2o65uy1" path="res://Assets/FlawLizArt/Frog/tongue.fbx" id="4_ai43q"]
 [ext_resource type="PackedScene" uid="uid://dxfvux2lo6jac" path="res://Assets/FlawLizArt/Frog/frog.fbx" id="4_db7or"]
-[ext_resource type="PackedScene" uid="uid://dvmei7w1bcnhp" path="res://Assets/Quaternius/RPG/Crown2.fbx" id="4_ipxdd"]
+[ext_resource type="PackedScene" uid="uid://n068dxjwbk4n" path="res://Appearance/Hat/Attachments/crown.tscn" id="5_380eu"]
 [ext_resource type="AudioStream" uid="uid://r43hpifjwwab" path="res://Sounds/Raw/sfx_slap_skin_001.wav" id="5_ai43q"]
 [ext_resource type="AudioStream" uid="uid://da3dqxkhes46e" path="res://Sounds/Raw/sfx_rub_skin_001.wav" id="5_iqfu1"]
+[ext_resource type="PackedScene" uid="uid://oth00eq3xg17" path="res://Appearance/Hat/Attachments/cat_ears.tscn" id="6_4vdn2"]
 [ext_resource type="AudioStream" uid="uid://dgxdg656niwoj" path="res://Sounds/Raw/sfx_rub_skin_002.wav" id="6_81ysc"]
-[ext_resource type="Script" uid="uid://bw3upqrgb4wnv" path="res://Appearance/Hat/AppearanceHatAttachment.cs" id="6_380eu"]
-[ext_resource type="PackedScene" uid="uid://cl4p6ip4r8foe" path="res://Assets/FlawLizArt/Clothing/cat_ears.fbx" id="7_380eu"]
 [ext_resource type="AudioStream" uid="uid://b0g6ilpk87mli" path="res://Sounds/Raw/sfx_rub_skin_double_001.wav" id="8_5vqex"]
 [ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="9_qta17"]
 [ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="10_w1eid"]
@@ -115,7 +114,6 @@ bones/25/rotation = Quaternion(-0.0590959, 0.637207, -0.144818, 0.754654)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/position = Vector3(0.00234124, 0.00557515, 0.000548778)
 bones/26/rotation = Quaternion(-0.0305987, 0.0355796, -0.538982, 0.841009)
-bones/26/scale = Vector3(1, 1, 1)
 bones/28/position = Vector3(0.00092987, 0.00685302, 0.000620215)
 bones/28/rotation = Quaternion(-0.00303081, 0.00658709, -0.0916656, 0.995763)
 bones/28/scale = Vector3(1, 1, 1)
@@ -169,17 +167,13 @@ transform = Transform3D(1, 6.23955e-15, -4.37082e-14, -2.4612e-14, 0.998942, -0.
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_4vdn2")
-Hats = [NodePath("Crown2"), NodePath("cat_ears")]
+Hats = [NodePath("Crown"), NodePath("CatEars")]
 
-[node name="Crown2" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("4_ipxdd")]
-transform = Transform3D(0.01, 0, 0, 0, -0.00284216, -0.0095876, 0, 0.0095876, -0.00284216, 1.04019e-09, -0.00171867, 0.00296973)
-script = ExtResource("6_380eu")
-Type = 1
+[node name="Crown" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("5_380eu")]
+transform = Transform3D(0.01, -3.6053e-11, -2.4847e-10, -2.4847e-10, -0.00284216, -0.0095876, -3.6053e-11, 0.0095876, -0.00284216, 1.04019e-09, -0.00171867, 0.00296973)
 
-[node name="cat_ears" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("7_380eu")]
-transform = Transform3D(0.009, 0, 0, 0, -3.93402e-10, -0.009, 0, 0.009, -3.93402e-10, 7.03806e-17, -0.00168419, 0.00136981)
-script = ExtResource("6_380eu")
-Type = 2
+[node name="CatEars" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("6_4vdn2")]
+transform = Transform3D(0.009, -4.96308e-24, 2.16943e-31, 0, -3.93402e-10, -0.009, 4.96308e-24, 0.009, -3.93402e-10, 7.03807e-17, -0.00168419, 0.00136981)
 
 [node name="AnimationPlayer" parent="frog" index="1"]
 playback_default_blend_time = 0.15

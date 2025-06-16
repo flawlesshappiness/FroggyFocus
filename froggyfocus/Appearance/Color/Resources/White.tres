@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppearanceColorInfo" load_steps=2 format=3 uid="uid://diny37w4y004s"]
+
+[ext_resource type="Script" uid="uid://b38lj3fb5dsuv" path="res://Appearance/Color/AppearanceColorInfo.cs" id="1_speev"]
+
+[resource]
+script = ExtResource("1_speev")
+Type = 7
+Name = "White"
+Color = Color(0.9, 0.9, 0.9, 1)
+metadata/_custom_type_script = "uid://b38lj3fb5dsuv"

@@ -1,7 +1,7 @@
 public class FrogAppearanceData
 {
-    public float ColorR { get; set; }
-    public float ColorG { get; set; }
-    public float ColorB { get; set; }
+    public AppearanceColorType BodyColor { get; set; }
+    public AppearanceColorType HatPrimaryColor { get; set; }
+    public AppearanceColorType HatSecondaryColor { get; set; }
     public AppearanceHatType Hat { get; set; }
 }
