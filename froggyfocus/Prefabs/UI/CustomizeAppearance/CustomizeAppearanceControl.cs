@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public partial class CustomizeAppearanceControl : ControlScript
 {
     [Export]
+    public TabContainer TabContainer;
+
+    [Export]
     public Slider ColorRedSlider;
 
     [Export]

@@ -53,6 +53,12 @@ public partial class FocusEvent : Node3D
         Target.Initialize(this);
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Player.SetAllLocks(nameof(FocusEvent), false);
+    }
+
     private void CreateTarget()
     {
         Target.GlobalPosition = GlobalPosition;

@@ -143,7 +143,7 @@ public partial class PauseView : View
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_customize");
             InputBlocker.Hide();
 
-            CustomizeAppearanceControl.ColorRedSlider.GrabFocus();
+            CustomizeAppearanceControl.TabContainer.GetTabBar().GrabFocus();
         }
     }
 

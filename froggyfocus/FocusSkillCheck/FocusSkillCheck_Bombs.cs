@@ -12,6 +12,8 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 
     private List<Bomb> bombs = new();
 
+    private int id = 0;
+
     private class Bomb
     {
         public SkillCheckBomb Node { get; set; }
@@ -60,7 +62,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 
     private Coroutine RunBomb(Bomb bomb)
     {
-        return Coroutine.Start(Cr);
+        return this.StartCoroutine(Cr, $"bomb_{id++}");
         IEnumerator Cr()
         {
             var success = false;

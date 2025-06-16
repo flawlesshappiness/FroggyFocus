@@ -17,7 +17,7 @@ texture_margin_bottom = 10.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
 
-[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("ColorRedSlider", "ColorGreenSlider", "ColorBlueSlider", "BackButton", "HatButtonTemplate", "Frog")]
+[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "ColorRedSlider", "ColorGreenSlider", "ColorBlueSlider", "BackButton", "HatButtonTemplate", "Frog")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,6 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_c1ffu")
 script = ExtResource("2_jjbel")
+TabContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer")
 ColorRedSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorRed/ColorRedSlider")
 ColorGreenSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorGreen/ColorGreenSlider")
 ColorBlueSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorBlue/ColorBlueSlider")
