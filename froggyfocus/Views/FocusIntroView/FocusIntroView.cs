@@ -27,6 +27,7 @@ public partial class FocusIntroView : View
 
     public IEnumerator AnimateShow()
     {
+        Frog.LoadAppearance();
         Show();
         yield return AnimationPlayer.PlayAndWaitForAnimation("show2");
         SfxRiff.Play();

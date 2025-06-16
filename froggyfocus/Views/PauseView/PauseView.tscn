@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://2mjpr6n1kw6f"]
+[gd_scene load_steps=17 format=3 uid="uid://2mjpr6n1kw6f"]
 
 [ext_resource type="Script" uid="uid://bviv37jaoxr1w" path="res://Views/PauseView/PauseView.cs" id="1_4uuhc"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_fpy4r"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="3_33ygy"]
 [ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/Options.tscn" id="4_bcih6"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="4_vwcev"]
+[ext_resource type="PackedScene" uid="uid://dsiem2e7uxtnt" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearance.tscn" id="5_t2mq0"]
 
 [sub_resource type="Animation" id="Animation_vwcev"]
 length = 0.001
@@ -115,6 +116,30 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CenterContainer/Center/AnimCustomize:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CenterContainer/Center/AnimCustomize:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
 }
 
 [sub_resource type="Animation" id="Animation_bcih6"]
@@ -404,12 +429,144 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_j78r4"]
+resource_name = "show_customize"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/AnimCustomize:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/AnimCustomize:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 1000), Vector2(0, -25), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/AnimPause:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.75, 0.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/Center/AnimPause:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.5, 0.5, 0.5, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/Center/AnimPause:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3mg3l"]
+resource_name = "hide_customize"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/AnimCustomize:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 1000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/AnimCustomize:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/AnimPause:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/Center/AnimPause:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/Center/AnimPause:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bcih6"]
 _data = {
 &"RESET": SubResource("Animation_vwcev"),
 &"hide": SubResource("Animation_bcih6"),
+&"hide_customize": SubResource("Animation_3mg3l"),
 &"hide_options": SubResource("Animation_om48w"),
 &"show": SubResource("Animation_33ygy"),
+&"show_customize": SubResource("Animation_j78r4"),
 &"show_options": SubResource("Animation_t2mq0"),
 &"show_overlay": SubResource("Animation_8a3o8")
 }
@@ -419,7 +576,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_vwcev")
 
-[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "InputBlocker", "Options", "ResumeButton", "OptionsButton", "MainMenuButton", "Overlay")]
+[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "InputBlocker", "Options", "CustomizeAppearanceControl", "ResumeButton", "CustomizeButton", "OptionsButton", "MainMenuButton", "Overlay")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -431,7 +588,9 @@ script = ExtResource("1_4uuhc")
 AnimationPlayer = NodePath("AnimationPlayer")
 InputBlocker = NodePath("InputBlocker")
 Options = NodePath("CenterContainer/Center/AnimOptions/Options/Options")
+CustomizeAppearanceControl = NodePath("CenterContainer/Center/AnimCustomize/CustomizeAppearance")
 ResumeButton = NodePath("CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/ResumeButton")
+CustomizeButton = NodePath("CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/CustomizeButton")
 OptionsButton = NodePath("CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/OptionsButton")
 MainMenuButton = NodePath("CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/MainMenuButton")
 Overlay = NodePath("Overlay")
@@ -472,10 +631,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -130.0
+offset_top = -135.0
+offset_right = 130.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -488,10 +647,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -87.0
-offset_top = -24.5
-offset_right = 87.0
-offset_bottom = 35.5
+offset_left = -106.5
+offset_top = -37.815
+offset_right = 106.5
+offset_bottom = 36.185
 grow_horizontal = 2
 
 [node name="Panel" type="Panel" parent="CenterContainer/Center/AnimPause/MarginContainer/Panel/Title"]
@@ -505,27 +664,38 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Label" type="Label" parent="CenterContainer/Center/AnimPause/MarginContainer/Panel/Title/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
 text = "PAUSED"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimPause/MarginContainer"]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimPause/MarginContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 25
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 5
 
 [node name="ResumeButton" parent="CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
 layout_mode = 2
 text = " Resume"
+
+[node name="CustomizeButton" parent="CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
+layout_mode = 2
+text = "Customize"
 
 [node name="OptionsButton" parent="CenterContainer/Center/AnimPause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
 layout_mode = 2
@@ -550,6 +720,15 @@ grow_vertical = 2
 theme = ExtResource("2_fpy4r")
 
 [node name="Options" parent="CenterContainer/Center/AnimOptions" instance=ExtResource("4_bcih6")]
+layout_mode = 1
+
+[node name="AnimCustomize" type="Control" parent="CenterContainer/Center"]
+visible = false
+anchors_preset = 0
+offset_top = 1000.0
+offset_bottom = 1000.0
+
+[node name="CustomizeAppearance" parent="CenterContainer/Center/AnimCustomize" instance=ExtResource("5_t2mq0")]
 layout_mode = 1
 
 [node name="Overlay" type="ColorRect" parent="."]

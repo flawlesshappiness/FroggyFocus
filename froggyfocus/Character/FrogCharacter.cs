@@ -19,10 +19,16 @@ public partial class FrogCharacter : Character
     [Export]
     public SoundInfo SfxSwallow;
 
+    [Export]
+    public MeshInstance3D BodyMesh;
+
     public bool IsHandOut { get; private set; }
 
     private float time_hand_out;
     private Node3D _attached_target;
+
+    private ShaderMaterial body_material;
+    private ShaderMaterial mouth_material;
 
     private BoolParameter param_moving = new BoolParameter("moving", false);
     private BoolParameter param_mouth_open = new BoolParameter("mouth_open", false);
@@ -37,8 +43,20 @@ public partial class FrogCharacter : Character
     public override void _Ready()
     {
         base._Ready();
+        InitializeMesh();
         InitializeAnimations();
         InitializeTongue();
+
+        LoadAppearance();
+
+        CustomizeAppearanceControl.OnBodyColorChanged += BodyColorChanged;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+
+        CustomizeAppearanceControl.OnBodyColorChanged -= BodyColorChanged;
     }
 
     private void InitializeTongue()
@@ -100,6 +118,32 @@ public partial class FrogCharacter : Character
         Animation.Connect(left_hand_left_in, idle);
 
         Animation.Start(idle.Node);
+    }
+
+    private void InitializeMesh()
+    {
+        body_material = BodyMesh.GetActiveMaterial(0).Duplicate() as ShaderMaterial;
+        mouth_material = BodyMesh.GetActiveMaterial(1).Duplicate() as ShaderMaterial;
+
+        BodyMesh.SetSurfaceOverrideMaterial(0, body_material);
+        BodyMesh.SetSurfaceOverrideMaterial(1, mouth_material);
+    }
+
+    public void LoadAppearance()
+    {
+        if (Data.Game == null) return;
+
+        BodyColorChanged();
+    }
+
+    private void BodyColorChanged()
+    {
+        var r = Data.Game.FrogAppearanceData.ColorR;
+        var g = Data.Game.FrogAppearanceData.ColorG;
+        var b = Data.Game.FrogAppearanceData.ColorB;
+        var c = new Color(r, g, b);
+        body_material.SetShaderParameter("albedo", c);
+        mouth_material.SetShaderParameter("albedo", c * 0.5f);
     }
 
     public override void _Process(double delta)

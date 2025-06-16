@@ -13,7 +13,13 @@ public partial class PauseView : View
     public OptionsControl Options;
 
     [Export]
+    public CustomizeAppearanceControl CustomizeAppearanceControl;
+
+    [Export]
     public Button ResumeButton;
+
+    [Export]
+    public Button CustomizeButton;
 
     [Export]
     public Button OptionsButton;
@@ -25,15 +31,18 @@ public partial class PauseView : View
     public ColorRect Overlay;
 
     private bool options_active;
+    private bool customize_active;
     private bool transitioning;
 
     public override void _Ready()
     {
         base._Ready();
         ResumeButton.Pressed += ClickResume;
+        CustomizeButton.Pressed += ClickCustomize;
         OptionsButton.Pressed += ClickOptions;
         MainMenuButton.Pressed += ClickMainMenu;
         Options.OnBack += ClickOptionsBack;
+        CustomizeAppearanceControl.OnBackPressed += ClickCustomizeBack;
     }
 
     protected override void OnShow()
@@ -69,6 +78,7 @@ public partial class PauseView : View
         if (UpgradeView.Instance.Visible) return;
         if (MainMenuView.Instance.Visible) return;
         if (options_active) return;
+        if (customize_active) return;
         if (transitioning) return;
 
         if (Visible)
@@ -119,6 +129,38 @@ public partial class PauseView : View
     private void ClickResume()
     {
         Close();
+    }
+
+    private void ClickCustomize()
+    {
+        customize_active = true;
+
+        Coroutine.Start(Cr)
+            .SetRunWhilePaused();
+        IEnumerator Cr()
+        {
+            InputBlocker.Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("show_customize");
+            InputBlocker.Hide();
+
+            CustomizeAppearanceControl.ColorRedSlider.GrabFocus();
+        }
+    }
+
+    private void ClickCustomizeBack()
+    {
+        Coroutine.Start(Cr)
+            .SetRunWhilePaused();
+        IEnumerator Cr()
+        {
+            InputBlocker.Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_customize");
+            InputBlocker.Hide();
+
+            CustomizeButton.GrabFocus();
+
+            customize_active = false;
+        }
     }
 
     private void ClickOptions()

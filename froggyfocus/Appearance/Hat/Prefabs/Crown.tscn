@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpl1r6i7pd7ty"]
+
+[ext_resource type="PackedScene" uid="uid://j6ldwmewtm0y" path="res://Assets/Quaternius/RPG/Crown2.fbx" id="1_w2pn2"]
+
+[node name="CrownPreview" type="Node3D"]
+
+[node name="Crown2" parent="." instance=ExtResource("1_w2pn2")]
+transform = Transform3D(0.968618, 0, -0.248555, 0, 1, 0, 0.248555, 0, 0.968618, 0, -0.14588, 0)

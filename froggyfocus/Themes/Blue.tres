@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dnae0f3350jys"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://dnae0f3350jys"]
 
 [ext_resource type="Texture2D" uid="uid://5fnd7654h6sk" path="res://Assets/KenneyNL/UI/Blue/button_square_depth_flat.png" id="2_cag1a"]
 [ext_resource type="Texture2D" uid="uid://2iew501qnljl" path="res://Assets/KenneyNL/UI/Blue/button_square_flat.png" id="3_hqcne"]
@@ -55,14 +55,6 @@ texture_margin_left = 10.0
 texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqjma"]
-texture = ExtResource("4_hqcne")
-texture_margin_left = 10.0
-texture_margin_top = 5.0
-texture_margin_right = 10.0
-expand_margin_top = 4.0
-region_rect = Rect2(0, 0, 64, 50)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wcklx"]
 texture = ExtResource("4_hqcne")
@@ -122,8 +114,10 @@ Panel/styles/panel = SubResource("StyleBoxTexture_gmvox")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_cag1a")
 PopupMenu/styles/panel = SubResource("StyleBoxTexture_iegeu")
 PopupPanel/styles/panel = SubResource("StyleBoxTexture_no5ov")
+TabContainer/colors/font_hovered_color = Color(1, 1, 1, 1)
+TabContainer/colors/font_selected_color = Color(1, 1, 1, 1)
+TabContainer/colors/font_unselected_color = Color(0.12549, 0.337255, 0.427451, 1)
 TabContainer/styles/panel = SubResource("StyleBoxTexture_tsi54")
-TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_eqjma")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_wcklx")
 TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_apell")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_fsqcy")
