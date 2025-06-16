@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnliymarrye3i"]
+
+[ext_resource type="PackedScene" uid="uid://cl4p6ip4r8foe" path="res://Assets/FlawLizArt/Clothing/cat_ears.fbx" id="2_355kt"]
+
+[node name="CatEars" type="Node3D"]
+
+[node name="cat_ears" parent="." instance=ExtResource("2_355kt")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.0963492, 0)

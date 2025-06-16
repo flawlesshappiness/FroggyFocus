@@ -17,7 +17,7 @@ texture_margin_bottom = 10.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
 
-[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "ColorRedSlider", "ColorGreenSlider", "ColorBlueSlider", "BackButton", "HatButtonTemplate", "Frog")]
+[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "ColorRedSlider", "ColorGreenSlider", "ColorBlueSlider", "BackButton", "HatButtonTemplate", "Frog", "PreviewRotationNode")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -33,12 +33,14 @@ grow_vertical = 2
 theme = ExtResource("1_c1ffu")
 script = ExtResource("2_jjbel")
 TabContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer")
+PreviewRotationSlider = NodePath("HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/RotationSlider")
 ColorRedSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorRed/ColorRedSlider")
 ColorGreenSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorGreen/ColorGreenSlider")
 ColorBlueSlider = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer/ColorBlue/ColorBlueSlider")
 BackButton = NodePath("HBoxContainer/OptionsPanel/CloseButton")
 HatButtonTemplate = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/GridContainer/AppearanceButton")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
+PreviewRotationNode = NodePath("SubViewport_Frog/Origin")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -68,22 +70,33 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 15
 
-[node name="Panel" type="Panel" parent="HBoxContainer/CameraPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CameraPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/MarginContainer"]
 modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_041x8")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CameraPanel/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CameraPanel/MarginContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_ntf0j")
 expand_mode = 1
+
+[node name="RotationSlider" type="HSlider" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 360.0
 
 [node name="OptionsPanel" type="Control" parent="HBoxContainer"]
 layout_mode = 2
@@ -215,7 +228,7 @@ size = Vector2i(1024, 1024)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport_Frog"]
-transform = Transform3D(-0.717907, -0.329335, 0.613309, -7.45058e-09, 0.881015, 0.473089, -0.696139, 0.339634, -0.632487, 1.07032, 0.890258, -0.913143)
+transform = Transform3D(-1, 4.13117e-08, -7.7046e-08, 0, 0.881304, 0.472551, 8.74228e-08, 0.472551, -0.881304, 0, 0.89, -1.2)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport_Frog"]

@@ -7,6 +7,11 @@ public partial class AppearanceHatAttachmentGroup : Node3D
     [Export]
     public Array<AppearanceHatAttachment> Hats = new();
 
+    public void Clear()
+    {
+        HideAllHats();
+    }
+
     private void HideAllHats()
     {
         Hats.ForEach(x => x.Hide());

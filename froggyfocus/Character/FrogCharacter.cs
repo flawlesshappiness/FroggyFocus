@@ -50,6 +50,7 @@ public partial class FrogCharacter : Character
         InitializeAnimations();
         InitializeTongue();
 
+        ClearAppearance();
         LoadAppearance();
 
         CustomizeAppearanceControl.OnBodyColorChanged += BodyColorChanged;
@@ -132,6 +133,11 @@ public partial class FrogCharacter : Character
 
         BodyMesh.SetSurfaceOverrideMaterial(0, body_material);
         BodyMesh.SetSurfaceOverrideMaterial(1, mouth_material);
+    }
+
+    public void ClearAppearance()
+    {
+        HatGroup.Clear();
     }
 
     public void LoadAppearance()

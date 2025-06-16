@@ -8,6 +8,9 @@ public partial class CustomizeAppearanceControl : ControlScript
     public TabContainer TabContainer;
 
     [Export]
+    public Slider PreviewRotationSlider;
+
+    [Export]
     public Slider ColorRedSlider;
 
     [Export]
@@ -25,6 +28,9 @@ public partial class CustomizeAppearanceControl : ControlScript
     [Export]
     public FrogCharacter Frog;
 
+    [Export]
+    public Node3D PreviewRotationNode;
+
     public event Action OnBackPressed;
 
     public static event Action OnBodyColorChanged;
@@ -40,6 +46,8 @@ public partial class CustomizeAppearanceControl : ControlScript
         ColorRedSlider.ValueChanged += _ => ColorSlider_ValueChanged();
         ColorGreenSlider.ValueChanged += _ => ColorSlider_ValueChanged();
         ColorBlueSlider.ValueChanged += _ => ColorSlider_ValueChanged();
+
+        PreviewRotationSlider.ValueChanged += PreviewRotationSlider_ValueChanged;
 
         BackButton.Pressed += BackPressed;
     }
@@ -65,11 +73,22 @@ public partial class CustomizeAppearanceControl : ControlScript
         }
     }
 
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
+        {
+            BackPressed();
+        }
+    }
+
     private AppearanceButton CreateHatButton()
     {
         var button = HatButtonTemplate.Duplicate() as AppearanceButton;
         button.SetParent(HatButtonTemplate.GetParent());
         button.Show();
+        hat_buttons.Add(button);
         return button;
     }
 
@@ -101,6 +120,12 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         Data.Game.Save();
         OnBackPressed?.Invoke();
+    }
+
+    private void PreviewRotationSlider_ValueChanged(double dvalue)
+    {
+        var value = Convert.ToSingle(dvalue);
+        PreviewRotationNode.RotationDegrees = new Vector3(0, value, 0);
     }
 
     private void ColorSlider_ValueChanged()
