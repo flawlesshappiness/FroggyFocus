@@ -22,6 +22,9 @@ public partial class FrogCharacter : Character
     [Export]
     public MeshInstance3D BodyMesh;
 
+    [Export]
+    public AppearanceHatAttachmentGroup HatGroup;
+
     public bool IsHandOut { get; private set; }
 
     private float time_hand_out;
@@ -50,6 +53,7 @@ public partial class FrogCharacter : Character
         LoadAppearance();
 
         CustomizeAppearanceControl.OnBodyColorChanged += BodyColorChanged;
+        CustomizeAppearanceControl.OnHatChanged += HatChanged;
     }
 
     public override void _ExitTree()
@@ -57,6 +61,7 @@ public partial class FrogCharacter : Character
         base._ExitTree();
 
         CustomizeAppearanceControl.OnBodyColorChanged -= BodyColorChanged;
+        CustomizeAppearanceControl.OnHatChanged -= HatChanged;
     }
 
     private void InitializeTongue()
@@ -134,6 +139,7 @@ public partial class FrogCharacter : Character
         if (Data.Game == null) return;
 
         BodyColorChanged();
+        HatChanged();
     }
 
     private void BodyColorChanged()
@@ -144,6 +150,11 @@ public partial class FrogCharacter : Character
         var c = new Color(r, g, b);
         body_material.SetShaderParameter("albedo", c);
         mouth_material.SetShaderParameter("albedo", c * 0.5f);
+    }
+
+    private void HatChanged()
+    {
+        HatGroup.SetHat(Data.Game.FrogAppearanceData.Hat);
     }
 
     public override void _Process(double delta)

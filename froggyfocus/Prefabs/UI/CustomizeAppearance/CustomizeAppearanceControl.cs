@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class CustomizeAppearanceControl : ControlScript
 {
@@ -16,13 +17,18 @@ public partial class CustomizeAppearanceControl : ControlScript
     public Button BackButton;
 
     [Export]
+    public AppearanceButton HatButtonTemplate;
+
+    [Export]
     public FrogCharacter Frog;
 
     public event Action OnBackPressed;
 
     public static event Action OnBodyColorChanged;
+    public static event Action OnHatChanged;
 
     private bool loading;
+    private List<AppearanceButton> hat_buttons = new();
 
     public override void _Ready()
     {
@@ -33,6 +39,35 @@ public partial class CustomizeAppearanceControl : ControlScript
         ColorBlueSlider.ValueChanged += _ => ColorSlider_ValueChanged();
 
         BackButton.Pressed += BackPressed;
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        InitializeHats();
+    }
+
+    private void InitializeHats()
+    {
+        HatButtonTemplate.Hide();
+
+        var empty_button = CreateHatButton();
+        empty_button.Pressed += () => HatButtonPressed(AppearanceHatType.None);
+
+        foreach (var info in AppearanceHatController.Instance.Collection.Resources)
+        {
+            var button = CreateHatButton();
+            button.SetPrefab(info.Prefab);
+            button.Pressed += () => HatButtonPressed(info.Type);
+        }
+    }
+
+    private AppearanceButton CreateHatButton()
+    {
+        var button = HatButtonTemplate.Duplicate() as AppearanceButton;
+        button.SetParent(HatButtonTemplate.GetParent());
+        button.Show();
+        return button;
     }
 
     protected override void OnShow()
@@ -74,5 +109,12 @@ public partial class CustomizeAppearanceControl : ControlScript
         Data.Game.FrogAppearanceData.ColorB = (float)ColorBlueSlider.Value;
 
         OnBodyColorChanged?.Invoke();
+    }
+
+    private void HatButtonPressed(AppearanceHatType type)
+    {
+        Data.Game.FrogAppearanceData.Hat = type;
+
+        OnHatChanged?.Invoke();
     }
 }

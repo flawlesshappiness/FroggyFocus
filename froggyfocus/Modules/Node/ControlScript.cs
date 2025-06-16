@@ -4,6 +4,7 @@ using System.Collections;
 
 public partial class ControlScript : Control
 {
+    private bool _initialized;
     private bool _visible;
 
     public Coroutine StartCoroutine(Func<IEnumerator> enumerator, string id = null)
@@ -12,9 +13,14 @@ public partial class ControlScript : Control
         return Coroutine.Start(enumerator, id, this);
     }
 
+    protected virtual void Initialize()
+    {
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
+        Process_Initialize();
         Process_Visible();
     }
 
@@ -32,6 +38,15 @@ public partial class ControlScript : Control
             {
                 OnHide();
             }
+        }
+    }
+
+    private void Process_Initialize()
+    {
+        if (!_initialized)
+        {
+            _initialized = true;
+            Initialize();
         }
     }
 

@@ -1,14 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=21 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ps7tr"]
+[ext_resource type="Script" uid="uid://uq2o0quxjtxh" path="res://Appearance/Hat/AppearanceHatAttachmentGroup.cs" id="4_4vdn2"]
 [ext_resource type="PackedScene" uid="uid://dmlnvb2o65uy1" path="res://Assets/FlawLizArt/Frog/tongue.fbx" id="4_ai43q"]
 [ext_resource type="PackedScene" uid="uid://dxfvux2lo6jac" path="res://Assets/FlawLizArt/Frog/frog.fbx" id="4_db7or"]
-[ext_resource type="PackedScene" uid="uid://j6ldwmewtm0y" path="res://Assets/Quaternius/RPG/Crown2.fbx" id="4_ipxdd"]
+[ext_resource type="PackedScene" uid="uid://dvmei7w1bcnhp" path="res://Assets/Quaternius/RPG/Crown2.fbx" id="4_ipxdd"]
 [ext_resource type="AudioStream" uid="uid://r43hpifjwwab" path="res://Sounds/Raw/sfx_slap_skin_001.wav" id="5_ai43q"]
 [ext_resource type="AudioStream" uid="uid://da3dqxkhes46e" path="res://Sounds/Raw/sfx_rub_skin_001.wav" id="5_iqfu1"]
 [ext_resource type="AudioStream" uid="uid://dgxdg656niwoj" path="res://Sounds/Raw/sfx_rub_skin_002.wav" id="6_81ysc"]
+[ext_resource type="Script" uid="uid://bw3upqrgb4wnv" path="res://Appearance/Hat/AppearanceHatAttachment.cs" id="6_380eu"]
 [ext_resource type="AudioStream" uid="uid://b0g6ilpk87mli" path="res://Sounds/Raw/sfx_rub_skin_double_001.wav" id="8_5vqex"]
 [ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="9_qta17"]
 [ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="10_w1eid"]
@@ -42,7 +44,7 @@ streams_count = 2
 stream_0/stream = ExtResource("9_qta17")
 stream_1/stream = ExtResource("10_w1eid")
 
-[node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "TongueTargetMarker", "TongueStartMarker", "Animation", "BodyMesh")]
+[node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "TongueTargetMarker", "TongueStartMarker", "Animation", "BodyMesh", "HatGroup")]
 script = ExtResource("1_c7gfj")
 Tongue = NodePath("Tongue")
 TongueTargetMarker = NodePath("Tongue/TongueTargetMarker")
@@ -50,6 +52,7 @@ TongueStartMarker = NodePath("frog/TongueStartMarker")
 Animation = NodePath("AnimationStateMachine")
 SfxSwallow = ExtResource("2_w1eid")
 BodyMesh = NodePath("frog/Armature/Skeleton3D/frog")
+HatGroup = NodePath("frog/Armature/Skeleton3D/HatAttachmentGroup")
 
 [node name="frog" parent="." instance=ExtResource("4_db7or")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
@@ -149,13 +152,17 @@ bones/52/scale = Vector3(1, 1, 1)
 bones/54/rotation = Quaternion(-0.334369, 0.623055, 0.623055, -0.334369)
 bones/56/rotation = Quaternion(0.692591, -0.142541, -0.142541, 0.692591)
 
-[node name="HatAttachment" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999999, -0.00101667, -0.000994983, 0.00105271, 0.999318, 0.0369155, 0.000956773, -0.0369165, 0.999318, -2.22531e-05, 0.0105613, 0.0142934)
+[node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="2" node_paths=PackedStringArray("Hats")]
+transform = Transform3D(0.999999, -0.00101667, -0.000994983, 0.00105271, 0.999318, 0.0369163, 0.000956773, -0.0369173, 0.999318, -2.22531e-05, 0.0105613, 0.0142934)
 bone_name = "Head"
 bone_idx = 4
+script = ExtResource("4_4vdn2")
+Hats = [NodePath("Crown2")]
 
-[node name="Crown2" parent="frog/Armature/Skeleton3D/HatAttachment" instance=ExtResource("4_ipxdd")]
+[node name="Crown2" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("4_ipxdd")]
 transform = Transform3D(0.01, 0, 0, 0, -0.00284216, -0.0095876, 0, 0.0095876, -0.00284216, 1.04019e-09, -0.00171867, 0.00296973)
+script = ExtResource("6_380eu")
+Type = 1
 
 [node name="AnimationPlayer" parent="frog" index="1"]
 playback_default_blend_time = 0.15
