@@ -156,7 +156,8 @@ public partial class FocusEvent : Node3D
             yield return Target.WaitForMoveToRandomPosition();
 
             // Skill check / wait
-            var has_skill_checks = Target.Info.SkillChecks?.Count > 0;
+            var has_override_skill_check = OverrideSkillCheck != null;
+            var has_skill_checks = Target.Info.SkillChecks?.Count > 0 || has_override_skill_check;
             var is_skill_check = rng.Randf() < 0.5f;
             if (has_skill_checks && is_skill_check)
             {
@@ -172,7 +173,7 @@ public partial class FocusEvent : Node3D
 
     private IEnumerator WaitForSkillCheck()
     {
-        var type = Target.Info.SkillChecks.PickRandom();
+        var type = Target.Info.SkillChecks.Count == 0 ? FocusSkillCheckType.Dash : Target.Info.SkillChecks?.PickRandom() ?? FocusSkillCheckType.Dash;
         CurrentSkillCheck = OverrideSkillCheck ?? SkillChecks.FirstOrDefault(x => x.Type == type);
         yield return CurrentSkillCheck.Start(this);
         CurrentSkillCheck = null;

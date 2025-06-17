@@ -5,6 +5,12 @@ using System.Collections.Generic;
 public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 {
     [Export]
+    public Vector2I BombCountRange;
+
+    [Export]
+    public Vector2 DistanceRange;
+
+    [Export]
     public SkillCheckBomb BombTemplate;
 
     [Export]
@@ -44,7 +50,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     protected override IEnumerator Run()
     {
         var last_angle = rng.RandfRange(0f, 360f);
-        var count = 3;
+        var count = GetDifficultyInt(BombCountRange);
         for (int i = 0; i < count; i++)
         {
             last_angle += rng.RandfRange(45, 180);
@@ -151,10 +157,11 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 
     private Vector3 GetBombPosition(float angle)
     {
-        var radius = rng.RandfRange(1.0f, 2.0f);
+        var radius_mul = rng.RandfRange(0.75f, 1f);
+        var radius = Mathf.Lerp(DistanceRange.X, DistanceRange.Y, Difficulty);
         var center = FocusEvent.Target.GlobalPosition;
         var dir = Vector3.Forward.Rotated(Vector3.Up, Mathf.DegToRad(angle));
-        var position = center + dir * radius;
+        var position = center + dir * radius * radius_mul;
         return position;
     }
 }

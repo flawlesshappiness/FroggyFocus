@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjfec2tbico8w"]
+
+[ext_resource type="Script" uid="uid://b7runs5elgqm8" path="res://FocusSkillCheck/SkillCheckDash.cs" id="1_ghwqf"]
+[ext_resource type="Texture2D" uid="uid://bonu8f811ddko" path="res://Assets/KenneyNL/Cursor/Basic/navigation_n.png" id="1_to7dc"]
+[ext_resource type="AudioStream" uid="uid://dva886cuu6ksw" path="res://Sounds/Raw/sfx_swish_001.wav" id="3_k2cjn"]
+
+[sub_resource type="Animation" id="Animation_to7dc"]
+resource_name = "telegraph"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotation/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.0805992), Vector3(0, 0, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotation/Anim/Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ghwqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotation/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.0805992)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rotation/Anim/Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2cjn"]
+_data = {
+&"RESET": SubResource("Animation_ghwqf"),
+&"telegraph": SubResource("Animation_to7dc")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k2cjn"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_k2cjn")
+
+[node name="Dash" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "RotationNode", "SfxMove")]
+script = ExtResource("1_ghwqf")
+DashCountRange = Vector2i(1, 3)
+TelegraphSpeedRange = Vector2(1, 3)
+AnimationPlayer = NodePath("AnimationPlayer")
+RotationNode = NodePath("Rotation")
+SfxMove = NodePath("SfxMove")
+Type = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k2cjn")
+}
+
+[node name="Rotation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+
+[node name="Anim" type="Node3D" parent="Rotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0805992)
+
+[node name="Sprite3D" type="Sprite3D" parent="Rotation/Anim"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_to7dc")
+
+[node name="SfxMove" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_k2cjn")
+volume_db = -10.0
+bus = &"SFX"

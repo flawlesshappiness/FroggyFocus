@@ -53,11 +53,8 @@ public partial class FocusTarget : Node3D
     public IEnumerator WaitForMoveToRandomPosition()
     {
         // Select position
-        var position = GetRandomPosition(1, 0, 1);
+        var position = GetClampedPosition();
         var dir_to_position = GlobalPosition.DirectionTo(position);
-        var length = dir_to_position.Length();
-        var dir_to_position_clamped = dir_to_position.ClampMagnitude(Info.MoveLengthRange.X, Info.MoveLengthRange.Y);
-        position = GlobalPosition + dir_to_position_clamped;
 
         // Move to position
         Character.StartFacingDirection(dir_to_position);
@@ -75,6 +72,15 @@ public partial class FocusTarget : Node3D
     private void Move(Vector3 velocity)
     {
         GlobalPosition += velocity;
+    }
+
+    public Vector3 GetClampedPosition()
+    {
+        var position = GetRandomPosition(1, 0, 1);
+        var dir_to_position = GlobalPosition.DirectionTo(position);
+        var length = dir_to_position.Length();
+        var dir_to_position_clamped = dir_to_position.ClampMagnitude(Info.MoveLengthRange.X, Info.MoveLengthRange.Y);
+        return GlobalPosition + dir_to_position_clamped;
     }
 
     private Vector3 GetRandomPosition(int x, int y, int z) => GetRandomPosition(new Vector3I(x, y, z));

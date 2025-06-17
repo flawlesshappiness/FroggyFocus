@@ -7,6 +7,7 @@ public partial class FocusSkillCheck : Node3D
     public FocusSkillCheckType Type;
 
     protected FocusEvent FocusEvent { get; set; }
+    protected float Difficulty => FocusEvent.Target.Info.Difficulty;
 
     protected RandomNumberGenerator rng = new();
 
@@ -25,5 +26,11 @@ public partial class FocusSkillCheck : Node3D
     protected virtual IEnumerator Run()
     {
         yield return null;
+    }
+
+    protected int GetDifficultyInt(Vector2I range) => GetDifficultyInt(range.X, range.Y);
+    protected int GetDifficultyInt(int min, int max)
+    {
+        return (int)Mathf.Clamp(Mathf.Lerp(min, max + 1, Difficulty), min, max);
     }
 }
