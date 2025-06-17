@@ -87,16 +87,16 @@ curve = SubResource("Curve_dv0nn")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tj6sj"]
 lifetime_randomness = 0.25
 emission_shape = 2
-emission_sphere_radius = 0.1
+emission_sphere_radius = 0.05
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
+initial_velocity_min = 0.25
+initial_velocity_max = 1.0
 gravity = Vector3(0, 1, 0)
 radial_accel_min = -2.23517e-06
 radial_accel_max = 0.999998
-scale_min = 0.2
-scale_max = 0.4
+scale_min = 0.1
+scale_max = 0.2
 scale_curve = SubResource("CurveTexture_0j44y")
 
 [sub_resource type="SphereMesh" id="SphereMesh_pgr7x"]
@@ -175,7 +175,6 @@ libraries = {
 }
 
 [node name="SubViewport_Frog" type="SubViewport" parent="."]
-own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
@@ -193,8 +192,12 @@ transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694
 [node name="Frog" parent="SubViewport_Frog/Origin" instance=ExtResource("2_q36ha")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewport_Frog/Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
-light_energy = 0.1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.842156, -1.95874)
+light_energy = 0.2
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewport_Frog/Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.842156, 2.24077)
+light_energy = 0.2
 
 [node name="TargetMarker" type="Marker3D" parent="SubViewport_Frog/Origin"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80245e-08, 0, -1.61868)

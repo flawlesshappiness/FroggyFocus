@@ -25,6 +25,9 @@ public partial class FocusCharacterInfo : Resource
     [Export]
     public int CurrencyReward = 1;
 
+    [Export(PropertyHint.Range, "0,1,0.01")]
+    public float Difficulty;
+
     [Export]
     public Array<FocusSkillCheckType> SkillChecks;
 }
