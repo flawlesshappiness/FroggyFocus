@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_nripm")
 Scene = ExtResource("1_u2f4j")
+FocusValue = 50.0
 SizeRange = Vector2(0.4, 0.8)
 MoveSpeed = 6.0
 MoveLengthRange = Vector2(2, 4)

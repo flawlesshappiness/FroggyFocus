@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bc86o50qja4fn" path="res://Prefabs/FocusSkillChecks/bombs.tscn" id="6_dbk1m"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="7_yos1q"]
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "OverrideSkillCheck", "SkillChecks")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "SkillChecks")]
 script = ExtResource("1_p778c")
 Info = ExtResource("2_2i5pb")
 Size = Vector2(10, 2)
@@ -16,7 +16,6 @@ Camera = NodePath("CameraMarker/Camera3D")
 Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
 Frog = NodePath("Frog")
-OverrideSkillCheck = NodePath("SkillChecks/Bombs")
 SkillChecks = [NodePath("SkillChecks/Bombs")]
 
 [node name="CameraMarker" type="Marker3D" parent="."]

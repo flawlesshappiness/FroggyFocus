@@ -13,6 +13,7 @@ stream_0/stream = ExtResource("3_mpjhp")
 script = ExtResource("1_whlow")
 BombTemplate = NodePath("SkillCheckBomb")
 SfxCreateBomb = NodePath("SfxCreateBomb")
+Type = 1
 
 [node name="SkillCheckBomb" parent="." instance=ExtResource("2_enwqw")]
 

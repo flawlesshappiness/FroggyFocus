@@ -56,7 +56,6 @@ public partial class Player : TopDownController
     {
         base._Ready();
         Instance = this;
-        //SetCameraTarget();
 
         OnMoveStart += () => MoveChanged(true);
         OnMoveStop += () => MoveChanged(false);

@@ -18,7 +18,16 @@ public partial class FocusOutroView : View
     public Marker3D TargetMarker;
 
     [Export]
-    public AudioStreamPlayer SfxChord;
+    public AudioStreamPlayer SfxChordSuccess;
+
+    [Export]
+    public AudioStreamPlayer SfxChordFail;
+
+    [Export]
+    public AudioStreamPlayer SfxSwish;
+
+    [Export]
+    public GpuParticles3D PsDust;
 
     private Node3D current_target;
 
@@ -33,20 +42,39 @@ public partial class FocusOutroView : View
         Frog.SetLeftHandForward();
     }
 
-    public IEnumerator EatBugSequence()
+    public IEnumerator EatBugSequence(bool success)
     {
         Show();
         SubViewport.AudioListenerEnable3D = true;
         Frog.SetHandsBack();
         yield return AnimationPlayer.PlayAndWaitForAnimation("eat_bug");
+        if (!success)
+        {
+            current_target.Hide();
+            PsDust.Emitting = true;
+            SfxSwish.Play();
+            yield return new WaitForSeconds(0.25f);
+        }
         yield return Frog.AnimateEatTarget(current_target);
         yield return new WaitForSeconds(0.25f);
-        SfxChord.Play();
+        PlayChord(success);
         yield return new WaitForSeconds(0.25f);
         SubViewport.AudioListenerEnable3D = false;
         Hide();
 
         ResetFrog();
+    }
+
+    private void PlayChord(bool success)
+    {
+        if (success)
+        {
+            SfxChordSuccess.Play();
+        }
+        else
+        {
+            SfxChordFail.Play();
+        }
     }
 
     private void RemoveTarget()

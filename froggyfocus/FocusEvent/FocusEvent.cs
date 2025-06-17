@@ -2,6 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections;
+using System.Linq;
 
 public partial class FocusEvent : Node3D
 {
@@ -120,11 +121,12 @@ public partial class FocusEvent : Node3D
 
             yield return new WaitForSeconds(0.5f);
 
+            // Eat target
+            FocusOutroView.Instance.CreateTarget(Target.Info);
+            yield return FocusOutroView.Instance.EatBugSequence(completed);
+
             if (completed)
             {
-                // Eat target
-                FocusOutroView.Instance.CreateTarget(Target.Info);
-                yield return FocusOutroView.Instance.EatBugSequence();
                 CurrencyController.Instance.AddValue(CurrencyType.Money, Target.Info.CurrencyReward);
             }
 
@@ -154,8 +156,9 @@ public partial class FocusEvent : Node3D
             yield return Target.WaitForMoveToRandomPosition();
 
             // Skill check / wait
+            var has_skill_checks = Target.Info.SkillChecks?.Count > 0;
             var is_skill_check = rng.Randf() < 0.5f;
-            if (is_skill_check)
+            if (has_skill_checks && is_skill_check)
             {
                 yield return WaitForSkillCheck();
             }
@@ -169,7 +172,8 @@ public partial class FocusEvent : Node3D
 
     private IEnumerator WaitForSkillCheck()
     {
-        CurrentSkillCheck = OverrideSkillCheck ?? SkillChecks.PickRandom();
+        var type = Target.Info.SkillChecks.PickRandom();
+        CurrentSkillCheck = OverrideSkillCheck ?? SkillChecks.FirstOrDefault(x => x.Type == type);
         yield return CurrentSkillCheck.Start(this);
         CurrentSkillCheck = null;
     }

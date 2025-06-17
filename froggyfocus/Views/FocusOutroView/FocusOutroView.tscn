@@ -1,11 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://bklev6v828pf7"]
+[gd_scene load_steps=23 format=3 uid="uid://bklev6v828pf7"]
 
 [ext_resource type="Script" uid="uid://qluuhf5keo3r" path="res://Views/FocusOutroView/FocusOutroView.cs" id="1_ftjlc"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="2_q36ha"]
 [ext_resource type="Texture2D" uid="uid://lfx3ye5e35df" path="res://Assets/FlawLizArt/Textures/background_gradient_circle.png" id="2_r3lkl"]
 [ext_resource type="AudioStream" uid="uid://cveebtv8pq815" path="res://Sounds/Raw/sfx_marimba_chord_c.wav" id="3_usddo"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="4_87eld"]
 [ext_resource type="AudioStream" uid="uid://co8y8prv2lgeu" path="res://Sounds/Raw/sfx_marimba_chord_d.wav" id="4_r3lkl"]
 [ext_resource type="AudioStream" uid="uid://csintuu1d7poa" path="res://Sounds/Raw/sfx_marimba_chord_f.wav" id="5_87eld"]
+[ext_resource type="AudioStream" uid="uid://dl44f833dkjsa" path="res://Sounds/Raw/sfx_marimba_chord_fail_002.wav" id="6_dv0nn"]
+[ext_resource type="AudioStream" uid="uid://ccvsh05n0rd06" path="res://Sounds/Raw/sfx_marimba_chord_fail_003.wav" id="7_0j44y"]
+[ext_resource type="AudioStream" uid="uid://bw2b5yoiv14mr" path="res://Sounds/Raw/sfx_marimba_chord_fail_001.wav" id="8_tj6sj"]
+[ext_resource type="AudioStream" uid="uid://dva886cuu6ksw" path="res://Sounds/Raw/sfx_swish_001.wav" id="11_pgr7x"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q36ha"]
 viewport_path = NodePath("SubViewport_Frog")
@@ -72,13 +77,49 @@ _data = {
 &"eat_bug": SubResource("Animation_1gv4t")
 }
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dv0nn"]
+[sub_resource type="Curve" id="Curve_dv0nn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_0j44y"]
+curve = SubResource("Curve_dv0nn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tj6sj"]
+lifetime_randomness = 0.25
+emission_shape = 2
+emission_sphere_radius = 0.1
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 1, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = 0.999998
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_0j44y")
+
+[sub_resource type="SphereMesh" id="SphereMesh_pgr7x"]
+material = ExtResource("4_87eld")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pgr7x"]
 streams_count = 3
 stream_0/stream = ExtResource("3_usddo")
 stream_1/stream = ExtResource("4_r3lkl")
 stream_2/stream = ExtResource("5_87eld")
 
-[node name="FocusOutroView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "SubViewport", "Frog", "TargetMarker", "SfxChord")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dv0nn"]
+streams_count = 3
+stream_0/stream = ExtResource("8_tj6sj")
+stream_1/stream = ExtResource("6_dv0nn")
+stream_2/stream = ExtResource("7_0j44y")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nb0i5"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("11_pgr7x")
+
+[node name="FocusOutroView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "SubViewport", "Frog", "TargetMarker", "SfxChordSuccess", "SfxChordFail", "SfxSwish", "PsDust")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +131,10 @@ AnimationPlayer = NodePath("AnimationPlayer")
 SubViewport = NodePath("SubViewport_Frog")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
 TargetMarker = NodePath("SubViewport_Frog/Origin/TargetMarker")
-SfxChord = NodePath("SfxChord")
+SfxChordSuccess = NodePath("SfxChordSuccess")
+SfxChordFail = NodePath("SfxChordFail")
+SfxSwish = NodePath("SfxSwish")
+PsDust = NodePath("SubViewport_Frog/Origin/TargetMarker/ps_dust")
 ChildOrder = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -155,6 +199,25 @@ light_energy = 0.1
 [node name="TargetMarker" type="Marker3D" parent="SubViewport_Frog/Origin"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.80245e-08, 0, -1.61868)
 
-[node name="SfxChord" type="AudioStreamPlayer" parent="."]
+[node name="ps_dust" type="GPUParticles3D" parent="SubViewport_Frog/Origin/TargetMarker"]
+emitting = false
+amount = 5
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_tj6sj")
+draw_pass_1 = SubResource("SphereMesh_pgr7x")
+
+[node name="SfxChordSuccess" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_pgr7x")
+bus = &"SFX"
+
+[node name="SfxChordFail" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_dv0nn")
+bus = &"SFX"
+
+[node name="SfxSwish" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_nb0i5")
+volume_db = -5.0
 bus = &"SFX"
