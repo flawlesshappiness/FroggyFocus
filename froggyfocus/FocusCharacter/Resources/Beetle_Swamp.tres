@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://cqjm2dxtl5xbj"]
 
-[ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="1_hx3bp"]
-[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_mcg1p"]
+[ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="1_0hbgr"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_k5qua"]
 
 [resource]
-script = ExtResource("2_mcg1p")
-Scene = ExtResource("1_hx3bp")
+script = ExtResource("2_k5qua")
+Scene = ExtResource("1_0hbgr")
 FocusValue = 75.0
 SizeRange = Vector2(0.4, 0.6)
 MoveSpeed = 1.0
@@ -13,5 +13,5 @@ MoveLengthRange = Vector2(0.5, 1)
 MoveDelayRange = Vector2(0.5, 1)
 CurrencyReward = 25
 Difficulty = 0.0
-SkillChecks = Array[int]([1])
+SkillChecks = Array[int]([1, 2])
 metadata/_custom_type_script = "uid://buqirimb2mf5"

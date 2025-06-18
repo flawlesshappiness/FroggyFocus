@@ -12,5 +12,6 @@ MoveSpeed = 4.0
 MoveLengthRange = Vector2(2, 3)
 MoveDelayRange = Vector2(0.2, 2)
 CurrencyReward = 40
-SkillChecks = null
+Difficulty = 0.0
+SkillChecks = Array[int]([2])
 metadata/_custom_type_script = "uid://buqirimb2mf5"
