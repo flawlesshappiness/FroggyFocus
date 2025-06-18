@@ -80,7 +80,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.75, 0.75, 0.75), Vector3(0.01, 0.01, 0.01)]
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(0.01, 0.01, 0.01)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -89,10 +89,10 @@ tracks/2/path = NodePath("Offset/AnimatedCoin:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_bie63"]
@@ -120,7 +120,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.01, 0.01, 0.01), Vector3(0.75, 0.75, 0.75)]
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(0.5, 0.5, 0.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -160,7 +160,6 @@ AnimationPlayer = NodePath("AnimationPlayer")
 AmountLabel = NodePath("Offset/AnimatedCoin/AmountLabel")
 
 [node name="Offset" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319355, 0, 0)
 
 [node name="AnimatedCoin" parent="Offset" instance=ExtResource("1_p2wu3")]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 1.5, 0)
@@ -168,6 +167,7 @@ visible = false
 
 [node name="AmountLabel" type="Label3D" parent="Offset/AnimatedCoin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.483728, 0, 0)
+visible = false
 billboard = 1
 text = "+100"
 font_size = 102

@@ -119,8 +119,6 @@ public partial class FocusEvent : Node3D
             // Disable cursor
             Cursor.Stop();
 
-            yield return new WaitForSeconds(0.5f);
-
             // Eat target
             FocusOutroView.Instance.CreateTarget(Target.Info);
             yield return FocusOutroView.Instance.EatBugSequence(completed);
