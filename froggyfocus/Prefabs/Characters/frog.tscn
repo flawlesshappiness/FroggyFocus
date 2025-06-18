@@ -163,7 +163,7 @@ bones/56/rotation = Quaternion(0.692591, -0.142541, -0.142541, 0.692591)
 bones/56/scale = Vector3(1, 1, 1)
 
 [node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="2" node_paths=PackedStringArray("Hats")]
-transform = Transform3D(1, 6.23955e-15, -4.37082e-14, -2.4612e-14, 0.998942, -0.0459942, 8.85753e-14, 0.0459944, 0.998942, -1.18764e-17, 0.0103008, 0.0153717)
+transform = Transform3D(1, -2.05045e-13, 7.11069e-13, 2.525e-13, 0.998942, -0.0459941, -7.21443e-13, 0.0459941, 0.998942, 1.73988e-15, 0.0103008, 0.0153717)
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_4vdn2")

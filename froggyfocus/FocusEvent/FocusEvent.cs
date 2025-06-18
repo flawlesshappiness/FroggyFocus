@@ -7,6 +7,9 @@ using System.Linq;
 public partial class FocusEvent : Node3D
 {
     [Export]
+    public string Id;
+
+    [Export]
     public FocusEventInfo Info;
 
     [Export]
@@ -139,8 +142,15 @@ public partial class FocusEvent : Node3D
 
             // End
             EventStarted = false;
-            FocusEventController.Instance.FocusEventCompleted(new FocusEventCompletedResult(this));
-            yield return null;
+
+            if (completed)
+            {
+                FocusEventController.Instance.FocusEventCompleted(new FocusEventCompletedResult(this));
+            }
+            else
+            {
+                FocusEventController.Instance.FocusEventFailed(new FocusEventFailedResult(this));
+            }
         }
     }
 

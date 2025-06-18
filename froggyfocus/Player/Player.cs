@@ -312,7 +312,7 @@ public partial class Player : TopDownController
             SfxFocusTargetStarted.Play();
             yield return ExclamationMark.AnimateBounce();
             Player.SetAllLocks(id, false);
-            GameScene.Instance.FocusEvent.StartEvent();
+            GameScene.Instance.StartFocusEvent();
         }
     }
 }
