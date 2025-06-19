@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=39 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
@@ -15,12 +15,18 @@
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/upgrade_shop.tscn" id="12_20fcr"]
 [ext_resource type="Resource" uid="uid://4t23pgixusyd" path="res://FocusEvent/Resources/Swamp Land.tres" id="12_cmxon"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="12_yvk0y"]
+[ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="13_a7viq"]
+[ext_resource type="PackedScene" uid="uid://cstu4xwk8m2au" path="res://Prefabs/Nature/common_tree_dead_1.tscn" id="13_yvk0y"]
 [ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Water.tres" id="14_52an4"]
+[ext_resource type="PackedScene" uid="uid://db3tbp4x07eca" path="res://Prefabs/Nature/common_tree_dead_2.tscn" id="14_cmxon"]
 [ext_resource type="PackedScene" uid="uid://b0uor5n0v8ykv" path="res://Assets/Quaternius/Nature/Lilypad_Cut.fbx" id="15_bmghv"]
+[ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="15_xnl44"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
 [ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="17_achss"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
+[ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
+[ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="23_fmiw0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_20fcr"]
 size = Vector2(1000, 1000)
@@ -73,14 +79,35 @@ geometry_parsed_geometry_type = 1
 [sub_resource type="Curve3D" id="Curve3D_20fcr"]
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 5, 0, 0, -5, -12.4084, 0, -0.9991, -5, 0, 0, 5, 0, 0, 0.38504, 0, -12.3052, 0, 0, -5, 0, 0, 5, 12.3906, 0, 1.17018, 5, 0, 0, -5, 0, 0, 0.0857086, 0, 12.7923),
+"points": PackedVector3Array(0, 0, 10, 0, 0, -10, -15.2806, 0, -2.51674, -10, 0, 0, 10, 0, 0, 1.82465, 0, -15.8537, 0, 0, -10, 0, 0, 10, 14.9178, 0, 1.57058, 10, 0, 0, -10, 0, 0, 0.735813, 0, 15.2889),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_a7viq"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 5, 0, 0, -5, -8.27078, 0, -0.174362, -5, 0, 0, 5, 0, 0, 0.237263, 0, -8.92587, 0, 0, -5, 0, 0, 5, 9.26044, 0, 0.939808, 5, 0, 0, -5, 0, 0, 0.471685, 0, 8.44974),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_achss"]
+vertices = PackedVector3Array(6.01851, 0.83444, -29.9281, 6.01851, 0.83444, -30.6781, 1.76851, 0.83444, -31.4281, -3.73149, 0.83444, -6.67814, -3.73149, 0.83444, -5.67814, 0.518509, 0.83444, -4.92814, -47.9815, 50.0844, -23.9281, -47.2315, 50.0844, -24.9281, -47.2315, 50.0844, -26.1781, -49.7315, 50.0844, -27.1781, -50.7315, 50.0844, -26.1781, -50.7315, 50.0844, -24.9281, -48.2315, 50.0844, -27.1781, -49.4815, 50.0844, -23.6781, -14.9815, 33.8344, -25.4281, -16.4815, 33.8344, -25.6781, -16.9815, 33.8344, -24.9281, -16.7315, 33.8344, -23.4281, -14.7315, 33.8344, -23.6781, 14.7685, 33.8344, -22.6781, 15.5185, 33.5844, -22.1781, 16.5185, 33.8344, -22.4281, 15.0185, 33.8344, -25.1781, 14.2685, 33.8344, -24.1781, 17.2685, 33.5844, -23.4281, 16.7685, 33.5844, -25.1781, -29.7315, 33.8344, -16.1781, -30.2315, 33.8344, -16.4281, -31.2315, 34.0844, -16.1781, -30.9815, 33.8344, -14.1781, -30.2315, 33.8344, -14.1781, -29.4815, 33.8344, -14.9281, -31.7315, 33.8344, -15.4281, -11.9815, 33.8344, -7.92814, -11.9815, 33.8344, -9.42814, -12.4815, 33.8344, -9.92814, -14.2315, 33.8344, -9.17814, -13.9815, 33.8344, -7.92814, -19.4815, -0.16556, -2.92814, -18.2315, -0.16556, -3.67814, -17.7315, -0.16556, -4.67814, -22.9815, -0.16556, -6.42814, -22.7315, -0.16556, -4.17814, -21.7315, -0.16556, -3.17814, -18.2315, -0.16556, -7.42814, -19.4815, -0.16556, -8.17814, -22.2315, -0.16556, -7.67814, 11.5185, 33.8344, -2.67814, 11.0185, 33.5844, -1.92814, 11.0185, 33.5844, -0.928139, 14.0185, 33.8344, -1.17814, 13.7685, 33.8344, -2.42814, 12.7685, 33.8344, -2.92814, 12.0185, 33.5844, 0.0718613, 13.2685, 33.5844, 0.0718613, -38.9815, 33.5844, 1.57186, -37.7315, 33.8344, 0.821861, -37.4815, 33.8344, 0.0718613, -38.2315, 33.8344, 0.821861, -38.2315, 33.8344, -1.42814, -39.2315, 33.8344, -1.67814, -40.4815, 33.5844, -0.678139, -40.2315, 33.8344, 0.821861, 48.2685, 50.0844, 2.57186, 49.0185, 50.0844, 1.57186, 49.0185, 50.0844, 0.571861, 48.0185, 50.0844, -0.678139, 46.5185, 50.0844, -0.678139, 45.5185, 50.0844, 0.321861, 45.5185, 50.0844, 1.82186, 46.7685, 50.0844, 2.82186, -9.23149, 0.0844402, 2.32186, -9.23149, 0.0844402, 4.32186, -7.23149, 0.0844402, 6.57186, -4.48149, 0.0844402, 6.57186, -2.48149, 0.0844402, 4.32186, -2.48149, 0.0844402, 2.32186, -4.48149, 0.0844402, 0.0718613, -7.23149, 0.0844402, 0.0718613, -41.9815, 0.33444, 10.8219, -40.9815, 0.33444, 12.8219, -40.4815, 0.33444, 12.8219, -27.4815, 0.33444, 5.07186, -28.7315, 0.33444, 3.07186, -13.4815, 0.33444, 5.57186, -13.9815, 0.33444, 3.32186, -14.7315, 0.33444, 3.32186, -28.7315, 0.33444, 8.07186, -27.7315, 0.33444, 10.3219, -96.9815, 50.0844, 6.32186, -97.7315, 50.0844, 7.57186, -97.7315, 50.0844, 8.32186, -96.7315, 50.0844, 9.57186, -94.9815, 50.0844, 9.57186, -94.2315, 50.0844, 8.82186, -95.4815, 50.3344, 9.19686, -94.2315, 50.0844, 7.07186, -95.4815, 50.0844, 6.07186, 1.26851, 0.83444, 8.32186, 0.518509, 0.83444, 8.32186, -2.73149, 0.83444, 10.3219, 10.2685, 0.83444, 33.0719, 14.2685, 0.83444, 31.0719, 13.2685, 33.8344, 15.3219, 14.5185, 33.8344, 15.5719, 15.0185, 33.8344, 15.0719, 15.0185, 33.8344, 13.8219, 14.2685, 33.8344, 13.3219, 13.0185, 33.8344, 14.0719, -66.4815, 33.8344, 16.8219, -64.9815, 33.8344, 16.8219, -64.7315, 33.8344, 16.3219, -65.2315, 33.8344, 14.8219, -66.7315, 33.8344, 15.3219, -40.7315, 0.0844402, 17.8219, -40.7315, 0.0844402, 20.3219, -40.2315, 0.0844402, 21.3219, -36.9815, 0.0844402, 15.5719, -39.7315, 0.0844402, 16.3219, -35.2315, 0.0844402, 21.8219, -33.9815, 0.0844402, 19.8219, -34.4815, 0.0844402, 17.0719, -37.9815, 0.0844402, 22.5719, -12.7315, 33.8344, 18.3219, -11.9815, 33.8344, 18.8219, -10.9815, 33.8344, 18.5719, -10.4815, 33.8344, 17.5719, -11.4815, 33.8344, 16.3219, -12.9815, 33.8344, 16.8219, -24.2315, 0.0844402, 19.8219, -24.2315, 0.0844402, 21.8219, -23.7315, 0.0844402, 22.8219, -21.9815, 0.0844402, 24.0719, -17.7315, 0.0844402, 19.0719, -18.2315, 0.0844402, 18.3219, -20.2315, 0.0844402, 17.3219, -22.7315, 0.0844402, 17.8219, -18.9815, 0.0844402, 23.8219, -17.4815, 0.0844402, 21.8219, -50.2315, 33.8344, 18.3219, -50.4815, 33.8344, 18.8219, -50.2315, 34.0844, 19.8219, -49.4815, 33.8344, 20.3219, -48.2315, 33.8344, 19.3219, -48.9815, 33.8344, 18.0719, -45.2315, -0.16556, 29.0719, -44.7315, -0.16556, 30.0719, -43.4815, -0.16556, 30.8219, -40.2315, -0.16556, 26.8219, -41.7315, -0.16556, 25.5719, -43.4815, -0.16556, 25.5719, -41.2315, -0.16556, 30.5719, -39.9815, -0.16556, 28.8219, -45.2315, -0.16556, 27.0719, -30.2315, 33.8344, 26.0719, -30.7315, 33.8344, 25.8219, -31.7315, 34.0844, 26.0719, -32.2315, 33.8344, 26.8219, -31.2315, 33.8344, 28.0719, -29.9815, 33.8344, 27.3219, 0.768509, 33.8344, 26.0719, -0.981491, 33.8344, 25.8219, -1.73149, 33.8344, 26.5719, -1.48149, 33.5844, 28.3219, 1.01851, 33.5844, 28.3219, 0.893509, 33.8344, 27.1969, -0.231491, 33.8344, 28.3219, 29.0185, 33.8344, 26.8219, 28.7685, 33.8344, 27.3219, 28.7685, 33.8344, 28.0719, 29.7685, 33.8344, 28.8219, 31.0185, 33.8344, 27.8219, 30.2685, 33.8344, 26.5719, -47.7315, 0.33444, 32.5719, -48.2315, 0.33444, 30.3219, -48.7315, 0.33444, 30.3219, -62.9815, 0.33444, 35.3219, -61.9815, 0.33444, 37.5719, -39.4815, 0.83444, 35.0719, -18.7315, 0.83444, 50.8219, -17.4815, 0.83444, 50.0719, -15.7315, 0.83444, 47.5719, -36.2315, 0.83444, 32.0719, -36.9815, 0.83444, 31.8219, -12.4815, 0.0844402, 37.0719, -11.7315, 0.0844402, 38.0719, -10.2315, 0.0844402, 38.8219, -10.4815, 0.0844402, 32.0719, -11.4815, 0.0844402, 32.5719, -12.7315, 0.0844402, 34.3219, -6.48149, 0.0844402, 33.3219, -8.23149, 0.0844402, 32.0719, -7.48149, 0.0844402, 38.3219, -5.98149, 0.0844402, 36.3219, 23.7685, 0.33444, 34.0719, 24.2685, 0.33444, 49.5719, 26.7685, 0.33444, 49.3219, 26.0185, 0.33444, 34.0719, -21.9815, 33.8344, 34.8219, -21.7315, 33.8344, 36.3219, -20.7315, 33.8344, 36.5719, -19.9815, 33.8344, 36.0719, -20.2315, 33.8344, 34.5719, -21.2315, 33.8344, 34.3219, 14.7685, -0.16556, 37.3219, 15.2685, -0.16556, 39.0719, 16.7685, -0.16556, 40.0719, 20.2685, -0.16556, 37.8219, 19.7685, -0.16556, 35.8219, 18.2685, -0.16556, 34.8219, 19.0185, -0.16556, 39.8219, 16.0185, -0.16556, 35.0719, 7.26851, 0.0844402, 44.0719, 10.2685, 0.0844402, 43.5719, 11.5185, 0.0844402, 41.8219, 4.76851, 0.0844402, 39.8219, 5.26851, 0.0844402, 42.8219, 11.0185, 0.0844402, 38.5719, 9.01851, 0.0844402, 37.3219, 6.01851, 0.0844402, 37.8219, -43.9815, 33.5844, 41.8219, -43.9815, 33.5844, 40.5719, -44.9815, 33.8344, 39.8219, -46.7315, 33.8344, 40.3219, -46.4815, 33.5844, 42.5719, -45.2315, 33.5844, 42.8219, 2.51851, 0.33444, 46.8219, 2.01851, 0.33444, 44.5719, 1.26851, 0.33444, 44.5719, -13.2315, 0.33444, 47.5719, -12.4815, 0.33444, 49.8219, -63.2315, 33.8344, 49.5719, -63.4815, 33.8344, 48.3219, -63.9815, 33.8344, 48.0719, -65.2315, 33.8344, 48.3219, -65.4815, 33.8344, 49.0719, -64.9815, 33.8344, 50.0719, -63.7315, 34.0844, 50.0719, 33.5185, 33.8344, 52.0719, 34.0185, 33.8344, 53.5719, 35.5185, 33.8344, 53.0719, 35.0185, 33.8344, 51.5719, 10.7685, 33.8344, 52.5719, 9.76851, 33.8344, 52.3219, 8.76851, 33.8344, 53.0719, 9.26851, 33.8344, 54.5719, 11.0185, 33.8344, 54.3219, -5.73149, -0.16556, 58.8219, -4.23149, -0.16556, 60.0719, -2.48149, -0.16556, 60.0719, -4.73149, -0.16556, 55.0719, -5.98149, -0.16556, 56.8219, -0.731491, -0.16556, 58.5719, -0.731491, -0.16556, 56.3219, -2.48149, -0.16556, 54.8219, -14.4815, 0.33444, 71.0719, -12.2315, 0.33444, 71.0719, -13.7315, 0.33444, 55.8219, -16.2315, 0.33444, 55.8219, -23.9815, 33.5844, 56.3219, -24.2315, 33.5844, 56.8219, -24.2315, 33.5844, 58.0719, -21.2315, 33.8344, 57.5719, -21.4815, 33.8344, 56.5719, -22.2315, 33.8344, 56.0719, -23.2315, 33.5844, 59.0719, -22.2315, 33.5844, 59.0719, -45.7315, 33.8344, 63.0719, -45.7315, 33.8344, 64.3219, -45.2315, 33.8344, 64.8219, -43.7315, 33.8344, 64.3219, -43.9815, 33.8344, 62.8219, 29.7685, 50.0844, 69.0719, 30.7685, 50.0844, 70.0719, 32.0185, 50.0844, 70.0719, 33.2685, 50.0844, 68.8219, 33.2685, 50.0844, 67.8219, 32.2685, 50.0844, 66.5719, 30.7685, 50.0844, 66.5719, 29.7685, 50.0844, 67.5719, -2.23149, 33.8344, 73.8219, -1.98149, 33.8344, 75.3219, -0.981491, 33.8344, 75.5719, -0.231491, 33.8344, 75.0719, -0.481491, 33.8344, 73.5719, -1.48149, 33.8344, 73.3219, -25.9815, 50.0844, 98.8219, -25.2315, 50.0844, 99.3219, -23.7315, 50.0844, 99.3219, -23.9815, 50.0844, 95.8219, -25.4815, 50.0844, 96.0719, -26.2315, 50.0844, 97.0719, -22.7315, 50.0844, 98.3219, -22.7315, 50.0844, 96.8219)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(8, 7, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(12, 8, 9), PackedInt32Array(9, 8, 6), PackedInt32Array(9, 6, 13), PackedInt32Array(9, 13, 11), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(17, 14, 18), PackedInt32Array(21, 20, 19), PackedInt32Array(23, 22, 19), PackedInt32Array(19, 22, 21), PackedInt32Array(21, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(26, 28, 27), PackedInt32Array(30, 29, 31), PackedInt32Array(31, 29, 26), PackedInt32Array(26, 29, 28), PackedInt32Array(28, 29, 32), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(36, 33, 37), PackedInt32Array(40, 39, 38), PackedInt32Array(43, 42, 41), PackedInt32Array(44, 40, 45), PackedInt32Array(45, 40, 38), PackedInt32Array(45, 38, 43), PackedInt32Array(45, 43, 41), PackedInt32Array(41, 46, 45), PackedInt32Array(49, 48, 47), PackedInt32Array(52, 51, 50), PackedInt32Array(54, 53, 50), PackedInt32Array(50, 53, 49), PackedInt32Array(50, 49, 47), PackedInt32Array(50, 47, 52), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 55), PackedInt32Array(55, 62, 58), PackedInt32Array(58, 62, 57), PackedInt32Array(57, 62, 61), PackedInt32Array(57, 61, 59), PackedInt32Array(59, 61, 60), PackedInt32Array(65, 64, 63), PackedInt32Array(68, 67, 66), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 63), PackedInt32Array(63, 68, 65), PackedInt32Array(65, 68, 66), PackedInt32Array(73, 72, 71), PackedInt32Array(76, 75, 74), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 71), PackedInt32Array(71, 76, 74), PackedInt32Array(71, 74, 73), PackedInt32Array(80, 79, 81), PackedInt32Array(81, 79, 83), PackedInt32Array(81, 83, 82), PackedInt32Array(85, 84, 86), PackedInt32Array(86, 84, 88), PackedInt32Array(86, 88, 87), PackedInt32Array(91, 90, 89), PackedInt32Array(94, 93, 95), PackedInt32Array(95, 93, 92), PackedInt32Array(92, 91, 95), PackedInt32Array(95, 91, 94), PackedInt32Array(94, 91, 96), PackedInt32Array(96, 91, 97), PackedInt32Array(97, 91, 89), PackedInt32Array(99, 98, 100), PackedInt32Array(100, 98, 101), PackedInt32Array(101, 98, 102), PackedInt32Array(104, 103, 105), PackedInt32Array(105, 103, 108), PackedInt32Array(105, 108, 106), PackedInt32Array(106, 108, 107), PackedInt32Array(110, 109, 111), PackedInt32Array(111, 109, 113), PackedInt32Array(111, 113, 112), PackedInt32Array(116, 115, 114), PackedInt32Array(114, 118, 117), PackedInt32Array(121, 120, 119), PackedInt32Array(122, 116, 119), PackedInt32Array(119, 116, 114), PackedInt32Array(119, 114, 117), PackedInt32Array(119, 117, 121), PackedInt32Array(124, 123, 125), PackedInt32Array(125, 123, 126), PackedInt32Array(126, 123, 127), PackedInt32Array(127, 123, 128), PackedInt32Array(130, 129, 131), PackedInt32Array(131, 129, 132), PackedInt32Array(135, 134, 133), PackedInt32Array(129, 136, 135), PackedInt32Array(138, 137, 133), PackedInt32Array(133, 137, 132), PackedInt32Array(133, 132, 135), PackedInt32Array(135, 132, 129), PackedInt32Array(140, 139, 141), PackedInt32Array(141, 139, 142), PackedInt32Array(142, 139, 144), PackedInt32Array(142, 144, 143), PackedInt32Array(147, 146, 145), PackedInt32Array(150, 149, 148), PackedInt32Array(148, 152, 151), PackedInt32Array(153, 150, 145), PackedInt32Array(145, 150, 147), PackedInt32Array(147, 150, 151), PackedInt32Array(151, 150, 148), PackedInt32Array(155, 154, 156), PackedInt32Array(156, 154, 157), PackedInt32Array(157, 154, 159), PackedInt32Array(157, 159, 158), PackedInt32Array(164, 166, 165), PackedInt32Array(165, 166, 160), PackedInt32Array(160, 166, 161), PackedInt32Array(161, 166, 162), PackedInt32Array(162, 166, 163), PackedInt32Array(168, 167, 169), PackedInt32Array(169, 167, 170), PackedInt32Array(170, 167, 172), PackedInt32Array(170, 172, 171), PackedInt32Array(174, 173, 175), PackedInt32Array(175, 173, 177), PackedInt32Array(175, 177, 176), PackedInt32Array(180, 179, 181), PackedInt32Array(181, 179, 182), PackedInt32Array(182, 179, 183), PackedInt32Array(183, 179, 178), PackedInt32Array(186, 185, 184), PackedInt32Array(189, 188, 187), PackedInt32Array(187, 191, 190), PackedInt32Array(193, 192, 186), PackedInt32Array(184, 189, 186), PackedInt32Array(186, 189, 187), PackedInt32Array(186, 187, 190), PackedInt32Array(186, 190, 193), PackedInt32Array(197, 196, 194), PackedInt32Array(194, 196, 195), PackedInt32Array(203, 202, 198), PackedInt32Array(198, 202, 199), PackedInt32Array(199, 202, 200), PackedInt32Array(200, 202, 201), PackedInt32Array(206, 205, 204), PackedInt32Array(207, 209, 208), PackedInt32Array(210, 206, 207), PackedInt32Array(207, 206, 204), PackedInt32Array(207, 204, 211), PackedInt32Array(207, 211, 209), PackedInt32Array(214, 213, 212), PackedInt32Array(216, 215, 212), PackedInt32Array(212, 215, 214), PackedInt32Array(214, 215, 217), PackedInt32Array(217, 215, 218), PackedInt32Array(215, 219, 218), PackedInt32Array(221, 220, 222), PackedInt32Array(222, 220, 225), PackedInt32Array(222, 225, 224), PackedInt32Array(222, 224, 223), PackedInt32Array(227, 226, 228), PackedInt32Array(228, 226, 230), PackedInt32Array(228, 230, 229), PackedInt32Array(233, 232, 231), PackedInt32Array(235, 234, 236), PackedInt32Array(236, 234, 233), PackedInt32Array(236, 233, 237), PackedInt32Array(237, 233, 231), PackedInt32Array(241, 240, 238), PackedInt32Array(238, 240, 239), PackedInt32Array(243, 242, 244), PackedInt32Array(244, 242, 245), PackedInt32Array(245, 242, 246), PackedInt32Array(249, 248, 247), PackedInt32Array(247, 251, 250), PackedInt32Array(252, 249, 253), PackedInt32Array(253, 249, 254), PackedInt32Array(254, 249, 250), PackedInt32Array(250, 249, 247), PackedInt32Array(256, 255, 257), PackedInt32Array(257, 255, 258), PackedInt32Array(261, 260, 259), PackedInt32Array(262, 264, 263), PackedInt32Array(265, 261, 266), PackedInt32Array(266, 261, 262), PackedInt32Array(262, 261, 264), PackedInt32Array(264, 261, 259), PackedInt32Array(268, 267, 269), PackedInt32Array(269, 267, 270), PackedInt32Array(270, 267, 271), PackedInt32Array(274, 273, 272), PackedInt32Array(277, 276, 275), PackedInt32Array(278, 277, 279), PackedInt32Array(279, 277, 272), PackedInt32Array(272, 277, 275), PackedInt32Array(272, 275, 274), PackedInt32Array(285, 284, 280), PackedInt32Array(280, 284, 281), PackedInt32Array(281, 284, 282), PackedInt32Array(282, 284, 283), PackedInt32Array(288, 287, 286), PackedInt32Array(291, 290, 289), PackedInt32Array(292, 288, 293), PackedInt32Array(293, 288, 289), PackedInt32Array(289, 288, 286), PackedInt32Array(289, 286, 291)]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="Curve3D" id="Curve3D_tqykx"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 10, 0, 0, -10, -29.6088, 0, -1.9705, -10, 0, 0, 10, 0, 0, 2.24161, 0, -23.9274, 0, 0, -10, 0, 0, 10, 24.0607, 0, 6.79908, 10, 0, 0, -10, 0, 0, 1.07415, 0, 20.4387),
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
 
 [node name="SwampScene" type="Node3D" node_paths=PackedStringArray("FocusEvents")]
 script = ExtResource("1_qfos7")
-FocusEvents = [NodePath("World/FocusEvent_Land"), NodePath("World/FocusEvent_Lilypad")]
+FocusEvents = [NodePath("World/FocusEvent_Land"), NodePath("World/FocusEvent_Lilypad"), NodePath("World/FocusEvent_Wood")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_0ky7s")
@@ -89,6 +116,7 @@ environment = ExtResource("2_0ky7s")
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 5.72245, 3.27611)
 light_color = Color(1, 1, 0.7, 1)
 shadow_enabled = true
+shadow_blur = 1.5
 
 [node name="Player" parent="." instance=ExtResource("2_qfos7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117083, -4.76837e-07, 2.93445)
@@ -130,26 +158,6 @@ transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -8, 0,
 [node name="TreeStump" parent="World/Island_SmallRound/Details" instance=ExtResource("9_1p1c6")]
 transform = Transform3D(2.20236, 0, -2.03706, 0, 3, 0, 2.03706, 0, 2.20236, 4.57761, 0.00649762, 2.24976)
 
-[node name="Lilypads" type="Node3D" parent="World/Island_SmallRound"]
-
-[node name="lilypad6" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(-1.87992, 0, -0.682564, 0, 2, 0, 0.682564, 0, -1.87992, -3.88897, -0.974196, -11.3794)
-
-[node name="lilypad7" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(-0.582673, 0, 1.91324, 0, 2, 0, -1.91324, 0, -0.582673, 7.264, -0.974196, -8.18753)
-
-[node name="lilypad8" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(0.507381, 0, 1.93457, 0, 2, 0, -1.93457, 0, 0.507381, 12.7015, -0.974196, -5.15111)
-
-[node name="lilypad9" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(1.29038, 0, 1.52804, 0, 2, 0, -1.52804, 0, 1.29038, 10.6346, -0.974196, 7.91896)
-
-[node name="lilypad10" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(1.95269, 0, -0.432436, 0, 2, 0, 0.432436, 0, 1.95269, -3.91159, -0.974196, 11.9929)
-
-[node name="lilypad2" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.4893, -0.974196, -2.23894)
-
 [node name="PathWaterSFX" type="Path3D" parent="World/Island_SmallRound"]
 curve = SubResource("Curve3D_bmghv")
 
@@ -168,7 +176,7 @@ shape = SubResource("SphereShape3D_qfnsp")
 debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0504, 0, -45.1176)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)
 navigation_mesh = SubResource("NavigationMesh_bmghv")
 
 [node name="Details" type="Node3D" parent="World/Lilypads"]
@@ -295,6 +303,164 @@ transform = Transform3D(1.14618, 0, 1.63898, 0, 2, 0, -1.63898, 0, 1.14618, -14.
 [node name="PathWaterSFX" type="Path3D" parent="World/Lilypads"]
 curve = SubResource("Curve3D_20fcr")
 
+[node name="PathWaterSFX2" type="Path3D" parent="World/Lilypads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5192, 0, -15.8791)
+curve = SubResource("Curve3D_a7viq")
+
+[node name="PathWaterSFX3" type="Path3D" parent="World/Lilypads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5566, 0, 18.2251)
+curve = SubResource("Curve3D_a7viq")
+
+[node name="PathWaterSFX4" type="Path3D" parent="World/Lilypads"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4229, 0, 28.6437)
+curve = SubResource("Curve3D_a7viq")
+
+[node name="DeadForest" type="NavigationRegion3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61978, -3.8147e-06, 44.1012)
+navigation_mesh = SubResource("NavigationMesh_achss")
+
+[node name="Floor" type="Node3D" parent="World/DeadForest"]
+
+[node name="TreeStump" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -5.85896, -3.79578, 3.33636)
+
+[node name="TreeStump6" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(0.38911, 0, -9.99243, 0, 10, 0, 9.99243, 0, 0.38911, -20.8433, -3.79578, 20.7875)
+
+[node name="TreeStump7" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(5.80873, 0, -8.13994, 0, 10, 0, 8.13994, 0, 5.80873, -9.3776, -3.79578, 35.3855)
+
+[node name="TreeStump4" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 8.15141, -3.79578, 40.7008)
+
+[node name="TreeStump2" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -37.4358, -3.79578, 19.0801)
+
+[node name="TreeStump3" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(-1.42396, 0, -7.87225, 0, 8, 0, 7.87225, 0, -1.42396, -42.6662, -3.33347, 28.1768)
+
+[node name="TreeStump8" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(-1.42396, 0, -7.87225, 0, 8, 0, 7.87225, 0, -1.42396, -20.3339, -3.33347, -5.57745)
+
+[node name="TreeStump9" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(-1.42396, 0, -7.87225, 0, 8, 0, 7.87225, 0, -1.42396, -3.2844, -3.33347, 57.4471)
+
+[node name="TreeStump5" parent="World/DeadForest/Floor" instance=ExtResource("9_1p1c6")]
+transform = Transform3D(-1.42396, 0, -7.87225, 0, 8, 0, 7.87225, 0, -1.42396, 17.5244, -3.33346, 37.4432)
+
+[node name="WoodLog" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(9.76941, 0, -2.13508, 0, 10, 0, 2.13508, 0, 9.76941, 1.13214, -4.80173, -16.3905)
+
+[node name="WoodLog2" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(-8.66261, 0, -4.99592, 0, 10, 0, 4.99592, 0, -8.66261, 4.53078, -4.80173, 19.4017)
+
+[node name="WoodLog5" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(-5.95131, 0, -8.03628, 0, 10, 0, 8.03628, 0, -5.95131, -29.1915, -4.80173, 40.6549)
+
+[node name="WoodLog3" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(-1.92279, 0, 5.68356, 0, 6, 0, -5.68356, 0, -1.92279, -20.1114, -3.28575, 6.20584)
+
+[node name="WoodLog9" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(-5.99481, 0, -0.24958, 0, 6, 0, 0.24958, 0, -5.99481, 24.9367, -3.28575, 40.7305)
+
+[node name="WoodLog7" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(-1.14177, 0, 5.89036, 0, 6, 0, -5.89036, 0, -1.14177, -4.42814, -3.28575, 46.731)
+
+[node name="WoodLog8" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(-5.96418, 0, -0.654659, 0, 6, 0, 0.654659, 0, -5.96418, -14.5386, -3.28575, 62.3862)
+
+[node name="WoodLog4" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(3.02056, 0, -5.18423, 0, 6, 0, 5.18423, 0, 3.02056, -35.5086, -3.28576, 8.70112)
+
+[node name="WoodLog6" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
+transform = Transform3D(1.94142, 0, -5.67722, 0, 6, 0, 5.67722, 0, 1.94142, -56.1894, -3.28576, 34.488)
+
+[node name="Details" type="Node3D" parent="World/DeadForest"]
+
+[node name="Trees" type="Node3D" parent="World/DeadForest"]
+
+[node name="CommonTree_Dead_1" parent="World/DeadForest/Trees" instance=ExtResource("13_yvk0y")]
+transform = Transform3D(19.7774, 0, -2.97586, 0, 20, 0, 2.97586, 0, 19.7774, -11.3157, -3, 14.3823)
+
+[node name="CommonTree_Dead_20" parent="World/DeadForest/Trees" instance=ExtResource("13_yvk0y")]
+transform = Transform3D(11.0096, 0, -16.697, 0, 20, 0, 16.697, 0, 11.0096, -13.1786, -3, -26.2097)
+
+[node name="CommonTree_Dead_7" parent="World/DeadForest/Trees" instance=ExtResource("13_yvk0y")]
+transform = Transform3D(7.91764, 0, -18.366, 0, 20, 0, 18.366, 0, 7.91764, 12.8818, -3, 52.2966)
+
+[node name="CommonTree_Dead_4" parent="World/DeadForest/Trees" instance=ExtResource("13_yvk0y")]
+transform = Transform3D(1.29866, 0, -19.9578, 0, 20, 0, 19.9578, 0, 1.29866, -9.8334, -3, -8.9691)
+
+[node name="CommonTree_Dead_2" parent="World/DeadForest/Trees" instance=ExtResource("14_cmxon")]
+transform = Transform3D(18.1232, 0, -8.45869, 0, 20, 0, 8.45869, 0, 18.1232, -0.817627, -3, 28.2896)
+
+[node name="CommonTree_Dead_21" parent="World/DeadForest/Trees" instance=ExtResource("14_cmxon")]
+transform = Transform3D(10.7015, 0, 16.8961, 0, 20, 0, -16.8961, 0, 10.7015, 16.7682, -3, -23.1742)
+
+[node name="CommonTree_Dead_9" parent="World/DeadForest/Trees" instance=ExtResource("14_cmxon")]
+transform = Transform3D(3.81515, 0, -19.6327, 0, 20, 0, 19.6327, 0, 3.81515, -40.1588, -3, 0.103764)
+
+[node name="CommonTree_Dead_11" parent="World/DeadForest/Trees" instance=ExtResource("14_cmxon")]
+transform = Transform3D(13.7673, 0, -14.5072, 0, 20, 0, 14.5072, 0, 13.7673, 11.6795, -3, -0.610912)
+
+[node name="CommonTree_Dead_8" parent="World/DeadForest/Trees" instance=ExtResource("14_cmxon")]
+transform = Transform3D(11.2012, 0, -16.569, 0, 20, 0, 16.569, 0, 11.2012, -23.7223, -3, 58.1875)
+
+[node name="CommonTree_Dead_5" parent="World/DeadForest/Trees" instance=ExtResource("14_cmxon")]
+transform = Transform3D(17.0276, 0, 10.491, 0, 20, 0, -10.491, 0, 17.0276, -44.8612, -3, 42.277)
+
+[node name="CommonTree_Dead_3" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -20.9841, -3, 35.55)
+
+[node name="CommonTree_Dead_22" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(2.75443, 0, -29.8733, 0, 30, 0, 29.8733, 0, 2.75443, -24.632, -5, 97.6619)
+
+[node name="CommonTree_Dead_23" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(2.75443, 0, -29.8733, 0, 30, 0, 29.8733, 0, 2.75443, -96.08, -5, 7.93272)
+
+[node name="CommonTree_Dead_24" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(2.75443, 0, -29.8733, 0, 30, 0, 29.8733, 0, 2.75443, 47.0295, -5, 1.04305)
+
+[node name="CommonTree_Dead_25" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(-26.7076, 0, 13.664, 0, 30, 0, -13.664, 0, -26.7076, 31.5744, -5, 68.1416)
+
+[node name="CommonTree_Dead_26" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(-1.36769, 0, -29.9688, 0, 30, 0, 29.9688, 0, -1.36769, -49.169, -5, -25.5122)
+
+[node name="CommonTree_Dead_6" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -49.3567, -3, 19.2774)
+
+[node name="CommonTree_Dead_10" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 14.0701, -3, 14.5982)
+
+[node name="CommonTree_Dead_12" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(-4.64175, 0, -19.4539, 0, 20, 0, 19.4539, 0, -4.64175, 29.7548, -3, 27.6184)
+
+[node name="CommonTree_Dead_13" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(-4.64175, 0, -19.4539, 0, 20, 0, 19.4539, 0, -4.64175, 34.3872, -3, 52.5596)
+
+[node name="CommonTree_Dead_14" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(-14.3117, 0, -13.9706, 0, 20, 0, 13.9706, 0, -14.3117, -1.30431, -3, 74.3481)
+
+[node name="CommonTree_Dead_15" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(11.5455, 0, 16.331, 0, 20, 0, -16.331, 0, 11.5455, -44.6247, -3, 63.8152)
+
+[node name="CommonTree_Dead_16" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(19.9761, 0, -0.977691, 0, 20, 0, 0.977691, 0, 19.9761, -64.3362, -3.00001, 49.2783)
+
+[node name="CommonTree_Dead_17" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(10.4345, 0, -17.0623, 0, 20, 0, 17.0623, 0, 10.4345, -65.8768, -3, 15.943)
+
+[node name="CommonTree_Dead_18" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(10.4345, 0, -17.0623, 0, 20, 0, 17.0623, 0, 10.4345, -31.1712, -3, 27.0184)
+
+[node name="CommonTree_Dead_19" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
+transform = Transform3D(10.4345, 0, -17.0623, 0, 20, 0, 17.0623, 0, 10.4345, -30.6833, -3, -15.2279)
+
+[node name="PathWaterSFX" type="Path3D" parent="World/DeadForest"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4236, 0, 27.9228)
+curve = SubResource("Curve3D_tqykx")
+
 [node name="RespawnArea" parent="World" instance=ExtResource("17_achss")]
 collision_layer = 0
 
@@ -322,6 +488,7 @@ transform = Transform3D(5.24537e-07, 0, 4, 0, 4, 0, -4, 0, 5.24537e-07, -8, 0, 8
 
 [node name="FocusEvent_Lilypad" parent="World" node_paths=PackedStringArray("SkillChecks") instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.894976, 320)
+visible = false
 Id = "lilypad"
 Info = ExtResource("14_52an4")
 Size = Vector2(5, 3)
@@ -345,6 +512,27 @@ transform = Transform3D(-2.35689, 0, 1.85609, 0, 3, 0, -1.85609, 0, -2.35689, -1
 [node name="Lilypad_Cut5" parent="World/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
 transform = Transform3D(-2.17038, 0, -2.07109, 0, 3, 0, 2.07109, 0, -2.17038, 7.90248, -1.43051e-06, -4.01971)
 
+[node name="FocusEvent_Wood" parent="World" node_paths=PackedStringArray("SkillChecks") instance=ExtResource("12_yvk0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.894976, 320)
+Id = "wood"
+Info = ExtResource("14_52an4")
+Size = Vector2(5, 3)
+SkillChecks = [NodePath("../FocusEvent_Land/SkillChecks/Bombs"), NodePath("../FocusEvent_Land/SkillChecks/Dash")]
+
+[node name="Floor" type="Node3D" parent="World/FocusEvent_Wood"]
+
+[node name="TreeStump_Flat" parent="World/FocusEvent_Wood/Floor" instance=ExtResource("22_tqykx")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.06303, 3.26807)
+
+[node name="TreeStump_Flat2" parent="World/FocusEvent_Wood/Floor" instance=ExtResource("22_tqykx")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.19731, -1.06303, -2.80566)
+
+[node name="WoodLog_NoDetails_Filled_Straight" parent="World/FocusEvent_Wood/Floor" instance=ExtResource("23_fmiw0")]
+transform = Transform3D(1.88067, 0, -2.33732, 0, 3, 0, 2.33732, 0, 1.88067, 3.58754, -1.21416, 3.4819)
+
+[node name="WoodLog_NoDetails_Filled_Straight2" parent="World/FocusEvent_Wood/Floor" instance=ExtResource("23_fmiw0")]
+transform = Transform3D(-2.90087, 0, 0.764818, 0, 3, 0, -0.764818, 0, -2.90087, -6.19449, -1.21416, -1.99738)
+
 [node name="Sounds" type="Node3D" parent="."]
 
 [node name="AmbLake" type="AudioStreamPlayer3D" parent="Sounds"]
@@ -363,7 +551,7 @@ autoplay = true
 panning_strength = 0.75
 bus = &"SFX"
 script = ExtResource("17_52an4")
-Paths = [NodePath("../../World/Island_SmallRound/PathWaterSFX")]
+Paths = [NodePath("../../World/Island_SmallRound/PathWaterSFX"), NodePath("../../World/Lilypads/PathWaterSFX"), NodePath("../../World/Lilypads/PathWaterSFX2"), NodePath("../../World/Lilypads/PathWaterSFX3"), NodePath("../../World/Lilypads/PathWaterSFX4"), NodePath("../../World/DeadForest/PathWaterSFX")]
 
 [node name="AmbWind" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("2_qfnsp")

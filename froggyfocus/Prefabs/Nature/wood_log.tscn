@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw7xbxi3rwqgg"]
+[gd_scene load_steps=5 format=3 uid="uid://bw7xbxi3rwqgg"]
 
 [ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="1_hjqi4"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_b80lg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1yv56"]
 size = Vector3(0.510437, 0.523926, 2.70941)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b80lg"]
+size = Vector3(0.505249, 0.408447, 2.65015)
 
 [node name="WoodLog" type="Node3D"]
 
@@ -14,3 +18,15 @@ size = Vector3(0.510437, 0.523926, 2.70941)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0401917, 0.264078, -0.171173)
 shape = SubResource("BoxShape3D_1yv56")
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_b80lg")
+Id = "wood"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0237427, 0.702114, -0.190063)
+shape = SubResource("BoxShape3D_b80lg")
+debug_color = Color(0.7, 0, 0, 0.419608)

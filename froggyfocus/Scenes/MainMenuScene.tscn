@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dclfilqvmuilh"]
+[gd_scene load_steps=8 format=3 uid="uid://dclfilqvmuilh"]
 
 [ext_resource type="Script" uid="uid://chh8ncpnh214i" path="res://Scenes/MainMenuScene.cs" id="1_sb72h"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_gmxq7"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d108tu8l4gbmx" path="res://Assets/FlawLizArt/Nature/Toon/bush_001.fbx" id="5_c7qge"]
 [ext_resource type="PackedScene" uid="uid://81i8koe64106" path="res://Assets/FlawLizArt/Nature/Toon/bush_002.fbx" id="6_6xh72"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="7_06svm"]
-[ext_resource type="PackedScene" uid="uid://crfqhh2qe7f8m" path="res://Assets/Quaternius/Nature/CommonTree_3.fbx" id="7_6xh72"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sb72h"]
 size = Vector2(500, 500)
@@ -50,24 +49,6 @@ transform = Transform3D(1.80498, 0, -0.861432, 0, 2, 0, 0.861432, 0, 1.80498, 3.
 
 [node name="bush_004" parent="World" instance=ExtResource("6_6xh72")]
 transform = Transform3D(-1.23904, 0, -1.56996, 0, 2, 0, 1.56996, 0, -1.23904, -13.556, 0, -9.20037)
-
-[node name="CommonTree_3" parent="World" instance=ExtResource("7_6xh72")]
-transform = Transform3D(1.8054, 0, 2.39594, 0, 3, 0, -2.39594, 0, 1.8054, 1.14114, 4.76837e-07, -5.64115)
-
-[node name="CommonTree_8" parent="World" instance=ExtResource("7_6xh72")]
-transform = Transform3D(1.8054, 0, 2.39594, 0, 3, 0, -2.39594, 0, 1.8054, 0.89591, 4.76837e-07, -0.0853124)
-
-[node name="CommonTree_4" parent="World" instance=ExtResource("7_6xh72")]
-transform = Transform3D(2.36077, 0, -1.85115, 0, 3, 0, 1.85115, 0, 2.36077, -8.37546, 9.53674e-07, -12.222)
-
-[node name="CommonTree_5" parent="World" instance=ExtResource("7_6xh72")]
-transform = Transform3D(-1.88991, 0, -2.32986, 0, 3, 0, 2.32986, 0, -1.88991, -3.83949, 9.53674e-07, -22.394)
-
-[node name="CommonTree_6" parent="World" instance=ExtResource("7_6xh72")]
-transform = Transform3D(-1.88991, 0, -2.32986, 0, 3, 0, 2.32986, 0, -1.88991, -17.7519, 9.53674e-07, -14.9446)
-
-[node name="CommonTree_7" parent="World" instance=ExtResource("7_6xh72")]
-transform = Transform3D(-1.88991, 0, -2.32986, 0, 3, 0, 2.32986, 0, -1.88991, 12.7219, 9.53674e-07, -13.6746)
 
 [node name="Frog" parent="World" instance=ExtResource("7_06svm")]
 transform = Transform3D(-0.675165, 0, 0.737666, 0, 1, 0, -0.737666, 0, -0.675165, -0.794186, 0, -0.163415)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cstu4xwk8m2au"]
+
+[ext_resource type="PackedScene" uid="uid://c4imw11qm1cig" path="res://Assets/Quaternius/Nature/CommonTree_Dead_1.fbx" id="1_sqsy7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_llb6d"]
+radius = 0.10951
+
+[node name="CommonTree_Dead_1" type="Node3D"]
+
+[node name="CommonTree_Dead_1" parent="." instance=ExtResource("1_sqsy7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0.836148, 0.0838516)
+shape = SubResource("CapsuleShape3D_llb6d")
