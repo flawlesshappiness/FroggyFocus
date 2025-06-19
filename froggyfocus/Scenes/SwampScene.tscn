@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=30 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
@@ -9,12 +9,14 @@
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="10_52an4"]
 [ext_resource type="Shader" uid="uid://babyxm8yext4w" path="res://Shaders/ToonWater.gdshader" id="10_e4xtd"]
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
-[ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad.tscn" id="12_5fuuy"]
+[ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="11_20fcr"]
+[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="11_achss"]
+[ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="12_5fuuy"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/upgrade_shop.tscn" id="12_20fcr"]
 [ext_resource type="Resource" uid="uid://4t23pgixusyd" path="res://FocusEvent/Resources/Swamp Land.tres" id="12_cmxon"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="12_yvk0y"]
 [ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Water.tres" id="14_52an4"]
-[ext_resource type="PackedScene" uid="uid://cg1klwhnjrbjm" path="res://Assets/Quaternius/Nature/Lilypad.fbx" id="15_bmghv"]
+[ext_resource type="PackedScene" uid="uid://b0uor5n0v8ykv" path="res://Assets/Quaternius/Nature/Lilypad_Cut.fbx" id="15_bmghv"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
 [ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="17_achss"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
@@ -62,6 +64,19 @@ point_count = 4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qfnsp"]
 radius = 8.33453
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_bmghv"]
+vertices = PackedVector3Array(-37.4589, -0.565452, -18.2349, -38.9589, -0.565452, -17.7349, -39.4589, -0.565452, -16.9849, -39.2089, -0.565452, -14.7349, -36.2089, -0.565452, -14.9849, -36.2089, -0.565452, -17.2349, -30.4589, -0.565452, -16.9849, -27.4589, -0.565452, -17.4849, -28.2089, -0.565452, -18.9849, -30.9589, -0.565452, -18.2349, -35.7089, -0.565452, -18.2349, -30.9589, -0.565452, -21.4849, -31.9589, -0.565452, -18.9849, -34.7089, -0.565452, -18.9849, -35.4589, -0.565452, -21.9849, -37.4589, -0.565452, -20.9849, -32.4589, -0.565452, -21.9849, -33.4589, -0.565452, -10.7349, -33.2089, -0.565452, -13.2349, -35.2089, -0.565452, -13.7349, -36.9589, -0.565452, -11.7349, -31.9589, 3.43455, -14.7349, -31.4589, 3.43455, -15.4849, -31.4589, 3.43455, -16.7349, -35.2089, 3.43455, -16.7349, -34.9589, 3.43455, -14.9849, -33.7089, 3.43455, -14.2349, -32.4589, 3.43455, -17.9849, -34.2089, 3.43455, -17.9849, -31.7089, -0.565452, -15.7349, -32.2089, -0.565452, -17.4849, -32.7089, -0.565452, -17.7349, -34.4589, -0.565452, -17.4849, -34.9589, -0.565452, -16.4849, -34.7089, -0.565452, -15.2349, -33.4589, -0.565452, -14.4849, -32.4589, -0.565452, -13.2349, -27.4589, -0.565452, -12.2349, -26.7089, -0.565452, -13.7349, -26.7089, -0.565452, -15.4849, -30.2089, -0.565452, -10.7349, -30.7089, -0.565452, -14.4849, -17.7089, -0.565452, -12.4849, -18.4589, -0.565452, -12.9849, -19.7089, -0.565452, -12.9849, -20.4589, -0.565452, -12.2349, -20.4589, -0.565452, -10.7349, -19.7089, -0.565452, -9.98491, -18.2089, -0.565452, -9.98491, -17.4589, -0.565452, -10.9849, -5.95889, -0.315452, -7.98491, -3.70889, -0.315452, -4.48491, -1.95889, -0.315452, -5.48491, -3.95889, -0.315452, -12.7349, -5.20889, -0.315452, -11.2349, 9.79111, -0.315452, -5.48491, 8.54111, -0.315452, -8.23491, 6.54111, -0.315452, -10.2349, 1.29111, -0.315452, -5.48491, 3.04111, -0.315452, -4.48491, 3.79111, -0.315452, -11.9849, 0.791115, -0.315452, -12.9849, -26.4589, -0.565452, -8.23491, -27.2089, -0.565452, -8.48491, -27.9589, -0.565452, -7.98491, -27.4589, -0.565452, -6.48491, -26.2089, -0.565452, -6.98491, -9.45889, -0.315452, -8.23491, -11.2089, -0.315452, -7.23491, -12.4589, -0.315452, -3.98491, -5.45889, -0.315452, -2.23491, -12.4589, -0.315452, -0.234907, -5.45889, -0.315452, -0.234907, -30.4589, -0.565452, -7.98491, -31.7089, -0.565452, -7.98491, -31.9589, -0.565452, -7.48491, -31.4589, -0.565452, -6.23491, -30.2089, -0.565452, -6.48491, 11.2911, -0.315452, -0.484907, 11.0411, -0.315452, -2.73491, 4.54111, -0.315452, -2.48491, 4.79111, -0.315452, -0.484907, 3.29111, 7.43455, -2.48491, 2.29111, 7.43455, -3.73491, 0.791115, 7.43455, -4.48491, -4.45889, 7.43455, -1.73491, -4.45889, 7.43455, 0.765093, -3.95889, 7.43455, 2.01509, -1.20889, 7.43455, 3.76509, 1.29111, 7.43455, 3.51509, 2.54111, 7.43455, 2.76509, 3.79111, 7.43455, 0.265093, -2.70889, 7.43455, -3.98491, -0.958885, -0.315452, 3.51509, 1.04111, -0.315452, 3.26509, 2.29111, -0.315452, 2.51509, 2.54111, -0.315452, -2.98491, 0.541115, -0.315452, -4.23491, -2.45889, -0.315452, -3.73491, 3.54111, -0.315452, 0.0150928, -4.20889, -0.315452, -1.48491, -3.70889, -0.315452, 1.76509, -24.7089, -0.565452, -3.23491, -24.4589, -0.565452, -1.73491, -22.9589, -0.565452, -2.23491, -23.4589, -0.565452, -3.48491, -18.2089, -0.565452, -2.73491, -17.7089, -0.565452, -1.73491, -16.7089, -0.565452, -1.73491, -16.2089, -0.565452, -2.48491, -16.7089, -0.565452, -3.48491, -17.7089, -0.565452, -3.48491, 5.29111, -0.315452, 12.5151, 9.04111, -0.315452, 10.5151, 10.0411, -0.315452, 9.51509, 11.5411, -0.315452, 5.26509, 11.7911, -0.315452, 1.76509, 4.29111, -0.315452, 2.26509, 3.04111, -0.315452, 3.76509, -1.45889, -0.315452, 11.7651, 0.791115, -0.315452, 12.5151, 0.791115, -0.315452, 4.76509, -1.20889, -0.315452, 4.76509, -12.2089, -0.315452, 1.76509, -10.4589, -0.315452, 5.51509, -5.20889, -0.315452, 2.01509, -6.70889, -0.315452, 9.26509, -5.70889, -0.315452, 9.51509, -3.95889, -0.315452, 3.51509, -21.9589, -0.565452, 3.01509, -21.7089, -0.565452, 4.26509, -20.9589, -0.565452, 4.76509, -18.7089, -0.565452, 3.76509, -18.9589, -0.565452, 2.26509, -19.7089, -0.565452, 1.76509, -19.7089, -0.565452, 4.76509, -21.4589, -0.565452, 2.01509, -14.9589, -0.565452, 4.01509, -14.4589, -0.565452, 5.51509, -13.2089, -0.565452, 5.01509, -13.4589, -0.565452, 3.76509, 16.5411, -0.565452, 9.76509, 16.2911, -0.565452, 8.51509, 15.5411, -0.565452, 8.01509, 14.0411, -0.565452, 8.01509, 13.2911, -0.565452, 9.01509, 13.2911, -0.565452, 10.0151, 14.2911, -0.565452, 11.0151, 16.0411, -0.565452, 10.7651, -20.4589, -0.565452, 10.7651, -19.4589, -0.565452, 10.7651, -18.9589, -0.565452, 10.0151, -19.4589, -0.565452, 9.01509, -20.9589, -0.565452, 9.51509, -13.2089, -0.565452, 9.76509, -12.7089, -0.565452, 10.7651, -11.7089, -0.565452, 10.7651, -11.2089, -0.565452, 10.0151, -11.7089, -0.565452, 9.01509, -12.7089, -0.565452, 9.01509, -25.4589, -0.565452, 15.0151, -23.4589, -0.565452, 15.0151, -22.7089, -0.565452, 13.5151, -24.4589, -0.565452, 11.7651, -25.7089, -0.565452, 11.7651, -27.9589, -0.565452, 13.0151, -26.4589, -0.565452, 15.5151, -27.2089, -0.565452, 18.5151, -27.2089, -0.565452, 16.5151, -29.7089, -0.565452, 15.7651, -29.7089, -0.565452, 19.5151, -20.2089, -0.565452, 13.2651, -21.4589, -0.565452, 13.0151, -21.9589, -0.565452, 16.0151, -21.4589, -0.565452, 17.2651, -18.7089, -0.565452, 16.0151, -21.7089, -0.565452, 19.2651, -22.9589, -0.565452, 20.5151, -22.2089, -0.565452, 23.5151, -20.2089, -0.565452, 21.7651, -18.9589, -0.565452, 19.5151, -14.7089, -0.565452, 15.2651, -14.7089, -0.565452, 16.5151, -14.2089, -0.565452, 16.7651, -12.9589, -0.565452, 16.0151, -13.2089, -0.565452, 15.0151, 10.2911, -0.565452, 16.5151, 11.5411, -0.565452, 16.7651, 12.0411, -0.565452, 16.2651, 11.7911, -0.565452, 15.0151, 10.2911, -0.565452, 15.2651, 4.79111, -0.565452, 15.7651, 5.04111, -0.565452, 17.0151, 5.79111, -0.565452, 17.2651, 6.54111, -0.565452, 16.7651, 6.29111, -0.565452, 15.5151, 5.29111, -0.565452, 15.2651, -22.9589, 3.43455, 16.5151, -23.9589, 3.43455, 16.0151, -24.9589, 3.43455, 16.0151, -26.2089, 3.43455, 17.0151, -26.2089, 3.43455, 18.7651, -25.2089, 3.43455, 19.7651, -23.2089, 3.43455, 19.5151, -22.4589, 3.43455, 18.0151, -25.9589, -0.565452, 18.5151, -24.9589, -0.565452, 19.5151, -23.9589, -0.565452, 19.5151, -22.9589, -0.565452, 18.5151, -23.2089, -0.565452, 16.7651, -24.2089, -0.565452, 16.2651, -25.9589, -0.565452, 17.2651, -3.20889, -0.565452, 17.7651, -2.70889, -0.565452, 19.7651, -1.20889, -0.565452, 20.0151, -0.208885, -0.565452, 19.0151, -0.708885, -0.565452, 17.0151, -1.95889, -0.565452, 16.7651, -26.9589, -0.565452, 19.7651, -29.4589, -0.565452, 21.5151, -25.7089, -0.565452, 20.7651, -27.4589, -0.565452, 24.2651, -24.7089, -0.565452, 24.7651, 8.79111, -0.565452, 21.0151, 10.0411, -0.565452, 21.0151, 10.2911, -0.565452, 20.5151, 9.54111, -0.565452, 19.2651, 8.29111, -0.565452, 20.0151, 10.0411, -0.565452, 25.2651, 11.0411, -0.565452, 26.5151, 12.2911, -0.565452, 26.0151, 12.2911, -0.565452, 22.7651, 11.0411, -0.565452, 23.0151, 14.5411, -0.565452, 26.5151, 15.5411, -0.565452, 23.7651, 17.0411, -0.565452, 25.2651, 15.5411, -0.565452, 28.0151, 18.0411, -0.565452, 27.2651, 15.2911, -0.565452, 30.5151, 18.2911, -0.565452, 30.5151, -33.2089, -0.565452, 26.0151, -32.4589, -0.565452, 26.2651, -31.7089, -0.565452, 25.7651, -32.2089, -0.565452, 24.2651, -33.4589, -0.565452, 24.7651, 9.79111, -0.565452, 27.7651, 7.54111, -0.565452, 25.5151, 6.79111, -0.565452, 27.0151, 13.2911, -0.565452, 32.0151, 10.7911, -0.565452, 31.5151, 9.54111, -0.565452, 33.7651, 12.7911, -0.565452, 35.2651, 9.79111, -0.565452, 30.2651, 7.04111, -0.565452, 30.5151, 18.2911, -0.565452, 32.2651, 14.5411, -0.565452, 31.5151, 15.7911, -0.565452, 35.2651, 17.5411, -0.565452, 34.0151, 13.5411, 3.43455, 30.7651, 14.5411, 3.43455, 29.5151, 14.5411, 3.43455, 28.5151, 10.7911, 3.43455, 28.2651, 10.7911, 3.43455, 29.7651, 11.7911, 3.43455, 30.7651, 13.5411, 3.43455, 27.2651, 11.7911, 3.43455, 27.2651, 11.0411, -0.565452, 28.5151, 11.0411, -0.565452, 29.5151, 12.0411, -0.565452, 30.5151, 13.2911, -0.565452, 27.5151, 12.0411, -0.565452, 27.5151, 13.7911, -0.565452, 30.2651, 14.2911, -0.565452, 29.2651, -39.7089, -0.565452, 30.0151, -39.7089, -0.565452, 31.0151, -38.9589, -0.565452, 32.0151, -37.4589, -0.565452, 29.0151, -38.7089, -0.565452, 29.0151, -37.4589, -0.565452, 32.0151, -36.4589, -0.565452, 30.7651, -45.9589, -0.565452, 33.0151, -45.7089, -0.565452, 34.5151, -44.2089, -0.565452, 34.0151, -44.7089, -0.565452, 32.7651)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(0, 10, 5), PackedInt32Array(12, 11, 9), PackedInt32Array(9, 11, 8), PackedInt32Array(10, 0, 13), PackedInt32Array(13, 0, 15), PackedInt32Array(13, 15, 14), PackedInt32Array(11, 12, 16), PackedInt32Array(16, 12, 13), PackedInt32Array(16, 13, 14), PackedInt32Array(18, 17, 19), PackedInt32Array(19, 17, 20), PackedInt32Array(19, 20, 4), PackedInt32Array(4, 20, 3), PackedInt32Array(22, 21, 23), PackedInt32Array(26, 25, 24), PackedInt32Array(27, 23, 28), PackedInt32Array(28, 23, 24), PackedInt32Array(24, 23, 21), PackedInt32Array(24, 21, 26), PackedInt32Array(31, 30, 29), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(35, 32, 31), PackedInt32Array(35, 31, 29), PackedInt32Array(17, 18, 36), PackedInt32Array(39, 38, 37), PackedInt32Array(41, 40, 36), PackedInt32Array(36, 40, 17), PackedInt32Array(7, 39, 6), PackedInt32Array(6, 39, 41), PackedInt32Array(41, 39, 37), PackedInt32Array(41, 37, 40), PackedInt32Array(43, 42, 44), PackedInt32Array(47, 46, 45), PackedInt32Array(48, 47, 49), PackedInt32Array(49, 47, 42), PackedInt32Array(42, 47, 44), PackedInt32Array(44, 47, 45), PackedInt32Array(50, 52, 51), PackedInt32Array(50, 54, 53), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 59), PackedInt32Array(57, 59, 58), PackedInt32Array(57, 61, 60), PackedInt32Array(52, 50, 58), PackedInt32Array(58, 50, 53), PackedInt32Array(58, 53, 61), PackedInt32Array(58, 61, 57), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 66), PackedInt32Array(64, 66, 65), PackedInt32Array(69, 68, 67), PackedInt32Array(51, 70, 50), PackedInt32Array(70, 72, 50), PackedInt32Array(50, 72, 67), PackedInt32Array(67, 72, 69), PackedInt32Array(69, 72, 71), PackedInt32Array(74, 73, 75), PackedInt32Array(75, 73, 76), PackedInt32Array(76, 73, 77), PackedInt32Array(79, 78, 55), PackedInt32Array(55, 78, 80), PackedInt32Array(80, 78, 81), PackedInt32Array(80, 59, 55), PackedInt32Array(84, 83, 82), PackedInt32Array(87, 86, 85), PackedInt32Array(90, 89, 88), PackedInt32Array(82, 91, 90), PackedInt32Array(85, 92, 84), PackedInt32Array(87, 85, 88), PackedInt32Array(88, 85, 90), PackedInt32Array(90, 85, 82), PackedInt32Array(82, 85, 84), PackedInt32Array(95, 94, 93), PackedInt32Array(98, 97, 96), PackedInt32Array(96, 99, 95), PackedInt32Array(100, 98, 101), PackedInt32Array(101, 98, 93), PackedInt32Array(93, 98, 95), PackedInt32Array(95, 98, 96), PackedInt32Array(105, 104, 102), PackedInt32Array(102, 104, 103), PackedInt32Array(111, 110, 106), PackedInt32Array(106, 110, 109), PackedInt32Array(106, 109, 108), PackedInt32Array(106, 108, 107), PackedInt32Array(114, 113, 112), PackedInt32Array(116, 115, 78), PackedInt32Array(78, 115, 117), PackedInt32Array(117, 115, 118), PackedInt32Array(112, 120, 119), PackedInt32Array(119, 122, 121), PackedInt32Array(117, 81, 78), PackedInt32Array(121, 118, 119), PackedInt32Array(119, 118, 112), PackedInt32Array(112, 118, 114), PackedInt32Array(114, 118, 115), PackedInt32Array(123, 71, 124), PackedInt32Array(124, 71, 125), PackedInt32Array(125, 71, 72), PackedInt32Array(126, 124, 127), PackedInt32Array(127, 124, 128), PackedInt32Array(128, 124, 125), PackedInt32Array(131, 130, 129), PackedInt32Array(132, 134, 133), PackedInt32Array(135, 131, 132), PackedInt32Array(132, 131, 129), PackedInt32Array(132, 129, 136), PackedInt32Array(132, 136, 134), PackedInt32Array(128, 122, 127), PackedInt32Array(127, 122, 119), PackedInt32Array(139, 138, 140), PackedInt32Array(140, 138, 137), PackedInt32Array(143, 142, 141), PackedInt32Array(146, 145, 144), PackedInt32Array(148, 147, 141), PackedInt32Array(141, 147, 146), PackedInt32Array(141, 146, 143), PackedInt32Array(143, 146, 144), PackedInt32Array(150, 149, 151), PackedInt32Array(151, 149, 152), PackedInt32Array(152, 149, 153), PackedInt32Array(159, 158, 154), PackedInt32Array(154, 158, 157), PackedInt32Array(154, 157, 156), PackedInt32Array(154, 156, 155), PackedInt32Array(162, 161, 160), PackedInt32Array(163, 162, 164), PackedInt32Array(164, 162, 160), PackedInt32Array(164, 160, 166), PackedInt32Array(164, 166, 165), PackedInt32Array(168, 167, 169), PackedInt32Array(169, 167, 170), PackedInt32Array(168, 169, 166), PackedInt32Array(166, 169, 165), PackedInt32Array(172, 171, 162), PackedInt32Array(162, 171, 173), PackedInt32Array(173, 171, 174), PackedInt32Array(174, 171, 175), PackedInt32Array(162, 173, 161), PackedInt32Array(180, 179, 176), PackedInt32Array(176, 179, 177), PackedInt32Array(177, 179, 178), PackedInt32Array(176, 174, 180), PackedInt32Array(180, 174, 175), PackedInt32Array(182, 181, 183), PackedInt32Array(183, 181, 184), PackedInt32Array(184, 181, 185), PackedInt32Array(187, 186, 188), PackedInt32Array(188, 186, 190), PackedInt32Array(188, 190, 189), PackedInt32Array(193, 192, 194), PackedInt32Array(194, 192, 195), PackedInt32Array(195, 192, 191), PackedInt32Array(195, 191, 196), PackedInt32Array(198, 197, 199), PackedInt32Array(202, 201, 200), PackedInt32Array(204, 203, 197), PackedInt32Array(197, 203, 202), PackedInt32Array(197, 202, 199), PackedInt32Array(199, 202, 200), PackedInt32Array(207, 206, 205), PackedInt32Array(209, 208, 210), PackedInt32Array(210, 208, 207), PackedInt32Array(210, 207, 211), PackedInt32Array(211, 207, 205), PackedInt32Array(217, 216, 212), PackedInt32Array(212, 216, 215), PackedInt32Array(212, 215, 214), PackedInt32Array(212, 214, 213), PackedInt32Array(170, 167, 218), PackedInt32Array(170, 218, 219), PackedInt32Array(219, 218, 220), PackedInt32Array(177, 178, 220), PackedInt32Array(220, 178, 222), PackedInt32Array(220, 222, 221), PackedInt32Array(220, 221, 219), PackedInt32Array(224, 223, 225), PackedInt32Array(225, 223, 227), PackedInt32Array(225, 227, 226), PackedInt32Array(230, 229, 228), PackedInt32Array(232, 231, 228), PackedInt32Array(228, 231, 230), PackedInt32Array(230, 231, 233), PackedInt32Array(233, 231, 234), PackedInt32Array(234, 235, 233), PackedInt32Array(233, 235, 236), PackedInt32Array(236, 235, 237), PackedInt32Array(238, 236, 239), PackedInt32Array(239, 236, 237), PackedInt32Array(241, 240, 242), PackedInt32Array(242, 240, 244), PackedInt32Array(242, 244, 243), PackedInt32Array(229, 245, 228), PackedInt32Array(228, 245, 246), PackedInt32Array(246, 245, 247), PackedInt32Array(249, 248, 250), PackedInt32Array(250, 248, 251), PackedInt32Array(249, 250, 252), PackedInt32Array(252, 250, 253), PackedInt32Array(238, 239, 255), PackedInt32Array(255, 239, 254), PackedInt32Array(257, 256, 254), PackedInt32Array(254, 256, 255), PackedInt32Array(255, 256, 248), PackedInt32Array(248, 256, 251), PackedInt32Array(252, 253, 245), PackedInt32Array(245, 253, 247), PackedInt32Array(260, 259, 258), PackedInt32Array(263, 262, 261), PackedInt32Array(265, 264, 261), PackedInt32Array(261, 264, 260), PackedInt32Array(261, 260, 258), PackedInt32Array(261, 258, 263), PackedInt32Array(268, 267, 266), PackedInt32Array(270, 269, 266), PackedInt32Array(266, 269, 272), PackedInt32Array(266, 272, 271), PackedInt32Array(266, 271, 268), PackedInt32Array(275, 274, 273), PackedInt32Array(277, 276, 273), PackedInt32Array(273, 276, 279), PackedInt32Array(273, 279, 278), PackedInt32Array(273, 278, 275), PackedInt32Array(283, 282, 280), PackedInt32Array(280, 282, 281)]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="Curve3D" id="Curve3D_20fcr"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 5, 0, 0, -5, -12.4084, 0, -0.9991, -5, 0, 0, 5, 0, 0, 0.38504, 0, -12.3052, 0, 0, -5, 0, 0, 5, 12.3906, 0, 1.17018, 5, 0, 0, -5, 0, 0, 0.0857086, 0, 12.7923),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="SwampScene" type="Node3D" node_paths=PackedStringArray("FocusEvents")]
 script = ExtResource("1_qfos7")
@@ -115,24 +130,24 @@ transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -8, 0,
 [node name="TreeStump" parent="World/Island_SmallRound/Details" instance=ExtResource("9_1p1c6")]
 transform = Transform3D(2.20236, 0, -2.03706, 0, 3, 0, 2.03706, 0, 2.20236, 4.57761, 0.00649762, 2.24976)
 
-[node name="Lilypards" type="Node3D" parent="World/Island_SmallRound"]
+[node name="Lilypads" type="Node3D" parent="World/Island_SmallRound"]
 
-[node name="lilypad6" parent="World/Island_SmallRound/Lilypards" instance=ExtResource("12_5fuuy")]
+[node name="lilypad6" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(-1.87992, 0, -0.682564, 0, 2, 0, 0.682564, 0, -1.87992, -3.88897, -0.974196, -11.3794)
 
-[node name="lilypad7" parent="World/Island_SmallRound/Lilypards" instance=ExtResource("12_5fuuy")]
+[node name="lilypad7" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(-0.582673, 0, 1.91324, 0, 2, 0, -1.91324, 0, -0.582673, 7.264, -0.974196, -8.18753)
 
-[node name="lilypad8" parent="World/Island_SmallRound/Lilypards" instance=ExtResource("12_5fuuy")]
+[node name="lilypad8" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(0.507381, 0, 1.93457, 0, 2, 0, -1.93457, 0, 0.507381, 12.7015, -0.974196, -5.15111)
 
-[node name="lilypad9" parent="World/Island_SmallRound/Lilypards" instance=ExtResource("12_5fuuy")]
+[node name="lilypad9" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(1.29038, 0, 1.52804, 0, 2, 0, -1.52804, 0, 1.29038, 10.6346, -0.974196, 7.91896)
 
-[node name="lilypad10" parent="World/Island_SmallRound/Lilypards" instance=ExtResource("12_5fuuy")]
+[node name="lilypad10" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(1.95269, 0, -0.432436, 0, 2, 0, 0.432436, 0, 1.95269, -3.91159, -0.974196, 11.9929)
 
-[node name="lilypad2" parent="World/Island_SmallRound/Lilypards" instance=ExtResource("12_5fuuy")]
+[node name="lilypad2" parent="World/Island_SmallRound/Lilypads" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.4893, -0.974196, -2.23894)
 
 [node name="PathWaterSFX" type="Path3D" parent="World/Island_SmallRound"]
@@ -151,6 +166,134 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Island_SmallRound/FocusEventArea"]
 shape = SubResource("SphereShape3D_qfnsp")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="Lilypads" type="NavigationRegion3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.0504, 0, -45.1176)
+navigation_mesh = SubResource("NavigationMesh_bmghv")
+
+[node name="Details" type="Node3D" parent="World/Lilypads"]
+
+[node name="Lilypad_Flower" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -22.9204, -1, 7.48311)
+
+[node name="Lilypad_Flower2" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20.2793, -1, -0.587406)
+
+[node name="Lilypad_Flower3" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -28.4427, -1, -5.33796)
+
+[node name="Lilypad_Flower4" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -22.3876, -1, -11.4476)
+
+[node name="Lilypad_Flower5" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.1621, -1, 3.12061)
+
+[node name="Lilypad_Flower6" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -14.3275, -1, 13.0473)
+
+[node name="Lilypad_Flower7" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.2326, -1, 15.4284)
+
+[node name="Lilypad_Flower8" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.58663, -1, 17.3201)
+
+[node name="Lilypad_Flower9" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.50633, -1, 18.1707)
+
+[node name="Lilypad_Flower10" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.69527, -1, 21.6268)
+
+[node name="Lilypad_Flower11" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.9679, -1, 10.5957)
+
+[node name="Lilypad_Flower12" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16.8592, -1, -5.84232)
+
+[node name="Lilypad_Flower13" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -32.5984, -1, 22.9881)
+
+[node name="Lilypad_Flower14" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -35.2554, -1, 28.7439)
+
+[node name="Lilypad_Flower15" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42.9178, -1, 31.3769)
+
+[node name="Lilypad_Flower16" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -43.874, -1, 37.3861)
+
+[node name="Lilypad_Flower17" parent="World/Lilypads/Details" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -48.2962, -1, 35.5024)
+
+[node name="Lilypads" type="Node3D" parent="World/Lilypads"]
+
+[node name="lilypad_big_flower" parent="World/Lilypads/Lilypads" instance=ExtResource("11_20fcr")]
+transform = Transform3D(16.1396, 0, 11.8116, 0, 20, 0, -11.8116, 0, 16.1396, 0, -0.8, 0)
+
+[node name="lilypad_big_flower2" parent="World/Lilypads/Lilypads" instance=ExtResource("11_20fcr")]
+transform = Transform3D(9.47434, 0, -3.19952, 0, 10, 0, 3.19952, 0, 9.47434, -24.4883, -0.9, 18.1944)
+
+[node name="lilypad_big_flower3" parent="World/Lilypads/Lilypads" instance=ExtResource("11_20fcr")]
+transform = Transform3D(8.19052, 0, 5.73719, 0, 10, 0, -5.73719, 0, 8.19052, 12.8315, -0.9, 29.2294)
+
+[node name="lilypad_big_flower4" parent="World/Lilypads/Lilypads" instance=ExtResource("11_20fcr")]
+transform = Transform3D(4.63126, 0, 8.86292, 0, 10, 0, -8.86292, 0, 4.63126, -33.0586, -0.9, -16.1085)
+
+[node name="lilypad" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -19.9859, -0.98, 9.84354)
+
+[node name="lilypad16" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(0.708386, 0, -1.87034, 0, 2, 0, 1.87034, 0, 0.708386, -32.5247, -0.98, 25.2648)
+
+[node name="lilypad18" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.94681, 0, -0.458163, 0, 2, 0, 0.458163, 0, 1.94681, -45.1696, -0.98, 33.6248)
+
+[node name="lilypad2" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(0.54765, 0, -1.92356, 0, 2, 0, 1.92356, 0, 0.54765, -12.1887, -0.98, 9.86062)
+
+[node name="lilypad3" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.14618, 0, 1.63898, 0, 2, 0, -1.63898, 0, 1.14618, -13.9143, -0.98, 15.7948)
+
+[node name="lilypad5" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.9997, 0, 0.0344164, 0, 2, 0, -0.0344164, 0, 1.9997, 5.61458, -0.979999, 16.2589)
+
+[node name="lilypad6" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-0.507246, 0, -1.93461, 0, 2, 0, 1.93461, 0, -0.507246, 9.31017, -0.979999, 20.2242)
+
+[node name="lilypad7" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-0.507246, 0, -1.93461, 0, 2, 0, 1.93461, 0, -0.507246, 11.1078, -0.980001, 15.8125)
+
+[node name="lilypad8" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-0.507246, 0, -1.93461, 0, 2, 0, 1.93461, 0, -0.507246, -17.223, -0.980001, -2.60672)
+
+[node name="lilypad9" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-1.97175, 0, 0.334983, 0, 2, 0, -0.334983, 0, -1.97175, -23.9249, -0.980001, -2.57393)
+
+[node name="lilypad12" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(0.6977, 0, 1.87436, 0, 2, 0, -1.87436, 0, 0.6977, -27.0926, -0.980002, -7.45579)
+
+[node name="lilypad10" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(0.186271, 0, -1.99131, 0, 2, 0, 1.99131, 0, 0.186271, -31.0365, -0.980001, -7.17348)
+
+[node name="lilypad11" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(0.279406, 0, -2.98696, 0, 3, 0, 2.98696, 0, 0.279406, -20.3273, -0.98, 3.28487)
+
+[node name="lilypad17" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-2.83553, 0, 0.979674, 0, 3, 0, -0.979674, 0, -2.83553, -38.1164, -0.980002, 30.5259)
+
+[node name="lilypad14" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(-2.94794, 0, -0.556486, 0, 3, 0, 0.556486, 0, -2.94794, -1.68729, -0.98, 18.395)
+
+[node name="lilypad15" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(0.0456038, 0, 2.99965, 0, 3, 0, -2.99965, 0, 0.0456038, 14.8933, -0.979999, 9.49614)
+
+[node name="lilypad13" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(2.98006, 0, 0.345332, 0, 3, 0, -0.345332, 0, 2.98006, -19.0335, -0.980003, -11.4737)
+
+[node name="lilypad4" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
+transform = Transform3D(1.14618, 0, 1.63898, 0, 2, 0, -1.63898, 0, 1.14618, -14.1089, -0.98, 4.56146)
+
+[node name="PathWaterSFX" type="Path3D" parent="World/Lilypads"]
+curve = SubResource("Curve3D_20fcr")
 
 [node name="RespawnArea" parent="World" instance=ExtResource("17_achss")]
 collision_layer = 0
@@ -187,8 +330,20 @@ SkillChecks = [NodePath("../FocusEvent_Land/SkillChecks/Bombs"), NodePath("../Fo
 [node name="Floor" type="Node3D" parent="World/FocusEvent_Lilypad"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
-[node name="Lilypad" parent="World/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
+[node name="Lilypad_Cut" parent="World/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 4.89301)
+
+[node name="Lilypad_Cut2" parent="World/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
+transform = Transform3D(0.411919, 0, -2.97159, 0, 3, 0, 2.97159, 0, 0.411919, -9.20526, 0, 1.13275)
+
+[node name="Lilypad_Cut3" parent="World/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
+transform = Transform3D(-0.644564, 0, 2.92994, 0, 3, 0, -2.92994, 0, -0.644564, -4.42462, 0, 5.97601)
+
+[node name="Lilypad_Cut4" parent="World/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
+transform = Transform3D(-2.35689, 0, 1.85609, 0, 3, 0, -1.85609, 0, -2.35689, -1.37161, 0, -6.09259)
+
+[node name="Lilypad_Cut5" parent="World/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
+transform = Transform3D(-2.17038, 0, -2.07109, 0, 3, 0, 2.07109, 0, -2.17038, 7.90248, -1.43051e-06, -4.01971)
 
 [node name="Sounds" type="Node3D" parent="."]
 

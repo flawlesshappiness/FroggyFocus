@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbhbo27vieidm"]
+[gd_scene load_steps=5 format=3 uid="uid://gtha4wrfngci"]
 
-[ext_resource type="PackedScene" uid="uid://dtyc444jon3uy" path="res://Assets/Quaternius/Nature/Lilypad_NoFlower.fbx" id="1_ky0cl"]
-[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_g2ctm"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="1_t2d36"]
+[ext_resource type="PackedScene" uid="uid://d02o4etv3ilu" path="res://Assets/Quaternius/Nature/Lilypad_Whole.fbx" id="2_t2d36"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ky0cl"]
 height = 0.111816
@@ -12,8 +12,6 @@ radius = 0.666071
 
 [node name="lilypad" type="Node3D"]
 
-[node name="Lilypad_NoFlower" parent="." instance=ExtResource("1_ky0cl")]
-
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -23,10 +21,12 @@ shape = SubResource("CylinderShape3D_ky0cl")
 [node name="FocusEventArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("2_g2ctm")
+script = ExtResource("1_t2d36")
 Id = "lilypad"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
 shape = SubResource("SphereShape3D_g2ctm")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="Lilypad_Whole" parent="." instance=ExtResource("2_t2d36")]
