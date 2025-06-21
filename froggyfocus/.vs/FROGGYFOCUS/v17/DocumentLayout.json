@@ -34,8 +34,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -44,14 +48,10 @@
               "RelativeDocumentMoniker": "Appearance\\Hat\\AppearanceHatType.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Appearance\\Hat\\AppearanceHatType.cs",
               "RelativeToolTip": "Appearance\\Hat\\AppearanceHatType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA6wAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-21T02:11:29.29Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
               "$type": "Document",
@@ -63,8 +63,7 @@
               "RelativeToolTip": "Inventory\\InventoryController.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAIwCgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T22:21:56.213Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-19T22:21:56.213Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "Prefabs\\UI\\Inventory\\InventoryControl.cs",
               "ViewState": "AgIAAIMAAAAAAAAAAADwv5MAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T18:31:51.898Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-19T18:31:51.898Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "Views\\PauseView\\PauseView.cs",
               "ViewState": "AgIAAM4AAAAAAAAAAADwv/YAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T18:25:00.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-19T18:25:00.469Z"
             },
             {
               "$type": "Document",

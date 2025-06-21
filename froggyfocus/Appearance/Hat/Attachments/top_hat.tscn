@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bibw10cs8fov6"]
+
+[ext_resource type="Script" uid="uid://bw3upqrgb4wnv" path="res://Appearance/Hat/AppearanceHatAttachment.cs" id="1_uqvqn"]
+[ext_resource type="PackedScene" uid="uid://dqhdj1m74fp8" path="res://Assets/FlawLizArt/Clothing/top_hat.fbx" id="2_uqvqn"]
+
+[node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
+transform = Transform3D(0.01, 1.8198e-23, -6.61744e-24, 0, -0.00284216, -0.0095876, 6.53473e-23, 0.0095876, -0.00284216, 0, 0, 0)
+script = ExtResource("1_uqvqn")
+Type = 5
+Mesh = NodePath("top_hat/top_hat")
+
+[node name="top_hat" parent="." instance=ExtResource("2_uqvqn")]
+
+[editable path="top_hat"]

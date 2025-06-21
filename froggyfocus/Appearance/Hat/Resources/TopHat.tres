@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppearanceHatInfo" load_steps=3 format=3 uid="uid://cmr7ne3xljgm7"]
+
+[ext_resource type="PackedScene" uid="uid://dlp5ptcmorakr" path="res://Appearance/Hat/Previews/TopHat.tscn" id="1_kspew"]
+[ext_resource type="Script" uid="uid://bgmxka5nlfp3x" path="res://Appearance/Hat/AppearanceHatInfo.cs" id="2_fgqfw"]
+
+[resource]
+script = ExtResource("2_fgqfw")
+Type = 5
+Prefab = ExtResource("1_kspew")
+metadata/_custom_type_script = "uid://bgmxka5nlfp3x"
