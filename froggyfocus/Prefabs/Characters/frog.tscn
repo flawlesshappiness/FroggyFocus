@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=26 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="9_qta17"]
 [ext_resource type="PackedScene" uid="uid://xqht7alrt8iv" path="res://Appearance/Hat/Attachments/tiara.tscn" id="10_1t647"]
 [ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="10_w1eid"]
+[ext_resource type="PackedScene" uid="uid://cqne4uq3cw58u" path="res://Appearance/Hat/Attachments/bow.tscn" id="11_qrirs"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_81ysc"]
 size = Vector3(0.15, 0.05, 1)
@@ -171,7 +172,7 @@ transform = Transform3D(1, -2.05045e-13, 7.11069e-13, 2.525e-13, 0.998942, -0.04
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_4vdn2")
-Hats = [NodePath("Crown"), NodePath("CatEars"), NodePath("BucketHat"), NodePath("CowboyHat"), NodePath("TopHat"), NodePath("Tiara")]
+Hats = [NodePath("Crown"), NodePath("CatEars"), NodePath("BucketHat"), NodePath("CowboyHat"), NodePath("TopHat"), NodePath("Tiara"), NodePath("Bow")]
 
 [node name="Crown" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("5_380eu")]
 transform = Transform3D(0.01, -3.6053e-11, -2.4847e-10, -2.4847e-10, -0.00284216, -0.0095876, -3.6053e-11, 0.0095876, -0.00284216, 1.04019e-09, -0.00171867, 0.00296973)
@@ -195,6 +196,10 @@ visible = false
 
 [node name="Tiara" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("10_1t647")]
 transform = Transform3D(0.012, -5.12403e-11, -2.96897e-10, -2.98163e-10, -0.00371776, -0.0114096, -4.32635e-11, 0.0114096, -0.00371776, -1.59588e-15, -0.00426125, 0.00102173)
+visible = false
+
+[node name="Bow" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("11_qrirs")]
+transform = Transform3D(0.012, -4.32635e-11, -2.98163e-10, -2.98163e-10, -0.00341059, -0.0115051, -4.32635e-11, 0.0115051, -0.00341059, -2.46564e-15, -0.00269785, 0.00269538)
 
 [node name="AnimationPlayer" parent="frog" index="1"]
 playback_default_blend_time = 0.15
