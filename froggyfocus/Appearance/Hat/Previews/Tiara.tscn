@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6tnbshgpiinr"]
+
+[ext_resource type="PackedScene" uid="uid://bcyxhtn31dfxy" path="res://Assets/FlawLizArt/Clothing/tiara.fbx" id="2_0f6pm"]
+
+[node name="PreviewHat" type="Node3D"]
+
+[node name="tiara" parent="." instance=ExtResource("2_0f6pm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0964677, 0.24022)

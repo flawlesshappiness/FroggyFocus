@@ -6,4 +6,6 @@ public enum AppearanceHatType
     BucketHat,
     CowboyHat,
     TopHat,
+    Tiara,
+    Bow
 }

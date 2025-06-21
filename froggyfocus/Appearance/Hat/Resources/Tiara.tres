@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppearanceHatInfo" load_steps=3 format=3 uid="uid://qfb7kosam4wt"]
+
+[ext_resource type="PackedScene" uid="uid://b6tnbshgpiinr" path="res://Appearance/Hat/Previews/Tiara.tscn" id="1_ebfof"]
+[ext_resource type="Script" uid="uid://bgmxka5nlfp3x" path="res://Appearance/Hat/AppearanceHatInfo.cs" id="2_tb2ya"]
+
+[resource]
+script = ExtResource("2_tb2ya")
+Type = 6
+Prefab = ExtResource("1_ebfof")
+metadata/_custom_type_script = "uid://bgmxka5nlfp3x"
