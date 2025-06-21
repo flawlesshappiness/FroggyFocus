@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhvnhvbyl256r"]
+
+[ext_resource type="PackedScene" uid="uid://6bv337f26ixf" path="res://Assets/FlawLizArt/Clothing/cowboy_hat.fbx" id="1_4yngj"]
+
+[node name="PreviewHat" type="Node3D"]
+
+[node name="cowboy_hat" parent="." instance=ExtResource("1_4yngj")]
+transform = Transform3D(0.6, 0, 0, 0, 0.577683, 0.162118, 0, -0.162118, 0.577683, 0, 0, 0)

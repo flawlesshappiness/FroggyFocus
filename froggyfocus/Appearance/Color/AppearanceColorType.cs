@@ -8,4 +8,5 @@ public enum AppearanceColorType
     Brown = 5,
     Gray = 6,
     White = 7,
+    Black = 8
 }

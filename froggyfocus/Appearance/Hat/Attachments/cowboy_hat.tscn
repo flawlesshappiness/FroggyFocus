@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2w4ggwbp6jdf"]
+
+[ext_resource type="Script" uid="uid://bw3upqrgb4wnv" path="res://Appearance/Hat/AppearanceHatAttachment.cs" id="1_w8swe"]
+[ext_resource type="PackedScene" uid="uid://6bv337f26ixf" path="res://Assets/FlawLizArt/Clothing/cowboy_hat.fbx" id="2_w8swe"]
+
+[node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
+transform = Transform3D(0.01, 1.8198e-23, -6.61744e-24, 0, -0.00284216, -0.0095876, 6.53473e-23, 0.0095876, -0.00284216, 0, 0, 0)
+script = ExtResource("1_w8swe")
+Type = 4
+Mesh = NodePath("cowboy_hat/cowboy_hat")
+
+[node name="cowboy_hat" parent="." instance=ExtResource("2_w8swe")]
+
+[editable path="cowboy_hat"]
