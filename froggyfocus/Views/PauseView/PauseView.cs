@@ -4,7 +4,16 @@ using System.Collections;
 public partial class PauseView : View
 {
     [Export]
-    public AnimationPlayer AnimationPlayer;
+    public AnimationPlayer AnimationPlayer_Pause;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Options;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Customize;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Inventory;
 
     [Export]
     public Control InputBlocker;
@@ -14,6 +23,9 @@ public partial class PauseView : View
 
     [Export]
     public CustomizeAppearanceControl CustomizeAppearanceControl;
+
+    [Export]
+    public InventoryControl InventoryControl;
 
     [Export]
     public Button ResumeButton;
@@ -28,10 +40,14 @@ public partial class PauseView : View
     public Button MainMenuButton;
 
     [Export]
+    public Button InventoryButton;
+
+    [Export]
     public ColorRect Overlay;
 
     private bool options_active;
     private bool customize_active;
+    private bool inventory_active;
     private bool transitioning;
 
     public override void _Ready()
@@ -41,8 +57,10 @@ public partial class PauseView : View
         CustomizeButton.Pressed += ClickCustomize;
         OptionsButton.Pressed += ClickOptions;
         MainMenuButton.Pressed += ClickMainMenu;
+        InventoryButton.Pressed += ClickInventory;
         Options.OnBack += ClickOptionsBack;
-        CustomizeAppearanceControl.OnBackPressed += ClickCustomizeBack;
+        CustomizeAppearanceControl.OnBack += ClickCustomizeBack;
+        InventoryControl.OnBack += ClickInventoryBack;
     }
 
     protected override void OnShow()
@@ -79,6 +97,7 @@ public partial class PauseView : View
         if (MainMenuView.Instance.Visible) return;
         if (options_active) return;
         if (customize_active) return;
+        if (inventory_active) return;
         if (transitioning) return;
 
         if (Visible)
@@ -101,7 +120,7 @@ public partial class PauseView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show");
+            yield return AnimationPlayer_Pause.PlayAndWaitForAnimation("show");
             InputBlocker.Hide();
             transitioning = false;
 
@@ -118,7 +137,7 @@ public partial class PauseView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
+            yield return AnimationPlayer_Pause.PlayAndWaitForAnimation("hide");
             InputBlocker.Hide();
 
             transitioning = false;
@@ -140,7 +159,8 @@ public partial class PauseView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show_customize");
+            AnimationPlayer_Pause.Play("to_background");
+            yield return AnimationPlayer_Customize.PlayAndWaitForAnimation("show");
             InputBlocker.Hide();
 
             CustomizeAppearanceControl.TabContainer.GetTabBar().GrabFocus();
@@ -154,7 +174,8 @@ public partial class PauseView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_customize");
+            AnimationPlayer_Pause.Play("to_foreground");
+            yield return AnimationPlayer_Customize.PlayAndWaitForAnimation("hide");
             InputBlocker.Hide();
 
             CustomizeButton.GrabFocus();
@@ -172,7 +193,8 @@ public partial class PauseView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show_options");
+            AnimationPlayer_Pause.Play("to_background");
+            yield return AnimationPlayer_Options.PlayAndWaitForAnimation("show");
             InputBlocker.Hide();
 
             Options.Tabs.GetTabBar().GrabFocus();
@@ -188,7 +210,8 @@ public partial class PauseView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_options");
+            AnimationPlayer_Pause.Play("to_foreground");
+            yield return AnimationPlayer_Options.PlayAndWaitForAnimation("hide");
             InputBlocker.Hide();
 
             OptionsButton.GrabFocus();
@@ -206,8 +229,8 @@ public partial class PauseView : View
             transitioning = true;
 
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show_overlay");
+            yield return AnimationPlayer_Pause.PlayAndWaitForAnimation("hide");
+            yield return AnimationPlayer_Pause.PlayAndWaitForAnimation("show_overlay");
             Scene.Goto<MainMenuScene>();
 
             Overlay.Hide();
@@ -215,6 +238,42 @@ public partial class PauseView : View
             InputBlocker.Hide();
 
             transitioning = false;
+        }
+    }
+
+    private void ClickInventory()
+    {
+        inventory_active = true;
+
+        Coroutine.Start(Cr)
+            .SetRunWhilePaused();
+        IEnumerator Cr()
+        {
+            InputBlocker.Show();
+            AnimationPlayer_Pause.Play("to_background");
+            yield return AnimationPlayer_Inventory.PlayAndWaitForAnimation("show");
+            InputBlocker.Hide();
+
+            InventoryControl.GrabFocus_InventoryButton();
+        }
+    }
+
+    private void ClickInventoryBack()
+    {
+        if (!inventory_active) return;
+
+        Coroutine.Start(Cr)
+            .SetRunWhilePaused();
+        IEnumerator Cr()
+        {
+            InputBlocker.Show();
+            AnimationPlayer_Pause.Play("to_foreground");
+            yield return AnimationPlayer_Inventory.PlayAndWaitForAnimation("hide");
+            InputBlocker.Hide();
+
+            InventoryButton.GrabFocus();
+
+            inventory_active = false;
         }
     }
 }

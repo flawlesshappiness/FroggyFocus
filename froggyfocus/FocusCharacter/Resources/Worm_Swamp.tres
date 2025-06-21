@@ -6,6 +6,8 @@
 [resource]
 script = ExtResource("2_ikdgy")
 Scene = ExtResource("1_nia4a")
+Name = "Common Worm"
+Description = "A bowl of these is a common meal, served with swamp sauce."
 FocusValue = 50.0
 SizeRange = Vector2(0.6, 0.8)
 MoveSpeed = 0.25

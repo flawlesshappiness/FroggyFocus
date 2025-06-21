@@ -25,7 +25,7 @@ public partial class CustomizeAppearanceControl : ControlScript
     [Export]
     public Node3D PreviewRotationNode;
 
-    public event Action OnBackPressed;
+    public event Action OnBack;
 
     public static event Action OnBodyColorChanged;
     public static event Action OnHatChanged;
@@ -111,7 +111,7 @@ public partial class CustomizeAppearanceControl : ControlScript
     private void BackPressed()
     {
         Data.Game.Save();
-        OnBackPressed?.Invoke();
+        OnBack?.Invoke();
     }
 
     private void PreviewRotationSlider_ValueChanged(double dvalue)

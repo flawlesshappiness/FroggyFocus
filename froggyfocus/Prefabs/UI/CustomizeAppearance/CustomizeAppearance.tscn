@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsiem2e7uxtnt"]
+[gd_scene load_steps=10 format=3 uid="uid://dsiem2e7uxtnt"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_c1ffu"]
-[ext_resource type="Texture2D" uid="uid://2iew501qnljl" path="res://Assets/KenneyNL/UI/Blue/button_square_flat.png" id="1_f2fty"]
 [ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="2_c1ffu"]
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_jjbel"]
 [ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/CustomizeAppearance/appearance_color_container.tscn" id="4_1uex8"]
@@ -9,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://7g3y8bn480iw" path="res://Prefabs/UI/CustomizeAppearance/appearance_preview_button.tscn" id="4_igo5n"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_ntf0j"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_041x8"]
-texture = ExtResource("1_f2fty")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uex8"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
@@ -80,14 +79,11 @@ size_flags_vertical = 3
 [node name="Panel" type="Panel" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/MarginContainer"]
 modulate = Color(0.5, 0.5, 0.5, 1)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_041x8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1uex8")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2

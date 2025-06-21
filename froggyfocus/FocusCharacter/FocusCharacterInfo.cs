@@ -8,6 +8,12 @@ public partial class FocusCharacterInfo : Resource
     public PackedScene Scene;
 
     [Export]
+    public string Name;
+
+    [Export(PropertyHint.MultilineText)]
+    public string Description;
+
+    [Export]
     public float FocusValue = 50;
 
     [Export]

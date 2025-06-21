@@ -486,13 +486,12 @@ transform = Transform3D(-4, 0, 3.49691e-07, 0, 4, 0, -3.49691e-07, 0, -4, 8, 0, 
 [node name="pond_corner_convex_004" parent="World/FocusEvent_Land/Floor" instance=ExtResource("10_qfnsp")]
 transform = Transform3D(5.24537e-07, 0, 4, 0, 4, 0, -4, 0, 5.24537e-07, -8, 0, 8)
 
-[node name="FocusEvent_Lilypad" parent="World" node_paths=PackedStringArray("SkillChecks") instance=ExtResource("12_yvk0y")]
+[node name="FocusEvent_Lilypad" parent="World" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.894976, 320)
 visible = false
 Id = "lilypad"
 Info = ExtResource("14_52an4")
 Size = Vector2(5, 3)
-SkillChecks = [NodePath("../FocusEvent_Land/SkillChecks/Bombs"), NodePath("../FocusEvent_Land/SkillChecks/Dash")]
 
 [node name="Floor" type="Node3D" parent="World/FocusEvent_Lilypad"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
@@ -512,12 +511,12 @@ transform = Transform3D(-2.35689, 0, 1.85609, 0, 3, 0, -1.85609, 0, -2.35689, -1
 [node name="Lilypad_Cut5" parent="World/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
 transform = Transform3D(-2.17038, 0, -2.07109, 0, 3, 0, 2.07109, 0, -2.17038, 7.90248, -1.43051e-06, -4.01971)
 
-[node name="FocusEvent_Wood" parent="World" node_paths=PackedStringArray("SkillChecks") instance=ExtResource("12_yvk0y")]
+[node name="FocusEvent_Wood" parent="World" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.894976, 320)
+visible = false
 Id = "wood"
 Info = ExtResource("14_52an4")
 Size = Vector2(5, 3)
-SkillChecks = [NodePath("../FocusEvent_Land/SkillChecks/Bombs"), NodePath("../FocusEvent_Land/SkillChecks/Dash")]
 
 [node name="Floor" type="Node3D" parent="World/FocusEvent_Wood"]
 

@@ -126,11 +126,6 @@ public partial class FocusEvent : Node3D
             FocusOutroView.Instance.CreateTarget(Target.Info);
             yield return FocusOutroView.Instance.EatBugSequence(completed);
 
-            if (completed)
-            {
-                CurrencyController.Instance.AddValue(CurrencyType.Money, Target.Info.CurrencyReward);
-            }
-
             // Camera target player
             Player.Instance.SetCameraTarget();
 
@@ -196,10 +191,11 @@ public partial class FocusEvent : Node3D
 
     private void FocusFilled()
     {
+        OnCompleted?.Invoke(new FocusEventCompletedResult(this));
+
         Data.Game.TargetsCollected++;
         Data.Game.Save();
 
-        OnCompleted?.Invoke(new FocusEventCompletedResult(this));
         EndEvent(true);
     }
 
