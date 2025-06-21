@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AppearanceColorInfo" load_steps=2 format=3 uid="uid://b6u2wdbu34ax3"]
+
+[ext_resource type="Script" uid="uid://b38lj3fb5dsuv" path="res://Appearance/Color/AppearanceColorInfo.cs" id="1_11wkk"]
+
+[resource]
+script = ExtResource("1_11wkk")
+Type = 9
+Name = "Cyan"
+Color = Color(0.27, 0.837, 0.9, 1)
+metadata/_custom_type_script = "uid://b38lj3fb5dsuv"
