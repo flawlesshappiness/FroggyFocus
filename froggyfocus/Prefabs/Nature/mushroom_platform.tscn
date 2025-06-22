@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cap2fnpuvvefh"]
+
+[ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="1_rk854"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l6pwq"]
+height = 0.228592
+radius = 0.416016
+
+[node name="Mushroom_Platform" type="Node3D"]
+
+[node name="mushroom_platform" parent="." instance=ExtResource("1_rk854")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.411178)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="mushroom_platform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mushroom_platform/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.113503, 0.0125622)
+shape = SubResource("CylinderShape3D_l6pwq")
