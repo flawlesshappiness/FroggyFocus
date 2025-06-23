@@ -93,7 +93,7 @@ public partial class PauseView : View
 
     private void Toggle()
     {
-        if (UpgradeView.Instance.Visible) return;
+        if (ShopView.Instance.Visible) return;
         if (MainMenuView.Instance.Visible) return;
         if (options_active) return;
         if (customize_active) return;

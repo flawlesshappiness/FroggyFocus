@@ -3,6 +3,12 @@ using Godot;
 public partial class InventoryPreviewButton : ButtonScript
 {
     [Export]
+    public Control ValueContainer;
+
+    [Export]
+    public Label ValueLabel;
+
+    [Export]
     public Node3D Origin;
 
     [Export]
@@ -17,6 +23,8 @@ public partial class InventoryPreviewButton : ButtonScript
     {
         var character = info.Scene.Instantiate<FocusCharacter>();
         SetPreview(character);
+
+        ValueLabel.Text = info.CurrencyReward.ToString();
     }
 
     public void SetPreview(Node3D node)

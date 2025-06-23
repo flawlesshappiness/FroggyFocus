@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpee6hy6xgor5"]
+
+[ext_resource type="PackedScene" uid="uid://s6oqyxkfywv7" path="res://Prefabs/UI/Inventory/inventory_container.tscn" id="1_oe3x5"]
+[ext_resource type="Script" uid="uid://crw68dbhrkmx1" path="res://Prefabs/UI/Sell/SellContainer.cs" id="1_wm1wu"]
+[ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="3_veqtd"]
+
+[node name="Sell" type="MarginContainer" node_paths=PackedStringArray("InventoryContainer", "SfxSell")]
+script = ExtResource("1_wm1wu")
+InventoryContainer = NodePath("inventory_container")
+SfxSell = NodePath("SfxSell")
+metadata/_tab_index = 0
+
+[node name="inventory_container" parent="." instance=ExtResource("1_oe3x5")]
+layout_mode = 2
+ShowValue = true
+
+[node name="SfxSell" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_veqtd")
+volume_db = -20.0
+bus = &"SFX"

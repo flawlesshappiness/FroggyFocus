@@ -1,12 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://w7rjdy2elbei"]
+[gd_scene load_steps=13 format=3 uid="uid://w7rjdy2elbei"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_f2gf6"]
-[ext_resource type="Script" uid="uid://b48kuv4pap1xp" path="res://Views/UpgradeView/UpgradeView.cs" id="2_idlmi"]
-[ext_resource type="PackedScene" uid="uid://bajaadt0hsp6w" path="res://Views/UpgradeView/upgrade_control_template.tscn" id="3_idlmi"]
+[ext_resource type="Script" uid="uid://b48kuv4pap1xp" path="res://Views/ShopView/ShopView.cs" id="2_idlmi"]
+[ext_resource type="PackedScene" uid="uid://cpee6hy6xgor5" path="res://Prefabs/UI/Sell/sell_container.tscn" id="3_sxpp3"]
 [ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="4_0oh7v"]
-[ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="4_xbrgb"]
+[ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="4_sxpp3"]
 [ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="5_n8kem"]
-[ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="5_xfivi"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="8_n8kem"]
 
 [sub_resource type="Animation" id="Animation_idlmi"]
@@ -101,29 +100,25 @@ _data = {
 &"show": SubResource("Animation_f2gf6")
 }
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xfivi"]
-random_pitch = 1.2
-streams_count = 1
-stream_0/stream = ExtResource("5_xfivi")
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bsdmw"]
 random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("8_n8kem")
 
-[node name="UpgradeView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "UpgradeControlTemplate", "SfxPurchaseSuccess", "SfxPurchaseFail", "InputBlocker")]
+[node name="ShopView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_f2gf6")
 script = ExtResource("2_idlmi")
 AnimationPlayer = NodePath("AnimationPlayer")
-BackButton = NodePath("CenterContainer/AnimContainer/AnimPanel/Panel/BackContainer/CloseButton")
-UpgradeControlTemplate = NodePath("CenterContainer/AnimContainer/AnimPanel/Panel/MainContainer/VBoxContainer/ScrollContainer/VBoxContainer/UpgradeControlTemplate")
-SfxPurchaseSuccess = NodePath("SfxPurchaseSuccess")
-SfxPurchaseFail = NodePath("SfxPurchaseFail")
+BackButton = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/BackContainer/CloseButton")
+TabContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer")
+UpgradeContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Upgrades")
+SellContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Sell")
 InputBlocker = NodePath("InputBlocker")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -154,69 +149,69 @@ offset_bottom = 2000.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/AnimContainer/AnimPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -250.0
-offset_right = 250.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_f2gf6")
-
-[node name="MainContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel"]
+[node name="Control" type="Control" parent="CenterContainer/AnimContainer/AnimPanel"]
+custom_minimum_size = Vector2(400, 450)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MainContainer"]
+[node name="TabContainer" type="TabContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_f2gf6")
+current_tab = 0
+
+[node name="Sell" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("3_sxpp3")]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MainContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-follow_focus = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MainContainer/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="UpgradeControlTemplate" parent="CenterContainer/AnimContainer/AnimPanel/Panel/MainContainer/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_idlmi")]
+[node name="Upgrades" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("4_sxpp3")]
+visible = false
 layout_mode = 2
 
-[node name="TitleContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel"]
+[node name="BackContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.06
+offset_right = 27.94
+offset_bottom = 50.0
+grow_horizontal = 0
+theme = ExtResource("4_0oh7v")
+
+[node name="CloseButton" parent="CenterContainer/AnimContainer/AnimPanel/Control/BackContainer" instance=ExtResource("5_n8kem")]
+layout_mode = 2
+
+[node name="TitleContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -140.0
-offset_top = -43.0
-offset_right = 140.0
-offset_bottom = 36.0
+offset_left = -87.0
+offset_top = -68.0
+offset_right = 88.0
+offset_bottom = 11.0
 grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/AnimContainer/AnimPanel/Panel/TitleContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/AnimContainer/AnimPanel/Control/TitleContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel/TitleContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control/TitleContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="CenterContainer/AnimContainer/AnimPanel/Panel/TitleContainer/MarginContainer"]
+[node name="Label" type="Label" parent="CenterContainer/AnimContainer/AnimPanel/Control/TitleContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
@@ -225,36 +220,9 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 50
-text = "UPGRADES"
+text = "SHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="BackContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Panel"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -34.0
-offset_top = -26.0
-offset_right = 16.0
-offset_bottom = 24.0
-grow_horizontal = 0
-theme = ExtResource("4_0oh7v")
-
-[node name="CloseButton" parent="CenterContainer/AnimContainer/AnimPanel/Panel/BackContainer" instance=ExtResource("5_n8kem")]
-layout_mode = 2
-
-[node name="SfxPurchaseSuccess" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_xbrgb")
-volume_db = -20.0
-bus = &"SFX"
-
-[node name="SfxPurchaseFail" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_xfivi")
-volume_db = -20.0
-max_polyphony = 3
-bus = &"SFX"
 
 [node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_bsdmw")

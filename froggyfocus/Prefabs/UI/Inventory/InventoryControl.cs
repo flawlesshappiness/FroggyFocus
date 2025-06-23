@@ -1,12 +1,10 @@
 using Godot;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 public partial class InventoryControl : ControlScript
 {
     [Export]
-    public InventoryPreviewButton InventoryButtonTemplate;
+    public InventoryContainer InventoryContainer;
 
     [Export]
     public Button BackButton;
@@ -32,15 +30,6 @@ public partial class InventoryControl : ControlScript
     public event Action OnBack;
 
     private Node3D current_preview;
-    private ButtonMap selected_map;
-    private List<ButtonMap> maps = new();
-
-    private class ButtonMap
-    {
-        public Button Button { get; set; }
-        public FocusCharacterInfo Info { get; set; }
-        public InventoryCharacterData Data { get; set; }
-    }
 
     public override void _Ready()
     {
@@ -48,76 +37,35 @@ public partial class InventoryControl : ControlScript
 
         BackButton.Pressed += BackPressed;
         DiscardButton.Pressed += DiscardPressed;
+        InventoryContainer.OnButtonPressed += InventoryButton_Pressed;
     }
 
     protected override void OnShow()
     {
         base.OnShow();
-        InitializeInventoryButtons();
-    }
 
-    private void InitializeInventoryButtons()
-    {
-        InventoryButtonTemplate.Hide();
-
-        ClearMaps();
-
-        foreach (var data in Data.Game.Inventory.Characters)
-        {
-            var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
-            if (info == null) continue;
-
-            var button = InventoryButtonTemplate.Duplicate() as InventoryPreviewButton;
-            button.SetParent(InventoryButtonTemplate.GetParent());
-            button.SetCharacter(info);
-            button.Show();
-
-            var map = new ButtonMap
-            {
-                Button = button,
-                Info = info,
-                Data = data
-            };
-
-            button.Pressed += () => InventoryButton_Pressed(map);
-
-            maps.Add(map);
-        }
-
+        InventoryContainer.UpdateButtons();
         ClearCharacterInfo();
-        if (maps.Count > 0)
-        {
-            var map = maps.First();
-            InventoryButton_Pressed(map);
-        }
+        InventoryContainer.PressFirstButton();
     }
 
     public void GrabFocus_InventoryButton()
     {
-        var focus = maps.FirstOrDefault()?.Button ?? BackButton;
+        var focus = InventoryContainer.GetFirstButton() ?? BackButton;
         focus.GrabFocus();
     }
 
     private void Clear()
     {
-        ClearMaps();
+        InventoryContainer.Clear();
         ClearCharacterInfo();
         ClearPreviewCharacter();
     }
 
-    private void ClearMaps()
+    private void InventoryButton_Pressed(FocusCharacterInfo info)
     {
-        selected_map = null;
-        maps.ForEach(x => x.Button.QueueFree());
-        maps.Clear();
-    }
-
-    private void InventoryButton_Pressed(ButtonMap map)
-    {
-        selected_map = map;
-
-        SetPreviewCharacter(map.Info);
-        SetCharacterInfo(map.Info);
+        SetPreviewCharacter(info);
+        SetCharacterInfo(info);
     }
 
     public override void _Input(InputEvent @event)
@@ -176,14 +124,15 @@ public partial class InventoryControl : ControlScript
 
     private void DiscardPressed()
     {
-        if (selected_map == null) return;
+        var data = InventoryContainer.GetSelectedData();
+        if (data == null) return;
 
-        InventoryController.Instance.RemoveCharacterData(selected_map.Data);
+        InventoryController.Instance.RemoveCharacterData(data);
         Data.Game.Save();
 
         Clear();
 
-        InitializeInventoryButtons();
+        InventoryContainer.UpdateButtons();
         GrabFocus_InventoryButton();
     }
 }

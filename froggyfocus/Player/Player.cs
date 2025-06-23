@@ -14,9 +14,6 @@ public partial class Player : TopDownController
     public FrogCharacter Character;
 
     [Export]
-    public PlayerMoneyGained MoneyGained;
-
-    [Export]
     public ExclamationMark ExclamationMark;
 
     [Export]
@@ -63,18 +60,6 @@ public partial class Player : TopDownController
         OnLand += () => JumpChanged(false);
 
         InteractLock.OnLocked += InteractLocked;
-    }
-
-    public override void _EnterTree()
-    {
-        base._EnterTree();
-        Money.OnMoneyChanged += MoneyChanged;
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        Money.OnMoneyChanged -= MoneyChanged;
     }
 
     public override void _Process(double delta)
@@ -227,18 +212,6 @@ public partial class Player : TopDownController
         {
             PsDustLand.Emitting = true;
             StopDustStreamPS();
-        }
-    }
-
-    private void MoneyChanged(int amount)
-    {
-        if (amount <= 0) return;
-
-        this.StartCoroutine(Cr, nameof(MoneyChanged));
-        IEnumerator Cr()
-        {
-            yield return new WaitForSeconds(1f);
-            yield return MoneyGained.AnimateMoneyGained(amount);
         }
     }
 

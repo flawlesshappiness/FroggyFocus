@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w3kxo"]
 [ext_resource type="Script" uid="uid://bju7b4mhjacmp" path="res://Prefabs/UI/Inventory/InventoryControl.cs" id="2_v4q88"]
-[ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="3_v4q88"]
+[ext_resource type="PackedScene" uid="uid://s6oqyxkfywv7" path="res://Prefabs/UI/Inventory/inventory_container.tscn" id="3_gj1sa"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="4_7pmmq"]
 [ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="4_j8bvv"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_tufir"]
@@ -12,7 +12,7 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_boh4b"]
 viewport_path = NodePath("SubViewport_InventoryPreview")
 
-[node name="InventoryControl" type="Control" node_paths=PackedStringArray("InventoryButtonTemplate", "BackButton", "DiscardButton", "PreviewOrigin", "NameLabel", "DescriptionLabel", "ValueLabel", "ValueContainer")]
+[node name="InventoryControl" type="Control" node_paths=PackedStringArray("InventoryContainer", "BackButton", "DiscardButton", "PreviewOrigin", "NameLabel", "DescriptionLabel", "ValueLabel", "ValueContainer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_w3kxo")
 script = ExtResource("2_v4q88")
-InventoryButtonTemplate = NodePath("HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer/MarginContainer/GridContainer/InventoryPreviewButton")
+InventoryContainer = NodePath("HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer/inventory_container")
 BackButton = NodePath("CloseButton")
 DiscardButton = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/DiscardButton")
 PreviewOrigin = NodePath("SubViewport_InventoryPreview/Origin")
@@ -63,20 +63,7 @@ theme_override_constants/margin_bottom = 10
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ButtonsPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer/MarginContainer"]
-layout_mode = 2
-columns = 5
-
-[node name="InventoryPreviewButton" parent="HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_v4q88")]
+[node name="inventory_container" parent="HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer" instance=ExtResource("3_gj1sa")]
 layout_mode = 2
 
 [node name="TitlePanel" type="Panel" parent="HBoxContainer/ButtonsPanel"]
