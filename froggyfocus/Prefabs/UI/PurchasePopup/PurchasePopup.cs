@@ -30,7 +30,6 @@ public partial class PurchasePopup : Control
     public Action OnPurchase;
     public Action OnCancel;
 
-    private bool active;
     private int current_price;
 
     public override void _Ready()
@@ -40,27 +39,14 @@ public partial class PurchasePopup : Control
         CancelButton.Pressed += Cancel_Pressed;
     }
 
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-
-        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
-        {
-            if (!active) return;
-            HidePopup();
-        }
-    }
-
     public void ShowPopup()
     {
-        active = true;
         AnimationPlayer.Play("show");
         CancelButton.GrabFocus();
     }
 
     private void HidePopup()
     {
-        active = false;
         AnimationPlayer.Play("hide");
     }
 
@@ -87,6 +73,11 @@ public partial class PurchasePopup : Control
         {
             SfxPurchaseFail.Play();
         }
+    }
+
+    public void Cancel()
+    {
+        Cancel_Pressed();
     }
 
     private void Cancel_Pressed()

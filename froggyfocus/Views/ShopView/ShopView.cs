@@ -86,8 +86,14 @@ public partial class ShopView : View
 
         if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
         {
-            if (popup_active) return;
-            Close();
+            if (popup_active)
+            {
+                PurchasePopup.Cancel();
+            }
+            else
+            {
+                Close();
+            }
         }
     }
 
@@ -145,6 +151,8 @@ public partial class ShopView : View
 
     private void HatButton_Pressed(AppearanceHatInfo info)
     {
+        popup_active = true;
+
         popup_back_focus = HatsContainer.GetButton(info);
         PurchasePopup.SetHat(info);
         PurchasePopup.ShowPopup();
@@ -154,11 +162,14 @@ public partial class ShopView : View
             Data.Game.Appearance.UnlockedHats.Add(info.Type);
             HatsContainer.UpdateButtons();
             TabContainer.GetTabBar().GrabFocus();
+
+            popup_active = false;
         };
     }
 
     private void PurchasePopup_OnCancel()
     {
         popup_back_focus.GrabFocus();
+        popup_active = false;
     }
 }

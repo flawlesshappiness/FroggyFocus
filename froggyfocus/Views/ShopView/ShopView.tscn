@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://w7rjdy2elbei"]
+[gd_scene load_steps=16 format=3 uid="uid://w7rjdy2elbei"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_f2gf6"]
 [ext_resource type="Script" uid="uid://b48kuv4pap1xp" path="res://Views/ShopView/ShopView.cs" id="2_idlmi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="4_sxpp3"]
 [ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="5_n8kem"]
 [ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="5_xcjs6"]
+[ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/CustomizeAppearance/appearance_color_container.tscn" id="6_xmg3l"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="8_n8kem"]
 [ext_resource type="PackedScene" uid="uid://bs6jtqi04ls8t" path="res://Prefabs/UI/PurchasePopup/purchase_popup.tscn" id="8_sxpp3"]
 
@@ -207,13 +208,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_f2gf6")
-current_tab = 1
+current_tab = 3
 
 [node name="Sell" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("3_sxpp3")]
 visible = false
 layout_mode = 2
 
 [node name="Upgrades" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("4_sxpp3")]
+visible = false
 layout_mode = 2
 
 [node name="Hats" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("5_xcjs6")]
@@ -221,6 +223,10 @@ visible = false
 layout_mode = 2
 ShowLocked = true
 metadata/_tab_index = 2
+
+[node name="Colors" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("6_xmg3l")]
+layout_mode = 2
+metadata/_tab_index = 3
 
 [node name="BackContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
 custom_minimum_size = Vector2(50, 50)
