@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dkuu2ydy618rx" path="res://Prefabs/UI/Inventory/InventoryContainer.cs" id="1_sxc53"]
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="1_vowir"]
 
-[node name="inventory_container" type="MarginContainer" node_paths=PackedStringArray("GridContainer", "InventoryButtonTemplate")]
+[node name="inventory_container" type="MarginContainer" node_paths=PackedStringArray("GridContainer", "InventoryButtonTemplate", "EmptyLabel")]
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
@@ -13,6 +13,7 @@ theme_override_constants/margin_bottom = 5
 script = ExtResource("1_sxc53")
 GridContainer = NodePath("GridContainer")
 InventoryButtonTemplate = NodePath("GridContainer/InventoryPreviewButton")
+EmptyLabel = NodePath("EmptyLabel")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
@@ -20,3 +21,11 @@ columns = 5
 
 [node name="InventoryPreviewButton" parent="GridContainer" instance=ExtResource("1_vowir")]
 layout_mode = 2
+
+[node name="EmptyLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.392157)
+theme_override_font_sizes/font_size = 25
+text = "Inventory is empty"
+horizontal_alignment = 1
+vertical_alignment = 1

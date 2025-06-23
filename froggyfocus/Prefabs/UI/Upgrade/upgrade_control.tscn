@@ -1,60 +1,70 @@
-[gd_scene load_steps=6 format=3 uid="uid://bajaadt0hsp6w"]
+[gd_scene load_steps=7 format=3 uid="uid://bajaadt0hsp6w"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_u78tf"]
 [ext_resource type="Script" uid="uid://dhj4m042rcknd" path="res://Prefabs/UI/Upgrade/UpgradeControl.cs" id="2_u78tf"]
 [ext_resource type="PackedScene" uid="uid://dkqy5xspl4fmb" path="res://Prefabs/UI/Upgrade/upgrade_level_node.tscn" id="3_yaetq"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="4_rsakc"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="4_w18jm"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_yaetq"]
 
 [node name="UpgradeControlTemplate" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "UpgradeButton", "UpgradeButtonLabel", "LevelNodesParent")]
 custom_minimum_size = Vector2(0, 50)
+offset_right = 307.0
+offset_bottom = 82.0
 theme = ExtResource("1_u78tf")
+script = ExtResource("2_u78tf")
+NameLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/NameLabel")
+UpgradeButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/UpgradeButton")
+UpgradeButtonLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/UpgradeButtonLabel")
+LevelNodesParent = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/UpgradeLevelNodes")
+UpgradeLevelNodeTemplate = ExtResource("3_yaetq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme = ExtResource("4_rsakc")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
-script = ExtResource("2_u78tf")
-NameLabel = NodePath("HBoxContainer/VBoxContainer2/NameLabel")
-UpgradeButton = NodePath("HBoxContainer/VBoxContainer/MarginContainer/UpgradeButton")
-UpgradeButtonLabel = NodePath("HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/UpgradeButtonLabel")
-LevelNodesParent = NodePath("HBoxContainer/VBoxContainer2/UpgradeLevelNodes")
-UpgradeLevelNodeTemplate = ExtResource("3_yaetq")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer2"]
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Name"
 
-[node name="Levels" type="Control" parent="HBoxContainer/VBoxContainer2"]
+[node name="Levels" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UpgradeLevelNodes" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="UpgradeLevelNodes" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Upgrade"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="UpgradeButton" parent="HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("5_yaetq")]
+[node name="UpgradeButton" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("5_yaetq")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 5
@@ -62,17 +72,17 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("4_w18jm")
 expand_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/Icon"]
+[node name="Shadow" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/Icon"]
 modulate = Color(0, 0, 0, 0.196078)
 show_behind_parent = true
 layout_mode = 1
@@ -89,7 +99,7 @@ mouse_filter = 2
 texture = ExtResource("4_w18jm")
 expand_mode = 2
 
-[node name="UpgradeButtonLabel" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="UpgradeButtonLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "1000"
 horizontal_alignment = 1

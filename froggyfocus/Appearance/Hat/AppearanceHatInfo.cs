@@ -8,4 +8,10 @@ public partial class AppearanceHatInfo : Resource
 
     [Export]
     public PackedScene Prefab;
+
+    [Export]
+    public string Name;
+
+    [Export]
+    public int Price;
 }

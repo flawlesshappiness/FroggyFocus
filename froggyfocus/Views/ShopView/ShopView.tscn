@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://w7rjdy2elbei"]
+[gd_scene load_steps=15 format=3 uid="uid://w7rjdy2elbei"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_f2gf6"]
 [ext_resource type="Script" uid="uid://b48kuv4pap1xp" path="res://Views/ShopView/ShopView.cs" id="2_idlmi"]
@@ -6,7 +6,9 @@
 [ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="4_0oh7v"]
 [ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="4_sxpp3"]
 [ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="5_n8kem"]
+[ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="5_xcjs6"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="8_n8kem"]
+[ext_resource type="PackedScene" uid="uid://bs6jtqi04ls8t" path="res://Prefabs/UI/PurchasePopup/purchase_popup.tscn" id="8_sxpp3"]
 
 [sub_resource type="Animation" id="Animation_idlmi"]
 length = 0.001
@@ -29,6 +31,18 @@ tracks/1/path = NodePath("SfxSwipe:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/AnimContainer/AnimPanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -63,6 +77,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/AnimContainer/AnimPanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_f2gf6"]
 resource_name = "show"
@@ -92,6 +118,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/AnimContainer/AnimPanel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_idlmi"]
 _data = {
@@ -105,7 +143,7 @@ random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("8_n8kem")
 
-[node name="ShopView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "InputBlocker")]
+[node name="ShopView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "HatsContainer", "PurchasePopup", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,6 +157,8 @@ BackButton = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/BackConta
 TabContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer")
 UpgradeContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Upgrades")
 SellContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Sell")
+HatsContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Hats")
+PurchasePopup = NodePath("PurchasePopup")
 InputBlocker = NodePath("InputBlocker")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -138,12 +178,15 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="AnimPanel" type="Control" parent="CenterContainer/AnimContainer"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_top = 2000.0
+offset_bottom = 2000.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -164,14 +207,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_f2gf6")
-current_tab = 0
+current_tab = 1
 
 [node name="Sell" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("3_sxpp3")]
+visible = false
 layout_mode = 2
 
 [node name="Upgrades" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("4_sxpp3")]
+layout_mode = 2
+
+[node name="Hats" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("5_xcjs6")]
 visible = false
 layout_mode = 2
+ShowLocked = true
+metadata/_tab_index = 2
 
 [node name="BackContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
 custom_minimum_size = Vector2(50, 50)
@@ -222,10 +271,8 @@ text = "SHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_bsdmw")
-volume_db = -20.0
-bus = &"SFX"
+[node name="PurchasePopup" parent="." instance=ExtResource("8_sxpp3")]
+layout_mode = 1
 
 [node name="InputBlocker" type="Control" parent="."]
 layout_mode = 1
@@ -234,3 +281,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bsdmw")
+volume_db = -20.0
+bus = &"SFX"

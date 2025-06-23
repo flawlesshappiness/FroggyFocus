@@ -14,6 +14,9 @@ public partial class InventoryContainer : ControlScript
     [Export]
     public InventoryPreviewButton InventoryButtonTemplate;
 
+    [Export]
+    public Label EmptyLabel;
+
     public event Action<FocusCharacterInfo> OnButtonPressed;
 
     private ButtonMap selected_map;
@@ -61,6 +64,8 @@ public partial class InventoryContainer : ControlScript
 
             maps.Add(map);
         }
+
+        EmptyLabel.Visible = Data.Game.Inventory.Characters.Count == 0;
 
         UpdateGridContainer();
     }

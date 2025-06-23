@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_jjbel"]
 [ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/CustomizeAppearance/appearance_color_container.tscn" id="4_1uex8"]
 [ext_resource type="Script" uid="uid://c27021d5v4xh6" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceColorTab.cs" id="4_bhn8p"]
-[ext_resource type="PackedScene" uid="uid://7g3y8bn480iw" path="res://Prefabs/UI/CustomizeAppearance/appearance_preview_button.tscn" id="4_igo5n"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_ntf0j"]
+[ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="5_1uex8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uex8"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -18,7 +18,7 @@ corner_radius_bottom_left = 8
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
 
-[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "ColorTab", "HatButtonTemplate", "Frog", "PreviewRotationNode")]
+[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "ColorTab", "HatsContainer", "Frog", "PreviewRotationNode")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,7 +37,7 @@ TabContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer")
 PreviewRotationSlider = NodePath("HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/RotationSlider")
 BackButton = NodePath("HBoxContainer/OptionsPanel/CloseButton")
 ColorTab = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color")
-HatButtonTemplate = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/GridContainer/AppearanceButton")
+HatsContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
 PreviewRotationNode = NodePath("SubViewport_Frog/Origin")
 
@@ -104,9 +104,10 @@ layout_mode = 2
 offset_right = 389.0
 offset_bottom = 400.0
 size_flags_horizontal = 3
-current_tab = 0
+current_tab = 1
 
 [node name="Color" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer" node_paths=PackedStringArray("BodyColorContainer", "HatPrimaryColorContainer", "HatSecondaryColorContainer")]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -143,34 +144,10 @@ layout_mode = 2
 [node name="HatSecondaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
 
-[node name="Hats" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
-visible = false
+[node name="Hats" parent="HBoxContainer/OptionsPanel/TabContainer" instance=ExtResource("5_1uex8")]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 10
-metadata/_tab_index = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats"]
-layout_mode = 2
-follow_focus = true
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer"]
-layout_mode = 2
-columns = 5
-
-[node name="AppearanceButton" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("4_igo5n")]
-layout_mode = 2
+ShowUnlocked = true
+ShowEmpty = true
 
 [node name="CloseButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("2_c1ffu")]
 layout_mode = 1

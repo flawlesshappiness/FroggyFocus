@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Collections.Generic;
 
 public partial class CustomizeAppearanceControl : ControlScript
 {
@@ -17,7 +16,7 @@ public partial class CustomizeAppearanceControl : ControlScript
     public CustomizeAppearanceColorTab ColorTab;
 
     [Export]
-    public AppearancePreviewButton HatButtonTemplate;
+    public HatsContainer HatsContainer;
 
     [Export]
     public FrogCharacter Frog;
@@ -31,11 +30,12 @@ public partial class CustomizeAppearanceControl : ControlScript
     public static event Action OnHatChanged;
 
     private bool loading;
-    private List<AppearancePreviewButton> hat_buttons = new();
 
     public override void _Ready()
     {
         base._Ready();
+
+        HatsContainer.OnButtonPressed += HatButton_Pressed;
 
         ColorTab.BodyColorContainer.OnColorPressed += BodyColor_Pressed;
 
@@ -48,27 +48,6 @@ public partial class CustomizeAppearanceControl : ControlScript
         BackButton.Pressed += BackPressed;
     }
 
-    protected override void Initialize()
-    {
-        base.Initialize();
-        InitializeHats();
-    }
-
-    private void InitializeHats()
-    {
-        HatButtonTemplate.Hide();
-
-        var empty_button = CreateHatButton();
-        empty_button.Pressed += () => HatButtonPressed(AppearanceHatType.None);
-
-        foreach (var info in AppearanceHatController.Instance.Collection.Resources)
-        {
-            var button = CreateHatButton();
-            button.SetPrefab(info.Prefab);
-            button.Pressed += () => HatButtonPressed(info.Type);
-        }
-    }
-
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
@@ -77,15 +56,6 @@ public partial class CustomizeAppearanceControl : ControlScript
         {
             BackPressed();
         }
-    }
-
-    private AppearancePreviewButton CreateHatButton()
-    {
-        var button = HatButtonTemplate.Duplicate() as AppearancePreviewButton;
-        button.SetParent(HatButtonTemplate.GetParent());
-        button.Show();
-        hat_buttons.Add(button);
-        return button;
     }
 
     protected override void OnShow()
@@ -141,10 +111,10 @@ public partial class CustomizeAppearanceControl : ControlScript
         OnHatChanged?.Invoke();
     }
 
-    private void HatButtonPressed(AppearanceHatType type)
+    private void HatButton_Pressed(AppearanceHatInfo info)
     {
         if (loading) return;
-        Data.Game.FrogAppearanceData.Hat = type;
+        Data.Game.FrogAppearanceData.Hat = info?.Type ?? AppearanceHatType.None;
         OnHatChanged?.Invoke();
     }
 }

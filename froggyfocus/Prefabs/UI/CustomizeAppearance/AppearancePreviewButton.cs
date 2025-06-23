@@ -11,6 +11,8 @@ public partial class AppearancePreviewButton : ButtonScript
     [Export]
     public SubViewport SubViewport;
 
+    public bool IsLocked { get; private set; }
+
     public void SetPrefab(PackedScene prefab)
     {
         if (prefab == null) return;
@@ -22,5 +24,11 @@ public partial class AppearancePreviewButton : ButtonScript
         preview.Scale = Vector3.One;
 
         TextureRect.Texture = SubViewport.GetTexture();
+    }
+
+    public void SetLocked(bool locked)
+    {
+        IsLocked = locked;
+        TextureRect.Modulate = locked ? Colors.Black.SetA(0.5f) : Colors.White;
     }
 }

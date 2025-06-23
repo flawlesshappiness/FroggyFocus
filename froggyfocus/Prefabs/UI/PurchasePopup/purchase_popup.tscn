@@ -1,0 +1,436 @@
+[gd_scene load_steps=19 format=3 uid="uid://bs6jtqi04ls8t"]
+
+[ext_resource type="Script" uid="uid://bqb54opapks22" path="res://Prefabs/UI/PurchasePopup/PurchasePopup.cs" id="1_rktto"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_v5x1g"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_rktto"]
+[ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="3_0glqt"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_snlvk"]
+[ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="5_vya16"]
+[ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="7_0glqt"]
+[ext_resource type="Script" uid="uid://cv0pph4qo2x68" path="res://Prefabs/UI/ObjectPreview/ObjectPreview.cs" id="7_snlvk"]
+[ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="9_vya16"]
+[ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="10_s74qh"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v5x1g"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="Animation" id="Animation_rktto"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/Center/Anim:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxSwipe:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0glqt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/Center/Anim:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxSwipe:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_snlvk"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/Anim:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0.01, 0.01)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/Center/Anim:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxSwipe:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0glqt"]
+_data = {
+&"RESET": SubResource("Animation_0glqt"),
+&"hide": SubResource("Animation_snlvk"),
+&"show": SubResource("Animation_rktto")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_snlvk"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("7_0glqt")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s74qh"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("9_vya16")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o0ix7"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("10_s74qh")
+
+[node name="PurchasePopup" type="Control" node_paths=PackedStringArray("AnimationPlayer", "CancelButton", "PurchaseButton", "NameLabel", "ValueLabel", "Preview", "SfxPurchaseSuccess", "SfxPurchaseFail")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_rktto")
+AnimationPlayer = NodePath("AnimationPlayer")
+CancelButton = NodePath("CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CancelButton")
+PurchaseButton = NodePath("CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PurchaseButton")
+NameLabel = NodePath("CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/NameLabel")
+ValueLabel = NodePath("CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer/ValueLabel")
+Preview = NodePath("SubViewport")
+SfxPurchaseSuccess = NodePath("SfxPurchaseSuccess")
+SfxPurchaseFail = NodePath("SfxPurchaseFail")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Center" type="Control" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Anim" type="Control" parent="CenterContainer/Center"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.01, 0.01)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -67.0
+offset_right = 214.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v5x1g")
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = ExtResource("2_rktto")
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_v5x1g")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ValueLabel" type="Label" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("3_0glqt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 30
+text = "Crown"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PurchaseButton" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_snlvk")]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../CancelButton")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../CancelButton")
+focus_previous = NodePath("../CancelButton")
+theme = ExtResource("5_vya16")
+text = "Buy"
+
+[node name="CancelButton" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_snlvk")]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../PurchaseButton")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../PurchaseButton")
+focus_previous = NodePath("../PurchaseButton")
+text = " Cancel"
+
+[node name="SubViewport" type="SubViewport" parent="." node_paths=PackedStringArray("Origin")]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("7_snlvk")
+Origin = NodePath("Origin")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -1.5)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="Origin" type="Node3D" parent="SubViewport"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0glqt")
+}
+
+[node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_snlvk")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="SfxPurchaseSuccess" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_s74qh")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxPurchaseFail" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_o0ix7")
+volume_db = -20.0
+bus = &"SFX"

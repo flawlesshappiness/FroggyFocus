@@ -21,9 +21,17 @@ public partial class ShopView : View
     public SellContainer SellContainer;
 
     [Export]
+    public HatsContainer HatsContainer;
+
+    [Export]
+    public PurchasePopup PurchasePopup;
+
+    [Export]
     public Control InputBlocker;
 
     private bool animating;
+    private bool popup_active;
+    private Control popup_back_focus;
 
     public override void _Ready()
     {
@@ -32,6 +40,8 @@ public partial class ShopView : View
 
         BackButton.Pressed += BackClicked;
         SellContainer.OnSell += Sell;
+        HatsContainer.OnButtonPressed += HatButton_Pressed;
+        PurchasePopup.OnCancel += PurchasePopup_OnCancel;
     }
 
     protected override void OnShow()
@@ -76,6 +86,7 @@ public partial class ShopView : View
 
         if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
         {
+            if (popup_active) return;
             Close();
         }
     }
@@ -130,5 +141,24 @@ public partial class ShopView : View
         {
             TabContainer.GetTabBar().GrabFocus();
         }
+    }
+
+    private void HatButton_Pressed(AppearanceHatInfo info)
+    {
+        popup_back_focus = HatsContainer.GetButton(info);
+        PurchasePopup.SetHat(info);
+        PurchasePopup.ShowPopup();
+
+        PurchasePopup.OnPurchase = () =>
+        {
+            Data.Game.Appearance.UnlockedHats.Add(info.Type);
+            HatsContainer.UpdateButtons();
+            TabContainer.GetTabBar().GrabFocus();
+        };
+    }
+
+    private void PurchasePopup_OnCancel()
+    {
+        popup_back_focus.GrabFocus();
     }
 }

@@ -26,6 +26,7 @@ public partial class SellContainer : ControlScript
     {
         base.OnShow();
         InventoryContainer.UpdateButtons();
+        UpdateSellAllButton();
     }
 
     private void Button_Pressed(FocusCharacterInfo info)
@@ -37,6 +38,7 @@ public partial class SellContainer : ControlScript
 
         Data.Game.Save();
         InventoryContainer.UpdateButtons();
+        UpdateSellAllButton();
         SfxSell.Play();
         OnSell?.Invoke();
     }
@@ -52,7 +54,14 @@ public partial class SellContainer : ControlScript
 
         Data.Game.Save();
         InventoryContainer.UpdateButtons();
+        UpdateSellAllButton();
         SfxSell.Play();
         OnSell?.Invoke();
+    }
+
+    private void UpdateSellAllButton()
+    {
+        var is_empty = Data.Game.Inventory.Characters.Count == 0;
+        SellAllButton.Visible = !is_empty;
     }
 }
