@@ -90,24 +90,24 @@ public partial class CustomizeAppearanceControl : ControlScript
         PreviewRotationNode.RotationDegrees = new Vector3(0, value, 0);
     }
 
-    private void BodyColor_Pressed(AppearanceColorType type)
+    private void BodyColor_Pressed(AppearanceColorInfo info)
     {
         if (loading) return;
-        Data.Game.FrogAppearanceData.BodyColor = type;
+        Data.Game.FrogAppearanceData.BodyColor = info.Type;
         OnBodyColorChanged?.Invoke();
     }
 
-    private void HatPrimaryColor_Pressed(AppearanceColorType type)
+    private void HatPrimaryColor_Pressed(AppearanceColorInfo info)
     {
         if (loading) return;
-        Data.Game.FrogAppearanceData.HatPrimaryColor = type;
+        Data.Game.FrogAppearanceData.HatPrimaryColor = info.Type;
         OnHatChanged?.Invoke();
     }
 
-    private void HatSecondaryColor_Pressed(AppearanceColorType type)
+    private void HatSecondaryColor_Pressed(AppearanceColorInfo info)
     {
         if (loading) return;
-        Data.Game.FrogAppearanceData.HatSecondaryColor = type;
+        Data.Game.FrogAppearanceData.HatSecondaryColor = info.Type;
         OnHatChanged?.Invoke();
     }
 

@@ -22,6 +22,12 @@ public partial class PurchasePopup : Control
     public ObjectPreview Preview;
 
     [Export]
+    public TextureRect TextureRect;
+
+    [Export]
+    public ColorRect ColorRect;
+
+    [Export]
     public AudioStreamPlayer SfxPurchaseSuccess;
 
     [Export]
@@ -58,6 +64,21 @@ public partial class PurchasePopup : Control
         NameLabel.Text = info.Name;
         ValueLabel.Text = info.Price.ToString();
         current_price = info.Price;
+
+        ColorRect.Hide();
+        TextureRect.Show();
+    }
+
+    public void SetColor(AppearanceColorInfo info)
+    {
+        ColorRect.Color = info.Color;
+
+        NameLabel.Text = info.Name;
+        ValueLabel.Text = info.Price.ToString();
+        current_price = info.Price;
+
+        ColorRect.Show();
+        TextureRect.Hide();
     }
 
     private void Purchase_Pressed()

@@ -1,16 +1,32 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-public partial class AppearanceColorContainer : Control
+public partial class AppearanceColorContainer : ControlScript
 {
+    [Export]
+    public bool ShowUnlocked;
+
+    [Export]
+    public bool ShowLocked;
+
     [Export]
     public AppearanceColorButton ButtonTemplate;
 
-    public event Action<AppearanceColorType> OnColorPressed;
+    public event Action<AppearanceColorInfo> OnColorPressed;
 
-    public override void _Ready()
+    private List<ButtonMap> maps = new();
+
+    private class ButtonMap
     {
-        base._Ready();
+        public AppearanceColorButton Button { get; set; }
+        public AppearanceColorInfo Info { get; set; }
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
         InitializeButtons();
     }
 
@@ -25,12 +41,38 @@ public partial class AppearanceColorContainer : Control
             button.SetParent(parent);
             button.Show();
             button.SetColor(info);
-            button.Pressed += () => ColorPressed(info.Type);
+            button.Pressed += () => ColorPressed(info);
+
+            maps.Add(new ButtonMap
+            {
+                Button = button,
+                Info = info
+            });
         }
     }
 
-    private void ColorPressed(AppearanceColorType type)
+    protected override void OnShow()
     {
-        OnColorPressed?.Invoke(type);
+        base.OnShow();
+        UpdateButtons();
+    }
+
+    public void UpdateButtons()
+    {
+        foreach (var map in maps)
+        {
+            var unlocked = Data.Game.Appearance.UnlockedColors.Contains(map.Info.Type);
+            map.Button.Visible = unlocked == ShowUnlocked || !unlocked == ShowLocked;
+        }
+    }
+
+    private void ColorPressed(AppearanceColorInfo info)
+    {
+        OnColorPressed?.Invoke(info);
+    }
+
+    public Button GetButton(AppearanceColorInfo info)
+    {
+        return maps.FirstOrDefault(x => x.Info == info)?.Button;
     }
 }

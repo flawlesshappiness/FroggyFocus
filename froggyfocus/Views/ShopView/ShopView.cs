@@ -24,6 +24,9 @@ public partial class ShopView : View
     public HatsContainer HatsContainer;
 
     [Export]
+    public AppearanceColorContainer ColorContainer;
+
+    [Export]
     public PurchasePopup PurchasePopup;
 
     [Export]
@@ -41,6 +44,7 @@ public partial class ShopView : View
         BackButton.Pressed += BackClicked;
         SellContainer.OnSell += Sell;
         HatsContainer.OnButtonPressed += HatButton_Pressed;
+        ColorContainer.OnColorPressed += ColorButton_Pressed;
         PurchasePopup.OnCancel += PurchasePopup_OnCancel;
     }
 
@@ -161,6 +165,24 @@ public partial class ShopView : View
         {
             Data.Game.Appearance.UnlockedHats.Add(info.Type);
             HatsContainer.UpdateButtons();
+            TabContainer.GetTabBar().GrabFocus();
+
+            popup_active = false;
+        };
+    }
+
+    private void ColorButton_Pressed(AppearanceColorInfo info)
+    {
+        popup_active = true;
+
+        popup_back_focus = ColorContainer.GetButton(info);
+        PurchasePopup.SetColor(info);
+        PurchasePopup.ShowPopup();
+
+        PurchasePopup.OnPurchase = () =>
+        {
+            Data.Game.Appearance.UnlockedColors.Add(info.Type);
+            ColorContainer.UpdateButtons();
             TabContainer.GetTabBar().GrabFocus();
 
             popup_active = false;

@@ -104,10 +104,9 @@ layout_mode = 2
 offset_right = 389.0
 offset_bottom = 400.0
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 0
 
 [node name="Color" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer" node_paths=PackedStringArray("BodyColorContainer", "HatPrimaryColorContainer", "HatSecondaryColorContainer")]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -133,6 +132,7 @@ text = "Body"
 
 [node name="BodyColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
+ShowUnlocked = true
 
 [node name="HatLabel" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -140,11 +140,14 @@ text = "Hat"
 
 [node name="HatPrimaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
+ShowUnlocked = true
 
 [node name="HatSecondaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
+ShowUnlocked = true
 
 [node name="Hats" parent="HBoxContainer/OptionsPanel/TabContainer" instance=ExtResource("5_1uex8")]
+visible = false
 layout_mode = 2
 ShowUnlocked = true
 ShowEmpty = true

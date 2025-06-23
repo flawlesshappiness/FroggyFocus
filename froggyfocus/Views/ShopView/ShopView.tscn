@@ -49,6 +49,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_xbrgb"]
 resource_name = "hide"
@@ -90,11 +114,35 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_f2gf6"]
 resource_name = "show"
 length = 0.5
-step = 0.025
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -131,6 +179,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_idlmi"]
 _data = {
@@ -144,7 +216,7 @@ random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("8_n8kem")
 
-[node name="ShopView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "HatsContainer", "PurchasePopup", "InputBlocker")]
+[node name="ShopView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "HatsContainer", "ColorContainer", "PurchasePopup", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,8 +231,20 @@ TabContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabCont
 UpgradeContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Upgrades")
 SellContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Sell")
 HatsContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Hats")
+ColorContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Colors")
 PurchasePopup = NodePath("PurchasePopup")
 InputBlocker = NodePath("InputBlocker")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -186,8 +270,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 2000.0
-offset_bottom = 2000.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -226,6 +308,7 @@ metadata/_tab_index = 2
 
 [node name="Colors" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("6_xmg3l")]
 layout_mode = 2
+ShowLocked = true
 metadata/_tab_index = 3
 
 [node name="BackContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
