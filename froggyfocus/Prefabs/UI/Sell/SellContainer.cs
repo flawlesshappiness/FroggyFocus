@@ -1,10 +1,14 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class SellContainer : ControlScript
 {
     [Export]
     public InventoryContainer InventoryContainer;
+
+    [Export]
+    public Button SellAllButton;
 
     [Export]
     public AudioStreamPlayer SfxSell;
@@ -15,6 +19,7 @@ public partial class SellContainer : ControlScript
     {
         base._Ready();
         InventoryContainer.OnButtonPressed += Button_Pressed;
+        SellAllButton.Pressed += SellAll_Pressed;
     }
 
     protected override void OnShow()
@@ -29,12 +34,25 @@ public partial class SellContainer : ControlScript
 
         var data = InventoryContainer.GetSelectedData();
         InventoryController.Instance.RemoveCharacterData(data);
+
         Data.Game.Save();
-
         InventoryContainer.UpdateButtons();
-
         SfxSell.Play();
+        OnSell?.Invoke();
+    }
 
+    private void SellAll_Pressed()
+    {
+        foreach (var data in Data.Game.Inventory.Characters.ToList())
+        {
+            var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
+            CurrencyController.Instance.AddValue(CurrencyType.Money, info.CurrencyReward);
+            InventoryController.Instance.RemoveCharacterData(data);
+        }
+
+        Data.Game.Save();
+        InventoryContainer.UpdateButtons();
+        SfxSell.Play();
         OnSell?.Invoke();
     }
 }

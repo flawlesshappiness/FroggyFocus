@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bajaadt0hsp6w"]
+[gd_scene load_steps=6 format=3 uid="uid://bajaadt0hsp6w"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_u78tf"]
 [ext_resource type="Script" uid="uid://dhj4m042rcknd" path="res://Prefabs/UI/Upgrade/UpgradeControl.cs" id="2_u78tf"]
 [ext_resource type="PackedScene" uid="uid://dkqy5xspl4fmb" path="res://Prefabs/UI/Upgrade/upgrade_level_node.tscn" id="3_yaetq"]
-[ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="4_u78tf"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="4_w18jm"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_yaetq"]
 
@@ -50,12 +49,10 @@ vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("4_u78tf")
 
 [node name="UpgradeButton" parent="HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("5_yaetq")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme = ExtResource("4_u78tf")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
