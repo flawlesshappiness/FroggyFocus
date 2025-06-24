@@ -74,7 +74,7 @@ public partial class DebugStatsView : View
             slider.NameLabel.Text = type.ToString();
             slider.ValueLabel.Text = StatsController.Instance.GetStatsValue(type, data.Level).ToString();
             slider.ValueSlider.MinValue = 0;
-            slider.ValueSlider.MaxValue = UpgradeController.Instance.GetUpgradeMaxLevel(type);
+            slider.ValueSlider.MaxValue = UpgradeController.Instance.GetMaxLevel(type);
             slider.ValueSlider.Value = data.Level;
             slider.ValueSlider.ValueChanged += d =>
             {

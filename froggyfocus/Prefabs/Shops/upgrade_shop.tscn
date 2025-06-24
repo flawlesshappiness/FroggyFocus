@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkrqmphtqlmnh"]
+[gd_scene load_steps=4 format=3 uid="uid://bkrqmphtqlmnh"]
 
 [ext_resource type="Script" uid="uid://c77p5fb0fthf1" path="res://Prefabs/Shops/UpgradeShop.cs" id="1_syha2"]
+[ext_resource type="PackedScene" uid="uid://dn2p8y4s4fbam" path="res://Assets/FlawLizArt/Other/ExclamationMark.fbx" id="2_ksoap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ksoap"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -14,7 +15,5 @@ script = ExtResource("1_syha2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_ksoap")
 
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485622, 0)
-billboard = 1
-text = "UPGRADES"
+[node name="ExclamationMark" parent="." instance=ExtResource("2_ksoap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.731905, 0)

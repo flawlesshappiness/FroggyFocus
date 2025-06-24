@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://bklev6v828pf7"]
+[gd_scene load_steps=24 format=3 uid="uid://bklev6v828pf7"]
 
 [ext_resource type="Script" uid="uid://qluuhf5keo3r" path="res://Views/FocusOutroView/FocusOutroView.cs" id="1_ftjlc"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="2_q36ha"]
 [ext_resource type="Texture2D" uid="uid://lfx3ye5e35df" path="res://Assets/FlawLizArt/Textures/background_gradient_circle.png" id="2_r3lkl"]
+[ext_resource type="PackedScene" uid="uid://2i5wje3b71jx" path="res://Prefabs/UI/InventoryReplacePopup/inventory_replace_popup.tscn" id="3_nb0i5"]
 [ext_resource type="AudioStream" uid="uid://cveebtv8pq815" path="res://Sounds/Raw/sfx_marimba_chord_c.wav" id="3_usddo"]
 [ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="4_87eld"]
 [ext_resource type="AudioStream" uid="uid://co8y8prv2lgeu" path="res://Sounds/Raw/sfx_marimba_chord_d.wav" id="4_r3lkl"]
@@ -168,6 +169,9 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_q36ha")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="InventoryReplacePopup" parent="." instance=ExtResource("3_nb0i5")]
+layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

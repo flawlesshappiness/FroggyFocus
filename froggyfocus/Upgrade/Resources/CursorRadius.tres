@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ey5nt")
 Type = 0
-Level = 0
 Value = 0.2
-Price = 0
+Values = Array[float]([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
+OverridePrice = null
 metadata/_custom_type_script = "uid://fxfoc46ir0al"

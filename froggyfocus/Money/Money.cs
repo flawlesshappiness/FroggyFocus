@@ -23,4 +23,9 @@ public partial class Money : Node
             OnMoneyChanged?.Invoke(value);
         }
     }
+
+    public static bool CanAfford(int price)
+    {
+        return CurrencyController.Instance.GetValue(CurrencyType.Money) >= price;
+    }
 }

@@ -26,8 +26,7 @@ public partial class UpgradeControl : Control
         this.type = type;
         var info = StatsController.Instance.GetInfo(type);
         var data = StatsController.Instance.GetOrCreateData(type);
-        var levels = UpgradeController.Instance.GetUpgradeMaxLevel(type);
-        var upgrade = UpgradeController.Instance.GetInfo(type, data.Level + 1);
+        var levels = UpgradeController.Instance.GetMaxLevel(type);
 
         NameLabel.Text = info.Name;
 
@@ -43,15 +42,17 @@ public partial class UpgradeControl : Control
     public void Update()
     {
         var data = StatsController.Instance.GetOrCreateData(type);
-        var upgrade = UpgradeController.Instance.GetInfo(type, data.Level + 1);
-        UpdateButton(upgrade);
+        var upgrade = UpgradeController.Instance.GetInfo(type);
+        UpdateButton(type);
         UpdateLevelNodes(data);
     }
 
-    private void UpdateButton(UpgradeInfo upgrade)
+    private void UpdateButton(StatsType type)
     {
-        UpgradeButtonLabel.Text = upgrade == null ? $"MAX" : $"{upgrade.Price}";
-        UpgradeButton.Disabled = upgrade == null;
+        var is_max = UpgradeController.Instance.IsMaxLevel(type);
+        var price = UpgradeController.Instance.GetCurrentPrice(type);
+        UpgradeButtonLabel.Text = is_max ? $"MAX" : $"{price}";
+        UpgradeButton.Disabled = is_max;
     }
 
     private void UpdateLevelNodes(StatsData data)

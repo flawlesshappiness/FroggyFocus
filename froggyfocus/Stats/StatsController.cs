@@ -1,3 +1,4 @@
+using Godot;
 using System.Linq;
 
 public partial class StatsController : ResourceController<StatsCollection, StatsInfo>
@@ -20,7 +21,7 @@ public partial class StatsController : ResourceController<StatsCollection, Stats
         return Collection.Resources.FirstOrDefault(x => x.Type == type);
     }
 
-    public float GetCurrentStatsValue(StatsType type)
+    public float GetCurrentValue(StatsType type)
     {
         var data = GetOrCreateData(type);
         return GetStatsValue(type, data.Level);
@@ -28,8 +29,9 @@ public partial class StatsController : ResourceController<StatsCollection, Stats
 
     public float GetStatsValue(StatsType type, int level)
     {
-        var upgrade = UpgradeController.Instance.GetInfo(type, level);
-        return upgrade?.Value ?? 0f;
+        var info = UpgradeController.Instance.GetInfo(type);
+        var idx = Mathf.Clamp(level, 0, info.Values.Count - 1);
+        return info.Values[idx];
     }
 
     public StatsData GetOrCreateData(StatsType type)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=2 format=3 uid="uid://c6d1h64txt14o"]
+
+[ext_resource type="Script" uid="uid://fxfoc46ir0al" path="res://Upgrade/UpgradeInfo.cs" id="1_n8iov"]
+
+[resource]
+script = ExtResource("1_n8iov")
+Type = 2
+Value = 1.0
+Values = Array[float]([1.0, 1.1, 1.2, 1.3, 1.4, 1.5])
+OverridePrice = null
+metadata/_custom_type_script = "uid://fxfoc46ir0al"

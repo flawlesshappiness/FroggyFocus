@@ -28,7 +28,6 @@ public partial class FocusCursor : Node3D
     private float FocusTickAmount { get; set; }
     private float FocusTickDecay { get; set; }
     private float MoveSpeed { get; set; }
-    private float MoveFocusSpeed { get; set; }
     private bool Filled { get; set; }
     private bool Empty { get; set; }
 
@@ -66,16 +65,15 @@ public partial class FocusCursor : Node3D
 
     public void Load(FocusTarget target)
     {
-        Radius = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorRadius);
+        Radius = StatsController.Instance.GetCurrentValue(StatsType.CursorRadius);
         RadiusNode.Scale = Vector3.One * Radius;
 
         FocusTickTime = 0.15f;
         FocusMax = target.Info.FocusValue;
-        FocusValue = FocusMax * StatsController.Instance.GetCurrentStatsValue(StatsType.CursorStartValue);
-        FocusTickAmount = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorTickAmount);
-        FocusTickDecay = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorTickDecay);
-        MoveSpeed = StatsController.Instance.GetCurrentStatsValue(StatsType.CursorMoveSpeed);
-        MoveFocusSpeed = MoveSpeed * StatsController.Instance.GetCurrentStatsValue(StatsType.CursorMoveSpeedMultiplierDuringFocus);
+        FocusValue = FocusMax * StatsController.Instance.GetCurrentValue(StatsType.CursorStartValue);
+        FocusTickAmount = StatsController.Instance.GetCurrentValue(StatsType.CursorTickAmount);
+        FocusTickDecay = StatsController.Instance.GetCurrentValue(StatsType.CursorTickDecay);
+        MoveSpeed = StatsController.Instance.GetCurrentValue(StatsType.CursorSpeed);
     }
 
     public override void _Process(double delta)

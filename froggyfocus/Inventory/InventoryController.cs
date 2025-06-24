@@ -54,4 +54,9 @@ public partial class InventoryController : SingletonController
     {
         Data.Game.Inventory.Characters.Remove(data);
     }
+
+    public int GetCurrentSize()
+    {
+        return (int)StatsController.Instance.GetCurrentValue(StatsType.InventorySize);
+    }
 }

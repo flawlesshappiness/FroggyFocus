@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class UpgradeInfo : Resource
@@ -7,11 +8,8 @@ public partial class UpgradeInfo : Resource
     public StatsType Type;
 
     [Export]
-    public int Level;
+    public Array<float> Values;
 
     [Export]
-    public float Value;
-
-    [Export]
-    public int Price;
+    public Array<int> OverridePrice;
 }
