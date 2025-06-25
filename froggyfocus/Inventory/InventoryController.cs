@@ -7,7 +7,6 @@ public partial class InventoryController : SingletonController
     {
         base.Initialize();
         RegisterDebugActions();
-        FocusEventController.Instance.OnFocusEventCompleted += FocusEventCompleted;
     }
 
     private void RegisterDebugActions()
@@ -35,11 +34,6 @@ public partial class InventoryController : SingletonController
         }
     }
 
-    private void FocusEventCompleted(FocusEventCompletedResult result)
-    {
-        AddCharacter(result.FocusEvent.Target.Info);
-    }
-
     public void AddCharacter(FocusCharacterInfo info)
     {
         var data = new InventoryCharacterData
@@ -58,5 +52,10 @@ public partial class InventoryController : SingletonController
     public int GetCurrentSize()
     {
         return (int)StatsController.Instance.GetCurrentValue(StatsType.InventorySize);
+    }
+
+    public bool IsInventoryFull()
+    {
+        return Data.Game.Inventory.Characters.Count >= GetCurrentSize();
     }
 }

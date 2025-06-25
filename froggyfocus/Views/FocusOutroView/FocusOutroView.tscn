@@ -120,7 +120,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("11_pgr7x")
 
-[node name="FocusOutroView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "SubViewport", "Frog", "TargetMarker", "SfxChordSuccess", "SfxChordFail", "SfxSwish", "PsDust")]
+[node name="FocusOutroView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "InventoryReplacePopup", "SubViewport", "Frog", "TargetMarker", "SfxChordSuccess", "SfxChordFail", "SfxSwish", "PsDust")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -129,6 +129,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ftjlc")
 AnimationPlayer = NodePath("AnimationPlayer")
+InventoryReplacePopup = NodePath("InventoryReplacePopup")
 SubViewport = NodePath("SubViewport_Frog")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
 TargetMarker = NodePath("SubViewport_Frog/Origin/TargetMarker")

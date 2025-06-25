@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://2i5wje3b71jx"]
+[gd_scene load_steps=12 format=3 uid="uid://2i5wje3b71jx"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_mh8f4"]
 [ext_resource type="Script" uid="uid://co56t4pvfvsss" path="res://Prefabs/UI/InventoryReplacePopup/InventoryReplacePopup.cs" id="2_86ta6"]
 [ext_resource type="PackedScene" uid="uid://s6oqyxkfywv7" path="res://Prefabs/UI/Inventory/inventory_container.tscn" id="2_sp06k"]
+[ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="3_1kbk8"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="3_86ta6"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="4_sp06k"]
 
@@ -211,7 +212,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_sp06k")
 
-[node name="InventoryReplacePopup" type="Control"]
+[node name="InventoryReplacePopup" type="Control" node_paths=PackedStringArray("AnimationPlayer", "InventoryContainer", "InputBlocker", "PreviewButton", "DiscardButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -220,6 +221,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mh8f4")
 script = ExtResource("2_86ta6")
+AnimationPlayer = NodePath("AnimationPlayer")
+InventoryContainer = NodePath("CenterContainer/Center/Anim/InventoryPanel/MarginContainer/VBoxContainer/ScrollContainer/inventory_container")
+InputBlocker = NodePath("InputBlocker")
+PreviewButton = NodePath("CenterContainer/Center/Anim/PreviewPanel/MarginContainer/HBoxContainer/InventoryPreviewButton")
+DiscardButton = NodePath("CenterContainer/Center/Anim/InventoryPanel/MarginContainer/VBoxContainer/DiscardButton")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -248,7 +254,30 @@ visible = false
 anchors_preset = 0
 scale = Vector2(0.01, 0.01)
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim"]
+[node name="PreviewPanel" type="MarginContainer" parent="CenterContainer/Center/Anim"]
+layout_mode = 0
+offset_left = -267.0
+offset_top = -125.0
+offset_right = -179.0
+offset_bottom = -45.0
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim/PreviewPanel"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim/PreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim/PreviewPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="InventoryPreviewButton" parent="CenterContainer/Center/Anim/PreviewPanel/MarginContainer/HBoxContainer" instance=ExtResource("3_1kbk8")]
+layout_mode = 2
+
+[node name="InstructionPanel" type="MarginContainer" parent="CenterContainer/Center/Anim"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -262,22 +291,22 @@ offset_bottom = 185.12
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim/InstructionPanel"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim/InstructionPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="CenterContainer/Center/Anim/MarginContainer/MarginContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Center/Anim/InstructionPanel/MarginContainer"]
 layout_mode = 2
 text = "Select catch to replace"
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim"]
+[node name="InventoryPanel" type="Panel" parent="CenterContainer/Center/Anim"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -291,7 +320,7 @@ offset_bottom = 149.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim/InventoryPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -303,17 +332,18 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/Anim/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/Anim/InventoryPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Center/Anim/Panel/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Center/Anim/InventoryPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="inventory_container" parent="CenterContainer/Center/Anim/Panel/MarginContainer/VBoxContainer/ScrollContainer" instance=ExtResource("2_sp06k")]
+[node name="inventory_container" parent="CenterContainer/Center/Anim/InventoryPanel/MarginContainer/VBoxContainer/ScrollContainer" instance=ExtResource("2_sp06k")]
 layout_mode = 2
 
-[node name="DiscardButton" parent="CenterContainer/Center/Anim/Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_86ta6")]
+[node name="DiscardButton" parent="CenterContainer/Center/Anim/InventoryPanel/MarginContainer/VBoxContainer" instance=ExtResource("3_86ta6")]
+visible = false
 layout_mode = 2
 text = " Discard"
 
@@ -358,3 +388,11 @@ libraries = {
 [node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_86ta6")
 volume_db = -20.0
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
