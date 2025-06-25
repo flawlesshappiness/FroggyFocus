@@ -19,6 +19,11 @@ public partial class InventoryPreviewButton : ButtonScript
 
     private Node3D current_preview;
 
+    public void Clear()
+    {
+        RemovePreview();
+    }
+
     public void SetCharacter(FocusCharacterInfo info)
     {
         var character = info.Scene.Instantiate<FocusCharacter>();
@@ -31,9 +36,10 @@ public partial class InventoryPreviewButton : ButtonScript
     {
         RemovePreview();
 
-        node.SetParent(Origin);
-        node.Position = Vector3.Zero;
-        node.Rotation = Vector3.Zero;
+        current_preview = node;
+        current_preview.SetParent(Origin);
+        current_preview.Position = Vector3.Zero;
+        current_preview.Rotation = Vector3.Zero;
 
         TextureRect.Texture = SubViewport.GetTexture();
     }
