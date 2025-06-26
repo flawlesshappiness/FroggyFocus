@@ -59,4 +59,9 @@ public partial class ControlScript : Control
     {
 
     }
+
+    protected void ReleaseCurrentFocus()
+    {
+        GetViewport().GuiReleaseFocus();
+    }
 }

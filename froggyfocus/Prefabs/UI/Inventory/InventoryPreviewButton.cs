@@ -51,4 +51,10 @@ public partial class InventoryPreviewButton : ButtonScript
         current_preview.QueueFree();
         current_preview = null;
     }
+
+    public void SetObscured(bool obscured)
+    {
+        var color = obscured ? Colors.Black.SetA(0.5f) : Colors.White;
+        TextureRect.Modulate = color;
+    }
 }

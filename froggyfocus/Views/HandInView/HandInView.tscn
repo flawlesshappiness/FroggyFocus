@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ug6yqg0hf76e"]
+[gd_scene load_steps=22 format=3 uid="uid://ug6yqg0hf76e"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w0lsk"]
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="2_fare7"]
@@ -6,72 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bonu8f811ddko" path="res://Assets/KenneyNL/Cursor/Basic/navigation_n.png" id="3_qp2ac"]
 [ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="4_l2pwb"]
 [ext_resource type="PackedScene" uid="uid://s6oqyxkfywv7" path="res://Prefabs/UI/Inventory/inventory_container.tscn" id="5_4gv8o"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_cjkwa"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_j6qhm"]
-
-[sub_resource type="Animation" id="Animation_4gv8o"]
-resource_name = "show"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/Center/Anim_HandIn:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.25),
-"transitions": PackedFloat32Array(0.5, 2, 1),
-"update": 0,
-"values": [Vector2(0.01, 0.01), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/Center/Anim_HandIn:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SfxSwipe:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[ext_resource type="PackedScene" uid="uid://byh5solck2yl" path="res://Prefabs/UI/RewardPreview/reward_preview.tscn" id="6_s1pfv"]
+[ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="10_kuxxg"]
 
 [sub_resource type="Animation" id="Animation_j6qhm"]
 length = 0.001
@@ -148,6 +86,47 @@ tracks/5/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_s1pfv"]
+resource_name = "grow"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/Anim_HandIn:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/Anim_HandIn:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5, 0.5, 0.5, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/Anim_HandIn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_tr8x0"]
 resource_name = "hide"
 length = 0.25
@@ -201,6 +180,71 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_4gv8o"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/Anim_HandIn:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/Anim_HandIn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxSwipe:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_cjkwa"]
 resource_name = "shrink"
 length = 0.25
@@ -242,47 +286,6 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_s1pfv"]
-resource_name = "grow"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/Center/Anim_HandIn:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(0.6, 0.6), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/Center/Anim_HandIn:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.5, 0.5, 0.5, 1), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/Center/Anim_HandIn:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j6qhm"]
 _data = {
 &"RESET": SubResource("Animation_j6qhm"),
@@ -290,47 +293,6 @@ _data = {
 &"hide": SubResource("Animation_tr8x0"),
 &"show": SubResource("Animation_4gv8o"),
 &"shrink": SubResource("Animation_cjkwa")
-}
-
-[sub_resource type="Animation" id="Animation_kuxxg"]
-resource_name = "show"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/Center/Anim_Inventory:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.25),
-"transitions": PackedFloat32Array(0.5, 2, 1),
-"update": 0,
-"values": [Vector2(0.01, 0.01), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SfxSwipe:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/Center/Anim_Inventory:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_8sgxy"]
@@ -413,6 +375,47 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_kuxxg"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/Anim_Inventory:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSwipe:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/Anim_Inventory:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8sgxy"]
 _data = {
 &"RESET": SubResource("Animation_8sgxy"),
@@ -425,7 +428,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("6_j6qhm")
 
-[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimationPlayer_HandIn", "AnimationPlayer_Inventory", "CloseHandInButton", "CloseInventoryButton", "InventoryContainer", "RequestButtons", "RewardButtons")]
+[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimationPlayer_HandIn", "AnimationPlayer_Inventory", "CloseHandInButton", "CloseInventoryButton", "ClaimButton", "InventoryContainer", "InputBlocker", "SfxMoney", "RequestButtons", "RewardPreviews")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -436,11 +439,14 @@ theme = ExtResource("1_w0lsk")
 script = ExtResource("2_tr8x0")
 AnimationPlayer_HandIn = NodePath("AnimationPlayer_HandIn")
 AnimationPlayer_Inventory = NodePath("AnimationPlayer_Inventory")
-CloseHandInButton = NodePath("CenterContainer/Center/Anim_HandIn/Panel/CloseHandInButton")
+CloseHandInButton = NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/Panel/CloseHandInButton")
 CloseInventoryButton = NodePath("CenterContainer/Center/Anim_Inventory/Panel/CloseInventoryButton")
+ClaimButton = NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/ClaimButton")
 InventoryContainer = NodePath("CenterContainer/Center/Anim_Inventory/Panel/inventory_container")
-RequestButtons = [NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 1"), NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 2"), NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 3"), NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 4"), NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 5"), NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 6")]
-RewardButtons = [NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardButton 1"), NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardButton 2"), NodePath("CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardButton 3")]
+InputBlocker = NodePath("InputBlocker")
+SfxMoney = NodePath("SfxMoney")
+RequestButtons = [NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 1"), NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 2"), NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 3"), NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 4"), NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 5"), NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 6")]
+RewardPreviews = [NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview"), NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview2"), NodePath("CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview3")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -476,78 +482,125 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.01, 0.01)
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim_HandIn"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim_HandIn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -115.0
-offset_right = 280.0
-offset_bottom = 115.0
+offset_left = -232.0
+offset_top = -90.0
+offset_right = 232.0
+offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim_HandIn/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim_HandIn/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer"]
+[node name="Title" type="MarginContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.5
+offset_top = -47.23
+offset_right = 116.5
+offset_bottom = 26.77
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/Panel/Title"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/Panel/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/Panel/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "REQUEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseHandInButton" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/Panel" instance=ExtResource("4_l2pwb")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.77
+offset_top = -18.8
+offset_right = 17.23
+offset_bottom = 23.2
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="RequestButton 1" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RequestButton 1" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
 
-[node name="RequestButton 2" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RequestButton 2" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
 
-[node name="RequestButton 3" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RequestButton 3" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="RequestButton 4" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
+[node name="RequestButton 4" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
 
-[node name="RequestButton 5" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
+[node name="RequestButton 5" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
 
-[node name="RequestButton 6" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
+[node name="RequestButton 6" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Control" type="Control" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Control" type="Control" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer2/Control"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Control"]
 modulate = Color(0, 0, 0, 0.392157)
 layout_mode = 1
 anchors_preset = 15
@@ -561,67 +614,31 @@ texture = ExtResource("3_qp2ac")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 alignment = 1
 
-[node name="RewardButton 1" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RewardPreview" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
 layout_mode = 2
 
-[node name="RewardButton 2" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RewardPreview2" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
 layout_mode = 2
 
-[node name="RewardButton 3" parent="CenterContainer/Center/Anim_HandIn/Panel/MarginContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RewardPreview3" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
 layout_mode = 2
 
-[node name="Title" type="MarginContainer" parent="CenterContainer/Center/Anim_HandIn/Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -116.5
-offset_top = -47.23
-offset_right = 116.5
-offset_bottom = 26.77
-grow_horizontal = 2
-
-[node name="Panel" type="Panel" parent="CenterContainer/Center/Anim_HandIn/Panel/Title"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Anim_HandIn/Panel/Title"]
+[node name="ClaimButton" parent="CenterContainer/Center/Anim_HandIn/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("5_cjkwa")]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="Label" type="Label" parent="CenterContainer/Center/Anim_HandIn/Panel/Title/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = "HAND IN"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CloseHandInButton" parent="CenterContainer/Center/Anim_HandIn/Panel" instance=ExtResource("4_l2pwb")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -24.77
-offset_top = -18.8
-offset_right = 17.23
-offset_bottom = 23.2
-grow_horizontal = 0
+size_flags_horizontal = 3
+text = " Claim"
 
 [node name="Anim_Inventory" type="Control" parent="CenterContainer/Center"]
 visible = false
@@ -697,6 +714,14 @@ offset_right = 17.23
 offset_bottom = 23.2
 grow_horizontal = 0
 
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="AnimationPlayer_HandIn" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_j6qhm")
@@ -710,3 +735,9 @@ libraries = {
 [node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_tr8x0")
 volume_db = -20.0
+bus = &"SFX"
+
+[node name="SfxMoney" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_kuxxg")
+volume_db = -10.0
+bus = &"SFX"

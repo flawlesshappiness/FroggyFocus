@@ -28,4 +28,9 @@ public partial class Money : Node
     {
         return CurrencyController.Instance.GetValue(CurrencyType.Money) >= price;
     }
+
+    public static void Add(int amount)
+    {
+        CurrencyController.Instance.AddValue(CurrencyType.Money, amount);
+    }
 }
