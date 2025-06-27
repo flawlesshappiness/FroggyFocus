@@ -21,7 +21,8 @@ public partial class AnimatedPanel : Control
 
     private Coroutine Animate(string animation)
     {
-        return this.StartCoroutine(Cr);
+        return this.StartCoroutine(Cr)
+            .SetRunWhilePaused();
         IEnumerator Cr()
         {
             yield return AnimationPlayer.PlayAndWaitForAnimation(animation);
