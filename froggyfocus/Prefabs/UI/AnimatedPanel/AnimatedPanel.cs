@@ -6,12 +6,18 @@ public partial class AnimatedPanel : Control
     [Export]
     public AnimationPlayer AnimationPlayer;
 
+    public override void _Ready()
+    {
+        base._Ready();
+        Hide();
+    }
+
     public Coroutine AnimatePopShow() => Animate("pop_show");
     public Coroutine AnimatePopHide() => Animate("pop_hide");
     public Coroutine AnimateMoveUp() => Animate("move_up");
     public Coroutine AnimateMoveDown() => Animate("move_down");
     public Coroutine AnimateGrow() => Animate("grow");
-    public Coroutine AnimateShrink() => Animate("move_shrink");
+    public Coroutine AnimateShrink() => Animate("shrink");
 
     private Coroutine Animate(string animation)
     {

@@ -9,10 +9,13 @@ public partial class HandInView : View
     public static HandInView Instance => Get<HandInView>();
 
     [Export]
-    public AnimationPlayer AnimationPlayer_HandIn;
+    public AnimatedOverlay AnimatedOverlay;
 
     [Export]
-    public AnimationPlayer AnimationPlayer_Inventory;
+    public AnimatedPanel AnimatedPanel_HandIn;
+
+    [Export]
+    public AnimatedPanel AnimatedPanel_Inventory;
 
     [Export]
     public Button CloseHandInButton;
@@ -146,7 +149,8 @@ public partial class HandInView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer_HandIn.PlayAndWaitForAnimation("show");
+            AnimatedOverlay.AnimateBehindShow();
+            yield return AnimatedPanel_HandIn.AnimatePopShow();
             RequestButtons.First().GrabFocus();
             InputBlocker.Hide();
         }
@@ -206,8 +210,8 @@ public partial class HandInView : View
         {
             ReleaseCurrentFocus();
             InputBlocker.Show();
-            AnimationPlayer_HandIn.PlayAndWaitForAnimation("shrink");
-            yield return AnimationPlayer_Inventory.PlayAndWaitForAnimation("show");
+            AnimatedPanel_HandIn.AnimateShrink();
+            yield return AnimatedPanel_Inventory.AnimatePopShow();
             InputBlocker.Hide();
 
             var button = InventoryContainer.GetFirstButton() ?? CloseInventoryButton;
@@ -233,7 +237,8 @@ public partial class HandInView : View
         {
             ReleaseCurrentFocus();
             InputBlocker.Show();
-            yield return AnimationPlayer_HandIn.PlayAndWaitForAnimation("hide");
+            AnimatedOverlay.AnimateBehindHide();
+            yield return AnimatedPanel_HandIn.AnimatePopHide();
             InputBlocker.Hide();
             Hide();
         }
@@ -245,9 +250,10 @@ public partial class HandInView : View
         IEnumerator Cr()
         {
             ReleaseCurrentFocus();
-            AnimationPlayer_HandIn.Play("grow");
+
             InputBlocker.Show();
-            yield return AnimationPlayer_Inventory.PlayAndWaitForAnimation("hide");
+            AnimatedPanel_HandIn.AnimateGrow();
+            yield return AnimatedPanel_Inventory.AnimatePopHide();
             InputBlocker.Hide();
             selected_map.Button?.GrabFocus();
         }
