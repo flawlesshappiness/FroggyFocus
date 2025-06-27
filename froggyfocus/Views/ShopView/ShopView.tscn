@@ -1,222 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://w7rjdy2elbei"]
+[gd_scene load_steps=9 format=3 uid="uid://w7rjdy2elbei"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_f2gf6"]
 [ext_resource type="Script" uid="uid://b48kuv4pap1xp" path="res://Views/ShopView/ShopView.cs" id="2_idlmi"]
-[ext_resource type="PackedScene" uid="uid://cpee6hy6xgor5" path="res://Prefabs/UI/Sell/sell_container.tscn" id="3_sxpp3"]
-[ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="4_0oh7v"]
-[ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="4_sxpp3"]
-[ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="5_n8kem"]
-[ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="5_xcjs6"]
-[ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/CustomizeAppearance/appearance_color_container.tscn" id="6_xmg3l"]
+[ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_aau5b"]
+[ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="3_aeg22"]
+[ext_resource type="PackedScene" uid="uid://du35rtcreuxfe" path="res://Prefabs/UI/Shop/shop_container.tscn" id="4_ikh5b"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="8_n8kem"]
 [ext_resource type="PackedScene" uid="uid://bs6jtqi04ls8t" path="res://Prefabs/UI/PurchasePopup/purchase_popup.tscn" id="8_sxpp3"]
-
-[sub_resource type="Animation" id="Animation_idlmi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/AnimContainer/AnimPanel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 2000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SfxSwipe:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/AnimContainer/AnimPanel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ColorRect:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xbrgb"]
-resource_name = "hide"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/AnimContainer/AnimPanel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
-"transitions": PackedFloat32Array(0.5, 2, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 2000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SfxSwipe:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/AnimContainer/AnimPanel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ColorRect:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_f2gf6"]
-resource_name = "show"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/AnimContainer/AnimPanel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.366667, 0.5),
-"transitions": PackedFloat32Array(0.5, -2, 1),
-"update": 0,
-"values": [Vector2(0, 2000), Vector2(0, -50), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SfxSwipe:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.2),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/AnimContainer/AnimPanel:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ColorRect:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_idlmi"]
-_data = {
-&"RESET": SubResource("Animation_idlmi"),
-&"hide": SubResource("Animation_xbrgb"),
-&"show": SubResource("Animation_f2gf6")
-}
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bsdmw"]
 random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("8_n8kem")
 
-[node name="ShopView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "HatsContainer", "ColorContainer", "PurchasePopup", "InputBlocker")]
+[node name="ShopView" type="Control" node_paths=PackedStringArray("AnimatedPanel", "AnimatedOverlay", "ShopContainer", "PurchasePopup", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,31 +22,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_f2gf6")
 script = ExtResource("2_idlmi")
-AnimationPlayer = NodePath("AnimationPlayer")
-BackButton = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/BackContainer/CloseButton")
-TabContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer")
-UpgradeContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Upgrades")
-SellContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Sell")
-HatsContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Hats")
-ColorContainer = NodePath("CenterContainer/AnimContainer/AnimPanel/Control/TabContainer/Colors")
+AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
+AnimatedOverlay = NodePath("AnimatedOverlay")
+ShopContainer = NodePath("CenterContainer/Center/AnimatedPanel/ShopContainer")
 PurchasePopup = NodePath("PurchasePopup")
 InputBlocker = NodePath("InputBlocker")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-modulate = Color(1, 1, 1, 0)
+[node name="AnimatedOverlay" parent="." instance=ExtResource("3_aeg22")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.392157)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_idlmi")
-}
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -259,106 +39,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimContainer" type="Control" parent="CenterContainer"]
+[node name="Center" type="Control" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="AnimPanel" type="Control" parent="CenterContainer/AnimContainer"]
-visible = false
+[node name="AnimatedPanel" parent="CenterContainer/Center" instance=ExtResource("3_aau5b")]
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 1000.0
+offset_right = 0.0
+offset_bottom = 1000.0
+
+[node name="ShopContainer" parent="CenterContainer/Center/AnimatedPanel" instance=ExtResource("4_ikh5b")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Control" type="Control" parent="CenterContainer/AnimContainer/AnimPanel"]
-custom_minimum_size = Vector2(400, 450)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TabContainer" type="TabContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_f2gf6")
-current_tab = 3
-
-[node name="Sell" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("3_sxpp3")]
-visible = false
-layout_mode = 2
-
-[node name="Upgrades" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("4_sxpp3")]
-visible = false
-layout_mode = 2
-
-[node name="Hats" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("5_xcjs6")]
-visible = false
-layout_mode = 2
-ShowLocked = true
-metadata/_tab_index = 2
-
-[node name="Colors" parent="CenterContainer/AnimContainer/AnimPanel/Control/TabContainer" instance=ExtResource("6_xmg3l")]
-layout_mode = 2
-ShowLocked = true
-metadata/_tab_index = 3
-
-[node name="BackContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -22.06
-offset_right = 27.94
-offset_bottom = 50.0
-grow_horizontal = 0
-theme = ExtResource("4_0oh7v")
-
-[node name="CloseButton" parent="CenterContainer/AnimContainer/AnimPanel/Control/BackContainer" instance=ExtResource("5_n8kem")]
-layout_mode = 2
-
-[node name="TitleContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -87.0
-offset_top = -68.0
-offset_right = 88.0
-offset_bottom = 11.0
-grow_horizontal = 2
-
-[node name="Panel" type="Panel" parent="CenterContainer/AnimContainer/AnimPanel/Control/TitleContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/AnimContainer/AnimPanel/Control/TitleContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="CenterContainer/AnimContainer/AnimPanel/Control/TitleContainer/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = "SHOP"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = -200.0
+offset_top = -225.0
+offset_right = 200.0
+offset_bottom = 225.0
 
 [node name="PurchasePopup" parent="." instance=ExtResource("8_sxpp3")]
 layout_mode = 1

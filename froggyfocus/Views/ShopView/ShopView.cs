@@ -6,25 +6,13 @@ public partial class ShopView : View
     public static ShopView Instance => Get<ShopView>();
 
     [Export]
-    public AnimationPlayer AnimationPlayer;
+    public AnimatedPanel AnimatedPanel;
 
     [Export]
-    public Button BackButton;
+    public AnimatedOverlay AnimatedOverlay;
 
     [Export]
-    public TabContainer TabContainer;
-
-    [Export]
-    public UpgradeContainer UpgradeContainer;
-
-    [Export]
-    public SellContainer SellContainer;
-
-    [Export]
-    public HatsContainer HatsContainer;
-
-    [Export]
-    public AppearanceColorContainer ColorContainer;
+    public ShopContainer ShopContainer;
 
     [Export]
     public PurchasePopup PurchasePopup;
@@ -41,11 +29,11 @@ public partial class ShopView : View
         base._Ready();
         RegisterDebugActions();
 
-        BackButton.Pressed += BackClicked;
-        SellContainer.OnSell += Sell;
-        HatsContainer.OnButtonPressed += HatButton_Pressed;
-        ColorContainer.OnColorPressed += ColorButton_Pressed;
+        ShopContainer.BackButton.Pressed += BackClicked;
         PurchasePopup.OnCancel += PurchasePopup_OnCancel;
+
+        ShopContainer.HatsContainer.OnButtonPressed += HatButton_Pressed;
+        ShopContainer.ColorContainer.OnColorPressed += ColorButton_Pressed;
     }
 
     protected override void OnShow()
@@ -110,10 +98,11 @@ public partial class ShopView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show");
+            AnimatedOverlay.AnimateBehindShow();
+            yield return AnimatedPanel.AnimatePopShow();
             InputBlocker.Hide();
 
-            TabContainer.GetTabBar().GrabFocus();
+            ShopContainer.TabContainer.GetTabBar().GrabFocus();
 
             animating = false;
         }
@@ -128,7 +117,8 @@ public partial class ShopView : View
         IEnumerator Cr()
         {
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
+            AnimatedOverlay.AnimateBehindHide();
+            yield return AnimatedPanel.AnimatePopHide();
             InputBlocker.Hide();
             Hide();
             animating = false;
@@ -140,32 +130,19 @@ public partial class ShopView : View
         Close();
     }
 
-    private void Sell()
-    {
-        var button = SellContainer.InventoryContainer.GetFirstButton();
-        if (button != null)
-        {
-            button.GrabFocus();
-        }
-        else
-        {
-            TabContainer.GetTabBar().GrabFocus();
-        }
-    }
-
     private void HatButton_Pressed(AppearanceHatInfo info)
     {
         popup_active = true;
 
-        popup_back_focus = HatsContainer.GetButton(info);
+        popup_back_focus = ShopContainer.HatsContainer.GetButton(info);
         PurchasePopup.SetHat(info);
         PurchasePopup.ShowPopup();
 
         PurchasePopup.OnPurchase = () =>
         {
             Data.Game.Appearance.UnlockedHats.Add(info.Type);
-            HatsContainer.UpdateButtons();
-            TabContainer.GetTabBar().GrabFocus();
+            ShopContainer.HatsContainer.UpdateButtons();
+            ShopContainer.TabContainer.GetTabBar().GrabFocus();
 
             popup_active = false;
         };
@@ -175,15 +152,15 @@ public partial class ShopView : View
     {
         popup_active = true;
 
-        popup_back_focus = ColorContainer.GetButton(info);
+        popup_back_focus = ShopContainer.ColorContainer.GetButton(info);
         PurchasePopup.SetColor(info);
         PurchasePopup.ShowPopup();
 
         PurchasePopup.OnPurchase = () =>
         {
             Data.Game.Appearance.UnlockedColors.Add(info.Type);
-            ColorContainer.UpdateButtons();
-            TabContainer.GetTabBar().GrabFocus();
+            ShopContainer.ColorContainer.UpdateButtons();
+            ShopContainer.TabContainer.GetTabBar().GrabFocus();
 
             popup_active = false;
         };

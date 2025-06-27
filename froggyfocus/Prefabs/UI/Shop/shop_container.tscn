@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://du35rtcreuxfe"]
+
+[ext_resource type="Script" uid="uid://dbpm57axr67cf" path="res://Prefabs/UI/Shop/ShopContainer.cs" id="1_qigjm"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_xtxcp"]
+[ext_resource type="PackedScene" uid="uid://cpee6hy6xgor5" path="res://Prefabs/UI/Sell/sell_container.tscn" id="2_qigjm"]
+[ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="3_ct30e"]
+[ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="4_7sns5"]
+[ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/CustomizeAppearance/appearance_color_container.tscn" id="5_48iua"]
+[ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="6_fnyac"]
+[ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="7_00p4r"]
+
+[node name="ShopContainer" type="Control" node_paths=PackedStringArray("BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "HatsContainer", "ColorContainer")]
+custom_minimum_size = Vector2(400, 450)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qigjm")
+BackButton = NodePath("BackContainer/CloseButton")
+TabContainer = NodePath("TabContainer")
+UpgradeContainer = NodePath("TabContainer/Upgrades")
+SellContainer = NodePath("TabContainer/Sell")
+HatsContainer = NodePath("TabContainer/Hats")
+ColorContainer = NodePath("TabContainer/Colors")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xtxcp")
+current_tab = 3
+
+[node name="Sell" parent="TabContainer" instance=ExtResource("2_qigjm")]
+visible = false
+layout_mode = 2
+
+[node name="Upgrades" parent="TabContainer" instance=ExtResource("3_ct30e")]
+visible = false
+layout_mode = 2
+
+[node name="Hats" parent="TabContainer" instance=ExtResource("4_7sns5")]
+visible = false
+layout_mode = 2
+ShowLocked = true
+metadata/_tab_index = 2
+
+[node name="Colors" parent="TabContainer" instance=ExtResource("5_48iua")]
+layout_mode = 2
+ShowLocked = true
+metadata/_tab_index = 3
+
+[node name="BackContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.79
+offset_top = 6.585
+offset_right = 25.21
+offset_bottom = 56.585
+grow_horizontal = 0
+theme = ExtResource("6_fnyac")
+
+[node name="CloseButton" parent="BackContainer" instance=ExtResource("7_00p4r")]
+layout_mode = 2
+
+[node name="TitleContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = -68.0
+offset_right = 88.0
+offset_bottom = 11.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="TitleContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TitleContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="TitleContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "SHOP"
+horizontal_alignment = 1
+vertical_alignment = 1
