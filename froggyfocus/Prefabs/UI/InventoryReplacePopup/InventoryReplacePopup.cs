@@ -4,7 +4,10 @@ using System.Collections;
 public partial class InventoryReplacePopup : ControlScript
 {
     [Export]
-    public AnimationPlayer AnimationPlayer;
+    public AnimatedOverlay AnimatedOverlay;
+
+    [Export]
+    public AnimatedPanel AnimatedPanel;
 
     [Export]
     public InventoryContainer InventoryContainer;
@@ -50,7 +53,8 @@ public partial class InventoryReplacePopup : ControlScript
 
         InventoryContainer.UpdateButtons();
 
-        yield return AnimationPlayer.PlayAndWaitForAnimation("show");
+        AnimatedOverlay.AnimateBehindShow();
+        yield return AnimatedPanel.AnimatePopShow();
 
         var button = InventoryContainer.GetFirstButton();
         button.GrabFocus();
@@ -67,7 +71,8 @@ public partial class InventoryReplacePopup : ControlScript
 
         MouseVisibility.Instance.Lock.RemoveLock(nameof(InventoryReplacePopup));
 
-        yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
+        AnimatedOverlay.AnimateBehindHide();
+        yield return AnimatedPanel.AnimatePopHide();
 
         Hide();
         InputBlocker.Hide();
