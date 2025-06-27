@@ -4,7 +4,10 @@ using System;
 public partial class PurchasePopup : Control
 {
     [Export]
-    public AnimationPlayer AnimationPlayer;
+    public AnimatedOverlay AnimatedOverlay;
+
+    [Export]
+    public AnimatedPanel AnimatedPanel;
 
     [Export]
     public Button CancelButton;
@@ -47,13 +50,15 @@ public partial class PurchasePopup : Control
 
     public void ShowPopup()
     {
-        AnimationPlayer.Play("show");
+        AnimatedOverlay.AnimateBehindShow();
+        AnimatedPanel.AnimatePopShow();
         CancelButton.GrabFocus();
     }
 
     private void HidePopup()
     {
-        AnimationPlayer.Play("hide");
+        AnimatedOverlay.AnimateBehindHide();
+        AnimatedPanel.AnimatePopHide();
     }
 
     public void SetHat(AppearanceHatInfo info)
