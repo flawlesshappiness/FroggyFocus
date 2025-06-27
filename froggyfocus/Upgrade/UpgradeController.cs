@@ -19,7 +19,7 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
 
     public bool IsMaxLevel(StatsType type)
     {
-        return GetCurrentLevel(type) < GetMaxLevel(type);
+        return GetCurrentLevel(type) >= GetMaxLevel(type);
     }
 
     public int GetCurrentLevel(StatsType type)
@@ -31,7 +31,7 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
     public int GetCurrentPrice(StatsType type)
     {
         var level = GetCurrentLevel(type);
-        return GetPrice(type, level);
+        return GetPrice(type, level + 1);
     }
 
     public int GetPrice(StatsType type, int level)

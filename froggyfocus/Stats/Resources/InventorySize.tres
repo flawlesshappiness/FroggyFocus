@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StatsInfo" load_steps=2 format=3 uid="uid://fa23yo2jb8m4"]
+
+[ext_resource type="Script" uid="uid://dct8ndrjlybm4" path="res://Stats/StatsInfo.cs" id="1_iycpd"]
+
+[resource]
+script = ExtResource("1_iycpd")
+Type = 10
+Name = "Inventory size"
+Description = "Increases inventory slots by 5"
+metadata/_custom_type_script = "uid://dct8ndrjlybm4"

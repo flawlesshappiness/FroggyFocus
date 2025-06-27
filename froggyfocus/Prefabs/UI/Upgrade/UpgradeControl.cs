@@ -7,6 +7,9 @@ public partial class UpgradeControl : Control
     public Label NameLabel;
 
     [Export]
+    public Label DescriptionLabel;
+
+    [Export]
     public Button UpgradeButton;
 
     [Export]
@@ -29,6 +32,7 @@ public partial class UpgradeControl : Control
         var levels = UpgradeController.Instance.GetMaxLevel(type);
 
         NameLabel.Text = info.Name;
+        DescriptionLabel.Text = info.Description;
 
         for (int i = 0; i < levels + 1; i++)
         {
