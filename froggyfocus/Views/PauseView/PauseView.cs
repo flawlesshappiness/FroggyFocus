@@ -239,6 +239,9 @@ public partial class PauseView : View
             AnimatedOverlay_Behind.AnimateBehindHide();
             yield return AnimatedPanel_Pause.AnimatePopHide();
             yield return AnimatedOverlay_Front.AnimateFrontShow();
+
+            Data.Game.Save();
+
             Scene.Goto<MainMenuScene>();
 
             Hide();

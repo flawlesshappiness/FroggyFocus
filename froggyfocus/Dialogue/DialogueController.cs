@@ -57,13 +57,15 @@ public partial class DialogueController : SingletonController
 
     private void SetNode(DialogueNode node)
     {
+        if (node == null)
+        {
+            Debug.LogError("DialogueController.SetNode(): Node was null");
+            return;
+        }
+
         if (current_node == null)
         {
             OnDialogueStarted?.Invoke();
-        }
-        else
-        {
-            OnNodeEnded?.Invoke(current_node.id);
         }
 
         current_node = node;
@@ -74,6 +76,11 @@ public partial class DialogueController : SingletonController
 
     private void NextDialogue()
     {
+        if (current_node != null)
+        {
+            OnNodeEnded?.Invoke(current_node.id);
+        }
+
         if (string.IsNullOrEmpty(current_node?.next))
         {
             current_node = null;

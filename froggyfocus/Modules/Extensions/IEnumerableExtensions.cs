@@ -14,7 +14,7 @@ public static class IEnumerableExtensions
         return source;
     }
 
-    public static IEnumerable<T> TakeRandom<T>(this IEnumerable<T> source, int count)
+    public static IEnumerable<T> TakeRandom<T>(this IEnumerable<T> source, int count, bool allow_duplicates = false)
     {
         var result = new List<T>();
         var list = source.ToList();
@@ -23,7 +23,7 @@ public static class IEnumerableExtensions
         {
             var v = list.Random();
             if (v == null) break;
-            list.Remove(v);
+            if (!allow_duplicates) list.Remove(v);
             result.Add(v);
         }
 

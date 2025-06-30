@@ -287,6 +287,8 @@ public partial class HandInView : View
 
         current_data.Claimed = true;
         CloseHandInButton_Pressed();
+
+        HandInController.Instance.HandInClaimed(current_data);
     }
 
     private bool Validate()

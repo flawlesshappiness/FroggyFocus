@@ -25,4 +25,24 @@ public partial class GameTime : Node
     {
         return (Time - start) / duration;
     }
+
+    public static DateTime ParseDateTime(string date_string)
+    {
+        return DateTime.ParseExact(date_string, "yyyy-MM-ddTHH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+    }
+
+    public static string GetDateTimeString(DateTime date)
+    {
+        return date.ToString("yyyy-MM-ddTHH:mm:ss");
+    }
+
+    public static DateTime GetCurrentDateTime()
+    {
+        return ParseDateTime(Godot.Time.GetDatetimeStringFromSystem(true));
+    }
+
+    public static string GetCurrentDateTimeString()
+    {
+        return GetDateTimeString(GetCurrentDateTime());
+    }
 }

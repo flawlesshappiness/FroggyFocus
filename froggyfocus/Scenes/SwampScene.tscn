@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=42 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="9_1p1c6"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="10_52an4"]
 [ext_resource type="Shader" uid="uid://babyxm8yext4w" path="res://Shaders/ToonWater.gdshader" id="10_e4xtd"]
+[ext_resource type="PackedScene" uid="uid://2ikni3b3nxm4" path="res://Prefabs/NPC/TestHandInNPC/test_hand_in_npc.tscn" id="10_mv6si"]
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="11_20fcr"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="11_achss"]
@@ -180,6 +181,9 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Island_SmallRound/FocusEventArea"]
 shape = SubResource("SphereShape3D_qfnsp")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="TestHandInNPC" parent="World/Island_SmallRound" instance=ExtResource("10_mv6si")]
+transform = Transform3D(0.74023, 0, 0.672354, 0, 1, 0, -0.672354, 0, 0.74023, -5.75358, 0, -4.41256)
 
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)

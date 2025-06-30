@@ -9,5 +9,17 @@
 	},
 	{
 		"id": "##TEST_003##"
+	},
+	
+	{
+		"id": "##TEST_HAND_IN_001##",
+		"next": "##TEST_HAND_IN_002##"
+	},
+	{
+		"id": "##TEST_HAND_IN_002##"
+	},
+	
+	{
+		"id": "##TEST_HAND_IN_COMPLETED_001##"
 	}
 ]

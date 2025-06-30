@@ -19,8 +19,8 @@ public class DialogueNodeCollection
         nodes.ForEach(x => Nodes.Add(x.id, x));
     }
 
-    public DialogueNode GetNode(string name)
+    public DialogueNode GetNode(string id)
     {
-        return Nodes.TryGetValue(name, out var node) ? node : null;
+        return Nodes.TryGetValue(id, out var node) ? node : null;
     }
 }
