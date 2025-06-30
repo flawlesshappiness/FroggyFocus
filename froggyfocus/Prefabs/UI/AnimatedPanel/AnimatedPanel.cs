@@ -18,6 +18,7 @@ public partial class AnimatedPanel : Control
     public Coroutine AnimateMoveDown() => Animate("move_down");
     public Coroutine AnimateGrow() => Animate("grow");
     public Coroutine AnimateShrink() => Animate("shrink");
+    public Coroutine AnimateBounce() => Animate("bounce");
 
     private Coroutine Animate(string animation)
     {
@@ -25,6 +26,7 @@ public partial class AnimatedPanel : Control
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            AnimationPlayer.Stop(true);
             yield return AnimationPlayer.PlayAndWaitForAnimation(animation);
         }
     }

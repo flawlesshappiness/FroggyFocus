@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp6ckj2tguh6t"]
+[gd_scene load_steps=8 format=3 uid="uid://cp6ckj2tguh6t"]
 
 [ext_resource type="Script" uid="uid://cw8kltb0ua55u" path="res://Views/DialogueView/DialogueView.cs" id="1_htuka"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_74xc6"]
 [ext_resource type="Texture2D" uid="uid://ca7v7xsa1i657" path="res://Assets/KenneyNL/UI/Blue/button_square_border.png" id="3_424su"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_kxd8v"]
+[ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="5_aumvv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxd8v"]
 texture = ExtResource("3_424su")
@@ -12,7 +13,12 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
-[node name="DialogueView" type="Control" node_paths=PackedStringArray("AnimatedPanel_Dialogue")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aumvv"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_aumvv")
+
+[node name="DialogueView" type="Control" node_paths=PackedStringArray("AnimatedPanel_Dialogue", "DialogueLabel", "SfxRevealCharacter")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +28,8 @@ grow_vertical = 2
 theme = ExtResource("2_74xc6")
 script = ExtResource("1_htuka")
 AnimatedPanel_Dialogue = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue")
+DialogueLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask/VBoxContainer/DialogueLabel")
+SfxRevealCharacter = NodePath("SfxRevealCharacter")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -105,10 +113,17 @@ layout_mode = 2
 offset_right = 780.0
 offset_bottom = 312.0
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask/VBoxContainer"]
+[node name="DialogueLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask/VBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0862745, 0.490196, 0.658824, 1)
 theme_override_font_sizes/font_size = 30
 text = "Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla"
-autowrap_mode = 3
+autowrap_mode = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="SfxRevealCharacter" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_aumvv")
+volume_db = -5.0
+bus = &"SFX"

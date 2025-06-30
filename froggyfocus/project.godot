@@ -160,6 +160,10 @@ ZoomIn={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Dialogue/dialogue.en.translation")
+
 [layer_names]
 
 3d_physics/layer_1="World"
