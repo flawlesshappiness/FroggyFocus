@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc1aqwgypdcw6"]
+[gd_scene load_steps=6 format=3 uid="uid://cc1aqwgypdcw6"]
 
 [ext_resource type="Script" uid="uid://b7lifygaipukt" path="res://Prefabs/Misc/RespawnArea.cs" id="1_uem8o"]
 [ext_resource type="AudioStream" uid="uid://dtyxe06md632t" path="res://Sounds/Raw/sfx_impact_water_001.wav" id="2_0jsv0"]
+[ext_resource type="PackedScene" uid="uid://nfqan33vj12g" path="res://Prefabs/Effects/splash_big.tscn" id="3_8ibcn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_20fcr"]
 size = Vector3(1000, 1, 1000)
@@ -18,9 +19,10 @@ script = ExtResource("1_uem8o")
 MinCameraHeight = 0.25
 Camera = NodePath("Camera3D")
 SfxImpact = NodePath("SfxImpact")
+PsSplashPrefab = ExtResource("3_8ibcn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_20fcr")
 
 [node name="SfxImpact" type="AudioStreamPlayer3D" parent="."]

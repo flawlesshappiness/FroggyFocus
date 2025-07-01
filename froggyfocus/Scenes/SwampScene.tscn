@@ -143,6 +143,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Water/StaticBody3D"]
 shape = SubResource("BoxShape3D_achss")
 
+[node name="RespawnArea" parent="World/Water" instance=ExtResource("17_achss")]
+collision_layer = 0
+
 [node name="Island_SmallRound" type="NavigationRegion3D" parent="World"]
 navigation_mesh = SubResource("NavigationMesh_20fcr")
 
@@ -547,9 +550,6 @@ transform = Transform3D(24.7433, 0, 16.9637, 0, 30, 0, -16.9637, 0, 24.7433, -10
 
 [node name="Mushroom_Platform" parent="World/Mushrooms/Trees/CommonTree_Dead_10" instance=ExtResource("17_riqag")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0118095, 0.588505, -0.0796642)
-
-[node name="RespawnArea" parent="World" instance=ExtResource("17_achss")]
-collision_layer = 0
 
 [node name="FocusEvent_Land" parent="World" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)
