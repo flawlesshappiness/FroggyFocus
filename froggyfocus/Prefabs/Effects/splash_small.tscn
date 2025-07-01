@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwbmt0bwqr7cw"]
+
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_ektla"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="2_8qp3d"]
+
+[sub_resource type="Curve" id="Curve_ektla"]
+_data = [Vector2(0, 0), 0.0, 13.8548, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.60815, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8qp3d"]
+curve = SubResource("Curve_ektla")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dgm7b"]
+lifetime_randomness = 0.5
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.7
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_8qp3d")
+
+[sub_resource type="SphereMesh" id="SphereMesh_6ssq6"]
+material = ExtResource("2_8qp3d")
+
+[sub_resource type="Curve" id="Curve_8qp3d"]
+_data = [Vector2(0, 0), 0.0, 13.8548, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.60815, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dgm7b"]
+curve = SubResource("Curve_8qp3d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lrag7"]
+direction = Vector3(0, 1, 0)
+spread = 25.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, -5, 0)
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_dgm7b")
+
+[node name="ps_splash_small" type="Node3D" node_paths=PackedStringArray("Particles")]
+script = ExtResource("1_ektla")
+DestroyDelay = 3.0
+Particles = [NodePath("ps_foam_horizontal"), NodePath("ps_foam_vertical")]
+
+[node name="ps_foam_horizontal" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 5
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_dgm7b")
+draw_pass_1 = SubResource("SphereMesh_6ssq6")
+
+[node name="ps_foam_vertical" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 5
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_lrag7")
+draw_pass_1 = SubResource("SphereMesh_6ssq6")

@@ -7,6 +7,7 @@ public partial class FocusSkillCheck : Node3D
     public FocusSkillCheckType Type;
 
     protected FocusEvent FocusEvent { get; set; }
+    protected FocusTarget Target => FocusEvent.Target;
     protected float Difficulty => FocusEvent.Target.Info.Difficulty;
 
     protected RandomNumberGenerator rng = new();

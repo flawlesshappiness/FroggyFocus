@@ -76,13 +76,14 @@ public partial class FocusTarget : Node3D
 
     public Vector3 GetClampedPosition()
     {
-        var position = GetRandomPosition(1, 0, 1);
+        var position = GetRandomPosition();
         var dir_to_position = GlobalPosition.DirectionTo(position);
         var length = dir_to_position.Length();
         var dir_to_position_clamped = dir_to_position.ClampMagnitude(Info.MoveLengthRange.X, Info.MoveLengthRange.Y);
         return GlobalPosition + dir_to_position_clamped;
     }
 
+    public Vector3 GetRandomPosition() => GetRandomPosition(1, 0, 1);
     private Vector3 GetRandomPosition(int x, int y, int z) => GetRandomPosition(new Vector3I(x, y, z));
     private Vector3 GetRandomPosition(Vector3I mul)
     {

@@ -52,6 +52,7 @@ public partial class FocusOutroView : View
         SubViewport.AudioListenerEnable3D = true;
         Frog.SetHandsBack();
         yield return AnimationPlayer.PlayAndWaitForAnimation("eat_bug");
+
         if (!success)
         {
             current_target.Hide();
@@ -59,9 +60,15 @@ public partial class FocusOutroView : View
             SfxSwish.Play();
             yield return new WaitForSeconds(0.25f);
         }
+
         yield return Frog.AnimateEatTarget(current_target);
         yield return new WaitForSeconds(0.25f);
-        yield return WaitForInventory();
+
+        if (success)
+        {
+            yield return WaitForInventory();
+        }
+
         PlayChord(success);
         yield return new WaitForSeconds(0.25f);
         SubViewport.AudioListenerEnable3D = false;

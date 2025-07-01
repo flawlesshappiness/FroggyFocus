@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bk1jnky7aenmk"]
+
+[ext_resource type="Script" uid="uid://dmosckoaqd3wx" path="res://FocusSkillCheck/SkillCheckDive.cs" id="1_67kc7"]
+[ext_resource type="PackedScene" uid="uid://cwbmt0bwqr7cw" path="res://Prefabs/Effects/splash_small.tscn" id="2_3xtrx"]
+[ext_resource type="PackedScene" uid="uid://5mscnbcwg08f" path="res://Prefabs/Effects/bubbles_underwater.tscn" id="3_v68jj"]
+[ext_resource type="AudioStream" uid="uid://dtyxe06md632t" path="res://Sounds/Raw/sfx_impact_water_001.wav" id="4_3xtrx"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rfpcb"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_3xtrx")
+
+[node name="Dive" type="Node3D" node_paths=PackedStringArray("SfxSplash")]
+script = ExtResource("1_67kc7")
+SfxSplash = NodePath("SfxSplash")
+SplashParticlePrefab = ExtResource("2_3xtrx")
+BubblesParticlePrefab = ExtResource("3_v68jj")
+Type = 3
+
+[node name="SfxSplash" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rfpcb")
+volume_db = -10.0
+bus = &"SFX"
