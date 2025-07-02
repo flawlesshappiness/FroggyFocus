@@ -48,6 +48,7 @@ public partial class FocusOutroView : View
 
     public IEnumerator EatBugSequence(bool success)
     {
+        Frog.LoadAppearance();
         Show();
         SubViewport.AudioListenerEnable3D = true;
         Frog.SetHandsBack();
