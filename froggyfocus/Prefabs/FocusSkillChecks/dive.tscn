@@ -1,14 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://bk1jnky7aenmk"]
+[gd_scene load_steps=9 format=3 uid="uid://bk1jnky7aenmk"]
 
 [ext_resource type="Script" uid="uid://dmosckoaqd3wx" path="res://FocusSkillCheck/SkillCheckDive.cs" id="1_67kc7"]
 [ext_resource type="PackedScene" uid="uid://cwbmt0bwqr7cw" path="res://Prefabs/Effects/splash_small.tscn" id="2_3xtrx"]
 [ext_resource type="PackedScene" uid="uid://5mscnbcwg08f" path="res://Prefabs/Effects/bubbles_underwater.tscn" id="3_v68jj"]
-[ext_resource type="AudioStream" uid="uid://dtyxe06md632t" path="res://Sounds/Raw/sfx_impact_water_001.wav" id="4_3xtrx"]
+[ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="4_ytj84"]
+[ext_resource type="AudioStream" uid="uid://iupdbu38bkq0" path="res://Sounds/Raw/sfx_impact_water_low_002.wav" id="5_34ixe"]
+[ext_resource type="AudioStream" uid="uid://mvr5nhm1lqiv" path="res://Sounds/Raw/sfx_impact_water_low_003.wav" id="6_ni2hi"]
+[ext_resource type="AudioStream" uid="uid://bu3w1t785m70f" path="res://Sounds/Raw/sfx_impact_water_low_004.wav" id="7_v5k8k"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rfpcb"]
 random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("4_3xtrx")
+streams_count = 4
+stream_0/stream = ExtResource("4_ytj84")
+stream_1/stream = ExtResource("5_34ixe")
+stream_2/stream = ExtResource("6_ni2hi")
+stream_3/stream = ExtResource("7_v5k8k")
 
 [node name="Dive" type="Node3D" node_paths=PackedStringArray("SfxSplash")]
 script = ExtResource("1_67kc7")

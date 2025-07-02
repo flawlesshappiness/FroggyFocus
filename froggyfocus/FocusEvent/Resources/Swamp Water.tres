@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=4 format=3 uid="uid://c8rw7h48k3o4k"]
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=5 format=3 uid="uid://c8rw7h48k3o4k"]
 
 [ext_resource type="Resource" uid="uid://m31nw5wfia48" path="res://FocusCharacter/Resources/Waterstrider.tres" id="1_mj6p4"]
 [ext_resource type="Resource" uid="uid://dtaq1s53cx6bt" path="res://FocusCharacter/Resources/Dragonfly.tres" id="2_qygn1"]
+[ext_resource type="Resource" uid="uid://dgedy1cyq8sdd" path="res://FocusCharacter/Resources/Backswimmer_Swamp.tres" id="3_qygn1"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="3_sf6qy"]
 
 [resource]
 script = ExtResource("3_sf6qy")
-Characters = Array[Object]([ExtResource("1_mj6p4"), ExtResource("2_qygn1")])
+Characters = Array[Object]([ExtResource("1_mj6p4"), ExtResource("2_qygn1"), ExtResource("3_qygn1")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dtmkufbgpcrfh"
-path="res://.godot/imported/beetle.fbx-56fadce6d49b5a612ecb86fd18d16455.scn"
+uid="uid://dkcskcygebid0"
+path="res://.godot/imported/backswimmer.fbx-270d6cc5df23afe93e2d41bef81a70ba.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Nature/Bugs/beetle.fbx"
-dest_files=["res://.godot/imported/beetle.fbx-56fadce6d49b5a612ecb86fd18d16455.scn"]
+source_file="res://Assets/FlawLizArt/Nature/Bugs/backswimmer.fbx"
+dest_files=["res://.godot/imported/backswimmer.fbx-270d6cc5df23afe93e2d41bef81a70ba.scn"]
 
 [params]
 
@@ -34,15 +34,15 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Antannae": {
+"Eye": {
+"use_external/enabled": true,
+"use_external/path": "uid://w4pv05que4no"
+},
+"Primary": {
 "use_external/enabled": true,
 "use_external/path": "uid://dejj7dkxn7x2q"
 },
-"Beetle": {
-"use_external/enabled": true,
-"use_external/path": "uid://dejj7dkxn7x2q"
-},
-"Legs": {
+"Secondary": {
 "use_external/enabled": true,
 "use_external/path": "uid://ja07pbxs1qlt"
 }

@@ -56,8 +56,7 @@ public partial class InventoryReplacePopup : ControlScript
         AnimatedOverlay.AnimateBehindShow();
         yield return AnimatedPanel.AnimatePopShow();
 
-        var button = InventoryContainer.GetFirstButton();
-        button.GrabFocus();
+        PreviewButton.GrabFocus();
 
         MouseVisibility.Instance.Lock.AddLock(nameof(InventoryReplacePopup));
 

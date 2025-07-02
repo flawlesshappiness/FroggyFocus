@@ -7,12 +7,12 @@
 script = ExtResource("2_np2wo")
 Scene = ExtResource("1_p4q1c")
 Name = "Dragonfly"
-Description = ""
+Description = "An acquired taste, mostly due to the difficulty of catching it."
 FocusValue = 100.0
 SizeRange = Vector2(0.6, 0.8)
-MoveSpeed = 4.0
+MoveSpeed = 3.0
 MoveLengthRange = Vector2(2, 3)
-MoveDelayRange = Vector2(0.2, 2)
+MoveDelayRange = Vector2(3, 4)
 CurrencyReward = 40
 Difficulty = 0.0
 SkillChecks = Array[int]([2])

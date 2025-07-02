@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhsta7k5pa82t"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_yo6pf"]
+[ext_resource type="PackedScene" uid="uid://dkcskcygebid0" path="res://Assets/FlawLizArt/Nature/Bugs/backswimmer.fbx" id="2_kh5su"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_rg0jt"]
+
+[node name="Backswimmer" type="Node3D" node_paths=PackedStringArray("Animation")]
+script = ExtResource("1_yo6pf")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+
+[node name="backswimmer" parent="." instance=ExtResource("2_kh5su")]
+transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, -0.0174046, 0.0438641)
+
+[node name="Skeleton3D" parent="backswimmer/Armature" index="0"]
+bones/0/position = Vector3(0, 0.001, 0)
+bones/1/rotation = Quaternion(0, -8.74228e-08, 0, 1)
+bones/2/rotation = Quaternion(2.7045e-07, -4.6431e-07, 0.200514, 0.979691)
+bones/3/position = Vector3(-5.10905e-11, 0.00173414, 2.2355e-11)
+bones/3/rotation = Quaternion(2.57682e-07, 2.05918e-07, 0.175283, 0.984518)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(5.395e-10, 0.00529081, -2.38423e-11)
+bones/4/rotation = Quaternion(1.11465e-07, 2.96819e-14, 0.0829917, 0.99655)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-1.67966e-09, 0.00584739, 2.66687e-15)
+bones/5/rotation = Quaternion(1.17631e-07, -1.34954e-13, 0.0875823, 0.996157)
+bones/7/rotation = Quaternion(3.15131e-07, -7.0029e-07, 0.211137, 0.977457)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(4.99432e-11, 0.00162809, 6.55431e-11)
+bones/8/rotation = Quaternion(8.52133e-08, -3.19595e-08, 0.0352021, 0.99938)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-4.41913e-11, 0.00193776, -7.15258e-11)
+bones/9/rotation = Quaternion(-7.41361e-08, 8.53216e-14, -0.0322785, 0.999479)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(-0.00051996, 0.00298965, -0.00114869)
+bones/11/rotation = Quaternion(4.62848e-07, -1.15991e-06, 0.233837, 0.972276)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(3.22027e-10, 0.00500078, 3.70715e-11)
+bones/12/rotation = Quaternion(2.26514e-06, -2.52138e-08, 0.702935, 0.711254)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(1.24976e-09, 0.00247407, -4.76869e-11)
+bones/13/rotation = Quaternion(5.60394e-07, 1.81061e-13, 0.172406, 0.985026)
+bones/13/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(0.00113673, 0.00090755, -0.00114869)
+bones/15/rotation = Quaternion(8.1723e-08, 1.25637e-06, -0.200514, 0.979691)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(1.36222e-11, 0.00173414, 4.91706e-11)
+bones/16/rotation = Quaternion(2.85597e-07, -2.00947e-07, -0.175283, 0.984518)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(-4.74066e-10, 0.00529081, -2.38419e-11)
+bones/17/rotation = Quaternion(1.11465e-07, -5.82041e-14, -0.0829917, 0.99655)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/position = Vector3(1.67966e-09, 0.00584739, 2.66692e-15)
+bones/18/rotation = Quaternion(1.17631e-07, 1.70493e-13, -0.0875823, 0.996157)
+bones/18/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(0.000203303, 0.0052528, -0.00114869)
+bones/20/rotation = Quaternion(1.56378e-07, 1.48256e-06, -0.211137, 0.977457)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(-4.9943e-11, 0.00162809, -1.78596e-11)
+bones/21/rotation = Quaternion(7.42505e-08, 3.15726e-08, -0.0352021, 0.99938)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/position = Vector3(4.41912e-11, 0.00193776, -2.38417e-11)
+bones/22/rotation = Quaternion(-7.4136e-08, -9.25276e-14, 0.0322785, 0.999479)
+bones/22/scale = Vector3(1, 1, 1)
+bones/24/position = Vector3(0.000519958, 0.00298965, -0.00114869)
+bones/24/rotation = Quaternion(2.8236e-07, 1.9386e-06, -0.233837, 0.972276)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(1.05617e-11, 0.00500079, 3.44529e-11)
+bones/25/rotation = Quaternion(2.25987e-06, 2.00023e-08, -0.702935, 0.711254)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/position = Vector3(5.40056e-10, 0.00247407, -4.76823e-11)
+bones/26/rotation = Quaternion(5.60394e-07, -2.5025e-13, -0.172406, 0.985026)
+bones/26/scale = Vector3(1, 1, 1)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_rg0jt")
+Animator = NodePath("../backswimmer/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="backswimmer"]

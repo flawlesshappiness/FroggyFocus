@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dgedy1cyq8sdd"]
+
+[ext_resource type="PackedScene" uid="uid://dhsta7k5pa82t" path="res://Prefabs/Characters/backswimmer.tscn" id="1_7ppqm"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_f2go5"]
+
+[resource]
+script = ExtResource("2_f2go5")
+Scene = ExtResource("1_7ppqm")
+Name = "Backswimmer"
+Description = "A little treat, presoaked in swamp water."
+FocusValue = 75.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.5
+MoveLengthRange = Vector2(1, 1.5)
+MoveDelayRange = Vector2(0.5, 1)
+CurrencyReward = 25
+Difficulty = 0.0
+SkillChecks = Array[int]([2, 3])
+metadata/_custom_type_script = "uid://buqirimb2mf5"
