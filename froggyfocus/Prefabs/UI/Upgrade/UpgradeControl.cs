@@ -21,14 +21,14 @@ public partial class UpgradeControl : Control
     [Export]
     public PackedScene UpgradeLevelNodeTemplate;
 
-    private StatsType type;
+    private UpgradeType type;
     private List<UpgradeLevelNode> level_nodes = new();
 
-    public void Initialize(StatsType type)
+    public void Initialize(UpgradeType type)
     {
         this.type = type;
-        var info = StatsController.Instance.GetInfo(type);
-        var data = StatsController.Instance.GetOrCreateData(type);
+        var info = UpgradeController.Instance.GetInfo(type);
+        var data = UpgradeController.Instance.GetOrCreateData(type);
         var levels = UpgradeController.Instance.GetMaxLevel(type);
 
         NameLabel.Text = info.Name;
@@ -45,13 +45,13 @@ public partial class UpgradeControl : Control
 
     public void Update()
     {
-        var data = StatsController.Instance.GetOrCreateData(type);
+        var data = UpgradeController.Instance.GetOrCreateData(type);
         var upgrade = UpgradeController.Instance.GetInfo(type);
         UpdateButton(type);
         UpdateLevelNodes(data);
     }
 
-    private void UpdateButton(StatsType type)
+    private void UpdateButton(UpgradeType type)
     {
         var is_max = UpgradeController.Instance.IsMaxLevel(type);
         var price = UpgradeController.Instance.GetCurrentPrice(type);
@@ -59,7 +59,7 @@ public partial class UpgradeControl : Control
         UpgradeButton.Disabled = is_max;
     }
 
-    private void UpdateLevelNodes(StatsData data)
+    private void UpdateLevelNodes(UpgradeData data)
     {
         for (int i = 0; i < level_nodes.Count; i++)
         {

@@ -43,7 +43,7 @@ public partial class UpgradeContainer : ControlScript
     private void CreateUpgradeControls()
     {
         var parent = UpgradeControlTemplate.GetParent();
-        var types = System.Enum.GetValues(typeof(StatsType)).Cast<StatsType>();
+        var types = System.Enum.GetValues(typeof(UpgradeType)).Cast<UpgradeType>();
         foreach (var type in types)
         {
             var control = UpgradeControlTemplate.Duplicate() as UpgradeControl;

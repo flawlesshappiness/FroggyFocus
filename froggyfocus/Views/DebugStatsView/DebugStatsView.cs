@@ -60,19 +60,19 @@ public partial class DebugStatsView : View
 
     private void CreateSliders()
     {
-        var types = Enum.GetValues(typeof(StatsType)).Cast<StatsType>().ToList();
+        var types = Enum.GetValues(typeof(UpgradeType)).Cast<UpgradeType>().ToList();
         var parent = StatsSliderTemplate.GetParent();
 
         foreach (var type in types)
         {
-            var info = StatsController.Instance.GetInfo(type);
-            var data = StatsController.Instance.GetOrCreateData(type);
+            var info = UpgradeController.Instance.GetInfo(type);
+            var data = UpgradeController.Instance.GetOrCreateData(type);
             var slider = StatsSliderTemplate.Duplicate() as DebugStatsSlider;
             slider.SetParent(parent);
             slider.Show();
 
             slider.NameLabel.Text = type.ToString();
-            slider.ValueLabel.Text = StatsController.Instance.GetStatsValue(type, data.Level).ToString();
+            slider.ValueLabel.Text = UpgradeController.Instance.GetValue(type, data.Level).ToString();
             slider.ValueSlider.MinValue = 0;
             slider.ValueSlider.MaxValue = UpgradeController.Instance.GetMaxLevel(type);
             slider.ValueSlider.Value = data.Level;
@@ -80,7 +80,7 @@ public partial class DebugStatsView : View
             {
                 var level = (int)d;
                 data.Level = level;
-                slider.ValueLabel.Text = StatsController.Instance.GetStatsValue(type, data.Level).ToString();
+                slider.ValueLabel.Text = UpgradeController.Instance.GetValue(type, data.Level).ToString();
             };
 
             sliders.Add(slider);

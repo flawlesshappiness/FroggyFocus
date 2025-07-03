@@ -5,7 +5,13 @@ using Godot.Collections;
 public partial class UpgradeInfo : Resource
 {
     [Export]
-    public StatsType Type;
+    public UpgradeType Type;
+
+    [Export]
+    public string Name;
+
+    [Export]
+    public string Description;
 
     [Export]
     public Array<float> Values;

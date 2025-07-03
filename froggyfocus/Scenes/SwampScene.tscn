@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=44 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
@@ -29,6 +29,8 @@
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
 [ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="23_fmiw0"]
+[ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="26_eoi61"]
+[ext_resource type="PackedScene" uid="uid://dphy7mkttpwga" path="res://Assets/Quaternius/Nature/CommonTree_Dead_5.fbx" id="27_tyvxw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_20fcr"]
 size = Vector2(1000, 1000)
@@ -114,7 +116,7 @@ geometry_parsed_geometry_type = 1
 
 [node name="SwampScene" type="Node3D" node_paths=PackedStringArray("FocusEvents")]
 script = ExtResource("1_qfos7")
-FocusEvents = [NodePath("World/FocusEvent_Land"), NodePath("World/FocusEvent_Lilypad"), NodePath("World/FocusEvent_Wood")]
+FocusEvents = [NodePath("World/FocusEvent_Land"), NodePath("World/FocusEvent_Lilypad"), NodePath("World/FocusEvent_Wood"), NodePath("World/FocusEvent_Mushroom")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_0ky7s")
@@ -618,6 +620,33 @@ transform = Transform3D(1.88067, 0, -2.33732, 0, 3, 0, 2.33732, 0, 1.88067, 3.58
 
 [node name="WoodLog_NoDetails_Filled_Straight2" parent="World/FocusEvent_Wood/Floor" instance=ExtResource("23_fmiw0")]
 transform = Transform3D(-2.90087, 0, 0.764818, 0, 3, 0, -0.764818, 0, -2.90087, -6.19449, -1.21416, -1.99738)
+
+[node name="FocusEvent_Mushroom" parent="World" instance=ExtResource("12_yvk0y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 320)
+visible = false
+Id = "mushroom"
+Info = ExtResource("12_cmxon")
+Size = Vector2(5, 3)
+
+[node name="Floor" type="Node3D" parent="World/FocusEvent_Mushroom"]
+
+[node name="mushroom_platform" parent="World/FocusEvent_Mushroom/Floor" instance=ExtResource("26_eoi61")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 3.38824)
+
+[node name="mushroom_platform2" parent="World/FocusEvent_Mushroom/Floor" instance=ExtResource("26_eoi61")]
+transform = Transform3D(-4.48633, 0, -8.93716, 0, 10, 0, 8.93716, 0, -4.48633, -2.98624, -0.11723, -0.958069)
+
+[node name="mushroom_platform3" parent="World/FocusEvent_Mushroom/Floor" instance=ExtResource("26_eoi61")]
+transform = Transform3D(-5.9572, 0, 8.03192, 0, 10, 0, -8.03192, 0, -5.9572, 1.98243, -0.233113, -1.28876)
+
+[node name="CommonTree_Dead_5" parent="World/FocusEvent_Mushroom/Floor" instance=ExtResource("27_tyvxw")]
+transform = Transform3D(-5.46047, 0, -13.9708, 0, 15, 0, 13.9708, 0, -5.46047, -5.78461, -6.35527, -3.00241)
+
+[node name="CommonTree_Dead_6" parent="World/FocusEvent_Mushroom/Floor" instance=ExtResource("27_tyvxw")]
+transform = Transform3D(-9.88093, 0, 11.2857, 0, 15, 0, -11.2857, 0, -9.88093, 4.27317, -6.35527, -2.88821)
+
+[node name="CommonTree_Dead_7" parent="World/FocusEvent_Mushroom/Floor" instance=ExtResource("27_tyvxw")]
+transform = Transform3D(14.9571, 0, -1.13408, 0, 15, 0, 1.13408, 0, 14.9571, 0.54985, -6.35527, 6.9454)
 
 [node name="Sounds" type="Node3D" parent="."]
 

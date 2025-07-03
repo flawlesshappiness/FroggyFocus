@@ -51,7 +51,7 @@ public partial class InventoryController : SingletonController
 
     public int GetCurrentSize()
     {
-        return (int)StatsController.Instance.GetCurrentValue(StatsType.InventorySize);
+        return (int)UpgradeController.Instance.GetCurrentValue(UpgradeType.InventorySize);
     }
 
     public bool IsInventoryFull()

@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_tt6wn")
 Type = 3
-Value = 1.0
+Name = "Focus decay"
+Description = "Decreases focus lost over time"
 Values = Array[float]([1.0, 0.98, 0.96, 0.94, 0.92, 0.9])
 OverridePrice = null
 metadata/_custom_type_script = "uid://fxfoc46ir0al"

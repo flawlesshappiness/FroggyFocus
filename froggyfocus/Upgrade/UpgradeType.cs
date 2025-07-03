@@ -1,4 +1,4 @@
-public enum StatsType
+public enum UpgradeType
 {
     CursorRadius = 0,
     CursorSpeed = 1,
