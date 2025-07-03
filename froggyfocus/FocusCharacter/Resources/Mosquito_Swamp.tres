@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://d3biw384eh4mn"]
+
+[ext_resource type="PackedScene" uid="uid://ir8kqnw2coxy" path="res://Prefabs/Characters/mosquito.tscn" id="1_ubp8e"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_ttvjf"]
+
+[resource]
+script = ExtResource("2_ttvjf")
+Scene = ExtResource("1_ubp8e")
+Name = "Mosquito"
+Description = "Skeevy little bloodsucker, like credit cards and bank loans."
+FocusValue = 75.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveLengthRange = Vector2(0.3, 0.6)
+MoveDelayRange = Vector2(0, 0)
+CurrencyReward = 25
+Difficulty = 0.0
+SkillChecks = null
+metadata/_custom_type_script = "uid://buqirimb2mf5"

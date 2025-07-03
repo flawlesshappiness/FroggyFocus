@@ -66,7 +66,7 @@ public partial class FocusEvent : Node3D
     private void CreateTarget()
     {
         Target.GlobalPosition = GlobalPosition;
-        Target.SetCharacter(Info.Characters.PickRandom());
+        Target.SetCharacter(Info.GetRandomCharacter());
         Target.Show();
     }
 
@@ -164,12 +164,17 @@ public partial class FocusEvent : Node3D
             var is_skill_check = rng.Randf() < 0.5f;
             if (has_skill_checks && is_skill_check)
             {
+                Target.StopMoving();
                 yield return WaitForSkillCheck();
             }
             else
             {
                 var duration = rng.RandfRange(Target.Info.MoveDelayRange.X, Target.Info.MoveDelayRange.Y);
-                yield return new WaitForSeconds(duration);
+                if (duration > 0)
+                {
+                    Target.StopMoving();
+                    yield return new WaitForSeconds(duration);
+                }
             }
         }
     }

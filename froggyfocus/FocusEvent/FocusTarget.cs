@@ -65,7 +65,10 @@ public partial class FocusTarget : Node3D
             Move(dir_to_position.Normalized() * Info.MoveSpeed * GameTime.DeltaTime);
             yield return null;
         }
+    }
 
+    public void StopMoving()
+    {
         Character.SetMoving(false);
     }
 

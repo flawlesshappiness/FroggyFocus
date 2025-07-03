@@ -60,6 +60,7 @@ public partial class Player : TopDownController
         OnLand += () => JumpChanged(false);
 
         InteractLock.OnLocked += InteractLocked;
+        InteractLock.OnFree += InteractFree;
     }
 
     public override void _Process(double delta)
@@ -160,6 +161,11 @@ public partial class Player : TopDownController
     private void InteractLocked()
     {
         StopWaitForFocusTarget();
+    }
+
+    private void InteractFree()
+    {
+        StartWaitForFocusTarget();
     }
 
     public void SetCameraTarget()
