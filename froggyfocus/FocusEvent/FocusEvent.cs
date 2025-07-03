@@ -146,6 +146,9 @@ public partial class FocusEvent : Node3D
             {
                 FocusEventController.Instance.FocusEventFailed(new FocusEventFailedResult(this));
             }
+
+            // Save
+            Data.Game.Save();
         }
     }
 

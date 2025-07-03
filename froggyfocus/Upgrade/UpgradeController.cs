@@ -91,6 +91,7 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
 
         CurrencyController.Instance.AddValue(CurrencyType.Money, -price);
         data.Level = next_level;
+
         Data.Game.Save();
 
         return true;

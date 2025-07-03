@@ -145,6 +145,8 @@ public partial class ShopView : View
             ShopContainer.TabContainer.GetTabBar().GrabFocus();
 
             popup_active = false;
+
+            Data.Game.Save();
         };
     }
 
@@ -163,6 +165,8 @@ public partial class ShopView : View
             ShopContainer.TabContainer.GetTabBar().GrabFocus();
 
             popup_active = false;
+
+            Data.Game.Save();
         };
     }
 

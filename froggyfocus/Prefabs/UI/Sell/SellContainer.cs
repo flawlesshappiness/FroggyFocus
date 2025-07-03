@@ -53,6 +53,7 @@ public partial class SellContainer : ControlScript
         }
 
         Data.Game.Save();
+
         InventoryContainer.UpdateButtons();
         UpdateSellAllButton();
         SfxSell.Play();
