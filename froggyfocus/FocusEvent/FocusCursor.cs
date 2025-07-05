@@ -31,6 +31,8 @@ public partial class FocusCursor : Node3D
     private bool Filled { get; set; }
     private bool Empty { get; set; }
 
+    public static readonly MultiLock FocusGainLock = new();
+
     private float next_tick;
 
     public event Action OnFocusStarted;
@@ -54,6 +56,7 @@ public partial class FocusCursor : Node3D
         Empty = false;
         InputEnabled = true;
         TickEnabled = true;
+        FocusGainLock.Clear();
         Show();
     }
 
@@ -118,6 +121,8 @@ public partial class FocusCursor : Node3D
 
         if (IsTargetInRange)
         {
+            if (FocusGainLock.IsLocked) return;
+
             SetFocusValue(FocusValue + FocusTickAmount);
             PlayFocusChangedSFX(FocusValue);
             Animation.Play("BounceIn");

@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv72vye2jwinf"]
+[gd_scene load_steps=6 format=3 uid="uid://bv72vye2jwinf"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_oaq2l"]
 [ext_resource type="PackedScene" uid="uid://vewjq2s0xdwu" path="res://Assets/FlawLizArt/Nature/Bugs/waxworm.fbx" id="2_oaq2l"]
+[ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="3_6y1go"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_qbkpi"]
+[ext_resource type="PackedScene" uid="uid://bc1nb7nssehh2" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_straight.fbx" id="4_qbkpi"]
 
-[node name="Waxworm" type="Node3D" node_paths=PackedStringArray("Animation")]
+[node name="Waxworm" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_oaq2l")
 Animation = NodePath("AnimationStateMachine")
+Accessories = [NodePath("waxworm/Armature/Skeleton3D/mushroom"), NodePath("waxworm/Armature/Skeleton3D/mushroom2"), NodePath("waxworm/Armature/Skeleton3D/mushroom3"), NodePath("waxworm/Armature/Skeleton3D/mushroom4")]
 
 [node name="waxworm" parent="." instance=ExtResource("2_oaq2l")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -26,6 +29,41 @@ bones/13/position = Vector3(0, 0.019, 0.00546361)
 bones/15/position = Vector3(0, 0.029, 0.0043807)
 bones/15/rotation = Quaternion(-0.0690713, -1.53369e-17, -2.83909e-25, 0.997612)
 bones/17/position = Vector3(0, 0.039, 0.00194417)
+
+[node name="mushroom" type="BoneAttachment3D" parent="waxworm/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048, 0.00494417)
+bone_name = "Head"
+bone_idx = 18
+
+[node name="mushroom_bent" parent="waxworm/Armature/Skeleton3D/mushroom" instance=ExtResource("3_6y1go")]
+transform = Transform3D(0.0015857, -3.58003e-10, 0.00474189, 0.00474189, -4.7633e-10, -0.0015857, 5.65278e-10, 0.005, 1.8846e-10, -0.00384617, 0.00253812, 0.0101542)
+
+[node name="mushroom_bent2" parent="waxworm/Armature/Skeleton3D/mushroom" instance=ExtResource("3_6y1go")]
+transform = Transform3D(0.00145493, 3.61154e-10, -0.00478364, -0.00478364, -4.86202e-10, -0.00145493, -5.70254e-10, 0.005, 2.04048e-10, 0.00341948, 0.00253812, 0.0101542)
+
+[node name="mushroom2" type="BoneAttachment3D" parent="waxworm/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 2.11868e-18, -3.06005e-17, 2.11868e-18, 0.990458, 0.137813, 3.06005e-17, -0.137813, 0.990458, 0, 0.027, 0.0043807)
+bone_name = "Spine.008"
+bone_idx = 15
+
+[node name="mushroom_straight" parent="waxworm/Armature/Skeleton3D/mushroom2" instance=ExtResource("4_qbkpi")]
+transform = Transform3D(0.005, 0, 0, 0, 0.00117028, -0.00486112, 0, 0.00486112, 0.00117028, 0.000459868, 0.0028929, 0.0164221)
+
+[node name="mushroom3" type="BoneAttachment3D" parent="waxworm/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.45673e-18, 3.90275e-17, 3.45672e-18, 0.984432, -0.175764, -3.90275e-17, 0.175764, 0.984432, 0, 0.007, 0.00343316)
+bone_name = "Spine.006"
+bone_idx = 11
+
+[node name="mushroom_straight" parent="waxworm/Armature/Skeleton3D/mushroom3" instance=ExtResource("4_qbkpi")]
+transform = Transform3D(0.00492934, -0.000834787, -6.89401e-05, -9.98532e-11, 0.000411518, -0.00498303, 0.000837629, 0.00491261, 0.000405703, -0.00363854, 0.0028929, 0.0164221)
+
+[node name="mushroom4" type="BoneAttachment3D" parent="waxworm/Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023, 0.0051252)
+bone_name = "Spine.003"
+bone_idx = 5
+
+[node name="mushroom_straight" parent="waxworm/Armature/Skeleton3D/mushroom4" instance=ExtResource("4_qbkpi")]
+transform = Transform3D(0.00489997, 0.000991753, 8.19029e-05, 1.11283e-10, 0.000411518, -0.00498304, -0.000995129, 0.00488335, 0.000403286, 0.00330828, 0.0028929, 0.0164221)
 
 [node name="AnimationPlayer" parent="waxworm" index="1"]
 playback_default_blend_time = 0.25

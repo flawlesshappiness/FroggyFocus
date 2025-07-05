@@ -13,6 +13,13 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     [Export]
     public SkillCheckBomb BombTemplate;
 
+    [Export]
+    public PackedScene PsExplode;
+
+    [Export]
+    public PackedScene PsSpores;
+
+    private List<ParticleEffectGroup> effects = new();
     private List<Bomb> bombs = new();
 
     private int id = 0;
@@ -40,12 +47,18 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     public override void Clear()
     {
         base.Clear();
+
         bombs.ForEach(x => x.Clear());
         bombs.Clear();
+
+        effects.ForEach(x => x.Destroy(true));
+        effects.Clear();
     }
 
     protected override IEnumerator Run()
     {
+        FocusCursor.FocusGainLock.AddLock(nameof(FocusSkillCheck_Bombs));
+
         var last_angle = rng.RandfRange(0f, 360f);
         var count = GetDifficultyInt(BombCountRange);
         for (int i = 0; i < count; i++)
@@ -61,6 +74,8 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
         {
             yield return bomb.Coroutine;
         }
+
+        FocusCursor.FocusGainLock.RemoveLock(nameof(FocusSkillCheck_Bombs));
     }
 
     private Coroutine RunBomb(Bomb bomb)
@@ -77,6 +92,8 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             bomb.Node.RotationDegrees = Vector3.Up * rng.RandfRange(0f, 360f);
             bomb.Node.GlobalPosition = bomb.Position;
             bomb.Node.Show();
+
+            var ps_spores = PlaySporesPS(bomb.Position);
 
             yield return bomb.Node.AnimateShow();
 
@@ -104,15 +121,18 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
                 yield return null;
             }
 
+            ps_spores.Stop(true);
+
             // Explode
             if (success)
             {
-                FocusEvent.Cursor.AdjustFocusValue(20);
+                FocusEvent.Cursor.AdjustFocusValue(10);
                 yield return bomb.Node.AnimateCollect();
             }
             else
             {
-                FocusEvent.Cursor.AdjustFocusValue(-40);
+                PlayExplodePS(bomb.Position);
+                FocusEvent.Cursor.AdjustFocusValue(-20);
                 yield return bomb.Node.AnimateExplode();
             }
 
@@ -152,5 +172,23 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
         var dir = Vector3.Forward.Rotated(Vector3.Up, Mathf.DegToRad(angle));
         var position = center + dir * radius * radius_mul;
         return position;
+    }
+
+    private void PlayExplodePS(Vector3 position)
+    {
+        var ps = PsExplode.Instantiate<ParticleEffectGroup>();
+        ps.SetParent(Scene.Current);
+        ps.GlobalPosition = position;
+        ps.Play(true);
+    }
+
+    private ParticleEffectGroup PlaySporesPS(Vector3 position)
+    {
+        var ps = PsSpores.Instantiate<ParticleEffectGroup>();
+        ps.SetParent(Scene.Current);
+        ps.GlobalPosition = position;
+        ps.Play();
+        effects.Add(ps);
+        return ps;
     }
 }

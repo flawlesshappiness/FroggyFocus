@@ -67,6 +67,6 @@ public partial class FocusCharacter : Character
 
     public void SetAccessory(string name)
     {
-        Accessories?.ForEach(x => x.Visible = x.Name == name);
+        Accessories?.ForEach(x => x.Visible = !string.IsNullOrEmpty(name) && x.Name.ToString().Contains(name));
     }
 }

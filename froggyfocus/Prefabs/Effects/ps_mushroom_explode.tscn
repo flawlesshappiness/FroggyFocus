@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1s4wbsn8d1ly"]
+
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_sv8lu"]
+[ext_resource type="Material" uid="uid://bs7gnasxvanql" path="res://Materials/PS_Yellow.tres" id="2_hc0c6"]
+
+[sub_resource type="Curve" id="Curve_s0l0h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.1, 0.7), 0.0, 0.0, 0, 0, Vector2(0.2, 0.9), 0.0, 0.0, 0, 0, Vector2(0.3, 0.6), 0.0, 0.0, 0, 0, Vector2(0.4, 0.8), 0.0, 0.0, 0, 0, Vector2(0.5, 0.5), 0.0, 0.0, 0, 0, Vector2(0.6, 0.7), 0.0, 0.0, 0, 0, Vector2(0.7, 0.4), 0.0, 0.0, 0, 0, Vector2(0.8, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="CurveTexture" id="CurveTexture_qdn1e"]
+curve = SubResource("Curve_s0l0h")
+
+[sub_resource type="Curve" id="Curve_bpgiw"]
+_data = [Vector2(0, 1), 0.0, -2.67595, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c5d3f"]
+curve = SubResource("Curve_bpgiw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c5d3f"]
+lifetime_randomness = 0.5
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+velocity_limit_curve = SubResource("CurveTexture_c5d3f")
+gravity = Vector3(0, 1, 0)
+scale_min = 0.02
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_qdn1e")
+
+[sub_resource type="SphereMesh" id="SphereMesh_em400"]
+material = ExtResource("2_hc0c6")
+
+[node name="PsMushroomExplode" type="Node3D" node_paths=PackedStringArray("Particles")]
+script = ExtResource("1_sv8lu")
+DestroyDelay = 4.0
+Particles = [NodePath("spores")]
+
+[node name="spores" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0641277, 0)
+emitting = false
+amount = 20
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_c5d3f")
+draw_pass_1 = SubResource("SphereMesh_em400")

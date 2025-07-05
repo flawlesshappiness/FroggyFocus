@@ -27,8 +27,8 @@ initial_velocity_min = 1.0
 initial_velocity_max = 1.0
 velocity_limit_curve = SubResource("CurveTexture_r4frm")
 gravity = Vector3(0, 0, 0)
-scale_min = 0.2
-scale_max = 0.3
+scale_min = 0.05
+scale_max = 0.1
 scale_curve = SubResource("CurveTexture_ny45k")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f076a"]
@@ -60,10 +60,8 @@ Particles = [NodePath("ps_foam_horizontal")]
 
 [node name="ps_foam_horizontal" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.53741, 0)
-emitting = false
 amount = 5
 lifetime = 2.0
-one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_k3d21")
 draw_pass_1 = SubResource("SphereMesh_7e8tb")

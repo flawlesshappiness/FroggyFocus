@@ -42,9 +42,31 @@ public partial class ParticleEffectGroup : Node3D
 
             if (destroy)
             {
-                yield return new WaitForSeconds(DestroyDelay);
-                QueueFree();
+                yield return Destroy();
             }
+        }
+    }
+
+    public void Stop(bool destroy = false, bool immediate = false)
+    {
+        Particles.ForEach(x => x.Emitting = false);
+
+        if (destroy)
+        {
+            Destroy(immediate);
+        }
+    }
+
+    public Coroutine Destroy(bool immediate = false)
+    {
+        return this.StartCoroutine(Cr, "destroy");
+        IEnumerator Cr()
+        {
+            if (!immediate)
+            {
+                yield return new WaitForSeconds(DestroyDelay);
+            }
+            QueueFree();
         }
     }
 }

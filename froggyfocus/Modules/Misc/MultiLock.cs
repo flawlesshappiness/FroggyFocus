@@ -10,6 +10,12 @@ public class MultiLock
     public bool IsLocked => _locks.Count > 0;
     public bool IsFree => _locks.Count == 0;
 
+    public void Clear()
+    {
+        _locks.Clear();
+        OnFree?.Invoke();
+    }
+
     public void AddLock(string key)
     {
         if (_locks.Contains(key)) return;
