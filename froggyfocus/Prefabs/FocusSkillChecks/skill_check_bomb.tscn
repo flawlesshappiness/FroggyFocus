@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3em6nli2qht2"]
+[gd_scene load_steps=17 format=3 uid="uid://d3em6nli2qht2"]
 
 [ext_resource type="Script" uid="uid://8huy3rb2n641" path="res://FocusSkillCheck/SkillCheckBomb.cs" id="1_fx42g"]
 [ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="2_l8i6u"]
 [ext_resource type="AudioStream" uid="uid://duovipuu4q1bh" path="res://Sounds/Raw/sfx_balloon_pop_001.wav" id="3_l8i6u"]
-[ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="4_uj3j4"]
+[ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="3_s0l0h"]
+[ext_resource type="AudioStream" uid="uid://5hlqxufdxy21" path="res://Sounds/Raw/sfx_pop.wav" id="5_s0l0h"]
 
 [sub_resource type="Animation" id="Animation_l8i6u"]
 length = 0.001
@@ -50,6 +51,18 @@ tracks/3/path = NodePath("SfxCollect:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxShow:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -202,6 +215,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxShow:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uj3j4"]
 _data = {
@@ -226,7 +251,12 @@ stream_0/stream = ExtResource("3_l8i6u")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_burhv"]
 streams_count = 1
-stream_0/stream = ExtResource("4_uj3j4")
+stream_0/stream = ExtResource("5_s0l0h")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s0l0h"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_s0l0h")
 
 [node name="SkillCheckBomb" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
 script = ExtResource("1_fx42g")
@@ -239,12 +269,16 @@ libraries = {
 playback_default_blend_time = 0.15
 
 [node name="Anim" type="Node3D" parent="."]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.4, 0)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Anim"]
+visible = false
 mesh = SubResource("SphereMesh_msjuc")
 skeleton = NodePath("../..")
+
+[node name="mushroom_bent" parent="Anim" instance=ExtResource("3_s0l0h")]
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)
 
 [node name="SfxPop" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_uj3j4")
@@ -254,4 +288,10 @@ bus = &"SFX"
 
 [node name="SfxCollect" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_burhv")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="SfxShow" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_s0l0h")
+volume_db = -5.0
 bus = &"SFX"

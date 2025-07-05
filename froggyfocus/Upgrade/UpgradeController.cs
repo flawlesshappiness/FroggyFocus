@@ -43,7 +43,6 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
             v.SetContent_Search();
 
             var data = GetOrCreateData(info.Type);
-            Debug.Log(data.Level);
             for (int i = 0; i < info.Values.Count; i++)
             {
                 var level = i;

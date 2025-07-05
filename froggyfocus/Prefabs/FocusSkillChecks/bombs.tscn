@@ -9,10 +9,9 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("3_mpjhp")
 
-[node name="Bombs" type="Node3D" node_paths=PackedStringArray("BombTemplate", "SfxCreateBomb")]
+[node name="Bombs" type="Node3D" node_paths=PackedStringArray("BombTemplate")]
 script = ExtResource("1_whlow")
 BombTemplate = NodePath("SkillCheckBomb")
-SfxCreateBomb = NodePath("SfxCreateBomb")
 Type = 1
 
 [node name="SkillCheckBomb" parent="." instance=ExtResource("2_enwqw")]

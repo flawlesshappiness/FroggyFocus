@@ -13,9 +13,6 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     [Export]
     public SkillCheckBomb BombTemplate;
 
-    [Export]
-    public AudioStreamPlayer3D SfxCreateBomb;
-
     private List<Bomb> bombs = new();
 
     private int id = 0;
@@ -76,20 +73,12 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             yield return new WaitForSeconds(bomb.Delay);
 
             // Move to position
-            var start = FocusEvent.Target.GlobalPosition;
-            var end = bomb.Position;
-            var curve = Curves.EaseOutQuad;
 
-            bomb.Node.GlobalPosition = start;
+            bomb.Node.RotationDegrees = Vector3.Up * rng.RandfRange(0f, 360f);
+            bomb.Node.GlobalPosition = bomb.Position;
             bomb.Node.Show();
-            bomb.Node.AnimateShow();
-            SfxCreateBomb.Play();
 
-            yield return LerpEnumerator.Lerp01(0.5f, f =>
-            {
-                var t = curve.Evaluate(f);
-                bomb.Node.GlobalPosition = start.Lerp(end, t);
-            });
+            yield return bomb.Node.AnimateShow();
 
             bomb.Node.AnimateIdle();
 

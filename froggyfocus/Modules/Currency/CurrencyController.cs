@@ -104,6 +104,8 @@ public partial class CurrencyController : Node
         view.ContentSearch.Show();
         view.ContentSearch.ClearItems();
 
+        view.ContentSearch.AddItem("-10000", () => AddValue(type, -10000));
+        view.ContentSearch.AddItem("-1000", () => AddValue(type, -1000));
         view.ContentSearch.AddItem("-100", () => AddValue(type, -100));
         view.ContentSearch.AddItem("-10", () => AddValue(type, -10));
         view.ContentSearch.AddItem("-5", () => AddValue(type, -5));
@@ -112,6 +114,8 @@ public partial class CurrencyController : Node
         view.ContentSearch.AddItem("+5", () => AddValue(type, 5));
         view.ContentSearch.AddItem("+10", () => AddValue(type, 10));
         view.ContentSearch.AddItem("+100", () => AddValue(type, 100));
+        view.ContentSearch.AddItem("+1000", () => AddValue(type, 1000));
+        view.ContentSearch.AddItem("+10000", () => AddValue(type, 10000));
 
         view.ContentSearch.UpdateButtons();
     }

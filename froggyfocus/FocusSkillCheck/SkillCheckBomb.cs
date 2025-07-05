@@ -6,28 +6,18 @@ public partial class SkillCheckBomb : Node3D
     [Export]
     public AnimationPlayer AnimationPlayer;
 
-    public void AnimateShow()
-    {
-        AnimationPlayer.Play("show");
-    }
+    public Coroutine AnimateShow() => Animate("show");
+    public Coroutine AnimateIdle() => Animate("idle");
+    public Coroutine AnimateIdleFast() => Animate("idle_fast");
+    public Coroutine AnimateCollect() => Animate("collect");
+    public Coroutine AnimateExplode() => Animate("explode");
 
-    public void AnimateIdle()
+    private Coroutine Animate(string animation)
     {
-        AnimationPlayer.Play("idle");
-    }
-
-    public void AnimateIdleFast()
-    {
-        AnimationPlayer.Play("idle_fast");
-    }
-
-    public IEnumerator AnimateCollect()
-    {
-        return AnimationPlayer.PlayAndWaitForAnimation("collect");
-    }
-
-    public IEnumerator AnimateExplode()
-    {
-        return AnimationPlayer.PlayAndWaitForAnimation("explode");
+        return this.StartCoroutine(Cr);
+        IEnumerator Cr()
+        {
+            yield return AnimationPlayer.PlayAndWaitForAnimation(animation);
+        }
     }
 }

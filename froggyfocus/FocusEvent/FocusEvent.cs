@@ -116,11 +116,13 @@ public partial class FocusEvent : Node3D
         this.StartCoroutine(Cr, "event");
         IEnumerator Cr()
         {
-            // Clear skill check
-            ClearSkillCheck();
-
             // Disable cursor
             Cursor.Stop();
+
+            yield return new WaitForSeconds(0.25f);
+
+            // Clear skill check
+            ClearSkillCheck();
 
             // Eat target
             FocusOutroView.Instance.CreateTarget(Target.Info);
