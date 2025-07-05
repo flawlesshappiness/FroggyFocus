@@ -55,7 +55,7 @@ public partial class ShopView : View
 
     private void RegisterDebugActions()
     {
-        var category = nameof(ShopView);
+        var category = "SHOP";
 
         Debug.RegisterAction(new DebugAction
         {
@@ -70,6 +70,79 @@ public partial class ShopView : View
             Text = "Hide",
             Action = v => { v.Close(); Close(); }
         });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Unlock items",
+            Action = v => UnlockItems(v)
+        });
+
+        void UnlockItems(DebugView v)
+        {
+            v.SetContent_Search();
+            v.ContentSearch.AddItem("Colors", () => UnlockColors(v));
+            v.ContentSearch.AddItem("Hats", () => UnlockHats(v));
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void UnlockColors(DebugView v)
+        {
+            v.SetContent_Search();
+
+            var infos = AppearanceColorController.Instance.Collection.Resources;
+            foreach (var info in infos)
+            {
+                var unlocked = Data.Game.Appearance.UnlockedColors.Contains(info.Type) ? "> " : string.Empty;
+                v.ContentSearch.AddItem($"{unlocked}{info.Name}", () => ToggleColor(info.Type, v));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void ToggleColor(AppearanceColorType type, DebugView v)
+        {
+            if (Data.Game.Appearance.UnlockedColors.Contains(type))
+            {
+                Data.Game.Appearance.UnlockedColors.Remove(type);
+            }
+            else
+            {
+                Data.Game.Appearance.UnlockedColors.Add(type);
+            }
+
+            Data.Game.Save();
+            UnlockColors(v);
+        }
+
+        void UnlockHats(DebugView v)
+        {
+            v.SetContent_Search();
+
+            var infos = AppearanceHatController.Instance.Collection.Resources;
+            foreach (var info in infos)
+            {
+                var unlocked = Data.Game.Appearance.UnlockedHats.Contains(info.Type) ? "> " : string.Empty;
+                v.ContentSearch.AddItem($"{unlocked}{info.Name}", () => ToggleHat(info.Type, v));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void ToggleHat(AppearanceHatType type, DebugView v)
+        {
+            if (Data.Game.Appearance.UnlockedHats.Contains(type))
+            {
+                Data.Game.Appearance.UnlockedHats.Remove(type);
+            }
+            else
+            {
+                Data.Game.Appearance.UnlockedHats.Add(type);
+            }
+
+            Data.Game.Save();
+            UnlockHats(v);
+        }
     }
 
     public override void _Input(InputEvent @event)
