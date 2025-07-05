@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd3byp0bhv1ml"]
+
+[ext_resource type="PackedScene" uid="uid://dy3weolguo8pt" path="res://Assets/FlawLizArt/Clothing/mushroom.fbx" id="2_vcsav"]
+
+[node name="PreviewHat" type="Node3D"]
+
+[node name="mushroom" parent="." instance=ExtResource("2_vcsav")]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, -0.117489, 0)

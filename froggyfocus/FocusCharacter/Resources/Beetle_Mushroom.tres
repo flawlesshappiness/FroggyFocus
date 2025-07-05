@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://3objvy6bb7dt"]
+
+[ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="1_r72sm"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_a6qrx"]
+
+[resource]
+script = ExtResource("2_a6qrx")
+Scene = ExtResource("1_r72sm")
+Name = "Infested Beetle"
+Description = "The taste is bland, but it is crunchy and filling."
+Accessory = "mushroom"
+FocusValue = 75.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(0.5, 1)
+CurrencyReward = 25
+Difficulty = 0.0
+SkillChecks = Array[int]([1, 2])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

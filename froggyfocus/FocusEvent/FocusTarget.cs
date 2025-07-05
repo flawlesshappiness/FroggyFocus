@@ -22,6 +22,7 @@ public partial class FocusTarget : Node3D
 
         Info = info;
         Character = info.Scene.Instantiate<FocusCharacter>();
+        Character.Initialize(info);
         Character.SetParent(this);
         Character.Position = Vector3.Zero;
         Character.Rotation = Vector3.Zero;

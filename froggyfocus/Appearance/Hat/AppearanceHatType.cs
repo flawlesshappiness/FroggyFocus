@@ -7,5 +7,6 @@ public enum AppearanceHatType
     CowboyHat,
     TopHat,
     Tiara,
-    Bow
+    Bow,
+    Mushroom
 }

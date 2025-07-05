@@ -108,7 +108,10 @@ public partial class InventoryControl : ControlScript
     {
         ClearPreviewCharacter();
 
-        current_preview = info.Scene.Instantiate<FocusCharacter>();
+        var character = info.Scene.Instantiate<FocusCharacter>();
+        character.Initialize(info);
+
+        current_preview = character;
         current_preview.SetParent(PreviewOrigin);
         current_preview.Position = Vector3.Zero;
         current_preview.Rotation = Vector3.Zero;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=45 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
 [ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="23_fmiw0"]
 [ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="26_eoi61"]
+[ext_resource type="Resource" uid="uid://domnlcvrorsml" path="res://FocusEvent/Resources/Swamp Mushroom.tres" id="26_ghoyf"]
 [ext_resource type="PackedScene" uid="uid://dphy7mkttpwga" path="res://Assets/Quaternius/Nature/CommonTree_Dead_5.fbx" id="27_tyvxw"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_20fcr"]
@@ -625,7 +626,7 @@ transform = Transform3D(-2.90087, 0, 0.764818, 0, 3, 0, -0.764818, 0, -2.90087, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 320)
 visible = false
 Id = "mushroom"
-Info = ExtResource("12_cmxon")
+Info = ExtResource("26_ghoyf")
 Size = Vector2(5, 3)
 
 [node name="Floor" type="Node3D" parent="World/FocusEvent_Mushroom"]

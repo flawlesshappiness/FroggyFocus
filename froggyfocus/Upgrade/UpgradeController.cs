@@ -8,6 +8,61 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
 
     private int[] DefaultPrices = [100, 500, 1000, 4000, 10000, 18000, 30000, 50000];
 
+    public override void _Ready()
+    {
+        base._Ready();
+        RegisterDebugActions();
+    }
+
+    private void RegisterDebugActions()
+    {
+        var category = "UPGRADES";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Set level",
+            Action = v => SetLevel(v)
+        });
+
+        void SetLevel(DebugView v)
+        {
+            v.SetContent_Search();
+
+            var infos = Collection.Resources;
+            foreach (var info in infos)
+            {
+                v.ContentSearch.AddItem($"{info.Name} ({info.GetResourceName()})", () => SelectUpgradeLevel(v, info));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SelectUpgradeLevel(DebugView v, UpgradeInfo info)
+        {
+            v.SetContent_Search();
+
+            var data = GetOrCreateData(info.Type);
+            Debug.Log(data.Level);
+            for (int i = 0; i < info.Values.Count; i++)
+            {
+                var level = i;
+                var selected = data.Level == i ? "> " : string.Empty;
+                v.ContentSearch.AddItem($"{selected}{i}: {info.Values[i]}", () => SetUpgradeLevel(v, info, level));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SetUpgradeLevel(DebugView v, UpgradeInfo info, int level)
+        {
+            var data = GetOrCreateData(info.Type);
+            data.Level = level;
+            Data.Game.Save();
+            SetLevel(v);
+        }
+    }
+
     public UpgradeInfo GetInfo(UpgradeType type)
     {
         return Collection.Resources.FirstOrDefault(x => x.Type == type);

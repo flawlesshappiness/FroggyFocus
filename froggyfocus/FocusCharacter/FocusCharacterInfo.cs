@@ -14,6 +14,9 @@ public partial class FocusCharacterInfo : Resource
     public string Description;
 
     [Export]
+    public string Accessory;
+
+    [Export]
     public float FocusValue = 50;
 
     [Export]

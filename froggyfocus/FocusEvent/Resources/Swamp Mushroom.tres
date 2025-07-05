@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=7 format=3 uid="uid://domnlcvrorsml"]
+
+[ext_resource type="Resource" uid="uid://cqjm2dxtl5xbj" path="res://FocusCharacter/Resources/Beetle_Swamp.tres" id="1_gtaho"]
+[ext_resource type="Resource" uid="uid://inwyiv20wmwr" path="res://FocusCharacter/Resources/Worm_Swamp.tres" id="2_q7dtt"]
+[ext_resource type="Resource" uid="uid://3objvy6bb7dt" path="res://FocusCharacter/Resources/Beetle_Mushroom.tres" id="2_y5jxe"]
+[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm_Swamp.tres" id="3_y5jxe"]
+[ext_resource type="Resource" uid="uid://d3biw384eh4mn" path="res://FocusCharacter/Resources/Mosquito_Swamp.tres" id="4_c3fy8"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="5_r023v"]
+
+[resource]
+script = ExtResource("5_r023v")
+OverrideCharacter = ExtResource("2_y5jxe")
+Characters = Array[Object]([ExtResource("1_gtaho"), ExtResource("2_y5jxe"), ExtResource("2_q7dtt"), ExtResource("3_y5jxe"), ExtResource("4_c3fy8")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"
