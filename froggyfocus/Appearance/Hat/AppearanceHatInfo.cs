@@ -14,4 +14,7 @@ public partial class AppearanceHatInfo : Resource
 
     [Export]
     public int Price;
+
+    [Export]
+    public bool Locked;
 }

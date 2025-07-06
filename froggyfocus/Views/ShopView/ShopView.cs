@@ -1,5 +1,7 @@
 using Godot;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class ShopView : View
 {
@@ -74,74 +76,93 @@ public partial class ShopView : View
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Unlock items",
+            Text = "Items",
             Action = v => UnlockItems(v)
         });
 
         void UnlockItems(DebugView v)
         {
             v.SetContent_Search();
-            v.ContentSearch.AddItem("Colors", () => UnlockColors(v));
-            v.ContentSearch.AddItem("Hats", () => UnlockHats(v));
+            v.ContentSearch.AddItem("Colors", () => SelectColor(v));
+            v.ContentSearch.AddItem("Hats", () => SelectHat(v));
             v.ContentSearch.UpdateButtons();
         }
 
-        void UnlockColors(DebugView v)
+        void SelectColor(DebugView v)
         {
             v.SetContent_Search();
 
             var infos = AppearanceColorController.Instance.Collection.Resources;
             foreach (var info in infos)
             {
-                var unlocked = Data.Game.Appearance.UnlockedColors.Contains(info.Type) ? "> " : string.Empty;
-                v.ContentSearch.AddItem($"{unlocked}{info.Name}", () => ToggleColor(info.Type, v));
+                var unlocked = Data.Game.Appearance.PurchasedColors.Contains(info.Type) ? "> " : string.Empty;
+                v.ContentSearch.AddItem($"{unlocked}{info.Name}", () => ColorActions(info, v));
             }
 
             v.ContentSearch.UpdateButtons();
         }
 
-        void ToggleColor(AppearanceColorType type, DebugView v)
+        void ColorActions(AppearanceColorInfo info, DebugView v)
         {
-            if (Data.Game.Appearance.UnlockedColors.Contains(type))
+            v.SetContent_Search();
+            AddListToggleButtons(v, Data.Game.Appearance.PurchasedColors, info.Type, "purchased", () => ColorActions(info, v));
+
+            if (info.Locked)
             {
-                Data.Game.Appearance.UnlockedColors.Remove(type);
-            }
-            else
-            {
-                Data.Game.Appearance.UnlockedColors.Add(type);
+                AddListToggleButtons(v, Data.Game.Appearance.UnlockedColors, info.Type, "unlocked", () => ColorActions(info, v));
             }
 
-            Data.Game.Save();
-            UnlockColors(v);
+            v.ContentSearch.AddItem("back", () => SelectColor(v));
+            v.ContentSearch.UpdateButtons();
         }
 
-        void UnlockHats(DebugView v)
+        void SelectHat(DebugView v)
         {
             v.SetContent_Search();
 
             var infos = AppearanceHatController.Instance.Collection.Resources;
             foreach (var info in infos)
             {
-                var unlocked = Data.Game.Appearance.UnlockedHats.Contains(info.Type) ? "> " : string.Empty;
-                v.ContentSearch.AddItem($"{unlocked}{info.Name}", () => ToggleHat(info.Type, v));
+                v.ContentSearch.AddItem($"{info.Name}", () => HatActions(info, v));
             }
 
             v.ContentSearch.UpdateButtons();
         }
 
-        void ToggleHat(AppearanceHatType type, DebugView v)
+        void HatActions(AppearanceHatInfo info, DebugView v)
         {
-            if (Data.Game.Appearance.UnlockedHats.Contains(type))
+            v.SetContent_Search();
+            AddListToggleButtons(v, Data.Game.Appearance.PurchasedHats, info.Type, "purchased", () => HatActions(info, v));
+
+            if (info.Locked)
             {
-                Data.Game.Appearance.UnlockedHats.Remove(type);
+                AddListToggleButtons(v, Data.Game.Appearance.UnlockedHats, info.Type, "unlocked", () => HatActions(info, v));
+            }
+
+            v.ContentSearch.AddItem("back", () => SelectHat(v));
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void AddListToggleButtons<T>(DebugView v, List<T> list, T value, string text, Action pressed)
+        {
+            if (list.Contains(value))
+            {
+                v.ContentSearch.AddItem(text, () =>
+                {
+                    list.Remove(value);
+                    Data.Game.Save();
+                    pressed?.Invoke();
+                });
             }
             else
             {
-                Data.Game.Appearance.UnlockedHats.Add(type);
+                v.ContentSearch.AddItem($"not {text}", () =>
+                {
+                    list.Add(value);
+                    Data.Game.Save();
+                    pressed?.Invoke();
+                });
             }
-
-            Data.Game.Save();
-            UnlockHats(v);
         }
     }
 
@@ -213,7 +234,7 @@ public partial class ShopView : View
 
         PurchasePopup.OnPurchase = () =>
         {
-            Data.Game.Appearance.UnlockedHats.Add(info.Type);
+            Data.Game.Appearance.PurchasedHats.Add(info.Type);
             ShopContainer.HatsContainer.UpdateButtons();
             ShopContainer.TabContainer.GetTabBar().GrabFocus();
 
@@ -233,7 +254,7 @@ public partial class ShopView : View
 
         PurchasePopup.OnPurchase = () =>
         {
-            Data.Game.Appearance.UnlockedColors.Add(info.Type);
+            Data.Game.Appearance.PurchasedColors.Add(info.Type);
             ShopContainer.ColorContainer.UpdateButtons();
             ShopContainer.TabContainer.GetTabBar().GrabFocus();
 

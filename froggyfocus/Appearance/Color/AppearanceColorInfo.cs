@@ -14,4 +14,7 @@ public partial class AppearanceColorInfo : Resource
 
     [Export]
     public int Price;
+
+    [Export]
+    public bool Locked;
 }

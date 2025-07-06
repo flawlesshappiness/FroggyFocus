@@ -6,10 +6,10 @@ using System.Linq;
 public partial class HatsContainer : ControlScript
 {
     [Export]
-    public bool ShowLocked;
+    public bool ShowUnpurchased;
 
     [Export]
-    public bool ShowUnlocked;
+    public bool ShowPurchased;
 
     [Export]
     public bool ObscureLocked;
@@ -44,7 +44,7 @@ public partial class HatsContainer : ControlScript
         HatButtonTemplate.Hide();
 
         var infos = AppearanceHatController.Instance.Collection.Resources.ToList()
-            .OrderBy(IsHatUnlocked)
+            .OrderBy(IsHatPurchased)
             .ToList();
 
         var empty_button = CreateHatButton(null);
@@ -70,8 +70,8 @@ public partial class HatsContainer : ControlScript
     {
         var infos = AppearanceHatController.Instance.Collection.Resources.ToList();
 
-        var has_unlocked_hats = infos.Any(IsHatUnlocked);
-        UnlockHintLabel.Visible = !has_unlocked_hats && !ShowLocked;
+        var has_unlocked_hats = infos.Any(IsHatPurchased);
+        UnlockHintLabel.Visible = !has_unlocked_hats && !ShowUnpurchased;
 
         foreach (var map in maps)
         {
@@ -81,16 +81,22 @@ public partial class HatsContainer : ControlScript
             }
             else
             {
-                var locked = !IsHatUnlocked(map.Info);
-                map.Button.SetLocked(locked && ObscureLocked);
-                map.Button.Visible = locked == ShowLocked || !locked == ShowUnlocked;
+                var purchased = IsHatPurchased(map.Info);
+                var unlocked = IsHatUnlocked(map.Info);
+                map.Button.SetLocked(!purchased && ObscureLocked);
+                map.Button.Visible = unlocked && (!purchased == ShowUnpurchased || purchased == ShowPurchased);
             }
         }
     }
 
+    private bool IsHatPurchased(AppearanceHatInfo info)
+    {
+        return Data.Game.Appearance.PurchasedHats.Contains(info.Type);
+    }
+
     private bool IsHatUnlocked(AppearanceHatInfo info)
     {
-        return Data.Game.Appearance.UnlockedHats.Contains(info.Type);
+        return !info.Locked || Data.Game.Appearance.UnlockedHats.Contains(info.Type);
     }
 
     private AppearancePreviewButton CreateHatButton(AppearanceHatInfo info)

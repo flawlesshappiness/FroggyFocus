@@ -61,7 +61,7 @@ public partial class AppearanceColorContainer : ControlScript
     {
         foreach (var map in maps)
         {
-            var unlocked = Data.Game.Appearance.UnlockedColors.Contains(map.Info.Type);
+            var unlocked = Data.Game.Appearance.PurchasedColors.Contains(map.Info.Type);
             map.Button.Visible = unlocked == ShowUnlocked || !unlocked == ShowLocked;
         }
     }

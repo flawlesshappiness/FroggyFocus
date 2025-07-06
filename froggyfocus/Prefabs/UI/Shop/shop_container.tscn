@@ -33,10 +33,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xtxcp")
-current_tab = 3
+current_tab = 0
 
 [node name="Sell" parent="TabContainer" instance=ExtResource("2_qigjm")]
-visible = false
 layout_mode = 2
 
 [node name="Upgrades" parent="TabContainer" instance=ExtResource("3_ct30e")]
@@ -46,10 +45,11 @@ layout_mode = 2
 [node name="Hats" parent="TabContainer" instance=ExtResource("4_7sns5")]
 visible = false
 layout_mode = 2
-ShowLocked = true
+ShowUnpurchased = true
 metadata/_tab_index = 2
 
 [node name="Colors" parent="TabContainer" instance=ExtResource("5_48iua")]
+visible = false
 layout_mode = 2
 ShowLocked = true
 metadata/_tab_index = 3

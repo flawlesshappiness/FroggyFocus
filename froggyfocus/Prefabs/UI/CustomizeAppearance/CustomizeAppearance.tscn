@@ -149,7 +149,7 @@ ShowUnlocked = true
 [node name="Hats" parent="HBoxContainer/OptionsPanel/TabContainer" instance=ExtResource("5_1uex8")]
 visible = false
 layout_mode = 2
-ShowUnlocked = true
+ShowPurchased = true
 ShowEmpty = true
 
 [node name="CloseButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("2_c1ffu")]
