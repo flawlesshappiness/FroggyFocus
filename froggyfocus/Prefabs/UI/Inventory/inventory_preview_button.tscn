@@ -1,19 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://defec4lhqg2fo"]
+[gd_scene load_steps=6 format=3 uid="uid://defec4lhqg2fo"]
 
 [ext_resource type="Script" uid="uid://cxxqv8hu5oi06" path="res://Prefabs/UI/Inventory/InventoryPreviewButton.cs" id="1_c7vpv"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ijjcq"]
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="3_sycv1"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="4_sycv1"]
+[ext_resource type="PackedScene" uid="uid://yqqk17swwx5a" path="res://Prefabs/UI/Inventory/inventory_sub_viewport.tscn" id="5_knw73"]
 
-[node name="InventoryPreviewButton" type="Button" node_paths=PackedStringArray("ValueContainer", "ValueLabel", "Origin", "TextureRect", "SubViewport")]
+[node name="InventoryPreviewButton" type="Button" node_paths=PackedStringArray("ValueContainer", "ValueLabel", "TextureRect", "InventorySubViewport")]
 custom_minimum_size = Vector2(65, 65)
 theme = ExtResource("1_ijjcq")
 script = ExtResource("1_c7vpv")
 ValueContainer = NodePath("ValuePanel")
 ValueLabel = NodePath("ValuePanel/MarginContainer/HBoxContainer/ValueLabel")
-Origin = NodePath("SubViewport/Origin")
 TextureRect = NodePath("MarginContainer/TextureRect")
-SubViewport = NodePath("SubViewport")
+InventorySubViewport = NodePath("InventorySubViewport")
 SfxPressed = ExtResource("3_sycv1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -78,23 +78,4 @@ texture = ExtResource("4_sycv1")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="SubViewport" type="SubViewport" parent="."]
-own_world_3d = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1024, 1024)
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(-1, 0, 8.74228e-08, 6.34227e-08, 0.688253, 0.72547, -6.0169e-08, 0.72547, -0.688253, 0, 1.24829, -1.22868)
-current = true
-fov = 50.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
-
-[node name="Origin" type="Node3D" parent="SubViewport"]
-transform = Transform3D(0.783791, 0, -0.621025, 0, 1, 0, 0.621025, 0, 0.783791, 0, 0, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
-light_energy = 0.1
+[node name="InventorySubViewport" parent="." instance=ExtResource("5_knw73")]

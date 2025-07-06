@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://u6g71t3e8loy"]
+
+[ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/Hats/HatSubViewport.cs" id="1_avf3k"]
+
+[node name="HatSubViewport" type="SubViewport" node_paths=PackedStringArray("Origin")]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("1_avf3k")
+Origin = NodePath("Origin")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -1.5)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="Origin" type="Node3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Origin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1

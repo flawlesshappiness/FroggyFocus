@@ -181,8 +181,15 @@ public partial class HandInView : View
         if (data.MoneyReward > 0)
         {
             var preview = RewardPreviews[0];
-            preview.SetCoinStack();
-            preview.SetAmount(data.MoneyReward);
+            preview.SetCoinStack(data.MoneyReward);
+            preview.Show();
+        }
+
+        if (data.HatUnlock != AppearanceHatType.None && !Data.Game.Appearance.UnlockedHats.Contains(data.HatUnlock))
+        {
+            var preview = RewardPreviews[1];
+            var info = AppearanceHatController.Instance.Collection.Resources.FirstOrDefault(x => x.Type == data.HatUnlock);
+            preview.SetHat(info);
             preview.Show();
         }
     }
@@ -285,10 +292,17 @@ public partial class HandInView : View
             SfxMoney.Play();
         }
 
+        if (current_data.HatUnlock != AppearanceHatType.None)
+        {
+            AppearanceHatController.Instance.Unlock(current_data.HatUnlock);
+        }
+
         current_data.Claimed = true;
         CloseHandInButton_Pressed();
 
         HandInController.Instance.HandInClaimed(current_data);
+
+        Data.Game.Save();
     }
 
     private bool Validate()

@@ -72,7 +72,6 @@ public partial class DialogueView : View
     {
         DialogueLabel.Text = text;
         DialogueLabel.VisibleCharacters = 0;
-        has_active_dialogue = true;
 
         this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
@@ -87,6 +86,7 @@ public partial class DialogueView : View
                 AnimatedPanel_Dialogue.AnimateBounce();
             }
 
+            has_active_dialogue = true;
             input_received = false;
             yield return RevealTextSequence();
         }

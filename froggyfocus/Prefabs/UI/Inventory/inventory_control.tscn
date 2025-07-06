@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blseliwm3s1f1"]
+[gd_scene load_steps=11 format=3 uid="uid://blseliwm3s1f1"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w3kxo"]
 [ext_resource type="Script" uid="uid://bju7b4mhjacmp" path="res://Prefabs/UI/Inventory/InventoryControl.cs" id="2_v4q88"]
@@ -8,20 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_tufir"]
 [ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="5_7pmmq"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="5_gj1sa"]
+[ext_resource type="PackedScene" uid="uid://yqqk17swwx5a" path="res://Prefabs/UI/Inventory/inventory_sub_viewport.tscn" id="9_j41a6"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_boh4b"]
 viewport_path = NodePath("SubViewport_InventoryPreview")
 
-[node name="InventoryControl" type="Control" node_paths=PackedStringArray("InventoryContainer", "BackButton", "DiscardButton", "PreviewOrigin", "NameLabel", "DescriptionLabel", "ValueLabel", "ValueContainer")]
+[node name="InventoryControl" type="Control" node_paths=PackedStringArray("InventoryContainer", "BackButton", "DiscardButton", "PreviewTextureRect", "InventorySubViewport", "NameLabel", "ValueLabel", "ValueContainer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -400.0
+offset_left = -322.0
 offset_top = -200.0
-offset_right = 400.0
+offset_right = 322.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -30,11 +31,11 @@ script = ExtResource("2_v4q88")
 InventoryContainer = NodePath("HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer/inventory_container")
 BackButton = NodePath("CloseButton")
 DiscardButton = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/DiscardButton")
-PreviewOrigin = NodePath("SubViewport_InventoryPreview/Origin")
-NameLabel = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NameLabel")
-DescriptionLabel = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/DescriptionLabel")
-ValueLabel = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/ValueContainer/MarginContainer/HBoxContainer/ValueLabel")
-ValueContainer = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/ValueContainer")
+PreviewTextureRect = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/Panel/PreviewTextureRect")
+InventorySubViewport = NodePath("InventorySubViewport")
+NameLabel = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/NameLabel")
+ValueLabel = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer/MarginContainer/HBoxContainer/ValueLabel")
+ValueContainer = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -103,8 +104,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InfoPanel" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoPanel"]
 layout_mode = 1
@@ -130,7 +131,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme = ExtResource("4_7pmmq")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/Panel"]
+[node name="PreviewTextureRect" type="TextureRect" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/Panel"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 15
@@ -146,55 +147,44 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NameLabel" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1, 1)
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Name"
-autowrap_mode = 1
-
-[node name="DescriptionLabel" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.784314)
-text = "Description"
-autowrap_mode = 3
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2"]
-layout_mode = 2
-alignment = 2
-
-[node name="ValueContainer" type="MarginContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="ValueContainer" type="MarginContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/ValueContainer"]
+[node name="Panel" type="Panel" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme = ExtResource("4_7pmmq")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/ValueContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/ValueContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ValueLabel" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/ValueContainer/MarginContainer/HBoxContainer"]
+[node name="ValueLabel" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "999"
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/ValueContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 texture = ExtResource("5_gj1sa")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Name"
+autowrap_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/InfoPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -221,29 +211,4 @@ offset_right = 19.265
 offset_bottom = 21.1
 grow_horizontal = 0
 
-[node name="SubViewport_InventoryPreview" type="SubViewport" parent="."]
-own_world_3d = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1024, 1024)
-render_target_update_mode = 4
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport_InventoryPreview"]
-transform = Transform3D(-1, 4.13117e-08, -7.7046e-08, 0, 0.881304, 0.472551, 8.74228e-08, 0.472551, -0.881304, -6.54446e-08, 1.12718, -1.9486)
-current = true
-fov = 30.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport_InventoryPreview"]
-transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
-
-[node name="Origin" type="Node3D" parent="SubViewport_InventoryPreview"]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport_InventoryPreview/Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12786, -1.003, 0)
-light_energy = 0.1
-omni_range = 8.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewport_InventoryPreview/Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13974, -1.003, 0)
-light_energy = 0.1
-omni_range = 8.0
+[node name="InventorySubViewport" parent="." instance=ExtResource("9_j41a6")]

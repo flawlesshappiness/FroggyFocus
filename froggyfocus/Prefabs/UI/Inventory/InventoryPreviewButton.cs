@@ -9,48 +9,26 @@ public partial class InventoryPreviewButton : ButtonScript
     public Label ValueLabel;
 
     [Export]
-    public Node3D Origin;
-
-    [Export]
     public TextureRect TextureRect;
 
     [Export]
-    public SubViewport SubViewport;
+    public InventorySubViewport InventorySubViewport;
 
-    private Node3D current_preview;
+    public override void _Ready()
+    {
+        base._Ready();
+        TextureRect.Texture = InventorySubViewport.GetTexture();
+    }
 
     public void Clear()
     {
-        RemovePreview();
+        InventorySubViewport.Clear();
     }
 
     public void SetCharacter(FocusCharacterInfo info)
     {
-        var character = info.Scene.Instantiate<FocusCharacter>();
-        character.Initialize(info);
-        SetPreview(character);
-
+        InventorySubViewport.SetCharacter(info);
         ValueLabel.Text = info.CurrencyReward.ToString();
-    }
-
-    public void SetPreview(Node3D node)
-    {
-        RemovePreview();
-
-        current_preview = node;
-        current_preview.SetParent(Origin);
-        current_preview.Position = Vector3.Zero;
-        current_preview.Rotation = Vector3.Zero;
-
-        TextureRect.Texture = SubViewport.GetTexture();
-    }
-
-    private void RemovePreview()
-    {
-        if (current_preview == null) return;
-
-        current_preview.QueueFree();
-        current_preview = null;
     }
 
     public void SetObscured(bool obscured)

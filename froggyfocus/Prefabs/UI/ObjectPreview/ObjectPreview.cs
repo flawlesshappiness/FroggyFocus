@@ -19,9 +19,19 @@ public partial class ObjectPreview : SubViewport
     {
         Clear();
 
+        if (preview == null) return;
+
         current_preview = preview;
         current_preview.SetParent(Origin);
         current_preview.Position = Vector3.Zero;
         current_preview.Rotation = Vector3.Zero;
+    }
+
+    public void SetPrefab(PackedScene prefab)
+    {
+        if (prefab == null) return;
+
+        var preview = prefab.Instantiate<Node3D>();
+        SetPreview(preview);
     }
 }

@@ -3,27 +3,38 @@ using Godot;
 public partial class RewardPreview : Control
 {
     [Export]
-    public ObjectPreview ObjectPreview;
+    public TextureRect TextureRect;
+
+    [Export]
+    public HatSubViewport HatSubViewport;
 
     [Export]
     public Label AmountLabel;
 
     [Export]
-    public Node3D CoinStack;
+    public PackedScene CoinStackPrefab;
 
-    public void Clear()
+    public override void _Ready()
     {
-        CoinStack.Hide();
+        base._Ready();
+        TextureRect.Texture = HatSubViewport.GetTexture();
     }
 
-    public void SetCoinStack()
+    public void SetHat(AppearanceHatInfo info)
     {
-        Clear();
-        CoinStack.Show();
+        HatSubViewport.SetHat(info);
+        AmountLabel.Hide();
+    }
+
+    public void SetCoinStack(int amount)
+    {
+        HatSubViewport.SetPrefab(CoinStackPrefab);
+        SetAmount(amount);
     }
 
     public void SetAmount(int amount)
     {
+        AmountLabel.Show();
         AmountLabel.Text = $"x{amount}";
     }
 }

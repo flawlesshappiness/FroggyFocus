@@ -1,21 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://byh5solck2yl"]
+[gd_scene load_steps=6 format=3 uid="uid://byh5solck2yl"]
 
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="1_ananr"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_jbr0e"]
-[ext_resource type="Script" uid="uid://cv0pph4qo2x68" path="res://Prefabs/UI/ObjectPreview/ObjectPreview.cs" id="2_bwqsi"]
 [ext_resource type="Script" uid="uid://33o1a8cvnbff" path="res://Prefabs/UI/RewardPreview/RewardPreview.cs" id="2_l2ab3"]
 [ext_resource type="PackedScene" uid="uid://xu7vcw8c8y5q" path="res://Prefabs/Misc/coin_stack.tscn" id="3_bwqsi"]
+[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/Hats/hat_sub_viewport.tscn" id="6_q5028"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ananr"]
-viewport_path = NodePath("SubViewport")
-
-[node name="RewardPreview" type="MarginContainer" node_paths=PackedStringArray("ObjectPreview", "AmountLabel", "CoinStack")]
+[node name="RewardPreview" type="MarginContainer" node_paths=PackedStringArray("TextureRect", "HatSubViewport", "AmountLabel")]
 custom_minimum_size = Vector2(60, 60)
 theme = ExtResource("1_jbr0e")
 script = ExtResource("2_l2ab3")
-ObjectPreview = NodePath("SubViewport")
+TextureRect = NodePath("TextureRect")
+HatSubViewport = NodePath("HatSubViewport")
 AmountLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/AmountLabel")
-CoinStack = NodePath("SubViewport/Origin/CoinStack")
+CoinStackPrefab = ExtResource("3_bwqsi")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
@@ -23,7 +21,6 @@ theme = ExtResource("1_ananr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = SubResource("ViewportTexture_ananr")
 expand_mode = 1
 stretch_mode = 4
 
@@ -46,27 +43,4 @@ alignment = 2
 layout_mode = 2
 text = "x50"
 
-[node name="SubViewport" type="SubViewport" parent="." node_paths=PackedStringArray("Origin")]
-own_world_3d = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1024, 1024)
-script = ExtResource("2_bwqsi")
-Origin = NodePath("Origin")
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(-1, 0, -8.74228e-08, -2.26267e-08, 0.965926, 0.258819, 8.44439e-08, 0.258819, -0.965926, 0, 0.620312, -1.36227)
-current = true
-fov = 50.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
-
-[node name="Origin" type="Node3D" parent="SubViewport"]
-transform = Transform3D(0.783791, 0, -0.621025, 0, 1, 0, 0.621025, 0, 0.783791, 0, 0, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
-light_energy = 0.1
-
-[node name="CoinStack" parent="SubViewport/Origin" instance=ExtResource("3_bwqsi")]
+[node name="HatSubViewport" parent="." instance=ExtResource("6_q5028")]

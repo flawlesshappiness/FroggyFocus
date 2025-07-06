@@ -13,13 +13,13 @@ public partial class InventoryControl : ControlScript
     public Button DiscardButton;
 
     [Export]
-    public Node3D PreviewOrigin;
+    public TextureRect PreviewTextureRect;
+
+    [Export]
+    public InventorySubViewport InventorySubViewport;
 
     [Export]
     public Label NameLabel;
-
-    [Export]
-    public Label DescriptionLabel;
 
     [Export]
     public Label ValueLabel;
@@ -29,8 +29,6 @@ public partial class InventoryControl : ControlScript
 
     public event Action OnBack;
 
-    private Node3D current_preview;
-
     public override void _Ready()
     {
         base._Ready();
@@ -38,6 +36,8 @@ public partial class InventoryControl : ControlScript
         BackButton.Pressed += BackPressed;
         DiscardButton.Pressed += DiscardPressed;
         InventoryContainer.OnButtonPressed += InventoryButton_Pressed;
+
+        PreviewTextureRect.Texture = InventorySubViewport.GetTexture();
     }
 
     protected override void OnShow()
@@ -58,13 +58,13 @@ public partial class InventoryControl : ControlScript
     private void Clear()
     {
         InventoryContainer.Clear();
+        InventorySubViewport.Clear();
         ClearCharacterInfo();
-        ClearPreviewCharacter();
     }
 
     private void InventoryButton_Pressed(FocusCharacterInfo info)
     {
-        SetPreviewCharacter(info);
+        InventorySubViewport.SetCharacter(info);
         SetCharacterInfo(info);
     }
 
@@ -88,7 +88,6 @@ public partial class InventoryControl : ControlScript
         ClearCharacterInfo();
 
         NameLabel.Text = info.Name;
-        DescriptionLabel.Text = info.Description;
         ValueLabel.Text = info.CurrencyReward.ToString();
 
         ValueContainer.Show();
@@ -98,31 +97,9 @@ public partial class InventoryControl : ControlScript
     private void ClearCharacterInfo()
     {
         NameLabel.Text = string.Empty;
-        DescriptionLabel.Text = string.Empty;
 
         ValueContainer.Hide();
         DiscardButton.Hide();
-    }
-
-    private void SetPreviewCharacter(FocusCharacterInfo info)
-    {
-        ClearPreviewCharacter();
-
-        var character = info.Scene.Instantiate<FocusCharacter>();
-        character.Initialize(info);
-
-        current_preview = character;
-        current_preview.SetParent(PreviewOrigin);
-        current_preview.Position = Vector3.Zero;
-        current_preview.Rotation = Vector3.Zero;
-    }
-
-    private void ClearPreviewCharacter()
-    {
-        if (current_preview == null) return;
-
-        current_preview.QueueFree();
-        current_preview = null;
     }
 
     private void DiscardPressed()

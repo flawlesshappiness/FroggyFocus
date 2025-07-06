@@ -4,90 +4,93 @@
 
 [node name="CoinStack" type="Node3D"]
 
-[node name="Stack" type="Node3D" parent="."]
+[node name="Offset" type="Node3D" parent="."]
+transform = Transform3D(-0.901674, 0, 0.432416, 0, 1, 0, -0.432416, 0, -0.901674, 0, -0.257259, 0)
+
+[node name="Stack" type="Node3D" parent="Offset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198929, 0, 0)
 
-[node name="Coin" parent="Stack" instance=ExtResource("1_pdge3")]
+[node name="Coin" parent="Offset/Stack" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.042781, 0)
 
-[node name="Coin2" parent="Stack" instance=ExtResource("1_pdge3")]
+[node name="Coin2" parent="Offset/Stack" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0110275, 0.120611, 0)
 
-[node name="Coin3" parent="Stack" instance=ExtResource("1_pdge3")]
+[node name="Coin3" parent="Offset/Stack" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.200371, -0.00611281)
 
-[node name="Coin4" parent="Stack" instance=ExtResource("1_pdge3")]
+[node name="Coin4" parent="Offset/Stack" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0.00840664, 0.280752, 0)
 
-[node name="Coin5" parent="Stack" instance=ExtResource("1_pdge3")]
+[node name="Coin5" parent="Offset/Stack" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.361089, 0.0102769)
 
-[node name="Coin6" parent="Stack" instance=ExtResource("1_pdge3")]
+[node name="Coin6" parent="Offset/Stack" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0102543, 0.441838, 0)
 
-[node name="Coin7" parent="Stack" instance=ExtResource("1_pdge3")]
+[node name="Coin7" parent="Offset/Stack" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.517448, -0.00955619)
 
-[node name="Coin8" parent="Stack" instance=ExtResource("1_pdge3")]
+[node name="Coin8" parent="Offset/Stack" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.596634, 0.00822496)
 
-[node name="Stack2" type="Node3D" parent="."]
+[node name="Stack2" type="Node3D" parent="Offset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120712, 0, -0.189786)
 
-[node name="Coin" parent="Stack2" instance=ExtResource("1_pdge3")]
+[node name="Coin" parent="Offset/Stack2" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0461973, 0)
 
-[node name="Coin2" parent="Stack2" instance=ExtResource("1_pdge3")]
+[node name="Coin2" parent="Offset/Stack2" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0110275, 0.124027, 0)
 
-[node name="Coin3" parent="Stack2" instance=ExtResource("1_pdge3")]
+[node name="Coin3" parent="Offset/Stack2" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.203787, -0.00611281)
 
-[node name="Coin4" parent="Stack2" instance=ExtResource("1_pdge3")]
+[node name="Coin4" parent="Offset/Stack2" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0.00840664, 0.284169, 0)
 
-[node name="Coin5" parent="Stack2" instance=ExtResource("1_pdge3")]
+[node name="Coin5" parent="Offset/Stack2" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.364506, 0.0102769)
 
-[node name="Coin6" parent="Stack2" instance=ExtResource("1_pdge3")]
+[node name="Coin6" parent="Offset/Stack2" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0102543, 0.445254, 0)
 
-[node name="Coin7" parent="Stack2" instance=ExtResource("1_pdge3")]
+[node name="Coin7" parent="Offset/Stack2" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.520865, -0.00955619)
 visible = false
 
-[node name="Coin8" parent="Stack2" instance=ExtResource("1_pdge3")]
+[node name="Coin8" parent="Offset/Stack2" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.60005, 0.00822496)
 visible = false
 
-[node name="Stack3" type="Node3D" parent="."]
+[node name="Stack3" type="Node3D" parent="Offset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120712, 0, 0.201558)
 
-[node name="Coin" parent="Stack3" instance=ExtResource("1_pdge3")]
+[node name="Coin" parent="Offset/Stack3" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0437734, 0)
 
-[node name="Coin2" parent="Stack3" instance=ExtResource("1_pdge3")]
+[node name="Coin2" parent="Offset/Stack3" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0110275, 0.121603, 0)
 
-[node name="Coin3" parent="Stack3" instance=ExtResource("1_pdge3")]
+[node name="Coin3" parent="Offset/Stack3" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.201363, -0.00611281)
 
-[node name="Coin4" parent="Stack3" instance=ExtResource("1_pdge3")]
+[node name="Coin4" parent="Offset/Stack3" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0.00840664, 0.281745, 0)
 visible = false
 
-[node name="Coin5" parent="Stack3" instance=ExtResource("1_pdge3")]
+[node name="Coin5" parent="Offset/Stack3" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.362082, 0.0102769)
 visible = false
 
-[node name="Coin6" parent="Stack3" instance=ExtResource("1_pdge3")]
+[node name="Coin6" parent="Offset/Stack3" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0102543, 0.442831, 0)
 visible = false
 
-[node name="Coin7" parent="Stack3" instance=ExtResource("1_pdge3")]
+[node name="Coin7" parent="Offset/Stack3" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.518441, -0.00955619)
 visible = false
 
-[node name="Coin8" parent="Stack3" instance=ExtResource("1_pdge3")]
+[node name="Coin8" parent="Offset/Stack3" instance=ExtResource("1_pdge3")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.597626, 0.00822496)
 visible = false

@@ -53,7 +53,7 @@ public partial class HatsContainer : ControlScript
         foreach (var info in AppearanceHatController.Instance.Collection.Resources)
         {
             var button = CreateHatButton(info);
-            button.SetPrefab(info.Prefab);
+            button.SetHat(info);
             button.Pressed += () => HatButtonPressed(info);
         }
 

@@ -10,9 +10,6 @@ public partial class FocusCharacterInfo : Resource
     [Export]
     public string Name;
 
-    [Export(PropertyHint.MultilineText)]
-    public string Description;
-
     [Export]
     public string Accessory;
 

@@ -56,6 +56,8 @@ public static class HandIn
         var reward = (int)(reward_base * reward_mul);
         data.MoneyReward = reward;
 
+        data.HatUnlock = info.HatUnlock;
+
         var date_now = GameTime.GetCurrentDateTime();
         var date_next = date_now.AddSeconds(info.CooldownInSeconds);
         data.DateTimeNext = GameTime.GetDateTimeString(date_next);
