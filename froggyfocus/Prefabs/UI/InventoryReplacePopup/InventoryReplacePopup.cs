@@ -1,19 +1,9 @@
 using Godot;
-using System.Collections;
 
-public partial class InventoryReplacePopup : ControlScript
+public partial class InventoryReplacePopup : PopupControl
 {
     [Export]
-    public AnimatedOverlay AnimatedOverlay;
-
-    [Export]
-    public AnimatedPanel AnimatedPanel;
-
-    [Export]
     public InventoryContainer InventoryContainer;
-
-    [Export]
-    public Control InputBlocker;
 
     [Export]
     public InventoryPreviewButton PreviewButton;
@@ -23,8 +13,6 @@ public partial class InventoryReplacePopup : ControlScript
 
     private FocusCharacterInfo ItemToAdd;
 
-    private bool action_performed;
-
     public override void _Ready()
     {
         base._Ready();
@@ -33,48 +21,29 @@ public partial class InventoryReplacePopup : ControlScript
         PreviewButton.Pressed += DiscardButton_Pressed;
     }
 
-    public IEnumerator WaitForReplace(FocusCharacterInfo info)
+    protected override void OnShow()
     {
-        action_performed = false;
+        base.OnShow();
+        SetLocks(true);
+    }
+
+    protected override void OnHide()
+    {
+        base.OnHide();
+        SetLocks(false);
+    }
+
+    private void SetLocks(bool locked)
+    {
+        var id = nameof(InventoryReplacePopup);
+        MouseVisibility.Instance.Lock.SetLock(id, locked);
+    }
+
+    public void SetCharacter(FocusCharacterInfo info)
+    {
         ItemToAdd = info;
-
         PreviewButton.SetCharacter(info);
-
-        yield return ShowPopup();
-        while (!action_performed) yield return null;
-        yield return HidePopup();
-    }
-
-    private IEnumerator ShowPopup()
-    {
-        Show();
-        InputBlocker.Show();
-        ReleaseCurrentFocus();
-
         InventoryContainer.UpdateButtons();
-
-        AnimatedOverlay.AnimateBehindShow();
-        yield return AnimatedPanel.AnimatePopShow();
-
-        PreviewButton.GrabFocus();
-
-        MouseVisibility.Instance.Lock.AddLock(nameof(InventoryReplacePopup));
-
-        InputBlocker.Hide();
-    }
-
-    private IEnumerator HidePopup()
-    {
-        InputBlocker.Show();
-        ReleaseCurrentFocus();
-
-        MouseVisibility.Instance.Lock.RemoveLock(nameof(InventoryReplacePopup));
-
-        AnimatedOverlay.AnimateBehindHide();
-        yield return AnimatedPanel.AnimatePopHide();
-
-        Hide();
-        InputBlocker.Hide();
     }
 
     private void InventoryButton_Pressed(FocusCharacterInfo info)
@@ -84,11 +53,11 @@ public partial class InventoryReplacePopup : ControlScript
         InventoryController.Instance.AddCharacter(ItemToAdd);
         Data.Game.Save();
 
-        action_performed = true;
+        ClosePopup();
     }
 
     private void DiscardButton_Pressed()
     {
-        action_performed = true;
+        ClosePopup();
     }
 }

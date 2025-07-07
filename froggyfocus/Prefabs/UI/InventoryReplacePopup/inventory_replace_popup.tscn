@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="3_cm5y6"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="4_cm5y6"]
 
-[node name="InventoryReplacePopup" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel", "InventoryContainer", "InputBlocker", "PreviewButton", "DiscardButton")]
+[node name="InventoryReplacePopup" type="Control" node_paths=PackedStringArray("InventoryContainer", "PreviewButton", "DiscardButton", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,12 +17,13 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mh8f4")
 script = ExtResource("2_86ta6")
-AnimatedOverlay = NodePath("AnimatedOverlay")
-AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
 InventoryContainer = NodePath("CenterContainer/Center/AnimatedPanel/Container/InventoryPanel/MarginContainer/VBoxContainer/ScrollContainer/inventory_container")
-InputBlocker = NodePath("InputBlocker")
 PreviewButton = NodePath("CenterContainer/Center/AnimatedPanel/Container/PreviewPanel/MarginContainer/HBoxContainer/InventoryPreviewButton")
 DiscardButton = NodePath("CenterContainer/Center/AnimatedPanel/Container/InventoryPanel/MarginContainer/VBoxContainer/DiscardButton")
+AnimatedOverlay = NodePath("AnimatedOverlay")
+AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
+InputBlocker = NodePath("InputBlocker")
+FocusButton = NodePath("CenterContainer/Center/AnimatedPanel/Container/PreviewPanel/MarginContainer/HBoxContainer/InventoryPreviewButton")
 
 [node name="AnimatedOverlay" parent="." instance=ExtResource("3_cm5y6")]
 layout_mode = 1

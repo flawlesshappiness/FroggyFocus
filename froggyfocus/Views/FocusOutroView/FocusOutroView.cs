@@ -33,7 +33,7 @@ public partial class FocusOutroView : View
     public GpuParticles3D PsDust;
 
     private FocusCharacterInfo current_target_info;
-    private Node3D current_target;
+    private FocusCharacter current_target;
 
     public override void _Ready()
     {
@@ -82,7 +82,8 @@ public partial class FocusOutroView : View
     {
         if (InventoryController.Instance.IsInventoryFull())
         {
-            yield return InventoryReplacePopup.WaitForReplace(current_target_info);
+            InventoryReplacePopup.SetCharacter(current_target_info);
+            yield return InventoryReplacePopup.WaitForPopup();
         }
         else
         {
@@ -116,10 +117,11 @@ public partial class FocusOutroView : View
         RemoveTarget();
 
         current_target_info = info;
-        current_target = info.Scene.Instantiate<Node3D>();
+        current_target = info.Scene.Instantiate<FocusCharacter>();
         current_target.SetParent(TargetMarker);
         current_target.Position = Vector3.Zero;
         current_target.Rotation = Vector3.Zero;
         current_target.Scale = Vector3.One * 0.3f;
+        current_target.Initialize(info);
     }
 }

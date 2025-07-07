@@ -55,5 +55,6 @@ public partial class FocusIntroView : View
         current_target.SetParent(TargetOrigin);
         current_target.Position = Vector3.Zero;
         current_target.Rotation = Vector3.Zero;
+        current_target.Initialize(info);
     }
 }
