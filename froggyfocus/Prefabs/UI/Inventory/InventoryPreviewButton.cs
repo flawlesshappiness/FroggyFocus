@@ -12,22 +12,22 @@ public partial class InventoryPreviewButton : ButtonScript
     public TextureRect TextureRect;
 
     [Export]
-    public InventorySubViewport InventorySubViewport;
+    public ItemSubViewport ItemSubViewport;
 
     public override void _Ready()
     {
         base._Ready();
-        TextureRect.Texture = InventorySubViewport.GetTexture();
+        TextureRect.Texture = ItemSubViewport.GetTexture();
     }
 
     public void Clear()
     {
-        InventorySubViewport.Clear();
+        ItemSubViewport.Clear();
     }
 
     public void SetCharacter(FocusCharacterInfo info)
     {
-        InventorySubViewport.SetCharacter(info);
+        ItemSubViewport.SetCharacter(info);
         ValueLabel.Text = info.CurrencyReward.ToString();
     }
 

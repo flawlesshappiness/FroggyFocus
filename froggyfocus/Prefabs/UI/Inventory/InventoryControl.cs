@@ -16,7 +16,7 @@ public partial class InventoryControl : ControlScript
     public TextureRect PreviewTextureRect;
 
     [Export]
-    public InventorySubViewport InventorySubViewport;
+    public ItemSubViewport ItemSubViewport;
 
     [Export]
     public Label NameLabel;
@@ -37,7 +37,7 @@ public partial class InventoryControl : ControlScript
         DiscardButton.Pressed += DiscardPressed;
         InventoryContainer.OnButtonPressed += InventoryButton_Pressed;
 
-        PreviewTextureRect.Texture = InventorySubViewport.GetTexture();
+        PreviewTextureRect.Texture = ItemSubViewport.GetTexture();
     }
 
     protected override void OnShow()
@@ -58,13 +58,13 @@ public partial class InventoryControl : ControlScript
     private void Clear()
     {
         InventoryContainer.Clear();
-        InventorySubViewport.Clear();
+        ItemSubViewport.Clear();
         ClearCharacterInfo();
     }
 
     private void InventoryButton_Pressed(FocusCharacterInfo info)
     {
-        InventorySubViewport.SetCharacter(info);
+        ItemSubViewport.SetCharacter(info);
         SetCharacterInfo(info);
     }
 

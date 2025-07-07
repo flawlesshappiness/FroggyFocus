@@ -4,16 +4,16 @@
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ijjcq"]
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="3_sycv1"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="4_sycv1"]
-[ext_resource type="PackedScene" uid="uid://yqqk17swwx5a" path="res://Prefabs/UI/Inventory/inventory_sub_viewport.tscn" id="5_knw73"]
+[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="5_knw73"]
 
-[node name="InventoryPreviewButton" type="Button" node_paths=PackedStringArray("ValueContainer", "ValueLabel", "TextureRect", "InventorySubViewport")]
+[node name="InventoryPreviewButton" type="Button" node_paths=PackedStringArray("ValueContainer", "ValueLabel", "TextureRect", "ItemSubViewport")]
 custom_minimum_size = Vector2(65, 65)
 theme = ExtResource("1_ijjcq")
 script = ExtResource("1_c7vpv")
 ValueContainer = NodePath("ValuePanel")
 ValueLabel = NodePath("ValuePanel/MarginContainer/HBoxContainer/ValueLabel")
 TextureRect = NodePath("MarginContainer/TextureRect")
-InventorySubViewport = NodePath("InventorySubViewport")
+ItemSubViewport = NodePath("ItemSubViewport")
 SfxPressed = ExtResource("3_sycv1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -78,4 +78,4 @@ texture = ExtResource("4_sycv1")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="InventorySubViewport" parent="." instance=ExtResource("5_knw73")]
+[node name="ItemSubViewport" parent="." instance=ExtResource("5_knw73")]

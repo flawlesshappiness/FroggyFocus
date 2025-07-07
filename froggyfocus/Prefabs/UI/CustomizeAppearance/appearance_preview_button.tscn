@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://7g3y8bn480iw"]
+[gd_scene load_steps=5 format=3 uid="uid://7g3y8bn480iw"]
 
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_2h73a"]
 [ext_resource type="Script" uid="uid://lvo1xk3ybdka" path="res://Prefabs/UI/CustomizeAppearance/AppearancePreviewButton.cs" id="1_5km8g"]
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="2_5km8g"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="3_vkjdt"]
 
 [node name="AppearancePreviewButton" type="Button" node_paths=PackedStringArray("HatTextureRect", "HatSubViewport")]
 custom_minimum_size = Vector2(65, 65)
+theme = ExtResource("1_2h73a")
 script = ExtResource("1_5km8g")
 HatTextureRect = NodePath("TextureRect")
 HatSubViewport = NodePath("ItemSubViewport")

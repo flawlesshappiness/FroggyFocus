@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://blseliwm3s1f1"]
+[gd_scene load_steps=10 format=3 uid="uid://blseliwm3s1f1"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w3kxo"]
 [ext_resource type="Script" uid="uid://bju7b4mhjacmp" path="res://Prefabs/UI/Inventory/InventoryControl.cs" id="2_v4q88"]
@@ -8,12 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_tufir"]
 [ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="5_7pmmq"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="5_gj1sa"]
-[ext_resource type="PackedScene" uid="uid://yqqk17swwx5a" path="res://Prefabs/UI/Inventory/inventory_sub_viewport.tscn" id="9_j41a6"]
+[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="9_j41a6"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_boh4b"]
-viewport_path = NodePath("SubViewport_InventoryPreview")
-
-[node name="InventoryControl" type="Control" node_paths=PackedStringArray("InventoryContainer", "BackButton", "DiscardButton", "PreviewTextureRect", "InventorySubViewport", "NameLabel", "ValueLabel", "ValueContainer")]
+[node name="InventoryControl" type="Control" node_paths=PackedStringArray("InventoryContainer", "BackButton", "DiscardButton", "PreviewTextureRect", "ItemSubViewport", "NameLabel", "ValueLabel", "ValueContainer")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,7 +29,7 @@ InventoryContainer = NodePath("HBoxContainer/ButtonsPanel/MarginContainer/Scroll
 BackButton = NodePath("CloseButton")
 DiscardButton = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/DiscardButton")
 PreviewTextureRect = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/Panel/PreviewTextureRect")
-InventorySubViewport = NodePath("InventorySubViewport")
+ItemSubViewport = NodePath("ItemSubViewport")
 NameLabel = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/NameLabel")
 ValueLabel = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer/MarginContainer/HBoxContainer/ValueLabel")
 ValueContainer = NodePath("HBoxContainer/InfoPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ValueContainer")
@@ -139,7 +136,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_boh4b")
 expand_mode = 1
 stretch_mode = 4
 
@@ -211,4 +207,4 @@ offset_right = 19.265
 offset_bottom = 21.1
 grow_horizontal = 0
 
-[node name="InventorySubViewport" parent="." instance=ExtResource("9_j41a6")]
+[node name="ItemSubViewport" parent="." instance=ExtResource("9_j41a6")]
