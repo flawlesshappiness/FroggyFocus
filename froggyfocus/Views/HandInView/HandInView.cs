@@ -44,6 +44,8 @@ public partial class HandInView : View
     [Export]
     public Array<RewardPreview> RewardPreviews;
 
+    private bool animating;
+    private bool inventory_active;
     private HandInData current_data;
     private ButtonMap selected_map;
     private List<ButtonMap> maps = new();
@@ -134,6 +136,24 @@ public partial class HandInView : View
         SetLocks(false);
     }
 
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
+        {
+            if (animating) return;
+            if (inventory_active)
+            {
+                CloseInventoryButton_Pressed();
+            }
+            else
+            {
+                Close();
+            }
+        }
+    }
+
     public void ShowPopup(string id)
     {
         var data = HandIn.GetOrCreateData(id);
@@ -151,11 +171,15 @@ public partial class HandInView : View
         StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
+            animating = true;
+
             InputBlocker.Show();
             AnimatedOverlay.AnimateBehindShow();
             yield return AnimatedPanel_HandIn.AnimatePopShow();
             RequestButtons.First().GrabFocus();
             InputBlocker.Hide();
+
+            animating = false;
         }
     }
 
@@ -200,9 +224,10 @@ public partial class HandInView : View
 
     private void SetLocks(bool locked)
     {
-        Player.SetAllLocks(nameof(HandInView), locked);
-        PauseView.ToggleLock.SetLock(nameof(HandInView), locked);
-        MouseVisibility.Instance.Lock.SetLock(nameof(HandInView), locked);
+        var id = nameof(HandInView);
+        Player.SetAllLocks(id, locked);
+        PauseView.ToggleLock.SetLock(id, locked);
+        MouseVisibility.Instance.Lock.SetLock(id, locked);
     }
 
     private void RequestButton_Pressed(ButtonMap map)
@@ -220,6 +245,8 @@ public partial class HandInView : View
         StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_HandIn.AnimateShrink();
@@ -228,6 +255,9 @@ public partial class HandInView : View
 
             var button = InventoryContainer.GetFirstButton() ?? CloseInventoryButton;
             button?.GrabFocus();
+
+            animating = false;
+            inventory_active = true;
         }
     }
 
@@ -244,17 +274,7 @@ public partial class HandInView : View
 
     private void CloseHandInButton_Pressed()
     {
-        StartCoroutine(Cr, "animate");
-        IEnumerator Cr()
-        {
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            AnimatedOverlay.AnimateBehindHide();
-            yield return AnimatedPanel_HandIn.AnimatePopHide();
-            InputBlocker.Hide();
-            yield return WaitForPopup();
-            Hide();
-        }
+        Close();
     }
 
     private void CloseInventoryButton_Pressed()
@@ -262,12 +282,36 @@ public partial class HandInView : View
         StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_HandIn.AnimateGrow();
             yield return AnimatedPanel_Inventory.AnimatePopHide();
             InputBlocker.Hide();
             selected_map.Button?.GrabFocus();
+
+            animating = false;
+            inventory_active = false;
+        }
+    }
+
+    private void Close()
+    {
+        StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            animating = true;
+
+            ReleaseCurrentFocus();
+            InputBlocker.Show();
+            AnimatedOverlay.AnimateBehindHide();
+            yield return AnimatedPanel_HandIn.AnimatePopHide();
+            InputBlocker.Hide();
+            yield return WaitForPopup();
+            Hide();
+
+            animating = false;
         }
     }
 
@@ -320,7 +364,7 @@ public partial class HandInView : View
 
         Data.Game.Save();
 
-        CloseHandInButton_Pressed();
+        Close();
     }
 
     private bool Validate()

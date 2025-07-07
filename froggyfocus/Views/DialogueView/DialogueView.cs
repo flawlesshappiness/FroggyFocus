@@ -47,13 +47,20 @@ public partial class DialogueView : View
     protected override void OnShow()
     {
         base.OnShow();
-        Player.SetAllLocks(nameof(DialogueView), true);
+        SetLocks(true);
     }
 
     protected override void OnHide()
     {
         base.OnHide();
-        Player.SetAllLocks(nameof(DialogueView), false);
+        SetLocks(false);
+    }
+
+    private void SetLocks(bool locked)
+    {
+        var id = nameof(DialogueView);
+        Player.SetAllLocks(id, locked);
+        PauseView.ToggleLock.SetLock(id, locked);
     }
 
     public override void _Input(InputEvent e)
