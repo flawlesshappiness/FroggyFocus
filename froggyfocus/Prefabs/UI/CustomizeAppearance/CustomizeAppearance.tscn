@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_c1ffu"]
 [ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="2_c1ffu"]
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_jjbel"]
-[ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/CustomizeAppearance/appearance_color_container.tscn" id="4_1uex8"]
+[ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/Color/appearance_color_container.tscn" id="4_1uex8"]
 [ext_resource type="Script" uid="uid://c27021d5v4xh6" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceColorTab.cs" id="4_bhn8p"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_ntf0j"]
 [ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="5_1uex8"]

@@ -3,17 +3,15 @@
 [ext_resource type="Script" uid="uid://bqb54opapks22" path="res://Prefabs/UI/PurchasePopup/PurchasePopup.cs" id="1_rktto"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_v5x1g"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_rktto"]
+[ext_resource type="PackedScene" uid="uid://clrmdq4h4lojv" path="res://Prefabs/Misc/paint_bucket.tscn" id="2_ry6mq"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_vdyvl"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="3_0glqt"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_ry6mq"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_snlvk"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="5_vya16"]
-[ext_resource type="Script" uid="uid://cv0pph4qo2x68" path="res://Prefabs/UI/SubViewport/PreviewSubViewport.cs" id="7_snlvk"]
 [ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="9_vya16"]
 [ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="10_s74qh"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_v5x1g"]
-viewport_path = NodePath("SubViewport")
+[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="11_o0ix7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s74qh"]
 random_pitch = 1.05
@@ -25,7 +23,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("10_s74qh")
 
-[node name="PurchasePopup" type="Control" node_paths=PackedStringArray("CancelButton", "PurchaseButton", "NameLabel", "ValueLabel", "Preview", "TextureRect", "ColorRect", "SfxPurchaseSuccess", "SfxPurchaseFail", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
+[node name="PurchasePopup" type="Control" node_paths=PackedStringArray("CancelButton", "PurchaseButton", "NameLabel", "ValueLabel", "ItemSubViewport", "TextureRect", "SfxPurchaseSuccess", "SfxPurchaseFail", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,9 +36,9 @@ CancelButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/Ma
 PurchaseButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PurchaseButton")
 NameLabel = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/NameLabel")
 ValueLabel = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer/ValueLabel")
-Preview = NodePath("SubViewport")
-TextureRect = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel/TextureRect")
-ColorRect = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel/MarginContainer/ColorRect")
+ItemSubViewport = NodePath("ItemSubViewport")
+TextureRect = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel/PreviewTextureRect")
+PaintBucketPrefab = ExtResource("2_ry6mq")
 SfxPurchaseSuccess = NodePath("SfxPurchaseSuccess")
 SfxPurchaseFail = NodePath("SfxPurchaseFail")
 AnimatedOverlay = NodePath("AnimatedOverlay")
@@ -105,31 +103,15 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme = ExtResource("2_rktto")
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel"]
+[node name="PreviewTextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("ViewportTexture_v5x1g")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 30
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel/MarginContainer"]
-layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel"]
 layout_mode = 1
@@ -149,6 +131,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "100"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(25, 25)
@@ -204,28 +187,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="." node_paths=PackedStringArray("Origin")]
-own_world_3d = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1024, 1024)
-script = ExtResource("7_snlvk")
-Origin = NodePath("Origin")
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -1.5)
-current = true
-fov = 50.0
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
-
-[node name="Origin" type="Node3D" parent="SubViewport"]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport/Origin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
-light_energy = 0.1
-
 [node name="SfxPurchaseSuccess" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_s74qh")
 volume_db = -10.0
@@ -235,3 +196,5 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_o0ix7")
 volume_db = -20.0
 bus = &"SFX"
+
+[node name="ItemSubViewport" parent="." instance=ExtResource("11_o0ix7")]

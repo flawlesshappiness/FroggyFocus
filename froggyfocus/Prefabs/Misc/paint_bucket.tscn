@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://clrmdq4h4lojv"]
+
+[ext_resource type="Script" uid="uid://71lh5nsabkyb" path="res://Prefabs/Misc/PaintBucket.cs" id="1_vxqnh"]
+[ext_resource type="PackedScene" uid="uid://dorh77i3elpoh" path="res://Assets/FlawLizArt/Objects/paint_bucket.fbx" id="1_xf1ac"]
+
+[node name="PaintBucket" type="Node3D" node_paths=PackedStringArray("MeshInstance")]
+script = ExtResource("1_vxqnh")
+MeshInstance = NodePath("paint_bucket/Bucket_Joined")
+
+[node name="paint_bucket" parent="." instance=ExtResource("1_xf1ac")]
+transform = Transform3D(0.519615, 0.276967, -0.115279, 0, 0.230558, 0.553934, 0.3, -0.479721, 0.199669, 0, 0, 0)
+
+[editable path="paint_bucket"]

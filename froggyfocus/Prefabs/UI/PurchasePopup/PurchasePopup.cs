@@ -15,13 +15,13 @@ public partial class PurchasePopup : PopupControl
     public Label ValueLabel;
 
     [Export]
-    public PreviewSubViewport Preview;
+    public ItemSubViewport ItemSubViewport;
 
     [Export]
     public TextureRect TextureRect;
 
     [Export]
-    public ColorRect ColorRect;
+    public PackedScene PaintBucketPrefab;
 
     [Export]
     public AudioStreamPlayer SfxPurchaseSuccess;
@@ -39,31 +39,27 @@ public partial class PurchasePopup : PopupControl
         base._Ready();
         PurchaseButton.Pressed += Purchase_Pressed;
         CancelButton.Pressed += Cancel_Pressed;
+        TextureRect.Texture = ItemSubViewport.GetTexture();
     }
 
     public void SetHat(AppearanceHatInfo info)
     {
-        var node = info.Prefab.Instantiate<Node3D>();
-        Preview.SetPreview(node);
+        ItemSubViewport.SetPrefab(info.Prefab);
 
         NameLabel.Text = info.Name;
         ValueLabel.Text = info.Price.ToString();
         current_price = info.Price;
-
-        ColorRect.Hide();
-        TextureRect.Show();
     }
 
     public void SetColor(AppearanceColorInfo info)
     {
-        ColorRect.Color = info.Color;
+        var paint_bucket = PaintBucketPrefab.Instantiate<PaintBucket>();
+        ItemSubViewport.SetPreview(paint_bucket);
+        paint_bucket.SetPaintColor(info.Color);
 
         NameLabel.Text = info.Name;
         ValueLabel.Text = info.Price.ToString();
         current_price = info.Price;
-
-        ColorRect.Show();
-        TextureRect.Hide();
     }
 
     private void Purchase_Pressed()
