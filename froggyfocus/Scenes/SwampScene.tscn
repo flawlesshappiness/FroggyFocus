@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="9_1p1c6"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="10_52an4"]
 [ext_resource type="Shader" uid="uid://babyxm8yext4w" path="res://Shaders/ToonWater.gdshader" id="10_e4xtd"]
-[ext_resource type="PackedScene" uid="uid://2ikni3b3nxm4" path="res://Prefabs/NPC/TestHandInNPC/test_hand_in_npc.tscn" id="10_mv6si"]
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="11_20fcr"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="11_achss"]
@@ -27,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cap2fnpuvvefh" path="res://Prefabs/Nature/mushroom_platform.tscn" id="17_riqag"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
+[ext_resource type="PackedScene" uid="uid://bvq1s6k4t5k0m" path="res://Prefabs/NPC/MushroomNPC/mushroom_npc.tscn" id="19_ghoyf"]
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
 [ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="23_fmiw0"]
 [ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="26_eoi61"]
@@ -187,9 +187,6 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Island_SmallRound/FocusEventArea"]
 shape = SubResource("SphereShape3D_qfnsp")
 debug_color = Color(0.7, 0, 0, 0.419608)
-
-[node name="TestHandInNPC" parent="World/Island_SmallRound" instance=ExtResource("10_mv6si")]
-transform = Transform3D(0.74023, 0, 0.672354, 0, 1, 0, -0.672354, 0, 0.74023, -5.75358, 0, -4.41256)
 
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)
@@ -553,6 +550,9 @@ transform = Transform3D(24.7433, 0, 16.9637, 0, 30, 0, -16.9637, 0, 24.7433, -10
 
 [node name="Mushroom_Platform" parent="World/Mushrooms/Trees/CommonTree_Dead_10" instance=ExtResource("17_riqag")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0118095, 0.588505, -0.0796642)
+
+[node name="MushroomNPC" parent="World/Mushrooms" instance=ExtResource("19_ghoyf")]
+transform = Transform3D(0.987727, 0, 0.156193, 0, 1, 0, -0.156193, 0, 0.987727, -29.9953, 14.606, -27.3322)
 
 [node name="FocusEvent_Land" parent="World" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)

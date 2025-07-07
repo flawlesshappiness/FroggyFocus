@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=4 format=3 uid="uid://ylb24pr0q6w6"]
+
+[ext_resource type="Resource" uid="uid://cqjm2dxtl5xbj" path="res://FocusCharacter/Resources/Beetle_Swamp.tres" id="1_bxmoc"]
+[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm_Swamp.tres" id="2_c8oei"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="4_trkri"]
+
+[resource]
+script = ExtResource("4_trkri")
+Id = "mushroom"
+PossibleRequests = Array[Object]([ExtResource("1_bxmoc"), ExtResource("2_c8oei")])
+CountRange = Vector2i(1, 2)
+RewardMultiplierRange = Vector2(1.2, 1.25)
+HatUnlock = 8
+CooldownInSeconds = 3600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"
