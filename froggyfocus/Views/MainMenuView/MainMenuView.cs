@@ -42,6 +42,7 @@ public partial class MainMenuView : View
     protected override void OnShow()
     {
         base.OnShow();
+        PauseView.ToggleLock.SetLock(nameof(MainMenuView), true);
         MouseVisibility.Show(nameof(MainMenuView));
 
         GameView.Instance.Hide();
@@ -79,6 +80,7 @@ public partial class MainMenuView : View
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_overlay");
 
             Hide();
+            PauseView.ToggleLock.SetLock(nameof(MainMenuView), false);
             MouseVisibility.Hide(nameof(MainMenuView));
             Scene.Goto<SwampScene>();
             GameView.Instance.Show();

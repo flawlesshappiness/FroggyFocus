@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://u6g71t3e8loy"]
 
-[ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/Hats/HatSubViewport.cs" id="1_avf3k"]
+[ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="1_avf3k"]
 
-[node name="HatSubViewport" type="SubViewport" node_paths=PackedStringArray("Origin")]
+[node name="ItemSubViewport" type="SubViewport" node_paths=PackedStringArray("Origin")]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false

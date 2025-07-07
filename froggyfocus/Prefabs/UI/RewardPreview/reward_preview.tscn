@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_jbr0e"]
 [ext_resource type="Script" uid="uid://33o1a8cvnbff" path="res://Prefabs/UI/RewardPreview/RewardPreview.cs" id="2_l2ab3"]
 [ext_resource type="PackedScene" uid="uid://xu7vcw8c8y5q" path="res://Prefabs/Misc/coin_stack.tscn" id="3_bwqsi"]
-[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/Hats/hat_sub_viewport.tscn" id="6_q5028"]
+[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="6_q5028"]
 
 [node name="RewardPreview" type="MarginContainer" node_paths=PackedStringArray("TextureRect", "HatSubViewport", "AmountLabel")]
 custom_minimum_size = Vector2(60, 60)

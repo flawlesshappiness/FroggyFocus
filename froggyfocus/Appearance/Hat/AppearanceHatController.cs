@@ -20,4 +20,12 @@ public partial class AppearanceHatController : ResourceController<AppearanceHatC
             Data.Game.Appearance.UnlockedHats.Add(type);
         }
     }
+
+    public void Purchase(AppearanceHatType type)
+    {
+        if (!Data.Game.Appearance.PurchasedHats.Contains(type))
+        {
+            Data.Game.Appearance.PurchasedHats.Add(type);
+        }
+    }
 }

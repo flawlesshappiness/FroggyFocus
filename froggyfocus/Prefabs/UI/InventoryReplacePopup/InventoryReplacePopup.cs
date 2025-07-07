@@ -49,7 +49,7 @@ public partial class InventoryReplacePopup : ControlScript
     {
         Show();
         InputBlocker.Show();
-        ReleaseFocus();
+        ReleaseCurrentFocus();
 
         InventoryContainer.UpdateButtons();
 
@@ -66,7 +66,7 @@ public partial class InventoryReplacePopup : ControlScript
     private IEnumerator HidePopup()
     {
         InputBlocker.Show();
-        ReleaseFocus();
+        ReleaseCurrentFocus();
 
         MouseVisibility.Instance.Lock.RemoveLock(nameof(InventoryReplacePopup));
 

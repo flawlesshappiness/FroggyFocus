@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_ry6mq"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_snlvk"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="5_vya16"]
-[ext_resource type="Script" uid="uid://cv0pph4qo2x68" path="res://Prefabs/UI/ObjectPreview/ObjectPreview.cs" id="7_snlvk"]
+[ext_resource type="Script" uid="uid://cv0pph4qo2x68" path="res://Prefabs/UI/SubViewport/PreviewSubViewport.cs" id="7_snlvk"]
 [ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="9_vya16"]
 [ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="10_s74qh"]
 
@@ -25,7 +25,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("10_s74qh")
 
-[node name="PurchasePopup" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel", "CancelButton", "PurchaseButton", "NameLabel", "ValueLabel", "Preview", "TextureRect", "ColorRect", "SfxPurchaseSuccess", "SfxPurchaseFail")]
+[node name="PurchasePopup" type="Control" node_paths=PackedStringArray("CancelButton", "PurchaseButton", "NameLabel", "ValueLabel", "Preview", "TextureRect", "ColorRect", "SfxPurchaseSuccess", "SfxPurchaseFail", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,8 +34,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_rktto")
-AnimatedOverlay = NodePath("AnimatedOverlay")
-AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
 CancelButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CancelButton")
 PurchaseButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PurchaseButton")
 NameLabel = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/NameLabel")
@@ -45,6 +43,10 @@ TextureRect = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/Mar
 ColorRect = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/Panel/MarginContainer/ColorRect")
 SfxPurchaseSuccess = NodePath("SfxPurchaseSuccess")
 SfxPurchaseFail = NodePath("SfxPurchaseFail")
+AnimatedOverlay = NodePath("AnimatedOverlay")
+AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
+InputBlocker = NodePath("InputBlocker")
+FocusButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CancelButton")
 
 [node name="AnimatedOverlay" parent="." instance=ExtResource("2_vdyvl")]
 layout_mode = 1
@@ -65,9 +67,9 @@ mouse_filter = 2
 [node name="AnimatedPanel" parent="CenterContainer/Center" instance=ExtResource("3_ry6mq")]
 layout_mode = 1
 offset_left = 0.0
-offset_top = 1000.0
+offset_top = 0.0
 offset_right = 0.0
-offset_bottom = 1000.0
+offset_bottom = 0.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel"]
 layout_mode = 1
@@ -193,6 +195,14 @@ focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../PurchaseButton")
 focus_previous = NodePath("../PurchaseButton")
 text = " Cancel"
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="." node_paths=PackedStringArray("Origin")]
 own_world_3d = true

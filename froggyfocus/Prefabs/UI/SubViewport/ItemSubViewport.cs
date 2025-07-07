@@ -1,4 +1,4 @@
-public partial class HatSubViewport : ObjectPreview
+public partial class ItemSubViewport : PreviewSubViewport
 {
     public void SetHat(AppearanceHatInfo info)
     {

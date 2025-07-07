@@ -48,6 +48,8 @@ public partial class PauseView : View
     [Export]
     public Button InventoryButton;
 
+    public static readonly MultiLock ToggleLock = new();
+
     private bool options_active;
     private bool customize_active;
     private bool inventory_active;
@@ -98,8 +100,7 @@ public partial class PauseView : View
 
     private void Toggle()
     {
-        if (ShopView.Instance.Visible) return;
-        if (MainMenuView.Instance.Visible) return;
+        if (ToggleLock.IsLocked) return;
         if (options_active) return;
         if (customize_active) return;
         if (inventory_active) return;

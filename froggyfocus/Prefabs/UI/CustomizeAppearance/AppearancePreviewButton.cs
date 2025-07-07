@@ -6,7 +6,7 @@ public partial class AppearancePreviewButton : ButtonScript
     public TextureRect HatTextureRect;
 
     [Export]
-    public HatSubViewport HatSubViewport;
+    public ItemSubViewport HatSubViewport;
 
     public bool IsLocked { get; private set; }
 

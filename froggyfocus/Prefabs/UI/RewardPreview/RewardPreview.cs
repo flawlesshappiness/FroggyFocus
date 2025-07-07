@@ -6,7 +6,7 @@ public partial class RewardPreview : Control
     public TextureRect TextureRect;
 
     [Export]
-    public HatSubViewport HatSubViewport;
+    public ItemSubViewport HatSubViewport;
 
     [Export]
     public Label AmountLabel;

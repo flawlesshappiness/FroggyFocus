@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://lvo1xk3ybdka" path="res://Prefabs/UI/CustomizeAppearance/AppearancePreviewButton.cs" id="1_5km8g"]
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="2_5km8g"]
-[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/Hats/hat_sub_viewport.tscn" id="3_vkjdt"]
+[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="3_vkjdt"]
 
 [node name="AppearancePreviewButton" type="Button" node_paths=PackedStringArray("HatTextureRect", "HatSubViewport")]
 custom_minimum_size = Vector2(65, 65)

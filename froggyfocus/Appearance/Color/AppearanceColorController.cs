@@ -15,4 +15,12 @@ public partial class AppearanceColorController : ResourceController<AppearanceCo
     {
         return GetInfo(type).Color;
     }
+
+    public void Purchase(AppearanceColorType type)
+    {
+        if (!Data.Game.Appearance.PurchasedColors.Contains(type))
+        {
+            Data.Game.Appearance.PurchasedColors.Add(type);
+        }
+    }
 }

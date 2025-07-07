@@ -23,8 +23,6 @@ public partial class ShopView : View
     public Control InputBlocker;
 
     private bool animating;
-    private bool popup_active;
-    private Control popup_back_focus;
 
     public override void _Ready()
     {
@@ -32,7 +30,6 @@ public partial class ShopView : View
         RegisterDebugActions();
 
         ShopContainer.BackButton.Pressed += BackClicked;
-        PurchasePopup.OnCancel += PurchasePopup_OnCancel;
 
         ShopContainer.HatsContainer.OnButtonPressed += HatButton_Pressed;
         ShopContainer.ColorContainer.OnColorPressed += ColorButton_Pressed;
@@ -45,6 +42,7 @@ public partial class ShopView : View
         Open();
 
         Player.SetAllLocks(nameof(ShopView), true);
+        PauseView.ToggleLock.SetLock(nameof(ShopView), true);
         MouseVisibility.Show(nameof(ShopView));
     }
 
@@ -52,6 +50,7 @@ public partial class ShopView : View
     {
         base.OnHide();
         Player.SetAllLocks(nameof(ShopView), false);
+        PauseView.ToggleLock.SetLock(nameof(ShopView), false);
         MouseVisibility.Hide(nameof(ShopView));
     }
 
@@ -172,7 +171,7 @@ public partial class ShopView : View
 
         if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
         {
-            if (popup_active)
+            if (PurchasePopup.Active)
             {
                 PurchasePopup.Cancel();
             }
@@ -226,47 +225,51 @@ public partial class ShopView : View
 
     private void HatButton_Pressed(AppearanceHatInfo info)
     {
-        popup_active = true;
-
-        popup_back_focus = ShopContainer.HatsContainer.GetButton(info);
+        var focus_button = ShopContainer.HatsContainer.GetButton(info);
         PurchasePopup.SetHat(info);
-        PurchasePopup.ShowPopup();
 
-        PurchasePopup.OnPurchase = () =>
+        this.StartCoroutine(Cr, "popup");
+        IEnumerator Cr()
         {
-            Data.Game.Appearance.PurchasedHats.Add(info.Type);
-            ShopContainer.HatsContainer.UpdateButtons();
-            ShopContainer.TabContainer.GetTabBar().GrabFocus();
+            yield return PurchasePopup.WaitForPopup();
 
-            popup_active = false;
+            if (PurchasePopup.Purchased)
+            {
+                AppearanceHatController.Instance.Purchase(info.Type);
+                ShopContainer.HatsContainer.UpdateButtons();
+                Data.Game.Save();
 
-            Data.Game.Save();
-        };
+                ShopContainer.TabContainer.GetTabBar().GrabFocus();
+            }
+            else if (PurchasePopup.Cancelled)
+            {
+                ShopContainer.HatsContainer.GetButton(info).GrabFocus();
+            }
+        }
     }
 
     private void ColorButton_Pressed(AppearanceColorInfo info)
     {
-        popup_active = true;
-
-        popup_back_focus = ShopContainer.ColorContainer.GetButton(info);
+        var focus_button = ShopContainer.ColorContainer.GetButton(info);
         PurchasePopup.SetColor(info);
-        PurchasePopup.ShowPopup();
 
-        PurchasePopup.OnPurchase = () =>
+        this.StartCoroutine(Cr, "popup");
+        IEnumerator Cr()
         {
-            Data.Game.Appearance.PurchasedColors.Add(info.Type);
-            ShopContainer.ColorContainer.UpdateButtons();
-            ShopContainer.TabContainer.GetTabBar().GrabFocus();
+            yield return PurchasePopup.WaitForPopup();
 
-            popup_active = false;
+            if (PurchasePopup.Purchased)
+            {
+                AppearanceColorController.Instance.Purchase(info.Type);
+                ShopContainer.ColorContainer.UpdateButtons();
+                Data.Game.Save();
 
-            Data.Game.Save();
-        };
-    }
-
-    private void PurchasePopup_OnCancel()
-    {
-        popup_back_focus.GrabFocus();
-        popup_active = false;
+                ShopContainer.TabContainer.GetTabBar().GrabFocus();
+            }
+            else if (PurchasePopup.Cancelled)
+            {
+                ShopContainer.ColorContainer.GetButton(info).GrabFocus();
+            }
+        }
     }
 }

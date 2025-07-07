@@ -30,6 +30,9 @@ public partial class HandInView : View
     public InventoryContainer InventoryContainer;
 
     [Export]
+    public ShopExpandPopup ShopExpandPopup;
+
+    [Export]
     public Control InputBlocker;
 
     [Export]
@@ -133,7 +136,7 @@ public partial class HandInView : View
 
     public void ShowPopup(string id)
     {
-        var data = Data.Game.HandIns.FirstOrDefault(x => x.Id == id);
+        var data = HandIn.GetOrCreateData(id);
         ShowPopup(data);
     }
 
@@ -160,6 +163,7 @@ public partial class HandInView : View
     {
         maps.ForEach(x => x.Clear());
         ClaimButton.Disabled = true;
+        current_data = null;
     }
 
     private void Load(HandInData data)
@@ -185,7 +189,7 @@ public partial class HandInView : View
             preview.Show();
         }
 
-        if (data.HatUnlock != AppearanceHatType.None && !Data.Game.Appearance.UnlockedHats.Contains(data.HatUnlock))
+        if (data.HatUnlock != AppearanceHatType.None)
         {
             var preview = RewardPreviews[1];
             var info = AppearanceHatController.Instance.Collection.Resources.FirstOrDefault(x => x.Type == data.HatUnlock);
@@ -197,6 +201,7 @@ public partial class HandInView : View
     private void SetLocks(bool locked)
     {
         Player.SetAllLocks(nameof(HandInView), locked);
+        PauseView.ToggleLock.SetLock(nameof(HandInView), locked);
         MouseVisibility.Instance.Lock.SetLock(nameof(HandInView), locked);
     }
 
@@ -247,6 +252,7 @@ public partial class HandInView : View
             AnimatedOverlay.AnimateBehindHide();
             yield return AnimatedPanel_HandIn.AnimatePopHide();
             InputBlocker.Hide();
+            yield return WaitForPopup();
             Hide();
         }
     }
@@ -257,12 +263,25 @@ public partial class HandInView : View
         IEnumerator Cr()
         {
             ReleaseCurrentFocus();
-
             InputBlocker.Show();
             AnimatedPanel_HandIn.AnimateGrow();
             yield return AnimatedPanel_Inventory.AnimatePopHide();
             InputBlocker.Hide();
             selected_map.Button?.GrabFocus();
+        }
+    }
+
+    private IEnumerator WaitForPopup()
+    {
+        if (current_data.Claimed)
+        {
+            if (current_data.HatUnlock != AppearanceHatType.None)
+            {
+                ShopExpandPopup.SetHat(current_data.HatUnlock);
+                yield return ShopExpandPopup.WaitForPopup();
+            }
+
+            HandInController.Instance.HandInClaimed(current_data);
         }
     }
 
@@ -298,11 +317,10 @@ public partial class HandInView : View
         }
 
         current_data.Claimed = true;
-        CloseHandInButton_Pressed();
-
-        HandInController.Instance.HandInClaimed(current_data);
 
         Data.Game.Save();
+
+        CloseHandInButton_Pressed();
     }
 
     private bool Validate()

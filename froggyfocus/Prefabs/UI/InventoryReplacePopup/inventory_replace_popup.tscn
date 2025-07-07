@@ -41,9 +41,9 @@ layout_mode = 2
 [node name="AnimatedPanel" parent="CenterContainer/Center" instance=ExtResource("4_cm5y6")]
 layout_mode = 1
 offset_left = 0.0
-offset_top = 1000.0
+offset_top = 0.0
 offset_right = 0.0
-offset_bottom = 1000.0
+offset_bottom = 0.0
 
 [node name="Container" type="Control" parent="CenterContainer/Center/AnimatedPanel"]
 layout_mode = 1

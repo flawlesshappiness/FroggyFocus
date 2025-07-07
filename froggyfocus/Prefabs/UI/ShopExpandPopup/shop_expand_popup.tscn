@@ -1,0 +1,308 @@
+[gd_scene load_steps=11 format=3 uid="uid://dtjh32wwairim"]
+
+[ext_resource type="Script" uid="uid://bqgspeqo63cmk" path="res://Prefabs/UI/ShopExpandPopup/ShopExpandPopup.cs" id="1_2g6sh"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_38mrl"]
+[ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_mv4vf"]
+[ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_fvmwr"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="5_itp0w"]
+[ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="5_kki8d"]
+[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="6_fvmwr"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="6_kki8d"]
+[ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="6_yov8v"]
+[ext_resource type="Script" uid="uid://b3xycn0wkry5n" path="res://Prefabs/UI/SubViewport/SubViewportTexture.cs" id="7_eo7dv"]
+
+[node name="ShopExpandPopup" type="Control" node_paths=PackedStringArray("ItemSubViewport", "NameLabel", "CostLabel", "OkButton", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_38mrl")
+script = ExtResource("1_2g6sh")
+ItemSubViewport = NodePath("ItemSubViewport")
+NameLabel = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer/MarginContainer/NameLabel")
+CostLabel = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer/CostLabel")
+OkButton = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/OkButton")
+AnimatedOverlay = NodePath("AnimatedOverlay")
+AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
+InputBlocker = NodePath("InputBlocker")
+FocusButton = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/OkButton")
+
+[node name="AnimatedOverlay" parent="." instance=ExtResource("2_mv4vf")]
+layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="AnimatedPanel" parent="CenterContainer/Center" instance=ExtResource("3_fvmwr")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="BackgroundEffects" type="Control" parent="CenterContainer/Center/AnimatedPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/BackgroundEffects"]
+modulate = Color(1, 0.987, 0.61, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -835.0
+offset_top = -835.0
+offset_right = 835.0
+offset_bottom = 835.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_kki8d")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Container" type="Control" parent="CenterContainer/Center/AnimatedPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -93.0
+offset_right = 165.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InstructionPanel" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -91.5
+offset_top = -11.785
+offset_right = 91.5
+offset_bottom = 36.215
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/InstructionPanel"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/InstructionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel/Container/InstructionPanel/MarginContainer"]
+layout_mode = 2
+text = "Purchase in the Shop"
+horizontal_alignment = 1
+
+[node name="ContentPanel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PreviewControl" type="Control" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PreviewControl"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_itp0w")
+
+[node name="PreviewTextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PreviewControl" node_paths=PackedStringArray("SubViewport")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("7_eo7dv")
+SubViewport = NodePath("../../../../../../../../../../../ItemSubViewport")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameControl" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_itp0w")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 2
+
+[node name="NameLabel" type="Label" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CostControl" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_itp0w")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="CostLabel" type="Label" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_yov8v")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="OkButton" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer" instance=ExtResource("6_kki8d")]
+layout_mode = 2
+text = " OK"
+
+[node name="TitleContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.5
+offset_top = -70.435
+offset_right = 225.5
+offset_bottom = 8.565
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/TitleContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/TitleContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel/Container/TitleContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "SHOP EXPANDED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemSubViewport" parent="." instance=ExtResource("6_fvmwr")]

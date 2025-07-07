@@ -1,14 +1,7 @@
 using Godot;
-using System;
 
-public partial class PurchasePopup : Control
+public partial class PurchasePopup : PopupControl
 {
-    [Export]
-    public AnimatedOverlay AnimatedOverlay;
-
-    [Export]
-    public AnimatedPanel AnimatedPanel;
-
     [Export]
     public Button CancelButton;
 
@@ -22,7 +15,7 @@ public partial class PurchasePopup : Control
     public Label ValueLabel;
 
     [Export]
-    public ObjectPreview Preview;
+    public PreviewSubViewport Preview;
 
     [Export]
     public TextureRect TextureRect;
@@ -36,8 +29,8 @@ public partial class PurchasePopup : Control
     [Export]
     public AudioStreamPlayer SfxPurchaseFail;
 
-    public Action OnPurchase;
-    public Action OnCancel;
+    public bool Purchased { get; private set; }
+    public bool Cancelled { get; private set; }
 
     private int current_price;
 
@@ -46,19 +39,6 @@ public partial class PurchasePopup : Control
         base._Ready();
         PurchaseButton.Pressed += Purchase_Pressed;
         CancelButton.Pressed += Cancel_Pressed;
-    }
-
-    public void ShowPopup()
-    {
-        AnimatedOverlay.AnimateBehindShow();
-        AnimatedPanel.AnimatePopShow();
-        CancelButton.GrabFocus();
-    }
-
-    private void HidePopup()
-    {
-        AnimatedOverlay.AnimateBehindHide();
-        AnimatedPanel.AnimatePopHide();
     }
 
     public void SetHat(AppearanceHatInfo info)
@@ -90,10 +70,12 @@ public partial class PurchasePopup : Control
     {
         if (CanAfford())
         {
+            Purchased = true;
+            Cancelled = false;
+
             CurrencyController.Instance.AddValue(CurrencyType.Money, -current_price);
             SfxPurchaseSuccess.Play();
-            HidePopup();
-            OnPurchase?.Invoke();
+            ClosePopup();
         }
         else
         {
@@ -108,8 +90,10 @@ public partial class PurchasePopup : Control
 
     private void Cancel_Pressed()
     {
-        HidePopup();
-        OnCancel?.Invoke();
+        Cancelled = true;
+        Purchased = false;
+
+        ClosePopup();
     }
 
     private bool CanAfford()

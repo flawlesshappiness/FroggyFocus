@@ -41,8 +41,16 @@ public static class HandIn
     public static void ResetData(HandInInfo info)
     {
         var data = GetOrCreateData(info.Id);
-        var rng = new RandomNumberGenerator();
+        data.Claimed = false;
 
+        ResetData_Requests(info, data);
+        ResetData_HatUnlock(info, data);
+        ResetData_Date(info, data);
+    }
+
+    private static void ResetData_Requests(HandInInfo info, HandInData data)
+    {
+        var rng = new RandomNumberGenerator();
         var count = rng.RandiRange(info.CountRange.X, info.CountRange.Y);
         var request_infos = info.PossibleRequests.TakeRandom(count, allow_duplicates: true);
 
@@ -55,9 +63,19 @@ public static class HandIn
         var reward_mul = rng.RandfRange(info.RewardMultiplierRange.X, info.RewardMultiplierRange.Y);
         var reward = (int)(reward_base * reward_mul);
         data.MoneyReward = reward;
+    }
 
-        data.HatUnlock = info.HatUnlock;
+    private static void ResetData_HatUnlock(HandInInfo info, HandInData data)
+    {
+        data.HatUnlock = AppearanceHatType.None;
+        if (!Data.Game.Appearance.UnlockedHats.Contains(info.HatUnlock))
+        {
+            data.HatUnlock = info.HatUnlock;
+        }
+    }
 
+    private static void ResetData_Date(HandInInfo info, HandInData data)
+    {
         var date_now = GameTime.GetCurrentDateTime();
         var date_next = date_now.AddSeconds(info.CooldownInSeconds);
         data.DateTimeNext = GameTime.GetDateTimeString(date_next);

@@ -1,4 +1,4 @@
-public partial class InventorySubViewport : ObjectPreview
+public partial class InventorySubViewport : PreviewSubViewport
 {
     public void SetCharacter(FocusCharacterInfo info)
     {

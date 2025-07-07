@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class ObjectPreview : SubViewport
+public partial class PreviewSubViewport : SubViewport
 {
     [Export]
     public Node3D Origin;
