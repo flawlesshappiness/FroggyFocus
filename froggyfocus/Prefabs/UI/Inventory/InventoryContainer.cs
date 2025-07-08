@@ -18,6 +18,7 @@ public partial class InventoryContainer : ControlScript
     public Label EmptyLabel;
 
     public event Action<FocusCharacterInfo> OnButtonPressed;
+    public event Action<FocusCharacterInfo> OnButtonFocus;
 
     private ButtonMap selected_map;
     private List<ButtonMap> maps = new();
@@ -70,6 +71,7 @@ public partial class InventoryContainer : ControlScript
             };
 
             button.Pressed += () => Button_Pressed(map);
+            button.FocusEntered += () => Button_FocusEntered(map);
 
             maps.Add(map);
         }
@@ -96,6 +98,11 @@ public partial class InventoryContainer : ControlScript
     {
         selected_map = map;
         OnButtonPressed?.Invoke(map.Info);
+    }
+
+    private void Button_FocusEntered(ButtonMap map)
+    {
+        OnButtonFocus?.Invoke(map.Info);
     }
 
     public void PressFirstButton()

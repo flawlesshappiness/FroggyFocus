@@ -59,7 +59,7 @@ public partial class StatsController : SingletonController
         return Data.Game.Stats;
     }
 
-    private StatsCharacterData GetOrCreateCharacterData(string info_path)
+    public StatsCharacterData GetOrCreateCharacterData(string info_path)
     {
         var data = GetData();
         var character = data.Characters.FirstOrDefault(x => x.InfoPath == info_path);

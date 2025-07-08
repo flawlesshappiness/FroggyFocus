@@ -10,22 +10,7 @@ public partial class InventoryControl : ControlScript
     public Button BackButton;
 
     [Export]
-    public Button DiscardButton;
-
-    [Export]
-    public TextureRect PreviewTextureRect;
-
-    [Export]
-    public ItemSubViewport ItemSubViewport;
-
-    [Export]
-    public Label NameLabel;
-
-    [Export]
-    public Label ValueLabel;
-
-    [Export]
-    public Control ValueContainer;
+    public InventoryInfoContainer InfoContainer;
 
     public event Action OnBack;
 
@@ -34,11 +19,7 @@ public partial class InventoryControl : ControlScript
         base._Ready();
 
         BackButton.Pressed += BackPressed;
-        DiscardButton.Pressed += DiscardPressed;
-        InventoryContainer.OnButtonPressed += InventoryButton_Pressed;
-
-        PreviewTextureRect.Texture = ItemSubViewport.GetTexture();
-        ItemSubViewport.SetCameraInventory();
+        InventoryContainer.OnButtonFocus += InventoryButton_Focus;
     }
 
     protected override void OnShow()
@@ -46,7 +27,6 @@ public partial class InventoryControl : ControlScript
         base.OnShow();
 
         InventoryContainer.UpdateButtons();
-        ClearCharacterInfo();
         InventoryContainer.PressFirstButton();
     }
 
@@ -59,14 +39,11 @@ public partial class InventoryControl : ControlScript
     private void Clear()
     {
         InventoryContainer.Clear();
-        ItemSubViewport.Clear();
-        ClearCharacterInfo();
     }
 
-    private void InventoryButton_Pressed(FocusCharacterInfo info)
+    private void InventoryButton_Focus(FocusCharacterInfo info)
     {
-        ItemSubViewport.SetCharacter(info);
-        SetCharacterInfo(info);
+        InfoContainer.SetCharacter(info);
     }
 
     public override void _Input(InputEvent @event)
@@ -82,25 +59,6 @@ public partial class InventoryControl : ControlScript
     private void BackPressed()
     {
         OnBack?.Invoke();
-    }
-
-    private void SetCharacterInfo(FocusCharacterInfo info)
-    {
-        ClearCharacterInfo();
-
-        NameLabel.Text = info.Name;
-        ValueLabel.Text = info.CurrencyReward.ToString();
-
-        ValueContainer.Show();
-        DiscardButton.Show();
-    }
-
-    private void ClearCharacterInfo()
-    {
-        NameLabel.Text = string.Empty;
-
-        ValueContainer.Hide();
-        DiscardButton.Hide();
     }
 
     private void DiscardPressed()
