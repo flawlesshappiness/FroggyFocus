@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsoru72pu6eaq"]
+
+[ext_resource type="Script" uid="uid://clrm8xheys45p" path="res://NoClip/NoClipPlayer.cs" id="1_t6mbo"]
+
+[node name="NoClipPlayer" type="Node3D" node_paths=PackedStringArray("Camera")]
+script = ExtResource("1_t6mbo")
+MoveSpeed = 10.0
+Camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true

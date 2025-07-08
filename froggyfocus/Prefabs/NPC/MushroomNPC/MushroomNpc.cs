@@ -19,15 +19,14 @@ public partial class MushroomNpc : Area3D, IInteractable
 
         DialogueController.Instance.OnNodeEnded += DialogueEnded;
         DialogueController.Instance.OnDialogueEnded += DialogueEnded;
+
+        InitializeAnimations();
     }
 
     private void InitializeAnimations()
     {
-        var idle = new AnimationState("Armature|idle");
-        var idle_dialogue = new AnimationState("Armature|idle_dialogue");
-
-        Animation.CreateAnimation(idle.Animation, true);
-        Animation.CreateAnimation(idle_dialogue.Animation, true);
+        var idle = Animation.CreateAnimation("Armature|idle", true);
+        var idle_dialogue = Animation.CreateAnimation("Armature|idle_dialogue", true);
 
         Animation.Connect(idle, idle_dialogue, param_dialogue.WhenTrue());
         Animation.Connect(idle_dialogue, idle, param_dialogue.WhenFalse());

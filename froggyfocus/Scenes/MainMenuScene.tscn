@@ -10,8 +10,9 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_sb72h"]
 size = Vector2(500, 500)
 
-[node name="MainMenuScene" type="Node3D"]
+[node name="MainMenuScene" type="Node3D" node_paths=PackedStringArray("Camera")]
 script = ExtResource("1_sb72h")
+Camera = NodePath("Camera3D")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.363072, 0.931761, 0, -0.931761, 0.363072, 0, 9.01286, 0)

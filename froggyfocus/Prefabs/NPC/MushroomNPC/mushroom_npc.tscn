@@ -31,6 +31,23 @@ shape = SubResource("CapsuleShape3D_mjd21")
 
 [node name="mushroom_guy" parent="." instance=ExtResource("4_2pf5i")]
 
+[node name="Skeleton3D" parent="mushroom_guy/Armature" index="0"]
+bones/1/position = Vector3(-3.28447e-20, -0.00155846, -0.000951274)
+bones/1/rotation = Quaternion(0.339181, -5.90143e-24, -4.89696e-17, 0.940721)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(2.47245e-26, 0.00719796, 1.02884e-10)
+bones/2/rotation = Quaternion(0.250012, 2.26211e-17, -7.87628e-17, 0.968243)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-1.70645e-25, 0.00810257, -8.14488e-10)
+bones/3/rotation = Quaternion(0.08815, 1.18745e-07, 1.05083e-08, 0.996107)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-5.88352e-16, 0.00977423, 1.29009e-09)
+bones/4/rotation = Quaternion(-0.156185, 2.23906e-10, -3.9624e-08, 0.987728)
+bones/4/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="mushroom_guy" index="1"]
+playback_default_blend_time = 0.25
+
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("4_mjd21")
 Animator = NodePath("../mushroom_guy/AnimationPlayer")
