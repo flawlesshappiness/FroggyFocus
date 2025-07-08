@@ -5,12 +5,12 @@
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="2_5km8g"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="3_vkjdt"]
 
-[node name="AppearancePreviewButton" type="Button" node_paths=PackedStringArray("HatTextureRect", "HatSubViewport")]
+[node name="AppearancePreviewButton" type="Button" node_paths=PackedStringArray("TextureRect", "ItemSubViewport")]
 custom_minimum_size = Vector2(65, 65)
 theme = ExtResource("1_2h73a")
 script = ExtResource("1_5km8g")
-HatTextureRect = NodePath("TextureRect")
-HatSubViewport = NodePath("ItemSubViewport")
+TextureRect = NodePath("TextureRect")
+ItemSubViewport = NodePath("ItemSubViewport")
 SfxPressed = ExtResource("2_5km8g")
 
 [node name="TextureRect" type="TextureRect" parent="."]

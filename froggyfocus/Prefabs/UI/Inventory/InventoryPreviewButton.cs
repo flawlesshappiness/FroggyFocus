@@ -18,6 +18,10 @@ public partial class InventoryPreviewButton : ButtonScript
     {
         base._Ready();
         TextureRect.Texture = ItemSubViewport.GetTexture();
+        ItemSubViewport.SetCameraInventory();
+
+        FocusEntered += Button_FocusEntered;
+        FocusExited += Button_FocusExited;
     }
 
     public void Clear()
@@ -35,5 +39,15 @@ public partial class InventoryPreviewButton : ButtonScript
     {
         var color = obscured ? Colors.Black.SetA(0.5f) : Colors.White;
         TextureRect.Modulate = color;
+    }
+
+    private void Button_FocusEntered()
+    {
+        ItemSubViewport.SetAnimationSpin();
+    }
+
+    private void Button_FocusExited()
+    {
+        ItemSubViewport.SetAnimationIdle();
     }
 }

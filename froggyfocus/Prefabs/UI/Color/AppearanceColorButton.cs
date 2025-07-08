@@ -18,6 +18,9 @@ public partial class AppearanceColorButton : ButtonScript
     {
         base._Ready();
         TextureRect.Texture = ItemSubViewport.GetTexture();
+
+        FocusEntered += Button_FocusEntered;
+        FocusExited += Button_FocusExited;
     }
 
     public override void _Process(double delta)
@@ -46,5 +49,15 @@ public partial class AppearanceColorButton : ButtonScript
     {
         InitializePaintBucket();
         paint_bucket.SetPaintColor(info.Color);
+    }
+
+    private void Button_FocusEntered()
+    {
+        ItemSubViewport.SetAnimationOscillate();
+    }
+
+    private void Button_FocusExited()
+    {
+        ItemSubViewport.SetAnimationIdle();
     }
 }

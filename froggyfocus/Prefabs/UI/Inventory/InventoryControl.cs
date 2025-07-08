@@ -38,6 +38,7 @@ public partial class InventoryControl : ControlScript
         InventoryContainer.OnButtonPressed += InventoryButton_Pressed;
 
         PreviewTextureRect.Texture = ItemSubViewport.GetTexture();
+        ItemSubViewport.SetCameraInventory();
     }
 
     protected override void OnShow()

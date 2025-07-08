@@ -40,6 +40,9 @@ public partial class PurchasePopup : PopupControl
         PurchaseButton.Pressed += Purchase_Pressed;
         CancelButton.Pressed += Cancel_Pressed;
         TextureRect.Texture = ItemSubViewport.GetTexture();
+
+        ItemSubViewport.SetCameraFront();
+        ItemSubViewport.SetAnimationSpin();
     }
 
     public void SetHat(AppearanceHatInfo info)

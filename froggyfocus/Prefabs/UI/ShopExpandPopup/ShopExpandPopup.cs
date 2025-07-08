@@ -18,6 +18,9 @@ public partial class ShopExpandPopup : PopupControl
     {
         base._Ready();
         OkButton.Pressed += OkButton_Pressed;
+
+        ItemSubViewport.SetCameraFront();
+        ItemSubViewport.SetAnimationSpin();
     }
 
     public void SetHat(AppearanceHatType type)
