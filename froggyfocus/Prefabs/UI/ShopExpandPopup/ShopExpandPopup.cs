@@ -14,6 +14,9 @@ public partial class ShopExpandPopup : PopupControl
     [Export]
     public Button OkButton;
 
+    [Export]
+    public AudioStreamPlayer SfxFanfare;
+
     public override void _Ready()
     {
         base._Ready();
@@ -39,5 +42,11 @@ public partial class ShopExpandPopup : PopupControl
     private void OkButton_Pressed()
     {
         ClosePopup();
+    }
+
+    protected override void PopupShown()
+    {
+        base.PopupShown();
+        SfxFanfare.Play();
     }
 }

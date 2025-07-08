@@ -101,6 +101,7 @@ public partial class HandInView : View
                     }
                 },
                 MoneyReward = 50,
+                HatUnlock = AppearanceHatType.Mushroom
             });
 
             v.Close();

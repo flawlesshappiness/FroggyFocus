@@ -25,10 +25,17 @@ public partial class PopupControl : ControlScript
         Hide();
     }
 
+    protected virtual void PopupShown()
+    {
+        //
+    }
+
     public IEnumerator WaitForPopup()
     {
         Active = true;
         action_performed = false;
+
+        PopupShown();
 
         yield return ShowPopup();
         while (!action_performed) yield return null;

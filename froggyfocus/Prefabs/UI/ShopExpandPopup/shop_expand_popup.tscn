@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtjh32wwairim"]
+[gd_scene load_steps=12 format=3 uid="uid://dtjh32wwairim"]
 
 [ext_resource type="Script" uid="uid://bqgspeqo63cmk" path="res://Prefabs/UI/ShopExpandPopup/ShopExpandPopup.cs" id="1_2g6sh"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_38mrl"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="6_kki8d"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="6_yov8v"]
 [ext_resource type="Script" uid="uid://b3xycn0wkry5n" path="res://Prefabs/UI/SubViewport/SubViewportTexture.cs" id="7_eo7dv"]
+[ext_resource type="AudioStream" uid="uid://c4peoobo0xyd3" path="res://Sounds/Raw/sfx_fanfare_organ_001.wav" id="11_4nhvw"]
 
-[node name="ShopExpandPopup" type="Control" node_paths=PackedStringArray("ItemSubViewport", "NameLabel", "CostLabel", "OkButton", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
+[node name="ShopExpandPopup" type="Control" node_paths=PackedStringArray("ItemSubViewport", "NameLabel", "CostLabel", "OkButton", "SfxFanfare", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,6 +25,7 @@ ItemSubViewport = NodePath("ItemSubViewport")
 NameLabel = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer/MarginContainer/NameLabel")
 CostLabel = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer/CostLabel")
 OkButton = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/OkButton")
+SfxFanfare = NodePath("SfxFanfare")
 AnimatedOverlay = NodePath("AnimatedOverlay")
 AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
 InputBlocker = NodePath("InputBlocker")
@@ -306,3 +308,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ItemSubViewport" parent="." instance=ExtResource("6_fvmwr")]
+
+[node name="SfxFanfare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_4nhvw")
+volume_db = -5.0
+bus = &"SFX"
