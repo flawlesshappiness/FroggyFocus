@@ -63,6 +63,13 @@ public partial class Player : TopDownController
         InteractLock.OnFree += InteractFree;
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        InteractLock.OnLocked -= InteractLocked;
+        InteractLock.OnFree -= InteractFree;
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);

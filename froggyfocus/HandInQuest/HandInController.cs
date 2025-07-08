@@ -31,6 +31,8 @@ public partial class HandInController : ResourceController<HandInCollection, Han
 
             foreach (var data in Data.Game.HandIns)
             {
+                var info = GetInfo(data.Id);
+                HandIn.ResetData(info);
                 data.DateTimeNext = GameTime.GetCurrentDateTimeString();
             }
 
