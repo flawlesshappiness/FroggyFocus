@@ -1,5 +1,21 @@
 [
 	{
+		"id": "##MUSHROOM_SWAMP_REQUEST_001##",
+		"next": "##MUSHROOM_SWAMP_REQUEST_002##"
+	},
+	{
+		"id": "##MUSHROOM_SWAMP_REQUEST_002##"
+	},
+	
+	{
+		"id": "##MUSHROOM_SWAMP_REQUEST_COMPLETE_001##"
+	},
+	
+	{
+		"id": "##MUSHROOM_SWAMP_REQUEST_IDLE_001##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

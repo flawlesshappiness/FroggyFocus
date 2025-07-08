@@ -1,20 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvq1s6k4t5k0m"]
+[gd_scene load_steps=7 format=3 uid="uid://bvq1s6k4t5k0m"]
 
 [ext_resource type="Script" uid="uid://chm11hfd5370t" path="res://Prefabs/NPC/MushroomNPC/MushroomNpc.cs" id="1_rt8b4"]
 [ext_resource type="Resource" uid="uid://ylb24pr0q6w6" path="res://HandInQuest/Resources/Mushroom.tres" id="2_rt8b4"]
-[ext_resource type="PackedScene" uid="uid://dn2p8y4s4fbam" path="res://Assets/FlawLizArt/Other/ExclamationMark.fbx" id="3_xytey"]
+[ext_resource type="PackedScene" uid="uid://c7ukmmer4ocw7" path="res://Assets/FlawLizArt/MushroomGuy/mushroom_guy.fbx" id="4_2pf5i"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="4_mjd21"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1y4e"]
+size = Vector3(1.97949, 2.56787, 2.74756)
 
-[node name="MushroomNPC" type="Area3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mjd21"]
+radius = 1.22306
+height = 4.98991
+
+[node name="MushroomNPC" type="Area3D" node_paths=PackedStringArray("Animation")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_rt8b4")
 HandInInfo = ExtResource("2_rt8b4")
+Animation = NodePath("AnimationStateMachine")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0744629, -1.95496)
 shape = SubResource("BoxShape3D_v1y4e")
 
-[node name="ExclamationMark" parent="." instance=ExtResource("3_xytey")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.788699, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82308, -0.761708)
+shape = SubResource("CapsuleShape3D_mjd21")
+
+[node name="mushroom_guy" parent="." instance=ExtResource("4_2pf5i")]
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("4_mjd21")
+Animator = NodePath("../mushroom_guy/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="mushroom_guy"]
