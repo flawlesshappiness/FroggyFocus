@@ -7,6 +7,7 @@
 script = ExtResource("2_np2wo")
 Scene = ExtResource("1_p4q1c")
 Name = "Dragonfly"
+LocationHint = "##HINT_LOC_SWAMP_WATER##"
 Accessory = ""
 FocusValue = 50.0
 SizeRange = Vector2(0.6, 0.8)
@@ -16,4 +17,5 @@ MoveDelayRange = Vector2(3, 4)
 CurrencyReward = 40
 Difficulty = 0.0
 SkillChecks = Array[int]([2])
+Tags = null
 metadata/_custom_type_script = "uid://buqirimb2mf5"

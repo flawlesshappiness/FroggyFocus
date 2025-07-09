@@ -7,6 +7,7 @@
 script = ExtResource("2_a6qrx")
 Scene = ExtResource("1_r72sm")
 Name = "Infested Beetle"
+LocationHint = "##HINT_LOC_MUSHROOM##"
 Accessory = "mushroom"
 FocusValue = 75.0
 SizeRange = Vector2(0.4, 0.6)
@@ -16,4 +17,5 @@ MoveDelayRange = Vector2(0.5, 1)
 CurrencyReward = 30
 Difficulty = 0.0
 SkillChecks = Array[int]([1, 2])
+Tags = Array[String](["infested"])
 metadata/_custom_type_script = "uid://buqirimb2mf5"

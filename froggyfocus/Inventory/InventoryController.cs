@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+
 public partial class InventoryController : SingletonController
 {
     public static InventoryController Instance => Singleton.Get<InventoryController>();
@@ -58,4 +61,31 @@ public partial class InventoryController : SingletonController
     {
         return Data.Game.Inventory.Characters.Count >= GetCurrentSize();
     }
+
+    public List<InventoryCharacterData> GetCharactersInInventory(InventoryFilterOptions options = null)
+    {
+        return Data.Game.Inventory.Characters
+            .Where(x => IsDataValid(x, options))
+            .ToList();
+    }
+
+    public bool IsDataValid(InventoryCharacterData data, InventoryFilterOptions options = null)
+    {
+        if (options == null) return true;
+
+        var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
+
+        if (options.ExcludedDatas?.Contains(data) ?? false) return false;
+        if (!options.ValidCharacters?.Contains(info) ?? false) return false;
+        if (options.ExcludedCharacters?.Contains(info) ?? false) return false;
+
+        return true;
+    }
+}
+
+public class InventoryFilterOptions
+{
+    public List<FocusCharacterInfo> ValidCharacters { get; set; }
+    public List<FocusCharacterInfo> ExcludedCharacters { get; set; }
+    public List<InventoryCharacterData> ExcludedDatas { get; set; }
 }

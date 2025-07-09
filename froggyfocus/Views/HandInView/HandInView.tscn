@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ug6yqg0hf76e"]
+[gd_scene load_steps=14 format=3 uid="uid://ug6yqg0hf76e"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w0lsk"]
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="2_fare7"]
@@ -10,10 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://s6oqyxkfywv7" path="res://Prefabs/UI/Inventory/inventory_container.tscn" id="5_4gv8o"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_cjkwa"]
 [ext_resource type="PackedScene" uid="uid://byh5solck2yl" path="res://Prefabs/UI/RewardPreview/reward_preview.tscn" id="6_s1pfv"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="8_ra46o"]
 [ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="10_kuxxg"]
 [ext_resource type="PackedScene" uid="uid://dtjh32wwairim" path="res://Prefabs/UI/ShopExpandPopup/shop_expand_popup.tscn" id="12_77p21"]
 
-[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "AnimatedPanel_Inventory", "CloseHandInButton", "CloseInventoryButton", "ClaimButton", "InventoryContainer", "ShopExpandPopup", "InputBlocker", "SfxMoney", "RequestButtons", "RewardPreviews")]
+[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "AnimatedPanel_Inventory", "CloseHandInButton", "CloseInventoryButton", "ClaimButton", "NameLabel", "LocationHintLabel", "InventoryContainer", "ShopExpandPopup", "InputBlocker", "SfxMoney", "RequestButtons", "RewardPreviews")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,9 +26,11 @@ script = ExtResource("2_tr8x0")
 AnimatedOverlay = NodePath("AnimatedOverlay")
 AnimatedPanel_HandIn = NodePath("CenterContainer/Center/AnimatedPanel_HandIn")
 AnimatedPanel_Inventory = NodePath("CenterContainer/Center/AnimatedPanel_Inventory")
-CloseHandInButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/CloseHandInButton")
+CloseHandInButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/CloseHandInButton")
 CloseInventoryButton = NodePath("CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/CloseInventoryButton")
-ClaimButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/ClaimButton")
+ClaimButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ClaimButton")
+NameLabel = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer/NameLabel")
+LocationHintLabel = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer/LocationHintLabel")
 InventoryContainer = NodePath("CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/Panel/inventory_container")
 ShopExpandPopup = NodePath("ShopExpandPopup")
 InputBlocker = NodePath("InputBlocker")
@@ -56,7 +59,7 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="HandInContainer" type="Control" parent="CenterContainer/Center/AnimatedPanel_HandIn"]
+[node name="HandInContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,27 +67,61 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.5
-offset_top = -130.0
+offset_top = -110.5
 offset_right = 250.5
-offset_bottom = 130.0
+offset_bottom = 110.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer"]
+layout_mode = 2
+
+[node name="Title" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = -47.23
+offset_right = 120.0
+offset_bottom = 26.77
 grow_horizontal = 2
-grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/Title"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "REQUEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseHandInButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel" instance=ExtResource("4_l2pwb")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.395
+offset_top = -20.775
+offset_right = 19.605
+offset_bottom = 21.225
+grow_horizontal = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 20
@@ -96,7 +133,6 @@ theme_override_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -111,26 +147,33 @@ alignment = 1
 
 [node name="RequestButton 1" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
+disabled = true
 
 [node name="RequestButton 2" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
+disabled = true
 
 [node name="RequestButton 3" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
+disabled = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="RequestButton 4" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
+disabled = true
 
 [node name="RequestButton 5" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
+disabled = true
 
 [node name="RequestButton 6" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
+disabled = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -175,54 +218,65 @@ layout_mode = 2
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ClaimButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("5_cjkwa")]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = " Claim"
 
-[node name="Title" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -120.0
-offset_top = -47.23
-offset_right = 120.0
-offset_bottom = 26.77
-grow_horizontal = 2
-
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Title"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Title"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
+theme = ExtResource("8_ra46o")
 
-[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Title/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = "REQUEST"
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="NameLabel" type="Label" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "NameLabel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseHandInButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer" instance=ExtResource("4_l2pwb")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -22.395
-offset_top = -20.775
-offset_right = 19.605
-offset_bottom = 21.225
-grow_horizontal = 0
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("8_ra46o")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="LocationHintLabel" type="RichTextLabel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+bbcode_enabled = true
+text = "[i]Location
+Hint[/i]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="ClaimButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" instance=ExtResource("5_cjkwa")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = " Claim"
 
 [node name="AnimatedPanel_Inventory" parent="CenterContainer/Center" instance=ExtResource("4_77p21")]
 layout_mode = 1

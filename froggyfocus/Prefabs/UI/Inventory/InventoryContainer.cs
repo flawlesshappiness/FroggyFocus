@@ -23,13 +23,6 @@ public partial class InventoryContainer : ControlScript
     private ButtonMap selected_map;
     private List<ButtonMap> maps = new();
 
-    public class FilterOptions
-    {
-        public List<FocusCharacterInfo> ValidCharacters { get; set; }
-        public List<FocusCharacterInfo> ExcludedCharacters { get; set; }
-        public List<InventoryCharacterData> ExcludedDatas { get; set; }
-    }
-
     private class ButtonMap
     {
         public Button Button { get; set; }
@@ -44,7 +37,7 @@ public partial class InventoryContainer : ControlScript
         maps.Clear();
     }
 
-    public void UpdateButtons(FilterOptions filter = null)
+    public void UpdateButtons(InventoryFilterOptions filter = null)
     {
         InventoryButtonTemplate.Hide();
 
@@ -52,7 +45,7 @@ public partial class InventoryContainer : ControlScript
 
         foreach (var data in Data.Game.Inventory.Characters)
         {
-            if (!IsDataValid(data, filter)) continue;
+            if (!InventoryController.Instance.IsDataValid(data, filter)) continue;
 
             var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
             if (info == null) continue;
@@ -79,19 +72,6 @@ public partial class InventoryContainer : ControlScript
         EmptyLabel.Visible = Data.Game.Inventory.Characters.Count == 0;
 
         UpdateGridContainer();
-    }
-
-    private bool IsDataValid(InventoryCharacterData data, FilterOptions options = null)
-    {
-        if (options == null) return true;
-
-        var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
-
-        if (options.ExcludedDatas?.Contains(data) ?? false) return false;
-        if (!options.ValidCharacters?.Contains(info) ?? false) return false;
-        if (options.ExcludedCharacters?.Contains(info) ?? false) return false;
-
-        return true;
     }
 
     private void Button_Pressed(ButtonMap map)

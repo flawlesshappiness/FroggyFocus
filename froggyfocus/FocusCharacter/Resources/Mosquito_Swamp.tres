@@ -7,6 +7,7 @@
 script = ExtResource("2_ttvjf")
 Scene = ExtResource("1_ubp8e")
 Name = "Mosquito"
+LocationHint = "##HINT_LOC_SWAMP##"
 Accessory = ""
 FocusValue = 75.0
 SizeRange = Vector2(0.4, 0.6)
@@ -16,4 +17,5 @@ MoveDelayRange = Vector2(0, 0)
 CurrencyReward = 25
 Difficulty = 0.0
 SkillChecks = null
+Tags = null
 metadata/_custom_type_script = "uid://buqirimb2mf5"

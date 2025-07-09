@@ -7,6 +7,7 @@
 script = ExtResource("2_qr5px")
 Scene = ExtResource("1_qa17i")
 Name = "Water Strider"
+LocationHint = "##HINT_LOC_SWAMP_WATER##"
 Accessory = ""
 FocusValue = 75.0
 SizeRange = Vector2(0.4, 0.6)
@@ -16,4 +17,5 @@ MoveDelayRange = Vector2(0.5, 1)
 CurrencyReward = 30
 Difficulty = 0.0
 SkillChecks = Array[int]([2, 3])
+Tags = null
 metadata/_custom_type_script = "uid://buqirimb2mf5"

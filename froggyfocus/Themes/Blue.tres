@@ -1,8 +1,15 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://dnae0f3350jys"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dnae0f3350jys"]
 
 [ext_resource type="Texture2D" uid="uid://5fnd7654h6sk" path="res://Assets/KenneyNL/UI/Blue/button_square_depth_flat.png" id="2_cag1a"]
 [ext_resource type="Texture2D" uid="uid://2iew501qnljl" path="res://Assets/KenneyNL/UI/Blue/button_square_flat.png" id="3_hqcne"]
 [ext_resource type="Texture2D" uid="uid://qxxjxnekfdbg" path="res://Assets/KenneyNL/UI/Blue/button_square_depth_gradient.png" id="4_hqcne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqcne"]
+bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gspl"]
 texture = ExtResource("4_hqcne")
@@ -106,6 +113,7 @@ Button/colors/font_focus_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/colors/font_hover_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/colors/font_hover_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_hqcne")
 Button/styles/hover = SubResource("StyleBoxTexture_3gspl")
 Button/styles/normal = SubResource("StyleBoxTexture_xy3c2")
 Button/styles/pressed = SubResource("StyleBoxTexture_urxog")

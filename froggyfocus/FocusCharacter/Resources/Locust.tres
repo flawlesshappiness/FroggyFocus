@@ -7,7 +7,7 @@
 script = ExtResource("2_nripm")
 Scene = ExtResource("1_u2f4j")
 Name = "Locust"
-Description = "It's got the hops."
+LocationHint = ""
 Accessory = ""
 FocusValue = 100.0
 SizeRange = Vector2(0.4, 0.8)
@@ -17,4 +17,5 @@ MoveDelayRange = Vector2(1, 2)
 CurrencyReward = 30
 Difficulty = 0.0
 SkillChecks = Array[int]([2])
+Tags = null
 metadata/_custom_type_script = "uid://buqirimb2mf5"

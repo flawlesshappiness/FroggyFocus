@@ -27,6 +27,12 @@ public partial class HandInView : View
     public Button ClaimButton;
 
     [Export]
+    public Label NameLabel;
+
+    [Export]
+    public RichTextLabel LocationHintLabel;
+
+    [Export]
     public InventoryContainer InventoryContainer;
 
     [Export]
@@ -120,7 +126,8 @@ public partial class HandInView : View
                 Button = button,
             };
 
-            button.Pressed += () => RequestButton_Pressed(map);
+            //button.Pressed += () => RequestButton_Pressed(map);
+            button.FocusEntered += () => RequestButton_FocusEntered(map);
             maps.Add(map);
         }
     }
@@ -167,6 +174,7 @@ public partial class HandInView : View
 
         Clear();
         Load(data);
+        Validate();
         Show();
 
         StartCoroutine(Cr, "animate");
@@ -198,12 +206,28 @@ public partial class HandInView : View
 
         for (int i = 0; i < data.Requests.Count; i++)
         {
+            // Info
             var request = data.Requests[i];
             var info = FocusCharacterController.Instance.GetInfoFromPath(request.InfoPath);
+
+            // Submission
+            var map = maps[i];
+            map.Submission = InventoryController.Instance.GetCharactersInInventory(new InventoryFilterOptions
+            {
+                ValidCharacters = new List<FocusCharacterInfo> { info },
+                ExcludedDatas = GetSubmissions()
+            }).FirstOrDefault();
+
+            // Button
             var button = RequestButtons[i];
             button.SetCharacter(info);
-            button.SetObscured(true);
+            button.SetObscured(map.Submission == null);
             button.Show();
+
+            if (i == 0)
+            {
+                ShowInfo(info);
+            }
         }
 
         RewardPreviews.ForEach(x => x.Hide());
@@ -237,7 +261,7 @@ public partial class HandInView : View
         var info = FocusCharacterController.Instance.GetInfoFromPath(request.InfoPath);
 
         selected_map = map;
-        InventoryContainer.UpdateButtons(new InventoryContainer.FilterOptions
+        InventoryContainer.UpdateButtons(new InventoryFilterOptions
         {
             ExcludedDatas = GetSubmissions(),
             ValidCharacters = new List<FocusCharacterInfo> { info },
@@ -262,6 +286,19 @@ public partial class HandInView : View
         }
     }
 
+    private void RequestButton_FocusEntered(ButtonMap map)
+    {
+        var request = current_data.Requests[map.Index];
+        var info = FocusCharacterController.Instance.GetInfoFromPath(request.InfoPath);
+        ShowInfo(info);
+    }
+
+    private void ShowInfo(FocusCharacterInfo info)
+    {
+        NameLabel.Text = Tr(info.Name);
+        LocationHintLabel.Text = Tr(info.LocationHint);
+    }
+
     private void InventoryButton_Pressed(FocusCharacterInfo info)
     {
         var data = InventoryContainer.GetSelectedData();
@@ -269,7 +306,7 @@ public partial class HandInView : View
 
         selected_map.Button.SetCharacter(info);
         selected_map.Button.SetObscured(false);
-        ClaimButton.Disabled = !Validate();
+        Validate();
         CloseInventoryButton_Pressed();
     }
 
@@ -332,15 +369,7 @@ public partial class HandInView : View
 
     private void ClaimButton_Pressed()
     {
-        TryClaim();
-    }
-
-    private void TryClaim()
-    {
-        if (Validate())
-        {
-            Claim();
-        }
+        Claim();
     }
 
     private void Claim()
@@ -368,9 +397,10 @@ public partial class HandInView : View
         Close();
     }
 
-    private bool Validate()
+    private void Validate()
     {
-        return GetSubmissions().Count == current_data.Requests.Count;
+        var is_valid = GetSubmissions().Count == current_data.Requests.Count;
+        ClaimButton.Disabled = !is_valid;
     }
 
     private List<InventoryCharacterData> GetSubmissions()

@@ -7,6 +7,7 @@
 script = ExtResource("2_ucjnk")
 Scene = ExtResource("1_6tc36")
 Name = "Infested Waxworm"
+LocationHint = "##HINT_LOC_MUSHROOM##"
 Accessory = "mushroom"
 FocusValue = 50.0
 SizeRange = Vector2(0.6, 0.8)
@@ -16,4 +17,5 @@ MoveDelayRange = Vector2(0, 0)
 CurrencyReward = 20
 Difficulty = 0.0
 SkillChecks = Array[int]([1])
+Tags = null
 metadata/_custom_type_script = "uid://buqirimb2mf5"

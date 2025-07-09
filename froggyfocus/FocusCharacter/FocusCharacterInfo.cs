@@ -10,6 +10,9 @@ public partial class FocusCharacterInfo : Resource
     [Export]
     public string Name;
 
+    [Export(PropertyHint.MultilineText)]
+    public string LocationHint;
+
     [Export]
     public string Accessory;
 
@@ -36,4 +39,7 @@ public partial class FocusCharacterInfo : Resource
 
     [Export]
     public Array<FocusSkillCheckType> SkillChecks;
+
+    [Export]
+    public Array<string> Tags;
 }
