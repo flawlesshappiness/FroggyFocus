@@ -9,6 +9,10 @@ public partial class MushroomNpc : Area3D, IInteractable
     [Export]
     public AnimationStateMachine Animation;
 
+    [Export]
+    public AudioStreamPlayer3D SfxSpeak;
+
+    private bool active_dialogue;
     private readonly BoolParameter param_dialogue = new BoolParameter("dialogue", false);
 
     public override void _Ready()
@@ -17,6 +21,7 @@ public partial class MushroomNpc : Area3D, IInteractable
         HandIn.InitializeData(HandInInfo);
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
 
+        DialogueController.Instance.OnNodeStarted += DialogueStarted;
         DialogueController.Instance.OnNodeEnded += DialogueEnded;
         DialogueController.Instance.OnDialogueEnded += DialogueEnded;
 
@@ -38,14 +43,12 @@ public partial class MushroomNpc : Area3D, IInteractable
     {
         if (HandIn.IsHandInAvailable(HandInInfo.Id))
         {
-            DialogueController.Instance.StartDialogue("##MUSHROOM_SWAMP_REQUEST_001##");
+            StartDialogue("##MUSHROOM_SWAMP_REQUEST_001##");
         }
         else
         {
-            DialogueController.Instance.StartDialogue("##MUSHROOM_SWAMP_REQUEST_IDLE_001##");
+            StartDialogue("##MUSHROOM_SWAMP_REQUEST_IDLE_001##");
         }
-
-        param_dialogue.Set(true);
     }
 
     private void HandInClaimed(string id)
@@ -53,7 +56,24 @@ public partial class MushroomNpc : Area3D, IInteractable
         if (id == HandInInfo.Id)
         {
             HandIn.ResetData(HandInInfo);
-            DialogueController.Instance.StartDialogue("##MUSHROOM_SWAMP_REQUEST_COMPLETE_001##");
+            Data.Game.Save();
+
+            StartDialogue("##MUSHROOM_SWAMP_REQUEST_COMPLETE_001##");
+        }
+    }
+
+    private void StartDialogue(string id)
+    {
+        active_dialogue = true;
+        param_dialogue.Set(true);
+        DialogueController.Instance.StartDialogue(id);
+    }
+
+    private void DialogueStarted(string id)
+    {
+        if (active_dialogue)
+        {
+            SfxSpeak.Play();
         }
     }
 
@@ -69,5 +89,6 @@ public partial class MushroomNpc : Area3D, IInteractable
     private void DialogueEnded()
     {
         param_dialogue.Set(false);
+        active_dialogue = false;
     }
 }
