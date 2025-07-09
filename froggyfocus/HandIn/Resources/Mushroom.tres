@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://3objvy6bb7dt" path="res://FocusCharacter/Resources/Beetle_Mushroom.tres" id="1_bxmoc"]
 [ext_resource type="Resource" uid="uid://nfqmx7nyg08u" path="res://FocusCharacter/Resources/Waxworm_Mushroom.tres" id="2_c8oei"]
 [ext_resource type="Resource" uid="uid://dd5h5376rnp4" path="res://FocusCharacter/Resources/Mosquito_Mushroom.tres" id="3_rhkfr"]
-[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="4_trkri"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandIn/HandInInfo.cs" id="4_trkri"]
 
 [resource]
 script = ExtResource("4_trkri")

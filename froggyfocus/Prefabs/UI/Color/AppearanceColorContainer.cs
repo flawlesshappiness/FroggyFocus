@@ -75,4 +75,9 @@ public partial class AppearanceColorContainer : ControlScript
     {
         return maps.FirstOrDefault(x => x.Info == info)?.Button;
     }
+
+    public Button GetFirstButton()
+    {
+        return maps.FirstOrDefault().Button;
+    }
 }
