@@ -3,7 +3,7 @@ using System.Linq;
 
 public partial class HandInController : ResourceController<HandInCollection, HandInInfo>
 {
-    public override string Directory => "HandInQuest";
+    public override string Directory => "HandIn";
     public static HandInController Instance => Singleton.Get<HandInController>();
 
     public event Action<string> OnHandInClaimed;

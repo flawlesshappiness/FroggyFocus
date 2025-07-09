@@ -84,12 +84,12 @@ public partial class HandInView : View
 
     private void RegisterDebugActions()
     {
-        var category = nameof(HandInView);
+        var category = "HAND IN";
 
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Show",
+            Text = "Show test",
             Action = DebugShow
         });
 

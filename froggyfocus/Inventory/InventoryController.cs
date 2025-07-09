@@ -14,7 +14,7 @@ public partial class InventoryController : SingletonController
 
     private void RegisterDebugActions()
     {
-        var category = "Inventory";
+        var category = "INVENTORY";
 
         Debug.RegisterAction(new DebugAction
         {
@@ -45,6 +45,7 @@ public partial class InventoryController : SingletonController
         };
 
         Data.Game.Inventory.Characters.Add(data);
+        Data.Game.Save();
     }
 
     public void RemoveCharacterData(InventoryCharacterData data)

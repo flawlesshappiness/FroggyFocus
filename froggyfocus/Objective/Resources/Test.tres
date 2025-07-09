@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ObjectiveInfo" load_steps=2 format=3 uid="uid://bw2r3422e8ib1"]
+
+[ext_resource type="Script" uid="uid://bvw1ud0pd0812" path="res://Objective/ObjectiveInfo.cs" id="1_so5k8"]
+
+[resource]
+script = ExtResource("1_so5k8")
+Description = "Test Objective"
+RequirementTag = "infested"
+Values = null
+MoneyRewards = null
+metadata/_custom_type_script = "uid://bvw1ud0pd0812"
