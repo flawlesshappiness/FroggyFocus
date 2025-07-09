@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ug6yqg0hf76e"]
+[gd_scene load_steps=15 format=3 uid="uid://ug6yqg0hf76e"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w0lsk"]
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="2_fare7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://byh5solck2yl" path="res://Prefabs/UI/RewardPreview/reward_preview.tscn" id="6_s1pfv"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="8_ra46o"]
 [ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="10_kuxxg"]
+[ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="11_4fhbg"]
 [ext_resource type="PackedScene" uid="uid://dtjh32wwairim" path="res://Prefabs/UI/ShopExpandPopup/shop_expand_popup.tscn" id="12_77p21"]
 
 [node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "AnimatedPanel_Inventory", "CloseHandInButton", "CloseInventoryButton", "ClaimButton", "NameLabel", "LocationHintLabel", "InventoryContainer", "ShopExpandPopup", "InputBlocker", "SfxMoney", "RequestButtons", "RewardPreviews")]
@@ -217,6 +218,7 @@ layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -276,6 +278,7 @@ alignment = 2
 [node name="ClaimButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" instance=ExtResource("5_cjkwa")]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("11_4fhbg")
 text = " Claim"
 
 [node name="AnimatedPanel_Inventory" parent="CenterContainer/Center" instance=ExtResource("4_77p21")]
