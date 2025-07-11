@@ -8,8 +8,19 @@ public abstract partial class View : ControlScript, IComparable<View>
     [Export]
     public int ChildOrder;
 
+    protected virtual bool IgnoreCreate => false;
     public virtual string Directory => $"{Paths.ViewDirectory}/{GetType().Name}";
-    private View Create() => Singleton.LoadScene($"{Directory}/{GetType().Name}", GetType()) as View;
+    private View Create()
+    {
+        if (IgnoreCreate)
+        {
+            return null;
+        }
+        else
+        {
+            return Singleton.LoadScene($"{Directory}/{GetType().Name}", GetType()) as View;
+        }
+    }
 
     public static void CreateAll()
     {
@@ -20,7 +31,10 @@ public abstract partial class View : ControlScript, IComparable<View>
         foreach (var type in types)
         {
             var v = type.Create();
-            views.Add(v);
+            if (v != null)
+            {
+                views.Add(v);
+            }
         }
 
         // Order views

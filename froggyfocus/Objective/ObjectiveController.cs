@@ -30,10 +30,35 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
             foreach (var info in Collection.Resources)
             {
                 var text = $"{info.Description} ({info.GetResourceName()})";
-                v.ContentSearch.AddItem(text, () => SelectLevel(v, info));
+                v.ContentSearch.AddItem(text, () => SelectAction(v, info));
             }
 
             v.ContentSearch.UpdateButtons();
+        }
+
+        void SelectAction(DebugView v, ObjectiveInfo info)
+        {
+            v.SetContent_Search();
+
+            v.ContentSearch.AddItem("Info", () => ShowInfo(v, info));
+            v.ContentSearch.AddItem("Level", () => SelectLevel(v, info));
+            v.ContentSearch.AddItem("Value", () => SelectValue(v, info));
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void ShowInfo(DebugView v, ObjectiveInfo info)
+        {
+            v.SetContent_List();
+
+            var data = Objective.GetOrCreateData(info.ResourcePath);
+
+            v.ContentList.AddText($"Resource: {info.GetResourceName()}");
+            v.ContentList.AddText($"Description: {info.Description}");
+            v.ContentList.AddText($"Tag: {info.RequirementTag}");
+            v.ContentList.AddText($"Level: {data.Level}");
+            v.ContentList.AddText($"Value: {data.Value} / {info.Values[data.Level]}");
+            v.ContentList.AddText($"Reward: {info.MoneyRewards[data.Level]}");
         }
 
         void SelectLevel(DebugView v, ObjectiveInfo info)
@@ -49,6 +74,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
                 v.ContentSearch.AddItem(text, () => SetLevel(v, info, level));
             }
 
+            v.ContentSearch.AddItem("Back", () => SelectAction(v, info));
             v.ContentSearch.UpdateButtons();
         }
 
@@ -57,6 +83,31 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
             Objective.SetLevel(info, level);
             Data.Game.Save();
             SelectLevel(v, info);
+        }
+
+        void SelectValue(DebugView v, ObjectiveInfo info)
+        {
+            v.SetContent_Search();
+
+            v.ContentSearch.AddItem("Zero", () => SetValueZero(v, info));
+            v.ContentSearch.AddItem("Max", () => SetValueMax(v, info));
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SetValueZero(DebugView v, ObjectiveInfo info)
+        {
+            Objective.SetValue(info, 0);
+            Data.Game.Save();
+            SelectAction(v, info);
+        }
+
+        void SetValueMax(DebugView v, ObjectiveInfo info)
+        {
+            var data = Objective.GetOrCreateData(info.ResourcePath);
+            Objective.SetValue(info, info.Values[data.Level]);
+            Data.Game.Save();
+            SelectAction(v, info);
         }
     }
 

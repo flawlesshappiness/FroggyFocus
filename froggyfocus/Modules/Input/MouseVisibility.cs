@@ -40,11 +40,16 @@ public partial class MouseVisibility : Node
 
     public static void Show(string lock_name)
     {
-        Instance.Lock.AddLock(lock_name);
+        SetVisible(lock_name, true);
     }
 
     public static void Hide(string lock_name)
     {
-        Instance.Lock.RemoveLock(lock_name);
+        SetVisible(lock_name, false);
+    }
+
+    public static void SetVisible(string id, bool visible)
+    {
+        Instance.Lock.SetLock(id, visible);
     }
 }
