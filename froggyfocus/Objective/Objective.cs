@@ -16,4 +16,11 @@ public static class Objective
 
         return data;
     }
+
+    public static void SetLevel(ObjectiveInfo info, int level)
+    {
+        var data = GetOrCreateData(info.ResourcePath);
+        data.Level = level;
+        data.Value = 0;
+    }
 }
