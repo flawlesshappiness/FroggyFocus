@@ -34,7 +34,7 @@ public partial class ObjectiveView : PanelView
         {
             Category = category,
             Text = "Show view",
-            Action = v => { v.Close(); Open(); }
+            Action = v => { v.Close(); Show(); }
         });
     }
 

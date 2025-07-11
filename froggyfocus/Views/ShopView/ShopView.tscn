@@ -13,7 +13,7 @@ random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("8_n8kem")
 
-[node name="ShopView" type="Control" node_paths=PackedStringArray("AnimatedPanel", "AnimatedOverlay", "ShopContainer", "PurchasePopup", "InputBlocker")]
+[node name="ShopView" type="Control" node_paths=PackedStringArray("ShopContainer", "PurchasePopup", "AnimatedPanel", "AnimatedOverlay", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,10 +22,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_f2gf6")
 script = ExtResource("2_idlmi")
-AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
-AnimatedOverlay = NodePath("AnimatedOverlay")
 ShopContainer = NodePath("CenterContainer/Center/AnimatedPanel/ShopContainer")
 PurchasePopup = NodePath("PurchasePopup")
+AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
+AnimatedOverlay = NodePath("AnimatedOverlay")
 InputBlocker = NodePath("InputBlocker")
 
 [node name="AnimatedOverlay" parent="." instance=ExtResource("3_aeg22")]
@@ -50,9 +50,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 0.0
-offset_top = 1000.0
+offset_top = 0.0
 offset_right = 0.0
-offset_bottom = 1000.0
+offset_bottom = 0.0
 
 [node name="ShopContainer" parent="CenterContainer/Center/AnimatedPanel" instance=ExtResource("4_ikh5b")]
 layout_mode = 1

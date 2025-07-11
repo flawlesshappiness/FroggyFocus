@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://dhj4m042rcknd" path="res://Prefabs/UI/Upgrade/UpgradeControl.cs" id="2_u78tf"]
 [ext_resource type="PackedScene" uid="uid://dkqy5xspl4fmb" path="res://Prefabs/UI/Upgrade/upgrade_level_node.tscn" id="3_yaetq"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="4_rsakc"]
-[ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="4_w18jm"]
+[ext_resource type="PackedScene" uid="uid://57h0lyjpo7q4" path="res://Prefabs/UI/Price/price_control.tscn" id="5_tih8a"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_yaetq"]
 
-[node name="UpgradeControlTemplate" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "DescriptionLabel", "UpgradeButton", "UpgradeButtonLabel", "LevelNodesParent")]
+[node name="UpgradeControlTemplate" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "DescriptionLabel", "MaxLabel", "UpgradeButton", "PriceControl", "LevelNodesParent")]
 custom_minimum_size = Vector2(0, 50)
 offset_right = 307.0
 offset_bottom = 82.0
@@ -15,8 +15,9 @@ theme = ExtResource("1_u78tf")
 script = ExtResource("2_u78tf")
 NameLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/NameLabel")
 DescriptionLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/DescriptionLabel")
+MaxLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MaxLabel")
 UpgradeButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/UpgradeButton")
-UpgradeButtonLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/UpgradeButtonLabel")
+PriceControl = NodePath("MarginContainer/HBoxContainer/VBoxContainer/PriceControl")
 LevelNodesParent = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/UpgradeLevelNodes")
 UpgradeLevelNodeTemplate = ExtResource("3_yaetq")
 
@@ -57,11 +58,8 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="PriceControl" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_tih8a")]
 layout_mode = 2
-text = "Upgrade"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -69,60 +67,18 @@ layout_mode = 2
 [node name="UpgradeButton" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("5_yaetq")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = " UPGRADE"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 10
+size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="MaxLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+visible = false
 layout_mode = 2
-mouse_filter = 2
-alignment = 1
-
-[node name="UpgradeButtonLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "1000"
+size_flags_vertical = 6
+text = "MAX"
 horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Icon" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(25, 25)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Icon"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_w18jm")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="Shadow" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Icon/TextureRect"]
-modulate = Color(0, 0, 0, 0.196078)
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 1.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_w18jm")
-expand_mode = 1
-stretch_mode = 4
+vertical_alignment = 1

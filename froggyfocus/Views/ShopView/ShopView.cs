@@ -3,26 +3,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public partial class ShopView : View
+public partial class ShopView : PanelView
 {
     public static ShopView Instance => Get<ShopView>();
-
-    [Export]
-    public AnimatedPanel AnimatedPanel;
-
-    [Export]
-    public AnimatedOverlay AnimatedOverlay;
+    protected override bool IgnoreCreate => false;
 
     [Export]
     public ShopContainer ShopContainer;
 
     [Export]
     public PurchasePopup PurchasePopup;
-
-    [Export]
-    public Control InputBlocker;
-
-    private bool animating;
 
     public override void _Ready()
     {
@@ -33,25 +23,6 @@ public partial class ShopView : View
 
         ShopContainer.HatsContainer.OnButtonPressed += HatButton_Pressed;
         ShopContainer.ColorContainer.OnColorPressed += ColorButton_Pressed;
-    }
-
-    protected override void OnShow()
-    {
-        base.OnShow();
-
-        Open();
-
-        Player.SetAllLocks(nameof(ShopView), true);
-        PauseView.ToggleLock.SetLock(nameof(ShopView), true);
-        MouseVisibility.Show(nameof(ShopView));
-    }
-
-    protected override void OnHide()
-    {
-        base.OnHide();
-        Player.SetAllLocks(nameof(ShopView), false);
-        PauseView.ToggleLock.SetLock(nameof(ShopView), false);
-        MouseVisibility.Hide(nameof(ShopView));
     }
 
     private void RegisterDebugActions()
@@ -182,40 +153,9 @@ public partial class ShopView : View
         }
     }
 
-    private void Open()
+    protected override void GrabFocusAfterOpen()
     {
-        if (animating) return;
-        animating = true;
-
-        this.StartCoroutine(Cr, "animate");
-        IEnumerator Cr()
-        {
-            InputBlocker.Show();
-            AnimatedOverlay.AnimateBehindShow();
-            yield return AnimatedPanel.AnimatePopShow();
-            InputBlocker.Hide();
-
-            ShopContainer.TabContainer.GetTabBar().GrabFocus();
-
-            animating = false;
-        }
-    }
-
-    private void Close()
-    {
-        if (animating) return;
-        animating = true;
-
-        this.StartCoroutine(Cr, "animate");
-        IEnumerator Cr()
-        {
-            InputBlocker.Show();
-            AnimatedOverlay.AnimateBehindHide();
-            yield return AnimatedPanel.AnimatePopHide();
-            InputBlocker.Hide();
-            Hide();
-            animating = false;
-        }
+        ShopContainer.TabContainer.GetTabBar().GrabFocus();
     }
 
     private void BackClicked()

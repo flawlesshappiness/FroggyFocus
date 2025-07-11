@@ -19,6 +19,7 @@ public partial class PanelView : View
     {
         base.OnShow();
         SetLocks(true);
+        Open();
     }
 
     protected override void OnHide()
@@ -44,8 +45,6 @@ public partial class PanelView : View
     {
         if (Animating) return;
         Animating = true;
-
-        Show();
 
         this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()

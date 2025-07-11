@@ -10,10 +10,13 @@ public partial class UpgradeControl : Control
     public Label DescriptionLabel;
 
     [Export]
+    public Label MaxLabel;
+
+    [Export]
     public Button UpgradeButton;
 
     [Export]
-    public Label UpgradeButtonLabel;
+    public PriceControl PriceControl;
 
     [Export]
     public Control LevelNodesParent;
@@ -55,8 +58,11 @@ public partial class UpgradeControl : Control
     {
         var is_max = UpgradeController.Instance.IsMaxLevel(type);
         var price = UpgradeController.Instance.GetCurrentPrice(type);
-        UpgradeButtonLabel.Text = is_max ? $"MAX" : $"{price}";
-        UpgradeButton.Disabled = is_max;
+        PriceControl.SetPrice(price);
+
+        UpgradeButton.Visible = !is_max;
+        PriceControl.Visible = !is_max;
+        MaxLabel.Visible = is_max;
     }
 
     private void UpdateLevelNodes(UpgradeData data)

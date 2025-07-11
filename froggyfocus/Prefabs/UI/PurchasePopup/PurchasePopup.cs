@@ -12,7 +12,7 @@ public partial class PurchasePopup : PopupControl
     public Label NameLabel;
 
     [Export]
-    public Label ValueLabel;
+    public PriceControl PriceControl;
 
     [Export]
     public ItemSubViewport ItemSubViewport;
@@ -50,7 +50,7 @@ public partial class PurchasePopup : PopupControl
         ItemSubViewport.SetPrefab(info.Prefab);
 
         NameLabel.Text = info.Name;
-        ValueLabel.Text = info.Price.ToString();
+        PriceControl.SetPrice(info.Price);
         current_price = info.Price;
     }
 
@@ -61,7 +61,7 @@ public partial class PurchasePopup : PopupControl
         paint_bucket.SetPaintColor(info.Color);
 
         NameLabel.Text = info.Name;
-        ValueLabel.Text = info.Price.ToString();
+        PriceControl.SetPrice(info.Price);
         current_price = info.Price;
     }
 

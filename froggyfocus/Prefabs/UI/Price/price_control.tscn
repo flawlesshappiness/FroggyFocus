@@ -15,9 +15,7 @@ theme = ExtResource("1_sto6g")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -26,6 +24,7 @@ alignment = 1
 [node name="PriceLabel" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_font_sizes/font_size = 20
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
