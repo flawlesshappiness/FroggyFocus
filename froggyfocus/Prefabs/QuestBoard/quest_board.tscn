@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://jnh2kdwd3acg"]
+
+[ext_resource type="PackedScene" uid="uid://b0prnatdq234e" path="res://Assets/FlawLizArt/Furniture/quest_board.fbx" id="1_euyx5"]
+[ext_resource type="Script" uid="uid://c4rxnr7vq8jd7" path="res://Prefabs/QuestBoard/QuestBoard.cs" id="1_njkut"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_euyx5"]
+size = Vector3(4.3623, 3.35339, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njkut"]
+size = Vector3(4.30957, 3.2356, 0.24707)
+
+[node name="QuestBoard" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_njkut")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60443, 0)
+shape = SubResource("BoxShape3D_euyx5")
+
+[node name="quest_board" parent="." instance=ExtResource("1_euyx5")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60159, 0)
+shape = SubResource("BoxShape3D_njkut")

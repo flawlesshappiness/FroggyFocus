@@ -41,5 +41,5 @@ public partial class FocusCharacterInfo : Resource
     public Array<FocusSkillCheckType> SkillChecks;
 
     [Export]
-    public Array<string> Tags;
+    public Array<FocusCharacterTag> Tags;
 }

@@ -8,7 +8,7 @@ public partial class ObjectiveInfo : Resource
     public string Description;
 
     [Export]
-    public string RequirementTag;
+    public FocusCharacterTag RequirementTag;
 
     [Export]
     public Array<int> Values;

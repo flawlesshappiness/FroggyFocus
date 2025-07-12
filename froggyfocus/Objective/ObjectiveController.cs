@@ -124,8 +124,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
         {
             if (info.Tags.Any(x => x == objective.RequirementTag))
             {
-                var data = Objective.GetOrCreateData(objective.ResourcePath);
-                data.Value++;
+                Objective.AddValue(objective, 1);
             }
         }
 

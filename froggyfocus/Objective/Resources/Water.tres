@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ObjectiveInfo" load_steps=2 format=3 uid="uid://b3u7echunsdrr"]
+
+[ext_resource type="Script" uid="uid://bvw1ud0pd0812" path="res://Objective/ObjectiveInfo.cs" id="1_vxnc3"]
+
+[resource]
+script = ExtResource("1_vxnc3")
+Description = "Catch swimmers"
+RequirementTag = 3
+Values = Array[int]([5, 25, 50, 100, 200])
+MoneyRewards = Array[int]([50, 500, 1000, 5000, 10000])
+metadata/_custom_type_script = "uid://bvw1ud0pd0812"
