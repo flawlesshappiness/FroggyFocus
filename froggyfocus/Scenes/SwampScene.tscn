@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=48 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="11_20fcr"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="11_achss"]
+[ext_resource type="PackedScene" uid="uid://bw057fcfnoby7" path="res://Prefabs/NPC/MagpieNPC/magpie_npc.tscn" id="11_hem5p"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="12_5fuuy"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/upgrade_shop.tscn" id="12_20fcr"]
 [ext_resource type="Resource" uid="uid://4t23pgixusyd" path="res://FocusEvent/Resources/Swamp Land.tres" id="12_cmxon"]
@@ -195,6 +196,9 @@ debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="QuestBoard" parent="World/Island_SmallRound" instance=ExtResource("33_brx17")]
 transform = Transform3D(0.809714, 0, 0.586825, 0, 1, 0, -0.586825, 0, 0.809714, -4.9321, 2.89054e-07, -5.16422)
+
+[node name="MagpieNPC" parent="World/Island_SmallRound" instance=ExtResource("11_hem5p")]
+transform = Transform3D(-2.15598, 0, 1.26561, 0, 2.5, 0, -1.26561, 0, -2.15598, 2.30889, 0, -4.43041)
 
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)

@@ -315,6 +315,13 @@ public class TriggerParameter : Parameter<bool>
     public Condition<bool> WhenTriggered() => new Condition<bool>(this, ComparisonType.Equal, true);
 }
 
+public class RandomParameter : Parameter<float>
+{
+    private RandomNumberGenerator rng = new();
+    public RandomParameter(string name, float chance) : base(name, chance) { }
+    public Condition<float> WhenTriggered() => new Condition<float>(this, ComparisonType.LessThan, rng.Randf());
+}
+
 public enum ComparisonType
 {
     Equal, NotEqual,
