@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 
 public partial class PanelView : View
@@ -11,6 +12,8 @@ public partial class PanelView : View
 
     [Export]
     public Control InputBlocker;
+
+    public event Action OnClosed;
 
     protected override bool IgnoreCreate => true;
     protected bool Animating { get; set; }
@@ -76,6 +79,8 @@ public partial class PanelView : View
             InputBlocker.Hide();
             Hide();
             Animating = false;
+
+            OnClosed?.Invoke();
         }
     }
 }

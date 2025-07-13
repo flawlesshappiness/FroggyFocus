@@ -1,0 +1,49 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://18t2msk6ooj"
+path="res://.godot/imported/mole_dirt.fbx-263861cf97a2f41249a33b0a66f0bcfd.scn"
+
+[deps]
+
+source_file="res://Assets/FlawLizArt/Mole/mole_dirt.fbx"
+dest_files=["res://.godot/imported/mole_dirt.fbx-263861cf97a2f41249a33b0a66f0bcfd.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=true
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"materials": {
+"Darkness": {
+"use_external/enabled": true,
+"use_external/path": "uid://byysddskgruh5"
+},
+"Dirt": {
+"use_external/enabled": true,
+"use_external/path": "uid://dhdvn3r0w3aee"
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

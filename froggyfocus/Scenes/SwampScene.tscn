@@ -176,14 +176,11 @@ transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -8, 0,
 
 [node name="Details" type="Node3D" parent="World/Island_SmallRound"]
 
-[node name="TreeStump" parent="World/Island_SmallRound/Details" instance=ExtResource("9_1p1c6")]
-transform = Transform3D(2.20236, 0, -2.03706, 0, 3, 0, 2.03706, 0, 2.20236, 4.57761, 0.00649762, 2.24976)
-
 [node name="PathWaterSFX_Island" type="Path3D" parent="World/Island_SmallRound"]
 curve = SubResource("Curve3D_bmghv")
 
 [node name="UpgradeShop" parent="World/Island_SmallRound" instance=ExtResource("12_20fcr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.53762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24055, 0, 1.44397)
 
 [node name="FocusEventArea" type="Area3D" parent="World/Island_SmallRound"]
 collision_layer = 0
@@ -568,6 +565,9 @@ transform = Transform3D(0.216951, 0, -0.976183, 0, 1, 0, 0.976183, 0, 0.216951, 
 [node name="PathWaterSFX_Mushrooms" type="Path3D" parent="World/Mushrooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4236, 0, 27.9228)
 curve = SubResource("Curve3D_ghoyf")
+
+[node name="UpgradeShop" parent="World/Mushrooms" instance=ExtResource("12_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6169, 14.6577, -14.9905)
 
 [node name="FocusEvent_Land" parent="World" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)

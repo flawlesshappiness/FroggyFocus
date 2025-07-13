@@ -1,19 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkrqmphtqlmnh"]
 
 [ext_resource type="Script" uid="uid://c77p5fb0fthf1" path="res://Prefabs/Shops/UpgradeShop.cs" id="1_syha2"]
-[ext_resource type="PackedScene" uid="uid://dn2p8y4s4fbam" path="res://Assets/FlawLizArt/Other/ExclamationMark.fbx" id="2_ksoap"]
+[ext_resource type="PackedScene" uid="uid://be6g2mx8tk63k" path="res://Prefabs/NPC/MoleNPC/mole_npc.tscn" id="3_1kjt3"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ksoap"]
-size = Vector3(0.5, 0.5, 0.5)
+[sub_resource type="SphereShape3D" id="SphereShape3D_1kjt3"]
+radius = 2.30563
 
-[node name="UpgradeShop" type="Area3D"]
+[node name="UpgradeShop" type="Area3D" node_paths=PackedStringArray("Mole")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_syha2")
+Mole = NodePath("MoleNPC")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-shape = SubResource("BoxShape3D_ksoap")
+shape = SubResource("SphereShape3D_1kjt3")
 
-[node name="ExclamationMark" parent="." instance=ExtResource("2_ksoap")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.731905, 0)
+[node name="MoleNPC" parent="." instance=ExtResource("3_1kjt3")]
