@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvrt3lre4whxh"]
+[gd_scene load_steps=6 format=3 uid="uid://bvrt3lre4whxh"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_iu15k"]
 [ext_resource type="PackedScene" uid="uid://57h0lyjpo7q4" path="res://Prefabs/UI/Price/price_control.tscn" id="2_0xg84"]
 [ext_resource type="Script" uid="uid://kqgcjtnu22ek" path="res://Prefabs/UI/Objective/ObjectiveControl.cs" id="2_x1ro1"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="3_rs0up"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="5_gh0uq"]
-[ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="6_jyoqc"]
 
 [node name="ObjectiveControl" type="MarginContainer" node_paths=PackedStringArray("DescriptionLabel", "ProgressLabel", "ProgressBar", "PriceControl", "ClaimButton", "SfxClaim")]
 custom_minimum_size = Vector2(200, 0)
@@ -17,7 +16,7 @@ ProgressLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginCont
 ProgressBar = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/ProgressBar")
 PriceControl = NodePath("MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/PriceControl")
 ClaimButton = NodePath("MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/ClaimButton")
-SfxClaim = NodePath("SfxClaim")
+SfxClaim = NodePath("")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 2
@@ -97,8 +96,3 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_rs0up")
 text = "CLAIM"
-
-[node name="SfxClaim" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_jyoqc")
-volume_db = -10.0
-bus = &"SFX"

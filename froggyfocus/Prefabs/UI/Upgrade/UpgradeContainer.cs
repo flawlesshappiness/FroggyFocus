@@ -11,9 +11,6 @@ public partial class UpgradeContainer : ControlScript
     public ScrollContainer ScrollContainer;
 
     [Export]
-    public AudioStreamPlayer SfxPurchaseSuccess;
-
-    [Export]
     public AudioStreamPlayer SfxPurchaseFail;
 
     private List<UpgradeControl> upgrade_controls = new();
@@ -59,7 +56,6 @@ public partial class UpgradeContainer : ControlScript
                 if (UpgradeController.Instance.TryPurchaseUpgrade(type))
                 {
                     // Purchase success
-                    SfxPurchaseSuccess.Play();
                 }
                 else
                 {

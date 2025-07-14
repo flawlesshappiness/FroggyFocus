@@ -42,9 +42,6 @@ public partial class HandInView : View
     public Control InputBlocker;
 
     [Export]
-    public AudioStreamPlayer SfxMoney;
-
-    [Export]
     public Array<InventoryPreviewButton> RequestButtons;
 
     [Export]
@@ -382,7 +379,6 @@ public partial class HandInView : View
         if (current_data.MoneyReward > 0)
         {
             Money.Add(current_data.MoneyReward);
-            SfxMoney.Play();
         }
 
         if (current_data.HatUnlock != AppearanceHatType.None)

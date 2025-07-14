@@ -24,9 +24,6 @@ public partial class PurchasePopup : PopupControl
     public PackedScene PaintBucketPrefab;
 
     [Export]
-    public AudioStreamPlayer SfxPurchaseSuccess;
-
-    [Export]
     public AudioStreamPlayer SfxPurchaseFail;
 
     public bool Purchased { get; private set; }
@@ -67,13 +64,12 @@ public partial class PurchasePopup : PopupControl
 
     private void Purchase_Pressed()
     {
-        if (CanAfford())
+        if (Money.CanAfford(current_price))
         {
             Purchased = true;
             Cancelled = false;
 
-            CurrencyController.Instance.AddValue(CurrencyType.Money, -current_price);
-            SfxPurchaseSuccess.Play();
+            Money.Add(-current_price);
             ClosePopup();
         }
         else
@@ -93,10 +89,5 @@ public partial class PurchasePopup : PopupControl
         Purchased = false;
 
         ClosePopup();
-    }
-
-    private bool CanAfford()
-    {
-        return CurrencyController.Instance.GetValue(CurrencyType.Money) >= current_price;
     }
 }

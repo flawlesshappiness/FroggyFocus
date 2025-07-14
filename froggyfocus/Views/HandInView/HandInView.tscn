@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ug6yqg0hf76e"]
+[gd_scene load_steps=14 format=3 uid="uid://ug6yqg0hf76e"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w0lsk"]
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="2_fare7"]
@@ -11,11 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_cjkwa"]
 [ext_resource type="PackedScene" uid="uid://byh5solck2yl" path="res://Prefabs/UI/RewardPreview/reward_preview.tscn" id="6_s1pfv"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="8_ra46o"]
-[ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="10_kuxxg"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="11_4fhbg"]
 [ext_resource type="PackedScene" uid="uid://dtjh32wwairim" path="res://Prefabs/UI/ShopExpandPopup/shop_expand_popup.tscn" id="12_77p21"]
 
-[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "AnimatedPanel_Inventory", "CloseHandInButton", "CloseInventoryButton", "ClaimButton", "NameLabel", "LocationHintLabel", "InventoryContainer", "ShopExpandPopup", "InputBlocker", "SfxMoney", "RequestButtons", "RewardPreviews")]
+[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "AnimatedPanel_Inventory", "CloseHandInButton", "CloseInventoryButton", "ClaimButton", "NameLabel", "LocationHintLabel", "InventoryContainer", "ShopExpandPopup", "InputBlocker", "RequestButtons", "RewardPreviews")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +34,6 @@ LocationHintLabel = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandIn
 InventoryContainer = NodePath("CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/Panel/inventory_container")
 ShopExpandPopup = NodePath("ShopExpandPopup")
 InputBlocker = NodePath("InputBlocker")
-SfxMoney = NodePath("SfxMoney")
 RequestButtons = [NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 1"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 2"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 3"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 4"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 5"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 6")]
 RewardPreviews = [NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview2"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview3")]
 
@@ -365,11 +363,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="SfxMoney" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_kuxxg")
-volume_db = -10.0
-bus = &"SFX"
 
 [node name="ShopExpandPopup" parent="." instance=ExtResource("12_77p21")]
 visible = false

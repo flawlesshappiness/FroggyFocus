@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bs6jtqi04ls8t"]
+[gd_scene load_steps=13 format=3 uid="uid://bs6jtqi04ls8t"]
 
 [ext_resource type="Script" uid="uid://bqb54opapks22" path="res://Prefabs/UI/PurchasePopup/PurchasePopup.cs" id="1_rktto"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_v5x1g"]
@@ -9,21 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_snlvk"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="5_vya16"]
 [ext_resource type="PackedScene" uid="uid://57h0lyjpo7q4" path="res://Prefabs/UI/Price/price_control.tscn" id="7_vdyvl"]
-[ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="9_vya16"]
 [ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="10_s74qh"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="11_o0ix7"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s74qh"]
-random_pitch = 1.05
-streams_count = 1
-stream_0/stream = ExtResource("9_vya16")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o0ix7"]
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("10_s74qh")
 
-[node name="PurchasePopup" type="Control" node_paths=PackedStringArray("CancelButton", "PurchaseButton", "NameLabel", "PriceControl", "ItemSubViewport", "TextureRect", "SfxPurchaseSuccess", "SfxPurchaseFail", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
+[node name="PurchasePopup" type="Control" node_paths=PackedStringArray("CancelButton", "PurchaseButton", "NameLabel", "PriceControl", "ItemSubViewport", "TextureRect", "SfxPurchaseFail", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +33,6 @@ PriceControl = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/Ma
 ItemSubViewport = NodePath("ItemSubViewport")
 TextureRect = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Panel/PreviewTextureRect")
 PaintBucketPrefab = ExtResource("2_ry6mq")
-SfxPurchaseSuccess = NodePath("SfxPurchaseSuccess")
 SfxPurchaseFail = NodePath("SfxPurchaseFail")
 AnimatedOverlay = NodePath("AnimatedOverlay")
 AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
@@ -172,11 +165,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="SfxPurchaseSuccess" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_s74qh")
-volume_db = -10.0
-bus = &"SFX"
 
 [node name="SfxPurchaseFail" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_o0ix7")

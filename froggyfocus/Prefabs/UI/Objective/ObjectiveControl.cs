@@ -17,9 +17,6 @@ public partial class ObjectiveControl : Control
     [Export]
     public Button ClaimButton;
 
-    [Export]
-    public AudioStreamPlayer SfxClaim;
-
     private ObjectiveInfo info;
     private ObjectiveData data;
 
@@ -55,8 +52,6 @@ public partial class ObjectiveControl : Control
     {
         var reward = info.MoneyRewards[data.Level];
         Money.Add(reward);
-
-        SfxClaim.Play();
 
         Objective.SetLevel(info, data.Level + 1);
         SetLevel(data.Level);

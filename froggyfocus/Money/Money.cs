@@ -5,6 +5,8 @@ public partial class Money : Node
 {
     public static event Action<int> OnMoneyChanged;
 
+    public static int Value => CurrencyController.Instance.GetValue(CurrencyType.Money);
+
     public override void _Ready()
     {
         base._Ready();
@@ -26,7 +28,7 @@ public partial class Money : Node
 
     public static bool CanAfford(int price)
     {
-        return CurrencyController.Instance.GetValue(CurrencyType.Money) >= price;
+        return Value >= price;
     }
 
     public static void Add(int amount)

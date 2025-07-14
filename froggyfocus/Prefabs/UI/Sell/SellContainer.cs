@@ -10,9 +10,6 @@ public partial class SellContainer : ControlScript
     [Export]
     public Button SellAllButton;
 
-    [Export]
-    public AudioStreamPlayer SfxSell;
-
     public event Action OnSell;
 
     public override void _Ready()
@@ -31,7 +28,7 @@ public partial class SellContainer : ControlScript
 
     private void Button_Pressed(FocusCharacterInfo info)
     {
-        CurrencyController.Instance.AddValue(CurrencyType.Money, info.CurrencyReward);
+        Money.Add(info.CurrencyReward);
 
         var data = InventoryContainer.GetSelectedData();
         InventoryController.Instance.RemoveCharacterData(data);
@@ -39,7 +36,6 @@ public partial class SellContainer : ControlScript
         Data.Game.Save();
         InventoryContainer.UpdateButtons();
         UpdateSellAllButton();
-        SfxSell.Play();
         OnSell?.Invoke();
     }
 
@@ -48,7 +44,7 @@ public partial class SellContainer : ControlScript
         foreach (var data in Data.Game.Inventory.Characters.ToList())
         {
             var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
-            CurrencyController.Instance.AddValue(CurrencyType.Money, info.CurrencyReward);
+            Money.Add(info.CurrencyReward);
             InventoryController.Instance.RemoveCharacterData(data);
         }
 
@@ -56,7 +52,6 @@ public partial class SellContainer : ControlScript
 
         InventoryContainer.UpdateButtons();
         UpdateSellAllButton();
-        SfxSell.Play();
         OnSell?.Invoke();
     }
 
