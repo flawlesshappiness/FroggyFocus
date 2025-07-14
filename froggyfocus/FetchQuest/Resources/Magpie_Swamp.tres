@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FetchInfo" load_steps=2 format=3 uid="uid://ccictmr6wjwmg"]
+
+[ext_resource type="Script" uid="uid://dghfsd33cggby" path="res://FetchQuest/FetchInfo.cs" id="1_8fsj0"]
+
+[resource]
+script = ExtResource("1_8fsj0")
+Id = "magpie_swamp"
+CountRange = Vector2i(4, 6)
+MoneyRewardBase = 100
+CooldownInSeconds = 3600.0
+metadata/_custom_type_script = "uid://dghfsd33cggby"

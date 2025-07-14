@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 public partial class DialogueController : SingletonController
 {
@@ -15,6 +16,7 @@ public partial class DialogueController : SingletonController
     public event Action OnDialogueEnded;
 
     private DialogueNode current_node;
+    private Dictionary<string, string> dialogue_variables = new();
 
     protected override void Initialize()
     {
@@ -69,7 +71,9 @@ public partial class DialogueController : SingletonController
         }
 
         current_node = node;
-        View.AnimateDialogue(Tr(node.id));
+
+        var text = FormatText(Tr(node.id));
+        View.AnimateDialogue(text);
 
         OnNodeStarted?.Invoke(node.id);
     }
@@ -84,13 +88,36 @@ public partial class DialogueController : SingletonController
         if (string.IsNullOrEmpty(current_node?.next))
         {
             current_node = null;
+            ClearVariables();
             View.AnimateClose();
-
             OnDialogueEnded?.Invoke();
         }
         else
         {
             SetNode(current_node.next);
         }
+    }
+
+    private void ClearVariables()
+    {
+        dialogue_variables.Clear();
+    }
+
+    public void AddVariable(string key, string value)
+    {
+        dialogue_variables.Add(key, value);
+    }
+
+    private string FormatText(string text)
+    {
+        foreach (var variable in dialogue_variables)
+        {
+            if (text.Contains(variable.Key))
+            {
+                text = text.Replace(variable.Key, Tr(variable.Value));
+            }
+        }
+
+        return text;
     }
 }

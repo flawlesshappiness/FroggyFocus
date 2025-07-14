@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=50 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
@@ -13,10 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="11_achss"]
 [ext_resource type="PackedScene" uid="uid://bw057fcfnoby7" path="res://Prefabs/NPC/MagpieNPC/magpie_npc.tscn" id="11_hem5p"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="12_5fuuy"]
+[ext_resource type="Resource" uid="uid://ccictmr6wjwmg" path="res://FetchQuest/Resources/Magpie_Swamp.tres" id="12_7qo61"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/upgrade_shop.tscn" id="12_20fcr"]
 [ext_resource type="Resource" uid="uid://4t23pgixusyd" path="res://FocusEvent/Resources/Swamp Land.tres" id="12_cmxon"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="12_yvk0y"]
 [ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="13_a7viq"]
+[ext_resource type="PackedScene" uid="uid://d4a0g7n1bgdr3" path="res://Prefabs/Pickups/stick_pickup.tscn" id="13_dkapk"]
 [ext_resource type="PackedScene" uid="uid://cstu4xwk8m2au" path="res://Prefabs/Nature/common_tree_dead_1.tscn" id="13_yvk0y"]
 [ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Water.tres" id="14_52an4"]
 [ext_resource type="PackedScene" uid="uid://db3tbp4x07eca" path="res://Prefabs/Nature/common_tree_dead_2.tscn" id="14_cmxon"]
@@ -135,7 +137,6 @@ environment = ExtResource("2_0ky7s")
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 5.72245, 3.27611)
 light_color = Color(1, 1, 0.7, 1)
 shadow_enabled = true
-shadow_blur = 1.5
 
 [node name="Player" parent="." instance=ExtResource("2_qfos7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117083, -4.76837e-07, 2.93445)
@@ -197,8 +198,31 @@ debug_color = Color(0.7, 0, 0, 0.419608)
 [node name="QuestBoard" parent="World/Island_SmallRound" instance=ExtResource("33_brx17")]
 transform = Transform3D(0.809714, 0, 0.586825, 0, 1, 0, -0.586825, 0, 0.809714, -4.9321, 2.89054e-07, -5.16422)
 
-[node name="MagpieNPC" parent="World/Island_SmallRound" instance=ExtResource("11_hem5p")]
+[node name="MagpieNPC" parent="World/Island_SmallRound" node_paths=PackedStringArray("Pickups") instance=ExtResource("11_hem5p")]
 transform = Transform3D(-2.15598, 0, 1.26561, 0, 2.5, 0, -1.26561, 0, -2.15598, 2.30889, 0, -4.43041)
+FetchInfo = ExtResource("12_7qo61")
+Pickups = [NodePath("../StickPickup"), NodePath("../StickPickup2"), NodePath("../StickPickup3"), NodePath("../StickPickup4"), NodePath("../StickPickup5"), NodePath("../StickPickup6"), NodePath("../StickPickup7")]
+
+[node name="StickPickup" parent="World/Island_SmallRound" instance=ExtResource("13_dkapk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3911, 0, 0.213299)
+
+[node name="StickPickup2" parent="World/Island_SmallRound" instance=ExtResource("13_dkapk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.34212, 0, 1.66348)
+
+[node name="StickPickup3" parent="World/Island_SmallRound" instance=ExtResource("13_dkapk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55397, 4.76837e-07, 3.02758)
+
+[node name="StickPickup4" parent="World/Island_SmallRound" instance=ExtResource("13_dkapk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17488, 0, 1.46634)
+
+[node name="StickPickup5" parent="World/Island_SmallRound" instance=ExtResource("13_dkapk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35813, 0, 0.230562)
+
+[node name="StickPickup6" parent="World/Island_SmallRound" instance=ExtResource("13_dkapk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25779, 0, -1.28716)
+
+[node name="StickPickup7" parent="World/Island_SmallRound" instance=ExtResource("13_dkapk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.15803, -4.76837e-07, -1.88981)
 
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)

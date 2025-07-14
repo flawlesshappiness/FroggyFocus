@@ -15,7 +15,7 @@ public partial class TestHandInNpc : Area3D, IInteractable
 
     public void Interact()
     {
-        if (HandIn.IsHandInAvailable(HandInInfo.Id))
+        if (HandIn.IsAvailable(HandInInfo.Id))
         {
             DialogueController.Instance.StartDialogue("##TEST_HAND_IN_001##");
         }

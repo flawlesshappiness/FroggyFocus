@@ -1,12 +1,9 @@
-using System;
 using System.Linq;
 
-public partial class HandInController : ResourceController<HandInCollection, HandInInfo>
+public partial class FetchController : ResourceController<FetchCollection, FetchInfo>
 {
-    public override string Directory => "HandIn";
-    public static HandInController Instance => Singleton.Get<HandInController>();
-
-    public event Action<string> OnHandInClaimed;
+    public static FetchController Instance => Singleton.Get<FetchController>();
+    public override string Directory => "FetchQuest";
 
     public override void _Ready()
     {
@@ -16,7 +13,7 @@ public partial class HandInController : ResourceController<HandInCollection, Han
 
     private void RegisterDebugActions()
     {
-        var category = "HAND IN";
+        var category = "FETCH";
 
         Debug.RegisterAction(new DebugAction
         {
@@ -27,26 +24,20 @@ public partial class HandInController : ResourceController<HandInCollection, Han
 
         void ResetAll(DebugView v)
         {
-            v.Close();
-
-            foreach (var data in Data.Game.HandIns)
+            foreach (var data in Data.Game.Fetchs)
             {
                 var info = GetInfo(data.Id);
-                HandIn.ResetData(info);
+                Fetch.ResetData(info);
                 data.DateTimeNext = GameTime.GetCurrentDateTimeString();
             }
 
             Data.Game.Save();
+            v.Close();
         }
     }
 
-    public HandInInfo GetInfo(string id)
+    public FetchInfo GetInfo(string id)
     {
         return Collection.Resources.FirstOrDefault(x => x.Id == id);
-    }
-
-    public void HandInClaimed(HandInData data)
-    {
-        OnHandInClaimed?.Invoke(data.Id);
     }
 }

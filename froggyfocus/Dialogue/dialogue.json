@@ -32,6 +32,18 @@
 	},
 	
 	{
+		"id": "##MAGPIE_SWAMP_FETCH_COUNT##"
+	},
+	
+	{
+		"id": "##MAGPIE_SWAMP_FETCH_COMPLETE_001##",
+		"next": "##MAGPIE_SWAMP_FETCH_COMPLETE_002##"
+	},
+	{
+		"id": "##MAGPIE_SWAMP_FETCH_COMPLETE_002##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

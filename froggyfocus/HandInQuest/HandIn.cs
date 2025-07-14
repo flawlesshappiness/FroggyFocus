@@ -3,14 +3,6 @@ using System.Linq;
 
 public static class HandIn
 {
-    public static bool IsHandInAvailable(string id)
-    {
-        var current_date = GameTime.GetCurrentDateTime();
-        var data = GetOrCreateData(id);
-        var next_date = GameTime.ParseDateTime(data.DateTimeNext);
-        return current_date > next_date;
-    }
-
     public static HandInData GetOrCreateData(string id)
     {
         var data = Data.Game.HandIns.FirstOrDefault(x => x.Id == id);
@@ -27,6 +19,12 @@ public static class HandIn
         return data;
     }
 
+    public static bool IsAvailable(string id)
+    {
+        var data = GetOrCreateData(id);
+        return Quest.IsAvailable(data);
+    }
+
     public static void InitializeData(HandInInfo info)
     {
         var data = GetOrCreateData(info.Id);
@@ -36,6 +34,8 @@ public static class HandIn
 
         ResetData(info);
         data.DateTimeNext = GameTime.GetCurrentDateTimeString();
+
+        Data.Game.Save();
     }
 
     public static void ResetData(HandInInfo info)
