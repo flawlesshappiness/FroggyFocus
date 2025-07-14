@@ -41,7 +41,6 @@ public static class Fetch
     public static void ResetData(FetchInfo info)
     {
         var data = GetOrCreateData(info.Id);
-        data.Claimed = false;
         data.Started = false;
 
         var rng = new RandomNumberGenerator();
