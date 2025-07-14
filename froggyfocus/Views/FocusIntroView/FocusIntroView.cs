@@ -29,6 +29,7 @@ public partial class FocusIntroView : View
     {
         Frog.LoadAppearance();
         Show();
+        MusicController.Instance.MuteLock.AddLock(nameof(FocusIntroView));
         yield return AnimationPlayer.PlayAndWaitForAnimation("show2");
         SfxRiff.Play();
     }
@@ -36,6 +37,7 @@ public partial class FocusIntroView : View
     public IEnumerator AnimateHide()
     {
         yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
+        MusicController.Instance.MuteLock.RemoveLock(nameof(FocusIntroView));
         Hide();
     }
 
