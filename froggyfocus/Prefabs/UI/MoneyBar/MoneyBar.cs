@@ -15,6 +15,7 @@ public partial class MoneyBar : Control
     [Export]
     public AudioStreamPlayer SfxValueChanged;
 
+    private int animate_value;
     private Coroutine cr_animate;
 
     public override void _Ready()
@@ -43,6 +44,7 @@ public partial class MoneyBar : Control
 
         if (amount > 0)
         {
+            animate_value += amount;
             cr_animate = this.StartCoroutine(Cr, "animate");
         }
         else
@@ -54,15 +56,16 @@ public partial class MoneyBar : Control
 
         IEnumerator Cr()
         {
-            var current_start = Money.Value - amount;
+            var current_start = Money.Value - animate_value;
             var current_end = Money.Value;
-            var reward_start = amount;
+            var reward_start = animate_value;
             var reward_end = 0;
 
             RewardLabel.Text = $"+{reward_start}";
             RewardLabel.Show();
 
             yield return new WaitForSeconds(1f);
+            animate_value = 0;
 
             yield return LerpEnumerator.Lerp01(1f, f =>
             {
