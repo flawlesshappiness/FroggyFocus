@@ -16,6 +16,9 @@ public partial class MagpieNpc : Area3D, IInteractable
     public AudioStreamPlayer3D SfxSpeak;
 
     [Export]
+    public AudioStreamPlayer SfxFetchCompleted;
+
+    [Export]
     public Array<Node3D> PickupParents;
 
     private List<Pickup> pickups = new();
@@ -183,5 +186,10 @@ public partial class MagpieNpc : Area3D, IInteractable
         var data = Fetch.GetOrCreateData(FetchInfo.Id);
         data.Count--;
         Data.Game.Save();
+
+        if (data.Count <= 0)
+        {
+            SfxFetchCompleted.Play();
+        }
     }
 }

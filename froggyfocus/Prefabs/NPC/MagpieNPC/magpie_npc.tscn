@@ -26,12 +26,13 @@ stream_3/stream = ExtResource("7_pf135")
 stream_4/stream = ExtResource("8_n80yi")
 stream_5/stream = ExtResource("9_1io3b")
 
-[node name="MagpieNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak", "PickupParents")]
+[node name="MagpieNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak", "SfxFetchCompleted", "PickupParents")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ckhjj")
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
+SfxFetchCompleted = NodePath("SfxFetchCompleted")
 PickupParents = []
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -114,6 +115,10 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 
 [node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.695463, 0)
+stream = SubResource("AudioStreamRandomizer_mp1k3")
+bus = &"SFX"
+
+[node name="SfxFetchCompleted" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mp1k3")
 bus = &"SFX"
 
