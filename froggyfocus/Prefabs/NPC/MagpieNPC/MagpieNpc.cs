@@ -1,6 +1,7 @@
 using FlawLizArt.Animation.StateMachine;
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class MagpieNpc : Area3D, IInteractable
@@ -15,7 +16,9 @@ public partial class MagpieNpc : Area3D, IInteractable
     public AudioStreamPlayer3D SfxSpeak;
 
     [Export]
-    public Array<Pickup> Pickups;
+    public Array<Node3D> PickupParents;
+
+    private List<Pickup> pickups = new();
 
     private bool active_dialogue;
     private bool begin_fetch;
@@ -66,7 +69,13 @@ public partial class MagpieNpc : Area3D, IInteractable
 
     private void InitializePickups()
     {
-        foreach (var pickup in Pickups)
+        foreach (var parent in PickupParents)
+        {
+            var pickups = parent.GetNodesInChildren<Pickup>();
+            this.pickups.AddRange(pickups);
+        }
+
+        foreach (var pickup in pickups)
         {
             pickup.SetPickupEnabled(false);
             pickup.OnPickup += Pickup_PickedUp;
@@ -158,7 +167,7 @@ public partial class MagpieNpc : Area3D, IInteractable
     private void EnableFetchPickups()
     {
         var data = Fetch.GetOrCreateData(FetchInfo.Id);
-        var available_pickups = Pickups.ToList();
+        var available_pickups = pickups.ToList();
 
         for (int i = 0; i < data.Count; i++)
         {

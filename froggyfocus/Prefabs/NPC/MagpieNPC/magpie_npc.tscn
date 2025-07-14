@@ -26,13 +26,13 @@ stream_3/stream = ExtResource("7_pf135")
 stream_4/stream = ExtResource("8_n80yi")
 stream_5/stream = ExtResource("9_1io3b")
 
-[node name="MagpieNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak", "Pickups")]
+[node name="MagpieNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak", "PickupParents")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ckhjj")
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
-Pickups = []
+PickupParents = []
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.466221, -0.238403)
