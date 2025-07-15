@@ -1,0 +1,15 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://bie4vi82fv6l7"]
+
+[ext_resource type="Texture2D" uid="uid://q8s06s63diox" path="res://Assets/Skybox/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_qs3ad"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mxhvt"]
+panorama = ExtResource("1_qs3ad")
+
+[sub_resource type="Sky" id="Sky_gmxq7"]
+sky_material = SubResource("PanoramaSkyMaterial_mxhvt")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_gmxq7")
+fog_light_color = Color(0.308, 0.56, 0.5516, 1)
+volumetric_fog_density = 0.01

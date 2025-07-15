@@ -1,13 +1,13 @@
-[gd_scene load_steps=50 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=49 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
+[ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/SwampWater.tres" id="4_dkapk"]
 [ext_resource type="PackedScene" uid="uid://dg28gg150qhoy" path="res://Prefabs/Ground/pond_corner_convex_002.tscn" id="8_iu42u"]
 [ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="9_1p1c6"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="10_52an4"]
-[ext_resource type="Shader" uid="uid://babyxm8yext4w" path="res://Shaders/ToonWater.gdshader" id="10_e4xtd"]
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="11_20fcr"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="11_achss"]
@@ -39,27 +39,6 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_20fcr"]
 size = Vector2(1000, 1000)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2hsqb"]
-render_priority = 0
-shader = ExtResource("10_e4xtd")
-shader_parameter/WATER_COL = Color(0.015, 0.2525, 0.3, 1)
-shader_parameter/WATER2_COL = Color(0.012, 0.1982, 0.24, 1)
-shader_parameter/FOAM_COL = Color(0.035, 0.2975, 0.35, 1)
-shader_parameter/distortion_speed = 0.4
-shader_parameter/tile = Vector2(500, 500)
-shader_parameter/wave_speed = 2.0
-shader_parameter/wave_amplitude = 0.0
-shader_parameter/wave_frequency = 1.5
-shader_parameter/time_offset = 0.0
-shader_parameter/water_size = Vector2(1000, 1000)
-shader_parameter/water_transparency = 1.0
-shader_parameter/water_depth_factor = 0.5
-shader_parameter/foam_width = 2.0
-shader_parameter/foam_edge_softness = 0.05
-shader_parameter/foam_smoothness = 0.03
-shader_parameter/foam_distortion_speed = 0.5
-shader_parameter/foam_distortion_amount = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_achss"]
 size = Vector3(1000, 1, 1000)
@@ -147,7 +126,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117083, -4.76837e-07, 2.934
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("PlaneMesh_20fcr")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_2hsqb")
+surface_material_override/0 = ExtResource("4_dkapk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/Water"]
 collision_layer = 8

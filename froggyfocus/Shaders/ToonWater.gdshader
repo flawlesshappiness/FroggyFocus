@@ -12,6 +12,7 @@ shader_type spatial;
 uniform vec4 WATER_COL : source_color = vec4(0.04, 0.38, 0.88, 1.0);
 uniform vec4 WATER2_COL : source_color = vec4(0.04, 0.35, 0.78, 1.0);
 uniform vec4 FOAM_COL : source_color = vec4(0.8125, 0.9609, 0.9648, 1.0);
+uniform vec4 DIST_COL : source_color = vec4(0.8125, 0.9609, 0.9648, 1.0);
 
 // Water animation and appearance
 uniform float distortion_speed = 2.0;
@@ -35,6 +36,10 @@ uniform float foam_edge_softness = 0.05;
 uniform float foam_smoothness = 0.03;
 uniform float foam_distortion_speed = 0.5;
 uniform float foam_distortion_amount = 0.1;
+
+// Horizon values
+uniform float horizon_start = 40.0;
+uniform float horizon_length = 200.0;
 
 
 // Math constants
@@ -317,9 +322,18 @@ void fragment() {
     // Mix water color with the scene behind it
     vec4 background = texture(SCREEN_TEXTURE, SCREEN_UV);
     vec4 final_color = mix(background, water_color, water_opacity * water_transparency);
+	
+	// Calculate view distance
+	vec4 upos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, FRAGCOORD.z, 1.0);
+	vec3 pixel_position = upos.xyz / upos.w;
+	float d = -pixel_position.z;
+	float dist = max(d - horizon_start, 0) / horizon_length;
 
     // Add foam
     final_color = mix(final_color, FOAM_COL, foam);
+	
+	// Add distance color
+	final_color = mix(final_color, DIST_COL, dist);
 
     // Set final color and alpha
     ALBEDO = final_color.rgb;
