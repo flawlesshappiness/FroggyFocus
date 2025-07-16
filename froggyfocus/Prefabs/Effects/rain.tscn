@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://bgam63hrep021"]
+
+[ext_resource type="Script" uid="uid://0hwqcgq8ndhg" path="res://Prefabs/Effects/RainEffect.cs" id="1_nm275"]
+[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="1_rl024"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1rxiw"]
+emission_shape_offset = Vector3(0, 20, 0)
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 20)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+color = Color(0.75, 1, 0.845833, 0.0392157)
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="Curve" id="Curve_1rxiw"]
+_data = [Vector2(0, 0), 0.0, 14.4068, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.694361, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rxiw"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_2i0a2"]
+material = SubResource("StandardMaterial3D_1rxiw")
+size = 0.05
+curve = SubResource("Curve_1rxiw")
+
+[sub_resource type="Curve" id="Curve_nm275"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j1en6"]
+curve = SubResource("Curve_nm275")
+
+[sub_resource type="Curve" id="Curve_rl024"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nm275"]
+curve = SubResource("Curve_rl024")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_48qqx"]
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_nm275")
+color = Color(0.75, 1, 0.8625, 1)
+alpha_curve = SubResource("CurveTexture_j1en6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm275"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_rl024")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rl024"]
+material = SubResource("StandardMaterial3D_nm275")
+orientation = 1
+
+[node name="Rain" type="GPUParticles3D"]
+emitting = false
+amount = 1000
+sub_emitter = NodePath("DropHit")
+randomness = 0.5
+fixed_fps = 60
+collision_base_size = 0.1
+trail_enabled = true
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_1rxiw")
+draw_pass_1 = SubResource("RibbonTrailMesh_2i0a2")
+script = ExtResource("1_nm275")
+
+[node name="DropHit" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -4.37114e-08, 0, 4.37114e-08, 1, 0, 0, 0)
+emitting = false
+amount = 1000
+lifetime = 0.5
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_48qqx")
+draw_pass_1 = SubResource("QuadMesh_rl024")

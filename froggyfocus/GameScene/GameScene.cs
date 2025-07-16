@@ -7,6 +7,12 @@ public partial class GameScene : Scene
     public static GameScene Instance { get; private set; }
 
     [Export]
+    public DirectionalLight3D DirectionalLight;
+
+    [Export]
+    public WorldEnvironment WorldEnvironment;
+
+    [Export]
     public Array<FocusEvent> FocusEvents = new();
 
     private string current_focus_event_id;
@@ -18,6 +24,9 @@ public partial class GameScene : Scene
 
         FocusEventController.Instance.OnFocusEventCompleted += _ => FocusEventEnded();
         FocusEventController.Instance.OnFocusEventFailed += _ => FocusEventEnded();
+
+        MusicController.Instance.StartMusic();
+        WeatherController.Instance.StartWeather();
 
         HideFocusEvents();
     }

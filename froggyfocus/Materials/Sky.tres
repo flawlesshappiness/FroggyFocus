@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://c25vo2yd2p8pm"]
+
+[ext_resource type="Shader" uid="uid://co5mop31m0dp1" path="res://Shaders/SkyDissolve.gdshader" id="1_m7mb1"]
+[ext_resource type="Texture2D" uid="uid://q8s06s63diox" path="res://Assets/Skybox/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="2_iee1n"]
+[ext_resource type="Texture2D" uid="uid://busgm8s4g1hkp" path="res://Assets/Skybox/AllSkyFree_Sky_OvercastLow_Equirect.png" id="3_uytbv"]
+
+[resource]
+shader = ExtResource("1_m7mb1")
+shader_parameter/sky1 = ExtResource("2_iee1n")
+shader_parameter/sky2 = ExtResource("3_uytbv")
+shader_parameter/blend = 0.0

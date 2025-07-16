@@ -71,7 +71,7 @@ public partial class PauseView : View
     protected override void OnShow()
     {
         base.OnShow();
-        Scene.PauseLock.AddLock(nameof(PauseView));
+        //Scene.PauseLock.AddLock(nameof(PauseView));
         Player.SetAllLocks(nameof(PauseView), true);
         MouseVisibility.Show(nameof(PauseView));
     }
@@ -79,7 +79,7 @@ public partial class PauseView : View
     protected override void OnHide()
     {
         base.OnHide();
-        Scene.PauseLock.RemoveLock(nameof(PauseView));
+        //Scene.PauseLock.RemoveLock(nameof(PauseView));
         Player.SetAllLocks(nameof(PauseView), false);
         MouseVisibility.Hide(nameof(PauseView));
     }

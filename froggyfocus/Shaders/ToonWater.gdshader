@@ -327,7 +327,7 @@ void fragment() {
 	vec4 upos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, FRAGCOORD.z, 1.0);
 	vec3 pixel_position = upos.xyz / upos.w;
 	float d = -pixel_position.z;
-	float dist = max(d - horizon_start, 0) / horizon_length;
+	float dist = clamp(max(d - horizon_start, 0) / horizon_length, 0.0, 1.0) * DIST_COL.a;
 
     // Add foam
     final_color = mix(final_color, FOAM_COL, foam);

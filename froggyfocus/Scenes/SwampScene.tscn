@@ -1,7 +1,7 @@
 [gd_scene load_steps=49 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
-[ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
 [ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/SwampWater.tres" id="4_dkapk"]
@@ -105,12 +105,14 @@ _data = {
 }
 point_count = 4
 
-[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("FocusEvents")]
+[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvents")]
 script = ExtResource("1_qfos7")
+DirectionalLight = NodePath("DirectionalLight3D")
+WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvents = [NodePath("World/FocusEvent_Land"), NodePath("World/FocusEvent_Lilypad"), NodePath("World/FocusEvent_Wood"), NodePath("World/FocusEvent_Mushroom")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_0ky7s")
+environment = ExtResource("2_f4fi4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 5.72245, 3.27611)
@@ -134,6 +136,9 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Water/StaticBody3D"]
 shape = SubResource("BoxShape3D_achss")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="World/Water"]
+size = Vector3(1000, 1, 1000)
 
 [node name="RespawnArea" parent="World/Water" instance=ExtResource("17_achss")]
 collision_layer = 0
@@ -476,9 +481,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06289, 3.8147e-06, 40.41)
 [node name="StickPickup2" parent="World/DeadForest/StickPickups" instance=ExtResource("13_dkapk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8194, 4.29154e-06, 37.4699)
 
-[node name="StickPickup3" parent="World/DeadForest/StickPickups" instance=ExtResource("13_dkapk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5939, 4.29154e-06, 20.5977)
-
 [node name="StickPickup4" parent="World/DeadForest/StickPickups" instance=ExtResource("13_dkapk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.7008, 4.29154e-06, 18.9307)
 
@@ -493,6 +495,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.72509, 6.19889e-06, 2.8839
 
 [node name="StickPickup8" parent="World/DeadForest/StickPickups" instance=ExtResource("13_dkapk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.151, 6.19889e-06, -5.48523)
+
+[node name="UpgradeShop2" parent="World/DeadForest" instance=ExtResource("12_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5564, -0.175682, 20.8814)
 
 [node name="Mushrooms" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.3473, -3.8147e-06, 68.5943)

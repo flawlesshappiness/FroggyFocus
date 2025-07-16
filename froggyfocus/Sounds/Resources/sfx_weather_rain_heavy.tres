@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://4ewaekpnj0o4"]
+
+[ext_resource type="AudioStream" uid="uid://cys0vt0edtgf7" path="res://Sounds/Raw/sfx_weather_rain_heavy_001.wav" id="1_y4xxt"]
+[ext_resource type="Script" uid="uid://blrvdsv0elqy5" path="res://Modules/Sound/SoundInfo.cs" id="2_310kc"]
+
+[resource]
+script = ExtResource("2_310kc")
+AudioStreams = Array[AudioStream]([ExtResource("1_y4xxt")])
+Volume = 0.0
+Looping = true
+PitchRange = Vector2(1, 1)
+Bus = "SFX"
+Distance = 0
+Attenuation = 0
+metadata/_custom_type_script = "uid://blrvdsv0elqy5"

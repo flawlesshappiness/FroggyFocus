@@ -35,7 +35,7 @@ public partial class MusicController : SingletonController
         {
             Category = category,
             Text = "Skip",
-            Action = v => Skip()
+            Action = v => { v.Close(); Skip(); }
         });
     }
 

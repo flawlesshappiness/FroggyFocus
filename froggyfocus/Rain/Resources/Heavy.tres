@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RainInfo" load_steps=3 format=3 uid="uid://b7i8rljodnbws"]
+
+[ext_resource type="Resource" uid="uid://4ewaekpnj0o4" path="res://Sounds/Resources/sfx_weather_rain_heavy.tres" id="1_ax0ee"]
+[ext_resource type="Script" uid="uid://bcs82eb5p7xn4" path="res://Rain/RainInfo.cs" id="2_1fvs1"]
+
+[resource]
+script = ExtResource("2_1fvs1")
+Type = 2
+SoundInfo = ExtResource("1_ax0ee")
+VolumeBase = 0.0
+metadata/_custom_type_script = "uid://bcs82eb5p7xn4"

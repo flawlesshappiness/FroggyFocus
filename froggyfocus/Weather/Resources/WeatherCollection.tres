@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="WeatherCollection" load_steps=2 format=3 uid="uid://btox5cn3rjwln"]
+
+[ext_resource type="Script" uid="uid://bg2c6ghv23fgh" path="res://Weather/WeatherCollection.cs" id="1_m2urp"]
+
+[resource]
+script = ExtResource("1_m2urp")
+metadata/_custom_type_script = "uid://bg2c6ghv23fgh"
