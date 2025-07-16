@@ -1,7 +1,7 @@
 shader_type sky;
 
-uniform sampler2D sky1 : source_color;
-uniform sampler2D sky2 : source_color;
+uniform sampler2D sky1 : source_color, filter_nearest;
+uniform sampler2D sky2 : source_color, filter_nearest;
 uniform float blend;
 
 void sky() {
