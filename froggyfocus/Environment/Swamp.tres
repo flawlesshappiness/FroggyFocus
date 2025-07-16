@@ -1,12 +1,9 @@
-[gd_resource type="Environment" load_steps=4 format=3 uid="uid://ccdedavwq28gu"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://ccdedavwq28gu"]
 
-[ext_resource type="Texture2D" uid="uid://q8s06s63diox" path="res://Assets/Skybox/AllSkyFree_Sky_ClearBlueSky_Equirect.png" id="1_kotqw"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mxhvt"]
-panorama = ExtResource("1_kotqw")
+[ext_resource type="Material" uid="uid://c25vo2yd2p8pm" path="res://Materials/Sky.tres" id="1_kotqw"]
 
 [sub_resource type="Sky" id="Sky_gmxq7"]
-sky_material = SubResource("PanoramaSkyMaterial_mxhvt")
+sky_material = ExtResource("1_kotqw")
 
 [resource]
 background_mode = 2

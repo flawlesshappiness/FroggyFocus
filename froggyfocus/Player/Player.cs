@@ -32,9 +32,6 @@ public partial class Player : TopDownController
     public GpuParticles3D PsDustLand;
 
     [Export]
-    public RainEffect Rain;
-
-    [Export]
     public Godot.Curve JumpLengthCurve;
 
     [Export]

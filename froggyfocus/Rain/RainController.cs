@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,8 @@ public partial class RainController : ResourceController<RainCollection, RainInf
 {
     public static RainController Instance => Singleton.Get<RainController>();
     public override string Directory => "Rain";
+
+    public Action<float> OnRainIntensityChanged;
 
     private List<RainPlayer> rain_players = new();
 
@@ -139,6 +142,6 @@ public partial class RainController : ResourceController<RainCollection, RainInf
             player.SetVolume(t);
         }
 
-        Player.Instance.Rain.SetIntensity(t);
+        OnRainIntensityChanged?.Invoke(t);
     }
 }

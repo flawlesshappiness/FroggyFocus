@@ -59,14 +59,6 @@ public partial class ParticleEffectGroup : Node3D
 
     public Coroutine Destroy(bool immediate = false)
     {
-        return this.StartCoroutine(Cr, "destroy");
-        IEnumerator Cr()
-        {
-            if (!immediate)
-            {
-                yield return new WaitForSeconds(DestroyDelay);
-            }
-            QueueFree();
-        }
+        return this.Destroy(immediate ? 0.0f : DestroyDelay);
     }
 }

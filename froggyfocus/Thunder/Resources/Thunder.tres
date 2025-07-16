@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ThunderInfo" load_steps=3 format=3 uid="uid://tyrp1jj1xac5"]
+
+[ext_resource type="Script" uid="uid://57s04rhyvaji" path="res://Thunder/ThunderInfo.cs" id="1_0b1yl"]
+[ext_resource type="PackedScene" uid="uid://viy4h1h2hav" path="res://Prefabs/Effects/thunder_cloud.tscn" id="1_h6hur"]
+
+[resource]
+script = ExtResource("1_0b1yl")
+Scene = ExtResource("1_h6hur")
+metadata/_custom_type_script = "uid://57s04rhyvaji"

@@ -112,7 +112,7 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
     public int GetCurrentPrice(UpgradeType type)
     {
         var level = GetCurrentLevel(type);
-        return GetPrice(type, level + 1);
+        return GetPrice(type, level);
     }
 
     public int GetPrice(UpgradeType type, int level)

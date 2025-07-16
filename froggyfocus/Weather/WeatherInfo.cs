@@ -20,4 +20,7 @@ public partial class WeatherInfo : Resource
 
     [Export]
     public float Rain;
+
+    [Export]
+    public bool Thunder;
 }

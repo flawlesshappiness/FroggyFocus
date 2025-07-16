@@ -35,14 +35,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Quick skip",
-            Action = SkipQuick
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Set weather",
+            Text = "Select weather",
             Action = SelectWeather
         });
 
@@ -52,8 +45,18 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
 
             foreach (var info in Collection.Resources)
             {
-                v.ContentSearch.AddItem(info.GetResourceName(), () => SetWeatherDebug(v, info));
+                v.ContentSearch.AddItem(info.GetResourceName(), () => SetAction(v, info));
             }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SetAction(DebugView v, WeatherInfo info)
+        {
+            v.SetContent_Search();
+
+            v.ContentSearch.AddItem("Fade", () => SetWeatherDebug(v, info));
+            v.ContentSearch.AddItem("Fade fast", () => SetWeatherDebugFast(v, info));
 
             v.ContentSearch.UpdateButtons();
         }
@@ -65,16 +68,17 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
             v.Close();
         }
 
-        void Skip(DebugView v)
+        void SetWeatherDebugFast(DebugView v, WeatherInfo info)
         {
+            next_weather = info;
             skip = true;
+            quick_transition = true;
             v.Close();
         }
 
-        void SkipQuick(DebugView v)
+        void Skip(DebugView v)
         {
             skip = true;
-            quick_transition = true;
             v.Close();
         }
     }
@@ -148,7 +152,8 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
     private WeatherInfo GetNextWeather()
     {
         var next = next_weather ?? Collection.Resources
-            .Where(x => x != current_weather)
+            .Where(x => x != current_weather) // Not the same as current weather
+            .Where(x => current_weather != null && current_weather.Rain > 0.0f ? x.Rain < 0.01f : true) // No repeat rain
             .ToList()
             .Random();
         next_weather = null;
@@ -173,5 +178,15 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
 
         // Rain
         RainController.Instance.SetRain(Mathf.Lerp(from.Rain, to.Rain, t));
+
+        // Thunder
+        if (!to.Thunder)
+        {
+            ThunderController.Instance.StopThunder();
+        }
+        else if (t >= 1.0f)
+        {
+            ThunderController.Instance.StartThunder();
+        }
     }
 }

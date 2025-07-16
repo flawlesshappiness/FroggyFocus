@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 using System.Collections.Generic;
 
 public static class Node3DExtensions
@@ -83,6 +84,19 @@ public static class Node3DExtensions
     {
         node.Position = Vector3.Zero;
         node.Rotation = Vector3.Zero;
+    }
+
+    public static Coroutine Destroy(this Node3D node, float delay = 0.0f)
+    {
+        return node.StartCoroutine(Cr, "destroy");
+        IEnumerator Cr()
+        {
+            if (delay > 0.0f)
+            {
+                yield return new WaitForSeconds(delay);
+            }
+            node.QueueFree();
+        }
     }
 
     #region RAYCAST
