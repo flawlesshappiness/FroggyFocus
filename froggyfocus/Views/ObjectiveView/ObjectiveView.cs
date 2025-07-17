@@ -42,7 +42,16 @@ public partial class ObjectiveView : PanelView
     {
         base.OnShow();
         UpdateControls();
+    }
 
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree() && !animating)
+        {
+            Close();
+        }
     }
 
     protected override void GrabFocusAfterOpen()
