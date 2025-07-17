@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="3_egmko"]
-[ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/Options.tscn" id="5_7iof8"]
+[ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/OptionsContainer.tscn" id="5_7iof8"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_7iof8"]
 
 [sub_resource type="Animation" id="Animation_7iof8"]
