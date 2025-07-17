@@ -13,6 +13,7 @@ public partial class MusicController : SingletonController
     private Coroutine cr_music;
     private bool skip;
     private AudioStreamPlayer current_asp;
+    private bool music_playing;
 
     public List<string> bgms = new()
     {
@@ -49,6 +50,7 @@ public partial class MusicController : SingletonController
             {
                 yield return WaitForSkippableDelay(300);
 
+                music_playing = true;
                 var bgm = bgms.Random();
                 current_asp = SoundController.Instance.Play(bgm);
                 current_asp.ProcessMode = ProcessModeEnum.Always;
@@ -56,6 +58,7 @@ public partial class MusicController : SingletonController
 
                 yield return WaitForSkippableDelay(Convert.ToSingle(length));
 
+                music_playing = false;
                 current_asp.Stop();
                 current_asp = null;
             }
@@ -103,5 +106,10 @@ public partial class MusicController : SingletonController
     {
         var bus = AudioBus.Get("BGM");
         bus.SetMuted(muted);
+    }
+
+    public bool IsMusicPlaying()
+    {
+        return music_playing;
     }
 }

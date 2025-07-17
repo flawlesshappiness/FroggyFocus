@@ -97,7 +97,17 @@ public partial class FocusEvent : Node3D
             HijackCamera();
 
             // Transition end
-            yield return new WaitForSeconds(1.0f);
+            if (!MusicController.Instance.IsMusicPlaying())
+            {
+                MusicController.Instance.MuteLock.AddLock(nameof(FocusIntroView));
+                yield return FocusIntroView.Instance.WaitForRiff();
+                MusicController.Instance.MuteLock.RemoveLock(nameof(FocusIntroView));
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+
             yield return FocusIntroView.Instance.AnimateHide();
 
             // Initialize cursor
