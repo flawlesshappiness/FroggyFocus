@@ -23,4 +23,10 @@ public partial class WeatherInfo : Resource
 
     [Export]
     public bool Thunder;
+
+    [Export]
+    public bool Wind;
+
+    [Export]
+    public Vector2 WindRange;
 }

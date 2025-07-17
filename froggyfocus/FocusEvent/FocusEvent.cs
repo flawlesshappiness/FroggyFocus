@@ -90,6 +90,9 @@ public partial class FocusEvent : Node3D
             FocusIntroView.Instance.LoadTargetCharacter(Target.Info);
             yield return FocusIntroView.Instance.AnimateShow();
 
+            // Show event
+            Show();
+
             // Hijack camera
             HijackCamera();
 

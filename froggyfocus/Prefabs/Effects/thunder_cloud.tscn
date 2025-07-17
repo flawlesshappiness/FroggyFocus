@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c4hmjnuaomx8d" path="res://Prefabs/Effects/ThunderCloudEffect.cs" id="1_1neav"]
 [ext_resource type="Texture2D" uid="uid://e3hfi2ik23nn" path="res://Assets/KenneyNL/Particles/smoke_07.png" id="1_cxeq8"]
-[ext_resource type="AudioStream" uid="uid://dtal3yucssd7t" path="res://Sounds/Raw/sfx_thunder_001.wav" id="2_tcjac"]
-[ext_resource type="AudioStream" uid="uid://cbr5uaxstqgby" path="res://Sounds/Raw/sfx_thunder_002.wav" id="3_0fj80"]
-[ext_resource type="AudioStream" uid="uid://btus6cms6jg8c" path="res://Sounds/Raw/sfx_thunder_003.wav" id="4_1neav"]
-[ext_resource type="AudioStream" uid="uid://crfnhw4hb5g74" path="res://Sounds/Raw/sfx_thunder_004.wav" id="5_swhgi"]
-[ext_resource type="AudioStream" uid="uid://ckpvg0e85nvrp" path="res://Sounds/Raw/sfx_thunder_005.wav" id="6_tvd2b"]
-[ext_resource type="AudioStream" uid="uid://bst3urhe214vr" path="res://Sounds/Raw/sfx_thunder_006.wav" id="7_a5nuy"]
+[ext_resource type="AudioStream" uid="uid://dtal3yucssd7t" path="res://Sounds/Raw/sfx_weather_thunder_001.wav" id="2_tcjac"]
+[ext_resource type="AudioStream" uid="uid://cbr5uaxstqgby" path="res://Sounds/Raw/sfx_weather_thunder_002.wav" id="3_0fj80"]
+[ext_resource type="AudioStream" uid="uid://btus6cms6jg8c" path="res://Sounds/Raw/sfx_weather_thunder_003.wav" id="4_1neav"]
+[ext_resource type="AudioStream" uid="uid://crfnhw4hb5g74" path="res://Sounds/Raw/sfx_weather_thunder_004.wav" id="5_swhgi"]
+[ext_resource type="AudioStream" uid="uid://ckpvg0e85nvrp" path="res://Sounds/Raw/sfx_weather_thunder_005.wav" id="6_tvd2b"]
+[ext_resource type="AudioStream" uid="uid://bst3urhe214vr" path="res://Sounds/Raw/sfx_weather_thunder_006.wav" id="7_a5nuy"]
 
 [sub_resource type="Curve" id="Curve_cxeq8"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.00873363, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://dnrvirru0oty6"]
+
+[ext_resource type="AudioStream" uid="uid://3x8u6drv8xiy" path="res://Sounds/Raw/sfx_weather_wind_001.wav" id="1_45bws"]
+[ext_resource type="Script" uid="uid://blrvdsv0elqy5" path="res://Modules/Sound/SoundInfo.cs" id="2_mwin1"]
+
+[resource]
+script = ExtResource("2_mwin1")
+AudioStreams = Array[AudioStream]([ExtResource("1_45bws")])
+Volume = 0.0
+Looping = true
+PitchRange = Vector2(1, 1)
+Bus = "SFX"
+Distance = 0
+Attenuation = 0
+metadata/_custom_type_script = "uid://blrvdsv0elqy5"

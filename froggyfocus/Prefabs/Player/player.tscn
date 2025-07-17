@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bhuic2i3dy7q5"]
+[gd_scene load_steps=25 format=3 uid="uid://bhuic2i3dy7q5"]
 
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="1_6dc14"]
 [ext_resource type="Script" uid="uid://c2ko138plrgx1" path="res://Player/Player.cs" id="1_hnwp3"]
@@ -8,7 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="7_ine62"]
 [ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="8_m5xj4"]
 [ext_resource type="Script" uid="uid://t86h1rrv1tss" path="res://Camera/ThirdPersonCamera.cs" id="9_a00l3"]
-[ext_resource type="PackedScene" uid="uid://bgam63hrep021" path="res://Prefabs/Effects/rain.tscn" id="9_dtqie"]
+[ext_resource type="PackedScene" uid="uid://bgam63hrep021" path="res://Prefabs/Effects/rain_effect.tscn" id="9_dtqie"]
+[ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="10_dtqie"]
 
 [sub_resource type="Curve" id="Curve_sysjd"]
 _limits = [0.0, 20.0, 0.0, 1.0]
@@ -84,7 +85,7 @@ scale_min = 0.2
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_m5xj4")
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ExclamationMark", "SfxFocusTargetFound", "SfxFocusTargetStarted", "PsDustStream", "PsDustJump", "PsDustLand", "Rain", "Camera")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ExclamationMark", "SfxFocusTargetFound", "SfxFocusTargetStarted", "PsDustStream", "PsDustJump", "PsDustLand", "Camera")]
 collision_layer = 2
 script = ExtResource("1_hnwp3")
 MoveSpeed = 2.0
@@ -96,7 +97,6 @@ SfxFocusTargetStarted = NodePath("SfxFocusTargetStarted")
 PsDustStream = NodePath("Frog/ps_dust_stream")
 PsDustJump = NodePath("Frog/ps_dust_jump")
 PsDustLand = NodePath("Frog/ps_dust_land")
-Rain = NodePath("Rain")
 JumpLengthCurve = SubResource("Curve_sysjd")
 JumpHeightCurve = SubResource("Curve_21ygf")
 Camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
@@ -173,3 +173,6 @@ spring_length = 2.5
 current = true
 
 [node name="Rain" parent="." instance=ExtResource("9_dtqie")]
+
+[node name="WindEffect" parent="." instance=ExtResource("10_dtqie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)

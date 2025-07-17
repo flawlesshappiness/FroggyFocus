@@ -11,6 +11,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
     private bool quick_transition;
     private WeatherInfo current_weather;
     private WeatherInfo next_weather;
+    private Coroutine cr_weather;
 
     private const float TRANSITION_DURATION = 30;
     private const float TRANSITION_DURATION_QUICK = 3;
@@ -65,6 +66,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         {
             next_weather = info;
             skip = true;
+            quick_transition = false;
             v.Close();
         }
 
@@ -83,6 +85,14 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         }
     }
 
+    public void StopWeather()
+    {
+        Coroutine.Stop(cr_weather);
+        RainController.Instance.StopRain();
+        WindController.Instance.StopWind();
+        ThunderController.Instance.StopThunder();
+    }
+
     public void StartWeather()
     {
         var scene = GameScene.Instance;
@@ -93,11 +103,12 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         env.Sky.SkyMaterial = sky_material;
 
         RainController.Instance.StartRain();
+        WindController.Instance.StartWind();
 
         current_weather = GetNextWeather();
         SetWeatherTransition(current_weather, current_weather, 1);
 
-        this.StartCoroutine(Cr, "weather");
+        cr_weather = this.StartCoroutine(Cr, "weather");
         IEnumerator Cr()
         {
             while (true)
@@ -109,6 +120,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
 
                 var transition_duration = quick_transition ? TRANSITION_DURATION_QUICK : TRANSITION_DURATION;
                 yield return WaitForWeatherTransition(previous_weather, current_weather, transition_duration);
+                quick_transition = false;
             }
         }
 
@@ -177,7 +189,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         env.FogLightColor = from.FogColor.Lerp(to.FogEnabled ? to.FogColor : from.FogColor, t);
 
         // Rain
-        RainController.Instance.SetRain(Mathf.Lerp(from.Rain, to.Rain, t));
+        RainController.Instance.SetIntensity(Mathf.Lerp(from.Rain, to.Rain, t));
 
         // Thunder
         if (!to.Thunder)
@@ -188,5 +200,11 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         {
             ThunderController.Instance.StartThunder();
         }
+
+        // Wind
+        var wind_from = from.Wind ? from.WindRange : Vector2.Zero;
+        var wind_to = to.Wind ? to.WindRange : Vector2.Zero;
+        var wind = wind_from.Lerp(wind_to, t);
+        WindController.Instance.SetIntensityRange(wind);
     }
 }

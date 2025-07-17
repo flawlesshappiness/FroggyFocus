@@ -39,7 +39,6 @@ public partial class GameScene : Scene
     public void StartFocusEvent()
     {
         var focus_event = FocusEvents.FirstOrDefault(x => x.Id == current_focus_event_id) ?? FocusEvents.First();
-        focus_event.Show();
         focus_event.StartEvent();
     }
 

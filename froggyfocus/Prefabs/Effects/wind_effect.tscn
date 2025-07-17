@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2g5o2xm6xb3"]
+
+[ext_resource type="Script" uid="uid://ds6rltyvmjrbf" path="res://Prefabs/Effects/WindEffect.cs" id="1_on72a"]
+
+[sub_resource type="Curve" id="Curve_mh0hn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_on72a"]
+curve = SubResource("Curve_mh0hn")
+
+[sub_resource type="Curve" id="Curve_dpsaq"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 40), 0.0, 0.0, 0, 0, Vector2(0.7, -40), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_hftp2"]
+curve = SubResource("Curve_dpsaq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tyfw1"]
+emission_shape_offset = Vector3(-50, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(40, 20, 40)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 2.0
+tangential_accel_max = 2.0
+tangential_accel_curve = SubResource("CurveTexture_hftp2")
+scale_min = 0.1
+scale_max = 0.3
+color = Color(1, 1, 1, 0.321569)
+alpha_curve = SubResource("CurveTexture_on72a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5763"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_vsyby"]
+material = SubResource("StandardMaterial3D_m5763")
+
+[node name="WindEffect" type="GPUParticles3D"]
+emitting = false
+amount = 200
+lifetime = 2.0
+fixed_fps = 60
+visibility_aabb = AABB(-50, -50, -50, 100, 100, 100)
+process_material = SubResource("ParticleProcessMaterial_tyfw1")
+draw_pass_1 = SubResource("QuadMesh_vsyby")
+script = ExtResource("1_on72a")

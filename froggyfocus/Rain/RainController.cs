@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,58 +39,32 @@ public partial class RainController : ResourceController<RainCollection, RainInf
 
     private void RegisterDebugActions()
     {
-        var category = "RAIN";
+        var category = "WEATHER";
 
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Set level",
-            Action = SelectRainLevel
+            Text = "Set rain intensity",
+            Action = SelectRainIntensity
         });
 
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Fade test",
-            Action = FadeTest
-        });
-
-        void SelectRainLevel(DebugView v)
+        void SelectRainIntensity(DebugView v)
         {
             v.SetContent_Search();
 
-            for (float i = 0; i <= 1.0f; i += 0.1f)
+            for (float i = 0; i <= 1.1f; i += 0.1f)
             {
                 var level = i;
-                v.ContentSearch.AddItem(i.ToString("0.0"), () => SetRainLevel(v, level));
+                v.ContentSearch.AddItem(i.ToString("0.0"), () => SetRainIntensity(v, level));
             }
 
             v.ContentSearch.UpdateButtons();
         }
 
-        void SetRainLevel(DebugView v, float level)
+        void SetRainIntensity(DebugView v, float level)
         {
-            SetRain(level);
+            SetIntensity(level);
             v.Close();
-        }
-
-        void FadeTest(DebugView v)
-        {
-            v.Close();
-
-            this.StartCoroutine(Cr, "fade_test");
-            IEnumerator Cr()
-            {
-                yield return LerpEnumerator.Lerp01(15f, f =>
-                {
-                    SetRain(f);
-                });
-
-                yield return LerpEnumerator.Lerp01(15f, f =>
-                {
-                    SetRain(Mathf.Lerp(1, 0, f));
-                });
-            }
         }
     }
 
@@ -114,6 +87,11 @@ public partial class RainController : ResourceController<RainCollection, RainInf
         InitializePlayer(RainType.Heavy, new Vector2(0.5f, 1.0f));
     }
 
+    public void StopRain()
+    {
+        Clear();
+    }
+
     private RainPlayer InitializePlayer(RainType type, Vector2 range)
     {
         var info = GetInfo(type);
@@ -131,7 +109,7 @@ public partial class RainController : ResourceController<RainCollection, RainInf
         return player;
     }
 
-    public void SetRain(float t)
+    public void SetIntensity(float t)
     {
         var env = GameScene.Instance.WorldEnvironment.Environment;
         var mat = env.Sky.SkyMaterial as ShaderMaterial;

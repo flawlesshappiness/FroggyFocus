@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WindInfo" load_steps=5 format=3 uid="uid://donnksmypb17c"]
+
+[ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="1_uvk47"]
+[ext_resource type="Script" uid="uid://qcfn44fysk6o" path="res://Wind/WindInfo.cs" id="1_y4ojv"]
+[ext_resource type="Resource" uid="uid://dnrvirru0oty6" path="res://Sounds/Resources/sfx_weather_wind.tres" id="2_gertr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uvk47"]
+frequency = 0.05
+metadata/_preview_in_3d_space_ = true
+
+[resource]
+script = ExtResource("1_y4ojv")
+EffectScene = ExtResource("1_uvk47")
+SoundInfo = ExtResource("2_gertr")
+Noise = SubResource("FastNoiseLite_uvk47")
+metadata/_custom_type_script = "uid://qcfn44fysk6o"

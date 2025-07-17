@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=12 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bjfec2tbico8w" path="res://Prefabs/FocusSkillChecks/dash.tscn" id="7_xhohg"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="7_yos1q"]
 [ext_resource type="PackedScene" uid="uid://bk1jnky7aenmk" path="res://Prefabs/FocusSkillChecks/dive.tscn" id="8_201f2"]
-[ext_resource type="PackedScene" uid="uid://bgam63hrep021" path="res://Prefabs/Effects/rain.tscn" id="10_5w8tb"]
+[ext_resource type="PackedScene" uid="uid://bgam63hrep021" path="res://Prefabs/Effects/rain_effect.tscn" id="10_5w8tb"]
+[ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="11_h8skc"]
 
 [node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "SkillChecks")]
 script = ExtResource("1_p778c")
@@ -45,4 +46,6 @@ DistanceRange = Vector2(0.5, 3)
 [node name="Frog" parent="." instance=ExtResource("7_yos1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 
-[node name="Rain" parent="." instance=ExtResource("10_5w8tb")]
+[node name="RainEffect" parent="." instance=ExtResource("10_5w8tb")]
+
+[node name="WindEffect" parent="." instance=ExtResource("11_h8skc")]
