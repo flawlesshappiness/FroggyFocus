@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AppearanceHatInfo" load_steps=3 format=3 uid="uid://fgb1hpjyxjc0"]
 
-[ext_resource type="PackedScene" uid="uid://dpt7b4p3b51mc" path="res://Appearance/Hat/Previews/Bow.tscn" id="1_o53cf"]
+[ext_resource type="PackedScene" uid="uid://cqne4uq3cw58u" path="res://Appearance/Hat/Attachments/bow.tscn" id="1_o53cf"]
 [ext_resource type="Script" uid="uid://bgmxka5nlfp3x" path="res://Appearance/Hat/AppearanceHatInfo.cs" id="2_y2ed0"]
 
 [resource]
@@ -9,4 +9,7 @@ Type = 7
 Prefab = ExtResource("1_o53cf")
 Name = "Bow"
 Price = 100
+Locked = false
+DefaultPrimaryColor = 4
+DefaultSecondaryColor = 4
 metadata/_custom_type_script = "uid://bgmxka5nlfp3x"

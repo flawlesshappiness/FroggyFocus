@@ -27,12 +27,14 @@ public partial class PreviewSubViewport : SubViewport
         current_preview.Rotation = Vector3.Zero;
     }
 
-    public Node3D SetPrefab(PackedScene prefab)
+    public Node3D SetPrefab(PackedScene prefab) => SetPrefab<Node3D>(prefab);
+    public T SetPrefab<T>(PackedScene prefab)
+        where T : Node3D
     {
         if (prefab == null) return null;
 
         var preview = prefab.Instantiate<Node3D>();
         SetPreview(preview);
-        return preview;
+        return preview as T;
     }
 }

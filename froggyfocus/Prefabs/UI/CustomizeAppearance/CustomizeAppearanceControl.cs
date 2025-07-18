@@ -40,7 +40,9 @@ public partial class CustomizeAppearanceControl : ControlScript
         ColorTab.BodyColorContainer.OnColorPressed += BodyColor_Pressed;
 
         ColorTab.HatPrimaryColorContainer.OnColorPressed += HatPrimaryColor_Pressed;
+        ColorTab.HatPrimaryColorContainer.OnDefaultColorPressed += HatPrimaryDefaultColor_Pressed;
         ColorTab.HatSecondaryColorContainer.OnColorPressed += HatSecondaryColor_Pressed;
+        ColorTab.HatSecondaryColorContainer.OnDefaultColorPressed += HatSecondaryDefaultColor_Pressed;
 
         PreviewRotationSlider.ValueChanged += PreviewRotationSlider_ValueChanged;
         PreviewRotationSlider_ValueChanged(PreviewRotationSlider.Value);
@@ -101,6 +103,14 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         if (loading) return;
         Data.Game.FrogAppearanceData.HatPrimaryColor = info.Type;
+        Data.Game.FrogAppearanceData.HatPrimaryColorDefault = false;
+        OnHatChanged?.Invoke();
+    }
+
+    private void HatPrimaryDefaultColor_Pressed()
+    {
+        if (loading) return;
+        Data.Game.FrogAppearanceData.HatPrimaryColorDefault = true;
         OnHatChanged?.Invoke();
     }
 
@@ -108,6 +118,14 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         if (loading) return;
         Data.Game.FrogAppearanceData.HatSecondaryColor = info.Type;
+        Data.Game.FrogAppearanceData.HatSecondaryColorDefault = false;
+        OnHatChanged?.Invoke();
+    }
+
+    private void HatSecondaryDefaultColor_Pressed()
+    {
+        if (loading) return;
+        Data.Game.FrogAppearanceData.HatSecondaryColorDefault = true;
         OnHatChanged?.Invoke();
     }
 

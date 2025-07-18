@@ -23,21 +23,6 @@ public partial class AppearanceColorButton : ButtonScript
         FocusExited += Button_FocusExited;
     }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        if (!initialized)
-        {
-            initialized = true;
-            Initialize();
-        }
-    }
-
-    private void Initialize()
-    {
-        InitializePaintBucket();
-    }
-
     private void InitializePaintBucket()
     {
         if (paint_bucket != null) return;

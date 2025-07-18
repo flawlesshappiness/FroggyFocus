@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AppearanceHatInfo" load_steps=3 format=3 uid="uid://qfb7kosam4wt"]
 
-[ext_resource type="PackedScene" uid="uid://b6tnbshgpiinr" path="res://Appearance/Hat/Previews/Tiara.tscn" id="1_ebfof"]
+[ext_resource type="PackedScene" uid="uid://xqht7alrt8iv" path="res://Appearance/Hat/Attachments/tiara.tscn" id="1_ebfof"]
 [ext_resource type="Script" uid="uid://bgmxka5nlfp3x" path="res://Appearance/Hat/AppearanceHatInfo.cs" id="2_tb2ya"]
 
 [resource]
@@ -9,4 +9,7 @@ Type = 6
 Prefab = ExtResource("1_ebfof")
 Name = "Tiara"
 Price = 800
+Locked = false
+DefaultPrimaryColor = 3
+DefaultSecondaryColor = 1
 metadata/_custom_type_script = "uid://bgmxka5nlfp3x"

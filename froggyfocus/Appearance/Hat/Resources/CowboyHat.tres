@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AppearanceHatInfo" load_steps=3 format=3 uid="uid://cj4mf2crle0w3"]
 
-[ext_resource type="PackedScene" uid="uid://dhvnhvbyl256r" path="res://Appearance/Hat/Previews/CowboyHat.tscn" id="1_7wjue"]
+[ext_resource type="PackedScene" uid="uid://c2w4ggwbp6jdf" path="res://Appearance/Hat/Attachments/cowboy_hat.tscn" id="1_7wjue"]
 [ext_resource type="Script" uid="uid://bgmxka5nlfp3x" path="res://Appearance/Hat/AppearanceHatInfo.cs" id="2_45y5h"]
 
 [resource]
@@ -9,4 +9,7 @@ Type = 4
 Prefab = ExtResource("1_7wjue")
 Name = "Cowboy Hat"
 Price = 500
+Locked = false
+DefaultPrimaryColor = 5
+DefaultSecondaryColor = 8
 metadata/_custom_type_script = "uid://bgmxka5nlfp3x"

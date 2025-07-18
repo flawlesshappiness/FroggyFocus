@@ -141,10 +141,12 @@ text = "Hat"
 [node name="HatPrimaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
 ShowUnlocked = true
+ShowDefault = true
 
 [node name="HatSecondaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
 layout_mode = 2
 ShowUnlocked = true
+ShowDefault = true
 
 [node name="Hats" parent="HBoxContainer/OptionsPanel/TabContainer" instance=ExtResource("5_1uex8")]
 visible = false

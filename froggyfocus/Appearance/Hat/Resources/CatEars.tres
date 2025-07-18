@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AppearanceHatInfo" load_steps=3 format=3 uid="uid://d1ji7mj5cbx3d"]
 
-[ext_resource type="PackedScene" uid="uid://dnliymarrye3i" path="res://Appearance/Hat/Previews/CatEars.tscn" id="1_pnyic"]
+[ext_resource type="PackedScene" uid="uid://oth00eq3xg17" path="res://Appearance/Hat/Attachments/cat_ears.tscn" id="1_pnyic"]
 [ext_resource type="Script" uid="uid://bgmxka5nlfp3x" path="res://Appearance/Hat/AppearanceHatInfo.cs" id="2_nxf4k"]
 
 [resource]
@@ -9,4 +9,7 @@ Type = 2
 Prefab = ExtResource("1_pnyic")
 Name = "Cat Ears"
 Price = 400
+Locked = false
+DefaultPrimaryColor = 0
+DefaultSecondaryColor = 8
 metadata/_custom_type_script = "uid://bgmxka5nlfp3x"

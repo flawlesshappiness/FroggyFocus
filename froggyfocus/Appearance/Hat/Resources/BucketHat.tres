@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AppearanceHatInfo" load_steps=3 format=3 uid="uid://o3uo2c0a4jk2"]
 
-[ext_resource type="PackedScene" uid="uid://c5ojwwfegdyx1" path="res://Appearance/Hat/Previews/BucketHat.tscn" id="1_sqiyg"]
+[ext_resource type="PackedScene" uid="uid://0ey4wtg3hu5i" path="res://Appearance/Hat/Attachments/bucket_hat.tscn" id="1_sqiyg"]
 [ext_resource type="Script" uid="uid://bgmxka5nlfp3x" path="res://Appearance/Hat/AppearanceHatInfo.cs" id="2_3vomc"]
 
 [resource]
@@ -9,4 +9,7 @@ Type = 3
 Prefab = ExtResource("1_sqiyg")
 Name = "Bucket Hat"
 Price = 120
+Locked = false
+DefaultPrimaryColor = 3
+DefaultSecondaryColor = 3
 metadata/_custom_type_script = "uid://bgmxka5nlfp3x"

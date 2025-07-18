@@ -10,7 +10,8 @@ public partial class ItemSubViewport : PreviewSubViewport
 
     public void SetHat(AppearanceHatInfo info)
     {
-        SetPrefab(info.Prefab);
+        var hat = SetPrefab<AppearanceHatAttachment>(info.Prefab);
+        hat.SetDefaultColors();
     }
 
     public void SetCharacter(FocusCharacterInfo info)

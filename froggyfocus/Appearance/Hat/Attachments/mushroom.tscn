@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dy3weolguo8pt" path="res://Assets/FlawLizArt/Clothing/mushroom.fbx" id="3_e4ho5"]
 
 [node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
-transform = Transform3D(0.01, 1.8198e-23, -6.61744e-24, 0, -0.00284216, -0.0095876, 6.53473e-23, 0.0095876, -0.00284216, 0, 0, 0)
 script = ExtResource("1_8d0ht")
 Type = 8
 Mesh = NodePath("mushroom/mushroom")
 
 [node name="mushroom" parent="." instance=ExtResource("3_e4ho5")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, -0.172251, 0)
 
 [editable path="mushroom"]

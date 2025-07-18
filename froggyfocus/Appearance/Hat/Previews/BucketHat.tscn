@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5ojwwfegdyx1"]
-
-[ext_resource type="PackedScene" uid="uid://mxgyl5pbqnyv" path="res://Assets/FlawLizArt/Clothing/bucket_hat.fbx" id="2_odw5j"]
-
-[node name="BucketHat" type="Node3D"]
-
-[node name="bucket_hat" parent="." instance=ExtResource("2_odw5j")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.0720119, 0)

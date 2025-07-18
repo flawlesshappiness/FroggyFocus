@@ -17,4 +17,10 @@ public partial class AppearanceHatInfo : Resource
 
     [Export]
     public bool Locked;
+
+    [Export]
+    public AppearanceColorType DefaultPrimaryColor;
+
+    [Export]
+    public AppearanceColorType DefaultSecondaryColor;
 }

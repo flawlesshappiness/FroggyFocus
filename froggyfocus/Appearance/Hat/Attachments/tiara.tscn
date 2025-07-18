@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://bcyxhtn31dfxy" path="res://Assets/FlawLizArt/Clothing/tiara.fbx" id="2_0v8o3"]
 
 [node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
-transform = Transform3D(0.01, 1.8198e-23, -6.61744e-24, 0, -0.00284216, -0.0095876, 6.53473e-23, 0.0095876, -0.00284216, 0, 0, 0)
 script = ExtResource("1_0v8o3")
 Type = 6
 Mesh = NodePath("tiara/Tiara")
 
 [node name="tiara" parent="." instance=ExtResource("2_0v8o3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0723815, 0)
 
 [editable path="tiara"]

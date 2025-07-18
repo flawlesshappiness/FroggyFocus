@@ -12,9 +12,13 @@ public partial class AppearanceColorContainer : ControlScript
     public bool ShowLocked;
 
     [Export]
+    public bool ShowDefault;
+
+    [Export]
     public AppearanceColorButton ButtonTemplate;
 
     public event Action<AppearanceColorInfo> OnColorPressed;
+    public event Action OnDefaultColorPressed;
 
     private List<ButtonMap> maps = new();
 
@@ -34,21 +38,28 @@ public partial class AppearanceColorContainer : ControlScript
     {
         ButtonTemplate.Hide();
 
-        var parent = ButtonTemplate.GetParent();
+        var default_button = CreateButton(null);
+        default_button.Pressed += DefaultColorPressed;
+
         foreach (var info in AppearanceColorController.Instance.Collection.Resources)
         {
-            var button = ButtonTemplate.Duplicate() as AppearanceColorButton;
-            button.SetParent(parent);
-            button.Show();
+            var button = CreateButton(info);
             button.SetColor(info);
             button.Pressed += () => ColorPressed(info);
-
-            maps.Add(new ButtonMap
-            {
-                Button = button,
-                Info = info
-            });
         }
+    }
+
+    private AppearanceColorButton CreateButton(AppearanceColorInfo info)
+    {
+        var button = ButtonTemplate.Duplicate() as AppearanceColorButton;
+        button.SetParent(ButtonTemplate.GetParent());
+        button.Show();
+        maps.Add(new ButtonMap
+        {
+            Button = button,
+            Info = info
+        });
+        return button;
     }
 
     protected override void OnShow()
@@ -61,14 +72,26 @@ public partial class AppearanceColorContainer : ControlScript
     {
         foreach (var map in maps)
         {
-            var unlocked = Data.Game.Appearance.PurchasedColors.Contains(map.Info.Type);
-            map.Button.Visible = unlocked == ShowUnlocked || !unlocked == ShowLocked;
+            if (map.Info == null)
+            {
+                map.Button.Visible = ShowDefault;
+            }
+            else
+            {
+                var unlocked = Data.Game.Appearance.PurchasedColors.Contains(map.Info.Type);
+                map.Button.Visible = unlocked == ShowUnlocked || !unlocked == ShowLocked;
+            }
         }
     }
 
     private void ColorPressed(AppearanceColorInfo info)
     {
         OnColorPressed?.Invoke(info);
+    }
+
+    private void DefaultColorPressed()
+    {
+        OnDefaultColorPressed?.Invoke();
     }
 
     public Button GetButton(AppearanceColorInfo info)

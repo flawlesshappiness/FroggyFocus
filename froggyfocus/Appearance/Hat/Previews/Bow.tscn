@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpt7b4p3b51mc"]
-
-[ext_resource type="PackedScene" uid="uid://bk7crdap8w0rp" path="res://Assets/FlawLizArt/Clothing/bow.fbx" id="1_8aogm"]
-
-[node name="PreviewHat" type="Node3D"]
-
-[node name="bow" parent="." instance=ExtResource("1_8aogm")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
