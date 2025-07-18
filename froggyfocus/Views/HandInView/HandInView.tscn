@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ug6yqg0hf76e"]
+[gd_scene load_steps=12 format=3 uid="uid://ug6yqg0hf76e"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w0lsk"]
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="2_fare7"]
@@ -6,15 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="3_8sgxy"]
 [ext_resource type="Texture2D" uid="uid://bonu8f811ddko" path="res://Assets/KenneyNL/Cursor/Basic/navigation_n.png" id="3_qp2ac"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="4_77p21"]
-[ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="4_l2pwb"]
-[ext_resource type="PackedScene" uid="uid://s6oqyxkfywv7" path="res://Prefabs/UI/Inventory/inventory_container.tscn" id="5_4gv8o"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_cjkwa"]
 [ext_resource type="PackedScene" uid="uid://byh5solck2yl" path="res://Prefabs/UI/RewardPreview/reward_preview.tscn" id="6_s1pfv"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="8_ra46o"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="11_4fhbg"]
 [ext_resource type="PackedScene" uid="uid://dtjh32wwairim" path="res://Prefabs/UI/ShopExpandPopup/shop_expand_popup.tscn" id="12_77p21"]
 
-[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "AnimatedPanel_Inventory", "CloseHandInButton", "CloseInventoryButton", "ClaimButton", "NameLabel", "LocationHintLabel", "InventoryContainer", "ShopExpandPopup", "InputBlocker", "RequestButtons", "RewardPreviews")]
+[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "CloseHandInButton", "ClaimButton", "NameLabel", "LocationHintLabel", "ShopExpandPopup", "InputBlocker", "RequestButtons", "RewardPreviews")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,13 +23,10 @@ theme = ExtResource("1_w0lsk")
 script = ExtResource("2_tr8x0")
 AnimatedOverlay = NodePath("AnimatedOverlay")
 AnimatedPanel_HandIn = NodePath("CenterContainer/Center/AnimatedPanel_HandIn")
-AnimatedPanel_Inventory = NodePath("CenterContainer/Center/AnimatedPanel_Inventory")
-CloseHandInButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/CloseHandInButton")
-CloseInventoryButton = NodePath("CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/CloseInventoryButton")
+CloseHandInButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/BackButton")
 ClaimButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ClaimButton")
 NameLabel = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer/NameLabel")
 LocationHintLabel = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer/LocationHintLabel")
-InventoryContainer = NodePath("CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/Panel/inventory_container")
 ShopExpandPopup = NodePath("ShopExpandPopup")
 InputBlocker = NodePath("InputBlocker")
 RequestButtons = [NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 1"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 2"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 3"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 4"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 5"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 6")]
@@ -108,16 +103,20 @@ text = "REQUEST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CloseHandInButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel" instance=ExtResource("4_l2pwb")]
+[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel" instance=ExtResource("5_cjkwa")]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -22.395
-offset_top = -20.775
-offset_right = 19.605
-offset_bottom = 21.225
-grow_horizontal = 0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.5
+offset_top = 9.63
+offset_right = 49.5
+offset_bottom = 54.63
+grow_horizontal = 2
+grow_vertical = 0
+text = " Back"
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer"]
 layout_mode = 2
@@ -278,83 +277,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("11_4fhbg")
 text = " Claim"
-
-[node name="AnimatedPanel_Inventory" parent="CenterContainer/Center" instance=ExtResource("4_77p21")]
-layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="InventoryContainer" type="Control" parent="CenterContainer/Center/AnimatedPanel_Inventory"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -174.0
-offset_top = -160.0
-offset_right = 174.0
-offset_bottom = 160.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InstructionPanel" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -97.5
-offset_top = 147.365
-offset_right = 97.5
-offset_bottom = 195.365
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/InstructionPanel"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/InstructionPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/InstructionPanel/MarginContainer"]
-layout_mode = 2
-text = "Select catch to hand in"
-horizontal_alignment = 1
-
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="inventory_container" parent="CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer/Panel" instance=ExtResource("5_4gv8o")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CloseInventoryButton" parent="CenterContainer/Center/AnimatedPanel_Inventory/InventoryContainer" instance=ExtResource("4_l2pwb")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -24.77
-offset_top = -18.8
-offset_right = 17.23
-offset_bottom = 23.2
-grow_horizontal = 0
 
 [node name="InputBlocker" type="Control" parent="."]
 layout_mode = 1

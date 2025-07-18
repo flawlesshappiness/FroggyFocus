@@ -15,13 +15,7 @@ public partial class HandInView : View
     public AnimatedPanel AnimatedPanel_HandIn;
 
     [Export]
-    public AnimatedPanel AnimatedPanel_Inventory;
-
-    [Export]
     public Button CloseHandInButton;
-
-    [Export]
-    public Button CloseInventoryButton;
 
     [Export]
     public Button ClaimButton;
@@ -31,9 +25,6 @@ public partial class HandInView : View
 
     [Export]
     public RichTextLabel LocationHintLabel;
-
-    [Export]
-    public InventoryContainer InventoryContainer;
 
     [Export]
     public ShopExpandPopup ShopExpandPopup;
@@ -48,7 +39,6 @@ public partial class HandInView : View
     public Array<RewardPreview> RewardPreviews;
 
     private bool animating;
-    private bool inventory_active;
     private HandInData current_data;
     private ButtonMap selected_map;
     private List<ButtonMap> maps = new();
@@ -69,9 +59,7 @@ public partial class HandInView : View
     {
         base._Ready();
 
-        InventoryContainer.OnButtonPressed += InventoryButton_Pressed;
         CloseHandInButton.Pressed += CloseHandInButton_Pressed;
-        CloseInventoryButton.Pressed += CloseInventoryButton_Pressed;
         ClaimButton.Pressed += ClaimButton_Pressed;
 
         InitializeRequestButtons();
@@ -145,17 +133,9 @@ public partial class HandInView : View
     {
         base._Input(@event);
 
-        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
+        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree() && !animating)
         {
-            if (animating) return;
-            if (inventory_active)
-            {
-                CloseInventoryButton_Pressed();
-            }
-            else
-            {
-                Close();
-            }
+            Close();
         }
     }
 
@@ -252,37 +232,6 @@ public partial class HandInView : View
         MouseVisibility.Instance.Lock.SetLock(id, locked);
     }
 
-    private void RequestButton_Pressed(ButtonMap map)
-    {
-        var request = current_data.Requests[map.Index];
-        var info = FocusCharacterController.Instance.GetInfoFromPath(request.InfoPath);
-
-        selected_map = map;
-        InventoryContainer.UpdateButtons(new InventoryFilterOptions
-        {
-            ExcludedDatas = GetSubmissions(),
-            ValidCharacters = new List<FocusCharacterInfo> { info },
-        });
-
-        StartCoroutine(Cr, "animate");
-        IEnumerator Cr()
-        {
-            animating = true;
-
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            AnimatedPanel_HandIn.AnimateShrink();
-            yield return AnimatedPanel_Inventory.AnimatePopShow();
-            InputBlocker.Hide();
-
-            var button = InventoryContainer.GetFirstButton() ?? CloseInventoryButton;
-            button?.GrabFocus();
-
-            animating = false;
-            inventory_active = true;
-        }
-    }
-
     private void RequestButton_FocusEntered(ButtonMap map)
     {
         var request = current_data.Requests[map.Index];
@@ -296,39 +245,9 @@ public partial class HandInView : View
         LocationHintLabel.Text = Tr(info.LocationHint);
     }
 
-    private void InventoryButton_Pressed(FocusCharacterInfo info)
-    {
-        var data = InventoryContainer.GetSelectedData();
-        selected_map.Submission = data;
-
-        selected_map.Button.SetCharacter(info);
-        selected_map.Button.SetObscured(false);
-        Validate();
-        CloseInventoryButton_Pressed();
-    }
-
     private void CloseHandInButton_Pressed()
     {
         Close();
-    }
-
-    private void CloseInventoryButton_Pressed()
-    {
-        StartCoroutine(Cr, "animate");
-        IEnumerator Cr()
-        {
-            animating = true;
-
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            AnimatedPanel_HandIn.AnimateGrow();
-            yield return AnimatedPanel_Inventory.AnimatePopHide();
-            InputBlocker.Hide();
-            selected_map.Button?.GrabFocus();
-
-            animating = false;
-            inventory_active = false;
-        }
     }
 
     private void Close()

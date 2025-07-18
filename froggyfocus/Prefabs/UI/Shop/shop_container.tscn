@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://du35rtcreuxfe"]
+[gd_scene load_steps=8 format=3 uid="uid://du35rtcreuxfe"]
 
 [ext_resource type="Script" uid="uid://dbpm57axr67cf" path="res://Prefabs/UI/Shop/ShopContainer.cs" id="1_qigjm"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_xtxcp"]
@@ -6,8 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="3_ct30e"]
 [ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="4_7sns5"]
 [ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/Color/appearance_color_container.tscn" id="5_48iua"]
-[ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="6_fnyac"]
-[ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="7_00p4r"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="7_xtxcp"]
 
 [node name="ShopContainer" type="Control" node_paths=PackedStringArray("BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "HatsContainer", "ColorContainer")]
 custom_minimum_size = Vector2(400, 450)
@@ -18,7 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qigjm")
-BackButton = NodePath("BackContainer/CloseButton")
+BackButton = NodePath("BackButton")
 TabContainer = NodePath("TabContainer")
 UpgradeContainer = NodePath("TabContainer/Upgrades")
 SellContainer = NodePath("TabContainer/Sell")
@@ -54,22 +53,6 @@ layout_mode = 2
 ShowLocked = true
 metadata/_tab_index = 3
 
-[node name="BackContainer" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -24.79
-offset_top = 6.585
-offset_right = 25.21
-offset_bottom = 56.585
-grow_horizontal = 0
-theme = ExtResource("6_fnyac")
-
-[node name="CloseButton" parent="BackContainer" instance=ExtResource("7_00p4r")]
-layout_mode = 2
-
 [node name="TitleContainer" type="MarginContainer" parent="."]
 visible = false
 layout_mode = 1
@@ -103,3 +86,18 @@ theme_override_font_sizes/font_size = 50
 text = "SHOP"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BackButton" parent="." instance=ExtResource("7_xtxcp")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.5
+offset_top = 9.0
+offset_right = 49.5
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+text = " Back"

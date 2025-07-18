@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://dsiem2e7uxtnt"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_c1ffu"]
-[ext_resource type="PackedScene" uid="uid://dyllc4fs4op0o" path="res://Prefabs/UI/SimpleButton/close_button.tscn" id="2_c1ffu"]
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_jjbel"]
 [ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/Color/appearance_color_container.tscn" id="4_1uex8"]
 [ext_resource type="Script" uid="uid://c27021d5v4xh6" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceColorTab.cs" id="4_bhn8p"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_ntf0j"]
 [ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="5_1uex8"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="7_bhn8p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uex8"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -35,7 +35,7 @@ theme = ExtResource("1_c1ffu")
 script = ExtResource("2_jjbel")
 TabContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer")
 PreviewRotationSlider = NodePath("HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/RotationSlider")
-BackButton = NodePath("HBoxContainer/OptionsPanel/CloseButton")
+BackButton = NodePath("HBoxContainer/OptionsPanel/BackButton")
 ColorTab = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color")
 HatsContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
@@ -152,16 +152,20 @@ layout_mode = 2
 ShowPurchased = true
 ShowEmpty = true
 
-[node name="CloseButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("2_c1ffu")]
+[node name="BackButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("7_bhn8p")]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -26.45
-offset_top = 10.645
-offset_right = 15.55
-offset_bottom = 52.645
-grow_horizontal = 0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.5
+offset_top = 12.0
+offset_right = 49.5
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 0
+text = " Back"
 
 [node name="TitlePanel" type="Panel" parent="."]
 layout_mode = 2
