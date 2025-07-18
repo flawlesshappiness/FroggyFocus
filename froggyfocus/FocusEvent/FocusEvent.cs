@@ -97,17 +97,7 @@ public partial class FocusEvent : Node3D
             HijackCamera();
 
             // Transition end
-            if (!MusicController.Instance.IsMusicPlaying())
-            {
-                MusicController.Instance.MuteLock.AddLock(nameof(FocusIntroView));
-                yield return FocusIntroView.Instance.WaitForRiff();
-                MusicController.Instance.MuteLock.RemoveLock(nameof(FocusIntroView));
-            }
-            else
-            {
-                yield return new WaitForSeconds(0.5f);
-            }
-
+            yield return WaitForRiff();
             yield return FocusIntroView.Instance.AnimateHide();
 
             // Initialize cursor
@@ -194,6 +184,21 @@ public partial class FocusEvent : Node3D
                     yield return new WaitForSeconds(duration);
                 }
             }
+        }
+    }
+
+    private IEnumerator WaitForRiff()
+    {
+        if (!MusicController.Instance.IsMusicPlaying())
+        {
+            MusicController.Instance.MuteLock.AddLock(nameof(FocusIntroView));
+            FocusIntroView.Instance.PlayRiff();
+            yield return new WaitForSeconds(1.0f);
+            MusicController.Instance.MuteLock.RemoveLock(nameof(FocusIntroView));
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
         }
     }
 

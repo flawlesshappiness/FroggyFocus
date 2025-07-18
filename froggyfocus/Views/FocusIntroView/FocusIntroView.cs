@@ -38,10 +38,9 @@ public partial class FocusIntroView : View
         Hide();
     }
 
-    public IEnumerator WaitForRiff()
+    public void PlayRiff()
     {
         SfxRiff.Play();
-        yield return new WaitForSeconds(SfxRiff.Stream.GetLength());
     }
 
     private void RemoveTargetCharacter()
