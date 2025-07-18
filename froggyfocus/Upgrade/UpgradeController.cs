@@ -138,13 +138,12 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
     public bool TryPurchaseUpgrade(UpgradeType type)
     {
         var data = GetOrCreateData(type);
-        var next_level = data.Level + 1;
-        var price = GetPrice(type, next_level);
+        var price = GetCurrentPrice(type);
 
         if (!Money.CanAfford(price)) return false;
 
         CurrencyController.Instance.AddValue(CurrencyType.Money, -price);
-        data.Level = next_level;
+        data.Level++;
 
         Data.Game.Save();
 
