@@ -76,6 +76,7 @@ public partial class MainMenuView : View
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_overlay");
 
@@ -99,6 +100,7 @@ public partial class MainMenuView : View
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide_main");
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_options");
@@ -117,6 +119,7 @@ public partial class MainMenuView : View
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide_options");
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_main");
@@ -129,6 +132,7 @@ public partial class MainMenuView : View
 
     private void ClickQuit()
     {
+        ReleaseCurrentFocus();
         Scene.Tree.Quit();
     }
 }

@@ -143,6 +143,7 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedOverlay_Behind.AnimateBehindHide();
             yield return AnimatedPanel_Pause.AnimatePopHide();
@@ -166,6 +167,7 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
             yield return AnimatedPanel_Customize.AnimatePopShow();
@@ -181,6 +183,7 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
             yield return AnimatedPanel_Customize.AnimatePopHide();
@@ -200,6 +203,7 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
             yield return AnimatedPanel_Options.AnimatePopShow();
@@ -217,6 +221,7 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
             yield return AnimatedPanel_Options.AnimatePopHide();
@@ -236,6 +241,7 @@ public partial class PauseView : View
         {
             transitioning = true;
 
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedOverlay_Behind.AnimateBehindHide();
             yield return AnimatedPanel_Pause.AnimatePopHide();
@@ -262,6 +268,7 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
             yield return AnimatedPanel_Inventory.AnimatePopShow();
@@ -279,6 +286,7 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
             yield return AnimatedPanel_Inventory.AnimatePopHide();
