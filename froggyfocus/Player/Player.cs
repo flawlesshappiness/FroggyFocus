@@ -41,6 +41,7 @@ public partial class Player : TopDownController
 
     public static MultiLock MovementLock = new();
     public static MultiLock InteractLock = new();
+    public static MultiLock FocusEventLock = new();
     private bool IsCharging { get; set; }
 
     private bool has_focus_target;
@@ -59,15 +60,15 @@ public partial class Player : TopDownController
         OnJump += () => JumpChanged(true);
         OnLand += () => JumpChanged(false);
 
-        InteractLock.OnLocked += InteractLocked;
-        InteractLock.OnFree += InteractFree;
+        FocusEventLock.OnLocked += FocusEventLocked;
+        FocusEventLock.OnFree += FocusEventFree;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        InteractLock.OnLocked -= InteractLocked;
-        InteractLock.OnFree -= InteractFree;
+        FocusEventLock.OnLocked -= FocusEventLocked;
+        FocusEventLock.OnFree -= FocusEventFree;
     }
 
     public override void _Process(double delta)
@@ -114,6 +115,8 @@ public partial class Player : TopDownController
 
         if (PlayerInput.Jump.Held)
         {
+            FocusEventLock.SetLock("jumping", true);
+
             IsCharging = true;
             jump_charge += GameTime.DeltaTime * 0.5f;
             Character.SetCharging(true);
@@ -165,12 +168,12 @@ public partial class Player : TopDownController
         }
     }
 
-    private void InteractLocked()
+    private void FocusEventLocked()
     {
         StopWaitForFocusTarget();
     }
 
-    private void InteractFree()
+    private void FocusEventFree()
     {
         StartWaitForFocusTarget();
     }
@@ -195,21 +198,14 @@ public partial class Player : TopDownController
     {
         MovementLock.SetLock(key, locked);
         InteractLock.SetLock(key, locked);
+        FocusEventLock.SetLock(key, locked);
         ThirdPersonCamera.InputLock.SetLock(key, locked);
     }
 
     private void MoveChanged(bool moving)
     {
         Character.SetMoving(moving);
-
-        if (moving)
-        {
-            StopWaitForFocusTarget();
-        }
-        else if (!InteractLock.IsLocked)
-        {
-            StartWaitForFocusTarget();
-        }
+        FocusEventLock.SetLock("moving", moving);
     }
 
     private void JumpChanged(bool jumping)
@@ -223,6 +219,7 @@ public partial class Player : TopDownController
         }
         else
         {
+            FocusEventLock.SetLock("jumping", false);
             PsDustLand.Emitting = true;
             StopDustStreamPS();
         }
