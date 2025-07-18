@@ -31,6 +31,12 @@ public partial class InventoryInfoContainer : Control
 
     public void SetCharacter(FocusCharacterInfo info)
     {
+        if (info == null)
+        {
+            Clear();
+            return;
+        }
+
         Show();
 
         ItemSubViewport.SetCharacter(info);

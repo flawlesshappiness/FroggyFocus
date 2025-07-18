@@ -82,6 +82,18 @@ public partial class InventoryController : SingletonController
 
         return true;
     }
+
+    public FocusCharacterInfo GetInfo(int index)
+    {
+        var data = Data.Game.Inventory.Characters.GetOrDefault(index);
+        var info = data == null ? null : GetInfoFromData(data);
+        return info;
+    }
+
+    public FocusCharacterInfo GetInfoFromData(InventoryCharacterData data)
+    {
+        return FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
+    }
 }
 
 public class InventoryFilterOptions

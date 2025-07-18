@@ -28,7 +28,7 @@ public partial class InventoryControl : ControlScript
 
         Clear();
         InventoryContainer.UpdateButtons();
-        InventoryContainer.PressFirstButton();
+        InfoContainer.SetCharacter(InventoryController.Instance.GetInfo(0));
     }
 
     public void GrabFocus_InventoryButton()

@@ -85,14 +85,6 @@ public partial class InventoryContainer : ControlScript
         OnButtonFocus?.Invoke(map.Info);
     }
 
-    public void PressFirstButton()
-    {
-        if (maps.Count == 0) return;
-
-        var map = maps.First();
-        Button_Pressed(map);
-    }
-
     public Button GetFirstButton()
     {
         if (maps.Count == 0) return null;
