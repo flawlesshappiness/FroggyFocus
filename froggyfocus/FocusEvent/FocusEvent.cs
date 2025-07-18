@@ -171,7 +171,15 @@ public partial class FocusEvent : Node3D
             // Move target
             yield return Target.WaitForMoveToRandomPosition();
 
-            // Skill check / wait
+            // Wait
+            var duration = rng.RandfRange(Target.Info.MoveDelayRange.X, Target.Info.MoveDelayRange.Y);
+            if (duration > 0)
+            {
+                Target.StopMoving();
+                yield return new WaitForSeconds(duration);
+            }
+
+            // Skill check
             var has_override_skill_check = OverrideSkillCheck != null;
             var has_skill_checks = Target.Info.SkillChecks?.Count > 0 || has_override_skill_check;
             var is_skill_check = rng.Randf() < 0.5f;
@@ -179,15 +187,6 @@ public partial class FocusEvent : Node3D
             {
                 Target.StopMoving();
                 yield return WaitForSkillCheck();
-            }
-            else
-            {
-                var duration = rng.RandfRange(Target.Info.MoveDelayRange.X, Target.Info.MoveDelayRange.Y);
-                if (duration > 0)
-                {
-                    Target.StopMoving();
-                    yield return new WaitForSeconds(duration);
-                }
             }
         }
     }

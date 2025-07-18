@@ -26,6 +26,7 @@ public partial class InventoryControl : ControlScript
     {
         base.OnShow();
 
+        Clear();
         InventoryContainer.UpdateButtons();
         InventoryContainer.PressFirstButton();
     }
@@ -39,6 +40,7 @@ public partial class InventoryControl : ControlScript
     private void Clear()
     {
         InventoryContainer.Clear();
+        InfoContainer.Clear();
     }
 
     private void InventoryButton_Focus(FocusCharacterInfo info)

@@ -12,7 +12,7 @@ public partial class InventoryInfoContainer : Control
     public Label NameLabel;
 
     [Export]
-    public Label ValueLabel;
+    public PriceControl PriceControl;
 
     [Export]
     public Label CaughtLabel;
@@ -24,12 +24,19 @@ public partial class InventoryInfoContainer : Control
         ItemSubViewport.SetCameraInventory();
     }
 
+    public void Clear()
+    {
+        Hide();
+    }
+
     public void SetCharacter(FocusCharacterInfo info)
     {
+        Show();
+
         ItemSubViewport.SetCharacter(info);
 
         NameLabel.Text = info.Name;
-        ValueLabel.Text = info.CurrencyReward.ToString();
+        PriceControl.SetPrice(info.CurrencyReward);
 
         var stats = StatsController.Instance.GetOrCreateCharacterData(info.ResourcePath);
         CaughtLabel.Text = stats.CountCaught.ToString();
