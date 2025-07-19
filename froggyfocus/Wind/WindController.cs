@@ -58,7 +58,10 @@ public partial class WindController : ResourceController<WindCollection, WindInf
         StopWind();
 
         info = GetInfo();
-        asp_wind = info.SoundInfo.Play();
+        asp_wind = info.SoundInfo.Play(new SoundOverride
+        {
+            Bus = AudioBusNames.Environment,
+        });
         asp_wind.VolumeLinear = 0;
 
         cr_wind = this.StartCoroutine(Cr, "wind");

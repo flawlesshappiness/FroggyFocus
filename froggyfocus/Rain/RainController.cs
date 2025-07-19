@@ -95,7 +95,10 @@ public partial class RainController : ResourceController<RainCollection, RainInf
     private RainPlayer InitializePlayer(RainType type, Vector2 range)
     {
         var info = GetInfo(type);
-        var asp = SoundController.Instance.Play(info.SoundInfo);
+        var asp = SoundController.Instance.Play(info.SoundInfo, new SoundOverride
+        {
+            Bus = AudioBusNames.Environment
+        });
         asp.VolumeLinear = 0;
         var player = new RainPlayer
         {

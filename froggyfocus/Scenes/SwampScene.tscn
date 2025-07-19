@@ -716,18 +716,18 @@ volume_db = -10.0
 unit_size = 30.0
 autoplay = true
 panning_strength = 0.5
-bus = &"SFX"
+bus = &"Environment"
 
 [node name="AmbWater" type="AudioStreamPlayer3D" parent="Sounds" node_paths=PackedStringArray("Paths")]
 stream = ExtResource("19_bmghv")
 volume_db = -5.0
 autoplay = true
 panning_strength = 0.75
-bus = &"SFX"
+bus = &"Environment"
 script = ExtResource("17_52an4")
 Paths = [NodePath("../../World/Island_SmallRound/PathWaterSFX_Island"), NodePath("../../World/Lilypads/PathWaterSFX_Lilypad1"), NodePath("../../World/Lilypads/PathWaterSFX_Lilypad2"), NodePath("../../World/Lilypads/PathWaterSFX_Lilypad3"), NodePath("../../World/Lilypads/PathWaterSFX_Lilypad4"), NodePath("../../World/DeadForest/PathWaterSFX_Wood"), NodePath("../../World/Mushrooms/PathWaterSFX_Mushrooms")]
 
 [node name="AmbWind" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("2_qfnsp")
 autoplay = true
-bus = &"SFX"
+bus = &"Environment"

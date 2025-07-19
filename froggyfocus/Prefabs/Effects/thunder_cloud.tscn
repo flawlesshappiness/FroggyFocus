@@ -186,7 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.183, 0)
 stream = SubResource("AudioStreamRandomizer_i6ipu")
 unit_size = 60.0
 panning_strength = 0.5
-bus = &"SFX"
+bus = &"Environment"
 
 [node name="AnimationPlayer_Light" type="AnimationPlayer" parent="."]
 libraries = {
