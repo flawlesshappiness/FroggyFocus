@@ -41,6 +41,7 @@ public partial class MushroomNpc : Area3D, IInteractable
 
     public void Interact()
     {
+        Debug.LogMethod();
         if (HandIn.IsAvailable(HandInInfo.Id))
         {
             StartDialogue("##MUSHROOM_SWAMP_REQUEST_001##");

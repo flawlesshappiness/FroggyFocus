@@ -9,6 +9,9 @@ public partial class MoleNpc : Node3D
     [Export]
     public Node3D Mole;
 
+    [Export]
+    public AudioStreamPlayer3D SfxOink;
+
     private BoolParameter param_show = new BoolParameter("show", false);
 
     public override void _Ready()
@@ -52,5 +55,12 @@ public partial class MoleNpc : Node3D
     {
         var y = Mathf.Atan2(direction.X, direction.Z);
         Mole.GlobalRotation = Mole.GlobalRotation.Set(y: y);
+    }
+
+    public void PlayOinkSfx()
+    {
+        if (ShopView.Instance.Visible) return;
+
+        SfxOink.Play();
     }
 }

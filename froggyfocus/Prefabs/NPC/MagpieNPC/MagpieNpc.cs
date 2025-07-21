@@ -98,6 +98,7 @@ public partial class MagpieNpc : Area3D, IInteractable
 
     public void Interact()
     {
+        Debug.LogMethod();
         if (Fetch.IsAvailable(FetchInfo.Id))
         {
             var data = Fetch.GetOrCreateData(FetchInfo.Id);
