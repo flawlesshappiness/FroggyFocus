@@ -1,6 +1,7 @@
 using Godot;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 {
@@ -23,6 +24,8 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     private List<Bomb> bombs = new();
 
     private int id = 0;
+
+    private Coroutine cr_clear;
 
     private class Bomb
     {
@@ -53,12 +56,12 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 
         effects.ForEach(x => x.Destroy(true));
         effects.Clear();
+
+        Coroutine.Stop(cr_clear);
     }
 
     protected override IEnumerator Run()
     {
-        FocusCursor.FocusGainLock.AddLock(nameof(FocusSkillCheck_Bombs));
-
         var last_angle = rng.RandfRange(0f, 360f);
         var count = GetDifficultyInt(BombCountRange);
         for (int i = 0; i < count; i++)
@@ -70,12 +73,24 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             bomb.Coroutine = RunBomb(bomb);
         }
 
-        foreach (var bomb in bombs)
-        {
-            yield return bomb.Coroutine;
-        }
+        WaitForBombs();
 
-        FocusCursor.FocusGainLock.RemoveLock(nameof(FocusSkillCheck_Bombs));
+        yield return null;
+    }
+
+    private Coroutine WaitForBombs()
+    {
+        cr_clear = this.StartCoroutine(Cr, nameof(WaitForBombs));
+        return cr_clear;
+        IEnumerator Cr()
+        {
+            foreach (var bomb in bombs.ToList())
+            {
+                yield return bomb.Coroutine;
+            }
+
+            Clear();
+        }
     }
 
     private Coroutine RunBomb(Bomb bomb)
@@ -126,13 +141,15 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             // Explode
             if (success)
             {
-                FocusEvent.Cursor.AdjustFocusValue(10);
+                var value = FocusEvent.Target.Info.FocusValue * 0.1f;
+                FocusEvent.Cursor.AdjustFocusValue(value);
                 yield return bomb.Node.AnimateCollect();
             }
             else
             {
+                var value = FocusEvent.Target.Info.FocusValue * -0.05f;
                 PlayExplodePS(bomb.Position);
-                FocusEvent.Cursor.AdjustFocusValue(-20);
+                FocusEvent.Cursor.AdjustFocusValue(value);
                 yield return bomb.Node.AnimateExplode();
             }
 
@@ -141,7 +158,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 
         bool IsCursorNear()
         {
-            return FocusEvent.Cursor.GlobalPosition.DistanceTo(bomb.Position) <= FocusEvent.Cursor.Radius;
+            return FocusEvent.Cursor.GlobalPosition.DistanceTo(bomb.Position) <= FocusEvent.Cursor.Radius + 0.1f;
         }
     }
 

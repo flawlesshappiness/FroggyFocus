@@ -56,5 +56,7 @@ public partial class SkillCheckDash : FocusSkillCheck
                 FocusEvent.Target.GlobalPosition = start.Lerp(position, t);
             });
         }
+
+        Clear();
     }
 }

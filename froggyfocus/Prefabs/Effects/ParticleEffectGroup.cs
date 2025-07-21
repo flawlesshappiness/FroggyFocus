@@ -59,6 +59,7 @@ public partial class ParticleEffectGroup : Node3D
 
     public Coroutine Destroy(bool immediate = false)
     {
+        if (IsQueuedForDeletion()) return null;
         return this.Destroy(immediate ? 0.0f : DestroyDelay);
     }
 }

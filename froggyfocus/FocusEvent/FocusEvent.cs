@@ -46,7 +46,6 @@ public partial class FocusEvent : Node3D
 
     private bool EventStarted { get; set; }
     private bool EventEnabled { get; set; }
-    private FocusSkillCheck CurrentSkillCheck { get; set; }
 
     public override void _Ready()
     {
@@ -57,12 +56,19 @@ public partial class FocusEvent : Node3D
         Cursor.Initialize(Target);
 
         Target.Initialize(this);
+
+        InitializeSkillChecks();
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
         Player.SetAllLocks(nameof(FocusEvent), false);
+    }
+
+    private void InitializeSkillChecks()
+    {
+        SkillChecks.ForEach(x => x.Initialize(this));
     }
 
     private void CreateTarget()
@@ -114,8 +120,6 @@ public partial class FocusEvent : Node3D
             OnStarted?.Invoke();
             FocusEventController.Instance.FocusEventStarted(this);
             this.StartCoroutine(EventCr, "event");
-
-            yield return null;
         }
     }
 
@@ -128,9 +132,6 @@ public partial class FocusEvent : Node3D
             Cursor.Stop();
 
             yield return new WaitForSeconds(0.25f);
-
-            // Clear skill check
-            ClearSkillCheck();
 
             // Eat target
             FocusOutroView.Instance.CreateTarget(Target.Info);
@@ -208,17 +209,18 @@ public partial class FocusEvent : Node3D
 
     private IEnumerator WaitForSkillCheck()
     {
-        var type = Target.Info.SkillChecks.Count == 0 ? FocusSkillCheckType.Dash : Target.Info.SkillChecks?.PickRandom() ?? FocusSkillCheckType.Dash;
-        CurrentSkillCheck = OverrideSkillCheck ?? SkillChecks.FirstOrDefault(x => x.Type == type);
-        yield return CurrentSkillCheck.Start(this);
-        CurrentSkillCheck = null;
-    }
+        var type = Target.Info.SkillChecks.Count == 0 ? FocusSkillCheckType.Dash
+            : Target.Info.SkillChecks?.Where(x => !SkillChecks.FirstOrDefault(y => y.Type == x)?.IsRunning ?? true).ToList().Random();
+        var skill_check = OverrideSkillCheck ?? SkillChecks.FirstOrDefault(x => x.Type == type);
 
-    private void ClearSkillCheck()
-    {
-        if (CurrentSkillCheck == null) return;
-        CurrentSkillCheck.Clear();
-        CurrentSkillCheck = null;
+        if (skill_check == null)
+        {
+            yield return null;
+        }
+        else
+        {
+            yield return skill_check.Start();
+        }
     }
 
     private void FocusFilled()

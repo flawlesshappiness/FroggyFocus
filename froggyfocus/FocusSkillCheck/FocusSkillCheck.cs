@@ -6,22 +6,31 @@ public partial class FocusSkillCheck : Node3D
     [Export]
     public FocusSkillCheckType Type;
 
+    public bool IsRunning { get; set; }
+
     protected FocusEvent FocusEvent { get; set; }
     protected FocusTarget Target => FocusEvent.Target;
     protected float Difficulty => FocusEvent.Target.Info.Difficulty;
 
     protected RandomNumberGenerator rng = new();
 
+    public void Initialize(FocusEvent focus_event)
+    {
+        FocusEvent = focus_event;
+        FocusEvent.OnCompleted += _ => Clear();
+        FocusEvent.OnFailed += _ => Clear();
+    }
+
     public virtual void Clear()
     {
         // Reset and hide
+        IsRunning = false;
     }
 
-    public IEnumerator Start(FocusEvent focus_event)
+    public IEnumerator Start()
     {
-        FocusEvent = focus_event;
+        IsRunning = true;
         yield return Run();
-        Clear();
     }
 
     protected virtual IEnumerator Run()
