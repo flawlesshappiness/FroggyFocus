@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections;
 
-public partial class SkillCheckDash : FocusSkillCheck
+public partial class FocusSkillCheck_Dash : FocusSkillCheck
 {
     [Export]
     public Vector2I DashCountRange;

@@ -1,16 +1,16 @@
 using Godot;
 using System.Collections;
 
-public partial class SkillCheckDive : FocusSkillCheck
+public partial class FocusSkillCheck_Dive : FocusSkillCheck
 {
     [Export]
     public AudioStreamPlayer SfxSplash;
 
     [Export]
-    public PackedScene SplashParticlePrefab;
+    public GpuParticles3D PsRipple;
 
     [Export]
-    public PackedScene BubblesParticlePrefab;
+    public PackedScene SplashParticlePrefab;
 
     public override void _Ready()
     {
@@ -29,12 +29,17 @@ public partial class SkillCheckDive : FocusSkillCheck
         CreateSplashPS(Target.GlobalPosition);
         Target.Hide();
 
-        var position = Target.GetClampedPosition();
-        Target.GlobalPosition = position;
+        var start_position = Target.GlobalPosition;
+        var end_position = Target.GetClampedPosition();
+        Target.GlobalPosition = end_position;
 
-        CreateBubblesPS(Target.GlobalPosition);
-
-        yield return new WaitForSeconds(3.0f);
+        PsRipple.Emitting = true;
+        PsRipple.GlobalPosition = start_position;
+        yield return LerpEnumerator.Lerp01(0.5f, f =>
+        {
+            PsRipple.GlobalPosition = start_position.Lerp(end_position, f);
+        });
+        PsRipple.Emitting = false;
 
         CreateSplashPS(Target.GlobalPosition);
         Target.Show();
@@ -50,13 +55,5 @@ public partial class SkillCheckDive : FocusSkillCheck
         ps.GlobalPosition = position;
 
         SfxSplash.Play();
-    }
-
-    private void CreateBubblesPS(Vector3 position)
-    {
-        var ps = BubblesParticlePrefab.Instantiate<ParticleEffectGroup>();
-        ps.SetParent(this);
-        ps.Play(destroy: true);
-        ps.GlobalPosition = position;
     }
 }

@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bk1jnky7aenmk"]
+[gd_scene load_steps=17 format=3 uid="uid://bk1jnky7aenmk"]
 
-[ext_resource type="Script" uid="uid://dmosckoaqd3wx" path="res://FocusSkillCheck/SkillCheckDive.cs" id="1_67kc7"]
+[ext_resource type="Script" uid="uid://dmosckoaqd3wx" path="res://FocusSkillCheck/FocusSkillCheck_Dive.cs" id="1_67kc7"]
 [ext_resource type="PackedScene" uid="uid://cwbmt0bwqr7cw" path="res://Prefabs/Effects/splash_small.tscn" id="2_3xtrx"]
 [ext_resource type="PackedScene" uid="uid://5mscnbcwg08f" path="res://Prefabs/Effects/bubbles_underwater.tscn" id="3_v68jj"]
 [ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="4_ytj84"]
 [ext_resource type="AudioStream" uid="uid://iupdbu38bkq0" path="res://Sounds/Raw/sfx_impact_water_low_002.wav" id="5_34ixe"]
 [ext_resource type="AudioStream" uid="uid://mvr5nhm1lqiv" path="res://Sounds/Raw/sfx_impact_water_low_003.wav" id="6_ni2hi"]
 [ext_resource type="AudioStream" uid="uid://bu3w1t785m70f" path="res://Sounds/Raw/sfx_impact_water_low_004.wav" id="7_v5k8k"]
+[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="8_34ixe"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rfpcb"]
 random_pitch = 1.1
@@ -16,9 +17,40 @@ stream_1/stream = ExtResource("5_34ixe")
 stream_2/stream = ExtResource("6_ni2hi")
 stream_3/stream = ExtResource("7_v5k8k")
 
-[node name="Dive" type="Node3D" node_paths=PackedStringArray("SfxSplash")]
+[sub_resource type="Curve" id="Curve_34ixe"]
+_data = [Vector2(0, 1), 0.0, -3.21629, 0, 0, Vector2(0.9, 0), -0.0839032, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ni2hi"]
+curve = SubResource("Curve_34ixe")
+
+[sub_resource type="Curve" id="Curve_v5k8k"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hdlxm"]
+curve = SubResource("Curve_v5k8k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_inm2w"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_curve = SubResource("CurveTexture_hdlxm")
+alpha_curve = SubResource("CurveTexture_ni2hi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ni2hi"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_34ixe")
+
+[sub_resource type="QuadMesh" id="QuadMesh_v5k8k"]
+material = SubResource("StandardMaterial3D_ni2hi")
+orientation = 1
+
+[node name="Dive" type="Node3D" node_paths=PackedStringArray("SfxSplash", "PsRipple")]
 script = ExtResource("1_67kc7")
 SfxSplash = NodePath("SfxSplash")
+PsRipple = NodePath("PsRipples")
 SplashParticlePrefab = ExtResource("2_3xtrx")
 BubblesParticlePrefab = ExtResource("3_v68jj")
 Type = 3
@@ -27,3 +59,10 @@ Type = 3
 stream = SubResource("AudioStreamRandomizer_rfpcb")
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="PsRipples" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 50
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_inm2w")
+draw_pass_1 = SubResource("QuadMesh_v5k8k")
