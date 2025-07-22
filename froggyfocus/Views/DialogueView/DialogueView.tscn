@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp6ckj2tguh6t"]
+[gd_scene load_steps=9 format=3 uid="uid://cp6ckj2tguh6t"]
 
 [ext_resource type="Script" uid="uid://cw8kltb0ua55u" path="res://Views/DialogueView/DialogueView.cs" id="1_htuka"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_74xc6"]
 [ext_resource type="Texture2D" uid="uid://ca7v7xsa1i657" path="res://Assets/KenneyNL/UI/Blue/button_square_border.png" id="3_424su"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_kxd8v"]
 [ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="5_aumvv"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="5_j80gu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxd8v"]
 texture = ExtResource("3_424su")
@@ -27,8 +28,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_74xc6")
 script = ExtResource("1_htuka")
-AnimatedPanel_Dialogue = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue")
-DialogueLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask/VBoxContainer/DialogueLabel")
+AnimatedPanel_Dialogue = NodePath("MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center/AnimatedPanel_Dialogue")
+DialogueLabel = NodePath("MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask/VBoxContainer/DialogueLabel")
 SfxRevealCharacter = NodePath("SfxRevealCharacter")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -47,26 +48,47 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Bottom" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="Control" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer"]
+layout_mode = 2
+
+[node name="UIScale" type="Control" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center"]
+layout_mode = 2
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_j80gu")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale"]
 custom_minimum_size = Vector2(800, 150)
 layout_mode = 2
+offset_left = -556.0
+offset_top = -154.0
+offset_right = 556.0
+offset_bottom = -4.0
 size_flags_horizontal = 3
 
-[node name="Center" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer"]
+[node name="Center" type="Control" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer"]
 layout_mode = 2
 
-[node name="AnimatedPanel_Dialogue" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center" instance=ExtResource("3_kxd8v")]
+[node name="AnimatedPanel_Dialogue" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center" instance=ExtResource("3_kxd8v")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue"]
+[node name="Container" type="Control" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center/AnimatedPanel_Dialogue"]
 custom_minimum_size = Vector2(800, 150)
 layout_mode = 1
 anchors_preset = 8
@@ -81,7 +103,7 @@ offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container"]
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center/AnimatedPanel_Dialogue/Container"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,7 +113,7 @@ grow_vertical = 2
 theme = ExtResource("2_74xc6")
 theme_override_styles/panel = SubResource("StyleBoxTexture_kxd8v")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center/AnimatedPanel_Dialogue/Container"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -104,16 +126,16 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Mask" type="ColorRect" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer"]
+[node name="Mask" type="ColorRect" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer"]
 clip_children = 1
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask"]
 layout_mode = 2
 offset_right = 780.0
 offset_bottom = 312.0
 
-[node name="DialogueLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask/VBoxContainer"]
+[node name="DialogueLabel" type="Label" parent="MarginContainer/VBoxContainer/Bottom/CenterContainer/Center/UIScale/CenterContainer/Center/AnimatedPanel_Dialogue/Container/MarginContainer/Mask/VBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0862745, 0.490196, 0.658824, 1)

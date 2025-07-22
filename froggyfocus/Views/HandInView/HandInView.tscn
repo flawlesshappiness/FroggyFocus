@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ug6yqg0hf76e"]
+[gd_scene load_steps=13 format=3 uid="uid://ug6yqg0hf76e"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w0lsk"]
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="2_fare7"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://byh5solck2yl" path="res://Prefabs/UI/RewardPreview/reward_preview.tscn" id="6_s1pfv"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="8_ra46o"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="11_4fhbg"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="11_77p21"]
 [ext_resource type="PackedScene" uid="uid://dtjh32wwairim" path="res://Prefabs/UI/ShopExpandPopup/shop_expand_popup.tscn" id="12_77p21"]
 
 [node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "CloseHandInButton", "ClaimButton", "NameLabel", "LocationHintLabel", "ShopExpandPopup", "InputBlocker", "RequestButtons", "RewardPreviews")]
@@ -22,15 +23,15 @@ grow_vertical = 2
 theme = ExtResource("1_w0lsk")
 script = ExtResource("2_tr8x0")
 AnimatedOverlay = NodePath("AnimatedOverlay")
-AnimatedPanel_HandIn = NodePath("CenterContainer/Center/AnimatedPanel_HandIn")
-CloseHandInButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/BackButton")
-ClaimButton = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ClaimButton")
-NameLabel = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer/NameLabel")
-LocationHintLabel = NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer/LocationHintLabel")
+AnimatedPanel_HandIn = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn")
+CloseHandInButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/Panel/BackButton")
+ClaimButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ClaimButton")
+NameLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer/NameLabel")
+LocationHintLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer/LocationHintLabel")
 ShopExpandPopup = NodePath("ShopExpandPopup")
 InputBlocker = NodePath("InputBlocker")
-RequestButtons = [NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 1"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 2"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 3"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 4"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 5"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 6")]
-RewardPreviews = [NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview2"), NodePath("CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview3")]
+RequestButtons = [NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 1"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 2"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 3"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 4"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 5"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 6")]
+RewardPreviews = [NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview2"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview3")]
 
 [node name="AnimatedOverlay" parent="." instance=ExtResource("3_8sgxy")]
 layout_mode = 1
@@ -46,14 +47,25 @@ grow_vertical = 2
 [node name="Center" type="Control" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="AnimatedPanel_HandIn" parent="CenterContainer/Center" instance=ExtResource("4_77p21")]
+[node name="UIScale" type="Control" parent="CenterContainer/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_77p21")
+
+[node name="AnimatedPanel_HandIn" parent="CenterContainer/Center/UIScale" instance=ExtResource("4_77p21")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="HandInContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn"]
+[node name="HandInContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,10 +79,10 @@ offset_bottom = 110.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer"]
 layout_mode = 2
 
-[node name="Title" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel"]
+[node name="Title" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -81,16 +93,16 @@ offset_right = 120.0
 offset_bottom = 26.77
 grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/Title"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/Panel/Title"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/Title"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/Panel/Title"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel/Title/MarginContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/Panel/Title/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
@@ -103,7 +115,7 @@ text = "REQUEST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/Panel" instance=ExtResource("5_cjkwa")]
+[node name="BackButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/Panel" instance=ExtResource("5_cjkwa")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -118,70 +130,70 @@ grow_horizontal = 2
 grow_vertical = 0
 text = " Back"
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 35
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="RequestButton 1" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RequestButton 1" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
 disabled = true
 
-[node name="RequestButton 2" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RequestButton 2" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
 disabled = true
 
-[node name="RequestButton 3" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
+[node name="RequestButton 3" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_fare7")]
 layout_mode = 2
 disabled = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="RequestButton 4" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
+[node name="RequestButton 4" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
 disabled = true
 
-[node name="RequestButton 5" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
+[node name="RequestButton 5" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
 disabled = true
 
-[node name="RequestButton 6" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
+[node name="RequestButton 6" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_fare7")]
 layout_mode = 2
 disabled = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Control" type="Control" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Control" type="Control" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Control"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Control"]
 modulate = Color(0, 0, 0, 0.392157)
 layout_mode = 1
 anchors_preset = 15
@@ -195,67 +207,67 @@ texture = ExtResource("3_qp2ac")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 alignment = 1
 
-[node name="RewardPreview" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
+[node name="RewardPreview" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
 layout_mode = 2
 
-[node name="RewardPreview2" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
+[node name="RewardPreview2" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
 layout_mode = 2
 
-[node name="RewardPreview3" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
+[node name="RewardPreview3" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("6_s1pfv")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("8_ra46o")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 2
 
-[node name="NameLabel" type="Label" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="NameLabel" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 text = "NameLabel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme = ExtResource("8_ra46o")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 2
 
-[node name="LocationHintLabel" type="RichTextLabel" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer"]
+[node name="LocationHintLabel" type="RichTextLabel" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 bbcode_enabled = true
@@ -267,12 +279,12 @@ autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="ClaimButton" parent="CenterContainer/Center/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" instance=ExtResource("5_cjkwa")]
+[node name="ClaimButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" instance=ExtResource("5_cjkwa")]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("11_4fhbg")

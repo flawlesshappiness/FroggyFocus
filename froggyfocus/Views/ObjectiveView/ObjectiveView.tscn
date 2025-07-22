@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq3agbekdhctm"]
+[gd_scene load_steps=8 format=3 uid="uid://dq3agbekdhctm"]
 
 [ext_resource type="Script" uid="uid://djpk8otvwke11" path="res://Views/ObjectiveView/ObjectiveView.cs" id="1_ierp1"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ip17i"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="2_ipdvi"]
 [ext_resource type="PackedScene" uid="uid://bvrt3lre4whxh" path="res://Prefabs/UI/Objective/objective_control.tscn" id="5_jv2vs"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_p2t4o"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="7_pauqc"]
 
 [node name="ObjectiveView" type="Control" node_paths=PackedStringArray("ObjectiveControlTemplate", "CloseButton", "ScrollContainer", "AnimatedPanel", "AnimatedOverlay", "InputBlocker")]
 layout_mode = 3
@@ -16,9 +17,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ip17i")
 script = ExtResource("1_ierp1")
-ObjectiveControlTemplate = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/ObjectiveControl")
-CloseButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/Panel/BackButton")
-ScrollContainer = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/ScrollContainer")
+ObjectiveControlTemplate = NodePath("CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/ObjectiveControl")
+CloseButton = NodePath("CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/Panel/BackButton")
+ScrollContainer = NodePath("CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/MarginContainer/ScrollContainer")
 AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
 AnimatedOverlay = NodePath("AnimatedOverlay")
 InputBlocker = NodePath("InputBlocker")
@@ -44,7 +45,18 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel"]
+[node name="UIScale" type="Control" parent="CenterContainer/Center/AnimatedPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_pauqc")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/UIScale"]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 1
 anchors_preset = 8
@@ -52,15 +64,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 20.0
-offset_bottom = 40.0
+offset_left = -190.0
+offset_top = -180.0
+offset_right = 210.0
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer"]
 layout_mode = 2
 
-[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/Panel" instance=ExtResource("5_p2t4o")]
+[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/Panel" instance=ExtResource("5_p2t4o")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -75,28 +89,29 @@ grow_horizontal = 2
 grow_vertical = 0
 text = " Back"
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 15
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
-[node name="ObjectiveControl" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_jv2vs")]
+[node name="ObjectiveControl" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_jv2vs")]
 layout_mode = 2
 
-[node name="TopControls" type="Control" parent="CenterContainer/Center/AnimatedPanel/MarginContainer"]
+[node name="TopControls" type="Control" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Title" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/TopControls"]
+[node name="Title" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/TopControls"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -107,16 +122,16 @@ offset_right = 104.0
 offset_bottom = 16.565
 grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/TopControls/Title"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/TopControls/Title"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/TopControls/Title"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/TopControls/Title"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/TopControls/Title/MarginContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel/UIScale/MarginContainer/TopControls/Title/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)

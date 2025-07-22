@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmuxgxi24ysym"]
+[gd_scene load_steps=16 format=3 uid="uid://cmuxgxi24ysym"]
 
 [ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="3_egmko"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="4_7iof8"]
 [ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/OptionsContainer.tscn" id="5_7iof8"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_7iof8"]
 
@@ -35,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/CenterContainer/Center/AnimOptions:position")
+tracks/2/path = NodePath("CenterContainer/Center/UIScale/AnimOptions:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -129,7 +130,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/CenterContainer/Center/AnimOptions:position")
+tracks/0/path = NodePath("CenterContainer/Center/UIScale/AnimOptions:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -227,7 +228,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/CenterContainer/Center/AnimOptions:position")
+tracks/0/path = NodePath("CenterContainer/Center/UIScale/AnimOptions:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -314,10 +315,10 @@ grow_vertical = 2
 theme = ExtResource("1_5j84w")
 script = ExtResource("1_qib6v")
 AnimationPlayer = NodePath("AnimationPlayer")
-OptionsControl = NodePath("CenterContainer/CenterContainer/Center/AnimOptions/Options/Options")
-ContinueButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/ContinueButton")
-OptionsButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/OptionsButton")
-QuitButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer/QuitButton")
+OptionsControl = NodePath("CenterContainer/Center/UIScale/AnimOptions/Options/Options")
+ContinueButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ContinueButton")
+OptionsButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/OptionsButton")
+QuitButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/QuitButton")
 InputBlocker = NodePath("InputBlocker")
 Overlay = NodePath("Overlay")
 
@@ -333,9 +334,8 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VSplitContainer" type="VSplitContainer" parent="Main"]
+[node name="VSplitContainer" type="VBoxContainer" parent="Main"]
 layout_mode = 2
-dragging_enabled = false
 
 [node name="Top" type="Control" parent="Main/VSplitContainer"]
 layout_mode = 2
@@ -361,41 +361,54 @@ text = "FROGGY FOCUS"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSplitContainer" type="HSplitContainer" parent="Main/VSplitContainer/Bottom"]
+[node name="HSplitContainer" type="HBoxContainer" parent="Main/VSplitContainer/Bottom"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-dragging_enabled = false
-dragger_visibility = 1
 
 [node name="Left" type="Control" parent="Main/VSplitContainer/Bottom/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left"]
+[node name="UIScale" type="Control" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 107.0
-offset_right = -107.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_7iof8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -106.0
+offset_right = 202.0
+offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="ContinueButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
+[node name="ContinueButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
 text = "Continue"
 
-[node name="OptionsButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
+[node name="OptionsButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
 text = "Options"
 
-[node name="QuitButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/VBoxContainer" instance=ExtResource("3_egmko")]
+[node name="QuitButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
 text = "Quit"
 
@@ -412,13 +425,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="MarginContainer" parent="CenterContainer"]
+[node name="Center" type="Control" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Center" type="Control" parent="CenterContainer/CenterContainer"]
-layout_mode = 2
+[node name="UIScale" type="Control" parent="CenterContainer/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_7iof8")
 
-[node name="AnimOptions" type="Control" parent="CenterContainer/CenterContainer/Center"]
+[node name="AnimOptions" type="Control" parent="CenterContainer/Center/UIScale"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -430,7 +451,7 @@ offset_bottom = 1000.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Options" parent="CenterContainer/CenterContainer/Center/AnimOptions" instance=ExtResource("5_7iof8")]
+[node name="Options" parent="CenterContainer/Center/UIScale/AnimOptions" instance=ExtResource("5_7iof8")]
 layout_mode = 1
 
 [node name="Overlay" type="ColorRect" parent="."]
@@ -461,4 +482,5 @@ libraries = {
 stream = SubResource("AudioStreamRandomizer_7iof8")
 volume_db = -20.0
 
-[editable path="CenterContainer/CenterContainer/Center/AnimOptions/Options"]
+[editable path="CenterContainer/Center/UIScale/AnimOptions/Options"]
+[editable path="CenterContainer/Center/UIScale/AnimOptions/Options/Options"]

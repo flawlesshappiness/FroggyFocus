@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2mjpr6n1kw6f"]
+[gd_scene load_steps=12 format=3 uid="uid://2mjpr6n1kw6f"]
 
 [ext_resource type="Script" uid="uid://bviv37jaoxr1w" path="res://Views/PauseView/PauseView.cs" id="1_4uuhc"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_8a3o8"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="4_vwcev"]
 [ext_resource type="PackedScene" uid="uid://dsiem2e7uxtnt" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearance.tscn" id="5_t2mq0"]
 [ext_resource type="PackedScene" uid="uid://blseliwm3s1f1" path="res://Prefabs/UI/Inventory/inventory_control.tscn" id="6_om48w"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="9_3mg3l"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vwcev"]
 random_pitch = 1.1
@@ -26,19 +27,19 @@ grow_vertical = 2
 script = ExtResource("1_4uuhc")
 AnimatedOverlay_Behind = NodePath("AnimatedOverlay_Behind")
 AnimatedOverlay_Front = NodePath("AnimatedOverlay_Front")
-AnimatedPanel_Pause = NodePath("CenterContainer/Center/AnimatedPanel_Pause")
-AnimatedPanel_Options = NodePath("CenterContainer/Center/AnimatedPanel_Options")
-AnimatedPanel_Customize = NodePath("CenterContainer/Center/AnimatedPanel_Customize")
-AnimatedPanel_Inventory = NodePath("CenterContainer/Center/AnimatedPanel_Inventory")
+AnimatedPanel_Pause = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause")
+AnimatedPanel_Options = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options")
+AnimatedPanel_Customize = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Customize")
+AnimatedPanel_Inventory = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Inventory")
 InputBlocker = NodePath("InputBlocker")
-Options = NodePath("CenterContainer/Center/AnimatedPanel_Options/Options/Options")
-CustomizeAppearanceControl = NodePath("CenterContainer/Center/AnimatedPanel_Customize/CustomizeAppearance")
-InventoryControl = NodePath("CenterContainer/Center/AnimatedPanel_Inventory/InventoryControl")
-ResumeButton = NodePath("CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/ResumeButton")
-CustomizeButton = NodePath("CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/CustomizeButton")
-OptionsButton = NodePath("CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/OptionsButton")
-MainMenuButton = NodePath("CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/MainMenuButton")
-InventoryButton = NodePath("CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/InventoryButton")
+Options = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options/Options/Options")
+CustomizeAppearanceControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Customize/CustomizeAppearance")
+InventoryControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Inventory/InventoryControl")
+ResumeButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/ResumeButton")
+CustomizeButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/CustomizeButton")
+OptionsButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/OptionsButton")
+MainMenuButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/MainMenuButton")
+InventoryButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/InventoryButton")
 ChildOrder = 1
 
 [node name="AnimatedOverlay_Behind" parent="." instance=ExtResource("2_8a3o8")]
@@ -55,14 +56,25 @@ grow_vertical = 2
 [node name="Center" type="Control" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="AnimatedPanel_Pause" parent="CenterContainer/Center" instance=ExtResource("3_j78r4")]
+[node name="UIScale" type="Control" parent="CenterContainer/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_3mg3l")
+
+[node name="AnimatedPanel_Pause" parent="CenterContainer/Center/UIScale" instance=ExtResource("3_j78r4")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Pause"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,11 +88,11 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("2_fpy4r")
 
-[node name="Title" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/Panel"]
+[node name="Title" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -91,16 +103,16 @@ offset_right = 106.5
 offset_bottom = 36.185
 grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/Panel/Title"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/Panel/Title"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/Panel/Title"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/Panel/Title"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/Panel/Title/MarginContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/Panel/Title/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
@@ -113,68 +125,68 @@ text = "PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="ResumeButton" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
+[node name="ResumeButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
 layout_mode = 2
 text = " Resume"
 
-[node name="InventoryButton" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
+[node name="InventoryButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
 layout_mode = 2
 text = "Inventory"
 
-[node name="CustomizeButton" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
+[node name="CustomizeButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
 layout_mode = 2
 text = "Customize"
 
-[node name="OptionsButton" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
+[node name="OptionsButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
 layout_mode = 2
 text = " Options"
 
-[node name="MainMenuButton" parent="CenterContainer/Center/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
+[node name="MainMenuButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
 layout_mode = 2
 text = " Main menu"
 
-[node name="AnimatedPanel_Options" parent="CenterContainer/Center" instance=ExtResource("3_j78r4")]
+[node name="AnimatedPanel_Options" parent="CenterContainer/Center/UIScale" instance=ExtResource("3_j78r4")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="Options" parent="CenterContainer/Center/AnimatedPanel_Options" instance=ExtResource("4_bcih6")]
+[node name="Options" parent="CenterContainer/Center/UIScale/AnimatedPanel_Options" instance=ExtResource("4_bcih6")]
 layout_mode = 1
 
-[node name="AnimatedPanel_Customize" parent="CenterContainer/Center" instance=ExtResource("3_j78r4")]
-layout_mode = 1
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="CustomizeAppearance" parent="CenterContainer/Center/AnimatedPanel_Customize" instance=ExtResource("5_t2mq0")]
-layout_mode = 1
-
-[node name="AnimatedPanel_Inventory" parent="CenterContainer/Center" instance=ExtResource("3_j78r4")]
+[node name="AnimatedPanel_Customize" parent="CenterContainer/Center/UIScale" instance=ExtResource("3_j78r4")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="InventoryControl" parent="CenterContainer/Center/AnimatedPanel_Inventory" instance=ExtResource("6_om48w")]
+[node name="CustomizeAppearance" parent="CenterContainer/Center/UIScale/AnimatedPanel_Customize" instance=ExtResource("5_t2mq0")]
+layout_mode = 1
+
+[node name="AnimatedPanel_Inventory" parent="CenterContainer/Center/UIScale" instance=ExtResource("3_j78r4")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="InventoryControl" parent="CenterContainer/Center/UIScale/AnimatedPanel_Inventory" instance=ExtResource("6_om48w")]
 layout_mode = 1
 
 [node name="AnimatedOverlay_Front" parent="." instance=ExtResource("2_8a3o8")]
@@ -192,4 +204,5 @@ grow_vertical = 2
 stream = SubResource("AudioStreamRandomizer_vwcev")
 volume_db = -20.0
 
-[editable path="CenterContainer/Center/AnimatedPanel_Options/Options"]
+[editable path="CenterContainer/Center/UIScale/AnimatedPanel_Options/Options"]
+[editable path="CenterContainer/Center/UIScale/AnimatedPanel_Options/Options/Options"]

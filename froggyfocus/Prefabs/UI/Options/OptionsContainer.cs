@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class OptionsContainer : Control
+public partial class OptionsContainer : ControlScript
 {
     [Export]
     public OptionsControl Options;
@@ -12,21 +12,41 @@ public partial class OptionsContainer : Control
     [Export]
     public Slider CameraSensitivtySlider;
 
+    [Export]
+    public Slider UIScaleSlider;
+
+    public static Action OnUIScaleChanged;
+
+    private bool showing;
+
     public override void _Ready()
     {
         base._Ready();
 
-        EnvironmentSlider.Value = Data.Options.EnvironmentVolume;
-        CameraSensitivtySlider.Value = Data.Options.CameraSensitivity;
-
         EnvironmentSlider.ValueChanged += EnvironmentVolume_ValueChanged;
         CameraSensitivtySlider.ValueChanged += CameraSensitivity_ValueChanged;
+        UIScaleSlider.ValueChanged += UIScaleSlider_ValueChanged;
 
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
     }
 
+    protected override void OnShow()
+    {
+        base.OnShow();
+
+        showing = true;
+
+        EnvironmentSlider.Value = Data.Options.EnvironmentVolume;
+        CameraSensitivtySlider.Value = Data.Options.CameraSensitivity;
+        UIScaleSlider.Value = Data.Options.UIScale;
+
+        showing = false;
+    }
+
     private void EnvironmentVolume_ValueChanged(double value)
     {
+        if (showing) return;
+
         var fvalue = Convert.ToSingle(value);
         Data.Options.EnvironmentVolume = fvalue;
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
@@ -34,7 +54,18 @@ public partial class OptionsContainer : Control
 
     private void CameraSensitivity_ValueChanged(double value)
     {
+        if (showing) return;
+
         var fvalue = Convert.ToSingle(value);
         Data.Options.CameraSensitivity = fvalue;
+    }
+
+    private void UIScaleSlider_ValueChanged(double value)
+    {
+        if (showing) return;
+
+        var fvalue = Convert.ToSingle(value);
+        Data.Options.UIScale = fvalue;
+        OnUIScaleChanged?.Invoke();
     }
 }

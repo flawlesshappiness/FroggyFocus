@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgydt42vrge0g"]
+[gd_scene load_steps=12 format=3 uid="uid://dgydt42vrge0g"]
 
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="1_7ctay"]
 [ext_resource type="Script" uid="uid://cahwtw1efy41" path="res://Prefabs/UI/MoneyBar/MoneyBar.cs" id="1_v4b0e"]
@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://57h0lyjpo7q4" path="res://Prefabs/UI/Price/price_control.tscn" id="3_0cn45"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="5_0ga21"]
 [ext_resource type="AudioStream" uid="uid://b6510xw0hdf7h" path="res://Sounds/Raw/sfx_coin_001.wav" id="6_bwas4"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="7_dbg6e"]
 
 [sub_resource type="Animation" id="Animation_l7lip"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anim:position")
+tracks/0/path = NodePath("UIScale/Anim:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +29,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anim:position")
+tracks/0/path = NodePath("UIScale/Anim:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,19 +57,30 @@ anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 script = ExtResource("1_v4b0e")
-MoneyLabel = NodePath("Anim/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MoneyLabel")
-RewardLabel = NodePath("Anim/VBoxContainer/RewardLabel")
+MoneyLabel = NodePath("UIScale/Anim/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/MoneyLabel")
+RewardLabel = NodePath("UIScale/Anim/VBoxContainer/RewardLabel")
 AnimationPlayer = NodePath("AnimationPlayer")
 SfxValueChanged = NodePath("SfxValueChanged")
 
-[node name="Anim" type="Control" parent="."]
+[node name="UIScale" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_dbg6e")
+
+[node name="Anim" type="Control" parent="UIScale"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Anim"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UIScale/Anim"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -78,34 +90,34 @@ offset_bottom = 54.0
 grow_horizontal = 0
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Anim/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UIScale/Anim/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("1_7ctay")
 
-[node name="Panel" type="Panel" parent="Anim/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="UIScale/Anim/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Anim/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UIScale/Anim/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PriceControl" parent="Anim/VBoxContainer/MarginContainer/MarginContainer" instance=ExtResource("3_0cn45")]
+[node name="PriceControl" parent="UIScale/Anim/VBoxContainer/MarginContainer/MarginContainer" instance=ExtResource("3_0cn45")]
 visible = false
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Anim/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIScale/Anim/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="Anim/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="UIScale/Anim/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_v4b0e")
 expand_mode = 2
 
-[node name="Shadow" type="TextureRect" parent="Anim/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/Icon"]
+[node name="Shadow" type="TextureRect" parent="UIScale/Anim/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/Icon"]
 modulate = Color(0, 0, 0, 0.196078)
 show_behind_parent = true
 layout_mode = 1
@@ -123,11 +135,11 @@ grow_vertical = 2
 texture = ExtResource("2_v4b0e")
 expand_mode = 2
 
-[node name="MoneyLabel" type="Label" parent="Anim/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="MoneyLabel" type="Label" parent="UIScale/Anim/VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "1000"
 
-[node name="RewardLabel" type="Label" parent="Anim/VBoxContainer"]
+[node name="RewardLabel" type="Label" parent="UIScale/Anim/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("5_0ga21")
 text = "+1000"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dtjh32wwairim"]
+[gd_scene load_steps=13 format=3 uid="uid://dtjh32wwairim"]
 
 [ext_resource type="Script" uid="uid://bqgspeqo63cmk" path="res://Prefabs/UI/ShopExpandPopup/ShopExpandPopup.cs" id="1_2g6sh"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_38mrl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="6_kki8d"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="6_yov8v"]
 [ext_resource type="Script" uid="uid://b3xycn0wkry5n" path="res://Prefabs/UI/SubViewport/SubViewportTexture.cs" id="7_eo7dv"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="10_ukmkn"]
 [ext_resource type="AudioStream" uid="uid://c4peoobo0xyd3" path="res://Sounds/Raw/sfx_fanfare_organ_001.wav" id="11_4nhvw"]
 
 [node name="ShopExpandPopup" type="Control" node_paths=PackedStringArray("ItemSubViewport", "NameLabel", "CostLabel", "OkButton", "SfxFanfare", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
@@ -22,14 +23,14 @@ grow_vertical = 2
 theme = ExtResource("1_38mrl")
 script = ExtResource("1_2g6sh")
 ItemSubViewport = NodePath("ItemSubViewport")
-NameLabel = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer/MarginContainer/NameLabel")
-CostLabel = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer/CostLabel")
-OkButton = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/OkButton")
+NameLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer/MarginContainer/NameLabel")
+CostLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer/CostLabel")
+OkButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/OkButton")
 SfxFanfare = NodePath("SfxFanfare")
 AnimatedOverlay = NodePath("AnimatedOverlay")
-AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
+AnimatedPanel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel")
 InputBlocker = NodePath("InputBlocker")
-FocusButton = NodePath("CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/OkButton")
+FocusButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/OkButton")
 
 [node name="AnimatedOverlay" parent="." instance=ExtResource("2_mv4vf")]
 layout_mode = 1
@@ -45,14 +46,25 @@ grow_vertical = 2
 [node name="Center" type="Control" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="AnimatedPanel" parent="CenterContainer/Center" instance=ExtResource("3_fvmwr")]
+[node name="UIScale" type="Control" parent="CenterContainer/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_ukmkn")
+
+[node name="AnimatedPanel" parent="CenterContainer/Center/UIScale" instance=ExtResource("3_fvmwr")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="BackgroundEffects" type="Control" parent="CenterContainer/Center/AnimatedPanel"]
+[node name="BackgroundEffects" type="Control" parent="CenterContainer/Center/UIScale/AnimatedPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,7 +74,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/BackgroundEffects"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/UIScale/AnimatedPanel/BackgroundEffects"]
 modulate = Color(1, 0.987, 0.61, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -80,7 +92,7 @@ texture = ExtResource("5_kki8d")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Container" type="Control" parent="CenterContainer/Center/AnimatedPanel"]
+[node name="Container" type="Control" parent="CenterContainer/Center/UIScale/AnimatedPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,7 +106,7 @@ offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InstructionPanel" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container"]
+[node name="InstructionPanel" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -108,22 +120,22 @@ offset_bottom = 36.215
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/InstructionPanel"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/InstructionPanel"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/InstructionPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/InstructionPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel/Container/InstructionPanel/MarginContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/InstructionPanel/MarginContainer"]
 layout_mode = 2
 text = "Purchase in the Shop"
 horizontal_alignment = 1
 
-[node name="ContentPanel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container"]
+[node name="ContentPanel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,7 +143,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -143,24 +155,24 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="PreviewControl" type="Control" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="PreviewControl" type="Control" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PreviewControl"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PreviewControl"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -176,7 +188,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_itp0w")
 
-[node name="PreviewTextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PreviewControl" node_paths=PackedStringArray("SubViewport")]
+[node name="PreviewTextureRect" type="TextureRect" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PreviewControl" node_paths=PackedStringArray("SubViewport")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -186,69 +198,69 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 4
 script = ExtResource("7_eo7dv")
-SubViewport = NodePath("../../../../../../../../../../../ItemSubViewport")
+SubViewport = NodePath("../../../../../../../../../../../../ItemSubViewport")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NameControl" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="NameControl" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("5_itp0w")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 2
 
-[node name="NameLabel" type="Label" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer/MarginContainer"]
+[node name="NameLabel" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NameControl/MarginContainer/MarginContainer"]
 layout_mode = 2
 text = "Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CostControl" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="CostControl" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("5_itp0w")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="CostLabel" type="Label" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="CostLabel" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "1000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer/Control"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/CostControl/MarginContainer/MarginContainer/HBoxContainer/Control"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -262,11 +274,11 @@ texture = ExtResource("6_yov8v")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="OkButton" parent="CenterContainer/Center/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer" instance=ExtResource("6_kki8d")]
+[node name="OkButton" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/ContentPanel/MarginContainer/VBoxContainer" instance=ExtResource("6_kki8d")]
 layout_mode = 2
 text = " OK"
 
-[node name="TitleContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container"]
+[node name="TitleContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -277,16 +289,16 @@ offset_right = 225.5
 offset_bottom = 8.565
 grow_horizontal = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/Container/TitleContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/TitleContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/Container/TitleContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/TitleContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel/Container/TitleContainer/MarginContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/TitleContainer/MarginContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)

@@ -75,6 +75,7 @@ public partial class OptionsControl : ControlScript
 
         if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
         {
+            if (Keys.IsRebinding) return;
             BackPressed();
             GetViewport().SetInputAsHandled();
         }

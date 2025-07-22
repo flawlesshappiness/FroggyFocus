@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs6jtqi04ls8t"]
+[gd_scene load_steps=14 format=3 uid="uid://bs6jtqi04ls8t"]
 
 [ext_resource type="Script" uid="uid://bqb54opapks22" path="res://Prefabs/UI/PurchasePopup/PurchasePopup.cs" id="1_rktto"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_v5x1g"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="5_vya16"]
 [ext_resource type="PackedScene" uid="uid://57h0lyjpo7q4" path="res://Prefabs/UI/Price/price_control.tscn" id="7_vdyvl"]
 [ext_resource type="AudioStream" uid="uid://b3id404wd53ol" path="res://Sounds/Raw/sfx_frog_croak_001.wav" id="10_s74qh"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="10_vdyvl"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="11_o0ix7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o0ix7"]
@@ -26,18 +27,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_rktto")
-CancelButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CancelButton")
-PurchaseButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PurchaseButton")
-NameLabel = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/NameLabel")
-PriceControl = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/PriceControl")
+CancelButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CancelButton")
+PurchaseButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/PurchaseButton")
+NameLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/NameLabel")
+PriceControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/PriceControl")
 ItemSubViewport = NodePath("ItemSubViewport")
-TextureRect = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Panel/PreviewTextureRect")
+TextureRect = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Panel/PreviewTextureRect")
 PaintBucketPrefab = ExtResource("2_ry6mq")
 SfxPurchaseFail = NodePath("SfxPurchaseFail")
 AnimatedOverlay = NodePath("AnimatedOverlay")
-AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
+AnimatedPanel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel")
 InputBlocker = NodePath("InputBlocker")
-FocusButton = NodePath("CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CancelButton")
+FocusButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CancelButton")
 
 [node name="AnimatedOverlay" parent="." instance=ExtResource("2_vdyvl")]
 layout_mode = 1
@@ -55,14 +56,25 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="AnimatedPanel" parent="CenterContainer/Center" instance=ExtResource("3_ry6mq")]
+[node name="UIScale" type="Control" parent="CenterContainer/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_vdyvl")
+
+[node name="AnimatedPanel" parent="CenterContainer/Center/UIScale" instance=ExtResource("3_ry6mq")]
 layout_mode = 1
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,29 +89,29 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_v5x1g")
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/MarginContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme = ExtResource("2_rktto")
 
-[node name="PreviewTextureRect" type="TextureRect" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Panel"]
+[node name="PreviewTextureRect" type="TextureRect" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,21 +121,21 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
-[node name="PriceControl" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer" instance=ExtResource("7_vdyvl")]
+[node name="PriceControl" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer" instance=ExtResource("7_vdyvl")]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NameLabel" type="Label" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -131,11 +143,11 @@ theme_override_font_sizes/font_size = 30
 text = "Crown"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PurchaseButton" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_snlvk")]
+[node name="PurchaseButton" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_snlvk")]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath(".")
@@ -147,7 +159,7 @@ focus_previous = NodePath("../CancelButton")
 theme = ExtResource("5_vya16")
 text = "Buy"
 
-[node name="CancelButton" parent="CenterContainer/Center/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_snlvk")]
+[node name="CancelButton" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_snlvk")]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../PurchaseButton")
