@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmvkcktlif5ut"]
+[gd_scene load_steps=6 format=3 uid="uid://dmvkcktlif5ut"]
 
 [ext_resource type="PackedScene" uid="uid://d23hqt3jgoo5l" path="res://Assets/FlawLizArt/Nature/Toon/reed.fbx" id="1_we6wm"]
+[ext_resource type="PackedScene" uid="uid://bwk6asvxrt7yj" path="res://Prefabs/Nature/reed_002.tscn" id="2_o65cf"]
 [ext_resource type="PackedScene" uid="uid://b1puinj13kpqv" path="res://Assets/FlawLizArt/Nature/Toon/cattail.fbx" id="2_yorcy"]
-[ext_resource type="PackedScene" uid="uid://dm336j0fyh0v0" path="res://Prefabs/Nature/reed_leaf.tscn" id="3_wb8us"]
+[ext_resource type="PackedScene" uid="uid://dm336j0fyh0v0" path="res://Prefabs/Nature/reed_001.tscn" id="3_wb8us"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o65cf"]
+top_radius = 4.0
+bottom_radius = 4.0
+height = 0.1
 
 [node name="Reeds_Dense" type="Node3D"]
 
 [node name="Leaves_Models" type="Node3D" parent="."]
+visible = false
 
 [node name="reed" parent="Leaves_Models" instance=ExtResource("1_we6wm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93584, 0, -1.23003)
@@ -80,6 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4525, -1.31643, 0.328306)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41271, -0.732777, 0.815789)
 
 [node name="Leaves_Textures" type="Node3D" parent="."]
+visible = false
 
 [node name="Reed_Leaf" parent="Leaves_Textures" instance=ExtResource("3_wb8us")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.855913, -1.76213, -0.146285)
@@ -125,3 +133,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26999, 0.585301, 2.32843)
 
 [node name="Reed_Leaf14" parent="Leaves_Textures" instance=ExtResource("3_wb8us")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83192, -1.76213, 1.49035)
+
+[node name="Leaves_002" type="Node3D" parent="."]
+
+[node name="reed_002" parent="Leaves_002" instance=ExtResource("2_o65cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5646, 0, 1.72836)
+
+[node name="reed_003" parent="Leaves_002" instance=ExtResource("2_o65cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44559, 0, -0.373231)
+
+[node name="reed_007" parent="Leaves_002" instance=ExtResource("2_o65cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38599, 0, 2.42052)
+
+[node name="reed_004" parent="Leaves_002" instance=ExtResource("2_o65cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.402371, 0, -2.36509)
+
+[node name="reed_005" parent="Leaves_002" instance=ExtResource("2_o65cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88739, 4.76837e-07, -1.33905)
+
+[node name="reed_006" parent="Leaves_002" instance=ExtResource("2_o65cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.261902, 0, 0.362845)
+
+[node name="ref" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_o65cf")

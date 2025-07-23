@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwk6asvxrt7yj"]
+
+[ext_resource type="Texture2D" uid="uid://dv63rqjro2aw6" path="res://Textures/reed_group_002.png" id="1_wlpry"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8jctr"]
+load_path = "res://.godot/imported/reed_group_003.png-3f3ef90dabb6bfcb20fb3ba42239bf61.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h08y3"]
+render_priority = 1
+transparency = 2
+alpha_scissor_threshold = 0.157
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.246, 0.6, 0.2755, 1)
+albedo_texture = SubResource("CompressedTexture2D_8jctr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jkucb"]
+material = SubResource("StandardMaterial3D_h08y3")
+size = Vector2(4, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7peya"]
+render_priority = 1
+transparency = 2
+alpha_scissor_threshold = 0.704
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.35, 0.312433, 0.189, 1)
+albedo_texture = ExtResource("1_wlpry")
+
+[sub_resource type="QuadMesh" id="QuadMesh_wlyoy"]
+material = SubResource("StandardMaterial3D_7peya")
+size = Vector2(4, 10)
+
+[node name="reed_002" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39074, 0)
+mesh = SubResource("QuadMesh_jkucb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.39074, 0)
+mesh = SubResource("QuadMesh_jkucb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 3.39074, 0)
+mesh = SubResource("QuadMesh_jkucb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 3.39074, 0)
+mesh = SubResource("QuadMesh_jkucb")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360416, 4.59291, 0.032932)
+mesh = SubResource("QuadMesh_wlyoy")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0794518, 4.59291, -0.296875)
+mesh = SubResource("QuadMesh_wlyoy")

@@ -3,9 +3,6 @@ using Godot;
 public partial class ThirdPersonCamera : Node3D
 {
     [Export]
-    public Node3D Pivot;
-
-    [Export]
     public Camera3D Camera;
 
     [Export]
@@ -16,7 +13,7 @@ public partial class ThirdPersonCamera : Node3D
     private float MouseSensitivity => 0.004f * Data.Options.CameraSensitivity;
     private float ControllerSensitivity => 0.05f * Data.Options.CameraSensitivity;
 
-    private float tilt_limit = Mathf.DegToRad(50f);
+    private float tilt_limit = Mathf.DegToRad(30f);
     private Vector2 zoom_range = new Vector2(1f, 8f);
 
     public override void _Input(InputEvent @event)
@@ -28,9 +25,9 @@ public partial class ThirdPersonCamera : Node3D
         if (@event is InputEventMouseMotion mouse_motion)
         {
             var relative = mouse_motion.Relative;
-            var x = Mathf.Clamp(Pivot.Rotation.X - relative.Y * MouseSensitivity, -tilt_limit, tilt_limit);
-            var y = Pivot.Rotation.Y - relative.X * MouseSensitivity;
-            Pivot.Rotation = new Vector3(x, y, Pivot.Rotation.Z);
+            var x = Mathf.Clamp(Rotation.X - relative.Y * MouseSensitivity, -tilt_limit, tilt_limit);
+            var y = Rotation.Y - relative.X * MouseSensitivity;
+            Rotation = new Vector3(x, y, Rotation.Z);
         }
     }
 
@@ -49,9 +46,9 @@ public partial class ThirdPersonCamera : Node3D
         var input = PlayerInput.GetLookInput();
         if (input.Length() < 0.1f) return;
 
-        var x = Mathf.Clamp(Pivot.Rotation.X - input.Y * ControllerSensitivity, -tilt_limit, tilt_limit);
-        var y = Pivot.Rotation.Y - input.X * ControllerSensitivity;
-        Pivot.Rotation = new Vector3(x, y, Pivot.Rotation.Z);
+        var x = Mathf.Clamp(Rotation.X - input.Y * ControllerSensitivity, -tilt_limit, tilt_limit);
+        var y = Rotation.Y - input.X * ControllerSensitivity;
+        Rotation = new Vector3(x, y, Rotation.Z);
     }
 
     private void Process_Zoom()
