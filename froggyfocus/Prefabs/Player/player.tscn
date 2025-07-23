@@ -160,7 +160,7 @@ stream = ExtResource("8_m5xj4")
 bus = &"SFX"
 
 [node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("Camera", "SpringArm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.655483, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18209, 0)
 script = ExtResource("9_a00l3")
 Camera = NodePath("SpringArm3D/Camera3D")
 SpringArm = NodePath("SpringArm3D")

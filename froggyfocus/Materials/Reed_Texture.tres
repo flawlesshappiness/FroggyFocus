@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bgdjfum8au8yu"]
+
+[ext_resource type="Texture2D" uid="uid://d1brn2tkwdbmy" path="res://Textures/reed.png" id="1_x2kf4"]
+
+[resource]
+render_priority = 1
+transparency = 2
+alpha_scissor_threshold = 0.157
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.246, 0.6, 0.2755, 1)
+albedo_texture = ExtResource("1_x2kf4")

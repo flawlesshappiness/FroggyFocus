@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjrocvyhabcve"]
+
+[ext_resource type="Texture2D" uid="uid://bulrhg2soh5g2" path="res://Textures/grass.png" id="1_5j4as"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibdt4"]
+transparency = 2
+alpha_scissor_threshold = 0.018
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_color = Color(0.77, 0.717897, 0.5467, 1)
+albedo_texture = ExtResource("1_5j4as")
+
+[sub_resource type="QuadMesh" id="QuadMesh_dmrsx"]
+material = SubResource("StandardMaterial3D_ibdt4")
+size = Vector2(4, 10)
+
+[node name="Grass_Tuft" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95185, 0)
+mesh = SubResource("QuadMesh_dmrsx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.95185, 0)
+mesh = SubResource("QuadMesh_dmrsx")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 3.95185, 0)
+mesh = SubResource("QuadMesh_dmrsx")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 3.95185, 0)
+mesh = SubResource("QuadMesh_dmrsx")

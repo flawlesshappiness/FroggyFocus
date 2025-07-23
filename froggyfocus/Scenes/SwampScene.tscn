@@ -1,7 +1,7 @@
-[gd_scene load_steps=49 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=51 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
-[ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Swamp.tres" id="2_0ky7s"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
 [ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/SwampWater.tres" id="4_dkapk"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="11_20fcr"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="11_achss"]
+[ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds.tscn" id="11_f4fi4"]
 [ext_resource type="PackedScene" uid="uid://bw057fcfnoby7" path="res://Prefabs/NPC/MagpieNPC/magpie_npc.tscn" id="11_hem5p"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="12_5fuuy"]
 [ext_resource type="Resource" uid="uid://ccictmr6wjwmg" path="res://FetchQuest/Resources/Magpie_Swamp.tres" id="12_7qo61"]
@@ -26,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="15_xnl44"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
 [ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="17_achss"]
+[ext_resource type="PackedScene" uid="uid://bjrocvyhabcve" path="res://Prefabs/Nature/grass_tuft.tscn" id="17_lakbb"]
 [ext_resource type="PackedScene" uid="uid://cap2fnpuvvefh" path="res://Prefabs/Nature/mushroom_platform.tscn" id="17_riqag"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
@@ -112,7 +114,7 @@ WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvents = [NodePath("World/FocusEvent_Land"), NodePath("World/FocusEvent_Lilypad"), NodePath("World/FocusEvent_Wood"), NodePath("World/FocusEvent_Mushroom")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_0ky7s")
+environment = ExtResource("2_f4fi4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 5.72245, 3.27611)
@@ -307,6 +309,107 @@ transform = Transform3D(2.98006, 0, 0.345332, 0, 3, 0, -0.345332, 0, 2.98006, -1
 [node name="lilypad4" parent="World/Lilypads/Lilypads" instance=ExtResource("12_5fuuy")]
 transform = Transform3D(1.14618, 0, 1.63898, 0, 2, 0, -1.63898, 0, 1.14618, -14.1089, -0.98, 4.56146)
 
+[node name="Reeds" type="Node3D" parent="World/Lilypads"]
+
+[node name="Reeds11" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.96748, 0, 0.359184, 0, 2, 0, -0.359184, 0, 1.96748, 0.868912, -4, 25.7619)
+
+[node name="Reeds12" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.96748, 0, 0.359184, 0, 2, 0, -0.359184, 0, 1.96748, -8.78584, -4, 18.6714)
+
+[node name="Reeds13" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(0.709561, 0, -1.8699, 0, 2, 0, 1.8699, 0, 0.709561, -15.8675, -4, 25.9849)
+
+[node name="Reeds14" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(-0.903219, 0, -1.78443, 0, 2, 0, 1.78443, 0, -0.903219, -22.4139, -4, 31.557)
+
+[node name="Reeds15" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(0.96968, 0, -1.74921, 0, 2, 0, 1.74921, 0, 0.96968, -30.4521, -4, 33.3643)
+
+[node name="Reeds16" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(0.96968, 0, -1.74921, 0, 2, 0, 1.74921, 0, 0.96968, -39.9057, -4, 38.6908)
+
+[node name="Reeds17" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(0.96968, 0, -1.74921, 0, 2, 0, 1.74921, 0, 0.96968, -52.2427, -4, 28.9721)
+
+[node name="Reeds18" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(0.96968, 0, -1.74921, 0, 2, 0, 1.74921, 0, 0.96968, -43.8528, -4, 23.9311)
+
+[node name="Reeds19" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(0.96968, 0, -1.74921, 0, 2, 0, 1.74921, 0, 0.96968, -38.1449, -4, 18.4775)
+
+[node name="Reeds20" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.74763, 0, -0.972518, 0, 2, 0, 0.972518, 0, 1.74763, -34.156, -4, 11.0707)
+
+[node name="Reeds21" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.96463, 0, -0.374488, 0, 2, 0, 0.374488, 0, 1.96463, -28.1945, -4, 5.07397)
+
+[node name="Reeds22" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.96463, 0, -0.374488, 0, 2, 0, 0.374488, 0, 1.96463, -36.3783, -4, -1.31075)
+
+[node name="Reeds23" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.96463, 0, -0.374488, 0, 2, 0, 0.374488, 0, 1.96463, -11.5449, -4, -13.5511)
+
+[node name="Reeds24" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.73311, 0, 0.998155, 0, 2, 0, -0.998155, 0, 1.73311, -20.7163, -4, -20.1122)
+
+[node name="Reeds40" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.73311, 0, 0.998155, 0, 2, 0, -0.998155, 0, 1.73311, -11.1576, -4, -21.1458)
+
+[node name="Reeds41" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.73311, 0, 0.998155, 0, 2, 0, -0.998155, 0, 1.73311, 4.93549, -4, -25.6145)
+
+[node name="Reeds42" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.73311, 0, 0.998155, 0, 2, 0, -0.998155, 0, 1.73311, 16.1472, -4, -18.1156)
+
+[node name="Reeds43" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.73311, 0, 0.998155, 0, 2, 0, -0.998155, 0, 1.73311, 27.197, -4, -2.0682)
+
+[node name="Reeds25" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(0.26946, 0, 1.98176, 0, 2, 0, -1.98176, 0, 0.26946, -1.97258, -4, -20.2006)
+
+[node name="Reeds26" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(0.26946, 0, 1.98176, 0, 2, 0, -1.98176, 0, 0.26946, 8.23124, -4, -17.0325)
+
+[node name="Reeds27" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.82337, 0, 0.821788, 0, 2, 0, -0.821788, 0, 1.82337, 15.843, -4, -10.4494)
+
+[node name="Reeds28" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, 18.1882, -4, -3.29023)
+
+[node name="Reeds29" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, 22.7141, -4, 5.47354)
+
+[node name="Reeds34" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, 27.6353, -4, 13.4642)
+
+[node name="Reeds35" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, -7.40026, -4, 25.6827)
+
+[node name="Reeds36" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, -16.5713, -4, 33.5551)
+
+[node name="Reeds37" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, -6.86775, -4, 33.6042)
+
+[node name="Reeds38" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, -43.1693, -4, 6.08138)
+
+[node name="Reeds39" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, -44.0891, -4, 14.5562)
+
+[node name="Reeds30" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, 19.7105, -4, 16.706)
+
+[node name="Reeds31" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, 24.7302, -4, 24.9349)
+
+[node name="Reeds32" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.98102, 0, 0.274854, 0, 2, 0, -0.274854, 0, 1.98102, 25.4296, -4, 35.4678)
+
+[node name="Reeds33" parent="World/Lilypads/Reeds" instance=ExtResource("11_f4fi4")]
+transform = Transform3D(1.7447, 0, 0.97776, 0, 2, 0, -0.97776, 0, 1.7447, 2.66962, -4, 35.4721)
+
 [node name="PathWaterSFX_Lilypad1" type="Path3D" parent="World/Lilypads"]
 curve = SubResource("Curve3D_20fcr")
 
@@ -383,6 +486,114 @@ transform = Transform3D(3.02056, 0, -5.18423, 0, 6, 0, 5.18423, 0, 3.02056, -35.
 transform = Transform3D(1.94142, 0, -5.67722, 0, 6, 0, 5.67722, 0, 1.94142, -56.1894, -3.28576, 34.488)
 
 [node name="Details" type="Node3D" parent="World/DeadForest"]
+
+[node name="Node3D" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20.6574, -0.367674, -0.68512)
+
+[node name="Node3D2" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 35.6279, -0.367676, 22.7065)
+
+[node name="Node3D3" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.06644, -0.367677, 67.4473)
+
+[node name="Node3D4" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.3355, -0.367677, 59.3323)
+
+[node name="Node3D5" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.82913, -0.367677, 84.2922)
+
+[node name="Node3D6" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -28.6726, -0.367677, 69.3724)
+
+[node name="Node3D7" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -50.4865, -0.367677, 55.3377)
+
+[node name="Node3D8" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -60.9116, -0.367677, 27.2464)
+
+[node name="Node3D9" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -27.1614, -0.367677, 33.5296)
+
+[node name="Node3D10" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -50.201, -0.367677, -2.62231)
+
+[node name="Node3D11" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -65.5961, -0.367675, 5.17759)
+
+[node name="Node3D12" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54.4044, -0.367675, 14.6117)
+
+[node name="Node3D13" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.1084, -0.367675, -21.6655)
+
+[node name="Node3D14" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42.6318, -0.367675, -12.8582)
+
+[node name="Grass_Tuft" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.7393, -4.9184, 7.60716)
+
+[node name="Grass_Tuft2" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 22.0741, -4.9184, 22.9677)
+
+[node name="Grass_Tuft3" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 36.7486, -4.9184, 49.7206)
+
+[node name="Grass_Tuft4" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.8208, -4.9184, 72.1853)
+
+[node name="Grass_Tuft5" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.9008, -4.9184, 85.8022)
+
+[node name="Grass_Tuft6" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -36.588, -4.9184, 54.9412)
+
+[node name="Grass_Tuft7" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.4571, -4.9184, 39.4421)
+
+[node name="Grass_Tuft8" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.35828, -4.9184, 19.8605)
+
+[node name="Grass_Tuft9" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.45936, -4.9184, 35.0556)
+
+[node name="Grass_Tuft10" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.99671, -4.9184, 51.9147)
+
+[node name="Grass_Tuft11" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.9717, -4.9184, 46.9603)
+
+[node name="Grass_Tuft12" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.9383, -4.9184, -9.78529)
+
+[node name="Grass_Tuft13" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.74727, -4.9184, -17.5846)
+
+[node name="Grass_Tuft14" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.9722, -4.9184, 13.1227)
+
+[node name="Grass_Tuft15" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -29.1193, -10.0004, 18.8731)
+
+[node name="Grass_Tuft16" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.4455, -10.0004, -0.848907)
+
+[node name="Grass_Tuft17" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -48.9579, -10.0004, 25.8983)
+
+[node name="Grass_Tuft18" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -43.6938, -10.0004, 6.24981)
+
+[node name="Grass_Tuft19" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.97956, -10.0004, 25.71)
+
+[node name="Grass_Tuft20" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.85063, -10.0004, 53.5321)
+
+[node name="Grass_Tuft21" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.39267, -10.0004, 73.7287)
+
+[node name="Grass_Tuft22" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.5115, -10.0004, 20.7538)
 
 [node name="Trees" type="Node3D" parent="World/DeadForest"]
 
