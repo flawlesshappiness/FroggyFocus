@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=52 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="11_20fcr"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="11_achss"]
-[ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds.tscn" id="11_f4fi4"]
+[ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds_dense.tscn" id="11_f4fi4"]
 [ext_resource type="PackedScene" uid="uid://bw057fcfnoby7" path="res://Prefabs/NPC/MagpieNPC/magpie_npc.tscn" id="11_hem5p"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="12_5fuuy"]
 [ext_resource type="Resource" uid="uid://ccictmr6wjwmg" path="res://FetchQuest/Resources/Magpie_Swamp.tres" id="12_7qo61"]
@@ -27,9 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="15_xnl44"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
 [ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="17_achss"]
-[ext_resource type="PackedScene" uid="uid://bjrocvyhabcve" path="res://Prefabs/Nature/grass_tuft.tscn" id="17_lakbb"]
+[ext_resource type="PackedScene" uid="uid://bjrocvyhabcve" path="res://Prefabs/Nature/grass_tuft_tall.tscn" id="17_lakbb"]
 [ext_resource type="PackedScene" uid="uid://cap2fnpuvvefh" path="res://Prefabs/Nature/mushroom_platform.tscn" id="17_riqag"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
+[ext_resource type="PackedScene" uid="uid://dm7mhx4ojgeg3" path="res://Prefabs/Nature/grass_tuft_small.tscn" id="18_xsh2a"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
 [ext_resource type="PackedScene" uid="uid://bvq1s6k4t5k0m" path="res://Prefabs/NPC/MushroomNPC/mushroom_npc.tscn" id="19_ghoyf"]
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
@@ -485,115 +486,164 @@ transform = Transform3D(3.02056, 0, -5.18423, 0, 6, 0, 5.18423, 0, 3.02056, -35.
 [node name="WoodLog6" parent="World/DeadForest/Floor" instance=ExtResource("13_a7viq")]
 transform = Transform3D(1.94142, 0, -5.67722, 0, 6, 0, 5.67722, 0, 1.94142, -56.1894, -3.28576, 34.488)
 
-[node name="Details" type="Node3D" parent="World/DeadForest"]
+[node name="Grass_Tufts" type="Node3D" parent="World/DeadForest"]
 
-[node name="Node3D" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Tall" type="Node3D" parent="World/DeadForest/Grass_Tufts"]
+
+[node name="Node3D" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20.6574, -0.367674, -0.68512)
 
-[node name="Node3D2" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D2" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 35.6279, -0.367676, 22.7065)
 
-[node name="Node3D3" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D3" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.06644, -0.367677, 67.4473)
 
-[node name="Node3D4" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D4" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.3355, -0.367677, 59.3323)
 
-[node name="Node3D5" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D5" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.82913, -0.367677, 84.2922)
 
-[node name="Node3D6" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D6" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -28.6726, -0.367677, 69.3724)
 
-[node name="Node3D7" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D7" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -50.4865, -0.367677, 55.3377)
 
-[node name="Node3D8" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D8" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -60.9116, -0.367677, 27.2464)
 
-[node name="Node3D9" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D9" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -27.1614, -0.367677, 33.5296)
 
-[node name="Node3D10" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D10" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -50.201, -0.367677, -2.62231)
 
-[node name="Node3D11" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D11" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -65.5961, -0.367675, 5.17759)
 
-[node name="Node3D12" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D12" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54.4044, -0.367675, 14.6117)
 
-[node name="Node3D13" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D13" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.1084, -0.367675, -21.6655)
 
-[node name="Node3D14" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Node3D14" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42.6318, -0.367675, -12.8582)
 
-[node name="Grass_Tuft" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.7393, -4.9184, 7.60716)
 
-[node name="Grass_Tuft2" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft2" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 22.0741, -4.9184, 22.9677)
 
-[node name="Grass_Tuft3" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft3" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 36.7486, -4.9184, 49.7206)
 
-[node name="Grass_Tuft4" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft4" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.8208, -4.9184, 72.1853)
 
-[node name="Grass_Tuft5" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft5" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.9008, -4.9184, 85.8022)
 
-[node name="Grass_Tuft6" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft6" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -36.588, -4.9184, 54.9412)
 
-[node name="Grass_Tuft7" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft7" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.4571, -4.9184, 39.4421)
 
-[node name="Grass_Tuft8" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft8" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.35828, -4.9184, 19.8605)
 
-[node name="Grass_Tuft9" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft9" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.45936, -4.9184, 35.0556)
 
-[node name="Grass_Tuft10" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft10" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.99671, -4.9184, 51.9147)
 
-[node name="Grass_Tuft11" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft11" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.9717, -4.9184, 46.9603)
 
-[node name="Grass_Tuft12" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft12" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.9383, -4.9184, -9.78529)
 
-[node name="Grass_Tuft13" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft13" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.74727, -4.9184, -17.5846)
 
-[node name="Grass_Tuft14" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft14" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.9722, -4.9184, 13.1227)
 
-[node name="Grass_Tuft15" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft15" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -29.1193, -10.0004, 18.8731)
 
-[node name="Grass_Tuft16" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft16" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.4455, -10.0004, -0.848907)
 
-[node name="Grass_Tuft17" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft17" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -48.9579, -10.0004, 25.8983)
 
-[node name="Grass_Tuft18" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft18" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -43.6938, -10.0004, 6.24981)
 
-[node name="Grass_Tuft19" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft19" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.97956, -10.0004, 25.71)
 
-[node name="Grass_Tuft20" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft20" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.85063, -10.0004, 53.5321)
 
-[node name="Grass_Tuft21" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft21" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.39267, -10.0004, 73.7287)
 
-[node name="Grass_Tuft22" parent="World/DeadForest/Details" instance=ExtResource("17_lakbb")]
+[node name="Grass_Tuft22" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.5115, -10.0004, 20.7538)
+
+[node name="Small" type="Node3D" parent="World/DeadForest/Grass_Tufts"]
+
+[node name="Grass_Tuft_Small" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.40478, -1.24983, 2.53403)
+
+[node name="Grass_Tuft_Small2" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.45959, -1.24983, 10.8074)
+
+[node name="Grass_Tuft_Small3" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -12.934, -1.24983, -2.31033)
+
+[node name="Grass_Tuft_Small4" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -33.4635, -1.24983, -5.11887)
+
+[node name="Grass_Tuft_Small5" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -32.8493, -1.24983, 12.4621)
+
+[node name="Grass_Tuft_Small6" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -36.4125, -1.24983, 28.7462)
+
+[node name="Grass_Tuft_Small7" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -43.8363, -1.24983, 20.4156)
+
+[node name="Grass_Tuft_Small8" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -22.6091, -1.24983, 52.3546)
+
+[node name="Grass_Tuft_Small9" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.15568, -1.24983, 58.8901)
+
+[node name="Grass_Tuft_Small10" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.926453, -1.24983, 51.8908)
+
+[node name="Grass_Tuft_Small11" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.64668, -1.24983, 41.7186)
+
+[node name="Grass_Tuft_Small12" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 11.3739, -1.24983, 58.0436)
+
+[node name="Grass_Tuft_Small13" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 30.0315, -1.24983, 45.7701)
+
+[node name="Grass_Tuft_Small14" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 19.8119, -1.24983, 29.0009)
+
+[node name="Grass_Tuft_Small15" parent="World/DeadForest/Grass_Tufts/Small" instance=ExtResource("18_xsh2a")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 21.8999, -1.24983, 12.7039)
 
 [node name="Trees" type="Node3D" parent="World/DeadForest"]
 

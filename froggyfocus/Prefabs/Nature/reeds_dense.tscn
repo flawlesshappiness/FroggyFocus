@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b1puinj13kpqv" path="res://Assets/FlawLizArt/Nature/Toon/cattail.fbx" id="2_yorcy"]
 [ext_resource type="PackedScene" uid="uid://dm336j0fyh0v0" path="res://Prefabs/Nature/reed_leaf.tscn" id="3_wb8us"]
 
-[node name="Reeds" type="Node3D"]
+[node name="Reeds_Dense" type="Node3D"]
 
 [node name="Leaves_Models" type="Node3D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bhuic2i3dy7q5"]
+[gd_scene load_steps=26 format=3 uid="uid://bhuic2i3dy7q5"]
 
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="1_6dc14"]
 [ext_resource type="Script" uid="uid://c2ko138plrgx1" path="res://Player/Player.cs" id="1_hnwp3"]
@@ -85,6 +85,8 @@ scale_min = 0.2
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_m5xj4")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dtqie"]
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ExclamationMark", "SfxFocusTargetFound", "SfxFocusTargetStarted", "PsDustStream", "PsDustJump", "PsDustLand", "Camera")]
 collision_layer = 2
 script = ExtResource("1_hnwp3")
@@ -99,7 +101,7 @@ PsDustJump = NodePath("Frog/ps_dust_jump")
 PsDustLand = NodePath("Frog/ps_dust_land")
 JumpLengthCurve = SubResource("Curve_sysjd")
 JumpHeightCurve = SubResource("Curve_21ygf")
-Camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
+Camera = NodePath("ThirdPersonCamera/Pivot/SpringArm3D/Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -159,17 +161,21 @@ bus = &"SFX"
 stream = ExtResource("8_m5xj4")
 bus = &"SFX"
 
-[node name="CameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("Camera", "SpringArm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18209, 0)
+[node name="ThirdPersonCamera" type="Node3D" parent="." node_paths=PackedStringArray("Pivot", "Camera", "SpringArm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768355, 0)
 script = ExtResource("9_a00l3")
-Camera = NodePath("SpringArm3D/Camera3D")
-SpringArm = NodePath("SpringArm3D")
+Pivot = NodePath("Pivot")
+Camera = NodePath("Pivot/SpringArm3D/Camera3D")
+SpringArm = NodePath("Pivot/SpringArm3D")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+[node name="Pivot" type="Node3D" parent="ThirdPersonCamera"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="ThirdPersonCamera/Pivot"]
 collision_mask = 9
+shape = SubResource("SphereShape3D_dtqie")
 spring_length = 2.5
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="ThirdPersonCamera/Pivot/SpringArm3D"]
 current = true
 
 [node name="Rain" parent="." instance=ExtResource("9_dtqie")]
