@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bvq1s6k4t5k0m"]
 
 [ext_resource type="Script" uid="uid://chm11hfd5370t" path="res://Prefabs/NPC/MushroomNPC/MushroomNpc.cs" id="1_rt8b4"]
-[ext_resource type="Resource" uid="uid://ylb24pr0q6w6" path="res://HandInQuest/Resources/Mushroom.tres" id="2_rt8b4"]
+[ext_resource type="Resource" uid="uid://ylb24pr0q6w6" path="res://HandInQuest/Resources/Mushroom_Swamp.tres" id="2_rt8b4"]
 [ext_resource type="PackedScene" uid="uid://c7ukmmer4ocw7" path="res://Assets/FlawLizArt/MushroomGuy/mushroom_guy.fbx" id="4_2pf5i"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="4_mjd21"]
 [ext_resource type="AudioStream" uid="uid://gs33ibo3tgrg" path="res://Sounds/Raw/sfx_mushroom_move_001.wav" id="5_lg5er"]

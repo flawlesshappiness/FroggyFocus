@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://but43q22crqx3"]
+
+[ext_resource type="Resource" uid="uid://3objvy6bb7dt" path="res://FocusCharacter/Resources/Beetle_Mushroom.tres" id="1_h0kk0"]
+[ext_resource type="Resource" uid="uid://nfqmx7nyg08u" path="res://FocusCharacter/Resources/Waxworm_Mushroom.tres" id="2_pxq8c"]
+[ext_resource type="Resource" uid="uid://dd5h5376rnp4" path="res://FocusCharacter/Resources/Mosquito_Mushroom.tres" id="3_hjoew"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="4_y3xp2"]
+
+[resource]
+script = ExtResource("4_y3xp2")
+Id = "mushroom"
+PossibleRequests = Array[Object]([ExtResource("1_h0kk0"), ExtResource("2_pxq8c"), ExtResource("3_hjoew")])
+CountRange = Vector2i(1, 2)
+RewardMultiplierRange = Vector2(1.2, 1.25)
+HatUnlock = 8
+CooldownInSeconds = 300.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"
