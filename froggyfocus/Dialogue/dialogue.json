@@ -44,6 +44,26 @@
 	},
 	
 	{
+		"id": "##OTTER_SWAMP_REQUEST_001##",
+		"next": "##OTTER_SWAMP_REQUEST_002##"
+	},
+	{
+		"id": "##OTTER_SWAMP_REQUEST_002##"
+	},
+	
+	{
+		"id": "##OTTER_SWAMP_REQUEST_COMPLETE_001##"
+	},
+	
+	{
+		"id": "##OTTER_SWAMP_REQUEST_IDLE_001##",
+		"next": "##OTTER_SWAMP_REQUEST_IDLE_002##"
+	},
+	{
+		"id": "##OTTER_SWAMP_REQUEST_IDLE_002##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

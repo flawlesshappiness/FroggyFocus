@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=4 format=3 uid="uid://dqvmw518u62ae"]
+
+[ext_resource type="Resource" uid="uid://dtaq1s53cx6bt" path="res://FocusCharacter/Resources/Dragonfly_Swamp.tres" id="1_t55nc"]
+[ext_resource type="Resource" uid="uid://d3biw384eh4mn" path="res://FocusCharacter/Resources/Mosquito_Swamp.tres" id="2_fyubp"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="4_s72v0"]
+
+[resource]
+script = ExtResource("4_s72v0")
+Id = "otter"
+PossibleRequests = Array[Object]([ExtResource("1_t55nc"), ExtResource("2_fyubp")])
+CountRange = Vector2i(2, 3)
+RewardMultiplierRange = Vector2(1.2, 1.25)
+HatUnlock = 0
+CooldownInSeconds = 300.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

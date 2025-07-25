@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=55 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://b0uor5n0v8ykv" path="res://Assets/Quaternius/Nature/Lilypad_Cut.fbx" id="15_bmghv"]
 [ext_resource type="PackedScene" uid="uid://78t0bt36x8b2" path="res://Prefabs/Nature/reeds_sparse.tscn" id="15_hj885"]
 [ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="15_xnl44"]
+[ext_resource type="PackedScene" uid="uid://bt47rt4wstm5n" path="res://Prefabs/NPC/OtterNPC/otter_npc.tscn" id="17_4oemw"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
 [ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="17_achss"]
 [ext_resource type="PackedScene" uid="uid://bjrocvyhabcve" path="res://Prefabs/Nature/grass_tuft_tall.tscn" id="17_lakbb"]
@@ -502,6 +503,9 @@ curve = SubResource("Curve3D_a7viq")
 [node name="PathWaterSFX_Lilypad4" type="Path3D" parent="World/Lilypads"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4229, 0, 28.6437)
 curve = SubResource("Curve3D_a7viq")
+
+[node name="OtterNPC" parent="World/Lilypads" instance=ExtResource("17_4oemw")]
+transform = Transform3D(-1.63936, 0, -1.14564, 0, 2, 0, 1.14564, 0, -1.63936, -11.7936, -0.930692, -9.63355)
 
 [node name="DeadForest" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61978, -3.8147e-06, 44.1012)
