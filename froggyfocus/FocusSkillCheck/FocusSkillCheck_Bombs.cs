@@ -63,7 +63,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     protected override IEnumerator Run()
     {
         var last_angle = rng.RandfRange(0f, 360f);
-        var count = GetDifficultyInt(BombCountRange);
+        var count = GetDifficultyRange(BombCountRange);
         for (int i = 0; i < count; i++)
         {
             last_angle += rng.RandfRange(45, 180);

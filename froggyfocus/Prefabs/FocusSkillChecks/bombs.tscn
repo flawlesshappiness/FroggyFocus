@@ -7,6 +7,8 @@
 
 [node name="Bombs" type="Node3D" node_paths=PackedStringArray("BombTemplate")]
 script = ExtResource("1_whlow")
+BombCountRange = Vector2i(2, 4)
+DistanceRange = Vector2(0.5, 2)
 BombTemplate = NodePath("SkillCheckBomb")
 PsExplode = ExtResource("2_hymmy")
 PsSpores = ExtResource("3_hymmy")

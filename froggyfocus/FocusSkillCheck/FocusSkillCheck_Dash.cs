@@ -34,7 +34,7 @@ public partial class FocusSkillCheck_Dash : FocusSkillCheck
 
         AnimationPlayer.SpeedScale = Mathf.Lerp(TelegraphSpeedRange.X, TelegraphSpeedRange.Y, Difficulty);
 
-        var count = GetDifficultyInt(DashCountRange);
+        var count = GetDifficultyRange(DashCountRange);
         for (int i = 0; i < count; i++)
         {
             GlobalPosition = FocusEvent.Target.GlobalPosition;

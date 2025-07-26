@@ -4,6 +4,9 @@ using System.Collections;
 public partial class FocusSkillCheck_Dive : FocusSkillCheck
 {
     [Export]
+    public Vector2 DistanceRange;
+
+    [Export]
     public AudioStreamPlayer SfxSplash;
 
     [Export]
@@ -29,8 +32,11 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
         CreateSplashPS(Target.GlobalPosition);
         Target.Hide();
 
+        var distance = GetDifficultyRange(DistanceRange);
         var start_position = Target.GlobalPosition;
-        var end_position = Target.GetClampedPosition();
+        var target_position = Target.GetRandomPosition();
+        var dir = Target.GlobalPosition.DirectionTo(target_position);
+        var end_position = FocusEvent.GlobalPosition + dir * distance;
         Target.GlobalPosition = end_position;
 
         PsRipple.Emitting = true;

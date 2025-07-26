@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk1jnky7aenmk"]
+[gd_scene load_steps=16 format=3 uid="uid://bk1jnky7aenmk"]
 
 [ext_resource type="Script" uid="uid://dmosckoaqd3wx" path="res://FocusSkillCheck/FocusSkillCheck_Dive.cs" id="1_67kc7"]
 [ext_resource type="PackedScene" uid="uid://cwbmt0bwqr7cw" path="res://Prefabs/Effects/splash_small.tscn" id="2_3xtrx"]
-[ext_resource type="PackedScene" uid="uid://5mscnbcwg08f" path="res://Prefabs/Effects/bubbles_underwater.tscn" id="3_v68jj"]
 [ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="4_ytj84"]
 [ext_resource type="AudioStream" uid="uid://iupdbu38bkq0" path="res://Sounds/Raw/sfx_impact_water_low_002.wav" id="5_34ixe"]
 [ext_resource type="AudioStream" uid="uid://mvr5nhm1lqiv" path="res://Sounds/Raw/sfx_impact_water_low_003.wav" id="6_ni2hi"]
@@ -49,10 +48,10 @@ orientation = 1
 
 [node name="Dive" type="Node3D" node_paths=PackedStringArray("SfxSplash", "PsRipple")]
 script = ExtResource("1_67kc7")
+DistanceRange = Vector2(0.5, 2)
 SfxSplash = NodePath("SfxSplash")
 PsRipple = NodePath("PsRipples")
 SplashParticlePrefab = ExtResource("2_3xtrx")
-BubblesParticlePrefab = ExtResource("3_v68jj")
 Type = 3
 
 [node name="SfxSplash" type="AudioStreamPlayer" parent="."]
