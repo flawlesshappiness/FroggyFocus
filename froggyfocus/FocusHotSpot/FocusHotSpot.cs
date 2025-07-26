@@ -68,7 +68,11 @@ public partial class FocusHotSpot : Area3D
         this.StartCoroutine(Cr, "destroy");
         IEnumerator Cr()
         {
-            yield return new WaitForSeconds(delay);
+            var end = GameTime.Time + delay;
+            while (GameTime.Time < end || active)
+            {
+                yield return null;
+            }
             Destroy();
         }
     }
@@ -82,7 +86,7 @@ public partial class FocusHotSpot : Area3D
             SetLock(false);
             Particles.Stop();
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(4f);
 
             QueueFree();
         }

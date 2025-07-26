@@ -1,85 +1,111 @@
-[gd_scene load_steps=15 format=3 uid="uid://daus5gkmu2cj1"]
+[gd_scene load_steps=22 format=3 uid="uid://daus5gkmu2cj1"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_hexcm"]
-[ext_resource type="Texture2D" uid="uid://e3hfi2ik23nn" path="res://Assets/KenneyNL/Particles/smoke_07.png" id="1_pj3aw"]
+[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="3_ndwqf"]
+[ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="4_cbbku"]
 
-[sub_resource type="Curve" id="Curve_yiy2s"]
-_data = [Vector2(0, 0), 0.0, 11.7624, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -12.4363, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_pj3aw"]
-curve = SubResource("Curve_yiy2s")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yiy2s"]
-lifetime_randomness = 0.5
-emission_shape = 1
-emission_sphere_radius = 0.5
-spread = 180.0
-flatness = 1.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-gravity = Vector3(0, 1, 0)
-scale_min = 0.05
-scale_max = 0.1
-scale_curve = SubResource("CurveTexture_pj3aw")
-turbulence_noise_speed_random = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj3aw"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_hexcm"]
-material = SubResource("StandardMaterial3D_pj3aw")
-
-[sub_resource type="Curve" id="Curve_pj3aw"]
-_data = [Vector2(0, 0), 0.0, 4.70498, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.45993, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_hexcm"]
-curve = SubResource("Curve_pj3aw")
-
-[sub_resource type="Curve" id="Curve_hexcm"]
-_data = [Vector2(0, 0.8), 0.0, 0.489504, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_ndwqf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.472598, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ndwqf"]
-curve = SubResource("Curve_hexcm")
+[sub_resource type="CurveTexture" id="CurveTexture_cbbku"]
+curve = SubResource("Curve_ndwqf")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pj3aw"]
-emission_shape = 2
-emission_sphere_radius = 0.4
-gravity = Vector3(0, 0.2, 0)
-scale_min = 2.0
+[sub_resource type="Curve" id="Curve_troui"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_mcj0g"]
+curve = SubResource("Curve_troui")
+
+[sub_resource type="Curve" id="Curve_1dtss"]
+_data = [Vector2(0, 0), 0.0, 1.80112, 0, 0, Vector2(1, 1), 0.315065, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_d1b44"]
+curve = SubResource("Curve_1dtss")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0ds2v"]
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
 scale_max = 4.0
-scale_curve = SubResource("CurveTexture_ndwqf")
-color = Color(0, 0, 0, 0.552941)
-alpha_curve = SubResource("CurveTexture_hexcm")
+scale_curve = SubResource("CurveTexture_d1b44")
+color = Color(1, 0.976667, 0.8, 0.2)
+alpha_curve = SubResource("CurveTexture_cbbku")
+emission_curve = SubResource("CurveTexture_mcj0g")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hexcm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbbku"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_pj3aw")
+albedo_texture = ExtResource("3_ndwqf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1dtss"]
+material = SubResource("StandardMaterial3D_cbbku")
+orientation = 1
+
+[sub_resource type="Curve" id="Curve_cbbku"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1dtss"]
+curve = SubResource("Curve_cbbku")
+
+[sub_resource type="Curve" id="Curve_0ds2v"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_troui"]
+curve = SubResource("Curve_0ds2v")
+
+[sub_resource type="Curve" id="Curve_d1b44"]
+_data = [Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0ds2v"]
+curve = SubResource("Curve_d1b44")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cbbku"]
+emission_shape_offset = Vector3(0, 0, 0.25)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.5
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 2, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_0ds2v")
+color = Color(1, 0.953333, 0.8, 1)
+alpha_curve = SubResource("CurveTexture_1dtss")
+emission_curve = SubResource("CurveTexture_troui")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dtss"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_cbbku")
 billboard_mode = 1
 billboard_keep_scale = true
 
-[sub_resource type="QuadMesh" id="QuadMesh_ndwqf"]
-material = SubResource("StandardMaterial3D_hexcm")
+[sub_resource type="QuadMesh" id="QuadMesh_d1b44"]
+material = SubResource("StandardMaterial3D_1dtss")
 
 [node name="HotspotEffect" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_hexcm")
-Particles = [NodePath("bugs"), NodePath("dust")]
+Particles = [NodePath("circle"), NodePath("shinies")]
 
-[node name="bugs" type="GPUParticles3D" parent="."]
-transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0.933207, 0)
-amount = 16
+[node name="circle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00762326, 0)
+amount = 2
+lifetime = 3.0
 fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_yiy2s")
-draw_pass_1 = SubResource("SphereMesh_hexcm")
+process_material = SubResource("ParticleProcessMaterial_0ds2v")
+draw_pass_1 = SubResource("QuadMesh_1dtss")
 
-[node name="dust" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.880573, 0)
-amount = 4
-lifetime = 2.0
+[node name="shinies" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_pj3aw")
-draw_pass_1 = SubResource("QuadMesh_ndwqf")
+process_material = SubResource("ParticleProcessMaterial_cbbku")
+draw_pass_1 = SubResource("QuadMesh_d1b44")
