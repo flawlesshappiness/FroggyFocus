@@ -26,14 +26,20 @@ public partial class FocusTarget : Node3D
         Character = info.Scene.Instantiate<FocusCharacter>();
         Character.Initialize(info);
         Character.SetParent(this);
-        Character.Position = Vector3.Zero;
-        Character.Rotation = Vector3.Zero;
+        Character.ClearPositionAndRotation();
 
-        var difficulty_variation = rng.RandfRange(-0.1f, 0.1f);
-        Difficulty = Mathf.Clamp(info.Difficulty + difficulty_variation, 0, 1);
-        Reward = (int)(Info.CurrencyReward * (1f + difficulty_variation));
+        UpdateDifficulty();
 
         RandomizeSize();
+    }
+
+    private void UpdateDifficulty()
+    {
+        var variation = rng.RandfRange(-0.1f, 0.1f);
+        var hotspot = Player.Instance.HasHotspot ? 0.2f : 0.0f;
+        var extra = variation + hotspot;
+        Difficulty = Mathf.Clamp(Info.Difficulty + extra, 0, 1);
+        Reward = (int)(Info.CurrencyReward * (1f + extra));
     }
 
     private void RemoveCharacter()
