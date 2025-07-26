@@ -27,6 +27,7 @@ public partial class GameScene : Scene
 
         MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather();
+        FocusHotSpotController.Instance.Start();
 
         HideFocusEvents();
     }

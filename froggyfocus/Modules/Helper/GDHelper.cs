@@ -3,7 +3,7 @@ using System.Text;
 
 public partial class GDHelper
 {
-    public static T Instantiate<T>(string scene_path, Node parent = null) where T : GodotObject
+    public static T Instantiate<T>(string scene_path) where T : GodotObject
     {
         var packed_scene = LoadPackedScene(scene_path);
         var instance = packed_scene.Instantiate<T>();

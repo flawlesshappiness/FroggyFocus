@@ -42,6 +42,7 @@ public partial class Player : TopDownController
     public static MultiLock MovementLock = new();
     public static MultiLock InteractLock = new();
     public static MultiLock FocusEventLock = new();
+    public static MultiLock FocusHotSpotLock = new();
     private bool IsCharging { get; set; }
 
     private bool has_focus_target;
@@ -268,14 +269,28 @@ public partial class Player : TopDownController
 
             while (true)
             {
-                var duration = rng.RandfRange(2f, 8f);
-                yield return new WaitForSeconds(duration);
+                var wait_duration = rng.RandfRange(2f, 8f);
+                var wait_end = GameTime.Time + wait_duration;
+                while (GameTime.Time < wait_end)
+                {
+                    if (FocusHotSpotLock.IsLocked) break;
+                    yield return null;
+                }
 
                 has_focus_target = true;
                 ExclamationMark.AnimateShow();
                 SfxFocusTargetFound.Play();
 
-                yield return new WaitForSeconds(2f);
+                var delay_duration = 2f;
+                var delay_end = GameTime.Time + delay_duration;
+                while (GameTime.Time < delay_end)
+                {
+                    while (FocusHotSpotLock.IsLocked)
+                    {
+                        yield return null;
+                    }
+                    yield return null;
+                }
 
                 ExclamationMark.AnimateHide();
                 has_focus_target = false;

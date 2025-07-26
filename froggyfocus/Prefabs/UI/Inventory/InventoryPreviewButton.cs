@@ -32,7 +32,11 @@ public partial class InventoryPreviewButton : ButtonScript
     public void SetCharacter(FocusCharacterInfo info)
     {
         ItemSubViewport.SetCharacter(info);
-        ValueLabel.Text = info.CurrencyReward.ToString();
+    }
+
+    public void SetValue(int value)
+    {
+        ValueLabel.Text = value.ToString();
     }
 
     public void SetObscured(bool obscured)

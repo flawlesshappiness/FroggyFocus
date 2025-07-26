@@ -26,14 +26,12 @@ public partial class SellContainer : ControlScript
         UpdateSellAllButton();
     }
 
-    private void Button_Pressed(FocusCharacterInfo info)
+    private void Button_Pressed(InventoryCharacterData data)
     {
-        Money.Add(info.CurrencyReward);
-
-        var data = InventoryContainer.GetSelectedData();
+        Money.Add(data.Value);
         InventoryController.Instance.RemoveCharacterData(data);
-
         Data.Game.Save();
+
         InventoryContainer.UpdateButtons();
         UpdateSellAllButton();
         OnSell?.Invoke();

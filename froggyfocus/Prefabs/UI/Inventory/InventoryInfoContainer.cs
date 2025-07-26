@@ -29,22 +29,23 @@ public partial class InventoryInfoContainer : Control
         Hide();
     }
 
-    public void SetCharacter(FocusCharacterInfo info)
+    public void SetCharacter(InventoryCharacterData data)
     {
-        if (info == null)
+        if (data == null)
         {
             Clear();
             return;
         }
 
-        Show();
-
+        var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
         ItemSubViewport.SetCharacter(info);
 
         NameLabel.Text = info.Name;
-        PriceControl.SetPrice(info.CurrencyReward);
+        PriceControl.SetPrice(data.Value);
 
         var stats = StatsController.Instance.GetOrCreateCharacterData(info.ResourcePath);
         CaughtLabel.Text = stats.CountCaught.ToString();
+
+        Show();
     }
 }

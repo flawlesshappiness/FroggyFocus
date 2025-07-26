@@ -61,7 +61,6 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
     public void FocusEventCompleted(FocusEventCompletedResult result)
     {
         OnFocusEventCompleted?.Invoke(result);
-        Data.Game.Save();
     }
 
     public void FocusEventFailed(FocusEventFailedResult result)

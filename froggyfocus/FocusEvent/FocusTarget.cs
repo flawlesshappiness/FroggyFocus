@@ -6,6 +6,8 @@ public partial class FocusTarget : Node3D
     public FocusCharacterInfo Info { get; private set; }
     public FocusCharacter Character { get; private set; }
     public float Size { get; private set; }
+    public float Difficulty { get; private set; }
+    public int Reward { get; private set; }
     public float Radius => Size * 0.5f;
 
     private FocusEvent focus_event;
@@ -26,6 +28,10 @@ public partial class FocusTarget : Node3D
         Character.SetParent(this);
         Character.Position = Vector3.Zero;
         Character.Rotation = Vector3.Zero;
+
+        var difficulty_variation = rng.RandfRange(-0.1f, 0.1f);
+        Difficulty = Mathf.Clamp(info.Difficulty + difficulty_variation, 0, 1);
+        Reward = (int)(Info.CurrencyReward * (1f + difficulty_variation));
 
         RandomizeSize();
     }

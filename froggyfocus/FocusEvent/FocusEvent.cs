@@ -134,7 +134,7 @@ public partial class FocusEvent : Node3D
             yield return new WaitForSeconds(0.25f);
 
             // Eat target
-            FocusOutroView.Instance.CreateTarget(Target.Info);
+            FocusOutroView.Instance.CreateTarget(Target);
             yield return FocusOutroView.Instance.EatBugSequence(completed);
 
             // Camera target player

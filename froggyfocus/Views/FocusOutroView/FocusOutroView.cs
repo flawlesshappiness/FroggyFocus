@@ -32,8 +32,9 @@ public partial class FocusOutroView : View
     [Export]
     public GpuParticles3D PsDust;
 
-    private FocusCharacterInfo current_target_info;
-    private FocusCharacter current_target;
+    private FocusTarget current_target;
+    private FocusCharacterInfo current_info;
+    private FocusCharacter current_character;
 
     public override void _Ready()
     {
@@ -56,13 +57,13 @@ public partial class FocusOutroView : View
 
         if (!success)
         {
-            current_target.Hide();
+            current_character.Hide();
             PsDust.Emitting = true;
             SfxSwish.Play();
             yield return new WaitForSeconds(0.25f);
         }
 
-        yield return Frog.AnimateEatTarget(current_target);
+        yield return Frog.AnimateEatTarget(current_character);
         yield return new WaitForSeconds(0.25f);
 
         if (success)
@@ -82,12 +83,12 @@ public partial class FocusOutroView : View
     {
         if (InventoryController.Instance.IsInventoryFull())
         {
-            InventoryReplacePopup.SetCharacter(current_target_info);
+            InventoryReplacePopup.SetCharacter(current_info);
             yield return InventoryReplacePopup.WaitForPopup();
         }
         else
         {
-            InventoryController.Instance.AddCharacter(current_target_info);
+            InventoryController.Instance.AddCharacter(current_target);
             yield return null;
         }
     }
@@ -106,22 +107,23 @@ public partial class FocusOutroView : View
 
     private void RemoveTarget()
     {
-        if (current_target == null) return;
+        if (current_character == null) return;
 
-        current_target.QueueFree();
-        current_target = null;
+        current_character.QueueFree();
+        current_character = null;
     }
 
-    public void CreateTarget(FocusCharacterInfo info)
+    public void CreateTarget(FocusTarget target)
     {
         RemoveTarget();
 
-        current_target_info = info;
-        current_target = info.Scene.Instantiate<FocusCharacter>();
-        current_target.SetParent(TargetMarker);
-        current_target.Position = Vector3.Zero;
-        current_target.Rotation = Vector3.Zero;
-        current_target.Scale = Vector3.One * 0.3f;
-        current_target.Initialize(info);
+        current_target = target;
+        current_info = target.Info;
+        current_character = current_info.Scene.Instantiate<FocusCharacter>();
+        current_character.SetParent(TargetMarker);
+        current_character.Position = Vector3.Zero;
+        current_character.Rotation = Vector3.Zero;
+        current_character.Scale = Vector3.One * 0.3f;
+        current_character.Initialize(current_info);
     }
 }

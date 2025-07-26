@@ -46,9 +46,8 @@ public partial class InventoryReplacePopup : PopupControl
         InventoryContainer.UpdateButtons();
     }
 
-    private void InventoryButton_Pressed(FocusCharacterInfo info)
+    private void InventoryButton_Pressed(InventoryCharacterData data)
     {
-        var data = InventoryContainer.GetSelectedData();
         InventoryController.Instance.RemoveCharacterData(data);
         InventoryController.Instance.AddCharacter(ItemToAdd);
         Data.Game.Save();

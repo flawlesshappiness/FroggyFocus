@@ -42,6 +42,19 @@ public partial class InventoryController : SingletonController
         var data = new InventoryCharacterData
         {
             InfoPath = info.ResourcePath,
+            Value = info.CurrencyReward
+        };
+
+        Data.Game.Inventory.Characters.Add(data);
+        Data.Game.Save();
+    }
+
+    public void AddCharacter(FocusTarget target)
+    {
+        var data = new InventoryCharacterData
+        {
+            InfoPath = target.Info.ResourcePath,
+            Value = target.Reward
         };
 
         Data.Game.Inventory.Characters.Add(data);
@@ -81,18 +94,6 @@ public partial class InventoryController : SingletonController
         if (options.ExcludedCharacters?.Contains(info) ?? false) return false;
 
         return true;
-    }
-
-    public FocusCharacterInfo GetInfo(int index)
-    {
-        var data = Data.Game.Inventory.Characters.GetOrDefault(index);
-        var info = data == null ? null : GetInfoFromData(data);
-        return info;
-    }
-
-    public FocusCharacterInfo GetInfoFromData(InventoryCharacterData data)
-    {
-        return FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
     }
 }
 

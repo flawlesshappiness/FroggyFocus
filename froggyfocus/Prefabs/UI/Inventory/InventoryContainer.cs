@@ -17,8 +17,8 @@ public partial class InventoryContainer : ControlScript
     [Export]
     public Label EmptyLabel;
 
-    public event Action<FocusCharacterInfo> OnButtonPressed;
-    public event Action<FocusCharacterInfo> OnButtonFocus;
+    public event Action<InventoryCharacterData> OnButtonPressed;
+    public event Action<InventoryCharacterData> OnButtonFocus;
 
     private ButtonMap selected_map;
     private List<ButtonMap> maps = new();
@@ -53,6 +53,7 @@ public partial class InventoryContainer : ControlScript
             var button = InventoryButtonTemplate.Duplicate() as InventoryPreviewButton;
             button.SetParent(InventoryButtonTemplate.GetParent());
             button.SetCharacter(info);
+            button.SetValue(data.Value);
             button.ValueContainer.Visible = ShowValue;
             button.Show();
 
@@ -77,12 +78,12 @@ public partial class InventoryContainer : ControlScript
     private void Button_Pressed(ButtonMap map)
     {
         selected_map = map;
-        OnButtonPressed?.Invoke(map.Info);
+        OnButtonPressed?.Invoke(map.Data);
     }
 
     private void Button_FocusEntered(ButtonMap map)
     {
-        OnButtonFocus?.Invoke(map.Info);
+        OnButtonFocus?.Invoke(map.Data);
     }
 
     public Button GetFirstButton()

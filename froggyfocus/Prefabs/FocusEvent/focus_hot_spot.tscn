@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxbm6elbsfasn"]
+
+[ext_resource type="PackedScene" uid="uid://daus5gkmu2cj1" path="res://Prefabs/Effects/hotspot_effect.tscn" id="1_8ymd6"]
+[ext_resource type="Script" uid="uid://c8lc8at13pyuu" path="res://FocusHotSpot/FocusHotSpot.cs" id="1_i1685"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_i1685"]
+height = 2.5
+radius = 1.43506
+
+[node name="FocusHotSpot" type="Area3D" node_paths=PackedStringArray("Particles")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_i1685")
+Particles = NodePath("HotspotEffect")
+
+[node name="HotspotEffect" parent="." instance=ExtResource("1_8ymd6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("CylinderShape3D_i1685")

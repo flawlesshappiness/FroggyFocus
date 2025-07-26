@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class InventoryControl : ControlScript
 {
@@ -28,7 +29,7 @@ public partial class InventoryControl : ControlScript
 
         Clear();
         InventoryContainer.UpdateButtons();
-        InfoContainer.SetCharacter(InventoryController.Instance.GetInfo(0));
+        InfoContainer.SetCharacter(Data.Game.Inventory.Characters.FirstOrDefault());
     }
 
     public void GrabFocus_InventoryButton()
@@ -43,9 +44,9 @@ public partial class InventoryControl : ControlScript
         InfoContainer.Clear();
     }
 
-    private void InventoryButton_Focus(FocusCharacterInfo info)
+    private void InventoryButton_Focus(InventoryCharacterData data)
     {
-        InfoContainer.SetCharacter(info);
+        InfoContainer.SetCharacter(data);
     }
 
     public override void _Input(InputEvent @event)
