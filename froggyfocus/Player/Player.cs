@@ -17,6 +17,9 @@ public partial class Player : TopDownController
     public ExclamationMark ExclamationMark;
 
     [Export]
+    public QuestionMarkEffect QuestionMark;
+
+    [Export]
     public AudioStreamPlayer3D SfxFocusTargetFound;
 
     [Export]
@@ -61,6 +64,9 @@ public partial class Player : TopDownController
         OnMoveStop += () => MoveChanged(false);
         OnJump += () => JumpChanged(true);
         OnLand += () => JumpChanged(false);
+
+        PlayerInteract.OnHasInteractable += HasInteractables;
+        PlayerInteract.OnNoInteractable += NoInteractables;
 
         FocusEventLock.OnLocked += FocusEventLocked;
         FocusEventLock.OnFree += FocusEventFree;
@@ -313,5 +319,17 @@ public partial class Player : TopDownController
             Player.SetAllLocks(id, false);
             GameScene.Instance.StartFocusEvent();
         }
+    }
+
+    private void HasInteractables()
+    {
+        QuestionMark.AnimateShow();
+        FocusEventLock.AddLock("interact");
+    }
+
+    private void NoInteractables()
+    {
+        QuestionMark.AnimateHide();
+        FocusEventLock.RemoveLock("interact");
     }
 }

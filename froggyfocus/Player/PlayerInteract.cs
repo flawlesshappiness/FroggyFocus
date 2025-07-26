@@ -1,9 +1,15 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public partial class PlayerInteract : Area3D
 {
+    public bool HasInteractables => _bodies.Count > 0;
+
+    public event Action OnHasInteractable;
+    public event Action OnNoInteractable;
+
     private List<GodotObject> _bodies = new();
 
     public override void _Ready()
@@ -16,11 +22,21 @@ public partial class PlayerInteract : Area3D
     private void OnAreaEntered(GodotObject body)
     {
         _bodies.Add(body);
+
+        if (_bodies.Count == 1)
+        {
+            OnHasInteractable?.Invoke();
+        }
     }
 
     private void OnAreaExited(GodotObject body)
     {
         _bodies.Remove(body);
+
+        if (_bodies.Count == 0)
+        {
+            OnNoInteractable?.Invoke();
+        }
     }
 
     public IInteractable GetInteractable()
