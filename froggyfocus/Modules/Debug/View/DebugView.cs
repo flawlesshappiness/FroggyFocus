@@ -90,7 +90,7 @@ public partial class DebugView : View
         var lock_name = nameof(DebugView);
         if (visible)
         {
-            MouseVisibility.Instance.Lock.AddLock(lock_name);
+            MouseVisibility.SetVisible(lock_name, true);
             Scene.PauseLock.AddLock(lock_name);
 
             var idx_max = parent.GetChildCount() - 1;
@@ -100,7 +100,7 @@ public partial class DebugView : View
         }
         else
         {
-            MouseVisibility.Instance.Lock.RemoveLock(lock_name);
+            MouseVisibility.SetVisible(lock_name, false);
             Scene.PauseLock.RemoveLock(lock_name);
 
             parent.MoveChild(this, 0);

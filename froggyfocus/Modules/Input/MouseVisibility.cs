@@ -10,32 +10,45 @@ public partial class MouseVisibility : Node
     {
         base._Ready();
         Instance = this;
-        InitializeMouse();
+        Lock.OnFree += OnFree;
+        ProcessMode = ProcessModeEnum.Always;
     }
 
-    private void InitializeMouse()
+    private void OnFree()
     {
-        Lock.OnLocked += OnMouseVisibleLocked;
-        Lock.OnFree += OnMouseVisibleFree;
+        HideMouse();
+    }
 
-        if (Lock.IsLocked)
+    public override void _Input(InputEvent e)
+    {
+        base._Input(e);
+
+        if (e is InputEventMouse mouse && mouse != null)
         {
-            OnMouseVisibleLocked();
+            ShowMouse();
         }
-        else
+        else if (e is InputEventMouseMotion mmotion && mmotion != null && mmotion.Relative.Length() > 0)
         {
-            OnMouseVisibleFree();
+            ShowMouse();
+        }
+        else if (e is InputEventJoypadButton joypad && joypad != null)
+        {
+            HideMouse();
+        }
+        else if (e is InputEventJoypadMotion jmotion && jmotion != null && Mathf.Abs(jmotion.AxisValue) > 0.25f)
+        {
+            HideMouse();
         }
     }
 
-    private void OnMouseVisibleFree()
+    private void ShowMouse()
+    {
+        Input.MouseMode = Lock.IsLocked ? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured;
+    }
+
+    private void HideMouse()
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
-    }
-
-    private void OnMouseVisibleLocked()
-    {
-        Input.MouseMode = Input.MouseModeEnum.Visible;
     }
 
     public static void Show(string lock_name)
