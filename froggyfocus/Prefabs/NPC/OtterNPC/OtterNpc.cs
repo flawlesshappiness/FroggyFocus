@@ -41,19 +41,14 @@ public partial class OtterNpc : Area3D, IInteractable
 
     public void Interact()
     {
-        Debug.TraceMethod();
         if (HandIn.IsAvailable(HandInInfo.Id))
         {
-            Debug.TraceMethod("Hand in available");
             StartDialogue("##OTTER_SWAMP_REQUEST_001##");
         }
         else
         {
-            Debug.TraceMethod("Hand in NOT available");
             StartDialogue("##OTTER_SWAMP_REQUEST_IDLE_001##");
         }
-
-        Debug.LogError("End of test");
     }
 
     private void HandInClaimed(string id)
@@ -69,7 +64,6 @@ public partial class OtterNpc : Area3D, IInteractable
 
     private void StartDialogue(string id)
     {
-        Debug.TraceMethod(id);
         active_dialogue = true;
         param_dialogue.Set(true);
         DialogueController.Instance.StartDialogue(id);

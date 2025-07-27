@@ -1,0 +1,157 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqp135ifs3p7p"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_hg4hd"]
+[ext_resource type="Script" uid="uid://c52tbxph6fkse" path="res://Views/UpgradeView/UpgradeView.cs" id="2_n8kem"]
+[ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="3_bsdmw"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="4_nc2yg"]
+[ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="5_ghlx0"]
+[ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="6_cjx6f"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="7_6t0b8"]
+
+[node name="UpgradeView" type="Control" node_paths=PackedStringArray("BackButton", "Upgrades", "AnimatedPanel", "AnimatedOverlay", "InputBlocker")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hg4hd")
+script = ExtResource("2_n8kem")
+BackButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/Container/BackButton")
+Upgrades = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/Container/MarginContainer/Upgrades")
+AnimatedPanel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel")
+AnimatedOverlay = NodePath("AnimatedOverlay")
+InputBlocker = NodePath("InputBlocker")
+
+[node name="AnimatedOverlay" parent="." instance=ExtResource("3_bsdmw")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="UIScale" type="Control" parent="CenterContainer/Center"]
+layout_mode = 2
+anchors_preset = 0
+script = ExtResource("4_nc2yg")
+
+[node name="AnimatedPanel" parent="CenterContainer/Center/UIScale" instance=ExtResource("5_ghlx0")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Container" type="Control" parent="CenterContainer/Center/UIScale/AnimatedPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -200.0
+offset_right = 225.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Upgrades" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/MarginContainer" instance=ExtResource("6_cjx6f")]
+layout_mode = 2
+
+[node name="BackButton" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container" instance=ExtResource("7_6t0b8")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.5
+offset_top = 12.455
+offset_right = 49.5
+offset_bottom = 57.455
+grow_horizontal = 2
+grow_vertical = 0
+text = " Back"
+
+[node name="TopControls" type="Control" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/TopControls"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = -57.435
+offset_right = 104.0
+offset_bottom = 16.565
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/TopControls/Title"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/TopControls/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel/Container/TopControls/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "##UPGRADES##"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

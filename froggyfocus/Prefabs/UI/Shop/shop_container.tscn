@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://du35rtcreuxfe"]
+[gd_scene load_steps=7 format=3 uid="uid://du35rtcreuxfe"]
 
 [ext_resource type="Script" uid="uid://dbpm57axr67cf" path="res://Prefabs/UI/Shop/ShopContainer.cs" id="1_qigjm"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_xtxcp"]
 [ext_resource type="PackedScene" uid="uid://cpee6hy6xgor5" path="res://Prefabs/UI/Sell/sell_container.tscn" id="2_qigjm"]
-[ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="3_ct30e"]
 [ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="4_7sns5"]
 [ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/Color/appearance_color_container.tscn" id="5_48iua"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="7_xtxcp"]
@@ -19,7 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_qigjm")
 BackButton = NodePath("BackButton")
 TabContainer = NodePath("TabContainer")
-UpgradeContainer = NodePath("TabContainer/Upgrades")
+UpgradeContainer = NodePath("")
 SellContainer = NodePath("TabContainer/Sell")
 HatsContainer = NodePath("TabContainer/Hats")
 ColorContainer = NodePath("TabContainer/Colors")
@@ -37,21 +36,16 @@ current_tab = 0
 [node name="Sell" parent="TabContainer" instance=ExtResource("2_qigjm")]
 layout_mode = 2
 
-[node name="Upgrades" parent="TabContainer" instance=ExtResource("3_ct30e")]
-visible = false
-layout_mode = 2
-
 [node name="Hats" parent="TabContainer" instance=ExtResource("4_7sns5")]
 visible = false
 layout_mode = 2
 ShowUnpurchased = true
-metadata/_tab_index = 2
 
 [node name="Colors" parent="TabContainer" instance=ExtResource("5_48iua")]
 visible = false
 layout_mode = 2
 ShowLocked = true
-metadata/_tab_index = 3
+metadata/_tab_index = 2
 
 [node name="TitleContainer" type="MarginContainer" parent="."]
 visible = false

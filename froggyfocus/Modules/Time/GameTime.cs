@@ -33,7 +33,7 @@ public partial class GameTime : Node
 
     public static string GetDateTimeString(DateTime date)
     {
-        return date.ToString("yyyy-MM-ddTHH:mm:ss");
+        return date.ToString("yyyy-MM-ddTHH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
     }
 
     public static DateTime GetCurrentDateTime()

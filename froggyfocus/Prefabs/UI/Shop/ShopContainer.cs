@@ -9,9 +9,6 @@ public partial class ShopContainer : Control
     public TabContainer TabContainer;
 
     [Export]
-    public UpgradeContainer UpgradeContainer;
-
-    [Export]
     public SellContainer SellContainer;
 
     [Export]

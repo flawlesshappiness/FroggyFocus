@@ -6,7 +6,7 @@ public partial class DialogueController : SingletonController
     public override string Directory => "Dialogue";
     public static DialogueController Instance => Singleton.Get<DialogueController>();
     private DialogueView View => Singleton.Get<DialogueView>();
-    private DialogueNodeCollection Collection { get; set; }
+    public DialogueNodeCollection Collection { get; private set; }
 
     private readonly string json_path = "res://Dialogue/dialogue.json";
 
