@@ -111,9 +111,10 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         cr_weather = this.StartCoroutine(Cr, "weather");
         IEnumerator Cr()
         {
+            var rng = new RandomNumberGenerator();
             while (true)
             {
-                yield return WaitForSkip(300);
+                yield return WaitForSkip(rng.RandfRange(200, 400));
 
                 var previous_weather = current_weather;
                 current_weather = GetNextWeather();

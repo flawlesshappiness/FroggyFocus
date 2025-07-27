@@ -239,7 +239,7 @@ auto_translate_mode = 2
 layout_mode = 2
 text = "PREFAB"
 
-[node name="ContentList" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer" node_paths=PackedStringArray("Label")]
+[node name="ContentList" type="Control" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer" node_paths=PackedStringArray("Label", "ScrollContainer")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -248,6 +248,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_42i5k")
 Label = NodePath("ScrollContainer/VBoxContainer/Label")
+ScrollContainer = NodePath("ScrollContainer")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Main/HSplitContainer/Right/Content/MarginContainer/MarginContainer/ContentContainer/ContentList"]
 layout_mode = 1

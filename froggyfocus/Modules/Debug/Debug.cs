@@ -163,7 +163,7 @@ public static class Debug
 
         foreach (var log in _logs)
         {
-            v.ContentList.AddText(log.GetLogMessage());
+            v.ContentList.AddLog(log);
         }
     }
 }

@@ -21,6 +21,7 @@ public static class HandIn
 
     public static bool IsAvailable(string id)
     {
+        Debug.TraceMethod(id);
         var data = GetOrCreateData(id);
         return Quest.IsAvailable(data);
     }

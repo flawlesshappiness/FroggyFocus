@@ -505,7 +505,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4229, 0, 28.6437)
 curve = SubResource("Curve3D_a7viq")
 
 [node name="OtterNPC" parent="World/Lilypads" instance=ExtResource("17_4oemw")]
-transform = Transform3D(-1.63936, 0, -1.14564, 0, 2, 0, 1.14564, 0, -1.63936, -11.7936, -0.930692, -9.63355)
+transform = Transform3D(-1.97628, 0, 0.30707, 0, 2, 0, -0.30707, 0, -1.97628, -11.9363, 0.00575167, 50.2068)
 
 [node name="DeadForest" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61978, -3.8147e-06, 44.1012)

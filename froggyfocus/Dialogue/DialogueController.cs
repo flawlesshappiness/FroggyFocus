@@ -48,17 +48,20 @@ public partial class DialogueController : SingletonController
 
     public void StartDialogue(string id)
     {
+        Debug.TraceMethod(id);
         SetNode(id);
     }
 
     private void SetNode(string id)
     {
+        Debug.TraceMethod(id);
         var node = Collection.GetNode(id);
         SetNode(node);
     }
 
     private void SetNode(DialogueNode node)
     {
+        Debug.TraceMethod(node);
         if (node == null)
         {
             Debug.LogError("DialogueController.SetNode(): Node was null");

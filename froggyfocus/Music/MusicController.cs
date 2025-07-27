@@ -46,9 +46,10 @@ public partial class MusicController : SingletonController
         cr_music = this.StartCoroutine(Cr);
         IEnumerator Cr()
         {
+            var rng = new RandomNumberGenerator();
             while (true)
             {
-                yield return WaitForSkippableDelay(300);
+                yield return WaitForSkippableDelay(rng.RandfRange(400, 600));
 
                 music_playing = true;
                 var bgm = bgms.Random();
