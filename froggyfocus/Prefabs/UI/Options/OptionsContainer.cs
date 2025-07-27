@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class OptionsContainer : ControlScript
 {
@@ -13,7 +14,7 @@ public partial class OptionsContainer : ControlScript
     public Slider CameraSensitivtySlider;
 
     [Export]
-    public Slider UIScaleSlider;
+    public OptionsButtonControl UIScaleOptions;
 
     public static Action OnUIScaleChanged;
 
@@ -25,7 +26,7 @@ public partial class OptionsContainer : ControlScript
 
         EnvironmentSlider.ValueChanged += EnvironmentVolume_ValueChanged;
         CameraSensitivtySlider.ValueChanged += CameraSensitivity_ValueChanged;
-        UIScaleSlider.ValueChanged += UIScaleSlider_ValueChanged;
+        UIScaleOptions.IndexChanged += UIScaleOptions_IndexChanged;
 
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
     }
@@ -38,7 +39,7 @@ public partial class OptionsContainer : ControlScript
 
         EnvironmentSlider.Value = Data.Options.EnvironmentVolume;
         CameraSensitivtySlider.Value = Data.Options.CameraSensitivity;
-        UIScaleSlider.Value = Data.Options.UIScale;
+        UIScaleOptions.SetIndex(Data.Options.UIScaleIndex);
 
         showing = false;
     }
@@ -60,12 +61,13 @@ public partial class OptionsContainer : ControlScript
         Data.Options.CameraSensitivity = fvalue;
     }
 
-    private void UIScaleSlider_ValueChanged(double value)
+    private void UIScaleOptions_IndexChanged(int index)
     {
         if (showing) return;
 
-        var fvalue = Convert.ToSingle(value);
-        Data.Options.UIScale = fvalue;
+        var scales = new List<float> { 0.8f, 0.9f, 1.0f, 1.1f, 1.2f };
+        Data.Options.UIScale = scales.GetClamped(index);
+        Data.Options.UIScaleIndex = index;
         OnUIScaleChanged?.Invoke();
     }
 }

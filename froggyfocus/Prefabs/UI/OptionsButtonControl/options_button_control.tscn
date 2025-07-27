@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddkr2dahi2d8"]
+
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="1_70055"]
+[ext_resource type="Script" uid="uid://du5afu8udprgs" path="res://Prefabs/UI/OptionsButtonControl/OptionsButtonControl.cs" id="1_m6t1p"]
+
+[node name="OptionsButtonControl" type="HBoxContainer" node_paths=PackedStringArray("PreviousButton", "NextButton", "Label")]
+size_flags_horizontal = 3
+script = ExtResource("1_m6t1p")
+PreviousButton = NodePath("PreviousButton")
+NextButton = NodePath("NextButton")
+Label = NodePath("Label")
+
+[node name="PreviousButton" parent="." instance=ExtResource("1_70055")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../NextButton")
+theme_override_font_sizes/font_size = 15
+text = " < "
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" parent="." instance=ExtResource("1_70055")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../PreviousButton")
+theme_override_font_sizes/font_size = 15
+text = " > "
