@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=58 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
@@ -38,8 +38,10 @@
 [ext_resource type="PackedScene" uid="uid://bvq1s6k4t5k0m" path="res://Prefabs/NPC/MushroomNPC/mushroom_npc.tscn" id="19_ghoyf"]
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
 [ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="23_fmiw0"]
+[ext_resource type="PackedScene" uid="uid://csnopemsak2aa" path="res://Assets/FlawLizArt/Nature/Toon/branch_001.fbx" id="25_fx45b"]
 [ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="26_eoi61"]
 [ext_resource type="Resource" uid="uid://domnlcvrorsml" path="res://FocusEvent/Resources/Swamp Mushroom.tres" id="26_ghoyf"]
+[ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="26_many0"]
 [ext_resource type="PackedScene" uid="uid://dphy7mkttpwga" path="res://Assets/Quaternius/Nature/CommonTree_Dead_5.fbx" id="27_tyvxw"]
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="33_brx17"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
@@ -588,7 +590,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 35.6279, -0.367676, 22.7065)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.06644, -0.367677, 67.4473)
 
 [node name="Node3D4" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 19.3355, -0.367677, 59.3323)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 22.399, -0.367677, 59.6066)
 
 [node name="Node3D5" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.82913, -0.367677, 84.2922)
@@ -621,7 +623,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.1084, -0.367675, -21.6655
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42.6318, -0.367675, -12.8582)
 
 [node name="Grass_Tuft" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.7393, -4.9184, 7.60716)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.4433, -4.9184, 5.07318)
 
 [node name="Grass_Tuft2" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 38.6877, -4.9184, 63.3578)
@@ -684,7 +686,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.85063, -10.0004, 53.5321)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.39267, -10.0004, 73.7287)
 
 [node name="Grass_Tuft22" parent="World/DeadForest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.5115, -10.0004, 20.7538)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 24.8839, -10.0004, 28.4408)
 
 [node name="Small" type="Node3D" parent="World/DeadForest/Grass_Tufts"]
 
@@ -815,6 +817,89 @@ transform = Transform3D(10.4345, 0, -17.0623, 0, 20, 0, 17.0623, 0, 10.4345, -31
 
 [node name="CommonTree_Dead_19" parent="World/DeadForest/Trees" instance=ExtResource("15_xnl44")]
 transform = Transform3D(10.4345, 0, -17.0623, 0, 20, 0, 17.0623, 0, 10.4345, -30.6833, -3, -15.2279)
+
+[node name="Branches" type="Node3D" parent="World/DeadForest"]
+
+[node name="branch_001" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(1.31777, 0, -1.50449, 0, 2, 0, 1.50449, 0, 1.31777, -50.3582, -3.8147e-06, -58.4388)
+
+[node name="branch_002" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(-1.74042, 0, -0.985364, 0, 2, 0, 0.985364, 0, -1.74042, -96.0954, -4.15717, 51.4143)
+
+[node name="branch_007" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(0.0581113, 0, -1.99916, 0, 2, 0, 1.99916, 0, 0.0581113, 21.1043, -4.15716, 99.7864)
+
+[node name="branch_008" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(1.22363, 0, 1.582, 0, 2, 0, -1.582, 0, 1.22363, 108.965, -4.15718, 48.9759)
+
+[node name="branch_009" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(-0.478491, 0, 1.94192, 0, 2, 0, -1.94192, 0, -0.478491, -97.955, -0.799695, -16.5816)
+
+[node name="branch_003" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(-0.181056, 0, -2.99453, 0, 3, 0, 2.99453, 0, -0.181056, -92.3619, 6.47058, -17.8752)
+
+[node name="branch_004" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(-0.825755, 0, -2.88412, 0, 3, 0, 2.88412, 0, -0.825755, -49.9152, -3.8528, 106.053)
+
+[node name="branch_005" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(-1.82819, 0, 2.37859, 0, 3, 0, -2.37859, 0, -1.82819, 39.481, 6.47058, 94.0334)
+
+[node name="branch_006" parent="World/DeadForest/Branches" instance=ExtResource("25_fx45b")]
+transform = Transform3D(2.82703, 0, -1.00394, 0, 3, 0, 1.00394, 0, 2.82703, 108.916, -3.64228, 29.4567)
+
+[node name="Branch_Swamp_002" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(1.48528, 0, 1.33938, 0, 2, 0, -1.33938, 0, 1.48528, 8.27528, 9.53674e-07, 15.1676)
+
+[node name="Branch_Swamp_003" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-1.93847, 0, -0.492273, 0, 2, 0, 0.492273, 0, -1.93847, -8.32391, -3.89583, 48.2896)
+
+[node name="Branch_Swamp_004" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(1.98847, 0, -0.214437, 0, 2, 0, 0.214437, 0, 1.98847, 11.0861, -0.245509, 68.4703)
+
+[node name="Branch_Swamp_005" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-0.356849, 0, -1.96791, 0, 2, 0, 1.96791, 0, -0.356849, -24.382, -0.245509, 77.1895)
+
+[node name="Branch_Swamp_015" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(1.70663, 0, -1.04279, 0, 2, 0, 1.04279, 0, 1.70663, 46.6366, -0.245509, 75.7247)
+
+[node name="Branch_Swamp_016" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-0.651829, 0, -1.8908, 0, 2, 0, 1.8908, 0, -0.651829, 63.7269, -1.80502, 20.0364)
+
+[node name="Branch_Swamp_017" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-0.892114, 0, -1.79001, 0, 2, 0, 1.79001, 0, -0.892114, 35.6142, -1.80502, 54.2198)
+
+[node name="Branch_Swamp_018" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-1.9909, 0, -0.190615, 0, 2, 0, 0.190615, 0, -1.9909, -51.0602, -1.80502, 52.7418)
+
+[node name="Branch_Swamp_019" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-1.9909, 0, -0.190615, 0, 2, 0, 0.190615, 0, -1.9909, -13.1488, -1.80502, -27.8261)
+
+[node name="Branch_Swamp_006" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-3.63008, 0, -1.68003, 0, 4, 0, 1.68003, 0, -3.63008, -59.9827, -4.39081, 69.049)
+
+[node name="Branch_Swamp_007" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(2.92055, 0, -2.7332, 0, 4, 0, 2.7332, 0, 2.92055, -75.8154, -4.39081, 13.3492)
+
+[node name="Branch_Swamp_008" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(0.2175, 0, 3.99408, 0, 4, 0, -3.99408, 0, 0.2175, -43.8654, -4.3908, -28.6731)
+
+[node name="Branch_Swamp_009" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-1.72929, 0, 3.60688, 0, 4, 0, -3.60688, 0, -1.72929, -15.0764, 0.819199, -86.0764)
+
+[node name="Branch_Swamp_010" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(4.37288, 0, -8.99321, 0, 10, 0, 8.99321, 0, 4.37288, -96.1819, -11.223, -103.277)
+
+[node name="Branch_Swamp_011" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-8.77807, 0, -4.79014, 0, 10, 0, 4.79014, 0, -8.77807, -170.542, 1.54453, 23.2604)
+
+[node name="Branch_Swamp_012" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(1.38274, 0, 9.90394, 0, 10, 0, -9.90394, 0, 1.38274, -41.8309, 1.54453, 169.454)
+
+[node name="Branch_Swamp_013" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(9.05584, 0, 4.24168, 0, 10, 0, -4.24168, 0, 9.05584, 105.09, 15.9159, 137.55)
+
+[node name="Branch_Swamp_014" parent="World/DeadForest/Branches" instance=ExtResource("26_many0")]
+transform = Transform3D(-4.925, 0, -8.70313, 0, 10, 0, 8.70313, 0, -4.925, 164.638, -16.9011, -30.0778)
 
 [node name="PathWaterSFX_Wood" type="Path3D" parent="World/DeadForest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4236, 0, 27.9228)

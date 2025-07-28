@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://2sbww4qcwiye"]
+
+[ext_resource type="PackedScene" uid="uid://csnopemsak2aa" path="res://Assets/FlawLizArt/Nature/Toon/branch_001.fbx" id="1_8pb2g"]
+
+[node name="Branch_Swamp_001" type="Node3D"]
+
+[node name="branch_001" parent="." instance=ExtResource("1_8pb2g")]

@@ -250,6 +250,7 @@ public partial class PauseView : View
             Data.Game.Save();
 
             WeatherController.Instance.StopWeather();
+            FocusHotSpotController.Instance.Stop();
             Scene.Goto<MainMenuScene>();
 
             Hide();
