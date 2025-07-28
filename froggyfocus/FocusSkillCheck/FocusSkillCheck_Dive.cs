@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class FocusSkillCheck_Dive : FocusSkillCheck
 {
@@ -15,6 +16,8 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
     [Export]
     public PackedScene SplashParticlePrefab;
 
+    private List<Node3D> created_objects = new();
+
     public override void _Ready()
     {
         base._Ready();
@@ -23,6 +26,8 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
     public override void Clear()
     {
         base.Clear();
+        created_objects.ForEach(x => x.QueueFree());
+        created_objects.Clear();
     }
 
     protected override IEnumerator Run()
@@ -59,6 +64,7 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
         ps.SetParent(this);
         ps.Play(destroy: true);
         ps.GlobalPosition = position;
+        created_objects.Add(ps);
 
         SfxSplash.Play();
     }
