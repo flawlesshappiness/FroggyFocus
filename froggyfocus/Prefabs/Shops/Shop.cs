@@ -1,12 +1,12 @@
 using Godot;
 using System.Collections;
 
-public partial class UpgradeShop : Area3D, IInteractable
+public partial class Shop : Area3D, IInteractable
 {
     [Export]
     public MoleNpc Mole;
 
-    private static UpgradeShop current;
+    private static Shop current;
 
     private bool animating;
     private bool mole_up;
@@ -90,7 +90,7 @@ public partial class UpgradeShop : Area3D, IInteractable
 
     private void SetLocks(bool locked)
     {
-        var id = nameof(UpgradeShop);
+        var id = nameof(Shop);
         Player.SetAllLocks(id, locked);
         PauseView.ToggleLock.SetLock(id, locked);
     }

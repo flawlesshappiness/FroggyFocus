@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bw057fcfnoby7" path="res://Prefabs/NPC/MagpieNPC/magpie_npc.tscn" id="11_hem5p"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="12_5fuuy"]
 [ext_resource type="Resource" uid="uid://ccictmr6wjwmg" path="res://FetchQuest/Resources/Magpie_Swamp.tres" id="12_7qo61"]
-[ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/upgrade_shop.tscn" id="12_20fcr"]
+[ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/Shop.tscn" id="12_20fcr"]
 [ext_resource type="Resource" uid="uid://4t23pgixusyd" path="res://FocusEvent/Resources/Swamp Land.tres" id="12_cmxon"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="12_yvk0y"]
 [ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="13_a7viq"]
@@ -224,7 +224,7 @@ transform = Transform3D(0.543054, 0, -9.98524, 0, 10, 0, 9.98524, 0, 0.543054, 4
 curve = SubResource("Curve3D_bmghv")
 
 [node name="UpgradeShop" parent="World/Islands" instance=ExtResource("12_20fcr")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -6.12665, 0, -1.18688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.12665, 0, -1.18688)
 
 [node name="FocusEventArea" type="Area3D" parent="World/Islands"]
 collision_layer = 0
@@ -939,8 +939,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.72509, 6.19889e-06, 2.8839
 [node name="StickPickup8" parent="World/DeadForest/StickPickups" instance=ExtResource("13_dkapk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.151, 6.19889e-06, -5.48523)
 
-[node name="UpgradeShop2" parent="World/DeadForest" instance=ExtResource("12_20fcr")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -20.5564, -0.175682, 20.8814)
+[node name="Shop" parent="World/DeadForest" instance=ExtResource("12_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5564, -0.175682, 20.8814)
 
 [node name="LeechNPC" parent="World/DeadForest" instance=ExtResource("43_8lh35")]
 transform = Transform3D(-0.578365, 0, 0.394327, 0, 0.7, 0, -0.394327, 0, -0.578365, 24.3897, -0.568434, 7.7792)
@@ -1035,8 +1035,8 @@ transform = Transform3D(0.216951, 0, -0.976183, 0, 1, 0, 0.976183, 0, 0.216951, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4236, 0, 27.9228)
 curve = SubResource("Curve3D_ghoyf")
 
-[node name="UpgradeShop" parent="World/Mushrooms" instance=ExtResource("12_20fcr")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -13.4389, 14.6577, -14.7516)
+[node name="Shop" parent="World/Mushrooms" instance=ExtResource("12_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4389, 14.6577, -14.7516)
 
 [node name="StickPickups" type="Node3D" parent="World/Mushrooms"]
 

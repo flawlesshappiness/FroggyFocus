@@ -1,12 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://br5qf0nwskdvc"]
+[gd_scene load_steps=29 format=3 uid="uid://br5qf0nwskdvc"]
 
 [ext_resource type="Script" uid="uid://qo5imoor6uf2" path="res://Views/FocusIntroView/FocusIntroView.cs" id="1_1m4rk"]
 [ext_resource type="Texture2D" uid="uid://dyuqnhv05ysnf" path="res://Assets/FlawLizArt/Textures/versus_split_left.png" id="2_fe111"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_fe111"]
 [ext_resource type="Texture2D" uid="uid://dh2yj6yw5br1a" path="res://Assets/FlawLizArt/Textures/versus_split_right.png" id="3_gvmda"]
 [ext_resource type="Texture2D" uid="uid://lfx3ye5e35df" path="res://Assets/FlawLizArt/Textures/background_gradient_circle.png" id="3_p37b3"]
+[ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="6_15pab"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_dnvhp"]
 [ext_resource type="AudioStream" uid="uid://uj04tqrfrjm8" path="res://Sounds/Raw/sfx_marimba_riff_001.wav" id="7_p37b3"]
+[ext_resource type="PackedScene" uid="uid://ir8kqnw2coxy" path="res://Prefabs/Characters/mosquito.tscn" id="7_tc7d2"]
 [ext_resource type="AudioStream" uid="uid://cj6452qfjc4bk" path="res://Sounds/Raw/sfx_marimba_riff_002.wav" id="8_ipw83"]
 [ext_resource type="AudioStream" uid="uid://bp6iuvbb4w16" path="res://Sounds/Raw/sfx_marimba_riff_011.wav" id="9_15pab"]
 [ext_resource type="AudioStream" uid="uid://8sle3fobbthf" path="res://Sounds/Raw/sfx_marimba_riff_003.wav" id="10_tc7d2"]
@@ -18,11 +20,11 @@
 [ext_resource type="AudioStream" uid="uid://domsdv6t2xhii" path="res://Sounds/Raw/sfx_marimba_riff_009.wav" id="16_h01o1"]
 [ext_resource type="AudioStream" uid="uid://conbu2jdco7vp" path="res://Sounds/Raw/sfx_marimba_riff_010.wav" id="17_ghpk4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ngwas"]
-viewport_path = NodePath("SubViewport_Frog")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_gvmda"]
 viewport_path = NodePath("SubViewport_Target")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ngwas"]
+viewport_path = NodePath("SubViewport_Frog")
 
 [sub_resource type="Animation" id="Animation_6v82s"]
 length = 0.001
@@ -238,78 +240,6 @@ grow_vertical = 2
 [node name="Center" type="Control" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="Anim_Left" type="Control" parent="CenterContainer/Center"]
-anchors_preset = 0
-offset_left = -1920.0
-offset_right = -1920.0
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/Anim_Left"]
-clip_children = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -966.0
-offset_top = -536.0
-offset_right = 954.0
-offset_bottom = 544.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_fe111")
-expand_mode = 1
-
-[node name="Control" type="Control" parent="CenterContainer/Center/Anim_Left/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/Center/Anim_Left/TextureRect/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0506, 0.17342, 0.46, 1)
-
-[node name="TextureRect2" type="TextureRect" parent="CenterContainer/Center/Anim_Left/TextureRect/Control/ColorRect"]
-modulate = Color(0.14, 0.742, 1, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_p37b3")
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/Anim_Left/TextureRect/Control/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -282.0
-offset_top = -66.0
-offset_right = -282.0
-offset_bottom = -66.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_ngwas")
-stretch_mode = 4
-
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/Center/Anim_Left/TextureRect"]
-layout_mode = 0
-offset_left = 1520.0
-offset_top = -14.0
-offset_right = 1560.0
-offset_bottom = 1557.0
-rotation = 0.785398
-color = Color(0, 0, 0, 1)
-
 [node name="Anim_Right" type="Control" parent="CenterContainer/Center"]
 layout_mode = 1
 anchors_preset = 8
@@ -330,10 +260,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -966.0
-offset_top = -536.0
-offset_right = 954.0
-offset_bottom = 544.0
+offset_left = -1440.0
+offset_top = -810.0
+offset_right = 1440.0
+offset_bottom = 810.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_gvmda")
@@ -371,21 +301,98 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 300.0
-offset_top = 45.0
-offset_right = 300.0
-offset_bottom = 45.0
+offset_left = 1056.0
+offset_top = 470.0
+offset_right = -385.0
+offset_bottom = -341.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_gvmda")
+expand_mode = 1
 stretch_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer/Center/Anim_Right/TextureRect"]
 layout_mode = 0
-offset_left = 1472.0
-offset_top = -33.0001
-offset_right = 1512.0
-offset_bottom = 1538.0
+offset_left = 2215.0
+offset_top = -43.0
+offset_right = 2255.0
+offset_bottom = 2837.0
+rotation = 0.785398
+color = Color(0, 0, 0, 1)
+
+[node name="Anim_Left" type="Control" parent="CenterContainer/Center"]
+anchors_preset = 0
+offset_left = -1920.0
+offset_right = -1920.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/Anim_Left"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1440.0
+offset_top = -810.0
+offset_right = 1440.0
+offset_bottom = 810.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fe111")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="CenterContainer/Center/Anim_Left/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/Center/Anim_Left/TextureRect/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0506, 0.17342, 0.46, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="CenterContainer/Center/Anim_Left/TextureRect/Control/ColorRect"]
+modulate = Color(0.14, 0.742, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 22.0
+offset_right = 22.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_p37b3")
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/Center/Anim_Left/TextureRect/Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = 173.0
+offset_right = -789.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_ngwas")
+stretch_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/Center/Anim_Left/TextureRect"]
+layout_mode = 0
+offset_left = 2308.0
+offset_top = -34.9999
+offset_right = 2348.0
+offset_bottom = 2845.0
 rotation = 0.785398
 color = Color(0, 0, 0, 1)
 
@@ -430,6 +437,12 @@ transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewport_Target/Origin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
 light_energy = 0.1
+
+[node name="Beetle" parent="SubViewport_Target/Origin" instance=ExtResource("6_15pab")]
+visible = false
+
+[node name="Mosquito" parent="SubViewport_Target/Origin" instance=ExtResource("7_tc7d2")]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
