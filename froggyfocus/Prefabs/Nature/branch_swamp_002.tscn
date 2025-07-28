@@ -1,7 +1,83 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfg4o34c4toh8"]
+[gd_scene load_steps=8 format=3 uid="uid://cfg4o34c4toh8"]
 
 [ext_resource type="PackedScene" uid="uid://cj0wol0qe4nq5" path="res://Assets/FlawLizArt/Nature/Toon/branch_002.fbx" id="1_url54"]
+[ext_resource type="Material" uid="uid://db1u1f58aaaky" path="res://Materials/Branch_001_Texture.tres" id="2_5lpbw"]
+[ext_resource type="Material" uid="uid://u2y5v44s2xc3" path="res://Materials/Branch_002_Texture.tres" id="3_024yu"]
+[ext_resource type="Material" uid="uid://cj44kc16xji4y" path="res://Materials/Branch_003_Texture.tres" id="4_knghc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_024yu"]
+material = ExtResource("2_5lpbw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_knghc"]
+material = ExtResource("3_024yu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_c1jyv"]
+material = ExtResource("4_knghc")
 
 [node name="Branch_Swamp_002" type="Node3D"]
 
 [node name="branch_002" parent="." instance=ExtResource("1_url54")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.204735, -2.35765, 1.84379, -2.29779, 1.30805, 1.41745, -1.91788, -1.31548, -1.89506, -0.617208, 1.18385, 1.75029)
+mesh = SubResource("QuadMesh_024yu")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.599147, 0.729339, -1.76326, -1.82753, 0.750862, -0.310405, 0.548788, 1.70419, 0.891381, -4.66829, 0.989569, -0.87598)
+mesh = SubResource("QuadMesh_024yu")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.175888, -1.98982, 0.0983097, -1.95736, 0.154207, -0.38075, 0.371233, -0.129698, -1.96096, 0.59383, 3.25719, -4.74514)
+mesh = SubResource("QuadMesh_024yu")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.491332, 0.754277, 2.86176, -2.66168, 1.15563, -0.76157, -1.29385, -2.66376, 0.479948, 0.676501, 0.264884, 0.0461064)
+mesh = SubResource("QuadMesh_knghc")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.893278, -0.111326, 2.86176, 2.60031, 1.2878, -0.76157, -1.20019, 2.70725, 0.479948, 1.24307, 2.48595, -3.57583)
+mesh = SubResource("QuadMesh_c1jyv")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.65776, -2.00744, -1.49064, 1.90991, 2.17093, -0.799567, 1.61372, -0.507163, 2.47764, 2.92868, 1.28262, -1.15126)
+mesh = SubResource("QuadMesh_c1jyv")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.16377, -2.49305, -1.19598, 2.72203, 1.26101, 0.0201222, 0.485989, -1.09297, 2.75122, -5.88475, 1.36944, -1.90928)
+mesh = SubResource("QuadMesh_c1jyv")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.746605, 1.64376, 0.860605, 1.57559, 1.05158, -0.641645, -0.979852, 0.438451, -1.6875, -4.53474, 2.39764, -1.46907)
+mesh = SubResource("QuadMesh_c1jyv")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.213324, -0.723856, 0.656144, 0.975669, -0.123036, 0.181474, -0.0506321, 0.678892, 0.73249, 0.748713, 1.32194, 3.84842)
+mesh = SubResource("QuadMesh_c1jyv")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.817522, 0.393849, -2.85946, 2.81625, 0.542659, 0.879911, 0.632755, -2.92411, -0.221848, 1.77514, 4.02165, -5.78783)
+mesh = SubResource("QuadMesh_c1jyv")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.583722, 0.217485, 1.90052, -1.63641, 1.08583, 0.378347, -0.990677, -1.66544, 0.494859, 0.684241, 4.40814, 3.59072)
+mesh = SubResource("QuadMesh_knghc")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.227912, 0.350612, -0.908365, -0.787811, -0.614644, -0.0395775, -0.572198, 0.7066, 0.416301, 3.9669, 1.71883, -0.0414479)
+mesh = SubResource("QuadMesh_knghc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.585011, -0.210583, 0.78321, -0.681508, 0.651163, -0.333967, -0.43967, -0.729138, -0.524451, 2.33997, 2.25242, 4.06711)
+mesh = SubResource("QuadMesh_024yu")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0080415, 0.485352, 0.874282, -0.946383, 0.278672, -0.163407, -0.322948, -0.828719, 0.457088, 3.99373, 2.70229, -0.68298)
+mesh = SubResource("QuadMesh_024yu")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.683441, 0.333823, -0.649207, -0.489697, -0.869191, 0.0685801, -0.541392, 0.364785, 0.757513, 1.64411, 1.08257, 3.94541)
+mesh = SubResource("QuadMesh_024yu")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.268361, 0.0339726, -0.962719, -0.621186, -0.75774, -0.199897, -0.736282, 0.651672, -0.182244, 0.47972, 3.92787, 5.01949)
+mesh = SubResource("QuadMesh_024yu")

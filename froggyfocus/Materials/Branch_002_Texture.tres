@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://u2y5v44s2xc3"]
+
+[ext_resource type="Texture2D" uid="uid://bpwilndr2bdxv" path="res://Textures/branch_002.png" id="1_adeys"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.237
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.76, 0.4009, 0.2812, 1)
+albedo_texture = ExtResource("1_adeys")
+metallic_specular = 0.0
