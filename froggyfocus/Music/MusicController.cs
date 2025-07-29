@@ -17,7 +17,8 @@ public partial class MusicController : SingletonController
 
     public List<string> bgms = new()
     {
-        "bgm_jolly_knight"
+        "bgm_jolly_knight",
+        "bgm_melon_dolly"
     };
 
     public override void _Ready()

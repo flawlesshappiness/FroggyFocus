@@ -82,3 +82,11 @@ size_flags_vertical = 6
 text = "MAX"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LockedLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 6
+text = "MAX?"
+horizontal_alignment = 1
+vertical_alignment = 1

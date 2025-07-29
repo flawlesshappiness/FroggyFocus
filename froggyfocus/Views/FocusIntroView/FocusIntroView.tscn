@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://br5qf0nwskdvc"]
+[gd_scene load_steps=30 format=3 uid="uid://br5qf0nwskdvc"]
 
 [ext_resource type="Script" uid="uid://qo5imoor6uf2" path="res://Views/FocusIntroView/FocusIntroView.cs" id="1_1m4rk"]
 [ext_resource type="Texture2D" uid="uid://dyuqnhv05ysnf" path="res://Assets/FlawLizArt/Textures/versus_split_left.png" id="2_fe111"]
@@ -7,18 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://lfx3ye5e35df" path="res://Assets/FlawLizArt/Textures/background_gradient_circle.png" id="3_p37b3"]
 [ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="6_15pab"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_dnvhp"]
-[ext_resource type="AudioStream" uid="uid://uj04tqrfrjm8" path="res://Sounds/Raw/sfx_marimba_riff_001.wav" id="7_p37b3"]
 [ext_resource type="PackedScene" uid="uid://ir8kqnw2coxy" path="res://Prefabs/Characters/mosquito.tscn" id="7_tc7d2"]
 [ext_resource type="AudioStream" uid="uid://cj6452qfjc4bk" path="res://Sounds/Raw/sfx_marimba_riff_002.wav" id="8_ipw83"]
 [ext_resource type="AudioStream" uid="uid://bp6iuvbb4w16" path="res://Sounds/Raw/sfx_marimba_riff_011.wav" id="9_15pab"]
-[ext_resource type="AudioStream" uid="uid://8sle3fobbthf" path="res://Sounds/Raw/sfx_marimba_riff_003.wav" id="10_tc7d2"]
 [ext_resource type="AudioStream" uid="uid://cv7bmkxuchocc" path="res://Sounds/Raw/sfx_marimba_riff_004.wav" id="11_03a6g"]
+[ext_resource type="AudioStream" uid="uid://b4t1b027xh5mr" path="res://Sounds/Raw/sfx_marimba_riff_014.wav" id="11_j42hg"]
 [ext_resource type="AudioStream" uid="uid://cw6ndmrf1bfn5" path="res://Sounds/Raw/sfx_marimba_riff_005.wav" id="12_j42hg"]
+[ext_resource type="AudioStream" uid="uid://cvv3r4mnbvev1" path="res://Sounds/Raw/sfx_marimba_riff_015.wav" id="12_l1pbs"]
 [ext_resource type="AudioStream" uid="uid://b3war64lfj6dv" path="res://Sounds/Raw/sfx_marimba_riff_006.wav" id="13_l1pbs"]
 [ext_resource type="AudioStream" uid="uid://chvksc7w8axcj" path="res://Sounds/Raw/sfx_marimba_riff_007.wav" id="14_o240r"]
 [ext_resource type="AudioStream" uid="uid://clnd3g6yy635b" path="res://Sounds/Raw/sfx_marimba_riff_008.wav" id="15_x2qoy"]
 [ext_resource type="AudioStream" uid="uid://domsdv6t2xhii" path="res://Sounds/Raw/sfx_marimba_riff_009.wav" id="16_h01o1"]
 [ext_resource type="AudioStream" uid="uid://conbu2jdco7vp" path="res://Sounds/Raw/sfx_marimba_riff_010.wav" id="17_ghpk4"]
+[ext_resource type="AudioStream" uid="uid://5xkv71cmeeed" path="res://Sounds/Raw/sfx_marimba_riff_012.wav" id="20_o240r"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gvmda"]
 viewport_path = NodePath("SubViewport_Target")
@@ -202,18 +203,19 @@ streams_count = 1
 stream_0/stream = ExtResource("6_dnvhp")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vc38l"]
-streams_count = 11
-stream_0/stream = ExtResource("7_p37b3")
-stream_1/stream = ExtResource("8_ipw83")
-stream_2/stream = ExtResource("10_tc7d2")
-stream_3/stream = ExtResource("11_03a6g")
-stream_4/stream = ExtResource("12_j42hg")
-stream_5/stream = ExtResource("13_l1pbs")
-stream_6/stream = ExtResource("14_o240r")
-stream_7/stream = ExtResource("15_x2qoy")
-stream_8/stream = ExtResource("16_h01o1")
-stream_9/stream = ExtResource("17_ghpk4")
-stream_10/stream = ExtResource("9_15pab")
+streams_count = 12
+stream_0/stream = ExtResource("8_ipw83")
+stream_1/stream = ExtResource("11_03a6g")
+stream_2/stream = ExtResource("12_j42hg")
+stream_3/stream = ExtResource("13_l1pbs")
+stream_4/stream = ExtResource("14_o240r")
+stream_5/stream = ExtResource("15_x2qoy")
+stream_6/stream = ExtResource("16_h01o1")
+stream_7/stream = ExtResource("17_ghpk4")
+stream_8/stream = ExtResource("9_15pab")
+stream_9/stream = ExtResource("20_o240r")
+stream_10/stream = ExtResource("11_j42hg")
+stream_11/stream = ExtResource("12_l1pbs")
 
 [node name="FocusIntroView" type="Control" node_paths=PackedStringArray("Frog", "AnimationPlayer", "TargetOrigin", "SfxRiff")]
 layout_mode = 3

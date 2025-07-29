@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://c0utgb1cblm1k"]
+
+[ext_resource type="AudioStream" uid="uid://x5c14ru12ofu" path="res://Sounds/Raw/bgm_melon_dolly.wav" id="1_xltvp"]
+[ext_resource type="Script" uid="uid://blrvdsv0elqy5" path="res://Modules/Sound/SoundInfo.cs" id="2_78rm1"]
+
+[resource]
+script = ExtResource("2_78rm1")
+AudioStreams = Array[AudioStream]([ExtResource("1_xltvp")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(1, 1)
+Bus = "BGM"
+Distance = 0
+Attenuation = 0
+metadata/_custom_type_script = "uid://blrvdsv0elqy5"
