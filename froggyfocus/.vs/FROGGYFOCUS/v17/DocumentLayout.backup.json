@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\handinquest\\handincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:handinquest\\handincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\ui\\rewardunlockbar\\rewardunlockbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\ui\\rewardunlockbar\\rewardunlockbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\ui\\unlockpopup\\unlockpopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\ui\\unlockpopup\\unlockpopup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\views\\handinview\\handinview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:views\\handinview\\handinview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\ui\\rewardunlockbar\\rewardunlockbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\ui\\rewardunlockbar\\rewardunlockbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\gamescene\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,38 +39,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HandInController.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\HandInQuest\\HandInController.cs",
-              "RelativeDocumentMoniker": "HandInQuest\\HandInController.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\HandInQuest\\HandInController.cs",
-              "RelativeToolTip": "HandInQuest\\HandInController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAwwCYAAAAAAAAAAAAAAA==",
+              "Title": "UnlockPopup.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\UI\\UnlockPopup\\UnlockPopup.cs",
+              "RelativeDocumentMoniker": "Prefabs\\UI\\UnlockPopup\\UnlockPopup.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\UI\\UnlockPopup\\UnlockPopup.cs",
+              "RelativeToolTip": "Prefabs\\UI\\UnlockPopup\\UnlockPopup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-30T13:09:38.417Z",
+              "WhenOpened": "2025-07-30T14:10:27.083Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "HandInView.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\HandInView\\HandInView.cs",
               "RelativeDocumentMoniker": "Views\\HandInView\\HandInView.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\HandInView\\HandInView.cs",
               "RelativeToolTip": "Views\\HandInView\\HandInView.cs",
-              "ViewState": "AgIAAAUBAAAAAAAAAAD4vycBAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAM4AAAAAAAAAAAAAAPQAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T10:12:26.153Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "RewardUnlockBar.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\UI\\RewardUnlockBar\\RewardUnlockBar.cs",
               "RelativeDocumentMoniker": "Prefabs\\UI\\RewardUnlockBar\\RewardUnlockBar.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\UI\\RewardUnlockBar\\RewardUnlockBar.cs",
               "RelativeToolTip": "Prefabs\\UI\\RewardUnlockBar\\RewardUnlockBar.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAgwB0AAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAA5wC0AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-30T09:40:44.202Z",
               "EditorCaption": ""

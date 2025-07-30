@@ -6,7 +6,7 @@ public partial class RewardPreview : Control
     public TextureRect TextureRect;
 
     [Export]
-    public ItemSubViewport HatSubViewport;
+    public ItemSubViewport SubViewport;
 
     [Export]
     public Label AmountLabel;
@@ -17,18 +17,18 @@ public partial class RewardPreview : Control
     public override void _Ready()
     {
         base._Ready();
-        TextureRect.Texture = HatSubViewport.GetTexture();
+        TextureRect.Texture = SubViewport.GetTexture();
     }
 
     public void SetHat(AppearanceHatInfo info)
     {
-        HatSubViewport.SetHat(info);
+        SubViewport.SetHat(info);
         AmountLabel.Hide();
     }
 
     public void SetCoinStack(int amount)
     {
-        HatSubViewport.SetPrefab(CoinStackPrefab);
+        SubViewport.SetPrefab(CoinStackPrefab);
         SetAmount(amount);
     }
 

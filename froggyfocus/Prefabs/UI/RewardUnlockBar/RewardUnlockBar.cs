@@ -48,7 +48,7 @@ public partial class RewardUnlockBar : Control
             CreateBarPiece();
         }
 
-        for (int i = 0; i < value; i++)
+        for (int i = 0; i < Mathf.Min(value, max); i++)
         {
             var piece = bar_pieces[i];
             piece.Value = piece.MaxValue;
@@ -67,7 +67,7 @@ public partial class RewardUnlockBar : Control
 
     public IEnumerator WaitForFillNext()
     {
-        var piece = bar_pieces[current_value];
+        var piece = bar_pieces.GetClamped(current_value);
         var curve = Curves.EaseOutQuad;
         yield return LerpEnumerator.Lerp01(0.5f, f =>
         {

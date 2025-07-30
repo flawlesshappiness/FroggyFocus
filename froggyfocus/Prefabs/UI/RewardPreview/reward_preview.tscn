@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://xu7vcw8c8y5q" path="res://Prefabs/Misc/coin_stack.tscn" id="3_bwqsi"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="6_q5028"]
 
-[node name="RewardPreview" type="MarginContainer" node_paths=PackedStringArray("TextureRect", "HatSubViewport", "AmountLabel")]
+[node name="RewardPreview" type="MarginContainer" node_paths=PackedStringArray("TextureRect", "SubViewport", "AmountLabel")]
 custom_minimum_size = Vector2(60, 60)
 theme = ExtResource("1_jbr0e")
 script = ExtResource("2_l2ab3")
 TextureRect = NodePath("TextureRect")
-HatSubViewport = NodePath("HatSubViewport")
+SubViewport = NodePath("SubViewport")
 AmountLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/AmountLabel")
 CoinStackPrefab = ExtResource("3_bwqsi")
 
@@ -43,4 +43,4 @@ alignment = 2
 layout_mode = 2
 text = "x50"
 
-[node name="HatSubViewport" parent="." instance=ExtResource("6_q5028")]
+[node name="SubViewport" parent="." instance=ExtResource("6_q5028")]

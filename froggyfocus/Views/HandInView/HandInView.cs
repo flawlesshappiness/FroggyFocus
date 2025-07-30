@@ -27,7 +27,7 @@ public partial class HandInView : View
     public RichTextLabel LocationHintLabel;
 
     [Export]
-    public ShopExpandPopup ShopExpandPopup;
+    public UnlockPopup UnlockPopup;
 
     [Export]
     public RewardUnlockBar RewardUnlockBar;
@@ -43,8 +43,11 @@ public partial class HandInView : View
 
     private bool animating;
     private HandInData current_data;
-    private ButtonMap selected_map;
+    private HandInInfo current_info;
     private List<ButtonMap> maps = new();
+
+    private bool HasItemUnlock => (current_data?.HatUnlock ?? AppearanceHatType.None) != AppearanceHatType.None;
+    private bool IsMaxClaim => current_data?.ClaimedCount >= current_info?.ClaimCountToUnlock;
 
     private class ButtonMap
     {
@@ -80,7 +83,6 @@ public partial class HandInView : View
                 Button = button,
             };
 
-            //button.Pressed += () => RequestButton_Pressed(map);
             button.FocusEntered += () => RequestButton_FocusEntered(map);
             maps.Add(map);
         }
@@ -149,6 +151,7 @@ public partial class HandInView : View
     private void Load(HandInData data)
     {
         current_data = data;
+        current_info = HandInController.Instance.GetInfo(data.Id);
         RequestButtons.ForEach(x => x.Hide());
 
         for (int i = 0; i < data.Requests.Count; i++)
@@ -185,12 +188,12 @@ public partial class HandInView : View
             preview.Show();
         }
 
-        var handin_info = HandInController.Instance.GetInfo(data.Id);
-        var has_unlock = handin_info.HatUnlock != AppearanceHatType.None;
-        RewardUnlockBar.Visible = has_unlock;
-        if (has_unlock)
+        var already_unlocked = Data.Game.Appearance.PurchasedHats.Contains(current_info.HatUnlock);
+        var show_unlock_bar = HasItemUnlock && !already_unlocked;
+        RewardUnlockBar.Visible = show_unlock_bar;
+        if (show_unlock_bar)
         {
-            RewardUnlockBar.Load(handin_info);
+            RewardUnlockBar.Load(current_info);
         }
     }
 
@@ -244,10 +247,11 @@ public partial class HandInView : View
     {
         if (current_data.Claimed)
         {
-            if (current_data.HatUnlock != AppearanceHatType.None)
+            if (HasItemUnlock && IsMaxClaim && RewardUnlockBar.Visible)
             {
-                ShopExpandPopup.SetHat(current_data.HatUnlock);
-                yield return ShopExpandPopup.WaitForPopup();
+                UnlockPopup.SetItemUnlock();
+                UnlockPopup.SetHat(current_data.HatUnlock);
+                yield return UnlockPopup.WaitForPopup();
             }
 
             HandInController.Instance.HandInClaimed(current_data);
@@ -256,7 +260,7 @@ public partial class HandInView : View
 
     private IEnumerator WaitForRewardBarFill()
     {
-        if (current_data.Claimed)
+        if (current_data.Claimed && RewardUnlockBar.Visible)
         {
             yield return RewardUnlockBar.WaitForFillNext();
             yield return new WaitForSeconds(0.25f);
@@ -270,6 +274,9 @@ public partial class HandInView : View
 
     private void Claim()
     {
+        current_data.Claimed = true;
+        current_data.ClaimedCount++;
+
         foreach (var map in maps)
         {
             InventoryController.Instance.RemoveCharacterData(map.Submission);
@@ -280,13 +287,11 @@ public partial class HandInView : View
             Money.Add(current_data.MoneyReward);
         }
 
-        if (current_data.HatUnlock != AppearanceHatType.None)
+        if (HasItemUnlock && IsMaxClaim)
         {
             AppearanceHatController.Instance.Unlock(current_data.HatUnlock);
+            AppearanceHatController.Instance.Purchase(current_data.HatUnlock);
         }
-
-        current_data.Claimed = true;
-        current_data.ClaimedCount++;
 
         Data.Game.Save();
 

@@ -11,10 +11,10 @@
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="8_ra46o"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="11_4fhbg"]
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="11_77p21"]
-[ext_resource type="PackedScene" uid="uid://dtjh32wwairim" path="res://Prefabs/UI/ShopExpandPopup/shop_expand_popup.tscn" id="12_77p21"]
+[ext_resource type="PackedScene" uid="uid://dtjh32wwairim" path="res://Prefabs/UI/UnlockPopup/unlock_popup.tscn" id="12_77p21"]
 [ext_resource type="PackedScene" uid="uid://f3kbwyvky2m8" path="res://Prefabs/UI/RewardUnlockBar/reward_unlock_bar.tscn" id="12_ra46o"]
 
-[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "CloseHandInButton", "ClaimButton", "NameLabel", "LocationHintLabel", "ShopExpandPopup", "RewardUnlockBar", "InputBlocker", "RequestButtons", "RewardPreviews")]
+[node name="HandInView" type="Control" node_paths=PackedStringArray("AnimatedOverlay", "AnimatedPanel_HandIn", "CloseHandInButton", "ClaimButton", "NameLabel", "LocationHintLabel", "UnlockPopup", "RewardUnlockBar", "InputBlocker", "RequestButtons", "RewardPreviews")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,7 @@ CloseHandInButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandI
 ClaimButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ClaimButton")
 NameLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer/NameLabel")
 LocationHintLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer/LocationHintLabel")
-ShopExpandPopup = NodePath("ShopExpandPopup")
+UnlockPopup = NodePath("UnlockPopup")
 RewardUnlockBar = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/RewardUnlockBar")
 InputBlocker = NodePath("InputBlocker")
 RequestButtons = [NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 1"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 2"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 3"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 4"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 5"), NodePath("CenterContainer/Center/UIScale/AnimatedPanel_HandIn/HandInContainer/VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 6")]
@@ -309,6 +309,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ShopExpandPopup" parent="." instance=ExtResource("12_77p21")]
+[node name="UnlockPopup" parent="." instance=ExtResource("12_77p21")]
 visible = false
 layout_mode = 1
