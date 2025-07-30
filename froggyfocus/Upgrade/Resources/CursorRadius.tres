@@ -7,6 +7,6 @@ script = ExtResource("1_ey5nt")
 Type = 0
 Name = "Pupil size"
 Description = "Increases focus area radius"
-Values = Array[float]([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
+Values = Array[float]([0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5])
 OverridePrice = null
 metadata/_custom_type_script = "uid://fxfoc46ir0al"

@@ -12,6 +12,7 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
     {
         base._Ready();
         RegisterDebugActions();
+        GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
     }
 
     private void RegisterDebugActions()
@@ -21,7 +22,7 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Set level",
+            Text = "Select upgrade",
             Action = v => SetLevel(v)
         });
 
@@ -32,10 +33,41 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
             var infos = Collection.Resources;
             foreach (var info in infos)
             {
-                v.ContentSearch.AddItem($"{info.Name} ({info.GetResourceName()})", () => SelectUpgradeLevel(v, info));
+                v.ContentSearch.AddItem($"{info.Name} ({info.GetResourceName()})", () => UpgradeActions(v, info));
             }
 
             v.ContentSearch.UpdateButtons();
+        }
+
+        void UpgradeActions(DebugView v, UpgradeInfo info)
+        {
+            v.SetContent_Search();
+            v.ContentSearch.AddItem("Level", () => SelectUpgradeLevel(v, info));
+            v.ContentSearch.AddItem("Capped level", () => SelectUncappedLevel(v, info));
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SelectUncappedLevel(DebugView v, UpgradeInfo info)
+        {
+            v.SetContent_Search();
+
+            var data = GetOrCreateData(info.Type);
+            for (int i = 0; i < info.Values.Count; i++)
+            {
+                var level = i;
+                var selected = data.CappedLevel == i ? "> " : string.Empty;
+                v.ContentSearch.AddItem($"{selected}{i}", () => SetCappedLevel(v, info, level));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SetCappedLevel(DebugView v, UpgradeInfo info, int level)
+        {
+            var data = GetOrCreateData(info.Type);
+            data.CappedLevel = level;
+            Data.Game.Save();
+            SetLevel(v);
         }
 
         void SelectUpgradeLevel(DebugView v, UpgradeInfo info)
@@ -60,6 +92,52 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
             Data.Game.Save();
             SetLevel(v);
         }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Reset upgrades",
+            Action = DebugResetUpgrades
+        });
+
+        void DebugResetUpgrades(DebugView v)
+        {
+            ResetUpgrades();
+            v.Close();
+        }
+    }
+
+    private void GameProfileSelected(int i)
+    {
+        InitializeUpgrades();
+    }
+
+    private void ResetUpgrades()
+    {
+        var types = System.Enum.GetValues(typeof(UpgradeType)).Cast<UpgradeType>();
+        foreach (var type in types)
+        {
+            var data = GetOrCreateData(type);
+            data.CappedLevel = 0;
+            data.Level = 0;
+        }
+
+        Data.Game.UpgradesInitialized = false;
+        InitializeUpgrades();
+    }
+
+    private void InitializeUpgrades()
+    {
+        Data.Game.UpgradesInitialized = true;
+
+        var radius = GetOrCreateData(UpgradeType.CursorRadius);
+        radius.CappedLevel = Mathf.Max(radius.CappedLevel, 2);
+
+        var decay = GetOrCreateData(UpgradeType.CursorTickDecay);
+        decay.CappedLevel = Mathf.Max(decay.CappedLevel, 2);
+
+        var inventory = GetOrCreateData(UpgradeType.InventorySize);
+        inventory.CappedLevel = Mathf.Max(inventory.CappedLevel, 2);
     }
 
     public UpgradeInfo GetInfo(UpgradeType type)
@@ -88,6 +166,17 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
     public bool IsMaxLevel(UpgradeType type)
     {
         return GetCurrentLevel(type) >= GetMaxLevel(type);
+    }
+
+    public int GetCappedLevel(UpgradeType type)
+    {
+        var data = GetOrCreateData(type);
+        return data.CappedLevel;
+    }
+
+    public bool IsCappedLevel(UpgradeType type)
+    {
+        return GetCurrentLevel(type) >= GetCappedLevel(type);
     }
 
     public int GetCurrentLevel(UpgradeType type)

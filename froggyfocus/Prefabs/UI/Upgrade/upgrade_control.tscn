@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://57h0lyjpo7q4" path="res://Prefabs/UI/Price/price_control.tscn" id="5_tih8a"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_yaetq"]
 
-[node name="UpgradeControlTemplate" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "DescriptionLabel", "MaxLabel", "UpgradeButton", "PriceControl", "LevelNodesParent")]
+[node name="UpgradeControlTemplate" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "DescriptionLabel", "MaxLabel", "CappedLabel", "UpgradeButton", "PriceControl", "LevelNodesParent")]
 custom_minimum_size = Vector2(0, 50)
 offset_right = 307.0
 offset_bottom = 82.0
@@ -16,6 +16,7 @@ script = ExtResource("2_u78tf")
 NameLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/NameLabel")
 DescriptionLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/DescriptionLabel")
 MaxLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MaxLabel")
+CappedLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/CappedLabel")
 UpgradeButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/UpgradeButton")
 PriceControl = NodePath("MarginContainer/HBoxContainer/VBoxContainer/PriceControl")
 LevelNodesParent = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/UpgradeLevelNodes")
@@ -83,7 +84,7 @@ text = "MAX"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LockedLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="CappedLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 6
