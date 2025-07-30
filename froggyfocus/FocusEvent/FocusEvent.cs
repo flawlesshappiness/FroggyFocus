@@ -90,6 +90,7 @@ public partial class FocusEvent : Node3D
     {
         // Disable player
         Player.SetAllLocks(nameof(FocusEvent), true);
+        PauseView.ToggleLock.SetLock(nameof(FocusEvent), true);
 
         this.StartCoroutine(Cr, "event");
         IEnumerator Cr()
@@ -145,6 +146,7 @@ public partial class FocusEvent : Node3D
 
             // Enable player
             Player.SetAllLocks(nameof(FocusEvent), false);
+            PauseView.ToggleLock.SetLock(nameof(FocusEvent), false);
 
             // End
             EventStarted = false;

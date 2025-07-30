@@ -314,9 +314,11 @@ public partial class Player : TopDownController
         IEnumerator Cr()
         {
             Player.SetAllLocks(id, true);
+            PauseView.ToggleLock.SetLock(id, true);
             SfxFocusTargetStarted.Play();
             yield return ExclamationMark.AnimateBounce();
             Player.SetAllLocks(id, false);
+            PauseView.ToggleLock.SetLock(id, false);
             GameScene.Instance.StartFocusEvent();
         }
     }
