@@ -21,22 +21,77 @@ public partial class HandInController : ResourceController<HandInCollection, Han
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Reset all",
-            Action = ResetAll
+            Text = "Edit",
+            Action = SelectHandIn
         });
 
-        void ResetAll(DebugView v)
+        void SelectHandIn(DebugView v)
         {
-            v.Close();
+            v.SetContent_Search();
 
-            foreach (var data in Data.Game.HandIns)
+            foreach (var info in Collection.Resources)
             {
-                var info = GetInfo(data.Id);
-                HandIn.ResetData(info);
-                data.DateTimeNext = GameTime.GetCurrentDateTimeString();
+                v.ContentSearch.AddItem(info.Id, () => HandInActions(v, info));
             }
 
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void HandInActions(DebugView v, HandInInfo info)
+        {
+            v.SetContent_Search();
+
+            v.ContentSearch.AddItem("Show", () => ShowHandIn(v, info));
+            v.ContentSearch.AddItem("Set claimed count", () => SelectClaimedCount(v, info));
+            v.ContentSearch.AddItem("Make available", () => MakeAvailable(v, info));
+            v.ContentSearch.AddItem("Reset", () => Reset(v, info));
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void ShowHandIn(DebugView v, HandInInfo info)
+        {
+            HandInView.Instance.ShowPopup(info.Id);
+            v.Close();
+        }
+
+        void MakeAvailable(DebugView v, HandInInfo info)
+        {
+            var data = HandIn.GetOrCreateData(info.Id);
+            data.DateTimeNext = GameTime.GetCurrentDateTimeString();
             Data.Game.Save();
+
+            HandInActions(v, info);
+        }
+
+        void SelectClaimedCount(DebugView v, HandInInfo info)
+        {
+            v.SetContent_Search();
+
+            for (int i = 0; i < info.ClaimCountToUnlock + 1; i++)
+            {
+                var idx = i;
+                v.ContentSearch.AddItem($"{idx}", () => SetClaimedCount(v, info, idx));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SetClaimedCount(DebugView v, HandInInfo info, int i)
+        {
+            var data = HandIn.GetOrCreateData(info.Id);
+            data.ClaimedCount = i;
+            Data.Game.Save();
+
+            HandInActions(v, info);
+        }
+
+        void Reset(DebugView v, HandInInfo info)
+        {
+            HandIn.ResetData(info);
+            Data.Game.Save();
+
+            HandInActions(v, info);
         }
     }
 

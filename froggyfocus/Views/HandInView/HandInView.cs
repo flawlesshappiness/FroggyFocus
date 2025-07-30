@@ -30,6 +30,9 @@ public partial class HandInView : View
     public ShopExpandPopup ShopExpandPopup;
 
     [Export]
+    public RewardUnlockBar RewardUnlockBar;
+
+    [Export]
     public Control InputBlocker;
 
     [Export]
@@ -63,40 +66,6 @@ public partial class HandInView : View
         ClaimButton.Pressed += ClaimButton_Pressed;
 
         InitializeRequestButtons();
-
-        RegisterDebugActions();
-    }
-
-    private void RegisterDebugActions()
-    {
-        var category = "HAND IN";
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Show test",
-            Action = DebugShow
-        });
-
-        void DebugShow(DebugView v)
-        {
-            var request_info = FocusCharacterController.Instance.Collection.Resources.First();
-
-            ShowPopup(new HandInData
-            {
-                Requests = new List<InventoryCharacterData>
-                {
-                    new InventoryCharacterData
-                    {
-                        InfoPath = request_info.ResourcePath,
-                    }
-                },
-                MoneyReward = 50,
-                HatUnlock = AppearanceHatType.Mushroom
-            });
-
-            v.Close();
-        }
     }
 
     private void InitializeRequestButtons()
@@ -174,6 +143,7 @@ public partial class HandInView : View
         maps.ForEach(x => x.Clear());
         ClaimButton.Disabled = true;
         current_data = null;
+        RewardUnlockBar.Clear();
     }
 
     private void Load(HandInData data)
@@ -215,12 +185,12 @@ public partial class HandInView : View
             preview.Show();
         }
 
-        if (data.HatUnlock != AppearanceHatType.None)
+        var handin_info = HandInController.Instance.GetInfo(data.Id);
+        var has_unlock = handin_info.HatUnlock != AppearanceHatType.None;
+        RewardUnlockBar.Visible = has_unlock;
+        if (has_unlock)
         {
-            var preview = RewardPreviews[1];
-            var info = AppearanceHatController.Instance.Collection.Resources.FirstOrDefault(x => x.Type == data.HatUnlock);
-            preview.SetHat(info);
-            preview.Show();
+            RewardUnlockBar.Load(handin_info);
         }
     }
 
@@ -250,15 +220,16 @@ public partial class HandInView : View
         Close();
     }
 
-    private void Close()
+    private Coroutine Close()
     {
-        StartCoroutine(Cr, "animate");
+        return StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             animating = true;
 
             ReleaseCurrentFocus();
             InputBlocker.Show();
+            yield return WaitForRewardBarFill();
             AnimatedOverlay.AnimateBehindHide();
             yield return AnimatedPanel_HandIn.AnimatePopHide();
             InputBlocker.Hide();
@@ -280,6 +251,15 @@ public partial class HandInView : View
             }
 
             HandInController.Instance.HandInClaimed(current_data);
+        }
+    }
+
+    private IEnumerator WaitForRewardBarFill()
+    {
+        if (current_data.Claimed)
+        {
+            yield return RewardUnlockBar.WaitForFillNext();
+            yield return new WaitForSeconds(0.25f);
         }
     }
 
@@ -306,8 +286,11 @@ public partial class HandInView : View
         }
 
         current_data.Claimed = true;
+        current_data.ClaimedCount++;
 
         Data.Game.Save();
+
+        ClaimButton.Disabled = true;
 
         Close();
     }

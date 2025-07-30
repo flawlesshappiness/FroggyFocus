@@ -106,6 +106,7 @@ draw_pass_1 = SubResource("QuadMesh_1dtss")
 
 [node name="shinies" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+amount = 20
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_cbbku")
 draw_pass_1 = SubResource("QuadMesh_d1b44")

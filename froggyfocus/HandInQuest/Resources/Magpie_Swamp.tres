@@ -7,10 +7,11 @@
 
 [resource]
 script = ExtResource("4_y3xp2")
-Id = "mushroom"
+Id = "magpie"
 PossibleRequests = Array[Object]([ExtResource("1_h0kk0"), ExtResource("2_pxq8c"), ExtResource("3_hjoew")])
 CountRange = Vector2i(1, 2)
 RewardMultiplierRange = Vector2(1.2, 1.25)
+ClaimCountToUnlock = 0
 HatUnlock = 8
 CooldownInSeconds = 300.0
 metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

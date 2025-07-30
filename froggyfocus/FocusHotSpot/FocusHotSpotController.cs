@@ -78,7 +78,7 @@ public partial class FocusHotSpotController : SingletonController
         var x = rng.RandfRange(-d, d);
         var z = rng.RandfRange(-d, d);
         var position = Player.Instance.GlobalPosition + new Vector3(x, 0, z);
-        var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), position).Add(y: -0.3f);
+        var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), position).Add(y: -0.2f);
         hotspot.GlobalPosition = nav_position;
         return hotspot;
     }

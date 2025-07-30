@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ru5cmmvv4gtr"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://ru5cmmvv4gtr"]
 
 [ext_resource type="Texture2D" uid="uid://b2rkjdeswm13l" path="res://Assets/KenneyNL/UI/Yellow/button_square_depth_flat.png" id="2_7ankg"]
 [ext_resource type="Texture2D" uid="uid://e8yokh4nvkal" path="res://Assets/KenneyNL/UI/Yellow/button_square_flat.png" id="3_dlmy2"]
@@ -32,6 +32,13 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8usy6"]
+bg_color = Color(1, 0.75, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [resource]
 Button/colors/font_color = Color(0.6, 0.4, 0, 1)
 Button/colors/font_disabled_color = Color(0, 0, 0, 0.392157)
@@ -45,3 +52,4 @@ Button/styles/pressed = SubResource("StyleBoxTexture_urxog")
 Label/colors/font_color = Color(0.6, 0.4, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.196078)
 Panel/styles/panel = SubResource("StyleBoxTexture_gmvox")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_8usy6")

@@ -17,6 +17,9 @@ public partial class HandInInfo : Resource
     public Vector2 RewardMultiplierRange;
 
     [Export]
+    public int ClaimCountToUnlock;
+
+    [Export]
     public AppearanceHatType HatUnlock;
 
     [Export]
