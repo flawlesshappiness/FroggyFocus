@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmp6kiqfw05i8"]
+[gd_scene load_steps=7 format=3 uid="uid://cmp6kiqfw05i8"]
 
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="1_pr7qt"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_xb8xt"]
+[ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="3_rhsfj"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_torsm"]
 height = 0.362305
@@ -9,6 +10,10 @@ radius = 0.378906
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rhsfj"]
 radius = 0.398078
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b5122"]
+height = 0.001
+radius = 0.0698242
 
 [node name="TreeStump" type="Node3D"]
 
@@ -32,3 +37,11 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0237427, 0.342896, -0.0245993)
 shape = SubResource("SphereShape3D_rhsfj")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="FocusHotSpotArea" type="Area3D" parent="."]
+script = ExtResource("3_rhsfj")
+metadata/_custom_type_script = "uid://crb4gwrjb3psl"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusHotSpotArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.372771, 0)
+shape = SubResource("CylinderShape3D_b5122")

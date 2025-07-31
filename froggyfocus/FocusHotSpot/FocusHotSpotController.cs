@@ -65,20 +65,31 @@ public partial class FocusHotSpotController : SingletonController
                 }
 
                 var hotspot = CreateHotSpot();
-                hotspot.DestroyAfterDelay(40f);
+                hotspot?.DestroyAfterDelay(40f);
             }
         }
     }
 
     private FocusHotSpot CreateHotSpot()
     {
+        var areas = GameScene.Instance.GetFocusHotSpotAreas();
+        var area = areas
+            .OrderBy(x => x.GlobalPosition.DistanceTo(Player.Instance.GlobalPosition))
+            .Take(3)
+            .ToList()
+            .Random();
+
+        if (area == null)
+        {
+            Debug.LogError("Failed to get area for hotspot");
+            return null;
+        }
+
+        var position = area.RandomPoint();
+        var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), position).Add(y: -0.2f);
+
         var hotspot = GDHelper.Instantiate<FocusHotSpot>(HotSpotTemplatePath);
         hotspot.SetParent(Scene.Current);
-        var d = 20f;
-        var x = rng.RandfRange(-d, d);
-        var z = rng.RandfRange(-d, d);
-        var position = Player.Instance.GlobalPosition + new Vector3(x, 0, z);
-        var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), position).Add(y: -0.2f);
         hotspot.GlobalPosition = nav_position;
         return hotspot;
     }

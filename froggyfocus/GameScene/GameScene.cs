@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class GameScene : Scene
@@ -16,6 +17,7 @@ public partial class GameScene : Scene
     public Array<FocusEvent> FocusEvents = new();
 
     private string current_focus_event_id;
+    private List<FocusHotSpotArea> hotspot_areas;
 
     public override void _Ready()
     {
@@ -51,5 +53,15 @@ public partial class GameScene : Scene
     private void FocusEventEnded()
     {
         HideFocusEvents();
+    }
+
+    public List<FocusHotSpotArea> GetFocusHotSpotAreas()
+    {
+        if (hotspot_areas == null)
+        {
+            hotspot_areas = this.GetNodesInChildren<FocusHotSpotArea>().ToList();
+        }
+
+        return hotspot_areas;
     }
 }

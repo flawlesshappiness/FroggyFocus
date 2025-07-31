@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\handinquest\\handindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:handinquest\\handindata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\handinquest\\handininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:handinquest\\handininfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\views\\handinview\\handinview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:views\\handinview\\handinview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focushotspot\\focushotspotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focushotspot\\focushotspotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\gamescene\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:gamescene\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\npc\\magpienpc\\magpienpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\npc\\magpienpc\\magpienpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\npc\\mushroomnpc\\mushroomnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\npc\\mushroomnpc\\mushroomnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,58 +38,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HandInView.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\HandInView\\HandInView.cs",
-              "RelativeDocumentMoniker": "Views\\HandInView\\HandInView.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\HandInView\\HandInView.cs",
-              "RelativeToolTip": "Views\\HandInView\\HandInView.cs",
-              "ViewState": "AgIAAOQAAAAAAAAAAAAqwPUAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "FocusHotSpotController.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusHotSpot\\FocusHotSpotController.cs",
+              "RelativeDocumentMoniker": "FocusHotSpot\\FocusHotSpotController.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusHotSpot\\FocusHotSpotController.cs",
+              "RelativeToolTip": "FocusHotSpot\\FocusHotSpotController.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAWwE8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T14:43:13.084Z",
+              "WhenOpened": "2025-07-31T21:45:42.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MushroomNpc.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Prefabs\\NPC\\MushroomNPC\\MushroomNpc.cs",
+              "RelativeDocumentMoniker": "Prefabs\\NPC\\MushroomNPC\\MushroomNpc.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Prefabs\\NPC\\MushroomNPC\\MushroomNpc.cs",
+              "RelativeToolTip": "Prefabs\\NPC\\MushroomNPC\\MushroomNpc.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAlwDcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:32:07.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MagpieNpc.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\NPC\\MagpieNPC\\MagpieNpc.cs",
+              "RelativeDocumentMoniker": "Prefabs\\NPC\\MagpieNPC\\MagpieNpc.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\NPC\\MagpieNPC\\MagpieNpc.cs",
+              "RelativeToolTip": "Prefabs\\NPC\\MagpieNPC\\MagpieNpc.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAMwDEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T18:15:20.695Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "HandInInfo.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\HandInQuest\\HandInInfo.cs",
-              "RelativeDocumentMoniker": "HandInQuest\\HandInInfo.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\HandInQuest\\HandInInfo.cs",
-              "RelativeToolTip": "HandInQuest\\HandInInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T14:40:36.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HandInData.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\HandInQuest\\HandInData.cs",
-              "RelativeDocumentMoniker": "HandInQuest\\HandInData.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\HandInQuest\\HandInData.cs",
-              "RelativeToolTip": "HandInQuest\\HandInData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T14:40:33.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "GameScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\GameScene\\GameScene.cs",
               "RelativeDocumentMoniker": "GameScene\\GameScene.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\GameScene\\GameScene.cs",
               "RelativeToolTip": "GameScene\\GameScene.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAmwDEAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T16:57:28.065Z"
+              "WhenOpened": "2025-07-15T16:57:28.065Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Player\\Player.cs",
@@ -97,8 +98,7 @@
               "RelativeToolTip": "Player\\Player.cs",
               "ViewState": "AgIAACEBAAAAAAAAAAD4vzEBAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T01:21:52.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T01:21:52.147Z"
             }
           ]
         }

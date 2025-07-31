@@ -17,8 +17,7 @@ public partial class FocusHotSpot : Area3D
         BodyEntered += PlayerEntered;
         BodyExited += PlayerExited;
 
-        FocusEventController.Instance.OnFocusEventCompleted += FocusEventCompleted;
-        FocusEventController.Instance.OnFocusEventFailed += FocusEventFailed;
+        FocusEventController.Instance.OnFocusEventStarted += FocusEventStarted;
 
         enabled = true;
     }
@@ -26,8 +25,7 @@ public partial class FocusHotSpot : Area3D
     public override void _ExitTree()
     {
         base._ExitTree();
-        FocusEventController.Instance.OnFocusEventCompleted -= FocusEventCompleted;
-        FocusEventController.Instance.OnFocusEventFailed -= FocusEventFailed;
+        FocusEventController.Instance.OnFocusEventStarted -= FocusEventStarted;
         SetLock(false);
     }
 
@@ -41,15 +39,7 @@ public partial class FocusHotSpot : Area3D
         SetLock(false);
     }
 
-    private void FocusEventCompleted(FocusEventCompletedResult result)
-    {
-        if (active)
-        {
-            Destroy();
-        }
-    }
-
-    private void FocusEventFailed(FocusEventFailedResult result)
+    private void FocusEventStarted()
     {
         if (active)
         {
