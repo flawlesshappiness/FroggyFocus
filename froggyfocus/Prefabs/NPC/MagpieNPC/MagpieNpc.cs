@@ -10,6 +10,9 @@ public partial class MagpieNpc : Area3D, IInteractable
     public FetchInfo FetchInfo;
 
     [Export]
+    public HandInInfo HandInInfo;
+
+    [Export]
     public AnimationStateMachine Animation;
 
     [Export]
@@ -33,12 +36,16 @@ public partial class MagpieNpc : Area3D, IInteractable
     {
         base._Ready();
 
+        HandInController.Instance.OnHandInClaimed += HandInClaimed;
+
         DialogueController.Instance.OnDialogueEnded += DialogueEnded;
         DialogueController.Instance.OnNodeStarted += DialogueNodeStarted;
+        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
 
         InitializeAnimations();
         InitializePickups();
         InitializeFetch();
+        InitializeHandIn();
     }
 
     private void InitializeAnimations()
@@ -96,8 +103,23 @@ public partial class MagpieNpc : Area3D, IInteractable
         }
     }
 
+    private void InitializeHandIn()
+    {
+        HandIn.InitializeData(HandInInfo);
+    }
+
     public void Interact()
     {
+        if (HandIn.IsAvailable(HandInInfo.Id))
+        {
+            StartDialogue("##MAGPIE_SWAMP_REQUEST_001##");
+        }
+        else
+        {
+            StartDialogue("##MAGPIE_SWAMP_IDLE_001##");
+        }
+
+        /*
         if (Fetch.IsAvailable(FetchInfo.Id))
         {
             var data = Fetch.GetOrCreateData(FetchInfo.Id);
@@ -125,6 +147,7 @@ public partial class MagpieNpc : Area3D, IInteractable
         {
             StartDialogue("##MAGPIE_SWAMP_IDLE_001##");
         }
+        */
     }
 
     private void StartDialogue(string id)
@@ -165,6 +188,28 @@ public partial class MagpieNpc : Area3D, IInteractable
         if (!active_dialogue) return;
 
         SfxSpeak.Play();
+    }
+
+    private void DialogueNodeEnded(string id)
+    {
+        if (!active_dialogue) return;
+
+        if (id == "##MAGPIE_SWAMP_REQUEST_002##")
+        {
+            var data = HandIn.GetOrCreateData(HandInInfo.Id);
+            HandInView.Instance.ShowPopup(data);
+        }
+    }
+
+    private void HandInClaimed(string id)
+    {
+        if (id == HandInInfo.Id)
+        {
+            HandIn.ResetData(HandInInfo);
+            Data.Game.Save();
+
+            StartDialogue("##MAGPIE_SWAMP_REQUEST_COMPLETE_001##");
+        }
     }
 
     private void EnableFetchPickups()

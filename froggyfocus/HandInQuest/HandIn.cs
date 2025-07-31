@@ -44,7 +44,6 @@ public static class HandIn
         data.Claimed = false;
 
         ResetData_Requests(info, data);
-        ResetData_HatUnlock(info, data);
         ResetData_Date(info, data);
     }
 
@@ -63,15 +62,6 @@ public static class HandIn
         var reward_mul = rng.RandfRange(info.RewardMultiplierRange.X, info.RewardMultiplierRange.Y);
         var reward = (int)(reward_base * reward_mul);
         data.MoneyReward = reward;
-    }
-
-    private static void ResetData_HatUnlock(HandInInfo info, HandInData data)
-    {
-        data.HatUnlock = AppearanceHatType.None;
-        if (!Data.Game.Appearance.UnlockedHats.Contains(info.HatUnlock))
-        {
-            data.HatUnlock = info.HatUnlock;
-        }
     }
 
     private static void ResetData_Date(HandInInfo info, HandInData data)

@@ -46,7 +46,7 @@ public partial class HandInView : View
     private HandInInfo current_info;
     private List<ButtonMap> maps = new();
 
-    private bool HasItemUnlock => (current_data?.HatUnlock ?? AppearanceHatType.None) != AppearanceHatType.None;
+    private bool HasItemUnlock => (current_info?.HatUnlock ?? AppearanceHatType.None) != AppearanceHatType.None;
     private bool IsMaxClaim => current_data?.ClaimedCount >= current_info?.ClaimCountToUnlock;
 
     private class ButtonMap
@@ -250,7 +250,7 @@ public partial class HandInView : View
             if (HasItemUnlock && IsMaxClaim && RewardUnlockBar.Visible)
             {
                 UnlockPopup.SetItemUnlock();
-                UnlockPopup.SetHat(current_data.HatUnlock);
+                UnlockPopup.SetHat(current_info.HatUnlock);
                 yield return UnlockPopup.WaitForPopup();
             }
 
@@ -289,8 +289,8 @@ public partial class HandInView : View
 
         if (HasItemUnlock && IsMaxClaim)
         {
-            AppearanceHatController.Instance.Unlock(current_data.HatUnlock);
-            AppearanceHatController.Instance.Purchase(current_data.HatUnlock);
+            AppearanceHatController.Instance.Unlock(current_info.HatUnlock);
+            AppearanceHatController.Instance.Purchase(current_info.HatUnlock);
         }
 
         Data.Game.Save();

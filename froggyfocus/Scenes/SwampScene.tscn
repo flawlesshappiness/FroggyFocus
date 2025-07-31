@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=59 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="26_m0kej"]
 [ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="26_many0"]
 [ext_resource type="PackedScene" uid="uid://dphy7mkttpwga" path="res://Assets/Quaternius/Nature/CommonTree_Dead_5.fbx" id="27_tyvxw"]
+[ext_resource type="Resource" uid="uid://but43q22crqx3" path="res://HandInQuest/Resources/Magpie_Swamp.tres" id="29_m0kej"]
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="33_brx17"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
 
@@ -914,6 +915,7 @@ curve = SubResource("Curve3D_tqykx")
 [node name="MagpieNPC" parent="World/DeadForest" node_paths=PackedStringArray("PickupParents") instance=ExtResource("11_hem5p")]
 transform = Transform3D(1.47152, 0, -2.02105, 0, 2.5, 0, 2.02105, 0, 1.47152, -11.0993, -0.184564, 36.5968)
 FetchInfo = ExtResource("12_7qo61")
+HandInInfo = ExtResource("29_m0kej")
 PickupParents = [NodePath("../StickPickups"), NodePath("../../Mushrooms/StickPickups")]
 
 [node name="StickPickups" type="Node3D" parent="World/DeadForest"]
