@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://v7ak1ykvbmjp"]
+
+[ext_resource type="Script" uid="uid://1w0fwhbkumli" path="res://FocusSkillCheck/SkillCheckBombProjectile.cs" id="1_07bhr"]
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="2_cloke"]
+[ext_resource type="Material" uid="uid://bs7gnasxvanql" path="res://Materials/PS_Yellow.tres" id="3_yemke"]
+
+[sub_resource type="Curve" id="Curve_qdn1e"]
+_data = [Vector2(0, 0), 0.0, 8.65475, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.27032, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bpgiw"]
+curve = SubResource("Curve_qdn1e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bpgiw"]
+emission_shape = 1
+emission_sphere_radius = 0.05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_bpgiw")
+
+[sub_resource type="SphereMesh" id="SphereMesh_c5d3f"]
+material = ExtResource("3_yemke")
+
+[node name="SkillCheckBombProjectile" type="Node3D" node_paths=PackedStringArray("PsProjectile")]
+script = ExtResource("1_07bhr")
+PsProjectile = NodePath("Particles")
+
+[node name="Particles" type="Node3D" parent="." node_paths=PackedStringArray("Particles")]
+script = ExtResource("2_cloke")
+Particles = [NodePath("smoke_local"), NodePath("smoke_global")]
+
+[node name="smoke_local" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.143474, 0)
+emitting = false
+lifetime = 0.5
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_bpgiw")
+draw_pass_1 = SubResource("SphereMesh_c5d3f")
+
+[node name="smoke_global" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.143474, 0)
+emitting = false
+lifetime = 0.25
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_bpgiw")
+draw_pass_1 = SubResource("SphereMesh_c5d3f")

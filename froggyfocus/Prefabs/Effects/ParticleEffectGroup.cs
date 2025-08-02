@@ -16,6 +16,14 @@ public partial class ParticleEffectGroup : Node3D
     [Export]
     public Array<GpuParticles3D> Particles;
 
+    public static ParticleEffectGroup Instantiate(PackedScene prefab, Node3D parent)
+    {
+        var ps = prefab.Instantiate<ParticleEffectGroup>();
+        ps.SetParent(parent);
+        ps.ClearPositionAndRotation();
+        return ps;
+    }
+
     public override void _Ready()
     {
         base._Ready();

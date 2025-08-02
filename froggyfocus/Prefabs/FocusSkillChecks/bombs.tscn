@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc86o50qja4fn"]
+[gd_scene load_steps=6 format=3 uid="uid://bc86o50qja4fn"]
 
 [ext_resource type="Script" uid="uid://b1qcu2liwvoof" path="res://FocusSkillCheck/FocusSkillCheck_Bombs.cs" id="1_whlow"]
 [ext_resource type="PackedScene" uid="uid://d3em6nli2qht2" path="res://Prefabs/FocusSkillChecks/skill_check_bomb.tscn" id="2_enwqw"]
 [ext_resource type="PackedScene" uid="uid://b1s4wbsn8d1ly" path="res://Prefabs/Effects/ps_mushroom_explode.tscn" id="2_hymmy"]
 [ext_resource type="PackedScene" uid="uid://djgm5yrcurmjt" path="res://Prefabs/Effects/ps_mushroom_spores.tscn" id="3_hymmy"]
+[ext_resource type="PackedScene" uid="uid://v7ak1ykvbmjp" path="res://Prefabs/FocusSkillChecks/skill_check_bomb_projectile.tscn" id="3_pqjld"]
 
-[node name="Bombs" type="Node3D" node_paths=PackedStringArray("BombTemplate")]
+[node name="Bombs" type="Node3D"]
 script = ExtResource("1_whlow")
 BombCountRange = Vector2i(2, 4)
 DistanceRange = Vector2(0.5, 2)
-BombTemplate = NodePath("SkillCheckBomb")
+BombPrefab = ExtResource("2_enwqw")
+ProjectilePrefab = ExtResource("3_pqjld")
 PsExplode = ExtResource("2_hymmy")
 PsSpores = ExtResource("3_hymmy")
 Type = 1
-
-[node name="SkillCheckBomb" parent="." instance=ExtResource("2_enwqw")]

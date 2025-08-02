@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwcxbt0gadhp8"]
+
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_a7n5t"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="2_js40i"]
+
+[sub_resource type="Curve" id="Curve_dhnhj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xfywn"]
+curve = SubResource("Curve_dhnhj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xfywn"]
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 6.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_xfywn")
+
+[sub_resource type="SphereMesh" id="SphereMesh_fe666"]
+material = ExtResource("2_js40i")
+
+[node name="PsShieldBlock" type="Node3D" node_paths=PackedStringArray("Particles")]
+script = ExtResource("1_a7n5t")
+DestroyDelay = 1.0
+Particles = [NodePath("PsBlock")]
+
+[node name="PsBlock" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0915031, 0)
+emitting = false
+amount = 6
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xfywn")
+draw_pass_1 = SubResource("SphereMesh_fe666")

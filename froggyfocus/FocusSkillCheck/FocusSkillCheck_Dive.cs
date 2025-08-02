@@ -64,7 +64,6 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
         ps.SetParent(this);
         ps.Play(destroy: true);
         ps.GlobalPosition = position;
-        created_objects.Add(ps);
 
         SfxSplash.Play();
     }

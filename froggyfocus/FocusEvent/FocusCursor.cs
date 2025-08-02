@@ -4,16 +4,28 @@ using System;
 public partial class FocusCursor : Node3D
 {
     [Export]
+    public FocusCursorShield Shield;
+
+    [Export]
     public Node3D RadiusNode;
 
     [Export]
     public Node3D FillNode;
 
     [Export]
-    public AnimationPlayer Animation;
+    public AnimationPlayer AnimationPlayer_Gain;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Hurt;
 
     [Export]
     public AudioStreamPlayer SfxFocusChanged;
+
+    [Export]
+    public AudioStreamPlayer SfxFocusHurt;
+
+    [Export]
+    public AudioStreamPlayer SfxFocusBlock;
 
     public bool InputEnabled { get; set; }
     public bool TickEnabled { get; set; }
@@ -100,6 +112,11 @@ public partial class FocusCursor : Node3D
 
         var input = PlayerInput.GetMoveInput();
         DesiredVelocity = new Vector3(input.X, 0, input.Y);
+
+        if (PlayerInput.Interact.Released)
+        {
+            Shield.StartShield();
+        }
     }
 
     private void PhysicsProcess_MoveCursor(float delta)
@@ -125,13 +142,29 @@ public partial class FocusCursor : Node3D
 
             SetFocusValue(FocusValue + FocusTickAmount);
             PlayFocusChangedSFX(FocusValue);
-            Animation.Play("BounceIn");
+            AnimationPlayer_Gain.Play("BounceIn");
             OnFocusTarget?.Invoke();
         }
         else
         {
             SetFocusValue(FocusValue - FocusTickDecay);
             PlayFocusChangedSFX(0);
+        }
+    }
+
+    public void HurtFocusValue(float value)
+    {
+        if (Shield.IsShielded)
+        {
+            SfxFocusBlock.Play();
+            Shield.PlayBlockEffect();
+        }
+        else
+        {
+            AdjustFocusValue(-value);
+            SfxFocusHurt.Play();
+            AnimationPlayer_Hurt.Stop();
+            AnimationPlayer_Hurt.Play("hurt");
         }
     }
 

@@ -12,7 +12,10 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     public Vector2 DistanceRange;
 
     [Export]
-    public SkillCheckBomb BombTemplate;
+    public PackedScene BombPrefab;
+
+    [Export]
+    public PackedScene ProjectilePrefab;
 
     [Export]
     public PackedScene PsExplode;
@@ -29,22 +32,18 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 
     private class Bomb
     {
-        public SkillCheckBomb Node { get; set; }
+        public SkillCheckBomb BombNode { get; set; }
+        public SkillCheckBombProjectile ProjectileNode { get; set; }
         public Vector3 Position { get; set; }
         public Coroutine Coroutine { get; set; }
         public float Delay { get; set; }
 
         public void Clear()
         {
-            Node.QueueFree();
+            BombNode.QueueFree();
+            ProjectileNode.QueueFree();
             Coroutine.Stop(Coroutine);
         }
-    }
-
-    public override void _Ready()
-    {
-        base._Ready();
-        BombTemplate.Hide();
     }
 
     public override void Clear()
@@ -64,12 +63,14 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     {
         var last_angle = rng.RandfRange(0f, 360f);
         var count = GetDifficultyRange(BombCountRange);
+        var delay_span = 0.6f;
+        var delay_per = delay_span / count;
         for (int i = 0; i < count; i++)
         {
             last_angle += rng.RandfRange(45, 180);
             var bomb = CreateBomb();
             bomb.Position = GetBombPosition(last_angle);
-            bomb.Delay = i * 0.25f;
+            bomb.Delay = i * delay_per;
             bomb.Coroutine = RunBomb(bomb);
         }
 
@@ -103,55 +104,30 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             yield return new WaitForSeconds(bomb.Delay);
 
             // Move to position
+            bomb.ProjectileNode.GlobalPosition = bomb.Position;
 
-            bomb.Node.RotationDegrees = Vector3.Up * rng.RandfRange(0f, 360f);
-            bomb.Node.GlobalPosition = bomb.Position;
-            bomb.Node.Show();
+            bomb.BombNode.RotationDegrees = Vector3.Up * rng.RandfRange(0f, 360f);
+            bomb.BombNode.GlobalPosition = bomb.Position;
+            bomb.BombNode.Show();
 
             var ps_spores = PlaySporesPS(bomb.Position);
 
-            yield return bomb.Node.AnimateShow();
+            yield return bomb.BombNode.AnimateShow();
 
-            bomb.Node.AnimateIdle();
+            bomb.BombNode.AnimateIdleFast();
 
-            // Wait for input
-            var idle_fast_started = false;
-            var duration = 5f;
-            var time_end = GameTime.Time + duration;
-            var time_idle_fast = GameTime.Time + duration * 0.75f;
-            while (GameTime.Time < time_end)
-            {
-                if (PlayerInput.Interact.Pressed && IsCursorNear())
-                {
-                    success = true;
-                    break;
-                }
-
-                if (!idle_fast_started && GameTime.Time > time_idle_fast)
-                {
-                    idle_fast_started = true;
-                    bomb.Node.AnimateIdleFast();
-                }
-
-                yield return null;
-            }
+            yield return new WaitForSeconds(1f);
 
             ps_spores.Stop(true);
 
-            // Explode
-            if (success)
-            {
-                var value = FocusEvent.Target.Info.FocusValue * 0.1f;
-                FocusEvent.Cursor.AdjustFocusValue(value);
-                yield return bomb.Node.AnimateCollect();
-            }
-            else
-            {
-                var value = FocusEvent.Target.Info.FocusValue * -0.05f;
-                PlayExplodePS(bomb.Position);
-                FocusEvent.Cursor.AdjustFocusValue(value);
-                yield return bomb.Node.AnimateExplode();
-            }
+            PlayExplodePS(bomb.Position);
+            yield return bomb.BombNode.AnimateExplode();
+
+            var cursor = FocusEvent.Cursor;
+            yield return bomb.ProjectileNode.WaitForMoveTowardsCursor(0.5f, cursor);
+
+            var value = FocusEvent.Target.Info.FocusValue * 0.1f;
+            FocusEvent.Cursor.HurtFocusValue(value);
 
             yield return new WaitForSeconds(0.5f);
         }
@@ -166,7 +142,8 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     {
         var bomb = new Bomb
         {
-            Node = CreateBombNode()
+            BombNode = CreateBombNode(),
+            ProjectileNode = CreateProjectileNode(),
         };
 
         bombs.Add(bomb);
@@ -176,8 +153,15 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 
     private SkillCheckBomb CreateBombNode()
     {
-        var node = BombTemplate.Duplicate() as SkillCheckBomb;
-        node.SetParent(BombTemplate.GetParent());
+        var node = BombPrefab.Instantiate<SkillCheckBomb>();
+        node.SetParent(this);
+        return node;
+    }
+
+    private SkillCheckBombProjectile CreateProjectileNode()
+    {
+        var node = ProjectilePrefab.Instantiate<SkillCheckBombProjectile>();
+        node.SetParent(this);
         return node;
     }
 

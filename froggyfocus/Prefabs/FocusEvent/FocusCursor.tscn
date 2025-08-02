@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cta4lwmtk36u"]
+[gd_scene load_steps=18 format=3 uid="uid://cta4lwmtk36u"]
 
 [ext_resource type="Script" uid="uid://bpbdt4x46g0ir" path="res://FocusEvent/FocusCursor.cs" id="1_x77ch"]
 [ext_resource type="Texture2D" uid="uid://6tevrdvf1tud" path="res://Assets/FlawLizArt/Textures/focus_circle.png" id="2_rpbmh"]
 [ext_resource type="Texture2D" uid="uid://cgvw1bv4nyiyt" path="res://Assets/FlawLizArt/Textures/focus_circle_outline.png" id="3_rptds"]
+[ext_resource type="PackedScene" uid="uid://ko8a82uxc2gv" path="res://Prefabs/FocusEvent/focus_cursor_shield.tscn" id="4_7kn4i"]
 [ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="4_rptds"]
+[ext_resource type="AudioStream" uid="uid://cnjbveslxr8uq" path="res://Sounds/Raw/sfx_focus_hit.wav" id="6_dthue"]
+[ext_resource type="AudioStream" uid="uid://bjgvjv7tgquhi" path="res://Sounds/Raw/sfx_focus_block.wav" id="7_uogcp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1eh1j"]
 transparency = 1
@@ -22,7 +25,7 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Radius/Anim:scale")
+tracks/0/path = NodePath("Radius/Anim_Hurt/Anim_Gain:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -37,7 +40,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Radius/Anim:scale")
+tracks/0/path = NodePath("Radius/Anim_Hurt/Anim_Gain:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,43 +56,114 @@ _data = {
 &"RESET": SubResource("Animation_yd0hp")
 }
 
-[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("RadiusNode", "FillNode", "Animation", "SfxFocusChanged")]
+[sub_resource type="Animation" id="Animation_h2wen"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uogcp"]
+resource_name = "hurt"
+length = 0.15
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.21, 0, 0), Vector3(-0.177387, 0, 0.155761), Vector3(0.0141396, 0, -0.192105), Vector3(0.139467, 0, 0.137589), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0fwo"]
+_data = {
+&"RESET": SubResource("Animation_h2wen"),
+&"hurt": SubResource("Animation_uogcp")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h2wen"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("6_dthue")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uogcp"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("7_uogcp")
+
+[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("Shield", "RadiusNode", "FillNode", "AnimationPlayer_Gain", "AnimationPlayer_Hurt", "SfxFocusChanged", "SfxFocusHurt", "SfxFocusBlock")]
 script = ExtResource("1_x77ch")
+Shield = NodePath("Radius/FocusCursorShield")
 RadiusNode = NodePath("Radius")
-FillNode = NodePath("Radius/Anim/Fill")
-Animation = NodePath("AnimationPlayer")
+FillNode = NodePath("Radius/Anim_Hurt/Anim_Gain/Fill")
+AnimationPlayer_Gain = NodePath("AnimationPlayer_Gain")
+AnimationPlayer_Hurt = NodePath("AnimationPlayer_Hurt")
 SfxFocusChanged = NodePath("SfxFocusGain")
+SfxFocusHurt = NodePath("SfxFocusHurt")
+SfxFocusBlock = NodePath("SfxFocusBlock")
 
 [node name="Radius" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 
-[node name="Anim" type="Node3D" parent="Radius"]
+[node name="Anim_Hurt" type="Node3D" parent="Radius"]
 
-[node name="Fill" type="Node3D" parent="Radius/Anim"]
+[node name="Anim_Gain" type="Node3D" parent="Radius/Anim_Hurt"]
 
-[node name="Circle" type="Sprite3D" parent="Radius/Anim/Fill"]
+[node name="Fill" type="Node3D" parent="Radius/Anim_Hurt/Anim_Gain"]
+
+[node name="Circle" type="Sprite3D" parent="Radius/Anim_Hurt/Anim_Gain/Fill"]
 transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, 0.8, 0, -0.8, -3.49691e-08, 0, 0, 0)
 modulate = Color(1, 1, 1, 0.392157)
 texture = ExtResource("2_rpbmh")
 
-[node name="Outline" type="Sprite3D" parent="Radius/Anim"]
+[node name="Outline" type="Sprite3D" parent="Radius/Anim_Hurt/Anim_Gain"]
 transform = Transform3D(0.822222, 0, 0, 0, -3.59405e-08, 0.822222, 0, -0.822222, -3.59405e-08, 0, 0, 0)
 modulate = Color(1, 1, 1, 0.392157)
 texture = ExtResource("3_rptds")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Radius/Anim"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Radius/Anim_Hurt/Anim_Gain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 visible = false
 mesh = SubResource("CylinderMesh_1eh1j")
-skeleton = NodePath("../../..")
+skeleton = NodePath("../../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="FocusCursorShield" parent="Radius" instance=ExtResource("4_7kn4i")]
+
+[node name="AnimationPlayer_Gain" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rpbmh")
+}
+
+[node name="AnimationPlayer_Hurt" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o0fwo")
 }
 
 [node name="SfxFocusGain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_rptds")
 volume_db = -15.0
+max_polyphony = 6
+bus = &"SFX"
+
+[node name="SfxFocusHurt" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_h2wen")
+max_polyphony = 6
+bus = &"SFX"
+
+[node name="SfxFocusBlock" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_uogcp")
 max_polyphony = 6
 bus = &"SFX"
