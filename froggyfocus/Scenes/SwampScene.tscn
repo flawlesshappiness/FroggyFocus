@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=60 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bw057fcfnoby7" path="res://Prefabs/NPC/MagpieNPC/magpie_npc.tscn" id="11_hem5p"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="12_5fuuy"]
 [ext_resource type="Resource" uid="uid://ccictmr6wjwmg" path="res://FetchQuest/Resources/Magpie_Swamp.tres" id="12_7qo61"]
+[ext_resource type="PackedScene" uid="uid://d3qra18xe0x7w" path="res://Prefabs/Tutorial/tutorial_sign.tscn" id="12_8ow6q"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/Shop.tscn" id="12_20fcr"]
 [ext_resource type="Resource" uid="uid://4t23pgixusyd" path="res://FocusEvent/Resources/Swamp Land.tres" id="12_cmxon"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="12_yvk0y"]
@@ -240,6 +241,10 @@ debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="QuestBoard" parent="World/Islands" instance=ExtResource("33_brx17")]
 transform = Transform3D(0.995514, 0, 0.0946125, 0, 1, 0, -0.0946125, 0, 0.995514, -0.656114, 2.89054e-07, -7.03288)
+
+[node name="TutorialSign" parent="World/Islands" instance=ExtResource("12_8ow6q")]
+transform = Transform3D(-0.30472, 0, 1.46872, 0, 1.5, 0, -1.46872, 0, -0.30472, 34.2133, -1.90735e-06, 14.6139)
+DialogueNode = "##TUTORIAL_JUMP_001##"
 
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)
@@ -1065,6 +1070,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2948, 7.01728, -1.90283)
 
 [node name="StickPickup13" parent="World/Mushrooms/StickPickups" instance=ExtResource("13_dkapk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.2553, 2.50508, 12.9578)
+
+[node name="TutorialSign" parent="World/Mushrooms" instance=ExtResource("12_8ow6q")]
+transform = Transform3D(-1.47988, 0, 0.244834, 0, 1.5, 0, -0.244834, 0, -1.47988, -30.4544, 15.9492, 7.0799)
+DialogueNode = "##TUTORIAL_SHIELD_001##"
 
 [node name="FocusEvents" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)

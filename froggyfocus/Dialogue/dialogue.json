@@ -1,5 +1,29 @@
 [
 	{
+		"id": "##TUTORIAL_JUMP_001##",
+		"next": "##TUTORIAL_JUMP_002##"
+	},
+	{
+		"id": "##TUTORIAL_JUMP_002##",
+		"next": "##TUTORIAL_JUMP_003##"
+	},
+	{
+		"id": "##TUTORIAL_JUMP_003##"
+	},
+	
+	{
+		"id": "##TUTORIAL_SHIELD_001##",
+		"next": "##TUTORIAL_SHIELD_002##"
+	},
+	{
+		"id": "##TUTORIAL_SHIELD_002##",
+		"next": "##TUTORIAL_SHIELD_003##"
+	},
+	{
+		"id": "##TUTORIAL_SHIELD_003##"
+	},
+	
+	{
 		"id": "##MUSHROOM_SWAMP_REQUEST_001##",
 		"next": "##MUSHROOM_SWAMP_REQUEST_002##"
 	},

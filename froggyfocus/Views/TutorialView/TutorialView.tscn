@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8jml0sphang0"]
+
+[ext_resource type="Script" uid="uid://dj06piy035o2l" path="res://Views/TutorialView/TutorialView.cs" id="1_4w7iv"]
+
+[node name="TutorialView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4w7iv")
