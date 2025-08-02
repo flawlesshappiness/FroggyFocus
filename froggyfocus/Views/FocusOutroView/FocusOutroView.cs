@@ -6,7 +6,10 @@ public partial class FocusOutroView : View
     public static FocusOutroView Instance => Singleton.Get<FocusOutroView>();
 
     [Export]
-    public AnimationPlayer AnimationPlayer;
+    public AnimationPlayer AnimationPlayer_Frog;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Transition;
 
     [Export]
     public InventoryReplacePopup InventoryReplacePopup;
@@ -53,7 +56,7 @@ public partial class FocusOutroView : View
         Show();
         SubViewport.AudioListenerEnable3D = true;
         Frog.SetHandsBack();
-        yield return AnimationPlayer.PlayAndWaitForAnimation("eat_bug");
+        yield return AnimationPlayer_Frog.PlayAndWaitForAnimation("eat_bug");
 
         if (!success)
         {
@@ -74,9 +77,18 @@ public partial class FocusOutroView : View
         PlayChord(success);
         yield return new WaitForSeconds(0.25f);
         SubViewport.AudioListenerEnable3D = false;
-        Hide();
 
+        //TransitionView.Instance.StartTransition(Close);
+        Player.Instance.SetCameraTarget();
+        yield return AnimationPlayer_Transition.PlayAndWaitForAnimation("transition_hide");
+        Close();
+    }
+
+    private void Close()
+    {
+        Hide();
         ResetFrog();
+        AnimationPlayer_Transition.Play("RESET");
     }
 
     private IEnumerator WaitForInventory()
