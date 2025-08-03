@@ -1,7 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=5 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
+[ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="2_o2l5d"]
 
-[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("SfxStun")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ffy"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.0470588)
+albedo_texture = ExtResource("2_o2l5d")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mfarc"]
+material = SubResource("StandardMaterial3D_a4ffy")
+size = Vector2(6, 6)
+orientation = 1
+
+[node name="FocusTarget" type="Node3D"]
 script = ExtResource("1_hmctk")
-SfxStun = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("QuadMesh_mfarc")

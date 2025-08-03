@@ -1087,7 +1087,7 @@ Info = ExtResource("12_cmxon")
 Size = Vector2(5, 3)
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Land/FocusEvent_Land"]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="pond_corner_convex_001" parent="World/FocusEvents/Land/FocusEvent_Land/Floor" instance=ExtResource("10_qfnsp")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8, 0, -8)
@@ -1103,21 +1103,21 @@ transform = Transform3D(5.24537e-07, 0, 4, 0, 4, 0, -4, 0, 5.24537e-07, -8, 0, 8
 
 [node name="FocusEvent_Mushroom" parent="World/FocusEvents/Land" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-visible = false
 Id = "mushroom"
 Info = ExtResource("26_ghoyf")
 Size = Vector2(5, 3)
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Land/FocusEvent_Mushroom"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="mushroom_platform" parent="World/FocusEvents/Land/FocusEvent_Mushroom/Floor" instance=ExtResource("26_eoi61")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 3.38824)
 
 [node name="mushroom_platform2" parent="World/FocusEvents/Land/FocusEvent_Mushroom/Floor" instance=ExtResource("26_eoi61")]
-transform = Transform3D(-4.48633, 0, -8.93716, 0, 10, 0, 8.93716, 0, -4.48633, -2.98624, -0.11723, -0.958069)
+transform = Transform3D(-4.48633, 0, -8.93716, 0, 10, 0, 8.93716, 0, -4.48633, -2.986, 0, -0.958)
 
 [node name="mushroom_platform3" parent="World/FocusEvents/Land/FocusEvent_Mushroom/Floor" instance=ExtResource("26_eoi61")]
-transform = Transform3D(-5.9572, 0, 8.03192, 0, 10, 0, -8.03192, 0, -5.9572, 1.98243, -0.233113, -1.28876)
+transform = Transform3D(-5.9572, 0, 8.03192, 0, 10, 0, -8.03192, 0, -5.9572, 1.982, 0, -1.289)
 
 [node name="CommonTree_Dead_5" parent="World/FocusEvents/Land/FocusEvent_Mushroom/Floor" instance=ExtResource("27_tyvxw")]
 transform = Transform3D(-5.46047, 0, -13.9708, 0, 15, 0, 13.9708, 0, -5.46047, -5.78461, -6.35527, -3.00241)
