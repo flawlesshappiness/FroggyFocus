@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=59 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
@@ -38,7 +38,6 @@
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
 [ext_resource type="PackedScene" uid="uid://bvq1s6k4t5k0m" path="res://Prefabs/NPC/MushroomNPC/mushroom_npc.tscn" id="19_ghoyf"]
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
-[ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="23_fmiw0"]
 [ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="26_eoi61"]
 [ext_resource type="Resource" uid="uid://domnlcvrorsml" path="res://FocusEvent/Resources/Swamp Mushroom.tres" id="26_ghoyf"]
 [ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="26_m0kej"]
@@ -1103,6 +1102,7 @@ transform = Transform3D(5.24537e-07, 0, 4, 0, 4, 0, -4, 0, 5.24537e-07, -8, 0, 8
 
 [node name="FocusEvent_Mushroom" parent="World/FocusEvents/Land" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+visible = false
 Id = "mushroom"
 Info = ExtResource("26_ghoyf")
 Size = Vector2(5, 3)
@@ -1141,20 +1141,47 @@ Size = Vector2(5, 3)
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Water/FocusEvent_Lilypad"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
+[node name="Lilypad_Flower" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.58328, 0, 1.69092)
+
+[node name="Lilypad_Flower3" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.44763, 0, -3.1261)
+
+[node name="Lilypad_Flower2" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.41064, 0, -1.38757)
+
+[node name="Lilypad_Flower4" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.43024, 0, -4.17239)
+
+[node name="Lilypad_Flower5" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.93251, 0, -2.37643)
+
+[node name="Lilypad_Flower6" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.45717, 0, -0.932495)
+
+[node name="Lilypad_Flower7" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.93027, 0, 1.81189)
+
+[node name="Lilypad_Flower8" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.88315, 0, 3.87018)
+
+[node name="Lilypad_Flower9" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("11_achss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.92262, 0, 3.00989)
+
 [node name="Lilypad_Cut" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 4.89301)
 
 [node name="Lilypad_Cut2" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
-transform = Transform3D(0.411919, 0, -2.97159, 0, 3, 0, 2.97159, 0, 0.411919, -9.20526, 0, 1.13275)
+transform = Transform3D(0.411919, 0, -2.97159, 0, 3, 0, 2.97159, 0, 0.411919, -7.36583, 0, -0.569397)
 
 [node name="Lilypad_Cut3" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
-transform = Transform3D(-0.644564, 0, 2.92994, 0, 3, 0, -2.92994, 0, -0.644564, -4.42462, 0, 5.97601)
+transform = Transform3D(-0.644564, 0, 2.92994, 0, 3, 0, -2.92994, 0, -0.644564, -4.12263, 0, 4.05417)
 
 [node name="Lilypad_Cut4" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
-transform = Transform3D(-2.35689, 0, 1.85609, 0, 3, 0, -1.85609, 0, -2.35689, -1.37161, 0, -6.09259)
+transform = Transform3D(-2.35689, 0, 1.85609, 0, 3, 0, -1.85609, 0, -2.35689, -1.37161, 0, -4.82965)
 
 [node name="Lilypad_Cut5" parent="World/FocusEvents/Water/FocusEvent_Lilypad/Floor" instance=ExtResource("15_bmghv")]
-transform = Transform3D(-2.17038, 0, -2.07109, 0, 3, 0, 2.07109, 0, -2.17038, 7.90248, -1.43051e-06, -4.01971)
+transform = Transform3D(-2.17038, 0, -2.07109, 0, 3, 0, 2.07109, 0, -2.17038, 6.36505, -1.43051e-06, -2.61957)
 
 [node name="FocusEvent_Wood" parent="World/FocusEvents/Water" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.895, 0)
@@ -1169,13 +1196,16 @@ Size = Vector2(5, 3)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -1.06303, 3.26807)
 
 [node name="TreeStump_Flat2" parent="World/FocusEvents/Water/FocusEvent_Wood/Floor" instance=ExtResource("22_tqykx")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 6.19731, -1.06303, -2.80566)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -1.77812, -1.06303, -3.4783)
 
-[node name="WoodLog_NoDetails_Filled_Straight" parent="World/FocusEvents/Water/FocusEvent_Wood/Floor" instance=ExtResource("23_fmiw0")]
-transform = Transform3D(1.88067, 0, -2.33732, 0, 3, 0, 2.33732, 0, 1.88067, 3.58754, -1.21416, 3.4819)
+[node name="Branch_Swamp_002" parent="World/FocusEvents/Water/FocusEvent_Wood/Floor" instance=ExtResource("26_many0")]
+transform = Transform3D(0.659359, 0, 0.751828, 0, 1, 0, -0.751828, 0, 0.659359, 0.0672531, 0, -4.68146)
 
-[node name="WoodLog_NoDetails_Filled_Straight2" parent="World/FocusEvents/Water/FocusEvent_Wood/Floor" instance=ExtResource("23_fmiw0")]
-transform = Transform3D(-2.90087, 0, 0.764818, 0, 3, 0, -0.764818, 0, -2.90087, -6.19449, -1.21416, -1.99738)
+[node name="Branch_Swamp_001" parent="World/FocusEvents/Water/FocusEvent_Wood/Floor" instance=ExtResource("26_m0kej")]
+transform = Transform3D(0.211989, 0, 0.132517, 0, 0.25, 0, -0.132517, 0, 0.211989, -3.67618, 0, 1.52426)
+
+[node name="Branch_Swamp_003" parent="World/FocusEvents/Water/FocusEvent_Wood/Floor" instance=ExtResource("26_m0kej")]
+transform = Transform3D(0.236716, 0, -0.0804094, 0, 0.25, 0, 0.0804094, 0, 0.236716, 4.34867, 0, 1.68118)
 
 [node name="AmbWater" type="AudioStreamPlayer3D" parent="World/FocusEvents/Water"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.895, 0)

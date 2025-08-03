@@ -44,8 +44,10 @@ public partial class FocusCursor : Node3D
     private bool Empty { get; set; }
 
     public static readonly MultiLock FocusGainLock = new();
+    public static readonly MultiLock MoveLock = new();
 
     private float next_tick;
+    private bool moving;
 
     public event Action OnFocusStarted;
     public event Action OnFocusStopped;
@@ -54,6 +56,8 @@ public partial class FocusCursor : Node3D
     public event Action OnFocusTargetExit;
     public event Action OnFocusFilled;
     public event Action OnFocusEmpty;
+    public event Action OnMoveStarted;
+    public event Action OnMoveEnded;
 
     public void Initialize(FocusTarget target)
     {
@@ -122,6 +126,20 @@ public partial class FocusCursor : Node3D
     private void PhysicsProcess_MoveCursor(float delta)
     {
         if (!InputEnabled) return;
+
+        var wants_to_move = DesiredVelocity.Length() > 0;
+        if (!moving && wants_to_move)
+        {
+            moving = true;
+            MoveStarted();
+        }
+        else if (moving && !wants_to_move)
+        {
+            moving = false;
+            MoveEnded();
+        }
+
+        if (MoveLock.IsLocked) return;
 
         GlobalPosition += DesiredVelocity * MoveSpeed;
     }
@@ -201,5 +219,15 @@ public partial class FocusCursor : Node3D
         var t = value / FocusMax;
         SfxFocusChanged.PitchScale = Mathf.Lerp(pitch_min, pitch_max, t);
         SfxFocusChanged.Play();
+    }
+
+    private void MoveStarted()
+    {
+        OnMoveStarted?.Invoke();
+    }
+
+    private void MoveEnded()
+    {
+        OnMoveEnded?.Invoke();
     }
 }
