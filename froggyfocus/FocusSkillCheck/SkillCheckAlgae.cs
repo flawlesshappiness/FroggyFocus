@@ -12,42 +12,30 @@ public partial class SkillCheckAlgae : Node3D
     [Export]
     public AudioStreamPlayer3D SfxConstrict;
 
-    private bool cleared;
+    [Export]
+    public PackedScene PsShake;
+
     private RandomNumberGenerator rng = new();
+
+    public void Clear()
+    {
+        AnimationPlayer.Play("hide");
+        FocusCursor.MoveLock.SetLock(nameof(FocusSkillCheck_Constrict), false);
+    }
 
     public void StartConstrict()
     {
-        cleared = false;
-
-        this.StartCoroutine(Cr, "constrict");
-        IEnumerator Cr()
-        {
-            SfxConstrict.Play();
-
-            FocusCursor.MoveLock.SetLock(nameof(FocusSkillCheck_Constrict), true);
-
-            AnimationPlayer.Play("show");
-
-            while (!cleared)
-            {
-                yield return null;
-            }
-
-            AnimationPlayer.Play("hide");
-
-            FocusCursor.MoveLock.SetLock(nameof(FocusSkillCheck_Constrict), false);
-        }
-    }
-
-    public void SetCleared()
-    {
-        cleared = true;
+        SfxConstrict.Play();
+        FocusCursor.MoveLock.SetLock(nameof(FocusSkillCheck_Constrict), true);
+        AnimationPlayer.Play("show");
     }
 
     public void Shake()
     {
         AnimationPlayer.Play("shake");
         SfxConstrict.Play();
+
+        ParticleEffectGroup.Instantiate(PsShake, this);
 
         AnimateRotate();
     }

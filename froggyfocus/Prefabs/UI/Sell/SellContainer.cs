@@ -41,8 +41,7 @@ public partial class SellContainer : ControlScript
     {
         foreach (var data in Data.Game.Inventory.Characters.ToList())
         {
-            var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
-            Money.Add(info.CurrencyReward);
+            Money.Add(data.Value);
             InventoryController.Instance.RemoveCharacterData(data);
         }
 

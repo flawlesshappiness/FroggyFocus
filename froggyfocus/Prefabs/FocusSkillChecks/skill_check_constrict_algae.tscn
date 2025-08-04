@@ -1,39 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cws1mvkthoiqj"]
+[gd_scene load_steps=15 format=3 uid="uid://cws1mvkthoiqj"]
 
 [ext_resource type="Script" uid="uid://b1fiv5ekfamx8" path="res://FocusSkillCheck/SkillCheckAlgae.cs" id="1_f8tky"]
 [ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="1_j7t3f"]
+[ext_resource type="PackedScene" uid="uid://bxi56icfdug5i" path="res://Prefabs/Effects/ps_leaves_and_petals.tscn" id="2_d7fd7"]
 [ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="3_5uc1f"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="3_ugrst"]
 [ext_resource type="PackedScene" uid="uid://dn267qcf8kx2g" path="res://Assets/FlawLizArt/Nature/Toon/algae_002.fbx" id="4_4lic5"]
-
-[sub_resource type="Animation" id="Animation_j7t3f"]
-resource_name = "show"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim_Algae:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Anim_Algae:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.00618882),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_f8tky"]
 length = 0.001
@@ -120,6 +92,35 @@ tracks/1/keys = {
 "values": [Vector3(0.5, 0.5, 0.5), Vector3(1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_j7t3f"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Algae:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Algae:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00618882),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5uc1f"]
 _data = {
 &"RESET": SubResource("Animation_f8tky"),
@@ -160,6 +161,7 @@ script = ExtResource("1_f8tky")
 AnimationPlayer = NodePath("AnimationPlayer")
 SizeNode = NodePath("Anim_Algae/Size")
 SfxConstrict = NodePath("SfxConstrict")
+PsShake = ExtResource("2_d7fd7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

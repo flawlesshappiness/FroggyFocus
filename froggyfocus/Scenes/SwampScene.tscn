@@ -119,7 +119,7 @@ point_count = 4
 script = ExtResource("1_qfos7")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-FocusEvents = [NodePath("World/FocusEvents/Land/FocusEvent_Land"), NodePath("World/FocusEvents/Water/FocusEvent_Lilypad"), NodePath("World/FocusEvents/Water/FocusEvent_Wood"), NodePath("World/FocusEvents/Land/FocusEvent_Mushroom")]
+FocusEvents = [NodePath("World/FocusEvents/Land/FocusEvent_Land"), NodePath("World/FocusEvents/Land/FocusEvent_Mushroom"), NodePath("World/FocusEvents/Water/FocusEvent_Lilypad"), NodePath("World/FocusEvents/Water/FocusEvent_Wood")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_f4fi4")

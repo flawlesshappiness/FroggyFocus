@@ -27,6 +27,7 @@ public partial class FocusSkillCheck_Constrict : FocusSkillCheck
     public override void Clear()
     {
         base.Clear();
+        Algae.Clear();
         FocusCursor.MoveLock.SetLock(nameof(FocusSkillCheck_Constrict), false);
     }
 
@@ -54,7 +55,6 @@ public partial class FocusSkillCheck_Constrict : FocusSkillCheck
         }
         else
         {
-            Algae.SetCleared();
             Clear();
         }
     }
