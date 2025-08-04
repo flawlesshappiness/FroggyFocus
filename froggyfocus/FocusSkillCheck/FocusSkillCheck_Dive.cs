@@ -40,8 +40,8 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
         var distance = GetDifficultyRange(DistanceRange);
         var start_position = Target.GlobalPosition;
         var target_position = Target.GetRandomPosition();
-        var dir = Target.GlobalPosition.DirectionTo(target_position);
-        var end_position = FocusEvent.GlobalPosition + dir * distance;
+        var dir = Target.GlobalPosition.DirectionTo(target_position).Normalized();
+        var end_position = Target.GlobalPosition + dir * distance;
         Target.GlobalPosition = end_position;
 
         PsRipple.Emitting = true;
