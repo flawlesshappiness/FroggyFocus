@@ -9,6 +9,9 @@ public partial class InventoryContainer : ControlScript
     public bool ShowValue;
 
     [Export]
+    public bool ButtonsDisabled;
+
+    [Export]
     public GridContainer GridContainer;
 
     [Export]
@@ -55,6 +58,7 @@ public partial class InventoryContainer : ControlScript
             button.SetCharacter(info);
             button.SetValue(data.Value);
             button.ValueContainer.Visible = ShowValue;
+            button.Disabled = ButtonsDisabled;
             button.Show();
 
             var map = new ButtonMap

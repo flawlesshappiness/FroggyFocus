@@ -54,6 +54,7 @@ layout_mode = 2
 
 [node name="inventory_container" parent="HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer" instance=ExtResource("3_gj1sa")]
 layout_mode = 2
+ButtonsDisabled = true
 
 [node name="TitlePanel" type="Panel" parent="HBoxContainer/ButtonsPanel"]
 layout_mode = 1
