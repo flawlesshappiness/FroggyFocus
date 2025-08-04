@@ -130,6 +130,8 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             FocusEvent.Cursor.HurtFocusValue(value);
 
             yield return new WaitForSeconds(0.5f);
+
+            Clear();
         }
 
         bool IsCursorNear()

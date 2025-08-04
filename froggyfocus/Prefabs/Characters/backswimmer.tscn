@@ -1,76 +1,100 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhsta7k5pa82t"]
+[gd_scene load_steps=6 format=3 uid="uid://dhsta7k5pa82t"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_yo6pf"]
 [ext_resource type="PackedScene" uid="uid://dkcskcygebid0" path="res://Assets/FlawLizArt/Nature/Bugs/backswimmer.fbx" id="2_kh5su"]
+[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="3_a8dxf"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_rg0jt"]
+[ext_resource type="PackedScene" uid="uid://hvkhlo4u24tl" path="res://Assets/FlawLizArt/Nature/Toon/algae_001.fbx" id="4_pj2up"]
 
-[node name="Backswimmer" type="Node3D" node_paths=PackedStringArray("Animation")]
+[node name="Backswimmer" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_yo6pf")
 Animation = NodePath("AnimationStateMachine")
 WalkingAnimation = "Armature|moving"
+Accessories = [NodePath("backswimmer/Armature/Skeleton3D/flower")]
 
 [node name="backswimmer" parent="." instance=ExtResource("2_kh5su")]
 transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, -0.0174046, 0.0438641)
 
 [node name="Skeleton3D" parent="backswimmer/Armature" index="0"]
-bones/0/position = Vector3(0, 0.001, 0)
 bones/1/rotation = Quaternion(0, -8.74228e-08, 0, 1)
-bones/2/rotation = Quaternion(2.7045e-07, -4.6431e-07, 0.200514, 0.979691)
+bones/2/rotation = Quaternion(-0.0149945, -0.002438, 0.2042, 0.978811)
 bones/3/position = Vector3(-5.10905e-11, 0.00173414, 2.2355e-11)
-bones/3/rotation = Quaternion(2.57682e-07, 2.05918e-07, 0.175283, 0.984518)
+bones/3/rotation = Quaternion(-0.027998, -0.0167858, 0.162365, 0.986191)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(5.395e-10, 0.00529081, -2.38423e-11)
-bones/4/rotation = Quaternion(1.11465e-07, 2.96819e-14, 0.0829917, 0.99655)
+bones/4/rotation = Quaternion(1.12146e-07, 1.02216e-09, 0.0829917, 0.99655)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(-1.67966e-09, 0.00584739, 2.66687e-15)
-bones/5/rotation = Quaternion(1.17631e-07, -1.34954e-13, 0.0875823, 0.996157)
-bones/7/rotation = Quaternion(3.15131e-07, -7.0029e-07, 0.211137, 0.977457)
+bones/5/rotation = Quaternion(1.18267e-07, -1.92826e-09, 0.0875823, 0.996157)
+bones/7/rotation = Quaternion(-0.0256489, -0.0581856, 0.232302, 0.970563)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(4.99432e-11, 0.00162809, 6.55431e-11)
-bones/8/rotation = Quaternion(8.52133e-08, -3.19595e-08, 0.0352021, 0.99938)
+bones/8/rotation = Quaternion(-0.218938, 0.0386881, 0.0540907, 0.97347)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(-4.41913e-11, 0.00193776, -7.15258e-11)
-bones/9/rotation = Quaternion(-7.41361e-08, 8.53216e-14, -0.0322785, 0.999479)
+bones/9/rotation = Quaternion(-0.212368, 0.0375496, 0.00104192, 0.976467)
 bones/9/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(-0.00051996, 0.00298965, -0.00114869)
-bones/11/rotation = Quaternion(4.62848e-07, -1.15991e-06, 0.233837, 0.972276)
+bones/11/rotation = Quaternion(-0.0219065, -0.0219031, 0.231773, 0.972277)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/position = Vector3(3.22027e-10, 0.00500078, 3.70715e-11)
-bones/12/rotation = Quaternion(2.26514e-06, -2.52138e-08, 0.702935, 0.711254)
+bones/12/rotation = Quaternion(-0.261689, -0.149421, 0.787849, 0.537109)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/position = Vector3(1.24976e-09, 0.00247407, -4.76869e-11)
-bones/13/rotation = Quaternion(5.60394e-07, 1.81061e-13, 0.172406, 0.985026)
+bones/13/rotation = Quaternion(-0.00555887, 0.273666, 0.254328, 0.927574)
 bones/13/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(0.00113673, 0.00090755, -0.00114869)
-bones/15/rotation = Quaternion(8.1723e-08, 1.25637e-06, -0.200514, 0.979691)
+bones/15/rotation = Quaternion(-0.0149947, 0.00243879, -0.2042, 0.978811)
 bones/15/scale = Vector3(1, 1, 1)
 bones/16/position = Vector3(1.36222e-11, 0.00173414, 4.91706e-11)
-bones/16/rotation = Quaternion(2.85597e-07, -2.00947e-07, -0.175283, 0.984518)
+bones/16/rotation = Quaternion(-0.0279979, 0.0167858, -0.162365, 0.986191)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/position = Vector3(-4.74066e-10, 0.00529081, -2.38419e-11)
-bones/17/rotation = Quaternion(1.11465e-07, -5.82041e-14, -0.0829917, 0.99655)
+bones/17/rotation = Quaternion(1.10277e-07, -1.22659e-09, -0.0829917, 0.99655)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/position = Vector3(1.67966e-09, 0.00584739, 2.66692e-15)
-bones/18/rotation = Quaternion(1.17631e-07, 1.70493e-13, -0.0875823, 0.996157)
+bones/18/rotation = Quaternion(1.16864e-07, 9.93348e-10, -0.0875823, 0.996157)
 bones/18/scale = Vector3(1, 1, 1)
 bones/20/position = Vector3(0.000203303, 0.0052528, -0.00114869)
-bones/20/rotation = Quaternion(1.56378e-07, 1.48256e-06, -0.211137, 0.977457)
+bones/20/rotation = Quaternion(-0.025649, 0.0581863, -0.232302, 0.970563)
 bones/20/scale = Vector3(1, 1, 1)
 bones/21/position = Vector3(-4.9943e-11, 0.00162809, -1.78596e-11)
-bones/21/rotation = Quaternion(7.42505e-08, 3.15726e-08, -0.0352021, 0.99938)
+bones/21/rotation = Quaternion(-0.218938, -0.0386881, -0.0540907, 0.97347)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/position = Vector3(4.41912e-11, 0.00193776, -2.38417e-11)
-bones/22/rotation = Quaternion(-7.4136e-08, -9.25276e-14, 0.0322785, 0.999479)
-bones/22/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.212368, -0.0375495, -0.00104194, 0.976467)
 bones/24/position = Vector3(0.000519958, 0.00298965, -0.00114869)
-bones/24/rotation = Quaternion(2.8236e-07, 1.9386e-06, -0.233837, 0.972276)
+bones/24/rotation = Quaternion(-0.0219067, 0.0219039, -0.231773, 0.972277)
 bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(1.05617e-11, 0.00500079, 3.44529e-11)
-bones/25/rotation = Quaternion(2.25987e-06, 2.00023e-08, -0.702935, 0.711254)
+bones/25/rotation = Quaternion(-0.261689, 0.149421, -0.787849, 0.537109)
 bones/25/scale = Vector3(1, 1, 1)
 bones/26/position = Vector3(5.40056e-10, 0.00247407, -4.76823e-11)
-bones/26/rotation = Quaternion(5.60394e-07, -2.5025e-13, -0.172406, 0.985026)
+bones/26/rotation = Quaternion(-0.00555888, -0.273666, -0.254328, 0.927574)
 bones/26/scale = Vector3(1, 1, 1)
+
+[node name="flower" type="BoneAttachment3D" parent="backswimmer/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, -5.48869e-14, -8.02679e-07, 1.52855e-14, -1, 8.74228e-08, -8.02679e-07, -8.74228e-08, -1, 0, 0.001, -0.000155951)
+bone_name = "Body"
+bone_idx = 1
+
+[node name="Lilypad_Flower" parent="backswimmer/Armature/Skeleton3D/flower" instance=ExtResource("3_a8dxf")]
+transform = Transform3D(0.02, -1.90735e-08, -8.33729e-16, 0, -8.74228e-10, 0.02, -1.90735e-08, -0.02, -8.74228e-10, -4.25806e-10, -0.00220693, -0.000945637)
+
+[node name="algae_001" parent="backswimmer/Armature/Skeleton3D/flower" instance=ExtResource("4_pj2up")]
+transform = Transform3D(4.84271e-05, -3.39336e-09, -0.00499977, 0.00499977, 8.45502e-10, 4.8427e-05, 8.12597e-10, -0.005, 3.40139e-09, 0.00165681, -4.19824e-05, -0.00142448)
+
+[node name="algae_002" parent="backswimmer/Armature/Skeleton3D/flower" instance=ExtResource("4_pj2up")]
+transform = Transform3D(0.00166097, -3.20481e-09, -0.00471606, 0.00471606, 6.08394e-10, 0.00166097, -4.90771e-10, -0.005, 3.22492e-09, 0.00165682, -0.00274591, -0.00122301)
+
+[node name="algae_003" parent="backswimmer/Armature/Skeleton3D/flower" instance=ExtResource("4_pj2up")]
+transform = Transform3D(0.00317136, -3.09994e-09, -0.00386555, 0.00386555, 3.0531e-10, 0.00317136, -1.73016e-09, -0.005, 2.59025e-09, 0.000807623, -0.00432703, -0.00127135)
+
+[node name="algae_004" parent="backswimmer/Armature/Skeleton3D/flower" instance=ExtResource("4_pj2up")]
+transform = Transform3D(0.00202427, -4.29386e-09, 0.0045719, -0.0045719, -7.22636e-10, 0.00202428, -1.07762e-09, -0.005, -4.21878e-09, -0.000782413, -0.00451062, -0.00127135)
+
+[node name="algae_005" parent="backswimmer/Armature/Skeleton3D/flower" instance=ExtResource("4_pj2up")]
+transform = Transform3D(-0.000509792, -4.69416e-09, 0.00497394, -0.00497394, -4.67465e-10, -0.000509791, 9.43637e-10, -0.005, -4.62204e-09, -0.00190987, -0.00140323, -0.00127135)
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_rg0jt")

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs35n1mp074rd"]
+
+[ext_resource type="Script" uid="uid://dyuvnximphoby" path="res://FocusSkillCheck/FocusSkillCheck_Constrict.cs" id="1_6h44y"]
+[ext_resource type="PackedScene" uid="uid://cws1mvkthoiqj" path="res://Prefabs/FocusSkillChecks/skill_check_constrict_algae.tscn" id="2_xyetx"]
+
+[node name="Constrict" type="Node3D" node_paths=PackedStringArray("Algae")]
+script = ExtResource("1_6h44y")
+CountRange = Vector2i(5, 15)
+Algae = NodePath("SkillCheck_ConstrictAlgae")
+Type = 4
+
+[node name="SkillCheck_ConstrictAlgae" parent="." instance=ExtResource("2_xyetx")]

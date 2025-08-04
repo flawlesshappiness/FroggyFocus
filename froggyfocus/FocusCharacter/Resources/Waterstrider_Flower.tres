@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://ddpbvp5jf57dp"]
+
+[ext_resource type="PackedScene" uid="uid://c58rcew34bdig" path="res://Prefabs/Characters/waterstrider.tscn" id="1_k1tm2"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_wu0ks"]
+
+[resource]
+script = ExtResource("2_wu0ks")
+Scene = ExtResource("1_k1tm2")
+Name = "Blooming Water Strider"
+LocationHint = "##HINT_LOC_SWAMP_WATER##"
+Accessory = "flower"
+FocusValue = 30.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(0.5, 1)
+CurrencyReward = 35
+Difficulty = 0.0
+SkillChecks = Array[int]([4, 3])
+Tags = Array[int]([0, 3, 4])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

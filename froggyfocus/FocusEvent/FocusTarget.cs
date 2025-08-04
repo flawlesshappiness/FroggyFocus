@@ -3,6 +3,9 @@ using System.Collections;
 
 public partial class FocusTarget : Node3D
 {
+    [Export]
+    public GpuParticles3D PsWaterRipples;
+
     public FocusCharacterInfo Info { get; private set; }
     public FocusCharacter Character { get; private set; }
     public float Size { get; private set; }
@@ -28,6 +31,7 @@ public partial class FocusTarget : Node3D
         Character.SetParent(this);
         Character.ClearPositionAndRotation();
 
+        UpdateWaterRipples();
         UpdateDifficulty();
 
         RandomizeSize();
@@ -112,5 +116,11 @@ public partial class FocusTarget : Node3D
         var offset = focus_event.Offset;
         var position = center + offset + new Vector3(x, y, z);
         return position;
+    }
+
+    private void UpdateWaterRipples()
+    {
+        var is_swimmer = Info.Tags.Contains(FocusCharacterTag.Water);
+        PsWaterRipples.Emitting = is_swimmer;
     }
 }

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=15 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="2_o2l5d"]
+[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="3_a4ffy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ffy"]
 transparency = 1
@@ -15,9 +16,58 @@ material = SubResource("StandardMaterial3D_a4ffy")
 size = Vector2(6, 6)
 orientation = 1
 
-[node name="FocusTarget" type="Node3D"]
+[sub_resource type="Curve" id="Curve_a4ffy"]
+_data = [Vector2(0, 1), 0.0, -2.57303, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mfarc"]
+curve = SubResource("Curve_a4ffy")
+
+[sub_resource type="Curve" id="Curve_mfarc"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mk5ib"]
+curve = SubResource("Curve_mfarc")
+
+[sub_resource type="Curve" id="Curve_mk5ib"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_v23j6"]
+curve = SubResource("Curve_mk5ib")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a4ffy"]
+angle_min = 15.0
+angle_max = 15.0
+angle_curve = SubResource("CurveTexture_mk5ib")
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_v23j6")
+color = Color(1, 1, 1, 0.52549)
+alpha_curve = SubResource("CurveTexture_mfarc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfarc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_a4ffy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mk5ib"]
+material = SubResource("StandardMaterial3D_mfarc")
+orientation = 1
+
+[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("PsWaterRipples")]
 script = ExtResource("1_hmctk")
+PsWaterRipples = NodePath("PsWaterRipple")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_mfarc")
+
+[node name="PsWaterRipple" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 4
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_a4ffy")
+draw_pass_1 = SubResource("QuadMesh_mk5ib")

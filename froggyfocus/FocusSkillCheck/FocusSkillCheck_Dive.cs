@@ -56,6 +56,8 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
         Target.Show();
 
         yield return new WaitForSeconds(0.25f);
+
+        Clear();
     }
 
     private void CreateSplashPS(Vector3 position)

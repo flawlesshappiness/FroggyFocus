@@ -1,0 +1,207 @@
+[gd_scene load_steps=14 format=3 uid="uid://cws1mvkthoiqj"]
+
+[ext_resource type="Script" uid="uid://b1fiv5ekfamx8" path="res://FocusSkillCheck/SkillCheckAlgae.cs" id="1_f8tky"]
+[ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="1_j7t3f"]
+[ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="3_5uc1f"]
+[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="3_ugrst"]
+[ext_resource type="PackedScene" uid="uid://dn267qcf8kx2g" path="res://Assets/FlawLizArt/Nature/Toon/algae_002.fbx" id="4_4lic5"]
+
+[sub_resource type="Animation" id="Animation_j7t3f"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Algae:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Algae:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00618882),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_f8tky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Algae:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Algae:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_5uc1f"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Algae:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Algae:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0067297, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ugrst"]
+resource_name = "shake"
+length = 0.1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Algae:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00552837),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Algae:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5uc1f"]
+_data = {
+&"RESET": SubResource("Animation_f8tky"),
+&"hide": SubResource("Animation_5uc1f"),
+&"shake": SubResource("Animation_ugrst"),
+&"show": SubResource("Animation_j7t3f")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8tky"]
+render_priority = 0
+shader = ExtResource("1_j7t3f")
+shader_parameter/albedo = Color(0.37505, 0.65, 0.299, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="SphereMesh" id="SphereMesh_5uc1f"]
+material = SubResource("ShaderMaterial_f8tky")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ugrst"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_5uc1f")
+
+[node name="SkillCheck_ConstrictAlgae" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "SizeNode", "SfxConstrict")]
+script = ExtResource("1_f8tky")
+AnimationPlayer = NodePath("AnimationPlayer")
+SizeNode = NodePath("Anim_Algae/Size")
+SfxConstrict = NodePath("SfxConstrict")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5uc1f")
+}
+playback_default_blend_time = 0.05
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_5uc1f")
+skeleton = NodePath("../Anim_Algae")
+
+[node name="Anim_Algae" type="Node3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+visible = false
+
+[node name="Size" type="Node3D" parent="Anim_Algae"]
+
+[node name="Models" type="Node3D" parent="Anim_Algae/Size"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Lilypad_Flower" parent="Anim_Algae/Size/Models" instance=ExtResource("3_ugrst")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.0181127, 0)
+
+[node name="algae_002" parent="Anim_Algae/Size/Models" instance=ExtResource("4_4lic5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196651, 0, -0.153973)
+
+[node name="algae_003" parent="Anim_Algae/Size/Models" instance=ExtResource("4_4lic5")]
+transform = Transform3D(-0.495914, 0, -0.868372, 0, 1, 0, 0.868372, 0, -0.495914, 0.114419, 0, 0.070816)
+
+[node name="algae_004" parent="Anim_Algae/Size/Models" instance=ExtResource("4_4lic5")]
+transform = Transform3D(-0.471766, 0, 0.881724, 0, 1, 0, -0.881724, 0, -0.471766, -0.110369, 0, 0.0510979)
+
+[node name="algae_005" parent="Anim_Algae/Size/Models" instance=ExtResource("4_4lic5")]
+transform = Transform3D(0.349016, 0, 0.606785, 0, 0.7, 0, -0.606785, 0, 0.349016, -0.141919, 0, -0.110592)
+
+[node name="algae_006" parent="Anim_Algae/Size/Models" instance=ExtResource("4_4lic5")]
+transform = Transform3D(0.495122, 0, -0.494828, 0, 0.7, 0, 0.494828, 0, 0.495122, 0.106532, 0, -0.138198)
+
+[node name="algae_007" parent="Anim_Algae/Size/Models" instance=ExtResource("4_4lic5")]
+transform = Transform3D(-0.698291, 0, -0.0488783, 0, 0.7, 0, 0.0488783, 0, -0.698291, 0.0276589, 0, 0.0550416)
+
+[node name="SfxConstrict" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ugrst")
+bus = &"SFX"

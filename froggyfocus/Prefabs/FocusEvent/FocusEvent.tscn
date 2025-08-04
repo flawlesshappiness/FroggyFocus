@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=13 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bjfec2tbico8w" path="res://Prefabs/FocusSkillChecks/dash.tscn" id="7_xhohg"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="7_yos1q"]
 [ext_resource type="PackedScene" uid="uid://bk1jnky7aenmk" path="res://Prefabs/FocusSkillChecks/dive.tscn" id="8_201f2"]
+[ext_resource type="PackedScene" uid="uid://bs35n1mp074rd" path="res://Prefabs/FocusSkillChecks/constrict.tscn" id="9_ixd7q"]
 [ext_resource type="PackedScene" uid="uid://bgam63hrep021" path="res://Prefabs/Effects/rain_effect.tscn" id="10_5w8tb"]
 [ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="11_h8skc"]
 
@@ -20,7 +21,7 @@ Camera = NodePath("CameraMarker/Camera3D")
 Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
 Frog = NodePath("Frog")
-SkillChecks = [NodePath("SkillChecks/Bombs"), NodePath("SkillChecks/Dash"), NodePath("SkillChecks/Dive")]
+SkillChecks = [NodePath("SkillChecks/Bombs"), NodePath("SkillChecks/Dash"), NodePath("SkillChecks/Dive"), NodePath("SkillChecks/Constrict")]
 
 [node name="CameraMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5, 0)
@@ -42,6 +43,8 @@ DistanceRange = Vector2(0.8, 2)
 [node name="Dash" parent="SkillChecks" instance=ExtResource("7_xhohg")]
 
 [node name="Dive" parent="SkillChecks" instance=ExtResource("8_201f2")]
+
+[node name="Constrict" parent="SkillChecks" instance=ExtResource("9_ixd7q")]
 
 [node name="Frog" parent="." instance=ExtResource("7_yos1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)

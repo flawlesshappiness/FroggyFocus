@@ -14,7 +14,7 @@ public partial class FocusSkillCheck : Node3D
 
     protected RandomNumberGenerator rng = new();
 
-    public void Initialize(FocusEvent focus_event)
+    public virtual void Initialize(FocusEvent focus_event)
     {
         FocusEvent = focus_event;
         FocusEvent.OnCompleted += _ => Clear();
