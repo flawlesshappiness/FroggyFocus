@@ -45,6 +45,7 @@ public partial class FocusCursor : Node3D
 
     public static readonly MultiLock FocusGainLock = new();
     public static readonly MultiLock MoveLock = new();
+    public static readonly MultiLock ShieldLock = new();
 
     private float next_tick;
     private bool moving;
@@ -117,7 +118,7 @@ public partial class FocusCursor : Node3D
         var input = PlayerInput.GetMoveInput();
         DesiredVelocity = new Vector3(input.X, 0, input.Y);
 
-        if (PlayerInput.Interact.Released)
+        if (PlayerInput.Interact.Released && ShieldLock.IsFree)
         {
             Shield.StartShield();
         }

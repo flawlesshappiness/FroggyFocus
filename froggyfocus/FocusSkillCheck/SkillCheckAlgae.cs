@@ -15,19 +15,23 @@ public partial class SkillCheckAlgae : Node3D
     [Export]
     public PackedScene PsShake;
 
+    private bool visible;
     private RandomNumberGenerator rng = new();
 
     public void Clear()
     {
-        AnimationPlayer.Play("hide");
-        FocusCursor.MoveLock.SetLock(nameof(FocusSkillCheck_Constrict), false);
+        if (visible)
+        {
+            visible = false;
+            AnimationPlayer.Play("hide");
+        }
     }
 
     public void StartConstrict()
     {
         SfxConstrict.Play();
-        FocusCursor.MoveLock.SetLock(nameof(FocusSkillCheck_Constrict), true);
         AnimationPlayer.Play("show");
+        visible = true;
     }
 
     public void Shake()

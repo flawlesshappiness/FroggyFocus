@@ -12,27 +12,34 @@ public partial class FocusSkillCheck_Constrict : FocusSkillCheck
     private int count_current;
     private int count_max;
 
-    public override void Initialize(FocusEvent focus_event)
+    public override void _Process(double delta)
     {
-        base.Initialize(focus_event);
-        FocusEvent.Cursor.OnMoveStarted += MoveStarted;
+        base._Process(delta);
+
+        if (PlayerInput.Interact.Released)
+        {
+            DecreaseCount();
+        }
     }
 
-    public override void _ExitTree()
+    private void SetLocks(bool locked)
     {
-        base._ExitTree();
-        FocusEvent.Cursor.OnMoveStarted -= MoveStarted;
+        var id = nameof(FocusSkillCheck_Constrict);
+        FocusCursor.MoveLock.SetLock(id, locked);
+        FocusCursor.ShieldLock.SetLock(id, locked);
     }
 
     public override void Clear()
     {
         base.Clear();
         Algae.Clear();
-        FocusCursor.MoveLock.SetLock(nameof(FocusSkillCheck_Constrict), false);
+        SetLocks(false);
     }
 
     protected override IEnumerator Run()
     {
+        SetLocks(true);
+
         count_max = GetDifficultyRange(CountRange);
         count_current = count_max;
 
@@ -42,7 +49,7 @@ public partial class FocusSkillCheck_Constrict : FocusSkillCheck
         yield return null;
     }
 
-    private void MoveStarted()
+    private void DecreaseCount()
     {
         if (!IsRunning) return;
 
@@ -55,6 +62,7 @@ public partial class FocusSkillCheck_Constrict : FocusSkillCheck
         }
         else
         {
+            Algae.Shake();
             Clear();
         }
     }

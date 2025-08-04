@@ -31,7 +31,7 @@ public partial class FocusTarget : Node3D
         Character.SetParent(this);
         Character.ClearPositionAndRotation();
 
-        UpdateWaterRipples();
+        UpdateSwimmer();
         UpdateDifficulty();
 
         RandomizeSize();
@@ -118,7 +118,7 @@ public partial class FocusTarget : Node3D
         return position;
     }
 
-    private void UpdateWaterRipples()
+    private void UpdateSwimmer()
     {
         var is_swimmer = Info.Tags.Contains(FocusCharacterTag.Water);
         PsWaterRipples.Emitting = is_swimmer;
