@@ -28,6 +28,7 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
         base.Clear();
         created_objects.ForEach(x => x.QueueFree());
         created_objects.Clear();
+        PsRipple.Emitting = false;
     }
 
     protected override IEnumerator Run()

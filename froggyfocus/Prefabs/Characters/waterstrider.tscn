@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c58rcew34bdig"]
+[gd_scene load_steps=13 format=3 uid="uid://c58rcew34bdig"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_7t4ty"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_1t24o"]
@@ -6,6 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="4_1t24o"]
 [ext_resource type="PackedScene" uid="uid://hvkhlo4u24tl" path="res://Assets/FlawLizArt/Nature/Toon/algae_001.fbx" id="5_s76no"]
 [ext_resource type="PackedScene" uid="uid://dn267qcf8kx2g" path="res://Assets/FlawLizArt/Nature/Toon/algae_002.fbx" id="6_6rg18"]
+[ext_resource type="Material" uid="uid://cj44kc16xji4y" path="res://Materials/Branch_003_Texture.tres" id="7_8qhwi"]
+[ext_resource type="Material" uid="uid://db1u1f58aaaky" path="res://Materials/Branch_001_Texture.tres" id="8_4j3x0"]
+[ext_resource type="Material" uid="uid://u2y5v44s2xc3" path="res://Materials/Branch_002_Texture.tres" id="9_timqg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_iwkcx"]
+material = ExtResource("7_8qhwi")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ryapm"]
+material = ExtResource("8_4j3x0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_o8aa0"]
+material = ExtResource("9_timqg")
 
 [node name="Locust" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_7t4ty")
@@ -21,17 +33,21 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Skeleton3D" parent="waterstrider/Armature" index="0"]
-bones/3/rotation = Quaternion(-0.0557254, -0.0136893, 0.245587, 0.967675)
-bones/4/rotation = Quaternion(-0.0193345, 0.00728787, -0.23519, 0.97173)
-bones/7/rotation = Quaternion(-0.0347978, 0.0306256, -0.04989, 0.997678)
-bones/8/rotation = Quaternion(-0.0227896, 0.0120569, -0.459175, 0.887971)
+bones/3/rotation = Quaternion(-0.0525632, -0.0116571, 0.405754, 0.912395)
+bones/4/rotation = Quaternion(-0.0226773, 0.00654464, -0.202101, 0.97908)
+bones/7/rotation = Quaternion(-0.0354122, 0.0286267, -0.263789, 0.963505)
+bones/8/rotation = Quaternion(-0.021048, 0.010498, -0.422053, 0.906266)
 bones/10/rotation = Quaternion(0, 0, -0.0677933, 0.997699)
-bones/13/rotation = Quaternion(-0.0557254, 0.0136893, -0.245587, 0.967675)
-bones/14/rotation = Quaternion(-0.0193345, -0.00728787, 0.23519, 0.97173)
-bones/17/rotation = Quaternion(-0.0347978, -0.0306256, 0.04989, 0.997678)
-bones/18/rotation = Quaternion(-0.0227896, -0.0120569, 0.459175, 0.887971)
+bones/13/rotation = Quaternion(-0.0525632, 0.0116571, -0.405754, 0.912395)
+bones/14/rotation = Quaternion(-0.0226773, -0.00654464, 0.202101, 0.97908)
+bones/17/rotation = Quaternion(-0.0354122, -0.0286267, 0.263789, 0.963505)
+bones/18/rotation = Quaternion(-0.021048, -0.010498, 0.422053, 0.906266)
 bones/20/rotation = Quaternion(0, 0, 0.0677933, 0.997699)
+bones/22/position = Vector3(0.017337, 0.0130735, 0)
+bones/24/position = Vector3(0.0145568, -0.0176505, 0)
 bones/24/rotation = Quaternion(-0.0499663, 0.705339, 0.705339, -0.0499663)
+bones/26/position = Vector3(-0.0145568, -0.0176505, 0)
+bones/28/position = Vector3(-0.017337, 0.0130735, 0)
 
 [node name="flower" type="BoneAttachment3D" parent="waterstrider/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0.00303515)
@@ -61,6 +77,35 @@ transform = Transform3D(0.00299626, -2.71861e-11, -0.000149739, -0.000149739, -1
 
 [node name="algae_006" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("6_6rg18")]
 transform = Transform3D(-0.0029341, 0.000612976, -0.000123797, -0.000126465, -5.92359e-10, 0.00299734, 0.000612431, 0.00293671, 2.58406e-05, 0.000633696, 0.00426871, 0.000255992)
+
+[node name="wooden" type="BoneAttachment3D" parent="waterstrider/Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0.00303515)
+bone_name = "Body"
+bone_idx = 1
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="waterstrider/Armature/Skeleton3D/wooden"]
+transform = Transform3D(0.000860188, 0.00369232, 0.00325989, 0.00467056, 0.000439319, -0.00173001, -0.00156398, 0.00334272, -0.00337346, 0.00211551, 0.0068045, 0.000665919)
+mesh = SubResource("QuadMesh_iwkcx")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="waterstrider/Armature/Skeleton3D/wooden"]
+transform = Transform3D(0.000618649, -0.00197009, -0.00455368, -0.00486853, 0.000643551, -0.000939847, 0.000956423, 0.00455023, -0.00183866, -0.0015623, -9.19607e-05, 0.00095252)
+mesh = SubResource("QuadMesh_iwkcx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="waterstrider/Armature/Skeleton3D/wooden"]
+transform = Transform3D(-0.000929255, -0.00288003, -0.00398019, -0.00489045, 0.000155548, 0.00102922, -0.000469016, 0.00408427, -0.00284584, -0.00166862, 0.00531908, 0.00134377)
+mesh = SubResource("QuadMesh_ryapm")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="waterstrider/Armature/Skeleton3D/wooden"]
+transform = Transform3D(4.96185e-05, 0.00228152, 0.00444885, 0.00495592, -0.000610284, 0.000257702, 0.0006606, 0.00440707, -0.00226746, 0.00172346, -0.00297525, 0.00113804)
+mesh = SubResource("QuadMesh_ryapm")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="waterstrider/Armature/Skeleton3D/wooden"]
+transform = Transform3D(-0.000459946, 0.00126927, -0.00481429, -0.0046396, -0.00186329, -4.79881e-05, -0.00180627, 0.00446285, 0.00134918, 0.00068999, 0.00302069, 0.00157716)
+mesh = SubResource("QuadMesh_o8aa0")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="waterstrider/Armature/Skeleton3D/wooden"]
+transform = Transform3D(-0.000727583, 0.00134088, 0.00476158, 0.00485063, -0.000750895, 0.000952644, 0.000970569, 0.00475796, -0.00119156, 0.000407991, -0.00481464, 0.00170769)
+mesh = SubResource("QuadMesh_o8aa0")
 
 [node name="AnimationPlayer" parent="waterstrider" index="1"]
 playback_default_blend_time = 0.25

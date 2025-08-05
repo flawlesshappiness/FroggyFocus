@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://c14c4axt0ra6"]
+
+[ext_resource type="PackedScene" uid="uid://ir8kqnw2coxy" path="res://Prefabs/Characters/mosquito.tscn" id="1_ddubj"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_hmyyb"]
+
+[resource]
+script = ExtResource("2_hmyyb")
+Scene = ExtResource("1_ddubj")
+Name = "Wooden Mosquito"
+LocationHint = "##HINT_LOC_SWAMP_WOODEN##"
+Accessory = "wooden"
+FocusValue = 40.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 0.8
+MoveLengthRange = Vector2(0.3, 0.6)
+MoveDelayRange = Vector2(0, 0)
+CurrencyReward = 25
+Difficulty = 0.0
+SkillChecks = Array[int]([5])
+Tags = Array[int]([0, 2, 5])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

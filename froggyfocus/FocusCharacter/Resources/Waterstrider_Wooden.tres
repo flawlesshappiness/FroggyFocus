@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://cx66qsueld33v"]
+
+[ext_resource type="PackedScene" uid="uid://c58rcew34bdig" path="res://Prefabs/Characters/waterstrider.tscn" id="1_m38v0"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_0bkps"]
+
+[resource]
+script = ExtResource("2_0bkps")
+Scene = ExtResource("1_m38v0")
+Name = "Wooden Water Strider"
+LocationHint = "##HINT_LOC_SWAMP_WOODEN##"
+Accessory = "wooden"
+FocusValue = 30.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(0.5, 1)
+CurrencyReward = 30
+Difficulty = 0.0
+SkillChecks = Array[int]([3, 5])
+Tags = Array[int]([0, 3, 5])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

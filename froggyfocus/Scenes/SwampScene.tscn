@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=60 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="13_a7viq"]
 [ext_resource type="PackedScene" uid="uid://d4a0g7n1bgdr3" path="res://Prefabs/Pickups/stick_pickup.tscn" id="13_dkapk"]
 [ext_resource type="PackedScene" uid="uid://cstu4xwk8m2au" path="res://Prefabs/Nature/common_tree_dead_1.tscn" id="13_yvk0y"]
-[ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Water.tres" id="14_52an4"]
+[ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Water Lilypads.tres" id="14_52an4"]
 [ext_resource type="PackedScene" uid="uid://db3tbp4x07eca" path="res://Prefabs/Nature/common_tree_dead_2.tscn" id="14_cmxon"]
 [ext_resource type="PackedScene" uid="uid://b0uor5n0v8ykv" path="res://Assets/Quaternius/Nature/Lilypad_Cut.fbx" id="15_bmghv"]
 [ext_resource type="PackedScene" uid="uid://78t0bt36x8b2" path="res://Prefabs/Nature/reeds_sparse.tscn" id="15_hj885"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://dphy7mkttpwga" path="res://Assets/Quaternius/Nature/CommonTree_Dead_5.fbx" id="27_tyvxw"]
 [ext_resource type="Resource" uid="uid://but43q22crqx3" path="res://HandInQuest/Resources/Magpie_Swamp.tres" id="29_m0kej"]
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="33_brx17"]
+[ext_resource type="Resource" uid="uid://c7a2ryrxyjyti" path="res://FocusEvent/Resources/Swamp Water Woods.tres" id="42_8ow6q"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_20fcr"]
@@ -1187,7 +1188,7 @@ transform = Transform3D(-2.17038, 0, -2.07109, 0, 3, 0, 2.07109, 0, -2.17038, 6.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.895, 0)
 visible = false
 Id = "wood"
-Info = ExtResource("14_52an4")
+Info = ExtResource("42_8ow6q")
 Size = Vector2(5, 3)
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Water/FocusEvent_Wood"]

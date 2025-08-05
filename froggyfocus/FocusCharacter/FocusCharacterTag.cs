@@ -5,4 +5,5 @@ public enum FocusCharacterTag
     Flying,
     Water,
     Flower,
+    Wooden,
 }

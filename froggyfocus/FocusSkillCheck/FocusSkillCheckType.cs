@@ -4,5 +4,6 @@ public enum FocusSkillCheckType
     MushroomBombs,
     Dash,
     Dive,
-    Constrict
+    Constrict,
+    Spike
 }
