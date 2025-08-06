@@ -83,7 +83,7 @@ public partial class MainMenuView : View
             Hide();
             PauseView.ToggleLock.SetLock(nameof(MainMenuView), false);
             MouseVisibility.Hide(nameof(MainMenuView));
-            Scene.Goto<SwampScene>();
+            Scene.Goto<CaveScene>();
             GameView.Instance.Show();
             GameView.Instance.AnimateHideOverlay();
 

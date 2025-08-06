@@ -1,10 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=57 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
-[ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/SwampWater.tres" id="4_dkapk"]
+[ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="4_m0kej"]
 [ext_resource type="PackedScene" uid="uid://dg28gg150qhoy" path="res://Prefabs/Ground/pond_corner_convex_002.tscn" id="8_iu42u"]
 [ext_resource type="PackedScene" uid="uid://c82d8w436imeq" path="res://Prefabs/Nature/rock.tscn" id="8_vvp34"]
 [ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="9_1p1c6"]
@@ -30,7 +30,6 @@
 [ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="15_xnl44"]
 [ext_resource type="PackedScene" uid="uid://bt47rt4wstm5n" path="res://Prefabs/NPC/OtterNPC/otter_npc.tscn" id="17_4oemw"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="17_52an4"]
-[ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="17_achss"]
 [ext_resource type="PackedScene" uid="uid://bjrocvyhabcve" path="res://Prefabs/Nature/grass_tuft_tall.tscn" id="17_lakbb"]
 [ext_resource type="PackedScene" uid="uid://cap2fnpuvvefh" path="res://Prefabs/Nature/mushroom_platform.tscn" id="17_riqag"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
@@ -47,12 +46,6 @@
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="33_brx17"]
 [ext_resource type="Resource" uid="uid://c7a2ryrxyjyti" path="res://FocusEvent/Resources/Swamp Water Woods.tres" id="42_8ow6q"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_20fcr"]
-size = Vector2(1000, 1000)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_achss"]
-size = Vector3(1000, 1, 1000)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_20fcr"]
 vertices = PackedVector3Array(3, 0.449998, -7.25, 2.25, 0.449998, -7.25, 2, 0.449998, -6.5, 4.25, 0.449998, -4.75, -7.25, 0.449998, -3.25, -7.25, 0.449998, -2.25, -5.25, 0.449998, -2.5, -3.25, 0.449998, -6, -3.75, 0.449998, -7, -5.5, 0.449998, -6, -2, 0.449998, -6, -4.75, 0.449998, -0.5, 7.5, 0.449998, 1.75, 7.25, 0.449998, -3, -7, 0.699998, 0, -7.5, 0.449998, -0.5, -7.25, 0.449998, 3, -4.75, 0.449998, 4.25, 3.25, 0.449998, 7.25, -5.25, 0.699998, 0, -3.25, 0.449998, 7, -1.75, 0.449998, 7.5, 5.5, 0.449998, 6, 7.25, 0.449998, 3.25, 20.75, 0.449998, -0.5, 19.5, 0.449998, -1.5, 18.25, 0.449998, -1.75, 22, 0.449998, 1.75, 13, 0.449998, 2, 11.75, 0.449998, 3.25, 11.75, 0.449998, 4.5, 13, 0.449998, 7.25, 21, 0.449998, 5.25, 22.25, 0.449998, 4, 14.75, 0.449998, 8.75, 16.25, 0.449998, 9, 15.5, 0.449998, -1.5, 13.5, 0.449998, -0.5, 20.5, 0.449998, 7.75, -6.5, 1.7, -1.25, -5.75, 1.7, -1, -6, 1.7, -1.5, 27.25, 0.449998, 5.25, 27.25, 0.449998, 6.75, 27.75, 0.449998, 7, 28.75, 0.449998, 3.5, 28, 0.449998, 8.5, 28.75, 0.449998, 9, 32, 0.449998, 4.25, 31.25, 0.449998, 3.75, 31, 0.449998, 9.25, 32.75, 0.449998, 7.25, 34.25, 0.449998, 21.5, 38, 0.449998, 25.5, 37.75, 0.449998, 22.5, 43.25, 0.449998, 10, 39.5, 0.449998, 9, 38.5, 0.449998, 9.5, 34.5, 0.449998, 13.75, 40.25, 0.449998, 18.25, 43.25, 0.449998, 19, 39, 0.449998, 18.5, 33.25, 0.449998, 17.75, 48, 0.449998, 21.75, 48.25, 0.449998, 25, 48.75, 0.449998, 25, 51.75, 0.449998, 21.75, 47.25, 0.449998, 20.25, 53, 0.449998, 17.5, 52, 0.449998, 14, 49, 0.449998, 10.5, 47, 0.449998, 9, 43.5, 3.95, 27.5, 44.25, 4.2, 27.25, 45.75, 5.45, 24.5, 43.75, 5.2, 20, 41.5, 5.2, 20.25, 41, 5.45, 22.75, 45.75, 5.45, 23.5, 41, 5.7, 24.5, 43.75, 0.449998, 25.5, 46.75, 0.449998, 26.25, 46.5, 0.449998, 23, 40, 0.449998, 20.25, 39.75, 0.449998, 22, 39.75, 0.449998, 24.25, 41, 0.449998, 26, 45.25, 0.449998, 21)
@@ -135,25 +128,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.903, -1.43051e-06, 15.3789
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="Water" type="MeshInstance3D" parent="World"]
+[node name="Water" parent="World" instance=ExtResource("4_m0kej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = SubResource("PlaneMesh_20fcr")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_dkapk")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World/Water"]
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Water/StaticBody3D"]
-shape = SubResource("BoxShape3D_achss")
-debug_color = Color(0, 0.595, 0.7, 1)
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="World/Water"]
-size = Vector3(1000, 1, 1000)
-
-[node name="RespawnArea" parent="World/Water" instance=ExtResource("17_achss")]
-collision_layer = 0
 
 [node name="Islands" type="NavigationRegion3D" parent="World"]
 navigation_mesh = SubResource("NavigationMesh_20fcr")
