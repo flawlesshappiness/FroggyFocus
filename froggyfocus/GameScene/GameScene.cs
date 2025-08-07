@@ -14,6 +14,9 @@ public partial class GameScene : Scene
     public WorldEnvironment WorldEnvironment;
 
     [Export]
+    public Array<WeatherInfo> Weathers = new();
+
+    [Export]
     public Array<FocusEvent> FocusEvents = new();
 
     private string current_focus_event_id;
@@ -28,7 +31,7 @@ public partial class GameScene : Scene
         FocusEventController.Instance.OnFocusEventFailed += _ => FocusEventEnded();
 
         MusicController.Instance.StartMusic();
-        WeatherController.Instance.StartWeather();
+        WeatherController.Instance.StartWeather(Weathers);
         FocusHotSpotController.Instance.Start();
 
         HideFocusEvents();

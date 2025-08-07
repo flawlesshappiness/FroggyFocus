@@ -1,5 +1,7 @@
 using Godot;
+using Godot.Collections;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class WeatherController : ResourceController<WeatherCollection, WeatherInfo>
@@ -93,7 +95,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         ThunderController.Instance.StopThunder();
     }
 
-    public void StartWeather()
+    public void StartWeather(Array<WeatherInfo> weathers)
     {
         var scene = GameScene.Instance;
         var env = scene.WorldEnvironment.Environment.Duplicate() as Environment;
@@ -105,7 +107,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         RainController.Instance.StartRain();
         WindController.Instance.StartWind();
 
-        current_weather = GetNextWeather();
+        current_weather = GetNextWeather(weathers);
         SetWeatherTransition(current_weather, current_weather, 1);
 
         cr_weather = this.StartCoroutine(Cr, "weather");
@@ -117,7 +119,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
                 yield return WaitForSkip(rng.RandfRange(200, 400));
 
                 var previous_weather = current_weather;
-                current_weather = GetNextWeather();
+                current_weather = GetNextWeather(weathers);
 
                 var transition_duration = quick_transition ? TRANSITION_DURATION_QUICK : TRANSITION_DURATION;
                 yield return WaitForWeatherTransition(previous_weather, current_weather, transition_duration);
@@ -162,9 +164,9 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         SetWeatherTransition(from, to, 1);
     }
 
-    private WeatherInfo GetNextWeather()
+    private WeatherInfo GetNextWeather(IEnumerable<WeatherInfo> weathers)
     {
-        var next = next_weather ?? Collection.Resources
+        var next = next_weather ?? weathers
             .Where(x => x != current_weather) // Not the same as current weather
             .Where(x => current_weather != null && current_weather.Rain > 0.0f ? x.Rain < 0.01f : true) // No repeat rain
             .ToList()
