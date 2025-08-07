@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://kvtix1ndn4h1"]
+
+[ext_resource type="PackedScene" uid="uid://cyoi4u7vbb4jc" path="res://Assets/FlawLizArt/Nature/Toon/stalagtite.fbx" id="1_wmsps"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_coyla"]
+height = 4.0
+
+[node name="Stalagtite" type="Node3D"]
+
+[node name="stalagtite" parent="." instance=ExtResource("1_wmsps")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CapsuleShape3D_coyla")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+height = 4.2
+vertices = PackedVector3Array(-0.00160877, 0, -0.463492, -0.344725, 0, -0.331964, -0.48769, 0, 0.0225887, -0.333287, 0, 0.354267, -0.00446812, 0, 0.482936, 0.344366, 0, 0.334252, 0.484472, 0, -0.0145822, 0.352944, 0, -0.357698)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

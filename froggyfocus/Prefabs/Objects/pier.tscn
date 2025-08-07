@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd1p385ni06q4"]
+
+[ext_resource type="PackedScene" uid="uid://b6j1ddmtb53bo" path="res://Prefabs/Objects/pier_section.tscn" id="1_08qas"]
+
+[node name="Pier" type="Node3D"]
+
+[node name="PierSection" parent="." instance=ExtResource("1_08qas")]
+
+[node name="PierSection2" parent="." instance=ExtResource("1_08qas")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+
+[node name="PierSection3" parent="." instance=ExtResource("1_08qas")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
