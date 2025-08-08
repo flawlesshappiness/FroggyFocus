@@ -13,12 +13,6 @@ public partial class FocusEvent : Node3D
     public FocusEventInfo Info;
 
     [Export]
-    public Vector2 Size;
-
-    [Export]
-    public Vector3 Offset;
-
-    [Export]
     public Camera3D Camera;
 
     [Export]
@@ -99,7 +93,7 @@ public partial class FocusEvent : Node3D
             CreateTarget();
 
             // Transition start
-            FocusIntroView.Instance.LoadTargetCharacter(Target.Info);
+            FocusIntroView.Instance.LoadTarget(Target);
             yield return FocusIntroView.Instance.AnimateShow();
 
             // Show event
@@ -175,7 +169,7 @@ public partial class FocusEvent : Node3D
             yield return Target.WaitForMoveToRandomPosition();
 
             // Wait
-            var duration = rng.RandfRange(Target.Info.MoveDelayRange.X, Target.Info.MoveDelayRange.Y);
+            var duration = Target.GetMoveDelay();
             if (duration > 0)
             {
                 Target.StopMoving();

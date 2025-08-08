@@ -42,7 +42,8 @@ public partial class InventoryController : SingletonController
         var data = new InventoryCharacterData
         {
             InfoPath = info.ResourcePath,
-            Value = info.CurrencyReward
+            Value = info.CurrencyReward,
+            Stars = 0
         };
 
         Data.Game.Inventory.Characters.Add(data);
@@ -54,7 +55,8 @@ public partial class InventoryController : SingletonController
         var data = new InventoryCharacterData
         {
             InfoPath = target.Info.ResourcePath,
-            Value = target.Reward
+            Value = target.Reward,
+            Stars = target.Stars
         };
 
         Data.Game.Inventory.Characters.Add(data);

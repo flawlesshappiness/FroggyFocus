@@ -34,12 +34,12 @@ public partial class FocusSkillCheck_Dash : FocusSkillCheck
 
         AnimationPlayer.SpeedScale = Mathf.Lerp(TelegraphSpeedRange.X, TelegraphSpeedRange.Y, Difficulty);
 
-        var count = GetDifficultyRange(DashCountRange);
+        var count = DashCountRange.Range(Difficulty);
         for (int i = 0; i < count; i++)
         {
             GlobalPosition = FocusEvent.Target.GlobalPosition;
 
-            var position = FocusEvent.Target.GetClampedPosition();
+            var position = FocusEvent.Target.GetNextPosition();
             var dir = FocusEvent.Target.GlobalPosition.DirectionTo(position);
             var angle = Mathf.RadToDeg(Vector3.Forward.SignedAngleTo(dir, Vector3.Up));
             RotationNode.GlobalRotationDegrees = new Vector3(0, angle, 0);

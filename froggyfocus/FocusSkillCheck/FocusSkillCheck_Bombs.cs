@@ -62,7 +62,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     protected override IEnumerator Run()
     {
         var last_angle = rng.RandfRange(0f, 360f);
-        var count = GetDifficultyRange(BombCountRange);
+        var count = BombCountRange.Range(Difficulty);
         var delay_span = 0.6f;
         var delay_per = delay_span / count;
         for (int i = 0; i < count; i++)

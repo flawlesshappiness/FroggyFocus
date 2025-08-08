@@ -22,7 +22,7 @@ material = ExtResource("9_timqg")
 [node name="Locust" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_7t4ty")
 Animation = NodePath("AnimationStateMachine")
-Accessories = [NodePath("waterstrider/Armature/Skeleton3D/flower")]
+Accessories = [NodePath("waterstrider/Armature/Skeleton3D/flower"), NodePath("waterstrider/Armature/Skeleton3D/wooden")]
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("2_1t24o")

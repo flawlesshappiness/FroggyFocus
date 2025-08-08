@@ -17,6 +17,9 @@ public partial class InventoryInfoContainer : Control
     [Export]
     public Label CaughtLabel;
 
+    [Export]
+    public DifficultyStarsTexture RarityTexture;
+
     public override void _Ready()
     {
         base._Ready();
@@ -45,6 +48,8 @@ public partial class InventoryInfoContainer : Control
 
         var stats = StatsController.Instance.GetOrCreateCharacterData(info.ResourcePath);
         CaughtLabel.Text = stats.CountCaught.ToString();
+
+        RarityTexture.SetStars(data.Stars);
 
         Show();
     }

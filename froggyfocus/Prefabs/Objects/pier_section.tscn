@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6j1ddmtb53bo"]
+[gd_scene load_steps=8 format=3 uid="uid://b6j1ddmtb53bo"]
 
 [ext_resource type="PackedScene" uid="uid://2vddpwr2n2uy" path="res://Prefabs/Objects/pole_wooden.tscn" id="1_1r4kt"]
 [ext_resource type="PackedScene" uid="uid://bjguptoax41oy" path="res://Assets/FlawLizArt/Objects/wood_plank_2m.fbx" id="2_1r4kt"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="3_hjaim"]
+[ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="4_12j2h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1r4kt"]
 size = Vector3(11, 0.6, 14)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_12j2h"]
 size = Vector3(11, 1, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2s7i5"]
+size = Vector3(3.34204, 0, 5.75171)
 
 [node name="PierSection" type="Node3D"]
 
@@ -76,3 +80,11 @@ height = 4.0
 vertices = PackedVector3Array(-7.34562, 0, -1.16388, -7.46467, 0, 13.0429, 7.41672, 0, 12.9238, 7.37704, 0, -1.20356)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
+
+[node name="FocusHotSpotArea" type="Area3D" parent="."]
+script = ExtResource("4_12j2h")
+metadata/_custom_type_script = "uid://crb4gwrjb3psl"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusHotSpotArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.24952, 6)
+shape = SubResource("BoxShape3D_2s7i5")

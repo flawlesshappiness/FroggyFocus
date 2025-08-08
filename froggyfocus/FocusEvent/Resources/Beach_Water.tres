@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://c7sssjwjgtj2d"]
+
+[ext_resource type="Resource" uid="uid://dgedy1cyq8sdd" path="res://FocusCharacter/Resources/Backswimmer_Swamp.tres" id="1_oxcrw"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_yu7lm"]
+
+[resource]
+script = ExtResource("2_yu7lm")
+Characters = Array[Object]([ExtResource("1_oxcrw")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

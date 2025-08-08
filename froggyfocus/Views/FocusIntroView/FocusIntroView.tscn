@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://br5qf0nwskdvc"]
+[gd_scene load_steps=31 format=3 uid="uid://br5qf0nwskdvc"]
 
 [ext_resource type="Script" uid="uid://qo5imoor6uf2" path="res://Views/FocusIntroView/FocusIntroView.cs" id="1_1m4rk"]
 [ext_resource type="Texture2D" uid="uid://dyuqnhv05ysnf" path="res://Assets/FlawLizArt/Textures/versus_split_left.png" id="2_fe111"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_fe111"]
 [ext_resource type="Texture2D" uid="uid://dh2yj6yw5br1a" path="res://Assets/FlawLizArt/Textures/versus_split_right.png" id="3_gvmda"]
 [ext_resource type="Texture2D" uid="uid://lfx3ye5e35df" path="res://Assets/FlawLizArt/Textures/background_gradient_circle.png" id="3_p37b3"]
+[ext_resource type="PackedScene" uid="uid://dp2ncvq06oerg" path="res://Prefabs/UI/DifficultyStars/difficulty_stars.tscn" id="4_j42hg"]
 [ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="6_15pab"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_dnvhp"]
 [ext_resource type="PackedScene" uid="uid://ir8kqnw2coxy" path="res://Prefabs/Characters/mosquito.tscn" id="7_tc7d2"]
@@ -217,7 +218,7 @@ stream_9/stream = ExtResource("20_o240r")
 stream_10/stream = ExtResource("11_j42hg")
 stream_11/stream = ExtResource("12_l1pbs")
 
-[node name="FocusIntroView" type="Control" node_paths=PackedStringArray("Frog", "AnimationPlayer", "TargetOrigin", "SfxRiff")]
+[node name="FocusIntroView" type="Control" node_paths=PackedStringArray("Frog", "AnimationPlayer", "TargetOrigin", "DifficultyStars", "SfxRiff")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,6 +229,7 @@ script = ExtResource("1_1m4rk")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
 AnimationPlayer = NodePath("AnimationPlayer")
 TargetOrigin = NodePath("SubViewport_Target/Origin")
+DifficultyStars = NodePath("CenterContainer/Center/Anim_Right/TextureRect/Control/ColorRect/StarsCenter/Center/DifficultyStars")
 SfxRiff = NodePath("SfxRiff")
 ChildOrder = 2
 
@@ -312,6 +314,24 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_gvmda")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="StarsCenter" type="CenterContainer" parent="CenterContainer/Center/Anim_Right/TextureRect/Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="Control" parent="CenterContainer/Center/Anim_Right/TextureRect/Control/ColorRect/StarsCenter"]
+layout_mode = 2
+
+[node name="DifficultyStars" parent="CenterContainer/Center/Anim_Right/TextureRect/Control/ColorRect/StarsCenter/Center" instance=ExtResource("4_j42hg")]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 156.0
+offset_right = 232.0
+offset_bottom = 348.0
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer/Center/Anim_Right/TextureRect"]
 layout_mode = 0
@@ -453,6 +473,7 @@ libraries = {
 
 [node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_dnvhp")
+volume_db = -10.0
 bus = &"SFX"
 
 [node name="SfxRiff" type="AudioStreamPlayer" parent="."]

@@ -21,7 +21,7 @@ material = ExtResource("6_cgl6p")
 script = ExtResource("1_7p45w")
 Animation = NodePath("AnimationStateMachine")
 WalkingAnimation = "Armature|moving"
-Accessories = [NodePath("mosquito/Armature/Skeleton3D/mushroom"), NodePath("mosquito/Armature/Skeleton3D/mushroom2")]
+Accessories = [NodePath("mosquito/Armature/Skeleton3D/mushroom"), NodePath("mosquito/Armature/Skeleton3D/mushroom2"), NodePath("mosquito/Armature/Skeleton3D/wooden"), NodePath("mosquito/Armature/Skeleton3D/wooden2")]
 
 [node name="mosquito" parent="." instance=ExtResource("2_kykgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419644, 0)
@@ -59,7 +59,7 @@ bones/37/rotation = Quaternion(-0.00159305, -0.0154405, 0.872856, 0.487731)
 bones/38/rotation = Quaternion(-0.121094, -0.103562, -0.68116, 0.714585)
 
 [node name="mushroom" type="BoneAttachment3D" parent="mosquito/Armature/Skeleton3D" index="7"]
-transform = Transform3D(1, 7.10543e-15, 2.38419e-07, 7.05212e-08, 0.955254, -0.295787, -2.2775e-07, 0.295787, 0.955254, 0, -0.000440418, 0.00133888)
+transform = Transform3D(1, -1.91847e-13, 2.38419e-07, 7.05213e-08, 0.955254, -0.295787, -2.2775e-07, 0.295787, 0.955254, 8.88178e-16, -0.000440418, 0.00133888)
 bone_name = "Body.Front"
 bone_idx = 1
 
@@ -70,7 +70,7 @@ transform = Transform3D(-0.000436415, -0.000884725, -0.00016372, -0.000899677, 0
 transform = Transform3D(0.000545645, 0.000830448, 0.000112374, 0.00067376, -0.000354994, -0.000648094, -0.000498317, 0.000429342, -0.000753223, 0.000635191, 0.00177235, 0.00131433)
 
 [node name="mushroom2" type="BoneAttachment3D" parent="mosquito/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, -1.04824e-07, 7.17943e-07, -4.93255e-07, -0.823894, 0.566742, 5.32102e-07, -0.566744, -0.823892, -1.64799e-17, -0.000677253, 0.00121033)
+transform = Transform3D(1, -1.04824e-07, 7.17943e-07, -4.93255e-07, -0.823894, 0.566742, 5.32102e-07, -0.566744, -0.823892, 9.22006e-16, -0.000677253, 0.00121034)
 bone_name = "Body.Back"
 bone_idx = 2
 
@@ -81,7 +81,7 @@ transform = Transform3D(-0.000293108, -0.000891616, -0.000345119, 0.000953755, -
 transform = Transform3D(0.000202328, 0.00091235, 0.000355921, -0.000881991, 0.000327713, -0.000338664, -0.000425622, -0.000245398, 0.000870989, 0.000444262, 0.00377244, 0.000124363)
 
 [node name="wooden" type="BoneAttachment3D" parent="mosquito/Armature/Skeleton3D" index="9"]
-transform = Transform3D(1, -1.04824e-07, 7.17943e-07, -4.93255e-07, -0.823894, 0.566742, 5.32102e-07, -0.566744, -0.823892, -1.64799e-17, -0.000677253, 0.00121033)
+transform = Transform3D(1, -1.04824e-07, 7.17943e-07, -4.93255e-07, -0.823894, 0.566742, 5.32102e-07, -0.566744, -0.823892, 9.22006e-16, -0.000677253, 0.00121034)
 bone_name = "Body.Back"
 bone_idx = 2
 
@@ -98,7 +98,7 @@ transform = Transform3D(0.000621422, 0.00155427, 0.00471148, -0.00457047, 0.0020
 mesh = SubResource("QuadMesh_nxddr")
 
 [node name="wooden2" type="BoneAttachment3D" parent="mosquito/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, 7.10543e-15, 2.38419e-07, 7.05212e-08, 0.955254, -0.295787, -2.2775e-07, 0.295787, 0.955254, 0, -0.000440418, 0.00133888)
+transform = Transform3D(1, -1.91847e-13, 2.38419e-07, 7.05213e-08, 0.955254, -0.295787, -2.2775e-07, 0.295787, 0.955254, 8.88178e-16, -0.000440418, 0.00133888)
 bone_name = "Body.Front"
 bone_idx = 1
 

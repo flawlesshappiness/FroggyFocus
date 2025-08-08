@@ -40,7 +40,7 @@ public partial class FocusSkillCheck_Constrict : FocusSkillCheck
     {
         SetLocks(true);
 
-        count_max = GetDifficultyRange(CountRange);
+        count_max = CountRange.Range(Difficulty);
         count_current = count_max;
 
         Algae.GlobalPosition = FocusEvent.Cursor.GlobalPosition;

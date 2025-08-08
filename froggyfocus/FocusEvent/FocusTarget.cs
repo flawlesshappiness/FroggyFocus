@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections;
+using System.Linq;
 
 public partial class FocusTarget : Node3D
 {
@@ -9,9 +10,12 @@ public partial class FocusTarget : Node3D
     public FocusCharacterInfo Info { get; private set; }
     public FocusCharacter Character { get; private set; }
     public float Size { get; private set; }
+    public int Stars { get; private set; }
     public float Difficulty { get; private set; }
     public int Reward { get; private set; }
     public float Radius => Size * 0.5f;
+
+    private float UpdatedMoveSpeed { get; set; }
 
     private FocusEvent focus_event;
     private RandomNumberGenerator rng = new();
@@ -33,17 +37,25 @@ public partial class FocusTarget : Node3D
 
         UpdateSwimmer();
         UpdateDifficulty();
+        UpdateMoveSpeed();
 
         RandomizeSize();
     }
 
     private void UpdateDifficulty()
     {
-        var variation = rng.RandfRange(-0.1f, 0.1f);
-        var hotspot = Player.Instance.HasHotspot ? 0.2f : 0.0f;
-        var extra = variation + hotspot;
-        Difficulty = Mathf.Clamp(Info.Difficulty + extra, 0, 1);
-        Reward = (int)(Info.CurrencyReward * (1f + extra));
+        var start = rng.RandiRange(1, 3);
+        var hotspot = Player.Instance.HasHotspot ? 1 : 0;
+        var stars = Mathf.Clamp(start + hotspot, 1, 5);
+        var difficulty = Mathf.Clamp((start - 1) / 4f, 0, 1);
+        Stars = stars;
+        Difficulty = difficulty;
+        Reward = (int)(Info.CurrencyReward + (stars * 5));
+    }
+
+    private void UpdateMoveSpeed()
+    {
+        UpdatedMoveSpeed = Info.MoveSpeedRange.Range(Difficulty);
     }
 
     private void RemoveCharacter()
@@ -70,7 +82,7 @@ public partial class FocusTarget : Node3D
     public IEnumerator WaitForMoveToRandomPosition()
     {
         // Select position
-        var position = GetClampedPosition();
+        var position = GetNextPosition();
         var dir_to_position = GlobalPosition.DirectionTo(position);
 
         // Move to position
@@ -79,7 +91,7 @@ public partial class FocusTarget : Node3D
 
         while (GlobalPosition.DistanceTo(position) > 0.1f)
         {
-            Move(dir_to_position.Normalized() * Info.MoveSpeed * GameTime.DeltaTime);
+            Move(dir_to_position.Normalized() * UpdatedMoveSpeed * GameTime.DeltaTime);
             yield return null;
         }
     }
@@ -94,27 +106,38 @@ public partial class FocusTarget : Node3D
         GlobalPosition += velocity;
     }
 
-    public Vector3 GetClampedPosition()
+    private float GetDifficultyRange(Vector2 range)
     {
-        var position = GetRandomPosition();
-        var dir_to_position = GlobalPosition.DirectionTo(position);
-        var length = dir_to_position.Length();
-        var dir_to_position_clamped = dir_to_position.ClampMagnitude(Info.MoveLengthRange.X, Info.MoveLengthRange.Y);
-        return GlobalPosition + dir_to_position_clamped;
+        var variance = rng.RandfRange(-0.1f, 0f);
+        var t = Mathf.Clamp(Difficulty + variance, 0, 1);
+        return range.Range(t);
     }
 
-    public Vector3 GetRandomPosition() => GetRandomPosition(1, 0, 1);
-    private Vector3 GetRandomPosition(int x, int y, int z) => GetRandomPosition(new Vector3I(x, y, z));
-    private Vector3 GetRandomPosition(Vector3I mul)
+    public float GetMoveLength() => GetDifficultyRange(Info.MoveLengthRange);
+    public float GetMoveDelay() => GetDifficultyRange(Info.MoveDelayRange);
+
+    public Vector3 GetApproximatePosition(Vector3 position)
     {
-        var rx = focus_event.Size.X;
-        var ry = focus_event.Size.Y;
-        var x = mul.X * rng.RandfRange(-rx, rx);
-        var y = mul.Y * rng.RandfRange(-ry, ry);
-        var z = mul.Z * rng.RandfRange(-ry, ry);
+        return NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), position).Set(y: position.Y);
+    }
+
+    public Vector3 GetNextDirection()
+    {
         var center = focus_event.GlobalPosition;
-        var offset = focus_event.Offset;
-        var position = center + offset + new Vector3(x, y, z);
+        var rx = 5;
+        var rz = 2f;
+        var x = rng.RandfRange(-rx, rx);
+        var z = rng.RandfRange(-rz, rz);
+        var position = center + new Vector3(x, 0, z);
+        var dir = GlobalPosition.DirectionTo(position).Normalized();
+        return dir;
+    }
+
+    public Vector3 GetNextPosition()
+    {
+        var dir = GetNextDirection();
+        var length = GetMoveLength();
+        var position = GetApproximatePosition(GlobalPosition + dir * length);
         return position;
     }
 

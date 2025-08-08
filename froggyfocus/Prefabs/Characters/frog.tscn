@@ -221,6 +221,7 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 
 [node name="Tongue" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96047e-08, 0.454968, -0.541548)
+visible = false
 
 [node name="Tongue_Mesh" type="MeshInstance3D" parent="Tongue"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)

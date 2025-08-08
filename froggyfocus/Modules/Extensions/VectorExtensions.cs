@@ -72,6 +72,10 @@ public static class VectorExtensions
         var length = v.Length();
         return v.Normalized() * Mathf.Clamp(length, min, max);
     }
+
+    public static float RangeUnclamped(this Vector2 v, float t) => Mathf.Lerp(v.X, v.Y, t);
+    public static float Range(this Vector2 v, float t) => Mathf.Clamp(v.RangeUnclamped(t), Mathf.Min(v.X, v.Y), Mathf.Max(v.X, v.Y));
+    public static int Range(this Vector2I v, float t) => (int)Mathf.Clamp(Mathf.Lerp(v.X, v.Y + 1, t), v.X, v.Y);
     #endregion
 
     #region VECTOR2I

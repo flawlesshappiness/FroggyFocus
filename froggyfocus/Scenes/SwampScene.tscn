@@ -1067,7 +1067,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 320)
 visible = false
 Id = "land"
 Info = ExtResource("12_cmxon")
-Size = Vector2(5, 3)
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Land/FocusEvent_Land"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1089,7 +1088,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 visible = false
 Id = "mushroom"
 Info = ExtResource("26_ghoyf")
-Size = Vector2(5, 3)
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Land/FocusEvent_Mushroom"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -1120,7 +1118,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.895, 0)
 visible = false
 Id = "lilypad"
 Info = ExtResource("14_52an4")
-Size = Vector2(5, 3)
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Water/FocusEvent_Lilypad"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
@@ -1172,7 +1169,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.895, 0)
 visible = false
 Id = "wood"
 Info = ExtResource("42_8ow6q")
-Size = Vector2(5, 3)
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Water/FocusEvent_Wood"]
 

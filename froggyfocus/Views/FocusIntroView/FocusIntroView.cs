@@ -15,6 +15,9 @@ public partial class FocusIntroView : View
     public Node3D TargetOrigin;
 
     [Export]
+    public DifficultyStarsTexture DifficultyStars;
+
+    [Export]
     public AudioStreamPlayer SfxRiff;
 
     private FocusCharacter current_target;
@@ -51,7 +54,13 @@ public partial class FocusIntroView : View
         current_target = null;
     }
 
-    public void LoadTargetCharacter(FocusCharacterInfo info)
+    public void LoadTarget(FocusTarget target)
+    {
+        LoadCharacter(target.Info);
+        SetDifficultyStars(target.Stars);
+    }
+
+    public void LoadCharacter(FocusCharacterInfo info)
     {
         RemoveTargetCharacter();
 
@@ -60,5 +69,10 @@ public partial class FocusIntroView : View
         current_target.Position = Vector3.Zero;
         current_target.Rotation = Vector3.Zero;
         current_target.Initialize(info);
+    }
+
+    public void SetDifficultyStars(int count)
+    {
+        DifficultyStars.SetStars(count);
     }
 }

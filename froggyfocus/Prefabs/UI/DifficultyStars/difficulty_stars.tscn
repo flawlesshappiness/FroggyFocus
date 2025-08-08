@@ -1,0 +1,15 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp2ncvq06oerg"]
+
+[ext_resource type="Texture2D" uid="uid://brjm17twi0ta5" path="res://Textures/difficulty_stars_005.png" id="1_oixjx"]
+[ext_resource type="Script" uid="uid://bxhvh6xywiup6" path="res://Prefabs/UI/DifficultyStars/DifficultyStarsTexture.cs" id="2_wn7nd"]
+[ext_resource type="Texture2D" uid="uid://cc756lp8h5xry" path="res://Textures/difficulty_stars_001.png" id="3_8ufob"]
+[ext_resource type="Texture2D" uid="uid://gk0bcnlchliq" path="res://Textures/difficulty_stars_002.png" id="4_7c6ge"]
+[ext_resource type="Texture2D" uid="uid://bkrk0ebsk2uff" path="res://Textures/difficulty_stars_003.png" id="5_hwqou"]
+[ext_resource type="Texture2D" uid="uid://cnvujp8ovc44x" path="res://Textures/difficulty_stars_004.png" id="6_apfx0"]
+
+[node name="DifficultyStars" type="TextureRect"]
+offset_right = 192.0
+offset_bottom = 192.0
+texture = ExtResource("1_oixjx")
+script = ExtResource("2_wn7nd")
+Textures = Array[Texture2D]([ExtResource("3_8ufob"), ExtResource("4_7c6ge"), ExtResource("5_hwqou"), ExtResource("6_apfx0"), ExtResource("1_oixjx")])

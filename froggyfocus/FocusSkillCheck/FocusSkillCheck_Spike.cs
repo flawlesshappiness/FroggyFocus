@@ -58,7 +58,7 @@ public partial class FocusSkillCheck_Spike : FocusSkillCheck
             PsRipples.Emitting = true;
             SfxCreaks.Play();
 
-            var delay = GetDifficultyRange(DelayRange);
+            var delay = DelayRange.Range(Difficulty);
             yield return new WaitForSeconds(delay);
 
             var hurt_amount = FocusEvent.Target.Info.FocusValue * 0.4f;

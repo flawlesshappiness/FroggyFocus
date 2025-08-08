@@ -10,7 +10,7 @@ public partial class FocusSkillCheck : Node3D
 
     protected FocusEvent FocusEvent { get; set; }
     protected FocusTarget Target => FocusEvent.Target;
-    protected float Difficulty => FocusEvent.Target.Info.Difficulty;
+    protected float Difficulty => FocusEvent.Target.Difficulty;
 
     protected RandomNumberGenerator rng = new();
 
@@ -36,12 +36,5 @@ public partial class FocusSkillCheck : Node3D
     protected virtual IEnumerator Run()
     {
         yield return null;
-    }
-
-    protected float GetDifficultyRange(Vector2 range) => Mathf.Lerp(range.X, range.Y, Difficulty);
-    protected int GetDifficultyRange(Vector2I range) => GetIntRange(range.X, range.Y, Difficulty);
-    protected int GetIntRange(int min, int max, float t)
-    {
-        return (int)Mathf.Clamp(Mathf.Lerp(min, max + 1, t), min, max);
     }
 }

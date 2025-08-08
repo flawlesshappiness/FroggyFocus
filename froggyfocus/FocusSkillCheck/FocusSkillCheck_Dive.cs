@@ -38,9 +38,9 @@ public partial class FocusSkillCheck_Dive : FocusSkillCheck
         CreateSplashPS(Target.GlobalPosition);
         Target.Hide();
 
-        var distance = GetDifficultyRange(DistanceRange);
+        var distance = DistanceRange.Range(Difficulty);
         var start_position = Target.GlobalPosition;
-        var target_position = Target.GetRandomPosition();
+        var target_position = Target.GetNextPosition();
         var dir = Target.GlobalPosition.DirectionTo(target_position).Normalized();
         var end_position = Target.GlobalPosition + dir * distance;
         Target.GlobalPosition = end_position;
