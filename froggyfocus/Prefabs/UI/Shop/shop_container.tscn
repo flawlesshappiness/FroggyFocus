@@ -1,97 +1,82 @@
-[gd_scene load_steps=7 format=3 uid="uid://du35rtcreuxfe"]
+[gd_scene load_steps=8 format=3 uid="uid://du35rtcreuxfe"]
 
 [ext_resource type="Script" uid="uid://dbpm57axr67cf" path="res://Prefabs/UI/Shop/ShopContainer.cs" id="1_qigjm"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_xtxcp"]
 [ext_resource type="PackedScene" uid="uid://cpee6hy6xgor5" path="res://Prefabs/UI/Sell/sell_container.tscn" id="2_qigjm"]
 [ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="4_7sns5"]
 [ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/Color/appearance_color_container.tscn" id="5_48iua"]
+[ext_resource type="PackedScene" uid="uid://d01a2ra0pi4" path="res://Prefabs/UI/Inventory/inventory_info_container.tscn" id="6_xtxcp"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="7_xtxcp"]
 
-[node name="ShopContainer" type="Control" node_paths=PackedStringArray("BackButton", "TabContainer", "UpgradeContainer", "SellContainer", "HatsContainer", "ColorContainer")]
-custom_minimum_size = Vector2(400, 450)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ShopContainer" type="MarginContainer" node_paths=PackedStringArray("BackButton", "TabContainer", "SellContainer", "HatsContainer", "ColorContainer", "InventoryInfoPanel", "InventoryInfoContainer")]
+offset_right = 654.0
+offset_bottom = 549.0
+theme = ExtResource("1_xtxcp")
 script = ExtResource("1_qigjm")
-BackButton = NodePath("BackButton")
-TabContainer = NodePath("TabContainer")
-UpgradeContainer = NodePath("")
-SellContainer = NodePath("TabContainer/Sell")
-HatsContainer = NodePath("TabContainer/Hats")
-ColorContainer = NodePath("TabContainer/Colors")
+BackButton = NodePath("HBoxContainer/VBoxContainer/BackButtonContainer/BackButton")
+TabContainer = NodePath("HBoxContainer/VBoxContainer/TabContainer")
+SellContainer = NodePath("HBoxContainer/VBoxContainer/TabContainer/Sell")
+HatsContainer = NodePath("HBoxContainer/VBoxContainer/TabContainer/Hats")
+ColorContainer = NodePath("HBoxContainer/VBoxContainer/TabContainer/Colors")
+InventoryInfoPanel = NodePath("HBoxContainer/InfoPanelContainer")
+InventoryInfoContainer = NodePath("HBoxContainer/InfoPanelContainer/InfoPanel/MarginContainer/InventoryInfoContainer")
 
-[node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("1_xtxcp")
 current_tab = 0
 
-[node name="Sell" parent="TabContainer" instance=ExtResource("2_qigjm")]
+[node name="Sell" parent="HBoxContainer/VBoxContainer/TabContainer" instance=ExtResource("2_qigjm")]
 layout_mode = 2
 
-[node name="Hats" parent="TabContainer" instance=ExtResource("4_7sns5")]
+[node name="Hats" parent="HBoxContainer/VBoxContainer/TabContainer" instance=ExtResource("4_7sns5")]
 visible = false
 layout_mode = 2
 ShowUnpurchased = true
 
-[node name="Colors" parent="TabContainer" instance=ExtResource("5_48iua")]
+[node name="Colors" parent="HBoxContainer/VBoxContainer/TabContainer" instance=ExtResource("5_48iua")]
 visible = false
 layout_mode = 2
 ShowLocked = true
 metadata/_tab_index = 2
 
-[node name="TitleContainer" type="MarginContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -87.0
-offset_top = -68.0
-offset_right = 88.0
-offset_bottom = 11.0
-grow_horizontal = 2
-
-[node name="Panel" type="Panel" parent="TitleContainer"]
+[node name="BackButtonContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="TitleContainer"]
+[node name="BackButton" parent="HBoxContainer/VBoxContainer/BackButtonContainer" instance=ExtResource("7_xtxcp")]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 10
-
-[node name="Label" type="Label" parent="TitleContainer/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = "SHOP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BackButton" parent="." instance=ExtResource("7_xtxcp")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -49.5
-offset_top = 9.0
-offset_right = 49.5
-offset_bottom = 54.0
-grow_horizontal = 2
-grow_vertical = 0
 text = " Back"
+
+[node name="InfoPanelContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="InfoPanel" type="Panel" parent="HBoxContainer/InfoPanelContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/InfoPanelContainer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="InventoryInfoContainer" parent="HBoxContainer/InfoPanelContainer/InfoPanel/MarginContainer" instance=ExtResource("6_xtxcp")]
+layout_mode = 2

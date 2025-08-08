@@ -75,6 +75,8 @@ offset_left = -200.0
 offset_top = -225.0
 offset_right = 200.0
 offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PurchasePopup" parent="." instance=ExtResource("8_sxpp3")]
 layout_mode = 1

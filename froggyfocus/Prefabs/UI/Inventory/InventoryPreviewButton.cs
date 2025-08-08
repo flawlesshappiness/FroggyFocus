@@ -3,12 +3,6 @@ using Godot;
 public partial class InventoryPreviewButton : ButtonScript
 {
     [Export]
-    public Control ValueContainer;
-
-    [Export]
-    public Label ValueLabel;
-
-    [Export]
     public TextureRect TextureRect;
 
     [Export]
@@ -32,11 +26,6 @@ public partial class InventoryPreviewButton : ButtonScript
     public void SetCharacter(FocusCharacterInfo info)
     {
         ItemSubViewport.SetCharacter(info);
-    }
-
-    public void SetValue(int value)
-    {
-        ValueLabel.Text = value.ToString();
     }
 
     public void SetObscured(bool obscured)

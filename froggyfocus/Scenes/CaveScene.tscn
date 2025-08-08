@@ -361,6 +361,27 @@ transform = Transform3D(10, 0, 0, 0, -10, 8.74228e-07, 0, -8.74228e-07, -10, 1.0
 [node name="Stalagtite2" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
 transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, 7.63601, 82.732, 7.40144)
 
+[node name="Stalagtite4" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
+transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, -23.294, 83.7684, 8.35933)
+
+[node name="Stalagtite7" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
+transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, -27.8658, 81.6979, -10.2768)
+
+[node name="Stalagtite8" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
+transform = Transform3D(6, 0, 0, 0, -6, 9.05975e-07, 0, -9.05975e-07, -6, -20.4408, 81.9615, -14.5034)
+
+[node name="Stalagtite9" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
+transform = Transform3D(6, 0, 0, 0, -6, 9.05975e-07, 0, -9.05975e-07, -6, -36.15, 75.618, -14.5034)
+
+[node name="Stalagtite10" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
+transform = Transform3D(6, 0, 0, 0, -6, 9.05975e-07, 0, -9.05975e-07, -6, -43.6809, 76.2021, -16.9898)
+
+[node name="Stalagtite5" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
+transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, -35.5043, 78.4222, 11.8134)
+
+[node name="Stalagtite6" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
+transform = Transform3D(6, 0, 0, 0, -6, 9.05975e-07, 0, -9.05975e-07, -6, -29.4115, 80.5366, 15.4057)
+
 [node name="Stalagtite3" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
 transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, 23.1764, 78.5004, 26.2792)
 
@@ -399,6 +420,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.02, 0)
 
 [node name="Pier" parent="World/FocusEvents" node_paths=PackedStringArray("SkillChecks") instance=ExtResource("14_byi1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.971666, 0)
+visible = false
 Id = "pier"
 SkillChecks = [NodePath("../Stalagmite/SkillChecks/Bombs"), NodePath("../Stalagmite/SkillChecks/Dash"), NodePath("../Stalagmite/SkillChecks/Dive"), NodePath("../Stalagmite/SkillChecks/Constrict"), NodePath("../Stalagmite/SkillChecks/Spike")]
 

@@ -6,9 +6,6 @@ using System.Linq;
 public partial class InventoryContainer : ControlScript
 {
     [Export]
-    public bool ShowValue;
-
-    [Export]
     public bool ButtonsDisabled;
 
     [Export]
@@ -56,8 +53,6 @@ public partial class InventoryContainer : ControlScript
             var button = InventoryButtonTemplate.Duplicate() as InventoryPreviewButton;
             button.SetParent(InventoryButtonTemplate.GetParent());
             button.SetCharacter(info);
-            button.SetValue(data.Value);
-            button.ValueContainer.Visible = ShowValue;
             button.Disabled = ButtonsDisabled;
             button.Show();
 
@@ -75,8 +70,6 @@ public partial class InventoryContainer : ControlScript
         }
 
         EmptyLabel.Visible = Data.Game.Inventory.Characters.Count == 0;
-
-        UpdateGridContainer();
     }
 
     private void Button_Pressed(ButtonMap map)
@@ -100,19 +93,5 @@ public partial class InventoryContainer : ControlScript
     public InventoryCharacterData GetSelectedData()
     {
         return selected_map?.Data;
-    }
-
-    private void UpdateGridContainer()
-    {
-        var v_separation = "v_separation";
-
-        if (ShowValue)
-        {
-            GridContainer.AddThemeConstantOverride(v_separation, 30);
-        }
-        else
-        {
-            GridContainer.RemoveThemeConstantOverride(v_separation);
-        }
     }
 }
