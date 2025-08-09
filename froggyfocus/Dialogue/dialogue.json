@@ -116,6 +116,22 @@
 	},
 	
 	{
+		"id": "##SNAIL_REQUEST_001##"
+	},
+	
+	{
+		"id": "##SNAIL_IDLE_001##",
+		"next": "##SNAIL_IDLE_002##"
+	},
+	{
+		"id": "##SNAIL_IDLE_002##"
+	},
+	
+	{
+		"id": "##SNAIL_REQUEST_COMPLETE_001##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://buwjkq6ue7rvb"]
+
+[ext_resource type="Resource" uid="uid://erlcywx4bqmx" path="res://FocusCharacter/Resources/Locust.tres" id="1_ym5rv"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="3_uxxv7"]
+
+[resource]
+script = ExtResource("3_uxxv7")
+Id = "snail"
+PossibleRequests = Array[Object]([ExtResource("1_ym5rv")])
+CountRange = Vector2i(2, 3)
+RewardMultiplierRange = Vector2(1.2, 1.25)
+ClaimCountToUnlock = 0
+HatUnlock = 0
+CooldownInSeconds = 300.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"
