@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_exe8s"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_fvftn"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_tkjes"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_wkocx"]
 [ext_resource type="Resource" uid="uid://cr6w4xkj1cp6h" path="res://Weather/Resources/Sunny-Windy.tres" id="4_pteap"]
@@ -22,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://buwjkq6ue7rvb" path="res://HandInQuest/Resources/Snail_Cave.tres" id="15_vlao4"]
 [ext_resource type="PackedScene" uid="uid://bd1p385ni06q4" path="res://Prefabs/Objects/pier.tscn" id="17_pteap"]
 [ext_resource type="PackedScene" uid="uid://kvtix1ndn4h1" path="res://Prefabs/Nature/stalagtite.tscn" id="17_wkocx"]
+[ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="20_bktod"]
 [ext_resource type="Resource" uid="uid://dho360gt3kik5" path="res://FocusEvent/Resources/Cave_Stalagmite.tres" id="20_rehxh"]
 [ext_resource type="Resource" uid="uid://cqcknpnbl0d18" path="res://FocusEvent/Resources/Cave_Moss.tres" id="21_bistx"]
 [ext_resource type="Resource" uid="uid://c7sssjwjgtj2d" path="res://FocusEvent/Resources/Beach_Water.tres" id="22_7d81n"]
@@ -46,7 +46,7 @@ size = Vector2(20, 10)
 script = ExtResource("1_q8md0")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-Weathers = Array[ExtResource("2_fvftn")]([ExtResource("3_wkocx"), ExtResource("4_pteap")])
+Weathers = [ExtResource("3_wkocx"), ExtResource("4_pteap")]
 FocusEvents = [NodePath("World/FocusEvents/Stalagmite"), NodePath("World/FocusEvents/Moss"), NodePath("World/FocusEvents/Beach"), NodePath("World/FocusEvents/Pier")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -211,7 +211,10 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 41.5879, 26.8523, 108.939)
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 54.8672, 30.1706, 104.508)
 
 [node name="Pier" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("17_pteap")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.29394, 140.157)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.29394, 137.633)
+
+[node name="Lilypad_Boat" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("20_bktod")]
+transform = Transform3D(-0.841086, 0, -0.540901, 0, 1, 0, 0.540901, 0, -0.841086, 2.37682, -0.959282, 182.836)
 
 [node name="Stalagmites" type="Node3D" parent="World/NavigationRegion3D/Cave"]
 
@@ -405,6 +408,7 @@ transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, 23.176
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
 
 [node name="Stalagmite" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.913065, 0)
 visible = false
 Id = "stalagmite"
 Info = ExtResource("20_rehxh")
@@ -413,19 +417,19 @@ Info = ExtResource("20_rehxh")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3.00555)
 
 [node name="Stalagmite_Platform2" parent="World/FocusEvents/Stalagmite" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.92558, 0, 1.46738)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.92558, 0.470133, 1.46738)
 
 [node name="Stalagmite_Platform4" parent="World/FocusEvents/Stalagmite" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.45906, 0, -0.181152)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.45906, 0.470133, -0.181152)
 
 [node name="Stalagmite_Platform5" parent="World/FocusEvents/Stalagmite" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.26651, 0, -3.7597)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.26651, 0.470133, -3.7597)
 
 [node name="Stalagmite_Platform3" parent="World/FocusEvents/Stalagmite" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.70535, 0.999999, -0.826032)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.70535, 1.1317, -0.826032)
 
 [node name="Stalagmite_Platform6" parent="World/FocusEvents/Stalagmite" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1.02107, 0.999999, -4.04268)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1.02107, 1.1317, -4.04268)
 
 [node name="Moss" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
 visible = false

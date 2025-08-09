@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=63 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_f4fi4"]
@@ -42,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
 [ext_resource type="PackedScene" uid="uid://bvq1s6k4t5k0m" path="res://Prefabs/NPC/MushroomNPC/mushroom_npc.tscn" id="19_ghoyf"]
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
+[ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="23_b0wg7"]
 [ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="26_eoi61"]
 [ext_resource type="Resource" uid="uid://domnlcvrorsml" path="res://FocusEvent/Resources/Swamp Mushroom.tres" id="26_ghoyf"]
 [ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="26_m0kej"]
@@ -376,12 +377,6 @@ transform = Transform3D(1.96463, 0, -0.374488, 0, 2, 0, 0.374488, 0, 1.96463, -3
 [node name="Reeds23" parent="World/Lilypads/Reeds_Dense" instance=ExtResource("11_f4fi4")]
 transform = Transform3D(1.96463, 0, -0.374488, 0, 2, 0, 0.374488, 0, 1.96463, -44.4008, -4, -7.48699)
 
-[node name="Reeds44" parent="World/Lilypads/Reeds_Dense" instance=ExtResource("11_f4fi4")]
-transform = Transform3D(1.96463, 0, -0.374488, 0, 2, 0, 0.374488, 0, 1.96463, -48.0865, -4, -19.8624)
-
-[node name="Reeds45" parent="World/Lilypads/Reeds_Dense" instance=ExtResource("11_f4fi4")]
-transform = Transform3D(1.96463, 0, -0.374488, 0, 2, 0, 0.374488, 0, 1.96463, -41.4701, -4, -29.711)
-
 [node name="Reeds46" parent="World/Lilypads/Reeds_Dense" instance=ExtResource("11_f4fi4")]
 transform = Transform3D(1.96463, 0, -0.374488, 0, 2, 0, 0.374488, 0, 1.96463, -30.4615, -4, -30.5631)
 
@@ -497,6 +492,9 @@ curve = SubResource("Curve3D_a7viq")
 
 [node name="OtterNPC" parent="World/Lilypads" instance=ExtResource("17_4oemw")]
 transform = Transform3D(-0.875951, 0, -1.79797, 0, 2, 0, 1.79797, 0, -0.875951, -13.9535, -0.896936, -6.65236)
+
+[node name="Lilypad_Boat" parent="World/Lilypads" instance=ExtResource("23_b0wg7")]
+transform = Transform3D(0.827679, 0, 0.561203, 0, 1, 0, -0.561203, 0, 0.827679, -41.2622, -0.917855, -23.3039)
 
 [node name="DeadForest" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61978, -3.8147e-06, 44.1012)

@@ -249,7 +249,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_dlir6")
 AnimationPlayer = NodePath("AnimationPlayer")
-ChildOrder = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

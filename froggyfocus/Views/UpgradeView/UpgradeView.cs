@@ -16,7 +16,7 @@ public partial class UpgradeView : PanelView
         base._Ready();
         RegisterDebugActions();
 
-        BackButton.Pressed += Close;
+        BackButton.Pressed += BackButton_Pressed;
     }
 
     private void RegisterDebugActions()
@@ -52,5 +52,10 @@ public partial class UpgradeView : PanelView
     {
         base.GrabFocusAfterOpen();
         Upgrades.GetFirstButton().GrabFocus();
+    }
+
+    private void BackButton_Pressed()
+    {
+        Close();
     }
 }

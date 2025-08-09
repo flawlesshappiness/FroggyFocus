@@ -171,6 +171,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
             .Where(x => current_weather != null && current_weather.Rain > 0.0f ? x.Rain < 0.01f : true) // No repeat rain
             .ToList()
             .Random();
+        next ??= weathers.ToList().Random();
         next_weather = null;
         return next;
     }

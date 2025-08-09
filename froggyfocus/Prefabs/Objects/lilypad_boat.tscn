@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpadyrifvpkie"]
+
+[ext_resource type="Script" uid="uid://b04trqug0i36x" path="res://Prefabs/Objects/FastTravelBoat.cs" id="1_3r3u3"]
+[ext_resource type="PackedScene" uid="uid://4qjep4y4fa6u" path="res://Assets/FlawLizArt/Objects/sail.fbx" id="1_ciob1"]
+[ext_resource type="PackedScene" uid="uid://2vddpwr2n2uy" path="res://Prefabs/Objects/pole_wooden.tscn" id="3_3r3u3"]
+[ext_resource type="PackedScene" uid="uid://bru2y0hj6v7h5" path="res://Assets/Quaternius/Nature/Lilypad_Heart.fbx" id="3_upa1a"]
+[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="4_ciob1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3r3u3"]
+height = 0.302246
+radius = 1.82764
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ciob1"]
+height = 0.0397949
+radius = 1.90625
+
+[node name="Lilypad_Boat" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_3r3u3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151123, 0)
+shape = SubResource("CylinderShape3D_3r3u3")
+
+[node name="sail" parent="." instance=ExtResource("1_ciob1")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0.123541, -1.62699)
+
+[node name="Pole_Wooden" parent="." instance=ExtResource("3_3r3u3")]
+transform = Transform3D(0.25, 0, 0, 0, 2, 0, 0, 0, 0.25, 0, 0, -1.56519)
+
+[node name="Pole_Wooden2" parent="Pole_Wooden" instance=ExtResource("3_3r3u3")]
+transform = Transform3D(-4.37114e-08, 8, 0, -0.125, -4.37114e-08, 0, 0, 0, 1, -8, 1.875, -0.319441)
+
+[node name="Lilypad_Heart" parent="." instance=ExtResource("3_upa1a")]
+transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, 0, 0, 0)
+
+[node name="Lilypad_Flower" parent="." instance=ExtResource("4_ciob1")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1.52574)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0284424, -0.0726436)
+shape = SubResource("CylinderShape3D_ciob1")
+
+[node name="StartBoat" type="Node3D" parent="."]

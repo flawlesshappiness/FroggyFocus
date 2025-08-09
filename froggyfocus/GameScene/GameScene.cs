@@ -37,6 +37,20 @@ public partial class GameScene : Scene
         HideFocusEvents();
     }
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+
+        if (!string.IsNullOrEmpty(Data.Game.StartingNode))
+        {
+            var node = this.GetNodeInChildren<Node3D>(Data.Game.StartingNode);
+            if (IsInstanceValid(node))
+            {
+                Player.Instance.GlobalPosition = node.GlobalPosition;
+            }
+        }
+    }
+
     public void SetFocusEventId(string id)
     {
         current_focus_event_id = id;

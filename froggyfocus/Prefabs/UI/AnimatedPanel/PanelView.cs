@@ -63,14 +63,14 @@ public partial class PanelView : View
         }
     }
 
-    protected void Close()
+    protected Coroutine Close()
     {
-        if (Animating) return;
+        if (Animating) return null;
         Animating = true;
 
         ReleaseCurrentFocus();
 
-        this.StartCoroutine(Cr, "animate");
+        return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
             InputBlocker.Show();
