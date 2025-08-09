@@ -13,7 +13,8 @@ public partial class ThirdPersonCamera : Node3D
     private float MouseSensitivity => 0.004f * Data.Options.CameraSensitivity;
     private float ControllerSensitivity => 0.05f * Data.Options.CameraSensitivity;
 
-    private float tilt_limit = Mathf.DegToRad(30f);
+    private float tilt_min = Mathf.DegToRad(-60);
+    private float tilt_max = Mathf.DegToRad(-5);
     private Vector2 zoom_range = new Vector2(1f, 8f);
 
     public override void _Input(InputEvent @event)
@@ -25,7 +26,7 @@ public partial class ThirdPersonCamera : Node3D
         if (@event is InputEventMouseMotion mouse_motion)
         {
             var relative = mouse_motion.Relative;
-            var x = Mathf.Clamp(Rotation.X - relative.Y * MouseSensitivity, -tilt_limit, tilt_limit);
+            var x = Mathf.Clamp(Rotation.X - relative.Y * MouseSensitivity, tilt_min, tilt_max);
             var y = Rotation.Y - relative.X * MouseSensitivity;
             Rotation = new Vector3(x, y, Rotation.Z);
         }
@@ -46,7 +47,7 @@ public partial class ThirdPersonCamera : Node3D
         var input = PlayerInput.GetLookInput();
         if (input.Length() < 0.1f) return;
 
-        var x = Mathf.Clamp(Rotation.X - input.Y * ControllerSensitivity, -tilt_limit, tilt_limit);
+        var x = Mathf.Clamp(Rotation.X - input.Y * ControllerSensitivity, -tilt_min, tilt_min);
         var y = Rotation.Y - input.X * ControllerSensitivity;
         Rotation = new Vector3(x, y, Rotation.Z);
     }
@@ -54,7 +55,7 @@ public partial class ThirdPersonCamera : Node3D
     private void Process_Zoom()
     {
         var zoom_controller = 0.05f;
-        var zoom_mouse = zoom_controller * 4f;
+        var zoom_mouse = zoom_controller * 8f;
 
         if (PlayerInput.ZoomIn_Controller.Held)
         {
