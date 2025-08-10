@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://f1tthxd3v53y"]
+
+[ext_resource type="PackedScene" uid="uid://oknm1i27hhfv" path="res://Prefabs/Characters/ladybug.tscn" id="1_5jtvw"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_e8y03"]
+
+[resource]
+script = ExtResource("2_e8y03")
+Scene = ExtResource("1_5jtvw")
+Name = "Ladybug"
+LocationHint = "##HINT_LOC_SAND##"
+Accessory = ""
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

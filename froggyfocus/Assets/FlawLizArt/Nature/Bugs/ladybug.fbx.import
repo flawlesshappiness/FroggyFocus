@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://3mpxj6wmpne1"
-path="res://.godot/imported/sandflea.fbx-9e59dd6dc4cff08b7db9dce5b17ba220.scn"
+uid="uid://deiwnyhxql7he"
+path="res://.godot/imported/ladybug.fbx-c12f3ceece434fc798825539fcb6e10a.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Nature/Bugs/sandflea.fbx"
-dest_files=["res://.godot/imported/sandflea.fbx-9e59dd6dc4cff08b7db9dce5b17ba220.scn"]
+source_file="res://Assets/FlawLizArt/Nature/Bugs/ladybug.fbx"
+dest_files=["res://.godot/imported/ladybug.fbx-c12f3ceece434fc798825539fcb6e10a.scn"]
 
 [params]
 
@@ -1833,7 +1833,7 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 },
-"Armature|moving": {
+"Armature|walking": {
 "save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "",
@@ -3634,13 +3634,22 @@ _subresources={
 }
 },
 "materials": {
-"Eye": {
+"Black": {
 "use_external/enabled": true,
-"use_external/path": "uid://w4pv05que4no"
+"use_external/path": "uid://cngrguaiyjtgk"
 },
-"Material": {
+"Red": {
 "use_external/enabled": true,
-"use_external/path": "uid://ca1k6ky0gfmrp"
+"use_external/path": "uid://bp4r8hinck686"
+},
+"White": {
+"use_external/enabled": true,
+"use_external/path": "uid://ctdvjlchj56sh"
+}
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"optimizer/enabled": false
 }
 }
 }
