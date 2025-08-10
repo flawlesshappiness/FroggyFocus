@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy03cvk35fee4"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_01q11"]
+[ext_resource type="PackedScene" uid="uid://3mpxj6wmpne1" path="res://Assets/FlawLizArt/Nature/Bugs/sandflea.fbx" id="2_vtrbk"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_gud7u"]
+
+[node name="Sandflea" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_01q11")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="sandflea" parent="." instance=ExtResource("2_vtrbk")]
+transform = Transform3D(-0.25, 0, 2.18557e-08, 0, 0.25, 0, -2.18557e-08, 0, -0.25, 0, 0, 0)
+
+[node name="Skeleton3D" parent="sandflea/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0557605, -2.69786e-07, 5.1405e-08, 0.998444)
+bones/3/rotation = Quaternion(0.058916, -0.0215407, -0.252332, 0.965605)
+bones/4/rotation = Quaternion(-0.033219, -0.024972, -0.292119, 0.955479)
+bones/5/rotation = Quaternion(-0.0365408, -0.00282191, -0.342138, 0.938935)
+bones/7/rotation = Quaternion(0.0589163, 0.0215419, 0.252332, 0.965605)
+bones/8/rotation = Quaternion(-0.033219, 0.024972, 0.292119, 0.955479)
+bones/9/rotation = Quaternion(-0.0365408, 0.0028219, 0.342138, 0.938935)
+bones/11/rotation = Quaternion(0.387451, -0.412447, -0.590857, 0.575027)
+bones/14/rotation = Quaternion(0.387451, -0.412447, -0.590858, 0.575027)
+bones/17/rotation = Quaternion(0.386771, -0.411976, -0.591117, 0.575556)
+bones/20/rotation = Quaternion(0.379935, -0.406934, -0.594177, 0.580524)
+bones/23/rotation = Quaternion(0.387452, 0.412447, 0.590857, 0.575027)
+bones/26/rotation = Quaternion(0.387452, 0.412447, 0.590857, 0.575027)
+bones/29/rotation = Quaternion(0.386771, 0.411977, 0.591117, 0.575556)
+bones/32/rotation = Quaternion(0.379935, 0.406934, 0.594177, 0.580524)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_gud7u")
+Animator = NodePath("../sandflea/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="sandflea"]
