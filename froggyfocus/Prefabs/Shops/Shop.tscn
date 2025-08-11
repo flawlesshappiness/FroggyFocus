@@ -7,7 +7,6 @@
 radius = 1.4
 
 [node name="Shop" type="Area3D" node_paths=PackedStringArray("Mole")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_syha2")

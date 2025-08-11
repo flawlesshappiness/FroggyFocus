@@ -118,11 +118,15 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
 
     private void FocusEventCompleted(FocusEventCompletedResult result)
     {
+        var target = result.FocusEvent.Target;
         var info = result.FocusEvent.Target.Info;
 
         foreach (var objective in Collection.Resources)
         {
-            if (info.Tags.Any(x => x == objective.RequirementTag))
+            var valid_tag = !objective.UseTag || info.Tags.Any(x => x == objective.RequirementTag);
+            var valid_rarity = target.Stars >= objective.MinimumStars;
+            var valid = valid_tag && valid_rarity;
+            if (valid)
             {
                 Objective.AddValue(objective, 1);
             }

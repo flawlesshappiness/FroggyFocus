@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dhaapoqb7w8s4"]
+
+[ext_resource type="PackedScene" uid="uid://b1jx1i06awdq6" path="res://Prefabs/Characters/seahorse.tscn" id="1_pc1lm"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_s03hr"]
+
+[resource]
+script = ExtResource("2_s03hr")
+Scene = ExtResource("1_pc1lm")
+Name = "Seahorse"
+LocationHint = "##HINT_LOC_OCEAN##"
+Accessory = ""
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([3])
+Tags = Array[int]([0, 3])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

@@ -34,19 +34,33 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
             var infos = FocusCharacterController.Instance.Collection.Resources;
             foreach (var info in infos)
             {
-                v.ContentSearch.AddItem(info.Name, () => StartFocusEvent(v, info));
+                v.ContentSearch.AddItem(info.Name, () => SelectStars(v, info));
             }
 
             v.ContentSearch.UpdateButtons();
         }
 
-        void StartFocusEvent(DebugView v, FocusCharacterInfo info)
+        void SelectStars(DebugView v, FocusCharacterInfo info)
+        {
+            v.SetContent_Search();
+
+            for (int i = 1; i < 6; i++)
+            {
+                var stars = i;
+                v.ContentSearch.AddItem($"{i} stars", () => StartFocusEvent(v, info, stars));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void StartFocusEvent(DebugView v, FocusCharacterInfo info, int stars)
         {
             var focus_event = GameScene.Instance.FocusEvents
                 .FirstOrDefault(x => x.Info.Characters.Contains(info))
                 ?? GameScene.Instance.FocusEvents.FirstOrDefault();
 
             focus_event.DebugTargetInfo = info;
+            focus_event.DebugTargetStars = stars;
             focus_event.StartEvent();
 
             v.Close();

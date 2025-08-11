@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=34 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_exe8s"]
@@ -24,8 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://kvtix1ndn4h1" path="res://Prefabs/Nature/stalagtite.tscn" id="17_wkocx"]
 [ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="20_bktod"]
 [ext_resource type="Resource" uid="uid://dho360gt3kik5" path="res://FocusEvent/Resources/Cave_Stalagmite.tres" id="20_rehxh"]
+[ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="21_5oda3"]
 [ext_resource type="Resource" uid="uid://cqcknpnbl0d18" path="res://FocusEvent/Resources/Cave_Moss.tres" id="21_bistx"]
 [ext_resource type="Resource" uid="uid://c7sssjwjgtj2d" path="res://FocusEvent/Resources/Beach_Water.tres" id="22_7d81n"]
+[ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/Shop.tscn" id="22_ns5ic"]
 [ext_resource type="Resource" uid="uid://chi5nlmadbpol" path="res://FocusEvent/Resources/Beach_Land.tres" id="23_fjshb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2i1sq"]
@@ -150,6 +152,9 @@ transform = Transform3D(-0.0498444, 0, -2.99959, 0, 3, 0, 2.99959, 0, -0.0498444
 [node name="Grass_Tuft_Small3" parent="World/NavigationRegion3D/Cave/Moss/Grass" instance=ExtResource("11_hitnx")]
 transform = Transform3D(-0.0498444, 0, -2.99959, 0, 3, 0, 2.99959, 0, -0.0498444, 64.83, 15.3034, -1.0857)
 
+[node name="Shop" parent="World/NavigationRegion3D/Cave/Moss" instance=ExtResource("22_ns5ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.1037, 4.36889, -36.3401)
+
 [node name="Beach" type="Node3D" parent="World/NavigationRegion3D/Cave"]
 
 [node name="beach_001" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("7_fqr4h")]
@@ -178,6 +183,12 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53695e-07, 0.81793, -3.12681)
 shape = SubResource("BoxShape3D_byi1e")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="Shop" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("22_ns5ic")]
+transform = Transform3D(-0.15233, 0, -0.98833, 0, 1, 0, 0.98833, 0, -0.15233, -18.4387, 2.27229, 134.229)
+
+[node name="Stalagmite_Platform13" parent="World/NavigationRegion3D/Cave/Beach/Shop" instance=ExtResource("6_0d8tv")]
+transform = Transform3D(-1.21864, 0, 7.90664, 0, 8, 0, -7.90664, 0, -1.21864, 0, 0, 0)
 
 [node name="Stalagmites" type="Node3D" parent="World/NavigationRegion3D/Cave/Beach"]
 
@@ -216,6 +227,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.29394, 137.633)
 
 [node name="Lilypad_Boat" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("20_bktod")]
 transform = Transform3D(-0.841086, 0, -0.540901, 0, 1, 0, 0.540901, 0, -0.841086, 2.37682, -0.959282, 182.836)
+
+[node name="QuestBoard" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("21_5oda3")]
+transform = Transform3D(0.490417, 0, -0.871488, 0, 1, 0, 0.871488, 0, 0.490417, 22.2957, 3.30526, 104.864)
 
 [node name="Stalagmites" type="Node3D" parent="World/NavigationRegion3D/Cave"]
 
@@ -404,6 +418,12 @@ transform = Transform3D(6, 0, 0, 0, -6, 9.05975e-07, 0, -9.05975e-07, -6, -29.41
 
 [node name="Stalagtite3" parent="World/NavigationRegion3D/Cave/Stalagmites/Deco_Stalagtites" instance=ExtResource("17_wkocx")]
 transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, 23.1764, 78.5004, 26.2792)
+
+[node name="Shop" parent="World/NavigationRegion3D/Cave/Stalagmites" instance=ExtResource("22_ns5ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.5205, 30.7031, -32.9002)
+
+[node name="Shop2" parent="World/NavigationRegion3D/Cave/Stalagmites" instance=ExtResource("22_ns5ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875647, 19.5807, 31.8297)
 
 [node name="FocusEvents" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)

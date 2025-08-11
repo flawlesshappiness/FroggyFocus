@@ -47,7 +47,12 @@ public partial class FocusTarget : Node3D
         var start = rng.RandiRange(1, 3);
         var hotspot = Player.Instance.HasHotspot ? 1 : 0;
         var stars = Mathf.Clamp(start + hotspot, 1, 5);
-        var difficulty = Mathf.Clamp((start - 1) / 4f, 0, 1);
+        SetStars(stars);
+    }
+
+    public void SetStars(int stars)
+    {
+        var difficulty = Mathf.Clamp((stars - 1) / 4f, 0, 1);
         Stars = stars;
         Difficulty = difficulty;
         Reward = (int)(Info.CurrencyReward + (stars * 5));

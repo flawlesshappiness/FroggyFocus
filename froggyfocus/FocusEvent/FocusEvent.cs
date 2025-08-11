@@ -31,6 +31,7 @@ public partial class FocusEvent : Node3D
     public Array<FocusSkillCheck> SkillChecks;
 
     public FocusCharacterInfo DebugTargetInfo { get; set; }
+    public int? DebugTargetStars { get; set; }
 
     public event Action<FocusEventCompletedResult> OnCompleted;
     public event Action<FocusEventFailedResult> OnFailed;
@@ -72,6 +73,13 @@ public partial class FocusEvent : Node3D
 
         Target.GlobalPosition = GlobalPosition;
         Target.SetCharacter(info);
+
+        if (DebugTargetStars != null)
+        {
+            Target.SetStars(DebugTargetStars ?? 0);
+            DebugTargetStars = null;
+        }
+
         Target.Show();
     }
 
