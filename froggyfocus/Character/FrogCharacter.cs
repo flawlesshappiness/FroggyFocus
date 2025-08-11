@@ -20,6 +20,9 @@ public partial class FrogCharacter : Character
     public SoundInfo SfxSwallow;
 
     [Export]
+    public PlayerMoveSoundsGroup MoveSounds;
+
+    [Export]
     public MeshInstance3D BodyMesh;
 
     [Export]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7xc6fc17fllt"]
+
+[ext_resource type="Script" uid="uid://ct7gbneqp883w" path="res://Prefabs/Player/PlayerMoveSoundsGroup.cs" id="1_4xh6g"]
+[ext_resource type="PackedScene" uid="uid://71xaxdckix2y" path="res://Prefabs/Player/player_move_sounds_solid.tscn" id="1_xdd8n"]
+[ext_resource type="PackedScene" uid="uid://cw0fw0asdb7kc" path="res://Prefabs/Player/player_move_sounds_sand.tscn" id="2_lutvh"]
+
+[node name="PlayerMoveSoundsGroup" type="Node3D" node_paths=PackedStringArray("MoveSounds")]
+script = ExtResource("1_4xh6g")
+MoveSounds = [NodePath("PlayerMoveSounds_Solid"), NodePath("PlayerMoveSounds_Sand")]
+
+[node name="PlayerMoveSounds_Solid" parent="." instance=ExtResource("1_xdd8n")]
+
+[node name="PlayerMoveSounds_Sand" parent="." instance=ExtResource("2_lutvh")]

@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd1p385ni06q4"]
+[gd_scene load_steps=4 format=3 uid="uid://bd1p385ni06q4"]
 
 [ext_resource type="PackedScene" uid="uid://b6j1ddmtb53bo" path="res://Prefabs/Objects/pier_section.tscn" id="1_08qas"]
+[ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="2_8ygxx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hd3r8"]
+size = Vector3(10.5078, 1, 40.7048)
 
 [node name="Pier" type="Node3D"]
 
@@ -11,3 +15,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
 
 [node name="PierSection3" parent="." instance=ExtResource("1_08qas")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_8ygxx")
+Id = "solid"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.14992, 19.8146)
+shape = SubResource("BoxShape3D_hd3r8")

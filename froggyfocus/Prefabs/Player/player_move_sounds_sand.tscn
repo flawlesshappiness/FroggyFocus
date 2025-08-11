@@ -1,0 +1,53 @@
+[gd_scene load_steps=13 format=3 uid="uid://cw0fw0asdb7kc"]
+
+[ext_resource type="Script" uid="uid://cif61kg0efphv" path="res://Player/PlayerMoveSounds.cs" id="1_b4kx2"]
+[ext_resource type="AudioStream" uid="uid://dqc4iej24gkoq" path="res://Sounds/Raw/sfx_frog_walk_sand_001.wav" id="2_cw2u3"]
+[ext_resource type="AudioStream" uid="uid://v32ud4uli2iy" path="res://Sounds/Raw/sfx_frog_walk_sand_002.wav" id="3_wuekw"]
+[ext_resource type="AudioStream" uid="uid://b5c1kyvkqud4t" path="res://Sounds/Raw/sfx_frog_walk_sand_003.wav" id="4_7w8bx"]
+[ext_resource type="AudioStream" uid="uid://cjqgwx8s5t1nd" path="res://Sounds/Raw/sfx_frog_jump_sand_001.wav" id="5_wuekw"]
+[ext_resource type="AudioStream" uid="uid://ebe862ea21cn" path="res://Sounds/Raw/sfx_frog_jump_sand_002.wav" id="6_40sam"]
+[ext_resource type="AudioStream" uid="uid://ca4ah66dsbk1a" path="res://Sounds/Raw/sfx_frog_land_sand_001.wav" id="7_7w8bx"]
+[ext_resource type="AudioStream" uid="uid://h2biikbrlg26" path="res://Sounds/Raw/sfx_frog_land_sand_002.wav" id="8_4easd"]
+[ext_resource type="AudioStream" uid="uid://dkfm1nawa33k3" path="res://Sounds/Raw/sfx_frog_land_sand_003.wav" id="9_v3omg"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4easd"]
+streams_count = 3
+stream_0/stream = ExtResource("2_cw2u3")
+stream_1/stream = ExtResource("3_wuekw")
+stream_2/stream = ExtResource("4_7w8bx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7w8bx"]
+streams_count = 2
+stream_0/stream = ExtResource("5_wuekw")
+stream_1/stream = ExtResource("6_40sam")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o2g25"]
+streams_count = 3
+stream_0/stream = ExtResource("7_7w8bx")
+stream_1/stream = ExtResource("8_4easd")
+stream_2/stream = ExtResource("9_v3omg")
+
+[node name="PlayerMoveSounds_Sand" type="Node3D" node_paths=PackedStringArray("SfxMove", "SfxJump", "SfxLand")]
+script = ExtResource("1_b4kx2")
+Id = "sand"
+SfxMove = NodePath("SfxMove")
+SfxJump = NodePath("SfxJump")
+SfxLand = NodePath("SfxLand")
+
+[node name="SfxMove" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_4easd")
+max_polyphony = 3
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+
+[node name="SfxJump" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7w8bx")
+max_polyphony = 3
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+
+[node name="SfxLand" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_o2g25")
+volume_db = -10.0
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
