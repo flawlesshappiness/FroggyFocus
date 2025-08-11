@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://b6dnkd36tuxjy"]
+
+[ext_resource type="PackedScene" uid="uid://dwvob8lsuvqjr" path="res://Prefabs/Characters/sandfly.tscn" id="1_n40qd"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_miov5"]
+
+[resource]
+script = ExtResource("2_miov5")
+Scene = ExtResource("1_n40qd")
+Name = "Sand Fly"
+LocationHint = "##HINT_LOC_SAND##"
+Accessory = ""
+FocusValue = 40.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 0.8
+MoveSpeedRange = Vector2(0.8, 1.2)
+MoveLengthRange = Vector2(0.3, 0.6)
+MoveDelayRange = Vector2(0, 0)
+CurrencyReward = 25
+SkillChecks = null
+Tags = Array[int]([0, 2])
+metadata/_custom_type_script = "uid://buqirimb2mf5"
