@@ -38,8 +38,7 @@ uniform float foam_distortion_speed = 0.5;
 uniform float foam_distortion_amount = 0.1;
 
 // Horizon values
-uniform float horizon_start = 40.0;
-uniform float horizon_length = 200.0;
+uniform float horizon_start = 0.5;
 
 
 // Math constants
@@ -323,11 +322,9 @@ void fragment() {
     vec4 background = texture(SCREEN_TEXTURE, SCREEN_UV);
     vec4 final_color = mix(background, water_color, water_opacity * water_transparency);
 	
-	// Calculate view distance
-	vec4 upos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, FRAGCOORD.z, 1.0);
-	vec3 pixel_position = upos.xyz / upos.w;
-	float d = -pixel_position.z;
-	float dist = clamp(max(d - horizon_start, 0) / horizon_length, 0.0, 1.0) * DIST_COL.a;
+	// Calculate horizon distance
+	vec2 uv_center = vec2(UV.x * 2.0 - 1.0, UV.y * 2.0 - 1.0);
+	float dist = max(sqrt(pow(uv_center.x, 2) + pow(uv_center.y, 2)) * (1.0 / horizon_start) - horizon_start, 0);
 
     // Add foam
     final_color = mix(final_color, FOAM_COL, foam);

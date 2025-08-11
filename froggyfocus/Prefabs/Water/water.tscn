@@ -1,17 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgqanaobw2044"]
 
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="1_g0xur"]
 [ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/SwampWater.tres" id="1_sl5aw"]
 [ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="2_g0xur"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_20fcr"]
-size = Vector2(1500, 1500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_achss"]
 size = Vector3(1000, 1, 1000)
 
-[node name="Water" type="MeshInstance3D"]
-mesh = SubResource("PlaneMesh_20fcr")
-skeleton = NodePath("")
+[node name="Water" type="Node3D"]
+
+[node name="Circle" parent="." instance=ExtResource("1_g0xur")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, 0, 0)
+
+[node name="Circle" parent="Circle" index="0"]
 surface_material_override/0 = ExtResource("1_sl5aw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -27,3 +28,5 @@ size = Vector3(1000, 1, 1000)
 
 [node name="RespawnArea" parent="." instance=ExtResource("2_g0xur")]
 collision_layer = 0
+
+[editable path="Circle"]
