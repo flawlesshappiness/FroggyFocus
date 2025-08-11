@@ -13,6 +13,13 @@ public partial class SnailNpc : CharacterNpc, IInteractable
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        HandInController.Instance.OnHandInClaimed -= HandInClaimed;
+        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+    }
+
     public override void Interact()
     {
         base.Interact();

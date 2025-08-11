@@ -29,6 +29,13 @@ public partial class CharacterNpc : Area3D, IInteractable
         InitializeAnimations();
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        DialogueController.Instance.OnNodeStarted -= DialogueStarted;
+        DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
+    }
+
     protected virtual void InitializeAnimations()
     {
         var idle = Animation.CreateAnimation(IdleAnimation, true);

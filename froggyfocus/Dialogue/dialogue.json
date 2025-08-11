@@ -132,6 +132,22 @@
 	},
 	
 	{
+		"id": "##CRAB_REQUEST_001##",
+		"next": "##CRAB_REQUEST_002##"
+	},
+	{
+		"id": "##CRAB_REQUEST_002##"
+	},
+	
+	{
+		"id": "##CRAB_REQUEST_COMPLETE_001##"
+	},
+	
+	{
+		"id": "##CRAB_IDLE_001##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},
