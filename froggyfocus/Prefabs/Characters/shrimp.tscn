@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdjryvfvwp4dw"]
+
+[ext_resource type="PackedScene" uid="uid://6up6nt7m5fka" path="res://Assets/FlawLizArt/Nature/Bugs/shrimp.fbx" id="1_jvedk"]
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_o27yr"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_tud0o"]
+
+[node name="Shrimp" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_o27yr")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="shrimp" parent="." instance=ExtResource("1_jvedk")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0.189958)
+
+[node name="Skeleton3D" parent="shrimp/Armature" index="0"]
+bones/1/rotation = Quaternion(0.044248, -3.01816e-26, -9.82504e-18, 0.999021)
+bones/2/rotation = Quaternion(-0.0195137, 6.78772e-26, 4.33291e-18, 0.99981)
+bones/4/rotation = Quaternion(-0.654558, -7.29715e-18, 6.31791e-18, 0.756012)
+bones/6/rotation = Quaternion(-0.654558, 9.01236e-08, -7.80294e-08, 0.756012)
+bones/8/rotation = Quaternion(-0.654558, 9.01236e-08, -7.80294e-08, 0.756012)
+bones/10/rotation = Quaternion(0.999969, -2.34853e-08, 2.98023e-06, -0.00788008)
+bones/11/rotation = Quaternion(0.075011, -7.13328e-07, 3.93455e-07, 0.997183)
+bones/12/rotation = Quaternion(-0.0199281, 8.34301e-07, -1.06903e-07, 0.999801)
+bones/13/rotation = Quaternion(-0.0803353, -1.18825e-07, -4.88412e-07, 0.996768)
+bones/15/rotation = Quaternion(-0.654558, -7.29715e-18, 6.31791e-18, 0.756012)
+bones/17/rotation = Quaternion(-0.654558, -9.01236e-08, 7.80294e-08, 0.756012)
+bones/19/rotation = Quaternion(-0.654558, -9.01237e-08, 7.80294e-08, 0.756012)
+
+[node name="AnimationPlayer" parent="shrimp" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_tud0o")
+Animator = NodePath("../shrimp/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="shrimp"]

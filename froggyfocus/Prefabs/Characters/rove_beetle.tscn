@@ -10,7 +10,7 @@ Animation = NodePath("AnimationStateMachine")
 Accessories = []
 
 [node name="rove_beetle" parent="." instance=ExtResource("2_22co2")]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, -0.0707372)
 
 [node name="Skeleton3D" parent="rove_beetle/Armature" index="0"]
 bones/1/position = Vector3(0, 0, 0.0046)
@@ -18,7 +18,6 @@ bones/1/rotation = Quaternion(-0.0102453, 8.07836e-28, 2.27492e-18, 0.999947)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(5.87706e-27, 0.00573789, 5.92029e-10)
 bones/2/rotation = Quaternion(0.00798479, -7.27037e-27, -1.77298e-18, 0.999968)
-bones/2/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-1.86416e-20, -0.00622032, -8.39541e-05)
 bones/4/rotation = Quaternion(0.99981, -8.89388e-24, -2.22001e-16, -0.0194735)
 bones/4/scale = Vector3(1, 1, 1)
