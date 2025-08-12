@@ -334,9 +334,4 @@ public partial class Player : TopDownController
         QuestionMark.AnimateHide();
         FocusEventLock.RemoveLock("interact");
     }
-
-    public void SetMoveSoundsId(string id)
-    {
-        Character.MoveSounds.SetSounds(id);
-    }
 }
