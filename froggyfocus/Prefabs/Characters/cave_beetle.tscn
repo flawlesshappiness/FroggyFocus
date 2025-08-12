@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://wbhunu4su2xq"]
+
+[ext_resource type="PackedScene" uid="uid://di4ifmo2lvbwp" path="res://Assets/FlawLizArt/Nature/Bugs/cave_beetle.fbx" id="1_hmkur"]
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_lh7xr"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_lh7xr"]
+
+[node name="CaveBeetle" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_lh7xr")
+Animation = NodePath("AnimationStateMachine")
+Accessories = []
+
+[node name="cave_beetle" parent="." instance=ExtResource("1_hmkur")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.0717007)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_lh7xr")
+Animator = NodePath("../cave_beetle/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="cave_beetle"]
