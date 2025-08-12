@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dvyecyctodpx"]
+
+[ext_resource type="PackedScene" uid="uid://dkwf4pkxnfdjr" path="res://Prefabs/Characters/bee.tscn" id="1_e4l6h"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_14any"]
+
+[resource]
+script = ExtResource("2_14any")
+Scene = ExtResource("1_e4l6h")
+Name = "Bee"
+LocationHint = "##HINT_LOC_CAVE##"
+Accessory = ""
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0, 2])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

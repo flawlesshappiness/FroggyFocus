@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=5 format=3 uid="uid://c7sssjwjgtj2d"]
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=6 format=3 uid="uid://c7sssjwjgtj2d"]
 
 [ext_resource type="Resource" uid="uid://dk3orexdc33xx" path="res://FocusCharacter/Resources/Shrimp.tres" id="1_oxcrw"]
 [ext_resource type="Resource" uid="uid://dhaapoqb7w8s4" path="res://FocusCharacter/Resources/Seahorse.tres" id="2_f17dx"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_yu7lm"]
 [ext_resource type="Resource" uid="uid://b6dnkd36tuxjy" path="res://FocusCharacter/Resources/Sandfly.tres" id="3_f17dx"]
+[ext_resource type="Resource" uid="uid://dvyecyctodpx" path="res://FocusCharacter/Resources/Bee.tres" id="4_0j25t"]
 
 [resource]
 script = ExtResource("2_yu7lm")
-Characters = Array[Object]([ExtResource("1_oxcrw"), ExtResource("2_f17dx"), ExtResource("3_f17dx")])
+Characters = Array[Object]([ExtResource("1_oxcrw"), ExtResource("2_f17dx"), ExtResource("3_f17dx"), ExtResource("4_0j25t")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"
