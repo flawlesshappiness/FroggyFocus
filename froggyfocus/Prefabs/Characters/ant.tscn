@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk2n0odj0rd4n"]
+
+[ext_resource type="PackedScene" uid="uid://chvyqmfb8on1p" path="res://Assets/FlawLizArt/Nature/Bugs/ant.fbx" id="1_hdfdn"]
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_pjuh3"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_pjuh3"]
+
+[node name="Ant" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_pjuh3")
+Animation = NodePath("AnimationStateMachine")
+Accessories = []
+
+[node name="ant" parent="." instance=ExtResource("1_hdfdn")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.0544099)
+
+[node name="Skeleton3D" parent="ant/Armature" index="0"]
+bones/0/position = Vector3(0, -0.001, -0.005)
+bones/2/rotation = Quaternion(-0.0546876, 5.91937e-20, 8.76002e-18, 0.998504)
+bones/6/rotation = Quaternion(0.301417, -0.300508, -0.638309, 0.641409)
+bones/8/rotation = Quaternion(0.301417, -0.300508, -0.638309, 0.641409)
+bones/10/rotation = Quaternion(0.301417, -0.300508, -0.638309, 0.641409)
+bones/12/rotation = Quaternion(0.301417, 0.300508, 0.638309, 0.641409)
+bones/14/rotation = Quaternion(0.301417, 0.300508, 0.638309, 0.641409)
+bones/16/rotation = Quaternion(0.301417, 0.300508, 0.638308, 0.641409)
+
+[node name="AnimationPlayer" parent="ant" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_pjuh3")
+Animator = NodePath("../ant/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="ant"]

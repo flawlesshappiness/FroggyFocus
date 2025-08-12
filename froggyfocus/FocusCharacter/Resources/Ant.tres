@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://4x4koxec4upp"]
+
+[ext_resource type="PackedScene" uid="uid://dk2n0odj0rd4n" path="res://Prefabs/Characters/ant.tscn" id="1_e2piv"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_y2o1u"]
+
+[resource]
+script = ExtResource("2_y2o1u")
+Scene = ExtResource("1_e2piv")
+Name = "Ant"
+LocationHint = "##HINT_LOC_CAVE##"
+Accessory = ""
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"
