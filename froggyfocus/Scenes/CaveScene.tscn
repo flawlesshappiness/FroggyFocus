@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
-[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_exe8s"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_fvftn"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_tkjes"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_wkocx"]
@@ -491,6 +491,18 @@ Info = ExtResource("21_bistx")
 
 [node name="Stalagmite_Platform" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.02, 0)
+
+[node name="Stalagmite_Platform2" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.51813, -0.318687, 3.0903)
+
+[node name="Stalagmite_Platform3" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.03122, -0.653644, -1.94382)
+
+[node name="Stalagmite_Platform4" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.50494, -0.653644, -1.94382)
+
+[node name="Stalagmite_Platform5" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.50494, -0.351599, 2.10547)
 
 [node name="Pier" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.971666, 0)

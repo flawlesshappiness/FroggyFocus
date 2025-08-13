@@ -13,6 +13,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
     private bool quick_transition;
     private WeatherInfo current_weather;
     private WeatherInfo next_weather;
+    private float? next_transition_duration;
     private Coroutine cr_weather;
 
     private const float TRANSITION_DURATION = 30;
@@ -87,6 +88,13 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         }
     }
 
+    public void SetNextWeather(WeatherInfo info, float? duration = null)
+    {
+        next_weather = info;
+        next_transition_duration = duration;
+        skip = true;
+    }
+
     public void StopWeather()
     {
         Coroutine.Stop(cr_weather);
@@ -121,9 +129,8 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
                 var previous_weather = current_weather;
                 current_weather = GetNextWeather(weathers);
 
-                var transition_duration = quick_transition ? TRANSITION_DURATION_QUICK : TRANSITION_DURATION;
+                var transition_duration = GetTransitionDuration();
                 yield return WaitForWeatherTransition(previous_weather, current_weather, transition_duration);
-                quick_transition = false;
             }
         }
 
@@ -164,6 +171,17 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         SetWeatherTransition(from, to, 1);
     }
 
+    private float GetTransitionDuration()
+    {
+        var duration = quick_transition ? TRANSITION_DURATION_QUICK :
+            next_transition_duration ?? TRANSITION_DURATION;
+
+        next_transition_duration = null;
+        quick_transition = false;
+
+        return duration;
+    }
+
     private WeatherInfo GetNextWeather(IEnumerable<WeatherInfo> weathers)
     {
         var next = next_weather ?? weathers
@@ -188,9 +206,9 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
 
         // Fog
         env.FogEnabled = true;
-        env.FogAerialPerspective = Mathf.Lerp(from.FogEnabled ? 0 : 1, to.FogEnabled ? 0 : 1, t);
         env.FogDensity = Mathf.Lerp(from.FogEnabled ? from.FogDensity : 0, to.FogEnabled ? to.FogDensity : 0, t);
         env.FogLightColor = from.FogColor.Lerp(to.FogEnabled ? to.FogColor : from.FogColor, t);
+        env.FogAerialPerspective = Mathf.Lerp(from.FogEnabled ? from.FogAerialPerspective : 1, to.FogEnabled ? to.FogAerialPerspective : 1, t);
 
         // Rain
         RainController.Instance.SetIntensity(Mathf.Lerp(from.Rain, to.Rain, t));

@@ -18,6 +18,9 @@ public partial class WeatherInfo : Resource
     [Export(PropertyHint.Range, "0,1,0.0001")]
     public float FogDensity;
 
+    [Export(PropertyHint.Range, "0,1,0.0001")]
+    public float FogAerialPerspective;
+
     [Export]
     public float Rain;
 

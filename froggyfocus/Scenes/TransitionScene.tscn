@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://dn3oktr6fampb"]
 
 [ext_resource type="Script" uid="uid://bbaduvx32xpxt" path="res://Scenes/TransitionScene.cs" id="1_ng4y5"]
-[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Test.tres" id="2_kb1rn"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_kb1rn"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_venqk"]
 [ext_resource type="Resource" uid="uid://cr6w4xkj1cp6h" path="res://Weather/Resources/Sunny-Windy.tres" id="3_ynwol"]
 [ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="5_fut22"]
