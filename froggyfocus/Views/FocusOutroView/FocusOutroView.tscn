@@ -321,11 +321,11 @@ draw_pass_1 = SubResource("SphereMesh_pgr7x")
 
 [node name="SfxChordSuccess" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_pgr7x")
-bus = &"SFX"
+bus = &"BGM"
 
 [node name="SfxChordFail" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_dv0nn")
-bus = &"SFX"
+bus = &"BGM"
 
 [node name="SfxSwish" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_nb0i5")
