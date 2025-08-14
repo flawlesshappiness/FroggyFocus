@@ -36,6 +36,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_rt8b4")
 HandInInfo = ExtResource("2_rt8b4")
+DialogueAnimation = "Armature|idle_dialogue"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 
@@ -53,16 +54,16 @@ shape = SubResource("CapsuleShape3D_mjd21")
 
 [node name="Skeleton3D" parent="mushroom_guy/Armature" index="0"]
 bones/1/position = Vector3(-3.28447e-20, -0.00155846, -0.000951274)
-bones/1/rotation = Quaternion(0.338736, 0.0173642, 0.0481596, 0.939488)
+bones/1/rotation = Quaternion(0.339181, -5.90143e-24, -4.89696e-17, 0.940721)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(2.47245e-26, 0.00719796, 1.02884e-10)
-bones/2/rotation = Quaternion(0.132602, -1.5882e-09, 1.95963e-09, 0.991169)
+bones/2/rotation = Quaternion(0.250012, 2.26211e-17, -7.87628e-17, 0.968243)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(-1.70645e-25, 0.00810257, -8.14488e-10)
-bones/3/rotation = Quaternion(0.186382, 0.000172411, -0.000370353, 0.982477)
+bones/3/rotation = Quaternion(0.0881501, 1.18745e-07, 1.05083e-08, 0.996107)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-5.88352e-16, 0.00977423, 1.29009e-09)
-bones/4/rotation = Quaternion(0.101654, -0.00286212, 0.0164834, 0.994679)
+bones/4/rotation = Quaternion(-0.156185, 2.23905e-10, -3.9624e-08, 0.987728)
 bones/4/scale = Vector3(1, 1, 1)
 
 [node name="AnimationPlayer" parent="mushroom_guy" index="1"]
