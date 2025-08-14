@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://bjsf02kaa2g15"]
+
+[ext_resource type="PackedScene" uid="uid://gxlcyjt8uqdg" path="res://Prefabs/Characters/cave_cricket.tscn" id="1_r3uj6"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_n2xbe"]
+
+[resource]
+script = ExtResource("2_n2xbe")
+Scene = ExtResource("1_r3uj6")
+Name = "Cave Cricket"
+LocationHint = "##HINT_LOC_CAVE##"
+Accessory = ""
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

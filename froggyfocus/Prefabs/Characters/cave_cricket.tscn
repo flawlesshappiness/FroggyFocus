@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://gxlcyjt8uqdg"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_ud6wg"]
+[ext_resource type="PackedScene" uid="uid://6pkh4xwdn46b" path="res://Assets/FlawLizArt/Nature/Bugs/cave_cricket.fbx" id="1_w0aes"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_ud6wg"]
+
+[node name="CaveCricket" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_ud6wg")
+Animation = NodePath("AnimationStateMachine")
+Accessories = []
+
+[node name="cave_cricket" parent="." instance=ExtResource("1_w0aes")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="cave_cricket/Armature" index="0"]
+bones/0/position = Vector3(-2.71053e-18, -0.00210016, -0.0122072)
+bones/2/rotation = Quaternion(-0.0864431, -3.749e-25, 1.91942e-17, 0.996257)
+bones/3/rotation = Quaternion(0.427523, 0.0460057, -0.0965963, 0.897651)
+bones/5/rotation = Quaternion(0.427523, -0.0460057, 0.0965963, 0.897651)
+bones/7/rotation = Quaternion(-0.0430474, 0.105788, -0.706151, 0.69879)
+bones/8/rotation = Quaternion(0.512144, -0.0072695, 0.0528562, 0.857241)
+bones/9/rotation = Quaternion(-0.709032, -3.55839e-08, -0.0704939, 0.701644)
+bones/11/rotation = Quaternion(-0.0430475, 0.105788, -0.706151, 0.69879)
+bones/12/rotation = Quaternion(0.512144, -0.00726948, 0.0528563, 0.857241)
+bones/13/rotation = Quaternion(-0.709032, -3.84468e-08, -0.0704939, 0.701644)
+bones/15/rotation = Quaternion(0.0583448, 0.388449, 0.919416, 0.0194192)
+bones/16/rotation = Quaternion(-0.711484, 3.16177e-05, 0.0878909, 0.697184)
+bones/18/rotation = Quaternion(-0.0430474, -0.105788, 0.706151, 0.69879)
+bones/19/rotation = Quaternion(0.512144, 0.0072695, -0.0528562, 0.857241)
+bones/20/rotation = Quaternion(-0.709032, 3.55839e-08, 0.0704939, 0.701644)
+bones/22/rotation = Quaternion(-0.0430475, -0.105788, 0.706151, 0.69879)
+bones/23/rotation = Quaternion(0.512144, 0.00726948, -0.0528563, 0.857241)
+bones/24/rotation = Quaternion(-0.709032, 3.84468e-08, 0.0704939, 0.701644)
+bones/26/rotation = Quaternion(-0.0583448, 0.388449, 0.919416, -0.0194192)
+bones/27/rotation = Quaternion(-0.711484, -3.16177e-05, -0.0878909, 0.697184)
+bones/29/rotation = Quaternion(0.999628, 9.75136e-09, -3.57498e-07, -0.0272665)
+bones/31/position = Vector3(0.00840063, -0.0723666, 0.00210275)
+bones/33/position = Vector3(0.0589667, 0.00229363, 0.00200511)
+bones/35/position = Vector3(0.0589667, 0.0152883, 0.00200511)
+bones/37/position = Vector3(-0.00840063, -0.0723666, 0.00210275)
+bones/37/rotation = Quaternion(-0.0468069, 0.705556, 0.705556, -0.0468069)
+bones/39/position = Vector3(-0.0589667, 0.00229363, 0.00200511)
+bones/41/position = Vector3(-0.0589667, 0.0152883, 0.00200511)
+
+[node name="AnimationPlayer" parent="cave_cricket" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_ud6wg")
+Animator = NodePath("../cave_cricket/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="cave_cricket"]

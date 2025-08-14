@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=6 format=3 uid="uid://dapgvgfcw8bk4"]
+
+[ext_resource type="Resource" uid="uid://c6hb68stthi3u" path="res://FocusCharacter/Resources/CaveBeetle.tres" id="1_phd1b"]
+[ext_resource type="Resource" uid="uid://4x4koxec4upp" path="res://FocusCharacter/Resources/Ant.tres" id="2_iepxn"]
+[ext_resource type="Resource" uid="uid://bjsf02kaa2g15" path="res://FocusCharacter/Resources/CaveCricket.tres" id="4_phd1b"]
+[ext_resource type="Resource" uid="uid://f1tthxd3v53y" path="res://FocusCharacter/Resources/Ladybug.tres" id="4_xs2vg"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="5_4wsa8"]
+
+[resource]
+script = ExtResource("5_4wsa8")
+Characters = Array[Object]([ExtResource("1_phd1b"), ExtResource("2_iepxn"), ExtResource("4_xs2vg"), ExtResource("4_phd1b")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

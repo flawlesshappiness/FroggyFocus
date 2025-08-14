@@ -1,0 +1,163 @@
+[gd_scene load_steps=10 format=3 uid="uid://cf5uwumydynrl"]
+
+[ext_resource type="PackedScene" uid="uid://crkfm1vapfehx" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat.fbx" id="1_exw41"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_wdauh"]
+[ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="3_sgb5n"]
+[ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="4_u8s8f"]
+[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="5_wdauh"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fwo67"]
+data = PackedVector3Array(0.0004, 0.0048, -0.01, 0.0037, 0.0031, -0.01, 0, 0.005, 0, 0.0037, 0.0031, -0.01, 0.0048, -0.0004, -0.01, 0.0035, 0.0035, 0, 0.0048, -0.0004, -0.01, 0.0031, -0.0037, -0.01, 0.005, 0, 0, 0.0031, -0.0037, -0.01, -0.0004, -0.0048, -0.01, 0.0035, -0.0035, 0, -0.0004, -0.0048, -0.01, -0.0037, -0.0031, -0.01, 0, -0.005, 0, -0.0037, -0.0031, -0.01, -0.0048, 0.0004, -0.01, -0.0035, -0.0035, 0, -0.0048, 0.0004, -0.01, -0.0031, 0.0037, -0.01, -0.005, 0, 0, -0.0031, 0.0037, -0.01, 0.0004, 0.0048, -0.01, -0.0035, 0.0035, 0, 0.0048, -0.0004, -0.01, 0.0056, -0.001, -0.02, 0.0031, -0.0037, -0.01, -0.0047, -0.0033, -0.02, -0.0056, -0.0032, -0.03, -0.0056, 0.001, -0.02, -0.0037, -0.0031, -0.01, -0.0047, -0.0033, -0.02, -0.0048, 0.0004, -0.01, 0.0031, -0.0037, -0.01, 0.0033, -0.0047, -0.02, -0.0004, -0.0048, -0.01, -0.0048, 0.0004, -0.01, -0.0056, 0.001, -0.02, -0.0031, 0.0037, -0.01, 0.0037, 0.0031, -0.01, 0.0047, 0.0033, -0.02, 0.0048, -0.0004, -0.01, -0.0004, -0.0048, -0.01, -0.001, -0.0056, -0.02, -0.0037, -0.0031, -0.01, -0.0031, 0.0037, -0.01, -0.0033, 0.0047, -0.02, 0.0004, 0.0048, -0.01, 0.0004, 0.0048, -0.01, 0.001, 0.0056, -0.02, 0.0037, 0.0031, -0.01, 0.0033, -0.0047, -0.02, 0.0032, -0.0056, -0.03, -0.001, -0.0056, -0.02, 0.0047, 0.0033, -0.02, 0.0056, 0.0032, -0.03, 0.0056, -0.001, -0.02, -0.0056, 0.001, -0.02, -0.0062, 0.0017, -0.03, -0.0033, 0.0047, -0.02, -0.001, -0.0056, -0.02, -0.0017, -0.0062, -0.03, -0.0047, -0.0033, -0.02, 0.0056, -0.001, -0.02, 0.0062, -0.0017, -0.03, 0.0033, -0.0047, -0.02, 0.0017, 0.0062, -0.03, 0.0056, 0.0032, -0.03, 0.001, 0.0056, -0.02, -0.0033, 0.0047, -0.02, -0.0032, 0.0056, -0.03, 0.001, 0.0056, -0.02, 0.0037, 0.0031, -0.01, 0.0035, 0.0035, 0, 0, 0.005, 0, 0.0048, -0.0004, -0.01, 0.005, 0, 0, 0.0035, 0.0035, 0, 0.0031, -0.0037, -0.01, 0.0035, -0.0035, 0, 0.005, 0, 0, -0.0004, -0.0048, -0.01, 0, -0.005, 0, 0.0035, -0.0035, 0, -0.0037, -0.0031, -0.01, -0.0035, -0.0035, 0, 0, -0.005, 0, -0.0048, 0.0004, -0.01, -0.005, 0, 0, -0.0035, -0.0035, 0, 0.0035, -0.0035, 0, -0.005, 0, 0, -0.0035, 0.0035, 0, 0.0035, -0.0035, 0, -0.0035, -0.0035, 0, -0.005, 0, 0, 0.0035, -0.0035, 0, 0, -0.005, 0, -0.0035, -0.0035, 0, 0.0035, -0.0035, 0, -0.0035, 0.0035, 0, 0, 0.005, 0, 0.005, 0, 0, 0.0035, -0.0035, 0, 0, 0.005, 0, 0.005, 0, 0, 0, 0.005, 0, 0.0035, 0.0035, 0, -0.0031, 0.0037, -0.01, -0.0035, 0.0035, 0, -0.005, 0, 0, 0.0004, 0.0048, -0.01, 0, 0.005, 0, -0.0035, 0.0035, 0, 0.0056, -0.001, -0.02, 0.0033, -0.0047, -0.02, 0.0031, -0.0037, -0.01, -0.0056, -0.0032, -0.03, -0.0062, 0.0017, -0.03, -0.0056, 0.001, -0.02, -0.0047, -0.0033, -0.02, -0.0056, 0.001, -0.02, -0.0048, 0.0004, -0.01, 0.0033, -0.0047, -0.02, -0.001, -0.0056, -0.02, -0.0004, -0.0048, -0.01, -0.0056, 0.001, -0.02, -0.0033, 0.0047, -0.02, -0.0031, 0.0037, -0.01, 0.0047, 0.0033, -0.02, 0.0056, -0.001, -0.02, 0.0048, -0.0004, -0.01, -0.001, -0.0056, -0.02, -0.0047, -0.0033, -0.02, -0.0037, -0.0031, -0.01, -0.0033, 0.0047, -0.02, 0.001, 0.0056, -0.02, 0.0004, 0.0048, -0.01, 0.001, 0.0056, -0.02, 0.0047, 0.0033, -0.02, 0.0037, 0.0031, -0.01, -0.0032, 0.0056, -0.03, 0.0032, -0.0056, -0.03, 0.0062, -0.0017, -0.03, -0.0032, 0.0056, -0.03, 0.0062, -0.0017, -0.03, 0.0056, 0.0032, -0.03, -0.0032, 0.0056, -0.03, 0.0056, 0.0032, -0.03, 0.0017, 0.0062, -0.03, -0.0032, 0.0056, -0.03, -0.0017, -0.0062, -0.03, 0.0032, -0.0056, -0.03, -0.0032, 0.0056, -0.03, -0.0062, 0.0017, -0.03, -0.0017, -0.0062, -0.03, -0.0062, 0.0017, -0.03, -0.0056, -0.0032, -0.03, -0.0017, -0.0062, -0.03, 0.0032, -0.0056, -0.03, -0.0017, -0.0062, -0.03, -0.001, -0.0056, -0.02, 0.0056, 0.0032, -0.03, 0.0062, -0.0017, -0.03, 0.0056, -0.001, -0.02, -0.0062, 0.0017, -0.03, -0.0032, 0.0056, -0.03, -0.0033, 0.0047, -0.02, -0.0017, -0.0062, -0.03, -0.0056, -0.0032, -0.03, -0.0047, -0.0033, -0.02, 0.0062, -0.0017, -0.03, 0.0032, -0.0056, -0.03, 0.0033, -0.0047, -0.02, 0.0056, 0.0032, -0.03, 0.0047, 0.0033, -0.02, 0.001, 0.0056, -0.02, -0.0032, 0.0056, -0.03, 0.0017, 0.0062, -0.03, 0.001, 0.0056, -0.02)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fwo67"]
+radius = 0.437228
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gbcoi"]
+height = 0.001
+radius = 0.115234
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kmi48"]
+height = 0.112305
+radius = 0.452637
+
+[node name="Stalagmite_Platform_Crystals" type="Node3D"]
+
+[node name="stalagmite_flat" parent="." instance=ExtResource("1_exw41")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stalagmite_flat/stalagmite_platform" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stalagmite_flat/stalagmite_platform/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_fwo67")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+height = 2.99
+vertices = PackedVector3Array(-0.51083, 0, 0.0026962, -0.355499, 0, -0.351929, 0.00498796, 0, -0.498468, 0.368405, 0, -0.340206, 0.503222, 0, 0.00562702, 0.350821, 0, 0.366114, -0.00380433, 0, 0.512653, -0.352568, 0, 0.35146)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_wdauh")
+Id = "crystal"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+shape = SubResource("SphereShape3D_fwo67")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="FocusHotSpotArea" type="Area3D" parent="."]
+script = ExtResource("3_sgb5n")
+metadata/_custom_type_script = "uid://crb4gwrjb3psl"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusHotSpotArea"]
+shape = SubResource("CylinderShape3D_gbcoi")
+
+[node name="PlayerGround" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_u8s8f")
+Id = "solid"
+metadata/_custom_type_script = "uid://cnv6mhgukc6u3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0200195, 0)
+shape = SubResource("CylinderShape3D_kmi48")
+
+[node name="Crystals" type="Node3D" parent="."]
+
+[node name="crystal_short" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.096395, -0.110396, -0.455314)
+
+[node name="crystal_short2" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.19927, -0.286784, -0.408875)
+
+[node name="crystal_short24" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.143709, -0.248653, -0.433956)
+
+[node name="crystal_short25" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.261894, -0.25372, -0.380606)
+
+[node name="crystal_short26" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.145616, -0.140358, -0.433096)
+
+[node name="crystal_short27" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.284742, -0.06432, -0.370292)
+
+[node name="crystal_short28" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.249359, -0.0372425, -0.386264)
+
+[node name="crystal_short29" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.0753834, -0.0602231, -0.464799)
+
+[node name="crystal_short30" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.155251, -0.0264404, -0.428746)
+
+[node name="crystal_short31" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.0436648, -0.229189, -0.479117)
+
+[node name="crystal_short3" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.0776166, -0.549084, -0.448121)
+
+[node name="crystal_short4" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.263067, -0.24838, -0.381903)
+
+[node name="crystal_short19" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.107623, -0.172698, -0.458126)
+
+[node name="crystal_short20" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.169574, -0.117753, -0.427748)
+
+[node name="crystal_short21" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.200308, -0.246541, -0.412677)
+
+[node name="crystal_short22" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.26409, -0.0592826, -0.381402)
+
+[node name="crystal_short23" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.071901, -0.0317986, -0.475642)
+
+[node name="crystal_short5" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.0888363, -0.116561, -0.462476)
+
+[node name="crystal_short6" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.222012, -0.363808, -0.397174)
+
+[node name="crystal_short7" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.456854, -0.0964038, -0.0712199)
+
+[node name="crystal_short15" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.451861, -0.146677, -0.108568)
+
+[node name="crystal_short16" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.367447, -0.0415847, -0.301079)
+
+[node name="crystal_short17" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.401931, -0.0883314, -0.222435)
+
+[node name="crystal_short18" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.441355, -0.043052, -0.132528)
+
+[node name="crystal_short8" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.401588, -0.345095, -0.197257)
+
+[node name="crystal_short9" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.441221, -0.634006, -0.0778764)
+
+[node name="crystal_short10" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(-0.0390763, -0.0920491, -1.79844e-09, -2.9645e-09, 3.21226e-09, -0.1, 0.0920491, -0.0390763, -3.98403e-09, 0.440362, -0.110707, 0.120261)
+
+[node name="crystal_short11" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(-0.0390763, -0.0920491, -1.79844e-09, -2.9645e-09, 3.21226e-09, -0.1, 0.0920491, -0.0390763, -3.98403e-09, 0.402368, -0.201167, 0.20976)
+
+[node name="crystal_short12" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.411309, -0.128619, 0.188697)
+
+[node name="crystal_short13" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.365237, -0.0765665, 0.297226)
+
+[node name="crystal_short14" parent="Crystals" instance=ExtResource("5_wdauh")]
+transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.462574, -0.0442182, 0.0679371)
+
+[editable path="stalagmite_flat"]
