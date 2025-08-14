@@ -16,6 +16,8 @@ public partial class CharacterNpc : Area3D, IInteractable
     public AudioStreamPlayer3D SfxSpeak;
 
     protected bool HasActiveDialogue { get; set; }
+    protected AnimationState IdleState { get; set; }
+    protected AnimationState DialogueState { get; set; }
 
     protected BoolParameter param_dialogue = new BoolParameter("dialogue", false);
 
@@ -38,13 +40,13 @@ public partial class CharacterNpc : Area3D, IInteractable
 
     protected virtual void InitializeAnimations()
     {
-        var idle = Animation.CreateAnimation(IdleAnimation, true);
-        var look = Animation.CreateAnimation(DialogueAnimation, true);
+        IdleState = Animation.CreateAnimation(IdleAnimation, true);
+        DialogueState = Animation.CreateAnimation(DialogueAnimation, true);
 
-        Animation.Connect(idle, look, param_dialogue.WhenTrue());
-        Animation.Connect(look, idle, param_dialogue.WhenFalse());
+        Animation.Connect(IdleState, DialogueState, param_dialogue.WhenTrue());
+        Animation.Connect(DialogueState, IdleState, param_dialogue.WhenFalse());
 
-        Animation.Start(idle.Node);
+        Animation.Start(IdleState.Node);
     }
 
     public virtual void Interact()

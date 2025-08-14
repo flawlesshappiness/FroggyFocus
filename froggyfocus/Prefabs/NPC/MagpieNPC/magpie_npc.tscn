@@ -26,14 +26,13 @@ stream_3/stream = ExtResource("7_pf135")
 stream_4/stream = ExtResource("8_n80yi")
 stream_5/stream = ExtResource("9_1io3b")
 
-[node name="MagpieNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak", "SfxFetchCompleted", "PickupParents")]
+[node name="MagpieNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_ckhjj")
+DialogueAnimation = "Armature|look"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
-SfxFetchCompleted = NodePath("SfxFetchCompleted")
-PickupParents = []
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.466221, -0.238403)
@@ -42,7 +41,7 @@ shape = SubResource("BoxShape3D_vhir8")
 [node name="magpie" parent="." instance=ExtResource("1_vhir8")]
 
 [node name="Skeleton3D" parent="magpie/Armature" index="0"]
-bones/1/rotation = Quaternion(0.00023663, -8.06848e-28, -1.11596e-17, 1)
+bones/1/rotation = Quaternion(-0.058593, -1.37192e-17, -1.11371e-17, 0.998282)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(4.18363e-19, -0.00419141, 0.00108172)
 bones/2/rotation = Quaternion(0.111512, 1.24423e-18, -8.12075e-19, 0.993763)
@@ -50,9 +49,9 @@ bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(7.20789e-26, 0.00364431, -5.47452e-10)
 bones/3/rotation = Quaternion(0.0712209, -2.35291e-18, -2.85092e-17, 0.997461)
 bones/4/position = Vector3(1.46876e-25, 0.006082, 4.29462e-10)
-bones/4/rotation = Quaternion(0.151721, 2.30312e-24, -3.36889e-17, 0.988423)
+bones/4/rotation = Quaternion(0.0373164, -3.47553e-17, -1.77763e-17, 0.999304)
 bones/5/position = Vector3(5.53286e-26, 0.00238568, 3.40185e-10)
-bones/5/rotation = Quaternion(0.151535, 1.17833e-07, 1.80644e-08, 0.988452)
+bones/5/rotation = Quaternion(-0.0507989, 1.19055e-07, -6.0557e-09, 0.998709)
 bones/5/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0.000657741, 0.00534477, 0.000485643)
 bones/7/rotation = Quaternion(-0.135523, -0.120624, -0.719175, 0.670724)
@@ -76,25 +75,23 @@ bones/15/position = Vector3(-1.5235e-20, -0.000503354, -1.05807e-05)
 bones/15/rotation = Quaternion(0.997364, 7.7848e-08, 1.07007e-06, 0.0725596)
 bones/15/scale = Vector3(1, 1, 0.99998)
 bones/17/position = Vector3(0.000763175, 0.000812657, -0.00123123)
-bones/17/rotation = Quaternion(-0.780931, -0.0538465, -0.036968, 0.621193)
+bones/17/rotation = Quaternion(-0.723236, -0.0611148, -0.0383864, 0.686819)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/position = Vector3(3.87151e-12, 0.00151709, -7.6918e-11)
-bones/18/rotation = Quaternion(0.543819, 0.0648495, 0.0119224, 0.836608)
+bones/18/rotation = Quaternion(0.533497, 0.0668227, 0.0097137, 0.843102)
 bones/18/scale = Vector3(1, 1, 1)
 bones/19/position = Vector3(-6.34896e-11, 0.00313047, -1.85046e-10)
 bones/19/rotation = Quaternion(-0.443023, -0.0318843, 0.020698, 0.895704)
 bones/19/scale = Vector3(1, 1, 1)
 bones/21/position = Vector3(-0.000763175, 0.000812657, -0.00123123)
-bones/21/rotation = Quaternion(-0.780931, 0.0538465, 0.036968, 0.621193)
+bones/21/rotation = Quaternion(-0.723236, 0.0611148, 0.0383864, 0.686819)
 bones/21/scale = Vector3(1, 1, 1)
 bones/22/position = Vector3(-3.87151e-12, 0.00151709, -7.6918e-11)
-bones/22/rotation = Quaternion(0.543819, -0.0648495, -0.0119224, 0.836608)
+bones/22/rotation = Quaternion(0.533497, -0.0668227, -0.0097137, 0.843102)
 bones/22/scale = Vector3(1, 1, 1)
 bones/23/position = Vector3(6.34896e-11, 0.00313047, -1.85046e-10)
 bones/23/rotation = Quaternion(-0.443023, 0.0318843, -0.020698, 0.895704)
 bones/23/scale = Vector3(1, 1, 1)
-bones/25/position = Vector3(0.00125748, 0, 0.000619283)
-bones/27/position = Vector3(-0.00125748, 0, 0.000619283)
 
 [node name="wings" parent="magpie/Armature/Skeleton3D" index="3"]
 visible = false
