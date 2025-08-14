@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://fqqvhhk0a8og"]
+
+[ext_resource type="PackedScene" uid="uid://bbvueedr3c1j2" path="res://Assets/FlawLizArt/Nature/Bugs/tick.fbx" id="1_wh7rv"]
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_wh12f"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_y7oyf"]
+
+[node name="Tick" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_wh12f")
+Animation = NodePath("AnimationStateMachine")
+Accessories = []
+
+[node name="tick" parent="." instance=ExtResource("1_wh7rv")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.0601557)
+
+[node name="Skeleton3D" parent="tick/Armature" index="0"]
+bones/3/rotation = Quaternion(0.00359082, 0.0116637, 0.0495915, 0.998695)
+bones/5/rotation = Quaternion(0.00359082, -0.0116637, -0.0495915, 0.998695)
+bones/7/rotation = Quaternion(-0.227968, 0.13481, -0.5021, 0.823257)
+bones/11/rotation = Quaternion(-0.194031, 0.187826, -0.67489, 0.686729)
+bones/15/rotation = Quaternion(-0.177136, 0.207839, -0.737279, 0.617936)
+bones/19/rotation = Quaternion(-0.178776, 0.206188, -0.731952, 0.624317)
+bones/23/rotation = Quaternion(-0.221043, -0.14817, 0.545665, 0.794629)
+bones/27/rotation = Quaternion(-0.193328, -0.189532, 0.679077, 0.682317)
+bones/31/rotation = Quaternion(-0.184182, -0.200305, 0.713356, 0.645815)
+bones/35/rotation = Quaternion(-0.186624, -0.19769, 0.704798, 0.655248)
+
+[node name="AnimationPlayer" parent="tick" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_y7oyf")
+Animator = NodePath("../tick/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="tick"]

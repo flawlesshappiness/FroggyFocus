@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_t2slg")
-shader_parameter/albedo = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/albedo = Color(0.2, 0.2, 0.2, 1)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 3
 shader_parameter/wrap = 0.0
