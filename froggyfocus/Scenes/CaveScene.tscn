@@ -514,7 +514,7 @@ curve = SubResource("Curve3D_tww0l")
 curve = SubResource("Curve3D_hexkd")
 
 [node name="LeechNPC" parent="World/NavigationRegion3D/Cave/Stalagmites" instance=ExtResource("27_df6tn")]
-transform = Transform3D(0.527979, 0, 0.849257, 0, 1, 0, -0.849257, 0, 0.527979, -43.1491, -0.819721, 63.6642)
+transform = Transform3D(0.700125, 0, 0.714021, 0, 1, 0, -0.714021, 0, 0.700125, -43.1491, -0.819721, 63.6642)
 
 [node name="Crystals" type="Node3D" parent="World/NavigationRegion3D/Cave"]
 
