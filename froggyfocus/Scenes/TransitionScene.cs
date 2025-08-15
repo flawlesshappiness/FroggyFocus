@@ -31,7 +31,11 @@ public partial class TransitionScene : GameScene
         return this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
-            Music.Play();
+            if (!MusicController.Instance.IsMusicPlaying())
+            {
+                Music.Play();
+            }
+
             yield return new WaitForSeconds(5f);
         }
     }

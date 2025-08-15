@@ -630,6 +630,7 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.50494, -0.653644, -1.94382)
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.50494, -0.351599, 2.10547)
 
 [node name="Crystal" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
 visible = false
 Id = "crystal"
 Info = ExtResource("32_k2kgv")
