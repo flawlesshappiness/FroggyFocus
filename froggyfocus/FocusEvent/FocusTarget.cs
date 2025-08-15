@@ -126,7 +126,7 @@ public partial class FocusTarget : Node3D
         return NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), position).Set(y: position.Y);
     }
 
-    public Vector3 GetNextDirection()
+    public Vector3 GetRandomPosition()
     {
         var center = focus_event.GlobalPosition;
         var rx = 5;
@@ -134,6 +134,12 @@ public partial class FocusTarget : Node3D
         var x = rng.RandfRange(-rx, rx);
         var z = rng.RandfRange(-rz, rz);
         var position = center + new Vector3(x, 0, z);
+        return position;
+    }
+
+    public Vector3 GetNextDirection()
+    {
+        var position = GetRandomPosition();
         var dir = GlobalPosition.DirectionTo(position).Normalized();
         return dir;
     }

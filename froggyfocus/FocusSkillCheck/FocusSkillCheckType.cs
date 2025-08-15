@@ -5,5 +5,8 @@ public enum FocusSkillCheckType
     Dash,
     Dive,
     Constrict,
-    Spike
+    Spike,
+    Crystal,
+    Moss,
+    Sand
 }

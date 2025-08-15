@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpxrc0e38jyx1"]
+
+[ext_resource type="Script" uid="uid://d313khlkrgmse" path="res://FocusSkillCheck/FocusSkillCheck_Crystal.cs" id="1_3gyb2"]
+[ext_resource type="PackedScene" uid="uid://beec38frmqp4t" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_long.fbx" id="2_duecu"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/White.tres" id="3_62ok3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nm0t4"]
+material = ExtResource("3_62ok3")
+radius = 0.1
+height = 0.2
+
+[node name="Crystal" type="Node3D" node_paths=PackedStringArray("CrystalTemplate", "ProjectileTemplate")]
+script = ExtResource("1_3gyb2")
+CrystalTemplate = NodePath("CrystalSpikeTemplate")
+ProjectileTemplate = NodePath("ProjectileTemplate")
+Type = 6
+
+[node name="CrystalSpikeTemplate" type="Node3D" parent="."]
+
+[node name="crystal_long" parent="CrystalSpikeTemplate" instance=ExtResource("2_duecu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.376915, 0)
+
+[node name="ProjectileTemplate" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ProjectileTemplate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40653, 0)
+mesh = SubResource("SphereMesh_nm0t4")

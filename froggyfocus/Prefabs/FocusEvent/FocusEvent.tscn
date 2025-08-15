@@ -4,7 +4,6 @@
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
 [ext_resource type="PackedScene" uid="uid://c7v778qpl5v6w" path="res://Prefabs/FocusEvent/FocusTarget.tscn" id="3_2i5pb"]
-[ext_resource type="PackedScene" uid="uid://bbebkriqvf8n1" path="res://Prefabs/FocusSkillChecks/Projectiles.tscn" id="5_2i5pb"]
 [ext_resource type="PackedScene" uid="uid://bc86o50qja4fn" path="res://Prefabs/FocusSkillChecks/bombs.tscn" id="6_dbk1m"]
 [ext_resource type="PackedScene" uid="uid://bjfec2tbico8w" path="res://Prefabs/FocusSkillChecks/dash.tscn" id="7_xhohg"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="7_yos1q"]
@@ -12,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bs35n1mp074rd" path="res://Prefabs/FocusSkillChecks/constrict.tscn" id="9_ixd7q"]
 [ext_resource type="PackedScene" uid="uid://duhs0m2x7kjpk" path="res://Prefabs/FocusSkillChecks/spike.tscn" id="10_4atv5"]
 [ext_resource type="PackedScene" uid="uid://bgam63hrep021" path="res://Prefabs/Effects/rain_effect.tscn" id="10_5w8tb"]
+[ext_resource type="PackedScene" uid="uid://dpxrc0e38jyx1" path="res://Prefabs/FocusSkillChecks/crystal.tscn" id="10_85vk6"]
 [ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="11_h8skc"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4atv5"]
@@ -26,14 +26,15 @@ geometry_parsed_geometry_type = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_4atv5"]
 size = Vector3(6, 1, 4)
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "SkillChecks")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "OverrideSkillCheck", "SkillCheckParent")]
 script = ExtResource("1_p778c")
 Info = ExtResource("2_2i5pb")
 Camera = NodePath("Camera3D")
 Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
 Frog = NodePath("Frog")
-SkillChecks = [NodePath("SkillChecks/Bombs"), NodePath("SkillChecks/Dash"), NodePath("SkillChecks/Dive"), NodePath("SkillChecks/Constrict"), NodePath("SkillChecks/Spike")]
+OverrideSkillCheck = NodePath("SkillChecks/Crystal")
+SkillCheckParent = NodePath("SkillChecks")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5, 0)
@@ -43,8 +44,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5
 [node name="FocusTarget" parent="." instance=ExtResource("3_2i5pb")]
 
 [node name="SkillChecks" type="Node3D" parent="."]
-
-[node name="Projectiles" parent="SkillChecks" instance=ExtResource("5_2i5pb")]
 
 [node name="Bombs" parent="SkillChecks" instance=ExtResource("6_dbk1m")]
 BombCountRange = Vector2i(2, 6)
@@ -57,6 +56,8 @@ DistanceRange = Vector2(0.8, 2)
 [node name="Constrict" parent="SkillChecks" instance=ExtResource("9_ixd7q")]
 
 [node name="Spike" parent="SkillChecks" instance=ExtResource("10_4atv5")]
+
+[node name="Crystal" parent="SkillChecks" instance=ExtResource("10_85vk6")]
 
 [node name="Frog" parent="." instance=ExtResource("7_yos1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)

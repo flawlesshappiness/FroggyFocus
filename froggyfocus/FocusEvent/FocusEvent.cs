@@ -1,7 +1,7 @@
 using Godot;
-using Godot.Collections;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class FocusEvent : Node3D
@@ -28,7 +28,7 @@ public partial class FocusEvent : Node3D
     public FocusSkillCheck OverrideSkillCheck;
 
     [Export]
-    public Array<FocusSkillCheck> SkillChecks;
+    public Node3D SkillCheckParent;
 
     public FocusCharacterInfo DebugTargetInfo { get; set; }
     public int? DebugTargetStars { get; set; }
@@ -38,6 +38,8 @@ public partial class FocusEvent : Node3D
     public event Action OnStarted;
     public event Action OnEnabled;
     public event Action OnDisabled;
+
+    private List<FocusSkillCheck> skill_checks = new();
 
     private bool EventStarted { get; set; }
     private bool EventEnabled { get; set; }
@@ -63,7 +65,8 @@ public partial class FocusEvent : Node3D
 
     private void InitializeSkillChecks()
     {
-        SkillChecks.ForEach(x => x.Initialize(this));
+        skill_checks = SkillCheckParent.GetNodesInChildren<FocusSkillCheck>();
+        skill_checks.ForEach(x => x.Initialize(this));
     }
 
     private void CreateTarget()
@@ -213,9 +216,11 @@ public partial class FocusEvent : Node3D
 
     private IEnumerator WaitForSkillCheck()
     {
-        var type = Target.Info.SkillChecks.Count == 0 ? FocusSkillCheckType.Dash
-            : Target.Info.SkillChecks?.Where(x => !SkillChecks.FirstOrDefault(y => y.Type == x)?.IsRunning ?? true).ToList().Random();
-        var skill_check = OverrideSkillCheck ?? SkillChecks.FirstOrDefault(x => x.Type == type);
+        var type =
+            (OverrideSkillCheck != null && !OverrideSkillCheck.IsRunning) ? OverrideSkillCheck.Type
+            : Target.Info.SkillChecks.Count == 0 ? FocusSkillCheckType.Dash
+            : Target.Info.SkillChecks?.Where(x => !skill_checks.FirstOrDefault(y => y.Type == x)?.IsRunning ?? true).ToList().Random();
+        var skill_check = skill_checks.FirstOrDefault(x => x.Type == type);
 
         if (skill_check == null)
         {

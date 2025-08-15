@@ -99,11 +99,8 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
         return this.StartCoroutine(Cr, $"bomb_{id++}");
         IEnumerator Cr()
         {
-            var success = false;
-
             yield return new WaitForSeconds(bomb.Delay);
 
-            // Move to position
             bomb.ProjectileNode.GlobalPosition = bomb.Position;
 
             bomb.BombNode.RotationDegrees = Vector3.Up * rng.RandfRange(0f, 360f);
@@ -130,13 +127,6 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             FocusEvent.Cursor.HurtFocusValue(value);
 
             yield return new WaitForSeconds(0.5f);
-
-            Clear();
-        }
-
-        bool IsCursorNear()
-        {
-            return FocusEvent.Cursor.GlobalPosition.DistanceTo(bomb.Position) <= FocusEvent.Cursor.Radius + 0.1f;
         }
     }
 
