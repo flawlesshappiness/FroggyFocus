@@ -89,7 +89,7 @@ public partial class FocusCursor : Node3D
         RadiusNode.Scale = Vector3.One * Radius;
 
         FocusTickTime = 0.15f;
-        FocusMax = target.Info.FocusValue;
+        FocusMax = target.Info.FocusValue * Mathf.Lerp(1f, 2.0f, target.Difficulty);
         FocusValue = FocusMax * UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorStartValue);
         FocusTickAmount = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickAmount);
         FocusTickDecay = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickDecay);
@@ -185,6 +185,13 @@ public partial class FocusCursor : Node3D
             AnimationPlayer_Hurt.Stop();
             AnimationPlayer_Hurt.Play("hurt");
         }
+    }
+
+    public void HurtFocusValuePercentage(float percentage)
+    {
+        percentage = Mathf.Clamp(percentage, 0, 1);
+        var value = FocusMax * percentage;
+        HurtFocusValue(value);
     }
 
     public void AdjustFocusValue(float value)

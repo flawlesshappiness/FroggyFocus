@@ -1,27 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpxrc0e38jyx1"]
+[gd_scene load_steps=6 format=3 uid="uid://dpxrc0e38jyx1"]
 
 [ext_resource type="Script" uid="uid://d313khlkrgmse" path="res://FocusSkillCheck/FocusSkillCheck_Crystal.cs" id="1_3gyb2"]
-[ext_resource type="PackedScene" uid="uid://beec38frmqp4t" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_long.fbx" id="2_duecu"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/White.tres" id="3_62ok3"]
+[ext_resource type="PackedScene" uid="uid://dn8qs824sjh2w" path="res://Prefabs/FocusSkillChecks/skill_check_crystal_spike.tscn" id="2_62ok3"]
+[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="4_nm0t4"]
+[ext_resource type="AudioStream" uid="uid://bjgvjv7tgquhi" path="res://Sounds/Raw/sfx_focus_block.wav" id="4_p8hnh"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_nm0t4"]
-material = ExtResource("3_62ok3")
-radius = 0.1
-height = 0.2
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kk2yj"]
+streams_count = 1
+stream_0/stream = ExtResource("4_p8hnh")
 
-[node name="Crystal" type="Node3D" node_paths=PackedStringArray("CrystalTemplate", "ProjectileTemplate")]
+[node name="Crystal" type="Node3D" node_paths=PackedStringArray("CrystalTemplate", "ProjectileTemplate", "SfxShoot")]
 script = ExtResource("1_3gyb2")
-CrystalTemplate = NodePath("CrystalSpikeTemplate")
+DelayRange = Vector2(1, 0.5)
+CrystalDistanceRange = Vector2(2.5, 1.5)
+ProjectileSpeedRange = Vector2(5, 6)
+CrystalTemplate = NodePath("SkillCheckCrystalSpike")
 ProjectileTemplate = NodePath("ProjectileTemplate")
+SfxShoot = NodePath("SfxShoot")
 Type = 6
 
-[node name="CrystalSpikeTemplate" type="Node3D" parent="."]
-
-[node name="crystal_long" parent="CrystalSpikeTemplate" instance=ExtResource("2_duecu")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.376915, 0)
+[node name="SkillCheckCrystalSpike" parent="." instance=ExtResource("2_62ok3")]
 
 [node name="ProjectileTemplate" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ProjectileTemplate"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40653, 0)
-mesh = SubResource("SphereMesh_nm0t4")
+[node name="crystal_short" parent="ProjectileTemplate" instance=ExtResource("4_nm0t4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.433409, 0)
+
+[node name="SfxShoot" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_kk2yj")
+bus = &"SFX"

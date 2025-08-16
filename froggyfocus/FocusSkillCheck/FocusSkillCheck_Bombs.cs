@@ -123,8 +123,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             var cursor = FocusEvent.Cursor;
             yield return bomb.ProjectileNode.WaitForMoveTowardsCursor(0.5f, cursor);
 
-            var value = FocusEvent.Target.Info.FocusValue * 0.1f;
-            FocusEvent.Cursor.HurtFocusValue(value);
+            FocusEvent.Cursor.HurtFocusValuePercentage(0.1f);
 
             yield return new WaitForSeconds(0.5f);
         }

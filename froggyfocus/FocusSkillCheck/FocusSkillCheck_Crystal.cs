@@ -6,12 +6,26 @@ using System.Linq;
 public partial class FocusSkillCheck_Crystal : FocusSkillCheck
 {
     [Export]
+    public Vector2 DelayRange;
+
+    [Export]
+    public Vector2 CrystalDistanceRange;
+
+    [Export]
+    public Vector2 ProjectileSpeedRange;
+
+    [Export]
     public Node3D CrystalTemplate;
 
     [Export]
     public Node3D ProjectileTemplate;
 
+    [Export]
+    public AudioStreamPlayer3D SfxShoot;
+
+    private bool recoil;
     private Vector3 first_projectile_direction;
+    private Coroutine cr_run;
     private List<Node3D> created_objects = new();
 
     public override void _Ready()
@@ -26,11 +40,13 @@ public partial class FocusSkillCheck_Crystal : FocusSkillCheck
         base.Clear();
         created_objects.ForEach(x => x.QueueFree());
         created_objects.Clear();
+        Coroutine.Stop(cr_run);
     }
 
     protected override IEnumerator Run()
     {
-        RunCr();
+        cr_run = RunCr();
+        yield return WaitForRecoilCr();
         yield return RecoilTargetCr();
     }
 
@@ -45,12 +61,18 @@ public partial class FocusSkillCheck_Crystal : FocusSkillCheck
         });
     }
 
+    private IEnumerator WaitForRecoilCr()
+    {
+        recoil = false;
+        while (!recoil) yield return null;
+    }
+
     private Coroutine RunCr()
     {
-        var count_crystals = 2;
+        var count_crystals = 1;
         var crystals = CreateCrystals(count_crystals);
         var projectile = CreateProjectile();
-        var speed = 6f;
+        var speed = ProjectileSpeedRange.Range(Difficulty);
         var max_duration = 0.8f;
 
         first_projectile_direction = projectile.GlobalPosition.DirectionTo(crystals.First().GlobalPosition).Normalized();
@@ -58,7 +80,12 @@ public partial class FocusSkillCheck_Crystal : FocusSkillCheck
         return this.StartCoroutine(Cr, nameof(RunCr));
         IEnumerator Cr()
         {
+            yield return new WaitForSeconds(DelayRange.Range(Difficulty));
+
+            recoil = true;
             projectile.Show();
+            SfxShoot.Play();
+
             foreach (var crystal in crystals)
             {
                 var start = projectile.GlobalPosition;
@@ -68,6 +95,8 @@ public partial class FocusSkillCheck_Crystal : FocusSkillCheck
                 {
                     projectile.GlobalPosition = start.Lerp(end, f);
                 });
+
+                crystal.AnimateHide();
             }
 
             var start_final = projectile.GlobalPosition;
@@ -78,34 +107,37 @@ public partial class FocusSkillCheck_Crystal : FocusSkillCheck
                 projectile.GlobalPosition = start_final.Lerp(FocusEvent.Cursor.GlobalPosition, f);
             });
 
-            var hurt_value = FocusEvent.Target.Info.FocusValue * 0.2f;
-            FocusEvent.Cursor.HurtFocusValue(hurt_value);
+            FocusEvent.Cursor.HurtFocusValuePercentage(0.2f);
 
             Clear();
         }
     }
 
-    private Vector3 RandomCrystalPosition()
+    private Vector3 RandomCrystalPosition(Vector3 center, float distance)
     {
-        return FocusEvent.Target.GetRandomPosition();
+        var position = Target.GetRandomPosition();
+        return center + center.DirectionTo(position).Normalized() * distance;
     }
 
-    private List<Node3D> CreateCrystals(int count)
+    private List<SkillCheckCrystalSpike> CreateCrystals(int count)
     {
-        var list = new List<Node3D>();
+        var list = new List<SkillCheckCrystalSpike>();
+        var position = Target.GlobalPosition;
+        var distance = CrystalDistanceRange.Range(Difficulty);
         for (int i = 0; i < count; i++)
         {
-            var position = RandomCrystalPosition();
+            position = RandomCrystalPosition(position, distance);
             var node = CreateCrystal(position);
             node.Show();
+            node.AnimateShow();
             list.Add(node);
         }
         return list;
     }
 
-    private Node3D CreateCrystal(Vector3 position)
+    private SkillCheckCrystalSpike CreateCrystal(Vector3 position)
     {
-        var node = CrystalTemplate.Duplicate() as Node3D;
+        var node = CrystalTemplate.Duplicate() as SkillCheckCrystalSpike;
         node.SetParent(CrystalTemplate.GetParent());
         node.GlobalPosition = position;
         created_objects.Add(node);

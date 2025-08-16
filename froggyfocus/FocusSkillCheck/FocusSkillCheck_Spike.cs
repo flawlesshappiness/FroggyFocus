@@ -61,8 +61,7 @@ public partial class FocusSkillCheck_Spike : FocusSkillCheck
             var delay = DelayRange.Range(Difficulty);
             yield return new WaitForSeconds(delay);
 
-            var hurt_amount = FocusEvent.Target.Info.FocusValue * 0.4f;
-            FocusEvent.Cursor.HurtFocusValue(hurt_amount);
+            FocusEvent.Cursor.HurtFocusValuePercentage(0.4f);
 
             visible = true;
             yield return AnimationPlayer.PlayAndWaitForAnimation("show");
