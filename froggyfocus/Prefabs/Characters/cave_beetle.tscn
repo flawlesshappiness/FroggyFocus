@@ -1,16 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://wbhunu4su2xq"]
+[gd_scene load_steps=5 format=3 uid="uid://wbhunu4su2xq"]
 
 [ext_resource type="PackedScene" uid="uid://di4ifmo2lvbwp" path="res://Assets/FlawLizArt/Nature/Bugs/cave_beetle.fbx" id="1_hmkur"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_lh7xr"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_lh7xr"]
+[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="3_b571t"]
 
 [node name="CaveBeetle" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_lh7xr")
 Animation = NodePath("AnimationStateMachine")
-Accessories = []
+Accessories = [NodePath("cave_beetle/Armature/Skeleton3D/crystal")]
 
 [node name="cave_beetle" parent="." instance=ExtResource("1_hmkur")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.0717007)
+
+[node name="Skeleton3D" parent="cave_beetle/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0271769, 1.91878e-19, -4.17002e-18, 0.999631)
+bones/3/rotation = Quaternion(0.00111259, 3.21215e-27, -2.47045e-19, 0.999999)
+bones/5/rotation = Quaternion(-0.0917854, 0.0783775, -0.67756, 0.725497)
+bones/7/rotation = Quaternion(-0.0940767, 0.0749928, -0.65307, 0.74768)
+bones/9/rotation = Quaternion(-0.0932446, 0.0765984, -0.663722, 0.738181)
+bones/11/rotation = Quaternion(-0.0989178, -0.0669513, 0.594425, 0.795231)
+bones/13/rotation = Quaternion(-0.0988264, -0.0672787, 0.596472, 0.79368)
+bones/15/rotation = Quaternion(-0.0888005, -0.0824572, 0.706908, 0.696848)
+
+[node name="crystal" type="BoneAttachment3D" parent="cave_beetle/Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, -2.62777e-18, -1.55494e-20, 2.62777e-18, 0.99993, 0.0118344, -1.55496e-20, -0.0118344, 0.99993, 1.12972e-20, -0.00332943, 0.00430365)
+bone_name = "Body.001"
+bone_idx = 1
+
+[node name="crystal_short" parent="cave_beetle/Armature/Skeleton3D/crystal" instance=ExtResource("3_b571t")]
+transform = Transform3D(0.005, 0, 0, 0, 0.000277713, -0.00499228, 0, 0.00499228, 0.000277713, 8.07794e-30, -1.09832e-10, 0.00251266)
+
+[node name="crystal_short2" parent="cave_beetle/Armature/Skeleton3D/crystal" instance=ExtResource("3_b571t")]
+transform = Transform3D(0.005, 0, 0, 0, -0.000923702, -0.00491394, 0, 0.00491394, -0.000923702, -1.9387e-28, -0.00234499, 0.00199065)
+
+[node name="crystal_short3" parent="cave_beetle/Armature/Skeleton3D/crystal" instance=ExtResource("3_b571t")]
+transform = Transform3D(0.005, 0, 0, 0, 0.00217977, -0.00449985, 0, 0.00449985, 0.00217977, 2.98814e-22, 0.00237325, 0.00160562)
+
+[node name="crystal_short4" parent="cave_beetle/Armature/Skeleton3D/crystal" instance=ExtResource("3_b571t")]
+transform = Transform3D(0.00212579, 0.00200949, 0.000665555, -0.000230507, 0.00115736, -0.00275815, -0.00210426, 0.00190327, 0.000974502, 0.00162649, 0.00160498, 0.00156896)
+
+[node name="crystal_short5" parent="cave_beetle/Armature/Skeleton3D/crystal" instance=ExtResource("3_b571t")]
+transform = Transform3D(0.00197579, 0.00225494, 0.00010723, 0.000257666, -8.36908e-05, -0.00298774, -0.00224274, 0.00197692, -0.000248793, 0.00164138, -0.00133296, 0.00192168)
+
+[node name="crystal_short6" parent="cave_beetle/Armature/Skeleton3D/crystal" instance=ExtResource("3_b571t")]
+transform = Transform3D(0.00206397, -0.00217451, 0.00010723, -0.000106999, -0.000248892, -0.00298774, 0.00217453, 0.00205172, -0.000248793, -0.00161635, -0.0014422, 0.00182951)
+
+[node name="crystal_short7" parent="cave_beetle/Armature/Skeleton3D/crystal" instance=ExtResource("3_b571t")]
+transform = Transform3D(0.00195769, -0.00227292, 3.56604e-05, 0.000706643, 0.000563758, -0.00286057, 0.00216058, 0.0018751, 0.00090327, -0.00163518, 0.00136349, 0.00158142)
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("2_lh7xr")

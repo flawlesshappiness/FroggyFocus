@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource("1_so5k8")
 Description = "Catch bugs"
-RequirementTag = "bug"
+UseTag = true
+RequirementTag = 0
+MinimumStars = 0
 Values = Array[int]([5, 25, 100, 250, 500])
 MoneyRewards = Array[int]([50, 500, 1000, 5000, 10000])
 metadata/_custom_type_script = "uid://bvw1ud0pd0812"

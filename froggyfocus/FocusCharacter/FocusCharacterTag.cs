@@ -6,4 +6,7 @@ public enum FocusCharacterTag
     Water,
     Flower,
     Wooden,
+    Crystalized,
+    Mossy,
+    Sandy
 }

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://uxx2115b5rbp"]
+
+[ext_resource type="PackedScene" uid="uid://fqqvhhk0a8og" path="res://Prefabs/Characters/tick.tscn" id="1_duju1"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_mpcka"]
+
+[resource]
+script = ExtResource("2_mpcka")
+Scene = ExtResource("1_duju1")
+Name = "Crystallized Tick"
+LocationHint = "##HINT_LOC_CRYSTAL##"
+Accessory = "crystal"
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2, 6])
+Tags = Array[int]([0, 6])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

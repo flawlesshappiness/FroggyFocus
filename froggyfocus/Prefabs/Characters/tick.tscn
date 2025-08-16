@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://fqqvhhk0a8og"]
+[gd_scene load_steps=5 format=3 uid="uid://fqqvhhk0a8og"]
 
 [ext_resource type="PackedScene" uid="uid://bbvueedr3c1j2" path="res://Assets/FlawLizArt/Nature/Bugs/tick.fbx" id="1_wh7rv"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_wh12f"]
+[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="3_tbmhs"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_y7oyf"]
 
 [node name="Tick" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_wh12f")
 Animation = NodePath("AnimationStateMachine")
-Accessories = []
+Accessories = [NodePath("tick/Armature/Skeleton3D/crystal")]
 
 [node name="tick" parent="." instance=ExtResource("1_wh7rv")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.0601557)
@@ -15,14 +16,31 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.0601557)
 [node name="Skeleton3D" parent="tick/Armature" index="0"]
 bones/3/rotation = Quaternion(0.00359082, 0.0116637, 0.0495915, 0.998695)
 bones/5/rotation = Quaternion(0.00359082, -0.0116637, -0.0495915, 0.998695)
-bones/7/rotation = Quaternion(-0.227968, 0.13481, -0.5021, 0.823257)
-bones/11/rotation = Quaternion(-0.194031, 0.187826, -0.67489, 0.686729)
-bones/15/rotation = Quaternion(-0.177136, 0.207839, -0.737279, 0.617936)
-bones/19/rotation = Quaternion(-0.178776, 0.206188, -0.731952, 0.624317)
-bones/23/rotation = Quaternion(-0.221043, -0.14817, 0.545665, 0.794629)
-bones/27/rotation = Quaternion(-0.193328, -0.189532, 0.679077, 0.682317)
-bones/31/rotation = Quaternion(-0.184182, -0.200305, 0.713356, 0.645815)
-bones/35/rotation = Quaternion(-0.186624, -0.19769, 0.704798, 0.655248)
+bones/7/rotation = Quaternion(-0.22671, 0.137359, -0.510432, 0.818043)
+bones/11/rotation = Quaternion(-0.201697, 0.178661, -0.644186, 0.715837)
+bones/15/rotation = Quaternion(-0.173311, 0.211737, -0.749532, 0.60277)
+bones/19/rotation = Quaternion(-0.155586, 0.22778, -0.799792, 0.533144)
+bones/23/rotation = Quaternion(-0.22671, -0.137359, 0.510432, 0.818043)
+bones/27/rotation = Quaternion(-0.201697, -0.178661, 0.644186, 0.715837)
+bones/31/rotation = Quaternion(-0.173311, -0.211737, 0.749532, 0.60277)
+bones/35/rotation = Quaternion(-0.155586, -0.22778, 0.799792, 0.533144)
+
+[node name="crystal" type="BoneAttachment3D" parent="tick/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, -6.02621e-18, -8.17898e-20, 6.02621e-18, 0.999632, 0.0271397, -8.17897e-20, -0.0271397, 0.999632, 7.32058e-20, -0.0047145, 0.0037512)
+bone_name = "Body"
+bone_idx = 1
+
+[node name="crystal_short" parent="tick/Armature/Skeleton3D/crystal" instance=ExtResource("3_tbmhs")]
+transform = Transform3D(0.00697438, -0.000598405, 1.23691e-10, -0.000114183, -0.0013308, -0.00687139, 0.000587411, 0.00684623, -0.00133568, -0.00219732, -0.0032611, 0.00124274)
+
+[node name="crystal_short2" parent="tick/Armature/Skeleton3D/crystal" instance=ExtResource("3_tbmhs")]
+transform = Transform3D(0.0078262, 0.00165739, 6.10343e-05, 0.000168904, -0.000503609, -0.00798235, -0.00164989, 0.00781022, -0.00052766, 0.00259048, 0.000904128, 0.00123958)
+
+[node name="crystal_short3" parent="tick/Armature/Skeleton3D/crystal" instance=ExtResource("3_tbmhs")]
+transform = Transform3D(0.00489487, -0.000999286, -0.000204105, -0.000103869, 0.000506983, -0.00497315, 0.00101461, 0.00487282, 0.000475565, -0.00233919, 0.00479165, 0.00115239)
+
+[node name="crystal_short4" parent="tick/Armature/Skeleton3D/crystal" instance=ExtResource("3_tbmhs")]
+transform = Transform3D(0.00492358, 0.000846612, -0.000204105, -0.000280898, 0.000434646, -0.00497315, -0.000824322, 0.0049086, 0.000475565, 0.00139978, 0.00758917, 0.000695369)
 
 [node name="AnimationPlayer" parent="tick" index="1"]
 playback_default_blend_time = 0.25
