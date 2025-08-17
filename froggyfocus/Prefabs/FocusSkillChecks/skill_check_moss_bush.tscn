@@ -1,0 +1,223 @@
+[gd_scene load_steps=15 format=3 uid="uid://dd62er1c0gk4t"]
+
+[ext_resource type="Script" uid="uid://da7ha716s0346" path="res://FocusSkillCheck/SkillCheckMossBush.cs" id="1_6vv2i"]
+[ext_resource type="Material" uid="uid://cukhg4fyffggk" path="res://Materials/Plant_Dark.tres" id="1_ekc78"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_01uvx"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_7estu"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_xh3rp"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="Animation" id="Animation_prjp0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PsLeaves:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ij8i3"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.00999999, 0.00999999, 0.00999999)]
+}
+
+[sub_resource type="Animation" id="Animation_6cu6a"]
+resource_name = "shake"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PsLeaves:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00594967),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.12, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0750256, 0, -0.0833568), Vector3(-0.0219988, 0, 0.102477), Vector3(0.0901143, 0, -0.0844326), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6vv2i"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00540879, 0.15, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_prjp0"]
+_data = {
+&"RESET": SubResource("Animation_prjp0"),
+&"hide": SubResource("Animation_ij8i3"),
+&"shake": SubResource("Animation_6cu6a"),
+&"show": SubResource("Animation_6vv2i")
+}
+
+[sub_resource type="Curve" id="Curve_6vv2i"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_prjp0"]
+curve = SubResource("Curve_6vv2i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ij8i3"]
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_prjp0")
+
+[sub_resource type="SphereMesh" id="SphereMesh_6cu6a"]
+material = ExtResource("1_ekc78")
+
+[node name="SkillCheckMossBush" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+script = ExtResource("1_6vv2i")
+AnimationPlayer = NodePath("AnimationPlayer")
+
+[node name="Anim" type="Node3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0282055, 0, 0.282425)
+mesh = SubResource("SphereMesh_01uvx")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.260012, 0, 0.260754)
+mesh = SubResource("SphereMesh_7estu")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218667, 0, -0.288238)
+mesh = SubResource("SphereMesh_7estu")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354955, 0, -0.305838)
+mesh = SubResource("SphereMesh_7estu")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.286685, 0, 0.227071)
+mesh = SubResource("SphereMesh_7estu")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.353892, 0, 0.00236653)
+mesh = SubResource("SphereMesh_01uvx")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0698048, 0, -0.324294)
+mesh = SubResource("SphereMesh_01uvx")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.409808, 0, -0.032632)
+mesh = SubResource("SphereMesh_01uvx")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0338159, 0.228761, -0.0130272)
+mesh = SubResource("SphereMesh_xh3rp")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_prjp0")
+}
+
+[node name="PsLeaves" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.156954, 0)
+emitting = false
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ij8i3")
+draw_pass_1 = SubResource("SphereMesh_6cu6a")

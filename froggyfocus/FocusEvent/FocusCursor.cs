@@ -33,7 +33,7 @@ public partial class FocusCursor : Node3D
     public float Radius { get; private set; }
     private Vector3 DesiredVelocity { get; set; }
     private float DistanceToTarget => Target == null ? 0f : GlobalPosition.DistanceTo(Target.GlobalPosition) - Target.Radius;
-    private bool IsTargetInRange => DistanceToTarget < Radius;
+    public bool IsTargetInRange => DistanceToTarget < Radius;
     private float FocusValue { get; set; }
     private float FocusMax { get; set; }
     private float FocusTickTime { get; set; }

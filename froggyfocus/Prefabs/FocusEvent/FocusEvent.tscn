@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=18 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://duhs0m2x7kjpk" path="res://Prefabs/FocusSkillChecks/spike.tscn" id="10_4atv5"]
 [ext_resource type="PackedScene" uid="uid://bgam63hrep021" path="res://Prefabs/Effects/rain_effect.tscn" id="10_5w8tb"]
 [ext_resource type="PackedScene" uid="uid://dpxrc0e38jyx1" path="res://Prefabs/FocusSkillChecks/crystal.tscn" id="10_85vk6"]
+[ext_resource type="PackedScene" uid="uid://cava4qyxuniih" path="res://Prefabs/FocusSkillChecks/moss.tscn" id="11_85vk6"]
 [ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="11_h8skc"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4atv5"]
@@ -33,7 +34,7 @@ Camera = NodePath("Camera3D")
 Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
 Frog = NodePath("Frog")
-OverrideSkillCheck = NodePath("SkillChecks/Crystal")
+OverrideSkillCheck = NodePath("SkillChecks/Moss")
 SkillCheckParent = NodePath("SkillChecks")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -58,6 +59,8 @@ DistanceRange = Vector2(0.8, 2)
 [node name="Spike" parent="SkillChecks" instance=ExtResource("10_4atv5")]
 
 [node name="Crystal" parent="SkillChecks" instance=ExtResource("10_85vk6")]
+
+[node name="Moss" parent="SkillChecks" instance=ExtResource("11_85vk6")]
 
 [node name="Frog" parent="." instance=ExtResource("7_yos1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)

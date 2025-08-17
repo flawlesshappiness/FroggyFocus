@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cava4qyxuniih"]
+
+[ext_resource type="Script" uid="uid://fckjxo5h0h1q" path="res://FocusSkillCheck/FocusSkillCheck_Moss.cs" id="1_e8r2a"]
+[ext_resource type="PackedScene" uid="uid://dd62er1c0gk4t" path="res://Prefabs/FocusSkillChecks/skill_check_moss_bush.tscn" id="2_7estu"]
+[ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="3_01uvx"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xh3rp"]
+streams_count = 1
+stream_0/stream = ExtResource("3_01uvx")
+stream_0/weight = 1.1
+
+[node name="Moss" type="Node3D" node_paths=PackedStringArray("SfxBush")]
+script = ExtResource("1_e8r2a")
+CountRange = Vector2i(2, 8)
+DelayRange = Vector2(3, 8)
+DistanceRange = Vector2(1.5, 3)
+BushPrefab = ExtResource("2_7estu")
+SfxBush = NodePath("SfxBush")
+Type = 7
+
+[node name="SfxBush" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_xh3rp")
+volume_db = -10.0
+bus = &"SFX"

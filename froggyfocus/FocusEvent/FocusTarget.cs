@@ -129,8 +129,8 @@ public partial class FocusTarget : Node3D
     public Vector3 GetRandomPosition()
     {
         var center = focus_event.GlobalPosition;
-        var rx = 5;
-        var rz = 2f;
+        var rx = 4;
+        var rz = 2;
         var x = rng.RandfRange(-rx, rx);
         var z = rng.RandfRange(-rz, rz);
         var position = center + new Vector3(x, 0, z);
