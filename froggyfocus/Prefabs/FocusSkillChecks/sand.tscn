@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://drlpioouldb1f"]
+
+[ext_resource type="Script" uid="uid://bkk0y2fy1t6b0" path="res://FocusSkillCheck/FocusSkillCheck_Sand.cs" id="1_bq41x"]
+[ext_resource type="Texture2D" uid="uid://e3hfi2ik23nn" path="res://Assets/KenneyNL/Particles/smoke_07.png" id="2_u43pa"]
+[ext_resource type="AudioStream" uid="uid://ccu1m8lsu8au" path="res://Sounds/Raw/sfx_wind_sand_001.wav" id="3_lpdta"]
+
+[sub_resource type="Curve" id="Curve_u43pa"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_lpdta"]
+curve = SubResource("Curve_u43pa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4f1dh"]
+emission_shape_offset = Vector3(0, 0, 5)
+emission_shape = 3
+emission_box_extents = Vector3(2.5, 1, 0)
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 8.0
+color = Color(0.7, 0.657533, 0.602, 0.541176)
+alpha_curve = SubResource("CurveTexture_lpdta")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpdta"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_u43pa")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_4f1dh"]
+material = SubResource("StandardMaterial3D_lpdta")
+
+[node name="Sand" type="Node3D" node_paths=PackedStringArray("PsWind", "SfxWind")]
+script = ExtResource("1_bq41x")
+AmountRange = Vector2(0.005, 0.01)
+DurationRange = Vector2(5, 10)
+PsWind = NodePath("PsWind")
+SfxWind = NodePath("SfxWind")
+Type = 8
+
+[node name="PsWind" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+emitting = false
+amount = 40
+lifetime = 5.0
+explosiveness = 0.05
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_4f1dh")
+draw_pass_1 = SubResource("QuadMesh_4f1dh")
+
+[node name="SfxWind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_lpdta")
+bus = &"SFX"
