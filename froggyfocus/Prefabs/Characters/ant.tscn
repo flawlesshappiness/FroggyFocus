@@ -1,26 +1,86 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk2n0odj0rd4n"]
+[gd_scene load_steps=7 format=3 uid="uid://dk2n0odj0rd4n"]
 
 [ext_resource type="PackedScene" uid="uid://chvyqmfb8on1p" path="res://Assets/FlawLizArt/Nature/Bugs/ant.fbx" id="1_hdfdn"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_pjuh3"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_pjuh3"]
+[ext_resource type="Material" uid="uid://cukhg4fyffggk" path="res://Materials/Plant_Dark.tres" id="3_32fuy"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yc87w"]
+radius = 0.002
+height = 0.002
+is_hemisphere = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_32fuy"]
+radius = 0.001
+height = 0.001
+is_hemisphere = true
 
 [node name="Ant" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_pjuh3")
 Animation = NodePath("AnimationStateMachine")
-Accessories = []
+Accessories = [NodePath("ant/Armature/Skeleton3D/moss")]
 
 [node name="ant" parent="." instance=ExtResource("1_hdfdn")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.0544099)
 
 [node name="Skeleton3D" parent="ant/Armature" index="0"]
-bones/0/position = Vector3(0, -0.001, -0.005)
-bones/2/rotation = Quaternion(-0.0546876, 5.91937e-20, 8.76002e-18, 0.998504)
-bones/6/rotation = Quaternion(0.301417, -0.300508, -0.638309, 0.641409)
-bones/8/rotation = Quaternion(0.301417, -0.300508, -0.638309, 0.641409)
-bones/10/rotation = Quaternion(0.301417, -0.300508, -0.638309, 0.641409)
-bones/12/rotation = Quaternion(0.301417, 0.300508, 0.638309, 0.641409)
-bones/14/rotation = Quaternion(0.301417, 0.300508, 0.638309, 0.641409)
-bones/16/rotation = Quaternion(0.301417, 0.300508, 0.638308, 0.641409)
+bones/2/rotation = Quaternion(-0.0896769, -2.48104e-19, 8.75671e-18, 0.995971)
+bones/6/rotation = Quaternion(0.338559, -0.256461, -0.546178, 0.722008)
+bones/8/rotation = Quaternion(0.275319, -0.324167, -0.689343, 0.586448)
+bones/10/rotation = Quaternion(0.225619, -0.362206, -0.767527, 0.478336)
+bones/12/rotation = Quaternion(0.316993, 0.282894, 0.602167, 0.67593)
+bones/14/rotation = Quaternion(0.275539, 0.324425, 0.689222, 0.586345)
+bones/16/rotation = Quaternion(0.25449, 0.342415, 0.725558, 0.539957)
+
+[node name="moss" type="BoneAttachment3D" parent="ant/Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 5.81926e-18, -1.40715e-15, -5.81921e-18, -0.999966, -0.0082708, -1.40715e-15, 0.0082708, -0.999966, -1.315e-20, -0.00562495, 0.00398512)
+bone_name = "Body_Back"
+bone_idx = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ant/Armature/Skeleton3D/moss"]
+transform = Transform3D(0.960551, -0.278103, 0, -1.21563e-08, -4.1987e-08, 1, -0.278103, -0.960551, -4.37114e-08, -0.00152658, 0.00572487, -0.00313757)
+mesh = SubResource("SphereMesh_yc87w")
+surface_material_override/0 = ExtResource("3_32fuy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ant/Armature/Skeleton3D/moss"]
+transform = Transform3D(0.763527, 0.506501, -0.400605, 0.206438, 0.396357, 0.894586, 0.611891, -0.765741, 0.198068, 0.00128463, 0.00729341, -0.00262376)
+mesh = SubResource("SphereMesh_yc87w")
+surface_material_override/0 = ExtResource("3_32fuy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ant/Armature/Skeleton3D/moss"]
+transform = Transform3D(0.85513, 0.423604, 0.29885, -0.114671, -0.407633, 0.905917, 0.505571, -0.808947, -0.300004, 0.000979424, 0.00378468, -0.00277297)
+mesh = SubResource("SphereMesh_yc87w")
+surface_material_override/0 = ExtResource("3_32fuy")
+
+[node name="moss2" type="BoneAttachment3D" parent="ant/Armature/Skeleton3D" index="8"]
+transform = Transform3D(1, -1.33853e-18, 3.45221e-21, 1.33853e-18, 0.999987, -0.00515816, 3.4522e-21, 0.00515816, 0.999987, 9.7608e-21, -0.00520661, 0.0039784)
+bone_name = "Body_Front"
+bone_idx = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ant/Armature/Skeleton3D/moss2"]
+transform = Transform3D(0.990959, -0.133712, 0.0110076, -0.00298586, -0.104005, -0.994572, 0.134131, 0.985548, -0.103464, -9.11877e-05, 0.00350884, 0.00043944)
+mesh = SubResource("SphereMesh_32fuy")
+surface_material_override/0 = ExtResource("3_32fuy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="ant/Armature/Skeleton3D/moss2"]
+transform = Transform3D(0.996624, 0.0813661, 0.0110076, 0.0193317, -0.102236, -0.994572, -0.079799, 0.991427, -0.103464, 0.000454007, 0.00657363, 0.000681292)
+mesh = SubResource("SphereMesh_32fuy")
+surface_material_override/0 = ExtResource("3_32fuy")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="ant/Armature/Skeleton3D/moss2"]
+transform = Transform3D(0.996624, 0.0813661, 0.0110076, 0.0193317, -0.102236, -0.994572, -0.079799, 0.991427, -0.103464, -0.000457651, 0.00747219, 0.000848771)
+mesh = SubResource("SphereMesh_32fuy")
+surface_material_override/0 = ExtResource("3_32fuy")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="ant/Armature/Skeleton3D/moss2"]
+transform = Transform3D(0.996624, 0.0813661, 0.0110076, 0.0193317, -0.102236, -0.994572, -0.079799, 0.991427, -0.103464, 0.000738303, 0.00802011, 0.000807121)
+mesh = SubResource("SphereMesh_32fuy")
+surface_material_override/0 = ExtResource("3_32fuy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="ant/Armature/Skeleton3D/moss2"]
+transform = Transform3D(0.99749, 0.0708132, -0.000123746, 0.00138784, -0.0212966, -0.999772, -0.0707997, 0.997262, -0.0213414, 0.000228051, 0.00236159, 0.000483512)
+mesh = SubResource("SphereMesh_32fuy")
+surface_material_override/0 = ExtResource("3_32fuy")
 
 [node name="AnimationPlayer" parent="ant" index="1"]
 playback_default_blend_time = 0.25

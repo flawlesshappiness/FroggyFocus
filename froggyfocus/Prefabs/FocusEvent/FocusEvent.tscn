@@ -27,14 +27,13 @@ geometry_parsed_geometry_type = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_4atv5"]
 size = Vector3(6, 1, 4)
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "OverrideSkillCheck", "SkillCheckParent")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "SkillCheckParent")]
 script = ExtResource("1_p778c")
 Info = ExtResource("2_2i5pb")
 Camera = NodePath("Camera3D")
 Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
 Frog = NodePath("Frog")
-OverrideSkillCheck = NodePath("SkillChecks/Moss")
 SkillCheckParent = NodePath("SkillChecks")
 
 [node name="Camera3D" type="Camera3D" parent="."]
