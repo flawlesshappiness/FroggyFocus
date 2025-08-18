@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwvob8lsuvqjr"]
+[gd_scene load_steps=5 format=3 uid="uid://dwvob8lsuvqjr"]
 
 [ext_resource type="PackedScene" uid="uid://bw0odhrf4k5r" path="res://Assets/FlawLizArt/Nature/Bugs/sandfly.fbx" id="1_4f626"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_rftmq"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_rftmq"]
+[ext_resource type="PackedScene" uid="uid://cl643m7hn5kxg" path="res://Prefabs/Effects/ps_sand_accessory.tscn" id="3_vhsk7"]
 
 [node name="Sandfly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_rftmq")
 Animation = NodePath("AnimationStateMachine")
 WalkingAnimation = "Armature|moving"
-Accessories = []
+Accessories = [NodePath("sandfly/Armature/Skeleton3D/sand")]
 
 [node name="sandfly" parent="." instance=ExtResource("1_4f626")]
 transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
@@ -17,30 +18,38 @@ transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0, 0)
 transform = Transform3D(-100, 8.74228e-06, 0, 1.04216e-12, 1.19209e-05, 100, 8.74228e-06, 100, -1.19209e-05, 0, 0, 0)
 
 [node name="Skeleton3D" parent="sandfly/Armature" index="0"]
-bones/1/position = Vector3(-3.78435e-09, 0.00419073, -0.00971805)
+bones/1/position = Vector3(-3.78435e-09, 0.00419073, -0.00963458)
 bones/1/rotation = Quaternion(0.240451, -5.05276e-07, -2.18801e-07, 0.970661)
-bones/2/rotation = Quaternion(0.887408, 5.49535e-08, -1.16366e-06, 0.460985)
-bones/4/rotation = Quaternion(0.228073, -6.15647e-13, -3.2626e-07, 0.973644)
-bones/6/rotation = Quaternion(0.514785, -0.0583059, 0.0959898, 0.849931)
-bones/7/rotation = Quaternion(0.00223011, -9.38103e-08, 0.825399, 0.564546)
-bones/8/rotation = Quaternion(-0.00510448, 2.07884e-08, -0.741284, 0.671172)
-bones/10/rotation = Quaternion(0.514785, -0.058306, 0.0959899, 0.849931)
-bones/11/rotation = Quaternion(0.00223011, -9.03047e-08, 0.825399, 0.564546)
-bones/12/rotation = Quaternion(-0.00510448, 1.48716e-08, -0.741284, 0.671172)
-bones/14/rotation = Quaternion(0.514785, -0.058306, 0.0959899, 0.849931)
-bones/15/rotation = Quaternion(0.00223011, -9.04935e-08, 0.825399, 0.564546)
-bones/16/rotation = Quaternion(-0.00510448, 1.5313e-08, -0.741284, 0.671172)
-bones/18/rotation = Quaternion(0.514785, 0.0583071, -0.0959906, 0.849931)
-bones/19/rotation = Quaternion(0.00223009, 9.20776e-08, -0.825399, 0.564546)
-bones/20/rotation = Quaternion(-0.00510446, -1.71063e-08, 0.741284, 0.671172)
-bones/22/rotation = Quaternion(0.514785, 0.0583072, -0.0959906, 0.849931)
-bones/23/rotation = Quaternion(0.0022301, 8.69176e-08, -0.825399, 0.564546)
-bones/24/rotation = Quaternion(-0.00510446, -1.24794e-08, 0.741284, 0.671172)
-bones/26/rotation = Quaternion(0.514785, 0.0583072, -0.0959906, 0.849931)
-bones/27/rotation = Quaternion(0.0022301, 8.69711e-08, -0.825399, 0.564546)
-bones/28/rotation = Quaternion(-0.00510446, -1.24794e-08, 0.741284, 0.671172)
-bones/30/rotation = Quaternion(-0.449108, -0.107733, 0.827735, -0.31867)
-bones/32/rotation = Quaternion(0.449109, -0.107732, 0.827734, 0.31867)
+bones/2/rotation = Quaternion(0.843398, 4.22122e-08, -1.09135e-06, 0.537289)
+bones/4/rotation = Quaternion(0.128592, -3.25895e-09, -1.53836e-07, 0.991698)
+bones/6/rotation = Quaternion(0.513567, 0.263801, 0.279852, 0.767033)
+bones/7/rotation = Quaternion(0.00593159, -0.00955217, 0.819296, 0.57326)
+bones/8/rotation = Quaternion(-0.0070949, 0.0083451, -0.735205, 0.677756)
+bones/10/rotation = Quaternion(0.521642, 0.0234431, 0.144454, 0.84052)
+bones/11/rotation = Quaternion(0.0129744, -0.02953, 0.723663, 0.689399)
+bones/12/rotation = Quaternion(-0.0056027, 0.00227686, -0.733114, 0.680078)
+bones/14/rotation = Quaternion(0.487233, -0.218537, -0.00254583, 0.845481)
+bones/15/rotation = Quaternion(0.000152813, 0.00509583, 0.817514, 0.575886)
+bones/16/rotation = Quaternion(-0.0039039, -0.00469917, -0.733123, 0.680068)
+bones/18/rotation = Quaternion(0.513567, -0.2638, -0.279853, 0.767034)
+bones/19/rotation = Quaternion(0.00593155, 0.00955218, -0.819296, 0.57326)
+bones/20/rotation = Quaternion(-0.0070949, -0.0083451, 0.735205, 0.677756)
+bones/22/rotation = Quaternion(0.521642, -0.0234419, -0.144454, 0.84052)
+bones/23/rotation = Quaternion(0.0129744, 0.02953, -0.723663, 0.689399)
+bones/24/rotation = Quaternion(-0.00560269, -0.00227687, 0.733114, 0.680079)
+bones/26/rotation = Quaternion(0.487233, 0.218538, 0.00254521, 0.845481)
+bones/27/rotation = Quaternion(0.000152806, -0.00509583, -0.817514, 0.575886)
+bones/28/rotation = Quaternion(-0.00390387, 0.00469919, 0.733123, 0.680068)
+bones/30/rotation = Quaternion(-0.310399, -0.119551, 0.916884, -0.220644)
+bones/32/rotation = Quaternion(0.3104, -0.119551, 0.916884, 0.220644)
+
+[node name="sand" type="BoneAttachment3D" parent="sandfly/Armature/Skeleton3D" index="9"]
+transform = Transform3D(1, -1.42109e-13, -1.43051e-06, 6.67752e-07, -0.884366, 0.466793, -1.2651e-06, -0.466793, -0.884366, -3.25069e-11, -0.00319073, 0.00963458)
+bone_name = "Body.Front"
+bone_idx = 1
+
+[node name="PsSandAccessory" parent="sandfly/Armature/Skeleton3D/sand" instance=ExtResource("3_vhsk7")]
+transform = Transform3D(0.01, 0, 0, 0, -0.00866025, -0.005, 0, 0.005, -0.00866025, 5.32907e-16, 0.0023382, 0.00404987)
 
 [node name="AnimationPlayer" parent="sandfly" index="1"]
 playback_default_blend_time = 0.25

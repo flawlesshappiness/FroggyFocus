@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://c4w5leaahem5w"]
+
+[ext_resource type="PackedScene" uid="uid://dbet37s5nnv43" path="res://Prefabs/Characters/rove_beetle.tscn" id="1_lwfpr"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_j4coc"]
+
+[resource]
+script = ExtResource("2_j4coc")
+Scene = ExtResource("1_lwfpr")
+Name = "Sandy Rove Beetle"
+LocationHint = "##HINT_LOC_SAND##"
+Accessory = "sand"
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2, 8])
+Tags = Array[int]([0, 8])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

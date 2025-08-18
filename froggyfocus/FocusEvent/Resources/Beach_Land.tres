@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=7 format=3 uid="uid://chi5nlmadbpol"]
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=10 format=3 uid="uid://chi5nlmadbpol"]
 
 [ext_resource type="Resource" uid="uid://bq42s5l1lfwvq" path="res://FocusCharacter/Resources/Sandflea.tres" id="1_hrs54"]
+[ext_resource type="Resource" uid="uid://bfnry3l7m3b6b" path="res://FocusCharacter/Resources/Sandflea_Sand.tres" id="2_5jrlp"]
 [ext_resource type="Resource" uid="uid://f1tthxd3v53y" path="res://FocusCharacter/Resources/Ladybug.tres" id="2_5l1os"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_e3fb0"]
 [ext_resource type="Resource" uid="uid://cd0sd1yco0x3" path="res://FocusCharacter/Resources/RoveBeetle.tres" id="3_5l1os"]
 [ext_resource type="Resource" uid="uid://b6dnkd36tuxjy" path="res://FocusCharacter/Resources/Sandfly.tres" id="4_k6d5e"]
+[ext_resource type="Resource" uid="uid://c4w5leaahem5w" path="res://FocusCharacter/Resources/RoveBeetle_Sand.tres" id="4_yjcg5"]
 [ext_resource type="Resource" uid="uid://dvyecyctodpx" path="res://FocusCharacter/Resources/Bee.tres" id="5_snum0"]
+[ext_resource type="Resource" uid="uid://b7x6wt7yb4fln" path="res://FocusCharacter/Resources/Sandfly_Sand.tres" id="6_0wqmb"]
 
 [resource]
 script = ExtResource("2_e3fb0")
-Characters = Array[Object]([ExtResource("1_hrs54"), ExtResource("2_5l1os"), ExtResource("3_5l1os"), ExtResource("4_k6d5e"), ExtResource("5_snum0")])
+Characters = Array[Object]([ExtResource("1_hrs54"), ExtResource("2_5jrlp"), ExtResource("3_5l1os"), ExtResource("4_yjcg5"), ExtResource("4_k6d5e"), ExtResource("6_0wqmb"), ExtResource("5_snum0"), ExtResource("2_5l1os")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"
