@@ -17,20 +17,23 @@ public partial class FastTravelView : PanelView
     [Export]
     public ImageButton LocationButtonTemplate;
 
-    private List<ImageButton> buttons = new();
+    [Export]
+    public PurchasePopup PurchasePopup;
 
-    private List<string> scenes = new()
-    {
-        nameof(SwampScene),
-        nameof(CaveScene)
-    };
+    private LocationInfo purchase_info;
+    private List<FastTravelButton> buttons = new();
 
     public override void _Ready()
     {
         base._Ready();
         BackButton.Pressed += Back_Pressed;
-        InitializeButtons();
         RegisterDebugActions();
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        InitializeButtons();
     }
 
     private void RegisterDebugActions()
@@ -55,16 +58,29 @@ public partial class FastTravelView : PanelView
     {
         LocationButtonTemplate.Hide();
 
-        foreach (var scene in scenes)
+        foreach (var info in LocationController.Instance.Collection.Resources)
         {
-            CreateLocationButton(scene);
+            CreateLocationButton(info);
         }
+    }
+
+    protected override void OnShow()
+    {
+        base.OnShow();
+        UpdateButtonVisibility();
+    }
+
+    private void UpdateButtonVisibility()
+    {
+        var scene_name = System.IO.Path.GetFileNameWithoutExtension(Data.Game.CurrentScene);
+        var current_location = LocationController.Instance.Collection.Resources.FirstOrDefault(x => x.Scene == scene_name);
+        buttons.ForEach(x => x.Visible = x.LocationInfo != current_location);
     }
 
     protected override void GrabFocusAfterOpen()
     {
         base.GrabFocusAfterOpen();
-        buttons.FirstOrDefault().GrabFocus();
+        buttons.FirstOrDefault(x => x.Visible).GrabFocus();
     }
 
     public override void _Input(InputEvent @event)
@@ -77,22 +93,47 @@ public partial class FastTravelView : PanelView
         }
     }
 
-    private Button CreateLocationButton(string scene_name)
+    private Button CreateLocationButton(LocationInfo info)
     {
-        var info = LocationController.Instance.GetInfo(scene_name);
-        var button = LocationButtonTemplate.Duplicate() as ImageButton;
+        var data = Location.GetOrCreateData(info.Id);
+        var button = LocationButtonTemplate.Duplicate() as FastTravelButton;
         button.SetParent(LocationButtonTemplate.GetParent());
         button.Show();
-        button.SetTexture(info.PreviewImage);
-        button.Text = scene_name;
-        button.Pressed += () => LocationButton_Pressed(scene_name);
+        button.SetLocation(info);
+        button.SetLocked(!data.Unlocked);
+        button.PressedWhenUnlocked += () => LocationButton_PressedWhenUnlocked(info.Scene);
+        button.PressedWhenLocked += () => LocationButton_PressedWhenLocked(info);
         buttons.Add(button);
         return button;
     }
 
-    private void LocationButton_Pressed(string scene_name)
+    private void LocationButton_PressedWhenUnlocked(string scene_name)
     {
         Transition(scene_name);
+    }
+
+    private void LocationButton_PressedWhenLocked(LocationInfo info)
+    {
+        purchase_info = info;
+        PurchasePopup.SetLocation(info);
+
+        this.StartCoroutine(Cr, "purchase");
+        IEnumerator Cr()
+        {
+            yield return PurchasePopup.WaitForPopup();
+
+            var button = buttons.FirstOrDefault(x => x.LocationInfo == info);
+            button.GrabFocus();
+
+            if (PurchasePopup.Purchased)
+            {
+                var data = Location.GetOrCreateData(info.Id);
+                data.Unlocked = true;
+                Data.Game.Save();
+
+                button.SetLocked(false);
+            }
+        }
     }
 
     private void Back_Pressed()

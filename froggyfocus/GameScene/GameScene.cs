@@ -27,14 +27,21 @@ public partial class GameScene : Scene
         base._Ready();
         Instance = this;
 
-        FocusEventController.Instance.OnFocusEventCompleted += _ => FocusEventEnded();
-        FocusEventController.Instance.OnFocusEventFailed += _ => FocusEventEnded();
+        FocusEventController.Instance.OnFocusEventCompleted += FocusEventEnded;
+        FocusEventController.Instance.OnFocusEventFailed += FocusEventEnded;
 
         MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather(Weathers);
         FocusHotSpotController.Instance.Start();
 
         HideFocusEvents();
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        FocusEventController.Instance.OnFocusEventCompleted -= FocusEventEnded;
+        FocusEventController.Instance.OnFocusEventFailed -= FocusEventEnded;
     }
 
     protected override void Initialize()
@@ -67,7 +74,7 @@ public partial class GameScene : Scene
         FocusEvents.ForEach(x => x.Hide());
     }
 
-    private void FocusEventEnded()
+    private void FocusEventEnded(FocusEventResult result)
     {
         HideFocusEvents();
     }

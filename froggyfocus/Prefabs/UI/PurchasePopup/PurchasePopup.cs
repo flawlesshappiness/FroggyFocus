@@ -62,6 +62,15 @@ public partial class PurchasePopup : PopupControl
         current_price = info.Price;
     }
 
+    public void SetLocation(LocationInfo info)
+    {
+        NameLabel.Text = info.Name;
+        PriceControl.SetPrice(info.Price);
+        current_price = info.Price;
+
+        TextureRect.Texture = info.PreviewImage;
+    }
+
     private void Purchase_Pressed()
     {
         if (Money.CanAfford(current_price))

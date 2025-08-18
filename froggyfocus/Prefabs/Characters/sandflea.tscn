@@ -15,13 +15,13 @@ Accessories = [NodePath("sandflea/Armature/Skeleton3D/sand")]
 transform = Transform3D(-0.25, 0, 2.18557e-08, 0, 0.25, 0, -2.18557e-08, 0, -0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="sandflea/Armature" index="0"]
-bones/2/rotation = Quaternion(0.0884173, -2.69149e-07, -8.1511e-08, 0.996084)
-bones/3/rotation = Quaternion(0.144932, 0.00108468, -0.253247, 0.956483)
-bones/4/rotation = Quaternion(0.149638, -0.2778, 0.00901174, 0.94887)
-bones/5/rotation = Quaternion(0.251294, -0.146631, -0.164358, 0.942516)
-bones/7/rotation = Quaternion(0.139685, 0.000624657, 0.371202, 0.917985)
-bones/8/rotation = Quaternion(0.149638, 0.2778, -0.00901168, 0.94887)
-bones/9/rotation = Quaternion(0.251294, 0.146631, 0.164358, 0.942516)
+bones/2/rotation = Quaternion(-0.0557605, -2.69786e-07, 5.1405e-08, 0.998444)
+bones/3/rotation = Quaternion(0.058916, -0.0215407, -0.252332, 0.965605)
+bones/4/rotation = Quaternion(-0.033219, -0.024972, -0.292119, 0.955479)
+bones/5/rotation = Quaternion(-0.0365408, -0.00282191, -0.342138, 0.938935)
+bones/7/rotation = Quaternion(0.0589163, 0.0215419, 0.252332, 0.965605)
+bones/8/rotation = Quaternion(-0.033219, 0.024972, 0.292119, 0.955479)
+bones/9/rotation = Quaternion(-0.0365408, 0.0028219, 0.342138, 0.938935)
 bones/11/rotation = Quaternion(0.387451, -0.412447, -0.590857, 0.575027)
 bones/14/rotation = Quaternion(0.387451, -0.412447, -0.590858, 0.575027)
 bones/17/rotation = Quaternion(0.386771, -0.411976, -0.591117, 0.575556)
@@ -38,6 +38,9 @@ bone_idx = 1
 
 [node name="PsSandAccessory" parent="sandflea/Armature/Skeleton3D/sand" instance=ExtResource("3_vtrbk")]
 transform = Transform3D(0.02, -3.49585e-09, -2.61534e-08, -3.49585e-09, -0.02, -1.86265e-09, -2.61534e-08, 1.86265e-09, -0.02, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="sandflea" index="1"]
+playback_default_blend_time = 0.25
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_gud7u")
