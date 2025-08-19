@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cugkgsqhc8no7"]
+
+[ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="1_qbotp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_umvde"]
+size = Vector3(1.41504, 2.00098, 1.41699)
+
+[node name="Barrel_Oil" type="Node3D"]
+
+[node name="oil_barrel" parent="." instance=ExtResource("1_qbotp")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_umvde")

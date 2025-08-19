@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dncslat5uk00w"]
+
+[ext_resource type="PackedScene" uid="uid://bjguptoax41oy" path="res://Assets/FlawLizArt/Objects/wood_plank_2m.fbx" id="1_ainir"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vorpe"]
+size = Vector3(2, 0.092041, 0.398)
+
+[node name="wood_plank_2m" type="Node3D"]
+
+[node name="wood_plank_2m" parent="." instance=ExtResource("1_ainir")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.0551507, 2.41072e-09)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_vorpe")
