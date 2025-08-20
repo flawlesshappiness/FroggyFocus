@@ -34,7 +34,7 @@ public partial class MainMenuView : View
         ContinueButton.Pressed += ClickContinue;
         OptionsButton.Pressed += ClickOptions;
         QuitButton.Pressed += ClickQuit;
-        OptionsControl.OnBack += ClickOptionsBack;
+        OptionsControl.BackPressed += ClickOptionsBack;
 
         InputBlocker.Hide();
     }

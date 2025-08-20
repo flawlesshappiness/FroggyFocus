@@ -17,6 +17,7 @@ public partial class OptionsContainer : ControlScript
     public OptionsButtonControl UIScaleOptions;
 
     public static Action OnUIScaleChanged;
+    public event Action BackPressed;
 
     private bool showing;
 

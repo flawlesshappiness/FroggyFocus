@@ -50,6 +50,7 @@ public partial class PauseView : View
 
     public static readonly MultiLock ToggleLock = new();
 
+    private bool animating;
     private bool options_active;
     private bool customize_active;
     private bool inventory_active;
@@ -63,7 +64,7 @@ public partial class PauseView : View
         OptionsButton.Pressed += ClickOptions;
         MainMenuButton.Pressed += ClickMainMenu;
         InventoryButton.Pressed += ClickInventory;
-        Options.OnBack += ClickOptionsBack;
+        Options.BackPressed += ClickOptionsBack;
         CustomizeAppearanceControl.OnBack += ClickCustomizeBack;
         InventoryControl.OnBack += ClickInventoryBack;
     }
@@ -105,6 +106,7 @@ public partial class PauseView : View
         if (customize_active) return;
         if (inventory_active) return;
         if (transitioning) return;
+        if (animating) return;
 
         if (Visible)
         {
@@ -125,13 +127,17 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
+
             InputBlocker.Show();
             AnimatedOverlay_Behind.AnimateBehindShow();
             yield return AnimatedPanel_Pause.AnimatePopShow();
             InputBlocker.Hide();
-            transitioning = false;
 
             ResumeButton.GrabFocus();
+
+            transitioning = false;
+            animating = false;
         }
     }
 
@@ -143,6 +149,8 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedOverlay_Behind.AnimateBehindHide();
@@ -150,6 +158,7 @@ public partial class PauseView : View
             InputBlocker.Hide();
 
             transitioning = false;
+            animating = false;
             Hide();
         }
     }
@@ -167,6 +176,8 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
@@ -174,15 +185,21 @@ public partial class PauseView : View
             InputBlocker.Hide();
 
             CustomizeAppearanceControl.TabContainer.GetTabBar().GrabFocus();
+
+            animating = false;
         }
     }
 
     private void ClickCustomizeBack()
     {
+        if (animating) return;
+
         Coroutine.Start(Cr)
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
@@ -192,6 +209,7 @@ public partial class PauseView : View
             CustomizeButton.GrabFocus();
 
             customize_active = false;
+            animating = false;
         }
     }
 
@@ -203,6 +221,8 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
@@ -210,17 +230,22 @@ public partial class PauseView : View
             InputBlocker.Hide();
 
             Options.Tabs.GetTabBar().GrabFocus();
+
+            animating = false;
         }
     }
 
     private void ClickOptionsBack()
     {
+        if (animating) return;
         if (!options_active) return;
 
         Coroutine.Start(Cr)
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
@@ -230,15 +255,19 @@ public partial class PauseView : View
             OptionsButton.GrabFocus();
 
             options_active = false;
+            animating = false;
         }
     }
 
     private void ClickMainMenu()
     {
+        if (animating) return;
+
         Coroutine.Start(Cr)
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
             transitioning = true;
 
             ReleaseCurrentFocus();
@@ -258,6 +287,7 @@ public partial class PauseView : View
             InputBlocker.Hide();
 
             transitioning = false;
+            animating = false;
         }
     }
 
@@ -269,6 +299,8 @@ public partial class PauseView : View
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
@@ -276,17 +308,22 @@ public partial class PauseView : View
             InputBlocker.Hide();
 
             InventoryControl.GrabFocus_InventoryButton();
+
+            animating = false;
         }
     }
 
     private void ClickInventoryBack()
     {
+        if (animating) return;
         if (!inventory_active) return;
 
         Coroutine.Start(Cr)
             .SetRunWhilePaused();
         IEnumerator Cr()
         {
+            animating = true;
+
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
@@ -296,6 +333,7 @@ public partial class PauseView : View
             InventoryButton.GrabFocus();
 
             inventory_active = false;
+            animating = false;
         }
     }
 }

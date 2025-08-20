@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6wxew74nf10j"]
+
+[ext_resource type="PackedScene" uid="uid://p21mt1ekca1x" path="res://Assets/FlawLizArt/Machine/gear_big.fbx" id="1_kuffb"]
+[ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="2_df84m"]
+[ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="3_71xie"]
+[ext_resource type="Material" uid="uid://dd4cr8a3qa3fa" path="res://Materials/Seaweed_003.tres" id="4_lwwdg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ikxs7"]
+height = 0.550781
+radius = 0.995605
+
+[sub_resource type="QuadMesh" id="QuadMesh_gxken"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_yqddi"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_i22jw"]
+
+[node name="Gear_Big_Seaweed" type="Node3D"]
+
+[node name="gear_big" parent="." instance=ExtResource("1_kuffb")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_ikxs7")
+
+[node name="Seaweed" type="Node3D" parent="."]
+
+[node name="ClusterA" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-6.55671e-08, 0, -1.5, -0.241424, 1.48044, 1.0553e-08, 1.48044, 0.241424, -6.47122e-08, 0.261171, 0.212544, -0.28419)
+mesh = SubResource("QuadMesh_gxken")
+surface_material_override/0 = ExtResource("2_df84m")
+
+[node name="ClusterA3" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 1.25123, 0.827293, -5.4693e-08, 0.827294, -1.25123, -3.61621e-08, 0.284335, 0.252108, 0.393329)
+mesh = SubResource("QuadMesh_gxken")
+surface_material_override/0 = ExtResource("2_df84m")
+
+[node name="ClusterB" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.5567e-08, 0.28474, -0.2252, -0.286187)
+mesh = SubResource("QuadMesh_yqddi")
+surface_material_override/0 = ExtResource("3_71xie")
+
+[node name="ClusterB3" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-8.74228e-08, 0, 2, 1.77087, 0.92953, 7.74071e-08, -0.92953, 1.77087, -4.0631e-08, 0.272193, 0.244641, -0.16309)
+mesh = SubResource("QuadMesh_yqddi")
+surface_material_override/0 = ExtResource("3_71xie")
+
+[node name="ClusterC" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0.27931, 0.18672, 0.109859)
+mesh = SubResource("QuadMesh_i22jw")
+surface_material_override/0 = ExtResource("4_lwwdg")
+
+[node name="ClusterA2" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-6.55671e-08, 0, -1.5, -0.241424, 1.48044, 1.0553e-08, 1.48044, 0.241424, -6.47122e-08, -0.291714, 0.212544, -0.28419)
+mesh = SubResource("QuadMesh_gxken")
+surface_material_override/0 = ExtResource("2_df84m")
+
+[node name="ClusterA4" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 1.25123, 0.827293, -5.4693e-08, 0.827294, -1.25123, -3.61621e-08, -0.268551, 0.252108, 0.393329)
+mesh = SubResource("QuadMesh_gxken")
+surface_material_override/0 = ExtResource("2_df84m")
+
+[node name="ClusterB2" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.5567e-08, -0.268145, -0.2252, -0.286187)
+mesh = SubResource("QuadMesh_yqddi")
+surface_material_override/0 = ExtResource("3_71xie")
+
+[node name="ClusterB4" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-8.74228e-08, 0, 2, 1.77087, 0.92953, 7.74071e-08, -0.92953, 1.77087, -4.0631e-08, -0.280692, 0.244641, -0.16309)
+mesh = SubResource("QuadMesh_yqddi")
+surface_material_override/0 = ExtResource("3_71xie")
+
+[node name="ClusterC2" type="MeshInstance3D" parent="Seaweed"]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -0.273576, 0.18672, 0.109859)
+mesh = SubResource("QuadMesh_i22jw")
+surface_material_override/0 = ExtResource("4_lwwdg")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+height = 1.5
+vertices = PackedVector3Array(-0.311155, 0, -1.05245, 0.330172, 0, -1.04784, 0.297874, 0, 1.0284, -0.324997, 0, 1.02378)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

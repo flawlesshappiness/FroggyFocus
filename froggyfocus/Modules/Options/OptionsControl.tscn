@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk5e5unescpcn"]
+[gd_scene load_steps=6 format=3 uid="uid://dk5e5unescpcn"]
 
 [ext_resource type="Script" uid="uid://hsvattyts0r2" path="res://Modules/Options/OptionsKeys.cs" id="1_m2unh"]
 [ext_resource type="Script" uid="uid://cxg3ricx0s381" path="res://Modules/Options/OptionsControl.cs" id="1_xgqu1"]
 [ext_resource type="Script" uid="uid://28cth4osr2u7" path="res://Modules/Options/OptionsKeyRebindControl.cs" id="2_b02h4"]
+[ext_resource type="Script" uid="uid://brkmo7edojrmf" path="res://Prefabs/UI/SimpleButton/ButtonScript.cs" id="4_ngl1r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hi6fc"]
 font_size = 20
 font_color = Color(1, 0.764706, 0, 1)
 
 [node name="Options" type="VBoxContainer" node_paths=PackedStringArray("BackButton", "Tabs", "MasterSlider", "SFXSlider", "BGMSlider", "WindowModeDropdown", "Resolution", "ResolutionDropdown", "VSyncDropdown", "FPSLimitDropdown", "Keys")]
-theme_override_constants/separation = 25
+offset_right = 500.0
+offset_bottom = 400.0
 script = ExtResource("1_xgqu1")
-BackButton = NodePath("VBoxContainer/BackButton")
+BackButton = NodePath("HBoxContainer/BackButton")
 Tabs = NodePath("TabContainer")
 MasterSlider = NodePath("TabContainer/Audio/VBoxContainer/MasterSlider")
 SFXSlider = NodePath("TabContainer/Audio/VBoxContainer/SFXSlider")
@@ -255,11 +257,12 @@ text = "X"
 layout_mode = 2
 text = "Reset all"
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="BackButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(150, 0)
+[node name="BackButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "Save & Back"
+script = ExtResource("4_ngl1r")

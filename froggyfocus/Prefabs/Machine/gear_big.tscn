@@ -63,3 +63,9 @@ Animation = "rotate"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_nxlv2")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+height = 1.5
+vertices = PackedVector3Array(-1.03091, 0, -0.292846, 1.03091, 0, -0.278561, 1.03567, 0, 0.283322, -1.04996, 0, 0.273799)
+affect_navigation_mesh = true
+carve_navigation_mesh = true

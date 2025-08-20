@@ -36,7 +36,7 @@ public partial class OptionsControl : ControlScript
     [Export]
     public OptionsKeys Keys;
 
-    public event Action OnBack;
+    public event Action BackPressed;
 
     public override void _Ready()
     {
@@ -56,7 +56,6 @@ public partial class OptionsControl : ControlScript
         VSyncDropdown.Selected = Data.Options.VSync;
         FPSLimitDropdown.Selected = Data.Options.FPSLimit;
 
-        BackButton.Pressed += BackPressed;
         MasterSlider.ValueChanged += MasterSlider_ValueChanged;
         SFXSlider.ValueChanged += SFXSlider_ValueChanged;
         BGMSlider.ValueChanged += BGMSlider_ValueChanged;
@@ -67,18 +66,8 @@ public partial class OptionsControl : ControlScript
 
         Keys.OnRebindStart += RebindStart;
         Keys.OnRebindEnd += RebindEnd;
-    }
 
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-
-        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
-        {
-            if (Keys.IsRebinding) return;
-            BackPressed();
-            GetViewport().SetInputAsHandled();
-        }
+        BackButton.Pressed += BackButton_Pressed;
     }
 
     protected override void OnShow()
@@ -90,10 +79,16 @@ public partial class OptionsControl : ControlScript
         Keys.UpdateDuplicateWarnings();
     }
 
-    private void BackPressed()
+    public override void _Input(InputEvent @event)
     {
-        Data.Options.Save();
-        OnBack?.Invoke();
+        base._Input(@event);
+
+        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
+        {
+            if (Keys.IsRebinding) return;
+            BackButton_Pressed();
+            GetViewport().SetInputAsHandled();
+        }
     }
 
     private void MasterSlider_ValueChanged(double v)
@@ -211,13 +206,11 @@ public partial class OptionsControl : ControlScript
 
     private void RebindStart()
     {
-        BackButton.Disabled = true;
         SetTabsEnabled(false);
     }
 
     private void RebindEnd()
     {
-        BackButton.Disabled = false;
         SetTabsEnabled(true);
     }
 
@@ -227,5 +220,11 @@ public partial class OptionsControl : ControlScript
         {
             Tabs.SetTabDisabled(i, !enabled);
         }
+    }
+
+    private void BackButton_Pressed()
+    {
+        Data.Options.Save();
+        BackPressed?.Invoke();
     }
 }
