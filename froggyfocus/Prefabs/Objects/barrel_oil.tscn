@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cugkgsqhc8no7"]
+[gd_scene load_steps=5 format=3 uid="uid://cugkgsqhc8no7"]
 
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="1_qbotp"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_umvde"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_umvde"]
 size = Vector3(1.41504, 2.00098, 1.41699)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ejwo"]
+size = Vector3(1.8252, 2.21487, 1.68848)
 
 [node name="Barrel_Oil" type="Node3D"]
 
@@ -13,3 +17,15 @@ size = Vector3(1.41504, 2.00098, 1.41699)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_umvde")
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_umvde")
+Id = "oil"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00791931, 0)
+shape = SubResource("BoxShape3D_5ejwo")
+debug_color = Color(0.7, 0, 0, 0.419608)

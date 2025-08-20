@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://jyb4tasp37gp"]
+[gd_scene load_steps=5 format=3 uid="uid://jyb4tasp37gp"]
 
 [ext_resource type="PackedScene" uid="uid://cafptecs7cbl7" path="res://Prefabs/Nature/seaweed_cluster_section.tscn" id="1_0ogyt"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_fegj0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fegj0"]
 size = Vector3(1.5, 1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wj6m8"]
+size = Vector3(1.49634, 1, 3)
 
 [node name="Seaweed_Cluster_Bridge" type="Node3D"]
 
@@ -35,3 +39,14 @@ transform = Transform3D(0.141851, 0, -0.989888, 0, 1, 0, 0.989888, 0, 0.141851, 
 
 [node name="Seaweed_Cluster_Section4" parent="Weeds" instance=ExtResource("1_0ogyt")]
 transform = Transform3D(0.141851, 0, -0.989888, 0, 1, 0, 0.989888, 0, 0.141851, -0.264956, 0, -1.22166)
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_fegj0")
+Id = "seaweed"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+shape = SubResource("BoxShape3D_wj6m8")
+debug_color = Color(0.7, 0, 0, 0.419608)

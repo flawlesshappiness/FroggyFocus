@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cr2mvb04tpmbl"]
+[gd_scene load_steps=6 format=3 uid="uid://cr2mvb04tpmbl"]
 
 [ext_resource type="PackedScene" uid="uid://bv360j0bodrms" path="res://Assets/FlawLizArt/Objects/trash_bag.fbx" id="1_0o6kh"]
 [ext_resource type="Material" uid="uid://bu0xn6ccwtlfq" path="res://Materials/Color_Green.tres" id="2_0o6kh"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="3_ji2og"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7egm2"]
 size = Vector3(1.92676, 1.6319, 1.94958)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_po4ym"]
+size = Vector3(1.79102, 1, 2)
 
 [node name="Trash_Bag_Green" type="Node3D"]
 
@@ -19,5 +23,16 @@ surface_material_override/0 = ExtResource("2_0o6kh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.818756, 0.0328979)
 shape = SubResource("BoxShape3D_7egm2")
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_ji2og")
+Id = "trash_land"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+shape = SubResource("BoxShape3D_po4ym")
+debug_color = Color(0.7, 0, 0, 0.419608)
 
 [editable path="trash_bag"]

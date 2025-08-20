@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwc0ley5ipxwr"]
+[gd_scene load_steps=5 format=3 uid="uid://bwc0ley5ipxwr"]
 
 [ext_resource type="PackedScene" uid="uid://cafptecs7cbl7" path="res://Prefabs/Nature/seaweed_cluster_section.tscn" id="1_m1u0p"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_qlgfd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xj4yx"]
 height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qlgfd"]
+height = 0.378784
 
 [node name="Seaweed_Cluster_Small" type="Node3D"]
 
@@ -14,3 +18,15 @@ height = 1.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("CylinderShape3D_xj4yx")
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_qlgfd")
+Id = "seaweed"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189392, 0)
+shape = SubResource("CylinderShape3D_qlgfd")
+debug_color = Color(0.7, 0, 0, 0.419608)

@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbwq5ouf0ihjq"]
+[gd_scene load_steps=5 format=3 uid="uid://dbwq5ouf0ihjq"]
 
 [ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="1_i8ddx"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_f6xt0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6xt0"]
 size = Vector3(1.43127, 0.771729, 0.807617)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sv86x"]
+size = Vector3(1.36447, 0.362183, 0.711426)
 
 [node name="Bottle_Cleaning_Simple" type="Node3D"]
 
@@ -15,3 +19,15 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.7726
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0686646, 0, 0)
 shape = SubResource("BoxShape3D_f6xt0")
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_f6xt0")
+Id = "trash_water"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0762177, 0.393359, 0.0057373)
+shape = SubResource("BoxShape3D_sv86x")
+debug_color = Color(0.7, 0, 0, 0.419608)
