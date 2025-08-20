@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuc22dure6gn7"]
+
+[ext_resource type="PackedScene" uid="uid://cafptecs7cbl7" path="res://Prefabs/Objects/seaweed_cluster_section.tscn" id="1_sitlp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_isti4"]
+height = 1.0
+radius = 2.0
+
+[node name="Seaweed_Cluster_Circle" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CylinderShape3D_isti4")
+
+[node name="Seaweed_Cluster_Small" parent="." instance=ExtResource("1_sitlp")]
+
+[node name="Seaweed_Cluster_Small2" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(0.235498, 0, -0.971875, 0, 1, 0, 0.971875, 0, 0.235498, -0.965336, 0, -0.29584)
+
+[node name="Seaweed_Cluster_Small3" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.696477, 0, -0.717579, 0, 1, 0, 0.717579, 0, -0.696477, -0.847203, 0, 0.718772)
+
+[node name="Seaweed_Cluster_Small4" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.696477, 0, -0.717579, 0, 1, 0, 0.717579, 0, -0.696477, 0.169434, 0, 0.980315)
+
+[node name="Seaweed_Cluster_Small5" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.811798, 0, 0.583938, 0, 1, 0, -0.583938, 0, -0.811798, 1.18352, 0, 0.44174)
+
+[node name="Seaweed_Cluster_Small6" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(0.204137, 0, 0.978942, 0, 1, 0, -0.978942, 0, 0.204137, 0.966562, 0, -0.513212)
+
+[node name="Seaweed_Cluster_Small7" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(0.76787, 0, 0.640606, 0, 1, 0, -0.640606, 0, 0.76787, 0.073689, 0, -0.990462)
+
+[node name="Seaweed_Cluster_Small8" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.68639, 0, 0.727234, 0, 1, 0, -0.727234, 0, -0.68639, -0.971463, 0, -1.18187)
+
+[node name="Seaweed_Cluster_Small9" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.983271, 0, -0.18215, 0, 1, 0, 0.18215, 0, -0.983271, -1.60019, 0, -0.119315)
+
+[node name="Seaweed_Cluster_Small10" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.611817, 0, -0.790999, 0, 1, 0, 0.790999, 0, -0.611817, -0.472339, 0, 1.41719)
+
+[node name="Seaweed_Cluster_Small11" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(0.602943, 0, -0.797784, 0, 1, 0, 0.797784, 0, 0.602943, 0.923104, 0, 1.16205)
+
+[node name="Seaweed_Cluster_Small12" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(0.602943, 0, -0.797784, 0, 1, 0, 0.797784, 0, 0.602943, 0.848134, 0, -1.53774)
+
+[node name="Seaweed_Cluster_Small13" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.0367659, 0, -0.999324, 0, 1, 0, 0.999324, 0, -0.0367659, -0.0984304, 0, -1.75083)
+
+[node name="Seaweed_Cluster_Small14" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.617791, 0, -0.786342, 0, 1, 0, 0.786342, 0, -0.617791, -1.35277, 0, 0.772956)
+
+[node name="Seaweed_Cluster_Small15" parent="." instance=ExtResource("1_sitlp")]
+transform = Transform3D(-0.995393, 0, -0.0958804, 0, 1, 0, 0.0958804, 0, -0.995393, 1.54883, 0, -0.48138)

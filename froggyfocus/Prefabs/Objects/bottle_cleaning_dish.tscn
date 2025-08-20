@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://pndnf2awnmp0"]
+
+[ext_resource type="PackedScene" uid="uid://drkw8kmks10q4" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_dish.fbx" id="1_itq8w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ce0nn"]
+size = Vector3(1.44824, 0.615479, 0.615234)
+
+[node name="Bottle_Cleaning_Dish" type="Node3D"]
+
+[node name="bottle_cleaning_dish" parent="." instance=ExtResource("1_itq8w")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.695426, 3.0398e-08, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ce0nn")

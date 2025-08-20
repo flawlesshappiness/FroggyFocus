@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsjmyfq0e0si5"]
+
+[ext_resource type="PackedScene" uid="uid://bv360j0bodrms" path="res://Assets/FlawLizArt/Objects/trash_bag.fbx" id="1_0bahu"]
+[ext_resource type="Material" uid="uid://q8jecixud5c4" path="res://Materials/Color_Blue.tres" id="2_0bahu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7egm2"]
+size = Vector3(1.92676, 1.6319, 1.94958)
+
+[node name="Trash_Bag_Blue" type="Node3D"]
+
+[node name="trash_bag" parent="." instance=ExtResource("1_0bahu")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.657925, -2.87588e-08)
+
+[node name="Cube" parent="trash_bag" index="0"]
+surface_material_override/0 = ExtResource("2_0bahu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.818756, 0.0328979)
+shape = SubResource("BoxShape3D_7egm2")
+
+[editable path="trash_bag"]

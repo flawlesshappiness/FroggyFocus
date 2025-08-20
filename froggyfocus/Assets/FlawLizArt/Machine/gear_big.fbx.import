@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ci1lxqq3u7xaq"
-path="res://.godot/imported/pipe_low_poly.fbx-ff3a3a096f73a6e78aafc1c3dd583547.scn"
+uid="uid://p21mt1ekca1x"
+path="res://.godot/imported/gear_big.fbx-f3c04afe38988c2b2dc944a5e0b33cc3.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Objects/pipe_low_poly.fbx"
-dest_files=["res://.godot/imported/pipe_low_poly.fbx-ff3a3a096f73a6e78aafc1c3dd583547.scn"]
+source_file="res://Assets/FlawLizArt/Machine/gear_big.fbx"
+dest_files=["res://.godot/imported/gear_big.fbx-f3c04afe38988c2b2dc944a5e0b33cc3.scn"]
 
 [params]
 
@@ -34,11 +34,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Darkness": {
-"use_external/enabled": true,
-"use_external/path": "uid://byysddskgruh5"
-},
-"Metal": {
+"Material": {
 "use_external/enabled": true,
 "use_external/path": "uid://wog5r0ocenqr"
 }

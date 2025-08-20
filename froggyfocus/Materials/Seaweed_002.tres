@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bhu4u4v2hryl0"]
+
+[ext_resource type="Texture2D" uid="uid://d0rimcyo7yvhi" path="res://Textures/seaweed_002.png" id="1_pstfc"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.47, 0.37271, 0.2162, 1)
+albedo_texture = ExtResource("1_pstfc")
+disable_receive_shadows = true

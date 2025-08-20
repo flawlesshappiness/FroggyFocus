@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ci1lxqq3u7xaq"
-path="res://.godot/imported/pipe_low_poly.fbx-ff3a3a096f73a6e78aafc1c3dd583547.scn"
+uid="uid://bi2an3gue5irw"
+path="res://.godot/imported/light_house.fbx-6fb9551d4e8d47a5a93d8a38a93010fe.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Objects/pipe_low_poly.fbx"
-dest_files=["res://.godot/imported/pipe_low_poly.fbx-ff3a3a096f73a6e78aafc1c3dd583547.scn"]
+source_file="res://Assets/FlawLizArt/Building/light_house.fbx"
+dest_files=["res://.godot/imported/light_house.fbx-6fb9551d4e8d47a5a93d8a38a93010fe.scn"]
 
 [params]
 
@@ -34,13 +34,21 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Darkness": {
+"Light": {
 "use_external/enabled": true,
-"use_external/path": "uid://byysddskgruh5"
+"use_external/path": "uid://dqix01s7vhtmd"
 },
-"Metal": {
+"Red": {
+"use_external/enabled": true,
+"use_external/path": "uid://bp4r8hinck686"
+},
+"Rock": {
 "use_external/enabled": true,
 "use_external/path": "uid://wog5r0ocenqr"
+},
+"White": {
+"use_external/enabled": true,
+"use_external/path": "uid://ctdvjlchj56sh"
 }
 }
 }

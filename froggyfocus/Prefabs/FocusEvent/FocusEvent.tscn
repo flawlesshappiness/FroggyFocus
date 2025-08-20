@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=20 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -16,7 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="11_h8skc"]
 [ext_resource type="PackedScene" uid="uid://drlpioouldb1f" path="res://Prefabs/FocusSkillChecks/sand.tscn" id="12_1pin3"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pin3"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.180392)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_4atv5"]
+material = SubResource("StandardMaterial3D_1pin3")
 top_radius = 3.0
 bottom_radius = 3.0
 

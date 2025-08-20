@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ci1lxqq3u7xaq"
-path="res://.godot/imported/pipe_low_poly.fbx-ff3a3a096f73a6e78aafc1c3dd583547.scn"
+uid="uid://cwe1qkbg1t6dn"
+path="res://.godot/imported/bottle_cleaning_simple.fbx-596efe006e3d1a98171240132fd2d15e.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Objects/pipe_low_poly.fbx"
-dest_files=["res://.godot/imported/pipe_low_poly.fbx-ff3a3a096f73a6e78aafc1c3dd583547.scn"]
+source_file="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx"
+dest_files=["res://.godot/imported/bottle_cleaning_simple.fbx-596efe006e3d1a98171240132fd2d15e.scn"]
 
 [params]
 
@@ -34,13 +34,13 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Darkness": {
+"Red": {
 "use_external/enabled": true,
-"use_external/path": "uid://byysddskgruh5"
+"use_external/path": "uid://bp4r8hinck686"
 },
-"Metal": {
+"White": {
 "use_external/enabled": true,
-"use_external/path": "uid://wog5r0ocenqr"
+"use_external/path": "uid://ctdvjlchj56sh"
 }
 }
 }
