@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://iq2uo8hapc6w"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_h6nik"]
+[ext_resource type="PackedScene" uid="uid://c22tevidn8irq" path="res://Assets/FlawLizArt/Nature/Bugs/cockroach.fbx" id="2_gdw3b"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ghd1s"]
+
+[node name="Cockroach" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_h6nik")
+Animation = NodePath("AnimationStateMachine")
+Accessories = []
+
+[node name="cockroach" parent="." instance=ExtResource("2_gdw3b")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0.107181)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_ghd1s")
+Animator = NodePath("../cockroach/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="cockroach"]

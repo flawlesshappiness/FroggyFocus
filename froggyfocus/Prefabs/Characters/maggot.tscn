@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbycfuiikekn5"]
+
+[ext_resource type="PackedScene" uid="uid://q8e15wpuoqu5" path="res://Assets/FlawLizArt/Nature/Bugs/maggot.fbx" id="1_dm04g"]
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_l7son"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_l7son"]
+
+[node name="Maggot" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_l7son")
+Animation = NodePath("AnimationStateMachine")
+Accessories = []
+
+[node name="maggot" parent="." instance=ExtResource("1_dm04g")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="maggot/Armature" index="0"]
+bones/1/position = Vector3(0.000544865, -0.0158465, 0.007)
+bones/1/rotation = Quaternion(0.705859, 0.0419872, 0.0419872, 0.705859)
+bones/3/position = Vector3(0, -0.00729015, 0.007)
+bones/3/rotation = Quaternion(0.705746, -0.04385, -0.04385, 0.705746)
+bones/5/position = Vector3(0, 0.000961971, 0.007)
+bones/5/rotation = Quaternion(0.704811, 0.0569298, 0.0569298, 0.704811)
+bones/7/position = Vector3(0, 0.00913803, 0.007)
+bones/7/rotation = Quaternion(0.70637, -0.0322751, -0.0322751, 0.70637)
+bones/9/position = Vector3(-0.000430522, 0.0176944, 0.007)
+bones/9/rotation = Quaternion(0.706507, 0.0291172, 0.0291172, 0.706507)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_l7son")
+Animator = NodePath("../maggot/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="maggot"]

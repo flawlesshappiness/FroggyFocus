@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cafptecs7cbl7"]
+[gd_scene load_steps=9 format=3 uid="uid://cafptecs7cbl7"]
 
 [ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="1_4yqpv"]
 [ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="2_tio3a"]
@@ -12,6 +12,14 @@ albedo_color = Color(1, 1, 1, 0.0784314)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ev0qg"]
 material = SubResource("StandardMaterial3D_oqewa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm42h"]
+albedo_color = Color(0.6, 0.4944, 0.312, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xca58"]
+material = SubResource("StandardMaterial3D_dm42h")
+radius = 0.1
+height = 0.2
 
 [node name="Seaweed_Cluster_Section" type="Node3D"]
 
@@ -49,3 +57,31 @@ surface_material_override/0 = ExtResource("3_tjrgj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 mesh = SubResource("BoxMesh_ev0qg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00490078, -0.141091, 0.355455)
+mesh = SubResource("SphereMesh_xca58")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.242714, -0.141091, 0.291675)
+mesh = SubResource("SphereMesh_xca58")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.415696, -0.141091, 0.147901)
+mesh = SubResource("SphereMesh_xca58")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.289853, -0.134755, -0.381308)
+mesh = SubResource("SphereMesh_xca58")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0528513, -0.134755, -0.381308)
+mesh = SubResource("SphereMesh_xca58")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165221, -0.134755, -0.33741)
+mesh = SubResource("SphereMesh_xca58")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.171832, -0.134755, -0.224847)
+mesh = SubResource("SphereMesh_xca58")
