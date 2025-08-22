@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2b5k52cllwso"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_55ydm"]
+[ext_resource type="PackedScene" uid="uid://dfj1td3i6a4so" path="res://Assets/FlawLizArt/Nature/Bugs/common_fly.fbx" id="2_omklm"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ngyqj"]
+
+[node name="CommonFly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_55ydm")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="common_fly" parent="." instance=ExtResource("2_omklm")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.069553, 0.180138)
+
+[node name="Skeleton3D" parent="common_fly/Armature" index="0"]
+bones/1/position = Vector3(2.43355e-18, 0.00194087, 0.0108756)
+bones/1/rotation = Quaternion(0.0531811, -5.1843e-26, -1.04306e-17, 0.998585)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(-2.59511e-25, 0.0135771, -2.02932e-10)
+bones/2/rotation = Quaternion(-0.070996, 2.45933e-20, 1.43865e-17, 0.997477)
+bones/4/position = Vector3(0.00450942, 0.0114414, 0.00152786)
+bones/4/rotation = Quaternion(-0.088379, 0.0282833, 0.983826, -0.153221)
+bones/4/scale = Vector3(0.999999, 1, 1)
+bones/6/position = Vector3(-0.00450942, 0.0114414, 0.00152786)
+bones/6/rotation = Quaternion(0.088379, 0.0282833, 0.983826, 0.153221)
+bones/6/scale = Vector3(0.999999, 1, 1)
+bones/8/position = Vector3(0.00279577, 0.0106066, -0.00148642)
+bones/8/rotation = Quaternion(-0.496161, 0.261715, -0.483694, 0.67184)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-2.32482e-10, 0.00632943, -8.33893e-10)
+bones/9/rotation = Quaternion(0.336302, -0.00229211, -0.0106855, 0.941691)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(2.46636e-11, 0.00422176, 6.95265e-10)
+bones/10/rotation = Quaternion(-0.630498, -6.37956e-08, 0.0348645, 0.775407)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(0.00279577, 0.00556418, -0.000947813)
+bones/12/rotation = Quaternion(-0.390328, 0.29174, -0.631799, 0.602795)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(-9.98536e-11, 0.00632943, -1.4013e-10)
+bones/13/rotation = Quaternion(0.447964, -0.00131638, -0.0166399, 0.893896)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(4.38938e-11, 0.00422176, 5.80148e-10)
+bones/14/rotation = Quaternion(-0.866842, -9.03383e-08, 0.0479337, 0.496273)
+bones/14/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(0.00279577, 0.00112289, -0.000473412)
+bones/16/rotation = Quaternion(-0.320006, 0.388274, -0.702535, 0.503273)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(-4.33421e-11, 0.00632942, -3.98521e-10)
+bones/17/rotation = Quaternion(0.501769, -0.0846488, -0.0651678, 0.85838)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/position = Vector3(5.38475e-11, 0.00422176, 8.6697e-10)
+bones/18/rotation = Quaternion(-0.754193, 0.0397821, 0.0751485, 0.651124)
+bones/18/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(-0.00279577, 0.0106066, -0.00148642)
+bones/20/rotation = Quaternion(-0.496161, -0.261715, 0.483694, 0.67184)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(2.77703e-10, 0.00632943, -8.31829e-10)
+bones/21/rotation = Quaternion(0.336302, 0.0022921, 0.0106855, 0.941691)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/position = Vector3(-2.46636e-11, 0.00422176, 6.95265e-10)
+bones/22/rotation = Quaternion(-0.630498, 9.22009e-08, -0.0348645, 0.775407)
+bones/22/scale = Vector3(1, 1, 1)
+bones/24/position = Vector3(-0.00279577, 0.00556418, -0.000947813)
+bones/24/rotation = Quaternion(-0.390328, -0.291739, 0.631799, 0.602795)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/position = Vector3(1.52611e-10, 0.00632943, -1.37723e-10)
+bones/25/rotation = Quaternion(0.447964, 0.00131638, 0.0166399, 0.893896)
+bones/25/scale = Vector3(1, 1, 1)
+bones/26/position = Vector3(-4.38938e-11, 0.00422176, 5.80148e-10)
+bones/26/rotation = Quaternion(-0.866842, 9.03383e-08, -0.0479337, 0.496273)
+bones/26/scale = Vector3(1, 1, 1)
+bones/28/position = Vector3(-0.00279577, 0.00112289, -0.000473412)
+bones/28/rotation = Quaternion(-0.320005, -0.388274, 0.702535, 0.503273)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/position = Vector3(4.33421e-11, 0.00632942, -3.98521e-10)
+bones/29/rotation = Quaternion(0.501769, 0.0846488, 0.0651678, 0.85838)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/position = Vector3(-5.38475e-11, 0.00422176, 8.6697e-10)
+bones/30/rotation = Quaternion(-0.754193, -0.0397821, -0.0751485, 0.651124)
+bones/30/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="common_fly" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_ngyqj")
+Animator = NodePath("../common_fly/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="common_fly"]

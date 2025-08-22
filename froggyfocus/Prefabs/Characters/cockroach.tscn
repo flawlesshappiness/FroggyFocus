@@ -12,6 +12,42 @@ Accessories = []
 [node name="cockroach" parent="." instance=ExtResource("2_gdw3b")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0.107181)
 
+[node name="Skeleton3D" parent="cockroach/Armature" index="0"]
+bones/1/rotation = Quaternion(0.0150769, 3.37696e-25, -3.34772e-18, 0.999886)
+bones/3/rotation = Quaternion(-0.647541, -9.08411e-08, 7.71929e-08, 0.76203)
+bones/4/rotation = Quaternion(0.753455, 0.126107, -0.105994, 0.636528)
+bones/6/rotation = Quaternion(0.753455, -0.126107, 0.105994, 0.636528)
+bones/8/rotation = Quaternion(-0.219287, 0.19307, -0.680194, 0.67229)
+bones/9/rotation = Quaternion(0.54456, -3.30186e-05, -0.0027963, 0.838717)
+bones/10/rotation = Quaternion(-0.667513, 5.49194e-08, 0.00687544, 0.744566)
+bones/12/rotation = Quaternion(-0.219287, 0.19307, -0.680194, 0.67229)
+bones/13/rotation = Quaternion(0.54456, -3.3067e-05, -0.00279617, 0.838717)
+bones/14/rotation = Quaternion(-0.667513, 5.9914e-08, 0.00687544, 0.744566)
+bones/16/rotation = Quaternion(-0.219287, 0.19307, -0.680194, 0.67229)
+bones/17/rotation = Quaternion(0.54456, -3.30789e-05, -0.0027962, 0.838717)
+bones/18/rotation = Quaternion(-0.667514, 5.11942e-08, 0.00687544, 0.744566)
+bones/20/rotation = Quaternion(-0.219287, -0.19307, 0.680194, 0.67229)
+bones/21/rotation = Quaternion(0.54456, 3.30186e-05, 0.00279629, 0.838717)
+bones/22/rotation = Quaternion(-0.667513, -5.49194e-08, -0.00687544, 0.744566)
+bones/24/rotation = Quaternion(-0.219287, -0.19307, 0.680194, 0.67229)
+bones/25/rotation = Quaternion(0.54456, 3.30672e-05, 0.00279617, 0.838717)
+bones/26/rotation = Quaternion(-0.667513, -5.9914e-08, -0.00687544, 0.744566)
+bones/28/rotation = Quaternion(-0.219287, -0.19307, 0.680194, 0.67229)
+bones/29/rotation = Quaternion(0.54456, 3.3079e-05, 0.0027962, 0.838717)
+bones/30/rotation = Quaternion(-0.667514, -5.11942e-08, -0.00687544, 0.744566)
+bones/32/position = Vector3(0.0148039, 0.0116182, 0.00176995)
+bones/32/rotation = Quaternion(-0.497418, 0.502568, 0.502568, -0.497418)
+bones/34/position = Vector3(0.0148039, 0.00655417, 0.00176995)
+bones/34/rotation = Quaternion(-0.497418, 0.502568, 0.502568, -0.497418)
+bones/36/position = Vector3(0.0148039, -9.23863e-05, 0.00176995)
+bones/36/rotation = Quaternion(-0.497418, 0.502568, 0.502568, -0.497418)
+bones/38/position = Vector3(-0.0148039, 0.0116182, 0.00176995)
+bones/40/position = Vector3(-0.0148039, 0.00655417, 0.00176995)
+bones/42/position = Vector3(-0.0148039, -9.23863e-05, 0.00176995)
+
+[node name="AnimationPlayer" parent="cockroach" index="1"]
+playback_default_blend_time = 0.25
+
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_ghd1s")
 Animator = NodePath("../cockroach/AnimationPlayer")
