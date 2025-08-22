@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://cnf7n65pa1ho"]
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=4 format=3 uid="uid://cnf7n65pa1ho"]
 
 [ext_resource type="Resource" uid="uid://dv4rlu765mpyd" path="res://FocusCharacter/Resources/Bloodworm.tres" id="1_ygal0"]
+[ext_resource type="Resource" uid="uid://joxldpuv0xuf" path="res://FocusCharacter/Resources/HorseFly.tres" id="2_74ll4"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="4_n11k3"]
 
 [resource]
 script = ExtResource("4_n11k3")
-Characters = Array[Object]([ExtResource("1_ygal0")])
+Characters = Array[Object]([ExtResource("1_ygal0"), ExtResource("2_74ll4")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"

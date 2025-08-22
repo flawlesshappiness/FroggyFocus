@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://cntyr6wehqdsp"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_agj4u"]
+[ext_resource type="PackedScene" uid="uid://d1by3m7qj52p3" path="res://Assets/FlawLizArt/Nature/Bugs/horsefly.fbx" id="2_4sku3"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_almym"]
+
+[node name="Horsefly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_agj4u")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="horsefly" parent="." instance=ExtResource("2_4sku3")]
+
+[node name="Skeleton3D" parent="horsefly/Armature" index="0"]
+bones/0/position = Vector3(0, -0.001, -0.016)
+bones/1/position = Vector3(3.70729e-18, -0.000524128, 0.0166961)
+bones/1/rotation = Quaternion(0.00915433, -7.48503e-26, -2.03266e-18, 0.999958)
+bones/4/rotation = Quaternion(0.074011, 0.0409622, 0.909259, -0.407545)
+bones/6/rotation = Quaternion(-0.166816, 0.278659, -0.691329, 0.645434)
+bones/7/rotation = Quaternion(0.52115, -1.95853e-08, 0.0978995, 0.847831)
+bones/8/rotation = Quaternion(-0.62753, 5.9779e-08, -0.117502, 0.769675)
+bones/10/rotation = Quaternion(-0.166816, 0.278659, -0.691329, 0.645434)
+bones/11/rotation = Quaternion(0.52115, -2.67082e-08, 0.0978995, 0.847831)
+bones/12/rotation = Quaternion(-0.62753, 4.51957e-08, -0.117502, 0.769675)
+bones/14/rotation = Quaternion(-0.166816, 0.278659, -0.691329, 0.645434)
+bones/15/rotation = Quaternion(0.52115, 3.47228e-08, 0.0978995, 0.847831)
+bones/16/rotation = Quaternion(-0.62753, 1.45264e-09, -0.117502, 0.769675)
+bones/18/rotation = Quaternion(-0.166816, -0.278659, 0.691329, 0.645434)
+bones/19/rotation = Quaternion(0.52115, 2.23527e-08, -0.0978995, 0.847831)
+bones/20/rotation = Quaternion(-0.62753, -4.56966e-08, 0.117502, 0.769675)
+bones/22/rotation = Quaternion(-0.166816, -0.278659, 0.691329, 0.645434)
+bones/23/rotation = Quaternion(0.52115, 2.67082e-08, -0.0978995, 0.847831)
+bones/24/rotation = Quaternion(-0.62753, -5.56987e-08, 0.117502, 0.769675)
+bones/26/rotation = Quaternion(-0.166816, -0.278659, 0.691329, 0.645434)
+bones/27/rotation = Quaternion(0.52115, -3.47228e-08, -0.0978995, 0.847831)
+bones/28/rotation = Quaternion(-0.62753, -1.28953e-08, 0.117502, 0.769675)
+bones/30/rotation = Quaternion(-0.0740109, 0.0409622, 0.909259, 0.407544)
+
+[node name="AnimationPlayer" parent="horsefly" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_almym")
+Animator = NodePath("../horsefly/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="horsefly"]
