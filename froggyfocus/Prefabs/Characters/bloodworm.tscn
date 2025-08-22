@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1tio0riiiayt"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_pcmp3"]
+[ext_resource type="PackedScene" uid="uid://dyqk2d3ggrnxv" path="res://Assets/FlawLizArt/Nature/Bugs/blood_worm.fbx" id="2_qd2xa"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_e0a5t"]
+
+[node name="Bloodworm" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_pcmp3")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="blood_worm" parent="." instance=ExtResource("2_qd2xa")]
+
+[node name="Skeleton3D" parent="blood_worm/Armature" index="0"]
+bones/0/position = Vector3(0, -0.001, -0.004)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/3/rotation = Quaternion(0, 0, 0, 1)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
+bones/7/rotation = Quaternion(0, 0, 0, 1)
+bones/9/rotation = Quaternion(0, 0, 0, 1)
+bones/11/rotation = Quaternion(0, 0, 0, 1)
+bones/13/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="AnimationPlayer" parent="blood_worm" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_e0a5t")
+Animator = NodePath("../blood_worm/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="blood_worm"]
