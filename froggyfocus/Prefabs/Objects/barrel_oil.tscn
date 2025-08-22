@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cugkgsqhc8no7"]
+[gd_scene load_steps=7 format=3 uid="uid://cugkgsqhc8no7"]
 
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="1_qbotp"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_umvde"]
+[ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="3_5ejwo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_umvde"]
 size = Vector3(1.41504, 2.00098, 1.41699)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5ejwo"]
 size = Vector3(1.8252, 2.21487, 1.68848)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e5a3"]
+size = Vector3(0.120117, 0.478516, 0.001)
 
 [node name="Barrel_Oil" type="Node3D"]
 
@@ -29,3 +33,12 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00791931, 0)
 shape = SubResource("BoxShape3D_5ejwo")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="FocusHotSpotArea" type="Area3D" parent="."]
+script = ExtResource("3_5ejwo")
+metadata/_custom_type_script = "uid://crb4gwrjb3psl"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusHotSpotArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0080145, 0.718103)
+shape = SubResource("BoxShape3D_3e5a3")
+debug_color = Color(0, 0.7, 0.0583333, 0.419608)
