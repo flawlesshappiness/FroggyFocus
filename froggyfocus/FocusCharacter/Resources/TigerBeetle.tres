@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://b6qp4y2ey8oqk"]
+
+[ext_resource type="PackedScene" uid="uid://vnrq0eoxny8w" path="res://Prefabs/Characters/tiger_beetle.tscn" id="1_5tbpk"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_bcc2j"]
+
+[resource]
+script = ExtResource("2_bcc2j")
+Scene = ExtResource("1_5tbpk")
+Name = "Tiger Beetle"
+LocationHint = "##HINT_LOC_SEAWEED##"
+Accessory = ""
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeed = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

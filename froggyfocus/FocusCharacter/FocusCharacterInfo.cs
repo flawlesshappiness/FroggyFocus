@@ -23,9 +23,6 @@ public partial class FocusCharacterInfo : Resource
     public Vector2 SizeRange = new Vector2(1, 1);
 
     [Export]
-    public float MoveSpeed = 1f;
-
-    [Export]
     public Vector2 MoveSpeedRange = new Vector2(1, 1);
 
     [Export]

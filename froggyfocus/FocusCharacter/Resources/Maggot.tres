@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://cfk0ktgcciegi"]
+
+[ext_resource type="PackedScene" uid="uid://dbycfuiikekn5" path="res://Prefabs/Characters/maggot.tscn" id="1_v2pqt"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_c4a6t"]
+
+[resource]
+script = ExtResource("2_c4a6t")
+Scene = ExtResource("1_v2pqt")
+Name = "Maggot"
+LocationHint = "##HINT_LOC_GARBAGE##"
+Accessory = ""
+FocusValue = 50.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeedRange = Vector2(0.25, 1)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

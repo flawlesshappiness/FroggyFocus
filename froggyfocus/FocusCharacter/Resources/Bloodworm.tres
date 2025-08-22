@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dv4rlu765mpyd"]
+
+[ext_resource type="PackedScene" uid="uid://c1tio0riiiayt" path="res://Prefabs/Characters/bloodworm.tscn" id="1_4jbop"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_jlisl"]
+
+[resource]
+script = ExtResource("2_jlisl")
+Scene = ExtResource("1_4jbop")
+Name = "Blood Worm"
+LocationHint = "##HINT_LOC_OIL##"
+Accessory = ""
+FocusValue = 25.0
+SizeRange = Vector2(0.6, 0.8)
+MoveSpeedRange = Vector2(0.25, 1)
+MoveLengthRange = Vector2(0.25, 0.5)
+MoveDelayRange = Vector2(0, 0)
+CurrencyReward = 15
+SkillChecks = null
+Tags = Array[int]([0, 3])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

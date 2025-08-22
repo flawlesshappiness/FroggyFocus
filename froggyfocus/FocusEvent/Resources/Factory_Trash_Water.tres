@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=5 format=3 uid="uid://conmipikui7b5"]
+
+[ext_resource type="Resource" uid="uid://byqr557n1o5br" path="res://FocusCharacter/Resources/Lanternfly.tres" id="2_rqi3u"]
+[ext_resource type="Resource" uid="uid://f1g3j3g1vkbl" path="res://FocusCharacter/Resources/CommonFly.tres" id="3_dowrq"]
+[ext_resource type="Resource" uid="uid://dk3orexdc33xx" path="res://FocusCharacter/Resources/Shrimp.tres" id="3_icujq"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="4_3ss2c"]
+
+[resource]
+script = ExtResource("4_3ss2c")
+Characters = Array[Object]([ExtResource("3_dowrq"), ExtResource("2_rqi3u"), ExtResource("3_icujq")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"
