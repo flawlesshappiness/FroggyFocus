@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://clftytcba1dij"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_6mkhk"]
+[ext_resource type="PackedScene" uid="uid://b23r68piquvcv" path="res://Assets/FlawLizArt/Nature/Bugs/scorpionfly.fbx" id="2_irmex"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_v3wpm"]
+
+[node name="ScorpionFly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_6mkhk")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="scorpionfly" parent="." instance=ExtResource("2_irmex")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="Skeleton3D" parent="scorpionfly/Armature" index="0"]
+bones/1/position = Vector3(1.54568e-18, 0.00136743, 0.00696115)
+bones/1/rotation = Quaternion(0.00318782, 2.35271e-26, -7.07837e-19, 0.999995)
+bones/4/rotation = Quaternion(0.99537, -8.02049e-08, 8.30606e-07, -0.0961148)
+bones/5/rotation = Quaternion(-0.235667, -4.7261e-12, -3.93314e-07, 0.971834)
+bones/6/rotation = Quaternion(-0.362849, -2.04017e-12, -6.0557e-07, 0.931848)
+bones/7/rotation = Quaternion(-0.536934, 8.49419e-13, -8.96107e-07, 0.843624)
+bones/13/rotation = Quaternion(-0.325104, 0.416047, -0.632129, 0.56712)
+bones/14/rotation = Quaternion(0.501219, -0.000582801, 0.0823088, 0.861397)
+bones/15/rotation = Quaternion(-0.683778, -4.14439e-08, -0.107922, 0.721665)
+bones/17/rotation = Quaternion(-0.337901, 0.427593, -0.625426, 0.558416)
+bones/18/rotation = Quaternion(0.746912, 0.000458405, 0.121107, 0.653801)
+bones/19/rotation = Quaternion(-0.817076, -1.86265e-08, -0.12896, 0.561921)
+bones/21/rotation = Quaternion(-0.377371, 0.462868, -0.602553, 0.529409)
+bones/22/rotation = Quaternion(0.64139, -2.48684e-05, 0.104486, 0.760067)
+bones/23/rotation = Quaternion(-0.744708, -6.96164e-08, -0.117538, 0.656959)
+bones/25/rotation = Quaternion(-0.325104, -0.416047, 0.632129, 0.56712)
+bones/26/rotation = Quaternion(0.501219, 0.000582801, -0.0823088, 0.861397)
+bones/27/rotation = Quaternion(-0.683778, 3.44589e-08, 0.107922, 0.721665)
+bones/29/rotation = Quaternion(-0.337901, -0.427593, 0.625426, 0.558416)
+bones/30/rotation = Quaternion(0.746912, -0.000458397, -0.121107, 0.653801)
+bones/31/rotation = Quaternion(-0.817076, 5.58794e-09, 0.12896, 0.561921)
+bones/33/rotation = Quaternion(-0.377371, -0.462868, 0.602553, 0.529409)
+bones/34/rotation = Quaternion(0.64139, 2.48571e-05, -0.104486, 0.760067)
+bones/35/rotation = Quaternion(-0.744708, 5.58794e-08, 0.117538, 0.656959)
+bones/37/rotation = Quaternion(0.852136, 0.383105, -0.327182, 0.141584)
+bones/39/rotation = Quaternion(0.852136, -0.383105, 0.327182, 0.141583)
+
+[node name="AnimationPlayer" parent="scorpionfly" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_v3wpm")
+Animator = NodePath("../scorpionfly/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="scorpionfly"]

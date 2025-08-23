@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6lgnsssfiop8"]
+
+[ext_resource type="PackedScene" uid="uid://w6oxojkly7mv" path="res://Assets/FlawLizArt/Nature/Bugs/giant_water_bug.fbx" id="1_awdic"]
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_ctewf"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_qrexy"]
+
+[node name="GiantWaterBug" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_ctewf")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="giant_water_bug" parent="." instance=ExtResource("1_awdic")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.061159)
+
+[node name="Skeleton3D" parent="giant_water_bug/Armature" index="0"]
+bones/1/position = Vector3(1.70087e-18, 0.00231518, 0.00766006)
+bones/1/rotation = Quaternion(0.00930711, -2.66583e-26, -2.06659e-18, 0.999957)
+bones/2/position = Vector3(1.51942e-26, 0.0106275, -2.69388e-11)
+bones/2/rotation = Quaternion(-0.253005, -2.56499e-24, 5.61784e-17, 0.967465)
+bones/2/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(0.00151657, 0.00939214, -0.00141201)
+bones/4/rotation = Quaternion(-0.0685047, -0.127109, -0.434271, 0.889134)
+bones/5/position = Vector3(-1.07367e-09, 0.0102235, 1.63904e-10)
+bones/5/rotation = Quaternion(0.114818, 0.0222651, 0.449874, 0.885401)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(0.00181669, 0.00222777, -0.00177773)
+bones/7/rotation = Quaternion(-0.155158, -0.113757, -0.817927, 0.5422)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(5.99484e-11, 0.00640297, -4.91295e-11)
+bones/8/rotation = Quaternion(-0.0999266, 0.00252692, -0.247091, 0.963823)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(0.00236617, -0.00638663, -0.00161735)
+bones/10/rotation = Quaternion(-0.150518, -0.119869, -0.789242, 0.583158)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(3.38515e-10, 0.00827834, -4.72977e-11)
+bones/11/rotation = Quaternion(-0.14671, 0.0021526, -0.373246, 0.916056)
+bones/11/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(-0.00151657, 0.00939214, -0.00141201)
+bones/13/rotation = Quaternion(-0.0685047, 0.127109, 0.434271, 0.889134)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(1.07367e-09, 0.0102235, 1.63904e-10)
+bones/14/rotation = Quaternion(0.114818, -0.022265, -0.449874, 0.885401)
+bones/14/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(-0.00181669, 0.00222777, -0.00177773)
+bones/16/rotation = Quaternion(-0.155158, 0.113757, 0.817927, 0.5422)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(-5.99484e-11, 0.00640297, -4.91295e-11)
+bones/17/rotation = Quaternion(-0.0999266, -0.00252692, 0.247091, 0.963823)
+bones/17/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(-0.00236617, -0.00638663, -0.00161735)
+bones/19/rotation = Quaternion(-0.150518, 0.119869, 0.789242, 0.583158)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(-3.38515e-10, 0.00827834, -4.72977e-11)
+bones/20/rotation = Quaternion(-0.14671, -0.00215261, 0.373246, 0.916056)
+bones/20/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="giant_water_bug" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_qrexy")
+Animator = NodePath("../giant_water_bug/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="giant_water_bug"]

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dvwxhlp13u47w"]
+
+[ext_resource type="PackedScene" uid="uid://b6lgnsssfiop8" path="res://Prefabs/Characters/giant_water_bug.tscn" id="1_rj2qx"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_jh44j"]
+
+[resource]
+script = ExtResource("2_jh44j")
+Scene = ExtResource("1_rj2qx")
+Name = "Giant Water Bug"
+LocationHint = "##HINT_LOC_GARBAGE##"
+Accessory = ""
+FocusValue = 30.0
+SizeRange = Vector2(0.4, 0.6)
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+CurrencyReward = 30
+SkillChecks = Array[int]([2, 3])
+Tags = Array[int]([0, 3])
+metadata/_custom_type_script = "uid://buqirimb2mf5"
