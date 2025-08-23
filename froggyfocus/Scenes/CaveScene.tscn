@@ -580,7 +580,7 @@ transform = Transform3D(3.99955, 0, 0.0601069, 0, 4, 0, -0.0601069, 0, 3.99955, 
 transform = Transform3D(1.4356, 0, -1.3925, 0, 2, 0, 1.3925, 0, 1.4356, 4.08409, 32.0914, -14.8223)
 
 [node name="FocusEvents" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -300)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2732, 0, -168.932)
 
 [node name="Stalagmite" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.913065, 0)

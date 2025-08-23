@@ -1,0 +1,36 @@
+[gd_scene load_steps=13 format=3 uid="uid://rvayc5bbn3k5"]
+
+[ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="1_o6m71"]
+[ext_resource type="Script" uid="uid://cih4n0nuwi6uq" path="res://Scenes/BugPreviewScene.cs" id="1_ya7o6"]
+[ext_resource type="Resource" uid="uid://4x4koxec4upp" path="res://FocusCharacter/Resources/Ant.tres" id="2_lpi7d"]
+[ext_resource type="Resource" uid="uid://cqjm2dxtl5xbj" path="res://FocusCharacter/Resources/Beetle_Swamp.tres" id="3_rjvbh"]
+[ext_resource type="Resource" uid="uid://c6hb68stthi3u" path="res://FocusCharacter/Resources/CaveBeetle.tres" id="4_i2dw4"]
+[ext_resource type="Resource" uid="uid://bjsf02kaa2g15" path="res://FocusCharacter/Resources/CaveCricket.tres" id="5_db2wp"]
+[ext_resource type="Resource" uid="uid://bfoqlq1ax6u82" path="res://FocusCharacter/Resources/Cockroach.tres" id="6_vb0hd"]
+[ext_resource type="Resource" uid="uid://f1tthxd3v53y" path="res://FocusCharacter/Resources/Ladybug.tres" id="7_y175l"]
+[ext_resource type="Resource" uid="uid://cd0sd1yco0x3" path="res://FocusCharacter/Resources/RoveBeetle.tres" id="8_4ldfl"]
+[ext_resource type="Resource" uid="uid://bq42s5l1lfwvq" path="res://FocusCharacter/Resources/Sandflea.tres" id="9_y5qr1"]
+[ext_resource type="Resource" uid="uid://qp57l760oc3m" path="res://FocusCharacter/Resources/Tick.tres" id="10_7brs7"]
+
+[sub_resource type="Environment" id="Environment_ya7o6"]
+background_mode = 1
+background_color = Color(0.1088, 0.220547, 0.34, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.2241, 0.25011, 0.27, 1)
+
+[node name="BugPreviewScene" type="Node3D" node_paths=PackedStringArray("Camera")]
+script = ExtResource("1_ya7o6")
+Camera = NodePath("Camera3D")
+WalkingBugs = Array[Object]([ExtResource("2_lpi7d"), ExtResource("3_rjvbh"), ExtResource("4_i2dw4"), ExtResource("5_db2wp"), ExtResource("6_vb0hd"), ExtResource("7_y175l"), ExtResource("8_4ldfl"), ExtResource("9_y5qr1"), ExtResource("10_7brs7")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ya7o6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -2.18557e-08, 0.5, -0.5, -3.78552e-08, 0.866025, 0, -1, -4.37114e-08, 0, -1.40917, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(2.78986e-08, -0.628723, 0.777629, 1.04808e-08, 0.777629, 0.628723, -1, -9.39029e-09, 2.82843e-08, 0.745433, 0.679106, 9.44024e-08)
+
+[node name="Beetle" parent="." instance=ExtResource("1_o6m71")]
+visible = false

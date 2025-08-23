@@ -18,7 +18,7 @@ is_hemisphere = true
 [node name="Ant" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_pjuh3")
 Animation = NodePath("AnimationStateMachine")
-Accessories = [NodePath("ant/Armature/Skeleton3D/moss")]
+Accessories = [NodePath("ant/Armature/Skeleton3D/moss"), NodePath("ant/Armature/Skeleton3D/moss2")]
 
 [node name="ant" parent="." instance=ExtResource("1_hdfdn")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.0544099)
