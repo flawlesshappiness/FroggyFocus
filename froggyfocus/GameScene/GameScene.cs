@@ -14,6 +14,9 @@ public partial class GameScene : Scene
     public WorldEnvironment WorldEnvironment;
 
     [Export]
+    public Node3D WorldBugParent;
+
+    [Export]
     public Array<WeatherInfo> Weathers = new();
 
     [Export]
@@ -21,6 +24,7 @@ public partial class GameScene : Scene
 
     private string current_focus_event_id;
     private List<FocusHotSpotArea> hotspot_areas;
+    private List<WorldBug> world_bugs;
 
     public override void _Ready()
     {
@@ -30,9 +34,12 @@ public partial class GameScene : Scene
         FocusEventController.Instance.OnFocusEventCompleted += FocusEventEnded;
         FocusEventController.Instance.OnFocusEventFailed += FocusEventEnded;
 
+        world_bugs = WorldBugParent.GetNodesInChildren<WorldBug>();
+
         MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather(Weathers);
         FocusHotSpotController.Instance.Start();
+        WorldBugController.Instance.Start();
 
         HideFocusEvents();
     }
@@ -87,5 +94,16 @@ public partial class GameScene : Scene
         }
 
         return hotspot_areas;
+    }
+
+    public WorldBug GetClosestWorldBug()
+    {
+        var player_pos = Player.Instance.GlobalPosition;
+        return world_bugs
+            .Where(x => !x.IsRunning && x.GlobalPosition.DistanceTo(player_pos) > WorldBug.MIN_DIST_TO_PLAYER)
+            .OrderBy(x => x.GlobalPosition.DistanceTo(player_pos))
+            .Take(6)
+            .ToList()
+            .Random();
     }
 }

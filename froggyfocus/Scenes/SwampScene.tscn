@@ -1,7 +1,6 @@
 [gd_scene load_steps=62 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_5usxp"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
@@ -51,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="33_brx17"]
 [ext_resource type="Resource" uid="uid://c7a2ryrxyjyti" path="res://FocusEvent/Resources/Swamp Water Woods.tres" id="42_8ow6q"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
+[ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="49_b0wg7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_20fcr"]
 vertices = PackedVector3Array(3, 0.449998, -7.25, 2.25, 0.449998, -7.25, 2, 0.449998, -6.5, 4.25, 0.449998, -4.75, -7.25, 0.449998, -3.25, -7.25, 0.449998, -2.25, -5.25, 0.449998, -2.5, -3.25, 0.449998, -6, -3.75, 0.449998, -7, -5.5, 0.449998, -6, -2, 0.449998, -6, -4.75, 0.449998, -0.5, 7.5, 0.449998, 1.75, 7.25, 0.449998, -3, -7, 0.699998, 0, -7.5, 0.449998, -0.5, -7.25, 0.449998, 3, -4.75, 0.449998, 4.25, 3.25, 0.449998, 7.25, -5.25, 0.699998, 0, -3.25, 0.449998, 7, -1.75, 0.449998, 7.5, 5.5, 0.449998, 6, 7.25, 0.449998, 3.25, 20.75, 0.449998, -0.5, 19.5, 0.449998, -1.5, 18.25, 0.449998, -1.75, 22, 0.449998, 1.75, 13, 0.449998, 2, 11.75, 0.449998, 3.25, 11.75, 0.449998, 4.5, 13, 0.449998, 7.25, 21, 0.449998, 5.25, 22.25, 0.449998, 4, 14.75, 0.449998, 8.75, 16.25, 0.449998, 9, 15.5, 0.449998, -1.5, 13.5, 0.449998, -0.5, 20.5, 0.449998, 7.75, -6.5, 1.7, -1.25, -5.75, 1.7, -1, -6, 1.7, -1.5, 27.25, 0.449998, 5.25, 27.25, 0.449998, 6.75, 27.75, 0.449998, 7, 28.75, 0.449998, 3.5, 28, 0.449998, 8.5, 28.75, 0.449998, 9, 32, 0.449998, 4.25, 31.25, 0.449998, 3.75, 31, 0.449998, 9.25, 32.75, 0.449998, 7.25, 34.25, 0.449998, 21.5, 38, 0.449998, 25.5, 37.75, 0.449998, 22.5, 43.25, 0.449998, 10, 39.5, 0.449998, 9, 38.5, 0.449998, 9.5, 34.5, 0.449998, 13.75, 40.25, 0.449998, 18.25, 43.25, 0.449998, 19, 39, 0.449998, 18.5, 33.25, 0.449998, 17.75, 48, 0.449998, 21.75, 48.25, 0.449998, 25, 48.75, 0.449998, 25, 51.75, 0.449998, 21.75, 47.25, 0.449998, 20.25, 53, 0.449998, 17.5, 52, 0.449998, 14, 49, 0.449998, 10.5, 47, 0.449998, 9, 43.5, 3.95, 27.5, 44.25, 4.2, 27.25, 45.75, 5.45, 24.5, 43.75, 5.2, 20, 41.5, 5.2, 20.25, 41, 5.45, 22.75, 45.75, 5.45, 23.5, 41, 5.7, 24.5, 43.75, 0.449998, 25.5, 46.75, 0.449998, 26.25, 46.5, 0.449998, 23, 40, 0.449998, 20.25, 39.75, 0.449998, 22, 39.75, 0.449998, 24.25, 41, 0.449998, 26, 45.25, 0.449998, 21)
@@ -114,11 +114,12 @@ _data = {
 }
 point_count = 4
 
-[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvents")]
+[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEvents")]
 script = ExtResource("1_qfos7")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-Weathers = Array[ExtResource("2_5usxp")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
+WorldBugParent = NodePath("World/WorldBugs")
+Weathers = [ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")]
 FocusEvents = [NodePath("World/FocusEvents/Land/FocusEvent_Land"), NodePath("World/FocusEvents/Land/FocusEvent_Mushroom"), NodePath("World/FocusEvents/Water/FocusEvent_Lilypad"), NodePath("World/FocusEvents/Water/FocusEvent_Wood")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -1143,6 +1144,288 @@ volume_db = -5.0
 autoplay = true
 panning_strength = 0.75
 bus = &"Environment"
+
+[node name="WorldBugs" type="Node3D" parent="World"]
+
+[node name="Woods" type="Node3D" parent="World/WorldBugs"]
+
+[node name="WorldBug_SwampWater" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.712087, 0, -0.702091, 0, 1, 0, 0.702091, 0, 0.712087, -9.21017, -1, 13.4731)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater2" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.947053, 0, -0.321076, 0, 1, 0, 0.321076, 0, -0.947053, -10.0339, -1, 21.638)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater3" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.139691, 0, 0.990195, 0, 1, 0, -0.990195, 0, 0.139691, 3.07572, -1, 22.9625)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater4" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.266078, 0, 0.963951, 0, 1, 0, -0.963951, 0, -0.266078, 0.571924, -1, 38.8023)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater5" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.914388, 0, -0.404838, 0, 1, 0, 0.404838, 0, 0.914388, -5.96265, -1, 42.8967)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater6" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.787591, 0, -0.616198, 0, 1, 0, 0.616198, 0, -0.787591, -4.94771, -1, 49.8629)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater7" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.733315, 0, 0.679889, 0, 1, 0, -0.679889, 0, -0.733315, -17.5882, -1, 52.5488)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater8" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.733315, 0, 0.679889, 0, 1, 0, -0.679889, 0, -0.733315, -22.5321, -1, 44.5147)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater9" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.733315, 0, 0.679889, 0, 1, 0, -0.679889, 0, -0.733315, -33.4538, -1, 36.7205)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater10" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.851809, 0, -0.523852, 0, 1, 0, 0.523852, 0, -0.851809, -21.7145, -1, 31.7899)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater11" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.851809, 0, -0.523852, 0, 1, 0, 0.523852, 0, -0.851809, -39.7095, -1, 45.4496)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater12" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.689746, 0, -0.724051, 0, 1, 0, 0.724051, 0, -0.689746, -51.9851, -1, 57.8327)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater13" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.975653, 0, 0.219318, 0, 1, 0, -0.219318, 0, -0.975653, -60.6433, -1, 71.6441)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater14" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.541546, 0, -0.84067, 0, 1, 0, 0.84067, 0, -0.541546, -30.8842, -1, 70.996)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater15" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.535311, 0, -0.844655, 0, 1, 0, 0.844655, 0, 0.535311, -18.8078, -1, 64.1683)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater16" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.587587, 0, -0.80916, 0, 1, 0, 0.80916, 0, -0.587587, -30.6448, -1, 57.9642)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater17" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.550991, 0, -0.834511, 0, 1, 0, 0.834511, 0, 0.550991, -24.1307, -1, 74.9437)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater18" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.981693, 0, -0.190466, 0, 1, 0, 0.190466, 0, 0.981693, -43.8706, -1, 86.6985)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater19" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.227399, 0, -0.973801, 0, 1, 0, 0.973801, 0, -0.227399, -37.2992, -1, 92.9278)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater20" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.925031, 0, 0.379892, 0, 1, 0, -0.379892, 0, -0.925031, -50.3679, -1, 79.9441)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater21" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.66752, 0, 0.744591, 0, 1, 0, -0.744591, 0, 0.66752, -59.0783, -1, 81.9025)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater22" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.66752, 0, 0.744591, 0, 1, 0, -0.744591, 0, 0.66752, -12.2278, -1, 110.09)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater23" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.999891, 0, -0.0147297, 0, 1, 0, 0.0147297, 0, 0.999891, 0.343375, -1, 103.603)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater24" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.658085, 0, 0.752943, 0, 1, 0, -0.752943, 0, 0.658085, 5.1588, -1, 90.8202)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater25" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.950721, 0, -0.310045, 0, 1, 0, 0.310045, 0, 0.950721, 24.7059, -1, 102.151)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater26" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.999086, 0, -0.0427297, 0, 1, 0, 0.0427297, 0, 0.999086, 13.4721, -1, 97.5398)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater27" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.854947, 0, 0.518714, 0, 1, 0, -0.518714, 0, 0.854947, 26.9492, -1, 59.688)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater28" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.177858, 0, 0.984056, 0, 1, 0, -0.984056, 0, -0.177858, 20.8866, -1, 58.5724)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater29" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.177858, 0, 0.984056, 0, 1, 0, -0.984056, 0, -0.177858, 8.51187, -1, 67.2651)
+Info = ExtResource("42_8ow6q")
+
+[node name="WorldBug_SwampWater30" parent="World/WorldBugs/Woods" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.989384, 0, 0.145323, 0, 1, 0, -0.145323, 0, -0.989384, 11.2047, -1, 54.2463)
+Info = ExtResource("42_8ow6q")
+
+[node name="Lilypads" type="Node3D" parent="World/WorldBugs"]
+
+[node name="WorldBug" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.998228, 0, -0.059498, 0, 1, 0, 0.059498, 0, 0.998228, 13.3961, -1, -7.1916)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug2" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.0974439, 0, -0.995241, 0, 1, 0, 0.995241, 0, 0.0974439, 6.12105, -1, -11.0049)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug3" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.841001, 0, -0.541033, 0, 1, 0, 0.541033, 0, -0.841001, 10.8605, -1, -14.5036)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug4" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.945586, 0, 0.32537, 0, 1, 0, -0.32537, 0, 0.945586, 15.9886, -1, -7.72759)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug5" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.984059, 0, 0.177841, 0, 1, 0, -0.177841, 0, 0.984059, 31.3997, -1, -14.4866)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug6" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.783563, 0, 0.621312, 0, 1, 0, -0.621312, 0, 0.783563, 39.8023, -1, -20.1188)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug7" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.935425, 0, -0.353524, 0, 1, 0, 0.353524, 0, 0.935425, 46.2247, -1, -25.6393)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug8" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.842875, 0, -0.538109, 0, 1, 0, 0.538109, 0, 0.842875, 57.8114, -1, -20.4918)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug9" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.99909, 0, 0.042643, 0, 1, 0, -0.042643, 0, 0.99909, 38.4785, -1, -34.9204)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug10" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.715668, 0, -0.69844, 0, 1, 0, 0.69844, 0, 0.715668, 29.1614, -0.999999, -38.1333)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug11" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.333017, 0, -0.94292, 0, 1, 0, 0.94292, 0, 0.333017, 26.2721, -0.999999, -43.6491)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug12" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.36099, 0, 0.932569, 0, 1, 0, -0.932569, 0, 0.36099, 33.5613, -0.999999, -49.1425)
+Info = ExtResource("14_52an4")
+
+[node name="WorldBug13" parent="World/WorldBugs/Lilypads" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.0903194, 0, -0.995912, 0, 1, 0, 0.995912, 0, -0.0903194, 12.055, -1, -61.1107)
+Info = ExtResource("14_52an4")
+
+[node name="Islands" type="Node3D" parent="World/WorldBugs"]
+
+[node name="WorldBug" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.962488, 0, -0.271323, 0, 1, 0, 0.271323, 0, -0.962488, -2.30409, 0, 2.73228)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug2" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.502265, 0, 0.864713, 0, 1, 0, -0.864713, 0, -0.502265, 1.20652, 0, -2.94964)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug3" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.967537, 0, -0.252728, 0, 1, 0, 0.252728, 0, 0.967537, 2.59726, 0, 2.82866)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug4" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.995186, 0, -0.0979996, 0, 1, 0, 0.0979996, 0, -0.995186, 17.1937, 0, 1.10525)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug5" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.967537, 0, -0.252728, 0, 1, 0, 0.252728, 0, 0.967537, 16.9308, 0, 6.67406)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug6" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.967537, 0, -0.252728, 0, 1, 0, 0.252728, 0, 0.967537, 29.8443, 0, 6.58283)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug7" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.967537, 0, -0.252728, 0, 1, 0, 0.252728, 0, 0.967537, 35.8809, 0, 18.0109)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug8" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.723738, 0, -0.690074, 0, 1, 0, 0.690074, 0, -0.723738, 40.029, 0, 12.9786)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug9" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.153607, 0, -0.988132, 0, 1, 0, 0.988132, 0, 0.153607, 45.4765, 0, 12.4228)
+Info = ExtResource("12_cmxon")
+
+[node name="WorldBug10" parent="World/WorldBugs/Islands" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.281404, 0, 0.959589, 0, 1, 0, -0.959589, 0, 0.281404, 48.5635, 0, 17.3453)
+Info = ExtResource("12_cmxon")
+
+[node name="Mushrooms" type="Node3D" parent="World/WorldBugs"]
+
+[node name="WorldBug" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.962488, 0, -0.271323, 0, 1, 0, 0.271323, 0, -0.962488, 66.6217, 1.6345, -1.09767)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug2" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.654464, 0, 0.756093, 0, 1, 0, -0.756093, 0, -0.654464, 69.5266, 2.52688, 6.43981)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug3" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.624166, 0, -0.781291, 0, 1, 0, 0.781291, 0, -0.624166, 57.7242, 2.11434, 16.7305)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug4" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.624166, 0, -0.781291, 0, 1, 0, 0.781291, 0, -0.624166, 59.1297, 4.16613, 6.77522)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug5" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.7697, 0, 0.638405, 0, 1, 0, -0.638405, 0, -0.7697, 64.412, 5.89903, 11.3618)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug6" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.823532, 0, -0.567269, 0, 1, 0, 0.567269, 0, -0.823532, 68.8874, 7.05808, 17.0428)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug7" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.0714452, 0, 0.997444, 0, 1, 0, -0.997444, 0, -0.0714452, 65.0823, 10.9695, 25.235)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug8" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.0714452, 0, 0.997444, 0, 1, 0, -0.997444, 0, -0.0714452, 56.9383, 12.6708, 27.2576)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug9" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.0714452, 0, 0.997444, 0, 1, 0, -0.997444, 0, -0.0714452, 57.1459, 12.6708, 59.0893)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug10" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.0714452, 0, 0.997444, 0, 1, 0, -0.997444, 0, -0.0714452, 51.6529, 15.9784, 72.1329)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug11" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.962625, 0, -0.270836, 0, 1, 0, 0.270836, 0, -0.962625, 48.472, 10.9536, 59.167)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug12" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.416979, 0, -0.908916, 0, 1, 0, 0.908916, 0, -0.416979, 40.8045, 7.04993, 66.8145)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug13" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(-0.369812, 0, 0.929106, 0, 1, 0, -0.929106, 0, -0.369812, 42.6478, 5.89157, 73.8028)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug14" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.957877, 0, 0.287177, 0, 1, 0, -0.287177, 0, 0.957877, 34.1217, 2.51951, 80.9376)
+Info = ExtResource("26_ghoyf")
+
+[node name="WorldBug15" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
+transform = Transform3D(0.0204013, 0, 0.999792, 0, 1, 0, -0.999792, 0, 0.0204013, 26.111, 1.62395, 83.1096)
+Info = ExtResource("26_ghoyf")
 
 [node name="Sounds" type="Node3D" parent="."]
 
