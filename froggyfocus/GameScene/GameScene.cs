@@ -34,7 +34,7 @@ public partial class GameScene : Scene
         FocusEventController.Instance.OnFocusEventCompleted += FocusEventEnded;
         FocusEventController.Instance.OnFocusEventFailed += FocusEventEnded;
 
-        world_bugs = WorldBugParent.GetNodesInChildren<WorldBug>();
+        world_bugs = WorldBugParent?.GetNodesInChildren<WorldBug>() ?? new List<WorldBug>();
 
         MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather(Weathers);
