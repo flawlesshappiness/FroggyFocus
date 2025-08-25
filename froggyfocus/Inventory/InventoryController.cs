@@ -1,3 +1,4 @@
+using Godot;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,45 +21,78 @@ public partial class InventoryController : SingletonController
         {
             Category = category,
             Text = "Add CharacterData",
-            Action = DebugAddCharacterData
+            Action = SelectCharacter
         });
 
-        void DebugAddCharacterData(DebugView v)
+        void SelectCharacter(DebugView v)
         {
             v.HideContent();
             v.SetContent_Search();
 
             foreach (var info in FocusCharacterController.Instance.Collection.Resources)
             {
-                v.ContentSearch.AddItem(info.Name, () => AddCharacter(info));
+                v.ContentSearch.AddItem(info.Name, () => DebugAddCharacterData(info));
             }
 
             v.ContentSearch.UpdateButtons();
         }
+
+        void DebugAddCharacterData(FocusCharacterInfo info)
+        {
+            var data = CreateCharacterData(info);
+            AddCharacter(data);
+        }
     }
 
-    public void AddCharacter(FocusCharacterInfo info)
+    public InventoryCharacterData CreateCharacterData(FocusCharacterInfo info)
     {
-        var data = new InventoryCharacterData
-        {
-            InfoPath = info.ResourcePath,
-            Value = info.CurrencyReward,
-            Stars = 0
-        };
+        var data = new InventoryCharacterData();
+        var rng = new RandomNumberGenerator();
 
-        Data.Game.Inventory.Characters.Add(data);
-        Data.Game.Save();
+        // Info
+        data.InfoPath = info.ResourcePath;
+
+        // Size
+        data.Size = rng.RandfRange(0.5f, 0.9f);
+
+        // Stars
+        var start = rng.RandiRange(1, 3);
+        var hotspot = Player.Instance.HasHotspot ? 1 : 0;
+        data.Stars = Mathf.Clamp(start + hotspot, 1, 5);
+
+        // Value
+        var base_value = Constants.BUG_BASE_VALUE;
+        var base_multiplier = info.MoneyMultiplier;
+        var stars_value = 5 * data.Stars;
+        var stars_multiplier = 1f + Mathf.Clamp(-0.2f + 0.1f * data.Stars, 0f, 1f);
+        var size_value = (int)(20 * data.Size);
+        var tag_multiplier = GetTagMoneyMultiplier(info);
+        var multiplier = base_multiplier * stars_multiplier * tag_multiplier;
+        data.Value = (int)((base_value + stars_value + size_value) * multiplier);
+
+        return data;
     }
 
-    public void AddCharacter(FocusTarget target)
+    private float GetTagMoneyMultiplier(FocusCharacterInfo info)
     {
-        var data = new InventoryCharacterData
-        {
-            InfoPath = target.Info.ResourcePath,
-            Value = target.Reward,
-            Stars = target.Stars
-        };
+        var significant_tags = new List<FocusCharacterTag> {
+            FocusCharacterTag.Sandy, FocusCharacterTag.Crystalized, FocusCharacterTag.Mossy,
+            FocusCharacterTag.Infested, FocusCharacterTag.Flower, FocusCharacterTag.Wooden };
 
+        var has_significant = info.Tags.Intersect(significant_tags).Any();
+
+        if (has_significant)
+        {
+            return 1.25f;
+        }
+        else
+        {
+            return 1.0f;
+        }
+    }
+
+    public void AddCharacter(InventoryCharacterData data)
+    {
         Data.Game.Inventory.Characters.Add(data);
         Data.Game.Save();
     }

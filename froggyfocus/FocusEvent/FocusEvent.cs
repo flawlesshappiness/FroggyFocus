@@ -74,15 +74,13 @@ public partial class FocusEvent : Node3D
         var info = DebugTargetInfo ?? Info.GetRandomCharacter();
         DebugTargetInfo = null;
 
+        var data = InventoryController.Instance.CreateCharacterData(info);
+
+        data.Stars = DebugTargetStars ?? data.Stars;
+        DebugTargetStars = null;
+
         Target.GlobalPosition = GlobalPosition;
-        Target.SetCharacter(info);
-
-        if (DebugTargetStars != null)
-        {
-            Target.SetStars(DebugTargetStars ?? 0);
-            DebugTargetStars = null;
-        }
-
+        Target.SetData(data);
         Target.Show();
     }
 

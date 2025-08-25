@@ -11,7 +11,7 @@ public partial class InventoryReplacePopup : PopupControl
     [Export]
     public Button DiscardButton;
 
-    private FocusCharacterInfo ItemToAdd;
+    private FocusTarget current_target;
 
     public override void _Ready()
     {
@@ -39,17 +39,17 @@ public partial class InventoryReplacePopup : PopupControl
         MouseVisibility.Instance.Lock.SetLock(id, locked);
     }
 
-    public void SetCharacter(FocusCharacterInfo info)
+    public void SetTarget(FocusTarget target)
     {
-        ItemToAdd = info;
-        PreviewButton.SetCharacter(info);
+        current_target = target;
+        PreviewButton.SetCharacter(target.Info);
         InventoryContainer.UpdateButtons();
     }
 
     private void InventoryButton_Pressed(InventoryCharacterData data)
     {
         InventoryController.Instance.RemoveCharacterData(data);
-        InventoryController.Instance.AddCharacter(ItemToAdd);
+        InventoryController.Instance.AddCharacter(current_target.CharacterData);
         Data.Game.Save();
 
         ClosePopup();

@@ -51,14 +51,13 @@ public static class HandIn
     {
         var rng = new RandomNumberGenerator();
         var count = rng.RandiRange(info.CountRange.X, info.CountRange.Y);
-        var request_infos = info.PossibleRequests.TakeRandom(count, allow_duplicates: true);
 
-        data.Requests = request_infos.Select(x => new InventoryCharacterData
-        {
-            InfoPath = x.ResourcePath
-        }).ToList();
+        data.RequestInfos = info.PossibleRequests
+            .TakeRandom(count, allow_duplicates: true)
+            .Select(x => x.ResourcePath)
+            .ToList();
 
-        var reward_base = request_infos.Sum(x => x.CurrencyReward);
+        var reward_base = Constants.BUG_BASE_VALUE * count;
         var reward_mul = rng.RandfRange(info.RewardMultiplierRange.X, info.RewardMultiplierRange.Y);
         var reward = (int)(reward_base * reward_mul);
         data.MoneyReward = reward;

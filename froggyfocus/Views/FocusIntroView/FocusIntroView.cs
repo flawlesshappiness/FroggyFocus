@@ -57,7 +57,7 @@ public partial class FocusIntroView : View
     public void LoadTarget(FocusTarget target)
     {
         LoadCharacter(target.Info);
-        SetDifficultyStars(target.Stars);
+        SetDifficultyStars(target.CharacterData.Stars);
     }
 
     public void LoadCharacter(FocusCharacterInfo info)

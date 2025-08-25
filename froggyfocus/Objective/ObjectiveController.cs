@@ -124,7 +124,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
         foreach (var objective in Collection.Resources)
         {
             var valid_tag = !objective.UseTag || info.Tags.Any(x => x == objective.RequirementTag);
-            var valid_rarity = target.Stars >= objective.MinimumStars;
+            var valid_rarity = target.CharacterData.Stars >= objective.MinimumStars;
             var valid = valid_tag && valid_rarity;
             if (valid)
             {

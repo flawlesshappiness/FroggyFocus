@@ -95,12 +95,12 @@ public partial class FocusOutroView : View
     {
         if (InventoryController.Instance.IsInventoryFull())
         {
-            InventoryReplacePopup.SetCharacter(current_info);
+            InventoryReplacePopup.SetTarget(current_target);
             yield return InventoryReplacePopup.WaitForPopup();
         }
         else
         {
-            InventoryController.Instance.AddCharacter(current_target);
+            InventoryController.Instance.AddCharacter(current_target.CharacterData);
             yield return null;
         }
     }

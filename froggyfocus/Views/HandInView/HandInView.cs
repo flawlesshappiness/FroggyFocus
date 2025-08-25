@@ -154,11 +154,11 @@ public partial class HandInView : View
         current_info = HandInController.Instance.GetInfo(data.Id);
         RequestButtons.ForEach(x => x.Hide());
 
-        for (int i = 0; i < data.Requests.Count; i++)
+        for (int i = 0; i < data.RequestInfos.Count; i++)
         {
             // Info
-            var request = data.Requests[i];
-            var info = FocusCharacterController.Instance.GetInfoFromPath(request.InfoPath);
+            var request = data.RequestInfos[i];
+            var info = FocusCharacterController.Instance.GetInfoFromPath(request);
 
             // Submission
             var map = maps[i];
@@ -207,8 +207,8 @@ public partial class HandInView : View
 
     private void RequestButton_FocusEntered(ButtonMap map)
     {
-        var request = current_data.Requests[map.Index];
-        var info = FocusCharacterController.Instance.GetInfoFromPath(request.InfoPath);
+        var request = current_data.RequestInfos[map.Index];
+        var info = FocusCharacterController.Instance.GetInfoFromPath(request);
         ShowInfo(info);
     }
 
@@ -302,7 +302,7 @@ public partial class HandInView : View
 
     private void Validate()
     {
-        var is_valid = GetSubmissions().Count == current_data.Requests.Count;
+        var is_valid = GetSubmissions().Count == current_data.RequestInfos.Count;
         ClaimButton.Disabled = !is_valid;
     }
 

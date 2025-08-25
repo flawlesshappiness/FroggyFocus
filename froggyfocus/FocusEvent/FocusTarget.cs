@@ -9,11 +9,9 @@ public partial class FocusTarget : Node3D
 
     public FocusCharacterInfo Info { get; private set; }
     public FocusCharacter Character { get; private set; }
-    public float Size { get; private set; }
-    public int Stars { get; private set; }
+    public InventoryCharacterData CharacterData { get; private set; }
     public float Difficulty { get; private set; }
-    public int Reward { get; private set; }
-    public float Radius => Size * 0.5f;
+    public float Radius => CharacterData.Size * 0.5f;
 
     private float UpdatedMoveSpeed { get; set; }
 
@@ -25,7 +23,17 @@ public partial class FocusTarget : Node3D
         this.focus_event = focus_event;
     }
 
-    public void SetCharacter(FocusCharacterInfo info)
+    public void SetData(InventoryCharacterData data)
+    {
+        CharacterData = data;
+        Info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
+        SetCharacter(Info);
+        UpdateSwimmer();
+        UpdateDifficulty();
+        UpdateMoveSpeed();
+    }
+
+    private void SetCharacter(FocusCharacterInfo info)
     {
         RemoveCharacter();
 
@@ -35,27 +43,12 @@ public partial class FocusTarget : Node3D
         Character.SetParent(this);
         Character.ClearPositionAndRotation();
 
-        UpdateSwimmer();
-        UpdateDifficulty();
-        UpdateMoveSpeed();
-
-        RandomizeSize();
+        Scale = Vector3.One * CharacterData.Size;
     }
 
     private void UpdateDifficulty()
     {
-        var start = rng.RandiRange(1, 3);
-        var hotspot = Player.Instance.HasHotspot ? 1 : 0;
-        var stars = Mathf.Clamp(start + hotspot, 1, 5);
-        SetStars(stars);
-    }
-
-    public void SetStars(int stars)
-    {
-        var difficulty = Mathf.Clamp((stars - 1) / 4f, 0, 1);
-        Stars = stars;
-        Difficulty = difficulty;
-        Reward = (int)(Info.CurrencyReward + (stars * 5));
+        Difficulty = Mathf.Clamp((CharacterData.Stars - 1) / 4f, 0, 1);
     }
 
     private void UpdateMoveSpeed()
@@ -69,19 +62,6 @@ public partial class FocusTarget : Node3D
 
         Character.QueueFree();
         Character = null;
-    }
-
-    public void RandomizeSize()
-    {
-        var rng = new RandomNumberGenerator();
-        var size = rng.RandfRange(Info.SizeRange.X, Info.SizeRange.Y);
-        SetSize(size);
-    }
-
-    public void SetSize(float size)
-    {
-        Size = size;
-        Scale = Vector3.One * size;
     }
 
     public IEnumerator WaitForMoveToRandomPosition()
