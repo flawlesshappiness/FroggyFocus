@@ -14,9 +14,6 @@ public partial class HandInInfo : Resource
     public Vector2I CountRange;
 
     [Export]
-    public Vector2 RewardMultiplierRange;
-
-    [Export]
     public int ClaimCountToUnlock;
 
     [Export]

@@ -58,7 +58,7 @@ public static class HandIn
             .ToList();
 
         var reward_base = Constants.BUG_BASE_VALUE * count;
-        var reward_mul = rng.RandfRange(info.RewardMultiplierRange.X, info.RewardMultiplierRange.Y);
+        var reward_mul = rng.RandfRange(4f, 6f);
         var reward = (int)(reward_base * reward_mul);
         data.MoneyReward = reward;
     }
