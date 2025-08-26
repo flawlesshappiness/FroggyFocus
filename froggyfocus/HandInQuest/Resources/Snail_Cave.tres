@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://buwjkq6ue7rvb"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://buwjkq6ue7rvb"]
 
-[ext_resource type="Resource" uid="uid://erlcywx4bqmx" path="res://FocusCharacter/Resources/Locust.tres" id="1_ym5rv"]
+[ext_resource type="Resource" uid="uid://f3e0arjbutud" path="res://FocusCharacter/Resources/Ant_Moss.tres" id="1_kp4el"]
+[ext_resource type="Resource" uid="uid://b1ldiov4f56wg" path="res://FocusCharacter/Resources/Bee_Moss.tres" id="2_uxxv7"]
+[ext_resource type="Resource" uid="uid://chwkbjmjj85xs" path="res://FocusCharacter/Resources/Ladybug_Moss.tres" id="3_2lm4r"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="3_uxxv7"]
 
 [resource]
 script = ExtResource("3_uxxv7")
 Id = "snail"
-PossibleRequests = Array[Object]([ExtResource("1_ym5rv")])
+PossibleRequests = Array[Object]([ExtResource("1_kp4el"), ExtResource("2_uxxv7"), ExtResource("3_2lm4r")])
 CountRange = Vector2i(2, 3)
 ClaimCountToUnlock = 0
 HatUnlock = 0

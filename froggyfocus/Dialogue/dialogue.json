@@ -160,6 +160,22 @@
 	},
 	
 	{
+		"id": "##SALAMANDER_REQUEST_001##",
+		"next": "##SALAMANDER_REQUEST_002##"
+	},
+	{
+		"id": "##SALAMANDER_REQUEST_002##"
+	},
+	
+	{
+		"id": "##SALAMANDER_REQUEST_COMPLETE_001##"
+	},
+	
+	{
+		"id": "##SALAMANDER_IDLE_001##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

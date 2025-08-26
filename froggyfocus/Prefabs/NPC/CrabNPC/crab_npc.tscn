@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ccgpgjg58jqqs" path="res://Assets/FlawLizArt/Crab/crab.fbx" id="1_hm23q"]
 [ext_resource type="Script" uid="uid://b05hxtmap7lyf" path="res://Prefabs/NPC/CrabNPC/CrabNpc.cs" id="1_mdt4n"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vub6u"]
-[ext_resource type="AudioStream" uid="uid://dbtow33lxh7up" path="res://Sounds/Raw/crab_speak_001.wav" id="4_yw2n1"]
-[ext_resource type="AudioStream" uid="uid://dco7hjmgtsvyt" path="res://Sounds/Raw/crab_speak_002.wav" id="5_djhky"]
-[ext_resource type="AudioStream" uid="uid://c0j6dmpdtn01i" path="res://Sounds/Raw/crab_speak_003.wav" id="6_yv4qu"]
+[ext_resource type="AudioStream" uid="uid://dbtow33lxh7up" path="res://Sounds/Raw/sfx_crab_speak_001.wav" id="4_yw2n1"]
+[ext_resource type="AudioStream" uid="uid://dco7hjmgtsvyt" path="res://Sounds/Raw/sfx_crab_speak_002.wav" id="5_djhky"]
+[ext_resource type="AudioStream" uid="uid://c0j6dmpdtn01i" path="res://Sounds/Raw/sfx_crab_speak_003.wav" id="6_yv4qu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vub6u"]
 height = 0.676758

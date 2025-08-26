@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://og4aje0oop1" path="res://Assets/FlawLizArt/Leech/leech.fbx" id="1_qeu6n"]
 [ext_resource type="Script" uid="uid://ddkl0kpssgs2u" path="res://Prefabs/NPC/LeechNPC/LeechNpc.cs" id="1_xqrj4"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_j2bgc"]
-[ext_resource type="AudioStream" uid="uid://dbfg433mht2bs" path="res://Sounds/Raw/leech_speak_001.wav" id="4_rqa61"]
-[ext_resource type="AudioStream" uid="uid://owd6ox4572cx" path="res://Sounds/Raw/leech_speak_002.wav" id="5_3qk3k"]
-[ext_resource type="AudioStream" uid="uid://dar5nmpifyj2q" path="res://Sounds/Raw/leech_speak_003.wav" id="6_mq46w"]
+[ext_resource type="AudioStream" uid="uid://dbfg433mht2bs" path="res://Sounds/Raw/sfx_leech_speak_001.wav" id="4_rqa61"]
+[ext_resource type="AudioStream" uid="uid://owd6ox4572cx" path="res://Sounds/Raw/sfx_leech_speak_002.wav" id="5_3qk3k"]
+[ext_resource type="AudioStream" uid="uid://dar5nmpifyj2q" path="res://Sounds/Raw/sfx_leech_speak_003.wav" id="6_mq46w"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_qeu6n"]
 height = 4.6272

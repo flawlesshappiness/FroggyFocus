@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=8 format=3 uid="uid://bskmlj4soy5e6"]
+
+[ext_resource type="Resource" uid="uid://dvwxhlp13u47w" path="res://FocusCharacter/Resources/GiantWaterBug.tres" id="1_2naje"]
+[ext_resource type="Resource" uid="uid://bfoqlq1ax6u82" path="res://FocusCharacter/Resources/Cockroach.tres" id="2_g2f82"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_pyxqd"]
+[ext_resource type="Resource" uid="uid://qp57l760oc3m" path="res://FocusCharacter/Resources/Tick.tres" id="3_k6u5b"]
+[ext_resource type="Resource" uid="uid://bjsf02kaa2g15" path="res://FocusCharacter/Resources/CaveCricket.tres" id="4_yv45d"]
+[ext_resource type="Resource" uid="uid://b6qp4y2ey8oqk" path="res://FocusCharacter/Resources/TigerBeetle.tres" id="5_pqder"]
+[ext_resource type="Resource" uid="uid://cqjm2dxtl5xbj" path="res://FocusCharacter/Resources/Beetle_Swamp.tres" id="6_phohg"]
+
+[resource]
+script = ExtResource("2_pyxqd")
+Id = "salamander"
+PossibleRequests = Array[Object]([ExtResource("1_2naje"), ExtResource("2_g2f82"), ExtResource("3_k6u5b"), ExtResource("4_yv45d"), ExtResource("5_pqder"), ExtResource("6_phohg")])
+CountRange = Vector2i(2, 3)
+ClaimCountToUnlock = 0
+HatUnlock = 0
+CooldownInSeconds = 600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

@@ -1,13 +1,19 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=4 format=3 uid="uid://dqvmw518u62ae"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=10 format=3 uid="uid://dqvmw518u62ae"]
 
 [ext_resource type="Resource" uid="uid://dtaq1s53cx6bt" path="res://FocusCharacter/Resources/Dragonfly_Swamp.tres" id="1_t55nc"]
 [ext_resource type="Resource" uid="uid://d3biw384eh4mn" path="res://FocusCharacter/Resources/Mosquito_Swamp.tres" id="2_fyubp"]
+[ext_resource type="Resource" uid="uid://dvyecyctodpx" path="res://FocusCharacter/Resources/Bee.tres" id="3_lo5s5"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="4_s72v0"]
+[ext_resource type="Resource" uid="uid://bi27kk1oi4nm4" path="res://FocusCharacter/Resources/ScorpionFly.tres" id="4_xehbg"]
+[ext_resource type="Resource" uid="uid://b6dnkd36tuxjy" path="res://FocusCharacter/Resources/Sandfly.tres" id="5_wflwk"]
+[ext_resource type="Resource" uid="uid://byqr557n1o5br" path="res://FocusCharacter/Resources/Lanternfly.tres" id="6_qug6k"]
+[ext_resource type="Resource" uid="uid://f1g3j3g1vkbl" path="res://FocusCharacter/Resources/CommonFly.tres" id="7_b8gaa"]
+[ext_resource type="Resource" uid="uid://joxldpuv0xuf" path="res://FocusCharacter/Resources/HorseFly.tres" id="8_rco3d"]
 
 [resource]
 script = ExtResource("4_s72v0")
 Id = "otter"
-PossibleRequests = Array[Object]([ExtResource("1_t55nc"), ExtResource("2_fyubp")])
+PossibleRequests = Array[Object]([ExtResource("1_t55nc"), ExtResource("2_fyubp"), ExtResource("3_lo5s5"), ExtResource("4_xehbg"), ExtResource("5_wflwk"), ExtResource("6_qug6k"), ExtResource("7_b8gaa"), ExtResource("8_rco3d")])
 CountRange = Vector2i(2, 3)
 ClaimCountToUnlock = 0
 HatUnlock = 0

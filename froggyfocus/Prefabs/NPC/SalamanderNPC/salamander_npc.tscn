@@ -1,0 +1,127 @@
+[gd_scene load_steps=22 format=3 uid="uid://bm7kofjv3i0ne"]
+
+[ext_resource type="Script" uid="uid://dvipwq521iyae" path="res://Prefabs/NPC/SalamanderNPC/SalamanderNpc.cs" id="1_dmmcr"]
+[ext_resource type="PackedScene" uid="uid://dvfygd4a40ea8" path="res://Assets/FlawLizArt/Salamander/salamander.fbx" id="1_j0ej6"]
+[ext_resource type="Resource" uid="uid://bskmlj4soy5e6" path="res://HandInQuest/Resources/Salamander_Cave.tres" id="2_vutm6"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_4eavn"]
+[ext_resource type="AudioStream" uid="uid://dus52jqi1sq06" path="res://Sounds/Raw/sfx_crystal_a1.wav" id="4_rlkyt"]
+[ext_resource type="AudioStream" uid="uid://byvk4svtnxi3" path="res://Sounds/Raw/sfx_crystal_c1.wav" id="5_ooxsf"]
+[ext_resource type="AudioStream" uid="uid://ka8mn8mvfg7b" path="res://Sounds/Raw/sfx_crystal_c2.wav" id="6_q3a16"]
+[ext_resource type="AudioStream" uid="uid://ccy2ni8a4kkmw" path="res://Sounds/Raw/sfx_crystal_d1.wav" id="7_mpmco"]
+[ext_resource type="AudioStream" uid="uid://bxkrw8o8088n" path="res://Sounds/Raw/sfx_crystal_d2.wav" id="8_7wjb6"]
+[ext_resource type="AudioStream" uid="uid://bpp27kjjqa6ec" path="res://Sounds/Raw/sfx_crystal_f1.wav" id="9_vutm6"]
+[ext_resource type="AudioStream" uid="uid://bm40sia6mmyjo" path="res://Sounds/Raw/sfx_crystal_g1.wav" id="10_va4mm"]
+[ext_resource type="AudioStream" uid="uid://bs7acwiiot5r7" path="res://Sounds/Raw/sfx_crystal_as1.wav" id="11_iql42"]
+[ext_resource type="AudioStream" uid="uid://fkxvky3m7cgy" path="res://Sounds/Raw/sfx_crystal_ds1.wav" id="12_k2mry"]
+[ext_resource type="AudioStream" uid="uid://b18mtcy8lfhv4" path="res://Sounds/Raw/sfx_salamander_speak_001.wav" id="13_7wjb6"]
+[ext_resource type="AudioStream" uid="uid://bigu1awg2hb24" path="res://Sounds/Raw/sfx_salamander_speak_002.wav" id="14_vutm6"]
+[ext_resource type="AudioStream" uid="uid://cgpbcjypgk4v" path="res://Sounds/Raw/sfx_salamander_speak_003.wav" id="15_va4mm"]
+[ext_resource type="AudioStream" uid="uid://dqk0q63m0swe7" path="res://Sounds/Raw/sfx_salamander_speak_004.wav" id="16_iql42"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dmmcr"]
+height = 1.91064
+radius = 1.23242
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j0ej6"]
+data = PackedVector3Array(-0.005, 0.0064, 0, -0.0059, 0.0091, 0.0124, -0.0116, 0, 0.0124, -0.0116, 0, 0.0124, -0.01, 0, 0, -0.005, 0.0064, 0, 0.0059, 0.0091, 0.0124, -0.0059, 0.0091, 0.0124, -0.005, 0.0064, 0, -0.005, 0.0064, 0, 0.005, 0.0064, 0, 0.0059, 0.0091, 0.0124, 0.0116, 0, 0.0124, 0.0059, 0.0091, 0.0124, 0.005, 0.0064, 0, 0.005, 0.0064, 0, 0.01, 0, 0, 0.0116, 0, 0.0124, 0.005, -0.0064, 0, 0.0044, -0.0091, 0.0124, 0.0116, 0, 0.0124, 0.0116, 0, 0.0124, 0.01, 0, 0, 0.005, -0.0064, 0, 0, 0, 0.0268, 0.0116, 0, 0.0124, 0.0044, -0.0091, 0.0124, -0.0044, -0.0091, 0.0124, 0.0044, -0.0091, 0.0124, 0.005, -0.0064, 0, 0.005, -0.0064, 0, -0.005, -0.0064, 0, -0.0044, -0.0091, 0.0124, -0.0116, 0, 0.0124, -0.0044, -0.0091, 0.0124, -0.005, -0.0064, 0, -0.005, -0.0064, 0, -0.01, 0, 0, -0.0116, 0, 0.0124, 0.005, 0.0064, 0, -0.01, 0, 0, -0.005, -0.0064, 0, 0.005, 0.0064, 0, -0.005, 0.0064, 0, -0.01, 0, 0, 0.005, 0.0064, 0, -0.005, -0.0064, 0, 0.005, -0.0064, 0, 0.005, 0.0064, 0, 0.005, -0.0064, 0, 0.01, 0, 0, 0, 0, 0.0268, -0.0059, 0.0091, 0.0124, 0.0059, 0.0091, 0.0124, 0, 0, 0.0268, 0.0044, -0.0091, 0.0124, -0.0044, -0.0091, 0.0124, 0, 0, 0.0268, -0.0116, 0, 0.0124, -0.0059, 0.0091, 0.0124, 0, 0, 0.0268, 0.0059, 0.0091, 0.0124, 0.0116, 0, 0.0124, 0, 0, 0.0268, -0.0044, -0.0091, 0.0124, -0.0116, 0, 0.0124)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gnfm6"]
+streams_count = 9
+stream_0/stream = ExtResource("4_rlkyt")
+stream_1/stream = ExtResource("5_ooxsf")
+stream_2/stream = ExtResource("6_q3a16")
+stream_3/stream = ExtResource("7_mpmco")
+stream_4/stream = ExtResource("8_7wjb6")
+stream_5/stream = ExtResource("9_vutm6")
+stream_6/stream = ExtResource("10_va4mm")
+stream_7/stream = ExtResource("11_iql42")
+stream_8/stream = ExtResource("12_k2mry")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_k2mry"]
+streams_count = 4
+stream_0/stream = ExtResource("13_7wjb6")
+stream_1/stream = ExtResource("14_vutm6")
+stream_2/stream = ExtResource("15_va4mm")
+stream_3/stream = ExtResource("16_iql42")
+
+[node name="SalamanderNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_dmmcr")
+HandInInfo = ExtResource("2_vutm6")
+IdleAnimation = "Armature|praising"
+Animation = NodePath("AnimationStateMachine")
+SfxSpeak = NodePath("SfxSpeak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.955322, -1.1735)
+shape = SubResource("CylinderShape3D_dmmcr")
+
+[node name="salamander" parent="." instance=ExtResource("1_j0ej6")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="salamander/crystal" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="salamander/crystal/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_j0ej6")
+
+[node name="Skeleton3D" parent="salamander/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0304022, -0.00688014, 0.0981014, 0.994688)
+bones/3/rotation = Quaternion(-0.0243854, -0.00259547, 0.0182194, 0.999533)
+bones/4/rotation = Quaternion(0.0663286, 0.00580523, 0.000506811, 0.997781)
+bones/6/rotation = Quaternion(0.664655, 0.0399921, -0.0134096, 0.745959)
+bones/7/rotation = Quaternion(-0.381354, 0.255746, -0.0336749, 0.88771)
+bones/8/rotation = Quaternion(-0.401304, 0.0929594, -0.245328, 0.877569)
+bones/9/rotation = Quaternion(0.0462061, -0.00610582, 0.0375287, 0.998208)
+bones/11/rotation = Quaternion(-0.0157686, -0.70776, 0.704789, -0.0458253)
+bones/12/rotation = Quaternion(-0.206142, -0.277772, -0.00714695, 0.938242)
+bones/13/rotation = Quaternion(-0.192447, -0.0908476, 0.102036, 0.971751)
+bones/14/rotation = Quaternion(-0.123469, -0.00773607, 0.09822, 0.987445)
+bones/17/rotation = Quaternion(0.0135639, -0.00628153, -0.123657, 0.992212)
+bones/18/rotation = Quaternion(0.0407302, -0.00827285, -0.109005, 0.993172)
+bones/19/rotation = Quaternion(0.0239023, -0.00149326, -0.0286662, 0.999302)
+bones/21/rotation = Quaternion(0.732279, 0.100788, -0.168628, 0.652053)
+bones/22/rotation = Quaternion(-0.306076, -0.225284, -0.216143, 0.899359)
+bones/23/rotation = Quaternion(-0.222536, -0.247129, -0.490149, 0.805704)
+bones/24/rotation = Quaternion(-0.31116, -0.0399216, 0.276476, 0.908376)
+bones/26/rotation = Quaternion(-0.168627, -0.652054, 0.732279, -0.100787)
+bones/27/rotation = Quaternion(-0.306076, 0.225284, 0.216144, 0.899359)
+bones/28/rotation = Quaternion(-0.222536, 0.247128, 0.490148, 0.805705)
+bones/29/rotation = Quaternion(-0.31116, 0.0399215, -0.276476, 0.908376)
+
+[node name="AnimationPlayer" parent="salamander" index="2"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_4eavn")
+Animator = NodePath("../salamander/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768625, 0)
+light_color = Color(0, 0.8, 1, 1)
+light_energy = 2.0
+omni_range = 20.0
+omni_attenuation = 0.0
+
+[node name="SfxCrystal" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830639, 0)
+stream = SubResource("AudioStreamRandomizer_gnfm6")
+volume_db = -20.0
+max_distance = 60.0
+max_polyphony = 3
+panning_strength = 0.75
+bus = &"SFX"
+
+[node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16043, -1.21402)
+stream = SubResource("AudioStreamRandomizer_k2mry")
+bus = &"SFX"
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.185572, 0)
+height = 3.0
+vertices = PackedVector3Array(-0.45093, 0, 0.916153, -1.16058, 0, 0.00872942, -0.584716, 0, -0.927779, 0.584464, 0, -0.898695, 1.16033, 0, -0.0029043, 0.444861, 0, 0.927787)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+
+[editable path="salamander"]
