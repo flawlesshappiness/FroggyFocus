@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=50 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cat6wqg4h8oqa" path="res://Prefabs/Objects/bottle_cleaning_toilet.tscn" id="22_01srd"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="24_0lfya"]
 [ext_resource type="PackedScene" uid="uid://cuc22dure6gn7" path="res://Prefabs/Nature/seaweed_cluster_circle.tscn" id="24_uf1yc"]
+[ext_resource type="PackedScene" uid="uid://bfva58jqvweh5" path="res://Prefabs/NPC/RaccoonNPC/raccoon_npc.tscn" id="24_v2jd5"]
 [ext_resource type="PackedScene" uid="uid://bwc0ley5ipxwr" path="res://Prefabs/Nature/seaweed_cluster_small.tscn" id="25_i5qij"]
 [ext_resource type="PackedScene" uid="uid://cp64pfqrxicn2" path="res://Prefabs/Machine/gear_big.tscn" id="26_3yuby"]
 [ext_resource type="PackedScene" uid="uid://b6wxew74nf10j" path="res://Prefabs/Machine/gear_big_seaweed.tscn" id="26_fpcwk"]
@@ -350,6 +351,9 @@ transform = Transform3D(0.216796, 0, -1.98821, 0, 2, 0, 1.98821, 0, 0.216796, 37
 
 [node name="Bottle_Cleaning_Toilet7" parent="World/NavigationRegion3D/Garbage/Bottles" instance=ExtResource("22_01srd")]
 transform = Transform3D(0.732873, 0, 1.86089, 0, 2, 0, -1.86089, 0, 0.732873, 27.6667, -0.999861, -15.6376)
+
+[node name="RaccoonNPC" parent="World/NavigationRegion3D/Garbage" instance=ExtResource("24_v2jd5")]
+transform = Transform3D(-0.505432, 0, 0.862867, 0, 1, 0, -0.862867, 0, -0.505432, 69.7563, 1.00969, -80.9716)
 
 [node name="Lighthouse" parent="World/NavigationRegion3D" instance=ExtResource("15_qfdwa")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 125.411, -25.807, -35.3942)

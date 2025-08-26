@@ -176,6 +176,22 @@
 	},
 	
 	{
+		"id": "##RACCOON_REQUEST_001##",
+		"next": "##RACCOON_REQUEST_002##"
+	},
+	{
+		"id": "##RACCOON_REQUEST_002##"
+	},
+	
+	{
+		"id": "##RACCOON_REQUEST_COMPLETE_001##"
+	},
+	
+	{
+		"id": "##RACCOON_IDLE_001##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},
