@@ -1,13 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfva58jqvweh5"]
+[gd_scene load_steps=10 format=3 uid="uid://bfva58jqvweh5"]
 
 [ext_resource type="Script" uid="uid://1wfcftgjy8s8" path="res://Prefabs/NPC/RaccoonNPC/RaccoonNpc.cs" id="1_2bb64"]
 [ext_resource type="PackedScene" uid="uid://bdegnjmdaok2p" path="res://Assets/FlawLizArt/Raccoon/raccoon.fbx" id="1_a28l7"]
 [ext_resource type="Resource" uid="uid://2yp6j8advpwu" path="res://HandInQuest/Resources/Raccoon_Factory.tres" id="2_lqyx2"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_lqyx2"]
+[ext_resource type="AudioStream" uid="uid://byagvoxwvkekh" path="res://Sounds/Raw/sfx_raccoon_speak_001.wav" id="5_5t764"]
+[ext_resource type="AudioStream" uid="uid://uhussb8ao1h4" path="res://Sounds/Raw/sfx_raccoon_speak_002.wav" id="6_36cau"]
+[ext_resource type="AudioStream" uid="uid://fhpsnhus3sm5" path="res://Sounds/Raw/sfx_raccoon_speak_003.wav" id="7_4uecp"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k62mn"]
 height = 4.60156
 radius = 4.06982
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a0w4v"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("5_5t764")
+stream_1/stream = ExtResource("6_36cau")
+stream_2/stream = ExtResource("7_4uecp")
 
 [node name="RaccoonNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 4
@@ -26,7 +36,6 @@ shape = SubResource("CylinderShape3D_k62mn")
 [node name="Skeleton3D" parent="raccoon/Armature" index="0"]
 bones/1/position = Vector3(0, 0.005, 0.0234677)
 bones/1/rotation = Quaternion(0.709202, 4.69319e-24, -1.3902e-16, 0.705005)
-bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(-5.45424e-26, 0.0348397, 2.52808e-11)
 bones/2/rotation = Quaternion(-0.302566, -8.53774e-18, 5.08229e-17, 0.953128)
 bones/2/scale = Vector3(1, 1, 1)
@@ -34,29 +43,26 @@ bones/3/position = Vector3(7.7438e-25, 0.0235578, -2.17588e-09)
 bones/3/rotation = Quaternion(-0.567504, 2.42254e-24, 1.26011e-16, 0.823371)
 bones/3/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(0.0207538, 0.0164584, -0.00147865)
-bones/5/rotation = Quaternion(-0.596937, 0.0834445, -0.375536, 0.704042)
+bones/5/rotation = Quaternion(-0.295778, -0.313945, -0.640641, 0.635243)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/position = Vector3(4.44704e-10, 0.0393669, -2.85691e-10)
-bones/6/rotation = Quaternion(-0.386642, 0.00134324, 0.461294, 0.798571)
+bones/6/rotation = Quaternion(-0.0156645, 6.35113e-08, 0.0159839, 0.99975)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(7.95906e-11, 0.0250674, -5.26659e-11)
-bones/7/rotation = Quaternion(0.00327313, 4.47029e-08, -0.00400561, 0.999987)
+bones/7/rotation = Quaternion(0.00327313, 5.56924e-08, -0.00400565, 0.999987)
 bones/7/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(-0.0207538, 0.0164584, -0.00147865)
-bones/9/rotation = Quaternion(-0.596937, -0.0834445, 0.375536, 0.704042)
+bones/9/rotation = Quaternion(-0.295778, 0.313945, 0.640641, 0.635243)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(-4.44704e-10, 0.0393669, -2.85691e-10)
-bones/10/rotation = Quaternion(-0.386642, -0.00134324, -0.461294, 0.798571)
+bones/10/rotation = Quaternion(-0.0156645, -6.35113e-08, -0.0159839, 0.99975)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(-7.95906e-11, 0.0250674, -5.26659e-11)
-bones/11/rotation = Quaternion(0.00327313, -4.47032e-08, 0.00400561, 0.999987)
-bones/11/scale = Vector3(1, 1, 1)
-bones/13/position = Vector3(0.0188464, 0.0585171, 0.0400934)
+bones/11/rotation = Quaternion(0.00327313, -5.56923e-08, 0.00400565, 0.999987)
+bones/13/position = Vector3(0.0851698, 0.00579122, 0.0400934)
 bones/13/rotation = Quaternion(0.641611, -0.297212, -0.297212, 0.641611)
-bones/13/scale = Vector3(1, 1, 1)
-bones/15/position = Vector3(-0.0188464, 0.0585171, 0.0400934)
+bones/15/position = Vector3(-0.0851698, 0.00579122, 0.0400934)
 bones/15/rotation = Quaternion(0.641611, 0.297212, 0.297212, 0.641611)
-bones/15/scale = Vector3(1, 1, 1)
 
 [node name="AnimationPlayer" parent="raccoon" index="1"]
 playback_default_blend_time = 0.25
@@ -67,5 +73,7 @@ Animator = NodePath("../raccoon/AnimationPlayer")
 metadata/_custom_type_script = "uid://ckv4mr7osps52"
 
 [node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_a0w4v")
+bus = &"SFX"
 
 [editable path="raccoon"]
