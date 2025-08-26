@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="3_yvliq"]
 [ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="4_kf3yv"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7egm2"]
-size = Vector3(1.92676, 1.6319, 1.94958)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kf3yv"]
+height = 1.81689
+radius = 0.894043
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kf3yv"]
 size = Vector3(1.79102, 1, 2)
@@ -26,8 +27,8 @@ surface_material_override/0 = ExtResource("2_0bahu")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.818756, 0.0328979)
-shape = SubResource("BoxShape3D_7egm2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.910309, 0.0328979)
+shape = SubResource("CylinderShape3D_kf3yv")
 
 [node name="FocusEventArea" type="Area3D" parent="."]
 collision_layer = 0
