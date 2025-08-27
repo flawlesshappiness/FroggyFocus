@@ -192,6 +192,22 @@
 	},
 	
 	{
+		"id": "##EEL_REQUEST_001##",
+		"next": "##EEL_REQUEST_002##"
+	},
+	{
+		"id": "##EEL_REQUEST_002##"
+	},
+	
+	{
+		"id": "##EEL_REQUEST_COMPLETE_001##"
+	},
+	
+	{
+		"id": "##EEL_IDLE_001##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

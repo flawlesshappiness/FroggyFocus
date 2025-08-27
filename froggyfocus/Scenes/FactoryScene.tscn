@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=51 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://jyb4tasp37gp" path="res://Prefabs/Nature/seaweed_cluster_bridge.tscn" id="27_k0l20"]
 [ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="28_ev2yv"]
 [ext_resource type="PackedScene" uid="uid://btfkqop4kbh8e" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_toilet.fbx" id="29_3aqke"]
+[ext_resource type="PackedScene" uid="uid://c3hkrtmh6ohnl" path="res://Prefabs/NPC/EelNPC/eel_npc.tscn" id="30_8g76t"]
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="30_kso58"]
 [ext_resource type="Resource" uid="uid://cnow1gj1m4qfa" path="res://FocusEvent/Resources/Factory_Trash_Land.tres" id="32_mie5t"]
 [ext_resource type="Resource" uid="uid://conmipikui7b5" path="res://FocusEvent/Resources/Factory_Trash_Water.tres" id="35_8mo76"]
@@ -360,80 +361,79 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 125.411, -25.807, -35.3942)
 
 [node name="Seaweed" type="Node3D" parent="World/NavigationRegion3D"]
 
-[node name="Seaweed_Cluster_Circle" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("24_uf1yc")]
+[node name="Weeds" type="Node3D" parent="World/NavigationRegion3D/Seaweed"]
+
+[node name="Seaweed_Cluster_Circle" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("24_uf1yc")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38.1585, -0.560604, 21.2284)
 
-[node name="Seaweed_Cluster_Circle3" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("24_uf1yc")]
+[node name="Seaweed_Cluster_Circle4" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("24_uf1yc")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 29.0488, -0.560604, 51.6546)
+
+[node name="Seaweed_Cluster_Circle3" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("24_uf1yc")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -0.255016, -0.560604, 24.9419)
 
-[node name="Seaweed_Cluster_Circle2" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("24_uf1yc")]
+[node name="Seaweed_Cluster_Circle2" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("24_uf1yc")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -44.8878, -0.560608, 63.3995)
 
-[node name="Seaweed_Cluster_Small2" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
+[node name="Seaweed_Cluster_Small2" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 12.1919, -0.587171, 31.4378)
 
-[node name="Seaweed_Cluster_Small5" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
+[node name="Seaweed_Cluster_Small5" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 7.22168, -0.587171, 11.3537)
 
-[node name="Seaweed_Cluster_Small6" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
+[node name="Seaweed_Cluster_Small6" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
 transform = Transform3D(0.909597, 0, -3.89521, 0, 4, 0, 3.89521, 0, 0.909597, 1.36552, -0.587171, 3.44917)
 
-[node name="Seaweed_Cluster_Small8" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
+[node name="Seaweed_Cluster_Small8" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
 transform = Transform3D(-0.714385, 0, 3.93569, 0, 4, 0, -3.93569, 0, -0.714385, 0.499338, -0.587171, -9.43918)
 
-[node name="Seaweed_Cluster_Small3" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
+[node name="Seaweed_Cluster_Small3" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 20.214, -0.587171, 37.4581)
 
-[node name="Seaweed_Cluster_Small7" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
+[node name="Seaweed_Cluster_Small7" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -20.5958, -0.587171, 46.3987)
 
-[node name="Seaweed_Cluster_Small10" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
+[node name="Seaweed_Cluster_Small10" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -16.5957, -0.587171, 53.6491)
 
-[node name="Seaweed_Cluster_Small9" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38.2051, -0.587171, 36.3166)
+[node name="Seaweed_Cluster_Small9" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 36.1848, -0.587171, 36.8233)
 
-[node name="Seaweed_Cluster_Small4" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("25_i5qij")]
+[node name="Seaweed_Cluster_Small4" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("25_i5qij")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 25.8259, -0.587171, 28.7148)
 
-[node name="Gear_Big_Seaweed3" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("26_fpcwk")]
+[node name="Gear_Big_Seaweed3" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("26_fpcwk")]
 transform = Transform3D(15, 0, -1.0133e-06, 0, 15, 0, 1.0133e-06, 0, 15, -35.0683, -1.74983, 39.3899)
 
-[node name="Gear_Big_Seaweed6" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("26_fpcwk")]
+[node name="Gear_Big_Seaweed6" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("26_fpcwk")]
 transform = Transform3D(15, 0, -1.0133e-06, 0, 15, 0, 1.0133e-06, 0, 15, 3.02157, -2.26587, 57.0298)
 
-[node name="Gear_Big_Seaweed9" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("26_fpcwk")]
+[node name="Gear_Big_Seaweed9" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("26_fpcwk")]
 transform = Transform3D(-1.66897e-06, 0, -15, 0, 15, 0, 15, 0, -1.66897e-06, 25.0398, -2.79891, 0.669694)
 
-[node name="Gear_Big_Seaweed7" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("26_fpcwk")]
+[node name="Gear_Big_Seaweed7" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("26_fpcwk")]
 transform = Transform3D(15, 0, -1.0133e-06, 0, 15, 0, 1.0133e-06, 0, 15, 55.5005, -1.42784, 57.0298)
 
-[node name="Gear_Big_Seaweed8" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("26_fpcwk")]
+[node name="Gear_Big_Seaweed8" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("26_fpcwk")]
 transform = Transform3D(15, 0, -1.0133e-06, 0, 15, 0, 1.0133e-06, 0, 15, 64.9165, -5.35599, 40.2962)
 
-[node name="Seaweed_Cluster_Bridge" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("27_k0l20")]
+[node name="Seaweed_Cluster_Bridge" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("27_k0l20")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -52.7897, -0.690371, 47.6656)
 
-[node name="Seaweed_Cluster_Bridge2" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("27_k0l20")]
+[node name="Seaweed_Cluster_Bridge2" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("27_k0l20")]
 transform = Transform3D(-1.29858, 0, 3.78335, 0, 4, 0, -3.78335, 0, -1.29858, -26.8074, -0.690371, 61.2709)
 
-[node name="Seaweed_Cluster_Bridge7" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("27_k0l20")]
+[node name="Seaweed_Cluster_Bridge7" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("27_k0l20")]
 transform = Transform3D(-3.94731, 0, -0.647104, 0, 4, 0, 0.647104, 0, -3.94731, -14.9793, -0.690371, 35.4021)
 
-[node name="Seaweed_Cluster_Bridge4" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("27_k0l20")]
-transform = Transform3D(3.99668, 0, -0.162969, 0, 4, 0, 0.162969, 0, 3.99668, 19.8595, -0.690371, 52.1224)
-
-[node name="Seaweed_Cluster_Bridge5" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("27_k0l20")]
-transform = Transform3D(2.7236, 0, -2.92951, 0, 4, 0, 2.92951, 0, 2.7236, 34.9707, -0.690371, 49.1291)
-
-[node name="Seaweed_Cluster_Bridge6" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("27_k0l20")]
-transform = Transform3D(0.939551, 0, -3.88809, 0, 4, 0, 3.88809, 0, 0.939551, 28.5986, -0.690371, 66.5934)
-
-[node name="Seaweed_Cluster_Bridge3" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("27_k0l20")]
+[node name="Seaweed_Cluster_Bridge3" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("27_k0l20")]
 transform = Transform3D(-0.499117, 0, 3.96874, 0, 4, 0, -3.96874, 0, -0.499117, 18.6644, -0.690371, 17.5201)
 
-[node name="Seaweed_Cluster_Bridge8" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("27_k0l20")]
+[node name="Seaweed_Cluster_Bridge8" parent="World/NavigationRegion3D/Seaweed/Weeds" instance=ExtResource("27_k0l20")]
 transform = Transform3D(-1.86128, 0, 3.54057, 0, 4, 0, -3.54057, 0, -1.86128, 52.2832, -0.690371, 12.0289)
+
+[node name="EelNPC" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("30_8g76t")]
+transform = Transform3D(0.731497, 0, 0.681845, 0, 1, 0, -0.681845, 0, 0.731497, 35.6411, 0, 60.0889)
 
 [node name="Machine" type="Node3D" parent="World/NavigationRegion3D"]
 
@@ -584,7 +584,7 @@ transform = Transform3D(0.660093, 0, 0.751183, 0, 1, 0, -0.751183, 0, 0.660093, 
 Info = ExtResource("41_8g76t")
 
 [node name="WorldBug9" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.938282, 0, -0.345871, 0, 1, 0, 0.345871, 0, 0.938282, 38.682, -0.751787, 36.4564)
+transform = Transform3D(0.938282, 0, -0.345871, 0, 1, 0, 0.345871, 0, 0.938282, 36.4636, -0.751787, 36.8836)
 Info = ExtResource("41_8g76t")
 
 [node name="WorldBug10" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
@@ -593,30 +593,6 @@ Info = ExtResource("41_8g76t")
 
 [node name="WorldBug11" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
 transform = Transform3D(-0.555585, 0, 0.83146, 0, 1, 0, -0.83146, 0, -0.555585, 11.7265, -0.751787, 31.2223)
-Info = ExtResource("41_8g76t")
-
-[node name="WorldBug12" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(-0.555585, 0, 0.83146, 0, 1, 0, -0.83146, 0, -0.555585, 37.0594, -0.751787, 46.9769)
-Info = ExtResource("41_8g76t")
-
-[node name="WorldBug13" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(-0.461733, 0, -0.887019, 0, 1, 0, 0.887019, 0, -0.461733, 33.0815, -0.751787, 51.0071)
-Info = ExtResource("41_8g76t")
-
-[node name="WorldBug14" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.987565, 0, -0.15721, 0, 1, 0, 0.15721, 0, 0.987565, 19.7347, -0.751787, 49.3322)
-Info = ExtResource("41_8g76t")
-
-[node name="WorldBug15" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.206409, 0, 0.978465, 0, 1, 0, -0.978465, 0, 0.206409, 20.1534, -0.751787, 54.4092)
-Info = ExtResource("41_8g76t")
-
-[node name="WorldBug16" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(-0.999994, 0, -0.00338586, 0, 1, 0, 0.00338586, 0, -0.999994, 32.4011, -0.751787, 65.4531)
-Info = ExtResource("41_8g76t")
-
-[node name="WorldBug17" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(-0.170639, 0, 0.985333, 0, 1, 0, -0.985333, 0, -0.170639, 26.3819, -0.751787, 67.128)
 Info = ExtResource("41_8g76t")
 
 [node name="WorldBug18" parent="World/WorldBugs/Seaweed" instance=ExtResource("42_v2jd5")]

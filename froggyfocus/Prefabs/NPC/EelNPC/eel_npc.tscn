@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3hkrtmh6ohnl"]
+
+[ext_resource type="PackedScene" uid="uid://3e5oppo6lmr7" path="res://Assets/FlawLizArt/Characters/Eel/eel.fbx" id="1_h0kul"]
+[ext_resource type="Script" uid="uid://dxpoycv1ltoba" path="res://Prefabs/NPC/EelNPC/EelNpc.cs" id="1_uu23s"]
+[ext_resource type="Resource" uid="uid://72vr17ea7883" path="res://HandInQuest/Resources/Eel_Factory.tres" id="2_f8bht"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_lq58h"]
+[ext_resource type="AudioStream" uid="uid://ergbcag2wd4j" path="res://Sounds/Raw/sfx_eel_speak_001.wav" id="5_f8bht"]
+[ext_resource type="AudioStream" uid="uid://boesilsarb81k" path="res://Sounds/Raw/sfx_eel_speak_002.wav" id="6_w8m0d"]
+[ext_resource type="AudioStream" uid="uid://bvtqyp78h031r" path="res://Sounds/Raw/sfx_eel_speak_003.wav" id="7_gw57y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uu23s"]
+height = 2.24756
+radius = 2.55127
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ucp6"]
+streams_count = 3
+stream_0/stream = ExtResource("5_f8bht")
+stream_1/stream = ExtResource("6_w8m0d")
+stream_2/stream = ExtResource("7_gw57y")
+
+[node name="EelNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_uu23s")
+HandInInfo = ExtResource("2_f8bht")
+Animation = NodePath("AnimationStateMachine")
+SfxSpeak = NodePath("SfxSpeak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12378, -4.87063)
+shape = SubResource("CylinderShape3D_uu23s")
+
+[node name="eel" parent="." instance=ExtResource("1_h0kul")]
+
+[node name="Skeleton3D" parent="eel/Armature" index="0"]
+bones/1/rotation = Quaternion(0.434473, 1.0737e-07, 5.17933e-08, 0.900685)
+bones/2/rotation = Quaternion(-0.0606936, -0.00351638, -0.066737, 0.995917)
+bones/3/rotation = Quaternion(-0.122491, -0.00851604, -0.067911, 0.990107)
+bones/4/rotation = Quaternion(-0.221663, 0.00991091, 0.0366708, 0.974383)
+bones/5/rotation = Quaternion(-0.116581, 0.010911, 0.12398, 0.985352)
+bones/6/rotation = Quaternion(-0.00491835, -0.000584863, 0.000199636, 0.999988)
+bones/8/rotation = Quaternion(0.175985, 0.000413241, -0.000229388, 0.984393)
+
+[node name="AnimationPlayer" parent="eel" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_lq58h")
+Animator = NodePath("../eel/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48818, -4.86773)
+stream = SubResource("AudioStreamRandomizer_7ucp6")
+
+[editable path="eel"]
