@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cdn0ulu4iqvsm"]
+[gd_scene load_steps=11 format=3 uid="uid://cdn0ulu4iqvsm"]
 
 [ext_resource type="Script" uid="uid://dunfu8p063ah5" path="res://Prefabs/NPC/SnailNPC/SnailNpc.cs" id="1_abwei"]
-[ext_resource type="PackedScene" uid="uid://cy6pdt5axqeip" path="res://Assets/FlawLizArt/Snail/snail.fbx" id="1_rkyac"]
+[ext_resource type="PackedScene" uid="uid://mg3lbs614k3d" path="res://Assets/FlawLizArt/Characters/Snail/snail.fbx" id="2_pdcxf"]
+[ext_resource type="Resource" uid="uid://buwjkq6ue7rvb" path="res://HandInQuest/Resources/Snail_Cave.tres" id="2_s8tk2"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_gs18x"]
 [ext_resource type="AudioStream" uid="uid://csiclebykw5p4" path="res://Sounds/Raw/sfx_snail_speak_001.wav" id="4_pdcxf"]
 [ext_resource type="AudioStream" uid="uid://crw57o2x3cr5q" path="res://Sounds/Raw/sfx_snail_speak_002.wav" id="5_s8tk2"]
@@ -24,6 +25,7 @@ stream_2/stream = ExtResource("6_451uh")
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_abwei")
+HandInInfo = ExtResource("2_s8tk2")
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 
@@ -31,20 +33,37 @@ SfxSpeak = NodePath("SfxSpeak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.63525, -3.56955)
 shape = SubResource("CylinderShape3D_gs18x")
 
-[node name="snail" parent="." instance=ExtResource("1_rkyac")]
+[node name="snail" parent="." instance=ExtResource("2_pdcxf")]
 
 [node name="Skeleton3D" parent="snail/Armature" index="0"]
-bones/3/rotation = Quaternion(0.0664087, -2.72311e-17, -8.73297e-17, 0.997793)
-bones/4/rotation = Quaternion(0.430902, 1.71451e-17, -6.82987e-17, 0.902399)
-bones/5/rotation = Quaternion(-0.590857, -8.02119e-17, 9.25408e-17, 0.806776)
-bones/6/rotation = Quaternion(-0.148943, -8.52786e-17, 6.18657e-17, 0.988846)
-bones/8/rotation = Quaternion(-0.292509, -6.70062e-17, 1.74351e-17, 0.956263)
-bones/10/rotation = Quaternion(-0.148943, 1.12472e-16, -3.86016e-17, 0.988846)
-bones/12/rotation = Quaternion(-0.292509, 7.08658e-17, -1.64921e-17, 0.956263)
-bones/14/rotation = Quaternion(0.998619, -0.000250637, -0.013412, -0.0507877)
-
-[node name="AnimationPlayer" parent="snail" index="1"]
-playback_default_blend_time = 0.25
+bones/1/position = Vector3(4.8068e-19, -0.00371648, 0.00216479)
+bones/1/rotation = Quaternion(8.9407e-08, -1.07533e-23, 1.11022e-16, 1)
+bones/2/position = Vector3(4.8265e-19, -0.00387479, 0.00604845)
+bones/2/rotation = Quaternion(-0.0160626, 1.78331e-18, -5.3528e-17, 0.999871)
+bones/3/position = Vector3(-1.8644e-25, 0.0205954, 6.80676e-10)
+bones/3/rotation = Quaternion(0.164136, -7.9937e-18, -8.97628e-17, 0.986438)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-1.12146e-25, 0.0161131, -1.1514e-09)
+bones/4/rotation = Quaternion(0.262418, 5.14334e-24, -5.82685e-17, 0.964954)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(7.39491e-25, 0.0169528, 2.3767e-09)
+bones/5/rotation = Quaternion(-0.282834, 7.76154e-24, 6.28019e-17, 0.959169)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(0.00325294, 0.00556906, 0.0037261)
+bones/6/rotation = Quaternion(0.275481, 1.72011e-17, 4.9293e-18, 0.961307)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(0.00217683, 0.00769101, 0.000327473)
+bones/8/rotation = Quaternion(-0.0286125, 1.98574e-18, -5.68371e-20, 0.999591)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(-0.00325294, 0.00556906, 0.0037261)
+bones/10/rotation = Quaternion(0.275481, 1.72011e-17, 4.9293e-18, 0.961307)
+bones/10/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-0.00217683, 0.00769101, 0.000327473)
+bones/12/rotation = Quaternion(-0.0286125, 1.98574e-18, -5.68371e-20, 0.999591)
+bones/12/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(-1.34439e-18, 0.0189568, 0.00629522)
+bones/14/rotation = Quaternion(0.998709, 1.21101e-08, -2.38112e-07, -0.0507923)
+bones/14/scale = Vector3(1, 1, 1.00003)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

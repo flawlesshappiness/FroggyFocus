@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ct6yxfuwur3fl"]
 
-[ext_resource type="PackedScene" uid="uid://ccgpgjg58jqqs" path="res://Assets/FlawLizArt/Crab/crab.fbx" id="1_hm23q"]
+[ext_resource type="PackedScene" uid="uid://ccgpgjg58jqqs" path="res://Assets/FlawLizArt/Characters/Crab/crab.fbx" id="1_hm23q"]
 [ext_resource type="Script" uid="uid://b05hxtmap7lyf" path="res://Prefabs/NPC/CrabNPC/CrabNpc.cs" id="1_mdt4n"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vub6u"]
 [ext_resource type="AudioStream" uid="uid://dbtow33lxh7up" path="res://Sounds/Raw/sfx_crab_speak_001.wav" id="4_yw2n1"]

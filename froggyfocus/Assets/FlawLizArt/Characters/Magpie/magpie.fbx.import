@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dhsttkfn7e2io"
-path="res://.godot/imported/magpie.fbx-46ae3bbe599a922264b45106f8f16d55.scn"
+path="res://.godot/imported/magpie.fbx-905fcc392c85fed21ab7ddeffe0cb2b6.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Magpie/magpie.fbx"
-dest_files=["res://.godot/imported/magpie.fbx-46ae3bbe599a922264b45106f8f16d55.scn"]
+source_file="res://Assets/FlawLizArt/Characters/Magpie/magpie.fbx"
+dest_files=["res://.godot/imported/magpie.fbx-905fcc392c85fed21ab7ddeffe0cb2b6.scn"]
 
 [params]
 
@@ -35,7 +35,7 @@ import_script/path=""
 _subresources={
 "animations": {
 "Armature|idle": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://Assets/FlawLizArt/Magpie/Animations/idle.res",
 "settings/loop_mode": 1,
@@ -1834,7 +1834,7 @@ _subresources={
 "slices/amount": 0
 },
 "Armature|idle_look": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://Assets/FlawLizArt/Magpie/Animations/idle_look.res",
 "settings/loop_mode": 0,
@@ -3633,7 +3633,7 @@ _subresources={
 "slices/amount": 0
 },
 "Armature|look": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://Assets/FlawLizArt/Magpie/Animations/look.res",
 "settings/loop_mode": 1,
@@ -5432,7 +5432,7 @@ _subresources={
 "slices/amount": 0
 },
 "Armature|look_tilt": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://Assets/FlawLizArt/Magpie/Animations/look_tilt.res",
 "settings/loop_mode": 0,
@@ -7231,7 +7231,7 @@ _subresources={
 "slices/amount": 0
 },
 "Armature|nod": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://Assets/FlawLizArt/Magpie/Animations/nod.res",
 "settings/loop_mode": 0,

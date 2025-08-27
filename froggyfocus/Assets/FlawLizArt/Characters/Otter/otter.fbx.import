@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccgpgjg58jqqs"
-path="res://.godot/imported/crab.fbx-8d8e37b9d843e4c27775217b8b024eeb.scn"
+uid="uid://b35nb5vv80ma7"
+path="res://.godot/imported/otter.fbx-185adc0a06da1be4efd6054c2971e3c0.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Crab/crab.fbx"
-dest_files=["res://.godot/imported/crab.fbx-8d8e37b9d843e4c27775217b8b024eeb.scn"]
+source_file="res://Assets/FlawLizArt/Characters/Otter/otter.fbx"
+dest_files=["res://.godot/imported/otter.fbx-185adc0a06da1be4efd6054c2971e3c0.scn"]
 
 [params]
 
@@ -34,10 +34,10 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "animations": {
-"Armature|dialogue": {
+"Armature|idle": {
 "save_to_file/enabled": false,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "",
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://Assets/FlawLizArt/Otter/Animations/idle.res",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -1833,11 +1833,11 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": 0
 },
-"Armature|idle": {
+"Armature|look": {
 "save_to_file/enabled": false,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "",
-"settings/loop_mode": 1,
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://Assets/FlawLizArt/Otter/Animations/look.res",
+"settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
 "slice_1/name": "",
@@ -3634,17 +3634,17 @@ _subresources={
 }
 },
 "materials": {
+"Body": {
+"use_external/enabled": true,
+"use_external/path": "uid://ja07pbxs1qlt"
+},
 "Eye": {
 "use_external/enabled": true,
 "use_external/path": "uid://w4pv05que4no"
 },
-"Red": {
+"Paw": {
 "use_external/enabled": true,
-"use_external/path": "uid://cynky0qd5qbf"
-},
-"White": {
-"use_external/enabled": true,
-"use_external/path": "uid://blimaxw8k6nua"
+"use_external/path": "uid://dejj7dkxn7x2q"
 }
 },
 "nodes": {

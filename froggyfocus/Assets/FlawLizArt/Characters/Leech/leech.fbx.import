@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cy6pdt5axqeip"
-path="res://.godot/imported/snail.fbx-96a0d66bd066527e6c46397aad923538.scn"
+uid="uid://og4aje0oop1"
+path="res://.godot/imported/leech.fbx-dbcba325369c2ef4880d355da002e8b1.scn"
 
 [deps]
 
-source_file="res://Assets/FlawLizArt/Snail/snail.fbx"
-dest_files=["res://.godot/imported/snail.fbx-96a0d66bd066527e6c46397aad923538.scn"]
+source_file="res://Assets/FlawLizArt/Characters/Leech/leech.fbx"
+dest_files=["res://.godot/imported/leech.fbx-dbcba325369c2ef4880d355da002e8b1.scn"]
 
 [params]
 
@@ -35,9 +35,9 @@ import_script/path=""
 _subresources={
 "animations": {
 "Armature|dialogue": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
-"save_to_file/path": "res://Assets/FlawLizArt/Snail/Animations/dialogue.res",
+"save_to_file/path": "res://Assets/FlawLizArt/Leech/Animations/dialogue.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -1834,9 +1834,9 @@ _subresources={
 "slices/amount": 0
 },
 "Armature|idle": {
-"save_to_file/enabled": true,
+"save_to_file/enabled": false,
 "save_to_file/keep_custom_tracks": true,
-"save_to_file/path": "res://Assets/FlawLizArt/Snail/Animations/idle.res",
+"save_to_file/path": "res://Assets/FlawLizArt/Leech/Animations/idle.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -3634,13 +3634,17 @@ _subresources={
 }
 },
 "materials": {
-"Body": {
+"Darkness": {
 "use_external/enabled": true,
-"use_external/path": "uid://xku8vyx57yu7"
+"use_external/path": "uid://byysddskgruh5"
 },
-"Shell": {
+"Leech": {
 "use_external/enabled": true,
-"use_external/path": "uid://cd0n4nvbjdlqr"
+"use_external/path": "uid://dvf08qcbm2w0r"
+},
+"Teeth": {
+"use_external/enabled": true,
+"use_external/path": "uid://dc2meu7yc38lv"
 }
 },
 "nodes": {
