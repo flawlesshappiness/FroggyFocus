@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://tg0kj2q60vm6"]
+
+[ext_resource type="Script" uid="uid://clpminwrgwaof" path="res://Prefabs/NPC/TurtleNPC/TurtleNpc.cs" id="1_3tldd"]
+[ext_resource type="PackedScene" uid="uid://p4h2xy11rfgg" path="res://Assets/FlawLizArt/Characters/Turtle/turtle.fbx" id="1_lfy8r"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_5nm1e"]
+[ext_resource type="Resource" uid="uid://cjoj1uvuy80p4" path="res://HandInQuest/Resources/Turtle_Factory.tres" id="2_bd5m3"]
+[ext_resource type="AudioStream" uid="uid://d1j10627f8dhw" path="res://Sounds/Raw/sfx_turtle_speak_001.wav" id="5_i6cp7"]
+[ext_resource type="AudioStream" uid="uid://dv733v2x2ukif" path="res://Sounds/Raw/sfx_turtle_speak_002.wav" id="6_porhg"]
+[ext_resource type="AudioStream" uid="uid://botltipsfjido" path="res://Sounds/Raw/sfx_turtle_speak_003.wav" id="7_peltu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5nm1e"]
+size = Vector3(8.3103, 2.66919, 10.848)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lfy8r"]
+size = Vector3(7.10938, 1.69177, 10.1299)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ij8v8"]
+random_pitch = 1.2
+streams_count = 3
+stream_0/stream = ExtResource("5_i6cp7")
+stream_1/stream = ExtResource("6_porhg")
+stream_2/stream = ExtResource("7_peltu")
+
+[node name="TurtleNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_3tldd")
+HandInInfo = ExtResource("2_bd5m3")
+Animation = NodePath("AnimationStateMachine")
+SfxSpeak = NodePath("SfxSpeak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75062, -0.0300903)
+shape = SubResource("BoxShape3D_5nm1e")
+
+[node name="turtle" parent="." instance=ExtResource("1_lfy8r")]
+
+[node name="Skeleton3D" parent="turtle/Armature" index="0"]
+bones/1/rotation = Quaternion(0.00636415, 1.2925e-26, -1.41313e-18, 0.99998)
+bones/2/position = Vector3(-1.41111e-26, 0.0534606, 9.78225e-11)
+bones/2/rotation = Quaternion(-0.00636415, -1.30747e-26, 1.41313e-18, 0.99998)
+bones/3/position = Vector3(-1.4655e-28, 0.0111216, -1.80377e-10)
+bones/3/rotation = Quaternion(4.65661e-10, 0, 6.57594e-27, 1)
+bones/4/position = Vector3(4.81482e-35, 0.00992323, 0)
+bones/4/rotation = Quaternion(0, 0, 0, 1)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(4.81482e-35, 0.0111518, 0)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(0.0333148, 0.0315791, 0.000278532)
+bones/7/rotation = Quaternion(0.0745281, -0.0262125, -0.288307, 0.954273)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/position = Vector3(2.20632e-09, 0.0155435, 8.27674e-11)
+bones/8/rotation = Quaternion(-0.0594554, -0.0314329, -0.294524, 0.953275)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(1.5073e-09, 0.020611, -3.63712e-11)
+bones/9/rotation = Quaternion(-0.0232169, -0.00496525, -0.247389, 0.968625)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.197408, -0.0370739, 0.943238, -0.264493)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-2.08766e-09, 0.0220988, 2.12225e-10)
+bones/12/rotation = Quaternion(-0.0500849, -0.00470615, 0.0873938, 0.994903)
+bones/12/scale = Vector3(1, 1, 1)
+bones/14/position = Vector3(-0.0333148, 0.0315791, 0.000278532)
+bones/14/rotation = Quaternion(0.0745281, 0.0262125, 0.288307, 0.954273)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(-2.20632e-09, 0.0155435, 8.27674e-11)
+bones/15/rotation = Quaternion(-0.0594554, 0.0314329, 0.294524, 0.953275)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(-1.5073e-09, 0.020611, -3.63712e-11)
+bones/16/rotation = Quaternion(-0.0232169, 0.00496525, 0.247389, 0.968625)
+bones/16/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.197408, -0.0370738, 0.943238, 0.264493)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(2.08766e-09, 0.0220988, 2.12225e-10)
+bones/19/rotation = Quaternion(-0.0500848, 0.00470616, -0.0873938, 0.994903)
+bones/19/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="turtle" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345886, 0)
+shape = SubResource("BoxShape3D_lfy8r")
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_5nm1e")
+Animator = NodePath("../turtle/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 3.44452, -5.15771)
+stream = SubResource("AudioStreamRandomizer_ij8v8")
+volume_db = 10.0
+bus = &"SFX"
+
+[editable path="turtle"]

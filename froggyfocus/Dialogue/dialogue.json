@@ -208,6 +208,22 @@
 	},
 	
 	{
+		"id": "##TURTLE_REQUEST_001##",
+		"next": "##TURTLE_REQUEST_002##"
+	},
+	{
+		"id": "##TURTLE_REQUEST_002##"
+	},
+	
+	{
+		"id": "##TURTLE_REQUEST_COMPLETE_001##"
+	},
+	
+	{
+		"id": "##TURTLE_IDLE_001##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

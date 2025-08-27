@@ -52,5 +52,6 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 [node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48818, -4.86773)
 stream = SubResource("AudioStreamRandomizer_7ucp6")
+bus = &"SFX"
 
 [editable path="eel"]

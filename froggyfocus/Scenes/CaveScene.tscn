@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=53 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="14_byi1e"]
 [ext_resource type="PackedScene" uid="uid://cdn0ulu4iqvsm" path="res://Prefabs/NPC/SnailNPC/snail_npc.tscn" id="14_fjshb"]
 [ext_resource type="Material" uid="uid://dacqxr0yochmh" path="res://Materials/Sand.tres" id="15_lrn65"]
-[ext_resource type="Resource" uid="uid://buwjkq6ue7rvb" path="res://HandInQuest/Resources/Snail_Cave.tres" id="15_vlao4"]
 [ext_resource type="PackedScene" uid="uid://bd1p385ni06q4" path="res://Prefabs/Objects/pier.tscn" id="17_pteap"]
 [ext_resource type="PackedScene" uid="uid://kvtix1ndn4h1" path="res://Prefabs/Nature/stalagtite.tscn" id="17_wkocx"]
 [ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="20_bktod"]
@@ -140,7 +139,6 @@ omni_attenuation = 0.0
 
 [node name="SnailNPC" parent="World/NavigationRegion3D/Cave/Moss" instance=ExtResource("14_fjshb")]
 transform = Transform3D(-0.510048, 0, 0.860146, 0, 1, 0, -0.860146, 0, -0.510048, 70.46, 15.1812, 1.66007)
-HandInInfo = ExtResource("15_vlao4")
 
 [node name="Platforms" type="Node3D" parent="World/NavigationRegion3D/Cave/Moss"]
 

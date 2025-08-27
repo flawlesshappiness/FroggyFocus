@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://cjoj1uvuy80p4"]
+
+[ext_resource type="Resource" uid="uid://bi27kk1oi4nm4" path="res://FocusCharacter/Resources/ScorpionFly.tres" id="6_ocvwc"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="7_afjku"]
+
+[resource]
+script = ExtResource("7_afjku")
+Id = "turtle"
+PossibleRequests = Array[Object]([ExtResource("6_ocvwc")])
+CountRange = Vector2i(2, 3)
+ClaimCountToUnlock = 0
+HatUnlock = 0
+CooldownInSeconds = 600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"
