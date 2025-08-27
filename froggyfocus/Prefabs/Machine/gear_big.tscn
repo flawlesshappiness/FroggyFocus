@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp64pfqrxicn2"]
+[gd_scene load_steps=12 format=3 uid="uid://cp64pfqrxicn2"]
 
 [ext_resource type="PackedScene" uid="uid://p21mt1ekca1x" path="res://Assets/FlawLizArt/Machine/gear_big.fbx" id="1_nxlv2"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="2_2sy8i"]
+[ext_resource type="AudioStream" uid="uid://b3we57k6co1yk" path="res://Sounds/Raw/sfx_water_wave_001.wav" id="3_7n5xj"]
+[ext_resource type="AudioStream" uid="uid://cr6fmc0807eyf" path="res://Sounds/Raw/sfx_water_wave_002.wav" id="4_komh5"]
+[ext_resource type="AudioStream" uid="uid://6urpqaegmi83" path="res://Sounds/Raw/sfx_water_wave_003.wav" id="5_1uh5o"]
+[ext_resource type="AudioStream" uid="uid://dn6fpshwvs80y" path="res://Sounds/Raw/sfx_gears_001.wav" id="6_komh5"]
 
 [sub_resource type="Animation" id="Animation_7n5xj"]
 length = 0.001
@@ -16,6 +20,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxWater:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_qas4x"]
@@ -35,6 +51,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -6.28319)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxWater:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.51, 3.04, 4.51, 6.01, 7.5, 9.01, 10.54),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_komh5"]
 _data = {
@@ -44,6 +72,15 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nxlv2"]
 size = Vector3(2, 2, 0.516)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_msp8y"]
+playback_mode = 2
+random_pitch = 1.1
+random_volume_offset_db = 2.0
+streams_count = 3
+stream_0/stream = ExtResource("3_7n5xj")
+stream_1/stream = ExtResource("4_komh5")
+stream_2/stream = ExtResource("5_1uh5o")
 
 [node name="Gear_Big" type="Node3D"]
 
@@ -69,3 +106,20 @@ height = 1.5
 vertices = PackedVector3Array(-1.03091, 0, -0.292846, 1.03091, 0, -0.278561, 1.03567, 0, 0.283322, -1.04996, 0, 0.273799)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
+
+[node name="SfxWater" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_msp8y")
+volume_db = -10.0
+unit_size = 15.0
+max_distance = 80.0
+max_polyphony = 5
+panning_strength = 0.75
+bus = &"SFX"
+
+[node name="SfxGears" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_komh5")
+volume_db = -15.0
+autoplay = true
+max_distance = 60.0
+max_polyphony = 5
+bus = &"SFX"
