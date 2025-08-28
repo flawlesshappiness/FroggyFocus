@@ -19,6 +19,7 @@ public partial class FocusSkillCheck : Node3D
         FocusEvent = focus_event;
         FocusEvent.OnCompleted += _ => Clear();
         FocusEvent.OnFailed += _ => Clear();
+        FocusEvent.OnStopped += () => Stop();
     }
 
     public virtual void Clear()
@@ -31,6 +32,11 @@ public partial class FocusSkillCheck : Node3D
     {
         IsRunning = true;
         yield return Run();
+    }
+
+    protected virtual void Stop()
+    {
+
     }
 
     protected virtual IEnumerator Run()

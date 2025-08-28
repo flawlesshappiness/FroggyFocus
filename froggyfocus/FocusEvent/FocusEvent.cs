@@ -35,6 +35,7 @@ public partial class FocusEvent : Node3D
 
     public event Action<FocusEventCompletedResult> OnCompleted;
     public event Action<FocusEventFailedResult> OnFailed;
+    public event Action OnStopped;
     public event Action OnStarted;
     public event Action OnEnabled;
     public event Action OnDisabled;
@@ -132,6 +133,8 @@ public partial class FocusEvent : Node3D
 
     protected virtual void EndEvent(bool completed)
     {
+        OnStopped?.Invoke();
+
         this.StartCoroutine(Cr, "event");
         IEnumerator Cr()
         {

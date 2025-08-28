@@ -8,5 +8,8 @@ public enum FocusSkillCheckType
     Spike,
     Crystal,
     Moss,
-    Sand
+    Sand,
+    Seaweed,
+    Oil,
+    Garbage
 }

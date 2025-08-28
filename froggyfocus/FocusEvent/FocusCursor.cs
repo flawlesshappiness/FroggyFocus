@@ -46,6 +46,7 @@ public partial class FocusCursor : Node3D
     public static readonly MultiLock FocusGainLock = new();
     public static readonly MultiLock MoveLock = new();
     public static readonly MultiLock ShieldLock = new();
+    public static readonly MultiLock SlowLock = new();
 
     private float next_tick;
     private bool moving;
@@ -142,7 +143,8 @@ public partial class FocusCursor : Node3D
 
         if (MoveLock.IsLocked) return;
 
-        GlobalPosition += DesiredVelocity * MoveSpeed;
+        var vel_mult = SlowLock.IsFree ? 1.0f : 0.5f;
+        GlobalPosition += DesiredVelocity * MoveSpeed * vel_mult;
     }
 
     private void Process_Target()

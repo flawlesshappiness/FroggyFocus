@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8orm5vjk31oe"]
+
+[ext_resource type="Script" uid="uid://m7abiripaaec" path="res://FocusSkillCheck/FocusSkillCheck_Seaweed.cs" id="1_cmcfh"]
+[ext_resource type="PackedScene" uid="uid://ouibhiug1fxg" path="res://Prefabs/FocusSkillChecks/skill_check_seaweed_patch.tscn" id="2_mcr7s"]
+
+[node name="Seaweed" type="Node3D"]
+script = ExtResource("1_cmcfh")
+CountRange = Vector2i(2, 4)
+SizeRange = Vector2(1.5, 2)
+DurationRange = Vector2(4, 8)
+SeaweedPatchPrefab = ExtResource("2_mcr7s")
+Type = 9

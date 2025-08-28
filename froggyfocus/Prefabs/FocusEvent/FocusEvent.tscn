@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=21 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cava4qyxuniih" path="res://Prefabs/FocusSkillChecks/moss.tscn" id="11_85vk6"]
 [ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="11_h8skc"]
 [ext_resource type="PackedScene" uid="uid://drlpioouldb1f" path="res://Prefabs/FocusSkillChecks/sand.tscn" id="12_1pin3"]
+[ext_resource type="PackedScene" uid="uid://b8orm5vjk31oe" path="res://Prefabs/FocusSkillChecks/seaweed.tscn" id="13_f8plv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pin3"]
 transparency = 1
@@ -33,13 +34,14 @@ geometry_parsed_geometry_type = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_4atv5"]
 size = Vector3(6, 1, 4)
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "SkillCheckParent")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "OverrideSkillCheck", "SkillCheckParent")]
 script = ExtResource("1_p778c")
 Info = ExtResource("2_2i5pb")
 Camera = NodePath("Camera3D")
 Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
 Frog = NodePath("Frog")
+OverrideSkillCheck = NodePath("SkillChecks/Seaweed")
 SkillCheckParent = NodePath("SkillChecks")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -66,6 +68,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5
 [node name="Moss" parent="SkillChecks" instance=ExtResource("11_85vk6")]
 
 [node name="Sand" parent="SkillChecks" instance=ExtResource("12_1pin3")]
+
+[node name="Seaweed" parent="SkillChecks" instance=ExtResource("13_f8plv")]
 
 [node name="Frog" parent="." instance=ExtResource("7_yos1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
