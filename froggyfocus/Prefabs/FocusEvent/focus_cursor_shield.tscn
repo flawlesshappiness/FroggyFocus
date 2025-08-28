@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ko8a82uxc2gv"]
+[gd_scene load_steps=13 format=3 uid="uid://ko8a82uxc2gv"]
 
 [ext_resource type="Texture2D" uid="uid://cgvw1bv4nyiyt" path="res://Assets/FlawLizArt/Textures/focus_circle_outline.png" id="1_rhb07"]
 [ext_resource type="Script" uid="uid://bi6uw07sssp6q" path="res://FocusEvent/FocusCursorShield.cs" id="1_yhc6n"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="2_yhc6n"]
 [ext_resource type="AudioStream" uid="uid://cegi2gqib8ilu" path="res://Sounds/Raw/sfx_focus_shield_001.wav" id="4_t0p43"]
 [ext_resource type="PackedScene" uid="uid://cwcxbt0gadhp8" path="res://Prefabs/Effects/ps_shield_block.tscn" id="5_dhnhj"]
+[ext_resource type="AudioStream" uid="uid://bsj1qpj5o1kxq" path="res://Sounds/Raw/sfx_focus_shield_002.wav" id="6_xfywn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rptds"]
 transparency = 1
@@ -62,6 +63,18 @@ tracks/3/path = NodePath("SfxShield:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxShieldInstant:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -138,10 +151,81 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_dhnhj"]
+resource_name = "shield_instant"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Mesh:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Mesh:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Glow_Shield:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.24, 1, 1, 1), Color(0.24, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.01, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"ActivateShield"
+}, {
+"args": [],
+"method": &"DeactivateShield"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxShieldInstant:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.002),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dthue"]
 _data = {
 &"RESET": SubResource("Animation_dthue"),
-&"shield": SubResource("Animation_7kn4i")
+&"shield": SubResource("Animation_7kn4i"),
+&"shield_instant": SubResource("Animation_dhnhj")
 }
 
 [node name="FocusCursorShield" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
@@ -174,6 +258,12 @@ libraries = {
 
 [node name="SfxShield" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_t0p43")
+volume_db = -5.0
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="SfxShieldInstant" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xfywn")
 volume_db = -5.0
 max_polyphony = 5
 bus = &"SFX"

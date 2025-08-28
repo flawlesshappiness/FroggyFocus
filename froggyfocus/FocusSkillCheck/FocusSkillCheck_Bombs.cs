@@ -63,8 +63,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     {
         var last_angle = rng.RandfRange(0f, 360f);
         var count = BombCountRange.Range(Difficulty);
-        var delay_span = 0.6f;
-        var delay_per = delay_span / count;
+        var delay_per = 0.5f;
         for (int i = 0; i < count; i++)
         {
             last_angle += rng.RandfRange(45, 180);

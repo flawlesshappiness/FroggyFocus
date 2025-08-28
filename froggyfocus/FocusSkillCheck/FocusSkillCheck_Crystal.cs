@@ -107,6 +107,10 @@ public partial class FocusSkillCheck_Crystal : FocusSkillCheck
                 projectile.GlobalPosition = start_final.Lerp(FocusEvent.Cursor.GlobalPosition, f);
             });
 
+            projectile.Hide();
+
+            yield return new WaitForSeconds(0.05f);
+
             FocusEvent.Cursor.HurtFocusValuePercentage(0.2f);
 
             Clear();

@@ -22,6 +22,9 @@ public partial class SkillCheckBombProjectile : Node3D
             GlobalPosition = position;
         });
 
+        Hide();
         PsProjectile.Stop();
+
+        yield return new WaitForSeconds(0.05f); // grace period
     }
 }

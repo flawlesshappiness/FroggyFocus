@@ -10,7 +10,7 @@ public partial class FocusSkillCheck_Spike : FocusSkillCheck
     public AnimationPlayer AnimationPlayer;
 
     [Export]
-    public GpuParticles3D PsRipples;
+    public PackedScene PsRipple;
 
     [Export]
     public AudioStreamPlayer3D SfxCreaks;
@@ -52,19 +52,28 @@ public partial class FocusSkillCheck_Spike : FocusSkillCheck
 
     private Coroutine StartSpike()
     {
+        var delay_per = DelayRange.Range(Difficulty);
+
         return this.StartCoroutine(Cr, "spike");
         IEnumerator Cr()
         {
-            PsRipples.Emitting = true;
-            SfxCreaks.Play();
+            for (int i = 0; i < 3; i++)
+            {
+                var ps = ParticleEffectGroup.Instantiate(PsRipple, this);
+                ps.Play(destroy: true);
 
-            var delay = DelayRange.Range(Difficulty);
-            yield return new WaitForSeconds(delay);
+                SfxCreaks.Play();
 
-            FocusEvent.Cursor.HurtFocusValuePercentage(0.4f);
+                yield return new WaitForSeconds(delay_per);
+            }
 
             visible = true;
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show");
+            var cr_anim = AnimationPlayer.PlayAndWaitForAnimation("show");
+
+            yield return new WaitForSeconds(0.1f); // grace period
+            FocusEvent.Cursor.HurtFocusValuePercentage(0.2f);
+
+            yield return cr_anim;
 
             Clear();
         }

@@ -101,6 +101,9 @@ public partial class FocusEvent : Node3D
             // Target
             CreateTarget();
 
+            // Clear skill checks
+            skill_checks.ForEach(x => x.Clear());
+
             // Transition start
             FocusIntroView.Instance.LoadTarget(Target);
             yield return FocusIntroView.Instance.AnimateShow();

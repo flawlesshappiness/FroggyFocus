@@ -353,7 +353,6 @@ curve = SubResource("Curve3D_gteuj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9353, 0, -41.8177)
 
 [node name="Path_SfxWater3" type="Path3D" parent="World/NavigationRegion3D/Garbage/Bags/Trash_bag_Island2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 curve = SubResource("Curve3D_ix7e4")
 
 [node name="Trash_Bag_White" parent="World/NavigationRegion3D/Garbage/Bags" instance=ExtResource("15_foaib")]

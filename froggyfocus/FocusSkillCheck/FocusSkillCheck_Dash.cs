@@ -30,9 +30,7 @@ public partial class FocusSkillCheck_Dash : FocusSkillCheck
 
     protected override IEnumerator Run()
     {
-        yield return base.Run();
-
-        AnimationPlayer.SpeedScale = Mathf.Lerp(TelegraphSpeedRange.X, TelegraphSpeedRange.Y, Difficulty);
+        AnimationPlayer.SpeedScale = TelegraphSpeedRange.Range(Difficulty);
 
         var count = DashCountRange.Range(Difficulty);
         for (int i = 0; i < count; i++)

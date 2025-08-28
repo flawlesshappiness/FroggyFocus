@@ -13,8 +13,9 @@ public partial class FocusCursorShield : Node3D
     public void StartShield()
     {
         if (AnimationPlayer.IsPlaying()) return;
+        IsShielded = true;
         AnimationPlayer.Stop();
-        AnimationPlayer.Play("shield");
+        AnimationPlayer.Play("shield_instant");
     }
 
     public void ActivateShield()
