@@ -8,5 +8,8 @@ public enum FocusCharacterTag
     Wooden,
     Crystalized,
     Mossy,
-    Sandy
+    Sandy,
+    Weeded,
+    Oily,
+    Polluted
 }

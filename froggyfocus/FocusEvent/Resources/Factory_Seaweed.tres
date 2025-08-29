@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=4 format=3 uid="uid://cm5mlcegogu6u"]
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=8 format=3 uid="uid://cm5mlcegogu6u"]
 
 [ext_resource type="Resource" uid="uid://b6qp4y2ey8oqk" path="res://FocusCharacter/Resources/TigerBeetle.tres" id="1_h765u"]
 [ext_resource type="Resource" uid="uid://byqr557n1o5br" path="res://FocusCharacter/Resources/Lanternfly.tres" id="2_fekvc"]
+[ext_resource type="Resource" uid="uid://k0kvfyx68fnd" path="res://FocusCharacter/Resources/TigerBeetle_Seaweed.tres" id="2_h514s"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_h765u"]
+[ext_resource type="Resource" uid="uid://joxldpuv0xuf" path="res://FocusCharacter/Resources/HorseFly.tres" id="3_fekvc"]
+[ext_resource type="Resource" uid="uid://buq8htybs04o" path="res://FocusCharacter/Resources/Lanternfly_Seaweed.tres" id="4_jcedk"]
+[ext_resource type="Resource" uid="uid://cvxeug6l1rgvk" path="res://FocusCharacter/Resources/HorseFly_Seaweed.tres" id="6_73jwn"]
 
 [resource]
 script = ExtResource("2_h765u")
-Characters = Array[Object]([ExtResource("1_h765u"), ExtResource("2_fekvc")])
+Characters = Array[Object]([ExtResource("1_h765u"), ExtResource("2_h514s"), ExtResource("2_fekvc"), ExtResource("4_jcedk"), ExtResource("3_fekvc"), ExtResource("6_73jwn")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"

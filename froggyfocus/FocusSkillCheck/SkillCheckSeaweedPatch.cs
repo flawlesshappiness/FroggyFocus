@@ -8,13 +8,22 @@ public partial class SkillCheckSeaweedPatch : Node3D
 
     private FocusCursor cursor;
     private float radius;
+    private float speed;
+    private Vector3 direction;
     private bool is_inside;
     private bool is_running;
 
-    public Coroutine Run(FocusCursor cursor, float duration)
+    public void Initialize(FocusCursor cursor, float size, float speed)
     {
         this.cursor = cursor;
+        Scale = Vector3.One * size;
+        radius = size * 0.5f;
+        this.speed = speed;
+    }
 
+    public Coroutine Run(Vector3 direction, float duration)
+    {
+        this.direction = direction;
         return this.StartCoroutine(Cr, "start");
         IEnumerator Cr()
         {
@@ -37,6 +46,9 @@ public partial class SkillCheckSeaweedPatch : Node3D
         base._Process(delta);
         if (!is_running) return;
 
+        GlobalPosition += direction * speed * GameTime.DeltaTime;
+        GlobalRotationDegrees += Vector3.Up * 10f * GameTime.DeltaTime;
+
         if (IsInsideRadius(cursor.GlobalPosition) != is_inside)
         {
             is_inside = !is_inside;
@@ -47,12 +59,6 @@ public partial class SkillCheckSeaweedPatch : Node3D
         {
             AnimateWiggle();
         }
-    }
-
-    public void SetSize(float size)
-    {
-        Scale = Vector3.One * size;
-        radius = size * 0.5f;
     }
 
     public bool IsInsideRadius(Vector3 position)

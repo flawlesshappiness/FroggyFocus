@@ -54,9 +54,10 @@ public partial class FocusSkillCheck_Seaweed : FocusSkillCheck
                 var patch = CreatePatch();
                 patch.GlobalPosition = GetPatchPosition();
                 patch.RotationDegrees = Vector3.Up * rng.RandfRange(0f, 360f);
-                var cr = patch.Run(FocusEvent.Cursor, DurationRange.Range(Difficulty));
+                var dir = GetPatchDirection(patch.GlobalPosition);
+                var cr = patch.Run(dir, DurationRange.Range(Difficulty));
                 crs.Add(cr);
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.3f);
             }
 
             foreach (var cr in crs)
@@ -71,19 +72,26 @@ public partial class FocusSkillCheck_Seaweed : FocusSkillCheck
     private Vector3 GetPatchPosition()
     {
         var center = FocusEvent.GlobalPosition;
-        var rx = 1;
-        var rz = 0.5f;
-        var x = rng.RandfRange(-rx, rx);
-        var z = rng.RandfRange(-rz, rz);
-        var position = center + new Vector3(x, 0, z);
+        var circ = rng.RandCircDirection();
+        var dir = new Vector3(circ.X, 0, circ.Y) * 6f;
+        var position = center + dir;
         return position;
+    }
+
+    private Vector3 GetPatchDirection(Vector3 start)
+    {
+        var center = GlobalPosition + Vector3.Right * rng.RandfRange(-3, 3);
+        var dir = start.DirectionTo(center);
+        return dir.Normalized();
     }
 
     private SkillCheckSeaweedPatch CreatePatch()
     {
+        var size = SizeRange.Range(Difficulty);
+        var speed = 0.8f;
         var node = SeaweedPatchPrefab.Instantiate<SkillCheckSeaweedPatch>();
         node.SetParent(this);
-        node.SetSize(SizeRange.Range(Difficulty));
+        node.Initialize(FocusEvent.Cursor, size, speed);
         created_patches.Add(node);
         return node;
     }

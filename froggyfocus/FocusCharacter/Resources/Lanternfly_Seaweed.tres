@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://buq8htybs04o"]
+
+[ext_resource type="PackedScene" uid="uid://clj4w2p24f2go" path="res://Prefabs/Characters/lanternfly.tscn" id="1_rx1ff"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_oi5p3"]
+
+[resource]
+script = ExtResource("2_oi5p3")
+Scene = ExtResource("1_rx1ff")
+Name = "Weeded Lantern Fly"
+LocationHint = "##HINT_LOC_SEAWEED##"
+Accessory = "seaweed"
+FocusValue = 50.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+SkillChecks = Array[int]([2, 9])
+Tags = Array[int]([0, 2, 9])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

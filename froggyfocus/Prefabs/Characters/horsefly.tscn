@@ -1,42 +1,123 @@
-[gd_scene load_steps=4 format=3 uid="uid://cntyr6wehqdsp"]
+[gd_scene load_steps=12 format=3 uid="uid://cntyr6wehqdsp"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_agj4u"]
 [ext_resource type="PackedScene" uid="uid://d1by3m7qj52p3" path="res://Assets/FlawLizArt/Nature/Bugs/horsefly.fbx" id="2_4sku3"]
+[ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="3_4sku3"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_almym"]
+[ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="4_almym"]
+[ext_resource type="Material" uid="uid://dd4cr8a3qa3fa" path="res://Materials/Seaweed_003.tres" id="5_i74n7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_almym"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_i74n7"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5r26w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i74n7"]
+albedo_color = Color(0.6, 0.4944, 0.312, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5r26w"]
+material = SubResource("StandardMaterial3D_i74n7")
+radius = 0.1
+height = 0.2
 
 [node name="Horsefly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_agj4u")
 Animation = NodePath("AnimationStateMachine")
 WalkingAnimation = "Armature|moving"
-Accessories = []
+Accessories = [NodePath("horsefly/Armature/Skeleton3D/seaweed")]
 
 [node name="horsefly" parent="." instance=ExtResource("2_4sku3")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="Skeleton3D" parent="horsefly/Armature" index="0"]
-bones/0/position = Vector3(0, -0.001, -0.016)
 bones/1/position = Vector3(3.70729e-18, -0.000524128, 0.0166961)
 bones/1/rotation = Quaternion(0.00915433, -7.48503e-26, -2.03266e-18, 0.999958)
-bones/4/rotation = Quaternion(0.074011, 0.0409622, 0.909259, -0.407545)
-bones/6/rotation = Quaternion(-0.166816, 0.278659, -0.691329, 0.645434)
-bones/7/rotation = Quaternion(0.52115, -1.95853e-08, 0.0978995, 0.847831)
-bones/8/rotation = Quaternion(-0.62753, 5.9779e-08, -0.117502, 0.769675)
-bones/10/rotation = Quaternion(-0.166816, 0.278659, -0.691329, 0.645434)
-bones/11/rotation = Quaternion(0.52115, -2.67082e-08, 0.0978995, 0.847831)
-bones/12/rotation = Quaternion(-0.62753, 4.51957e-08, -0.117502, 0.769675)
-bones/14/rotation = Quaternion(-0.166816, 0.278659, -0.691329, 0.645434)
-bones/15/rotation = Quaternion(0.52115, 3.47228e-08, 0.0978995, 0.847831)
-bones/16/rotation = Quaternion(-0.62753, 1.45264e-09, -0.117502, 0.769675)
-bones/18/rotation = Quaternion(-0.166816, -0.278659, 0.691329, 0.645434)
-bones/19/rotation = Quaternion(0.52115, 2.23527e-08, -0.0978995, 0.847831)
-bones/20/rotation = Quaternion(-0.62753, -4.56966e-08, 0.117502, 0.769675)
-bones/22/rotation = Quaternion(-0.166816, -0.278659, 0.691329, 0.645434)
-bones/23/rotation = Quaternion(0.52115, 2.67082e-08, -0.0978995, 0.847831)
-bones/24/rotation = Quaternion(-0.62753, -5.56987e-08, 0.117502, 0.769675)
-bones/26/rotation = Quaternion(-0.166816, -0.278659, 0.691329, 0.645434)
-bones/27/rotation = Quaternion(0.52115, -3.47228e-08, -0.0978995, 0.847831)
-bones/28/rotation = Quaternion(-0.62753, -1.28953e-08, 0.117502, 0.769675)
-bones/30/rotation = Quaternion(-0.0740109, 0.0409622, 0.909259, 0.407544)
+bones/4/rotation = Quaternion(0.373784, 0.0800962, 0.900909, -0.205507)
+bones/6/rotation = Quaternion(-0.291682, 0.394541, -0.65037, 0.579894)
+bones/7/rotation = Quaternion(0.557408, 1.37235e-05, 0.104688, 0.823612)
+bones/8/rotation = Quaternion(-0.849378, 5.96046e-08, -0.159041, 0.503252)
+bones/10/rotation = Quaternion(-0.35643, 0.452771, -0.617929, 0.534902)
+bones/11/rotation = Quaternion(0.736634, 8.85762e-05, 0.138234, 0.662014)
+bones/12/rotation = Quaternion(-0.869185, 2.6077e-08, -0.16275, 0.466936)
+bones/14/rotation = Quaternion(-0.295953, 0.398425, -0.648487, 0.577178)
+bones/15/rotation = Quaternion(0.674417, 6.11097e-05, 0.126592, 0.727417)
+bones/16/rotation = Quaternion(-0.873699, 2.98023e-08, -0.163595, 0.458134)
+bones/18/rotation = Quaternion(-0.291682, -0.394541, 0.65037, 0.579894)
+bones/19/rotation = Quaternion(0.557408, -1.37347e-05, -0.104688, 0.823612)
+bones/20/rotation = Quaternion(-0.849378, -5.96046e-08, 0.159041, 0.503252)
+bones/22/rotation = Quaternion(-0.35643, -0.452771, 0.617929, 0.534902)
+bones/23/rotation = Quaternion(0.736634, -8.85669e-05, -0.138234, 0.662014)
+bones/24/rotation = Quaternion(-0.869185, -7.45058e-09, 0.16275, 0.466936)
+bones/26/rotation = Quaternion(-0.295953, -0.398425, 0.648486, 0.577178)
+bones/27/rotation = Quaternion(0.674417, -6.11115e-05, -0.126592, 0.727417)
+bones/28/rotation = Quaternion(-0.873699, -2.23517e-08, 0.163595, 0.458134)
+bones/30/rotation = Quaternion(-0.373784, 0.0800962, 0.900909, 0.205507)
+
+[node name="seaweed" type="BoneAttachment3D" parent="horsefly/Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 4.06515e-18, -3.72154e-20, -4.06515e-18, 0.999832, -0.0183079, -3.72151e-20, 0.0183079, 0.999832, 3.70729e-18, -0.00152413, 0.0169794)
+bone_name = "Body"
+bone_idx = 1
+
+[node name="ClusterA" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(0.00759405, 0.0181444, 0.00362077, -0.0181488, 0.00654373, 0.00527255, 0.00359871, -0.00528764, 0.0189497, 0.0101066, 0.00538912, -0.000885559)
+mesh = SubResource("QuadMesh_almym")
+surface_material_override/0 = ExtResource("3_4sku3")
+
+[node name="ClusterA2" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(-0.0124602, -0.0154158, 0.00266417, -0.0154773, 0.0116508, -0.00497089, 0.00227952, -0.00515862, -0.0191883, -0.00995921, 0.00597749, -0.000687261)
+mesh = SubResource("QuadMesh_almym")
+surface_material_override/0 = ExtResource("3_4sku3")
+
+[node name="ClusterB" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(-0.00697919, 0.0184665, 0.00320623, -0.0167805, -0.00768043, 0.00770892, 0.0083491, 0, 0.018174, 0.00852293, -0.0052849, 0.000658449)
+mesh = SubResource("QuadMesh_i74n7")
+surface_material_override/0 = ExtResource("4_almym")
+
+[node name="ClusterB2" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(-0.00321315, -0.0197402, -3.69581e-05, 0.0161785, -0.00265485, 0.0114546, -0.0113107, 0.00181037, 0.0163948, -0.00877322, -0.00393329, 0.000568368)
+mesh = SubResource("QuadMesh_i74n7")
+surface_material_override/0 = ExtResource("4_almym")
+
+[node name="ClusterC" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(-0.00868323, -0.00990822, 0.0150475, 0.0173614, -0.00013749, 0.00992791, -0.00481495, 0.0173726, 0.00866071, -0.00086059, -0.00296091, 0.00919027)
+mesh = SubResource("QuadMesh_5r26w")
+surface_material_override/0 = ExtResource("5_i74n7")
+
+[node name="ClusterC3" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(-0.00868323, -0.00990822, 0.0150475, 0.0173614, -0.00013749, 0.00992791, -0.00481495, 0.0173726, 0.00866071, -0.00239028, 0.00663393, 0.00919992)
+mesh = SubResource("QuadMesh_5r26w")
+surface_material_override/0 = ExtResource("5_i74n7")
+
+[node name="ClusterC2" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(0.0158877, 0.0076964, 0.00939932, 0.0119901, -0.00744531, -0.0141705, -0.00195406, 0.0168918, -0.0105285, 0.00282279, 0.00127518, 0.00994032)
+mesh = SubResource("QuadMesh_5r26w")
+surface_material_override/0 = ExtResource("5_i74n7")
+
+[node name="ClusterC4" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(0.0183323, 0.0076964, 0.00216621, 0.00523029, -0.00744531, -0.0178104, -0.00604741, 0.0168918, -0.0088372, 0.00156576, -0.00956905, 0.00573331)
+mesh = SubResource("QuadMesh_5r26w")
+surface_material_override/0 = ExtResource("5_i74n7")
+
+[node name="ball" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.0026053, 0.00972693, 0.00409324)
+mesh = SubResource("SphereMesh_5r26w")
+
+[node name="ball2" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.000591273, 0.00671862, 0.00477602)
+mesh = SubResource("SphereMesh_5r26w")
+
+[node name="ball3" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.000678274, 0.00222787, 0.00477602)
+mesh = SubResource("SphereMesh_5r26w")
+
+[node name="ball4" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.000693547, -0.00335156, 0.00376563)
+mesh = SubResource("SphereMesh_5r26w")
+
+[node name="ball5" type="MeshInstance3D" parent="horsefly/Armature/Skeleton3D/seaweed"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.000618626, -0.00858194, 0.0020765)
+mesh = SubResource("SphereMesh_5r26w")
 
 [node name="AnimationPlayer" parent="horsefly" index="1"]
 playback_default_blend_time = 0.25
