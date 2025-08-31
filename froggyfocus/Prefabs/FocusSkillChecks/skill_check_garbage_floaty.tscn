@@ -1,0 +1,222 @@
+[gd_scene load_steps=25 format=3 uid="uid://bg0qxw7bywuse"]
+
+[ext_resource type="Script" uid="uid://dsf4abcb8px0x" path="res://FocusSkillCheck/SkillCheckGarbageFloaty.cs" id="1_cblfg"]
+[ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="2_qd8xy"]
+[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="3_i8bjo"]
+[ext_resource type="PackedScene" uid="uid://drkw8kmks10q4" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_dish.fbx" id="3_qd8xy"]
+[ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="5_e4dli"]
+[ext_resource type="AudioStream" uid="uid://iupdbu38bkq0" path="res://Sounds/Raw/sfx_impact_water_low_002.wav" id="6_v0iv3"]
+[ext_resource type="AudioStream" uid="uid://mvr5nhm1lqiv" path="res://Sounds/Raw/sfx_impact_water_low_003.wav" id="7_doy2a"]
+[ext_resource type="AudioStream" uid="uid://bu3w1t785m70f" path="res://Sounds/Raw/sfx_impact_water_low_004.wav" id="8_wxwlx"]
+
+[sub_resource type="Animation" id="Animation_i8bjo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxWater:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qd8xy"]
+resource_name = "hide"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cblfg"]
+resource_name = "show"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, -2, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxWater:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8bjo"]
+_data = {
+&"RESET": SubResource("Animation_i8bjo"),
+&"hide": SubResource("Animation_qd8xy"),
+&"show": SubResource("Animation_cblfg")
+}
+
+[sub_resource type="Curve" id="Curve_oxqd8"]
+_data = [Vector2(0, 1), 0.0, -2.57303, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_s3y7d"]
+curve = SubResource("Curve_oxqd8")
+
+[sub_resource type="Curve" id="Curve_3g6hj"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_48r52"]
+curve = SubResource("Curve_3g6hj")
+
+[sub_resource type="Curve" id="Curve_xfk8l"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bs2i1"]
+curve = SubResource("Curve_xfk8l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8qq3e"]
+angle_min = 15.0
+angle_max = 15.0
+angle_curve = SubResource("CurveTexture_48r52")
+gravity = Vector3(0, 0, 0)
+scale_min = 4.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_bs2i1")
+color = Color(1, 1, 1, 0.52549)
+alpha_curve = SubResource("CurveTexture_s3y7d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfarc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_i8bjo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jf0rd"]
+material = SubResource("StandardMaterial3D_mfarc")
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cktxx"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.0392157)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xvwy0"]
+material = SubResource("StandardMaterial3D_cktxx")
+height = 0.001
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_amqbk"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("5_e4dli")
+stream_1/stream = ExtResource("6_v0iv3")
+stream_2/stream = ExtResource("7_doy2a")
+stream_3/stream = ExtResource("8_wxwlx")
+
+[node name="SkillCheckGarbageFloaty" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Models")]
+script = ExtResource("1_cblfg")
+AnimationPlayer = NodePath("AnimationPlayer")
+Models = [NodePath("Anim/bottle_cleaning_simple"), NodePath("Anim/bottle_cleaning_dish")]
+
+[node name="Anim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+visible = false
+
+[node name="bottle_cleaning_simple" parent="Anim" instance=ExtResource("2_qd8xy")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -2.37229, 0)
+
+[node name="bottle_cleaning_dish" parent="Anim" instance=ExtResource("3_qd8xy")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -2.72633, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i8bjo")
+}
+
+[node name="PsWaterRipple" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+amount = 4
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_8qq3e")
+draw_pass_1 = SubResource("QuadMesh_jf0rd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CylinderMesh_xvwy0")
+
+[node name="SfxWater" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_amqbk")
+volume_db = -10.0
+bus = &"SFX"

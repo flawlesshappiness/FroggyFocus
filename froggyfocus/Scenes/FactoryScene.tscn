@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=59 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -21,9 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bovnbfopscqpk" path="res://Prefabs/Buildings/lighthouse.tscn" id="15_qfdwa"]
 [ext_resource type="PackedScene" uid="uid://dh0g8nwc8a2dv" path="res://Prefabs/Objects/trash_bag_black.tscn" id="16_fivwh"]
 [ext_resource type="PackedScene" uid="uid://tg0kj2q60vm6" path="res://Prefabs/NPC/TurtleNPC/turtle_npc.tscn" id="16_l4num"]
-[ext_resource type="PackedScene" uid="uid://cr2mvb04tpmbl" path="res://Prefabs/Objects/trash_bag_green.tscn" id="17_ea7wq"]
 [ext_resource type="PackedScene" uid="uid://bcfbwifytvr60" path="res://Prefabs/Objects/trash_bag_island_2.tscn" id="17_jeo78"]
-[ext_resource type="PackedScene" uid="uid://dsjmyfq0e0si5" path="res://Prefabs/Objects/trash_bag_blue.tscn" id="18_16r1r"]
 [ext_resource type="PackedScene" uid="uid://dbwq5ouf0ihjq" path="res://Prefabs/Objects/bottle_cleaning_simple.tscn" id="19_ea7wq"]
 [ext_resource type="PackedScene" uid="uid://pndnf2awnmp0" path="res://Prefabs/Objects/bottle_cleaning_dish.tscn" id="20_16r1r"]
 [ext_resource type="PackedScene" uid="uid://c482un0ek3woo" path="res://Prefabs/Objects/bottle_cleaning_soap.tscn" id="21_lxndu"]
@@ -127,7 +125,7 @@ DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
 Weathers = Array[ExtResource("2_jmf1t")]([ExtResource("3_s3kaw"), ExtResource("4_g0uh1"), ExtResource("5_j3lbf")])
-FocusEvents = [NodePath("World/FocusEvents/Trash_Land"), NodePath("World/FocusEvents/Trash_Water"), NodePath("World/FocusEvents/Oil"), NodePath("World/FocusEvents/Seaweed")]
+FocusEvents = [NodePath("World/FocusEvents/Trash_Water"), NodePath("World/FocusEvents/Oil"), NodePath("World/FocusEvents/Seaweed")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_rcofs")
@@ -568,32 +566,6 @@ transform = Transform3D(-0.356461, 0, -0.93431, 0, 1, 0, 0.93431, 0, -0.356461, 
 
 [node name="FocusEvents" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.617, 0, 113.425)
-
-[node name="Trash_Land" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
-visible = false
-Id = "trash_land"
-Info = ExtResource("32_mie5t")
-
-[node name="Trash_Bag_Black" parent="World/FocusEvents/Trash_Land" instance=ExtResource("16_fivwh")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.0951462, 0, 2.87857)
-
-[node name="Trash_Bag_Black4" parent="World/FocusEvents/Trash_Land" instance=ExtResource("16_fivwh")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0746384, 0, -3.11918)
-
-[node name="Trash_Bag_Black2" parent="World/FocusEvents/Trash_Land" instance=ExtResource("16_fivwh")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.311226, 0, -0.155907)
-
-[node name="Trash_Bag_Black3" parent="World/FocusEvents/Trash_Land" instance=ExtResource("16_fivwh")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.64094, 0, -2.11593)
-
-[node name="Trash_Bag_Blue" parent="World/FocusEvents/Trash_Land" instance=ExtResource("18_16r1r")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.78183, 0, 0.90657)
-
-[node name="Trash_Bag_White" parent="World/FocusEvents/Trash_Land" instance=ExtResource("15_foaib")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.93947, 0, 0.794418)
-
-[node name="Trash_Bag_Green" parent="World/FocusEvents/Trash_Land" instance=ExtResource("17_ea7wq")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.90605, 0, -2.10356)
 
 [node name="Trash_Water" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
 visible = false

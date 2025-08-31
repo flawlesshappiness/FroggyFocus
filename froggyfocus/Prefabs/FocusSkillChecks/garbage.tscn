@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://eaxvbi7r2use"]
+
+[ext_resource type="Script" uid="uid://3h1xunvkwsxs" path="res://FocusSkillCheck/FocusSkillCheck_Garbage.cs" id="1_0popg"]
+[ext_resource type="PackedScene" uid="uid://bg0qxw7bywuse" path="res://Prefabs/FocusSkillChecks/skill_check_garbage_floaty.tscn" id="2_dawok"]
+
+[node name="Garbage" type="Node3D"]
+script = ExtResource("1_0popg")
+CountRange = Vector2i(3, 6)
+SizeRange = Vector2(0.7, 1.3)
+SpeedRange = Vector2(1.2, 2)
+DurationRange = Vector2(4, 6)
+FloatyPrefrab = ExtResource("2_dawok")
+Type = 11
