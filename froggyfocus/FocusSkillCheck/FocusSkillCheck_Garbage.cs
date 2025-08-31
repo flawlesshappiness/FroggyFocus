@@ -31,6 +31,13 @@ public partial class FocusSkillCheck_Garbage : FocusSkillCheck
         Coroutine.Stop(cr_run);
     }
 
+    protected override void Stop()
+    {
+        base.Stop();
+        Coroutine.Stop(cr_run);
+        created_floaties.ForEach(x => x.HideIfVisible());
+    }
+
     protected override IEnumerator Run()
     {
         cr_run = RunCr();

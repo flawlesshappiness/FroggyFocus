@@ -33,6 +33,7 @@ public partial class FocusSkillCheck_Seaweed : FocusSkillCheck
     protected override void Stop()
     {
         base.Stop();
+        Coroutine.Stop(cr_run);
         created_patches.ForEach(x => x.Stop());
     }
 

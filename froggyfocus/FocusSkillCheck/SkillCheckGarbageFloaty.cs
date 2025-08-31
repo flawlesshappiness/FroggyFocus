@@ -15,6 +15,9 @@ public partial class SkillCheckGarbageFloaty : Node3D
     private float speed;
     private Vector3 direction;
     private bool is_running;
+    private bool is_visible;
+
+    private Coroutine cr_run;
 
     public void Initialize(FocusCursor cursor, float size, float speed)
     {
@@ -29,13 +32,17 @@ public partial class SkillCheckGarbageFloaty : Node3D
     public Coroutine Run(Vector3 direction, float duration)
     {
         this.direction = direction;
-        return this.StartCoroutine(Cr, "start");
+        cr_run = this.StartCoroutine(Cr, "start");
+        return cr_run;
+
         IEnumerator Cr()
         {
+            is_visible = true;
             yield return AnimateShow();
             is_running = true;
             yield return new WaitForSeconds(duration);
             Stop();
+            is_visible = false;
             yield return AnimateHide();
         }
     }
@@ -43,6 +50,18 @@ public partial class SkillCheckGarbageFloaty : Node3D
     public void Stop()
     {
         is_running = false;
+    }
+
+    public void HideIfVisible()
+    {
+        if (is_visible)
+        {
+            is_visible = false;
+            AnimateHide();
+        }
+
+        Stop();
+        Coroutine.Stop(cr_run);
     }
 
     public override void _Process(double delta)

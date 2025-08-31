@@ -162,11 +162,15 @@ public partial class FocusEvent : Node3D
 
             if (completed)
             {
-                FocusEventController.Instance.FocusEventCompleted(new FocusEventCompletedResult(this));
+                var result = new FocusEventCompletedResult(this);
+                OnCompleted?.Invoke(result);
+                FocusEventController.Instance.FocusEventCompleted(result);
             }
             else
             {
-                FocusEventController.Instance.FocusEventFailed(new FocusEventFailedResult(this));
+                var result = new FocusEventFailedResult(this);
+                OnFailed?.Invoke(result);
+                FocusEventController.Instance.FocusEventFailed(result);
             }
 
             // Save
@@ -238,8 +242,6 @@ public partial class FocusEvent : Node3D
 
     private void FocusFilled()
     {
-        OnCompleted?.Invoke(new FocusEventCompletedResult(this));
-
         Data.Game.TargetsCollected++;
         Data.Game.Save();
 
@@ -248,7 +250,6 @@ public partial class FocusEvent : Node3D
 
     private void FocusEmpty()
     {
-        OnFailed?.Invoke(new FocusEventFailedResult(this));
         EndEvent(false);
     }
 

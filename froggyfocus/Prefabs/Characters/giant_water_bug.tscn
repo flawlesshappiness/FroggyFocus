@@ -1,59 +1,93 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6lgnsssfiop8"]
+[gd_scene load_steps=7 format=3 uid="uid://b6lgnsssfiop8"]
 
 [ext_resource type="PackedScene" uid="uid://w6oxojkly7mv" path="res://Assets/FlawLizArt/Nature/Bugs/giant_water_bug.fbx" id="1_awdic"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_ctewf"]
+[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="3_d3pmr"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_qrexy"]
+[ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="4_d3pmr"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_v4b3a"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.2
 
 [node name="GiantWaterBug" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_ctewf")
 Animation = NodePath("AnimationStateMachine")
 WalkingAnimation = "Armature|moving"
-Accessories = []
+Accessories = [NodePath("giant_water_bug/Armature/Skeleton3D/garbage"), NodePath("giant_water_bug/Armature/Skeleton3D/garbage2")]
 
 [node name="giant_water_bug" parent="." instance=ExtResource("1_awdic")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.061159)
 
 [node name="Skeleton3D" parent="giant_water_bug/Armature" index="0"]
-bones/1/position = Vector3(1.70087e-18, 0.00231518, 0.00766006)
 bones/1/rotation = Quaternion(0.00930711, -2.66583e-26, -2.06659e-18, 0.999957)
 bones/2/position = Vector3(1.51942e-26, 0.0106275, -2.69388e-11)
 bones/2/rotation = Quaternion(-0.253005, -2.56499e-24, 5.61784e-17, 0.967465)
 bones/2/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(0.00151657, 0.00939214, -0.00141201)
-bones/4/rotation = Quaternion(-0.0685047, -0.127109, -0.434271, 0.889134)
+bones/4/rotation = Quaternion(-0.0724498, -0.12538, -0.463567, 0.874149)
 bones/5/position = Vector3(-1.07367e-09, 0.0102235, 1.63904e-10)
-bones/5/rotation = Quaternion(0.114818, 0.0222651, 0.449874, 0.885401)
+bones/5/rotation = Quaternion(0.114857, 0.022324, 0.450146, 0.885256)
 bones/5/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0.00181669, 0.00222777, -0.00177773)
-bones/7/rotation = Quaternion(-0.155158, -0.113757, -0.817927, 0.5422)
+bones/7/rotation = Quaternion(-0.118786, -0.151696, -0.618806, 0.76155)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(5.99484e-11, 0.00640297, -4.91295e-11)
-bones/8/rotation = Quaternion(-0.0999266, 0.00252692, -0.247091, 0.963823)
+bones/8/rotation = Quaternion(-0.177064, 0.00100673, -0.450252, 0.875169)
 bones/8/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(0.00236617, -0.00638663, -0.00161735)
-bones/10/rotation = Quaternion(-0.150518, -0.119869, -0.789242, 0.583158)
+bones/10/rotation = Quaternion(-0.146416, -0.125006, -0.766648, 0.612524)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(3.38515e-10, 0.00827834, -4.72977e-11)
-bones/11/rotation = Quaternion(-0.14671, 0.0021526, -0.373246, 0.916056)
+bones/11/rotation = Quaternion(-0.232846, 0.000525315, -0.600333, 0.765103)
 bones/11/scale = Vector3(1, 1, 1)
 bones/13/position = Vector3(-0.00151657, 0.00939214, -0.00141201)
-bones/13/rotation = Quaternion(-0.0685047, 0.127109, 0.434271, 0.889134)
+bones/13/rotation = Quaternion(-0.0724498, 0.12538, 0.463567, 0.874149)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/position = Vector3(1.07367e-09, 0.0102235, 1.63904e-10)
-bones/14/rotation = Quaternion(0.114818, -0.022265, -0.449874, 0.885401)
+bones/14/rotation = Quaternion(0.114959, -0.022265, -0.450441, 0.885094)
 bones/14/scale = Vector3(1, 1, 1)
 bones/16/position = Vector3(-0.00181669, 0.00222777, -0.00177773)
-bones/16/rotation = Quaternion(-0.155158, 0.113757, 0.817927, 0.5422)
+bones/16/rotation = Quaternion(-0.118786, 0.151696, 0.618806, 0.76155)
 bones/16/scale = Vector3(1, 1, 1)
 bones/17/position = Vector3(-5.99484e-11, 0.00640297, -4.91295e-11)
-bones/17/rotation = Quaternion(-0.0999266, -0.00252692, 0.247091, 0.963823)
+bones/17/rotation = Quaternion(-0.177064, -0.00100671, 0.450252, 0.875169)
 bones/17/scale = Vector3(1, 1, 1)
 bones/19/position = Vector3(-0.00236617, -0.00638663, -0.00161735)
-bones/19/rotation = Quaternion(-0.150518, 0.119869, 0.789242, 0.583158)
+bones/19/rotation = Quaternion(-0.146416, 0.125006, 0.766648, 0.612524)
 bones/19/scale = Vector3(1, 1, 1)
 bones/20/position = Vector3(-3.38515e-10, 0.00827834, -4.72977e-11)
-bones/20/rotation = Quaternion(-0.14671, -0.00215261, 0.373246, 0.916056)
+bones/20/rotation = Quaternion(-0.232846, -0.000525319, 0.600333, 0.765103)
 bones/20/scale = Vector3(1, 1, 1)
+
+[node name="garbage" type="BoneAttachment3D" parent="giant_water_bug/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, -1.05079e-16, -2.64371e-17, 1.05079e-16, 0.880938, 0.473232, -2.64371e-17, -0.473232, 0.880938, 1.7448e-18, 0.00921385, 0.000705509)
+bone_name = "Head"
+bone_idx = 2
+
+[node name="hat" type="MeshInstance3D" parent="giant_water_bug/Armature/Skeleton3D/garbage"]
+transform = Transform3D(0.01, 3.45509e-21, -3.59608e-20, 3.61252e-20, -0.00103734, 0.00994605, -2.93887e-22, -0.00994605, -0.00103734, 1.65108e-18, 0.00103919, 0.00190405)
+mesh = SubResource("CylinderMesh_v4b3a")
+skeleton = NodePath("../../garbage")
+surface_material_override/0 = ExtResource("3_d3pmr")
+
+[node name="garbage2" type="BoneAttachment3D" parent="giant_water_bug/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 4.133e-18, -3.8468e-20, -4.133e-18, 0.999827, -0.0186134, -3.84679e-20, 0.0186134, 0.999827, 1.70087e-18, -0.0014118, 0.000507695)
+bone_name = "Body"
+bone_idx = 1
+
+[node name="trash_paper" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("4_d3pmr")]
+transform = Transform3D(0.00132673, -0.00254832, -0.000863648, 0.00269033, 0.00127203, 0.000379567, 4.37757e-05, -0.00094236, 0.00284781, -0.00233796, 0.00803252, 0.00228549)
+
+[node name="trash_paper2" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("4_d3pmr")]
+transform = Transform3D(-0.000941384, -0.00279668, 0.000540716, 0.00280868, -0.00100621, -0.000314394, 0.000474444, 0.000407578, 0.00293407, 0.00281082, 0.00207028, 0.00292024)
+
+[node name="trash_paper3" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("4_d3pmr")]
+transform = Transform3D(0.00104898, -0.00277897, -0.000420718, 0.00155919, 0.000948991, -0.00238083, 0.0023385, 0.000613818, 0.00177613, -0.00199832, -0.00236123, 0.00217693)
+
+[node name="trash_paper4" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("4_d3pmr")]
+transform = Transform3D(0.00269126, -0.00111786, 0.000712401, 0.00110141, 0.00278289, 0.000205933, -0.000737579, 7.68098e-05, 0.0029069, 0.0006672, -0.0103721, 0.00175609)
 
 [node name="AnimationPlayer" parent="giant_water_bug" index="1"]
 playback_default_blend_time = 0.25

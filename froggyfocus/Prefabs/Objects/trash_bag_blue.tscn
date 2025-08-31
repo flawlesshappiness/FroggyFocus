@@ -34,7 +34,7 @@ shape = SubResource("CylinderShape3D_kf3yv")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_yvliq")
-Id = "trash_land"
+Id = "trash_water"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
