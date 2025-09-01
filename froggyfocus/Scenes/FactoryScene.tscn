@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=58 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -38,7 +38,6 @@
 [ext_resource type="PackedScene" uid="uid://btfkqop4kbh8e" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_toilet.fbx" id="29_3aqke"]
 [ext_resource type="PackedScene" uid="uid://c3hkrtmh6ohnl" path="res://Prefabs/NPC/EelNPC/eel_npc.tscn" id="30_8g76t"]
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="30_kso58"]
-[ext_resource type="Resource" uid="uid://cnow1gj1m4qfa" path="res://FocusEvent/Resources/Factory_Trash_Land.tres" id="32_mie5t"]
 [ext_resource type="Resource" uid="uid://conmipikui7b5" path="res://FocusEvent/Resources/Factory_Trash_Water.tres" id="35_8mo76"]
 [ext_resource type="Resource" uid="uid://cnf7n65pa1ho" path="res://FocusEvent/Resources/Factory_Oil.tres" id="39_v2jd5"]
 [ext_resource type="Resource" uid="uid://cm5mlcegogu6u" path="res://FocusEvent/Resources/Factory_Seaweed.tres" id="41_8g76t"]
@@ -786,6 +785,18 @@ Info = ExtResource("35_8mo76")
 transform = Transform3D(0.866801, 0, -0.498654, 0, 1, 0, 0.498654, 0, 0.866801, 23.1555, -1, -56.9485)
 Info = ExtResource("35_8mo76")
 
+[node name="WorldBug27" parent="World/WorldBugs/Trash_Water" instance=ExtResource("42_v2jd5")]
+transform = Transform3D(0.866801, 0, -0.498654, 0, 1, 0, 0.498654, 0, 0.866801, 42.0581, -1, -60.2744)
+Info = ExtResource("35_8mo76")
+
+[node name="WorldBug28" parent="World/WorldBugs/Trash_Water" instance=ExtResource("42_v2jd5")]
+transform = Transform3D(0.866801, 0, -0.498654, 0, 1, 0, 0.498654, 0, 0.866801, 67.4065, -1, -62.5496)
+Info = ExtResource("35_8mo76")
+
+[node name="WorldBug29" parent="World/WorldBugs/Trash_Water" instance=ExtResource("42_v2jd5")]
+transform = Transform3D(0.866801, 0, -0.498654, 0, 1, 0, 0.498654, 0, 0.866801, 34.1488, -1, -86.1549)
+Info = ExtResource("35_8mo76")
+
 [node name="WorldBug13" parent="World/WorldBugs/Trash_Water" instance=ExtResource("42_v2jd5")]
 transform = Transform3D(0.866801, 0, -0.498654, 0, 1, 0, 0.498654, 0, 0.866801, -0.0746689, -1, -64.8588)
 Info = ExtResource("35_8mo76")
@@ -841,88 +852,6 @@ Info = ExtResource("35_8mo76")
 [node name="WorldBug26" parent="World/WorldBugs/Trash_Water" instance=ExtResource("42_v2jd5")]
 transform = Transform3D(0.978523, 0, -0.206136, 0, 1, 0, 0.206136, 0, 0.978523, 76.7251, -1, -79.5779)
 Info = ExtResource("35_8mo76")
-
-[node name="Trash_Land" type="Node3D" parent="World/WorldBugs"]
-
-[node name="WorldBug" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.4582, 0, 0.888849, 0, 1, 0, -0.888849, 0, 0.4582, 52.4949, 0.99199, -30.5529)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug2" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.959913, 0, -0.280298, 0, 1, 0, 0.280298, 0, 0.959913, 56.061, 0.99199, -46.2605)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug15" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.959913, 0, -0.280298, 0, 1, 0, 0.280298, 0, 0.959913, 47.7512, 0.99199, -9.75191)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug16" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.315881, 0, 0.948799, 0, 1, 0, -0.948799, 0, 0.315881, 61.3175, 0.99199, -3.442)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug17" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.686669, 0, 0.72697, 0, 1, 0, -0.72697, 0, 0.686669, 54.5028, 0.99199, -13.3485)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug18" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.686669, 0, 0.72697, 0, 1, 0, -0.72697, 0, 0.686669, 64.4473, 0.99199, -71.9258)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug19" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(-0.750803, 0, 0.660526, 0, 1, 0, -0.660526, 0, -0.750803, 52.5979, 0.99199, -73.6185)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug20" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.367881, 0, 0.929873, 0, 1, 0, -0.929873, 0, 0.367881, 59.2954, 0.99199, -82.8184)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug3" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.888136, 0, 0.45958, 0, 1, 0, -0.45958, 0, 0.888136, 42.476, 0.99199, -52.6285)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug4" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.334761, 0, 0.942303, 0, 1, 0, -0.942303, 0, 0.334761, 30.6741, 0.99199, -48.2983)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug5" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(-0.941805, 0, -0.336158, 0, 1, 0, 0.336158, 0, -0.941805, 28.6364, 0.99199, -34.5435)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug6" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.98552, 0, -0.169556, 0, 1, 0, 0.169556, 0, 0.98552, 42.6458, 0.99199, -27.6661)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug7" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.98552, 0, -0.169556, 0, 1, 0, 0.169556, 0, 0.98552, 21.759, 0.032923, -23.4208)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug8" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.896254, 0, 0.443541, 0, 1, 0, -0.443541, 0, 0.896254, 7.84508, 0.032923, -15.5826)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug9" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.896254, 0, 0.443541, 0, 1, 0, -0.443541, 0, 0.896254, 60.8781, 0.032923, -56.729)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug10" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.727761, 0, -0.685831, 0, 1, 0, 0.685831, 0, 0.727761, 42.2496, 0.032923, -67.9748)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug11" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.727761, 0, -0.685831, 0, 1, 0, 0.685831, 0, 0.727761, 42.1637, 0.032923, -84.3713)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug13" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(-0.818019, 0, 0.575191, 0, 1, 0, -0.575191, 0, -0.818019, 26.454, 0.032923, -67.3739)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug14" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(-0.813415, 0, -0.581683, 0, 1, 0, 0.581683, 0, -0.813415, 4.5634, 0.032923, -80.5941)
-Info = ExtResource("32_mie5t")
-
-[node name="WorldBug12" parent="World/WorldBugs/Trash_Land" instance=ExtResource("42_v2jd5")]
-transform = Transform3D(0.549475, 0, 0.83551, 0, 1, 0, -0.83551, 0, 0.549475, 31.0038, 0.032923, -76.8169)
-Info = ExtResource("32_mie5t")
 
 [node name="Oil" type="Node3D" parent="World/WorldBugs"]
 

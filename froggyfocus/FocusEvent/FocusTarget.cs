@@ -13,7 +13,7 @@ public partial class FocusTarget : Node3D
     public float Difficulty { get; private set; }
     public float Radius => CharacterData.Size * 0.5f;
 
-    private float UpdatedMoveSpeed { get; set; }
+    public float UpdatedMoveSpeed { get; private set; }
 
     private FocusEvent focus_event;
     private RandomNumberGenerator rng = new();

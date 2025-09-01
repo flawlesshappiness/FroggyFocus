@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://233jeu3oadly"]
+
+[ext_resource type="Script" uid="uid://vqdcdwmiun4b" path="res://FocusSkillCheck/FocusSkillCheck_Oil.cs" id="1_8r1m1"]
+[ext_resource type="PackedScene" uid="uid://b3200kev0bkuk" path="res://Prefabs/FocusSkillChecks/skill_check_oil_clone.tscn" id="2_f6uww"]
+
+[node name="Oil" type="Node3D"]
+script = ExtResource("1_8r1m1")
+CountRange = Vector2i(3, 10)
+DurationRange = Vector2i(5, 10)
+ClonePrefab = ExtResource("2_f6uww")
+Type = 10
