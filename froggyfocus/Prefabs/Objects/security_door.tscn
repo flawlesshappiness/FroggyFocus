@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://x7nclqu76y7s"]
+[gd_scene load_steps=9 format=3 uid="uid://x7nclqu76y7s"]
 
 [ext_resource type="Script" uid="uid://cce8dupkk10ay" path="res://Prefabs/Objects/FactoryEntryDoor.cs" id="1_vx0je"]
 [ext_resource type="PackedScene" uid="uid://b54uutheaw4em" path="res://Assets/FlawLizArt/Objects/security_door.fbx" id="1_vxr4f"]
+[ext_resource type="AudioStream" uid="uid://dfylhhmi52jlf" path="res://Sounds/Raw/sfx_door_close_001.wav" id="3_do0nf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vx0je"]
 size = Vector3(2.4646, 4.23474, 0.639648)
@@ -47,10 +48,11 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxr4f"]
 size = Vector3(2.59595, 4.3009, 1)
 
-[node name="SecurityDoor" type="Area3D"]
+[node name="SecurityDoor" type="Area3D" node_paths=PackedStringArray("SfxLocked")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_vx0je")
+SfxLocked = NodePath("SfxLocked")
 
 [node name="security_door" parent="." instance=ExtResource("1_vxr4f")]
 
@@ -71,5 +73,10 @@ libraries = {
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.10309, 0)
 shape = SubResource("BoxShape3D_vxr4f")
+
+[node name="SfxLocked" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.758904, 0)
+stream = ExtResource("3_do0nf")
+bus = &"SFX"
 
 [editable path="security_door"]
