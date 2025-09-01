@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://233jeu3oadly"]
+[gd_scene load_steps=8 format=3 uid="uid://233jeu3oadly"]
 
 [ext_resource type="Script" uid="uid://vqdcdwmiun4b" path="res://FocusSkillCheck/FocusSkillCheck_Oil.cs" id="1_8r1m1"]
 [ext_resource type="PackedScene" uid="uid://b3200kev0bkuk" path="res://Prefabs/FocusSkillChecks/skill_check_oil_clone.tscn" id="2_f6uww"]
+[ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="3_i2mpt"]
+[ext_resource type="AudioStream" uid="uid://iupdbu38bkq0" path="res://Sounds/Raw/sfx_impact_water_low_002.wav" id="4_asblv"]
+[ext_resource type="AudioStream" uid="uid://mvr5nhm1lqiv" path="res://Sounds/Raw/sfx_impact_water_low_003.wav" id="5_d2gj1"]
+[ext_resource type="AudioStream" uid="uid://bu3w1t785m70f" path="res://Sounds/Raw/sfx_impact_water_low_004.wav" id="6_p5e6d"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b1pyq"]
+random_pitch = 1.1
+streams_count = 4
+stream_0/stream = ExtResource("3_i2mpt")
+stream_1/stream = ExtResource("4_asblv")
+stream_2/stream = ExtResource("5_d2gj1")
+stream_3/stream = ExtResource("6_p5e6d")
 
 [node name="Oil" type="Node3D"]
 script = ExtResource("1_8r1m1")
@@ -9,3 +21,9 @@ CountRange = Vector2i(3, 10)
 DurationRange = Vector2i(5, 10)
 ClonePrefab = ExtResource("2_f6uww")
 Type = 10
+
+[node name="SfxWater" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_b1pyq")
+volume_db = -10.0
+pitch_scale = 0.5
+bus = &"SFX"

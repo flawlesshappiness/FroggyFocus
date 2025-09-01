@@ -1,45 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://clftytcba1dij"]
+[gd_scene load_steps=7 format=3 uid="uid://clftytcba1dij"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_6mkhk"]
 [ext_resource type="PackedScene" uid="uid://b23r68piquvcv" path="res://Assets/FlawLizArt/Nature/Bugs/scorpionfly.fbx" id="2_irmex"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_v3wpm"]
+[ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="3_vy2y0"]
+[ext_resource type="Material" uid="uid://cngrguaiyjtgk" path="res://Materials/Color_Black.tres" id="4_e8umg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_wker3"]
 
 [node name="ScorpionFly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_6mkhk")
 Animation = NodePath("AnimationStateMachine")
 WalkingAnimation = "Armature|moving"
-Accessories = []
+Accessories = [NodePath("scorpionfly/Armature/Skeleton3D/oil")]
 
 [node name="scorpionfly" parent="." instance=ExtResource("2_irmex")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [node name="Skeleton3D" parent="scorpionfly/Armature" index="0"]
-bones/1/position = Vector3(1.54568e-18, 0.00136743, 0.00696115)
+bones/1/position = Vector3(1.54568e-18, 0.00136743, 0.0085118)
 bones/1/rotation = Quaternion(0.00318782, 2.35271e-26, -7.07837e-19, 0.999995)
-bones/4/rotation = Quaternion(0.99537, -8.02049e-08, 8.30606e-07, -0.0961148)
-bones/5/rotation = Quaternion(-0.235667, -4.7261e-12, -3.93314e-07, 0.971834)
-bones/6/rotation = Quaternion(-0.362849, -2.04017e-12, -6.0557e-07, 0.931848)
-bones/7/rotation = Quaternion(-0.536934, 8.49419e-13, -8.96107e-07, 0.843624)
-bones/13/rotation = Quaternion(-0.325104, 0.416047, -0.632129, 0.56712)
-bones/14/rotation = Quaternion(0.501219, -0.000582801, 0.0823088, 0.861397)
-bones/15/rotation = Quaternion(-0.683778, -4.14439e-08, -0.107922, 0.721665)
-bones/17/rotation = Quaternion(-0.337901, 0.427593, -0.625426, 0.558416)
-bones/18/rotation = Quaternion(0.746912, 0.000458405, 0.121107, 0.653801)
-bones/19/rotation = Quaternion(-0.817076, -1.86265e-08, -0.12896, 0.561921)
-bones/21/rotation = Quaternion(-0.377371, 0.462868, -0.602553, 0.529409)
-bones/22/rotation = Quaternion(0.64139, -2.48684e-05, 0.104486, 0.760067)
-bones/23/rotation = Quaternion(-0.744708, -6.96164e-08, -0.117538, 0.656959)
-bones/25/rotation = Quaternion(-0.325104, -0.416047, 0.632129, 0.56712)
-bones/26/rotation = Quaternion(0.501219, 0.000582801, -0.0823088, 0.861397)
-bones/27/rotation = Quaternion(-0.683778, 3.44589e-08, 0.107922, 0.721665)
-bones/29/rotation = Quaternion(-0.337901, -0.427593, 0.625426, 0.558416)
-bones/30/rotation = Quaternion(0.746912, -0.000458397, -0.121107, 0.653801)
-bones/31/rotation = Quaternion(-0.817076, 5.58794e-09, 0.12896, 0.561921)
-bones/33/rotation = Quaternion(-0.377371, -0.462868, 0.602553, 0.529409)
-bones/34/rotation = Quaternion(0.64139, 2.48571e-05, -0.104486, 0.760067)
-bones/35/rotation = Quaternion(-0.744708, 5.58794e-08, 0.117538, 0.656959)
-bones/37/rotation = Quaternion(0.852136, 0.383105, -0.327182, 0.141584)
-bones/39/rotation = Quaternion(0.852136, -0.383105, 0.327182, 0.141583)
+bones/4/rotation = Quaternion(0.999843, -1.45141e-07, 8.2175e-07, -0.0177052)
+bones/5/rotation = Quaternion(-0.344754, 4.47639e-08, -3.90759e-07, 0.938693)
+bones/6/rotation = Quaternion(-0.420307, 3.77975e-08, -6.04389e-07, 0.907382)
+bones/7/rotation = Quaternion(-0.384722, -1.53275e-07, -8.82901e-07, 0.923032)
+bones/13/rotation = Quaternion(-0.361126, 0.447712, -0.612126, 0.542627)
+bones/14/rotation = Quaternion(0.581971, -0.000271075, 0.0950962, 0.80763)
+bones/15/rotation = Quaternion(-0.713595, -7.48739e-05, -0.112555, 0.691457)
+bones/17/rotation = Quaternion(-0.299283, 0.392603, -0.644661, 0.583699)
+bones/18/rotation = Quaternion(0.819665, 0.000840491, 0.13251, 0.557306)
+bones/19/rotation = Quaternion(-0.884896, -4.84288e-08, -0.139664, 0.444356)
+bones/21/rotation = Quaternion(-0.41002, 0.490668, -0.58072, 0.503878)
+bones/22/rotation = Quaternion(0.560489, -0.000356422, 0.0916973, 0.82307)
+bones/23/rotation = Quaternion(-0.668675, -3.35276e-08, -0.105538, 0.736027)
+bones/25/rotation = Quaternion(-0.361126, -0.447712, 0.612126, 0.542627)
+bones/26/rotation = Quaternion(0.581971, 0.000271084, -0.0950962, 0.80763)
+bones/27/rotation = Quaternion(-0.713595, 7.49005e-05, 0.112555, 0.691457)
+bones/29/rotation = Quaternion(-0.299283, -0.392603, 0.644661, 0.583699)
+bones/30/rotation = Quaternion(0.819665, -0.000840493, -0.13251, 0.557306)
+bones/31/rotation = Quaternion(-0.884897, 3.72529e-08, 0.139664, 0.444356)
+bones/33/rotation = Quaternion(-0.41002, -0.490668, 0.58072, 0.503878)
+bones/34/rotation = Quaternion(0.560489, 0.000356422, -0.0916973, 0.82307)
+bones/35/rotation = Quaternion(-0.668675, 4.93601e-08, 0.105538, 0.736027)
+bones/37/rotation = Quaternion(0.838365, 0.406647, -0.281844, 0.228793)
+bones/39/rotation = Quaternion(0.838365, -0.406647, 0.281844, 0.228793)
+
+[node name="oil" type="BoneAttachment3D" parent="scorpionfly/Armature/Skeleton3D" index="8"]
+transform = Transform3D(1, 1.41567e-18, -4.51286e-21, -1.41567e-18, 0.99998, -0.0063756, -4.51296e-21, 0.0063756, 0.99998, 1.54568e-18, 0.000367434, 0.00742471)
+bone_name = "Body"
+bone_idx = 1
+
+[node name="oil_bug_accessory" parent="scorpionfly/Armature/Skeleton3D/oil" instance=ExtResource("3_vy2y0")]
+transform = Transform3D(0.002, 0, 0, 0, -0.000435469, -0.00195202, 0, 0.00195202, -0.000435469, 1.24953e-18, -0.00253612, 0.00065028)
+
+[node name="oil_bug_accessory2" parent="scorpionfly/Armature/Skeleton3D/oil" instance=ExtResource("3_vy2y0")]
+transform = Transform3D(-0.003, 0, 2.62268e-10, 2.61277e-10, -0.000260581, 0.00298866, 2.27807e-11, 0.00298866, 0.000260581, 1.24664e-18, -0.00049483, 0.00121309)
+
+[node name="sphere" type="MeshInstance3D" parent="scorpionfly/Armature/Skeleton3D/oil"]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, -1.46431e-21, 0.0010369, 0.000439788)
+mesh = SubResource("SphereMesh_wker3")
+surface_material_override/0 = ExtResource("4_e8umg")
+
+[node name="sphere2" type="MeshInstance3D" parent="scorpionfly/Armature/Skeleton3D/oil"]
+transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, -3.11223e-21, 0.00219967, 0.000391973)
+mesh = SubResource("SphereMesh_wker3")
+surface_material_override/0 = ExtResource("4_e8umg")
 
 [node name="AnimationPlayer" parent="scorpionfly" index="1"]
 playback_default_blend_time = 0.25

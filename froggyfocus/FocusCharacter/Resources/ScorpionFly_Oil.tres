@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dfn68pry7clu7"]
+
+[ext_resource type="PackedScene" uid="uid://clftytcba1dij" path="res://Prefabs/Characters/scorpion_fly.tscn" id="1_25b02"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_2ibkr"]
+
+[resource]
+script = ExtResource("2_2ibkr")
+Scene = ExtResource("1_25b02")
+Name = "Oily Scorpion Fly"
+LocationHint = "##HINT_LOC_OIL##"
+Accessory = "oil"
+FocusValue = 50.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+SkillChecks = Array[int]([2, 10])
+Tags = Array[int]([0, 2, 10])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

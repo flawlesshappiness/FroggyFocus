@@ -1,11 +1,14 @@
-[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=5 format=3 uid="uid://cnf7n65pa1ho"]
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=8 format=3 uid="uid://cnf7n65pa1ho"]
 
 [ext_resource type="Resource" uid="uid://dv4rlu765mpyd" path="res://FocusCharacter/Resources/Bloodworm.tres" id="1_ygal0"]
 [ext_resource type="Resource" uid="uid://joxldpuv0xuf" path="res://FocusCharacter/Resources/HorseFly.tres" id="2_74ll4"]
+[ext_resource type="Resource" uid="uid://dsnwhqreyw75v" path="res://FocusCharacter/Resources/Bloodworm_Oil.tres" id="2_i7i7x"]
 [ext_resource type="Resource" uid="uid://bi27kk1oi4nm4" path="res://FocusCharacter/Resources/ScorpionFly.tres" id="3_5kjw3"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="4_n11k3"]
+[ext_resource type="Resource" uid="uid://dgoo1uaf3kmwn" path="res://FocusCharacter/Resources/HorseFly_Oil.tres" id="4_r5qv3"]
+[ext_resource type="Resource" uid="uid://dfn68pry7clu7" path="res://FocusCharacter/Resources/ScorpionFly_Oil.tres" id="5_evh5w"]
 
 [resource]
 script = ExtResource("4_n11k3")
-Characters = Array[Object]([ExtResource("1_ygal0"), ExtResource("2_74ll4"), ExtResource("3_5kjw3")])
+Characters = Array[Object]([ExtResource("1_ygal0"), ExtResource("2_i7i7x"), ExtResource("2_74ll4"), ExtResource("4_r5qv3"), ExtResource("3_5kjw3"), ExtResource("5_evh5w")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"

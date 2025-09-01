@@ -14,6 +14,9 @@ public partial class FocusSkillCheck_Oil : FocusSkillCheck
     [Export]
     public PackedScene ClonePrefab;
 
+    [Export]
+    public AudioStreamPlayer SfxWater;
+
     private SkillCheckOilClone target_clone;
     private List<SkillCheckOilClone> clones = new();
 
@@ -40,6 +43,7 @@ public partial class FocusSkillCheck_Oil : FocusSkillCheck
 
         // Show clones
         clones.ForEach(x => x.AnimateShow());
+        SfxWater.Play();
         yield return new WaitForSeconds(0.25f);
 
         // Start moving clones
@@ -54,6 +58,7 @@ public partial class FocusSkillCheck_Oil : FocusSkillCheck
 
         // Hide clones
         clones.ForEach(x => x.AnimateHide());
+        SfxWater.Play();
 
         // Show target
         target_clone = null;

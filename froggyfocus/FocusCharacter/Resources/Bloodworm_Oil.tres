@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dsnwhqreyw75v"]
+
+[ext_resource type="PackedScene" uid="uid://c1tio0riiiayt" path="res://Prefabs/Characters/bloodworm.tscn" id="1_n7o85"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_qky27"]
+
+[resource]
+script = ExtResource("2_qky27")
+Scene = ExtResource("1_n7o85")
+Name = "Oily Blood Worm"
+LocationHint = "##HINT_LOC_OIL##"
+Accessory = "oil"
+FocusValue = 25.0
+MoneyMultiplier = 0.5
+MoveSpeedRange = Vector2(0.25, 1)
+MoveLengthRange = Vector2(0.25, 0.5)
+MoveDelayRange = Vector2(0, 0)
+SkillChecks = Array[int]([10])
+Tags = Array[int]([0, 3, 10])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

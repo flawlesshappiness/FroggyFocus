@@ -1,27 +1,58 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1tio0riiiayt"]
+[gd_scene load_steps=5 format=3 uid="uid://c1tio0riiiayt"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_pcmp3"]
 [ext_resource type="PackedScene" uid="uid://dyqk2d3ggrnxv" path="res://Assets/FlawLizArt/Nature/Bugs/blood_worm.fbx" id="2_qd2xa"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_e0a5t"]
+[ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="3_qd2xa"]
 
 [node name="Bloodworm" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_pcmp3")
 Animation = NodePath("AnimationStateMachine")
 WalkingAnimation = "Armature|moving"
-Accessories = []
+Accessories = [NodePath("blood_worm/Armature/Skeleton3D/oil"), NodePath("blood_worm/Armature/Skeleton3D/oil2"), NodePath("blood_worm/Armature/Skeleton3D/oil3")]
 
 [node name="blood_worm" parent="." instance=ExtResource("2_qd2xa")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Skeleton3D" parent="blood_worm/Armature" index="0"]
-bones/0/position = Vector3(0, -0.001, -0.004)
-bones/1/rotation = Quaternion(0, 0, 0, 1)
-bones/3/rotation = Quaternion(0, 0, 0, 1)
-bones/5/rotation = Quaternion(0, 0, 0, 1)
-bones/7/rotation = Quaternion(0, 0, 0, 1)
-bones/9/rotation = Quaternion(0, 0, 0, 1)
-bones/11/rotation = Quaternion(0, 0, 0, 1)
-bones/13/rotation = Quaternion(0, 0, 0, 1)
+bones/1/position = Vector3(6.48039e-05, -0.0189062, 0.004)
+bones/1/rotation = Quaternion(0, 0, -0.0615789, 0.998102)
+bones/3/position = Vector3(0.000761511, -0.0140234, 0.004)
+bones/3/rotation = Quaternion(0, 0, -0.0599237, 0.998203)
+bones/5/position = Vector3(0.00141915, -0.00900371, 0.004)
+bones/5/rotation = Quaternion(0, 0, -0.0583842, 0.998294)
+bones/7/position = Vector3(0.00199865, -0.00357517, 0.004)
+bones/7/rotation = Quaternion(0, 0, -0.0396826, 0.999212)
+bones/9/position = Vector3(0.00246096, 0.00235619, 0.004)
+bones/9/rotation = Quaternion(0, 0, -0.0326844, 0.999466)
+bones/11/position = Vector3(0.00276699, 0.00783517, 0.004)
+bones/11/rotation = Quaternion(0, 0, -0.024804, 0.999692)
+bones/13/position = Vector3(0.00287768, 0.0126724, 0.004)
+bones/13/rotation = Quaternion(0, 0, 0.152993, 0.988227)
+
+[node name="oil" type="BoneAttachment3D" parent="blood_worm/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.99877, 0.0495927, 0, -0.0495927, 0.99877, 0, 0, 0, 1, 0.00276699, 0.00683517, 0.00120062)
+bone_name = "Body.006"
+bone_idx = 11
+
+[node name="oil_bug_accessory" parent="blood_worm/Armature/Skeleton3D/oil" instance=ExtResource("3_qd2xa")]
+transform = Transform3D(0.003, 0, 0, 0, -1.31134e-10, -0.003, 0, 0.003, -1.31134e-10, 1.249e-18, -6.09011e-11, 0.00139326)
+
+[node name="oil2" type="BoneAttachment3D" parent="blood_worm/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.997863, 0.065334, 0, -0.065334, 0.997863, 0, 0, 0, 1, 0.00246096, 0.00135619, 0.00120062)
+bone_name = "Body.005"
+bone_idx = 9
+
+[node name="oil_bug_accessory" parent="blood_worm/Armature/Skeleton3D/oil2" instance=ExtResource("3_qd2xa")]
+transform = Transform3D(-0.003, 0, 2.62268e-10, 2.62268e-10, -1.31134e-10, 0.003, 1.14641e-17, 0.003, 1.31134e-10, 1.41553e-18, -6.22722e-11, 0.00142462)
+
+[node name="oil3" type="BoneAttachment3D" parent="blood_worm/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.99685, 0.0793026, 0, -0.0793026, 0.99685, 0, 0, 0, 1, 0.00199865, -0.00457517, 0.00120062)
+bone_name = "Body.004"
+bone_idx = 7
+
+[node name="oil_bug_accessory" parent="blood_worm/Armature/Skeleton3D/oil3" instance=ExtResource("3_qd2xa")]
+transform = Transform3D(0.003, 0, 0, 0, -1.31134e-10, -0.003, 0, 0.003, -1.31134e-10, 1.33227e-18, -6.36726e-11, 0.00145666)
 
 [node name="AnimationPlayer" parent="blood_worm" index="1"]
 playback_default_blend_time = 0.25
