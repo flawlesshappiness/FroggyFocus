@@ -6,6 +6,12 @@ public partial class SkillCheckOilClone : Character
     [Export]
     public AnimationPlayer AnimationPlayer;
 
+    [Export]
+    public Node3D ModelFlying;
+
+    [Export]
+    public Node3D ModelWorm;
+
     public bool IsTarget { get; set; }
 
     private FocusTarget target;
@@ -17,6 +23,15 @@ public partial class SkillCheckOilClone : Character
     public void Initialize(FocusTarget target)
     {
         this.target = target;
+
+        if (target.Info.Tags.Contains(FocusCharacterTag.Flying))
+        {
+            SetFlying();
+        }
+        else
+        {
+            SetWorm();
+        }
     }
 
     public void StopMoving()
@@ -75,5 +90,17 @@ public partial class SkillCheckOilClone : Character
         {
             yield return AnimationPlayer.PlayAndWaitForAnimation(animation);
         }
+    }
+
+    public void SetWorm()
+    {
+        ModelWorm.Show();
+        ModelFlying.Hide();
+    }
+
+    public void SetFlying()
+    {
+        ModelWorm.Hide();
+        ModelFlying.Show();
     }
 }

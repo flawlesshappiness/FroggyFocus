@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3200kev0bkuk"]
+[gd_scene load_steps=13 format=3 uid="uid://b3200kev0bkuk"]
 
 [ext_resource type="Script" uid="uid://con6dyu5vsy2e" path="res://FocusSkillCheck/SkillCheckOilClone.cs" id="1_733di"]
 [ext_resource type="Material" uid="uid://cngrguaiyjtgk" path="res://Materials/Color_Black.tres" id="2_7kev7"]
+[ext_resource type="PackedScene" uid="uid://byypfnirgviue" path="res://Assets/FlawLizArt/Nature/Bugs/scorpionfly_oil.fbx" id="2_edg01"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="3_edg01"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_edg01"]
-material = ExtResource("2_7kev7")
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_i4m1x"]
+[ext_resource type="PackedScene" uid="uid://dyqk2d3ggrnxv" path="res://Assets/FlawLizArt/Nature/Bugs/blood_worm.fbx" id="4_bbrif"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ffy"]
 transparency = 1
@@ -111,17 +111,68 @@ _data = {
 &"show": SubResource("Animation_7kev7")
 }
 
-[node name="SkillCheckOilClone" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
+[node name="SkillCheckOilClone" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "ModelFlying", "ModelWorm")]
 script = ExtResource("1_733di")
 AnimationPlayer = NodePath("AnimationPlayer")
+ModelFlying = NodePath("Anim/clone_flying")
+ModelWorm = NodePath("Anim/clone_worm")
 
 [node name="Anim" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Anim"]
-transform = Transform3D(7.64274e-16, 1.74846e-08, 0.4, 0.4, -1.74846e-08, 0, 1.74846e-08, 0.4, -1.74846e-08, 0, 0.240309, 0)
-mesh = SubResource("CapsuleMesh_edg01")
+[node name="clone_flying" parent="Anim" instance=ExtResource("2_edg01")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.010351, 0)
+
+[node name="Skeleton3D" parent="Anim/clone_flying/Armature" index="0"]
+bones/1/position = Vector3(2.18815e-18, -1.21598e-05, 0.00985453)
+bones/1/rotation = Quaternion(0.00497378, 6.88653e-26, -1.10441e-18, 0.999988)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(-1.54092e-26, 0.00470501, 1.43667e-10)
+bones/2/rotation = Quaternion(0.0113244, 1.59953e-25, -2.51452e-18, 0.999936)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(0.000235137, 0.00106706, 0.000100203)
+bones/3/rotation = Quaternion(-0.0372445, 0.00609856, -0.167952, 0.985072)
+bones/3/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-0.000235137, 0.00106706, 0.000100203)
+bones/5/rotation = Quaternion(-0.0372445, -0.00609856, 0.167952, 0.985072)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(0.000725012, 0.0026, 0.000656947)
+bones/7/rotation = Quaternion(-0.0443906, -0.0102758, 0.907344, -0.417912)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-0.000725012, 0.0026, 0.000656947)
+bones/9/rotation = Quaternion(0.0443906, -0.0102758, 0.907344, 0.417912)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(0.000587217, 0.00206741, -0.000470309)
+bones/11/rotation = Quaternion(0.0849765, -0.516776, 0.702798, -0.481453)
+bones/11/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(-0.000587217, 0.00206741, -0.000470309)
+bones/13/rotation = Quaternion(-0.0849765, -0.516776, 0.702798, 0.481453)
+bones/13/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="Anim/clone_flying" index="1"]
+script = ExtResource("3_i4m1x")
+Animation = "Armature|moving"
+
+[node name="clone_worm" parent="Anim" instance=ExtResource("4_bbrif")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.0396901, -0.0930621)
+
+[node name="Skeleton3D" parent="Anim/clone_worm/Armature" index="0"]
+bones/0/position = Vector3(0, -0.001, -0.004)
+bones/1/rotation = Quaternion(0, 0, 0, 1)
+bones/3/rotation = Quaternion(0, 0, 0, 1)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
+bones/7/rotation = Quaternion(0, 0, 0, 1)
+bones/9/rotation = Quaternion(0, 0, 0, 1)
+bones/11/rotation = Quaternion(0, 0, 0, 1)
+bones/13/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="worm" parent="Anim/clone_worm/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_7kev7")
+
+[node name="AnimationPlayer" parent="Anim/clone_worm" index="1"]
+script = ExtResource("3_i4m1x")
+Animation = "Armature|moving"
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Anim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
@@ -132,3 +183,6 @@ skeleton = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_i4m1x")
 }
+
+[editable path="Anim/clone_flying"]
+[editable path="Anim/clone_worm"]
