@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=60 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -7,6 +7,7 @@
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="4_rcofs"]
 [ext_resource type="Resource" uid="uid://dq8un1bylw425" path="res://Weather/Resources/Foggy.tres" id="5_j3lbf"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="5_tnbv0"]
+[ext_resource type="Resource" uid="uid://bpacdrq1w1n0k" path="res://Weather/Resources/FoggyWhite.tres" id="6_pkxqc"]
 [ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="6_s3kaw"]
 [ext_resource type="Material" uid="uid://wog5r0ocenqr" path="res://Materials/Rock.tres" id="7_rcofs"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="8_k0l20"]
@@ -124,7 +125,7 @@ script = ExtResource("1_net23")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
-Weathers = Array[ExtResource("2_jmf1t")]([ExtResource("3_s3kaw"), ExtResource("4_g0uh1"), ExtResource("5_j3lbf")])
+Weathers = Array[ExtResource("2_jmf1t")]([ExtResource("3_s3kaw"), ExtResource("4_g0uh1"), ExtResource("5_j3lbf"), ExtResource("6_pkxqc")])
 FocusEvents = [NodePath("World/FocusEvents/Trash_Water"), NodePath("World/FocusEvents/Oil"), NodePath("World/FocusEvents/Seaweed")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
