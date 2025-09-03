@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ObjectiveInfo" load_steps=2 format=3 uid="uid://bsffs5hp3x7yw"]
+
+[ext_resource type="Script" uid="uid://bvw1ud0pd0812" path="res://Objective/ObjectiveInfo.cs" id="1_iuy5t"]
+
+[resource]
+script = ExtResource("1_iuy5t")
+Description = "Catch weeded bugs"
+UseTag = true
+RequirementTag = 9
+MinimumStars = 0
+Values = Array[int]([5, 25, 100, 250, 500])
+MoneyRewards = Array[int]([50, 500, 1000, 5000, 10000])
+metadata/_custom_type_script = "uid://bvw1ud0pd0812"

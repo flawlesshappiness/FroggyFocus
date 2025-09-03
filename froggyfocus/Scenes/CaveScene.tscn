@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=56 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
@@ -31,7 +31,10 @@
 [ext_resource type="Resource" uid="uid://chi5nlmadbpol" path="res://FocusEvent/Resources/Beach_Land.tres" id="23_fjshb"]
 [ext_resource type="Resource" uid="uid://b3hhun7nmjp8p" path="res://HandInQuest/Resources/Crab_Cave.tres" id="24_n4upl"]
 [ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="25_54h6h"]
+[ext_resource type="PackedScene" uid="uid://cebikss5h6wvu" path="res://Prefabs/Objects/beach_umbrella.tscn" id="25_hexkd"]
+[ext_resource type="PackedScene" uid="uid://6khbeqmqyph1" path="res://Prefabs/Objects/summer_chair.tscn" id="26_jvqbs"]
 [ext_resource type="PackedScene" uid="uid://cf5uwumydynrl" path="res://Prefabs/Nature/stalagmite_platform_crystal.tscn" id="27_8vus0"]
+[ext_resource type="PackedScene" uid="uid://dh4a2fdmnah0r" path="res://Prefabs/NPC/FrogManagerNPC/frog_manager_npc.tscn" id="27_68c8r"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="27_df6tn"]
 [ext_resource type="PackedScene" uid="uid://db303mjlt45f4" path="res://Prefabs/Nature/crystal_long.tscn" id="27_lljyu"]
 [ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="28_8vus0"]
@@ -283,7 +286,7 @@ transform = Transform3D(-0.841086, 0, -0.540901, 0, 1, 0, 0.540901, 0, -0.841086
 transform = Transform3D(0.490417, 0, -0.871488, 0, 1, 0, 0.871488, 0, 0.490417, 22.2957, 3.30526, 104.864)
 
 [node name="CrabNPC" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("23_5fnkl")]
-transform = Transform3D(-1.75982, 0, -1.77568, 0, 2.5, 0, 1.77568, 0, -1.75982, -16.8308, 3.61368, 106.578)
+transform = Transform3D(0.0122595, 0, 2.49997, 0.156974, 2.49507, -0.000769783, -2.49504, 0.156976, 0.0122353, 13.8135, 3.42666, 120.923)
 HandInInfo = ExtResource("24_n4upl")
 
 [node name="PlayerGround" type="Area3D" parent="World/NavigationRegion3D/Cave/Beach"]
@@ -307,6 +310,15 @@ shape = SubResource("BoxShape3D_lljyu")
 
 [node name="PathWaterSFX_Ocean" type="Path3D" parent="World/NavigationRegion3D/Cave/Beach"]
 curve = SubResource("Curve3D_u3jh2")
+
+[node name="BeachUmbrella" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("25_hexkd")]
+transform = Transform3D(1.69974, -0.572883, -0.884702, 0.638779, 1.89525, 0, 0.838365, -0.282565, 1.79368, -27.7365, 1.65756, 121.813)
+
+[node name="SummerChair" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("26_jvqbs")]
+transform = Transform3D(2.19032, -0.931779, -3.2147, -0.239213, 3.78847, -1.26107, 3.33845, 0.882788, 2.01877, -25.2723, 2.57443, 123.977)
+
+[node name="FrogManagerNPC" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("27_68c8r")]
+transform = Transform3D(0.313609, -0.256934, -1.44417, 1.86265e-09, 1.47681, -0.262741, 1.46685, 0.0549318, 0.30876, -25.2376, 2.65458, 121.013)
 
 [node name="Stalagmites" type="Node3D" parent="World/NavigationRegion3D/Cave"]
 
@@ -865,7 +877,7 @@ transform = Transform3D(0.419943, 0, -0.90755, 0, 1, 0, 0.90755, 0, 0.419943, -3
 Info = ExtResource("23_fjshb")
 
 [node name="WorldBug6" parent="World/WorldBugs/Beach" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.801097, 0, -0.598534, 0, 1, 0, 0.598534, 0, 0.801097, -24.6069, 2.90254, 120.068)
+transform = Transform3D(0.801097, 0, -0.598534, 0, 1, 0, 0.598534, 0, 0.801097, -23.0228, 3.2855, 116.636)
 Info = ExtResource("23_fjshb")
 
 [node name="WorldBug7" parent="World/WorldBugs/Beach" instance=ExtResource("38_tww0l")]
@@ -910,6 +922,10 @@ Info = ExtResource("23_fjshb")
 
 [node name="WorldBug17" parent="World/WorldBugs/Beach" instance=ExtResource("38_tww0l")]
 transform = Transform3D(-0.172497, 0, 0.98501, 0, 1, 0, -0.98501, 0, -0.172497, -1.23909, 3.68704, 106.78)
+Info = ExtResource("23_fjshb")
+
+[node name="WorldBug18" parent="World/WorldBugs/Beach" instance=ExtResource("38_tww0l")]
+transform = Transform3D(-0.172497, 0, 0.98501, 0, 1, 0, -0.98501, 0, -0.172497, -14.1161, 3.68704, 106.247)
 Info = ExtResource("23_fjshb")
 
 [node name="Stalagmites" type="Node3D" parent="World/WorldBugs"]

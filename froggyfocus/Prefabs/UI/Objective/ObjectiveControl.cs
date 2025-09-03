@@ -45,7 +45,10 @@ public partial class ObjectiveControl : Control
         var is_max_level = Objective.IsMaxLevel(info);
         var is_max_value = Objective.IsMaxValue(info);
         ClaimButton.Disabled = is_max_level || !is_max_value;
-        ClaimButton.Text = is_max_level ? Tr("##COMPLETED##") : Tr("##CLAIM##");
+        ClaimButton.Text = is_max_level ? Tr("##COMPLETED##") : is_max_value ? Tr("##CLAIM##") : string.Empty;
+
+        ProgressBar.Visible = !is_max_level;
+        ProgressLabel.Visible = !is_max_value;
     }
 
     private void ClaimButton_Pressed()

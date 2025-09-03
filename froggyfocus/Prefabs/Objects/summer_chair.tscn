@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://6khbeqmqyph1"]
+
+[ext_resource type="PackedScene" uid="uid://qqm1oay4l2ia" path="res://Assets/FlawLizArt/Objects/summer_chair.fbx" id="1_twjrw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o725s"]
+size = Vector3(0.626953, 0.253418, 0.436462)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4x3x"]
+size = Vector3(0.626953, 0.708862, 0.314682)
+
+[node name="SummerChair" type="Node3D"]
+
+[node name="summer_chair" parent="." instance=ExtResource("1_twjrw")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116943, -0.160675)
+shape = SubResource("BoxShape3D_o725s")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344666, 0.214221)
+shape = SubResource("BoxShape3D_e4x3x")

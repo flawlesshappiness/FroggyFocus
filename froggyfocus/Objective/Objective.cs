@@ -49,7 +49,14 @@ public static class Objective
     public static bool IsMaxValue(ObjectiveInfo info)
     {
         var data = GetOrCreateData(info);
-        var max_value = info.Values[data.Level];
+        var max_value = info.Values.ToList().GetClamped(data.Level);
         return data.Value >= max_value;
+    }
+
+    public static float GetPercentage(ObjectiveInfo info)
+    {
+        var data = GetOrCreateData(info);
+        var max_value = info.Values.ToList().GetClamped(data.Level);
+        return (float)data.Value / max_value;
     }
 }

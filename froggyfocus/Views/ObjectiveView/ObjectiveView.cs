@@ -19,6 +19,12 @@ public partial class ObjectiveView : PanelView
     private bool animating;
     private List<ObjectiveControl> objective_controls = new();
 
+    private class ObjectiveMap
+    {
+        public ObjectiveInfo Info { get; set; }
+        public ObjectiveData Data { get; set; }
+    }
+
     public override void _Ready()
     {
         base._Ready();
@@ -72,9 +78,12 @@ public partial class ObjectiveView : PanelView
         Clear();
 
         var infos = ObjectiveController.Instance.Collection.Resources;
-        foreach (var info in infos)
+        var maps = infos.Select(x => new ObjectiveMap { Info = x, Data = Objective.GetOrCreateData(x) })
+            .OrderByDescending(x => Objective.GetPercentage(x.Info));
+
+        foreach (var map in maps)
         {
-            var control = CreateObjectiveControl(info);
+            var control = CreateObjectiveControl(map.Info);
         }
 
         var first = objective_controls.First();
