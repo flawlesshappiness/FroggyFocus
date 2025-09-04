@@ -17,10 +17,12 @@ public partial class GameScene : Scene
     public Node3D WorldBugParent;
 
     [Export]
-    public Array<WeatherInfo> Weathers = new();
+    public Node3D FocusEventParent;
 
     [Export]
-    public Array<FocusEvent> FocusEvents = new();
+    public Array<WeatherInfo> Weathers = new();
+
+    public List<FocusEvent> FocusEvents { get; private set; } = new();
 
     private string current_focus_event_id;
     private List<FocusHotSpotArea> hotspot_areas;
@@ -35,6 +37,7 @@ public partial class GameScene : Scene
         FocusEventController.Instance.OnFocusEventFailed += FocusEventEnded;
 
         world_bugs = WorldBugParent?.GetNodesInChildren<WorldBug>() ?? new List<WorldBug>();
+        FocusEvents = FocusEventParent?.GetNodesInChildren<FocusEvent>() ?? new List<FocusEvent>();
 
         MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather(Weathers);

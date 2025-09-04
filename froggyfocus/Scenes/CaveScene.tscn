@@ -99,13 +99,13 @@ height = 20.0
 material = ExtResource("15_lrn65")
 size = Vector2(20, 10)
 
-[node name="CaveScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEvents")]
+[node name="CaveScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
 script = ExtResource("1_q8md0")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
+FocusEventParent = NodePath("World/FocusEvents")
 Weathers = Array[ExtResource("2_fvftn")]([ExtResource("3_wkocx"), ExtResource("4_pteap")])
-FocusEvents = [NodePath("World/FocusEvents/Stalagmite"), NodePath("World/FocusEvents/Moss"), NodePath("World/FocusEvents/Beach"), NodePath("World/FocusEvents/Pier"), NodePath("World/FocusEvents/Crystal")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_exe8s")

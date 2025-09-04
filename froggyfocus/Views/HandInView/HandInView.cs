@@ -1,8 +1,5 @@
 using Godot;
-using Godot.Collections;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 public partial class HandInView : View
 {
@@ -15,77 +12,21 @@ public partial class HandInView : View
     public AnimatedPanel AnimatedPanel_HandIn;
 
     [Export]
-    public Button CloseHandInButton;
-
-    [Export]
-    public Button ClaimButton;
-
-    [Export]
-    public Label NameLabel;
-
-    [Export]
-    public RichTextLabel LocationHintLabel;
+    public HandInContainer HandInContainer;
 
     [Export]
     public UnlockPopup UnlockPopup;
 
     [Export]
-    public RewardUnlockBar RewardUnlockBar;
-
-    [Export]
     public Control InputBlocker;
 
-    [Export]
-    public Array<InventoryPreviewButton> RequestButtons;
-
-    [Export]
-    public Array<RewardPreview> RewardPreviews;
-
     private bool animating;
-    private HandInData current_data;
-    private HandInInfo current_info;
-    private List<ButtonMap> maps = new();
-
-    private bool HasItemUnlock => (current_info?.HatUnlock ?? AppearanceHatType.None) != AppearanceHatType.None;
-    private bool IsMaxClaim => current_data?.ClaimedCount >= current_info?.ClaimCountToUnlock;
-
-    private class ButtonMap
-    {
-        public int Index { get; set; }
-        public InventoryPreviewButton Button { get; set; }
-        public InventoryCharacterData Submission { get; set; }
-        public void Clear()
-        {
-            Button.Clear();
-            Submission = null;
-        }
-    }
 
     public override void _Ready()
     {
         base._Ready();
-
-        CloseHandInButton.Pressed += CloseHandInButton_Pressed;
-        ClaimButton.Pressed += ClaimButton_Pressed;
-
-        InitializeRequestButtons();
-    }
-
-    private void InitializeRequestButtons()
-    {
-        for (int i = 0; i < RequestButtons.Count; i++)
-        {
-            var idx = i;
-            var button = RequestButtons[i];
-            var map = new ButtonMap
-            {
-                Index = idx,
-                Button = button,
-            };
-
-            button.FocusEntered += () => RequestButton_FocusEntered(map);
-            maps.Add(map);
-        }
+        HandInContainer.BackButton.Pressed += BackButton_Pressed;
+        HandInContainer.OnClaim += HandInContainer_Claim;
     }
 
     protected override void OnShow()
@@ -120,9 +61,7 @@ public partial class HandInView : View
     {
         if (data == null) return;
 
-        Clear();
-        Load(data);
-        Validate();
+        HandInContainer.Load(data);
         Show();
 
         StartCoroutine(Cr, "animate");
@@ -133,67 +72,10 @@ public partial class HandInView : View
             InputBlocker.Show();
             AnimatedOverlay.AnimateBehindShow();
             yield return AnimatedPanel_HandIn.AnimatePopShow();
-            RequestButtons.First().GrabFocus();
+            HandInContainer.GetFirstButton().GrabFocus();
             InputBlocker.Hide();
 
             animating = false;
-        }
-    }
-
-    private void Clear()
-    {
-        maps.ForEach(x => x.Clear());
-        ClaimButton.Disabled = true;
-        current_data = null;
-        RewardUnlockBar.Clear();
-    }
-
-    private void Load(HandInData data)
-    {
-        current_data = data;
-        current_info = HandInController.Instance.GetInfo(data.Id);
-        RequestButtons.ForEach(x => x.Hide());
-
-        for (int i = 0; i < data.RequestInfos.Count; i++)
-        {
-            // Info
-            var request = data.RequestInfos[i];
-            var info = FocusCharacterController.Instance.GetInfoFromPath(request);
-
-            // Submission
-            var map = maps[i];
-            map.Submission = InventoryController.Instance.GetCharactersInInventory(new InventoryFilterOptions
-            {
-                ValidCharacters = new List<FocusCharacterInfo> { info },
-                ExcludedDatas = GetSubmissions()
-            }).FirstOrDefault();
-
-            // Button
-            var button = RequestButtons[i];
-            button.SetCharacter(info);
-            button.SetObscured(map.Submission == null);
-            button.Show();
-
-            if (i == 0)
-            {
-                ShowInfo(info);
-            }
-        }
-
-        RewardPreviews.ForEach(x => x.Hide());
-        if (data.MoneyReward > 0)
-        {
-            var preview = RewardPreviews[0];
-            preview.SetCoinStack(data.MoneyReward);
-            preview.Show();
-        }
-
-        var already_unlocked = Data.Game.Appearance.PurchasedHats.Contains(current_info.HatUnlock);
-        var show_unlock_bar = HasItemUnlock && !already_unlocked;
-        RewardUnlockBar.Visible = show_unlock_bar;
-        if (show_unlock_bar)
-        {
-            RewardUnlockBar.Load(current_info);
         }
     }
 
@@ -205,20 +87,12 @@ public partial class HandInView : View
         MouseVisibility.Instance.Lock.SetLock(id, locked);
     }
 
-    private void RequestButton_FocusEntered(ButtonMap map)
+    private void BackButton_Pressed()
     {
-        var request = current_data.RequestInfos[map.Index];
-        var info = FocusCharacterController.Instance.GetInfoFromPath(request);
-        ShowInfo(info);
+        Close();
     }
 
-    private void ShowInfo(FocusCharacterInfo info)
-    {
-        NameLabel.Text = Tr(info.Name);
-        LocationHintLabel.Text = Tr(info.LocationHint);
-    }
-
-    private void CloseHandInButton_Pressed()
+    private void HandInContainer_Claim()
     {
         Close();
     }
@@ -232,7 +106,7 @@ public partial class HandInView : View
 
             ReleaseCurrentFocus();
             InputBlocker.Show();
-            yield return WaitForRewardBarFill();
+            yield return HandInContainer.WaitForRewardBarFill();
             AnimatedOverlay.AnimateBehindHide();
             yield return AnimatedPanel_HandIn.AnimatePopHide();
             InputBlocker.Hide();
@@ -240,77 +114,33 @@ public partial class HandInView : View
             Hide();
 
             animating = false;
+
+            if (!HandInContainer.CurrentData.Claimed)
+            {
+                HandInController.Instance.HandInClosed(HandInContainer.CurrentInfo);
+            }
         }
+    }
+
+    private bool CanShowPopup()
+    {
+        return HandInContainer.HasItemUnlock &&
+            HandInContainer.IsMaxClaim &&
+            HandInContainer.RewardUnlockBar.Visible;
     }
 
     private IEnumerator WaitForPopup()
     {
-        if (current_data.Claimed)
+        if (HandInContainer.CurrentData.Claimed)
         {
-            if (HasItemUnlock && IsMaxClaim && RewardUnlockBar.Visible)
+            if (CanShowPopup())
             {
                 UnlockPopup.SetItemUnlock();
-                UnlockPopup.SetHat(current_info.HatUnlock);
+                UnlockPopup.SetHat(HandInContainer.CurrentInfo.HatUnlock);
                 yield return UnlockPopup.WaitForPopup();
             }
 
-            HandInController.Instance.HandInClaimed(current_data);
+            HandInController.Instance.HandInClaimed(HandInContainer.CurrentData);
         }
-    }
-
-    private IEnumerator WaitForRewardBarFill()
-    {
-        if (current_data.Claimed && RewardUnlockBar.Visible)
-        {
-            yield return RewardUnlockBar.WaitForFillNext();
-            yield return new WaitForSeconds(0.25f);
-        }
-    }
-
-    private void ClaimButton_Pressed()
-    {
-        Claim();
-    }
-
-    private void Claim()
-    {
-        current_data.Claimed = true;
-        current_data.ClaimedCount++;
-
-        foreach (var map in maps)
-        {
-            InventoryController.Instance.RemoveCharacterData(map.Submission);
-        }
-
-        if (current_data.MoneyReward > 0)
-        {
-            Money.Add(current_data.MoneyReward);
-        }
-
-        if (HasItemUnlock && IsMaxClaim)
-        {
-            AppearanceHatController.Instance.Unlock(current_info.HatUnlock);
-            AppearanceHatController.Instance.Purchase(current_info.HatUnlock);
-        }
-
-        Data.Game.Save();
-
-        ClaimButton.Disabled = true;
-
-        Close();
-    }
-
-    private void Validate()
-    {
-        var is_valid = GetSubmissions().Count == current_data.RequestInfos.Count;
-        ClaimButton.Disabled = !is_valid;
-    }
-
-    private List<InventoryCharacterData> GetSubmissions()
-    {
-        return maps
-            .Select(x => x.Submission)
-            .Where(x => x != null)
-            .ToList();
     }
 }

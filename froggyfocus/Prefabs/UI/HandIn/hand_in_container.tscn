@@ -1,0 +1,253 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbl0lxjgwiop8"]
+
+[ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="1_egl5y"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_gy4rq"]
+[ext_resource type="Script" uid="uid://nympupi6qvim" path="res://Prefabs/UI/HandIn/HandInContainer.cs" id="2_6tauf"]
+[ext_resource type="Texture2D" uid="uid://bonu8f811ddko" path="res://Assets/KenneyNL/Cursor/Basic/navigation_n.png" id="2_gy4rq"]
+[ext_resource type="PackedScene" uid="uid://byh5solck2yl" path="res://Prefabs/UI/RewardPreview/reward_preview.tscn" id="3_6tauf"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="4_we8yh"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_svgvs"]
+[ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="6_hgnx5"]
+[ext_resource type="PackedScene" uid="uid://f3kbwyvky2m8" path="res://Prefabs/UI/RewardUnlockBar/reward_unlock_bar.tscn" id="7_h3v2q"]
+
+[node name="HandInContainer" type="MarginContainer" node_paths=PackedStringArray("BackButton", "ClaimButton", "NameLabel", "LocationHintLabel", "RewardUnlockBar", "RequestButtons", "RewardPreviews")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.5
+offset_top = -110.5
+offset_right = 250.5
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gy4rq")
+script = ExtResource("2_6tauf")
+BackButton = NodePath("VBoxContainer/BackButtonContainer/BackButton")
+ClaimButton = NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ClaimButton")
+NameLabel = NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer/NameLabel")
+LocationHintLabel = NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer/LocationHintLabel")
+RewardUnlockBar = NodePath("VBoxContainer/RewardUnlockBar")
+RequestButtons = [NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 1"), NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 2"), NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/RequestButton 3"), NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 4"), NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 5"), NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/RequestButton 6")]
+RewardPreviews = [NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview"), NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview2"), NodePath("VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer/RewardPreview3")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MainContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MainPanel" type="Panel" parent="VBoxContainer/MainContainer"]
+custom_minimum_size = Vector2(500, 220)
+layout_mode = 2
+
+[node name="Title" type="MarginContainer" parent="VBoxContainer/MainContainer/MainPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = -47.23
+offset_right = 120.0
+offset_bottom = 26.77
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MainContainer/MainPanel/Title"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/MainPanel/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/MainContainer/MainPanel/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "REQUEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="RequestButton 1" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_egl5y")]
+layout_mode = 2
+disabled = true
+
+[node name="RequestButton 2" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_egl5y")]
+layout_mode = 2
+disabled = true
+
+[node name="RequestButton 3" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_egl5y")]
+layout_mode = 2
+disabled = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="RequestButton 4" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_egl5y")]
+layout_mode = 2
+disabled = true
+
+[node name="RequestButton 5" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_egl5y")]
+layout_mode = 2
+disabled = true
+
+[node name="RequestButton 6" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_egl5y")]
+layout_mode = 2
+disabled = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Control"]
+modulate = Color(0, 0, 0, 0.392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+pivot_offset = Vector2(25, 25)
+texture = ExtResource("2_gy4rq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="RewardPreview" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("3_6tauf")]
+layout_mode = 2
+
+[node name="RewardPreview2" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("3_6tauf")]
+layout_mode = 2
+
+[node name="RewardPreview3" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/HBoxContainer" instance=ExtResource("3_6tauf")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(215, 81)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_we8yh")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "NameLabel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("4_we8yh")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="LocationHintLabel" type="RichTextLabel" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+bbcode_enabled = true
+text = "[i]Location
+Hint[/i]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(188, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="ClaimButton" parent="VBoxContainer/MainContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" instance=ExtResource("5_svgvs")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_hgnx5")
+text = " Claim"
+
+[node name="RewardUnlockBar" parent="VBoxContainer" instance=ExtResource("7_h3v2q")]
+layout_mode = 2
+
+[node name="BackButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" parent="VBoxContainer/BackButtonContainer" instance=ExtResource("5_svgvs")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = " Back"

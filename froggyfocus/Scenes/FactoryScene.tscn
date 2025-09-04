@@ -120,13 +120,13 @@ _data = {
 }
 point_count = 4
 
-[node name="FactoryScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEvents")]
+[node name="FactoryScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
 script = ExtResource("1_net23")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
+FocusEventParent = NodePath("World/FocusEvents")
 Weathers = Array[ExtResource("2_jmf1t")]([ExtResource("3_s3kaw"), ExtResource("4_g0uh1"), ExtResource("5_j3lbf"), ExtResource("6_pkxqc")])
-FocusEvents = [NodePath("World/FocusEvents/Trash_Water"), NodePath("World/FocusEvents/Oil"), NodePath("World/FocusEvents/Seaweed")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_rcofs")

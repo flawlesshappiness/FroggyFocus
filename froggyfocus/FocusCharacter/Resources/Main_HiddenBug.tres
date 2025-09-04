@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://bn6kwmsp5wc2v"]
+
+[ext_resource type="PackedScene" uid="uid://fqqvhhk0a8og" path="res://Prefabs/Characters/tick.tscn" id="1_vkb8i"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_1q6d0"]
+
+[resource]
+script = ExtResource("2_1q6d0")
+Scene = ExtResource("1_vkb8i")
+Name = "The Hidden Bug"
+LocationHint = "???"
+Accessory = ""
+FocusValue = 50.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

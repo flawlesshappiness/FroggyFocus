@@ -36,6 +36,8 @@ public partial class FrogCharacter : Character
     private ShaderMaterial body_material;
     private ShaderMaterial mouth_material;
 
+    private AnimationState state_in_sand;
+
     private BoolParameter param_moving = new BoolParameter("moving", false);
     private BoolParameter param_mouth_open = new BoolParameter("mouth_open", false);
     private BoolParameter param_jumping = new BoolParameter("jumping", false);
@@ -93,6 +95,8 @@ public partial class FrogCharacter : Character
         var right_hand_right_in = Animation.CreateAnimation("Armature|right_hand_right_in", false);
         var left_hand_left_out = Animation.CreateAnimation("Armature|left_hand_left_out", false);
         var left_hand_left_in = Animation.CreateAnimation("Armature|left_hand_left_in", false);
+
+        state_in_sand = Animation.CreateAnimation("Armature|in_sand", true);
 
         Animation.Connect(idle, walking, param_moving.WhenTrue());
         Animation.Connect(walking, idle, param_moving.WhenFalse());
@@ -365,5 +369,10 @@ public partial class FrogCharacter : Character
         SetHandsBack();
         param_left_hand_left.Set(true);
         IsHandOut = true;
+    }
+
+    public void SetInSand()
+    {
+        Animation.SetCurrentState(state_in_sand.Node);
     }
 }

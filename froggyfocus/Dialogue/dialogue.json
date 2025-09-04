@@ -224,7 +224,19 @@
 	},
 	
 	{
-		"id": "##LOCKED##"
+		"id": "##MANAGER_REQUEST_001##",
+		"next": "##MANAGER_REQUEST_002##"
+	},
+	{
+		"id": "##MANAGER_REQUEST_002##"
+	},
+	
+	{
+		"id": "##MANAGER_REQUEST_FAIL_001##",
+		"next": "##MANAGER_REQUEST_FAIL_002##"
+	},
+	{
+		"id": "##MANAGER_REQUEST_FAIL_002##"
 	},
 	
 	{

@@ -7,6 +7,7 @@ public partial class HandInController : ResourceController<HandInCollection, Han
     public static HandInController Instance => Singleton.Get<HandInController>();
 
     public event Action<string> OnHandInClaimed;
+    public event Action<string> OnHandInClosed;
 
     public override void _Ready()
     {
@@ -103,5 +104,10 @@ public partial class HandInController : ResourceController<HandInCollection, Han
     public void HandInClaimed(HandInData data)
     {
         OnHandInClaimed?.Invoke(data.Id);
+    }
+
+    public void HandInClosed(HandInInfo info)
+    {
+        OnHandInClosed?.Invoke(info.Id);
     }
 }
