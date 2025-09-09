@@ -69,7 +69,7 @@ public partial class CharacterNpc : Area3D, IInteractable
         }
     }
 
-    private void DialogueEnded()
+    protected virtual void DialogueEnded()
     {
         param_dialogue.Set(false);
         HasActiveDialogue = false;

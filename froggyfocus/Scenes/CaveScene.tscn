@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=55 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
@@ -29,7 +29,6 @@
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/Shop.tscn" id="22_ns5ic"]
 [ext_resource type="PackedScene" uid="uid://ct6yxfuwur3fl" path="res://Prefabs/NPC/CrabNPC/crab_npc.tscn" id="23_5fnkl"]
 [ext_resource type="Resource" uid="uid://chi5nlmadbpol" path="res://FocusEvent/Resources/Beach_Land.tres" id="23_fjshb"]
-[ext_resource type="Resource" uid="uid://b3hhun7nmjp8p" path="res://HandInQuest/Resources/Crab_Cave.tres" id="24_n4upl"]
 [ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="25_54h6h"]
 [ext_resource type="PackedScene" uid="uid://cebikss5h6wvu" path="res://Prefabs/Objects/beach_umbrella.tscn" id="25_hexkd"]
 [ext_resource type="PackedScene" uid="uid://6khbeqmqyph1" path="res://Prefabs/Objects/summer_chair.tscn" id="26_jvqbs"]
@@ -287,7 +286,6 @@ transform = Transform3D(0.490417, 0, -0.871488, 0, 1, 0, 0.871488, 0, 0.490417, 
 
 [node name="CrabNPC" parent="World/NavigationRegion3D/Cave/Beach" instance=ExtResource("23_5fnkl")]
 transform = Transform3D(0.0122595, 0, 2.49997, 0.156974, 2.49507, -0.000769783, -2.49504, 0.156976, 0.0122353, 13.8135, 3.42666, 120.923)
-HandInInfo = ExtResource("24_n4upl")
 
 [node name="PlayerGround" type="Area3D" parent="World/NavigationRegion3D/Cave/Beach"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 118.367)

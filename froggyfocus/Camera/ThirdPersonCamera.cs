@@ -47,7 +47,7 @@ public partial class ThirdPersonCamera : Node3D
         var input = PlayerInput.GetLookInput();
         if (input.Length() < 0.1f) return;
 
-        var x = Mathf.Clamp(Rotation.X - input.Y * ControllerSensitivity, -tilt_min, tilt_min);
+        var x = Mathf.Clamp(Rotation.X - input.Y * ControllerSensitivity, tilt_min, tilt_max);
         var y = Rotation.Y - input.X * ControllerSensitivity;
         Rotation = new Vector3(x, y, Rotation.Z);
     }

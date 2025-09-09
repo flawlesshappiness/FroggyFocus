@@ -55,7 +55,11 @@ public partial class DialogueController : SingletonController
     private void SetNode(string id)
     {
         Debug.TraceMethod(id);
-        var node = Collection.GetNode(id);
+        var node = Collection.GetNode(id) ?? new DialogueNode
+        {
+            id = id
+        };
+
         SetNode(node);
     }
 
