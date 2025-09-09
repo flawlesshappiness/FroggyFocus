@@ -106,11 +106,21 @@ public partial class HandInContainer : MarginContainer
                 ExcludedDatas = Submissions
             }).FirstOrDefault();
 
+            var has_submission = map.Submission != null;
+
             // Button
             var button = RequestButtons[i];
-            button.SetCharacter(info);
-            button.SetObscured(map.Submission == null);
+            button.SetObscured(!has_submission);
             button.Show();
+
+            if (CurrentInfo.RequestPreviewHidden && !has_submission)
+            {
+                button.SetHiddenPreview();
+            }
+            else
+            {
+                button.SetCharacter(info);
+            }
 
             if (i == 0)
             {

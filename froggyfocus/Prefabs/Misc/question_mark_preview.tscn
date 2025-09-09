@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cplo4mx0f0qkx"]
+
+[ext_resource type="PackedScene" uid="uid://b02jlvmojusij" path="res://Assets/FlawLizArt/Other/QuestionMark.fbx" id="1_ntk6v"]
+
+[node name="QuestionMarkPreview" type="Node3D"]
+
+[node name="QuestionMark" parent="." instance=ExtResource("1_ntk6v")]
+transform = Transform3D(-7.86805e-08, 0, -1.8, 0, 1.8, 0, 1.8, 0, -7.86805e-08, 0, 0, 0)

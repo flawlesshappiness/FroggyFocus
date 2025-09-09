@@ -8,6 +8,9 @@ public partial class InventoryPreviewButton : ButtonScript
     [Export]
     public ItemSubViewport ItemSubViewport;
 
+    [Export]
+    public PackedScene HiddenPreviewPrefab;
+
     public override void _Ready()
     {
         base._Ready();
@@ -26,6 +29,11 @@ public partial class InventoryPreviewButton : ButtonScript
     public void SetCharacter(FocusCharacterInfo info)
     {
         ItemSubViewport.SetCharacter(info);
+    }
+
+    public void SetHiddenPreview()
+    {
+        ItemSubViewport.SetPrefab(HiddenPreviewPrefab);
     }
 
     public void SetObscured(bool obscured)

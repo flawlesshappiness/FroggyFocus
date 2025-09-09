@@ -8,6 +8,9 @@ public partial class HandInInfo : Resource
     public string Id;
 
     [Export]
+    public bool RequestPreviewHidden;
+
+    [Export]
     public Array<FocusCharacterInfo> PossibleRequests;
 
     [Export]

@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("3_33d3d")
 Id = "manager"
+RequestPreviewHidden = true
 PossibleRequests = Array[Object]([ExtResource("1_2hehi")])
 CountRange = Vector2i(1, 1)
 ClaimCountToUnlock = 0
