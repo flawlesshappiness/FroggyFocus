@@ -45,6 +45,7 @@ public partial class HandInController : ResourceController<HandInCollection, Han
             v.ContentSearch.AddItem("Show", () => ShowHandIn(v, info));
             v.ContentSearch.AddItem("Set claimed count", () => SelectClaimedCount(v, info));
             v.ContentSearch.AddItem("Make available", () => MakeAvailable(v, info));
+            v.ContentSearch.AddItem("Make available in 10 seconds", () => MakeAvailableSoon(v, info));
             v.ContentSearch.AddItem("Reset", () => Reset(v, info));
 
             v.ContentSearch.UpdateButtons();
@@ -63,6 +64,16 @@ public partial class HandInController : ResourceController<HandInCollection, Han
             Data.Game.Save();
 
             HandInActions(v, info);
+        }
+
+        void MakeAvailableSoon(DebugView v, HandInInfo info)
+        {
+            var data = HandIn.GetOrCreateData(info.Id);
+            var date = GameTime.GetCurrentDateTime().AddSeconds(10);
+            data.DateTimeNext = GameTime.GetDateTimeString(date);
+            Data.Game.Save();
+
+            ShowHandIn(v, info);
         }
 
         void SelectClaimedCount(DebugView v, HandInInfo info)

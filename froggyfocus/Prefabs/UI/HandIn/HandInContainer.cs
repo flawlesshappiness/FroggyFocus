@@ -8,10 +8,19 @@ using System.Linq;
 public partial class HandInContainer : MarginContainer
 {
     [Export]
+    public Control ControlsContainer;
+
+    [Export]
+    public Control TimerContainer;
+
+    [Export]
     public Button BackButton;
 
     [Export]
     public Button ClaimButton;
+
+    [Export]
+    public Label TimerLabel;
 
     [Export]
     public Label NameLabel;
@@ -59,6 +68,12 @@ public partial class HandInContainer : MarginContainer
         InitializeRequestButtons();
     }
 
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Process_TimerLabel();
+    }
+
     private void InitializeRequestButtons()
     {
         for (int i = 0; i < RequestButtons.Count; i++)
@@ -90,6 +105,16 @@ public partial class HandInContainer : MarginContainer
 
         CurrentData = data;
         CurrentInfo = HandInController.Instance.GetInfo(data.Id);
+
+        var is_available = HandIn.IsAvailable(data.Id);
+        ControlsContainer.Visible = is_available;
+        TimerContainer.Visible = !is_available;
+
+        LoadControls(data);
+    }
+
+    private void LoadControls(HandInData data)
+    {
         RequestButtons.ForEach(x => x.Hide());
 
         for (int i = 0; i < data.RequestInfos.Count; i++)
@@ -145,6 +170,20 @@ public partial class HandInContainer : MarginContainer
         }
 
         Validate();
+    }
+
+    private void Process_TimerLabel()
+    {
+        if (CurrentData == null) return;
+
+        var date_now = GameTime.GetCurrentDateTime();
+        var date_next = GameTime.ParseDateTime(CurrentData.DateTimeNext);
+        var span_next = date_next.Subtract(date_now);
+
+        if (span_next >= TimeSpan.Zero)
+        {
+            TimerLabel.Text = span_next.ToString("hh':'mm':'ss");
+        }
     }
 
     private void ShowInfo(FocusCharacterInfo info)

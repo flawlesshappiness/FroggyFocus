@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\views\\handinview\\handinview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:views\\handinview\\handinview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\ui\\handin\\handincontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\ui\\handin\\handincontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\npc\\frogmanagernpc\\frogmanagernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\npc\\frogmanagernpc\\frogmanagernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\ui\\subviewport\\itemsubviewport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\ui\\subviewport\\itemsubviewport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\npc\\crabnpc\\crabnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\npc\\crabnpc\\crabnpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\handinquest\\handin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:handinquest\\handin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\gamescene\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,71 +34,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HandInView.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\HandInView\\HandInView.cs",
-              "RelativeDocumentMoniker": "Views\\HandInView\\HandInView.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\HandInView\\HandInView.cs",
-              "RelativeToolTip": "Views\\HandInView\\HandInView.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAuwF0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "HandIn.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\HandInQuest\\HandIn.cs",
+              "RelativeDocumentMoniker": "HandInQuest\\HandIn.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\HandInQuest\\HandIn.cs",
+              "RelativeToolTip": "HandInQuest\\HandIn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T01:33:22.852Z",
+              "WhenOpened": "2025-09-09T08:23:43.195Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "HandInContainer.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\UI\\HandIn\\HandInContainer.cs",
               "RelativeDocumentMoniker": "Prefabs\\UI\\HandIn\\HandInContainer.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\UI\\HandIn\\HandInContainer.cs",
               "RelativeToolTip": "Prefabs\\UI\\HandIn\\HandInContainer.cs",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAtwMMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAJYAAAAAAAAAAAD4v7UAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-04T01:33:10.224Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ItemSubViewport.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\UI\\SubViewport\\ItemSubViewport.cs",
-              "RelativeDocumentMoniker": "Prefabs\\UI\\SubViewport\\ItemSubViewport.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\UI\\SubViewport\\ItemSubViewport.cs",
-              "RelativeToolTip": "Prefabs\\UI\\SubViewport\\ItemSubViewport.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-04T01:25:44.362Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CrabNpc.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\NPC\\CrabNPC\\CrabNpc.cs",
-              "RelativeDocumentMoniker": "Prefabs\\NPC\\CrabNPC\\CrabNpc.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\NPC\\CrabNPC\\CrabNpc.cs",
-              "RelativeToolTip": "Prefabs\\NPC\\CrabNPC\\CrabNpc.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAA5wCsAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-03T17:28:57.226Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FrogManagerNpc.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\NPC\\FrogManagerNPC\\FrogManagerNpc.cs",
-              "RelativeDocumentMoniker": "Prefabs\\NPC\\FrogManagerNPC\\FrogManagerNpc.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\NPC\\FrogManagerNPC\\FrogManagerNpc.cs",
-              "RelativeToolTip": "Prefabs\\NPC\\FrogManagerNPC\\FrogManagerNpc.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAIwCoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-02T23:48:14.526Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "GameScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\GameScene\\GameScene.cs",
               "RelativeDocumentMoniker": "GameScene\\GameScene.cs",
@@ -122,7 +72,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Player\\Player.cs",
