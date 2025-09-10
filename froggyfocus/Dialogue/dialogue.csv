@@ -36,51 +36,27 @@ keys;en
 ##TUTORIAL_CATCH_BUGS_001##;Don't know how to catch bugs?
 ##TUTORIAL_CATCH_BUGS_002##;Well, stop moving so much!
 ##TUTORIAL_CATCH_BUGS_003##;Sit still, and wait for the exclamation mark to appear. Then press [INTERACT] to begin focusing.
-##MUSHROOM_SWAMP_REQUEST_001##;There is an absence in our possession.
-##MUSHROOM_SWAMP_REQUEST_002##;Please fulfill our request.
-##MUSHROOM_SWAMP_REQUEST_COMPLETE_001##;We thank you.
-##MUSHROOM_SWAMP_REQUEST_IDLE_001##;The network is debating our next request, please wait.
-##MAGPIE_SWAMP_IDLE_001##;Worm always hide. Sneaky-sneaky.
-##MAGPIE_SWAMP_REQUEST_001##;Need food.
-##MAGPIE_SWAMP_REQUEST_002##;Got worm?
-##MAGPIE_SWAMP_REQUEST_COMPLETE_001##;Yummy food!
-##MAGPIE_SWAMP_REQUEST_COMPLETE_002##;I give pay. Goodbye!
-##MAGPIE_SWAMP_FETCH_001##;Need stick.
-##MAGPIE_SWAMP_FETCH_002##;You got stick?
-##MAGPIE_SWAMP_FETCH_003##;I pay for stick.
-##MAGPIE_SWAMP_FETCH_COUNT##;Need {count} more stick.
-##MAGPIE_SWAMP_FETCH_COMPLETE_001##;All stick! Happy stick!
-##MAGPIE_SWAMP_FETCH_COMPLETE_002##;I give pay. Goodbye.
-##OTTER_SWAMP_REQUEST_001##;Oh! Help me catch the ones with wings.
-##OTTER_SWAMP_REQUEST_002##;They keep swarming, and I can't catch them.
-##OTTER_SWAMP_REQUEST_COMPLETE_001##;Thank you so much!
-##OTTER_SWAMP_REQUEST_IDLE_001##;I can't figure out how I'm gonna fly like them.
-##OTTER_SWAMP_REQUEST_IDLE_002##;Can you come back later?
+##MUSHROOM_REQUEST##;There is an absence in our possession. Please fulfill our request.
+##MUSHROOM_COMPLETE_001##;We thank you.
+##MAGPIE_REQUEST##;Need worm. I give pay.
+##MAGPIE_COMPLETE_001##;Good worm. Goodbye!
+##OTTER_REQUEST##;Help me catch the winged ones.
+##OTTER_COMPLETE_001##;Thank you so much!
 ##LEECH_UPGRADE_START_001##;Are you... looking to grow stronger?
 ##LEECH_UPGRADE_START_002##;Let's unlock your potential...
 ##LEECH_UPGRADE_START_003##;There is true power hidden inside you...
-##SNAIL_REQUEST_001##;C-can you h-help me with something?
-##SNAIL_IDLE_001##;S-so nice and warm here.
-##SNAIL_IDLE_002##;I'm just g-gonna rest for a b-bit.
-##SNAIL_REQUEST_COMPLETE_001##;Y-you're so k-kind.
+##SNAIL_REQUEST##;C-can you h-help me with something?
+##SNAIL_COMPLETE_001##;Y-you're so k-kind.
 ##CRAB_REQUEST##;There are bugs. So many. You have?
 ##CRAB_COMPLETE_001##;Click-clack. Yes. Click-clack.
-##SALAMANDER_REQUEST_001##;Guess who's still stuck in a crystal.
-##SALAMANDER_REQUEST_002##;It's me! And I'm hungryyyyy...
-##SALAMANDER_REQUEST_COMPLETE_001##;The crystals are as pleased as I am.
-##SALAMANDER_IDLE_001##;Do you hear their singing?
-##RACCOON_REQUEST_001##;There is so much to dig through!
-##RACCOON_REQUEST_002##;Have you found anything worthwhile?
-##RACCOON_REQUEST_COMPLETE_001##;Ah yes, this will do nicely.
-##RACCOON_IDLE_001##;*sniff sniff* Yeah, that's the good stuff...
-##EEL_REQUEST_001##;All of them, so eeeeelusive...
-##EEL_REQUEST_002##;Hiding in the weeeeeds...
-##EEL_REQUEST_COMPLETE_001##;Eeeeexcellent!
-##EEL_IDLE_001##;You hear a static hum? Eeeeelectric!
-##TURTLE_REQUEST_001##;You know, if you think about it...
-##TURTLE_REQUEST_002##;Being stuck is just an opportunity to ask for help.
-##TURTLE_REQUEST_COMPLETE_001##;I live to lie here another day.
-##TURTLE_IDLE_001##;Oh hey, nice of you to drop by.
+##SALAMANDER_REQUEST##;Guess who's still stuck in a crystal. It's me! And I'm hungryyyyy...
+##SALAMANDER_COMPLETE_001##;The crystals are as pleased as I am. Do you hear them sing?
+##RACCOON_REQUEST##;There is so much to dig through! Found anything good?
+##RACCOON_COMPLETE_001##;Ah yes, this will do nicely.
+##EEL_REQUEST##;All of them, so eeelusive... Hiding in the weeeds...
+##EEL_COMPLETE_001##;Eeexcellent!
+##TURTLE_REQUEST##;If you think about it... Being stuck is just an opportunity to ask for help.
+##TURTLE_COMPLETE_001##;I live to lie here another day.
 ##MANAGER_REQUEST_001##;What?
 ##MANAGER_REQUEST_002##;Have you done the task?
 ##MANAGER_REQUEST_FAIL_001##;I don't appreciate having my vacation disturbed!

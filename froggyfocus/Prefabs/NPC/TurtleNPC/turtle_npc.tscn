@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://tg0kj2q60vm6"]
 
-[ext_resource type="Script" uid="uid://clpminwrgwaof" path="res://Prefabs/NPC/TurtleNPC/TurtleNpc.cs" id="1_3tldd"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_i6cp7"]
 [ext_resource type="PackedScene" uid="uid://p4h2xy11rfgg" path="res://Assets/FlawLizArt/Characters/Turtle/turtle.fbx" id="1_lfy8r"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_5nm1e"]
 [ext_resource type="Resource" uid="uid://cjoj1uvuy80p4" path="res://HandInQuest/Resources/Turtle_Factory.tres" id="2_bd5m3"]
@@ -24,8 +24,9 @@ stream_2/stream = ExtResource("7_peltu")
 [node name="TurtleNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_3tldd")
+script = ExtResource("1_i6cp7")
 HandInInfo = ExtResource("2_bd5m3")
+DialogueKey = "TURTLE"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 

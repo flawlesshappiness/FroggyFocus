@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3hkrtmh6ohnl"]
 
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_f8bht"]
 [ext_resource type="PackedScene" uid="uid://3e5oppo6lmr7" path="res://Assets/FlawLizArt/Characters/Eel/eel.fbx" id="1_h0kul"]
-[ext_resource type="Script" uid="uid://dxpoycv1ltoba" path="res://Prefabs/NPC/EelNPC/EelNpc.cs" id="1_uu23s"]
 [ext_resource type="Resource" uid="uid://72vr17ea7883" path="res://HandInQuest/Resources/Eel_Factory.tres" id="2_f8bht"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_lq58h"]
 [ext_resource type="AudioStream" uid="uid://ergbcag2wd4j" path="res://Sounds/Raw/sfx_eel_speak_001.wav" id="5_f8bht"]
@@ -21,8 +21,9 @@ stream_2/stream = ExtResource("7_gw57y")
 [node name="EelNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_uu23s")
+script = ExtResource("1_f8bht")
 HandInInfo = ExtResource("2_f8bht")
+DialogueKey = "EEL"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 

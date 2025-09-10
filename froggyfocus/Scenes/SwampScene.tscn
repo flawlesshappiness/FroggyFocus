@@ -1,7 +1,6 @@
-[gd_scene load_steps=63 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=61 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_b0wg7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
@@ -47,7 +46,6 @@
 [ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="26_m0kej"]
 [ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="26_many0"]
 [ext_resource type="PackedScene" uid="uid://dphy7mkttpwga" path="res://Assets/Quaternius/Nature/CommonTree_Dead_5.fbx" id="27_tyvxw"]
-[ext_resource type="Resource" uid="uid://but43q22crqx3" path="res://HandInQuest/Resources/Magpie_Swamp.tres" id="29_m0kej"]
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="33_brx17"]
 [ext_resource type="Resource" uid="uid://c7a2ryrxyjyti" path="res://FocusEvent/Resources/Swamp Water Woods.tres" id="42_8ow6q"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
@@ -121,7 +119,7 @@ DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
 FocusEventParent = NodePath("World/FocusEvents")
-Weathers = Array[ExtResource("2_b0wg7")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
+Weathers = [ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_f4fi4")
@@ -904,7 +902,6 @@ curve = SubResource("Curve3D_tqykx")
 
 [node name="MagpieNPC" parent="World/DeadForest" instance=ExtResource("11_hem5p")]
 transform = Transform3D(1.47152, 0, -2.02105, 0, 2.5, 0, 2.02105, 0, 1.47152, -11.0993, -0.184564, 36.5968)
-HandInInfo = ExtResource("29_m0kej")
 
 [node name="Shop" parent="World/DeadForest" instance=ExtResource("12_20fcr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5564, -0.175682, 20.8814)

@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("7_17h4e")
 Id = "raccoon"
+RequestPreviewHidden = false
 PossibleRequests = Array[Object]([ExtResource("2_pat33"), ExtResource("5_6n8rl"), ExtResource("3_7fs1f")])
 CountRange = Vector2i(2, 3)
 ClaimCountToUnlock = 0

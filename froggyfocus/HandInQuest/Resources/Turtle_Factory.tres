@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("7_afjku")
 Id = "turtle"
+RequestPreviewHidden = false
 PossibleRequests = Array[Object]([ExtResource("6_ocvwc")])
 CountRange = Vector2i(2, 3)
 ClaimCountToUnlock = 0

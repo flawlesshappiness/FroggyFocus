@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bw057fcfnoby7"]
+[gd_scene load_steps=14 format=3 uid="uid://bw057fcfnoby7"]
 
-[ext_resource type="Script" uid="uid://1fmk0nhom5xl" path="res://Prefabs/NPC/MagpieNPC/MagpieNpc.cs" id="1_ckhjj"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_201og"]
 [ext_resource type="PackedScene" uid="uid://dhsttkfn7e2io" path="res://Assets/FlawLizArt/Characters/Magpie/magpie.fbx" id="1_vhir8"]
+[ext_resource type="Resource" uid="uid://but43q22crqx3" path="res://HandInQuest/Resources/Magpie_Swamp.tres" id="2_4y8sw"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_xbyyc"]
 [ext_resource type="AudioStream" uid="uid://bspgktdfssm0j" path="res://Sounds/Raw/sfx_magpie_speak_001.wav" id="4_rqusm"]
 [ext_resource type="AudioStream" uid="uid://b7a42shuyqvi1" path="res://Sounds/Raw/sfx_magpie_speak_002.wav" id="5_201og"]
@@ -29,7 +30,9 @@ stream_5/stream = ExtResource("9_1io3b")
 [node name="MagpieNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_ckhjj")
+script = ExtResource("1_201og")
+HandInInfo = ExtResource("2_4y8sw")
+DialogueKey = "MAGPIE"
 DialogueAnimation = "Armature|look"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
@@ -48,7 +51,6 @@ bones/2/rotation = Quaternion(0.111512, 1.24423e-18, -8.12075e-19, 0.993763)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(7.20789e-26, 0.00364431, -5.47452e-10)
 bones/3/rotation = Quaternion(0.0712209, -2.35291e-18, -2.85092e-17, 0.997461)
-bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(1.46876e-25, 0.006082, 4.29462e-10)
 bones/4/rotation = Quaternion(0.151721, 2.30312e-24, -3.36889e-17, 0.988423)
 bones/5/position = Vector3(5.53286e-26, 0.00238568, 3.40185e-10)

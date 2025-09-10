@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bt47rt4wstm5n"]
 
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_1jh81"]
 [ext_resource type="PackedScene" uid="uid://b35nb5vv80ma7" path="res://Assets/FlawLizArt/Characters/Otter/otter.fbx" id="1_tb71d"]
-[ext_resource type="Script" uid="uid://msp1rrk6yjap" path="res://Prefabs/NPC/OtterNPC/OtterNpc.cs" id="1_uqt75"]
 [ext_resource type="Resource" uid="uid://dqvmw518u62ae" path="res://HandInQuest/Resources/Otter_Swamp.tres" id="2_qg8qc"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_uqt75"]
 [ext_resource type="AudioStream" uid="uid://bmhtl4g6sc5eh" path="res://Sounds/Raw/sfx_otter_speak_001.wav" id="5_1jh81"]
@@ -33,8 +33,9 @@ stream_6/stream = ExtResource("11_kmscy")
 [node name="OtterNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 5
 collision_mask = 0
-script = ExtResource("1_uqt75")
+script = ExtResource("1_1jh81")
 HandInInfo = ExtResource("2_qg8qc")
+DialogueKey = "OTTER"
 DialogueAnimation = "Armature|look"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")

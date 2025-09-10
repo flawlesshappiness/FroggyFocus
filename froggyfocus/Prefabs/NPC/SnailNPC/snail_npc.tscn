@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cdn0ulu4iqvsm"]
 
-[ext_resource type="Script" uid="uid://dunfu8p063ah5" path="res://Prefabs/NPC/SnailNPC/SnailNpc.cs" id="1_abwei"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_pdcxf"]
 [ext_resource type="PackedScene" uid="uid://mg3lbs614k3d" path="res://Assets/FlawLizArt/Characters/Snail/snail.fbx" id="2_pdcxf"]
 [ext_resource type="Resource" uid="uid://buwjkq6ue7rvb" path="res://HandInQuest/Resources/Snail_Cave.tres" id="2_s8tk2"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_gs18x"]
@@ -24,8 +24,9 @@ stream_2/stream = ExtResource("6_451uh")
 [node name="SnailNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_abwei")
+script = ExtResource("1_pdcxf")
 HandInInfo = ExtResource("2_s8tk2")
+DialogueKey = "SNAIL"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 
@@ -44,26 +45,29 @@ bones/3/position = Vector3(-1.8644e-25, 0.0205954, 6.80676e-10)
 bones/3/rotation = Quaternion(0.164136, -7.9937e-18, -8.97628e-17, 0.986438)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-1.12146e-25, 0.0161131, -1.1514e-09)
-bones/4/rotation = Quaternion(0.262418, 5.14334e-24, -5.82685e-17, 0.964954)
+bones/4/rotation = Quaternion(0.262418, 2.02003e-24, -5.82685e-17, 0.964954)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(7.39491e-25, 0.0169528, 2.3767e-09)
-bones/5/rotation = Quaternion(-0.282834, 7.76154e-24, 6.28019e-17, 0.959169)
+bones/5/rotation = Quaternion(-0.282834, 1.28083e-23, 6.28019e-17, 0.959169)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/position = Vector3(0.00325294, 0.00556906, 0.0037261)
-bones/6/rotation = Quaternion(0.275481, 1.72011e-17, 4.9293e-18, 0.961307)
+bones/6/rotation = Quaternion(0.275481, 1.72011e-17, 4.92931e-18, 0.961307)
 bones/6/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(0.00217683, 0.00769101, 0.000327473)
-bones/8/rotation = Quaternion(-0.0286125, 1.98574e-18, -5.68371e-20, 0.999591)
+bones/8/rotation = Quaternion(-0.0286125, 1.98574e-18, -5.6837e-20, 0.999591)
 bones/8/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(-0.00325294, 0.00556906, 0.0037261)
-bones/10/rotation = Quaternion(0.275481, 1.72011e-17, 4.9293e-18, 0.961307)
+bones/10/rotation = Quaternion(0.275481, 1.72011e-17, 4.92931e-18, 0.961307)
 bones/10/scale = Vector3(1, 1, 1)
 bones/12/position = Vector3(-0.00217683, 0.00769101, 0.000327473)
-bones/12/rotation = Quaternion(-0.0286125, 1.98574e-18, -5.68371e-20, 0.999591)
+bones/12/rotation = Quaternion(-0.0286125, 1.98574e-18, -5.6837e-20, 0.999591)
 bones/12/scale = Vector3(1, 1, 1)
 bones/14/position = Vector3(-1.34439e-18, 0.0189568, 0.00629522)
 bones/14/rotation = Quaternion(0.998709, 1.21101e-08, -2.38112e-07, -0.0507923)
 bones/14/scale = Vector3(1, 1, 1.00003)
+
+[node name="AnimationPlayer" parent="snail" index="1"]
+playback_default_blend_time = 0.25
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

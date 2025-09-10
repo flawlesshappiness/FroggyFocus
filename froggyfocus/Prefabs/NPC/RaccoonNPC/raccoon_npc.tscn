@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bfva58jqvweh5"]
 
-[ext_resource type="Script" uid="uid://1wfcftgjy8s8" path="res://Prefabs/NPC/RaccoonNPC/RaccoonNpc.cs" id="1_2bb64"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_5t764"]
 [ext_resource type="PackedScene" uid="uid://bdegnjmdaok2p" path="res://Assets/FlawLizArt/Characters/Raccoon/raccoon.fbx" id="1_a28l7"]
 [ext_resource type="Resource" uid="uid://2yp6j8advpwu" path="res://HandInQuest/Resources/Raccoon_Factory.tres" id="2_lqyx2"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_lqyx2"]
@@ -22,8 +22,9 @@ stream_2/stream = ExtResource("7_4uecp")
 [node name="RaccoonNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_2bb64")
+script = ExtResource("1_5t764")
 HandInInfo = ExtResource("2_lqyx2")
+DialogueKey = "RACCOON"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 
