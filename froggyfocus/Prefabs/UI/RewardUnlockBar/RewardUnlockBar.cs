@@ -30,8 +30,8 @@ public partial class RewardUnlockBar : Control
         var data = HandIn.GetOrCreateData(info.Id);
         SetBar(data.ClaimedCount, info.ClaimCountToUnlock);
 
-        var hat_info = AppearanceHatController.Instance.GetInfo(info.HatUnlock);
-        RewardPreview.SetHat(hat_info);
+        var appearance_info = AppearanceController.Instance.GetInfo(info.ItemUnlock);
+        RewardPreview.SetAppearanceItem(appearance_info);
     }
 
     public void SetBar(int value, int max)

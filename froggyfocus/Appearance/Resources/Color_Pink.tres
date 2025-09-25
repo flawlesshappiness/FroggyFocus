@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://7ol6cwokcp1u"]
+
+[ext_resource type="PackedScene" uid="uid://42ln4ht6xybx" path="res://Appearance/Color/Prefabs/color_pink.tscn" id="1_skyam"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_61mgv"]
+
+[resource]
+script = ExtResource("2_61mgv")
+Category = 2
+Type = 205
+DefaultPrimaryColor = 205
+DefaultSecondaryColor = 205
+Prefab = ExtResource("1_skyam")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

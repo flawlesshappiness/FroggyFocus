@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://caagunxupe2cn"]
+
+[ext_resource type="PackedScene" uid="uid://c2w4ggwbp6jdf" path="res://Appearance/Attachments/cowboy_hat.tscn" id="1_0wjo8"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="1_6vrnj"]
+
+[resource]
+script = ExtResource("1_6vrnj")
+Category = 0
+Type = 4
+DefaultPrimaryColor = 206
+DefaultSecondaryColor = 209
+Prefab = ExtResource("1_0wjo8")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

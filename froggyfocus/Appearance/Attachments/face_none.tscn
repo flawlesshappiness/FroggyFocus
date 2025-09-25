@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4d7xq88kcwlj"]
+
+[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_hww54"]
+
+[node name="FaceNone" type="Node3D"]
+script = ExtResource("1_hww54")
+Type = 100

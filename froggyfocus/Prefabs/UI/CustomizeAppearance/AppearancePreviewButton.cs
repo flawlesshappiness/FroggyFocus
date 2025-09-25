@@ -25,9 +25,10 @@ public partial class AppearancePreviewButton : ButtonScript
         TextureRect.Modulate = locked ? Colors.Black.SetA(0.5f) : Colors.White;
     }
 
-    public void SetHat(AppearanceHatInfo info)
+    public void SetAppearance(AppearanceInfo info)
     {
-        ItemSubViewport.SetHat(info);
+        var attachment = ItemSubViewport.SetPrefab<AppearanceAttachment>(info.Prefab);
+        attachment.SetDefaultColors();
         TextureRect.Show();
     }
 

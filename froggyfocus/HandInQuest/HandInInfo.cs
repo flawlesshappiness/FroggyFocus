@@ -20,7 +20,10 @@ public partial class HandInInfo : Resource
     public int ClaimCountToUnlock;
 
     [Export]
-    public AppearanceHatType HatUnlock;
+    public bool HasItemUnlock;
+
+    [Export]
+    public ItemType ItemUnlock;
 
     [Export]
     public float CooldownInSeconds;

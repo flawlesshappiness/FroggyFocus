@@ -3,6 +3,9 @@ using Godot;
 public partial class PaintBucket : Node3D
 {
     [Export]
+    public ItemType Color;
+
+    [Export]
     public MeshInstance3D MeshInstance;
 
     private ShaderMaterial mat_paint;
@@ -11,6 +14,9 @@ public partial class PaintBucket : Node3D
     {
         base._Ready();
         InitializeMesh();
+
+        var info = AppearanceColorController.Instance.GetInfo(Color);
+        SetPaintColor(info.Color);
     }
 
     private void InitializeMesh()

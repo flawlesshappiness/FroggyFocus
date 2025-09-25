@@ -57,19 +57,24 @@ public partial class UnlockPopup : PopupControl
         ItemUnlockControl.Show();
     }
 
-    public void SetHat(AppearanceHatType type)
+    public void SetAppearanceItem(ItemType type)
     {
-        var info = AppearanceHatController.Instance.GetInfo(type);
-        SetHat(info);
+        var info = AppearanceController.Instance.GetInfo(type);
+        if (info.Category == ItemCategory.Hat || info.Category == ItemCategory.Face)
+        {
+            SetAppearanceAttachment(info);
+        }
+        // TODO COLOR?
     }
 
-    public void SetHat(AppearanceHatInfo info)
+    public void SetAppearanceAttachment(AppearanceInfo info)
     {
-        ItemUnlockRewardPreview.SetHat(info);
+        var item_info = ItemController.Instance.GetInfo(info.Type);
+        var shop_info = ShopController.Instance.GetInfo(info.Type);
 
-        ShopExpandRewardPreview.SetHat(info);
-        ShopExpandNameLabel.Text = info.Name;
-        ShopExpandPriceControl.SetPrice(info.Price);
+        ItemUnlockRewardPreview.SetAppearanceItem(info);
+        ShopExpandRewardPreview.SetAppearanceItem(info);
+        ShopExpandNameLabel.Text = item_info.Name;
     }
 
     private void OkButton_Pressed()

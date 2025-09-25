@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddd3p0fgxvk4l"]
+
+[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_kpmh6"]
+
+[node name="HatNone" type="Node3D"]
+script = ExtResource("1_kpmh6")

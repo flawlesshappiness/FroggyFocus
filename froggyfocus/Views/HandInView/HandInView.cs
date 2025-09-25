@@ -136,7 +136,7 @@ public partial class HandInView : View
             if (CanShowPopup())
             {
                 UnlockPopup.SetItemUnlock();
-                UnlockPopup.SetHat(HandInContainer.CurrentInfo.HatUnlock);
+                UnlockPopup.SetAppearanceItem(HandInContainer.CurrentInfo.ItemUnlock);
                 yield return UnlockPopup.WaitForPopup();
             }
 

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://tendufvsehx6"]
+
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="1_722i3"]
+[ext_resource type="PackedScene" uid="uid://n068dxjwbk4n" path="res://Appearance/Attachments/crown.tscn" id="1_xsav5"]
+
+[resource]
+script = ExtResource("1_722i3")
+Category = 0
+Type = 1
+DefaultPrimaryColor = 202
+DefaultSecondaryColor = 204
+Prefab = ExtResource("1_xsav5")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

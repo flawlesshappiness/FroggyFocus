@@ -3,22 +3,22 @@
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ps7tr"]
-[ext_resource type="Script" uid="uid://uq2o0quxjtxh" path="res://Appearance/Hat/AppearanceHatAttachmentGroup.cs" id="4_4vdn2"]
+[ext_resource type="Script" uid="uid://bh70kviwhy4x4" path="res://Appearance/AppearanceAttachmentGroup.cs" id="4_6ia88"]
 [ext_resource type="PackedScene" uid="uid://dmlnvb2o65uy1" path="res://Assets/FlawLizArt/Frog/tongue.fbx" id="4_ai43q"]
 [ext_resource type="PackedScene" uid="uid://dxfvux2lo6jac" path="res://Assets/FlawLizArt/Frog/frog.fbx" id="4_db7or"]
-[ext_resource type="PackedScene" uid="uid://n068dxjwbk4n" path="res://Appearance/Hat/Attachments/crown.tscn" id="5_380eu"]
+[ext_resource type="PackedScene" uid="uid://n068dxjwbk4n" path="res://Appearance/Attachments/crown.tscn" id="5_380eu"]
 [ext_resource type="AudioStream" uid="uid://r43hpifjwwab" path="res://Sounds/Raw/sfx_slap_skin_001.wav" id="5_ai43q"]
 [ext_resource type="AudioStream" uid="uid://da3dqxkhes46e" path="res://Sounds/Raw/sfx_rub_skin_001.wav" id="5_iqfu1"]
-[ext_resource type="PackedScene" uid="uid://oth00eq3xg17" path="res://Appearance/Hat/Attachments/cat_ears.tscn" id="6_4vdn2"]
+[ext_resource type="PackedScene" uid="uid://oth00eq3xg17" path="res://Appearance/Attachments/cat_ears.tscn" id="6_4vdn2"]
 [ext_resource type="AudioStream" uid="uid://dgxdg656niwoj" path="res://Sounds/Raw/sfx_rub_skin_002.wav" id="6_81ysc"]
-[ext_resource type="PackedScene" uid="uid://0ey4wtg3hu5i" path="res://Appearance/Hat/Attachments/bucket_hat.tscn" id="7_380eu"]
-[ext_resource type="PackedScene" uid="uid://c2w4ggwbp6jdf" path="res://Appearance/Hat/Attachments/cowboy_hat.tscn" id="8_scipr"]
-[ext_resource type="PackedScene" uid="uid://bibw10cs8fov6" path="res://Appearance/Hat/Attachments/top_hat.tscn" id="9_ji4k5"]
+[ext_resource type="PackedScene" uid="uid://0ey4wtg3hu5i" path="res://Appearance/Attachments/bucket_hat.tscn" id="7_380eu"]
+[ext_resource type="PackedScene" uid="uid://c2w4ggwbp6jdf" path="res://Appearance/Attachments/cowboy_hat.tscn" id="8_scipr"]
+[ext_resource type="PackedScene" uid="uid://bibw10cs8fov6" path="res://Appearance/Attachments/top_hat.tscn" id="9_ji4k5"]
 [ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="9_qta17"]
-[ext_resource type="PackedScene" uid="uid://xqht7alrt8iv" path="res://Appearance/Hat/Attachments/tiara.tscn" id="10_1t647"]
+[ext_resource type="PackedScene" uid="uid://xqht7alrt8iv" path="res://Appearance/Attachments/tiara.tscn" id="10_1t647"]
 [ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="10_w1eid"]
-[ext_resource type="PackedScene" uid="uid://cqne4uq3cw58u" path="res://Appearance/Hat/Attachments/bow.tscn" id="11_qrirs"]
-[ext_resource type="PackedScene" uid="uid://fsar64iba3yk" path="res://Appearance/Hat/Attachments/mushroom.tscn" id="12_6ia88"]
+[ext_resource type="PackedScene" uid="uid://b8hh8idcv2mka" path="res://Appearance/Attachments/bow.tscn" id="11_qrirs"]
+[ext_resource type="PackedScene" uid="uid://fsar64iba3yk" path="res://Appearance/Attachments/mushroom.tscn" id="12_6ia88"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="21_uv7pe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_81ysc"]
@@ -45,7 +45,7 @@ streams_count = 2
 stream_0/stream = ExtResource("9_qta17")
 stream_1/stream = ExtResource("10_w1eid")
 
-[node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "TongueTargetMarker", "TongueStartMarker", "Animation", "MoveSounds", "BodyMesh", "HatGroup")]
+[node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "TongueTargetMarker", "TongueStartMarker", "Animation", "MoveSounds", "BodyMesh", "HatAttachments", "FaceAttachments")]
 script = ExtResource("1_c7gfj")
 Tongue = NodePath("Tongue")
 TongueTargetMarker = NodePath("Tongue/TongueTargetMarker")
@@ -54,7 +54,8 @@ Animation = NodePath("AnimationStateMachine")
 SfxSwallow = ExtResource("2_w1eid")
 MoveSounds = NodePath("Sounds/PlayerMoveSoundsGroup")
 BodyMesh = NodePath("frog/Armature/Skeleton3D/frog")
-HatGroup = NodePath("frog/Armature/Skeleton3D/HatAttachmentGroup")
+HatAttachments = NodePath("frog/Armature/Skeleton3D/HatAttachmentGroup")
+FaceAttachments = NodePath("frog/Armature/Skeleton3D/FaceAttachmentGroup")
 
 [node name="frog" parent="." instance=ExtResource("4_db7or")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
@@ -159,12 +160,11 @@ bones/54/rotation = Quaternion(-0.334369, 0.623055, 0.623055, -0.334369)
 bones/56/position = Vector3(-0.0253908, -0.00599798, 0.00824145)
 bones/56/rotation = Quaternion(0.692591, -0.142541, -0.142541, 0.692591)
 
-[node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="2" node_paths=PackedStringArray("Hats")]
-transform = Transform3D(1, 5.55288e-15, -5.83403e-14, 3.80966e-15, 0.998942, -0.0459943, 4.59428e-14, 0.0459943, 0.998942, -1.09814e-16, 0.0103008, 0.0153717)
+[node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -2.0399e-13, 6.96787e-13, 2.525e-13, 0.998942, -0.0459939, -7.07233e-13, 0.0459939, 0.998942, 1.69091e-15, 0.0103008, 0.0153717)
 bone_name = "Head"
 bone_idx = 4
-script = ExtResource("4_4vdn2")
-Hats = [NodePath("Crown"), NodePath("CatEars"), NodePath("BucketHat"), NodePath("CowboyHat"), NodePath("TopHat"), NodePath("Tiara"), NodePath("Bow"), NodePath("Mushroom")]
+script = ExtResource("4_6ia88")
 
 [node name="Crown" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("5_380eu")]
 transform = Transform3D(0.01, -3.6053e-11, -2.4847e-10, -2.4847e-10, -0.00284216, -0.0095876, -3.6053e-11, 0.0095876, -0.00284216, 1.03685e-09, -0.00198159, 0.00385667)
@@ -192,11 +192,16 @@ visible = false
 
 [node name="Bow" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("11_qrirs")]
 transform = Transform3D(0.015, -9.34056e-11, -6.43732e-10, -6.43732e-10, -0.00426324, -0.0143814, -9.34056e-11, 0.0143814, -0.00426324, -2.46564e-15, -0.00269785, 0.00269538)
-visible = false
 
 [node name="Mushroom" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("12_6ia88")]
 transform = Transform3D(0.016, -5.89405e-11, -5.30394e-10, -5.30394e-10, -0.00351264, -0.0156097, -5.89405e-11, 0.0156097, -0.00351264, 1.7035e-09, -0.0043267, 0.00408345)
 visible = false
+
+[node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, -2.0399e-13, 6.96787e-13, 2.525e-13, 0.998942, -0.0459939, -7.07233e-13, 0.0459939, 0.998942, 1.69091e-15, 0.0103008, 0.0153717)
+bone_name = "Head"
+bone_idx = 4
+script = ExtResource("4_6ia88")
 
 [node name="AnimationPlayer" parent="frog" index="1"]
 playback_default_blend_time = 0.15

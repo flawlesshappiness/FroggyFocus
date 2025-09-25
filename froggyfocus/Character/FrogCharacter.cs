@@ -26,7 +26,10 @@ public partial class FrogCharacter : Character
     public MeshInstance3D BodyMesh;
 
     [Export]
-    public AppearanceHatAttachmentGroup HatGroup;
+    public AppearanceAttachmentGroup HatAttachments;
+
+    [Export]
+    public AppearanceAttachmentGroup FaceAttachments;
 
     public bool IsHandOut { get; private set; }
 
@@ -144,7 +147,8 @@ public partial class FrogCharacter : Character
 
     public void ClearAppearance()
     {
-        HatGroup.Clear();
+        HatAttachments.Clear();
+        FaceAttachments.Clear();
     }
 
     public void LoadAppearance()
@@ -157,15 +161,17 @@ public partial class FrogCharacter : Character
 
     private void BodyColorChanged()
     {
-        var type = Data.Game.FrogAppearanceData.BodyColor;
-        var c = AppearanceColorController.Instance.GetColor(type);
-        body_material.SetShaderParameter("albedo", c);
-        mouth_material.SetShaderParameter("albedo", c * 0.5f);
+        var data_type = Data.Game.FrogAppearanceData.BodyColor;
+        var type = data_type == ItemType.Color_Default ? ItemType.Color_Green : data_type;
+        var color = AppearanceColorController.Instance.GetColor(type);
+        body_material.SetShaderParameter("albedo", color);
+        mouth_material.SetShaderParameter("albedo", color * 0.5f);
     }
 
     private void HatChanged()
     {
-        HatGroup.SetHat(Data.Game.FrogAppearanceData.Hat);
+        var data = Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Hat);
+        HatAttachments.SetAttachment(data.Type);
     }
 
     public override void _Process(double delta)

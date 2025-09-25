@@ -16,7 +16,7 @@ public partial class CustomizeAppearanceControl : ControlScript
     public CustomizeAppearanceColorTab ColorTab;
 
     [Export]
-    public HatsContainer HatsContainer;
+    public AppearanceContainer HatsContainer;
 
     [Export]
     public FrogCharacter Frog;
@@ -31,18 +31,18 @@ public partial class CustomizeAppearanceControl : ControlScript
 
     private bool loading;
 
+    private FrogAppearanceAttachmentData HatData => Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Hat);
+
     public override void _Ready()
     {
         base._Ready();
 
         HatsContainer.OnButtonPressed += HatButton_Pressed;
 
-        ColorTab.BodyColorContainer.OnColorPressed += BodyColor_Pressed;
+        ColorTab.BodyColorContainer.OnButtonPressed += BodyColor_Pressed;
 
-        ColorTab.HatPrimaryColorContainer.OnColorPressed += HatPrimaryColor_Pressed;
-        ColorTab.HatPrimaryColorContainer.OnDefaultColorPressed += HatPrimaryDefaultColor_Pressed;
-        ColorTab.HatSecondaryColorContainer.OnColorPressed += HatSecondaryColor_Pressed;
-        ColorTab.HatSecondaryColorContainer.OnDefaultColorPressed += HatSecondaryDefaultColor_Pressed;
+        ColorTab.HatPrimaryColorContainer.OnButtonPressed += HatPrimaryColor_Pressed;
+        ColorTab.HatSecondaryColorContainer.OnButtonPressed += HatSecondaryColor_Pressed;
 
         PreviewRotationSlider.ValueChanged += PreviewRotationSlider_ValueChanged;
         PreviewRotationSlider_ValueChanged(PreviewRotationSlider.Value);
@@ -92,47 +92,31 @@ public partial class CustomizeAppearanceControl : ControlScript
         PreviewRotationNode.RotationDegrees = new Vector3(0, value, 0);
     }
 
-    private void BodyColor_Pressed(AppearanceColorInfo info)
+    private void BodyColor_Pressed(AppearanceInfo info)
     {
         if (loading) return;
         Data.Game.FrogAppearanceData.BodyColor = info.Type;
         OnBodyColorChanged?.Invoke();
     }
 
-    private void HatPrimaryColor_Pressed(AppearanceColorInfo info)
+    private void HatPrimaryColor_Pressed(AppearanceInfo info)
     {
         if (loading) return;
-        Data.Game.FrogAppearanceData.HatPrimaryColor = info.Type;
-        Data.Game.FrogAppearanceData.HatPrimaryColorDefault = false;
+        HatData.PrimaryColor = info.Type;
         OnHatChanged?.Invoke();
     }
 
-    private void HatPrimaryDefaultColor_Pressed()
+    private void HatSecondaryColor_Pressed(AppearanceInfo info)
     {
         if (loading) return;
-        Data.Game.FrogAppearanceData.HatPrimaryColorDefault = true;
+        HatData.SecondaryColor = info.Type;
         OnHatChanged?.Invoke();
     }
 
-    private void HatSecondaryColor_Pressed(AppearanceColorInfo info)
+    private void HatButton_Pressed(AppearanceInfo info)
     {
         if (loading) return;
-        Data.Game.FrogAppearanceData.HatSecondaryColor = info.Type;
-        Data.Game.FrogAppearanceData.HatSecondaryColorDefault = false;
-        OnHatChanged?.Invoke();
-    }
-
-    private void HatSecondaryDefaultColor_Pressed()
-    {
-        if (loading) return;
-        Data.Game.FrogAppearanceData.HatSecondaryColorDefault = true;
-        OnHatChanged?.Invoke();
-    }
-
-    private void HatButton_Pressed(AppearanceHatInfo info)
-    {
-        if (loading) return;
-        Data.Game.FrogAppearanceData.Hat = info?.Type ?? AppearanceHatType.None;
+        HatData.Type = info.Type;
         OnHatChanged?.Invoke();
     }
 }

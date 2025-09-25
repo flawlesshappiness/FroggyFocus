@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqc4geie2toaj"]
+
+[ext_resource type="Script" uid="uid://x4bj6vwhqbpi" path="res://Prefabs/UI/Appearance/AppearanceContainer.cs" id="1_51jca"]
+[ext_resource type="PackedScene" uid="uid://7g3y8bn480iw" path="res://Prefabs/UI/CustomizeAppearance/appearance_preview_button.tscn" id="1_u17em"]
+
+[node name="appearance_container" type="MarginContainer" node_paths=PackedStringArray("ButtonTemplate", "UnlockHintLabel")]
+offset_right = 487.0
+offset_bottom = 421.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_51jca")
+ButtonTemplate = NodePath("GridContainer/AppearanceButton")
+UnlockHintLabel = NodePath("VBoxContainer/UnlockHintLabel")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 5
+
+[node name="AppearanceButton" parent="GridContainer" instance=ExtResource("1_u17em")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="UnlockHintLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0.392157)
+theme_override_font_sizes/font_size = 25
+text = "Unlocked by quests 
+or in the shop"
+horizontal_alignment = 1

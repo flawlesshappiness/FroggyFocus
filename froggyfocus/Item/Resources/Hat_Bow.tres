@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://bslvmy3m4od2n"]
+
+[ext_resource type="Script" uid="uid://xn66d7btognw" path="res://Item/ItemInfo.cs" id="1_82qdm"]
+
+[resource]
+script = ExtResource("1_82qdm")
+Category = 0
+Type = 7
+Name = "Bow"
+metadata/_custom_type_script = "uid://xn66d7btognw"

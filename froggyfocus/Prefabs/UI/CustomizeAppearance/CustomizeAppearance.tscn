@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsiem2e7uxtnt"]
+[gd_scene load_steps=9 format=3 uid="uid://dsiem2e7uxtnt"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_c1ffu"]
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_jjbel"]
-[ext_resource type="PackedScene" uid="uid://musv0y56adnc" path="res://Prefabs/UI/Color/appearance_color_container.tscn" id="4_1uex8"]
 [ext_resource type="Script" uid="uid://c27021d5v4xh6" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceColorTab.cs" id="4_bhn8p"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_ntf0j"]
-[ext_resource type="PackedScene" uid="uid://cc0mip82x7hf7" path="res://Prefabs/UI/Hats/hats_container.tscn" id="5_1uex8"]
+[ext_resource type="PackedScene" uid="uid://bqc4geie2toaj" path="res://Prefabs/UI/Appearance/appearance_container.tscn" id="5_1uex8"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="7_bhn8p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uex8"]
@@ -104,9 +103,10 @@ layout_mode = 2
 offset_right = 389.0
 offset_bottom = 400.0
 size_flags_horizontal = 3
-current_tab = 0
+current_tab = 1
 
 [node name="Color" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer" node_paths=PackedStringArray("BodyColorContainer", "HatPrimaryColorContainer", "HatSecondaryColorContainer")]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
@@ -114,12 +114,13 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 script = ExtResource("4_bhn8p")
 BodyColorContainer = NodePath("ScrollContainer/VBoxContainer/BodyColorContainer")
-HatPrimaryColorContainer = NodePath("ScrollContainer/VBoxContainer/HatPrimaryColorContainer")
-HatSecondaryColorContainer = NodePath("ScrollContainer/VBoxContainer/HatSecondaryColorContainer")
+HatPrimaryColorContainer = NodePath("ScrollContainer/VBoxContainer/HatPrimaryColor")
+HatSecondaryColorContainer = NodePath("ScrollContainer/VBoxContainer/HatSecondaryColor")
 metadata/_tab_index = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color"]
 layout_mode = 2
+follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer"]
 layout_mode = 2
@@ -130,29 +131,40 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Body"
 
-[node name="BodyColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
+[node name="BodyColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("5_1uex8")]
 layout_mode = 2
-ShowUnlocked = true
+ItemCategory = 2
+NoneType = 200
+ShowOwned = true
 
 [node name="HatLabel" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Hat"
 
-[node name="HatPrimaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
+[node name="HatPrimaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("5_1uex8")]
 layout_mode = 2
-ShowUnlocked = true
-ShowDefault = true
+ItemCategory = 2
+NoneType = 200
+ShowOwned = true
 
-[node name="HatSecondaryColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("4_1uex8")]
+[node name="HatSecondaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Color/ScrollContainer/VBoxContainer" instance=ExtResource("5_1uex8")]
 layout_mode = 2
-ShowUnlocked = true
-ShowDefault = true
+ItemCategory = 2
+NoneType = 200
+ShowOwned = true
 
 [node name="Hats" parent="HBoxContainer/OptionsPanel/TabContainer" instance=ExtResource("5_1uex8")]
+layout_mode = 2
+ShowOwned = true
+metadata/_tab_index = 1
+
+[node name="Face" parent="HBoxContainer/OptionsPanel/TabContainer" instance=ExtResource("5_1uex8")]
 visible = false
 layout_mode = 2
-ShowPurchased = true
-ShowEmpty = true
+ItemCategory = 1
+NoneType = 100
+ShowOwned = true
+metadata/_tab_index = 2
 
 [node name="BackButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("7_bhn8p")]
 layout_mode = 1

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://dvwaadxqct5hv"]
+
+[ext_resource type="PackedScene" uid="uid://0ey4wtg3hu5i" path="res://Appearance/Attachments/bucket_hat.tscn" id="1_c1j8v"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_nrpn5"]
+
+[resource]
+script = ExtResource("2_nrpn5")
+Category = 0
+Type = 3
+DefaultPrimaryColor = 204
+DefaultSecondaryColor = 204
+Prefab = ExtResource("1_c1j8v")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

@@ -4,17 +4,11 @@ using Godot;
 public partial class AppearanceColorInfo : Resource
 {
     [Export]
-    public AppearanceColorType Type;
+    public ItemCategory Category;
 
     [Export]
-    public string Name;
+    public ItemType Type;
 
     [Export]
     public Color Color = Colors.White;
-
-    [Export]
-    public int Price;
-
-    [Export]
-    public bool Locked;
 }

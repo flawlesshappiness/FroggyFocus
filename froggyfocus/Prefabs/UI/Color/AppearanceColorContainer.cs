@@ -6,10 +6,10 @@ using System.Linq;
 public partial class AppearanceColorContainer : ControlScript
 {
     [Export]
-    public bool ShowUnlocked;
+    public bool ShowOwned;
 
     [Export]
-    public bool ShowLocked;
+    public bool ShowUnowned;
 
     [Export]
     public bool ShowDefault;
@@ -37,9 +37,6 @@ public partial class AppearanceColorContainer : ControlScript
     private void InitializeButtons()
     {
         ButtonTemplate.Hide();
-
-        var default_button = CreateButton(null);
-        default_button.Pressed += DefaultColorPressed;
 
         foreach (var info in AppearanceColorController.Instance.Collection.Resources)
         {
@@ -72,26 +69,14 @@ public partial class AppearanceColorContainer : ControlScript
     {
         foreach (var map in maps)
         {
-            if (map.Info == null)
-            {
-                map.Button.Visible = ShowDefault;
-            }
-            else
-            {
-                var unlocked = Data.Game.Appearance.PurchasedColors.Contains(map.Info.Type);
-                map.Button.Visible = unlocked == ShowUnlocked || !unlocked == ShowLocked;
-            }
+            var owned = Item.IsOwned(map.Info.Type);
+            map.Button.Visible = owned == ShowOwned || !owned == ShowUnowned;
         }
     }
 
     private void ColorPressed(AppearanceColorInfo info)
     {
         OnColorPressed?.Invoke(info);
-    }
-
-    private void DefaultColorPressed()
-    {
-        OnDefaultColorPressed?.Invoke();
     }
 
     public Button GetButton(AppearanceColorInfo info)

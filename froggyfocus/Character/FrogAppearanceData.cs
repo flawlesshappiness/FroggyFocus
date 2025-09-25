@@ -1,9 +1,21 @@
+using System.Collections.Generic;
+using System.Linq;
+
 public class FrogAppearanceData
 {
-    public AppearanceColorType BodyColor { get; set; }
-    public bool HatPrimaryColorDefault { get; set; } = true;
-    public bool HatSecondaryColorDefault { get; set; } = true;
-    public AppearanceColorType HatPrimaryColor { get; set; }
-    public AppearanceColorType HatSecondaryColor { get; set; }
-    public AppearanceHatType Hat { get; set; }
+    public ItemType BodyColor { get; set; }
+    public List<FrogAppearanceAttachmentData> Attachments { get; set; } = new();
+
+    public FrogAppearanceAttachmentData GetAttachmentData(ItemCategory category)
+    {
+        var data = Attachments.FirstOrDefault(x => x.Category == category);
+
+        if (data == null)
+        {
+            data = new FrogAppearanceAttachmentData { Category = category };
+            Attachments.Add(data);
+        }
+
+        return data;
+    }
 }

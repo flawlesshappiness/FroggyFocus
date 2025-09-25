@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://btip06p1wweoy"]
+
+[ext_resource type="PackedScene" uid="uid://oth00eq3xg17" path="res://Appearance/Attachments/cat_ears.tscn" id="1_pacd4"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="1_yd7vp"]
+
+[resource]
+script = ExtResource("1_yd7vp")
+Category = 0
+Type = 2
+DefaultPrimaryColor = 201
+DefaultSecondaryColor = 205
+Prefab = ExtResource("1_pacd4")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

@@ -20,9 +20,10 @@ public partial class RewardPreview : Control
         TextureRect.Texture = SubViewport.GetTexture();
     }
 
-    public void SetHat(AppearanceHatInfo info)
+    public void SetAppearanceItem(AppearanceInfo info)
     {
-        SubViewport.SetHat(info);
+        var item = SubViewport.SetPrefab<AppearanceAttachment>(info.Prefab);
+        item.SetDefaultColors();
         AmountLabel.Hide();
     }
 

@@ -12,10 +12,13 @@ public partial class ShopContainer : Control
     public SellContainer SellContainer;
 
     [Export]
-    public HatsContainer HatsContainer;
+    public AppearanceContainer HatsContainer;
 
     [Export]
-    public AppearanceColorContainer ColorContainer;
+    public AppearanceContainer FaceContainer;
+
+    [Export]
+    public AppearanceContainer ColorContainer;
 
     [Export]
     public Control InventoryInfoPanel;

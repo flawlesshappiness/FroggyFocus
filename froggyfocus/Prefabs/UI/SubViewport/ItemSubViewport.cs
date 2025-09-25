@@ -8,12 +8,6 @@ public partial class ItemSubViewport : PreviewSubViewport
     [Export]
     public AnimationPlayer AnimationPlayer_Target;
 
-    public void SetHat(AppearanceHatInfo info)
-    {
-        var hat = SetPrefab<AppearanceHatAttachment>(info.Prefab);
-        hat.SetDefaultColors();
-    }
-
     public void SetCharacter(FocusCharacterInfo info)
     {
         var character = info.Scene.Instantiate<FocusCharacter>();

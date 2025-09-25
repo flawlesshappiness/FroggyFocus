@@ -3,11 +3,11 @@ using Godot;
 public partial class CustomizeAppearanceColorTab : Control
 {
     [Export]
-    public AppearanceColorContainer BodyColorContainer;
+    public AppearanceContainer BodyColorContainer;
 
     [Export]
-    public AppearanceColorContainer HatPrimaryColorContainer;
+    public AppearanceContainer HatPrimaryColorContainer;
 
     [Export]
-    public AppearanceColorContainer HatSecondaryColorContainer;
+    public AppearanceContainer HatSecondaryColorContainer;
 }

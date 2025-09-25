@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://c8ftq3hr7nq1g"]
+
+[ext_resource type="Script" uid="uid://xn66d7btognw" path="res://Item/ItemInfo.cs" id="1_512c3"]
+
+[resource]
+script = ExtResource("1_512c3")
+Category = 0
+Type = 4
+Name = "Cowboy Hat"
+metadata/_custom_type_script = "uid://xn66d7btognw"

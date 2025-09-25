@@ -6,21 +6,21 @@ public partial class AppearanceColorController : ResourceController<AppearanceCo
     public static AppearanceColorController Instance => Singleton.Get<AppearanceColorController>();
     public override string Directory => "Appearance/Color";
 
-    public AppearanceColorInfo GetInfo(AppearanceColorType type)
+    public AppearanceColorInfo GetInfo(ItemType type)
     {
         return Collection.Resources.FirstOrDefault(x => x.Type == type);
     }
 
-    public Color GetColor(AppearanceColorType type)
+    public Color GetColor(ItemType type)
     {
-        return GetInfo(type).Color;
-    }
+        var info = GetInfo(type);
 
-    public void Purchase(AppearanceColorType type)
-    {
-        if (!Data.Game.Appearance.PurchasedColors.Contains(type))
+        if (info == null)
         {
-            Data.Game.Appearance.PurchasedColors.Add(type);
+            Debug.LogError("Failed to get color of type: " + type);
+            return Colors.Pink;
         }
+
+        return info.Color;
     }
 }

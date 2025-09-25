@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://dxftbfscf54jc"]
+
+[ext_resource type="PackedScene" uid="uid://xqht7alrt8iv" path="res://Appearance/Attachments/tiara.tscn" id="1_jcpgo"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="1_uurro"]
+
+[resource]
+script = ExtResource("1_uurro")
+Category = 0
+Type = 6
+DefaultPrimaryColor = 204
+DefaultSecondaryColor = 202
+Prefab = ExtResource("1_jcpgo")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj017mypcst8m"]
+
+[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_4i3yg"]
+[ext_resource type="PackedScene" uid="uid://bdo0ubmy2w6mu" path="res://Assets/FlawLizArt/Face/beard_moustache.fbx" id="1_71t62"]
+
+[node name="Moustache" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_4i3yg")
+Type = 101
+Mesh = NodePath("beard_moustache/moustache")
+
+[node name="beard_moustache" parent="." instance=ExtResource("1_71t62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0529135, 0)
+
+[editable path="beard_moustache"]

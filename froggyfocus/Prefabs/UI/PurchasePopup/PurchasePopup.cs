@@ -21,9 +21,6 @@ public partial class PurchasePopup : PopupControl
     public TextureRect TextureRect;
 
     [Export]
-    public PackedScene PaintBucketPrefab;
-
-    [Export]
     public AudioStreamPlayer SfxPurchaseFail;
 
     public bool Purchased { get; private set; }
@@ -42,24 +39,16 @@ public partial class PurchasePopup : PopupControl
         ItemSubViewport.SetAnimationSpin();
     }
 
-    public void SetHat(AppearanceHatInfo info)
+    public void SetAppearanceItem(AppearanceInfo info)
     {
+        var item_info = ItemController.Instance.GetInfo(info.Type);
+        var shop_info = ShopController.Instance.GetInfo(info.Type);
+
         ItemSubViewport.SetPrefab(info.Prefab);
 
-        NameLabel.Text = info.Name;
-        PriceControl.SetPrice(info.Price);
-        current_price = info.Price;
-    }
-
-    public void SetColor(AppearanceColorInfo info)
-    {
-        var paint_bucket = PaintBucketPrefab.Instantiate<PaintBucket>();
-        ItemSubViewport.SetPreview(paint_bucket);
-        paint_bucket.SetPaintColor(info.Color);
-
-        NameLabel.Text = info.Name;
-        PriceControl.SetPrice(info.Price);
-        current_price = info.Price;
+        NameLabel.Text = item_info.Name;
+        PriceControl.SetPrice(shop_info.Price);
+        current_price = shop_info.Price;
     }
 
     public void SetLocation(LocationInfo info)

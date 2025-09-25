@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://csc7d5tl1ys0t"]
+
+[ext_resource type="PackedScene" uid="uid://cktil4q7nuxi2" path="res://Appearance/Color/Prefabs/color_default.tscn" id="1_xucla"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_tpaua"]
+
+[resource]
+script = ExtResource("2_tpaua")
+Category = 2
+Type = 200
+DefaultPrimaryColor = 209
+DefaultSecondaryColor = 209
+Prefab = ExtResource("1_xucla")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

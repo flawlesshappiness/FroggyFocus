@@ -3,7 +3,12 @@ using Godot;
 public partial class AppearanceAttachment : Node3D
 {
     [Export]
+    public ItemType Type;
+
+    [Export]
     public MeshInstance3D Mesh;
+
+    public AppearanceInfo Info { get; private set; }
 
     private ShaderMaterial primary_material;
     private ShaderMaterial secondary_material;
@@ -12,25 +17,52 @@ public partial class AppearanceAttachment : Node3D
     {
         base._Ready();
 
-        var max = Mesh.GetSurfaceOverrideMaterialCount();
+        Info = AppearanceController.Instance.GetInfo(Type);
+
+        initializeMesh();
+    }
+
+    private void initializeMesh()
+    {
+        if (Mesh == null) return;
+
+        var count = Mesh.GetSurfaceOverrideMaterialCount();
 
         primary_material = Mesh.GetActiveMaterial(0).Duplicate() as ShaderMaterial;
         Mesh.SetSurfaceOverrideMaterial(0, primary_material);
 
-        if (max > 1)
+        if (count > 1)
         {
             secondary_material = Mesh.GetActiveMaterial(1).Duplicate() as ShaderMaterial;
             Mesh.SetSurfaceOverrideMaterial(1, secondary_material);
         }
     }
 
-    public virtual void SetPrimaryColor(Color color)
+    public void SetPrimaryColor(Color color)
     {
+        if (Mesh == null) return;
         primary_material?.SetShaderParameter("albedo", color);
     }
 
-    public virtual void SetSecondaryColor(Color color)
+    public void SetSecondaryColor(Color color)
     {
+        if (Mesh == null) return;
         secondary_material?.SetShaderParameter("albedo", color);
+    }
+
+    public void SetDefaultColors()
+    {
+        SetDefaultPrimaryColor();
+        SetDefaultSecondaryColor();
+    }
+
+    public void SetDefaultPrimaryColor()
+    {
+        SetPrimaryColor(AppearanceColorController.Instance.GetColor(Info.DefaultPrimaryColor));
+    }
+
+    public void SetDefaultSecondaryColor()
+    {
+        SetSecondaryColor(AppearanceColorController.Instance.GetColor(Info.DefaultSecondaryColor));
     }
 }

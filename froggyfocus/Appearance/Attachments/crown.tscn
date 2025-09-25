@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://n068dxjwbk4n"]
+
+[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_of515"]
+[ext_resource type="PackedScene" uid="uid://dvmei7w1bcnhp" path="res://Assets/Quaternius/RPG/crown2.fbx" id="2_3g8sv"]
+
+[node name="Crown" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_of515")
+Type = 1
+Mesh = NodePath("Crown2/Crown2")
+
+[node name="Crown2" parent="." instance=ExtResource("2_3g8sv")]
+transform = Transform3D(1, -4.23516e-22, 1.69407e-21, -1.69407e-21, 1, -2.98023e-08, 3.38813e-21, 0, 1, 1.42109e-14, -0.13248, 0)
+
+[editable path="Crown2"]

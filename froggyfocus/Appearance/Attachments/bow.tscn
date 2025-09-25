@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8hh8idcv2mka"]
+
+[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_ufox4"]
+[ext_resource type="PackedScene" uid="uid://bk7crdap8w0rp" path="res://Assets/FlawLizArt/Hats/bow.fbx" id="2_ufox4"]
+
+[node name="Bow" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_ufox4")
+Type = 7
+Mesh = NodePath("bow/bow")
+
+[node name="bow" parent="." instance=ExtResource("2_ufox4")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+
+[editable path="bow"]

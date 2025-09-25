@@ -1,7 +1,5 @@
 using Godot;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 
 public partial class ShopView : PanelView
 {
@@ -22,7 +20,7 @@ public partial class ShopView : PanelView
         ShopContainer.BackButton.Pressed += BackClicked;
 
         ShopContainer.HatsContainer.OnButtonPressed += HatButton_Pressed;
-        ShopContainer.ColorContainer.OnColorPressed += ColorButton_Pressed;
+        ShopContainer.ColorContainer.OnButtonPressed += ColorButton_Pressed;
     }
 
     private void RegisterDebugActions()
@@ -35,105 +33,6 @@ public partial class ShopView : PanelView
             Text = "Show",
             Action = v => { v.Close(); Show(); }
         });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Hide",
-            Action = v => { v.Close(); Close(); }
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Category = category,
-            Text = "Items",
-            Action = v => UnlockItems(v)
-        });
-
-        void UnlockItems(DebugView v)
-        {
-            v.SetContent_Search();
-            v.ContentSearch.AddItem("Colors", () => SelectColor(v));
-            v.ContentSearch.AddItem("Hats", () => SelectHat(v));
-            v.ContentSearch.UpdateButtons();
-        }
-
-        void SelectColor(DebugView v)
-        {
-            v.SetContent_Search();
-
-            var infos = AppearanceColorController.Instance.Collection.Resources;
-            foreach (var info in infos)
-            {
-                var unlocked = Data.Game.Appearance.PurchasedColors.Contains(info.Type) ? "> " : string.Empty;
-                v.ContentSearch.AddItem($"{unlocked}{info.Name}", () => ColorActions(info, v));
-            }
-
-            v.ContentSearch.UpdateButtons();
-        }
-
-        void ColorActions(AppearanceColorInfo info, DebugView v)
-        {
-            v.SetContent_Search();
-            AddListToggleButtons(v, Data.Game.Appearance.PurchasedColors, info.Type, "purchased", () => ColorActions(info, v));
-
-            if (info.Locked)
-            {
-                AddListToggleButtons(v, Data.Game.Appearance.UnlockedColors, info.Type, "unlocked", () => ColorActions(info, v));
-            }
-
-            v.ContentSearch.AddItem("back", () => SelectColor(v));
-            v.ContentSearch.UpdateButtons();
-        }
-
-        void SelectHat(DebugView v)
-        {
-            v.SetContent_Search();
-
-            var infos = AppearanceHatController.Instance.Collection.Resources;
-            foreach (var info in infos)
-            {
-                v.ContentSearch.AddItem($"{info.Name}", () => HatActions(info, v));
-            }
-
-            v.ContentSearch.UpdateButtons();
-        }
-
-        void HatActions(AppearanceHatInfo info, DebugView v)
-        {
-            v.SetContent_Search();
-            AddListToggleButtons(v, Data.Game.Appearance.PurchasedHats, info.Type, "purchased", () => HatActions(info, v));
-
-            if (info.Locked)
-            {
-                AddListToggleButtons(v, Data.Game.Appearance.UnlockedHats, info.Type, "unlocked", () => HatActions(info, v));
-            }
-
-            v.ContentSearch.AddItem("back", () => SelectHat(v));
-            v.ContentSearch.UpdateButtons();
-        }
-
-        void AddListToggleButtons<T>(DebugView v, List<T> list, T value, string text, Action pressed)
-        {
-            if (list.Contains(value))
-            {
-                v.ContentSearch.AddItem(text, () =>
-                {
-                    list.Remove(value);
-                    Data.Game.Save();
-                    pressed?.Invoke();
-                });
-            }
-            else
-            {
-                v.ContentSearch.AddItem($"not {text}", () =>
-                {
-                    list.Add(value);
-                    Data.Game.Save();
-                    pressed?.Invoke();
-                });
-            }
-        }
     }
 
     public override void _Input(InputEvent @event)
@@ -163,10 +62,10 @@ public partial class ShopView : PanelView
         Close();
     }
 
-    private void HatButton_Pressed(AppearanceHatInfo info)
+    private void HatButton_Pressed(AppearanceInfo info)
     {
         var focus_button = ShopContainer.HatsContainer.GetButton(info);
-        PurchasePopup.SetHat(info);
+        PurchasePopup.SetAppearanceItem(info);
 
         this.StartCoroutine(Cr, "popup");
         IEnumerator Cr()
@@ -175,10 +74,10 @@ public partial class ShopView : PanelView
 
             if (PurchasePopup.Purchased)
             {
-                AppearanceHatController.Instance.Purchase(info.Type);
-                ShopContainer.HatsContainer.UpdateButtons();
+                Item.MakeOwned(info.Type);
                 Data.Game.Save();
 
+                ShopContainer.HatsContainer.UpdateButtons();
                 ShopContainer.TabContainer.GetTabBar().GrabFocus();
             }
             else if (PurchasePopup.Cancelled)
@@ -188,10 +87,10 @@ public partial class ShopView : PanelView
         }
     }
 
-    private void ColorButton_Pressed(AppearanceColorInfo info)
+    private void ColorButton_Pressed(AppearanceInfo info)
     {
         var focus_button = ShopContainer.ColorContainer.GetButton(info);
-        PurchasePopup.SetColor(info);
+        PurchasePopup.SetAppearanceItem(info);
 
         this.StartCoroutine(Cr, "popup");
         IEnumerator Cr()
@@ -200,10 +99,10 @@ public partial class ShopView : PanelView
 
             if (PurchasePopup.Purchased)
             {
-                AppearanceColorController.Instance.Purchase(info.Type);
-                ShopContainer.ColorContainer.UpdateButtons();
+                Item.MakeOwned(info.Type);
                 Data.Game.Save();
 
+                ShopContainer.ColorContainer.UpdateButtons();
                 ShopContainer.TabContainer.GetTabBar().GrabFocus();
             }
             else if (PurchasePopup.Cancelled)

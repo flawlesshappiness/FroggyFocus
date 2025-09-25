@@ -12,25 +12,19 @@ public partial class HatsContainer : ControlScript
     public bool ShowPurchased;
 
     [Export]
-    public bool ObscureLocked;
-
-    [Export]
-    public bool ShowEmpty;
-
-    [Export]
     public AppearancePreviewButton HatButtonTemplate;
 
     [Export]
     public Label UnlockHintLabel;
 
-    public event Action<AppearanceHatInfo> OnButtonPressed;
+    public event Action<AppearanceInfo> OnButtonPressed;
 
     private List<ButtonMap> maps = new();
 
     private class ButtonMap
     {
         public AppearancePreviewButton Button { get; set; }
-        public AppearanceHatInfo Info { get; set; }
+        public AppearanceInfo Info { get; set; }
     }
 
     protected override void Initialize()
@@ -43,17 +37,15 @@ public partial class HatsContainer : ControlScript
     {
         HatButtonTemplate.Hide();
 
-        var infos = AppearanceHatController.Instance.Collection.Resources.ToList()
-            .OrderBy(IsHatPurchased)
+        var infos = AppearanceController.Instance.GetInfos(ItemCategory.Hat)
+            .OrderBy(x => Item.IsOwned(x.Type))
+            .ThenBy(x => x.Type == ItemType.Hat_None)
             .ToList();
 
-        var empty_button = CreateHatButton(null);
-        empty_button.Pressed += () => HatButtonPressed(null);
-
-        foreach (var info in AppearanceHatController.Instance.Collection.Resources)
+        foreach (var info in infos)
         {
             var button = CreateHatButton(info);
-            button.SetHat(info);
+            button.SetAppearance(info);
             button.Pressed += () => HatButtonPressed(info);
         }
 
@@ -68,38 +60,21 @@ public partial class HatsContainer : ControlScript
 
     public void UpdateButtons()
     {
-        var infos = AppearanceHatController.Instance.Collection.Resources.ToList();
-
-        var has_unlocked_hats = infos.Any(IsHatPurchased);
+        var infos = AppearanceController.Instance.GetInfos(ItemCategory.Hat);
+        var has_unlocked_hats = infos.Any(x => x.Type != ItemType.Hat_None);
         UnlockHintLabel.Visible = !has_unlocked_hats && !ShowUnpurchased;
 
         foreach (var map in maps)
         {
-            if (map.Info == null)
-            {
-                map.Button.Visible = has_unlocked_hats && ShowEmpty;
-            }
-            else
-            {
-                var purchased = IsHatPurchased(map.Info);
-                var unlocked = IsHatUnlocked(map.Info);
-                map.Button.SetLocked(!purchased && ObscureLocked);
-                map.Button.Visible = unlocked && (!purchased == ShowUnpurchased || purchased == ShowPurchased);
-            }
+            var owned = Item.IsOwned(map.Info.Type);
+            var shop_info = ShopController.Instance.GetInfo(map.Info.Type);
+            var show_if_unpurchased = (!owned && ShowUnpurchased) && shop_info != null;
+            var show_if_purchased = owned && ShowPurchased;
+            map.Button.Visible = show_if_unpurchased || show_if_purchased;
         }
     }
 
-    private bool IsHatPurchased(AppearanceHatInfo info)
-    {
-        return Data.Game.Appearance.PurchasedHats.Contains(info.Type);
-    }
-
-    private bool IsHatUnlocked(AppearanceHatInfo info)
-    {
-        return !info.Locked || Data.Game.Appearance.UnlockedHats.Contains(info.Type);
-    }
-
-    private AppearancePreviewButton CreateHatButton(AppearanceHatInfo info)
+    private AppearancePreviewButton CreateHatButton(AppearanceInfo info)
     {
         var button = HatButtonTemplate.Duplicate() as AppearancePreviewButton;
         button.SetParent(HatButtonTemplate.GetParent());
@@ -112,12 +87,12 @@ public partial class HatsContainer : ControlScript
         return button;
     }
 
-    private void HatButtonPressed(AppearanceHatInfo info)
+    private void HatButtonPressed(AppearanceInfo info)
     {
         OnButtonPressed?.Invoke(info);
     }
 
-    public Button GetButton(AppearanceHatInfo info)
+    public Button GetButton(AppearanceInfo info)
     {
         return maps.FirstOrDefault(x => x.Info == info)?.Button;
     }

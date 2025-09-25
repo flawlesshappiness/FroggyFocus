@@ -43,7 +43,7 @@ public partial class HandInContainer : MarginContainer
 
     public HandInData CurrentData { get; private set; }
     public HandInInfo CurrentInfo { get; private set; }
-    public bool HasItemUnlock => (CurrentInfo?.HatUnlock ?? AppearanceHatType.None) != AppearanceHatType.None;
+    public bool HasItemUnlock => CurrentInfo?.HasItemUnlock ?? false;
     public bool IsMaxClaim => CurrentData?.ClaimedCount >= CurrentInfo?.ClaimCountToUnlock;
     private List<InventoryCharacterData> Submissions => maps.Select(x => x.Submission).Where(x => x != null).ToList();
 
@@ -161,7 +161,7 @@ public partial class HandInContainer : MarginContainer
             preview.Show();
         }
 
-        var already_unlocked = Data.Game.Appearance.PurchasedHats.Contains(CurrentInfo.HatUnlock);
+        var already_unlocked = Item.IsOwned(CurrentInfo.ItemUnlock);
         var show_unlock_bar = HasItemUnlock && !already_unlocked;
         RewardUnlockBar.Visible = show_unlock_bar;
         if (show_unlock_bar)
@@ -221,15 +221,14 @@ public partial class HandInContainer : MarginContainer
 
         if (HasItemUnlock && IsMaxClaim)
         {
-            AppearanceHatController.Instance.Unlock(CurrentInfo.HatUnlock);
-            AppearanceHatController.Instance.Purchase(CurrentInfo.HatUnlock);
+            var data = Item.GetOrCreateData(CurrentInfo.ItemUnlock);
+            data.Owned = true;
         }
 
         Data.Game.Save();
 
         ClaimButton.Disabled = true;
 
-        //Close();
         OnClaim?.Invoke();
     }
 

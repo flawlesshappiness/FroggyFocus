@@ -321,14 +321,14 @@ void fragment() {
     // Mix water color with the scene behind it
     vec4 background = texture(SCREEN_TEXTURE, SCREEN_UV);
     vec4 final_color = mix(background, water_color, water_opacity * water_transparency);
-	
+
 	// Calculate horizon distance
 	vec2 uv_center = vec2(UV.x * 2.0 - 1.0, UV.y * 2.0 - 1.0);
 	float dist = max(sqrt(pow(uv_center.x, 2) + pow(uv_center.y, 2)) * (1.0 / horizon_start) - horizon_start, 0);
 
     // Add foam
     final_color = mix(final_color, FOAM_COL, foam);
-	
+
 	// Add distance color
 	final_color = mix(final_color, DIST_COL, dist);
 

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7jhwfbdg8vgm"]
+
+[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_jukpm"]
+[ext_resource type="PackedScene" uid="uid://clrmdq4h4lojv" path="res://Prefabs/Misc/paint_bucket.tscn" id="2_ttjte"]
+
+[node name="Color_Blue" type="Node3D"]
+script = ExtResource("1_jukpm")
+Type = 203
+
+[node name="PaintBucket" parent="." instance=ExtResource("2_ttjte")]
+Color = 203
