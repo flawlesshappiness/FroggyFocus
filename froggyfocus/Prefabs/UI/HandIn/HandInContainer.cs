@@ -122,6 +122,7 @@ public partial class HandInContainer : MarginContainer
             // Info
             var request = data.RequestInfos[i];
             var info = FocusCharacterController.Instance.GetInfoFromPath(request);
+            Debug.Log($"request: {info.Name}");
 
             // Submission
             var map = maps[i];

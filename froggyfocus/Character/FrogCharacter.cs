@@ -63,6 +63,7 @@ public partial class FrogCharacter : Character
 
         CustomizeAppearanceControl.OnBodyColorChanged += BodyColorChanged;
         CustomizeAppearanceControl.OnHatChanged += HatChanged;
+        CustomizeAppearanceControl.OnFaceChanged += FaceChanged;
     }
 
     public override void _ExitTree()
@@ -71,6 +72,7 @@ public partial class FrogCharacter : Character
 
         CustomizeAppearanceControl.OnBodyColorChanged -= BodyColorChanged;
         CustomizeAppearanceControl.OnHatChanged -= HatChanged;
+        CustomizeAppearanceControl.OnFaceChanged -= FaceChanged;
     }
 
     private void InitializeTongue()
@@ -157,6 +159,7 @@ public partial class FrogCharacter : Character
 
         BodyColorChanged();
         HatChanged();
+        FaceChanged();
     }
 
     private void BodyColorChanged()
@@ -172,6 +175,12 @@ public partial class FrogCharacter : Character
     {
         var data = Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Hat);
         HatAttachments.SetAttachment(data.Type);
+    }
+
+    private void FaceChanged()
+    {
+        var data = Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Face);
+        FaceAttachments.SetAttachment(data.Type);
     }
 
     public override void _Process(double delta)

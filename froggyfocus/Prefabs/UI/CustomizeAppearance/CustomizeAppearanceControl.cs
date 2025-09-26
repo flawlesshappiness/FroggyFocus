@@ -19,6 +19,9 @@ public partial class CustomizeAppearanceControl : ControlScript
     public AppearanceContainer HatsContainer;
 
     [Export]
+    public AppearanceContainer FaceContainer;
+
+    [Export]
     public FrogCharacter Frog;
 
     [Export]
@@ -28,16 +31,19 @@ public partial class CustomizeAppearanceControl : ControlScript
 
     public static event Action OnBodyColorChanged;
     public static event Action OnHatChanged;
+    public static event Action OnFaceChanged;
 
     private bool loading;
 
     private FrogAppearanceAttachmentData HatData => Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Hat);
+    private FrogAppearanceAttachmentData FaceData => Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Face);
 
     public override void _Ready()
     {
         base._Ready();
 
         HatsContainer.OnButtonPressed += HatButton_Pressed;
+        FaceContainer.OnButtonPressed += FaceButton_Pressed;
 
         ColorTab.BodyColorContainer.OnButtonPressed += BodyColor_Pressed;
 
@@ -118,5 +124,12 @@ public partial class CustomizeAppearanceControl : ControlScript
         if (loading) return;
         HatData.Type = info.Type;
         OnHatChanged?.Invoke();
+    }
+
+    private void FaceButton_Pressed(AppearanceInfo info)
+    {
+        if (loading) return;
+        FaceData.Type = info.Type;
+        OnFaceChanged?.Invoke();
     }
 }

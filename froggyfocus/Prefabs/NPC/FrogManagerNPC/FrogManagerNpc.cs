@@ -26,6 +26,9 @@ public partial class FrogManagerNpc : Area3D, IInteractable
     private void InitializeCharacter()
     {
         FrogCharacter.SetInSand();
+
+        FrogCharacter.ClearAppearance();
+        FrogCharacter.FaceAttachments.SetAttachment(ItemType.Face_Moustache);
     }
 
     public void Interact()

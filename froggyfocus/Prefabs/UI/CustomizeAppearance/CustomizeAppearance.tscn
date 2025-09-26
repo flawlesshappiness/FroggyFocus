@@ -17,7 +17,7 @@ corner_radius_bottom_left = 8
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
 
-[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "ColorTab", "HatsContainer", "Frog", "PreviewRotationNode")]
+[node name="CustomizeAppearance" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "ColorTab", "HatsContainer", "FaceContainer", "Frog", "PreviewRotationNode")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,6 +37,7 @@ PreviewRotationSlider = NodePath("HBoxContainer/CameraPanel/MarginContainer/VBox
 BackButton = NodePath("HBoxContainer/OptionsPanel/BackButton")
 ColorTab = NodePath("HBoxContainer/OptionsPanel/TabContainer/Color")
 HatsContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats")
+FaceContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Face")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
 PreviewRotationNode = NodePath("SubViewport_Frog/Origin")
 
