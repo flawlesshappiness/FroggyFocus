@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://8suq4f4y855o"]
+
+[ext_resource type="Resource" uid="uid://cee5gf2jhekao" path="res://FocusCharacter/Resources/Main_BugOfLove.tres" id="1_uiydg"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_wmy3o"]
+
+[resource]
+script = ExtResource("2_wmy3o")
+Id = "partner"
+RequestPreviewHidden = true
+PossibleRequests = Array[Object]([ExtResource("1_uiydg")])
+CountRange = Vector2i(1, 1)
+ClaimCountToUnlock = 0
+HasItemUnlock = false
+ItemUnlock = 0
+CooldownInSeconds = 600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

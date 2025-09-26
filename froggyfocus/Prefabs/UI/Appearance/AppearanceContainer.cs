@@ -44,8 +44,7 @@ public partial class AppearanceContainer : ControlScript
         ButtonTemplate.Hide();
 
         var infos = AppearanceController.Instance.GetInfos(ItemCategory)
-            .OrderBy(x => Item.IsOwned(x.Type))
-            .ThenByDescending(x => x.Type == NoneType)
+            .OrderByDescending(x => x.Type == NoneType)
             .ToList();
 
         foreach (var info in infos)

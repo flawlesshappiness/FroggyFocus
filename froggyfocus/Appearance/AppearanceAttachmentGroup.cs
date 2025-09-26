@@ -22,7 +22,7 @@ public partial class AppearanceAttachmentGroup : Node3D
         attachments.ForEach(x => x.Hide());
     }
 
-    public void SetAttachment(ItemType type)
+    public void SetAttachment(ItemType type, ItemType color_primary, ItemType color_secondary)
     {
         HideAll();
 
@@ -31,10 +31,9 @@ public partial class AppearanceAttachmentGroup : Node3D
 
         var category = attachment.Info.Category;
         var info = AppearanceController.Instance.GetInfo(type);
-        var data = Data.Game.FrogAppearanceData.GetAttachmentData(category);
 
-        var primary_color_type = data.PrimaryColor == ItemType.Color_Default ? info.DefaultPrimaryColor : data.PrimaryColor;
-        var secondary_color_type = data.SecondaryColor == ItemType.Color_Default ? info.DefaultSecondaryColor : data.SecondaryColor;
+        var primary_color_type = color_primary == ItemType.Color_Default ? info.DefaultPrimaryColor : color_primary;
+        var secondary_color_type = color_secondary == ItemType.Color_Default ? info.DefaultSecondaryColor : color_secondary;
 
         var primary_color = AppearanceColorController.Instance.GetColor(primary_color_type);
         var secondary_color = AppearanceColorController.Instance.GetColor(secondary_color_type);

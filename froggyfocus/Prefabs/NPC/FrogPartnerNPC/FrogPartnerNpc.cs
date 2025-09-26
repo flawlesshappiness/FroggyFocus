@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class FrogManagerNpc : Area3D, IInteractable
+public partial class FrogPartnerNpc : Area3D, IInteractable
 {
     [Export]
     public HandInInfo HandInInfo;
@@ -12,7 +12,7 @@ public partial class FrogManagerNpc : Area3D, IInteractable
 
     private bool active_dialogue;
 
-    private readonly string DIALOGUE_ID = "MANAGER";
+    private readonly string DIALOGUE_ID = "PARTNER";
 
     public override void _Ready()
     {
@@ -27,9 +27,8 @@ public partial class FrogManagerNpc : Area3D, IInteractable
 
     private void InitializeCharacter()
     {
-        FrogCharacter.SetInSand();
         FrogCharacter.ClearAppearance();
-        FrogCharacter.FaceAttachments.SetAttachment(ItemType.Face_Moustache, ItemType.Color_Default, ItemType.Color_Default);
+        FrogCharacter.HatAttachments.SetAttachment(ItemType.Hat_Bow, ItemType.Color_Default, ItemType.Color_Default);
     }
 
     public void Interact()

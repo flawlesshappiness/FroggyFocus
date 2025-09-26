@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=61 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bcfbwifytvr60" path="res://Prefabs/Objects/trash_bag_island_2.tscn" id="17_jeo78"]
 [ext_resource type="PackedScene" uid="uid://x7nclqu76y7s" path="res://Prefabs/Objects/security_door.tscn" id="17_l4num"]
 [ext_resource type="PackedScene" uid="uid://dbwq5ouf0ihjq" path="res://Prefabs/Objects/bottle_cleaning_simple.tscn" id="19_ea7wq"]
+[ext_resource type="PackedScene" uid="uid://ch71i4r1h8ofk" path="res://Prefabs/NPC/FrogScientistNPC/frog_scientist_npc.tscn" id="19_gteuj"]
 [ext_resource type="PackedScene" uid="uid://pndnf2awnmp0" path="res://Prefabs/Objects/bottle_cleaning_dish.tscn" id="20_16r1r"]
 [ext_resource type="PackedScene" uid="uid://c482un0ek3woo" path="res://Prefabs/Objects/bottle_cleaning_soap.tscn" id="21_lxndu"]
 [ext_resource type="PackedScene" uid="uid://cat6wqg4h8oqa" path="res://Prefabs/Objects/bottle_cleaning_toilet.tscn" id="22_01srd"]
@@ -309,6 +310,9 @@ curve = SubResource("Curve3D_xdgi3")
 
 [node name="SecurityDoor" parent="World/NavigationRegion3D/Building" instance=ExtResource("17_l4num")]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -51.2642, 5, -79.6282)
+
+[node name="FrogScientistNPC" parent="World/NavigationRegion3D/Building" instance=ExtResource("19_gteuj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30.7371, 5, -71.2852)
 
 [node name="Garbage" type="Node3D" parent="World/NavigationRegion3D"]
 

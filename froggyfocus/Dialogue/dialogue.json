@@ -64,6 +64,38 @@
 	},
 	
 	{
+		"id": "##PARTNER_REQUEST_001##",
+		"next": "##PARTNER_REQUEST_002##"
+	},
+	{
+		"id": "##PARTNER_REQUEST_002##"
+	},
+	
+	{
+		"id": "##PARTNER_REQUEST_FAIL_001##",
+		"next": "##PARTNER_REQUEST_FAIL_002##"
+	},
+	{
+		"id": "##PARTNER_REQUEST_FAIL_002##"
+	},
+	
+	{
+		"id": "##SCIENTIST_REQUEST_001##",
+		"next": "##SCIENTIST_REQUEST_002##"
+	},
+	{
+		"id": "##SCIENTIST_REQUEST_002##"
+	},
+	
+	{
+		"id": "##SCIENTIST_REQUEST_FAIL_001##",
+		"next": "##SCIENTIST_REQUEST_FAIL_002##"
+	},
+	{
+		"id": "##SCIENTIST_REQUEST_FAIL_002##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

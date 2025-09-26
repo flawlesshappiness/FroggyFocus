@@ -5,9 +5,9 @@
 
 [node name="appearance_container" type="MarginContainer" node_paths=PackedStringArray("ButtonTemplate", "UnlockHintLabel")]
 offset_right = 487.0
-offset_bottom = 421.0
+offset_bottom = 75.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -31,7 +31,7 @@ alignment = 1
 [node name="UnlockHintLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0.392157)
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "Unlocked by quests 
 or in the shop"
 horizontal_alignment = 1

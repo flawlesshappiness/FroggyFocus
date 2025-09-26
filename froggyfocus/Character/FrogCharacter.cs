@@ -174,13 +174,13 @@ public partial class FrogCharacter : Character
     private void HatChanged()
     {
         var data = Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Hat);
-        HatAttachments.SetAttachment(data.Type);
+        HatAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
     }
 
     private void FaceChanged()
     {
         var data = Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Face);
-        FaceAttachments.SetAttachment(data.Type);
+        FaceAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
     }
 
     public override void _Process(double delta)

@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch71i4r1h8ofk"]
+
+[ext_resource type="Script" uid="uid://d0kfbva5tuxd5" path="res://Prefabs/NPC/FrogScientistNPC/FrogScientistNpc.cs" id="1_3h7t5"]
+[ext_resource type="Resource" uid="uid://bvhdpbv1srgex" path="res://HandInQuest/Resources/Main_Scientist.tres" id="2_5asxe"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_bytrc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rhrvr"]
+height = 0.738281
+radius = 0.710938
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2d5ww"]
+height = 0.652832
+radius = 0.688477
+
+[node name="FrogScientistNPC" type="Area3D" node_paths=PackedStringArray("FrogCharacter")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_3h7t5")
+HandInInfo = ExtResource("2_5asxe")
+FrogCharacter = NodePath("Frog")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369141, -0.396207)
+shape = SubResource("CylinderShape3D_rhrvr")
+
+[node name="Frog" parent="." instance=ExtResource("3_bytrc")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326416, 0)
+shape = SubResource("CylinderShape3D_2d5ww")

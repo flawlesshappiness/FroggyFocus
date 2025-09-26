@@ -13,13 +13,25 @@ public partial class CustomizeAppearanceControl : ControlScript
     public Button BackButton;
 
     [Export]
-    public CustomizeAppearanceColorTab ColorTab;
+    public AppearanceContainer BodyPrimaryColorContainer;
 
     [Export]
-    public AppearanceContainer HatsContainer;
+    public AppearanceContainer HatContainer;
+
+    [Export]
+    public AppearanceContainer HatPrimaryColorContainer;
+
+    [Export]
+    public AppearanceContainer HatSecondaryColorContainer;
 
     [Export]
     public AppearanceContainer FaceContainer;
+
+    [Export]
+    public AppearanceContainer FacePrimaryColorContainer;
+
+    [Export]
+    public AppearanceContainer FaceSecondaryColorContainer;
 
     [Export]
     public FrogCharacter Frog;
@@ -42,13 +54,16 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         base._Ready();
 
-        HatsContainer.OnButtonPressed += HatButton_Pressed;
+        BodyPrimaryColorContainer.OnButtonPressed += BodyColor_Pressed;
+
+        HatContainer.OnButtonPressed += HatButton_Pressed;
+        HatPrimaryColorContainer.OnButtonPressed += HatPrimaryColor_Pressed;
+        HatSecondaryColorContainer.OnButtonPressed += HatSecondaryColor_Pressed;
+
         FaceContainer.OnButtonPressed += FaceButton_Pressed;
+        FacePrimaryColorContainer.OnButtonPressed += FacePrimaryColor_Pressed;
+        FaceSecondaryColorContainer.OnButtonPressed += FaceSecondaryColor_Pressed;
 
-        ColorTab.BodyColorContainer.OnButtonPressed += BodyColor_Pressed;
-
-        ColorTab.HatPrimaryColorContainer.OnButtonPressed += HatPrimaryColor_Pressed;
-        ColorTab.HatSecondaryColorContainer.OnButtonPressed += HatSecondaryColor_Pressed;
 
         PreviewRotationSlider.ValueChanged += PreviewRotationSlider_ValueChanged;
         PreviewRotationSlider_ValueChanged(PreviewRotationSlider.Value);
@@ -130,6 +145,20 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         if (loading) return;
         FaceData.Type = info.Type;
+        OnFaceChanged?.Invoke();
+    }
+
+    private void FacePrimaryColor_Pressed(AppearanceInfo info)
+    {
+        if (loading) return;
+        FaceData.PrimaryColor = info.Type;
+        OnFaceChanged?.Invoke();
+    }
+
+    private void FaceSecondaryColor_Pressed(AppearanceInfo info)
+    {
+        if (loading) return;
+        FaceData.SecondaryColor = info.Type;
         OnFaceChanged?.Invoke();
     }
 }
