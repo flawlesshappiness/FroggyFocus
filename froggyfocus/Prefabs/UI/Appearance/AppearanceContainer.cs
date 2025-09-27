@@ -23,7 +23,11 @@ public partial class AppearanceContainer : ControlScript
     [Export]
     public Label UnlockHintLabel;
 
+    [Export]
+    public GridContainer GridContainer;
+
     public event Action<AppearanceInfo> OnButtonPressed;
+    public event Action TopButtonFocusEntered;
 
     private List<ButtonMap> maps = new();
 
@@ -53,8 +57,6 @@ public partial class AppearanceContainer : ControlScript
             button.SetAppearance(info);
             button.Pressed += () => AppearanceButtonPressed(info);
         }
-
-        UpdateButtons();
     }
 
     protected override void OnShow()
@@ -83,6 +85,7 @@ public partial class AppearanceContainer : ControlScript
     {
         var button = ButtonTemplate.Duplicate() as AppearancePreviewButton;
         button.SetParent(ButtonTemplate.GetParent());
+        button.FocusEntered += () => PreviewButton_FocusEntered(button);
         maps.Add(new ButtonMap
         {
             Button = button,
@@ -104,5 +107,30 @@ public partial class AppearanceContainer : ControlScript
     public Button GetFirstButton()
     {
         return maps.FirstOrDefault().Button;
+    }
+
+    public List<AppearancePreviewButton> GetTopButtons()
+    {
+        var count = GridContainer.Columns;
+        return maps.Select(map => map.Button).Take(count).ToList();
+    }
+
+    public List<AppearancePreviewButton> GetBottomButtons()
+    {
+        var count = GridContainer.Columns;
+        var reverse_list = maps.ToList();
+        reverse_list.Reverse();
+        return reverse_list.Select(map => map.Button).Take(count).ToList();
+    }
+
+    private void PreviewButton_FocusEntered(AppearancePreviewButton button)
+    {
+        var columns = GridContainer.Columns;
+        var top_buttons = maps.Select(map => map.Button).Take(columns).ToList();
+
+        if (top_buttons.Contains(button))
+        {
+            TopButtonFocusEntered?.Invoke();
+        }
     }
 }

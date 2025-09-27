@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://x4bj6vwhqbpi" path="res://Prefabs/UI/Appearance/AppearanceContainer.cs" id="1_51jca"]
 [ext_resource type="PackedScene" uid="uid://7g3y8bn480iw" path="res://Prefabs/UI/CustomizeAppearance/appearance_preview_button.tscn" id="1_u17em"]
 
-[node name="appearance_container" type="MarginContainer" node_paths=PackedStringArray("ButtonTemplate", "UnlockHintLabel")]
+[node name="appearance_container" type="MarginContainer" node_paths=PackedStringArray("ButtonTemplate", "UnlockHintLabel", "GridContainer")]
 offset_right = 487.0
 offset_bottom = 75.0
 size_flags_horizontal = 3
@@ -15,6 +15,7 @@ theme_override_constants/margin_bottom = 5
 script = ExtResource("1_51jca")
 ButtonTemplate = NodePath("GridContainer/AppearanceButton")
 UnlockHintLabel = NodePath("VBoxContainer/UnlockHintLabel")
+GridContainer = NodePath("GridContainer")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
