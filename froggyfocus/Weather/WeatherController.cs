@@ -199,6 +199,9 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         var env = GameScene.Instance.WorldEnvironment.Environment;
         var sun = GameScene.Instance.DirectionalLight;
 
+        // Background
+        env.BackgroundEnergyMultiplier = Mathf.Lerp(from.BackgroundEnergyMultiplier, to.BackgroundEnergyMultiplier, t);
+
         // Sun
         sun.LightColor = from.SunColor.Lerp(to.SunColor, Mathf.Clamp(t * 10, 0, 1));
         sun.ShadowEnabled = true;

@@ -47,10 +47,49 @@ public partial class FastTravelView : PanelView
             Action = ShowView
         });
 
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Scenes",
+            Action = ListScenes
+        });
+
         void ShowView(DebugView v)
         {
             Show();
             v.Close();
+        }
+
+        void ListScenes(DebugView v)
+        {
+            v.SetContent_Search();
+
+            v.ContentSearch.AddItem(nameof(SwampScene), () => SceneActions(v, nameof(SwampScene)));
+            v.ContentSearch.AddItem(nameof(CaveScene), () => SceneActions(v, nameof(CaveScene)));
+            v.ContentSearch.AddItem(nameof(FactoryScene), () => SceneActions(v, nameof(FactoryScene)));
+            v.ContentSearch.AddItem(nameof(GlitchScene), () => SceneActions(v, nameof(GlitchScene)));
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SceneActions(DebugView v, string scene_name)
+        {
+            v.SetContent_Search();
+
+            v.ContentSearch.AddItem("Goto", () => GotoScene(v, scene_name));
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void GotoScene(DebugView v, string scene_name)
+        {
+            v.Close();
+
+            Data.Game.CurrentScene = scene_name;
+            Data.Game.StartingNode = "StartBoat";
+            Data.Game.Save();
+
+            Scene.Goto(scene_name);
         }
     }
 

@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://b2gamstk3nwpo"]
+
+[ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_iviy3"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_mtert"]
+[ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_bxtix"]
+[ext_resource type="Resource" uid="uid://btdwynpenhki5" path="res://Weather/Resources/Glitch.tres" id="3_ossgx"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="4_bxtix"]
+[ext_resource type="PackedScene" uid="uid://d2xrgps5dughf" path="res://Prefabs/Water/water_code.tscn" id="5_ttjhv"]
+[ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Code_Wireframe.tres" id="8_ossgx"]
+[ext_resource type="Script" uid="uid://dm8guta6iefk5" path="res://Misc/MatrixLabel.cs" id="9_owccc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ttjhv"]
+material = ExtResource("4_bxtix")
+flip_faces = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_iviy3"]
+vertices = PackedVector3Array(0.75, 0.5, 1.5, 1.5, 0.5, 0.75, 1.5, 0.5, -0.75, -0.75, 0.5, -1.5, -1.5, 0.5, -0.75, -1.25, 0.5, 1.25, 0.75, 0.5, -1.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 6, 2)]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_ossgx"]
+material = ExtResource("8_ossgx")
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owccc"]
+size = Vector3(4, 1, 4)
+
+[node name="GlitchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment")]
+script = ExtResource("1_6t126")
+DirectionalLight = NodePath("DirectionalLight3D")
+WorldEnvironment = NodePath("WorldEnvironment")
+Weathers = Array[ExtResource("2_iviy3")]([ExtResource("3_ossgx")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_mtert")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -0.999999, -4.37114e-08, 0, 5.72245, 10.5826)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("3_bxtix")]
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1400, 0, 0, 0, 1400, 0, 0, 0, 1400, 0, 0, 0)
+mesh = SubResource("SphereMesh_ttjhv")
+skeleton = NodePath("../..")
+
+[node name="Water" parent="World" instance=ExtResource("5_ttjhv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
+navigation_mesh = SubResource("NavigationMesh_iviy3")
+
+[node name="Platform" type="MeshInstance3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_ossgx")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Platform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Platform/StaticBody3D"]
+shape = SubResource("BoxShape3D_owccc")
+
+[node name="Label3D" type="Label3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24191, -1, -6.51609)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 100
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1

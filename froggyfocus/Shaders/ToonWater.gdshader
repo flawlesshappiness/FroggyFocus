@@ -7,6 +7,7 @@
 
 
 shader_type spatial;
+render_mode unshaded;
 
 // Water color and foam color
 uniform vec4 WATER_COL : source_color = vec4(0.04, 0.38, 0.88, 1.0);
@@ -324,13 +325,17 @@ void fragment() {
 
 	// Calculate horizon distance
 	vec2 uv_center = vec2(UV.x * 2.0 - 1.0, UV.y * 2.0 - 1.0);
-	float dist = max(sqrt(pow(uv_center.x, 2) + pow(uv_center.y, 2)) * (1.0 / horizon_start) - horizon_start, 0);
+	float dist = sqrt(pow(uv_center.x, 2) + pow(uv_center.y, 2)) * (1.0 / horizon_start) - horizon_start;
 
     // Add foam
     final_color = mix(final_color, FOAM_COL, foam);
 
 	// Add distance color
-	final_color = mix(final_color, DIST_COL, dist);
+	if(dist < 1.0) {
+		final_color = mix(final_color, DIST_COL, dist);
+	} else {
+		final_color = DIST_COL;
+	}
 
     // Set final color and alpha
     ALBEDO = final_color.rgb;

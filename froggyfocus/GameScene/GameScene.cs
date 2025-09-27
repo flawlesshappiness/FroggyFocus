@@ -109,4 +109,9 @@ public partial class GameScene : Scene
             .ToList()
             .Random();
     }
+
+    public bool HasFocusEventTargets()
+    {
+        return FocusEvents.Any(x => x.Info.Characters.Count > 0);
+    }
 }
