@@ -39,9 +39,9 @@ BodyPrimaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Bo
 HatContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/VBoxContainer/HatsContainer")
 HatPrimaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/VBoxContainer/HatPrimaryColor")
 HatSecondaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/VBoxContainer/HatSecondaryColor")
-FaceContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer/FaceContainer")
-FacePrimaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer/FacePrimaryColor")
-FaceSecondaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer/FaceSecondaryColor")
+FaceContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer/FaceContainer")
+FacePrimaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer/FacePrimaryColor")
+FaceSecondaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer/FaceSecondaryColor")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
 PreviewRotationNode = NodePath("SubViewport_Frog/Origin")
 
@@ -183,46 +183,46 @@ text = "Item"
 layout_mode = 2
 ShowOwned = true
 
-[node name="Face" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+[node name="Accessories" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Face" node_paths=PackedStringArray("TopContainer")]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories" node_paths=PackedStringArray("TopContainer")]
 layout_mode = 2
 follow_focus = true
 script = ExtResource("3_s4spg")
 TopContainer = NodePath("VBoxContainer/FacePrimaryColor")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Primary Color"
 
-[node name="FacePrimaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
+[node name="FacePrimaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 2
 NoneType = 200
 ShowOwned = true
 
-[node name="Label2" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Secondary Color"
 
-[node name="FaceSecondaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
+[node name="FaceSecondaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 2
 NoneType = 200
 ShowOwned = true
 
-[node name="Label3" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "Item"
 
-[node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Face/ScrollContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
+[node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 1
 NoneType = 100

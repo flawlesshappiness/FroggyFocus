@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShopItemInfo" load_steps=2 format=3 uid="uid://dn64s2erqjrxd"]
+
+[ext_resource type="Script" uid="uid://s1ghkh46wrqg" path="res://Shop/ShopItemInfo.cs" id="1_dia7u"]
+
+[resource]
+script = ExtResource("1_dia7u")
+Category = 2
+Type = 206
+Price = 1000
+metadata/_custom_type_script = "uid://s1ghkh46wrqg"

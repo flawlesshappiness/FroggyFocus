@@ -75,9 +75,9 @@ public partial class AppearanceContainer : ControlScript
         {
             var owned = Item.IsOwned(map.Info.Type);
             var shop_info = ShopController.Instance.GetInfo(map.Info.Type);
-            var show_if_unpurchased = (!owned && ShowUnowned) && shop_info != null;
-            var show_if_purchased = owned && ShowOwned;
-            map.Button.Visible = show_if_unpurchased || show_if_purchased;
+            var show_if_unowned = (!owned && ShowUnowned) && shop_info != null;
+            var show_if_owned = owned && ShowOwned;
+            map.Button.Visible = show_if_unowned || show_if_owned;
         }
     }
 
