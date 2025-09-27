@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bodarbjjv44b"]
+
+[ext_resource type="Shader" uid="uid://dutdvyy686jac" path="res://Shaders/PlaneCut.gdshader" id="2_nuls5"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("2_nuls5")
+shader_parameter/_albedo = Color(0.8, 0, 0, 1)
+shader_parameter/cutplane1 = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/cutplane2 = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)

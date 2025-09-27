@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccxpurkgtb7y3"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_a107q"]
+[ext_resource type="PackedScene" uid="uid://du1eyxmiptram" path="res://Assets/FlawLizArt/Nature/Bugs/error_bug_cube.fbx" id="2_s8rnd"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="5_ugbgu"]
+
+[node name="ErrorWhileLoop" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_a107q")
+Animation = NodePath("AnimationStateMachine")
+Accessories = [null]
+
+[node name="error_bug_cube" parent="." instance=ExtResource("2_s8rnd")]
+transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, 0, 0)
+
+[node name="Skeleton3D" parent="error_bug_cube/Armature" index="0"]
+bones/3/position = Vector3(-0.001, 0.0065, -0.0025)
+bones/3/rotation = Quaternion(-0.382683, -9.55751e-09, 2.48349e-07, 0.92388)
+bones/5/position = Vector3(0.000999998, 0.0065, -0.0025)
+bones/5/rotation = Quaternion(-0.382683, -9.55751e-09, 2.48349e-07, 0.92388)
+bones/5/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(-0.0035, 0.004, 0.0025)
+bones/7/rotation = Quaternion(0.270599, 0.270598, 0.653281, 0.653282)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-0.0035, 0.001, 0.0025)
+bones/9/rotation = Quaternion(0.146447, 0.353553, 0.853553, 0.353554)
+bones/9/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(-0.0035, -0.002, 0.0025)
+bones/11/rotation = Quaternion(0.270599, 0.270598, 0.653281, 0.653282)
+bones/11/scale = Vector3(1, 1, 1)
+bones/13/position = Vector3(0.0035, 0.004, 0.0025)
+bones/13/rotation = Quaternion(0.270598, -0.270598, -0.653281, 0.653282)
+bones/13/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(0.0035, 0.001, 0.0025)
+bones/15/rotation = Quaternion(0.146447, -0.353553, -0.853553, 0.353554)
+bones/15/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(0.0035, -0.002, 0.0025)
+bones/17/rotation = Quaternion(0.270598, -0.270597, -0.653281, 0.653282)
+bones/17/scale = Vector3(1, 1, 1)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("5_ugbgu")
+Animator = NodePath("../error_bug_cube/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="error_bug_cube"]
