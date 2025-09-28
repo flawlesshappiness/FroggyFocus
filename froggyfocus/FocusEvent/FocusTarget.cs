@@ -84,10 +84,11 @@ public partial class FocusTarget : Node3D
         }
         else if (Info.MoveType == FocusCharacterMoveType.Glitch)
         {
+            Character.RotateToDirectionImmediate(dir_to_position);
             while (GlobalPosition.DistanceTo(position) > UpdatedMoveSpeed)
             {
                 Move(dir_to_position.Normalized() * UpdatedMoveSpeed);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.3f);
             }
         }
     }

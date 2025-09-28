@@ -11,5 +11,6 @@ public enum FocusSkillCheckType
     Sand,
     Seaweed,
     Oil,
-    Garbage
+    Garbage,
+    GlitchTeleport,
 }

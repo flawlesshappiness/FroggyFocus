@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccn5g4jw8hlci"]
+
+[ext_resource type="Script" uid="uid://dqv4akaw2ybd7" path="res://FocusSkillCheck/FocusSkillCheck_FreezeTeleport.cs" id="1_gy2fr"]
+[ext_resource type="AudioStream" uid="uid://dc21j2wi6hioy" path="res://Sounds/Raw/sfx_glitch_freeze_001.wav" id="2_2n0ye"]
+
+[node name="GlitchTeleport" type="Node3D" node_paths=PackedStringArray("SfxFreeze")]
+process_mode = 3
+script = ExtResource("1_gy2fr")
+SfxFreeze = NodePath("SfxFreeze")
+Type = 12
+
+[node name="SfxFreeze" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2n0ye")
+volume_db = -10.0
+bus = &"SFX"

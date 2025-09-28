@@ -127,7 +127,8 @@ public partial class FocusEvent : Node3D
             EventStarted = true;
             OnStarted?.Invoke();
             FocusEventController.Instance.FocusEventStarted(this);
-            this.StartCoroutine(EventCr, "event");
+            this.StartCoroutine(EventCr, "event")
+                .SetRunWhilePaused(true);
         }
     }
 

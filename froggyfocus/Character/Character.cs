@@ -31,6 +31,12 @@ public partial class Character : Node3D
         _facing_direction = null;
     }
 
+    public void RotateToDirectionImmediate(Vector3 direction)
+    {
+        var ry = Mathf.Atan2(-direction.X, -direction.Z);
+        Rotation = new Vector3(0, ry, 0);
+    }
+
     private void RotateToDirection(Vector3 direction)
     {
         var rotation_speed = 10f;
