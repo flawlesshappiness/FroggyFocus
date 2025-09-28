@@ -32,6 +32,9 @@ public partial class FocusCharacterInfo : Resource
     public Vector2 MoveDelayRange = new Vector2(1, 1);
 
     [Export]
+    public FocusCharacterMoveType MoveType = FocusCharacterMoveType.Walk;
+
+    [Export]
     public Array<FocusSkillCheckType> SkillChecks;
 
     [Export]

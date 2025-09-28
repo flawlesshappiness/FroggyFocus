@@ -325,7 +325,7 @@ void fragment() {
 
 	// Calculate horizon distance
 	vec2 uv_center = vec2(UV.x * 2.0 - 1.0, UV.y * 2.0 - 1.0);
-	float dist = sqrt(pow(uv_center.x, 2) + pow(uv_center.y, 2)) * (1.0 / horizon_start) - horizon_start;
+	float dist = max(sqrt(pow(uv_center.x, 2) + pow(uv_center.y, 2)) * (1.0 / horizon_start) - horizon_start, 0);
 
     // Add foam
     final_color = mix(final_color, FOAM_COL, foam);

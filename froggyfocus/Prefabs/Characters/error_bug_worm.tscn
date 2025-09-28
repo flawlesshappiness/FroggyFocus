@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1ajrpo5jef50"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_r11kp"]
+[ext_resource type="PackedScene" uid="uid://cy4e2xwgjd25l" path="res://Assets/FlawLizArt/Nature/Bugs/error_bug_worm.fbx" id="2_r11kp"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_0njpx"]
+
+[node name="ErrorBug_Worm" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_r11kp")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="error_bug_worm" parent="." instance=ExtResource("2_r11kp")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="Skeleton3D" parent="error_bug_worm/Armature" index="0"]
+bones/2/rotation = Quaternion(0.707106, -1.78405e-14, -1.16741e-15, 0.707107)
+bones/4/rotation = Quaternion(0.707106, -1.02086e-14, 1.14267e-14, 0.707107)
+bones/8/position = Vector3(-0.0005, 0, 0.001)
+bones/10/position = Vector3(-0.0005, -0.0025, 0.001)
+bones/12/position = Vector3(-0.0005, -0.005, 0.001)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_0njpx")
+Animator = NodePath("../error_bug_worm/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="error_bug_worm"]

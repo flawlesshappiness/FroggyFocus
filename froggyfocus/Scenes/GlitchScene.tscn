@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2gamstk3nwpo"]
+[gd_scene load_steps=23 format=3 uid="uid://b2gamstk3nwpo"]
 
 [ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_iviy3"]
@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://d2xrgps5dughf" path="res://Prefabs/Water/water_code.tscn" id="5_ttjhv"]
 [ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Code_Wireframe.tres" id="8_ossgx"]
 [ext_resource type="Script" uid="uid://dm8guta6iefk5" path="res://Misc/MatrixLabel.cs" id="9_owccc"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="9_qpaxj"]
+[ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="10_8f2ml"]
+[ext_resource type="Resource" uid="uid://hw17iw32hgjy" path="res://FocusEvent/Resources/Glitch_Legs.tres" id="11_8f2ml"]
+[ext_resource type="Resource" uid="uid://dfngo68v7l0gi" path="res://FocusEvent/Resources/Glitch_Flying.tres" id="12_oj01c"]
+[ext_resource type="Resource" uid="uid://cut7ng686j6fv" path="res://FocusEvent/Resources/Glitch_Worm.tres" id="13_12xjm"]
+[ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="15_wuacj"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ttjhv"]
 material = ExtResource("4_bxtix")
@@ -24,12 +30,24 @@ material = ExtResource("8_ossgx")
 size = Vector3(4, 1, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_owccc"]
-size = Vector3(4, 1, 4)
+size = Vector3(8, 1, 8)
 
-[node name="GlitchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment")]
+[sub_resource type="BoxMesh" id="BoxMesh_qpaxj"]
+material = ExtResource("8_ossgx")
+size = Vector3(8, 1, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qpaxj"]
+size = Vector3(8, 1, 8)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8f2ml"]
+size = Vector2(10, 10)
+
+[node name="GlitchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
 script = ExtResource("1_6t126")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
+WorldBugParent = NodePath("World/WorldBugs")
+FocusEventParent = NodePath("World/FocusEvents")
 Weathers = Array[ExtResource("2_iviy3")]([ExtResource("3_ossgx")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -64,6 +82,27 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Platform/StaticBody3D"]
 shape = SubResource("BoxShape3D_owccc")
 
+[node name="Platform_Legs" type="MeshInstance3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 0)
+mesh = SubResource("BoxMesh_qpaxj")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Platform_Legs"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Platform_Legs/StaticBody3D"]
+shape = SubResource("BoxShape3D_owccc")
+
+[node name="FocusEventArea" type="Area3D" parent="World/NavigationRegion3D/Platform_Legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "legs"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Platform_Legs/FocusEventArea"]
+shape = SubResource("BoxShape3D_qpaxj")
+
 [node name="Label3D" type="Label3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24191, -1, -6.51609)
 billboard = 2
@@ -84,3 +123,52 @@ Size = Vector2i(1, 50)
 SpaceLength = Vector2i(2, 4)
 StringLength = Vector2i(4, 6)
 Frequency = 0.1
+
+[node name="FocusEvents" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.617, 0, 113.425)
+
+[node name="Legs" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
+visible = false
+Id = "legs"
+Info = ExtResource("11_8f2ml")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Legs"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+mesh = SubResource("QuadMesh_8f2ml")
+surface_material_override/0 = ExtResource("4_bxtix")
+
+[node name="Flying" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
+visible = false
+Id = "flying"
+Info = ExtResource("12_oj01c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Flying"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+mesh = SubResource("QuadMesh_8f2ml")
+surface_material_override/0 = ExtResource("4_bxtix")
+
+[node name="Worm" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
+visible = false
+Id = "worm"
+Info = ExtResource("13_12xjm")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Worm"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+mesh = SubResource("QuadMesh_8f2ml")
+surface_material_override/0 = ExtResource("4_bxtix")
+
+[node name="WorldBugs" type="Node3D" parent="World"]
+
+[node name="Legs" type="Node3D" parent="World/WorldBugs"]
+
+[node name="WorldBug" parent="World/WorldBugs/Legs" instance=ExtResource("15_wuacj")]
+transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, 6.24253, 0, 2.72066)
+Info = ExtResource("11_8f2ml")
+
+[node name="WorldBug2" parent="World/WorldBugs/Legs" instance=ExtResource("15_wuacj")]
+transform = Transform3D(0.196887, 0, -0.980426, 0, 1, 0, 0.980426, 0, 0.196887, 7.35422, 0, -2.26262)
+Info = ExtResource("11_8f2ml")
+
+[node name="WorldBug3" parent="World/WorldBugs/Legs" instance=ExtResource("15_wuacj")]
+transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121, 10.05, 0, 2.31043)
+Info = ExtResource("11_8f2ml")

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://boussnosvemgu"]
+
+[ext_resource type="PackedScene" uid="uid://ccxpurkgtb7y3" path="res://Prefabs/Characters/error_bug_legs.tscn" id="1_76ld0"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_hd8mj"]
+
+[resource]
+script = ExtResource("2_hd8mj")
+Scene = ExtResource("1_76ld0")
+Name = "ERROR_13G5"
+LocationHint = "##HINT_LOC_GLITCH##"
+Accessory = ""
+FocusValue = 200.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0.15, 0.3)
+MoveLengthRange = Vector2(1.5, 2)
+MoveDelayRange = Vector2(1, 0.5)
+MoveType = 2
+SkillChecks = Array[int]([])
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

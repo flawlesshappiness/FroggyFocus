@@ -74,10 +74,21 @@ public partial class FocusTarget : Node3D
         Character.StartFacingDirection(dir_to_position);
         Character.SetMoving(true);
 
-        while (GlobalPosition.DistanceTo(position) > 0.1f)
+        if (Info.MoveType == FocusCharacterMoveType.Walk)
         {
-            Move(dir_to_position.Normalized() * UpdatedMoveSpeed * GameTime.DeltaTime);
-            yield return null;
+            while (GlobalPosition.DistanceTo(position) > 0.1f)
+            {
+                Move(dir_to_position.Normalized() * UpdatedMoveSpeed * GameTime.DeltaTime);
+                yield return null;
+            }
+        }
+        else if (Info.MoveType == FocusCharacterMoveType.Glitch)
+        {
+            while (GlobalPosition.DistanceTo(position) > UpdatedMoveSpeed)
+            {
+                Move(dir_to_position.Normalized() * UpdatedMoveSpeed);
+                yield return new WaitForSeconds(0.5f);
+            }
         }
     }
 

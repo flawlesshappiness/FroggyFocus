@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://cm142o8b11iqn"]
+
+[ext_resource type="PackedScene" uid="uid://b1ajrpo5jef50" path="res://Prefabs/Characters/error_bug_worm.tscn" id="1_h5yca"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_x1n6a"]
+
+[resource]
+script = ExtResource("2_x1n6a")
+Scene = ExtResource("1_h5yca")
+Name = "ERROR_W0RM"
+LocationHint = "##HINT_LOC_GLITCH##"
+Accessory = ""
+FocusValue = 50.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0.15, 0.3)
+MoveLengthRange = Vector2(1.5, 2)
+MoveDelayRange = Vector2(1, 0.5)
+MoveType = 2
+SkillChecks = Array[int]([])
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

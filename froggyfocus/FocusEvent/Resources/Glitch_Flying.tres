@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://dfngo68v7l0gi"]
+
+[ext_resource type="Resource" uid="uid://cy288cgujhhst" path="res://FocusCharacter/Resources/Error_Flying.tres" id="1_gtwb2"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_xrtbu"]
+
+[resource]
+script = ExtResource("2_xrtbu")
+Characters = Array[Object]([ExtResource("1_gtwb2")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://cy288cgujhhst"]
+
+[ext_resource type="PackedScene" uid="uid://drpkac4yk650q" path="res://Prefabs/Characters/error_bug_flying.tscn" id="1_ncwyy"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_grths"]
+
+[resource]
+script = ExtResource("2_grths")
+Scene = ExtResource("1_ncwyy")
+Name = "ERROR_W1NG5"
+LocationHint = "##HINT_LOC_GLITCH##"
+Accessory = ""
+FocusValue = 50.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0.15, 0.3)
+MoveLengthRange = Vector2(1.5, 2)
+MoveDelayRange = Vector2(1, 0.5)
+MoveType = 2
+SkillChecks = Array[int]([])
+Tags = Array[int]([0, 2])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

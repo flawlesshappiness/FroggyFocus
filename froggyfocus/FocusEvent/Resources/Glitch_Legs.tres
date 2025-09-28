@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://hw17iw32hgjy"]
+
+[ext_resource type="Resource" uid="uid://boussnosvemgu" path="res://FocusCharacter/Resources/Error_Legs.tres" id="1_734qh"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="9_wrae0"]
+
+[resource]
+script = ExtResource("9_wrae0")
+Characters = Array[Object]([ExtResource("1_734qh")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://drpkac4yk650q"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_pjlow"]
+[ext_resource type="PackedScene" uid="uid://b6w2oarfpl481" path="res://Assets/FlawLizArt/Nature/Bugs/error_bug_flying.fbx" id="2_ali5j"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ali5j"]
+
+[node name="ErrorBug_Flying" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_pjlow")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|idle"
+Accessories = []
+
+[node name="error_bug_flying" parent="." instance=ExtResource("2_ali5j")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.4, 0)
+
+[node name="Skeleton3D" parent="error_bug_flying/Armature" index="0"]
+bones/1/position = Vector3(0, 0, 0.005)
+bones/2/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+bones/4/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_ali5j")
+Animator = NodePath("../error_bug_flying/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="error_bug_flying"]
