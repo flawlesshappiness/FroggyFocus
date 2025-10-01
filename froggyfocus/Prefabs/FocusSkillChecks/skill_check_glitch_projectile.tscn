@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwa73c2d80nt4"]
+
+[ext_resource type="Script" uid="uid://538qaywb41gc" path="res://FocusSkillCheck/SkillCheckProjectile.cs" id="1_hagm6"]
+[ext_resource type="Material" uid="uid://cn0telsifi6jx" path="res://Materials/Color_Yellow_Unshaded.tres" id="2_ng43e"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mnmrg"]
+size = Vector2(0.1, 0.1)
+
+[node name="SkillCheckGlitchProjectile" type="Node3D"]
+script = ExtResource("1_hagm6")
+Radius = 0.1
+SpeedMin = Vector2(0.2, 0.2)
+SpeedMax = Vector2(0.2, 0.2)
+Movement = 1
+Damage = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_mnmrg")
+surface_material_override/0 = ExtResource("2_ng43e")
