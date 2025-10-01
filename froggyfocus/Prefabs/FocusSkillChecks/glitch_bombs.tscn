@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://6svjunh12rln"]
+
+[ext_resource type="Script" uid="uid://b1qcu2liwvoof" path="res://FocusSkillCheck/FocusSkillCheck_Bombs.cs" id="1_udhwb"]
+[ext_resource type="PackedScene" uid="uid://qw450mbghxw" path="res://Prefabs/FocusSkillChecks/skill_check_bomb_glitch.tscn" id="2_udhwb"]
+
+[node name="GlitchBombs" type="Node3D"]
+script = ExtResource("1_udhwb")
+BombCountRange = Vector2i(1, 3)
+DistanceRange = Vector2(1.5, 2)
+BombPrefab = ExtResource("2_udhwb")
+Type = 13

@@ -4,6 +4,15 @@ using System.Collections;
 public partial class SkillCheckBomb : Node3D
 {
     [Export]
+    public string AnimShow = "show";
+
+    [Export]
+    public string AnimIdle = "idle";
+
+    [Export]
+    public string AnimExplode = "explode";
+
+    [Export]
     public AnimationPlayer AnimationPlayer;
 
     [Export]
@@ -15,11 +24,9 @@ public partial class SkillCheckBomb : Node3D
     [Export]
     public ParticleEffectGroup PsExplode;
 
-    public Coroutine AnimateShow() => Animate("show");
-    public Coroutine AnimateIdle() => Animate("idle");
-    public Coroutine AnimateIdleFast() => Animate("idle_fast");
-    public Coroutine AnimateCollect() => Animate("collect");
-    public Coroutine AnimateExplode() => Animate("explode");
+    public Coroutine AnimateShow() => Animate(AnimShow);
+    public Coroutine AnimateIdle() => Animate(AnimIdle);
+    public Coroutine AnimateExplode() => Animate(AnimExplode);
 
     public bool Running { get; private set; }
 
@@ -54,7 +61,7 @@ public partial class SkillCheckBomb : Node3D
         IEnumerator Cr()
         {
             yield return AnimateShow();
-            AnimateIdleFast();
+            AnimateIdle();
             yield return new WaitForSeconds(1f);
             yield return AnimateExplode();
             PlayExplodePS();

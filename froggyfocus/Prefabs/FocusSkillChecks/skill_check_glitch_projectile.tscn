@@ -11,6 +11,7 @@ script = ExtResource("1_hagm6")
 Radius = 0.1
 SpeedMin = Vector2(0.2, 0.2)
 SpeedMax = Vector2(0.2, 0.2)
+SpeedCurve = 21
 Movement = 1
 Damage = 0.1
 

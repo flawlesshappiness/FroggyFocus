@@ -130,6 +130,7 @@ public partial class SkillCheckProjectile : Node3D
         {
             IsHit = true;
             HurtPlayer();
+            Hide();
         }
     }
 
