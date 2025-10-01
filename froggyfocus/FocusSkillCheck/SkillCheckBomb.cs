@@ -6,11 +6,36 @@ public partial class SkillCheckBomb : Node3D
     [Export]
     public AnimationPlayer AnimationPlayer;
 
+    [Export]
+    public PackedScene ProjectilePrefab;
+
+    [Export]
+    public ParticleEffectGroup PsIdle;
+
+    [Export]
+    public ParticleEffectGroup PsExplode;
+
     public Coroutine AnimateShow() => Animate("show");
     public Coroutine AnimateIdle() => Animate("idle");
     public Coroutine AnimateIdleFast() => Animate("idle_fast");
     public Coroutine AnimateCollect() => Animate("collect");
     public Coroutine AnimateExplode() => Animate("explode");
+
+    public bool Running { get; private set; }
+
+    private FocusEvent focus_event;
+    private SkillCheckProjectile projectile;
+
+    public void Clear()
+    {
+        if (IsInstanceValid(projectile))
+        {
+            projectile.QueueFree();
+            projectile = null;
+        }
+
+        QueueFree();
+    }
 
     private Coroutine Animate(string animation)
     {
@@ -19,5 +44,46 @@ public partial class SkillCheckBomb : Node3D
         {
             yield return AnimationPlayer.PlayAndWaitForAnimation(animation);
         }
+    }
+
+    public void StartBomb(FocusEvent focus_event)
+    {
+        this.focus_event = focus_event;
+        Running = true;
+        this.StartCoroutine(Cr, "bomb");
+        IEnumerator Cr()
+        {
+            yield return AnimateShow();
+            AnimateIdleFast();
+            yield return new WaitForSeconds(1f);
+            yield return AnimateExplode();
+            PlayExplodePS();
+
+            projectile = SpawnProjectile();
+            yield return projectile.StartProjectile(new SkillCheckProjectile.Settings { FocusEvent = focus_event });
+
+            while (!projectile.IsHit)
+            {
+                yield return null;
+            }
+
+            Running = false;
+        }
+    }
+
+    private SkillCheckProjectile SpawnProjectile()
+    {
+        var p = ProjectilePrefab.Instantiate<SkillCheckProjectile>();
+        p.SetParent(this);
+        return p;
+    }
+
+    private void PlayExplodePS()
+    {
+        PsIdle?.SetParent(focus_event);
+        PsIdle?.Stop(destroy: true);
+
+        PsExplode?.SetParent(focus_event);
+        PsExplode?.Play(destroy: true);
     }
 }

@@ -15,11 +15,12 @@ stream_1/stream = ExtResource("4_asblv")
 stream_2/stream = ExtResource("5_d2gj1")
 stream_3/stream = ExtResource("6_p5e6d")
 
-[node name="Oil" type="Node3D"]
+[node name="Oil" type="Node3D" node_paths=PackedStringArray("SfxWater")]
 script = ExtResource("1_8r1m1")
 CountRange = Vector2i(3, 10)
 DurationRange = Vector2i(5, 10)
 ClonePrefab = ExtResource("2_f6uww")
+SfxWater = NodePath("SfxWater")
 Type = 10
 
 [node name="SfxWater" type="AudioStreamPlayer" parent="."]

@@ -39,6 +39,7 @@ Particles = [NodePath("spores")]
 
 [node name="spores" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0641277, 0)
+emitting = false
 amount = 10
 lifetime = 1.5
 fixed_fps = 60

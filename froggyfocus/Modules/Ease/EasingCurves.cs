@@ -33,7 +33,7 @@ public static class Curves
     public static Curve EaseOutElastic { get { return GetCurve(EasingFunctions.Ease.EaseOutElastic); } }
     public static Curve EaseInOutElastic { get { return GetCurve(EasingFunctions.Ease.EaseInOutElastic); } }
 
-    private static Curve GetCurve(EasingFunctions.Ease ease)
+    public static Curve GetCurve(EasingFunctions.Ease ease)
     {
         return new Curve(ease);
     }

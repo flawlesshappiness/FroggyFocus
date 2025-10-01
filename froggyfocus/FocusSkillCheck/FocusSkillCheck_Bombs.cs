@@ -14,37 +14,10 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     [Export]
     public PackedScene BombPrefab;
 
-    [Export]
-    public PackedScene ProjectilePrefab;
-
-    [Export]
-    public PackedScene PsExplode;
-
-    [Export]
-    public PackedScene PsSpores;
-
-    private List<ParticleEffectGroup> effects = new();
-    private List<Bomb> bombs = new();
+    private List<SkillCheckBomb> bombs = new();
 
     private int id = 0;
-
     private Coroutine cr_clear;
-
-    private class Bomb
-    {
-        public SkillCheckBomb BombNode { get; set; }
-        public SkillCheckBombProjectile ProjectileNode { get; set; }
-        public Vector3 Position { get; set; }
-        public Coroutine Coroutine { get; set; }
-        public float Delay { get; set; }
-
-        public void Clear()
-        {
-            BombNode.QueueFree();
-            ProjectileNode.QueueFree();
-            Coroutine.Stop(Coroutine);
-        }
-    }
 
     public override void Clear()
     {
@@ -52,25 +25,28 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
 
         bombs.ForEach(x => x.Clear());
         bombs.Clear();
+    }
 
-        effects.ForEach(x => x.Destroy(true));
-        effects.Clear();
-
-        Coroutine.Stop(cr_clear);
+    protected override void Stop()
+    {
+        base.Stop();
+        Clear();
     }
 
     protected override IEnumerator Run()
     {
-        var last_angle = rng.RandfRange(0f, 360f);
+        var next_angle = rng.RandfRange(0f, 360f);
         var count = BombCountRange.Range(Difficulty);
         var delay_per = 0.5f;
         for (int i = 0; i < count; i++)
         {
-            last_angle += rng.RandfRange(45, 180);
+            next_angle += rng.RandfRange(45, 180);
+            var position = GetBombPosition(next_angle);
             var bomb = CreateBomb();
-            bomb.Position = GetBombPosition(last_angle);
-            bomb.Delay = i * delay_per;
-            bomb.Coroutine = RunBomb(bomb);
+            bomb.GlobalPosition = position;
+            bomb.StartBomb(FocusEvent);
+
+            yield return new WaitForSeconds(delay_per);
         }
 
         WaitForBombs();
@@ -78,81 +54,31 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
         yield return null;
     }
 
-    private Coroutine WaitForBombs()
+    private void WaitForBombs()
     {
-        cr_clear = this.StartCoroutine(Cr, nameof(WaitForBombs));
-        return cr_clear;
+        Coroutine.Stop(cr_clear);
+        cr_clear = this.StartCoroutine(Cr);
+
         IEnumerator Cr()
         {
             foreach (var bomb in bombs.ToList())
             {
-                yield return bomb.Coroutine;
+                while (bomb.Running)
+                {
+                    yield return null;
+                }
             }
 
             Clear();
         }
     }
 
-    private Coroutine RunBomb(Bomb bomb)
+    private SkillCheckBomb CreateBomb()
     {
-        return this.StartCoroutine(Cr, $"bomb_{id++}");
-        IEnumerator Cr()
-        {
-            yield return new WaitForSeconds(bomb.Delay);
-
-            bomb.ProjectileNode.GlobalPosition = bomb.Position;
-
-            bomb.BombNode.RotationDegrees = Vector3.Up * rng.RandfRange(0f, 360f);
-            bomb.BombNode.GlobalPosition = bomb.Position;
-            bomb.BombNode.Show();
-
-            var ps_spores = PlaySporesPS(bomb.Position);
-
-            yield return bomb.BombNode.AnimateShow();
-
-            bomb.BombNode.AnimateIdleFast();
-
-            yield return new WaitForSeconds(1f);
-
-            ps_spores.Stop(true);
-
-            PlayExplodePS(bomb.Position);
-            yield return bomb.BombNode.AnimateExplode();
-
-            var cursor = FocusEvent.Cursor;
-            yield return bomb.ProjectileNode.WaitForMoveTowardsCursor(0.5f, cursor);
-
-            FocusEvent.Cursor.HurtFocusValuePercentage(0.1f);
-
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
-
-    private Bomb CreateBomb()
-    {
-        var bomb = new Bomb
-        {
-            BombNode = CreateBombNode(),
-            ProjectileNode = CreateProjectileNode(),
-        };
-
+        var bomb = BombPrefab.Instantiate<SkillCheckBomb>();
+        bomb.SetParent(this);
         bombs.Add(bomb);
-
         return bomb;
-    }
-
-    private SkillCheckBomb CreateBombNode()
-    {
-        var node = BombPrefab.Instantiate<SkillCheckBomb>();
-        node.SetParent(this);
-        return node;
-    }
-
-    private SkillCheckBombProjectile CreateProjectileNode()
-    {
-        var node = ProjectilePrefab.Instantiate<SkillCheckBombProjectile>();
-        node.SetParent(this);
-        return node;
     }
 
     private Vector3 GetBombPosition(float angle)
@@ -163,23 +89,5 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
         var dir = Vector3.Forward.Rotated(Vector3.Up, Mathf.DegToRad(angle));
         var position = center + dir * radius * radius_mul;
         return position;
-    }
-
-    private void PlayExplodePS(Vector3 position)
-    {
-        var ps = PsExplode.Instantiate<ParticleEffectGroup>();
-        ps.SetParent(Scene.Current);
-        ps.GlobalPosition = position;
-        ps.Play(true);
-    }
-
-    private ParticleEffectGroup PlaySporesPS(Vector3 position)
-    {
-        var ps = PsSpores.Instantiate<ParticleEffectGroup>();
-        ps.SetParent(Scene.Current);
-        ps.GlobalPosition = position;
-        ps.Play();
-        effects.Add(ps);
-        return ps;
     }
 }

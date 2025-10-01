@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3em6nli2qht2"]
+[gd_scene load_steps=20 format=3 uid="uid://d3em6nli2qht2"]
 
 [ext_resource type="Script" uid="uid://8huy3rb2n641" path="res://FocusSkillCheck/SkillCheckBomb.cs" id="1_fx42g"]
+[ext_resource type="PackedScene" uid="uid://v7ak1ykvbmjp" path="res://Prefabs/FocusSkillChecks/skill_check_bomb_projectile.tscn" id="2_qdn1e"]
 [ext_resource type="Material" uid="uid://bs7gnasxvanql" path="res://Materials/PS_Yellow.tres" id="2_s0l0h"]
 [ext_resource type="AudioStream" uid="uid://duovipuu4q1bh" path="res://Sounds/Raw/sfx_balloon_pop_001.wav" id="3_l8i6u"]
 [ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="3_s0l0h"]
 [ext_resource type="AudioStream" uid="uid://5hlqxufdxy21" path="res://Sounds/Raw/sfx_pop.wav" id="5_s0l0h"]
+[ext_resource type="PackedScene" uid="uid://djgm5yrcurmjt" path="res://Prefabs/Effects/ps_mushroom_spores.tscn" id="7_c5d3f"]
+[ext_resource type="PackedScene" uid="uid://b1s4wbsn8d1ly" path="res://Prefabs/Effects/ps_mushroom_explode.tscn" id="8_em400"]
 
 [sub_resource type="Animation" id="Animation_l8i6u"]
 length = 0.001
@@ -258,9 +261,12 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("5_s0l0h")
 
-[node name="SkillCheckBomb" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
+[node name="SkillCheckBomb" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "PsIdle", "PsExplode")]
 script = ExtResource("1_fx42g")
 AnimationPlayer = NodePath("AnimationPlayer")
+ProjectilePrefab = ExtResource("2_qdn1e")
+PsIdle = NodePath("PsMushroomSpores")
+PsExplode = NodePath("PsMushroomExplode")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -295,3 +301,8 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_s0l0h")
 volume_db = -5.0
 bus = &"SFX"
+
+[node name="PsMushroomSpores" parent="." instance=ExtResource("7_c5d3f")]
+PlayOnReady = true
+
+[node name="PsMushroomExplode" parent="." instance=ExtResource("8_em400")]

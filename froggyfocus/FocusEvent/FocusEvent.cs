@@ -199,7 +199,7 @@ public partial class FocusEvent : Node3D
             // Skill check
             var has_override_skill_check = OverrideSkillCheck != null;
             var has_skill_checks = Target.Info.SkillChecks?.Count > 0 || has_override_skill_check;
-            var is_skill_check = rng.Randf() < 0.5f;
+            var is_skill_check = true || rng.Randf() < 0.5f;
             if (has_skill_checks && is_skill_check)
             {
                 Target.StopMoving();

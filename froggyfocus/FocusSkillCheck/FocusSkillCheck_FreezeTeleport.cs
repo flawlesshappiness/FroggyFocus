@@ -17,7 +17,7 @@ public partial class FocusSkillCheck_FreezeTeleport : FocusSkillCheck
         Scene.PauseLock.SetLock(id, true);
 
         SfxFreeze.Play();
-        yield return new WaitForSecondsUnscaled(0.5f);
+        yield return new WaitForSecondsUnscaled(rng.RandfRange(0.2f, 0.5f));
         SfxFreeze.Stop();
 
         Target.GlobalPosition = Target.GetRandomPosition();

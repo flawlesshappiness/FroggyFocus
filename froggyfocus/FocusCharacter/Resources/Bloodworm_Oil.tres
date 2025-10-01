@@ -14,6 +14,7 @@ MoneyMultiplier = 0.5
 MoveSpeedRange = Vector2(0.25, 1)
 MoveLengthRange = Vector2(0.25, 0.5)
 MoveDelayRange = Vector2(0, 0)
+MoveType = 0
 SkillChecks = Array[int]([10])
 Tags = Array[int]([0, 3, 10])
 metadata/_custom_type_script = "uid://buqirimb2mf5"
