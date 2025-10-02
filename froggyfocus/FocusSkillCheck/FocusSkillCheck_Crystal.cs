@@ -1,159 +1,78 @@
 using Godot;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 public partial class FocusSkillCheck_Crystal : FocusSkillCheck
 {
     [Export]
-    public Vector2 DelayRange;
+    public Vector2I Count;
 
     [Export]
-    public Vector2 CrystalDistanceRange;
+    public Vector2 DotDistance;
 
     [Export]
-    public Vector2 ProjectileSpeedRange;
+    public PackedScene DotPrefab;
 
-    [Export]
-    public Node3D CrystalTemplate;
-
-    [Export]
-    public Node3D ProjectileTemplate;
-
-    [Export]
-    public AudioStreamPlayer3D SfxShoot;
-
-    private bool recoil;
-    private Vector3 first_projectile_direction;
     private Coroutine cr_run;
-    private List<Node3D> created_objects = new();
-
-    public override void _Ready()
-    {
-        base._Ready();
-        CrystalTemplate.Hide();
-        ProjectileTemplate.Hide();
-    }
+    private List<SkillCheckDot> dots = new();
 
     public override void Clear()
     {
         base.Clear();
-        created_objects.ForEach(x => x.QueueFree());
-        created_objects.Clear();
+        dots.ForEach(x => x.QueueFree());
+        dots.Clear();
         Coroutine.Stop(cr_run);
     }
 
     protected override IEnumerator Run()
     {
+        yield return base.Run();
         cr_run = RunCr();
-        yield return WaitForRecoilCr();
-        yield return RecoilTargetCr();
-    }
-
-    private IEnumerator RecoilTargetCr()
-    {
-        var start = Target.GlobalPosition;
-        var end = start - first_projectile_direction * 0.5f;
-        var curve = Curves.EaseOutQuad;
-        yield return LerpEnumerator.Lerp01(0.25f, f =>
-        {
-            Target.GlobalPosition = start.Lerp(end, curve.Evaluate(f));
-        });
-    }
-
-    private IEnumerator WaitForRecoilCr()
-    {
-        recoil = false;
-        while (!recoil) yield return null;
     }
 
     private Coroutine RunCr()
     {
-        var count_crystals = 1;
-        var crystals = CreateCrystals(count_crystals);
-        var projectile = CreateProjectile();
-        var speed = ProjectileSpeedRange.Range(Difficulty);
-        var max_duration = 0.8f;
-
-        first_projectile_direction = projectile.GlobalPosition.DirectionTo(crystals.First().GlobalPosition).Normalized();
-
         return this.StartCoroutine(Cr, nameof(RunCr));
         IEnumerator Cr()
         {
-            yield return new WaitForSeconds(DelayRange.Range(Difficulty));
+            var count = Count.Range(Difficulty);
 
-            recoil = true;
-            projectile.Show();
-            SfxShoot.Play();
-
-            foreach (var crystal in crystals)
+            for (int i = 0; i < count; i++)
             {
-                var start = projectile.GlobalPosition;
-                var end = crystal.GlobalPosition;
-                var duration = Mathf.Min(start.DistanceTo(end) / speed, max_duration);
-                yield return LerpEnumerator.Lerp01(duration, f =>
-                {
-                    projectile.GlobalPosition = start.Lerp(end, f);
-                });
+                var dot = CreateDot();
+                dot.GlobalPosition = RandomPosition();
+                dot.RotationDegrees = new Vector3(0f, rng.RandfRange(0f, 90f), 0f);
+                dot.StartDot(new SkillCheckDot.Settings { FocusEvent = FocusEvent });
 
-                crystal.AnimateHide();
+                yield return new WaitForSeconds(rng.RandfRange(0.1f, 0.2f));
             }
 
-            var start_final = projectile.GlobalPosition;
-            var end_final = FocusEvent.Cursor.GlobalPosition;
-            var duration_final = Mathf.Min(start_final.DistanceTo(end_final) / speed, max_duration);
-            yield return LerpEnumerator.Lerp01(duration_final, f =>
+            foreach (var dot in dots)
             {
-                projectile.GlobalPosition = start_final.Lerp(FocusEvent.Cursor.GlobalPosition, f);
-            });
-
-            projectile.Hide();
-
-            yield return new WaitForSeconds(0.05f);
-
-            FocusEvent.Cursor.HurtFocusValuePercentage(0.2f);
+                while (dot.IsRunning)
+                {
+                    yield return null;
+                }
+            }
 
             Clear();
         }
     }
 
-    private Vector3 RandomCrystalPosition(Vector3 center, float distance)
+    private Vector3 RandomPosition()
     {
+        var center = Target.GlobalPosition;
         var position = Target.GetRandomPosition();
-        return center + center.DirectionTo(position).Normalized() * distance;
+        var dir = center.DirectionTo(position).Normalized();
+        var distance = DotDistance.Range(rng.RandfRange(0f, 1f));
+        return center + dir * distance;
     }
 
-    private List<SkillCheckCrystalSpike> CreateCrystals(int count)
+    private SkillCheckDot CreateDot()
     {
-        var list = new List<SkillCheckCrystalSpike>();
-        var position = Target.GlobalPosition;
-        var distance = CrystalDistanceRange.Range(Difficulty);
-        for (int i = 0; i < count; i++)
-        {
-            position = RandomCrystalPosition(position, distance);
-            var node = CreateCrystal(position);
-            node.Show();
-            node.AnimateShow();
-            list.Add(node);
-        }
-        return list;
-    }
-
-    private SkillCheckCrystalSpike CreateCrystal(Vector3 position)
-    {
-        var node = CrystalTemplate.Duplicate() as SkillCheckCrystalSpike;
-        node.SetParent(CrystalTemplate.GetParent());
-        node.GlobalPosition = position;
-        created_objects.Add(node);
-        return node;
-    }
-
-    private Node3D CreateProjectile()
-    {
-        var node = ProjectileTemplate.Duplicate() as Node3D;
-        node.SetParent(ProjectileTemplate.GetParent());
-        node.GlobalPosition = FocusEvent.Target.GlobalPosition;
-        created_objects.Add(node);
-        return node;
+        var dot = DotPrefab.Instantiate<SkillCheckDot>();
+        dot.SetParent(this);
+        dots.Add(dot);
+        return dot;
     }
 }

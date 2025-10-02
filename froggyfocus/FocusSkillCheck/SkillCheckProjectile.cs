@@ -34,6 +34,7 @@ public partial class SkillCheckProjectile : Node3D
     public bool IsHit { get; private set; }
     protected float DistanceToCursor => GlobalPosition.DistanceTo(settings.FocusEvent.Cursor.GlobalPosition);
 
+    private bool going_to_player;
     private float time_start;
     private Settings settings;
 
@@ -46,20 +47,27 @@ public partial class SkillCheckProjectile : Node3D
     public class Settings
     {
         public FocusEvent FocusEvent { get; set; }
+        public List<Vector3> HitPositions { get; set; } = new();
         public FocusCursor Cursor => FocusEvent.Cursor;
         public FocusCursorShield Shield => Cursor.Shield;
         public FocusTarget Target => FocusEvent.Target;
-        public List<Vector3> HitPositions { get; private set; } = new();
     }
 
     public Coroutine StartProjectile(Settings settings)
     {
         this.settings = settings;
+        going_to_player = false;
         time_start = GameTime.Time;
         return this.StartCoroutine(Cr, "projectile");
 
         IEnumerator Cr()
         {
+            foreach (var position in settings.HitPositions)
+            {
+                yield return WaitForMoveTowardsPosition(position);
+            }
+
+            going_to_player = true;
             yield return WaitForMoveTowardsPlayer();
             yield return new WaitForSeconds(0.05f); // grace period
             ValidatePlayerDistance(true);
@@ -121,6 +129,7 @@ public partial class SkillCheckProjectile : Node3D
     private void ValidatePlayerDistance(bool can_hurt)
     {
         if (IsHit) return;
+        if (!going_to_player) return;
 
         var shield_radius = Radius + settings.Cursor.Radius;
         var near_shield = DistanceToCursor < shield_radius;
