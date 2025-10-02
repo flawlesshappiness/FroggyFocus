@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://baff0vi363x4j"]
+
+[ext_resource type="Script" uid="uid://d313khlkrgmse" path="res://FocusSkillCheck/FocusSkillCheck_Crystal.cs" id="1_pbqv4"]
+[ext_resource type="PackedScene" uid="uid://dll7a3fcy5muh" path="res://Prefabs/FocusSkillChecks/skill_check_glitch_dot.tscn" id="2_pnkow"]
+
+[node name="GlitchDot" type="Node3D"]
+script = ExtResource("1_pbqv4")
+Count = Vector2i(3, 8)
+DotDistance = Vector2(0.2, 3)
+DotPrefab = ExtResource("2_pnkow")
+Type = 14

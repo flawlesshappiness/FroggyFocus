@@ -14,4 +14,5 @@ public enum FocusSkillCheckType
     Garbage,
     GlitchTeleport,
     GlitchBombs,
+    GlitchDot,
 }

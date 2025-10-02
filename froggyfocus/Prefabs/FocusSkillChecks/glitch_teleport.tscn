@@ -20,6 +20,6 @@ visible = false
 
 [node name="Label3D" type="Label3D" parent="ErrorLabel"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.0132222, 0)
-modulate = Color(0.8, 0.16, 0.16, 1)
+modulate = Color(1, 0.833333, 0, 1)
 text = "ERR_POS_NOT_FOUND"
 outline_size = 0
