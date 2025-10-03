@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b2gamstk3nwpo"]
+[gd_scene load_steps=31 format=3 uid="uid://b2gamstk3nwpo"]
 
 [ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_iviy3"]
@@ -7,40 +7,57 @@
 [ext_resource type="Resource" uid="uid://btdwynpenhki5" path="res://Weather/Resources/Glitch.tres" id="3_ossgx"]
 [ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="4_bxtix"]
 [ext_resource type="PackedScene" uid="uid://d2xrgps5dughf" path="res://Prefabs/Water/water_code.tscn" id="5_ttjhv"]
-[ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Code_Wireframe.tres" id="8_ossgx"]
+[ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Code_Wireframe_Green.tres" id="8_ossgx"]
+[ext_resource type="PackedScene" uid="uid://x1aj06qpdngg" path="res://Prefabs/Objects/color_wall_block.tscn" id="9_ijwup"]
 [ext_resource type="Script" uid="uid://dm8guta6iefk5" path="res://Misc/MatrixLabel.cs" id="9_owccc"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="9_qpaxj"]
+[ext_resource type="PackedScene" uid="uid://ck1j2yhhjoijb" path="res://Prefabs/Objects/glitch_platform_4x4x1.tscn" id="9_xtd18"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="10_8f2ml"]
+[ext_resource type="PackedScene" uid="uid://raniiec717ky" path="res://Prefabs/Objects/glitch_platform_8x8x1.tscn" id="10_ylbj5"]
 [ext_resource type="Resource" uid="uid://hw17iw32hgjy" path="res://FocusEvent/Resources/Glitch_Legs.tres" id="11_8f2ml"]
 [ext_resource type="Resource" uid="uid://dfngo68v7l0gi" path="res://FocusEvent/Resources/Glitch_Flying.tres" id="12_oj01c"]
 [ext_resource type="Resource" uid="uid://cut7ng686j6fv" path="res://FocusEvent/Resources/Glitch_Worm.tres" id="13_12xjm"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="15_wuacj"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_ttjhv"]
-material = ExtResource("4_bxtix")
-flip_faces = true
+[ext_resource type="PackedScene" uid="uid://chcgrn07vcfvv" path="res://Prefabs/Objects/color_button.tscn" id="16_wuacj"]
+[ext_resource type="PackedScene" uid="uid://dy7rt7h4kmi85" path="res://Prefabs/Objects/color_wall_platform.tscn" id="20_jfqyu"]
+[ext_resource type="PackedScene" uid="uid://1jqtwnd6m5f1" path="res://Prefabs/Objects/color_wall_tall.tscn" id="21_546co"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_iviy3"]
-vertices = PackedVector3Array(0.75, 0.5, 1.5, 1.5, 0.5, 0.75, 1.5, 0.5, -0.75, -0.75, 0.5, -1.5, -1.5, 0.5, -0.75, -1.25, 0.5, 1.25, 0.75, 0.5, -1.5)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 5), PackedInt32Array(2, 5, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 6, 2)]
+vertices = PackedVector3Array(-1.5, 0.5, -6.5, -1.5, 0.5, -3.5, 1.5, 0.5, -3.5, 1.5, 0.5, -6.5, 4.5, 0.5, -3.5, 4.5, 0.5, 3.5, 11.5, 0.5, 3.5, 11.5, 0.5, -3.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9)]
 geometry_parsed_geometry_type = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_ossgx"]
 material = ExtResource("8_ossgx")
 size = Vector3(4, 1, 4)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_owccc"]
-size = Vector3(8, 1, 8)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ijwup"]
+size = Vector3(4, 1, 4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_qpaxj"]
-material = ExtResource("8_ossgx")
-size = Vector3(8, 1, 8)
+[sub_resource type="QuadMesh" id="QuadMesh_8f2ml"]
+size = Vector2(10, 10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ttjhv"]
+material = ExtResource("4_bxtix")
+flip_faces = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jfqyu"]
+vertices = PackedVector3Array(6.5, 7.5, -13.5, 6.5, 7.5, -10.5, 9.5, 7.5, -10.5, 9.5, 7.5, -13.5, 6.5, 7.5, -5.5, 6.5, 7.5, -2.5, 9.5, 7.5, -2.5, 9.5, 7.5, -5.5, 22.5, 11.5, -3.5, 22.5, 11.5, 3.5, 29.5, 11.5, 3.5, 29.5, 11.5, -3.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 14.5, 11.5, -1.5, 14.5, 11.5, 1.5, 17.5, 11.5, 1.5, 17.5, 11.5, -1.5, 6.5, 3.5, 2.5, 6.5, 3.5, 5.5, 9.5, 3.5, 5.5, 9.5, 3.5, 2.5, 6.5, 3.5, 10.5, 6.5, 3.5, 13.5, 9.5, 3.5, 13.5, 9.5, 3.5, 10.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25)]
+geometry_parsed_geometry_type = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpaxj"]
 size = Vector3(8, 1, 8)
 
-[sub_resource type="QuadMesh" id="QuadMesh_8f2ml"]
-size = Vector2(10, 10)
+[sub_resource type="NavigationMesh" id="NavigationMesh_546co"]
+vertices = PackedVector3Array(-13.5, 0.5, -13.5, -13.5, 0.5, -10.5, -10.5, 0.5, -10.5, -10.5, 0.5, -13.5, -33.5, 0.5, -3.5, -33.5, 0.5, 3.5, -26.5, 0.5, 3.5, -26.5, 0.5, -3.5, -13.5, 0.5, -1.5, -13.5, 0.5, 1.5, -10.5, 0.5, 1.5, -10.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, -13.5, 0.5, 10.5, -13.5, 0.5, 13.5, -10.5, 0.5, 13.5, -10.5, 0.5, 10.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17)]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_cpcb0"]
+vertices = PackedVector3Array(-1.5, 0.5, -13.5, -1.5, 0.5, -10.5, 1.5, 0.5, -10.5, 1.5, 0.5, -13.5, -13.5, 0.5, -1.5, -13.5, 0.5, 1.5, -10.5, 0.5, 1.5, -10.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 20.5, 0.5, 4.5, 20.5, 0.5, 11.5, 27.5, 0.5, 11.5, 27.5, 0.5, 4.5, -1.5, 0.5, 14.5, -1.5, 0.5, 17.5, 1.5, 0.5, 17.5, 1.5, 0.5, 14.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17)]
+geometry_parsed_geometry_type = 1
 
 [node name="GlitchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
 script = ExtResource("1_6t126")
@@ -61,11 +78,6 @@ shadow_enabled = true
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1400, 0, 0, 0, 1400, 0, 0, 0, 1400, 0, 0, 0)
-mesh = SubResource("SphereMesh_ttjhv")
-skeleton = NodePath("../..")
-
 [node name="Water" parent="World" instance=ExtResource("5_ttjhv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
@@ -80,49 +92,7 @@ skeleton = NodePath("../..")
 [node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Platform"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Platform/StaticBody3D"]
-shape = SubResource("BoxShape3D_owccc")
-
-[node name="Platform_Legs" type="MeshInstance3D" parent="World/NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, 0)
-mesh = SubResource("BoxMesh_qpaxj")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Platform_Legs"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Platform_Legs/StaticBody3D"]
-shape = SubResource("BoxShape3D_owccc")
-
-[node name="FocusEventArea" type="Area3D" parent="World/NavigationRegion3D/Platform_Legs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("9_qpaxj")
-Id = "legs"
-metadata/_custom_type_script = "uid://dt4o28x6fcqym"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Platform_Legs/FocusEventArea"]
-shape = SubResource("BoxShape3D_qpaxj")
-
-[node name="Label3D" type="Label3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24191, -1, -6.51609)
-billboard = 2
-double_sided = false
-modulate = Color(0, 0.5, 0.0833333, 1)
-text = "A
-B
-C
-D
-E
-F
-G"
-font_size = 100
-horizontal_alignment = 0
-vertical_alignment = 2
-script = ExtResource("9_owccc")
-Size = Vector2i(1, 50)
-SpaceLength = Vector2i(2, 4)
-StringLength = Vector2i(4, 6)
-Frequency = 0.1
+shape = SubResource("BoxShape3D_ijwup")
 
 [node name="FocusEvents" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.617, 0, 113.425)
@@ -172,3 +142,629 @@ Info = ExtResource("11_8f2ml")
 [node name="WorldBug3" parent="World/WorldBugs/Legs" instance=ExtResource("15_wuacj")]
 transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121, 10.05, 0, 2.31043)
 Info = ExtResource("11_8f2ml")
+
+[node name="Dome" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1400, 0, 0, 0, 1400, 0, 0, 0, 1400, 0, 0, 0)
+mesh = SubResource("SphereMesh_ttjhv")
+skeleton = NodePath("../..")
+
+[node name="Decorations" type="Node3D" parent="World"]
+
+[node name="MatrixLabel" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.7773, -1, 1.48512)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel2" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.597, -0.999996, -17.3285)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel3" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.432, -1, -33.0608)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel4" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5742, -1, -48.8703)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel5" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95174, -1, -53.9736)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel6" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8752, -1, -53.1527)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel7" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4548, -1.00001, -47.8619)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel8" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.0423, -1.00001, -35.5368)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel9" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.0457, -1, -18.1245)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel10" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.2251, -1, -1.97761)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel11" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.0487, -1, 12.3075)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel12" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2988, -1, 27.7827)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel13" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8959, -1, 42.1809)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel14" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8959, -1, 51.1809)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel15" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04261, -1, 57.4667)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel16" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9358, -1, 56.0156)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel17" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.1115, -1, 48.1655)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel18" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.1646, -1, 32.9547)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel19" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.4373, -1, 18.2566)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 200
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="Stacks" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World/Stacks"]
+navigation_mesh = SubResource("NavigationMesh_jfqyu")
+
+[node name="GlitchPlatform_4x4x1" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+
+[node name="GlitchPlatform_4x4x2" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 4)
+
+[node name="GlitchPlatform_4x4x6" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 12)
+
+[node name="GlitchPlatform_4x4x3" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, -12)
+
+[node name="GlitchPlatform_4x4x5" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, -4)
+
+[node name="GlitchPlatform_4x4x4" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 11, 0)
+
+[node name="GlitchPlatform_8x8x1" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 11, 0)
+
+[node name="FocusEventArea2" type="Area3D" parent="World/Stacks/NavigationRegion3D/GlitchPlatform_8x8x1"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "wings"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Stacks/NavigationRegion3D/GlitchPlatform_8x8x1/FocusEventArea2"]
+shape = SubResource("BoxShape3D_qpaxj")
+
+[node name="ColorBlocks" type="Node3D" parent="World/Stacks"]
+
+[node name="ColorWall_Block" parent="World/Stacks/ColorBlocks" instance=ExtResource("9_ijwup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -1, 0)
+
+[node name="ColorWall_Block2" parent="World/Stacks/ColorBlocks" instance=ExtResource("9_ijwup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 0)
+Type = 1
+
+[node name="ColorWall_Block3" parent="World/Stacks/ColorBlocks" instance=ExtResource("9_ijwup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, 0)
+Type = 2
+
+[node name="ColorButton" parent="World/Stacks/ColorBlocks" instance=ExtResource("16_wuacj")]
+Type = 1
+
+[node name="ColorButton2" parent="World/Stacks/ColorBlocks" instance=ExtResource("16_wuacj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 12)
+Type = 2
+
+[node name="ColorButton3" parent="World/Stacks/ColorBlocks" instance=ExtResource("16_wuacj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, -12)
+
+[node name="Bridges" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World/Bridges"]
+navigation_mesh = SubResource("NavigationMesh_546co")
+
+[node name="GlitchPlatform_4x4x1" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+
+[node name="GlitchPlatform_4x4x4" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="GlitchPlatform_4x4x2" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
+
+[node name="GlitchPlatform_4x4x3" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
+
+[node name="GlitchPlatform_8x8x1" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+
+[node name="FocusEventArea2" type="Area3D" parent="World/Bridges/NavigationRegion3D/GlitchPlatform_8x8x1"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "worm"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bridges/NavigationRegion3D/GlitchPlatform_8x8x1/FocusEventArea2"]
+shape = SubResource("BoxShape3D_qpaxj")
+
+[node name="ColorBlocks" type="Node3D" parent="World/Bridges"]
+
+[node name="ColorWall_Block2" parent="World/Bridges/ColorBlocks" instance=ExtResource("20_jfqyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="ColorWall_Block6" parent="World/Bridges/ColorBlocks" instance=ExtResource("20_jfqyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0)
+Type = 1
+
+[node name="ColorButton" parent="World/Bridges/ColorBlocks" instance=ExtResource("16_wuacj")]
+
+[node name="ColorButton2" parent="World/Bridges/ColorBlocks" instance=ExtResource("16_wuacj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
+Type = 1
+
+[node name="ColorButton3" parent="World/Bridges/ColorBlocks" instance=ExtResource("16_wuacj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
+Type = 2
+
+[node name="ColorWall_Block" parent="World/Bridges/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2)
+Type = 1
+
+[node name="ColorWall_Block3" parent="World/Bridges/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14, 0, 0)
+Type = 2
+
+[node name="ColorWall_Block4" parent="World/Bridges/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0, 2)
+
+[node name="Doors" type="Node3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World/Doors"]
+navigation_mesh = SubResource("NavigationMesh_cpcb0")
+
+[node name="GlitchPlatform_4x4x1" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+
+[node name="GlitchPlatform_4x4x6" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+
+[node name="GlitchPlatform_4x4x5" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="GlitchPlatform_4x4x4" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 12)
+
+[node name="GlitchPlatform_8x8x1" parent="World/Doors/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 8)
+
+[node name="FocusEventArea2" type="Area3D" parent="World/Doors/NavigationRegion3D/GlitchPlatform_8x8x1"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "legs"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Doors/NavigationRegion3D/GlitchPlatform_8x8x1/FocusEventArea2"]
+shape = SubResource("BoxShape3D_qpaxj")
+
+[node name="ColorBlocks" type="Node3D" parent="World/Doors"]
+
+[node name="ColorWall_Block2" parent="World/Doors/ColorBlocks" instance=ExtResource("20_jfqyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+Type = 1
+
+[node name="ColorWall_Block9" parent="World/Doors/ColorBlocks" instance=ExtResource("20_jfqyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 4)
+
+[node name="ColorWall_Block18" parent="World/Doors/ColorBlocks" instance=ExtResource("20_jfqyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 8)
+Type = 1
+
+[node name="ColorWall_Block13" parent="World/Doors/ColorBlocks" instance=ExtResource("20_jfqyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 8)
+
+[node name="ColorWall_Block3" parent="World/Doors/ColorBlocks" instance=ExtResource("20_jfqyu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="ColorWall_Block4" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="ColorWall_Block6" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 0, 8)
+Type = 2
+
+[node name="ColorWall_Block8" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9, 0, 0)
+Type = 1
+
+[node name="ColorWall_Block14" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -9, 0, 4)
+Type = 1
+
+[node name="ColorWall_Block15" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -6, 0, 6)
+Type = 1
+
+[node name="ColorWall_Block16" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 6, 0, 6)
+
+[node name="ColorWall_Block17" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 10, 0, 6)
+
+[node name="ColorWall_Block7" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 8)
+Type = 2
+
+[node name="ColorWall_Block5" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+Type = 1
+
+[node name="ColorWall_Block11" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 12)
+Type = 2
+
+[node name="ColorWall_Block12" parent="World/Doors/ColorBlocks" instance=ExtResource("21_546co")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -4, 0, 12)
+Type = 2
+
+[node name="ColorButton" parent="World/Doors/ColorBlocks" instance=ExtResource("16_wuacj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="ColorButton3" parent="World/Doors/ColorBlocks" instance=ExtResource("16_wuacj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+Type = 2
+
+[node name="ColorButton2" parent="World/Doors/ColorBlocks" instance=ExtResource("16_wuacj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 12)
+Type = 1

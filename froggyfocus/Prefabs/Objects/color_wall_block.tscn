@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://x1aj06qpdngg"]
+
+[ext_resource type="Script" uid="uid://4hjwti814kr" path="res://Objects/ColorWall.cs" id="1_agrq0"]
+[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Code_Wireframe_Red.tres" id="2_7l231"]
+[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Code_Wireframe_Yellow.tres" id="3_w8svk"]
+[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Code_Wireframe_Blue.tres" id="4_avck0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_agrq0"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_agrq0"]
+size = Vector3(4, 4, 4)
+
+[node name="ColorWall_Block" type="Node3D" node_paths=PackedStringArray("MeshInstance", "Collider")]
+script = ExtResource("1_agrq0")
+RedMaterial = ExtResource("2_7l231")
+YellowMaterial = ExtResource("3_w8svk")
+BlueMaterial = ExtResource("4_avck0")
+MeshInstance = NodePath("MeshInstance3D")
+Collider = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_agrq0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_agrq0")
+surface_material_override/0 = ExtResource("2_7l231")
