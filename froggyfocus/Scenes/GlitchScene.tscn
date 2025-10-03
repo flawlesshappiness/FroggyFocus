@@ -130,18 +130,49 @@ surface_material_override/0 = ExtResource("4_bxtix")
 [node name="WorldBugs" type="Node3D" parent="World"]
 
 [node name="Legs" type="Node3D" parent="World/WorldBugs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 32)
 
 [node name="WorldBug" parent="World/WorldBugs/Legs" instance=ExtResource("15_wuacj")]
-transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, 6.24253, 0, 2.72066)
+transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, -1.75747, 0, 2.72066)
 Info = ExtResource("11_8f2ml")
 
 [node name="WorldBug2" parent="World/WorldBugs/Legs" instance=ExtResource("15_wuacj")]
-transform = Transform3D(0.196887, 0, -0.980426, 0, 1, 0, 0.980426, 0, 0.196887, 7.35422, 0, -2.26262)
+transform = Transform3D(0.196887, 0, -0.980426, 0, 1, 0, 0.980426, 0, 0.196887, -0.645781, 0, -2.26262)
 Info = ExtResource("11_8f2ml")
 
 [node name="WorldBug3" parent="World/WorldBugs/Legs" instance=ExtResource("15_wuacj")]
-transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121, 10.05, 0, 2.31043)
+transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121, 2.05, 0, 2.31043)
 Info = ExtResource("11_8f2ml")
+
+[node name="Worm" type="Node3D" parent="World/WorldBugs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 0)
+
+[node name="WorldBug" parent="World/WorldBugs/Worm" instance=ExtResource("15_wuacj")]
+transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, -1.75747, 0, 2.72066)
+Info = ExtResource("13_12xjm")
+
+[node name="WorldBug2" parent="World/WorldBugs/Worm" instance=ExtResource("15_wuacj")]
+transform = Transform3D(0.196887, 0, -0.980426, 0, 1, 0, 0.980426, 0, 0.196887, -0.645781, 0, -2.26262)
+Info = ExtResource("13_12xjm")
+
+[node name="WorldBug3" parent="World/WorldBugs/Worm" instance=ExtResource("15_wuacj")]
+transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121, 2.05, 0, 2.31043)
+Info = ExtResource("13_12xjm")
+
+[node name="Flying" type="Node3D" parent="World/WorldBugs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 11, 0)
+
+[node name="WorldBug" parent="World/WorldBugs/Flying" instance=ExtResource("15_wuacj")]
+transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, -1.75747, 0, 2.72066)
+Info = ExtResource("12_oj01c")
+
+[node name="WorldBug2" parent="World/WorldBugs/Flying" instance=ExtResource("15_wuacj")]
+transform = Transform3D(0.196887, 0, -0.980426, 0, 1, 0, 0.980426, 0, 0.196887, -0.645781, 0, -2.26262)
+Info = ExtResource("12_oj01c")
+
+[node name="WorldBug3" parent="World/WorldBugs/Flying" instance=ExtResource("15_wuacj")]
+transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121, 2.05, 0, 2.31043)
+Info = ExtResource("12_oj01c")
 
 [node name="Dome" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1400, 0, 0, 0, 1400, 0, 0, 0, 1400, 0, 0, 0)
