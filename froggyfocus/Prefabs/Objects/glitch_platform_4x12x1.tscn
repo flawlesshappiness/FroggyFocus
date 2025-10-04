@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://7wjk30vxt4g7"]
+
+[ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Code_Wireframe_Green.tres" id="1_41l4y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ossgx"]
+material = ExtResource("1_41l4y")
+size = Vector3(4, 1, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ijwup"]
+size = Vector3(4, 1, 12)
+
+[node name="GlitchPlatform_4x12x1" type="Node3D"]
+
+[node name="Platform3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_ossgx")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ijwup")

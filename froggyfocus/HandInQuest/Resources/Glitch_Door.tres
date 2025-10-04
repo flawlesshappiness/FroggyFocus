@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://nrulkh5rud8y"]
+
+[ext_resource type="Resource" uid="uid://cm142o8b11iqn" path="res://FocusCharacter/Resources/Error_Worm.tres" id="1_4garv"]
+[ext_resource type="Resource" uid="uid://boussnosvemgu" path="res://FocusCharacter/Resources/Error_Legs.tres" id="2_yrb7q"]
+[ext_resource type="Resource" uid="uid://cy288cgujhhst" path="res://FocusCharacter/Resources/Error_Flying.tres" id="3_g6h4l"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="3_yrb7q"]
+
+[resource]
+script = ExtResource("3_yrb7q")
+Id = "glitch_door"
+RequestPreviewHidden = false
+PossibleRequests = Array[Object]([ExtResource("1_4garv"), ExtResource("2_yrb7q"), ExtResource("3_g6h4l")])
+CountRange = Vector2i(2, 4)
+ClaimCountToUnlock = 10
+HasItemUnlock = false
+ItemUnlock = 0
+CooldownInSeconds = 600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"
