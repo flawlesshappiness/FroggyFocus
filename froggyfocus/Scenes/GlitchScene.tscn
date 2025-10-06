@@ -181,7 +181,7 @@ skeleton = NodePath("../..")
 [node name="Decorations" type="Node3D" parent="World"]
 
 [node name="MatrixLabel" type="Label3D" parent="World/Decorations"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.7773, -1, 1.48512)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150.777, -1, 0.48512)
 billboard = 2
 double_sided = false
 modulate = Color(0, 0.5, 0.0833333, 1)
@@ -192,7 +192,910 @@ D
 E
 F
 G"
-font_size = 200
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel22" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.558, -1, -20.6743)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel23" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.303, -1, -50.903)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel24" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.7799, -1, -89.6406)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel25" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.45, -1, -110.857)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel26" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7194, -1.00001, -126.593)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel27" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8789, -1, -128.26)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel28" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.8278, -1, -111.774)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel29" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.6321, -1, -84.2369)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel30" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.913, -1, -51.9631)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel31" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 126.025, -1, -16.126)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel32" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.679, -1, 12.2054)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel33" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.284, -1, 50.1487)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel34" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.974, -1, 74.7975)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel35" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.6063, -1, 99.4558)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel36" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.5589, -1, 114.962)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel37" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1275, -1, 123.119)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel38" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3673, -1, 122.634)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel39" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4666, -1, 115.975)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel40" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.3283, -1, 97.382)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel41" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0941, -1, 75.2899)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel42" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.375, -1, 36.0018)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel43" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.453, -1, 48.3465)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel44" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.25, -1, 18.3755)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel2" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.369, -1, -45.1171)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel3" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.414, -1, -75.6774)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel4" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.791, -1, -110.593)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel5" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.0811, -0.999992, -135.765)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel6" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.26248, -0.999992, -149.586)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel7" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.5213, -0.999992, -132.603)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel8" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.2696, -0.999992, -105.498)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel9" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.481, -0.999992, -75.1396)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel10" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130.121, -0.999992, -37.5834)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel11" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.254, -0.999992, -1.55624)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel12" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 124.016, -0.999992, 33.0583)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel13" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.176, -0.999992, 67.8832)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel14" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.1947, -0.999985, 95.968)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel15" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.5281, -0.999985, 118.612)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel16" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.48, -0.999985, 133.834)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel17" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95665, -0.999985, 141.175)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel18" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1617, -0.999985, 134.757)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel19" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.7158, -0.999985, 120.48)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel20" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.5387, -0.999985, 97.7703)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("9_owccc")
+Size = Vector2i(1, 50)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel21" type="Label3D" parent="World/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.048, -0.999985, 72.1171)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 400
 horizontal_alignment = 0
 vertical_alignment = 2
 script = ExtResource("9_owccc")
