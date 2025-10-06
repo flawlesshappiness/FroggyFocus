@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b2gamstk3nwpo"]
+[gd_scene load_steps=31 format=3 uid="uid://b2gamstk3nwpo"]
 
 [ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_iviy3"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://raniiec717ky" path="res://Prefabs/Objects/glitch_platform_8x8x1.tscn" id="10_ylbj5"]
 [ext_resource type="Resource" uid="uid://hw17iw32hgjy" path="res://FocusEvent/Resources/Glitch_Legs.tres" id="11_8f2ml"]
 [ext_resource type="Resource" uid="uid://dfngo68v7l0gi" path="res://FocusEvent/Resources/Glitch_Flying.tres" id="12_oj01c"]
+[ext_resource type="Resource" uid="uid://dy3k8ehj2rflo" path="res://FocusEvent/Resources/Glitch_BugOfData.tres" id="13_7ck8m"]
 [ext_resource type="Resource" uid="uid://cut7ng686j6fv" path="res://FocusEvent/Resources/Glitch_Worm.tres" id="13_12xjm"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="15_wuacj"]
 [ext_resource type="PackedScene" uid="uid://chcgrn07vcfvv" path="res://Prefabs/Objects/color_button.tscn" id="16_wuacj"]
@@ -88,6 +89,16 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 mesh = SubResource("QuadMesh_8f2ml")
 surface_material_override/0 = ExtResource("4_bxtix")
 
+[node name="mantis" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
+visible = false
+Id = "mantis"
+Info = ExtResource("13_7ck8m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/mantis"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+mesh = SubResource("QuadMesh_8f2ml")
+surface_material_override/0 = ExtResource("4_bxtix")
+
 [node name="Flying" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
 visible = false
 Id = "flying"
@@ -111,7 +122,7 @@ surface_material_override/0 = ExtResource("4_bxtix")
 [node name="WorldBugs" type="Node3D" parent="World"]
 
 [node name="Legs" type="Node3D" parent="World/WorldBugs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 41)
 
 [node name="WorldBug" parent="World/WorldBugs/Legs" instance=ExtResource("15_wuacj")]
 transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, -1.75747, 0, 2.72066)
@@ -126,7 +137,7 @@ transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121
 Info = ExtResource("11_8f2ml")
 
 [node name="Worm" type="Node3D" parent="World/WorldBugs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 0)
 
 [node name="WorldBug" parent="World/WorldBugs/Worm" instance=ExtResource("15_wuacj")]
 transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, -1.75747, 0, 2.72066)
@@ -141,7 +152,7 @@ transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121
 Info = ExtResource("13_12xjm")
 
 [node name="Flying" type="Node3D" parent="World/WorldBugs"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 11, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 11, 0)
 
 [node name="WorldBug" parent="World/WorldBugs/Flying" instance=ExtResource("15_wuacj")]
 transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, -1.75747, 0, 2.72066)
@@ -154,6 +165,13 @@ Info = ExtResource("12_oj01c")
 [node name="WorldBug3" parent="World/WorldBugs/Flying" instance=ExtResource("15_wuacj")]
 transform = Transform3D(-0.743121, 0, 0.669157, 0, 1, 0, -0.669157, 0, -0.743121, 2.05, 0, 2.31043)
 Info = ExtResource("12_oj01c")
+
+[node name="Mantis" type="Node3D" parent="World/WorldBugs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -76)
+
+[node name="WorldBug" parent="World/WorldBugs/Mantis" instance=ExtResource("15_wuacj")]
+transform = Transform3D(0.874298, 0, 0.485389, 0, 1, 0, -0.485389, 0, 0.874298, 0, 0, -1)
+Info = ExtResource("13_7ck8m")
 
 [node name="Dome" type="MeshInstance3D" parent="World"]
 transform = Transform3D(1400, 0, 0, 0, 1400, 0, 0, 0, 1400, 0, 0, 0)
@@ -438,6 +456,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -52)
 [node name="GlitchPlatform_8x8x2" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -66)
 
+[node name="FocusEventArea2" type="Area3D" parent="World/Stairway/NavigationRegion3D/GlitchPlatform_8x8x2"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "mantis"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Stairway/NavigationRegion3D/GlitchPlatform_8x8x2/FocusEventArea2"]
+shape = SubResource("BoxShape3D_qpaxj")
+
 [node name="ColorBlocks" type="Node3D" parent="World/Stairway"]
 
 [node name="ColorButton" parent="World/Stairway/ColorBlocks" instance=ExtResource("16_wuacj")]
@@ -487,4 +515,4 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 3, -4
 [node name="Door" type="Node3D" parent="World/Stairway"]
 
 [node name="GlitchLockedDoor" parent="World/Stairway/Door" instance=ExtResource("22_cpcb0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -60)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 6, -60)

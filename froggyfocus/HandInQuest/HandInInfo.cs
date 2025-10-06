@@ -17,6 +17,9 @@ public partial class HandInInfo : Resource
     public Vector2I CountRange;
 
     [Export]
+    public bool UniqueRequests;
+
+    [Export]
     public int ClaimCountToUnlock;
 
     [Export]

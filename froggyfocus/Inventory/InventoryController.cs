@@ -58,7 +58,7 @@ public partial class InventoryController : SingletonController
         // Stars
         var start = rng.RandiRange(1, 3);
         var hotspot = Player.Instance.HasHotspot ? 1 : 0;
-        data.Stars = Mathf.Clamp(start + hotspot, 1, 5);
+        data.Stars = info.OverrideRarity > 0 ? info.OverrideRarity : Mathf.Clamp(start + hotspot, 1, 5);
 
         // Value
         var base_value = Constants.BUG_BASE_VALUE;

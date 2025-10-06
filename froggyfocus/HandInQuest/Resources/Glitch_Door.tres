@@ -11,6 +11,7 @@ Id = "glitch_door"
 RequestPreviewHidden = false
 PossibleRequests = Array[Object]([ExtResource("1_4garv"), ExtResource("2_yrb7q"), ExtResource("3_g6h4l")])
 CountRange = Vector2i(2, 4)
+UniqueRequests = true
 ClaimCountToUnlock = 10
 HasItemUnlock = false
 ItemUnlock = 0

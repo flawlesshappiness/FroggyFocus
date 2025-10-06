@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://bn6kwmsp5wc2v"]
 
-[ext_resource type="PackedScene" uid="uid://ccxpurkgtb7y3" path="res://Prefabs/Characters/error_bug_legs.tscn" id="1_64vi4"]
+[ext_resource type="PackedScene" uid="uid://cktp3ldl6mja4" path="res://Prefabs/Characters/main_bug_of_data.tscn" id="1_64vi4"]
 [ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_n0wc1"]
 
 [resource]
@@ -9,12 +9,13 @@ Scene = ExtResource("1_64vi4")
 Name = "Bug of Data"
 LocationHint = "???"
 Accessory = ""
-FocusValue = 50.0
+FocusValue = 400.0
 MoneyMultiplier = 1.0
-MoveSpeedRange = Vector2(0.8, 2)
-MoveLengthRange = Vector2(0.5, 1)
+MoveSpeedRange = Vector2(0.3, 0.3)
+MoveLengthRange = Vector2(3, 3)
 MoveDelayRange = Vector2(1, 0.5)
-MoveType = 0
+MoveType = 2
+OverrideRarity = 5
 SkillChecks = Array[int]([12, 13, 14])
 Tags = Array[int]([0])
 metadata/_custom_type_script = "uid://buqirimb2mf5"

@@ -35,6 +35,9 @@ public partial class FocusCharacterInfo : Resource
     public FocusCharacterMoveType MoveType = FocusCharacterMoveType.Walk;
 
     [Export]
+    public int OverrideRarity;
+
+    [Export]
     public Array<FocusSkillCheckType> SkillChecks;
 
     [Export]
