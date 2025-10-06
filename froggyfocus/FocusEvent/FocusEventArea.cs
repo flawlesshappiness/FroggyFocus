@@ -10,11 +10,16 @@ public partial class FocusEventArea : Area3D
     {
         base._Ready();
         BodyEntered += OnBodyEntered;
+        BodyExited += OnBodyExited;
     }
 
     private void OnBodyEntered(GodotObject body)
     {
-        var node = body as Node3D;
         GameScene.Instance.SetFocusEventId(Id);
+    }
+
+    private void OnBodyExited(GodotObject bodt)
+    {
+        GameScene.Instance.ClearFocusEventId();
     }
 }

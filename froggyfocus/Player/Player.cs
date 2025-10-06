@@ -269,6 +269,7 @@ public partial class Player : TopDownController
 
     private void StartWaitForFocusTarget()
     {
+        if (!GameScene.Instance.HasFocusEvent()) return;
         if (!GameScene.Instance.HasFocusEventTargets()) return;
 
         cr_wait_focus_target = this.StartCoroutine(Cr, nameof(StartWaitForFocusTarget));

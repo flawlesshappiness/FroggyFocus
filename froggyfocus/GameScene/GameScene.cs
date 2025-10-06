@@ -68,6 +68,11 @@ public partial class GameScene : Scene
         }
     }
 
+    public void ClearFocusEventId()
+    {
+        current_focus_event_id = string.Empty;
+    }
+
     public void SetFocusEventId(string id)
     {
         current_focus_event_id = id;
@@ -113,5 +118,11 @@ public partial class GameScene : Scene
     public bool HasFocusEventTargets()
     {
         return FocusEvents.Any(x => x.Info.Characters.Count > 0);
+    }
+
+    public bool HasFocusEvent()
+    {
+        var focus_event = FocusEvents.FirstOrDefault(x => x.Id == current_focus_event_id);
+        return focus_event != null;
     }
 }
