@@ -3,6 +3,9 @@ using Godot;
 public partial class MatrixLabel : Label3D
 {
     [Export]
+    public bool StartOn = true;
+
+    [Export]
     public Vector2I Size;
 
     [Export]
@@ -14,6 +17,7 @@ public partial class MatrixLabel : Label3D
     [Export]
     public float Frequency;
 
+    private bool is_on;
     private int string_offset;
     private float time_next;
     private bool[,] letter_map;
@@ -23,6 +27,7 @@ public partial class MatrixLabel : Label3D
     public override void _Ready()
     {
         base._Ready();
+        is_on = StartOn;
         InitializeLetterMap();
         UpdateLabel();
     }
@@ -51,10 +56,17 @@ public partial class MatrixLabel : Label3D
         }
     }
 
+    public void SetOn(bool on)
+    {
+        is_on = on;
+        UpdateLabel();
+    }
+
     public override void _Process(double delta)
     {
         base._Process(delta);
 
+        if (!is_on) return;
         if (GameTime.Time < time_next) return;
         time_next = GameTime.Time + Frequency;
         string_offset = (string_offset + 1) % Size.Y;
@@ -65,14 +77,17 @@ public partial class MatrixLabel : Label3D
     {
         var s = "";
 
-        for (int y = 0; y < Size.Y; y++)
+        if (is_on)
         {
-            for (int x = 0; x < Size.X; x++)
+            for (int y = 0; y < Size.Y; y++)
             {
-                s += letter_map[x, (y + string_offset) % Size.Y] ? symbols[rng.RandiRange(0, symbols.Length - 1)] : " ";
-            }
+                for (int x = 0; x < Size.X; x++)
+                {
+                    s += letter_map[x, (y + string_offset) % Size.Y] ? symbols[rng.RandiRange(0, symbols.Length - 1)] : " ";
+                }
 
-            s += "\n";
+                s += "\n";
+            }
         }
 
         Text = s;

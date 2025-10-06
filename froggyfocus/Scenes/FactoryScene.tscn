@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=62 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://jyb4tasp37gp" path="res://Prefabs/Nature/seaweed_cluster_bridge.tscn" id="27_k0l20"]
 [ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="28_ev2yv"]
 [ext_resource type="PackedScene" uid="uid://btfkqop4kbh8e" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_toilet.fbx" id="29_3aqke"]
+[ext_resource type="PackedScene" uid="uid://dq6j0lsuirc0k" path="res://Prefabs/Objects/tv_glitchy.tscn" id="29_ix7e4"]
 [ext_resource type="PackedScene" uid="uid://c3hkrtmh6ohnl" path="res://Prefabs/NPC/EelNPC/eel_npc.tscn" id="30_8g76t"]
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="30_kso58"]
 [ext_resource type="Resource" uid="uid://conmipikui7b5" path="res://FocusEvent/Resources/Factory_Trash_Water.tres" id="35_8mo76"]
@@ -314,6 +315,16 @@ transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -51.26
 [node name="FrogScientistNPC" parent="World/NavigationRegion3D/Building" instance=ExtResource("19_gteuj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30.7371, 5, -71.2852)
 
+[node name="TvGlitchy2" parent="World/NavigationRegion3D/Building" node_paths=PackedStringArray("MatrixLabels") instance=ExtResource("29_ix7e4")]
+transform = Transform3D(0.91541, 0, -0.402523, 0, 1, 0, 0.402523, 0, 0.91541, -12.5454, 0.256041, -13.7603)
+GameFlagId = "tv_glitch_002"
+MatrixLabels = [NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Long"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Short"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Medium"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Long2"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Short2"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Medium2")]
+
+[node name="TvGlitchy5" parent="World/NavigationRegion3D/Building" node_paths=PackedStringArray("MatrixLabels") instance=ExtResource("29_ix7e4")]
+transform = Transform3D(0.833548, 0, -0.552446, 0, 1, 0, 0.552446, 0, 0.833548, -73.762, 0.161798, -104.004)
+GameFlagId = "tv_glitch_005"
+MatrixLabels = [NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Long"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Short"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Medium"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Long2"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Short2"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Medium2")]
+
 [node name="Garbage" type="Node3D" parent="World/NavigationRegion3D"]
 
 [node name="Bags" type="Node3D" parent="World/NavigationRegion3D/Garbage"]
@@ -438,14 +449,20 @@ transform = Transform3D(0.712139, 0, 1.86892, 0, 2, 0, -1.86892, 0, 0.712139, 33
 [node name="Bottle_Cleaning_Toilet5" parent="World/NavigationRegion3D/Garbage/Bottles" instance=ExtResource("22_01srd")]
 transform = Transform3D(0.712139, 0, 1.86892, 0, 2, 0, -1.86892, 0, 0.712139, 14.1202, -0.999861, -23.4079)
 
-[node name="Bottle_Cleaning_Toilet6" parent="World/NavigationRegion3D/Garbage/Bottles" instance=ExtResource("22_01srd")]
-transform = Transform3D(0.216796, 0, -1.98821, 0, 2, 0, 1.98821, 0, 0.216796, 37.0186, -0.999861, -18.4569)
-
 [node name="Bottle_Cleaning_Toilet7" parent="World/NavigationRegion3D/Garbage/Bottles" instance=ExtResource("22_01srd")]
 transform = Transform3D(0.732873, 0, 1.86089, 0, 2, 0, -1.86089, 0, 0.732873, 27.6667, -0.999861, -15.6376)
 
 [node name="RaccoonNPC" parent="World/NavigationRegion3D/Garbage" instance=ExtResource("24_v2jd5")]
 transform = Transform3D(-0.505432, 0, 0.862867, 0, 1, 0, -0.862867, 0, -0.505432, 69.7563, 1.00969, -80.9716)
+
+[node name="TvGlitchy1" parent="World/NavigationRegion3D/Garbage" instance=ExtResource("29_ix7e4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2215, 0, -93.9949)
+GameFlagId = "tv_glitch_001"
+
+[node name="TvGlitchy4" parent="World/NavigationRegion3D/Garbage" node_paths=PackedStringArray("MatrixLabels") instance=ExtResource("29_ix7e4")]
+transform = Transform3D(0.779699, 0, 0.626155, 0, 1, 0, -0.626155, 0, 0.779699, 37.4147, 0, -19.0407)
+GameFlagId = "tv_glitch_004"
+MatrixLabels = [NodePath("../TvGlitchy1/Labels/MatrixLabel_Long"), NodePath("../TvGlitchy1/Labels/MatrixLabel_Short"), NodePath("../TvGlitchy1/Labels/MatrixLabel_Medium"), NodePath("../TvGlitchy1/Labels/MatrixLabel_Long2"), NodePath("../TvGlitchy1/Labels/MatrixLabel_Short2"), NodePath("../TvGlitchy1/Labels/MatrixLabel_Medium2")]
 
 [node name="Lighthouse" parent="World/NavigationRegion3D" instance=ExtResource("15_qfdwa")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 125.411, -25.807, -35.3942)
@@ -533,6 +550,11 @@ curve = SubResource("Curve3D_inr37")
 [node name="Path_SfxWater8" type="Path3D" parent="World/NavigationRegion3D/Seaweed"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7067, 0, 15.0323)
 curve = SubResource("Curve3D_relfh")
+
+[node name="TvGlitchy3" parent="World/NavigationRegion3D/Seaweed" node_paths=PackedStringArray("MatrixLabels") instance=ExtResource("29_ix7e4")]
+transform = Transform3D(0.853141, 0, 0.52168, 0, 1, 0, -0.52168, 0, 0.853141, -8.98858, 7.62939e-06, 48.5937)
+GameFlagId = "tv_glitch_003"
+MatrixLabels = [NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Long"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Short"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Medium"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Long2"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Short2"), NodePath("../../Garbage/TvGlitchy1/Labels/MatrixLabel_Medium2")]
 
 [node name="Machine" type="Node3D" parent="World/NavigationRegion3D"]
 

@@ -9,6 +9,7 @@ Id = "partner"
 RequestPreviewHidden = true
 PossibleRequests = Array[Object]([ExtResource("1_uiydg")])
 CountRange = Vector2i(1, 1)
+UniqueRequests = false
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

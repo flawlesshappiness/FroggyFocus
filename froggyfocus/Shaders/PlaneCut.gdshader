@@ -21,9 +21,9 @@ bool is_cut(mat4 plane){
 void fragment() {
 	bool cut1 = is_cut(cutplane1);
 	bool cut2 = is_cut(cutplane2);
-	
+
 	if(cut1 || cut2) discard;
-	
+
 	ALBEDO = _albedo.rgb;
 }
 

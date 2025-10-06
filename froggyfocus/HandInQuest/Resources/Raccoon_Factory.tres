@@ -11,6 +11,7 @@ Id = "raccoon"
 RequestPreviewHidden = false
 PossibleRequests = Array[Object]([ExtResource("2_pat33"), ExtResource("5_6n8rl"), ExtResource("3_7fs1f")])
 CountRange = Vector2i(2, 3)
+UniqueRequests = false
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

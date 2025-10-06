@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\objects\\glitchlockeddoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:objects\\glitchlockeddoor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Objects\\TvGlitchy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Objects\\TvGlitchy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\misc\\matrixlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:misc\\matrixlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,6 +17,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\gamescene\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:gamescene\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusevent\\focuseventarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusevent\\focuseventarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,39 +39,65 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GlitchLockedDoor.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Objects\\GlitchLockedDoor.cs",
-              "RelativeDocumentMoniker": "Objects\\GlitchLockedDoor.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Objects\\GlitchLockedDoor.cs",
-              "RelativeToolTip": "Objects\\GlitchLockedDoor.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAEwBkAAABDAAAAAAAAAA==",
+              "Title": "TvGlitchy.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Objects\\TvGlitchy.cs",
+              "RelativeDocumentMoniker": "Objects\\TvGlitchy.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Objects\\TvGlitchy.cs",
+              "RelativeToolTip": "Objects\\TvGlitchy.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCcAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T04:19:28.229Z",
+              "WhenOpened": "2025-10-06T18:26:55.238Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "MatrixLabel.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Misc\\MatrixLabel.cs",
+              "RelativeDocumentMoniker": "Misc\\MatrixLabel.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Misc\\MatrixLabel.cs",
+              "RelativeToolTip": "Misc\\MatrixLabel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T17:51:42.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FocusEventArea.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusEvent\\FocusEventArea.cs",
+              "RelativeDocumentMoniker": "FocusEvent\\FocusEventArea.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusEvent\\FocusEventArea.cs",
+              "RelativeToolTip": "FocusEvent\\FocusEventArea.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T04:57:24.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "GameScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\GameScene\\GameScene.cs",
               "RelativeDocumentMoniker": "GameScene\\GameScene.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\GameScene\\GameScene.cs",
               "RelativeToolTip": "GameScene\\GameScene.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAFIAAAAAAAAAAAArwH0AAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-15T16:57:28.065Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Player\\Player.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeToolTip": "Player\\Player.cs",
-              "ViewState": "AgIAACkBAAAAAAAAAAD4vz4BAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAPsAAAAAAAAAAAAswAYBAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T01:21:52.147Z"
+              "WhenOpened": "2025-06-15T01:21:52.147Z",
+              "EditorCaption": ""
             }
           ]
         }

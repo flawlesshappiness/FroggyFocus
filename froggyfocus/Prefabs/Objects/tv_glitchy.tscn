@@ -1,0 +1,330 @@
+[gd_scene load_steps=13 format=3 uid="uid://dq6j0lsuirc0k"]
+
+[ext_resource type="PackedScene" uid="uid://blgekt80fq2oo" path="res://Assets/FlawLizArt/Objects/tv.fbx" id="1_5jy52"]
+[ext_resource type="Script" uid="uid://dycpmrgi87d37" path="res://Objects/TvGlitchy.cs" id="1_wk70n"]
+[ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Color_Green_Unshaded.tres" id="2_tmexc"]
+[ext_resource type="Script" uid="uid://dm8guta6iefk5" path="res://Misc/MatrixLabel.cs" id="3_cpt4p"]
+[ext_resource type="AudioStream" uid="uid://1yg6fqdxmxe7" path="res://Sounds/Raw/sfx_glitch_shoot_001.wav" id="5_yv1c5"]
+[ext_resource type="AudioStream" uid="uid://bygtaj6m8xtgt" path="res://Sounds/Raw/sfx_glitch_static_001.wav" id="6_tfq45"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yv1c5"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="Animation" id="Animation_tmexc"]
+resource_name = "off"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/tv_off:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/tv_on:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxStatic:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cpt4p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/tv_off:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/tv_on:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxStatic:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wk70n"]
+resource_name = "glitch"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model/tv_off:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.6, 0.75, 1.4, 1.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Model/tv_on:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.6, 0.75, 1.4, 1.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxStatic:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.6, 0.75, 1.4, 1.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yv1c5"]
+_data = {
+&"RESET": SubResource("Animation_cpt4p"),
+&"off": SubResource("Animation_tmexc"),
+&"on": SubResource("Animation_wk70n")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tmexc"]
+size = Vector3(4, 2, 3.72327)
+
+[node name="TvGlitchy" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "SfxOn", "MatrixLabels")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_wk70n")
+AnimationPlayer = NodePath("AnimationPlayer")
+SfxOn = NodePath("SfxClick")
+MatrixLabels = [NodePath("Labels/MatrixLabel_Long"), NodePath("Labels/MatrixLabel_Short"), NodePath("Labels/MatrixLabel_Medium"), NodePath("Labels/MatrixLabel_Long2"), NodePath("Labels/MatrixLabel_Short2"), NodePath("Labels/MatrixLabel_Medium2")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422352, 0)
+shape = SubResource("BoxShape3D_yv1c5")
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="tv_off" parent="Model" instance=ExtResource("1_5jy52")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.5011, 0.465861)
+
+[node name="tv_on" parent="Model" instance=ExtResource("1_5jy52")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.5011, 0.465861)
+visible = false
+
+[node name="tv" parent="Model/tv_on" index="0"]
+surface_material_override/1 = ExtResource("2_tmexc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yv1c5")
+}
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.00653076)
+shape = SubResource("BoxShape3D_tmexc")
+
+[node name="Labels" type="Node3D" parent="."]
+
+[node name="MatrixLabel_Long" type="Label3D" parent="Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09585, 0, -0.861374)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 50
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_cpt4p")
+StartOn = false
+Size = Vector2i(1, 10)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel_Long2" type="Label3D" parent="Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03903, 0, 0.906834)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 50
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_cpt4p")
+StartOn = false
+Size = Vector2i(1, 10)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel_Short" type="Label3D" parent="Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.355822, 0, -0.245574)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 50
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_cpt4p")
+StartOn = false
+Size = Vector2i(1, 4)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel_Short2" type="Label3D" parent="Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.769138, 0, 0.142356)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 50
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_cpt4p")
+StartOn = false
+Size = Vector2i(1, 4)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel_Medium" type="Label3D" parent="Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.700733, 0, -0.69434)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 50
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_cpt4p")
+StartOn = false
+Size = Vector2i(1, 7)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel_Medium2" type="Label3D" parent="Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07832, 0, 0.637137)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 50
+outline_size = 0
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("3_cpt4p")
+StartOn = false
+Size = Vector2i(1, 7)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="SfxClick" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_yv1c5")
+max_distance = 12.0
+bus = &"SFX"
+
+[node name="SfxStatic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_tfq45")
+volume_db = -15.0
+max_distance = 12.0
+bus = &"SFX"
+
+[editable path="Model/tv_on"]
