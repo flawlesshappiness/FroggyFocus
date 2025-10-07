@@ -1422,3 +1422,4 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 6, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 TravelScene = "FactoryScene"
 StartNode = "StartTv"
+IsGoingUp = true

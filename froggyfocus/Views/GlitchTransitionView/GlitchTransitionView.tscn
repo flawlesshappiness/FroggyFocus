@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://wima8rr8ngox"]
+[gd_scene load_steps=12 format=3 uid="uid://wima8rr8ngox"]
 
 [ext_resource type="Script" uid="uid://ccfnb4i2tkkoe" path="res://Views/GlitchTransitionView/GlitchTransitionView.cs" id="1_iapto"]
 [ext_resource type="Texture2D" uid="uid://6tevrdvf1tud" path="res://Assets/FlawLizArt/Textures/focus_circle.png" id="2_ids51"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_r4lvn"]
 [ext_resource type="Script" uid="uid://dm8guta6iefk5" path="res://Misc/MatrixLabel.cs" id="4_sft62"]
+[ext_resource type="AudioStream" uid="uid://c7jxtkh2mv805" path="res://Sounds/Raw/sfx_glitch_transition_boom_001.wav" id="5_y7lo8"]
+[ext_resource type="AudioStream" uid="uid://c6qgqsc1mpc28" path="res://Sounds/Raw/sfx_glitch_transition_up_001.wav" id="6_h4ikx"]
+[ext_resource type="AudioStream" uid="uid://bxdipxk18vxed" path="res://Sounds/Raw/sfx_glitch_transition_down_001.wav" id="7_84fi7"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_r4lvn"]
 viewport_path = NodePath("ItemSubViewport")
@@ -190,9 +193,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.7, 2.5),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"PlayTransitionSfx"
+}, {
 "args": [],
 "method": &"LoadScene"
 }]
@@ -228,7 +234,7 @@ _data = {
 &"transition": SubResource("Animation_ids51")
 }
 
-[node name="GlitchTransitionView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Frog")]
+[node name="GlitchTransitionView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Frog", "SfxBoom", "SfxTransitionUp", "SfxTransitionDown")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -238,6 +244,9 @@ grow_vertical = 2
 script = ExtResource("1_iapto")
 AnimationPlayer = NodePath("AnimationPlayer_Circle")
 Frog = NodePath("ItemSubViewport/Anim/Origin/Frog")
+SfxBoom = NodePath("SfxBoom")
+SfxTransitionUp = NodePath("SfxTransitionUp")
+SfxTransitionDown = NodePath("SfxTransitionDown")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -837,3 +846,15 @@ Frequency = 0.1
 libraries = {
 &"": SubResource("AnimationLibrary_y7lo8")
 }
+
+[node name="SfxBoom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y7lo8")
+bus = &"SFX"
+
+[node name="SfxTransitionUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_h4ikx")
+bus = &"SFX"
+
+[node name="SfxTransitionDown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_84fi7")
+bus = &"SFX"

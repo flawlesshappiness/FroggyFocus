@@ -12,6 +12,9 @@ public partial class TvTravel : Area3D, IInteractable
     public string StartNode;
 
     [Export]
+    public bool IsGoingUp;
+
+    [Export]
     public AnimationPlayer AnimationPlayer;
 
     [Export]
@@ -67,6 +70,7 @@ public partial class TvTravel : Area3D, IInteractable
         Data.Game.StartingNode = StartNode;
         Data.Game.Save();
 
+        GlitchTransitionView.Instance.IsGoingUp = IsGoingUp;
         GlitchTransitionView.Instance.StartTransition();
     }
 

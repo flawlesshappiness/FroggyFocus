@@ -11,6 +11,17 @@ public partial class GlitchTransitionView : View
     [Export]
     public FrogCharacter Frog;
 
+    [Export]
+    public AudioStreamPlayer SfxBoom;
+
+    [Export]
+    public AudioStreamPlayer SfxTransitionUp;
+
+    [Export]
+    public AudioStreamPlayer SfxTransitionDown;
+
+    public bool IsGoingUp { get; set; }
+
     public override void _Ready()
     {
         base._Ready();
@@ -29,6 +40,7 @@ public partial class GlitchTransitionView : View
         {
             SetLocks(true);
             Show();
+            PlayBoomSfx();
             yield return AnimationPlayer.PlayAndWaitForAnimation("transition");
             Hide();
             SetLocks(false);
@@ -41,5 +53,16 @@ public partial class GlitchTransitionView : View
 
         Player.SetAllLocks(id, locked);
         PauseView.ToggleLock.SetLock(id, locked);
+    }
+
+    public void PlayBoomSfx()
+    {
+        SfxBoom.Play();
+    }
+
+    public void PlayTransitionSfx()
+    {
+        var sfx = IsGoingUp ? SfxTransitionUp : SfxTransitionDown;
+        sfx.Play();
     }
 }
