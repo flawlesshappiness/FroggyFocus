@@ -67,7 +67,7 @@ public partial class TvTravel : Area3D, IInteractable
         Data.Game.StartingNode = StartNode;
         Data.Game.Save();
 
-        Scene.Goto(Data.Game.CurrentScene);
+        GlitchTransitionView.Instance.StartTransition();
     }
 
     private void TvChanged()

@@ -1,0 +1,839 @@
+[gd_scene load_steps=9 format=3 uid="uid://wima8rr8ngox"]
+
+[ext_resource type="Script" uid="uid://ccfnb4i2tkkoe" path="res://Views/GlitchTransitionView/GlitchTransitionView.cs" id="1_iapto"]
+[ext_resource type="Texture2D" uid="uid://6tevrdvf1tud" path="res://Assets/FlawLizArt/Textures/focus_circle.png" id="2_ids51"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_r4lvn"]
+[ext_resource type="Script" uid="uid://dm8guta6iefk5" path="res://Misc/MatrixLabel.cs" id="4_sft62"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r4lvn"]
+viewport_path = NodePath("ItemSubViewport")
+
+[sub_resource type="Animation" id="Animation_r4lvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/AnimCircle:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.001, 0.001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/AnimCircle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/AnimCircle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("TextureRect:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ItemSubViewport/Anim/Origin/Frog:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ids51"]
+resource_name = "show_scale"
+length = 5.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/AnimCircle:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.001, 0.001), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/AnimCircle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 1, 0.166667, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/AnimCircle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"LoadScene"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("TextureRect:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ItemSubViewport/Anim/Origin/Frog:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(4, 0.5, 4, 4, 1),
+"update": 0,
+"values": [Vector3(0, 4, 0), Vector3(0, 4, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7lo8"]
+_data = {
+&"RESET": SubResource("Animation_r4lvn"),
+&"transition": SubResource("Animation_ids51")
+}
+
+[node name="GlitchTransitionView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Frog")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iapto")
+AnimationPlayer = NodePath("AnimationPlayer_Circle")
+Frog = NodePath("ItemSubViewport/Anim/Origin/Frog")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_r4lvn")
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="AnimCircle" type="Control" parent="CenterContainer/Center"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.001, 0.001)
+
+[node name="Circle" type="TextureRect" parent="CenterContainer/Center/AnimCircle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ids51")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ItemSubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport"]
+transform = Transform3D(-1, 0, 2.53518e-06, 6.56153e-07, 0.965926, 0.258819, -2.4488e-06, 0.258819, -0.965926, 4.13952e-06, 0.993953, -4.07719)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="Anim" type="Node3D" parent="ItemSubViewport"]
+
+[node name="Origin" type="Node3D" parent="ItemSubViewport/Anim"]
+
+[node name="Frog" parent="ItemSubViewport/Anim/Origin" instance=ExtResource("3_r4lvn")]
+
+[node name="Labels" type="Node3D" parent="ItemSubViewport"]
+
+[node name="MatrixLabel" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.761889, -1, -0.6757)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel18" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33169, -1, -1.14313)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel19" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98335, -1, -0.77754)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel20" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40769, -1, -1.09392)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel21" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0936, -1, -0.54366)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel22" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70693, -1, 0.104983)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel23" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75706, -1, 0.104983)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel2" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.137858, -1, -1.04761)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel3" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.646848, -1, -0.66453)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel4" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.805818, -1, 1.07976)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel5" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117844, -1, 1.62873)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel6" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.590976, -1, 1.46085)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel7" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1716, -1, 1.27918)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel8" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38796, -1, 1.9596)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel9" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.543865, -1, 1.65711)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel10" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0349646, -1, 2.29534)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel11" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13527, -1, 2.13915)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel12" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65401, -1, 1.22595)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel13" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21877, -1, 1.81022)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel14" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58282, -1, 1.58773)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel15" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18658, -1, 1.28105)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel16" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52103, -1, 2.18207)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="MatrixLabel17" type="Label3D" parent="ItemSubViewport/Labels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12638, -1, 2.36894)
+billboard = 2
+double_sided = false
+modulate = Color(0, 0.5, 0.0833333, 1)
+text = "A
+B
+C
+D
+E
+F
+G"
+font_size = 25
+outline_size = 5
+horizontal_alignment = 0
+vertical_alignment = 2
+script = ExtResource("4_sft62")
+Size = Vector2i(1, 20)
+SpaceLength = Vector2i(2, 4)
+StringLength = Vector2i(4, 6)
+Frequency = 0.1
+
+[node name="AnimationPlayer_Circle" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y7lo8")
+}

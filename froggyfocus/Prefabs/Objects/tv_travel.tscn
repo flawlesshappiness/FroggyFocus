@@ -12,8 +12,8 @@ size = Vector3(6.41235, 4, 6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_66g5y"]
 size = Vector3(8, 2, 7.5)
 
-[sub_resource type="Animation" id="Animation_kik84"]
-resource_name = "off"
+[sub_resource type="Animation" id="Animation_f4iva"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -39,8 +39,8 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_f4iva"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_kik84"]
+resource_name = "off"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -969,7 +969,6 @@ libraries = {
 [node name="SfxStatic" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_f4iva")
 volume_db = -30.0
-autoplay = true
 max_distance = 12.0
 bus = &"SFX"
 
