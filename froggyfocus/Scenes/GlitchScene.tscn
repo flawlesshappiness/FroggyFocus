@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b2gamstk3nwpo"]
+[gd_scene load_steps=32 format=3 uid="uid://b2gamstk3nwpo"]
 
 [ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_iviy3"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://1jqtwnd6m5f1" path="res://Prefabs/Objects/color_wall_tall.tscn" id="21_546co"]
 [ext_resource type="PackedScene" uid="uid://7wjk30vxt4g7" path="res://Prefabs/Objects/glitch_platform_4x12x1.tscn" id="21_cpcb0"]
 [ext_resource type="PackedScene" uid="uid://wp48b5jw0mw5" path="res://Prefabs/Objects/glitch_locked_door.tscn" id="22_cpcb0"]
+[ext_resource type="PackedScene" uid="uid://c8y0kfo5jh0t8" path="res://Prefabs/Objects/tv_travel.tscn" id="24_udo3y"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8f2ml"]
 size = Vector2(10, 10)
@@ -1339,9 +1340,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="World/Stairway"]
 navigation_mesh = SubResource("NavigationMesh_iviy3")
 
-[node name="GlitchPlatform_8x8x1" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-
 [node name="GlitchPlatform_4x4x1" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("9_xtd18")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
@@ -1419,3 +1417,8 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 3, -4
 
 [node name="GlitchLockedDoor" parent="World/Stairway/Door" instance=ExtResource("22_cpcb0")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 6, -60)
+
+[node name="tv_travel" parent="World/Stairway" instance=ExtResource("24_udo3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+TravelScene = "FactoryScene"
+StartNode = "StartTv"

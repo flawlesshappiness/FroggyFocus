@@ -145,3 +145,5 @@ libraries = {
 
 [node name="SfxOpen" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_xx4pk")
+max_distance = 12.0
+bus = &"SFX"

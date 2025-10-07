@@ -10,8 +10,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_yv1c5"]
 size = Vector3(4, 1, 4)
 
-[sub_resource type="Animation" id="Animation_tmexc"]
-resource_name = "off"
+[sub_resource type="Animation" id="Animation_cpt4p"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,8 +49,8 @@ tracks/2/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_cpt4p"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_tmexc"]
+resource_name = "off"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

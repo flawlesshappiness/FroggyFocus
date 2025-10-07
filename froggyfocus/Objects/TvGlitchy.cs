@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System;
 
 public partial class TvGlitchy : Area3D, IInteractable
 {
@@ -17,6 +18,8 @@ public partial class TvGlitchy : Area3D, IInteractable
 
     public bool IsOn => GameFlags.IsFlag(GameFlagId, 1);
 
+    public event Action OnTvChanged;
+
     public override void _Ready()
     {
         base._Ready();
@@ -30,6 +33,8 @@ public partial class TvGlitchy : Area3D, IInteractable
     public void Interact()
     {
         SetOn(!IsOn);
+        Data.Game.Save();
+        OnTvChanged?.Invoke();
 
         if (IsOn)
         {
@@ -46,9 +51,6 @@ public partial class TvGlitchy : Area3D, IInteractable
 
         MatrixLabels.ForEach(x => x.SetOn(on));
 
-        if (on)
-        {
-            SfxOn.Play();
-        }
+        SfxOn.Play();
     }
 }
