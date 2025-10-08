@@ -14,12 +14,6 @@ public partial class GlitchTransitionView : View
     [Export]
     public AudioStreamPlayer SfxBoom;
 
-    [Export]
-    public AudioStreamPlayer SfxTransitionUp;
-
-    [Export]
-    public AudioStreamPlayer SfxTransitionDown;
-
     public bool IsGoingUp { get; set; }
 
     public override void _Ready()
@@ -41,7 +35,10 @@ public partial class GlitchTransitionView : View
             SetLocks(true);
             Show();
             PlayBoomSfx();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("transition");
+
+            var anim = IsGoingUp ? "transition_up" : "transition_down";
+            yield return AnimationPlayer.PlayAndWaitForAnimation(anim);
+
             Hide();
             SetLocks(false);
         }
@@ -58,11 +55,5 @@ public partial class GlitchTransitionView : View
     public void PlayBoomSfx()
     {
         SfxBoom.Play();
-    }
-
-    public void PlayTransitionSfx()
-    {
-        var sfx = IsGoingUp ? SfxTransitionUp : SfxTransitionDown;
-        sfx.Play();
     }
 }
