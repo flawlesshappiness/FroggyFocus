@@ -11,7 +11,7 @@ WalkingAnimation = "Armature|moving"
 Accessories = []
 
 [node name="error_bug_mantis" parent="." instance=ExtResource("2_f5x2m")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, -0.090745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.116666)
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_f5x2m")
