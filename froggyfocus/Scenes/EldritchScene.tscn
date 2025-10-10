@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://na6ghlg4xx1t"]
+
+[ext_resource type="Script" uid="uid://n10j2kkvmge1" path="res://Scenes/EldritchScene.cs" id="1_vole6"]
+[ext_resource type="Material" uid="uid://71pv1fsup32f" path="res://Materials/Color_Brown.tres" id="2_6bnib"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_d5q5d"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_lfqeu"]
+[ext_resource type="Resource" uid="uid://cjpkpg08em4hs" path="res://Weather/Resources/FoggyBrown.tres" id="3_cvby2"]
+[ext_resource type="PackedScene" uid="uid://hka08c0m8os8" path="res://Prefabs/Water/water_bile.tscn" id="5_aut7b"]
+[ext_resource type="PackedScene" uid="uid://c7whvf1sy2d0g" path="res://Prefabs/Eldritch/eldritch_pillar.tscn" id="6_ell4v"]
+[ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="7_6636b"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_vole6"]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_lfqeu"]
+material = ExtResource("2_6bnib")
+flip_faces = true
+radius = 1000.0
+height = 2000.0
+is_hemisphere = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvby2"]
+size = Vector3(4, 1, 4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cvby2"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ro7oi"]
+height = 1.0
+radius = 2.0
+
+[node name="EldritchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment")]
+script = ExtResource("1_vole6")
+DirectionalLight = NodePath("DirectionalLight3D")
+WorldEnvironment = NodePath("WorldEnvironment")
+Weathers = Array[ExtResource("2_d5q5d")]([ExtResource("3_cvby2")])
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_lfqeu")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_vole6")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+mesh = SubResource("SphereMesh_lfqeu")
+
+[node name="Water" parent="World" instance=ExtResource("5_aut7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="EldritchPillar" parent="World" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.17307, 0, 0)
+
+[node name="EldritchPillar2" parent="World" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20001, 0, 0)
+
+[node name="Player" parent="World" instance=ExtResource("7_6636b")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_cvby2")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("CylinderMesh_cvby2")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("CylinderShape3D_ro7oi")

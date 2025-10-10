@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bvh21lkq01ocn"]
+
+[ext_resource type="Shader" uid="uid://babyxm8yext4w" path="res://Shaders/ToonWater.gdshader" id="1_trdk2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_trdk2")
+shader_parameter/WATER_COL = Color(0.35, 0.233333, 0, 1)
+shader_parameter/WATER2_COL = Color(0.3, 0.175, 0, 1)
+shader_parameter/FOAM_COL = Color(0.5, 0.375, 0, 1)
+shader_parameter/DIST_COL = Color(0.25, 0.177083, 0.125, 1)
+shader_parameter/distortion_speed = 0.4
+shader_parameter/tile = Vector2(500, 500)
+shader_parameter/wave_speed = 2.0
+shader_parameter/wave_amplitude = 0.0
+shader_parameter/wave_frequency = 1.5
+shader_parameter/time_offset = 0.0
+shader_parameter/water_size = Vector2(1500, 1500)
+shader_parameter/water_transparency = 1.0
+shader_parameter/water_depth_factor = 3.0
+shader_parameter/foam_width = 2.0
+shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.1
+shader_parameter/horizon_start = 0.55
