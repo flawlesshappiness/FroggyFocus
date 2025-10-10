@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cstu4xwk8m2au"]
+[gd_scene load_steps=4 format=3 uid="uid://cstu4xwk8m2au"]
 
 [ext_resource type="PackedScene" uid="uid://c4imw11qm1cig" path="res://Assets/Quaternius/Nature/CommonTree_Dead_1.fbx" id="1_sqsy7"]
+[ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_llb6d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_llb6d"]
 radius = 0.10951
@@ -14,3 +15,12 @@ radius = 0.10951
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0.836148, 0.0838516)
 shape = SubResource("CapsuleShape3D_llb6d")
+
+[node name="Eldritch_Eye" parent="." instance=ExtResource("2_llb6d")]
+transform = Transform3D(-0.00882195, 0, -0.0593479, 0, 0.06, 0, 0.0593479, 0, -0.00882195, 0.0436908, 0.626595, 0.0664842)
+
+[node name="Eldritch_Eye3" parent="." instance=ExtResource("2_llb6d")]
+transform = Transform3D(0.00882196, 0, 0.0593479, 0, 0.06, 0, -0.0593479, 0, 0.00882196, -0.068666, 0.45666, 0.0431634)
+
+[node name="Eldritch_Eye2" parent="." instance=ExtResource("2_llb6d")]
+transform = Transform3D(-0.00553151, -0.00199801, -0.0395653, -0.0135889, 0.037621, 0, 0.0372121, 0.0134412, -0.0058813, 0.0544972, 0.519382, 0.0465323)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://2sbww4qcwiye"]
+[gd_scene load_steps=9 format=3 uid="uid://2sbww4qcwiye"]
 
 [ext_resource type="PackedScene" uid="uid://csnopemsak2aa" path="res://Assets/FlawLizArt/Nature/Toon/branch_001.fbx" id="1_8pb2g"]
 [ext_resource type="Material" uid="uid://db1u1f58aaaky" path="res://Materials/Branch_001_Texture.tres" id="2_p668m"]
 [ext_resource type="Material" uid="uid://u2y5v44s2xc3" path="res://Materials/Branch_002_Texture.tres" id="3_i48nl"]
 [ext_resource type="Material" uid="uid://cj44kc16xji4y" path="res://Materials/Branch_003_Texture.tres" id="4_e0n5a"]
+[ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="5_ee002"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_i48nl"]
 material = ExtResource("2_p668m")
@@ -18,54 +19,110 @@ material = ExtResource("4_e0n5a")
 
 [node name="branch_001" parent="." instance=ExtResource("1_8pb2g")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Branches" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(2.77942, -0.920441, -0.653908, 0.773617, 2.81803, -0.678411, 0.822389, 0.459906, 2.84819, -3.93458, 5.60735, -0.100754)
 mesh = SubResource("QuadMesh_i48nl")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(-0.0246571, 1.67221, -2.4906, 0.486011, 2.46001, 1.64686, 2.96027, -0.389951, -0.291123, 0.890489, 4.38226, -9.13543)
 mesh = SubResource("QuadMesh_i48nl")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(-0.656456, -3.36551, -2.05971, 0.50096, 2.00003, -3.42767, 3.91384, -0.820487, 0.0932631, -1.85379, 7.33267, 5.5772)
 mesh = SubResource("QuadMesh_i48nl")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(-0.0752913, 1.87857, -0.682131, 1.9755, 0.173406, 0.259506, 0.302893, -0.664005, -1.86208, 4.96418, 3.05945, -0.865857)
 mesh = SubResource("QuadMesh_i48nl")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(-0.526686, 1.11271, -1.57623, -0.0468184, 1.62605, 1.16352, 1.92884, 0.343303, -0.402161, 1.41717, 6.97895, 2.11945)
 mesh = SubResource("QuadMesh_e0n5a")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(0.137532, -0.836946, 0.529723, 0.77613, 0.423332, 0.467345, -0.615392, 0.346859, 0.707801, 3.28196, 3.44792, 1.46244)
 mesh = SubResource("QuadMesh_e0n5a")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(-1.26185, 1.70812, 2.11898, -2.19549, -2.01922, 0.320291, 1.60859, -1.41601, 2.09937, 1.27741, 3.04684, -3.50554)
 mesh = SubResource("QuadMesh_ee002")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(0.463127, -0.440607, -3.94859, 0.401022, -3.94984, 0.487782, -3.95281, -0.452344, -0.413146, 0.0707489, 4.45922, 4.19285)
 mesh = SubResource("QuadMesh_ee002")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(0.432996, 1.58558, -3.6467, -3.05071, 2.48537, 0.718406, 2.55063, 2.70349, 1.47833, 1.00694, 6.3212, 12.3725)
 mesh = SubResource("QuadMesh_ee002")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(1.05563, -2.66364, 0.889201, -2.80775, -1.01701, 0.286755, 0.0468384, -0.933121, -2.85081, -1.48051, 2.98369, -7.10132)
 mesh = SubResource("QuadMesh_ee002")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(-0.0263422, -0.280511, 2.98674, -2.73244, 1.23505, 0.091895, -1.23819, -2.71955, -0.266337, -0.0220903, 2.31047, -13.0992)
 mesh = SubResource("QuadMesh_ee002")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(-1.17639, -1.60182, -0.224219, -1.59908, 1.11016, 0.458772, -0.242975, 0.44912, -1.93372, -5.59377, 1.21444, -11.7201)
 mesh = SubResource("QuadMesh_ee002")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Branches"]
 transform = Transform3D(1.65439, -1.10452, -0.20742, 0.992603, 1.26302, 1.19143, -0.526993, -1.08849, 1.59294, -3.16978, 2.0342, -12.4326)
 mesh = SubResource("QuadMesh_ee002")
+skeleton = NodePath("../..")
+
+[node name="Eyes" type="Node3D" parent="."]
+
+[node name="Eldritch_Eye" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 1.14176, 6.52676, 6.21256)
+
+[node name="Eldritch_Eye5" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(6.55671e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.55671e-08, -1.07842, 6.27581, 4.29767)
+
+[node name="Eldritch_Eye9" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(-0.0216858, 0.997292, -0.0702818, 0.680506, -0.0367758, -0.731819, -0.732421, -0.0636973, -0.677866, -0.389441, 6.6248, 11.1556)
+
+[node name="Eldritch_Eye10" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(0.0078708, 0.797833, -0.0583123, 0.739954, -0.0294206, -0.302659, -0.303984, -0.0509578, -0.738239, -0.0142625, 4.2698, 12.8586)
+
+[node name="Eldritch_Eye11" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(0.26158, 0.316842, 0.284933, -0.0090673, 0.338399, -0.367972, -0.426021, 0.187342, 0.182783, -5.91393, 3.42164, 7.40326)
+
+[node name="Eldritch_Eye12" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(0.267361, 0.191203, 0.227946, 0.0625411, 0.263496, -0.294378, -0.290872, 0.232403, 0.146226, -5.31947, 4.2467, 7.75071)
+
+[node name="Eldritch_Eye13" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(0.245048, 0.0269125, 0.17096, 0.137626, 0.149378, -0.220783, -0.104932, 0.25877, 0.10967, -5.10049, 4.85059, 8.41061)
+
+[node name="Eldritch_Eye6" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(2.26494e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, 2.26494e-08, -1.11319, 6.11126, 3.31612)
+
+[node name="Eldritch_Eye7" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(2.26494e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, 2.26494e-08, -0.83045, 3.86658, -3.49947)
+
+[node name="Eldritch_Eye8" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(2.26494e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, 2.26494e-08, -0.751311, 3.37344, -7.86192)
+
+[node name="Eldritch_Eye2" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.824605, 4.03419, -2.55656)
+
+[node name="Eldritch_Eye3" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.748644, 3.61668, -5.99787)
+
+[node name="Eldritch_Eye4" parent="Eyes" instance=ExtResource("5_ee002")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.748644, 3.51637, -6.79268)

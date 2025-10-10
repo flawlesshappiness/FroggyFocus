@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://2yk827j8q4kd"]
+
+[ext_resource type="PackedScene" uid="uid://ca8cwwnni1yis" path="res://Assets/FlawLizArt/Eldritch/tentacle.fbx" id="1_20ffb"]
+[ext_resource type="Script" uid="uid://e0iafwrwxwwb" path="res://Prefabs/Eldritch/EldritchTentacle.cs" id="1_b8nn1"]
+[ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_b8nn1"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_6yafa"]
+
+[node name="EldritchTentacle" type="Node3D" node_paths=PackedStringArray("Animation", "Eye")]
+script = ExtResource("1_b8nn1")
+StartState = 1
+Animation = NodePath("AnimationStateMachine")
+Eye = NodePath("tentacle/Armature/Skeleton3D/BoneAttachment3D/Eldritch_Eye")
+
+[node name="tentacle" parent="." instance=ExtResource("1_20ffb")]
+
+[node name="Skeleton3D" parent="tentacle/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.0971924, 5.42165e-26, 2.1581e-17, 0.995266)
+bones/3/rotation = Quaternion(-0.203665, -2.30212e-25, 5.96002e-17, 0.979041)
+bones/4/rotation = Quaternion(-0.225086, -1.40173e-24, 1.97518e-17, 0.974339)
+bones/5/rotation = Quaternion(0.288735, 2.39128e-24, -8.15048e-17, 0.957409)
+bones/6/rotation = Quaternion(0.23618, 2.2178e-24, -4.77872e-17, 0.971709)
+bones/7/rotation = Quaternion(0.263662, -2.47906e-24, -5.45547e-17, 0.964615)
+bones/8/rotation = Quaternion(0.288032, -1.91587e-24, -6.0902e-17, 0.957621)
+bones/9/rotation = Quaternion(0.234315, 7.63526e-24, -5.20284e-17, 0.972161)
+bones/10/rotation = Quaternion(0.250803, 4.58516e-26, -5.56894e-17, 0.968038)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.506351, -2.099e-16, -0.506351, -0.862327, 1.79839e-18, -0.011888, 0.0594653)
+bone_name = "Limb.010_end"
+bone_idx = 11
+
+[node name="Eldritch_Eye" parent="tentacle/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("2_b8nn1")]
+transform = Transform3D(0.003, 0, 0, 0, -1.31134e-10, -0.003, 0, 0.003, -1.31134e-10, 0, 0, 0)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_6yafa")
+Animator = NodePath("../tentacle/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="tentacle"]

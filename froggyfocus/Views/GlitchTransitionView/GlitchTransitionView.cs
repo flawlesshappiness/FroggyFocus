@@ -32,6 +32,7 @@ public partial class GlitchTransitionView : View
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
+            Frog.LoadAppearance();
             SetLocks(true);
             Show();
             PlayBoomSfx();
