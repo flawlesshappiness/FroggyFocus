@@ -30,8 +30,8 @@ public partial class FocusEvent : Node3D
     [Export]
     public Node3D SkillCheckParent;
 
-    public FocusCharacterInfo DebugTargetInfo { get; set; }
-    public int? DebugTargetStars { get; set; }
+    public FocusCharacterInfo OverrideTargetInfo { get; set; }
+    public int? OverrideTargetStars { get; set; }
 
     public event Action<FocusEventCompletedResult> OnCompleted;
     public event Action<FocusEventFailedResult> OnFailed;
@@ -72,13 +72,13 @@ public partial class FocusEvent : Node3D
 
     private void CreateTarget()
     {
-        var info = DebugTargetInfo ?? Info.GetRandomCharacter();
-        DebugTargetInfo = null;
+        var info = OverrideTargetInfo ?? Info.GetRandomCharacter();
+        OverrideTargetInfo = null;
 
         var data = InventoryController.Instance.CreateCharacterData(info);
 
-        data.Stars = DebugTargetStars ?? data.Stars;
-        DebugTargetStars = null;
+        data.Stars = OverrideTargetStars ?? data.Stars;
+        OverrideTargetStars = null;
 
         Target.GlobalPosition = GlobalPosition;
         Target.SetData(data);
@@ -186,7 +186,10 @@ public partial class FocusEvent : Node3D
         while (true)
         {
             // Move target
-            yield return Target.WaitForMoveToRandomPosition();
+            if (!Target.Info.IsStationary)
+            {
+                yield return Target.WaitForMoveToRandomPosition();
+            }
 
             // Wait
             var duration = Target.GetMoveDelay();

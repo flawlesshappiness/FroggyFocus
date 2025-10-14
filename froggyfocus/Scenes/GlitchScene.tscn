@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b2gamstk3nwpo"]
+[gd_scene load_steps=38 format=3 uid="uid://b2gamstk3nwpo"]
 
 [ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_iviy3"]
@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://7wjk30vxt4g7" path="res://Prefabs/Objects/glitch_platform_4x12x1.tscn" id="21_cpcb0"]
 [ext_resource type="PackedScene" uid="uid://wp48b5jw0mw5" path="res://Prefabs/Objects/glitch_locked_door.tscn" id="22_cpcb0"]
 [ext_resource type="PackedScene" uid="uid://c8y0kfo5jh0t8" path="res://Prefabs/Objects/tv_travel.tscn" id="24_udo3y"]
+[ext_resource type="AudioStream" uid="uid://biug0yyfjoxvi" path="res://Sounds/Raw/amb_water_glitch_001.wav" id="25_cq1bo"]
+[ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="26_3jere"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8f2ml"]
 size = Vector2(10, 10)
@@ -54,6 +56,34 @@ geometry_parsed_geometry_type = 1
 vertices = PackedVector3Array(-3.5, 6.5, -69.5, -3.5, 6.5, -62.5, 3.5, 6.5, -62.5, 3.5, 6.5, -69.5, -1.5, 6.5, -57.5, -1.5, 6.5, -46.5, 1.5, 6.5, -46.5, 1.5, 6.5, -57.5, -1.5, 4.5, -35.5, -1.5, 4.5, -32.5, 1.5, 4.5, -32.5, 1.5, 4.5, -35.5, -1.5, 2.5, -23.5, -1.5, 2.5, -20.5, 1.5, 2.5, -20.5, 1.5, 2.5, -23.5, -1.5, 0.5, -11.5, -1.5, 0.5, -8.5, 1.5, 0.5, -8.5, 1.5, 0.5, -11.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, -3.5, 0.5, 6.5, -3.5, 0.5, 13.5, 3.5, 0.5, 13.5, 3.5, 0.5, 6.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25)]
 geometry_parsed_geometry_type = 1
+
+[sub_resource type="Curve3D" id="Curve3D_cq1bo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -8, 0, -8, 0, 0, 0, 0, 0, 0, -8, 0, -20, 0, 0, 0, 0, 0, 0, -16, 0, -20, 0, 0, 0, 0, 0, 0, -16, 0, -56, 0, 0, 0, 0, 0, 0, -7.94984, 0, -56.7616, 0, 0, 0, 0, 0, 0, -9.28252, 0, -83.9052, 0, 0, 0, 0, 0, 0, 8.82786, 0, -83.9052, 0, 0, 0, 0, 0, 0, 8.48454, 0, -56.3534, 0, 0, 0, 0, 0, 0, 15.9383, 0, -56.4077, 0, 0, 0, 0, 0, 0, 16.0826, 0, -20.9324, 0, 0, 0, 0, 0, 0, 7.49949, 0, -20.4174, 0, 0, 0, 0, 0, 0, 8.01448, 0, -8.05771),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="Curve3D" id="Curve3D_3jere"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 8.9347, 0, -6.95288, 0, 0, 0, 0, 0, 0, 20.0204, 0, -7.17608, 0, 0, 0, 0, 0, 0, 19.8716, 0, -16.997, 0, 0, 0, 0, 0, 0, 31.6269, 0, -17.0714, 0, 0, 0, 0, 0, 0, 32.3709, 0, -7.25048, 0, 0, 0, 0, 0, 0, 50.3015, 0, -6.72968, 0, 0, 0, 0, 0, 0, 53.2574, 0, 8.79605, 0, 0, 0, 0, 0, 0, 32.8716, 0, 8.05205, 0, 0, 0, 0, 0, 0, 31.83, 0, 18.4681, 0, 0, 0, 0, 0, 0, 19.9259, 0, 18.2449, 0, 0, 0, 0, 0, 0, 19.0331, 0, 6.93604, 0, 0, 0, 0, 0, 0, 7.87302, 0, 6.71284),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
+
+[sub_resource type="Curve3D" id="Curve3D_48cxi"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 8.03585, 0, 7.38885, 0, 0, 0, 0, 0, 0, 8.50166, 0, 33.3964, 0, 0, 0, 0, 0, 0, 32.3483, 0, 32.0152, 0, 0, 0, 0, 0, 0, 32.3483, 0, 49.1724, 0, 0, 0, 0, 0, 0, -17.726, 0, 49.7159, 0, 0, 0, 0, 0, 0, -17.3621, 0, 26.4305, 0, 0, 0, 0, 0, 0, -5.17344, 0, 26.741, 0, 0, 0, 0, 0, 0, -5.76694, 0, 6.88146),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_o5x5n"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -9.39573, 0, 5.64532, 0, 0, 0, 0, 0, 0, -25.0003, 0, 5.56769, 0, 0, 0, 0, 0, 0, -24.6121, 0, 16.98, 0, 0, 0, 0, 0, 0, -35.9468, 0, 16.8247, 0, 0, 0, 0, 0, 0, -36.4902, 0, 6.4993, 0, 0, 0, 0, 0, 0, -54.812, 0, 7.04275, 0, 0, 0, 0, 0, 0, -55.0449, 0, -7.78546, 0, 0, 0, 0, 0, 0, -35.3257, 0, -7.08675, 0, 0, 0, 0, 0, 0, -35.2385, 0, -17.7778, 0, 0, 0, 0, 0, 0, -23.9038, 0, -17.3896, 0, 0, 0, 0, 0, 0, -23.6709, 0, -6.98658, 0, 0, 0, 0, 0, 0, -11.8705, 0, -6.83131),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
 
 [node name="GlitchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
 script = ExtResource("1_6t126")
@@ -1423,3 +1453,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 TravelScene = "FactoryScene"
 StartNode = "StartTv"
 IsGoingUp = true
+
+[node name="Sounds" type="Node3D" parent="World"]
+
+[node name="AmbWater" type="AudioStreamPlayer3D" parent="World/Sounds" node_paths=PackedStringArray("Paths")]
+stream = ExtResource("25_cq1bo")
+volume_db = -5.0
+autoplay = true
+panning_strength = 0.75
+bus = &"Environment"
+script = ExtResource("26_3jere")
+Paths = [NodePath("../../Paths/PathWater_Stairs"), NodePath("../../Paths/PathWater_Stack"), NodePath("../../Paths/PathWater_Doors"), NodePath("../../Paths/PathWater_Bridges")]
+
+[node name="Paths" type="Node3D" parent="World"]
+
+[node name="PathWater_Stairs" type="Path3D" parent="World/Paths"]
+curve = SubResource("Curve3D_cq1bo")
+
+[node name="PathWater_Stack" type="Path3D" parent="World/Paths"]
+curve = SubResource("Curve3D_3jere")
+
+[node name="PathWater_Doors" type="Path3D" parent="World/Paths"]
+curve = SubResource("Curve3D_48cxi")
+
+[node name="PathWater_Bridges" type="Path3D" parent="World/Paths"]
+curve = SubResource("Curve3D_o5x5n")

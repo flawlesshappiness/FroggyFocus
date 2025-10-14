@@ -5,7 +5,7 @@ using System.Collections;
 
 public enum EldritchTentacleStartState
 {
-    Curved, InWater
+    Curved, InWater, Curved_Idle, InPain
 }
 
 public partial class EldritchTentacle : Node3D
@@ -21,7 +21,8 @@ public partial class EldritchTentacle : Node3D
 
     private static event Action<bool> OnAwakeStateChanged;
 
-    private BoolParameter param_awake = new("awake", false);
+    private TriggerParameter param_awake = new("awake");
+    private TriggerParameter param_asleep = new("asleep");
 
     public override void _Ready()
     {
@@ -39,31 +40,51 @@ public partial class EldritchTentacle : Node3D
 
     private void InitializeAnimations()
     {
-        var idle = Animation.CreateAnimation("Armature|idle", true);
         var curved = Animation.CreateAnimation("Armature|curved", true);
+        var curved_to_idle = Animation.CreateAnimation("Armature|curved_to_idle", false);
+        var curved_to_in_water = Animation.CreateAnimation("Armature|curved_to_in_water", false);
+        var idle_curved = Animation.CreateAnimation("Armature|idle_curved", true);
+        var idle = Animation.CreateAnimation("Armature|idle", true);
         var in_water = Animation.CreateAnimation("Armature|in_water", true);
         var in_water_to_idle = Animation.CreateAnimation("Armature|in_water_to_idle", false);
-        var curved_to_idle = Animation.CreateAnimation("Armature|curved_to_idle", false);
+        var in_pain = Animation.CreateAnimation("Armature|in_pain", true);
+        var in_pain_to_in_water = Animation.CreateAnimation("Armature|in_pain_to_in_water", false);
 
         var start = StartState switch
         {
             EldritchTentacleStartState.Curved => curved,
             EldritchTentacleStartState.InWater => in_water,
+            EldritchTentacleStartState.Curved_Idle => idle_curved,
+            EldritchTentacleStartState.InPain => in_pain,
             _ => in_water
         };
 
-        Animation.Connect(in_water, in_water_to_idle, param_awake.WhenTrue());
-        Animation.Connect(curved, curved_to_idle, param_awake.WhenTrue());
+        Animation.Connect(in_water, in_water_to_idle, param_awake.WhenTriggered());
+        Animation.Connect(curved, curved_to_idle, param_awake.WhenTriggered());
+
+        Animation.Connect(idle_curved, curved_to_in_water, param_asleep.WhenTriggered());
+        Animation.Connect(idle_curved, curved_to_idle, param_awake.WhenTriggered());
+
+        Animation.Connect(curved, curved_to_in_water, param_asleep.WhenTriggered());
+        Animation.Connect(in_pain, in_pain_to_in_water, param_asleep.WhenTriggered());
 
         Animation.Connect(in_water_to_idle, idle);
         Animation.Connect(curved_to_idle, idle);
 
+        Animation.Connect(curved_to_in_water, in_water);
+        Animation.Connect(in_pain_to_in_water, in_water);
+
         Animation.Start(start.Node);
     }
 
-    public void SetAwake(bool awake)
+    public void TriggerAsleep()
     {
-        param_awake.Set(awake);
+        param_asleep.Trigger();
+    }
+
+    public void TriggerAwake()
+    {
+        param_awake.Trigger();
     }
 
     public static void SetAwakeGlobal(bool awake)
@@ -78,7 +99,7 @@ public partial class EldritchTentacle : Node3D
         {
             var rng = new RandomNumberGenerator();
             yield return new WaitForSeconds(rng.RandfRange(0f, 2f));
-            SetAwake(awake);
+            TriggerAwake();
         }
     }
 }

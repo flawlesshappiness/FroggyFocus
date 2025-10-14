@@ -4,12 +4,12 @@
 
 [resource]
 script = ExtResource("1_2k38a")
-BackgroundEnergyMultiplier = 1.0
+BackgroundEnergyMultiplier = 0.3
 SunColor = Color(1, 0.95, 0.7, 1)
 SunShadowOpacity = 0.35
 FogEnabled = true
 FogColor = Color(0.2, 0.1475, 0.11, 1)
-FogDensity = 0.02
+FogDensity = 0.06
 FogAerialPerspective = 0.0
 Rain = 0.0
 Thunder = false

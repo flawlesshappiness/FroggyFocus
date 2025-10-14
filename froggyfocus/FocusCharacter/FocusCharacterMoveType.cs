@@ -2,5 +2,5 @@ public enum FocusCharacterMoveType
 {
     Walk,
     Flying,
-    Glitch
+    Glitch,
 }

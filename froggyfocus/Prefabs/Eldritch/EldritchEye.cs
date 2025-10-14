@@ -2,8 +2,16 @@ using FlawLizArt.Animation.StateMachine;
 using Godot;
 using System;
 
+public enum EldritchEyeStartState
+{
+    Closed, Open, Pout
+}
+
 public partial class EldritchEye : Node3D
 {
+    [Export]
+    public EldritchEyeStartState StartState;
+
     [Export]
     public Vector2 BlinkDelay;
 
@@ -36,6 +44,7 @@ public partial class EldritchEye : Node3D
     {
         var idle_closed = Animation.CreateAnimation("Armature|idle_closed", true);
         var idle_open = Animation.CreateAnimation("Armature|idle_open", true);
+        var idle_pout = Animation.CreateAnimation("Armature|idle_pout", true);
         var open = Animation.CreateAnimation("Armature|open", false);
         var close = Animation.CreateAnimation("Armature|close", false);
         var blink = Animation.CreateAnimation("Armature|blink", false);
@@ -50,7 +59,15 @@ public partial class EldritchEye : Node3D
         Animation.Connect(blink, idle_open);
         Animation.Connect(blink, close, param_open.WhenFalse());
 
-        Animation.Start(idle_closed.Node);
+        var start = StartState switch
+        {
+            EldritchEyeStartState.Closed => idle_closed,
+            EldritchEyeStartState.Open => idle_open,
+            EldritchEyeStartState.Pout => idle_pout,
+            _ => idle_closed
+        };
+
+        Animation.Start(start.Node);
     }
 
     public override void _Process(double delta)

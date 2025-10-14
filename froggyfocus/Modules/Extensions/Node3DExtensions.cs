@@ -11,7 +11,7 @@ public static class Node3DExtensions
     {
         node.Visible = enabled;
         node.ProcessMode = enabled ? Node.ProcessModeEnum.Inherit : Node.ProcessModeEnum.Disabled;
-        node.SetCollisionEnabled(enabled);
+        //node.SetCollisionEnabled(enabled);
         node.SetSoundsEnabled(enabled);
     }
 

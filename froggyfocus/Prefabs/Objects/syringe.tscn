@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://danceb4frxi2m"]
+
+[ext_resource type="PackedScene" uid="uid://dnn057wjcl7ih" path="res://Assets/FlawLizArt/Eldritch/syringe.fbx" id="1_bfmck"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="2_2q25g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bfmck"]
+height = 0.549805
+radius = 0.0527344
+
+[node name="Syringe" type="Node3D"]
+
+[node name="syringe" parent="." instance=ExtResource("1_bfmck")]
+
+[node name="Skeleton3D" parent="syringe/Armature" index="0"]
+bones/0/rotation = Quaternion(0.707107, 1.34846e-08, -6.67267e-09, 0.707107)
+
+[node name="AnimationPlayer" parent="syringe" index="2"]
+script = ExtResource("2_2q25g")
+Animation = "Armature|swirl"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274902, 0)
+shape = SubResource("CylinderShape3D_bfmck")
+
+[editable path="syringe"]

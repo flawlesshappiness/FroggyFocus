@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxp1nsi0jhu3i"]
+
+[ext_resource type="PackedScene" uid="uid://dkhfqakcxk7tp" path="res://Assets/FlawLizArt/Bones/long.fbx" id="1_hw0bt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tpcwm"]
+height = 1.78662
+radius = 0.0961914
+
+[node name="bone_long" type="Node3D"]
+
+[node name="long" parent="." instance=ExtResource("1_hw0bt")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.893311, 0)
+shape = SubResource("CylinderShape3D_tpcwm")

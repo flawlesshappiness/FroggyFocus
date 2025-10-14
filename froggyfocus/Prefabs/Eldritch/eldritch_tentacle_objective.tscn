@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://ct33gr4jalld4"]
+
+[ext_resource type="Script" uid="uid://cgvcp6g7dh53g" path="res://Prefabs/Eldritch/EldritchTentacleObjective.cs" id="1_1rb33"]
+[ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="1_2ofln"]
+[ext_resource type="PackedScene" uid="uid://danceb4frxi2m" path="res://Prefabs/Objects/syringe.tscn" id="2_rv8y7"]
+[ext_resource type="Script" uid="uid://cxo2wn5rsff82" path="res://Misc/Interactable.cs" id="5_n674b"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1rb33"]
+radius = 0.0209345
+
+[node name="EldritchTentacleObjective" type="Node3D" node_paths=PackedStringArray("Tentacle", "Interactable", "Syringe")]
+transform = Transform3D(-0.258179, 0, 0.966097, 0, 1, 0, -0.966097, 0, -0.258179, 0, 0, 0)
+script = ExtResource("1_1rb33")
+Tentacle = NodePath("EldritchTentacle")
+Interactable = NodePath("EldritchTentacle/tentacle/Armature/Skeleton3D/SyringeAttachment/Interactable")
+Syringe = NodePath("EldritchTentacle/tentacle/Armature/Skeleton3D/SyringeAttachment/Syringe")
+
+[node name="EldritchTentacle" parent="." instance=ExtResource("1_2ofln")]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
+StartState = 3
+
+[node name="Eldritch_Eye" parent="EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
+StartState = 2
+
+[node name="SyringeAttachment" type="BoneAttachment3D" parent="EldritchTentacle/tentacle/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -1.61275e-16, -3.74669e-16, 3.74668e-16, 0.72632, 0.687357, 1.61275e-16, -0.687357, 0.72632, -7.87518e-18, 0.0354666, 0.0314275)
+bone_name = "Limb.007"
+bone_idx = 7
+
+[node name="Syringe" parent="EldritchTentacle/tentacle/Armature/Skeleton3D/SyringeAttachment" instance=ExtResource("2_rv8y7")]
+transform = Transform3D(-0.00160263, -0.0185374, -0.035409, -0.0399295, -0.000810925, 0.00223175, -0.00175212, 0.035436, -0.0184722, -0.000634879, 0.00595526, -0.000913333)
+
+[node name="Interactable" type="Area3D" parent="EldritchTentacle/tentacle/Armature/Skeleton3D/SyringeAttachment"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_n674b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EldritchTentacle/tentacle/Armature/Skeleton3D/SyringeAttachment/Interactable"]
+transform = Transform3D(1, 0, 0, -1.73642e-20, 1, -8.12622e-20, -4.02331e-07, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_1rb33")
+
+[editable path="EldritchTentacle"]
+[editable path="EldritchTentacle/tentacle"]

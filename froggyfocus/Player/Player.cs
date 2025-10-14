@@ -51,6 +51,7 @@ public partial class Player : TopDownController
 
     private bool has_focus_target;
     private float jump_charge;
+    private bool on_stable_ground;
     private Vector3 respawn_position;
 
     private Coroutine cr_wait_focus_target;
@@ -70,6 +71,8 @@ public partial class Player : TopDownController
 
         FocusEventLock.OnLocked += FocusEventLocked;
         FocusEventLock.OnFree += FocusEventFree;
+
+        EvaluateStableGround();
     }
 
     public override void _ExitTree()
@@ -139,6 +142,8 @@ public partial class Player : TopDownController
             var velocity = Character.Basis * new Vector3(0, height, -length);
             Jump(velocity);
             Character.SetCharging(false);
+
+            on_stable_ground = false;
         }
     }
 
@@ -154,6 +159,7 @@ public partial class Player : TopDownController
     {
         if (IsJumping) return;
         if (!IsOnFloor()) return;
+        if (!on_stable_ground) return;
 
         respawn_position = GlobalPosition;
     }
@@ -230,7 +236,14 @@ public partial class Player : TopDownController
             FocusEventLock.SetLock("jumping", false);
             PsDustLand.Emitting = true;
             StopDustStreamPS();
+            EvaluateStableGround();
         }
+    }
+
+    private void EvaluateStableGround()
+    {
+        var closest_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), GlobalPosition);
+        on_stable_ground = GlobalPosition.DistanceTo(closest_position) < 0.5f;
     }
 
     public void Respawn()

@@ -35,6 +35,12 @@ public partial class FocusCharacterInfo : Resource
     public FocusCharacterMoveType MoveType = FocusCharacterMoveType.Walk;
 
     [Export]
+    public bool IsStationary;
+
+    [Export]
+    public float OverrideSize;
+
+    [Export]
     public int OverrideRarity;
 
     [Export]

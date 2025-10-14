@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://na6ghlg4xx1t"]
+[gd_scene load_steps=18 format=3 uid="uid://na6ghlg4xx1t"]
 
 [ext_resource type="Script" uid="uid://n10j2kkvmge1" path="res://Scenes/EldritchScene.cs" id="1_vole6"]
 [ext_resource type="Material" uid="uid://71pv1fsup32f" path="res://Materials/Color_Brown.tres" id="2_6bnib"]
@@ -6,10 +6,19 @@
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_lfqeu"]
 [ext_resource type="Resource" uid="uid://cjpkpg08em4hs" path="res://Weather/Resources/FoggyBrown.tres" id="3_cvby2"]
 [ext_resource type="PackedScene" uid="uid://hka08c0m8os8" path="res://Prefabs/Water/water_bile.tscn" id="5_aut7b"]
+[ext_resource type="PackedScene" uid="uid://dcfuntqu5frvb" path="res://Prefabs/Ground/eldritch_corner_convex_001.tscn" id="5_qjlmc"]
+[ext_resource type="PackedScene" uid="uid://cvmh0jn7gf0a3" path="res://Prefabs/Objects/floating_bone_rib.tscn" id="5_ro7oi"]
 [ext_resource type="PackedScene" uid="uid://c7whvf1sy2d0g" path="res://Prefabs/Eldritch/eldritch_pillar.tscn" id="6_ell4v"]
+[ext_resource type="PackedScene" uid="uid://pxtjfc22pib3" path="res://Prefabs/Eldritch/eldritch_tentacle_wall.tscn" id="6_hulv8"]
+[ext_resource type="PackedScene" uid="uid://ct33gr4jalld4" path="res://Prefabs/Eldritch/eldritch_tentacle_objective.tscn" id="7_6os4d"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="7_6636b"]
+[ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="13_s322q"]
+[ext_resource type="Resource" uid="uid://byovumopjt2bh" path="res://FocusEvent/Resources/Eldritch_Syringe.tres" id="14_s322q"]
+[ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="15_ki66s"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vole6"]
+vertices = PackedVector3Array(-4.37798, 0.388103, -55.5822, -3.12798, 0.388103, -54.8322, -1.87798, 0.388103, -54.8322, -5.62798, 0.388103, -60.5822, -5.37798, 0.388103, -58.0822, 1.87202, 0.388103, -54.8322, 3.62202, 0.388103, -55.0822, 4.37202, 0.388103, -55.5822, 4.87202, 0.388103, -57.8322, 4.37202, 0.388103, -64.0822, 3.12202, 0.388103, -64.8322, 1.87202, 0.388103, -64.8322, 5.62202, 0.388103, -60.8322, -1.87798, 0.388103, -64.8322, -3.12798, 0.388103, -64.8322, -4.37798, 0.388103, -64.0822, 5.62202, 0.388103, -58.8322, -1.62798, 0.388103, -54.3322, 1.62202, 0.388103, -54.3322, 1.62202, 0.388103, -65.3322, -1.62798, 0.388103, -65.3322, -7.62798, 25.3881, -50.5822, -7.62798, 25.3881, -47.3322, 7.62202, 25.3881, -47.3322, 7.62202, 25.3881, -50.5822, -4.62798, 3.3881, -49.8322, -5.37798, 3.1381, -49.3322, -4.62798, 3.3881, -48.0822, 6.12202, 2.6381, -47.5822, 6.62202, 2.6381, -48.5822, 5.87202, 2.8881, -50.3322, 1.87202, 4.3881, -47.5822, 3.28869, 4.1381, -47.5822, 6.24702, 2.8881, -49.4572, 3.24702, 4.3881, -50.2072, -0.690475, 4.8881, -50.0197, -3.32798, 3.6381, -47.9822, -2.02798, 4.6381, -47.8822, 5.12202, 0.138103, -47.8322, 5.62202, 0.138103, -47.5822, 5.87202, 0.388103, -48.0822, 5.62202, 0.388103, -50.3322, 5.12202, 0.138103, -50.3322, 4.87202, 0.138103, -49.0822, 6.87202, -2.6119, -47.8322, 6.37202, -2.6119, -47.8322, 7.37202, -2.6119, -47.5822, 7.37202, -2.6119, -50.3322, 6.62202, -2.6119, -50.3322, 7.37202, -2.3619, -48.9572, -8.62798, 25.3881, -44.5822, -8.62798, 25.3881, -41.3322, 6.62202, 25.3881, -41.3322, 6.62202, 25.3881, -44.5822, -8.37798, -2.6119, -41.5822, -7.62798, -2.6119, -41.5822, -8.12798, -2.3619, -42.0822, -8.12798, -2.3619, -43.8322, -7.62798, -2.6119, -44.3322, -8.37798, -2.6119, -44.3322, -8.37798, -2.3619, -42.9572, 4.12202, 3.3881, -42.8322, 4.12202, 3.1381, -43.5822, 3.62202, 3.3881, -43.8322, 0.872025, 4.8881, -42.3322, 3.62202, 3.3881, -42.0822, -6.87798, 2.8881, -41.5822, 0.372025, 4.8881, -41.8322, -0.419643, 4.8881, -42.2072, -4.29464, 4.3881, -41.8322, -3.97797, 4.3881, -41.6822, -7.37798, 2.6381, -44.3322, -7.62798, 2.6381, -43.8322, -7.62798, 2.6381, -42.3322, -0.502975, 4.8881, -44.0197, -4.62798, 4.3881, -44.2072, -6.12798, 0.138103, -44.0822, -6.62798, 0.138103, -44.3322, -7.12798, 0.638103, -43.5822, -6.62798, 0.138103, -41.5822, -6.12798, 0.138103, -41.8322, -53.878, 4.6381, -39.8322, -52.878, 4.1381, -40.0822, -52.878, 4.1381, -40.5822, -54.128, 4.6381, -40.3322, -6.62798, 25.3881, -38.5822, -6.62798, 25.3881, -35.3322, 8.62202, 25.3881, -35.3322, 8.62202, 25.3881, -38.5822, -55.628, 0.388103, -32.3322, -55.128, 0.388103, -31.8322, -53.878, 0.388103, -31.8322, -55.628, 0.388103, -35.8322, -56.128, 0.388103, -35.5822, -50.128, 0.388103, -31.8322, -49.628, 0.388103, -32.3322, -49.628, 0.388103, -33.5822, -49.628, 0.388103, -37.3322, -50.128, 0.388103, -37.8322, -51.378, 0.388103, -37.8322, -49.128, 0.388103, -33.8322, -55.128, 0.388103, -37.8322, -55.628, 0.388103, -37.3322, -53.628, 0.388103, -31.3322, -51.628, 0.388103, -38.3322, -3.62798, 3.3881, -37.8322, -4.37798, 3.1381, -37.3322, -3.62798, 3.3881, -36.0822, 7.12202, 2.6381, -35.5822, 7.62202, 2.6381, -36.5822, 6.87202, 2.8881, -38.3322, 2.87202, 4.3881, -35.5822, 4.28869, 4.1381, -35.5822, 7.24702, 2.8881, -37.4572, 4.24702, 4.3881, -38.2072, 0.309525, 4.8881, -38.0197, -2.32798, 3.6381, -35.9822, -1.02798, 4.6381, -35.8822, 6.12202, 0.138103, -35.8322, 6.62202, 0.138103, -35.5822, 6.87202, 0.388103, -36.0822, 6.62202, 0.388103, -38.3322, 6.12202, 0.138103, -38.3322, 5.87202, 0.138103, -37.0822, 7.87202, -2.6119, -35.8322, 7.37202, -2.6119, -35.8322, 8.37202, -2.6119, -35.5822, 8.37202, -2.6119, -38.3322, 7.62202, -2.6119, -38.3322, 8.37202, -2.3619, -36.9572, 1.12202, 0.388103, -32.3322, 0.872025, 0.388103, -32.8322, -0.877975, 0.388103, -32.8322, 2.12202, 0.388103, -26.0822, 2.87202, 0.388103, -26.5822, 3.12202, 0.388103, -28.3322, -1.12798, 0.388103, -26.3322, -0.877975, 0.388103, -25.8322, -2.87798, 0.388103, -32.0822, -3.12798, 0.388103, -30.3322, 3.62202, 0.388103, -28.5822, 2.87202, 0.388103, -32.0822, -3.62798, 0.388103, -30.0822, -2.87798, 0.388103, -26.5822, 66.372, 0.388103, -11.3322, 66.372, 0.388103, -9.58218, 66.872, 0.388103, -9.33218, 67.372, 0.388103, -13.5822, 68.872, 0.388103, -7.58218, 69.122, 0.388103, -7.08218, 70.872, 0.388103, -7.08218, 71.122, 0.388103, -7.58218, 72.622, 0.388103, -7.83218, 73.622, 0.388103, -10.5822, 70.872, 0.388103, -13.8322, 67.122, 0.388103, -7.83218, 70.622, 0.388103, -14.3322, 72.622, 0.388103, -13.5822, 74.872, 4.6381, -13.0822, 75.122, 4.1381, -11.0822, 75.622, 4.1381, -11.0822, 3.12202, 0.388103, 0.917824, 3.62202, 0.388103, 0.667824, 3.12202, 0.388103, -2.33218, 0.872025, 0.388103, -3.58218, -0.627975, 0.388103, 3.66782, 2.62202, 0.388103, 2.91782, -2.37798, 0.388103, -3.08218, -3.62798, 0.388103, -0.832176, -2.87798, 0.388103, 2.66782, -54.628, 0.388103, 27.1678, -54.128, 0.388103, 26.6678, -54.128, 0.388103, 25.4178, -53.628, 0.388103, 25.1678, -53.628, 0.388103, 23.4178, -54.128, 0.388103, 23.1678, -54.378, 0.388103, 21.4178, -56.128, 0.388103, 21.1678, -56.378, 0.388103, 20.6678, -59.628, 0.388103, 21.1678, -60.878, 0.388103, 23.6678, -59.878, 0.388103, 27.1678, -57.628, 0.388103, 27.9178, -62.878, 4.1381, 24.4178, -62.378, 4.6381, 25.9178, -62.378, 4.1381, 24.6678)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 3), PackedInt32Array(16, 8, 12), PackedInt32Array(12, 8, 5), PackedInt32Array(17, 2, 18), PackedInt32Array(18, 2, 5), PackedInt32Array(19, 11, 20), PackedInt32Array(20, 11, 13), PackedInt32Array(11, 12, 13), PackedInt32Array(13, 12, 3), PackedInt32Array(3, 12, 2), PackedInt32Array(2, 12, 5), PackedInt32Array(24, 23, 21), PackedInt32Array(21, 23, 22), PackedInt32Array(27, 26, 25), PackedInt32Array(29, 28, 33), PackedInt32Array(33, 28, 30), PackedInt32Array(30, 28, 34), PackedInt32Array(34, 28, 32), PackedInt32Array(34, 32, 31), PackedInt32Array(34, 31, 35), PackedInt32Array(35, 31, 37), PackedInt32Array(35, 37, 36), PackedInt32Array(35, 36, 27), PackedInt32Array(35, 27, 25), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 43), PackedInt32Array(40, 43, 42), PackedInt32Array(40, 42, 41), PackedInt32Array(44, 46, 45), PackedInt32Array(46, 44, 49), PackedInt32Array(49, 44, 47), PackedInt32Array(47, 44, 48), PackedInt32Array(53, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(56, 55, 54), PackedInt32Array(59, 58, 57), PackedInt32Array(59, 57, 60), PackedInt32Array(60, 57, 56), PackedInt32Array(60, 56, 54), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 65), PackedInt32Array(63, 65, 64), PackedInt32Array(64, 67, 68), PackedInt32Array(68, 67, 70), PackedInt32Array(68, 70, 69), PackedInt32Array(69, 70, 66), PackedInt32Array(72, 71, 73), PackedInt32Array(73, 71, 66), PackedInt32Array(66, 71, 75), PackedInt32Array(66, 75, 69), PackedInt32Array(69, 75, 74), PackedInt32Array(69, 74, 68), PackedInt32Array(68, 74, 64), PackedInt32Array(64, 74, 63), PackedInt32Array(77, 76, 78), PackedInt32Array(78, 76, 80), PackedInt32Array(78, 80, 79), PackedInt32Array(82, 81, 83), PackedInt32Array(83, 81, 84), PackedInt32Array(88, 87, 85), PackedInt32Array(85, 87, 86), PackedInt32Array(90, 89, 91), PackedInt32Array(91, 89, 93), PackedInt32Array(91, 93, 92), PackedInt32Array(96, 95, 94), PackedInt32Array(98, 97, 99), PackedInt32Array(99, 97, 100), PackedInt32Array(99, 100, 96), PackedInt32Array(92, 102, 101), PackedInt32Array(94, 91, 96), PackedInt32Array(96, 91, 92), PackedInt32Array(96, 92, 101), PackedInt32Array(96, 101, 99), PackedInt32Array(94, 103, 91), PackedInt32Array(101, 104, 99), PackedInt32Array(107, 106, 105), PackedInt32Array(109, 108, 113), PackedInt32Array(113, 108, 110), PackedInt32Array(110, 108, 114), PackedInt32Array(114, 108, 112), PackedInt32Array(114, 112, 111), PackedInt32Array(114, 111, 115), PackedInt32Array(115, 111, 117), PackedInt32Array(115, 117, 116), PackedInt32Array(115, 116, 107), PackedInt32Array(115, 107, 105), PackedInt32Array(119, 118, 120), PackedInt32Array(120, 118, 123), PackedInt32Array(120, 123, 122), PackedInt32Array(120, 122, 121), PackedInt32Array(124, 126, 125), PackedInt32Array(126, 124, 129), PackedInt32Array(129, 124, 127), PackedInt32Array(127, 124, 128), PackedInt32Array(132, 131, 130), PackedInt32Array(135, 134, 133), PackedInt32Array(133, 137, 136), PackedInt32Array(139, 138, 132), PackedInt32Array(140, 135, 141), PackedInt32Array(141, 135, 130), PackedInt32Array(142, 139, 143), PackedInt32Array(143, 139, 136), PackedInt32Array(132, 130, 139), PackedInt32Array(139, 130, 136), PackedInt32Array(136, 130, 135), PackedInt32Array(136, 135, 133), PackedInt32Array(145, 144, 146), PackedInt32Array(146, 144, 147), PackedInt32Array(149, 148, 150), PackedInt32Array(150, 148, 151), PackedInt32Array(152, 148, 153), PackedInt32Array(153, 148, 146), PackedInt32Array(153, 146, 154), PackedInt32Array(154, 146, 147), PackedInt32Array(148, 155, 146), PackedInt32Array(154, 147, 156), PackedInt32Array(152, 151, 148), PackedInt32Array(154, 157, 153), PackedInt32Array(160, 159, 158), PackedInt32Array(162, 161, 163), PackedInt32Array(163, 161, 164), PackedInt32Array(161, 166, 165), PackedInt32Array(167, 164, 168), PackedInt32Array(168, 164, 169), PackedInt32Array(169, 164, 165), PackedInt32Array(165, 164, 161), PackedInt32Array(172, 171, 170), PackedInt32Array(174, 173, 172), PackedInt32Array(174, 172, 175), PackedInt32Array(175, 172, 170), PackedInt32Array(177, 176, 175), PackedInt32Array(179, 178, 177), PackedInt32Array(179, 177, 180), PackedInt32Array(180, 177, 175), PackedInt32Array(180, 175, 181), PackedInt32Array(181, 175, 170), PackedInt32Array(170, 182, 181), PackedInt32Array(185, 184, 183)]
 geometry_parsed_geometry_type = 1
 
 [sub_resource type="SphereMesh" id="SphereMesh_lfqeu"]
@@ -19,22 +28,11 @@ radius = 1000.0
 height = 2000.0
 is_hemisphere = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cvby2"]
-size = Vector3(4, 1, 4)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_cvby2"]
-top_radius = 2.0
-bottom_radius = 2.0
-height = 1.0
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ro7oi"]
-height = 1.0
-radius = 2.0
-
-[node name="EldritchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment")]
+[node name="EldritchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEventParent")]
 script = ExtResource("1_vole6")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
+FocusEventParent = NodePath("FocusEvents")
 Weathers = Array[ExtResource("2_d5q5d")]([ExtResource("3_cvby2")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -46,6 +44,131 @@ environment = ExtResource("2_lfqeu")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vole6")
 
+[node name="Island_Start" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="pond_corner_convex_001" parent="NavigationRegion3D/Island_Start" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
+
+[node name="pond_corner_convex_002" parent="NavigationRegion3D/Island_Start" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
+
+[node name="pond_corner_convex_003" parent="NavigationRegion3D/Island_Start" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
+
+[node name="pond_corner_convex_004" parent="NavigationRegion3D/Island_Start" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
+
+[node name="End" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.8322)
+
+[node name="Island_End" type="Node3D" parent="NavigationRegion3D/End"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="pond_corner_convex_001" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
+
+[node name="pond_corner_convex_002" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
+
+[node name="pond_corner_convex_003" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
+
+[node name="pond_corner_convex_004" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
+
+[node name="EldritchTentacleWall1" parent="NavigationRegion3D/End" node_paths=PackedStringArray("Objective") instance=ExtResource("6_hulv8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 0, 10.8318)
+Objective = NodePath("../../Objective1/EldritchTentacleObjective1")
+
+[node name="EldritchTentacleWall3" parent="NavigationRegion3D/End" node_paths=PackedStringArray("Objective") instance=ExtResource("6_hulv8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 22.8318)
+Objective = NodePath("../../Objective3/EldritchTentacleObjective3")
+
+[node name="EldritchTentacleWall2" parent="NavigationRegion3D/End" node_paths=PackedStringArray("Objective") instance=ExtResource("6_hulv8")]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -8.1, 0, 16.8318)
+Objective = NodePath("../../Objective2/EldritchTentacleObjective2")
+
+[node name="Island_End2" type="Node3D" parent="NavigationRegion3D/End"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30.5)
+
+[node name="pond_corner_convex_001" parent="NavigationRegion3D/End/Island_End2" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
+
+[node name="pond_corner_convex_002" parent="NavigationRegion3D/End/Island_End2" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
+
+[node name="pond_corner_convex_003" parent="NavigationRegion3D/End/Island_End2" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
+
+[node name="pond_corner_convex_004" parent="NavigationRegion3D/End/Island_End2" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
+
+[node name="Objective1" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.6015, 0, -34.8167)
+
+[node name="Island" type="Node3D" parent="NavigationRegion3D/Objective1"]
+
+[node name="pond_corner_convex_001" parent="NavigationRegion3D/Objective1/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
+
+[node name="pond_corner_convex_002" parent="NavigationRegion3D/Objective1/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
+
+[node name="pond_corner_convex_003" parent="NavigationRegion3D/Objective1/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
+
+[node name="pond_corner_convex_004" parent="NavigationRegion3D/Objective1/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
+
+[node name="EldritchTentacleObjective1" parent="NavigationRegion3D/Objective1" node_paths=PackedStringArray("FocusEvent") instance=ExtResource("7_6os4d")]
+transform = Transform3D(-0.258179, 0, 0.966097, 0, 1, 0, -0.966097, 0, -0.258179, 0.18594, 0, -5.66751)
+GameFlagId = "eldritch_objective_001"
+FocusEvent = NodePath("../../../FocusEvents/Syringe")
+
+[node name="Objective2" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(-0.00959922, 0, 0.999954, 0, 1, 0, -0.999954, 0, -0.00959922, -57.2012, 0, 24.2382)
+
+[node name="Island" type="Node3D" parent="NavigationRegion3D/Objective2"]
+
+[node name="pond_corner_convex_001" parent="NavigationRegion3D/Objective2/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
+
+[node name="pond_corner_convex_002" parent="NavigationRegion3D/Objective2/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
+
+[node name="pond_corner_convex_003" parent="NavigationRegion3D/Objective2/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
+
+[node name="pond_corner_convex_004" parent="NavigationRegion3D/Objective2/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
+
+[node name="EldritchTentacleObjective2" parent="NavigationRegion3D/Objective2" node_paths=PackedStringArray("FocusEvent") instance=ExtResource("7_6os4d")]
+transform = Transform3D(-0.258179, 0, 0.966097, 0, 1, 0, -0.966097, 0, -0.258179, 0.18594, 0, -5.66751)
+GameFlagId = "eldritch_objective_001"
+FocusEvent = NodePath("../../../FocusEvents/Syringe")
+
+[node name="Objective3" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.050436, 0, -0.998727, 0, 1, 0, 0.998727, 0, 0.050436, 69.914, -3.8147e-06, -10.665)
+
+[node name="Island" type="Node3D" parent="NavigationRegion3D/Objective3"]
+
+[node name="pond_corner_convex_001" parent="NavigationRegion3D/Objective3/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
+
+[node name="pond_corner_convex_002" parent="NavigationRegion3D/Objective3/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
+
+[node name="pond_corner_convex_003" parent="NavigationRegion3D/Objective3/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
+
+[node name="pond_corner_convex_004" parent="NavigationRegion3D/Objective3/Island" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
+
+[node name="EldritchTentacleObjective3" parent="NavigationRegion3D/Objective3" node_paths=PackedStringArray("FocusEvent") instance=ExtResource("7_6os4d")]
+transform = Transform3D(-0.258179, 0, 0.966097, 0, 1, 0, -0.966097, 0, -0.258179, 0.18594, 0, -5.66751)
+GameFlagId = "eldritch_objective_001"
+FocusEvent = NodePath("../../../FocusEvents/Syringe")
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
@@ -55,28 +178,269 @@ mesh = SubResource("SphereMesh_lfqeu")
 [node name="Water" parent="World" instance=ExtResource("5_aut7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="EldritchPillar" parent="World" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.17307, 0, 0)
-
-[node name="EldritchPillar2" parent="World" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20001, 0, 0)
-
 [node name="Player" parent="World" instance=ExtResource("7_6636b")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+[node name="Pillars" type="Node3D" parent="World"]
+visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_cvby2")
+[node name="EldritchPillar" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.17307, 0, 0)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+[node name="EldritchPillar2" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4012, 0, -5.69401)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-mesh = SubResource("CylinderMesh_cvby2")
-skeleton = NodePath("../..")
+[node name="EldritchPillar3" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.44896, 0, -15.3926)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("CylinderShape3D_ro7oi")
+[node name="EldritchPillar4" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9857, 0, -20.2134)
+
+[node name="EldritchPillar5" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.90583, 0, -38.546)
+
+[node name="EldritchPillar6" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5482, 0, -43.976)
+
+[node name="EldritchPillar7" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0587, 0, -40.8796)
+
+[node name="EldritchPillar8" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4781, 0, -26.6528)
+
+[node name="EldritchPillar9" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4865, 0, -52.165)
+
+[node name="EldritchPillar10" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3824, 0, -57.0079)
+
+[node name="EldritchPillar11" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1248, 0, -59.7948)
+
+[node name="Platforms_Start" type="Node3D" parent="."]
+
+[node name="FloatingBoneRib" parent="Platforms_Start" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.9375, 0, 0.496095, 0, 2, 0, -0.496095, 0, 1.9375, 0, -1, -8)
+TickOffset = 8
+
+[node name="FloatingBoneRib2" parent="Platforms_Start" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.945678, -1, -14)
+TickOffset = 4
+
+[node name="FloatingBoneRib3" parent="Platforms_Start" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.93695, 0, -0.498225, 0, 2, 0, 0.498225, 0, 1.93695, 0, -1, -20)
+
+[node name="Platforms_Objective1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.201, 0, -29.218)
+
+[node name="FloatingBoneRib" parent="Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.0122871, 0, 1.99996, 0, 2, 0, -1.99996, 0, 0.0122871, -0.0890393, -1, -0.442989)
+TickUp = 2
+TickWarn = 2
+TickDown = 4
+TickOffset = 4
+
+[node name="FloatingBoneRib2" parent="Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.675571, 0, 1.88245, 0, 2, 0, -1.88245, 0, -0.675571, -6.13618, -1, 0.364349)
+TickUp = 2
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib3" parent="Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.23352, 0, 1.5743, 0, 2, 0, -1.5743, 0, -1.23352, -11.4067, -1, 3.72877)
+TickUp = 2
+TickWarn = 2
+TickDown = 4
+TickOffset = 4
+
+[node name="FloatingBoneRib4" parent="Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.262091, 0, 1.98275, 0, 2, 0, -1.98275, 0, -0.262091, -17.1947, -1, 7.04793)
+TickUp = 2
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib5" parent="Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.483675, 0, 1.94063, 0, 2, 0, -1.94063, 0, 0.483675, -24.264, -1, 7.17403)
+TickUp = 2
+TickWarn = 2
+TickDown = 4
+TickOffset = 4
+
+[node name="FloatingBoneRib6" parent="Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.940823, 0, 1.76489, 0, 2, 0, -1.76489, 0, 0.940823, -31.1784, -1, 3.74784)
+TickUp = 2
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib7" parent="Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.542108, 0, 1.92513, 0, 2, 0, -1.92513, 0, 0.542108, -37.8021, -1, 0.505856)
+TickUp = 2
+TickWarn = 2
+TickDown = 4
+TickOffset = 4
+
+[node name="Platforms_Objective2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48584, -1.90735e-06, 5.5567)
+
+[node name="FloatingBoneRib" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.54067, 0, 1.27528, 0, 2, 0, -1.27528, 0, -1.54067, 0, -1, 0)
+TickUp = 8
+TickDown = 2
+TickOffset = 12
+
+[node name="FloatingBoneRib2" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.30258, 0, 1.51766, 0, 2, 0, -1.51766, 0, -1.30258, -3.42683, -1, 2.92673)
+TickUp = 8
+TickDown = 2
+TickOffset = 10
+
+[node name="FloatingBoneRib3" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.536663, 0, 1.92665, 0, 2, 0, -1.92665, 0, -0.536663, -8.98656, -1, 3.23907)
+TickUp = 8
+TickDown = 2
+TickOffset = 6
+
+[node name="FloatingBoneRib4" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.73301, 0, 0.998337, 0, 2, 0, -0.998337, 0, -1.73301, -5.98805, -1, 7.7993)
+TickUp = 8
+TickDown = 2
+
+[node name="FloatingBoneRib5" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.69914, 0, 1.05495, 0, 2, 0, -1.05495, 0, -1.69914, -8.17447, -1, 13.1716)
+TickUp = 8
+TickDown = 2
+TickOffset = 2
+
+[node name="FloatingBoneRib6" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.889677, 0, 1.79122, 0, 2, 0, -1.79122, 0, -0.889677, -15.5781, -1, 2.57863)
+TickUp = 8
+TickDown = 2
+TickOffset = 8
+
+[node name="FloatingBoneRib7" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.17283, 0, -1.62002, 0, 2, 0, 1.62002, 0, 1.17283, -13.5384, -1, 9.6995)
+TickUp = 8
+TickDown = 2
+TickOffset = 5
+
+[node name="FloatingBoneRib8" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.56042, 0, -1.25103, 0, 2, 0, 1.25103, 0, 1.56042, -19.2315, -1, 6.86226)
+TickUp = 8
+TickDown = 2
+
+[node name="FloatingBoneRib9" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.69963, 0, -1.87364, 0, 2, 0, 1.87364, 0, 0.69963, -12.268, -1, 18.3807)
+TickUp = 8
+TickDown = 2
+TickOffset = 12
+
+[node name="FloatingBoneRib10" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.920865, 0, -1.77539, 0, 2, 0, 1.77539, 0, 0.920865, -18.1335, -1, 13.7088)
+TickUp = 8
+TickDown = 2
+TickOffset = 10
+
+[node name="FloatingBoneRib11" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.812804, 0, -1.82739, 0, 2, 0, 1.82739, 0, 0.812804, -24.0878, -1, 11.1009)
+TickUp = 8
+TickDown = 2
+TickOffset = 7
+
+[node name="FloatingBoneRib12" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.27697, 0, -1.53927, 0, 2, 0, 1.53927, 0, 1.27697, -19.4106, -1, 19.227)
+TickUp = 8
+TickDown = 2
+TickOffset = 3
+
+[node name="FloatingBoneRib13" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.985242, 0, -1.74049, 0, 2, 0, 1.74049, 0, 0.985242, -24.4393, -1, 16.9922)
+TickUp = 8
+TickDown = 2
+TickOffset = 6
+
+[node name="FloatingBoneRib14" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.633152, 0, -1.89713, 0, 2, 0, 1.89713, 0, -0.633152, -29.9391, -1, 14.1286)
+TickUp = 8
+TickDown = 2
+TickOffset = 8
+
+[node name="FloatingBoneRib19" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.0548667, 0, -1.99925, 0, 2, 0, 1.99925, 0, 0.0548667, -36.1737, -1, 11.4042)
+TickUp = 8
+TickDown = 2
+TickOffset = 6
+
+[node name="FloatingBoneRib20" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.697243, 0, -1.87453, 0, 2, 0, 1.87453, 0, 0.697243, -42.8798, -1, 12.9236)
+TickUp = 8
+TickDown = 2
+TickOffset = 4
+
+[node name="FloatingBoneRib15" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.67685, 0, -1.09004, 0, 2, 0, 1.09004, 0, 1.67685, -27.6374, -1, 21.7485)
+TickUp = 8
+TickDown = 2
+TickOffset = 12
+
+[node name="FloatingBoneRib16" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.1216, 0, -1.65591, 0, 2, 0, 1.65591, 0, 1.1216, -30.9162, -1, 25.8826)
+TickUp = 8
+TickDown = 2
+TickOffset = 8
+
+[node name="FloatingBoneRib17" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.384736, 0, -1.96265, 0, 2, 0, 1.96265, 0, 0.384736, -36.8322, -1, 26.7379)
+TickUp = 8
+TickDown = 2
+TickOffset = 4
+
+[node name="FloatingBoneRib18" parent="Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.04366, 0, -1.7061, 0, 2, 0, 1.7061, 0, -1.04366, -42.4632, -1, 24.457)
+TickUp = 8
+TickDown = 2
+
+[node name="Platforms_End" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45)
+
+[node name="FloatingBoneRib" parent="Platforms_End" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.94072, 0, -0.483336, 0, 2, 0, 0.483336, 0, 1.94072, 1.14271, -1, 5.09036)
+TickUp = 3
+TickWarn = 1
+TickDown = 2
+
+[node name="FloatingBoneRib2" parent="Platforms_End" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(1.92535, 0, 0.541335, 0, 2, 0, -0.541335, 0, 1.92535, 1.29474, -1, -1.20878)
+TickUp = 3
+TickWarn = 1
+TickDown = 2
+
+[node name="FocusEvents" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 100)
+
+[node name="Syringe" parent="FocusEvents" instance=ExtResource("13_s322q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+Id = "syringe"
+Info = ExtResource("14_s322q")
+
+[node name="Frog" parent="FocusEvents/Syringe" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 2.5)
+
+[node name="Island_Start" type="Node3D" parent="FocusEvents/Syringe"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -2.4, 0)
+
+[node name="pond_corner_convex_001" parent="FocusEvents/Syringe/Island_Start" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
+
+[node name="pond_corner_convex_002" parent="FocusEvents/Syringe/Island_Start" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
+
+[node name="pond_corner_convex_003" parent="FocusEvents/Syringe/Island_Start" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
+
+[node name="pond_corner_convex_004" parent="FocusEvents/Syringe/Island_Start" instance=ExtResource("5_qjlmc")]
+transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
+
+[node name="EldritchTentacle" parent="FocusEvents/Syringe" instance=ExtResource("15_ki66s")]
+transform = Transform3D(-0.339051, 0, 1.15111, 0, 1.2, 0, -1.15111, 0, -0.339051, 3.95191, -2.4, -3.51632)
+StartState = 3
+
+[editable path="FocusEvents/Syringe"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://scqlqqxli7n"]
+[gd_scene load_steps=9 format=3 uid="uid://scqlqqxli7n"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_6qvif"]
-[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="2_q5gyj"]
+[ext_resource type="Material" uid="uid://4cns6ftvo7i1" path="res://Materials/PS_Water_Ripple.tres" id="2_6qvif"]
 
 [sub_resource type="Curve" id="Curve_6v3f5"]
 _data = [Vector2(0, 0), 0.0, 7.95301, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.195775, 0.0, 0, 0]
@@ -25,14 +25,8 @@ scale_curve = SubResource("CurveTexture_wlrwp")
 color = Color(1, 1, 1, 0.313726)
 alpha_curve = SubResource("CurveTexture_o6pkf")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlrwp"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_q5gyj")
-
 [sub_resource type="QuadMesh" id="QuadMesh_o8ft5"]
-material = SubResource("StandardMaterial3D_wlrwp")
+material = ExtResource("2_6qvif")
 orientation = 1
 
 [node name="PsWaterRipple" type="Node3D" node_paths=PackedStringArray("Particles")]

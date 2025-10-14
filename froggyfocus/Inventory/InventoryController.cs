@@ -53,7 +53,7 @@ public partial class InventoryController : SingletonController
         data.InfoPath = info.ResourcePath;
 
         // Size
-        data.Size = rng.RandfRange(0.4f, 0.7f);
+        data.Size = info.OverrideSize > 0 ? info.OverrideSize : rng.RandfRange(0.5f, 0.8f);
 
         // Stars
         var start = rng.RandiRange(1, 3);

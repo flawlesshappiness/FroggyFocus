@@ -12,8 +12,7 @@ Animation = NodePath("AnimationStateMachine")
 [node name="eye" parent="." instance=ExtResource("1_h8ccs")]
 
 [node name="Skeleton3D" parent="eye/Armature" index="0"]
-bones/1/rotation = Quaternion(0.887011, 4.72136e-17, -4.72136e-17, 0.461749)
-bones/3/rotation = Quaternion(-0.627211, -0.326506, 0.627211, 0.326506)
+bones/3/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
 
 [node name="AnimationPlayer" parent="eye" index="2"]
 playback_default_blend_time = 0.15

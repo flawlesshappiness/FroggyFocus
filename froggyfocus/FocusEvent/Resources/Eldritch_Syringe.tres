@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://byovumopjt2bh"]
+
+[ext_resource type="Resource" uid="uid://brtww74rnne66" path="res://FocusCharacter/Resources/Syringe.tres" id="1_pjpy4"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_yyk1l"]
+
+[resource]
+script = ExtResource("2_yyk1l")
+Characters = Array[Object]([ExtResource("1_pjpy4")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

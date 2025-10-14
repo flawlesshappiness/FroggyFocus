@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://brtww74rnne66"]
+
+[ext_resource type="PackedScene" uid="uid://bmy27b581iw2s" path="res://Prefabs/Characters/syringe.tscn" id="1_tpmrt"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_r26vl"]
+
+[resource]
+script = ExtResource("2_r26vl")
+Scene = ExtResource("1_tpmrt")
+Name = "Syringe"
+LocationHint = "##HINT_LOC_ELDRITCH##"
+Accessory = ""
+FocusValue = 50.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0, 0)
+MoveLengthRange = Vector2(0, 0)
+MoveDelayRange = Vector2(1, 0.5)
+MoveType = 0
+IsStationary = true
+OverrideSize = 1.0
+OverrideRarity = 0
+SkillChecks = Array[int]([])
+Tags = Array[int]([])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://pxtjfc22pib3"]
+
+[ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="1_owkrt"]
+[ext_resource type="Script" uid="uid://tvwl81vup874" path="res://Prefabs/Eldritch/EldritchTentacleWall.cs" id="1_txw6i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hulv8"]
+size = Vector3(4, 30, 16)
+
+[node name="EldritchTentacleWall" type="Node3D" node_paths=PackedStringArray("Tentacle", "Collider")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_txw6i")
+Tentacle = NodePath("EldritchTentacle")
+Collider = NodePath("StaticBody3D/CollisionShape3D")
+
+[node name="EldritchTentacle" parent="." instance=ExtResource("1_owkrt")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -8, 0)
+StartState = 2
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -7)
+shape = SubResource("BoxShape3D_hulv8")

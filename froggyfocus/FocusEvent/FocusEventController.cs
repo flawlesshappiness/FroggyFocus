@@ -59,8 +59,8 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
                 .FirstOrDefault(x => x.Info.Characters.Contains(info))
                 ?? GameScene.Instance.FocusEvents.FirstOrDefault();
 
-            focus_event.DebugTargetInfo = info;
-            focus_event.DebugTargetStars = stars;
+            focus_event.OverrideTargetInfo = info;
+            focus_event.OverrideTargetStars = stars;
             focus_event.StartEvent();
 
             v.Close();
