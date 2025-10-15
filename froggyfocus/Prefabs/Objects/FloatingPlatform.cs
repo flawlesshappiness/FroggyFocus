@@ -4,6 +4,9 @@ using Godot;
 public partial class FloatingPlatform : Node3D
 {
     [Export]
+    public bool AlwaysUp;
+
+    [Export]
     public int TickUp;
 
     [Export]
@@ -54,6 +57,8 @@ public partial class FloatingPlatform : Node3D
 
     private void Tick(int tick)
     {
+        if (AlwaysUp) return;
+
         var t = (tick + TickOffset) % TickMax;
 
         if (t < TickUp)
