@@ -1,0 +1,122 @@
+[gd_scene load_steps=6 format=3 uid="uid://dolwflnwe75eq"]
+
+[ext_resource type="Script" uid="uid://c5u4dsxtlxelw" path="res://Prefabs/UI/TwoButtonPopup/TwoButtonPopup.cs" id="1_nhd2q"]
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="1_o1el8"]
+[ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_66xt6"]
+[ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="2_nhd2q"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="3_66xt6"]
+
+[node name="TwoButtonPopup" type="Control" node_paths=PackedStringArray("TextLabel", "AcceptButton", "CancelButton", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nhd2q")
+TextLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Label")
+AcceptButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/AcceptButton")
+CancelButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/CancelButton")
+AnimatedOverlay = NodePath("AnimatedOverlay")
+AnimatedPanel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel")
+InputBlocker = NodePath("InputBlocker")
+FocusButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/CancelButton")
+
+[node name="AnimatedOverlay" parent="." instance=ExtResource("2_66xt6")]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Center" type="Control" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="UIScale" type="Control" parent="CenterContainer/Center"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o1el8")
+
+[node name="AnimatedPanel" parent="CenterContainer/Center/UIScale" instance=ExtResource("2_nhd2q")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -67.5
+offset_right = 214.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_66xt6")
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Return to beginning?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="AcceptButton" type="Button" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Yes"
+
+[node name="CancelButton" type="Button" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No"
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

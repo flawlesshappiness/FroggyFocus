@@ -3,6 +3,12 @@ using Godot;
 [GlobalClass]
 public partial class WeatherInfo : Resource
 {
+    [Export]
+    public Environment.BGMode BackgroundMode = Environment.BGMode.Sky;
+
+    [Export]
+    public Color BackgroundColor;
+
     [Export(PropertyHint.Range, "0,1,0.0001")]
     public float BackgroundEnergyMultiplier = 1.0f;
 

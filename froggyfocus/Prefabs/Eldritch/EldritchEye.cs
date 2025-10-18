@@ -67,6 +67,8 @@ public partial class EldritchEye : Node3D
             _ => idle_closed
         };
 
+        param_open.Set(StartState != EldritchEyeStartState.Closed);
+
         Animation.Start(start.Node);
     }
 

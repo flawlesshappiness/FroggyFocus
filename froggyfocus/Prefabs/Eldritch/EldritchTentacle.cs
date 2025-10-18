@@ -5,7 +5,7 @@ using System.Collections;
 
 public enum EldritchTentacleStartState
 {
-    Curved, InWater, Curved_Idle, InPain
+    Curved, InWater, Curved_Idle, InPain, Idle
 }
 
 public partial class EldritchTentacle : Node3D
@@ -56,6 +56,7 @@ public partial class EldritchTentacle : Node3D
             EldritchTentacleStartState.InWater => in_water,
             EldritchTentacleStartState.Curved_Idle => idle_curved,
             EldritchTentacleStartState.InPain => in_pain,
+            EldritchTentacleStartState.Idle => idle,
             _ => in_water
         };
 

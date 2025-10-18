@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi33hifhhmwyo"]
+[gd_scene load_steps=8 format=3 uid="uid://bi33hifhhmwyo"]
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
 [ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="2_nrlgi"]
+[ext_resource type="PackedScene" uid="uid://dolwflnwe75eq" path="res://Prefabs/UI/TwoButtonPopup/two_button_popup.tscn" id="3_nrlgi"]
 
 [sub_resource type="Animation" id="Animation_b56qe"]
 length = 0.001
@@ -91,7 +92,7 @@ _data = {
 &"show_overlay": SubResource("Animation_nrlgi")
 }
 
-[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay")]
+[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -101,6 +102,7 @@ grow_vertical = 2
 script = ExtResource("1_v4b6a")
 AnimationPlayer = NodePath("AnimationPlayer")
 Overlay = NodePath("Overlay")
+TwoButtonPopup = NodePath("TwoButtonPopup")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -133,3 +135,6 @@ color = Color(0, 0, 0, 1)
 libraries = {
 &"": SubResource("AnimationLibrary_l7lip")
 }
+
+[node name="TwoButtonPopup" parent="." instance=ExtResource("3_nrlgi")]
+layout_mode = 1

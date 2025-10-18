@@ -53,18 +53,18 @@ Eye = NodePath("tentacle/Armature/Skeleton3D/BoneAttachment3D/Eldritch_Eye")
 [node name="tentacle" parent="." instance=ExtResource("1_20ffb")]
 
 [node name="Skeleton3D" parent="tentacle/Armature" index="0"]
-bones/2/rotation = Quaternion(-0.100712, -7.10267e-26, 2.23625e-17, 0.994916)
-bones/3/rotation = Quaternion(-0.20328, -2.65794e-25, 4.51373e-17, 0.979121)
-bones/4/rotation = Quaternion(-0.192885, 2.95912e-24, 4.2829e-17, 0.981221)
-bones/5/rotation = Quaternion(-0.213369, -2.37864e-24, 4.73774e-17, 0.976972)
-bones/6/rotation = Quaternion(-0.240516, -4.88021e-24, 5.34053e-17, 0.970645)
-bones/7/rotation = Quaternion(-0.205241, -2.11029e-24, 4.55726e-17, 0.978712)
-bones/8/rotation = Quaternion(-0.206345, 9.03544e-25, 4.58177e-17, 0.97848)
-bones/9/rotation = Quaternion(-0.140715, -1.44191e-23, 3.12451e-17, 0.99005)
-bones/10/rotation = Quaternion(-0.0154843, 1.27709e-23, 3.4382e-18, 0.99988)
+bones/2/rotation = Quaternion(-0.0971924, 5.42165e-26, 2.1581e-17, 0.995266)
+bones/3/rotation = Quaternion(-0.203665, -2.30212e-25, 5.96002e-17, 0.979041)
+bones/4/rotation = Quaternion(-0.225086, -1.40173e-24, 1.97518e-17, 0.974339)
+bones/5/rotation = Quaternion(0.288735, 2.39128e-24, -8.15048e-17, 0.957409)
+bones/6/rotation = Quaternion(0.23618, 1.83571e-24, -4.77871e-17, 0.971709)
+bones/7/rotation = Quaternion(0.263662, -3.37033e-24, -5.45547e-17, 0.964615)
+bones/8/rotation = Quaternion(0.288032, -1.30492e-23, -6.0902e-17, 0.957621)
+bones/9/rotation = Quaternion(0.234315, -3.52216e-25, -5.20284e-17, 0.972161)
+bones/10/rotation = Quaternion(0.250803, -9.02852e-24, -5.56894e-17, 0.968038)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -1.86165e-17, -4.43307e-16, 4.43307e-16, 0.0838414, 0.996479, 1.86166e-17, -0.996479, 0.0838413, -1.07878e-17, 0.0485839, -0.00456606)
+transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862328, 0.50635, -2.099e-16, -0.50635, -0.862328, 1.79838e-18, -0.011888, 0.0594653)
 bone_name = "Limb.010_end"
 bone_idx = 11
 
@@ -83,7 +83,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_b8nn1")
 
 [node name="Limb_002" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -4.44977e-17, -4.50435e-18, 4.50435e-18, 0.2004, -0.979714, 4.44977e-17, 0.979714, 0.2004, 0, -2.38419e-09, 0.01)
+transform = Transform3D(1, -4.29577e-17, -4.19503e-18, 4.19502e-18, 0.193464, -0.981107, 4.29577e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
 bone_name = "Limb.002"
 bone_idx = 2
 
@@ -94,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_6yafa")
 
 [node name="Limb_003" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="4"]
-transform = Transform3D(1, -1.27417e-16, -4.01964e-17, 4.01964e-17, 0.573834, -0.818972, 1.27417e-16, 0.818972, 0.573834, -4.44977e-19, 0.00200399, 0.0197971)
+transform = Transform3D(1, -1.54423e-16, -4.52552e-17, 5.0591e-17, 0.568673, -0.822563, 1.52758e-16, 0.822563, 0.568673, -4.29577e-19, 0.00193464, 0.0198111)
 bone_name = "Limb.003"
 bone_idx = 3
 
@@ -105,7 +105,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_v45o8")
 
 [node name="Limb_004" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -1.8677e-16, -1.01958e-16, 1.01958e-16, 0.841137, -0.540822, 1.8677e-16, 0.540822, 0.841137, -1.71914e-18, 0.00774233, 0.0279869)
+transform = Transform3D(1, -1.57416e-16, -1.17294e-16, 7.97931e-17, 0.871844, -0.489783, 1.79362e-16, 0.489783, 0.871844, -1.97381e-18, 0.00762138, 0.0280367)
 bone_name = "Limb.004"
 bone_idx = 4
 
@@ -116,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_blmpd")
 
 [node name="Limb_005" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, -2.19829e-16, -1.90759e-16, 1.90759e-16, 0.990024, -0.1409, 2.19829e-16, 0.1409, 0.990024, -3.58684e-18, 0.0161537, 0.0333951)
+transform = Transform3D(1, -3.99512e-17, -5.77725e-17, -3.32204e-17, 0.455687, -0.89014, 6.18883e-17, 0.89014, 0.455687, -3.54796e-18, 0.0163398, 0.0329345)
 bone_name = "Limb.005"
 bone_idx = 5
 
@@ -127,7 +127,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_yo4h0")
 
 [node name="Limb_006" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="7"]
-transform = Transform3D(1, -2.09004e-16, -2.97019e-16, 2.97019e-16, 0.94127, 0.337655, 2.09004e-16, -0.337655, 0.94127, -5.78514e-18, 0.0260539, 0.0348041)
+transform = Transform3D(1, 3.08589e-17, -5.55626e-17, -5.54474e-17, -0.00372064, -0.999993, -3.10654e-17, 0.999993, -0.00372064, -3.94748e-18, 0.0208967, 0.0418359)
 bone_name = "Limb.006"
 bone_idx = 6
 
@@ -138,7 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_qrltt")
 
 [node name="Limb_007" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, -1.61275e-16, -3.74669e-16, 3.74668e-16, 0.72632, 0.687357, 1.61275e-16, -0.687357, 0.72632, -7.87518e-18, 0.0354666, 0.0314275)
+transform = Transform3D(1, 1.03554e-16, -9.23023e-17, -2.6288e-17, -0.511865, -0.859066, -1.36206e-16, 0.859066, -0.511865, -3.63889e-18, 0.0208595, 0.0518359)
 bone_name = "Limb.007"
 bone_idx = 7
 
@@ -149,7 +149,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_gimeh")
 
 [node name="Limb_008" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="9"]
-transform = Transform3D(1, -8.59111e-17, -4.26796e-16, 4.26796e-16, 0.386909, 0.922118, 8.59111e-17, -0.922118, 0.386909, -9.48793e-18, 0.0427298, 0.024554)
+transform = Transform3D(1, 1.52095e-16, -1.69196e-16, 6.35559e-17, -0.900838, -0.434155, -2.18451e-16, 0.434155, -0.900838, -2.60334e-18, 0.0157408, 0.0604265)
 bone_name = "Limb.008"
 bone_idx = 8
 
@@ -160,7 +160,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_tcsey")
 
 [node name="Limb_009" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, -2.54589e-17, -4.42625e-16, 4.42625e-16, 0.114657, 0.993405, 2.5459e-17, -0.993405, 0.114657, -1.0347e-17, 0.0465989, 0.0153328)
+transform = Transform3D(1, 1.59471e-16, -2.44292e-16, 1.6527e-16, -0.999714, 0.0239256, -2.40406e-16, -0.0239257, -0.999714, -1.08239e-18, 0.00673245, 0.0647681)
 bone_name = "Limb.009"
 bone_idx = 9
 
@@ -171,7 +171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
 shape = SubResource("CapsuleShape3D_gydqj")
 
 [node name="Limb_010" type="BoneAttachment3D" parent="tentacle/Armature/Skeleton3D" index="11"]
-transform = Transform3D(1, -1.86165e-17, -4.43307e-16, 4.43307e-16, 0.0838414, 0.996479, 1.86166e-17, -0.996479, 0.0838413, -1.06016e-17, 0.0477455, 0.00539873)
+transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862328, 0.50635, -2.099e-16, -0.50635, -0.862328, 5.1232e-19, -0.00326468, 0.0645288)
 bone_name = "Limb.010"
 bone_idx = 10
 

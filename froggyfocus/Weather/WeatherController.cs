@@ -200,6 +200,8 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         var sun = GameScene.Instance.DirectionalLight;
 
         // Background
+        env.BackgroundMode = to.BackgroundMode;
+        env.BackgroundColor = from.BackgroundColor.Lerp(to.BackgroundColor, t);
         env.BackgroundEnergyMultiplier = Mathf.Lerp(from.BackgroundEnergyMultiplier, to.BackgroundEnergyMultiplier, t);
 
         // Sun
