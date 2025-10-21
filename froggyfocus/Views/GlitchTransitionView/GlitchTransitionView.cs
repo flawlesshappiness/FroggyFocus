@@ -50,7 +50,6 @@ public partial class GlitchTransitionView : View
         var id = nameof(GlitchTransitionView);
 
         Player.SetAllLocks(id, locked);
-        PauseView.ToggleLock.SetLock(id, locked);
     }
 
     public void PlayBoomSfx()

@@ -92,6 +92,5 @@ public partial class Shop : Area3D, IInteractable
     {
         var id = nameof(Shop);
         Player.SetAllLocks(id, locked);
-        PauseView.ToggleLock.SetLock(id, locked);
     }
 }

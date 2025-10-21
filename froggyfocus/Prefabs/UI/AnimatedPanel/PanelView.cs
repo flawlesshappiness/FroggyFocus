@@ -35,7 +35,6 @@ public partial class PanelView : View
     {
         var id = GetType().Name;
         Player.SetAllLocks(id, locked);
-        PauseView.ToggleLock.SetLock(id, locked);
         MouseVisibility.SetVisible(id, locked);
     }
 

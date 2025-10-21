@@ -4,6 +4,7 @@ public partial class EldritchScene : GameScene
     {
         base._Ready();
         FloatingPlatformController.Instance.Start();
+        EldritchEye.SetOpenGlobal(true);
     }
 
     public override void _ExitTree()

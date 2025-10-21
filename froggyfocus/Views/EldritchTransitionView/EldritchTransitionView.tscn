@@ -1,0 +1,782 @@
+[gd_scene load_steps=26 format=3 uid="uid://v3dk0hx0sy6q"]
+
+[ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="1_rdds2"]
+[ext_resource type="Script" uid="uid://cu425iglqq43d" path="res://Views/EldritchTransitionView/EldritchTransitionView.cs" id="1_yigmh"]
+[ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_yigmh"]
+[ext_resource type="AudioStream" uid="uid://bljvgpoc4b32a" path="res://Sounds/Raw/sfx_eldritch_transition_002.wav" id="3_v5f7b"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_v5f7b"]
+[ext_resource type="PackedScene" uid="uid://dmneakwh1b1tw" path="res://Assets/FlawLizArt/Eldritch/tunnel.fbx" id="5_fpjq7"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="6_kpvq6"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="6_x7ufa"]
+[ext_resource type="PackedScene" uid="uid://dlxlmcr6nl2l4" path="res://Prefabs/Effects/ps_eldritch_transition_splash.tscn" id="8_4wy8w"]
+[ext_resource type="AudioStream" uid="uid://clfa4iq5dlykj" path="res://Sounds/Raw/sfx_eldritch_transition_001.wav" id="9_vwchh"]
+[ext_resource type="AudioStream" uid="uid://dtyxe06md632t" path="res://Sounds/Raw/sfx_impact_water_001.wav" id="11_4wy8w"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rdds2"]
+viewport_path = NodePath("ItemSubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vwchh"]
+viewport_path = NodePath("ItemSubViewport3")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v5f7b"]
+viewport_path = NodePath("ItemSubViewport2")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4wy8w"]
+viewport_path = NodePath("ItemSubViewport4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vwchh"]
+material = ExtResource("6_x7ufa")
+size = Vector2(4, 4)
+
+[sub_resource type="Animation" id="Animation_x7ufa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 16, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kpvq6"]
+resource_name = "camera"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 16, 0), Vector3(0, 8, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vwchh"]
+_data = {
+&"RESET": SubResource("Animation_x7ufa"),
+&"camera": SubResource("Animation_kpvq6")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_15qts"]
+material = ExtResource("6_x7ufa")
+size = Vector2(12, 12)
+
+[sub_resource type="Animation" id="Animation_yigmh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SfxTransitionShort:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/EyeScale1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/EyeScale1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/Center/EyeScale2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterContainer/Center/EyeScale2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CenterContainer/Center/FrogScale:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CenterContainer/Center/FrogScale:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SfxTransition:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SfxSplash:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CenterContainer/Center/SplashScale:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CenterContainer/Center/TunnelScale:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_15qts"]
+resource_name = "transition"
+length = 21.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SfxTransition:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSplash:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CenterContainer/Center/SplashScale:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/Center/TunnelScale:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3, 4.5, 6, 7, 8.5, 10, 11, 12.5, 14, 15, 16, 18),
+"transitions": PackedFloat32Array(0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterContainer/Center/EyeScale2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2, 3, 6, 7, 10, 11, 14, 15),
+"transitions": PackedFloat32Array(0, 1, 0, 1, 0, 1, 0, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 0), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 0), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 0), Color(1, 1, 1, 0.490196), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CenterContainer/Center/EyeScale2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2, 3, 6, 7, 10, 11, 14, 15),
+"transitions": PackedFloat32Array(1, 1, 0, 1, 0, 1, 0, 1, 0),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(1, 1), Vector2(0.6, 0.6), Vector2(1, 1), Vector2(0.6, 0.6), Vector2(1, 1), Vector2(0.6, 0.6), Vector2(1, 1)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1, 18.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"PlaySplashEffect"
+}, {
+"args": [],
+"method": &"OnTransition"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fpjq7"]
+resource_name = "transition_short"
+length = 4.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SfxTransitionShort:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/EyeScale1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer/Center/EyeScale1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.392292, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CenterContainer/Center/EyeScale2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(3, 3)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CenterContainer/Center/EyeScale2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.55),
+"transitions": PackedFloat32Array(0.353553, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CenterContainer/Center/FrogScale:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.5, 0.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CenterContainer/Center/FrogScale:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"OnTransition"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4wy8w"]
+resource_name = "hide"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kpvq6"]
+_data = {
+&"RESET": SubResource("Animation_yigmh"),
+&"hide": SubResource("Animation_4wy8w"),
+&"transition": SubResource("Animation_15qts"),
+&"transition_short": SubResource("Animation_fpjq7")
+}
+
+[node name="EldritchTransitionView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Frog", "SplashEffectNode")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_yigmh")
+AnimationPlayer = NodePath("AnimationPlayer")
+Frog = NodePath("ItemSubViewport2/Frog/Frog")
+SplashEffectNode = NodePath("ItemSubViewport4/PsPosition")
+SplashEffect = ExtResource("8_4wy8w")
+
+[node name="Background" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="Control" parent="CenterContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="EyeScale1" type="Control" parent="CenterContainer/Center"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="Eye" type="TextureRect" parent="CenterContainer/Center/EyeScale1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.85
+offset_top = -515.995
+offset_right = 515.15
+offset_bottom = 508.005
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_rdds2")
+
+[node name="TunnelScale" type="Control" parent="CenterContainer/Center"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.625, 0.625)
+mouse_filter = 2
+
+[node name="Tunnel" type="TextureRect" parent="CenterContainer/Center/TunnelScale"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.85
+offset_top = -515.995
+offset_right = 515.15
+offset_bottom = 508.005
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_vwchh")
+
+[node name="EyeScale2" type="Control" parent="CenterContainer/Center"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="Eye" type="TextureRect" parent="CenterContainer/Center/EyeScale2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.85
+offset_top = -515.995
+offset_right = 515.15
+offset_bottom = 508.005
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_rdds2")
+
+[node name="FrogScale" type="Control" parent="CenterContainer/Center"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+mouse_filter = 2
+
+[node name="Frog" type="TextureRect" parent="CenterContainer/Center/FrogScale"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.85
+offset_top = -515.995
+offset_right = 515.15
+offset_bottom = 508.005
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_v5f7b")
+
+[node name="SplashScale" type="Control" parent="CenterContainer/Center"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.625, 0.625)
+mouse_filter = 2
+
+[node name="Splash" type="TextureRect" parent="CenterContainer/Center/SplashScale"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -508.85
+offset_top = -515.995
+offset_right = 515.15
+offset_bottom = 508.005
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_4wy8w")
+
+[node name="ItemSubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("1_rdds2")
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport"]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -1.71745)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="Eye" type="Node3D" parent="ItemSubViewport"]
+
+[node name="Eldritch_Eye" parent="ItemSubViewport/Eye" instance=ExtResource("2_yigmh")]
+StartState = 1
+CanBlink = false
+
+[node name="ItemSubViewport2" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("1_rdds2")
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport2"]
+transform = Transform3D(-1, -4.54747e-13, 2.53518e-06, 1.64839e-06, 0.759759, 0.650204, -1.92613e-06, 0.650204, -0.759759, -4.76837e-07, 1.61796, -1.88999)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport2"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="Frog" type="Node3D" parent="ItemSubViewport2"]
+
+[node name="Frog" parent="ItemSubViewport2/Frog" instance=ExtResource("4_v5f7b")]
+
+[node name="ItemSubViewport3" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("1_rdds2")
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 16, 0)
+current = true
+fov = 50.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport3/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+omni_range = 4.89795
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="ItemSubViewport3/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+light_energy = 0.25
+omni_range = 4.89795
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="ItemSubViewport3/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+light_energy = 0.05
+omni_range = 4.89795
+
+[node name="Tunnel" type="Node3D" parent="ItemSubViewport3"]
+
+[node name="tunnel" parent="ItemSubViewport3/Tunnel" instance=ExtResource("5_fpjq7")]
+
+[node name="tunnel4" parent="ItemSubViewport3/Tunnel" instance=ExtResource("5_fpjq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+
+[node name="tunnel2" parent="ItemSubViewport3/Tunnel" instance=ExtResource("5_fpjq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="tunnel3" parent="ItemSubViewport3/Tunnel" instance=ExtResource("5_fpjq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemSubViewport3/Tunnel"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+mesh = SubResource("PlaneMesh_vwchh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ItemSubViewport3"]
+libraries = {
+&"": SubResource("AnimationLibrary_vwchh")
+}
+script = ExtResource("6_kpvq6")
+Animation = "camera"
+
+[node name="ItemSubViewport4" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("1_rdds2")
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.76837e-07, 1.45688, -3.49642)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport4"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ItemSubViewport4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_15qts")
+
+[node name="PsPosition" type="Node3D" parent="ItemSubViewport4"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.822438)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kpvq6")
+}
+
+[node name="SfxTransitionShort" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v5f7b")
+bus = &"SFX"
+
+[node name="SfxTransition" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_vwchh")
+bus = &"SFX"
+
+[node name="SfxSplash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_4wy8w")
+bus = &"SFX"

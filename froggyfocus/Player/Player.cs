@@ -71,8 +71,6 @@ public partial class Player : TopDownController
 
         FocusEventLock.OnLocked += FocusEventLocked;
         FocusEventLock.OnFree += FocusEventFree;
-
-        EvaluateStableGround();
     }
 
     public override void _ExitTree()
@@ -210,6 +208,7 @@ public partial class Player : TopDownController
 
     public static void SetAllLocks(string key, bool locked)
     {
+        PauseView.ToggleLock.SetLock(key, locked);
         MovementLock.SetLock(key, locked);
         InteractLock.SetLock(key, locked);
         FocusEventLock.SetLock(key, locked);
@@ -244,6 +243,11 @@ public partial class Player : TopDownController
     {
         var closest_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), GlobalPosition);
         on_stable_ground = GlobalPosition.DistanceTo(closest_position) < 0.5f;
+    }
+
+    public void SetRespawnPosition(Vector3 position)
+    {
+        respawn_position = position;
     }
 
     public void Respawn()
@@ -330,11 +334,9 @@ public partial class Player : TopDownController
         IEnumerator Cr()
         {
             Player.SetAllLocks(id, true);
-            PauseView.ToggleLock.SetLock(id, true);
             SfxFocusTargetStarted.Play();
             yield return ExclamationMark.AnimateBounce();
             Player.SetAllLocks(id, false);
-            PauseView.ToggleLock.SetLock(id, false);
             GameScene.Instance.StartFocusEvent();
         }
     }

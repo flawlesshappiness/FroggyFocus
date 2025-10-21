@@ -36,6 +36,7 @@ public partial class SwampScene : GameScene
         {
             EldritchTentacle.SetAwakeGlobal(true);
             EldritchEye.SetOpenGlobal(true);
+            EldritchEntrance.Instance.Activate();
             v.Close();
         }
 

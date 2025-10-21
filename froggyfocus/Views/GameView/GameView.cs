@@ -38,7 +38,6 @@ public partial class GameView : View
         {
             var id = nameof(TwoButtonPopup);
             Player.SetAllLocks(id, true);
-            PauseView.ToggleLock.SetLock(id, true);
 
             yield return TwoButtonPopup.WaitForPopup();
 
@@ -51,7 +50,6 @@ public partial class GameView : View
                 on_cancel?.Invoke();
             }
 
-            PauseView.ToggleLock.SetLock(id, false);
             Player.SetAllLocks(id, false);
         }
     }

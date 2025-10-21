@@ -60,7 +60,6 @@ public partial class DialogueView : View
     {
         var id = nameof(DialogueView);
         Player.SetAllLocks(id, locked);
-        PauseView.ToggleLock.SetLock(id, locked);
     }
 
     public override void _Input(InputEvent e)

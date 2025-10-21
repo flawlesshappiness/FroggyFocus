@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlxlmcr6nl2l4"]
+
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_nyj4j"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="2_oyqro"]
+
+[sub_resource type="Curve" id="Curve_4wy8w"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.30819, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q65o6"]
+curve = SubResource("Curve_4wy8w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hs4qo"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(0, 1, 0.2)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, -4, 0)
+scale_min = 0.02
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_q65o6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_xvqjo"]
+material = ExtResource("2_oyqro")
+
+[node name="PsEldritchTransitionSplash" type="Node3D" node_paths=PackedStringArray("Particles")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_nyj4j")
+PlayOnReady = true
+DestroyDelay = 4.0
+Particles = [NodePath("splash")]
+
+[node name="splash" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 30
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_hs4qo")
+draw_pass_1 = SubResource("SphereMesh_xvqjo")

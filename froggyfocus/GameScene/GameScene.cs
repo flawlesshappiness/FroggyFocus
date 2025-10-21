@@ -64,6 +64,7 @@ public partial class GameScene : Scene
             if (IsInstanceValid(node))
             {
                 Player.Instance.GlobalPosition = node.GlobalPosition;
+                Player.Instance.SetRespawnPosition(node.GlobalPosition);
             }
         }
     }

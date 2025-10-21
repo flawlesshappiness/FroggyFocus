@@ -83,7 +83,6 @@ public partial class HandInView : View
     {
         var id = nameof(HandInView);
         Player.SetAllLocks(id, locked);
-        PauseView.ToggleLock.SetLock(id, locked);
         MouseVisibility.Instance.Lock.SetLock(id, locked);
     }
 

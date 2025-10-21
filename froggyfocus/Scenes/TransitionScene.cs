@@ -44,6 +44,5 @@ public partial class TransitionScene : GameScene
     {
         var id = nameof(TransitionScene);
         Player.SetAllLocks(id, locked);
-        PauseView.ToggleLock.SetLock(id, locked);
     }
 }

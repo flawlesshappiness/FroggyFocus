@@ -13,6 +13,9 @@ public partial class EldritchEye : Node3D
     public EldritchEyeStartState StartState;
 
     [Export]
+    public bool CanBlink = true;
+
+    [Export]
     public Vector2 BlinkDelay;
 
     [Export]
@@ -76,6 +79,7 @@ public partial class EldritchEye : Node3D
     {
         base._Process(delta);
 
+        if (!CanBlink) return;
         if (!param_open.Value) return;
         if (GameTime.Time < time_blink) return;
 

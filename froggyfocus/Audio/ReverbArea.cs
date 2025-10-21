@@ -19,6 +19,12 @@ public partial class ReverbArea : Area3D
         reverb = bus.GetEffect<AudioEffectReverb>();
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        reverb.Wet = 0;
+    }
+
     private void PlayerEntered(GodotObject go)
     {
         FadeReverb(Amount, 1f);
