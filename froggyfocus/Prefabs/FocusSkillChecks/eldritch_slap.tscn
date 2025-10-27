@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://t1nqv2ixw81n"]
+
+[ext_resource type="Script" uid="uid://c34qd4f6haxfp" path="res://FocusSkillCheck/FocusSkillCheck_EldritchSlap.cs" id="1_g8pk7"]
+[ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="2_xt16c"]
+
+[node name="EldritchSlap" type="Node3D" node_paths=PackedStringArray("Tentacle", "Pivot")]
+script = ExtResource("1_g8pk7")
+Tentacle = NodePath("Pivot/EldritchTentacle")
+Pivot = NodePath("Pivot")
+Type = 16
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="EldritchTentacle" parent="Pivot" instance=ExtResource("2_xt16c")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, -1.64218)
+visible = false
+StartState = 1

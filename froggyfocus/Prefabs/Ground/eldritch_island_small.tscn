@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://u816b8cey38j"]
+
+[ext_resource type="PackedScene" uid="uid://c3m2kcarrwoxx" path="res://Prefabs/Ground/eldritch_corner_convex_002.tscn" id="1_56wou"]
+
+[node name="EldritchIslandSmall" type="Node3D"]
+
+[node name="pond_corner_convex_001" parent="." instance=ExtResource("1_56wou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="pond_corner_convex_002" parent="." instance=ExtResource("1_56wou")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -2)
+
+[node name="pond_corner_convex_003" parent="." instance=ExtResource("1_56wou")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 2, 0, 2)
+
+[node name="pond_corner_convex_004" parent="." instance=ExtResource("1_56wou")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -2, 0, 2)

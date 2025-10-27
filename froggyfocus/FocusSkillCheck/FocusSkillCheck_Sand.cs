@@ -33,6 +33,17 @@ public partial class FocusSkillCheck_Sand : FocusSkillCheck
         SfxWind.VolumeLinear = 0;
     }
 
+    protected override void Stop()
+    {
+        base.Stop();
+
+        if (PsWind.Emitting)
+        {
+            PsWind.Emitting = false;
+            SfxWind.FadeOut(0.5f);
+        }
+    }
+
     protected override IEnumerator Run()
     {
         StartWind();

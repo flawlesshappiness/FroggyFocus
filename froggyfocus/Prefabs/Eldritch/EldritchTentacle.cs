@@ -21,8 +21,11 @@ public partial class EldritchTentacle : Node3D
 
     private static event Action<bool> OnAwakeStateChanged;
 
+    public Action OnSlapHit;
+
     private TriggerParameter param_awake = new("awake");
     private TriggerParameter param_asleep = new("asleep");
+    private TriggerParameter param_slap = new("slap");
 
     public override void _Ready()
     {
@@ -45,10 +48,12 @@ public partial class EldritchTentacle : Node3D
         var curved_to_in_water = Animation.CreateAnimation("Armature|curved_to_in_water", false);
         var idle_curved = Animation.CreateAnimation("Armature|idle_curved", true);
         var idle = Animation.CreateAnimation("Armature|idle", true);
+        var idle_to_in_water = Animation.CreateAnimation("Armature|idle_to_in_water", false);
         var in_water = Animation.CreateAnimation("Armature|in_water", true);
         var in_water_to_idle = Animation.CreateAnimation("Armature|in_water_to_idle", false);
         var in_pain = Animation.CreateAnimation("Armature|in_pain", true);
         var in_pain_to_in_water = Animation.CreateAnimation("Armature|in_pain_to_in_water", false);
+        var slap = Animation.CreateAnimation("Armature|slap", false);
 
         var start = StartState switch
         {
@@ -75,6 +80,12 @@ public partial class EldritchTentacle : Node3D
         Animation.Connect(curved_to_in_water, in_water);
         Animation.Connect(in_pain_to_in_water, in_water);
 
+        Animation.Connect(idle, slap, param_slap.WhenTriggered());
+        Animation.Connect(slap, idle);
+
+        Animation.Connect(idle, idle_to_in_water, param_asleep.WhenTriggered());
+        Animation.Connect(idle_to_in_water, in_water);
+
         Animation.Start(start.Node);
     }
 
@@ -86,6 +97,11 @@ public partial class EldritchTentacle : Node3D
     public void TriggerAwake()
     {
         param_awake.Trigger();
+    }
+
+    public void TriggerSlap()
+    {
+        param_slap.Trigger();
     }
 
     public static void SetAwakeGlobal(bool awake)
@@ -102,5 +118,10 @@ public partial class EldritchTentacle : Node3D
             yield return new WaitForSeconds(rng.RandfRange(0f, 2f));
             TriggerAwake();
         }
+    }
+
+    public void AnimationSlap()
+    {
+        OnSlapHit?.Invoke();
     }
 }

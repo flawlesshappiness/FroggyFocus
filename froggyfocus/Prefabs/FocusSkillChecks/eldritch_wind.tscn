@@ -63,6 +63,7 @@ Type = 15
 
 [node name="PsWind" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+emitting = false
 amount = 20
 lifetime = 2.0
 explosiveness = 0.05

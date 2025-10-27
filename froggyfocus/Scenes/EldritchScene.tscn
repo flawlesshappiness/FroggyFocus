@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://na6ghlg4xx1t"]
+[gd_scene load_steps=25 format=3 uid="uid://na6ghlg4xx1t"]
 
 [ext_resource type="Script" uid="uid://n10j2kkvmge1" path="res://Scenes/EldritchScene.cs" id="1_vole6"]
 [ext_resource type="Material" uid="uid://71pv1fsup32f" path="res://Materials/Color_Brown.tres" id="2_6bnib"]
@@ -10,14 +10,17 @@
 [ext_resource type="PackedScene" uid="uid://cvmh0jn7gf0a3" path="res://Prefabs/Objects/floating_bone_rib.tscn" id="5_ro7oi"]
 [ext_resource type="PackedScene" uid="uid://c7whvf1sy2d0g" path="res://Prefabs/Eldritch/eldritch_pillar.tscn" id="6_ell4v"]
 [ext_resource type="PackedScene" uid="uid://pxtjfc22pib3" path="res://Prefabs/Eldritch/eldritch_tentacle_wall.tscn" id="6_hulv8"]
+[ext_resource type="PackedScene" uid="uid://b1rkrpd5uvu4o" path="res://Prefabs/Ground/eldritch_island_small_focus.tscn" id="7_5am1p"]
 [ext_resource type="PackedScene" uid="uid://ct33gr4jalld4" path="res://Prefabs/Eldritch/eldritch_tentacle_objective.tscn" id="7_6os4d"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="7_6636b"]
-[ext_resource type="PackedScene" uid="uid://k363eryuxjas" path="res://Prefabs/Characters/incubator.tscn" id="7_e6fod"]
+[ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="9_7a7gi"]
 [ext_resource type="Script" uid="uid://dmmkas04t7id3" path="res://Prefabs/Eldritch/EldritchReturn.cs" id="9_vmhyt"]
 [ext_resource type="PackedScene" uid="uid://c7qruwrt0l5pa" path="res://Prefabs/Eldritch/eldritch_entrance.tscn" id="10_c1m17"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="13_s322q"]
 [ext_resource type="Resource" uid="uid://byovumopjt2bh" path="res://FocusEvent/Resources/Eldritch_Syringe.tres" id="14_s322q"]
 [ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="15_ki66s"]
+[ext_resource type="PackedScene" uid="uid://u816b8cey38j" path="res://Prefabs/Ground/eldritch_island_small.tscn" id="19_4jmxh"]
+[ext_resource type="Resource" uid="uid://jdagk8uthv87" path="res://FocusEvent/Resources/Eldritch_Incubator.tres" id="19_5am1p"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vole6"]
 vertices = PackedVector3Array(-4.49622, 0.5, -55.8322, -2.99622, 0.5, -54.8322, -1.74622, 0.5, -54.8322, -4.99622, 0.5, -58.0822, 4.00378, 0.5, -55.3322, 5.00378, 0.5, -56.8322, 5.00378, 0.5, -58.0822, 1.75378, 0.5, -54.8322, 4.50378, 0.5, -63.8322, 3.00378, 0.5, -64.8322, 1.75378, 0.5, -64.8322, -3.99622, 0.5, -64.3322, -4.99622, 0.5, -62.8322, -4.99622, 0.5, -61.5822, -5.49622, 0.5, -61.3322, -5.49622, 0.5, -58.3322, -1.49622, 0.5, -54.3322, 1.50378, 0.5, -54.3322, 5.50378, 0.5, -58.3322, 5.50378, 0.5, -61.3322, 5.00378, 0.5, -61.5822, 1.50378, 0.5, -65.3322, -1.49622, 0.5, -65.3322, -1.74622, 0.5, -64.8322, -7.74622, 25.5, -50.5822, -7.74622, 25.5, -47.3322, 7.50378, 25.5, -47.3322, 7.50378, 25.5, -50.5822, 5.00378, 0, -47.8322, 5.75378, 0.25, -47.8322, 6.00378, 0.5, -48.3322, 5.75378, 0.5, -50.0822, 5.00378, 0.25, -50.0822, 4.00378, 4.25, -50.0822, 3.75378, 4.5, -49.3322, 3.75378, 4.25, -47.8322, 6.00378, 2.75, -47.5822, 6.50378, 2.75, -48.0822, 6.50378, 2.75, -49.8322, 6.00378, 2.75, -50.3322, 6.50378, -2.5, -47.8322, 7.25378, -2.5, -47.5822, 7.25378, -2.5, -50.3322, 6.75378, -2.5, -50.3322, 1.50378, 12.5, -49.5822, 1.50378, 12.25, -48.3322, 2.50378, 12.5, -48.0822, 7.25378, 13.5, -48.3322, 7.25378, 13.5, -49.5822, 6.06628, 13.5, -48.2697, 8.50378, 13, -49.5822, 8.50378, 13, -48.3322, 9.75378, 13, -48.8322, 9.75378, 13, -49.3322, 10.7538, 11.75, -49.3322, 10.7538, 11.75, -48.5822, 11.7538, 11.25, -48.5822, 11.7538, 11.25, -49.3322, -8.74622, 25.5, -44.5822, -8.74622, 25.5, -41.3322, 6.50378, 25.5, -41.3322, 6.50378, 25.5, -44.5822, -8.49622, -2.5, -41.8322, -7.74622, -2.5, -41.5822, -7.74622, -2.5, -44.3322, -8.49622, -2.5, -44.3322, -7.24622, 2.75, -44.3322, -7.74622, 2.75, -43.5822, -7.74622, 2.75, -42.5822, -6.99622, 3, -41.5822, -4.99622, 4.25, -41.8322, -4.99622, 4.25, -44.0822, -6.74622, 0.25, -41.8322, -6.24622, 0.25, -41.8322, -5.99622, 0.25, -42.8322, -6.24622, 0, -44.3322, -6.99622, 0.5, -44.0822, -7.24622, 0.5, -43.0822, -2.74622, 12.5, -42.3322, -2.74622, 12.5, -43.5822, -3.49622, 12.5, -43.8322, -8.49622, 13.5, -43.5822, -8.49622, 13.5, -42.3322, -7.05872, 13.5, -42.3322, -10.9962, 12.75, -43.0822, -9.74622, 13, -42.3322, -9.74622, 13, -43.5822, -12.9962, 11, -43.3322, -12.9962, 11, -42.5822, -11.9962, 11.75, -42.5822, -11.9962, 11.75, -43.3322, -6.74622, 25.5, -38.5822, -6.74622, 25.5, -35.3322, 8.50378, 25.5, -35.3322, 8.50378, 25.5, -38.5822, -50.4962, 0.5, -31.5822, -49.7462, 0.5, -32.0822, -49.4962, 0.5, -33.8322, -53.7462, 0.5, -31.8322, -53.4962, 0.5, -31.3322, -51.4962, 0.5, -37.8322, -51.7462, 0.5, -38.3322, -54.9962, 0.5, -37.8322, -48.9962, 0.5, -34.0822, -49.7462, 0.5, -37.5822, -56.2462, 0.5, -35.5822, -55.4962, 0.5, -32.0822, 6.00378, 0, -35.8322, 6.75378, 0.25, -35.8322, 7.00378, 0.5, -36.3322, 6.75378, 0.5, -38.0822, 6.00378, 0.25, -38.0822, 5.00378, 4.25, -38.0822, 4.75378, 4.5, -37.3322, 4.75378, 4.25, -35.8322, 7.00378, 2.75, -35.5822, 7.50378, 2.75, -36.0822, 7.50378, 2.75, -37.8322, 7.00378, 2.75, -38.3322, 7.50378, -2.5, -35.8322, 8.25378, -2.5, -35.5822, 8.25378, -2.5, -38.3322, 7.75378, -2.5, -38.3322, 2.50378, 12.5, -37.5822, 2.50378, 12.25, -36.3322, 3.50378, 12.5, -36.0822, 8.25378, 13.5, -36.3322, 8.25378, 13.5, -37.5822, 7.06628, 13.5, -36.2697, -66.9962, 0.5, -33.0822, -66.4962, 0.5, -32.5822, -65.2462, 0.5, -32.5822, -64.9962, 0.5, -32.0822, -62.4962, 0.5, -32.5822, -62.2462, 0.5, -34.0822, -61.7462, 0.5, -34.3322, -62.2462, 0.5, -36.8322, -63.4962, 0.5, -37.0822, -66.7462, 0.5, -35.8322, -67.2462, 0.5, -35.5822, -63.7462, 0.5, -37.5822, -66.7462, 0.5, -37.0822, 9.50378, 13, -37.5822, 9.50378, 13, -36.3322, 10.7538, 13, -36.8322, 10.7538, 13, -37.3322, 11.7538, 11.75, -37.3322, 11.7538, 11.75, -36.5822, 12.7538, 11.25, -36.5822, 12.7538, 11.25, -37.3322, -2.99622, 0.5, -26.8322, -2.49622, 0.5, -26.3322, -1.24622, 0.5, -26.3322, -2.99622, 0.5, -30.5822, -3.49622, 0.5, -30.3322, 2.50378, 0.5, -26.3322, 3.00378, 0.5, -26.8322, 3.00378, 0.5, -28.0822, 3.00378, 0.5, -31.8322, 2.50378, 0.5, -32.3322, 1.25378, 0.5, -32.3322, -2.49622, 0.5, -32.3322, -2.99622, 0.5, -31.8322, 1.00378, 0.5, -32.8322, -0.996216, 0.5, -25.8322, 3.50378, 0.5, -28.3322, -2.99622, 0.5, 2.4178, -2.24622, 0.5, 3.1678, -0.996216, 0.5, 3.1678, -2.99622, 0.5, -1.0822, -3.49622, 0.5, -0.832199, 3.25378, 0.5, -2.0822, 2.75378, 0.5, -2.8322, 1.00378, 0.5, -3.0822, -0.496216, 0.5, 3.6678, 2.25378, 0.5, 3.1678, 3.50378, 0.5, 0.917801, 0.753784, 0.5, -3.5822, -2.74622, 0.5, -2.8322, 69.5038, 0.25, 0.667801, 69.5038, 0.25, -1.0822, 69.0038, 0.25, -1.3322, 68.5038, 0.25, 2.9178, 67.0038, 0.25, -3.0822, 66.7538, 0.25, -3.5822, 65.0038, 0.25, -3.5822, 64.7538, 0.25, -3.0822, 62.5038, 0.25, -0.832199, 63.0038, 0.25, 2.4178, 65.2538, 0.25, 3.1678, 63.7538, 0.25, 3.1678, 68.7538, 0.25, -2.8322, 63.2538, 0.25, -2.8322, 65.5038, 0.25, 3.6678, 4.75378, 0.5, 14.6678, 5.50378, 0.5, 14.6678, 6.25378, 0.5, 13.4178, 6.00378, 0.5, 10.9178, 1.25378, 0.5, 15.9178, 4.00378, 0.5, 15.6678, -0.746216, 0.5, 13.9178, 1.50378, 0.5, 8.6678, -0.996216, 0.5, 10.4178, 4.25378, 0.5, 8.6678, 68.2538, 0.5, 15.6678, 68.7538, 0.5, 15.1678, 68.7538, 0.5, 13.9178, 65.7538, 0.5, 15.9178, 64.5038, 0.5, 10.9178, 64.0038, 0.5, 11.4178, 64.0038, 0.5, 12.6678, 67.0038, 0.5, 10.6678, 69.2538, 0.5, 13.6678, 68.7538, 0.5, 11.4178, 63.5038, 0.5, 12.9178, 64.2538, 0.5, 15.6678, -31.9962, 0.5, 23.9178, -31.7462, 0.5, 24.4178, -28.4962, 0.5, 23.9178, -33.9962, 0.5, 19.9178, -34.4962, 0.5, 20.1678, -33.7462, 0.5, 23.6678, -30.4962, 0.5, 17.1678, -33.4962, 0.5, 17.9178, -27.2462, 0.5, 21.4178, -27.9962, 0.5, 18.1678, -29.9962, 0.5, 34.9178, -30.2462, 0.5, 32.9178, -31.4962, 0.5, 32.6678, -31.9962, 0.5, 31.9178, -34.7462, 0.5, 32.1678, -34.7462, 0.5, 33.1678, -32.9962, 0.5, 37.4178, -31.2462, 0.5, 37.1678, -35.4962, 0.5, 36.4178, -35.7462, 0.5, 33.9178)
@@ -35,10 +38,11 @@ radius = 1000.0
 height = 2000.0
 is_hemisphere = true
 
-[node name="EldritchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEventParent")]
+[node name="EldritchScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
 script = ExtResource("1_vole6")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
+WorldBugParent = NodePath("WorldBugs")
 FocusEventParent = NodePath("FocusEvents")
 Weathers = Array[ExtResource("2_d5q5d")]([ExtResource("3_cvby2")])
 
@@ -96,32 +100,17 @@ transform = Transform3D(0.938884, 0, -0.344233, 0, 1, 0, 0.344233, 0, 0.938884, 
 [node name="End" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.8322)
 
-[node name="Island_End" type="Node3D" parent="NavigationRegion3D/End"]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -12.8353)
-
-[node name="pond_corner_convex_001" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
-
-[node name="pond_corner_convex_002" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
-
-[node name="pond_corner_convex_003" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
-transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
-
-[node name="pond_corner_convex_004" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
-transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
-
 [node name="EldritchTentacleWall1" parent="NavigationRegion3D/End" node_paths=PackedStringArray("Objective") instance=ExtResource("6_hulv8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 0, 10.8318)
 Objective = NodePath("../../Objective1/EldritchTentacleObjective1")
 
 [node name="EldritchTentacleWall3" parent="NavigationRegion3D/End" node_paths=PackedStringArray("Objective") instance=ExtResource("6_hulv8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 22.8318)
-Objective = NodePath("../../Objective3/EldritchTentacleObjective3")
+Objective = NodePath("../../Objective2/EldritchTentacleObjective2")
 
 [node name="EldritchTentacleWall2" parent="NavigationRegion3D/End" node_paths=PackedStringArray("Objective") instance=ExtResource("6_hulv8")]
 transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -8.1, 0, 16.8318)
-Objective = NodePath("../../Objective2/EldritchTentacleObjective2")
+Objective = NodePath("../../Objective3/EldritchTentacleObjective3")
 
 [node name="Island_End2" type="Node3D" parent="NavigationRegion3D/End"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30.5)
@@ -138,8 +127,49 @@ transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 
 [node name="pond_corner_convex_004" parent="NavigationRegion3D/End/Island_End2" instance=ExtResource("5_qjlmc")]
 transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
 
-[node name="Incubator" parent="NavigationRegion3D/End" instance=ExtResource("7_e6fod")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1714)
+[node name="Islands" type="Node3D" parent="NavigationRegion3D/End"]
+
+[node name="EldritchIslandSmall" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 3.7702)
+
+[node name="EldritchIslandSmall2" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 4.44819, -9.53674e-07, -4.27053)
+
+[node name="EldritchIslandSmall3" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10.5707, -9.53674e-07, -6.57016)
+
+[node name="EldritchIslandSmall4" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.66671, -9.53674e-07, -13.383)
+
+[node name="EldritchIslandSmall5" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -8.37691, 0, -18.1944)
+
+[node name="EldritchIslandSmall6" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 13.4362, 0, -15.7344)
+
+[node name="EldritchIslandSmall7" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05148, -0.28591, -5.02948)
+
+[node name="EldritchIslandSmall8" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.34536, -0.285909, -11.793)
+
+[node name="EldritchIslandSmall9" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.976037, -0.285909, -20.7863)
+
+[node name="EldritchIslandSmall10" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.54818, -0.285908, -18.5878)
+
+[node name="EldritchIslandSmall11" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0607, -0.285908, -13.4626)
+
+[node name="EldritchIslandSmall12" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57657, -0.285908, 1.15553)
+
+[node name="EldritchIslandSmall13" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4108, -0.285909, -7.79145)
+
+[node name="EldritchIslandSmall14" parent="NavigationRegion3D/End/Islands" instance=ExtResource("7_5am1p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.14924, -0.285909, 1.78835)
 
 [node name="Objective1" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.6015, 0, -34.8167)
@@ -187,38 +217,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.909
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 StartState = 4
 
-[node name="BoneAttachment3D" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.506351, -2.099e-16, -0.506351, -0.862327, 1.79839e-18, -0.011888, 0.0594653)
-
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
-
-[node name="Limb_002" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
-
-[node name="Limb_003" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="4"]
-transform = Transform3D(1, -1.54423e-16, -4.52551e-17, 5.0591e-17, 0.568673, -0.822564, 1.52758e-16, 0.822564, 0.568673, -4.29576e-19, 0.00193464, 0.0198111)
-
-[node name="Limb_004" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -1.57416e-16, -1.17294e-16, 7.97931e-17, 0.871844, -0.489784, 1.79362e-16, 0.489784, 0.871844, -1.97381e-18, 0.00762137, 0.0280367)
-
-[node name="Limb_005" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, -3.99511e-17, -5.77724e-17, -3.32204e-17, 0.455687, -0.89014, 6.18883e-17, 0.89014, 0.455687, -3.54796e-18, 0.0163398, 0.0329345)
-
-[node name="Limb_006" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="7"]
-transform = Transform3D(1, 3.08589e-17, -5.55625e-17, -5.54473e-17, -0.00372198, -0.999993, -3.10655e-17, 0.999993, -0.00372198, -3.94748e-18, 0.0208967, 0.0418359)
-
-[node name="Limb_007" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, 1.03554e-16, -9.23022e-17, -2.62877e-17, -0.511866, -0.859065, -1.36206e-16, 0.859065, -0.511866, -3.63889e-18, 0.0208595, 0.0518359)
-
-[node name="Limb_008" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="9"]
-transform = Transform3D(1, 1.52096e-16, -1.69196e-16, 6.35563e-17, -0.900838, -0.434154, -2.18451e-16, 0.434154, -0.900839, -2.60334e-18, 0.0157408, 0.0604265)
-
-[node name="Limb_009" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, 1.59471e-16, -2.44292e-16, 1.65271e-16, -0.999714, 0.0239263, -2.40406e-16, -0.0239263, -0.999714, -1.08239e-18, 0.00673241, 0.0647681)
-
-[node name="Limb_010" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="11"]
-transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.506351, -2.099e-16, -0.506351, -0.862327, 5.12326e-19, -0.00326473, 0.0645288)
 
 [node name="EldritchReturn" type="Area3D" parent="NavigationRegion3D/Return1" node_paths=PackedStringArray("ReturnNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
@@ -250,7 +250,7 @@ transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4
 
 [node name="EldritchTentacleObjective2" parent="NavigationRegion3D/Objective2" node_paths=PackedStringArray("FocusEvent") instance=ExtResource("7_6os4d")]
 transform = Transform3D(-0.258179, 0, 0.966097, 0, 1, 0, -0.966097, 0, -0.258179, 0.18594, 0, -5.66751)
-GameFlagId = "eldritch_objective_001"
+GameFlagId = "eldritch_objective_002"
 FocusEvent = NodePath("../../../FocusEvents/Syringe")
 
 [node name="Return2" type="Node3D" parent="NavigationRegion3D"]
@@ -277,38 +277,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.909
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 StartState = 4
 
-[node name="BoneAttachment3D" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.506351, -2.099e-16, -0.506351, -0.862327, 1.79839e-18, -0.011888, 0.0594653)
-
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
-
-[node name="Limb_002" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
-
-[node name="Limb_003" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="4"]
-transform = Transform3D(1, -1.54423e-16, -4.52551e-17, 5.0591e-17, 0.568673, -0.822564, 1.52758e-16, 0.822564, 0.568673, -4.29576e-19, 0.00193464, 0.0198111)
-
-[node name="Limb_004" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -1.57416e-16, -1.17294e-16, 7.97931e-17, 0.871844, -0.489784, 1.79362e-16, 0.489784, 0.871844, -1.97381e-18, 0.00762137, 0.0280367)
-
-[node name="Limb_005" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, -3.99511e-17, -5.77724e-17, -3.32204e-17, 0.455687, -0.89014, 6.18883e-17, 0.89014, 0.455687, -3.54796e-18, 0.0163398, 0.0329345)
-
-[node name="Limb_006" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="7"]
-transform = Transform3D(1, 3.08589e-17, -5.55625e-17, -5.54473e-17, -0.00372198, -0.999993, -3.10655e-17, 0.999993, -0.00372198, -3.94748e-18, 0.0208967, 0.0418359)
-
-[node name="Limb_007" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, 1.03554e-16, -9.23022e-17, -2.62877e-17, -0.511866, -0.859065, -1.36206e-16, 0.859065, -0.511866, -3.63889e-18, 0.0208595, 0.0518359)
-
-[node name="Limb_008" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="9"]
-transform = Transform3D(1, 1.52096e-16, -1.69196e-16, 6.35563e-17, -0.900838, -0.434154, -2.18451e-16, 0.434154, -0.900839, -2.60334e-18, 0.0157408, 0.0604265)
-
-[node name="Limb_009" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, 1.59471e-16, -2.44292e-16, 1.65271e-16, -0.999714, 0.0239263, -2.40406e-16, -0.0239263, -0.999714, -1.08239e-18, 0.00673241, 0.0647681)
-
-[node name="Limb_010" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="11"]
-transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.506351, -2.099e-16, -0.506351, -0.862327, 5.12326e-19, -0.00326473, 0.0645288)
 
 [node name="EldritchReturn" type="Area3D" parent="NavigationRegion3D/Return2" node_paths=PackedStringArray("ReturnNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
@@ -340,7 +310,7 @@ transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4
 
 [node name="EldritchTentacleObjective3" parent="NavigationRegion3D/Objective3" node_paths=PackedStringArray("FocusEvent") instance=ExtResource("7_6os4d")]
 transform = Transform3D(-0.258179, 0, 0.966097, 0, 1, 0, -0.966097, 0, -0.258179, 0.18594, 0, -5.66751)
-GameFlagId = "eldritch_objective_001"
+GameFlagId = "eldritch_objective_003"
 FocusEvent = NodePath("../../../FocusEvents/Syringe")
 
 [node name="Return3" type="Node3D" parent="NavigationRegion3D"]
@@ -367,38 +337,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.909
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 StartState = 4
 
-[node name="BoneAttachment3D" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.506351, -2.099e-16, -0.506351, -0.862327, 1.79839e-18, -0.011888, 0.0594653)
-
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
-
-[node name="Limb_002" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
-
-[node name="Limb_003" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="4"]
-transform = Transform3D(1, -1.54423e-16, -4.52551e-17, 5.0591e-17, 0.568673, -0.822564, 1.52758e-16, 0.822564, 0.568673, -4.29576e-19, 0.00193464, 0.0198111)
-
-[node name="Limb_004" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -1.57416e-16, -1.17294e-16, 7.97931e-17, 0.871844, -0.489784, 1.79362e-16, 0.489784, 0.871844, -1.97381e-18, 0.00762137, 0.0280367)
-
-[node name="Limb_005" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, -3.99511e-17, -5.77724e-17, -3.32204e-17, 0.455687, -0.89014, 6.18883e-17, 0.89014, 0.455687, -3.54796e-18, 0.0163398, 0.0329345)
-
-[node name="Limb_006" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="7"]
-transform = Transform3D(1, 3.08589e-17, -5.55625e-17, -5.54473e-17, -0.00372198, -0.999993, -3.10655e-17, 0.999993, -0.00372198, -3.94748e-18, 0.0208967, 0.0418359)
-
-[node name="Limb_007" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, 1.03554e-16, -9.23022e-17, -2.62877e-17, -0.511866, -0.859065, -1.36206e-16, 0.859065, -0.511866, -3.63889e-18, 0.0208595, 0.0518359)
-
-[node name="Limb_008" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="9"]
-transform = Transform3D(1, 1.52096e-16, -1.69196e-16, 6.35563e-17, -0.900838, -0.434154, -2.18451e-16, 0.434154, -0.900839, -2.60334e-18, 0.0157408, 0.0604265)
-
-[node name="Limb_009" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, 1.59471e-16, -2.44292e-16, 1.65271e-16, -0.999714, 0.0239263, -2.40406e-16, -0.0239263, -0.999714, -1.08239e-18, 0.00673241, 0.0647681)
-
-[node name="Limb_010" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="11"]
-transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.506351, -2.099e-16, -0.506351, -0.862327, 5.12326e-19, -0.00326473, 0.0645288)
 
 [node name="EldritchReturn" type="Area3D" parent="NavigationRegion3D/Return3" node_paths=PackedStringArray("ReturnNode")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
@@ -1030,6 +970,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 100)
 
 [node name="Syringe" parent="FocusEvents" instance=ExtResource("13_s322q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 Id = "syringe"
 Info = ExtResource("14_s322q")
 
@@ -1054,6 +995,75 @@ transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4
 [node name="EldritchTentacle" parent="FocusEvents/Syringe" instance=ExtResource("15_ki66s")]
 transform = Transform3D(-0.339051, 0, 1.15111, 0, 1.2, 0, -1.15111, 0, -0.339051, 3.95191, -2.4, -3.51632)
 StartState = 3
+
+[node name="Island" parent="FocusEvents" instance=ExtResource("13_s322q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.63726, 0)
+Id = "island"
+Info = ExtResource("19_5am1p")
+
+[node name="EldritchIslandSmall" parent="FocusEvents/Island" instance=ExtResource("19_4jmxh")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0.0579147)
+
+[node name="EldritchIslandSmall2" parent="FocusEvents/Island" instance=ExtResource("19_4jmxh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 2.68021)
+
+[node name="WorldBugs" type="Node3D" parent="."]
+
+[node name="WorldBug_Islands" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -56.1337)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands2" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.82031, -0.28609, -58.5823)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands3" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.109, -0.286, -58.003)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands4" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.39699, 0, -64.0325)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands5" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.107, -0.286, -64.875)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands6" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.637, 0, -66.4285)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands7" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.008, -0.286, -73.3)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands8" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.24106, 0, -78.0397)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands9" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57975, 0, -73.0634)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands10" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.027, -0.286, -80.484)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands11" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.424, -0.286, -78.457)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands12" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.24, -0.286, -71.532)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands13" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3226, 0, -75.5606)
+Info = ExtResource("19_5am1p")
+
+[node name="WorldBug_Islands14" parent="WorldBugs" instance=ExtResource("9_7a7gi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.533, -0.286, -67.662)
+Info = ExtResource("19_5am1p")
 
 [editable path="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle"]
 [editable path="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle"]

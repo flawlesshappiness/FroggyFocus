@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=28 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://6svjunh12rln" path="res://Prefabs/FocusSkillChecks/glitch_bombs.tscn" id="17_n8lvd"]
 [ext_resource type="PackedScene" uid="uid://baff0vi363x4j" path="res://Prefabs/FocusSkillChecks/glitch_dot.tscn" id="18_kdpbt"]
 [ext_resource type="PackedScene" uid="uid://dch3byblos3f1" path="res://Prefabs/FocusSkillChecks/eldritch_wind.tscn" id="19_otgg6"]
+[ext_resource type="PackedScene" uid="uid://t1nqv2ixw81n" path="res://Prefabs/FocusSkillChecks/eldritch_slap.tscn" id="20_wi65r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pin3"]
 transparency = 1
@@ -87,6 +88,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5
 [node name="GlitchDot" parent="SkillChecks" instance=ExtResource("18_kdpbt")]
 
 [node name="EldritchWind" parent="SkillChecks" instance=ExtResource("19_otgg6")]
+
+[node name="EldritchSlap" parent="SkillChecks" instance=ExtResource("20_wi65r")]
 
 [node name="Frog" parent="." instance=ExtResource("7_yos1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
