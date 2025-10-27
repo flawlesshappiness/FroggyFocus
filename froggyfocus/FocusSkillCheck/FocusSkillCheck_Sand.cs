@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System.Collections;
 
 public partial class FocusSkillCheck_Sand : FocusSkillCheck
@@ -14,6 +15,9 @@ public partial class FocusSkillCheck_Sand : FocusSkillCheck
 
     [Export]
     public AudioStreamPlayer SfxWind;
+
+    [Export]
+    public Array<Godot.Curve> Curves;
 
     public override void _Ready()
     {
@@ -43,7 +47,9 @@ public partial class FocusSkillCheck_Sand : FocusSkillCheck
 
         var wind_amount = AmountRange.Range(Difficulty);
         var wind_duration = DurationRange.Range(Difficulty);
-        var time_end = GameTime.Time + wind_duration;
+        var time_start = GameTime.Time;
+        var time_end = time_start + wind_duration;
+        var curve = Curves.PickRandom();
 
         return this.StartCoroutine(Cr, "wind");
         IEnumerator Cr()
@@ -54,7 +60,9 @@ public partial class FocusSkillCheck_Sand : FocusSkillCheck
 
             while (GameTime.Time < time_end)
             {
-                FocusEvent.Cursor.GlobalPosition += dir * wind_amount;
+                var t = (GameTime.Time - time_start) / wind_duration;
+                var amount = wind_amount * curve.Sample(Mathf.Clamp(t, 0, 1));
+                FocusEvent.Cursor.GlobalPosition += dir * amount;
                 yield return null;
             }
 

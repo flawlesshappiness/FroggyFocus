@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://na6ghlg4xx1t"]
+[gd_scene load_steps=22 format=3 uid="uid://na6ghlg4xx1t"]
 
 [ext_resource type="Script" uid="uid://n10j2kkvmge1" path="res://Scenes/EldritchScene.cs" id="1_vole6"]
 [ext_resource type="Material" uid="uid://71pv1fsup32f" path="res://Materials/Color_Brown.tres" id="2_6bnib"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://pxtjfc22pib3" path="res://Prefabs/Eldritch/eldritch_tentacle_wall.tscn" id="6_hulv8"]
 [ext_resource type="PackedScene" uid="uid://ct33gr4jalld4" path="res://Prefabs/Eldritch/eldritch_tentacle_objective.tscn" id="7_6os4d"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="7_6636b"]
+[ext_resource type="PackedScene" uid="uid://k363eryuxjas" path="res://Prefabs/Characters/incubator.tscn" id="7_e6fod"]
 [ext_resource type="Script" uid="uid://dmmkas04t7id3" path="res://Prefabs/Eldritch/EldritchReturn.cs" id="9_vmhyt"]
 [ext_resource type="PackedScene" uid="uid://c7qruwrt0l5pa" path="res://Prefabs/Eldritch/eldritch_entrance.tscn" id="10_c1m17"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="13_s322q"]
@@ -96,7 +97,7 @@ transform = Transform3D(0.938884, 0, -0.344233, 0, 1, 0, 0.344233, 0, 0.938884, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.8322)
 
 [node name="Island_End" type="Node3D" parent="NavigationRegion3D/End"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -12.8353)
 
 [node name="pond_corner_convex_001" parent="NavigationRegion3D/End/Island_End" instance=ExtResource("5_qjlmc")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
@@ -136,6 +137,9 @@ transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 
 
 [node name="pond_corner_convex_004" parent="NavigationRegion3D/End/Island_End2" instance=ExtResource("5_qjlmc")]
 transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
+
+[node name="Incubator" parent="NavigationRegion3D/End" instance=ExtResource("7_e6fod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1714)
 
 [node name="Objective1" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.6015, 0, -34.8167)
@@ -188,9 +192,6 @@ transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.5
 
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
-
-[node name="Limb_001" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.19209e-09, -9.31323e-10)
 
 [node name="Limb_002" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
@@ -282,9 +283,6 @@ transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.5
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
 
-[node name="Limb_001" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.19209e-09, -9.31323e-10)
-
 [node name="Limb_002" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
 
@@ -374,9 +372,6 @@ transform = Transform3D(1, 1.28606e-16, -3.18928e-16, 2.7239e-16, -0.862327, 0.5
 
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
-
-[node name="Limb_001" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.19209e-09, -9.31323e-10)
 
 [node name="Limb_002" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
@@ -764,40 +759,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.50338, 0, -6.88447)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4865, 0, -52.165)
 
 [node name="EldritchPillar10" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3824, 0, -57.0079)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3217, 0, -44.9035)
 
 [node name="EldritchPillar11" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1248, 0, -59.7948)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6481, 1.90735e-06, -44.7674)
 
 [node name="EldritchPillar75" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.79122, 0, -72.7478)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0381, 0, -75.5063)
 
 [node name="EldritchPillar76" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.44768, 0, -72.7478)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.5085, -1.90735e-06, -66.3269)
 
 [node name="EldritchPillar77" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1124, 0, -68.4152)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9671, -1.90735e-06, -52.9254)
 
 [node name="EldritchPillar78" parent="World/Pillars" instance=ExtResource("6_ell4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.666, 0, -59.6391)
 
 [node name="EldritchPillar79" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3349, 0, -79.7465)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0656, -1.90735e-06, -72.3328)
 
 [node name="EldritchPillar80" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.550867, 0, -81.7461)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.055, 0, -68.8538)
 
 [node name="EldritchPillar81" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2136, 0, -70.6371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7731, 0, -56.0289)
 
 [node name="EldritchPillar82" parent="World/Pillars" instance=ExtResource("6_ell4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1018, 0, -61.8609)
 
 [node name="EldritchPillar83" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1038, 0, -83.1903)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.9863, 0, -76.9222)
 
 [node name="EldritchPillar84" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.66967, 0, -88.6338)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.56, 3.8147e-06, -35.0613)
 
 [node name="EldritchPillar85" parent="World/Pillars" instance=ExtResource("6_ell4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3327, 0, -73.6365)
@@ -806,7 +801,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3327, 0, -73.6365)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.4876, 0, -57.3715)
 
 [node name="EldritchPillar87" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.19779, 0, -95.6394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.1112, 0, -84.055)
+
+[node name="EldritchPillar115" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3867, 0, -99.5767)
+
+[node name="EldritchPillar116" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.387806, 0, -105.883)
+
+[node name="EldritchPillar117" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.552, 0, -98.9148)
+
+[node name="EldritchPillar118" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.552, 0, -88.9148)
+
+[node name="EldritchPillar119" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1487, 0, -113.466)
+
+[node name="EldritchPillar120" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0501, 0, -110.174)
+
+[node name="EldritchPillar121" parent="World/Pillars" instance=ExtResource("6_ell4v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.0501, 0, -96.1739)
 
 [node name="Platforms_Start" type="Node3D" parent="."]
 

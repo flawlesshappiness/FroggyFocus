@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://drlpioouldb1f"]
+[gd_scene load_steps=10 format=3 uid="uid://drlpioouldb1f"]
 
 [ext_resource type="Script" uid="uid://bkk0y2fy1t6b0" path="res://FocusSkillCheck/FocusSkillCheck_Sand.cs" id="1_bq41x"]
 [ext_resource type="Texture2D" uid="uid://e3hfi2ik23nn" path="res://Assets/KenneyNL/Particles/smoke_07.png" id="2_u43pa"]
 [ext_resource type="AudioStream" uid="uid://ccu1m8lsu8au" path="res://Sounds/Raw/sfx_wind_sand_001.wav" id="3_lpdta"]
+
+[sub_resource type="Curve" id="Curve_lpdta"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_u43pa"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -42,6 +46,7 @@ AmountRange = Vector2(0.005, 0.01)
 DurationRange = Vector2(5, 10)
 PsWind = NodePath("PsWind")
 SfxWind = NodePath("SfxWind")
+Curves = Array[Curve]([SubResource("Curve_lpdta")])
 Type = 8
 
 [node name="PsWind" type="GPUParticles3D" parent="."]

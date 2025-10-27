@@ -15,4 +15,6 @@ public enum FocusSkillCheckType
     GlitchTeleport,
     GlitchBombs,
     GlitchDot,
+    EldritchWind,
+    EldritchSlap,
 }
