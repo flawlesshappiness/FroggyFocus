@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://dkcf81vj50ane"]
+
+[ext_resource type="Resource" uid="uid://dk3orexdc33xx" path="res://FocusCharacter/Resources/Shrimp.tres" id="1_lgu73"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_vffb6"]
+
+[resource]
+script = ExtResource("2_vffb6")
+Id = "swamp_flower_005"
+RequestPreviewHidden = false
+PossibleRequests = Array[Object]([ExtResource("1_lgu73")])
+CountRange = Vector2i(1, 1)
+UniqueRequests = false
+ClaimCountToUnlock = 0
+HasItemUnlock = false
+ItemUnlock = 0
+CooldownInSeconds = 600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

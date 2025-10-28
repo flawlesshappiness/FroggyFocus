@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=70 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_f4fi4"]
@@ -40,6 +40,8 @@
 [ext_resource type="PackedScene" uid="uid://dm7mhx4ojgeg3" path="res://Prefabs/Nature/grass_tuft_small.tscn" id="18_xsh2a"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
 [ext_resource type="PackedScene" uid="uid://bvq1s6k4t5k0m" path="res://Prefabs/NPC/MushroomNPC/mushroom_npc.tscn" id="19_ghoyf"]
+[ext_resource type="Resource" uid="uid://8nu1sq6r3aut" path="res://HandInQuest/Resources/Swamp_Flower_003.tres" id="19_o0yll"]
+[ext_resource type="Resource" uid="uid://dyfavk2x76c7k" path="res://HandInQuest/Resources/Swamp_Flower_004.tres" id="20_qbb40"]
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="22_tqykx"]
 [ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="23_b0wg7"]
 [ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="26_eoi61"]
@@ -50,7 +52,11 @@
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="33_brx17"]
 [ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="34_b0wg7"]
 [ext_resource type="PackedScene" uid="uid://c7qruwrt0l5pa" path="res://Prefabs/Eldritch/eldritch_entrance.tscn" id="35_firk2"]
+[ext_resource type="PackedScene" uid="uid://cylpusjkvu6mk" path="res://Prefabs/Eldritch/eldritch_flower.tscn" id="41_uapja"]
 [ext_resource type="Resource" uid="uid://c7a2ryrxyjyti" path="res://FocusEvent/Resources/Swamp Water Woods.tres" id="42_8ow6q"]
+[ext_resource type="Resource" uid="uid://dagwuwvas8r0u" path="res://HandInQuest/Resources/Swamp_Flower_002.tres" id="42_o0yll"]
+[ext_resource type="Resource" uid="uid://cn8a451siyrho" path="res://HandInQuest/Resources/Swamp_Flower_001.tres" id="42_qabxi"]
+[ext_resource type="Resource" uid="uid://dkcf81vj50ane" path="res://HandInQuest/Resources/Swamp_Flower_005.tres" id="42_yc6k2"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="49_b0wg7"]
 
@@ -237,6 +243,10 @@ DialogueNode = "##TUTORIAL_CATCH_BUGS_001##"
 
 [node name="FrogPartnerNPC" parent="World/Islands" instance=ExtResource("18_b0wg7")]
 transform = Transform3D(0.98793, 0, 0.1549, 0, 1, 0, -0.1549, 0, 0.98793, 45.0217, 0, 18.857)
+
+[node name="EldritchFlower3" parent="World/Islands" instance=ExtResource("41_uapja")]
+transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, 9.05607, -1.966, 5.25772)
+HandInInfo = ExtResource("19_o0yll")
 
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)
@@ -504,6 +514,10 @@ transform = Transform3D(-0.875951, 0, -1.79797, 0, 2, 0, 1.79797, 0, -0.875951, 
 
 [node name="Lilypad_Boat" parent="World/Lilypads" instance=ExtResource("23_b0wg7")]
 transform = Transform3D(0.827679, 0, 0.561203, 0, 1, 0, -0.561203, 0, 0.827679, -41.2622, -0.917855, -23.3039)
+
+[node name="EldritchFlower4" parent="World/Lilypads" instance=ExtResource("41_uapja")]
+transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, 13.3713, -1.966, 6.16979)
+HandInInfo = ExtResource("20_qbb40")
 
 [node name="DeadForest" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61978, -3.8147e-06, 44.1012)
@@ -1035,6 +1049,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5564, -0.175682, 20.8814)
 [node name="LeechNPC" parent="World/DeadForest" instance=ExtResource("43_8lh35")]
 transform = Transform3D(-0.578365, 0, 0.394327, 0, 0.7, 0, -0.394327, 0, -0.578365, 24.3897, -0.568434, 7.7792)
 
+[node name="EldritchFlower2" parent="World/DeadForest" instance=ExtResource("41_uapja")]
+transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, -12.9037, -1.966, 72.5677)
+HandInInfo = ExtResource("42_o0yll")
+
+[node name="EldritchFlower5" parent="World/DeadForest" instance=ExtResource("41_uapja")]
+transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, -29.7038, -1.63398, 9.99325)
+HandInInfo = ExtResource("42_yc6k2")
+
 [node name="Mushrooms" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.3473, -3.8147e-06, 68.5943)
 navigation_mesh = SubResource("NavigationMesh_riqag")
@@ -1131,6 +1153,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4389, 14.6577, -14.7516)
 [node name="TutorialSign" parent="World/Mushrooms" instance=ExtResource("12_8ow6q")]
 transform = Transform3D(-1.47988, 0, 0.244834, 0, 1.5, 0, -0.244834, 0, -1.47988, -30.4544, 15.9492, 7.0799)
 DialogueNode = "##TUTORIAL_SHIELD_001##"
+
+[node name="EldritchFlower" parent="World/Mushrooms" instance=ExtResource("41_uapja")]
+transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, -55.7944, 0, 10.1991)
+HandInInfo = ExtResource("42_qabxi")
 
 [node name="FocusEvents" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -164.184)

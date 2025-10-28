@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://cylpusjkvu6mk"]
+
+[ext_resource type="Script" uid="uid://hoaylk4vvjmx" path="res://Prefabs/Eldritch/EldritchFlower.cs" id="1_2up6m"]
+[ext_resource type="PackedScene" uid="uid://cfwlg2jimkbki" path="res://Assets/FlawLizArt/Eldritch/flower.fbx" id="1_u16jr"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_2up6m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hjble"]
+height = 3.23022
+radius = 0.620117
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2up6m"]
+height = 9.12744
+
+[node name="EldritchFlower" type="Area3D" node_paths=PackedStringArray("Animation", "Collider")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_2up6m")
+Animation = NodePath("AnimationStateMachine")
+Collider = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.615112, 0)
+shape = SubResource("CylinderShape3D_hjble")
+
+[node name="flower" parent="." instance=ExtResource("1_u16jr")]
+
+[node name="Skeleton3D" parent="flower/Armature" index="0"]
+bones/1/rotation = Quaternion(0.127561, 0.00716928, -0.133033, 0.982842)
+bones/2/rotation = Quaternion(-0.0870098, -0.00145267, 0.093608, 0.991799)
+bones/3/rotation = Quaternion(-0.0640676, -0.00173331, 0.0587091, 0.996216)
+bones/5/rotation = Quaternion(-0.109814, 0.0553252, -0.115085, 0.985716)
+bones/6/rotation = Quaternion(0.0553318, 0.114064, 0.076664, 0.988964)
+bones/7/rotation = Quaternion(0.00270658, 0.380854, 0.111493, 0.917885)
+bones/9/rotation = Quaternion(0.127561, -0.00716928, 0.133033, 0.982842)
+bones/10/rotation = Quaternion(-0.0870098, 0.00145267, -0.093608, 0.991799)
+bones/11/rotation = Quaternion(-0.0640675, 0.00173331, -0.058709, 0.996216)
+bones/13/rotation = Quaternion(-0.109814, -0.0553252, 0.115085, 0.985716)
+bones/14/rotation = Quaternion(0.0553318, -0.114064, -0.076664, 0.988964)
+bones/15/rotation = Quaternion(0.00270657, -0.380854, -0.111493, 0.917885)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_2up6m")
+Animator = NodePath("../flower/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56372, 0)
+shape = SubResource("CylinderShape3D_2up6m")
+
+[editable path="flower"]
