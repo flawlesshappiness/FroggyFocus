@@ -54,6 +54,12 @@ public partial class EldritchTentacleObjective : Node3D
         });
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Debug.RemoveActions(DebugId);
+    }
+
     public void ResetObjective()
     {
         GameFlags.SetFlag(GameFlagId, 0);

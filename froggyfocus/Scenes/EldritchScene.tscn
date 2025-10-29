@@ -450,9 +450,10 @@ ReturnNode = NodePath("../../TeleportBack/EldritchStart")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 shape = SubResource("CylinderShape3D_ki66s")
 
-[node name="EldritchEntrance" parent="NavigationRegion3D" instance=ExtResource("10_c1m17")]
+[node name="EldritchEntrance" parent="NavigationRegion3D" node_paths=PackedStringArray("Flowers") instance=ExtResource("10_c1m17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1317, -1, 23.1102)
 AlwaysActive = true
+Flowers = []
 
 [node name="EldritchTentacle" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
 transform = Transform3D(0.633948, 0, -0.773376, 0, 1, 0, 0.773376, 0, 0.633948, 5.64924, 0, -4.63077)

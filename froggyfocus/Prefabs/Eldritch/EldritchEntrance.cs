@@ -1,4 +1,6 @@
 using Godot;
+using Godot.Collections;
+using System.Linq;
 
 public partial class EldritchEntrance : Area3D
 {
@@ -22,6 +24,14 @@ public partial class EldritchEntrance : Area3D
     [Export]
     public AnimationPlayer AnimationPlayer;
 
+    [Export]
+    public AudioStreamPlayer SfxWakeUp;
+
+    [Export]
+    public Array<EldritchFlower> Flowers;
+
+    private string DebugId => nameof(EldritchEntrance) + GetInstanceId();
+
     private bool initialized;
     private bool is_active;
 
@@ -31,6 +41,13 @@ public partial class EldritchEntrance : Area3D
 
         Instance = this;
         BodyEntered += PlayerEntered;
+
+        foreach (var flower in Flowers)
+        {
+            flower.OnCompleted += FlowerCompleted;
+        }
+
+        RegisterDebugActions();
     }
 
     public override void _Process(double delta)
@@ -42,6 +59,49 @@ public partial class EldritchEntrance : Area3D
             initialized = true;
             Initialize();
         }
+    }
+
+    private void RegisterDebugActions()
+    {
+        var category = "ELDRITCH ENTRANCE";
+
+        if (!AlwaysActive)
+        {
+            Debug.RegisterAction(new DebugAction
+            {
+                Id = DebugId,
+                Category = category,
+                Text = "Open",
+                Action = v => SetOpen(v, true)
+            });
+
+            Debug.RegisterAction(new DebugAction
+            {
+                Id = DebugId,
+                Category = category,
+                Text = "Close",
+                Action = v => SetOpen(v, false)
+            });
+        }
+
+        void SetOpen(DebugView v, bool open)
+        {
+            Flowers.ForEach(x => x.DebugSetCompleted(open));
+
+            if (open)
+            {
+                FlowerCompleted();
+            }
+
+            Data.Game.Save();
+            v.Close();
+        }
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Debug.RemoveActions(DebugId);
     }
 
     private void Initialize()
@@ -56,6 +116,10 @@ public partial class EldritchEntrance : Area3D
             Collider.Disabled = false;
             AnimationPlayer.Play("active");
         }
+        else if (ValidateFlowers())
+        {
+            Activate();
+        }
     }
 
     public void Activate()
@@ -65,6 +129,9 @@ public partial class EldritchEntrance : Area3D
 
         Collider.Disabled = false;
         AnimationPlayer.Play("show");
+
+        EldritchTentacle.SetAwakeGlobal(true);
+        EldritchEye.SetOpenGlobal(true);
     }
 
     private void PlayerEntered(GodotObject go)
@@ -80,5 +147,28 @@ public partial class EldritchEntrance : Area3D
         {
             Scene.Goto(Data.Game.CurrentScene);
         });
+    }
+
+    private bool ValidateFlowers()
+    {
+        return Flowers.All(x => x.IsCompleted);
+    }
+
+    private void FlowerCompleted()
+    {
+        if (AlwaysActive) return;
+        if (is_active) return;
+
+        if (ValidateFlowers())
+        {
+            Awaken();
+        }
+    }
+
+    private void Awaken()
+    {
+        SfxWakeUp.Play();
+        Activate();
+        DialogueController.Instance.StartDialogue("##ELDRITCH_FLOWER_RUMBLE##");
     }
 }

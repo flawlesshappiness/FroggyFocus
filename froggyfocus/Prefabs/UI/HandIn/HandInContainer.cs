@@ -43,6 +43,7 @@ public partial class HandInContainer : MarginContainer
 
     public HandInData CurrentData { get; private set; }
     public HandInInfo CurrentInfo { get; private set; }
+    public bool CurrentClaimed { get; private set; }
     public bool HasItemUnlock => CurrentInfo?.HasItemUnlock ?? false;
     public bool IsMaxClaim => CurrentData?.ClaimedCount >= CurrentInfo?.ClaimCountToUnlock;
     private List<InventoryCharacterData> Submissions => maps.Select(x => x.Submission).Where(x => x != null).ToList();
@@ -97,6 +98,7 @@ public partial class HandInContainer : MarginContainer
         ClaimButton.Disabled = true;
         CurrentData = null;
         RewardUnlockBar.Clear();
+        CurrentClaimed = false;
     }
 
     public void Load(HandInData data)
@@ -109,6 +111,8 @@ public partial class HandInContainer : MarginContainer
         var is_available = HandIn.IsAvailable(data.Id);
         ControlsContainer.Visible = is_available;
         TimerContainer.Visible = !is_available;
+
+        CurrentClaimed = false;
 
         LoadControls(data);
     }
@@ -206,7 +210,7 @@ public partial class HandInContainer : MarginContainer
 
     private void Claim()
     {
-        CurrentData.Claimed = true;
+        CurrentClaimed = true;
         CurrentData.ClaimedCount++;
 
         foreach (var map in maps)
@@ -245,7 +249,7 @@ public partial class HandInContainer : MarginContainer
 
     public IEnumerator WaitForRewardBarFill()
     {
-        if (CurrentData.Claimed && RewardUnlockBar.Visible)
+        if (CurrentClaimed && RewardUnlockBar.Visible)
         {
             yield return RewardUnlockBar.WaitForFillNext();
             yield return new WaitForSeconds(0.25f);

@@ -114,7 +114,7 @@ public partial class HandInView : View
 
             animating = false;
 
-            if (!HandInContainer.CurrentData.Claimed)
+            if (!HandInContainer.CurrentClaimed)
             {
                 HandInController.Instance.HandInClosed(HandInContainer.CurrentInfo);
             }
@@ -130,7 +130,7 @@ public partial class HandInView : View
 
     private IEnumerator WaitForPopup()
     {
-        if (HandInContainer.CurrentData.Claimed)
+        if (HandInContainer.CurrentClaimed)
         {
             if (CanShowPopup())
             {

@@ -15,6 +15,7 @@ public partial class EldritchFlower : Area3D, IInteractable
 
     public bool IsCompleted => HandIn.GetOrCreateData(HandInInfo.Id).ClaimedCount > 0;
 
+    private bool active_dialogue;
     private BoolParameter param_open = new BoolParameter("open", false);
 
     public Action OnCompleted;
@@ -27,6 +28,13 @@ public partial class EldritchFlower : Area3D, IInteractable
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        HandInController.Instance.OnHandInClaimed -= HandInClaimed;
+        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
     }
 
     private void InitializeHandIn()
@@ -64,6 +72,7 @@ public partial class EldritchFlower : Area3D, IInteractable
         }
         else
         {
+            active_dialogue = true;
             DialogueController.Instance.StartDialogue("##ELDRITCH_FLOWER_HUNGRY##");
         }
     }
@@ -84,10 +93,23 @@ public partial class EldritchFlower : Area3D, IInteractable
 
     private void DialogueNodeEnded(string id)
     {
+        if (!active_dialogue) return;
+
         if (id == "##ELDRITCH_FLOWER_HUNGRY##")
         {
             var data = HandIn.GetOrCreateData(HandInInfo.Id);
             HandInView.Instance.ShowPopup(data);
         }
+
+        active_dialogue = false;
+    }
+
+    public void DebugSetCompleted(bool completed)
+    {
+        var count = completed ? 1 : 0;
+        var data = HandIn.GetOrCreateData(HandInInfo.Id);
+        data.ClaimedCount = count;
+
+        param_open.Set(!completed);
     }
 }

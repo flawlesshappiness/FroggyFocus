@@ -41,8 +41,6 @@ public static class HandIn
     public static void ResetData(HandInInfo info)
     {
         var data = GetOrCreateData(info.Id);
-        data.Claimed = false;
-
         ResetData_Requests(info, data);
         ResetData_Date(info, data);
     }

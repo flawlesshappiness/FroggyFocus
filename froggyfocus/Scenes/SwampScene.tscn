@@ -1032,9 +1032,10 @@ transform = Transform3D(-0.463314, 0, -0.997667, 0, 1.1, 0, 0.997667, 0, -0.4633
 [node name="EldritchTentacle5" parent="World/DeadForest/Tentacles" instance=ExtResource("34_b0wg7")]
 transform = Transform3D(1.03757, 0, 0.783229, 0, 1.3, 0, -0.783229, 0, 1.03757, 41.7042, -1, 28.0073)
 
-[node name="EldritchEntrance" parent="World/DeadForest" instance=ExtResource("35_firk2")]
+[node name="EldritchEntrance" parent="World/DeadForest" node_paths=PackedStringArray("Flowers") instance=ExtResource("35_firk2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.094, -1, 52.72)
 IsEntrance = true
+Flowers = [NodePath("../../Mushrooms/EldritchFlower"), NodePath("../EldritchFlower2"), NodePath("../../Islands/EldritchFlower3"), NodePath("../../Lilypads/EldritchFlower4"), NodePath("../EldritchFlower5")]
 
 [node name="PathWaterSFX_Wood" type="Path3D" parent="World/DeadForest"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4236, 0, 27.9228)
