@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://blgekt80fq2oo" path="res://Assets/FlawLizArt/Objects/tv.fbx" id="1_5jy52"]
 [ext_resource type="Script" uid="uid://dycpmrgi87d37" path="res://Objects/TvGlitchy.cs" id="1_wk70n"]
+[ext_resource type="PackedScene" uid="uid://0jmsiis7i0p6" path="res://Prefabs/Glitch/matrix_label.tscn" id="2_j48ws"]
 [ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Color_Green_Unshaded.tres" id="2_tmexc"]
-[ext_resource type="Script" uid="uid://dm8guta6iefk5" path="res://Misc/MatrixLabel.cs" id="3_cpt4p"]
 [ext_resource type="AudioStream" uid="uid://1yg6fqdxmxe7" path="res://Sounds/Raw/sfx_glitch_shoot_001.wav" id="5_yv1c5"]
 [ext_resource type="AudioStream" uid="uid://bygtaj6m8xtgt" path="res://Sounds/Raw/sfx_glitch_static_001.wav" id="6_tfq45"]
 
@@ -140,13 +140,14 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmexc"]
 size = Vector3(4, 2, 3.72327)
 
-[node name="TvGlitchy" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "SfxOn", "MatrixLabels")]
+[node name="TvGlitchy" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "SfxOn", "MatrixLabelParent")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_wk70n")
 AnimationPlayer = NodePath("AnimationPlayer")
 SfxOn = NodePath("SfxClick")
-MatrixLabels = [NodePath("Labels/MatrixLabel_Long"), NodePath("Labels/MatrixLabel_Short"), NodePath("Labels/MatrixLabel_Medium"), NodePath("Labels/MatrixLabel_Long2"), NodePath("Labels/MatrixLabel_Short2"), NodePath("Labels/MatrixLabel_Medium2")]
+MatrixLabelParent = NodePath("Labels")
+MatrixLabelPrefab = ExtResource("2_j48ws")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422352, 0)
@@ -177,144 +178,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.00653076)
 shape = SubResource("BoxShape3D_tmexc")
 
 [node name="Labels" type="Node3D" parent="."]
-
-[node name="MatrixLabel_Long" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09585, 0, -0.861374)
-billboard = 2
-double_sided = false
-modulate = Color(0, 0.5, 0.0833333, 1)
-text = "A
-B
-C
-D
-E
-F
-G"
-font_size = 50
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 2
-script = ExtResource("3_cpt4p")
-StartOn = false
-Size = Vector2i(1, 10)
-SpaceLength = Vector2i(2, 4)
-StringLength = Vector2i(4, 6)
-Frequency = 0.1
-
-[node name="MatrixLabel_Long2" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03903, 0, 0.906834)
-billboard = 2
-double_sided = false
-modulate = Color(0, 0.5, 0.0833333, 1)
-text = "A
-B
-C
-D
-E
-F
-G"
-font_size = 50
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 2
-script = ExtResource("3_cpt4p")
-StartOn = false
-Size = Vector2i(1, 10)
-SpaceLength = Vector2i(2, 4)
-StringLength = Vector2i(4, 6)
-Frequency = 0.1
-
-[node name="MatrixLabel_Short" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.355822, 0, -0.245574)
-billboard = 2
-double_sided = false
-modulate = Color(0, 0.5, 0.0833333, 1)
-text = "A
-B
-C
-D
-E
-F
-G"
-font_size = 50
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 2
-script = ExtResource("3_cpt4p")
-StartOn = false
-Size = Vector2i(1, 4)
-SpaceLength = Vector2i(2, 4)
-StringLength = Vector2i(4, 6)
-Frequency = 0.1
-
-[node name="MatrixLabel_Short2" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.769138, 0, 0.142356)
-billboard = 2
-double_sided = false
-modulate = Color(0, 0.5, 0.0833333, 1)
-text = "A
-B
-C
-D
-E
-F
-G"
-font_size = 50
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 2
-script = ExtResource("3_cpt4p")
-StartOn = false
-Size = Vector2i(1, 4)
-SpaceLength = Vector2i(2, 4)
-StringLength = Vector2i(4, 6)
-Frequency = 0.1
-
-[node name="MatrixLabel_Medium" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.700733, 0, -0.69434)
-billboard = 2
-double_sided = false
-modulate = Color(0, 0.5, 0.0833333, 1)
-text = "A
-B
-C
-D
-E
-F
-G"
-font_size = 50
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 2
-script = ExtResource("3_cpt4p")
-StartOn = false
-Size = Vector2i(1, 7)
-SpaceLength = Vector2i(2, 4)
-StringLength = Vector2i(4, 6)
-Frequency = 0.1
-
-[node name="MatrixLabel_Medium2" type="Label3D" parent="Labels"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07832, 0, 0.637137)
-billboard = 2
-double_sided = false
-modulate = Color(0, 0.5, 0.0833333, 1)
-text = "A
-B
-C
-D
-E
-F
-G"
-font_size = 50
-outline_size = 0
-horizontal_alignment = 0
-vertical_alignment = 2
-script = ExtResource("3_cpt4p")
-StartOn = false
-Size = Vector2i(1, 7)
-SpaceLength = Vector2i(2, 4)
-StringLength = Vector2i(4, 6)
-Frequency = 0.1
 
 [node name="SfxClick" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_yv1c5")

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\eldritch\\eldritchflower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\eldritch\\eldritchflower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\views\\glitchtransitionview\\glitchtransitionview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:views\\glitchtransitionview\\glitchtransitionview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\eldritch\\eldritchentrance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\eldritch\\eldritchentrance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\scenes\\glitchscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:scenes\\glitchscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\gamescene\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,27 +35,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EldritchEntrance.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\Eldritch\\EldritchEntrance.cs",
-              "RelativeDocumentMoniker": "Prefabs\\Eldritch\\EldritchEntrance.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\Eldritch\\EldritchEntrance.cs",
-              "RelativeToolTip": "Prefabs\\Eldritch\\EldritchEntrance.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAD4v4cAAAAAAAAAAAAAAA==",
+              "Title": "GlitchScene.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Scenes\\GlitchScene.cs",
+              "RelativeDocumentMoniker": "Scenes\\GlitchScene.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Scenes\\GlitchScene.cs",
+              "RelativeToolTip": "Scenes\\GlitchScene.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-29T03:04:33.653Z",
+              "WhenOpened": "2025-10-30T08:15:24.239Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "EldritchFlower.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\Eldritch\\EldritchFlower.cs",
-              "RelativeDocumentMoniker": "Prefabs\\Eldritch\\EldritchFlower.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\Eldritch\\EldritchFlower.cs",
-              "RelativeToolTip": "Prefabs\\Eldritch\\EldritchFlower.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwDIAAABOAAAAAAAAAA==",
+              "Title": "GlitchTransitionView.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\GlitchTransitionView\\GlitchTransitionView.cs",
+              "RelativeDocumentMoniker": "Views\\GlitchTransitionView\\GlitchTransitionView.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\GlitchTransitionView\\GlitchTransitionView.cs",
+              "RelativeToolTip": "Views\\GlitchTransitionView\\GlitchTransitionView.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwEgAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-28T01:59:30.485Z",
+              "WhenOpened": "2025-10-30T08:15:16.725Z",
               "EditorCaption": ""
             },
             {
@@ -66,9 +66,10 @@
               "RelativeDocumentMoniker": "GameScene\\GameScene.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\GameScene\\GameScene.cs",
               "RelativeToolTip": "GameScene\\GameScene.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAgwDgAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwDkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T16:57:28.065Z"
+              "WhenOpened": "2025-07-15T16:57:28.065Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

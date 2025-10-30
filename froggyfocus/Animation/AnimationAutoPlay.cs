@@ -1,5 +1,4 @@
 using Godot;
-using System.Collections;
 
 public partial class AnimationAutoPlay : AnimationPlayer
 {
@@ -13,12 +12,9 @@ public partial class AnimationAutoPlay : AnimationPlayer
     {
         base._Ready();
 
-        this.StartCoroutine(Cr, "auto_animate");
-        IEnumerator Cr()
-        {
-            var rng = new RandomNumberGenerator();
-            yield return new WaitForSeconds(Delay.Range(rng.Randf()));
-            Play(Animation);
-        }
+        var rng = new RandomNumberGenerator();
+        var delay = Delay.Range(rng.Randf());
+        Play(Animation);
+        Seek(delay, update: true);
     }
 }

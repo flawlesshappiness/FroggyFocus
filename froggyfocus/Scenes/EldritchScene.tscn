@@ -223,17 +223,11 @@ transform = Transform3D(1, 1.89617e-16, -3.37584e-16, 3.37584e-16, -0.853957, 0.
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
 
-[node name="Limb_001" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.19209e-09, -9.31323e-10)
-
 [node name="Limb_002" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
 
 [node name="Limb_003" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="4"]
 transform = Transform3D(1, -1.25782e-16, -3.9062e-17, 3.9062e-17, 0.566473, -0.82408, 1.25782e-16, 0.82408, 0.566473, -4.29576e-19, 0.00193464, 0.0198111)
-
-[node name="Limb_004" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -1.95655e-16, -1.17055e-16, 1.17055e-16, 0.881154, -0.472829, 1.95655e-16, 0.472829, 0.881154, -1.6874e-18, 0.00759937, 0.0280519)
 
 [node name="Limb_005" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, -1.10923e-16, -2.96909e-17, 2.96909e-17, 0.499552, -0.866284, 1.10923e-16, 0.866284, 0.499552, -3.64395e-18, 0.0164109, 0.0327802)
@@ -316,17 +310,11 @@ transform = Transform3D(1, 1.89617e-16, -3.37584e-16, 3.37584e-16, -0.853957, 0.
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
 
-[node name="Limb_001" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.19209e-09, -9.31323e-10)
-
 [node name="Limb_002" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
 
 [node name="Limb_003" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="4"]
 transform = Transform3D(1, -1.25782e-16, -3.9062e-17, 3.9062e-17, 0.566473, -0.82408, 1.25782e-16, 0.82408, 0.566473, -4.29576e-19, 0.00193464, 0.0198111)
-
-[node name="Limb_004" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -1.95655e-16, -1.17055e-16, 1.17055e-16, 0.881154, -0.472829, 1.95655e-16, 0.472829, 0.881154, -1.6874e-18, 0.00759937, 0.0280519)
 
 [node name="Limb_005" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, -1.10923e-16, -2.96909e-17, 2.96909e-17, 0.499552, -0.866284, 1.10923e-16, 0.866284, 0.499552, -3.64395e-18, 0.0164109, 0.0327802)
@@ -409,17 +397,11 @@ transform = Transform3D(1, 1.89617e-16, -3.37584e-16, 3.37584e-16, -0.853957, 0.
 [node name="Eldritch_Eye" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
 StartState = 1
 
-[node name="Limb_001" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.19209e-09, -9.31323e-10)
-
 [node name="Limb_002" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
 
 [node name="Limb_003" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="4"]
 transform = Transform3D(1, -1.25782e-16, -3.9062e-17, 3.9062e-17, 0.566473, -0.82408, 1.25782e-16, 0.82408, 0.566473, -4.29576e-19, 0.00193464, 0.0198111)
-
-[node name="Limb_004" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -1.95655e-16, -1.17055e-16, 1.17055e-16, 0.881154, -0.472829, 1.95655e-16, 0.472829, 0.881154, -1.6874e-18, 0.00759937, 0.0280519)
 
 [node name="Limb_005" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, -1.10923e-16, -2.96909e-17, 2.96909e-17, 0.499552, -0.866284, 1.10923e-16, 0.866284, 0.499552, -3.64395e-18, 0.0164109, 0.0327802)
@@ -450,10 +432,9 @@ ReturnNode = NodePath("../../TeleportBack/EldritchStart")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 shape = SubResource("CylinderShape3D_ki66s")
 
-[node name="EldritchEntrance" parent="NavigationRegion3D" node_paths=PackedStringArray("Flowers") instance=ExtResource("10_c1m17")]
+[node name="EldritchEntrance" parent="NavigationRegion3D" instance=ExtResource("10_c1m17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1317, -1, 23.1102)
 AlwaysActive = true
-Flowers = []
 
 [node name="EldritchTentacle" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
 transform = Transform3D(0.633948, 0, -0.773376, 0, 1, 0, 0.773376, 0, 0.633948, 5.64924, 0, -4.63077)

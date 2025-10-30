@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 using System;
 
 public partial class TvGlitchy : Area3D, IInteractable
@@ -14,7 +13,10 @@ public partial class TvGlitchy : Area3D, IInteractable
     public AudioStreamPlayer3D SfxOn;
 
     [Export]
-    public Array<MatrixLabel> MatrixLabels;
+    public Node3D MatrixLabelParent;
+
+    [Export]
+    public PackedScene MatrixLabelPrefab;
 
     public bool IsOn => GameFlags.IsFlag(GameFlagId, 1);
 
@@ -24,9 +26,31 @@ public partial class TvGlitchy : Area3D, IInteractable
     {
         base._Ready();
 
+        InitializeMatrixLabels();
+
         if (IsOn)
         {
             SetOn(IsOn);
+        }
+    }
+
+    private void InitializeMatrixLabels()
+    {
+        var rng = new RandomNumberGenerator();
+        var count = 5;
+        var extent = 1.3f;
+        var scale_range = new Vector2(0.002f, 0.005f);
+
+        for (int i = 0; i < count; i++)
+        {
+            var label = MatrixLabelPrefab.Instantiate<Node3D>();
+            label.SetParent(MatrixLabelParent);
+
+            var x = rng.RandfRange(-extent, extent);
+            var z = rng.RandfRange(-extent, extent);
+            label.Position = new Vector3(x, 0, z);
+
+            label.Scale = Vector3.One * scale_range.Range(rng.Randf());
         }
     }
 
@@ -49,7 +73,7 @@ public partial class TvGlitchy : Area3D, IInteractable
         var anim = on ? "on" : "off";
         AnimationPlayer.Play(anim);
 
-        MatrixLabels.ForEach(x => x.SetOn(on));
+        MatrixLabelParent.Visible = on;
 
         SfxOn.Play();
     }

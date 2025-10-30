@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqq37kiy87qqv"]
+
+[ext_resource type="Script" uid="uid://cc67uo61cfmyp" path="res://Objects/GlitchObject.cs" id="1_ajkhu"]
+[ext_resource type="PackedScene" uid="uid://drno733mhajmn" path="res://Assets/FlawLizArt/Machine/cable_ocean.fbx" id="2_b3mcl"]
+[ext_resource type="PackedScene" uid="uid://0jmsiis7i0p6" path="res://Prefabs/Glitch/matrix_label.tscn" id="3_6jdc8"]
+
+[node name="CableGlitch" type="Node3D"]
+script = ExtResource("1_ajkhu")
+
+[node name="cable_ocean" parent="." instance=ExtResource("2_b3mcl")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="MatrixLabel" parent="." instance=ExtResource("3_6jdc8")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.814684, 0, -2.21408)

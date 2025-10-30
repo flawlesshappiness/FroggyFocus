@@ -1,0 +1,279 @@
+[gd_scene load_steps=23 format=3 uid="uid://0jmsiis7i0p6"]
+
+[ext_resource type="Texture2D" uid="uid://cq2cd6uox3usy" path="res://Textures/matrix_label_001.png" id="1_ksnc3"]
+[ext_resource type="Texture2D" uid="uid://brnmdgfnlmw7j" path="res://Textures/matrix_label_002.png" id="2_et72l"]
+[ext_resource type="Texture2D" uid="uid://bcwdumbuukcdn" path="res://Textures/matrix_label_003.png" id="3_m7hu5"]
+[ext_resource type="Texture2D" uid="uid://x614opxr54ry" path="res://Textures/matrix_label_004.png" id="4_da5kc"]
+[ext_resource type="Texture2D" uid="uid://cj50unagdjknv" path="res://Textures/matrix_label_005.png" id="5_o2keo"]
+[ext_resource type="Texture2D" uid="uid://b46gterftxvjn" path="res://Textures/matrix_label_006.png" id="6_porkg"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="7_et72l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_et72l"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0.0833333, 1)
+albedo_texture = ExtResource("1_ksnc3")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_o63qt"]
+material = SubResource("StandardMaterial3D_et72l")
+size = Vector2(32, 1024)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c5t0y"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0.0833333, 1)
+albedo_texture = ExtResource("2_et72l")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_l5pwi"]
+material = SubResource("StandardMaterial3D_c5t0y")
+size = Vector2(32, 1024)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0rnc"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0.0833333, 1)
+albedo_texture = ExtResource("3_m7hu5")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_xav5s"]
+material = SubResource("StandardMaterial3D_n0rnc")
+size = Vector2(32, 1024)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sa4ta"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0.0833333, 1)
+albedo_texture = ExtResource("4_da5kc")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_wvrjl"]
+material = SubResource("StandardMaterial3D_sa4ta")
+size = Vector2(32, 1024)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tuwa"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0.0833333, 1)
+albedo_texture = ExtResource("5_o2keo")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_2y7l2"]
+material = SubResource("StandardMaterial3D_0tuwa")
+size = Vector2(32, 1024)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jywa0"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0.0833333, 1)
+albedo_texture = ExtResource("6_porkg")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_j0b4i"]
+material = SubResource("StandardMaterial3D_jywa0")
+size = Vector2(32, 1024)
+
+[sub_resource type="Animation" id="Animation_da5kc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("001:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("002:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("003:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("004:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("005:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("006:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_m7hu5"]
+resource_name = "scroll"
+length = 1.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("001:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("002:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("003:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("004:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("005:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("006:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o2keo"]
+_data = {
+&"RESET": SubResource("Animation_da5kc"),
+&"scroll": SubResource("Animation_m7hu5")
+}
+
+[node name="MatrixLabel" type="Node3D"]
+
+[node name="001" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 398.868, 0)
+mesh = SubResource("QuadMesh_o63qt")
+
+[node name="002" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 398.868, 0)
+visible = false
+mesh = SubResource("QuadMesh_l5pwi")
+
+[node name="003" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 398.868, 0)
+visible = false
+mesh = SubResource("QuadMesh_xav5s")
+
+[node name="004" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 398.868, 0)
+visible = false
+mesh = SubResource("QuadMesh_wvrjl")
+
+[node name="005" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 398.868, 0)
+visible = false
+mesh = SubResource("QuadMesh_2y7l2")
+
+[node name="006" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 398.868, 0)
+visible = false
+mesh = SubResource("QuadMesh_j0b4i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o2keo")
+}
+script = ExtResource("7_et72l")
+Animation = "scroll"
+Delay = Vector2(0, 1.5)

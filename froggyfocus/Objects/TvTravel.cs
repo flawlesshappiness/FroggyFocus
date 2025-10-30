@@ -1,6 +1,5 @@
 using Godot;
 using Godot.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 public partial class TvTravel : Area3D, IInteractable
@@ -21,20 +20,43 @@ public partial class TvTravel : Area3D, IInteractable
     public Node3D MatrixLabelParent;
 
     [Export]
+    public PackedScene MatrixLabelPrefab;
+
+    [Export]
     public Array<TvGlitchy> Tvs;
 
     private bool is_on;
-    private List<MatrixLabel> matrix_labels = new();
 
     public override void _Ready()
     {
         base._Ready();
-        matrix_labels = MatrixLabelParent.GetNodesInChildren<MatrixLabel>();
+
+        InitializeMatrixLabels();
 
         TvChanged();
         foreach (var tv in Tvs)
         {
             tv.OnTvChanged += TvChanged;
+        }
+    }
+
+    private void InitializeMatrixLabels()
+    {
+        var rng = new RandomNumberGenerator();
+        var count = 20;
+        var extent = 2.5f;
+        var scale_range = new Vector2(0.005f, 0.02f);
+
+        for (int i = 0; i < count; i++)
+        {
+            var label = MatrixLabelPrefab.Instantiate<Node3D>();
+            label.SetParent(MatrixLabelParent);
+
+            var x = rng.RandfRange(-extent, extent);
+            var z = rng.RandfRange(-extent, extent);
+            label.Position = new Vector3(x, 0, z);
+
+            label.Scale = Vector3.One * scale_range.Range(rng.Randf());
         }
     }
 
@@ -53,7 +75,7 @@ public partial class TvTravel : Area3D, IInteractable
     private void SetOn(bool on)
     {
         is_on = on;
-        matrix_labels.ForEach(x => x.SetOn(on));
+        MatrixLabelParent.Visible = on;
 
         var anim = on ? "on" : "off";
         AnimationPlayer.Play(anim);
