@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=69 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -28,7 +28,9 @@
 [ext_resource type="PackedScene" uid="uid://ch71i4r1h8ofk" path="res://Prefabs/NPC/FrogScientistNPC/frog_scientist_npc.tscn" id="19_gteuj"]
 [ext_resource type="PackedScene" uid="uid://pndnf2awnmp0" path="res://Prefabs/Objects/bottle_cleaning_dish.tscn" id="20_16r1r"]
 [ext_resource type="PackedScene" uid="uid://c482un0ek3woo" path="res://Prefabs/Objects/bottle_cleaning_soap.tscn" id="21_lxndu"]
+[ext_resource type="Resource" uid="uid://ddvwvkdj0vgft" path="res://HandInQuest/Resources/Factory_Tv_002.tres" id="21_yhogp"]
 [ext_resource type="PackedScene" uid="uid://cat6wqg4h8oqa" path="res://Prefabs/Objects/bottle_cleaning_toilet.tscn" id="22_01srd"]
+[ext_resource type="Resource" uid="uid://b8lbfg478ik28" path="res://HandInQuest/Resources/Factory_Tv_005.tres" id="22_gihq3"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="24_0lfya"]
 [ext_resource type="PackedScene" uid="uid://cuc22dure6gn7" path="res://Prefabs/Nature/seaweed_cluster_circle.tscn" id="24_uf1yc"]
 [ext_resource type="PackedScene" uid="uid://bfva58jqvweh5" path="res://Prefabs/NPC/RaccoonNPC/raccoon_npc.tscn" id="24_v2jd5"]
@@ -43,10 +45,13 @@
 [ext_resource type="PackedScene" uid="uid://c3hkrtmh6ohnl" path="res://Prefabs/NPC/EelNPC/eel_npc.tscn" id="30_8g76t"]
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="30_kso58"]
 [ext_resource type="PackedScene" uid="uid://c8y0kfo5jh0t8" path="res://Prefabs/Glitch/tv_travel.tscn" id="30_lajby"]
+[ext_resource type="Resource" uid="uid://646tu350bkvf" path="res://HandInQuest/Resources/Factory_Tv_001.tres" id="33_b7s7t"]
+[ext_resource type="Resource" uid="uid://r0ehnnp1jwbf" path="res://HandInQuest/Resources/Factory_Tv_004.tres" id="34_xv66q"]
 [ext_resource type="Resource" uid="uid://conmipikui7b5" path="res://FocusEvent/Resources/Factory_Trash_Water.tres" id="35_8mo76"]
 [ext_resource type="PackedScene" uid="uid://cvky4buvmgo3h" path="res://Prefabs/Objects/exhaust_pipe.tscn" id="37_la0tx"]
 [ext_resource type="Resource" uid="uid://cnf7n65pa1ho" path="res://FocusEvent/Resources/Factory_Oil.tres" id="39_v2jd5"]
 [ext_resource type="Resource" uid="uid://cm5mlcegogu6u" path="res://FocusEvent/Resources/Factory_Seaweed.tres" id="41_8g76t"]
+[ext_resource type="Resource" uid="uid://0u3j4imv7nko" path="res://HandInQuest/Resources/Factory_Tv_003.tres" id="42_8kavb"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="42_v2jd5"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="46_gteuj"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="47_ix7e4"]
@@ -319,11 +324,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30.73
 
 [node name="TvGlitchy2" parent="World/NavigationRegion3D/Building" instance=ExtResource("29_ix7e4")]
 transform = Transform3D(0.91541, 0, -0.402523, 0, 1, 0, 0.402523, 0, 0.91541, -10.1981, 0.256041, -15.2812)
-GameFlagId = "tv_glitch_002"
+HandInInfo = ExtResource("21_yhogp")
 
 [node name="TvGlitchy5" parent="World/NavigationRegion3D/Building" instance=ExtResource("29_ix7e4")]
 transform = Transform3D(0.833548, 0, -0.552446, 0, 1, 0, 0.552446, 0, 0.833548, -63.3154, 1.80487, -98.8423)
-GameFlagId = "tv_glitch_005"
+HandInInfo = ExtResource("22_gihq3")
 
 [node name="ExhaustPipe" parent="World/NavigationRegion3D/Building" instance=ExtResource("37_la0tx")]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -52.5126, -8.99999, -97.0041)
@@ -463,11 +468,11 @@ transform = Transform3D(-0.505432, 0, 0.862867, 0, 1, 0, -0.862867, 0, -0.505432
 
 [node name="TvGlitchy1" parent="World/NavigationRegion3D/Garbage" instance=ExtResource("29_ix7e4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2215, 0, -93.9949)
-GameFlagId = "tv_glitch_001"
+HandInInfo = ExtResource("33_b7s7t")
 
 [node name="TvGlitchy4" parent="World/NavigationRegion3D/Garbage" instance=ExtResource("29_ix7e4")]
 transform = Transform3D(0.779699, 0, 0.626155, 0, 1, 0, -0.626155, 0, 0.779699, 37.4147, 0, -19.0407)
-GameFlagId = "tv_glitch_004"
+HandInInfo = ExtResource("34_xv66q")
 
 [node name="tv_travel" parent="World/NavigationRegion3D/Garbage" node_paths=PackedStringArray("Tvs") instance=ExtResource("30_lajby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12146, -1.90735e-06, -12)
@@ -565,7 +570,7 @@ curve = SubResource("Curve3D_relfh")
 
 [node name="TvGlitchy3" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("29_ix7e4")]
 transform = Transform3D(0.853141, 0, 0.52168, 0, 1, 0, -0.52168, 0, 0.853141, -8.98858, 7.62939e-06, 48.5937)
-GameFlagId = "tv_glitch_003"
+HandInInfo = ExtResource("42_8kavb")
 
 [node name="ExhaustPipe" parent="World/NavigationRegion3D/Seaweed" instance=ExtResource("37_la0tx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 15.1105, -3, 71.7711)

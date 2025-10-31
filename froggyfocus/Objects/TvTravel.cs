@@ -36,7 +36,7 @@ public partial class TvTravel : Area3D, IInteractable
         TvChanged();
         foreach (var tv in Tvs)
         {
-            tv.OnTvChanged += TvChanged;
+            tv.OnCompleted += TvChanged;
         }
     }
 
@@ -79,11 +79,13 @@ public partial class TvTravel : Area3D, IInteractable
 
         var anim = on ? "on" : "off";
         AnimationPlayer.Play(anim);
+
+        MatrixLabelParent.Visible = on;
     }
 
     private bool IsAllTVsOn()
     {
-        return Tvs.Count == 0 || Tvs.All(x => x.IsOn);
+        return Tvs.Count == 0 || Tvs.All(x => x.IsCompleted);
     }
 
     private void Travel()
@@ -99,13 +101,6 @@ public partial class TvTravel : Area3D, IInteractable
     private void TvChanged()
     {
         var all_on = IsAllTVsOn();
-        if (all_on && !is_on)
-        {
-            SetOn(true);
-        }
-        else if (is_on)
-        {
-            SetOn(false);
-        }
+        SetOn(all_on);
     }
 }

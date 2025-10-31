@@ -101,7 +101,7 @@ public partial class PauseView : View
 
     private void Toggle()
     {
-        if (ToggleLock.IsLocked) return;
+        if (ToggleLock.IsLocked && !Visible) return;
         if (options_active) return;
         if (customize_active) return;
         if (inventory_active) return;

@@ -4,13 +4,13 @@ using System;
 public partial class TvGlitchy : Area3D, IInteractable
 {
     [Export]
-    public string GameFlagId;
+    public HandInInfo HandInInfo;
 
     [Export]
     public AnimationPlayer AnimationPlayer;
 
     [Export]
-    public AudioStreamPlayer3D SfxOn;
+    public CollisionShape3D Collider;
 
     [Export]
     public Node3D MatrixLabelParent;
@@ -18,20 +18,33 @@ public partial class TvGlitchy : Area3D, IInteractable
     [Export]
     public PackedScene MatrixLabelPrefab;
 
-    public bool IsOn => GameFlags.IsFlag(GameFlagId, 1);
+    public bool IsCompleted => HandIn.GetOrCreateData(HandInInfo.Id).ClaimedCount > 0;
 
-    public event Action OnTvChanged;
+    private bool active_dialogue;
+
+    public event Action OnCompleted;
 
     public override void _Ready()
     {
         base._Ready();
-
         InitializeMatrixLabels();
+        InitializeHandIn();
 
-        if (IsOn)
-        {
-            SetOn(IsOn);
-        }
+        HandInController.Instance.OnHandInClaimed += HandInClaimed;
+        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        HandInController.Instance.OnHandInClaimed -= HandInClaimed;
+        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+    }
+
+    private void InitializeHandIn()
+    {
+        HandIn.InitializeData(HandInInfo);
+        SetCompleted(IsCompleted);
     }
 
     private void InitializeMatrixLabels()
@@ -56,25 +69,52 @@ public partial class TvGlitchy : Area3D, IInteractable
 
     public void Interact()
     {
-        SetOn(!IsOn);
-        Data.Game.Save();
-        OnTvChanged?.Invoke();
-
-        if (IsOn)
+        if (IsCompleted)
         {
-            DialogueController.Instance.StartDialogue("##GLITCH_TV_ON##");
+
+        }
+        else
+        {
+            active_dialogue = true;
+            DialogueController.Instance.StartDialogue("##GLITCH_TV_REQUEST##");
         }
     }
 
-    private void SetOn(bool on)
+    private void HandInClaimed(string id)
     {
-        GameFlags.SetFlag(GameFlagId, on ? 1 : 0);
+        if (id != HandInInfo.Id) return;
 
-        var anim = on ? "on" : "off";
+        SetCompleted(true);
+        OnCompleted?.Invoke();
+    }
+
+    private void DialogueNodeEnded(string id)
+    {
+        if (!active_dialogue) return;
+
+        if (id == "##GLITCH_TV_REQUEST##")
+        {
+            var data = HandIn.GetOrCreateData(HandInInfo.Id);
+            HandInView.Instance.ShowPopup(data);
+        }
+
+        active_dialogue = false;
+    }
+
+    public void DebugSetCompleted(bool completed)
+    {
+        var count = completed ? 1 : 0;
+        var data = HandIn.GetOrCreateData(HandInInfo.Id);
+        data.ClaimedCount = count;
+
+        SetCompleted(completed);
+    }
+
+    private void SetCompleted(bool completed)
+    {
+        var anim = completed ? "completed" : "glitchy";
         AnimationPlayer.Play(anim);
 
-        MatrixLabelParent.Visible = on;
-
-        SfxOn.Play();
+        Collider.Disabled = completed;
     }
 }

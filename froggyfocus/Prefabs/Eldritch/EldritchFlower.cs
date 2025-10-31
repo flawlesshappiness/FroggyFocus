@@ -18,7 +18,7 @@ public partial class EldritchFlower : Area3D, IInteractable
     private bool active_dialogue;
     private BoolParameter param_open = new BoolParameter("open", false);
 
-    public Action OnCompleted;
+    public event Action OnCompleted;
 
     public override void _Ready()
     {

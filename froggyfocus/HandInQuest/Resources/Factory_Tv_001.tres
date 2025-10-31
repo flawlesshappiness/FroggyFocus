@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://646tu350bkvf"]
+
+[ext_resource type="Resource" uid="uid://d3biw384eh4mn" path="res://FocusCharacter/Resources/Mosquito_Swamp.tres" id="1_oqnp5"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_h17ax"]
+
+[resource]
+script = ExtResource("2_h17ax")
+Id = "factory_tv_001"
+RequestPreviewHidden = false
+PossibleRequests = Array[Object]([ExtResource("1_oqnp5")])
+CountRange = Vector2i(1, 1)
+UniqueRequests = false
+ClaimCountToUnlock = 0
+HasItemUnlock = false
+ItemUnlock = 0
+CooldownInSeconds = 600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

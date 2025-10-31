@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq6j0lsuirc0k"]
+[gd_scene load_steps=12 format=3 uid="uid://dq6j0lsuirc0k"]
 
 [ext_resource type="PackedScene" uid="uid://blgekt80fq2oo" path="res://Assets/FlawLizArt/Objects/tv.fbx" id="1_5jy52"]
 [ext_resource type="Script" uid="uid://dycpmrgi87d37" path="res://Objects/TvGlitchy.cs" id="1_wk70n"]
 [ext_resource type="PackedScene" uid="uid://0jmsiis7i0p6" path="res://Prefabs/Glitch/matrix_label.tscn" id="2_j48ws"]
 [ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Color_Green_Unshaded.tres" id="2_tmexc"]
-[ext_resource type="AudioStream" uid="uid://1yg6fqdxmxe7" path="res://Sounds/Raw/sfx_glitch_shoot_001.wav" id="5_yv1c5"]
 [ext_resource type="AudioStream" uid="uid://bygtaj6m8xtgt" path="res://Sounds/Raw/sfx_glitch_static_001.wav" id="6_tfq45"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yv1c5"]
@@ -48,9 +47,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Labels:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-[sub_resource type="Animation" id="Animation_tmexc"]
-resource_name = "off"
+[sub_resource type="Animation" id="Animation_j48ws"]
+resource_name = "completed"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -61,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -73,7 +85,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -86,6 +98,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Labels:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_wk70n"]
@@ -129,23 +153,35 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true, false, true, false, true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Labels:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yv1c5"]
 _data = {
 &"RESET": SubResource("Animation_cpt4p"),
-&"off": SubResource("Animation_tmexc"),
-&"on": SubResource("Animation_wk70n")
+&"completed": SubResource("Animation_j48ws"),
+&"glitchy": SubResource("Animation_wk70n")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmexc"]
 size = Vector3(4, 2, 3.72327)
 
-[node name="TvGlitchy" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "SfxOn", "MatrixLabelParent")]
+[node name="TvGlitchy" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "Collider", "MatrixLabelParent")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_wk70n")
 AnimationPlayer = NodePath("AnimationPlayer")
-SfxOn = NodePath("SfxClick")
+Collider = NodePath("CollisionShape3D")
 MatrixLabelParent = NodePath("Labels")
 MatrixLabelPrefab = ExtResource("2_j48ws")
 
@@ -178,11 +214,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -0.00653076)
 shape = SubResource("BoxShape3D_tmexc")
 
 [node name="Labels" type="Node3D" parent="."]
-
-[node name="SfxClick" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_yv1c5")
-max_distance = 12.0
-bus = &"SFX"
+visible = false
 
 [node name="SfxStatic" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_tfq45")
