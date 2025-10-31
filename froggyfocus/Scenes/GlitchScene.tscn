@@ -40,7 +40,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 geometry_parsed_geometry_type = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpaxj"]
-size = Vector3(8, 1, 8)
+size = Vector3(8, 2, 8)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_546co"]
 vertices = PackedVector3Array(-13.5, 0.5, -13.5, -13.5, 0.5, -10.5, -10.5, 0.5, -10.5, -10.5, 0.5, -13.5, -33.5, 0.5, -3.5, -33.5, 0.5, 3.5, -26.5, 0.5, 3.5, -26.5, 0.5, -3.5, -13.5, 0.5, -1.5, -13.5, 0.5, 1.5, -10.5, 0.5, 1.5, -10.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 6.5, 0.5, -1.5, 6.5, 0.5, 1.5, 9.5, 0.5, 1.5, 9.5, 0.5, -1.5, -13.5, 0.5, 10.5, -13.5, 0.5, 13.5, -10.5, 0.5, 13.5, -10.5, 0.5, 10.5)
@@ -248,10 +248,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 11, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("9_qpaxj")
-Id = "wings"
+Id = "flying"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Stacks/NavigationRegion3D/GlitchPlatform_8x8x1/FocusEventArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_qpaxj")
 
 [node name="ColorBlocks" type="Node3D" parent="World/Stacks"]

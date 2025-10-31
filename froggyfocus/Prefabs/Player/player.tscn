@@ -86,12 +86,13 @@ scale_min = 0.2
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_m5xj4")
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ExclamationMark", "QuestionMark", "SfxFocusTargetFound", "SfxFocusTargetStarted", "PsDustStream", "PsDustJump", "PsDustLand", "Camera")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ThirdPersonCamera", "ExclamationMark", "QuestionMark", "SfxFocusTargetFound", "SfxFocusTargetStarted", "PsDustStream", "PsDustJump", "PsDustLand", "Camera")]
 collision_layer = 2
 script = ExtResource("1_hnwp3")
 MoveSpeed = 2.0
 PlayerInteract = NodePath("Frog/Interact")
 Character = NodePath("Frog")
+ThirdPersonCamera = NodePath("ThirdPersonCamera")
 ExclamationMark = NodePath("Frog/ExclamationMark")
 QuestionMark = NodePath("Frog/QuestionMark")
 SfxFocusTargetFound = NodePath("SfxFocusTargetFound")
@@ -164,9 +165,10 @@ bus = &"SFX"
 stream = ExtResource("8_m5xj4")
 bus = &"SFX"
 
-[node name="ThirdPersonCamera" type="Node3D" parent="." node_paths=PackedStringArray("Camera", "SpringArm")]
+[node name="ThirdPersonCamera" type="Node3D" parent="." node_paths=PackedStringArray("Player", "Camera", "SpringArm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768355, 0)
 script = ExtResource("9_a00l3")
+Player = NodePath("..")
 Camera = NodePath("SpringArm3D/Camera3D")
 SpringArm = NodePath("SpringArm3D")
 
