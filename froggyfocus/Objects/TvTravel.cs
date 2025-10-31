@@ -23,20 +23,70 @@ public partial class TvTravel : Area3D, IInteractable
     public PackedScene MatrixLabelPrefab;
 
     [Export]
+    public AudioStreamPlayer SfxComplete;
+
+    [Export]
     public Array<TvGlitchy> Tvs;
 
+    private string DebugId => nameof(TvTravel) + GetInstanceId();
+
     private bool is_on;
+    private bool initialized;
 
     public override void _Ready()
     {
         base._Ready();
 
+        RegisterDebugActions();
         InitializeMatrixLabels();
 
-        TvChanged();
         foreach (var tv in Tvs)
         {
             tv.OnCompleted += TvChanged;
+        }
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (!initialized)
+        {
+            initialized = true;
+            Initialize();
+        }
+    }
+
+    private void RegisterDebugActions()
+    {
+        var category = "ELDRITCH ENTRANCE";
+
+        if (!IsGoingUp)
+        {
+            Debug.RegisterAction(new DebugAction
+            {
+                Id = DebugId,
+                Category = category,
+                Text = "Open",
+                Action = v => SetOpen(v, true)
+            });
+
+            Debug.RegisterAction(new DebugAction
+            {
+                Id = DebugId,
+                Category = category,
+                Text = "Close",
+                Action = v => SetOpen(v, false)
+            });
+        }
+
+        void SetOpen(DebugView v, bool open)
+        {
+            Tvs.ForEach(x => x.DebugSetCompleted(open));
+            TvChanged();
+
+            Data.Game.Save();
+            v.Close();
         }
     }
 
@@ -58,6 +108,12 @@ public partial class TvTravel : Area3D, IInteractable
 
             label.Scale = Vector3.One * scale_range.Range(rng.Randf());
         }
+    }
+
+    private void Initialize()
+    {
+        var all_on = IsAllTVsOn();
+        SetOn(all_on);
     }
 
     public void Interact()
@@ -101,6 +157,12 @@ public partial class TvTravel : Area3D, IInteractable
     private void TvChanged()
     {
         var all_on = IsAllTVsOn();
-        SetOn(all_on);
+        SetOn(all_on || IsGoingUp);
+
+        if (all_on)
+        {
+            SfxComplete.Play();
+            DialogueController.Instance.StartDialogue("##GLITCH_TV_COMPLETE##");
+        }
     }
 }

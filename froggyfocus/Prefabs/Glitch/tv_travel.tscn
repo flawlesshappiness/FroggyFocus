@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8y0kfo5jh0t8"]
+[gd_scene load_steps=13 format=3 uid="uid://c8y0kfo5jh0t8"]
 
 [ext_resource type="PackedScene" uid="uid://blgekt80fq2oo" path="res://Assets/FlawLizArt/Objects/tv.fbx" id="1_66g5y"]
 [ext_resource type="Script" uid="uid://bvucsmprvfqph" path="res://Objects/TvTravel.cs" id="1_kik84"]
 [ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Color_Green_Unshaded.tres" id="2_kfs8y"]
 [ext_resource type="PackedScene" uid="uid://0jmsiis7i0p6" path="res://Prefabs/Glitch/matrix_label.tscn" id="4_f4iva"]
 [ext_resource type="AudioStream" uid="uid://bf5x2aypc82vt" path="res://Sounds/Raw/sfx_glitch_warn_001.wav" id="5_f4iva"]
+[ext_resource type="AudioStream" uid="uid://vt5etl4wsr4l" path="res://Sounds/Raw/sfx_glitch_open.wav" id="6_lltxx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kfs8y"]
 size = Vector3(6.41235, 4, 6)
@@ -100,13 +101,14 @@ _data = {
 &"on": SubResource("Animation_klpp5")
 }
 
-[node name="tv_travel" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "MatrixLabelParent", "Tvs")]
+[node name="tv_travel" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "MatrixLabelParent", "SfxComplete", "Tvs")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_kik84")
 AnimationPlayer = NodePath("AnimationPlayer")
 MatrixLabelParent = NodePath("Labels")
 MatrixLabelPrefab = ExtResource("4_f4iva")
+SfxComplete = NodePath("SfxComplete")
 Tvs = []
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -143,6 +145,10 @@ libraries = {
 stream = ExtResource("5_f4iva")
 volume_db = -30.0
 max_distance = 12.0
+bus = &"SFX"
+
+[node name="SfxComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lltxx")
 bus = &"SFX"
 
 [editable path="Model/tv_on"]

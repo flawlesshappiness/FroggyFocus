@@ -27,7 +27,7 @@ public partial class TvGlitchy : Area3D, IInteractable
     public override void _Ready()
     {
         base._Ready();
-        InitializeMatrixLabels();
+        //InitializeMatrixLabels();
         InitializeHandIn();
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
