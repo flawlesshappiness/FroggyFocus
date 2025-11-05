@@ -22,6 +22,9 @@ public partial class WeatherInfo : Resource
     public bool FogEnabled;
 
     [Export]
+    public FogType FogType;
+
+    [Export]
     public Color FogColor;
 
     [Export(PropertyHint.Range, "0,1,0.0001")]
@@ -42,3 +45,5 @@ public partial class WeatherInfo : Resource
     [Export]
     public Vector2 WindRange;
 }
+
+public enum FogType { Fog, Volumetric }

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class MainMenuScene : Scene
+public partial class MainMenuScene : GameScene
 {
     [Export]
     public Camera3D Camera;

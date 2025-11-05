@@ -122,8 +122,9 @@ public partial class ThirdPersonCamera : Node3D
 
     private void Process_Position()
     {
+        var speed = 15f;
         var target = GetTargetPosition();
-        GlobalPosition = GlobalPosition.Lerp(target, 10f * GameTime.DeltaTime);
+        GlobalPosition = GlobalPosition.Lerp(target, speed * GameTime.DeltaTime);
     }
 
     public void SnapToPosition()

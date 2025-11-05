@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dclfilqvmuilh"]
+[gd_scene load_steps=10 format=3 uid="uid://dclfilqvmuilh"]
 
 [ext_resource type="Script" uid="uid://chh8ncpnh214i" path="res://Scenes/MainMenuScene.cs" id="1_sb72h"]
-[ext_resource type="Environment" uid="uid://ccdedavwq28gu" path="res://Environment/Test.tres" id="2_gmxq7"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_06svm"]
+[ext_resource type="Resource" uid="uid://cr6w4xkj1cp6h" path="res://Weather/Resources/Sunny-Windy.tres" id="2_6xh72"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_c7qge"]
 [ext_resource type="Material" uid="uid://c0dwjdrp2kmvd" path="res://Materials/Grass.tres" id="2_mxhvt"]
 [ext_resource type="PackedScene" uid="uid://d108tu8l4gbmx" path="res://Assets/FlawLizArt/Nature/Toon/bush_001.fbx" id="5_c7qge"]
 [ext_resource type="PackedScene" uid="uid://81i8koe64106" path="res://Assets/FlawLizArt/Nature/Toon/bush_002.fbx" id="6_6xh72"]
@@ -10,16 +12,19 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_sb72h"]
 size = Vector2(500, 500)
 
-[node name="MainMenuScene" type="Node3D" node_paths=PackedStringArray("Camera")]
+[node name="MainMenuScene" type="Node3D" node_paths=PackedStringArray("Camera", "DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_sb72h")
 Camera = NodePath("Camera3D")
+DirectionalLight = NodePath("DirectionalLight3D")
+WorldEnvironment = NodePath("WorldEnvironment")
+Weathers = Array[ExtResource("2_06svm")]([ExtResource("2_6xh72")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.363072, 0.931761, 0, -0.931761, 0.363072, 0, 9.01286, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_gmxq7")
+environment = ExtResource("2_c7qge")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.961694, 0.274127, 0, -0.274127, 0.961694, -1.74717, 1.01917, 1.64653)

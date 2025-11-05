@@ -1,6 +1,7 @@
 using Godot;
 using System.Collections;
 
+[GlobalClass]
 public partial class ReverbArea : Area3D
 {
     [Export(PropertyHint.Range, "0,1,0.001")]

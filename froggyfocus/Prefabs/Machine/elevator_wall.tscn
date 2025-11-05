@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ljnggrpbcwa"]
+
+[ext_resource type="PackedScene" uid="uid://da0nw8k1u4suo" path="res://Assets/FlawLizArt/Machine/elevator_wall.fbx" id="1_dcp1h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dcp1h"]
+size = Vector3(0.5, 0.5, 0.8)
+
+[node name="ElevatorWall" type="Node3D"]
+
+[node name="elevator_wall" parent="." instance=ExtResource("1_dcp1h")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, 0, 0)
+shape = SubResource("BoxShape3D_dcp1h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+shape = SubResource("BoxShape3D_dcp1h")
