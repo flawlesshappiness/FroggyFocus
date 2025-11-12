@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0osj3jb5aniy"]
+
+[ext_resource type="PackedScene" uid="uid://mvfdm3gxsfe1" path="res://Assets/FlawLizArt/Machine/crane_bottom.fbx" id="1_8drng"]
+[ext_resource type="Script" uid="uid://bk0670mb2dpj8" path="res://Prefabs/Machine/CrystalCrane.cs" id="1_lnwip"]
+[ext_resource type="PackedScene" uid="uid://va1lwsbev6ti" path="res://Assets/FlawLizArt/Machine/crane_top.fbx" id="2_lnwip"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8drng"]
+size = Vector3(1.9834, 5.20874, 1.96387)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ebofv"]
+size = Vector3(1, 1.28453, 1.14362)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lnwip"]
+size = Vector3(0.692383, 0.781464, 2.47711)
+
+[sub_resource type="Animation" id="Animation_lnwip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crane_top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ebofv"]
+resource_name = "rotate_off"
+length = 8.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crane_top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(0, 1.74846e-07, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8drng"]
+resource_name = "rotate_on"
+length = 8.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crane_top:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ebofv"]
+_data = {
+&"RESET": SubResource("Animation_lnwip"),
+&"rotate_off": SubResource("Animation_ebofv"),
+&"rotate_on": SubResource("Animation_8drng")
+}
+
+[node name="CrystalCrane" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "MiddleNode")]
+script = ExtResource("1_lnwip")
+AnimationPlayer = NodePath("AnimationPlayer")
+MiddleNode = NodePath("MiddleNode")
+
+[node name="crane_bottom" parent="." instance=ExtResource("1_8drng")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="crane_bottom"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="crane_bottom/StaticBody3D"]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 2.49915, 0)
+shape = SubResource("BoxShape3D_8drng")
+
+[node name="crane_top" parent="." instance=ExtResource("2_lnwip")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="crane_top"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crane_top/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 2.59303, -3.12839)
+shape = SubResource("BoxShape3D_ebofv")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="crane_top/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.67033, -2.05747)
+shape = SubResource("BoxShape3D_lnwip")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ebofv")
+}
+
+[node name="MiddleNode" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.50645, 3.1404)

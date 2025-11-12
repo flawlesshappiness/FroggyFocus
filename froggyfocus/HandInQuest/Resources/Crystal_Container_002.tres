@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://dhjg8yjfo2his"]
+
+[ext_resource type="Resource" uid="uid://uxx2115b5rbp" path="res://FocusCharacter/Resources/Tick_Crystal.tres" id="1_kn28y"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_rt6p8"]
+
+[resource]
+script = ExtResource("2_rt6p8")
+Id = "crystal_container_002"
+RequestPreviewHidden = false
+PossibleRequests = Array[Object]([ExtResource("1_kn28y")])
+CountRange = Vector2i(1, 1)
+UniqueRequests = false
+ClaimCountToUnlock = 0
+HasItemUnlock = false
+ItemUnlock = 0
+CooldownInSeconds = 600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

@@ -30,4 +30,6 @@ public partial class HandInInfo : Resource
 
     [Export]
     public float CooldownInSeconds;
+
+    public HandInData Data => HandIn.GetOrCreateData(Id);
 }
