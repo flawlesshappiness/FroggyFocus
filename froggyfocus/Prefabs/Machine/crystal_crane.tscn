@@ -1,14 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0osj3jb5aniy"]
+[gd_scene load_steps=12 format=3 uid="uid://b0osj3jb5aniy"]
 
 [ext_resource type="PackedScene" uid="uid://mvfdm3gxsfe1" path="res://Assets/FlawLizArt/Machine/crane_bottom.fbx" id="1_8drng"]
 [ext_resource type="Script" uid="uid://bk0670mb2dpj8" path="res://Prefabs/Machine/CrystalCrane.cs" id="1_lnwip"]
 [ext_resource type="PackedScene" uid="uid://va1lwsbev6ti" path="res://Assets/FlawLizArt/Machine/crane_top.fbx" id="2_lnwip"]
+[ext_resource type="AudioStream" uid="uid://xvlwkd3jlry3" path="res://Sounds/Raw/sfx_crane_move.wav" id="4_ebofv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8drng"]
 size = Vector3(1.9834, 5.20874, 1.96387)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ebofv"]
-size = Vector3(1, 1.28453, 1.14362)
+size = Vector3(0.952, 0.956469, 0.952)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lnwip"]
 size = Vector3(0.692383, 0.781464, 2.47711)
@@ -27,6 +28,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxMove:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ebofv"]
 resource_name = "rotate_off"
@@ -40,9 +53,21 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(0, 3.14159, 0), Vector3(0, 1.74846e-07, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxMove:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.09),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_8drng"]
@@ -57,9 +82,21 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 8),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxMove:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ebofv"]
@@ -69,10 +106,9 @@ _data = {
 &"rotate_on": SubResource("Animation_8drng")
 }
 
-[node name="CrystalCrane" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "MiddleNode")]
+[node name="CrystalCrane" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
 script = ExtResource("1_lnwip")
 AnimationPlayer = NodePath("AnimationPlayer")
-MiddleNode = NodePath("MiddleNode")
 
 [node name="crane_bottom" parent="." instance=ExtResource("1_8drng")]
 
@@ -87,7 +123,7 @@ shape = SubResource("BoxShape3D_8drng")
 [node name="StaticBody3D" type="StaticBody3D" parent="crane_top"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crane_top/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 2.59303, -3.12839)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 2.70105, -3.12839)
 shape = SubResource("BoxShape3D_ebofv")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="crane_top/StaticBody3D"]
@@ -101,3 +137,10 @@ libraries = {
 
 [node name="MiddleNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.50645, 3.1404)
+
+[node name="SfxMove" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2121, 0)
+stream = ExtResource("4_ebofv")
+max_distance = 800.0
+bus = &"SFX"
+attenuation_filter_db = 0.0

@@ -215,7 +215,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8066, 69.7574, -53.3584)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1596, 66.7574, -42.8501)
 
 [node name="CrystalPlatform_10x280" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("7_wn760")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29938, 63.7574, -58.3974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4362, 63.7574, -54.7538)
 
 [node name="CrystalPlatform_10x281" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("7_wn760")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1777, 60.7574, -69.1849)
@@ -224,7 +224,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1777, 60.7574, -69.1849)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.286, 57.7574, -57.6517)
 
 [node name="CrystalPlatform_10x283" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("7_wn760")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8054, 54.7574, -75.9785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8569, 54.7574, -72.2925)
 
 [node name="CrystalPlatform_10x285" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("7_wn760")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.658, 51.757, -61.844)

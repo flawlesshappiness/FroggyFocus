@@ -8,16 +8,13 @@ public partial class CrystalCrane : Node3D
     [Export]
     public AnimationPlayer AnimationPlayer;
 
-    [Export]
-    public Node3D MiddleNode;
-
-    private bool is_powered;
     private bool is_up;
 
     public override void _Ready()
     {
         base._Ready();
-        is_powered = EnergyContainer == null || EnergyContainer.IsCompleted;
+        var is_powered = EnergyContainer == null || EnergyContainer.IsCompleted;
+        SetPowered(is_powered);
 
         if (EnergyContainer != null)
         {
@@ -26,17 +23,7 @@ public partial class CrystalCrane : Node3D
         }
     }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        if (!is_powered) return;
-
-        var player_is_up = Player.Instance.GlobalPosition.Y > MiddleNode.GlobalPosition.Y;
-        SetUp(player_is_up);
-    }
-
-    private void SetUp(bool up)
+    private void SetPowered(bool up)
     {
         if (is_up == up) return;
         is_up = up;
@@ -47,12 +34,11 @@ public partial class CrystalCrane : Node3D
 
     private void EnergyContainerCompleted()
     {
-        is_powered = true;
+        SetPowered(true);
     }
 
     private void EnergyContainerNotCompleted()
     {
-        is_powered = false;
-        SetUp(false);
+        SetPowered(false);
     }
 }

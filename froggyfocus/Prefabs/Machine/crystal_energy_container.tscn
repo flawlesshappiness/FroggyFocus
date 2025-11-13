@@ -1,18 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://baokaf45j1173"]
+[gd_scene load_steps=8 format=3 uid="uid://baokaf45j1173"]
 
 [ext_resource type="Script" uid="uid://cct0xpwiv5px8" path="res://Prefabs/Machine/CrystalEnergyContainer.cs" id="1_cxi1n"]
+[ext_resource type="Material" uid="uid://cngrguaiyjtgk" path="res://Materials/Color_Black.tres" id="2_4o7p6"]
 [ext_resource type="PackedScene" uid="uid://c4o0bu8lxudy5" path="res://Assets/FlawLizArt/Machine/crystal_power_box.fbx" id="2_orku5"]
+[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="3_ftlwq"]
 [ext_resource type="PackedScene" uid="uid://dirlcqapusx6b" path="res://Assets/FlawLizArt/Machine/crystal_power_box_crystal.fbx" id="3_qxa20"]
+[ext_resource type="Material" uid="uid://bu0xn6ccwtlfq" path="res://Materials/Color_Green.tres" id="4_4o7p6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4slm8"]
 size = Vector3(1, 2.05176, 0.507263)
 
-[node name="CrystalEnergyContainer" type="Area3D" node_paths=PackedStringArray("Collider", "Crystal")]
+[node name="CrystalEnergyContainer" type="Area3D" node_paths=PackedStringArray("Collider", "Crystal", "ButtonMesh")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_cxi1n")
 Collider = NodePath("CollisionShape3D")
 Crystal = NodePath("crystal_power_box_crystal")
+ButtonMesh = NodePath("crystal_power_box/container")
+UnpoweredMaterial = ExtResource("2_4o7p6")
+RedMaterial = ExtResource("3_ftlwq")
+GreenMaterial = ExtResource("4_4o7p6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246368)
@@ -20,4 +27,10 @@ shape = SubResource("BoxShape3D_4slm8")
 
 [node name="crystal_power_box" parent="." instance=ExtResource("2_orku5")]
 
+[node name="container" parent="crystal_power_box" index="0"]
+surface_material_override/1 = ExtResource("3_ftlwq")
+surface_material_override/2 = ExtResource("4_4o7p6")
+
 [node name="crystal_power_box_crystal" parent="." instance=ExtResource("3_qxa20")]
+
+[editable path="crystal_power_box"]

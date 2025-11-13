@@ -12,6 +12,18 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
     [Export]
     public Node3D Crystal;
 
+    [Export]
+    public MeshInstance3D ButtonMesh;
+
+    [Export]
+    public Material UnpoweredMaterial;
+
+    [Export]
+    public Material RedMaterial;
+
+    [Export]
+    public Material GreenMaterial;
+
     public bool IsCompleted => HandInInfo.Data.ClaimedCount > 0;
 
     private string DebugId => $"{nameof(CrystalEnergyContainer)}{GetInstanceId()}";
@@ -27,6 +39,7 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
         RegisterDebugActions();
         InitializeHandIn();
         InitializeCrystal();
+        InitializeMaterials();
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
@@ -70,10 +83,10 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
             Data.Game.Save();
 
             SetCrystalEnabled(completed);
+            SetInteractive(!completed);
 
             if (completed)
             {
-                DisableInteractive();
                 OnCompleted?.Invoke();
             }
             else
@@ -86,16 +99,17 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
     private void InitializeHandIn()
     {
         HandIn.InitializeData(HandInInfo);
-
-        if (IsCompleted)
-        {
-            DisableInteractive();
-        }
+        SetInteractive(!IsCompleted);
     }
 
     private void InitializeCrystal()
     {
         SetCrystalEnabled(IsCompleted);
+    }
+
+    private void InitializeMaterials()
+    {
+        SetPowered(IsCompleted);
     }
 
     public void Interact()
@@ -111,16 +125,16 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
         }
     }
 
-    private void DisableInteractive()
+    private void SetInteractive(bool interactive)
     {
-        Collider.Disabled = true;
+        Collider.Disabled = !interactive;
     }
 
     private void HandInClaimed(string id)
     {
         if (id != HandInInfo.Id) return;
 
-        DisableInteractive();
+        SetInteractive(false);
         SetCrystalEnabled(true);
         OnCompleted?.Invoke();
     }
@@ -141,5 +155,11 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
     private void SetCrystalEnabled(bool enabled)
     {
         Crystal.Visible = enabled;
+    }
+
+    private void SetPowered(bool powered)
+    {
+        ButtonMesh.SetSurfaceOverrideMaterial(1, powered ? UnpoweredMaterial : RedMaterial);
+        ButtonMesh.SetSurfaceOverrideMaterial(2, powered ? GreenMaterial : UnpoweredMaterial);
     }
 }
