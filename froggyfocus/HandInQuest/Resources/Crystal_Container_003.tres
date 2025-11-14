@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://d183ekl8xur2b"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=7 format=3 uid="uid://d183ekl8xur2b"]
 
-[ext_resource type="Resource" uid="uid://uxx2115b5rbp" path="res://FocusCharacter/Resources/Tick_Crystal.tres" id="1_2d34k"]
+[ext_resource type="Resource" uid="uid://diyjybx5boa61" path="res://FocusCharacter/Resources/Crystal_Worm.tres" id="1_skgnw"]
+[ext_resource type="Resource" uid="uid://d28p6ase4nfxn" path="res://FocusCharacter/Resources/Crystal_Walker.tres" id="2_bjp8i"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_l3xt6"]
+[ext_resource type="Resource" uid="uid://dxeqaklhqofik" path="res://FocusCharacter/Resources/Crystal_Serpent.tres" id="3_x83p0"]
+[ext_resource type="Resource" uid="uid://b5avgl46snq5c" path="res://FocusCharacter/Resources/Crystal_Stomper.tres" id="4_ij80n"]
+[ext_resource type="Resource" uid="uid://eus6bswjm8po" path="res://FocusCharacter/Resources/Crystal_Butterfly.tres" id="5_gjbbd"]
 
 [resource]
 script = ExtResource("2_l3xt6")
 Id = "crystal_container_003"
 RequestPreviewHidden = false
-PossibleRequests = Array[Object]([ExtResource("1_2d34k")])
-CountRange = Vector2i(1, 1)
-UniqueRequests = false
+PossibleRequests = Array[Object]([ExtResource("1_skgnw"), ExtResource("2_bjp8i"), ExtResource("3_x83p0"), ExtResource("4_ij80n"), ExtResource("5_gjbbd")])
+CountRange = Vector2i(2, 3)
+UniqueRequests = true
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

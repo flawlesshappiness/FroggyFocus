@@ -1,12 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://i7pfdqreowiu"]
+[gd_scene load_steps=11 format=3 uid="uid://i7pfdqreowiu"]
 
 [ext_resource type="PackedScene" uid="uid://d3c3r4kr07et5" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_platform.fbx" id="1_0mu5n"]
+[ext_resource type="Script" uid="uid://dccqls3hcor0n" path="res://Prefabs/Crystal/CrystalPlatform.cs" id="1_rc7kp"]
+[ext_resource type="Material" uid="uid://dqix01s7vhtmd" path="res://Materials/Crystal1.tres" id="2_2qgov"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_ale6r"]
+[ext_resource type="Material" uid="uid://nhig3l3yh8b7" path="res://Materials/Crystal2.tres" id="3_gbyav"]
+[ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="3_r23uq"]
+[ext_resource type="Material" uid="uid://0od1oea7n2ob" path="res://Materials/Crystal3.tres" id="4_nqeae"]
+[ext_resource type="Resource" uid="uid://uxvnhfnkgc0a" path="res://FocusEvent/Resources/Crystal_Bugs.tres" id="4_r23uq"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wn760"]
 height = 200.0
 radius = 5.0
 
-[node name="CrystalPlatform_10x200" type="Node3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o6pvg"]
+height = 1.0
+radius = 4.68701
+
+[node name="CrystalPlatform_10x200" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_rc7kp")
+Mesh = NodePath("crystal_platform/Cylinder")
+Materials = Array[Material]([ExtResource("2_2qgov"), ExtResource("3_gbyav"), ExtResource("4_nqeae")])
 
 [node name="crystal_platform" parent="." instance=ExtResource("1_0mu5n")]
 transform = Transform3D(10, 0, 0, 0, 200, 0, 0, 0, 10, 0, -100, 0)
@@ -30,3 +44,21 @@ height = 100.0
 vertices = PackedVector3Array(-0.0641036, 0, -4.91751, 2.38823, 0, -4.29139, 4.2927, 0, -2.49127, 4.91883, 0, 0.0132408, 4.34488, 0, 2.46557, 2.54476, 0, 4.2396, -0.0119262, 0, 4.94399, -2.51644, 0, 4.16133, -4.31655, 0, 2.38731, -5.04703, 0, -0.0389366, -4.23829, 0, -2.51736, -2.3599, 0, -4.36965)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_ale6r")
+Id = "crystal"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_o6pvg")
+debug_color = Color(0.999899, 0, 0.0970777, 0.42)
+
+[node name="WorldBug" parent="." instance=ExtResource("3_r23uq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.65112)
+Info = ExtResource("4_r23uq")
+
+[editable path="crystal_platform"]

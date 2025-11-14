@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=7 format=3 uid="uid://uxvnhfnkgc0a"]
+
+[ext_resource type="Resource" uid="uid://diyjybx5boa61" path="res://FocusCharacter/Resources/Crystal_Worm.tres" id="1_3a0f1"]
+[ext_resource type="Resource" uid="uid://d28p6ase4nfxn" path="res://FocusCharacter/Resources/Crystal_Walker.tres" id="2_qist8"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_tu3qu"]
+[ext_resource type="Resource" uid="uid://dxeqaklhqofik" path="res://FocusCharacter/Resources/Crystal_Serpent.tres" id="3_6v1r0"]
+[ext_resource type="Resource" uid="uid://b5avgl46snq5c" path="res://FocusCharacter/Resources/Crystal_Stomper.tres" id="4_xacvp"]
+[ext_resource type="Resource" uid="uid://eus6bswjm8po" path="res://FocusCharacter/Resources/Crystal_Butterfly.tres" id="5_bth0t"]
+
+[resource]
+script = ExtResource("2_tu3qu")
+Characters = Array[Object]([ExtResource("1_3a0f1"), ExtResource("2_qist8"), ExtResource("3_6v1r0"), ExtResource("4_xacvp"), ExtResource("5_bth0t")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dxeqaklhqofik"]
+
+[ext_resource type="PackedScene" uid="uid://db5pblf7os2gc" path="res://Prefabs/Characters/crystal_serpent.tscn" id="1_qc0jp"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_khhyy"]
+
+[resource]
+script = ExtResource("2_khhyy")
+Scene = ExtResource("1_qc0jp")
+Name = "Crystal Serpent"
+LocationHint = "##HINT_LOC_CRYSTAL_MOUNTAIN##"
+Accessory = ""
+FocusValue = 150.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0.8, 2)
+MoveLengthRange = Vector2(0.5, 1)
+MoveDelayRange = Vector2(1, 0.5)
+MoveType = 1
+IsStationary = false
+OverrideSize = 0.0
+OverrideRarity = 0
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0, 6, 2])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

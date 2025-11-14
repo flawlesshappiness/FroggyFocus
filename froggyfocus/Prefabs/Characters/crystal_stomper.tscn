@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqq4q138c6hyn"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_qjobm"]
+[ext_resource type="PackedScene" uid="uid://cwfwp25yswahu" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_stomper.fbx" id="2_dcpj4"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_nw0ih"]
+
+[node name="CrystalStomper" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_qjobm")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="crystal_stomper" parent="." instance=ExtResource("2_dcpj4")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+
+[node name="Skeleton3D" parent="crystal_stomper/Armature" index="0"]
+bones/5/position = Vector3(0, 0.001, 0.015)
+
+[node name="AnimationPlayer" parent="crystal_stomper" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_nw0ih")
+Animator = NodePath("../crystal_stomper/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="crystal_stomper"]

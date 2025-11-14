@@ -70,6 +70,16 @@ public partial class FocusEvent : Node3D
         skill_checks.ForEach(x => x.Initialize(this));
     }
 
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+
+        if (PlayerInput.Pause.Released)
+        {
+            EndEventPrematurely();
+        }
+    }
+
     private void CreateTarget()
     {
         var info = OverrideTargetInfo ?? Info.GetRandomCharacter();
@@ -175,6 +185,13 @@ public partial class FocusEvent : Node3D
             // Save
             Data.Game.Save();
         }
+    }
+
+    private void EndEventPrematurely()
+    {
+        if (!EventStarted) return;
+
+        Cursor.AdjustFocusValue(-99999);
     }
 
     private IEnumerator EventCr()

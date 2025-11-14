@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dimtq8fo0s1d1"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_thigo"]
+[ext_resource type="PackedScene" uid="uid://4hp26ult2vjo" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_butterfly.fbx" id="2_02uyp"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_cjmwq"]
+
+[node name="CrystalButterfly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_thigo")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="crystal_butterfly" parent="." instance=ExtResource("2_02uyp")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="crystal_butterfly/Armature" index="0"]
+bones/1/position = Vector3(0, 0.001, 0.003)
+bones/1/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+bones/3/rotation = Quaternion(0.597142, 0.378711, -0.378711, 0.597142)
+bones/5/rotation = Quaternion(0.327632, 0.626623, -0.626623, 0.327633)
+bones/7/rotation = Quaternion(0.597142, -0.378711, 0.378711, 0.597142)
+bones/9/rotation = Quaternion(-0.327632, 0.626623, -0.626623, -0.327633)
+
+[node name="AnimationPlayer" parent="crystal_butterfly" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_cjmwq")
+Animator = NodePath("../crystal_butterfly/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="crystal_butterfly"]

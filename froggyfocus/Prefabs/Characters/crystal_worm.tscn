@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjaubm1ip5h4e"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_ufntu"]
+[ext_resource type="PackedScene" uid="uid://dnirdct56nnpp" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_worm.fbx" id="2_ckjdy"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_2tk1w"]
+
+[node name="CrystalWorm" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_ufntu")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="crystal_worm" parent="." instance=ExtResource("2_ckjdy")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="crystal_worm" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_2tk1w")
+Animator = NodePath("../crystal_worm/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="crystal_worm"]
