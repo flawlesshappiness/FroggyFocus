@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://i7pfdqreowiu"]
+[gd_scene load_steps=13 format=3 uid="uid://i7pfdqreowiu"]
 
 [ext_resource type="PackedScene" uid="uid://d3c3r4kr07et5" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_platform.fbx" id="1_0mu5n"]
 [ext_resource type="Script" uid="uid://dccqls3hcor0n" path="res://Prefabs/Crystal/CrystalPlatform.cs" id="1_rc7kp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="3_r23uq"]
 [ext_resource type="Material" uid="uid://0od1oea7n2ob" path="res://Materials/Crystal3.tres" id="4_nqeae"]
 [ext_resource type="Resource" uid="uid://uxvnhfnkgc0a" path="res://FocusEvent/Resources/Crystal_Bugs.tres" id="4_r23uq"]
+[ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="9_2qgov"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wn760"]
 height = 200.0
@@ -16,6 +17,10 @@ radius = 5.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o6pvg"]
 height = 1.0
 radius = 4.68701
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gbyav"]
+height = 0.001
+radius = 0.832031
 
 [node name="CrystalPlatform_10x200" type="Node3D" node_paths=PackedStringArray("Mesh")]
 script = ExtResource("1_rc7kp")
@@ -60,5 +65,14 @@ debug_color = Color(0.999899, 0, 0.0970777, 0.42)
 [node name="WorldBug" parent="." instance=ExtResource("3_r23uq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.65112)
 Info = ExtResource("4_r23uq")
+
+[node name="FocusHotSpotArea" type="Area3D" parent="."]
+script = ExtResource("9_2qgov")
+metadata/_custom_type_script = "uid://crb4gwrjb3psl"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusHotSpotArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.63982)
+shape = SubResource("CylinderShape3D_gbyav")
+debug_color = Color(0.668815, 0.509965, 0, 0.42)
 
 [editable path="crystal_platform"]

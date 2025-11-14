@@ -1,9 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn8qs824sjh2w"]
+[gd_scene load_steps=11 format=3 uid="uid://dn8qs824sjh2w"]
 
 [ext_resource type="Script" uid="uid://focufwcpcvo2" path="res://FocusSkillCheck/SkillCheckDot.cs" id="1_py5am"]
 [ext_resource type="PackedScene" uid="uid://beec38frmqp4t" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_long.fbx" id="2_nau7p"]
 [ext_resource type="AudioStream" uid="uid://chsmvnuk5ocu2" path="res://Sounds/Raw/sfx_mole_show_001.wav" id="3_4ca8u"]
 [ext_resource type="AudioStream" uid="uid://t6fyf7iejqbk" path="res://Sounds/Raw/sfx_mole_show_002.wav" id="4_6mnwl"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_py5am"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.001
 
 [sub_resource type="Animation" id="Animation_6ni8j"]
 length = 0.001
@@ -113,6 +118,89 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="crystal_long" parent="Anim" instance=ExtResource("2_nau7p")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.453, 0)
+visible = false
+
+[node name="crystal_long2" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.173473, 0)
+
+[node name="crystal_long11" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0270229, -0.0063974, -0.0415793, 0.0115186, 0.0486551, 0, 0.0404609, -0.00957873, 0.0277698, -0.0890266, -0.0314041, -0.0484381)
+
+[node name="crystal_long12" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0477794, -0.0113113, -0.00944363, 0.0115186, 0.0486551, 0, 0.00918963, -0.00217555, 0.0491001, -0.131363, -0.0314041, -0.0540087)
+
+[node name="crystal_long13" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.00485017, 0.00114823, -0.049751, 0.0115186, 0.0486551, 1.82912e-10, 0.0484128, -0.0114612, -0.00498422, -0.111309, -0.0314041, -0.0891035)
+
+[node name="crystal_long14" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.00485017, 0.00114823, -0.049751, 0.0115186, 0.0486551, 1.82912e-10, 0.0484128, -0.0114612, -0.00498422, -0.00268222, -0.0314041, -0.135897)
+
+[node name="crystal_long15" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0209788, -0.00496651, -0.0451135, 0.0115186, 0.0486551, 2.73156e-10, 0.0439, -0.0103929, 0.0215586, -0.0556029, -0.0314041, -0.145924)
+
+[node name="crystal_long16" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0389978, 0.00923235, -0.0298987, 0.0115186, 0.0486551, 2.25063e-10, 0.0290945, -0.00688784, -0.0400757, 0.0530238, -0.0314041, -0.145367)
+
+[node name="crystal_long17" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.00785949, -0.00186066, -0.0493434, 0.0115186, 0.0486551, 4.59957e-12, 0.0480161, -0.0113673, 0.00807675, 0.0963292, -0.0314041, -0.0432897)
+
+[node name="crystal_long18" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0368628, 0.00872689, -0.032634, 0.0115186, 0.0486551, 9.19914e-12, 0.0317562, -0.00751798, -0.0378817, 0.149945, -0.0314041, -0.0525694)
+
+[node name="crystal_long19" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0384779, 0.00910925, 0.0306019, 0.0115186, 0.0486551, 1.83983e-11, -0.0297788, 0.00704984, -0.0395414, 0.147883, -0.0314041, -0.0185438)
+
+[node name="crystal_long20" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0331423, 0.00784612, -0.0366063, 0.0115186, 0.0486551, 3.67966e-11, 0.0356217, -0.00843309, -0.0340584, 0.158194, -0.0314041, 0.0433211)
+
+[node name="crystal_long21" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.00213588, -0.00050565, 0.0499518, 0.0115186, 0.0486551, 6.1907e-10, -0.0486082, 0.0115075, 0.0021949, 0.080863, -0.0314041, 0.113434)
+
+[node name="crystal_long22" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0288708, 0.00683488, 0.0402462, 0.0115186, 0.0486551, 6.52256e-10, -0.0391637, 0.00927162, -0.0296688, 0.0282781, -0.0314041, 0.150553)
+
+[node name="crystal_long23" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0288708, 0.00683488, 0.0402462, 0.0115186, 0.0486551, 6.52256e-10, -0.0391637, 0.00927162, -0.0296688, -0.0459596, -0.0314041, 0.0886886)
+
+[node name="crystal_long24" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0394927, -0.00934951, 0.0292047, 0.0115186, 0.0486551, 1.05082e-10, -0.0284192, 0.00672796, 0.0405843, -0.0552394, -0.0314041, 0.134056)
+
+[node name="crystal_long25" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0022784, -0.000539389, 0.0499451, 0.0115186, 0.0486551, 4.05948e-11, -0.0486018, 0.011506, 0.00234136, -0.0109029, -0.0314041, 0.14746)
+
+[node name="crystal_long26" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0460421, -0.0109, 0.0161653, 0.0115186, 0.0486551, 1.16079e-10, -0.0157305, 0.00372404, 0.0473147, -0.155254, -0.0314041, 1.57505e-05)
+
+[node name="crystal_long27" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0136502, -0.00323154, 0.047992, 0.0115186, 0.0486551, 7.13922e-10, -0.0467011, 0.011056, 0.0140275, -0.124322, -0.0314041, 0.0505387)
+
+[node name="crystal_long3" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0920034, 0.0391839, 0, -0.0391839, 0.0920034, 0, 0, 0, 0.1, 0.0635936, -0.0473008, -0.00536254)
+
+[node name="crystal_long4" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.036804, 0.0156747, -0.0916502, -0.0391839, 0.0920034, -1.77636e-16, 0.0843213, 0.0359122, 0.0400029, 0.00366076, -0.0473008, 0.0589331)
+
+[node name="crystal_long5" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0919491, -0.0391608, -0.00343413, -0.0391839, 0.0920034, 3.4703e-10, 0.00315951, 0.00134563, -0.099941, -0.0624505, -0.0473008, 0.00293496)
+
+[node name="crystal_long6" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0293332, -0.0124929, 0.0947813, -0.0391839, 0.0920034, 4.14828e-10, -0.087202, -0.0371391, -0.0318827, -0.0378742, -0.0473008, -0.0639497)
+
+[node name="crystal_long7" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0643461, 0.0274048, 0.0714741, -0.0391839, 0.0920034, 1.53583e-09, -0.0657586, -0.0280064, 0.0699389, -0.00252904, -0.0473008, -0.0633652)
+
+[node name="crystal_long8" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0643461, 0.0274048, 0.0714741, -0.0391839, 0.0920034, 1.53583e-09, -0.0657586, -0.0280064, 0.0699389, 0.090992, -0.0473008, -0.0831722)
+
+[node name="crystal_long9" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(0.0789044, 0.0336052, -0.0514275, -0.0391839, 0.0920033, 7.2861e-09, 0.047315, 0.0201513, 0.0857625, 0.0922594, -0.0473008, 0.0659132)
+
+[node name="crystal_long10" parent="Anim" instance=ExtResource("2_nau7p")]
+transform = Transform3D(-0.0702479, -0.0299184, -0.0645764, -0.0391839, 0.0920033, 1.04836e-08, 0.0594125, 0.0253036, -0.0763537, -0.0872016, -0.0473008, 0.0934609)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anim"]
+visible = false
+mesh = SubResource("CylinderMesh_py5am")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

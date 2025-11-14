@@ -82,6 +82,7 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
             HandInInfo.Data.ClaimedCount = count;
             Data.Game.Save();
 
+            SetPowered(completed);
             SetCrystalEnabled(completed);
             SetInteractive(!completed);
 
@@ -136,6 +137,7 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
 
         SetInteractive(false);
         SetCrystalEnabled(true);
+        SetPowered(true);
         OnCompleted?.Invoke();
     }
 
