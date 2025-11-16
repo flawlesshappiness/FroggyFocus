@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://d1k0a6fdjn5kh"]
+
+[ext_resource type="PackedScene" uid="uid://bkbbk2nsx028o" path="res://Appearance/Attachments/bug_of_love.tscn" id="1_0tlhu"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_q7iaf"]
+
+[resource]
+script = ExtResource("2_q7iaf")
+Category = 0
+Type = 9
+DefaultPrimaryColor = 203
+DefaultSecondaryColor = 202
+Prefab = ExtResource("1_0tlhu")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

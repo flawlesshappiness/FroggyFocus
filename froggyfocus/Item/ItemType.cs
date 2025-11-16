@@ -10,6 +10,7 @@ public enum ItemType
     Hat_Tiara = 6,
     Hat_Bow = 7,
     Hat_Mushroom = 8,
+    Hat_BugOfLove = 9,
 
     // Faces
     Face_None = 100,

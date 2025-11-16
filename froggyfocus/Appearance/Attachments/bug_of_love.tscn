@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkbbk2nsx028o"]
+
+[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_3y403"]
+[ext_resource type="PackedScene" uid="uid://onmrfwh06en5" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_tiara.fbx" id="2_awynv"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_mb6qw"]
+
+[node name="BugOfLove" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_3y403")
+Type = 9
+Mesh = NodePath("crystal_tiara/Armature/Skeleton3D/bug_of_love")
+
+[node name="crystal_tiara" parent="." instance=ExtResource("2_awynv")]
+
+[node name="Skeleton3D" parent="crystal_tiara/Armature" index="0"]
+bones/1/position = Vector3(-0.0017, -0.003, 0.001)
+bones/1/rotation = Quaternion(0, 0, -0.5, 0.866025)
+bones/3/position = Vector3(-0.0003, -0.001, 0.001)
+bones/3/rotation = Quaternion(0, 0, -0.173648, 0.984808)
+bones/4/position = Vector3(-7.45058e-11, -7.45058e-11, 0.00165812)
+bones/7/position = Vector3(0, 0, 0.000682507)
+bones/9/position = Vector3(0, -3.51847e-10, 0.00264165)
+bones/11/position = Vector3(-0.0003, 0.003, 0.001)
+bones/11/rotation = Quaternion(0, 0, 0.173648, 0.984808)
+bones/12/position = Vector3(1.86265e-11, 6.51926e-11, 0.00165812)
+bones/14/position = Vector3(-0.0017, 0.005, 0.001)
+bones/14/rotation = Quaternion(0, 0, 0.5, 0.866025)
+
+[node name="AnimationPlayer" parent="crystal_tiara" index="1"]
+script = ExtResource("3_mb6qw")
+Animation = "Armature|hat"
+
+[editable path="crystal_tiara"]

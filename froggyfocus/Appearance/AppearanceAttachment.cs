@@ -17,12 +17,21 @@ public partial class AppearanceAttachment : Node3D
     {
         base._Ready();
 
-        Info = AppearanceController.Instance.GetInfo(Type);
-
-        initializeMesh();
+        InitializeInfo();
+        InitializeMesh();
     }
 
-    private void initializeMesh()
+    private void InitializeInfo()
+    {
+        Info = AppearanceController.Instance.GetInfo(Type);
+
+        if (Info == null)
+        {
+            Debug.LogError($"{Name}: Failed to get AppearanceInfo for {Type}");
+        }
+    }
+
+    private void InitializeMesh()
     {
         if (Mesh == null) return;
 

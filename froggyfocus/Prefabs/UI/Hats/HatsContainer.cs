@@ -9,9 +9,6 @@ public partial class HatsContainer : ControlScript
     public bool ShowUnpurchased;
 
     [Export]
-    public bool ShowPurchased;
-
-    [Export]
     public AppearancePreviewButton HatButtonTemplate;
 
     [Export]
@@ -69,8 +66,8 @@ public partial class HatsContainer : ControlScript
             var owned = Item.IsOwned(map.Info.Type);
             var shop_info = ShopController.Instance.GetInfo(map.Info.Type);
             var show_if_unpurchased = (!owned && ShowUnpurchased) && shop_info != null;
-            var show_if_purchased = owned && ShowPurchased;
-            map.Button.Visible = show_if_unpurchased || show_if_purchased;
+            var show_if_owned = owned && !ShowUnpurchased;
+            map.Button.Visible = show_if_unpurchased || show_if_owned;
         }
     }
 

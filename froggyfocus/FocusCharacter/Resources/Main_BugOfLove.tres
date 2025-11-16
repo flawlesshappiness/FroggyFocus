@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://cee5gf2jhekao"]
 
-[ext_resource type="PackedScene" uid="uid://fqqvhhk0a8og" path="res://Prefabs/Characters/tick.tscn" id="1_6svvn"]
+[ext_resource type="PackedScene" uid="uid://cwyvh3ul0083" path="res://Prefabs/Characters/main_bug_of_love.tscn" id="1_6svvn"]
 [ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_o04dr"]
 
 [resource]
@@ -18,6 +18,6 @@ MoveType = 0
 IsStationary = false
 OverrideSize = 0.0
 OverrideRarity = 0
-SkillChecks = Array[int]([2])
-Tags = Array[int]([0])
+SkillChecks = Array[int]([])
+Tags = Array[int]([0, 6, 2])
 metadata/_custom_type_script = "uid://buqirimb2mf5"

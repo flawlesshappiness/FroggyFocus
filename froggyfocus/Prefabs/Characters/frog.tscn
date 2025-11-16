@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=29 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="10_w1eid"]
 [ext_resource type="PackedScene" uid="uid://b8hh8idcv2mka" path="res://Appearance/Attachments/bow.tscn" id="11_qrirs"]
 [ext_resource type="PackedScene" uid="uid://fsar64iba3yk" path="res://Appearance/Attachments/mushroom.tscn" id="12_6ia88"]
+[ext_resource type="PackedScene" uid="uid://bkbbk2nsx028o" path="res://Appearance/Attachments/bug_of_love.tscn" id="13_tev55"]
 [ext_resource type="PackedScene" uid="uid://bj017mypcst8m" path="res://Appearance/Attachments/moustache.tscn" id="13_uv7pe"]
 [ext_resource type="PackedScene" uid="uid://bycye7hwagma" path="res://Appearance/Attachments/glasses_scientist.tscn" id="14_50yl0"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="21_uv7pe"]
@@ -198,6 +199,10 @@ visible = false
 
 [node name="Mushroom" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("12_6ia88")]
 transform = Transform3D(0.016, -5.89405e-11, -5.30394e-10, -5.30394e-10, -0.00351264, -0.0156097, -5.89405e-11, 0.0156097, -0.00351264, 1.7035e-09, -0.0043267, 0.00408345)
+visible = false
+
+[node name="BugOfLove" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("13_tev55")]
+transform = Transform3D(-4.48411e-10, 8.11626e-10, 0.015, 0.0144131, -0.00415469, 6.55671e-10, 0.00415469, 0.0144131, -6.55671e-10, 1.24437e-09, -0.00109971, 0.00148116)
 visible = false
 
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="3"]

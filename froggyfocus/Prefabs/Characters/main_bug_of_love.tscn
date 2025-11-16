@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwyvh3ul0083"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_d4w43"]
+[ext_resource type="PackedScene" uid="uid://onmrfwh06en5" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_tiara.fbx" id="2_2iinl"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_a8t5c"]
+
+[node name="BugOfLove" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_d4w43")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|moving"
+Accessories = []
+
+[node name="crystal_tiara" parent="." instance=ExtResource("2_2iinl")]
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("3_a8t5c")
+Animator = NodePath("../crystal_tiara/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[editable path="crystal_tiara"]
