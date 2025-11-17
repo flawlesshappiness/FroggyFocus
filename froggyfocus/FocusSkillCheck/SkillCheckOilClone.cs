@@ -94,8 +94,8 @@ public partial class SkillCheckOilClone : Character
 
     public void SetWorm()
     {
-        ModelWorm.Show();
         ModelFlying.Hide();
+        ModelWorm.Show();
     }
 
     public void SetFlying()

@@ -17,4 +17,6 @@ public enum FocusSkillCheckType
     GlitchDot,
     EldritchWind,
     EldritchSlap,
+    CrystalClone,
+    CrystalMoss,
 }

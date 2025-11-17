@@ -74,7 +74,7 @@ public partial class FocusTarget : Node3D
         Character.StartFacingDirection(dir_to_position);
         Character.SetMoving(true);
 
-        if (Info.MoveType == FocusCharacterMoveType.Walk)
+        if (Info.MoveType == FocusCharacterMoveType.Walk || Info.MoveType == FocusCharacterMoveType.Flying)
         {
             while (GlobalPosition.DistanceTo(position) > 0.1f)
             {

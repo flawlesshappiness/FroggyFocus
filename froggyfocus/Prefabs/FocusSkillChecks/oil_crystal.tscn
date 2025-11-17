@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://whmyqj1a1qg"]
+
+[ext_resource type="Script" uid="uid://vqdcdwmiun4b" path="res://FocusSkillCheck/FocusSkillCheck_Oil.cs" id="1_pqgd6"]
+[ext_resource type="PackedScene" uid="uid://itc1k7yfkr5s" path="res://Prefabs/FocusSkillChecks/skill_check_oil_clone_crystal.tscn" id="2_pqgd6"]
+[ext_resource type="AudioStream" uid="uid://jl6c61u233gn" path="res://Sounds/Raw/sfx_crystal_manifest.wav" id="3_6nwf1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b1pyq"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_6nwf1")
+
+[node name="CrystalClones" type="Node3D" node_paths=PackedStringArray("SfxWater")]
+script = ExtResource("1_pqgd6")
+CountRange = Vector2i(10, 20)
+DurationRange = Vector2i(5, 10)
+ClonePrefab = ExtResource("2_pqgd6")
+SfxWater = NodePath("SfxAppear")
+Type = 17
+
+[node name="SfxAppear" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_b1pyq")
+bus = &"SFX"

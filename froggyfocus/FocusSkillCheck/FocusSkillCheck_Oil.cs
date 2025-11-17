@@ -72,16 +72,16 @@ public partial class FocusSkillCheck_Oil : FocusSkillCheck
         return this.StartCoroutine(Cr, "target_position");
         IEnumerator Cr()
         {
-            var start = Target.GlobalPosition;
+            var start = Target.Position.Set(y: 0);
             var end = start.Set(y: -2);
             var curve = Curves.EaseInQuad;
             yield return LerpEnumerator.Lerp01(0.25f, f =>
             {
                 var t = curve.Evaluate(f);
-                Target.GlobalPosition = start.Lerp(end, t);
+                Target.Position = start.Lerp(end, t);
             });
             Target.Hide();
-            Target.GlobalPosition = start;
+            Target.Position = start;
         }
     }
 
@@ -90,17 +90,17 @@ public partial class FocusSkillCheck_Oil : FocusSkillCheck
         return this.StartCoroutine(Cr, "target_position");
         IEnumerator Cr()
         {
-            var start = Target.GlobalPosition.Set(y: -2);
+            var start = Target.Position.Set(y: -2);
             var end = start.Set(y: 0);
             var curve = Curves.EaseOutQuad;
 
-            Target.GlobalPosition = start;
+            Target.Position = start;
             yield return null;
             Target.Show();
             yield return LerpEnumerator.Lerp01(0.25f, f =>
             {
                 var t = curve.Evaluate(f);
-                Target.GlobalPosition = start.Lerp(end, t);
+                Target.Position = start.Lerp(end, t);
             });
         }
     }
@@ -114,7 +114,7 @@ public partial class FocusSkillCheck_Oil : FocusSkillCheck
         }
 
         target_clone = clones.First();
-        target_clone.GlobalPosition = Target.GlobalPosition;
+        target_clone.Position = Target.Position.Set(y: 0);
         target_clone.IsTarget = true;
         return clones;
     }
@@ -139,6 +139,6 @@ public partial class FocusSkillCheck_Oil : FocusSkillCheck
     private void Process_TargetPosition()
     {
         if (target_clone == null) return;
-        Target.GlobalPosition = target_clone.GlobalPosition;
+        Target.Position = target_clone.Position;
     }
 }

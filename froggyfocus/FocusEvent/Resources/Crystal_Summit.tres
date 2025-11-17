@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://c4lk38w2g73rb"]
+
+[ext_resource type="Resource" uid="uid://cee5gf2jhekao" path="res://FocusCharacter/Resources/Main_BugOfLove.tres" id="1_86kyn"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="6_2dmo3"]
+
+[resource]
+script = ExtResource("6_2dmo3")
+Characters = Array[Object]([ExtResource("1_86kyn")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"
