@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://quha7lvsnhk5"]
+
+[ext_resource type="Script" uid="uid://fckjxo5h0h1q" path="res://FocusSkillCheck/FocusSkillCheck_Moss.cs" id="1_sshoo"]
+[ext_resource type="PackedScene" uid="uid://ciax3g8xee60o" path="res://Prefabs/FocusSkillChecks/skill_check_moss_crystal.tscn" id="2_sshoo"]
+[ext_resource type="AudioStream" uid="uid://dea3461dg0q8b" path="res://Sounds/Raw/sfx_crystal_manifest_002.wav" id="3_sshoo"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xh3rp"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_sshoo")
+stream_0/weight = 1.1
+
+[node name="CrystalMoss" type="Node3D" node_paths=PackedStringArray("SfxBush")]
+script = ExtResource("1_sshoo")
+CountRange = Vector2i(2, 5)
+DelayRange = Vector2(3, 8)
+DistanceRange = Vector2(1.5, 3)
+BushPrefab = ExtResource("2_sshoo")
+SfxBush = NodePath("SfxBush")
+Type = 18
+
+[node name="SfxBush" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_xh3rp")
+bus = &"SFX"

@@ -17,7 +17,7 @@ public partial class FocusSkillCheck_Moss : FocusSkillCheck
     public PackedScene BushPrefab;
 
     [Export]
-    public AudioStreamPlayer3D SfxBush;
+    public AudioStreamPlayer SfxBush;
 
     private List<Node3D> created_objects = new();
 

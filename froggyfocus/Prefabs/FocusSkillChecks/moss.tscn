@@ -18,7 +18,7 @@ BushPrefab = ExtResource("2_7estu")
 SfxBush = NodePath("SfxBush")
 Type = 7
 
-[node name="SfxBush" type="AudioStreamPlayer3D" parent="."]
+[node name="SfxBush" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_xh3rp")
 volume_db = -10.0
 bus = &"SFX"
