@@ -12,6 +12,9 @@ Accessories = []
 
 [node name="crystal_tiara" parent="." instance=ExtResource("2_2iinl")]
 
+[node name="AnimationPlayer" parent="crystal_tiara" index="1"]
+playback_default_blend_time = 0.25
+
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_a8t5c")
 Animator = NodePath("../crystal_tiara/AnimationPlayer")

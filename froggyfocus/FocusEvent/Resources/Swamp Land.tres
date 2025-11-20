@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="FocusEventInfo" load_steps=6 format=3 uid="uid://4t23pgixusyd"]
 
-[ext_resource type="Resource" uid="uid://cqjm2dxtl5xbj" path="res://FocusCharacter/Resources/Beetle_Swamp.tres" id="1_cxc55"]
-[ext_resource type="Resource" uid="uid://inwyiv20wmwr" path="res://FocusCharacter/Resources/Worm_Swamp.tres" id="3_jfp7u"]
-[ext_resource type="Resource" uid="uid://d3biw384eh4mn" path="res://FocusCharacter/Resources/Mosquito_Swamp.tres" id="4_cxc55"]
-[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm_Swamp.tres" id="4_mkaqi"]
+[ext_resource type="Resource" uid="uid://cqjm2dxtl5xbj" path="res://FocusCharacter/Resources/Beetle.tres" id="1_cxc55"]
+[ext_resource type="Resource" uid="uid://inwyiv20wmwr" path="res://FocusCharacter/Resources/Worm.tres" id="3_jfp7u"]
+[ext_resource type="Resource" uid="uid://d3biw384eh4mn" path="res://FocusCharacter/Resources/Mosquito.tres" id="4_cxc55"]
+[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm.tres" id="4_mkaqi"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="5_et7e0"]
 
 [resource]

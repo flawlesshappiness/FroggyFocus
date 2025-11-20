@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=18 format=3 uid="uid://dc4jsailqcu02"]
+
+[ext_resource type="Resource" uid="uid://cnjvqov7aslvq" path="res://FocusCharacter/Resources/Backswimmer_Flower.tres" id="1_xxe3i"]
+[ext_resource type="Resource" uid="uid://3objvy6bb7dt" path="res://FocusCharacter/Resources/Beetle_Mushroom.tres" id="2_pdgdj"]
+[ext_resource type="Resource" uid="uid://dsnwhqreyw75v" path="res://FocusCharacter/Resources/Bloodworm_Oil.tres" id="3_gd464"]
+[ext_resource type="Resource" uid="uid://dku4m8pbirgxs" path="res://FocusCharacter/Resources/CommonFly_Garbage.tres" id="4_ldj0y"]
+[ext_resource type="Resource" uid="uid://c4oy02wvwofiy" path="res://FocusCharacter/Resources/GiantWaterBug_Garbage.tres" id="5_ynrhy"]
+[ext_resource type="Resource" uid="uid://dgoo1uaf3kmwn" path="res://FocusCharacter/Resources/HorseFly_Oil.tres" id="6_grkde"]
+[ext_resource type="Resource" uid="uid://cvxeug6l1rgvk" path="res://FocusCharacter/Resources/HorseFly_Seaweed.tres" id="7_2jpdt"]
+[ext_resource type="Resource" uid="uid://dwq60jhimefeo" path="res://FocusCharacter/Resources/Lanternfly_Garbage.tres" id="8_iddn6"]
+[ext_resource type="Resource" uid="uid://buq8htybs04o" path="res://FocusCharacter/Resources/Lanternfly_Seaweed.tres" id="9_1wn6r"]
+[ext_resource type="Resource" uid="uid://dd5h5376rnp4" path="res://FocusCharacter/Resources/Mosquito_Mushroom.tres" id="10_crbfe"]
+[ext_resource type="Resource" uid="uid://c14c4axt0ra6" path="res://FocusCharacter/Resources/Mosquito_Wooden.tres" id="11_y517p"]
+[ext_resource type="Resource" uid="uid://dfn68pry7clu7" path="res://FocusCharacter/Resources/ScorpionFly_Oil.tres" id="12_uqpvn"]
+[ext_resource type="Resource" uid="uid://k0kvfyx68fnd" path="res://FocusCharacter/Resources/TigerBeetle_Seaweed.tres" id="13_p87vm"]
+[ext_resource type="Resource" uid="uid://ddpbvp5jf57dp" path="res://FocusCharacter/Resources/Waterstrider_Flower.tres" id="14_tipqs"]
+[ext_resource type="Resource" uid="uid://cx66qsueld33v" path="res://FocusCharacter/Resources/Waterstrider_Wooden.tres" id="15_b7s2d"]
+[ext_resource type="Resource" uid="uid://nfqmx7nyg08u" path="res://FocusCharacter/Resources/Waxworm_Mushroom.tres" id="16_0ry80"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="17_hrcq5"]
+
+[resource]
+script = ExtResource("17_hrcq5")
+Id = "crystal_pillar_004"
+RequestPreviewHidden = false
+PossibleRequests = Array[Object]([ExtResource("1_xxe3i"), ExtResource("2_pdgdj"), ExtResource("3_gd464"), ExtResource("4_ldj0y"), ExtResource("5_ynrhy"), ExtResource("6_grkde"), ExtResource("7_2jpdt"), ExtResource("8_iddn6"), ExtResource("9_1wn6r"), ExtResource("10_crbfe"), ExtResource("11_y517p"), ExtResource("12_uqpvn"), ExtResource("13_p87vm"), ExtResource("14_tipqs"), ExtResource("15_b7s2d"), ExtResource("15_b7s2d"), ExtResource("16_0ry80")])
+CountRange = Vector2i(1, 1)
+UniqueRequests = true
+ClaimCountToUnlock = 0
+HasItemUnlock = false
+ItemUnlock = 0
+CooldownInSeconds = 600.0
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

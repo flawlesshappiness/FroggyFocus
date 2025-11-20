@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://dtaq1s53cx6bt"]
+
+[ext_resource type="PackedScene" uid="uid://dwbma2eixbj5y" path="res://Prefabs/Characters/dragonfly.tscn" id="1_p4q1c"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_np2wo"]
+
+[resource]
+script = ExtResource("2_np2wo")
+Scene = ExtResource("1_p4q1c")
+Name = "Dragonfly"
+LocationHint = "##HINT_LOC_SWAMP_WATER##"
+Accessory = ""
+FocusValue = 25.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(3, 4.5)
+MoveLengthRange = Vector2(0.25, 1)
+MoveDelayRange = Vector2(4, 2)
+MoveType = 0
+IsStationary = false
+OverrideSize = 0.0
+OverrideRarity = 0
+SkillChecks = Array[int]([2])
+Tags = Array[int]([0, 2])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

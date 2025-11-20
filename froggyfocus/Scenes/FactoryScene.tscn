@@ -8,11 +8,11 @@
 [ext_resource type="Resource" uid="uid://dq8un1bylw425" path="res://Weather/Resources/Foggy.tres" id="5_j3lbf"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="5_tnbv0"]
 [ext_resource type="Resource" uid="uid://bpacdrq1w1n0k" path="res://Weather/Resources/FoggyWhite.tres" id="6_pkxqc"]
-[ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="6_s3kaw"]
 [ext_resource type="Material" uid="uid://wog5r0ocenqr" path="res://Materials/Rock.tres" id="7_rcofs"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="8_k0l20"]
 [ext_resource type="PackedScene" uid="uid://cwwnl8eyypjvn" path="res://Prefabs/Objects/pipe.tscn" id="8_tnbv0"]
 [ext_resource type="PackedScene" uid="uid://b0lk5512t6aga" path="res://Prefabs/Objects/wood_plank_4m.tscn" id="9_517jr"]
+[ext_resource type="PackedScene" uid="uid://dhc14skbkolxp" path="res://Prefabs/Water/water_factory.tscn" id="9_gihq3"]
 [ext_resource type="PackedScene" uid="uid://pc44e6arpkd7" path="res://Prefabs/Objects/pipe_oil.tscn" id="9_k8q3c"]
 [ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="12_qubeh"]
 [ext_resource type="PackedScene" uid="uid://dptay8dphttdl" path="res://Assets/FlawLizArt/Objects/oil_spill.fbx" id="12_sptoi"]
@@ -150,7 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0196, 5, -70.1591)
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="Water" parent="World" instance=ExtResource("6_s3kaw")]
+[node name="WaterFactory" parent="World" instance=ExtResource("9_gihq3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]

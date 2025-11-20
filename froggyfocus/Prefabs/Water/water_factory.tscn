@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhc14skbkolxp"]
+
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="1_e5kgs"]
+[ext_resource type="Material" uid="uid://bbu4qi3npvrm" path="res://Materials/Water_Factory.tres" id="3_e5kgs"]
+[ext_resource type="PackedScene" uid="uid://cc1aqwgypdcw6" path="res://Prefabs/Misc/respawn_area.tscn" id="4_rqu33"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_achss"]
+size = Vector3(1000, 1, 1000)
+
+[node name="WaterFactory" type="Node3D"]
+
+[node name="Circle" parent="." instance=ExtResource("1_e5kgs")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, 0, 0)
+
+[node name="Circle" parent="Circle" index="0"]
+surface_material_override/0 = ExtResource("3_e5kgs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_achss")
+debug_color = Color(0, 0.595, 0.7, 1)
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+size = Vector3(1000, 1, 1000)
+
+[node name="RespawnArea" parent="." instance=ExtResource("4_rqu33")]
+collision_layer = 0
+
+[editable path="Circle"]

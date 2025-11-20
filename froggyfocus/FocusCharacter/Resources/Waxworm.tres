@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://ctcbxhnj4xrku"]
+
+[ext_resource type="PackedScene" uid="uid://bv72vye2jwinf" path="res://Prefabs/Characters/waxworm.tscn" id="1_j0pm6"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_dgrgb"]
+
+[resource]
+script = ExtResource("2_dgrgb")
+Scene = ExtResource("1_j0pm6")
+Name = "Waxworm"
+LocationHint = "##HINT_LOC_LAND##"
+Accessory = ""
+FocusValue = 50.0
+MoneyMultiplier = 0.5
+MoveSpeedRange = Vector2(0.25, 1)
+MoveLengthRange = Vector2(0.25, 0.5)
+MoveDelayRange = Vector2(0, 0)
+MoveType = 0
+IsStationary = false
+OverrideSize = 0.0
+OverrideRarity = 0
+SkillChecks = null
+Tags = Array[int]([0])
+metadata/_custom_type_script = "uid://buqirimb2mf5"

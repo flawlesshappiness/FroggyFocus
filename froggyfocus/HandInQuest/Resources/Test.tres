@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://cjovp87hurwi7"]
 
-[ext_resource type="Resource" uid="uid://cqjm2dxtl5xbj" path="res://FocusCharacter/Resources/Beetle_Swamp.tres" id="1_0x4mn"]
+[ext_resource type="Resource" uid="uid://cqjm2dxtl5xbj" path="res://FocusCharacter/Resources/Beetle.tres" id="1_0x4mn"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="1_omu82"]
-[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm_Swamp.tres" id="2_blknq"]
-[ext_resource type="Resource" uid="uid://inwyiv20wmwr" path="res://FocusCharacter/Resources/Worm_Swamp.tres" id="3_r1cpn"]
+[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm.tres" id="2_blknq"]
+[ext_resource type="Resource" uid="uid://inwyiv20wmwr" path="res://FocusCharacter/Resources/Worm.tres" id="3_r1cpn"]
 
 [resource]
 script = ExtResource("1_omu82")

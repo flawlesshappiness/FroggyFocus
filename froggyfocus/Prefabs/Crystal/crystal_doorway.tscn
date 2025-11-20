@@ -1,0 +1,125 @@
+[gd_scene load_steps=13 format=3 uid="uid://dptbcsgggi5jt"]
+
+[ext_resource type="PackedScene" uid="uid://civm5dcnnghbq" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_doorway.fbx" id="1_dl85v"]
+[ext_resource type="Script" uid="uid://78gwiv82or78" path="res://Prefabs/Crystal/CrystalDoorway.cs" id="1_nsfgp"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="2_nsfgp"]
+[ext_resource type="PackedScene" uid="uid://beec38frmqp4t" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_long.fbx" id="4_vrfma"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_hckf8"]
+material = ExtResource("2_nsfgp")
+size = Vector2(2.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ub6t5"]
+size = Vector3(2.39868, 2.82062, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6k6gf"]
+size = Vector3(3.94507, 3.98682, 1.43018)
+
+[sub_resource type="Animation" id="Animation_g0bux"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vrfma"]
+resource_name = "closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mx2nk"]
+resource_name = "open"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2.75662, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_twsxp"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.78265, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_twsxp"]
+_data = {
+&"RESET": SubResource("Animation_g0bux"),
+&"closed": SubResource("Animation_vrfma"),
+&"open": SubResource("Animation_twsxp"),
+&"opening": SubResource("Animation_mx2nk")
+}
+
+[node name="CrystalDoorway" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "Containers")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_nsfgp")
+AnimationPlayer = NodePath("AnimationPlayer")
+Containers = []
+
+[node name="crystal_doorway" parent="." instance=ExtResource("1_dl85v")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 0, 1.30037, 0)
+mesh = SubResource("QuadMesh_hckf8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29074, 0)
+shape = SubResource("BoxShape3D_ub6t5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-06, 1.49341, 0.0363827)
+shape = SubResource("BoxShape3D_6k6gf")
+
+[node name="Door" type="Node3D" parent="."]
+
+[node name="crystal_long" parent="Door" instance=ExtResource("4_vrfma")]
+transform = Transform3D(-1.06066, 1.60155e-07, -1.06066, -2.26494e-07, -1.5, 0, -1.06066, 1.60155e-07, 1.06066, 0.751261, 0.0699849, -0.303626)
+
+[node name="crystal_long2" parent="Door" instance=ExtResource("4_vrfma")]
+transform = Transform3D(-1.06066, 1.60155e-07, -1.06066, -2.26494e-07, -1.5, 0, -1.06066, 1.60155e-07, 1.06066, -0.000144958, 0.534945, -0.104658)
+
+[node name="crystal_long3" parent="Door" instance=ExtResource("4_vrfma")]
+transform = Transform3D(-1.06066, 1.60155e-07, -1.06066, -2.26494e-07, -1.5, 0, -1.06066, 1.60155e-07, 1.06066, -0.764856, 0.0699849, -0.303626)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_twsxp")
+}

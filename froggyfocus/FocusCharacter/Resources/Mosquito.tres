@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://d3biw384eh4mn"]
+
+[ext_resource type="PackedScene" uid="uid://ir8kqnw2coxy" path="res://Prefabs/Characters/mosquito.tscn" id="1_ubp8e"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_ttvjf"]
+
+[resource]
+script = ExtResource("2_ttvjf")
+Scene = ExtResource("1_ubp8e")
+Name = "Mosquito"
+LocationHint = "##HINT_LOC_SWAMP##"
+Accessory = ""
+FocusValue = 40.0
+MoneyMultiplier = 1.0
+MoveSpeedRange = Vector2(0.8, 1.2)
+MoveLengthRange = Vector2(0.3, 0.6)
+MoveDelayRange = Vector2(0, 0)
+MoveType = 0
+IsStationary = false
+OverrideSize = 0.0
+OverrideRarity = 0
+SkillChecks = null
+Tags = Array[int]([0, 2])
+metadata/_custom_type_script = "uid://buqirimb2mf5"
