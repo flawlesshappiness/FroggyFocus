@@ -64,6 +64,9 @@ public partial class FocusSkillCheck_EldritchSlap : FocusSkillCheck
 
     private void TentacleSlapHit()
     {
+        var distance_to_cursor = FocusEvent.Cursor.GlobalPosition.DistanceTo(GlobalPosition);
+        if (distance_to_cursor > 1) return;
+
         FocusEvent.Cursor.HurtFocusValuePercentage(0.1f);
 
         if (FocusEvent.Cursor.Shield.IsShielded)
