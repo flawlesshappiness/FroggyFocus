@@ -1,0 +1,358 @@
+[gd_scene load_steps=21 format=3 uid="uid://b38q32vtddqtf"]
+
+[ext_resource type="Script" uid="uid://dfn4uxykrsgai" path="res://FocusSkillCheck/SkillCheckEldritchTeleportEye.cs" id="1_3ipg1"]
+[ext_resource type="PackedScene" uid="uid://dneub1w482vjc" path="res://Assets/FlawLizArt/Eldritch/eye.fbx" id="1_uhwm0"]
+[ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="2_dtdns"]
+[ext_resource type="Material" uid="uid://bs7gnasxvanql" path="res://Materials/PS_Yellow.tres" id="3_15a0w"]
+[ext_resource type="AudioStream" uid="uid://bbifgwlsir35v" path="res://Sounds/Raw/sfx_eldritch_eye_teleport_001.wav" id="4_ku71x"]
+
+[sub_resource type="Animation" id="Animation_dtdns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSplash:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AimPivot/PsPull:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PsTeleport:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AimPivot/PsPull:amount_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SfxTeleport:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uhwm0"]
+resource_name = "show"
+length = 5.0
+step = 0.1
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim/AnimCharge/eye/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Armature|open", "Armature|blink", "Armature|blink"),
+"times": PackedFloat32Array(0, 2.2, 3.5)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.566667, 1.06667, 2, 4.9, 5),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -2, 0), Vector3(0, 0, 0), Vector3(0, -0.2, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, -2, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxSplash:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer_Charge")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("charge"),
+"times": PackedFloat32Array(0.05)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AimPivot/PsPull:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PsTeleport:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AimPivot/PsPull:amount_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2, 1.0]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"AnimationTeleport"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SfxTeleport:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_15a0w"]
+_data = {
+&"RESET": SubResource("Animation_dtdns"),
+&"charge": SubResource("Animation_uhwm0")
+}
+
+[sub_resource type="Animation" id="Animation_3ipg1"]
+resource_name = "charge"
+length = 0.3
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim/AnimCharge:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ku71x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim/AnimCharge:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bu4vr"]
+_data = {
+&"RESET": SubResource("Animation_ku71x"),
+&"charge": SubResource("Animation_3ipg1")
+}
+
+[sub_resource type="Curve" id="Curve_15a0w"]
+_data = [Vector2(0, 0), 0.0, 10.4637, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3ipg1"]
+curve = SubResource("Curve_15a0w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3ipg1"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 0.1
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+spread = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_3ipg1")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ku71x"]
+material = ExtResource("3_15a0w")
+
+[sub_resource type="Curve" id="Curve_3ipg1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ku71x"]
+curve = SubResource("Curve_3ipg1")
+
+[sub_resource type="Curve" id="Curve_bu4vr"]
+_data = [Vector2(0, 0), 0.0, 16.3738, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_y36vc"]
+curve = SubResource("Curve_bu4vr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8o8y1"]
+lifetime_randomness = 0.5
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+damping_min = 30.0
+damping_max = 30.0
+damping_curve = SubResource("CurveTexture_ku71x")
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_y36vc")
+
+[node name="SkillCheck_EldritchTeleportEye" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "AimPivot")]
+script = ExtResource("1_3ipg1")
+AnimationPlayer = NodePath("AnimationPlayer")
+AimPivot = NodePath("AimPivot")
+
+[node name="Anim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="AnimCharge" type="Node3D" parent="Anim"]
+
+[node name="eye" parent="Anim/AnimCharge" instance=ExtResource("1_uhwm0")]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0.229851, 0)
+
+[node name="Skeleton3D" parent="Anim/AnimCharge/eye/Armature" index="0"]
+bones/1/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+bones/3/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
+
+[node name="AnimationPlayer" parent="Anim/AnimCharge/eye" index="2"]
+playback_default_blend_time = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_15a0w")
+}
+
+[node name="AnimationPlayer_Charge" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bu4vr")
+}
+playback_default_blend_time = 1.0
+
+[node name="SfxSplash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dtdns")
+bus = &"SFX"
+
+[node name="SfxTeleport" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ku71x")
+max_polyphony = 2
+bus = &"SFX"
+
+[node name="AimPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="PsPull" type="GPUParticles3D" parent="AimPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423205, -2.5)
+emitting = false
+amount = 15
+lifetime = 0.4
+randomness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_3ipg1")
+draw_pass_1 = SubResource("SphereMesh_ku71x")
+
+[node name="PsTeleport" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419842, 0)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.95
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_8o8y1")
+draw_pass_1 = SubResource("SphereMesh_ku71x")
+
+[editable path="Anim/AnimCharge/eye"]

@@ -7,8 +7,8 @@ public partial class FocusSkillCheck : Node3D
     public FocusSkillCheckType Type;
 
     public bool IsRunning { get; set; }
+    public FocusEvent FocusEvent { get; private set; }
 
-    protected FocusEvent FocusEvent { get; set; }
     protected FocusTarget Target => FocusEvent.Target;
     protected float Difficulty => FocusEvent.Target.Difficulty;
 

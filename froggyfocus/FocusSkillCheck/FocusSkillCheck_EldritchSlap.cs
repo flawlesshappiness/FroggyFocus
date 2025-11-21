@@ -9,6 +9,8 @@ public partial class FocusSkillCheck_EldritchSlap : FocusSkillCheck
     [Export]
     public Node3D Pivot;
 
+    private bool PlayerIsInRange => FocusEvent.Cursor.GlobalPosition.DistanceTo(GlobalPosition) < 1;
+
     private AnimationPlayer animation;
     private bool is_up;
     private float angle;
@@ -55,7 +57,10 @@ public partial class FocusSkillCheck_EldritchSlap : FocusSkillCheck
             is_up = true;
             Tentacle.Show();
             yield return animation.PlayAndWaitForAnimation("Armature|in_water_to_idle");
-            yield return animation.PlayAndWaitForAnimation("Armature|slap");
+            if (PlayerIsInRange)
+            {
+                yield return animation.PlayAndWaitForAnimation("Armature|slap");
+            }
             is_up = false;
             yield return animation.PlayAndWaitForAnimation("Armature|idle_to_in_water");
             Clear();
@@ -64,8 +69,7 @@ public partial class FocusSkillCheck_EldritchSlap : FocusSkillCheck
 
     private void TentacleSlapHit()
     {
-        var distance_to_cursor = FocusEvent.Cursor.GlobalPosition.DistanceTo(GlobalPosition);
-        if (distance_to_cursor > 1) return;
+        if (!PlayerIsInRange) return;
 
         FocusEvent.Cursor.HurtFocusValuePercentage(0.1f);
 

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cprj7mfy6pl7q"]
+
+[ext_resource type="Script" uid="uid://dgvoonmdhlegt" path="res://FocusSkillCheck/FocusSkillCheck_EldritchTeleport.cs" id="1_xye7o"]
+[ext_resource type="PackedScene" uid="uid://b38q32vtddqtf" path="res://Prefabs/FocusSkillChecks/skill_check_eldritch_teleport_eye.tscn" id="2_7omh8"]
+
+[node name="EldritchTeleport" type="Node3D" node_paths=PackedStringArray("Eye")]
+script = ExtResource("1_xye7o")
+Eye = NodePath("SkillCheck_EldritchTeleportEye")
+Type = 19
+
+[node name="SkillCheck_EldritchTeleportEye" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("2_7omh8")]
+Parent = NodePath("..")
