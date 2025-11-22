@@ -29,7 +29,8 @@ public partial class CharacterNpc : Area3D, IInteractable
     {
         base._Ready();
 
-        DialogueController.Instance.OnNodeStarted += DialogueStarted;
+        DialogueController.Instance.OnNodeStarted += DialogueNodeStarted;
+        DialogueController.Instance.OnDialogueStarted += DialogueStarted;
         DialogueController.Instance.OnDialogueEnded += DialogueEnded;
 
         InitializeAnimations();
@@ -38,12 +39,15 @@ public partial class CharacterNpc : Area3D, IInteractable
     public override void _ExitTree()
     {
         base._ExitTree();
-        DialogueController.Instance.OnNodeStarted -= DialogueStarted;
+        DialogueController.Instance.OnNodeStarted -= DialogueNodeStarted;
+        DialogueController.Instance.OnDialogueStarted -= DialogueStarted;
         DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
     }
 
     protected virtual void InitializeAnimations()
     {
+        if (Animation == null) return;
+
         IdleState = Animation.CreateAnimation(IdleAnimation, true);
         DialogueState = Animation.CreateAnimation(DialogueAnimation, true);
 
@@ -65,11 +69,18 @@ public partial class CharacterNpc : Area3D, IInteractable
         DialogueController.Instance.StartDialogue(id);
     }
 
-    private void DialogueStarted(string id)
+    private void DialogueNodeStarted(string id)
     {
         if (HasActiveDialogue)
         {
-            SfxSpeak.Play();
+            SfxSpeak?.Play();
+        }
+    }
+
+    protected virtual void DialogueStarted()
+    {
+        if (HasActiveDialogue)
+        {
             StartDialogueCamera();
         }
     }
@@ -83,6 +94,7 @@ public partial class CharacterNpc : Area3D, IInteractable
     protected void StartDialogueCamera()
     {
         if (DialogueCamera == null) return;
+        if (DialogueCamera.Current) return;
 
         AnimateDialogueCamera(true);
     }

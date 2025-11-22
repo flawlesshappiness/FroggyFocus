@@ -325,8 +325,14 @@ curve = SubResource("Curve3D_xdgi3")
 [node name="SecurityDoor" parent="World/NavigationRegion3D/Building" instance=ExtResource("17_l4num")]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -51.2642, 5, -79.6282)
 
-[node name="FrogScientistNPC" parent="World/NavigationRegion3D/Building" instance=ExtResource("19_gteuj")]
+[node name="FrogScientistNPC" parent="World/NavigationRegion3D/Building" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("19_gteuj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -30.7371, 5, -71.2852)
+DialogueCamera = NodePath("CameraTransition/Camera3D")
+
+[node name="CameraTransition" type="Node3D" parent="World/NavigationRegion3D/Building/FrogScientistNPC"]
+transform = Transform3D(-0.340363, 0.487771, -0.803886, 0, 0.85493, 0.518743, 0.940294, 0.176561, -0.290987, -1.59889, 1.61385, -1.93299)
+
+[node name="Camera3D" type="Camera3D" parent="World/NavigationRegion3D/Building/FrogScientistNPC/CameraTransition"]
 
 [node name="TvGlitchy2" parent="World/NavigationRegion3D/Building" instance=ExtResource("29_ix7e4")]
 transform = Transform3D(0.91541, 0, -0.402523, 0, 1, 0, 0.402523, 0, 0.91541, -10.1981, 0.256041, -15.2812)

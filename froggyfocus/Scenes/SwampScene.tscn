@@ -242,8 +242,14 @@ DialogueNode = "##TUTORIAL_JUMP_001##"
 transform = Transform3D(1.49871, 0, -0.0621059, 0, 1.5, 0, 0.0621059, 0, 1.49871, 29.712, -1.90735e-06, 3.70221)
 DialogueNode = "##TUTORIAL_CATCH_BUGS_001##"
 
-[node name="FrogPartnerNPC" parent="World/Islands" instance=ExtResource("18_b0wg7")]
+[node name="FrogPartnerNPC" parent="World/Islands" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("18_b0wg7")]
 transform = Transform3D(0.98793, 0, 0.1549, 0, 1, 0, -0.1549, 0, 0.98793, 45.0217, 0, 18.857)
+DialogueCamera = NodePath("CameraTransform/Camera3D")
+
+[node name="CameraTransform" type="Node3D" parent="World/Islands/FrogPartnerNPC"]
+transform = Transform3D(-0.493153, 0.581846, -0.646727, -1.33393e-08, 0.743413, 0.668832, 0.869943, 0.329836, -0.366616, -1.21144, 1.93739, -2.05278)
+
+[node name="Camera3D" type="Camera3D" parent="World/Islands/FrogPartnerNPC/CameraTransform"]
 
 [node name="EldritchFlower3" parent="World/Islands" instance=ExtResource("41_uapja")]
 transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, 9.05607, -1.966, 5.25772)

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class FrogPartnerNpc : Area3D, IInteractable
+public partial class FrogPartnerNpc : CharacterNpc, IInteractable
 {
     [Export]
     public HandInInfo HandInInfo;
@@ -9,8 +9,6 @@ public partial class FrogPartnerNpc : Area3D, IInteractable
     public FrogCharacter FrogCharacter;
 
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
-
-    private bool active_dialogue;
 
     private readonly string DIALOGUE_ID = "PARTNER";
 
@@ -31,7 +29,7 @@ public partial class FrogPartnerNpc : Area3D, IInteractable
         FrogCharacter.HatAttachments.SetAttachment(ItemType.Hat_Bow, ItemType.Color_Default, ItemType.Color_Default);
     }
 
-    public void Interact()
+    public override void Interact()
     {
         if (HandInData.ClaimedCount > 0)
         {
@@ -44,17 +42,15 @@ public partial class FrogPartnerNpc : Area3D, IInteractable
         }
     }
 
-    private void StartDialogue(string id)
-    {
-        active_dialogue = true;
-        DialogueController.Instance.StartDialogue(id);
-    }
-
     private void DialogueNodeEnded(string id)
     {
         if (id == $"##{DIALOGUE_ID}_REQUEST_002##")
         {
             HandInView.Instance.ShowPopup(HandInInfo.Id);
+        }
+        else if (id == $"##{DIALOGUE_ID}_REQUEST_FAIL_002##")
+        {
+            StopDialogueCamera();
         }
     }
 

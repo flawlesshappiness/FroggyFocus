@@ -445,8 +445,14 @@ transform = Transform3D(1.69974, -0.572883, -0.884702, 0.638779, 1.89525, 0, 0.8
 [node name="SummerChair" parent="World/Beach" instance=ExtResource("26_jvqbs")]
 transform = Transform3D(2.19032, -0.931779, -3.2147, -0.239213, 3.78847, -1.26107, 3.33845, 0.882788, 2.01877, -25.2723, 2.57443, 123.977)
 
-[node name="FrogManagerNPC" parent="World/Beach" instance=ExtResource("27_68c8r")]
+[node name="FrogManagerNPC" parent="World/Beach" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("27_68c8r")]
 transform = Transform3D(0.313609, -0.256934, -1.44417, 1.86265e-09, 1.47681, -0.262741, 1.46685, 0.0549318, 0.30876, -25.2376, 2.65458, 121.013)
+DialogueCamera = NodePath("CameraTransition/Camera3D")
+
+[node name="CameraTransition" type="Node3D" parent="World/Beach/FrogManagerNPC"]
+transform = Transform3D(-0.0752747, 0.71547, -0.694575, 0.174664, 0.695243, 0.697229, 0.981746, -0.0688333, -0.177301, -1.57246, 1.60381, -1.27965)
+
+[node name="Camera3D" type="Camera3D" parent="World/Beach/FrogManagerNPC/CameraTransition"]
 
 [node name="Stalagmites" type="Node3D" parent="World"]
 
