@@ -135,6 +135,23 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_bf1r5"]
+resource_name = "oscillate"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.0472, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_unda1"]
 resource_name = "spin"
 length = 3.0
@@ -151,23 +168,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -6.28319, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_bf1r5"]
-resource_name = "oscillate"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.0472, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_unda1"]

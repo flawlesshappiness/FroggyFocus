@@ -161,8 +161,17 @@ public partial class HandInContainer : MarginContainer
         if (data.MoneyReward > 0)
         {
             var preview = RewardPreviews[0];
-            preview.SetCoinStack(data.MoneyReward);
+            preview.SetObscured(CurrentInfo.HasMoneyReward);
             preview.Show();
+
+            if (CurrentInfo.HasMoneyReward)
+            {
+                preview.SetCoinStack(data.MoneyReward);
+            }
+            else
+            {
+                preview.SetHiddenPreview();
+            }
         }
 
         var already_unlocked = Item.IsOwned(CurrentInfo.ItemUnlock);
@@ -218,7 +227,7 @@ public partial class HandInContainer : MarginContainer
             InventoryController.Instance.RemoveCharacterData(map.Submission);
         }
 
-        if (CurrentData.MoneyReward > 0)
+        if (CurrentInfo.HasMoneyReward && CurrentData.MoneyReward > 0)
         {
             Money.Add(CurrentData.MoneyReward);
         }

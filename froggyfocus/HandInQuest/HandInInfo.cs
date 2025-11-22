@@ -8,16 +8,19 @@ public partial class HandInInfo : Resource
     public string Id;
 
     [Export]
+    public bool UniqueRequests;
+
+    [Export]
     public bool RequestPreviewHidden;
+
+    [Export]
+    public bool HasMoneyReward = true;
 
     [Export]
     public Array<FocusCharacterInfo> PossibleRequests;
 
     [Export]
     public Vector2I CountRange;
-
-    [Export]
-    public bool UniqueRequests;
 
     [Export]
     public int ClaimCountToUnlock;

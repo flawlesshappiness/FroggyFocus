@@ -6,10 +6,11 @@
 [resource]
 script = ExtResource("2_wmy3o")
 Id = "partner"
+UniqueRequests = false
 RequestPreviewHidden = true
+HasMoneyReward = false
 PossibleRequests = Array[Object]([ExtResource("1_uiydg")])
 CountRange = Vector2i(1, 1)
-UniqueRequests = false
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

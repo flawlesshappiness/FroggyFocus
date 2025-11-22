@@ -6,10 +6,11 @@
 [resource]
 script = ExtResource("3_33d3d")
 Id = "manager"
+UniqueRequests = false
 RequestPreviewHidden = true
+HasMoneyReward = false
 PossibleRequests = Array[Object]([ExtResource("1_2hehi")])
 CountRange = Vector2i(1, 1)
-UniqueRequests = false
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0
