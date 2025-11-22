@@ -21,10 +21,11 @@
 [resource]
 script = ExtResource("17_hrcq5")
 Id = "crystal_pillar_004"
+UniqueRequests = true
 RequestPreviewHidden = false
+HasMoneyReward = false
 PossibleRequests = Array[Object]([ExtResource("1_xxe3i"), ExtResource("2_pdgdj"), ExtResource("3_gd464"), ExtResource("4_ldj0y"), ExtResource("5_ynrhy"), ExtResource("6_grkde"), ExtResource("7_2jpdt"), ExtResource("8_iddn6"), ExtResource("9_1wn6r"), ExtResource("10_crbfe"), ExtResource("11_y517p"), ExtResource("12_uqpvn"), ExtResource("13_p87vm"), ExtResource("14_tipqs"), ExtResource("15_b7s2d"), ExtResource("15_b7s2d"), ExtResource("16_0ry80")])
 CountRange = Vector2i(1, 1)
-UniqueRequests = true
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

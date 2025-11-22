@@ -1,15 +1,31 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://646tu350bkvf"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=18 format=3 uid="uid://646tu350bkvf"]
 
-[ext_resource type="Resource" uid="uid://d3biw384eh4mn" path="res://FocusCharacter/Resources/Mosquito.tres" id="1_oqnp5"]
+[ext_resource type="Resource" uid="uid://cnjvqov7aslvq" path="res://FocusCharacter/Resources/Backswimmer_Flower.tres" id="1_dnpog"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_h17ax"]
+[ext_resource type="Resource" uid="uid://3objvy6bb7dt" path="res://FocusCharacter/Resources/Beetle_Mushroom.tres" id="2_u7dam"]
+[ext_resource type="Resource" uid="uid://f3e0arjbutud" path="res://FocusCharacter/Resources/Ant_Moss.tres" id="8_u7dam"]
+[ext_resource type="Resource" uid="uid://dd5h5376rnp4" path="res://FocusCharacter/Resources/Mosquito_Mushroom.tres" id="9_1q2xm"]
+[ext_resource type="Resource" uid="uid://b1ldiov4f56wg" path="res://FocusCharacter/Resources/Bee_Moss.tres" id="9_f2ra1"]
+[ext_resource type="Resource" uid="uid://c14c4axt0ra6" path="res://FocusCharacter/Resources/Mosquito_Wooden.tres" id="10_11ceh"]
+[ext_resource type="Resource" uid="uid://crjju8hvlknjy" path="res://FocusCharacter/Resources/CaveBeetle_Crystal.tres" id="10_op7db"]
+[ext_resource type="Resource" uid="uid://boxkpaov1nsvm" path="res://FocusCharacter/Resources/CaveCricket_Crystal.tres" id="11_dp25n"]
+[ext_resource type="Resource" uid="uid://chwkbjmjj85xs" path="res://FocusCharacter/Resources/Ladybug_Moss.tres" id="12_7ejs3"]
+[ext_resource type="Resource" uid="uid://c4w5leaahem5w" path="res://FocusCharacter/Resources/RoveBeetle_Sand.tres" id="13_fktmw"]
+[ext_resource type="Resource" uid="uid://ddpbvp5jf57dp" path="res://FocusCharacter/Resources/Waterstrider_Flower.tres" id="13_q7bsa"]
+[ext_resource type="Resource" uid="uid://bfnry3l7m3b6b" path="res://FocusCharacter/Resources/Sandflea_Sand.tres" id="14_fqkgt"]
+[ext_resource type="Resource" uid="uid://cx66qsueld33v" path="res://FocusCharacter/Resources/Waterstrider_Wooden.tres" id="14_i1j53"]
+[ext_resource type="Resource" uid="uid://b7x6wt7yb4fln" path="res://FocusCharacter/Resources/Sandfly_Sand.tres" id="15_1q2xm"]
+[ext_resource type="Resource" uid="uid://nfqmx7nyg08u" path="res://FocusCharacter/Resources/Waxworm_Mushroom.tres" id="15_58l57"]
+[ext_resource type="Resource" uid="uid://uxx2115b5rbp" path="res://FocusCharacter/Resources/Tick_Crystal.tres" id="16_11ceh"]
 
 [resource]
 script = ExtResource("2_h17ax")
 Id = "factory_tv_001"
-RequestPreviewHidden = false
-PossibleRequests = Array[Object]([ExtResource("1_oqnp5")])
-CountRange = Vector2i(1, 1)
 UniqueRequests = false
+RequestPreviewHidden = false
+HasMoneyReward = false
+PossibleRequests = Array[Object]([ExtResource("1_dnpog"), ExtResource("2_u7dam"), ExtResource("9_1q2xm"), ExtResource("10_11ceh"), ExtResource("13_q7bsa"), ExtResource("14_i1j53"), ExtResource("14_i1j53"), ExtResource("15_58l57"), ExtResource("8_u7dam"), ExtResource("9_f2ra1"), ExtResource("10_op7db"), ExtResource("11_dp25n"), ExtResource("12_7ejs3"), ExtResource("13_fktmw"), ExtResource("14_fqkgt"), ExtResource("15_1q2xm"), ExtResource("16_11ceh")])
+CountRange = Vector2i(1, 1)
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

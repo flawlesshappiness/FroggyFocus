@@ -1,15 +1,33 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://cn8a451siyrho"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=20 format=3 uid="uid://cn8a451siyrho"]
 
-[ext_resource type="Resource" uid="uid://dk3orexdc33xx" path="res://FocusCharacter/Resources/Shrimp.tres" id="1_xs1q7"]
+[ext_resource type="Resource" uid="uid://f3e0arjbutud" path="res://FocusCharacter/Resources/Ant_Moss.tres" id="1_gs0kv"]
+[ext_resource type="Resource" uid="uid://b1ldiov4f56wg" path="res://FocusCharacter/Resources/Bee_Moss.tres" id="2_1ja8d"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_aljsh"]
+[ext_resource type="Resource" uid="uid://crjju8hvlknjy" path="res://FocusCharacter/Resources/CaveBeetle_Crystal.tres" id="3_s0cbp"]
+[ext_resource type="Resource" uid="uid://boxkpaov1nsvm" path="res://FocusCharacter/Resources/CaveCricket_Crystal.tres" id="4_8m8n8"]
+[ext_resource type="Resource" uid="uid://chwkbjmjj85xs" path="res://FocusCharacter/Resources/Ladybug_Moss.tres" id="5_r5xky"]
+[ext_resource type="Resource" uid="uid://c4w5leaahem5w" path="res://FocusCharacter/Resources/RoveBeetle_Sand.tres" id="6_yq75n"]
+[ext_resource type="Resource" uid="uid://bfnry3l7m3b6b" path="res://FocusCharacter/Resources/Sandflea_Sand.tres" id="7_oek3j"]
+[ext_resource type="Resource" uid="uid://b7x6wt7yb4fln" path="res://FocusCharacter/Resources/Sandfly_Sand.tres" id="8_v7opf"]
+[ext_resource type="Resource" uid="uid://uxx2115b5rbp" path="res://FocusCharacter/Resources/Tick_Crystal.tres" id="9_y5lv4"]
+[ext_resource type="Resource" uid="uid://dsnwhqreyw75v" path="res://FocusCharacter/Resources/Bloodworm_Oil.tres" id="10_5gypy"]
+[ext_resource type="Resource" uid="uid://dku4m8pbirgxs" path="res://FocusCharacter/Resources/CommonFly_Garbage.tres" id="11_easye"]
+[ext_resource type="Resource" uid="uid://c4oy02wvwofiy" path="res://FocusCharacter/Resources/GiantWaterBug_Garbage.tres" id="12_cmfkh"]
+[ext_resource type="Resource" uid="uid://dgoo1uaf3kmwn" path="res://FocusCharacter/Resources/HorseFly_Oil.tres" id="13_8eyiq"]
+[ext_resource type="Resource" uid="uid://cvxeug6l1rgvk" path="res://FocusCharacter/Resources/HorseFly_Seaweed.tres" id="14_5foej"]
+[ext_resource type="Resource" uid="uid://dwq60jhimefeo" path="res://FocusCharacter/Resources/Lanternfly_Garbage.tres" id="15_6sh3a"]
+[ext_resource type="Resource" uid="uid://buq8htybs04o" path="res://FocusCharacter/Resources/Lanternfly_Seaweed.tres" id="16_g5byj"]
+[ext_resource type="Resource" uid="uid://dfn68pry7clu7" path="res://FocusCharacter/Resources/ScorpionFly_Oil.tres" id="17_d5fpg"]
+[ext_resource type="Resource" uid="uid://k0kvfyx68fnd" path="res://FocusCharacter/Resources/TigerBeetle_Seaweed.tres" id="18_xxoh4"]
 
 [resource]
 script = ExtResource("2_aljsh")
 Id = "swamp_flower_001"
-RequestPreviewHidden = false
-PossibleRequests = Array[Object]([ExtResource("1_xs1q7")])
-CountRange = Vector2i(1, 1)
 UniqueRequests = false
+RequestPreviewHidden = false
+HasMoneyReward = false
+PossibleRequests = Array[Object]([ExtResource("1_gs0kv"), ExtResource("2_1ja8d"), ExtResource("3_s0cbp"), ExtResource("4_8m8n8"), ExtResource("5_r5xky"), ExtResource("6_yq75n"), ExtResource("7_oek3j"), ExtResource("8_v7opf"), ExtResource("9_y5lv4"), ExtResource("10_5gypy"), ExtResource("11_easye"), ExtResource("12_cmfkh"), ExtResource("13_8eyiq"), ExtResource("14_5foej"), ExtResource("15_6sh3a"), ExtResource("16_g5byj"), ExtResource("17_d5fpg"), ExtResource("18_xxoh4")])
+CountRange = Vector2i(1, 1)
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

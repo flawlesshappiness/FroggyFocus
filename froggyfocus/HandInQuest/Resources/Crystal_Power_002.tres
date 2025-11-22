@@ -10,10 +10,11 @@
 [resource]
 script = ExtResource("2_rt6p8")
 Id = "crystal_power_002"
+UniqueRequests = true
 RequestPreviewHidden = false
+HasMoneyReward = false
 PossibleRequests = Array[Object]([ExtResource("1_pk8bk"), ExtResource("2_otk1a"), ExtResource("3_1nqrw"), ExtResource("4_qg45r"), ExtResource("5_js350")])
 CountRange = Vector2i(2, 3)
-UniqueRequests = true
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0
