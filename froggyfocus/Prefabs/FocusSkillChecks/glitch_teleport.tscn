@@ -9,6 +9,7 @@ script = ExtResource("1_gy2fr")
 SfxFreeze = NodePath("SfxFreeze")
 ErrorLabel = NodePath("ErrorLabel")
 Type = 12
+Cooldown = Vector2(15, 10)
 
 [node name="SfxFreeze" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_2n0ye")

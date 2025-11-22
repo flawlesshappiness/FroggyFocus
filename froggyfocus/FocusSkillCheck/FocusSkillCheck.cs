@@ -6,7 +6,11 @@ public partial class FocusSkillCheck : Node3D
     [Export]
     public FocusSkillCheckType Type;
 
+    [Export]
+    public Vector2 Cooldown;
+
     public bool IsRunning { get; set; }
+    public float TimeAvailable { get; set; }
     public FocusEvent FocusEvent { get; private set; }
 
     protected FocusTarget Target => FocusEvent.Target;
@@ -26,6 +30,12 @@ public partial class FocusSkillCheck : Node3D
     {
         // Reset and hide
         IsRunning = false;
+        StartCooldown();
+    }
+
+    public void ResetCooldown()
+    {
+        TimeAvailable = GameTime.Time;
     }
 
     public IEnumerator Start()
@@ -36,11 +46,23 @@ public partial class FocusSkillCheck : Node3D
 
     protected virtual void Stop()
     {
-
+        // Interrupt current sequence and prepare for clear
     }
 
     protected virtual IEnumerator Run()
     {
         yield return null;
+    }
+
+    public bool IsAvailable()
+    {
+        var inactive = !IsRunning;
+        var cooldown = GameTime.Time > TimeAvailable;
+        return inactive && cooldown;
+    }
+
+    private void StartCooldown()
+    {
+        TimeAvailable = GameTime.Time + Cooldown.Range(Target.Difficulty);
     }
 }

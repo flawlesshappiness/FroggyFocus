@@ -60,6 +60,7 @@ PsWind = NodePath("PsWind")
 SfxWind = NodePath("SfxWind")
 Curves = Array[Curve]([SubResource("Curve_jc5ks"), SubResource("Curve_502ub"), SubResource("Curve_u3f6x"), SubResource("Curve_egolw")])
 Type = 15
+Cooldown = Vector2(5, 0)
 
 [node name="PsWind" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

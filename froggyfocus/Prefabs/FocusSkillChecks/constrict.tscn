@@ -8,5 +8,6 @@ script = ExtResource("1_6h44y")
 CountRange = Vector2i(5, 15)
 Algae = NodePath("SkillCheck_ConstrictAlgae")
 Type = 4
+Cooldown = Vector2(10, 5)
 
 [node name="SkillCheck_ConstrictAlgae" parent="." instance=ExtResource("2_xyetx")]

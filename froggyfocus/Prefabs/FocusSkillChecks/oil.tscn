@@ -22,6 +22,7 @@ DurationRange = Vector2i(5, 10)
 ClonePrefab = ExtResource("2_f6uww")
 SfxWater = NodePath("SfxWater")
 Type = 10
+Cooldown = Vector2(15, 10)
 
 [node name="SfxWater" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_b1pyq")

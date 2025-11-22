@@ -18,6 +18,7 @@ DistanceRange = Vector2(1.5, 3)
 BushPrefab = ExtResource("2_sshoo")
 SfxBush = NodePath("SfxBush")
 Type = 18
+Cooldown = Vector2(15, 10)
 
 [node name="SfxBush" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_xh3rp")

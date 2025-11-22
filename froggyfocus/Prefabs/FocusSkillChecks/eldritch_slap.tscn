@@ -8,6 +8,7 @@ script = ExtResource("1_g8pk7")
 Tentacle = NodePath("Pivot/EldritchTentacle")
 Pivot = NodePath("Pivot")
 Type = 16
+Cooldown = Vector2(2, 0)
 
 [node name="Pivot" type="Node3D" parent="."]
 

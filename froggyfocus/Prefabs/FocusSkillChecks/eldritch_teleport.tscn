@@ -7,6 +7,7 @@
 script = ExtResource("1_xye7o")
 Eye = NodePath("SkillCheck_EldritchTeleportEye")
 Type = 19
+Cooldown = Vector2(15, 10)
 
 [node name="SkillCheck_EldritchTeleportEye" parent="." node_paths=PackedStringArray("Parent") instance=ExtResource("2_7omh8")]
 Parent = NodePath("..")

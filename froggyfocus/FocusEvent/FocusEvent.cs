@@ -112,7 +112,11 @@ public partial class FocusEvent : Node3D
             CreateTarget();
 
             // Clear skill checks
-            skill_checks.ForEach(x => x.Clear());
+            skill_checks.ForEach(x =>
+            {
+                x.Clear();
+                x.ResetCooldown();
+            });
 
             // Transition start
             FocusIntroView.Instance.LoadTarget(Target);
@@ -244,9 +248,9 @@ public partial class FocusEvent : Node3D
     private IEnumerator WaitForSkillCheck()
     {
         var type =
-            (OverrideSkillCheck != null && !OverrideSkillCheck.IsRunning) ? OverrideSkillCheck.Type
+            (OverrideSkillCheck != null && OverrideSkillCheck.IsAvailable()) ? OverrideSkillCheck.Type
             : Target.Info.SkillChecks.Count == 0 ? FocusSkillCheckType.Dash
-            : Target.Info.SkillChecks?.Where(x => !skill_checks.FirstOrDefault(y => y.Type == x)?.IsRunning ?? true).ToList().Random();
+            : Target.Info.SkillChecks?.Where(x => skill_checks.FirstOrDefault(y => y.Type == x)?.IsAvailable() ?? true).ToList().Random();
         var skill_check = skill_checks.FirstOrDefault(x => x.Type == type);
 
         if (skill_check == null)
