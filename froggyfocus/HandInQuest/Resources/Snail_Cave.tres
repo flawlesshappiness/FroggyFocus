@@ -8,10 +8,11 @@
 [resource]
 script = ExtResource("3_uxxv7")
 Id = "snail"
+UniqueRequests = false
 RequestPreviewHidden = false
+HasMoneyReward = true
 PossibleRequests = Array[Object]([ExtResource("1_kp4el"), ExtResource("2_uxxv7"), ExtResource("3_2lm4r")])
 CountRange = Vector2i(2, 3)
-UniqueRequests = false
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

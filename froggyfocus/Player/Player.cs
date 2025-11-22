@@ -74,6 +74,9 @@ public partial class Player : TopDownController
 
         FocusEventLock.OnLocked += FocusEventLocked;
         FocusEventLock.OnFree += FocusEventFree;
+
+        InteractLock.OnLocked += InteractLocked;
+        InteractLock.OnFree += InteractFree;
     }
 
     public override void _ExitTree()
@@ -81,6 +84,9 @@ public partial class Player : TopDownController
         base._ExitTree();
         FocusEventLock.OnLocked -= FocusEventLocked;
         FocusEventLock.OnFree -= FocusEventFree;
+
+        InteractLock.OnLocked -= InteractLocked;
+        InteractLock.OnFree -= InteractFree;
     }
 
     public override void _Process(double delta)
@@ -355,5 +361,18 @@ public partial class Player : TopDownController
     {
         QuestionMark.AnimateHide();
         FocusEventLock.RemoveLock("interact");
+    }
+
+    private void InteractLocked()
+    {
+        QuestionMark.AnimateHide();
+    }
+
+    private void InteractFree()
+    {
+        if (PlayerInteract.HasInteractables)
+        {
+            QuestionMark.AnimateShow();
+        }
     }
 }

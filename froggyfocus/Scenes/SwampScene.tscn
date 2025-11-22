@@ -510,8 +510,14 @@ curve = SubResource("Curve3D_a7viq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4229, 0, 28.6437)
 curve = SubResource("Curve3D_a7viq")
 
-[node name="OtterNPC" parent="World/Lilypads" instance=ExtResource("17_4oemw")]
+[node name="OtterNPC" parent="World/Lilypads" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("17_4oemw")]
 transform = Transform3D(-0.875951, 0, -1.79797, 0, 2, 0, 1.79797, 0, -0.875951, -13.9535, -0.896936, -6.65236)
+DialogueCamera = NodePath("CameraTransform/Camera3D")
+
+[node name="CameraTransform" type="Node3D" parent="World/Lilypads/OtterNPC"]
+transform = Transform3D(-0.222502, 0.462414, -0.858293, -2.82104e-08, 0.880362, 0.474303, 0.974932, 0.105533, -0.195882, -2.69748, 2.56276, -2.95118)
+
+[node name="Camera3D" type="Camera3D" parent="World/Lilypads/OtterNPC/CameraTransform"]
 
 [node name="Lilypad_Boat" parent="World/Lilypads" instance=ExtResource("23_b0wg7")]
 transform = Transform3D(0.827679, 0, 0.561203, 0, 1, 0, -0.561203, 0, 0.827679, -41.2622, -0.917855, -23.3039)
@@ -1042,8 +1048,14 @@ Flowers = [NodePath("../../Mushrooms/EldritchFlower"), NodePath("../EldritchFlow
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4236, 0, 27.9228)
 curve = SubResource("Curve3D_tqykx")
 
-[node name="MagpieNPC" parent="World/DeadForest" instance=ExtResource("11_hem5p")]
+[node name="MagpieNPC" parent="World/DeadForest" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("11_hem5p")]
 transform = Transform3D(1.47152, 0, -2.02105, 0, 2.5, 0, 2.02105, 0, 1.47152, -11.0993, -0.184564, 36.5968)
+DialogueCamera = NodePath("CameraTransform/Camera3D")
+
+[node name="CameraTransform" type="Node3D" parent="World/DeadForest/MagpieNPC"]
+transform = Transform3D(-0.411133, 0.440312, -0.798183, -3.72529e-09, 0.875608, 0.483023, 0.911576, 0.198586, -0.359991, -1.49179, 1.34928, -1.45735)
+
+[node name="Camera3D" type="Camera3D" parent="World/DeadForest/MagpieNPC/CameraTransform"]
 
 [node name="Shop" parent="World/DeadForest" instance=ExtResource("12_20fcr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5564, -0.175682, 20.8814)
@@ -1142,8 +1154,14 @@ transform = Transform3D(24.7433, 0, 16.9637, 0, 30, 0, -16.9637, 0, 24.7433, -10
 [node name="Mushroom_Platform" parent="World/Mushrooms/Trees/CommonTree_Dead_10" instance=ExtResource("17_riqag")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0118095, 0.588505, -0.0796642)
 
-[node name="MushroomNPC" parent="World/Mushrooms" instance=ExtResource("19_ghoyf")]
+[node name="MushroomNPC" parent="World/Mushrooms" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("19_ghoyf")]
 transform = Transform3D(0.216951, 0, -0.976183, 0, 1, 0, 0.976183, 0, 0.216951, -30.6584, 15.5552, -27.1659)
+DialogueCamera = NodePath("CameraTransform/Camera3D")
+
+[node name="CameraTransform" type="Node3D" parent="World/Mushrooms/MushroomNPC"]
+transform = Transform3D(-0.300606, 0, -0.953748, 0, 1, 0, 0.953748, 0, -0.300606, -4.24636, 0.52756, -4.43044)
+
+[node name="Camera3D" type="Camera3D" parent="World/Mushrooms/MushroomNPC/CameraTransform"]
 
 [node name="PathWaterSFX_Mushrooms" type="Path3D" parent="World/Mushrooms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4236, 0, 27.9228)

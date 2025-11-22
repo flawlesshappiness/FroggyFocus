@@ -13,10 +13,11 @@
 [resource]
 script = ExtResource("4_s72v0")
 Id = "otter"
+UniqueRequests = false
 RequestPreviewHidden = false
+HasMoneyReward = true
 PossibleRequests = Array[Object]([ExtResource("1_t55nc"), ExtResource("2_fyubp"), ExtResource("3_lo5s5"), ExtResource("4_xehbg"), ExtResource("5_wflwk"), ExtResource("6_qug6k"), ExtResource("7_b8gaa"), ExtResource("8_rco3d")])
 CountRange = Vector2i(2, 3)
-UniqueRequests = false
 ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0

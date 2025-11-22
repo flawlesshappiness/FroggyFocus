@@ -1,5 +1,6 @@
 using FlawLizArt.Animation.StateMachine;
 using Godot;
+using System.Collections;
 
 public partial class CharacterNpc : Area3D, IInteractable
 {
@@ -14,6 +15,9 @@ public partial class CharacterNpc : Area3D, IInteractable
 
     [Export]
     public AudioStreamPlayer3D SfxSpeak;
+
+    [Export]
+    public Camera3D DialogueCamera;
 
     protected bool HasActiveDialogue { get; set; }
     protected AnimationState IdleState { get; set; }
@@ -66,6 +70,7 @@ public partial class CharacterNpc : Area3D, IInteractable
         if (HasActiveDialogue)
         {
             SfxSpeak.Play();
+            StartDialogueCamera();
         }
     }
 
@@ -73,5 +78,53 @@ public partial class CharacterNpc : Area3D, IInteractable
     {
         param_dialogue.Set(false);
         HasActiveDialogue = false;
+    }
+
+    protected void StartDialogueCamera()
+    {
+        if (DialogueCamera == null) return;
+
+        AnimateDialogueCamera(true);
+    }
+
+    protected void StopDialogueCamera()
+    {
+        if (DialogueCamera == null) return;
+
+        AnimateDialogueCamera(false);
+    }
+
+    private Coroutine AnimateDialogueCamera(bool to_dialogue)
+    {
+        var player_camera = Player.Instance.Camera;
+        var start = to_dialogue ? player_camera.GlobalTransform : DialogueCamera.GlobalTransform;
+        var end = to_dialogue ? DialogueCamera.GetParentNode3D().GlobalTransform : player_camera.GlobalTransform;
+
+        return this.StartCoroutine(Cr, nameof(AnimateDialogueCamera));
+        IEnumerator Cr()
+        {
+            var id = nameof(AnimateDialogueCamera) + GetInstanceId();
+            if (to_dialogue)
+            {
+                Player.SetAllLocks(id, true);
+            }
+
+            DialogueCamera.GlobalTransform = start;
+            yield return null;
+            DialogueCamera.Current = true;
+
+            var curve = Curves.EaseInOutQuad;
+            yield return LerpEnumerator.Lerp01(1f, f =>
+            {
+                var t = curve.Evaluate(f);
+                DialogueCamera.GlobalTransform = start.InterpolateWith(end, t);
+            });
+
+            if (!to_dialogue)
+            {
+                player_camera.Current = true;
+                Player.SetAllLocks(id, false);
+            }
+        }
     }
 }

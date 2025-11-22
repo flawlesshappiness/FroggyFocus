@@ -36,7 +36,7 @@ material = SubResource("StandardMaterial3D_1pin3")
 top_radius = 3.0
 bottom_radius = 3.0
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_4atv5"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_ef5u0"]
 vertices = PackedVector3Array(-2.5, 0.5, -1.5, -2.5, 0.5, 1.5, 2.5, 0.5, 1.5, 2.5, 0.5, -1.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 geometry_parsed_geometry_type = 1
@@ -113,7 +113,7 @@ visible = false
 mesh = SubResource("CylinderMesh_4atv5")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_4atv5")
+navigation_mesh = SubResource("NavigationMesh_ef5u0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
 

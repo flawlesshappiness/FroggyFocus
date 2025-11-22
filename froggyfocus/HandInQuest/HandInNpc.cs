@@ -15,12 +15,14 @@ public partial class HandInNpc : CharacterNpc
         base._Ready();
         HandIn.InitializeData(HandInInfo);
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
+        HandInController.Instance.OnHandInClosed += HandInClosed;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
         HandInController.Instance.OnHandInClaimed -= HandInClaimed;
+        HandInController.Instance.OnHandInClosed -= HandInClosed;
     }
 
     public override void Interact()
@@ -58,6 +60,14 @@ public partial class HandInNpc : CharacterNpc
             claimed_hand_in = true;
 
             StartRequestCompleteDialogue();
+        }
+    }
+
+    private void HandInClosed(string id)
+    {
+        if (id == HandInInfo.Id)
+        {
+            StopDialogueCamera();
         }
     }
 
