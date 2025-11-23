@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://eldaxlwl16o2"]
+
+[ext_resource type="Script" uid="uid://cif61kg0efphv" path="res://Player/PlayerMoveSounds.cs" id="1_0ptbv"]
+[ext_resource type="AudioStream" uid="uid://e438ph5vnqwk" path="res://Sounds/Raw/sfx_frog_walk_soft_001.wav" id="2_sygiv"]
+[ext_resource type="AudioStream" uid="uid://b1f5sfdas2hlq" path="res://Sounds/Raw/sfx_frog_walk_soft_002.wav" id="3_r76sv"]
+[ext_resource type="AudioStream" uid="uid://bhu510d5nqt2i" path="res://Sounds/Raw/sfx_frog_jump_soft_001.wav" id="4_pmmjg"]
+[ext_resource type="AudioStream" uid="uid://b87hjmygvxjrq" path="res://Sounds/Raw/sfx_frog_land_soft_001.wav" id="5_4ugxg"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4easd"]
+streams_count = 2
+stream_0/stream = ExtResource("2_sygiv")
+stream_1/stream = ExtResource("3_r76sv")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7w8bx"]
+streams_count = 1
+stream_0/stream = ExtResource("4_pmmjg")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o2g25"]
+streams_count = 1
+stream_0/stream = ExtResource("5_4ugxg")
+
+[node name="PlayerMoveSounds_Soft" type="Node3D" node_paths=PackedStringArray("SfxMove", "SfxJump", "SfxLand")]
+script = ExtResource("1_0ptbv")
+Id = "soft"
+SfxMove = NodePath("SfxMove")
+SfxJump = NodePath("SfxJump")
+SfxLand = NodePath("SfxLand")
+
+[node name="SfxMove" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_4easd")
+volume_db = 5.0
+max_polyphony = 3
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+attenuation_filter_db = 0.0
+
+[node name="SfxJump" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7w8bx")
+volume_db = 5.0
+max_polyphony = 3
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+attenuation_filter_db = 0.0
+
+[node name="SfxLand" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_o2g25")
+volume_db = -5.0
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 8000.0
+attenuation_filter_db = 0.0
