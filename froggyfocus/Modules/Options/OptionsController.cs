@@ -13,6 +13,7 @@ public partial class OptionsController : SingletonController
     public static List<OptionsKeyRebind> Rebinds { get; set; } = new();
 
     public event Action OnBrightnessChanged;
+    public event Action OnResolutionChanged;
 
     public static readonly List<Window.ModeEnum> WindowModes = new()
     {
@@ -160,6 +161,8 @@ public partial class OptionsController : SingletonController
     {
         var res = Resolutions.GetClamped(i);
         Scene.Root.Size = res;
+
+        OnResolutionChanged?.Invoke();
     }
 
     public void UpdateVsync(int i)

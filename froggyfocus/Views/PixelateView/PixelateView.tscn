@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxtoglvtfwcpj"]
+
+[ext_resource type="Script" uid="uid://c8s2h5w6yhxfq" path="res://Views/PixelateView/PixelateView.cs" id="1_t8tsl"]
+[ext_resource type="Shader" uid="uid://bgv04xv7jeag8" path="res://Shaders/Pixelate.gdshader" id="2_8nn6u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_08w1p"]
+shader = ExtResource("2_8nn6u")
+shader_parameter/pixel_size = 4
+shader_parameter/screen_size = Vector2(1920, 1080)
+
+[node name="PixelateView" type="Control" node_paths=PackedStringArray("Pixelate")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_t8tsl")
+Pixelate = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_08w1p")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
