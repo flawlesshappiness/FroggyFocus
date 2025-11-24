@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=74 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://cat6wqg4h8oqa" path="res://Prefabs/Objects/bottle_cleaning_toilet.tscn" id="22_01srd"]
 [ext_resource type="Resource" uid="uid://b8lbfg478ik28" path="res://HandInQuest/Resources/Factory_Tv_005.tres" id="22_gihq3"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="24_0lfya"]
+[ext_resource type="Material" uid="uid://bwype3h3t71r7" path="res://Materials/Oil.tres" id="24_gihq3"]
 [ext_resource type="PackedScene" uid="uid://cuc22dure6gn7" path="res://Prefabs/Nature/seaweed_cluster_circle.tscn" id="24_uf1yc"]
 [ext_resource type="PackedScene" uid="uid://bfva58jqvweh5" path="res://Prefabs/NPC/RaccoonNPC/raccoon_npc.tscn" id="24_v2jd5"]
 [ext_resource type="PackedScene" uid="uid://bwc0ley5ipxwr" path="res://Prefabs/Nature/seaweed_cluster_small.tscn" id="25_i5qij"]
@@ -98,6 +99,27 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve" id="Curve_gihq3"]
+_data = [Vector2(0, 0), 0.0, 6.11096, 0, 0, Vector2(0.2, 0.6), 0.0, 0.0, 0, 0, Vector2(0.9, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 1), 6.17528, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_b7s7t"]
+curve = SubResource("Curve_gihq3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gihq3"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 8.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_b7s7t")
+
+[sub_resource type="SphereMesh" id="SphereMesh_b7s7t"]
+material = ExtResource("24_gihq3")
 
 [sub_resource type="Curve3D" id="Curve3D_gteuj"]
 closed = true
@@ -350,6 +372,33 @@ transform = Transform3D(-0.0930271, 0, -1.99784, 0, 2, 0, 1.99784, 0, -0.0930271
 
 [node name="ExhaustPipe2" parent="World/NavigationRegion3D/Building" instance=ExtResource("37_la0tx")]
 transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -47.5126, -4.89409, -97.0041)
+
+[node name="Particles" type="Node3D" parent="World/NavigationRegion3D/Building"]
+
+[node name="PsOilBubbles" type="GPUParticles3D" parent="World/NavigationRegion3D/Building/Particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.4784, -0.190364, 4.64832)
+process_material = SubResource("ParticleProcessMaterial_gihq3")
+draw_pass_1 = SubResource("SphereMesh_b7s7t")
+
+[node name="PsOilBubbles2" type="GPUParticles3D" parent="World/NavigationRegion3D/Building/Particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.63004, -0.190364, -34.5086)
+process_material = SubResource("ParticleProcessMaterial_gihq3")
+draw_pass_1 = SubResource("SphereMesh_b7s7t")
+
+[node name="PsOilBubbles3" type="GPUParticles3D" parent="World/NavigationRegion3D/Building/Particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.9437, -0.190364, -53.8453)
+process_material = SubResource("ParticleProcessMaterial_gihq3")
+draw_pass_1 = SubResource("SphereMesh_b7s7t")
+
+[node name="PsOilBubbles4" type="GPUParticles3D" parent="World/NavigationRegion3D/Building/Particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -19.015, -0.190364, -20.1861)
+process_material = SubResource("ParticleProcessMaterial_gihq3")
+draw_pass_1 = SubResource("SphereMesh_b7s7t")
+
+[node name="PsOilBubbles5" type="GPUParticles3D" parent="World/NavigationRegion3D/Building/Particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.34634, -0.190364, -5.4056)
+process_material = SubResource("ParticleProcessMaterial_gihq3")
+draw_pass_1 = SubResource("SphereMesh_b7s7t")
 
 [node name="Garbage" type="Node3D" parent="World/NavigationRegion3D"]
 
