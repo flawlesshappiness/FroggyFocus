@@ -17,6 +17,7 @@ public partial class FocusTarget : Node3D
 
     private FocusEvent focus_event;
     private RandomNumberGenerator rng = new();
+    private Curve3D move_curve = new();
 
     public void Initialize(FocusEvent focus_event)
     {
@@ -70,27 +71,39 @@ public partial class FocusTarget : Node3D
         var position = GetNextPosition();
         var dir_to_position = GlobalPosition.DirectionTo(position);
 
+        CalculateMovePath(position);
+
         // Move to position
-        Character.StartFacingDirection(dir_to_position);
         Character.SetMoving(true);
 
-        if (Info.MoveType == FocusCharacterMoveType.Walk || Info.MoveType == FocusCharacterMoveType.Flying)
+        var is_glitch = Info.IsGlitch;
+        var velocity = Vector3.Zero;
+        var start = GlobalPosition;
+        var length = move_curve.GetBakedLength();
+        var dist = 0f;
+        while (dist < length)
         {
-            while (GlobalPosition.DistanceTo(position) > 0.1f)
+            var speed_mul = is_glitch ? 1.0f : GameTime.DeltaTime;
+            var sample = move_curve.SampleBaked(dist);
+            velocity = (start + sample) - GlobalPosition;
+            Move(velocity);
+            dist += UpdatedMoveSpeed * speed_mul;
+
+            if (is_glitch)
             {
-                Move(dir_to_position.Normalized() * UpdatedMoveSpeed * GameTime.DeltaTime);
+                Character.RotateToDirectionImmediate(velocity);
+                yield return new WaitForSeconds(0.3f);
+            }
+            else
+            {
+                Character.StartFacingDirection(velocity);
                 yield return null;
             }
         }
-        else if (Info.MoveType == FocusCharacterMoveType.Glitch)
-        {
-            Character.RotateToDirectionImmediate(dir_to_position);
-            while (GlobalPosition.DistanceTo(position) > UpdatedMoveSpeed)
-            {
-                Move(dir_to_position.Normalized() * UpdatedMoveSpeed);
-                yield return new WaitForSeconds(0.3f);
-            }
-        }
+
+        velocity = (start + move_curve.SampleBaked(length)) - GlobalPosition;
+        Move(velocity);
+        yield return null;
     }
 
     public void StopMoving()
@@ -148,5 +161,57 @@ public partial class FocusTarget : Node3D
     {
         var is_swimmer = Info.Tags.Contains(FocusCharacterTag.Water);
         PsWaterRipples.Emitting = is_swimmer;
+    }
+
+    private void CalculateMovePath(Vector3 global_destination)
+    {
+        if (Info.MoveType == FocusCharacterMoveType.Flying)
+        {
+            CalculateCurvedMovePath(global_destination);
+        }
+        else
+        {
+            CalculateStraightMovePath(global_destination);
+        }
+    }
+
+    private void CalculateCurvedMovePath(Vector3 global_destination)
+    {
+        var destination = global_destination - GlobalPosition;
+        var dir = destination.Normalized();
+        var perp = dir.Cross(Vector3.Up).Normalized();
+        var dir_face = -Character.GlobalBasis.Z;
+
+        var width_mul = Mathf.Lerp(0.25f, 0.4f, Difficulty);
+        var width = dir.Length() * width_mul;
+
+        var p1 = Vector3.Zero;
+        var p3 = dir;
+        var p2 = p1.Lerp(p3, 0.5f);
+
+        var p1_out = dir_face * 0.5f;
+        var p2_in = ((p1 - p2) * 0.5f + perp * width);
+        var p2_out = (p2.Lerp(p3, 0.5f) - perp * width) - p2;
+
+        move_curve.ClearPoints();
+        move_curve.AddPoint(p1, @out: p1_out);
+        move_curve.AddPoint(p2, @in: p2_in, @out: p2_out);
+        move_curve.AddPoint(p3);
+    }
+
+    private void CalculateStraightMovePath(Vector3 global_destination)
+    {
+        var destination = global_destination - GlobalPosition;
+        var dir = destination.Normalized();
+        var dir_face = -Character.GlobalBasis.Z;
+
+        var p1 = Vector3.Zero;
+        var p2 = dir;
+
+        var p1_out = dir_face * 0.5f;
+
+        move_curve.ClearPoints();
+        move_curve.AddPoint(p1, @out: p1_out);
+        move_curve.AddPoint(p2);
     }
 }

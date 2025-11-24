@@ -89,8 +89,12 @@ public partial class FocusCursor : Node3D
         Radius = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorRadius);
         RadiusNode.Scale = Vector3.One * Radius;
 
+        var base_focus_value = 100f;
+        var focus_value_override = target.Info.FocusValueOverride;
+        var focus_value = focus_value_override > 0 ? focus_value_override : base_focus_value;
+
         FocusTickTime = 0.15f;
-        FocusMax = target.Info.FocusValue * Mathf.Lerp(1f, 2.0f, target.Difficulty);
+        FocusMax = focus_value * Mathf.Lerp(1f, 1.5f, target.Difficulty);
         FocusValue = FocusMax * UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorStartValue);
         FocusTickAmount = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickAmount);
         FocusTickDecay = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickDecay);

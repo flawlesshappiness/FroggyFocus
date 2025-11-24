@@ -17,7 +17,7 @@ public partial class FocusCharacterInfo : Resource
     public string Accessory;
 
     [Export]
-    public float FocusValue = 50;
+    public float FocusValueOverride = 0;
 
     [Export]
     public float MoneyMultiplier = 1f;
@@ -33,6 +33,9 @@ public partial class FocusCharacterInfo : Resource
 
     [Export]
     public FocusCharacterMoveType MoveType = FocusCharacterMoveType.Walk;
+
+    [Export]
+    public bool IsGlitch;
 
     [Export]
     public bool IsStationary;
