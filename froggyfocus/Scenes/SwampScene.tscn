@@ -255,6 +255,10 @@ transform = Transform3D(-0.493153, 0.581846, -0.646727, -1.33393e-08, 0.743413, 
 transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, 9.05607, -1.966, 5.25772)
 HandInInfo = ExtResource("19_o0yll")
 
+[node name="TutorialSign3" parent="World/Islands" instance=ExtResource("12_8ow6q")]
+transform = Transform3D(1.49538, 0, 0.117583, 0, 1.5, 0, -0.117583, 0, 1.49538, 17.5305, 0, -1.53454)
+DialogueNode = "##TUTORIAL_SHIELD_001##"
+
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)
 navigation_mesh = SubResource("NavigationMesh_bmghv")
@@ -1175,10 +1179,6 @@ curve = SubResource("Curve3D_ghoyf")
 
 [node name="Shop" parent="World/Mushrooms" instance=ExtResource("12_20fcr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4389, 14.6577, -14.7516)
-
-[node name="TutorialSign" parent="World/Mushrooms" instance=ExtResource("12_8ow6q")]
-transform = Transform3D(-1.47988, 0, 0.244834, 0, 1.5, 0, -0.244834, 0, -1.47988, -30.4544, 15.9492, 7.0799)
-DialogueNode = "##TUTORIAL_SHIELD_001##"
 
 [node name="EldritchFlower" parent="World/Mushrooms" instance=ExtResource("41_uapja")]
 transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, -55.7944, 0, 10.1991)
