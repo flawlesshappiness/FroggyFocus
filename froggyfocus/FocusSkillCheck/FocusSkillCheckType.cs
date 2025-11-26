@@ -20,4 +20,7 @@ public enum FocusSkillCheckType
     CrystalClone,
     CrystalMoss,
     EldritchTeleport,
+    Buzz,
+    Dig,
+    Stomp
 }

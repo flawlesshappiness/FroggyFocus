@@ -13,7 +13,7 @@ public partial class FocusSkillCheck : Node3D
     public float TimeAvailable { get; set; }
     public FocusEvent FocusEvent { get; private set; }
 
-    protected FocusTarget Target => FocusEvent.Target;
+    protected FocusTarget Target => FocusEvent?.Target;
     protected float Difficulty => FocusEvent.Target.Difficulty;
 
     protected RandomNumberGenerator rng = new();

@@ -1,0 +1,186 @@
+[gd_scene load_steps=14 format=3 uid="uid://bbkdv22tcatiw"]
+
+[ext_resource type="AudioStream" uid="uid://5g86emltaosx" path="res://Sounds/Raw/sfx_buzz_warn_001.wav" id="1_71gxm"]
+[ext_resource type="Script" uid="uid://bomhgajqj8rlw" path="res://FocusSkillCheck/FocusSkillCheck_Buzz.cs" id="1_76pjx"]
+[ext_resource type="AudioStream" uid="uid://op2p16t30u70" path="res://Sounds/Raw/sfx_buzz_attack_001.wav" id="2_76pjx"]
+[ext_resource type="Texture2D" uid="uid://fq7du2kn7023" path="res://Textures/circle_spiky_001.png" id="4_s75o0"]
+[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="5_4e77h"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rqtj8"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("1_71gxm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q0yhd"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_76pjx")
+
+[sub_resource type="Animation" id="Animation_4e77h"]
+resource_name = "buzz"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_50veu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i8dt5"]
+_data = {
+&"RESET": SubResource("Animation_50veu"),
+&"buzz": SubResource("Animation_4e77h")
+}
+
+[sub_resource type="Animation" id="Animation_i8dt5"]
+resource_name = "chage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.360784), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.8, 0.8, 0.8), Vector3(0.3, 0.3, 0.3)]
+}
+
+[sub_resource type="Animation" id="Animation_fnxb2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cv5lb"]
+_data = {
+&"RESET": SubResource("Animation_fnxb2"),
+&"charge": SubResource("Animation_i8dt5")
+}
+
+[node name="Buzz" type="Node3D" node_paths=PackedStringArray("BuzzEffect", "ChargeEffect", "AnimationPlayer_BuzzEffect", "AnimationPlayer_ChargeEffect", "SfxWarn", "SfxBuzz")]
+script = ExtResource("1_76pjx")
+CountRange = Vector2i(1, 5)
+DelayRange = Vector2(1, 0.6)
+PauseRange = Vector2(0.2, 0.1)
+BuzzEffect = NodePath("Spiky")
+ChargeEffect = NodePath("Charge")
+AnimationPlayer_BuzzEffect = NodePath("Spiky/AnimationPlayer")
+AnimationPlayer_ChargeEffect = NodePath("Charge/AnimationPlayer")
+SfxWarn = NodePath("SfxWarn")
+SfxBuzz = NodePath("SfxAttack")
+Type = 20
+Cooldown = Vector2(10, 5)
+
+[node name="SfxWarn" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rqtj8")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="SfxAttack" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_q0yhd")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Spiky" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Spiky"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("4_s75o0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Spiky"]
+libraries = {
+&"": SubResource("AnimationLibrary_i8dt5")
+}
+
+[node name="Charge" type="Node3D" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="Charge"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("5_4e77h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Charge"]
+libraries = {
+&"": SubResource("AnimationLibrary_cv5lb")
+}

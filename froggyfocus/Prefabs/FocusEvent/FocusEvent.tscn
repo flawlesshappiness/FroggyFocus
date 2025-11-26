@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=32 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cprj7mfy6pl7q" path="res://Prefabs/FocusSkillChecks/eldritch_teleport.tscn" id="21_ef5u0"]
 [ext_resource type="PackedScene" uid="uid://whmyqj1a1qg" path="res://Prefabs/FocusSkillChecks/crystal_oil.tscn" id="21_f3kj3"]
 [ext_resource type="PackedScene" uid="uid://quha7lvsnhk5" path="res://Prefabs/FocusSkillChecks/crystal_moss.tscn" id="22_3otxw"]
+[ext_resource type="PackedScene" uid="uid://bbkdv22tcatiw" path="res://Prefabs/FocusSkillChecks/buzz.tscn" id="24_3q4gb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pin3"]
 transparency = 1
@@ -99,6 +100,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5
 [node name="CrystalClones" parent="SkillChecks" instance=ExtResource("21_f3kj3")]
 
 [node name="CrystalMoss" parent="SkillChecks" instance=ExtResource("22_3otxw")]
+
+[node name="Buzz" parent="SkillChecks" instance=ExtResource("24_3q4gb")]
 
 [node name="Frog" parent="." instance=ExtResource("7_yos1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
