@@ -15,6 +15,50 @@ public partial class GameView : View
     [Export]
     public TwoButtonPopup TwoButtonPopup;
 
+    [Export]
+    public ProgressBar ShieldBar;
+
+    private FocusEvent current_focus_event;
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        FocusEventController.Instance.OnFocusEventStarted += FocusEventStarted;
+        FocusEventController.Instance.OnFocusEventCompleted += _ => FocusEventEnded();
+        FocusEventController.Instance.OnFocusEventFailed += _ => FocusEventEnded();
+
+        SetFocusEventControlsVisible(false);
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Process_ShieldBar();
+    }
+
+    private void Process_ShieldBar()
+    {
+        if (current_focus_event == null) return;
+
+        ShieldBar.Value = current_focus_event.Cursor.ShieldPercentage;
+    }
+
+    public void SetFocusEventControlsVisible(bool visible)
+    {
+        ShieldBar.Visible = visible;
+    }
+
+    private void FocusEventStarted(FocusEvent e)
+    {
+        current_focus_event = e;
+    }
+
+    private void FocusEventEnded()
+    {
+        current_focus_event = null;
+    }
+
     public void AnimateHideOverlay()
     {
         Overlay.Show();

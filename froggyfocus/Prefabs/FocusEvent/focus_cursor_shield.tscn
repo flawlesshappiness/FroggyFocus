@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://ko8a82uxc2gv"]
+[gd_scene load_steps=19 format=3 uid="uid://ko8a82uxc2gv"]
 
 [ext_resource type="Texture2D" uid="uid://cgvw1bv4nyiyt" path="res://Assets/FlawLizArt/Textures/focus_circle_outline.png" id="1_rhb07"]
 [ext_resource type="Script" uid="uid://bi6uw07sssp6q" path="res://FocusEvent/FocusCursorShield.cs" id="1_yhc6n"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="2_yhc6n"]
 [ext_resource type="AudioStream" uid="uid://cegi2gqib8ilu" path="res://Sounds/Raw/sfx_focus_shield_001.wav" id="4_t0p43"]
-[ext_resource type="PackedScene" uid="uid://cwcxbt0gadhp8" path="res://Prefabs/Effects/ps_shield_block.tscn" id="5_dhnhj"]
 [ext_resource type="AudioStream" uid="uid://bsj1qpj5o1kxq" path="res://Sounds/Raw/sfx_focus_shield_002.wav" id="6_xfywn"]
+[ext_resource type="AudioStream" uid="uid://cps4ajn0wt6cq" path="res://Sounds/Raw/sfx_frog_croak_005.wav" id="7_st4te"]
+[ext_resource type="AudioStream" uid="uid://dvdubl1liar4a" path="res://Sounds/Raw/sfx_frog_croak_006.wav" id="8_s0xb7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rptds"]
 transparency = 1
@@ -47,7 +48,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Glow_Shield:modulate")
+tracks/2/path = NodePath("Anim_Glow/Glow_Shield:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -79,6 +80,42 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SfxShieldOn:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SfxShieldOff:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Anim_Glow:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7kn4i"]
@@ -112,7 +149,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Glow_Shield:modulate")
+tracks/2/path = NodePath("Anim_Glow/Glow_Shield:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -182,7 +219,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Glow_Shield:modulate")
+tracks/2/path = NodePath("Anim_Glow/Glow_Shield:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -221,17 +258,116 @@ tracks/4/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_fe666"]
+resource_name = "shield_off"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Glow/Glow_Shield:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.490196), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxShieldOff:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xfywn"]
+resource_name = "shield_on"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Glow/Glow_Shield:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.490196)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxShieldOn:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_st4te"]
+resource_name = "shield_block"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Glow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1.5), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim_Glow/Glow_Shield:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.490196)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dthue"]
 _data = {
 &"RESET": SubResource("Animation_dthue"),
 &"shield": SubResource("Animation_7kn4i"),
-&"shield_instant": SubResource("Animation_dhnhj")
+&"shield_block": SubResource("Animation_st4te"),
+&"shield_instant": SubResource("Animation_dhnhj"),
+&"shield_off": SubResource("Animation_fe666"),
+&"shield_on": SubResource("Animation_xfywn")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_st4te"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("7_st4te")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s0xb7"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_s0xb7")
 
 [node name="FocusCursorShield" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
 script = ExtResource("1_yhc6n")
 AnimationPlayer = NodePath("AnimationPlayer")
-PsBlock = ExtResource("5_dhnhj")
 
 [node name="Anim_Mesh" type="Node3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
@@ -246,8 +382,10 @@ transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, 0.8, 0, -0.8, -3.49691e-08, 
 modulate = Color(0.4, 0.8, 1, 0.392157)
 texture = ExtResource("1_rhb07")
 
-[node name="Glow_Shield" type="Sprite3D" parent="."]
-transform = Transform3D(2.2, 0, 0, 0, -9.6165e-08, 2.2, 0, -2.2, -9.6165e-08, 0, 0, 0)
+[node name="Anim_Glow" type="Node3D" parent="."]
+
+[node name="Glow_Shield" type="Sprite3D" parent="Anim_Glow"]
+transform = Transform3D(2.2, 0, 0, 0, -9.61651e-08, 2.2, 0, -2.2, -9.61651e-08, 0, 0, 0)
 modulate = Color(0.24, 1, 1, 0)
 texture = ExtResource("2_yhc6n")
 
@@ -265,5 +403,17 @@ bus = &"SFX"
 [node name="SfxShieldInstant" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_xfywn")
 volume_db = -5.0
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="SfxShieldOn" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_st4te")
+volume_db = -15.0
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="SfxShieldOff" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_s0xb7")
+volume_db = -15.0
 max_polyphony = 5
 bus = &"SFX"

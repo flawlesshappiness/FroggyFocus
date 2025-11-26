@@ -31,6 +31,7 @@ public partial class FocusCursor : Node3D
     public bool TickEnabled { get; set; }
     public FocusTarget Target { get; set; }
     public float Radius { get; private set; }
+    public float ShieldPercentage => ShieldMax == 0 ? 1.0f : ShieldValue / ShieldMax;
     private Vector3 DesiredVelocity { get; set; }
     private float DistanceToTarget => Target == null ? 0f : GlobalPosition.DistanceTo(Target.GlobalPosition) - Target.Radius;
     public bool IsTargetInRange => DistanceToTarget < Radius;
@@ -40,6 +41,9 @@ public partial class FocusCursor : Node3D
     private float FocusTickAmount { get; set; }
     private float FocusTickDecay { get; set; }
     private float MoveSpeed { get; set; }
+    private float ShieldMax { get; set; }
+    private float ShieldValue { get; set; }
+    private float ShieldGain { get; set; }
     private bool Filled { get; set; }
     private bool Empty { get; set; }
 
@@ -49,6 +53,7 @@ public partial class FocusCursor : Node3D
     public static readonly MultiLock SlowLock = new();
 
     private float next_tick;
+    private float time_shield_cooldown;
     private bool moving;
 
     public event Action OnFocusStarted;
@@ -99,6 +104,10 @@ public partial class FocusCursor : Node3D
         FocusTickAmount = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickAmount);
         FocusTickDecay = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickDecay);
         MoveSpeed = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorSpeed);
+
+        ShieldMax = 2f;
+        ShieldValue = ShieldMax;
+        ShieldGain = 0.1f;
     }
 
     public override void _Process(double delta)
@@ -106,6 +115,7 @@ public partial class FocusCursor : Node3D
         base._Process(delta);
         var fdelta = Convert.ToSingle(delta);
         Process_Input();
+        Process_Shield();
         Process_Target();
     }
 
@@ -122,11 +132,37 @@ public partial class FocusCursor : Node3D
 
         var input = PlayerInput.GetMoveInput();
         DesiredVelocity = new Vector3(input.X, 0, input.Y);
+    }
 
-        if (PlayerInput.Interact.Released && ShieldLock.IsFree)
+    private void Process_Shield()
+    {
+        if (Shield.IsShielded)
         {
-            Shield.StartShield();
+            SetShieldValue(ShieldValue - GameTime.DeltaTime);
         }
+        else
+        {
+            SetShieldValue(ShieldValue + ShieldGain * GameTime.DeltaTime);
+        }
+
+        if (!InputEnabled) return;
+        if (GameTime.Time < time_shield_cooldown) return;
+
+        if (!Shield.IsShielded && PlayerInput.Interact.Held && ShieldLock.IsFree && ShieldValue > 0)
+        {
+            time_shield_cooldown = GameTime.Time + 0.25f;
+            Shield.SetShieldOn(true);
+        }
+        else if (Shield.IsShielded && (!PlayerInput.Interact.Held || ShieldLock.IsLocked || ShieldValue <= 0))
+        {
+            time_shield_cooldown = GameTime.Time + 0.25f;
+            Shield.SetShieldOn(false);
+        }
+    }
+
+    private void SetShieldValue(float value)
+    {
+        ShieldValue = Mathf.Clamp(value, 0, ShieldMax);
     }
 
     private void PhysicsProcess_MoveCursor(float delta)
@@ -182,7 +218,7 @@ public partial class FocusCursor : Node3D
         if (Shield.IsShielded)
         {
             SfxFocusBlock.Play();
-            Shield.PlayBlockEffect();
+            Shield.PlayBlockAnimation();
         }
         else
         {

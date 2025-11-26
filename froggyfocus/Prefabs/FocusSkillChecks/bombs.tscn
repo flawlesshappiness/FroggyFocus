@@ -5,8 +5,8 @@
 
 [node name="Bombs" type="Node3D"]
 script = ExtResource("1_whlow")
-BombCountRange = Vector2i(1, 3)
+BombCountRange = Vector2i(3, 6)
 DistanceRange = Vector2(1.5, 2)
 BombPrefab = ExtResource("2_enwqw")
 Type = 1
-Cooldown = Vector2(5, 0)
+Cooldown = Vector2(8, 5)

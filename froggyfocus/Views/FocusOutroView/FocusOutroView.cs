@@ -77,9 +77,10 @@ public partial class FocusOutroView : View
         PlayChord(success);
         yield return new WaitForSeconds(0.25f);
         SubViewport.AudioListenerEnable3D = false;
+    }
 
-        //TransitionView.Instance.StartTransition(Close);
-        Player.Instance.SetCameraTarget();
+    public IEnumerator WaitForHide()
+    {
         yield return AnimationPlayer_Transition.PlayAndWaitForAnimation("transition_hide");
         Close();
     }

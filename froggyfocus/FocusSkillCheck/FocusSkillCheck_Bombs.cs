@@ -37,7 +37,6 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     {
         var next_angle = rng.RandfRange(0f, 360f);
         var count = BombCountRange.Range(Difficulty);
-        var delay_per = 0.5f;
         for (int i = 0; i < count; i++)
         {
             next_angle += rng.RandfRange(45, 180);
@@ -46,7 +45,8 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
             bomb.GlobalPosition = position;
             bomb.StartBomb(FocusEvent);
 
-            yield return new WaitForSeconds(delay_per);
+            var delay = rng.RandfRange(0.05f, 0.15f);
+            yield return new WaitForSeconds(delay);
         }
 
         WaitForBombs();

@@ -5,9 +5,6 @@ public partial class FocusCursorShield : Node3D
     [Export]
     public AnimationPlayer AnimationPlayer;
 
-    [Export]
-    public PackedScene PsBlock;
-
     public bool IsShielded { get; private set; }
 
     public void StartShield()
@@ -28,9 +25,17 @@ public partial class FocusCursorShield : Node3D
         IsShielded = false;
     }
 
-    public void PlayBlockEffect()
+    public void SetShieldOn(bool on)
     {
-        var ps = ParticleEffectGroup.Instantiate(PsBlock, this);
-        ps.Play(true);
+        if (IsShielded == on) return;
+        IsShielded = on;
+
+        var anim = on ? "shield_on" : "shield_off";
+        AnimationPlayer.Play(anim);
+    }
+
+    public void PlayBlockAnimation()
+    {
+        AnimationPlayer.Play("shield_block");
     }
 }

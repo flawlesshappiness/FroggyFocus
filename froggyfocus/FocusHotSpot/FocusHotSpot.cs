@@ -39,7 +39,7 @@ public partial class FocusHotSpot : Area3D
         SetLock(false);
     }
 
-    private void FocusEventStarted()
+    private void FocusEventStarted(FocusEvent e)
     {
         if (active)
         {

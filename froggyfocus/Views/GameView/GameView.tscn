@@ -1,8 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi33hifhhmwyo"]
+[gd_scene load_steps=11 format=3 uid="uid://bi33hifhhmwyo"]
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
 [ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="2_nrlgi"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="3_b56qe"]
 [ext_resource type="PackedScene" uid="uid://dolwflnwe75eq" path="res://Prefabs/UI/TwoButtonPopup/two_button_popup.tscn" id="3_nrlgi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7lip"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 2
+corner_radius_top_right = 16
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b56qe"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 16
+corner_radius_bottom_left = 2
 
 [sub_resource type="Animation" id="Animation_b56qe"]
 length = 0.001
@@ -16,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -28,7 +41,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_l7lip"]
@@ -92,7 +105,7 @@ _data = {
 &"show_overlay": SubResource("Animation_nrlgi")
 }
 
-[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup")]
+[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup", "ShieldBar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,9 +113,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v4b6a")
-AnimationPlayer = NodePath("AnimationPlayer")
+AnimationPlayer = NodePath("AnimationPlayer_Overlay")
 Overlay = NodePath("Overlay")
 TwoButtonPopup = NodePath("TwoButtonPopup")
+ShieldBar = NodePath("MarginContainer/Control/ShieldBar")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -122,7 +136,24 @@ layout_mode = 2
 [node name="MoneyBar" parent="MarginContainer/Control" instance=ExtResource("2_nrlgi")]
 layout_mode = 1
 
+[node name="ShieldBar" type="ProgressBar" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 383.0
+grow_vertical = 0
+theme = ExtResource("3_b56qe")
+theme_override_styles/background = SubResource("StyleBoxFlat_l7lip")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b56qe")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
 [node name="Overlay" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,7 +162,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer_Overlay" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_l7lip")
 }

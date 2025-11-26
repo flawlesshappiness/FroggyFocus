@@ -128,6 +128,9 @@ public partial class FocusEvent : Node3D
             // Hijack camera
             HijackCamera();
 
+            // Game View
+            GameView.Instance.SetFocusEventControlsVisible(true);
+
             // Transition end
             yield return WaitForRiff();
             yield return FocusIntroView.Instance.AnimateHide();
@@ -167,8 +170,13 @@ public partial class FocusEvent : Node3D
             // Hide target
             Target.Hide();
 
+            // GameView
+            GameView.Instance.SetFocusEventControlsVisible(false);
+
             // Enable player
             Player.SetAllLocks(nameof(FocusEvent), false);
+
+            yield return FocusOutroView.Instance.WaitForHide();
 
             // End
             EventStarted = false;

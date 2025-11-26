@@ -6,7 +6,7 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
     public override string Directory => "FocusEvent";
     public static FocusEventController Instance => Singleton.Get<FocusEventController>();
 
-    public event Action OnFocusEventStarted;
+    public event Action<FocusEvent> OnFocusEventStarted;
     public event Action<FocusEventCompletedResult> OnFocusEventCompleted;
     public event Action<FocusEventFailedResult> OnFocusEventFailed;
 
@@ -69,7 +69,7 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
 
     public void FocusEventStarted(FocusEvent e)
     {
-        OnFocusEventStarted?.Invoke();
+        OnFocusEventStarted?.Invoke(e);
     }
 
     public void FocusEventCompleted(FocusEventCompletedResult result)
