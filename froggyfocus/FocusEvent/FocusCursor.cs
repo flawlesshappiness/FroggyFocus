@@ -27,6 +27,15 @@ public partial class FocusCursor : Node3D
     [Export]
     public AudioStreamPlayer SfxFocusBlock;
 
+    [Export]
+    public AudioStreamPlayer SfxFocusComplete;
+
+    [Export]
+    public PackedScene FocusGainEffect;
+
+    [Export]
+    public PackedScene FocusCompleteEffect;
+
     public bool InputEnabled { get; set; }
     public bool TickEnabled { get; set; }
     public FocusTarget Target { get; set; }
@@ -202,6 +211,7 @@ public partial class FocusCursor : Node3D
             if (FocusGainLock.IsLocked) return;
 
             SetFocusValue(FocusValue + FocusTickAmount);
+            PlayFocusGainEffect();
             PlayFocusChangedSFX(FocusValue);
             AnimationPlayer_Gain.Play("BounceIn");
             OnFocusTarget?.Invoke();
@@ -253,6 +263,8 @@ public partial class FocusCursor : Node3D
         if (FocusValue >= FocusMax)
         {
             Filled = true;
+            PlayFocusCompleteEffect();
+            SfxFocusComplete.Play();
             OnFocusFilled?.Invoke();
         }
         else if (FocusValue <= 0)
@@ -279,5 +291,16 @@ public partial class FocusCursor : Node3D
     private void MoveEnded()
     {
         OnMoveEnded?.Invoke();
+    }
+
+    private void PlayFocusGainEffect()
+    {
+        ParticleEffectGroup.Instantiate(FocusGainEffect, this);
+    }
+
+    private void PlayFocusCompleteEffect()
+    {
+        var ps = ParticleEffectGroup.Instantiate(FocusCompleteEffect, GetParentNode3D());
+        ps.GlobalPosition = GlobalPosition;
     }
 }

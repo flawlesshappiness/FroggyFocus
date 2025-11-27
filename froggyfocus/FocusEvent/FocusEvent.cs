@@ -158,7 +158,7 @@ public partial class FocusEvent : Node3D
             // Disable cursor
             Cursor.Stop();
 
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(1.0f);
 
             // Eat target
             FocusOutroView.Instance.CreateTarget(Target);

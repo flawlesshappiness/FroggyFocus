@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://dskkwka35lnhm"]
+
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_wf5e0"]
+[ext_resource type="Texture2D" uid="uid://cc1g3dchqsex4" path="res://Assets/KenneyNL/Particles/star_09.png" id="2_kiytj"]
+
+[sub_resource type="Curve" id="Curve_o0fwo"]
+_data = [Vector2(0, 0), 0.0, 2.07503, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x27xx"]
+curve = SubResource("Curve_o0fwo")
+
+[sub_resource type="Curve" id="Curve_7fivx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 0.3), 0.0, 0.0, 0, 0, Vector2(0.6, 0.8), 0.0, 0.0, 0, 0, Vector2(0.8, 0.2), 0.0, 0.0, 0, 0, Vector2(0.9, 0.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_1aoio"]
+curve = SubResource("Curve_7fivx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lx060"]
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+damping_min = 10.0
+damping_max = 10.0
+damping_curve = SubResource("CurveTexture_x27xx")
+scale_min = 0.1
+scale_max = 0.25
+scale_curve = SubResource("CurveTexture_1aoio")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61g72"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_kiytj")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_78s2t"]
+material = SubResource("StandardMaterial3D_61g72")
+
+[node name="FocusGainEffect" type="Node3D" node_paths=PackedStringArray("Particles")]
+script = ExtResource("1_wf5e0")
+PlayOnReady = true
+DestroyDelay = 1.0
+Particles = [NodePath("PsFocusGain")]
+
+[node name="PsFocusGain" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_lx060")
+draw_pass_1 = SubResource("QuadMesh_78s2t")

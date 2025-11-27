@@ -1,7 +1,8 @@
-[gd_scene load_steps=62 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=63 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_k0g6b"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_tkjes"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_wkocx"]
 [ext_resource type="Resource" uid="uid://cr6w4xkj1cp6h" path="res://Weather/Resources/Sunny-Windy.tres" id="4_pteap"]
@@ -111,7 +112,7 @@ DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
 FocusEventParent = NodePath("World/FocusEvents")
-Weathers = [ExtResource("3_wkocx"), ExtResource("4_pteap")]
+Weathers = Array[ExtResource("2_k0g6b")]([ExtResource("3_wkocx"), ExtResource("4_pteap")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_exe8s")

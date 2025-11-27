@@ -1,12 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://cta4lwmtk36u"]
+[gd_scene load_steps=23 format=3 uid="uid://cta4lwmtk36u"]
 
 [ext_resource type="Script" uid="uid://bpbdt4x46g0ir" path="res://FocusEvent/FocusCursor.cs" id="1_x77ch"]
+[ext_resource type="PackedScene" uid="uid://dskkwka35lnhm" path="res://Prefabs/Effects/focus_gain_effect.tscn" id="2_o0fwo"]
 [ext_resource type="Texture2D" uid="uid://6tevrdvf1tud" path="res://Assets/FlawLizArt/Textures/focus_circle.png" id="2_rpbmh"]
 [ext_resource type="Texture2D" uid="uid://cgvw1bv4nyiyt" path="res://Assets/FlawLizArt/Textures/focus_circle_outline.png" id="3_rptds"]
+[ext_resource type="PackedScene" uid="uid://f8sopuk343rn" path="res://Prefabs/Effects/focus_complete_effect.tscn" id="3_x27xx"]
 [ext_resource type="PackedScene" uid="uid://ko8a82uxc2gv" path="res://Prefabs/FocusEvent/focus_cursor_shield.tscn" id="4_7kn4i"]
 [ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="4_rptds"]
 [ext_resource type="AudioStream" uid="uid://cnjbveslxr8uq" path="res://Sounds/Raw/sfx_focus_hit.wav" id="6_dthue"]
 [ext_resource type="AudioStream" uid="uid://dj2xwyehx2u1n" path="res://Sounds/Raw/sfx_frog_croak_007.wav" id="7_uogcp"]
+[ext_resource type="AudioStream" uid="uid://bnax3xolu5bdn" path="res://Sounds/Raw/sfx_marimba_chord_g.wav" id="10_7fivx"]
+[ext_resource type="AudioStream" uid="uid://bon7weiyvo25d" path="res://Sounds/Raw/sfx_marimba_chord_a.wav" id="11_1aoio"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1eh1j"]
 transparency = 1
@@ -104,7 +108,12 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("7_uogcp")
 
-[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("Shield", "RadiusNode", "FillNode", "AnimationPlayer_Gain", "AnimationPlayer_Hurt", "SfxFocusChanged", "SfxFocusHurt", "SfxFocusBlock")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lx060"]
+streams_count = 2
+stream_0/stream = ExtResource("10_7fivx")
+stream_1/stream = ExtResource("11_1aoio")
+
+[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("Shield", "RadiusNode", "FillNode", "AnimationPlayer_Gain", "AnimationPlayer_Hurt", "SfxFocusChanged", "SfxFocusHurt", "SfxFocusBlock", "SfxFocusComplete")]
 script = ExtResource("1_x77ch")
 Shield = NodePath("Radius/FocusCursorShield")
 RadiusNode = NodePath("Radius")
@@ -114,6 +123,9 @@ AnimationPlayer_Hurt = NodePath("AnimationPlayer_Hurt")
 SfxFocusChanged = NodePath("SfxFocusGain")
 SfxFocusHurt = NodePath("SfxFocusHurt")
 SfxFocusBlock = NodePath("SfxFocusBlock")
+SfxFocusComplete = NodePath("SfxFocusComplete")
+FocusGainEffect = ExtResource("2_o0fwo")
+FocusCompleteEffect = ExtResource("3_x27xx")
 
 [node name="Radius" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
@@ -167,3 +179,8 @@ bus = &"SFX"
 stream = SubResource("AudioStreamRandomizer_uogcp")
 max_polyphony = 6
 bus = &"SFX"
+
+[node name="SfxFocusComplete" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_lx060")
+max_polyphony = 6
+bus = &"BGM"
