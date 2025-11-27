@@ -110,16 +110,17 @@ carve_navigation_mesh = true
 [node name="SfxWater" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_msp8y")
 volume_db = -10.0
-unit_size = 15.0
-max_distance = 80.0
+max_distance = 100.0
 max_polyphony = 5
 panning_strength = 0.75
 bus = &"SFX"
+attenuation_filter_db = 0.0
 
 [node name="SfxGears" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_komh5")
 volume_db = -15.0
 autoplay = true
-max_distance = 60.0
+max_distance = 80.0
 max_polyphony = 5
 bus = &"SFX"
+attenuation_filter_db = 0.0
