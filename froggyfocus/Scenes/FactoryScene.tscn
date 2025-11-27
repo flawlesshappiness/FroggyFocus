@@ -840,6 +840,9 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -12.1168, -2.43669, 67.
 [node name="Grass_Tuft_Tall45" parent="World/Seaweed/Weeds" instance=ExtResource("43_b7s7t")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -19.7549, -2.43669, 67.9097)
 
+[node name="Shop2" parent="World/Seaweed" instance=ExtResource("40_xv66q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5571, -0.753436, 68.3066)
+
 [node name="Machine" type="Node3D" parent="World"]
 
 [node name="Gear_Big12" parent="World/Machine" instance=ExtResource("26_3yuby")]
