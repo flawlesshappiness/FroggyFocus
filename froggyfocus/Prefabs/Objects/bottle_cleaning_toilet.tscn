@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cat6wqg4h8oqa"]
+[gd_scene load_steps=7 format=3 uid="uid://cat6wqg4h8oqa"]
 
 [ext_resource type="PackedScene" uid="uid://btfkqop4kbh8e" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_toilet.fbx" id="1_bphl6"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_o81hj"]
+[ext_resource type="PackedScene" uid="uid://coc1ipx2s1ljj" path="res://Prefabs/Nature/float_bounce.tscn" id="3_h611w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h611w"]
+size = Vector3(1.48828, 0.144775, 0.819336)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o81hj"]
 size = Vector3(1.5564, 0.476807, 0.710938)
@@ -11,12 +15,19 @@ size = Vector3(1.5069, 0.362183, 0.652344)
 
 [node name="Bottle_Cleaning_Toilet" type="Node3D"]
 
-[node name="bottle_cleaning_toilet" parent="." instance=ExtResource("1_bphl6")]
+[node name="FloatBounce" parent="." instance=ExtResource("3_h611w")]
+
+[node name="CollisionShape3D" parent="FloatBounce/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25009, 0)
+shape = SubResource("BoxShape3D_h611w")
+
+[node name="bottle_cleaning_toilet" parent="FloatBounce/Anim" index="0" instance=ExtResource("1_bphl6")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.767424, 3.35452e-08, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="FloatBounce/Anim/bottle_cleaning_toilet"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.13163e-14, 0.767424, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatBounce/Anim/bottle_cleaning_toilet/StaticBody3D"]
 shape = SubResource("BoxShape3D_o81hj")
 
 [node name="FocusEventArea" type="Area3D" parent="."]
@@ -30,3 +41,5 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00875854, 0.318909, 0)
 shape = SubResource("BoxShape3D_ugoas")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[editable path="FloatBounce"]

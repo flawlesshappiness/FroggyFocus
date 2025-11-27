@@ -1,23 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c482un0ek3woo"]
+[gd_scene load_steps=7 format=3 uid="uid://c482un0ek3woo"]
 
 [ext_resource type="PackedScene" uid="uid://dyh08ems2n1yu" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_soap.fbx" id="1_l32pe"]
+[ext_resource type="PackedScene" uid="uid://coc1ipx2s1ljj" path="res://Prefabs/Nature/float_bounce.tscn" id="2_4l2ey"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_g844v"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_g844v"]
-size = Vector3(1.68652, 0.456787, 0.829102)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4l2ey"]
 size = Vector3(1.65991, 0.362183, 0.767578)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5702o"]
+size = Vector3(1.74707, 0.164063, 0.858398)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g844v"]
+size = Vector3(1.68652, 0.456787, 0.829102)
+
 [node name="Bottle_Cleaning_Soap" type="Node3D"]
-
-[node name="bottle_cleaning_soap" parent="." instance=ExtResource("1_l32pe")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.845608, 3.69627e-08, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_g844v")
 
 [node name="FocusEventArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -30,3 +26,18 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.318909, 0)
 shape = SubResource("BoxShape3D_4l2ey")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="FloatBounce" parent="." instance=ExtResource("2_4l2ey")]
+
+[node name="CollisionShape3D" parent="FloatBounce/Area3D" index="0"]
+shape = SubResource("BoxShape3D_5702o")
+
+[node name="bottle_cleaning_soap" parent="FloatBounce/Anim" index="0" instance=ExtResource("1_l32pe")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.845608, 3.69627e-08, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FloatBounce/Anim" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatBounce/Anim/StaticBody3D"]
+shape = SubResource("BoxShape3D_g844v")
+
+[editable path="FloatBounce"]

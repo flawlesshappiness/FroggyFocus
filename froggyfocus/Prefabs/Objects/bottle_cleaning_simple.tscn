@@ -1,24 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbwq5ouf0ihjq"]
+[gd_scene load_steps=7 format=3 uid="uid://dbwq5ouf0ihjq"]
 
 [ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="1_i8ddx"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_f6xt0"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_f6xt0"]
-size = Vector3(1.43127, 0.771729, 0.807617)
+[ext_resource type="PackedScene" uid="uid://coc1ipx2s1ljj" path="res://Prefabs/Nature/float_bounce.tscn" id="2_sv86x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sv86x"]
 size = Vector3(1.36447, 0.362183, 0.711426)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5geq5"]
+size = Vector3(1.45313, 0.130371, 0.797852)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6xt0"]
+size = Vector3(1.43127, 0.771729, 0.807617)
+
 [node name="Bottle_Cleaning_Simple" type="Node3D"]
-
-[node name="bottle_cleaning_simple" parent="." instance=ExtResource("1_i8ddx")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.772616, 3.37721e-08, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0686646, 0, 0)
-shape = SubResource("BoxShape3D_f6xt0")
 
 [node name="FocusEventArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -31,3 +26,20 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0762177, 0.393359, 0.0057373)
 shape = SubResource("BoxShape3D_sv86x")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="FloatBounce" parent="." instance=ExtResource("2_sv86x")]
+
+[node name="CollisionShape3D" parent="FloatBounce/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0722656, 0.40158, 0)
+shape = SubResource("BoxShape3D_5geq5")
+
+[node name="bottle_cleaning_simple" parent="FloatBounce/Anim" index="0" instance=ExtResource("1_i8ddx")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.772616, 3.37721e-08, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FloatBounce/Anim" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatBounce/Anim/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0686646, 0, 0)
+shape = SubResource("BoxShape3D_f6xt0")
+
+[editable path="FloatBounce"]

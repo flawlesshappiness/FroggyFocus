@@ -8,8 +8,9 @@ sky_material = ExtResource("1_kotqw")
 [resource]
 background_mode = 2
 sky = SubResource("Sky_gmxq7")
+fog_enabled = true
 fog_light_color = Color(0.308, 0.56, 0.5516, 1)
-fog_density = 0.005
+fog_density = 0.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 volumetric_fog_albedo = Color(0.4, 0.65, 1, 1)

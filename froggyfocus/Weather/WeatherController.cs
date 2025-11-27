@@ -210,13 +210,13 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         sun.ShadowOpacity = Mathf.Lerp(from.SunShadowOpacity, to.SunShadowOpacity, t);
 
         // Fog
-        env.FogEnabled = to.FogEnabled && to.FogType == FogType.Fog;
+        env.FogEnabled = true;
         env.FogDensity = Mathf.Lerp(from.FogEnabled ? from.FogDensity : 0, to.FogEnabled ? to.FogDensity : 0, t);
         env.FogLightColor = from.FogColor.Lerp(to.FogEnabled ? to.FogColor : from.FogColor, t);
         env.FogAerialPerspective = Mathf.Lerp(from.FogEnabled ? from.FogAerialPerspective : 1, to.FogEnabled ? to.FogAerialPerspective : 1, t);
 
         // Volumetric
-        env.VolumetricFogEnabled = to.FogEnabled && to.FogType == FogType.Volumetric;
+        env.VolumetricFogEnabled = true;
         env.VolumetricFogDensity = Mathf.Lerp(from.FogEnabled ? from.FogDensity : 0, to.FogEnabled ? to.FogDensity : 0, t);
         env.VolumetricFogAlbedo = from.FogColor.Lerp(to.FogEnabled ? to.FogColor : from.FogColor, t);
         env.VolumetricFogEmission = from.FogColor.Lerp(to.FogEnabled ? to.FogColor : from.FogColor, t);
