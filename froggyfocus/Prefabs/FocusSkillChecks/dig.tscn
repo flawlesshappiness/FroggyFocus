@@ -1,3 +1,232 @@
-[gd_scene format=3 uid="uid://rum51macbtyh"]
+[gd_scene load_steps=14 format=3 uid="uid://rum51macbtyh"]
 
-[node name="Dig" type="Node3D"]
+[ext_resource type="Script" uid="uid://dgt1a7311slmi" path="res://FocusSkillCheck/FocusSkillCheck_Dig.cs" id="1_dfl6r"]
+[ext_resource type="AudioStream" uid="uid://chsmvnuk5ocu2" path="res://Sounds/Raw/sfx_mole_show_001.wav" id="3_c6q3j"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="3_slb8d"]
+[ext_resource type="AudioStream" uid="uid://t6fyf7iejqbk" path="res://Sounds/Raw/sfx_mole_show_002.wav" id="4_slb8d"]
+
+[sub_resource type="Animation" id="Animation_khj5x"]
+resource_name = "dig_down"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPosition/Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.55, 1),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.952688, 0, 0), Vector3(-0.724765, 0, 0), Vector3(-1.49568, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetPosition/Anim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 1),
+"transitions": PackedFloat32Array(1, 2, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, -0.1, 0), Vector3(0, -1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxDig:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TargetPosition/PsDig:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.05, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_at1g8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPosition/Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetPosition/Anim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxDig:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TargetPosition/PsDig:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pj6dq"]
+resource_name = "dig_up"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetPosition/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.183011, 1),
+"update": 0,
+"values": [Vector3(0, -1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetPosition/Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(1.47718, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxDig:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TargetPosition/PsDig:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.05, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qhsn"]
+_data = {
+&"RESET": SubResource("Animation_at1g8"),
+&"dig_down": SubResource("Animation_khj5x"),
+&"dig_up": SubResource("Animation_pj6dq")
+}
+
+[sub_resource type="Curve" id="Curve_khj5x"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_y1duc"]
+curve = SubResource("Curve_khj5x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_at1g8"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.3
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_y1duc")
+
+[sub_resource type="SphereMesh" id="SphereMesh_pj6dq"]
+material = ExtResource("3_slb8d")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0yyas"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("3_c6q3j")
+stream_1/stream = ExtResource("4_slb8d")
+
+[node name="Dig" type="Node3D" node_paths=PackedStringArray("TargetNode", "TargetParent", "AnimationPlayer")]
+script = ExtResource("1_dfl6r")
+TargetNode = NodePath("TargetPosition")
+TargetParent = NodePath("TargetPosition/Anim/TargetParent")
+AnimationPlayer = NodePath("AnimationPlayer")
+Type = 21
+Cooldown = Vector2(10, 5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1qhsn")
+}
+
+[node name="TargetPosition" type="Node3D" parent="."]
+
+[node name="Anim" type="Node3D" parent="TargetPosition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="TargetParent" type="Node3D" parent="TargetPosition/Anim"]
+
+[node name="PsDig" type="GPUParticles3D" parent="TargetPosition"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+emitting = false
+amount = 10
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_at1g8")
+draw_pass_1 = SubResource("SphereMesh_pj6dq")
+
+[node name="SfxDig" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_0yyas")
+bus = &"SFX"
