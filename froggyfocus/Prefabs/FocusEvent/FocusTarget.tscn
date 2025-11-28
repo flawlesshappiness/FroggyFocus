@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=19 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="2_o2l5d"]
@@ -57,11 +57,66 @@ albedo_texture = ExtResource("3_a4ffy")
 material = SubResource("StandardMaterial3D_mfarc")
 orientation = 1
 
-[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("PsWaterRipples")]
+[sub_resource type="Animation" id="Animation_mfarc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mk5ib"]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.00999999, 0.00999999, 0.00999999)]
+}
+
+[sub_resource type="Animation" id="Animation_a4ffy"]
+resource_name = "show"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Glow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v23j6"]
+_data = {
+&"RESET": SubResource("Animation_mfarc"),
+&"hide": SubResource("Animation_mk5ib"),
+&"show": SubResource("Animation_a4ffy")
+}
+
+[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("PsWaterRipples", "AnimationPlayer_Glow")]
 script = ExtResource("1_hmctk")
 PsWaterRipples = NodePath("PsWaterRipple")
+AnimationPlayer_Glow = NodePath("AnimationPlayer_Glow")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_mfarc")
 
@@ -71,3 +126,8 @@ amount = 4
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_a4ffy")
 draw_pass_1 = SubResource("QuadMesh_mk5ib")
+
+[node name="AnimationPlayer_Glow" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v23j6")
+}

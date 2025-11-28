@@ -16,10 +16,12 @@ public partial class FocusSkillCheck_Dig : FocusSkillCheck
     {
         base.Clear();
         Target.SetParent(FocusEvent);
+        Target.SetGlowVisible(true);
     }
 
     protected override IEnumerator Run()
     {
+        Target.SetGlowVisible(false);
         TargetNode.GlobalPosition = Target.GlobalPosition;
         TargetNode.GlobalRotation = Target.Character.GlobalRotation;
 

@@ -13,6 +13,9 @@ public partial class FocusCursor : Node3D
     public Node3D FillNode;
 
     [Export]
+    public Node3D ParticleParent;
+
+    [Export]
     public AnimationPlayer AnimationPlayer_Gain;
 
     [Export]
@@ -295,12 +298,12 @@ public partial class FocusCursor : Node3D
 
     private void PlayFocusGainEffect()
     {
-        ParticleEffectGroup.Instantiate(FocusGainEffect, this);
+        ParticleEffectGroup.Instantiate(FocusGainEffect, ParticleParent);
     }
 
     private void PlayFocusCompleteEffect()
     {
         var ps = ParticleEffectGroup.Instantiate(FocusCompleteEffect, GetParentNode3D());
-        ps.GlobalPosition = GlobalPosition;
+        ps.GlobalPosition = ParticleParent.GlobalPosition;
     }
 }

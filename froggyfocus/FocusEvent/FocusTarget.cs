@@ -7,6 +7,9 @@ public partial class FocusTarget : Node3D
     [Export]
     public GpuParticles3D PsWaterRipples;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_Glow;
+
     public FocusCharacterInfo Info { get; private set; }
     public FocusCharacter Character { get; private set; }
     public InventoryCharacterData CharacterData { get; private set; }
@@ -15,6 +18,7 @@ public partial class FocusTarget : Node3D
 
     public float UpdatedMoveSpeed { get; private set; }
 
+    private bool glow_visible;
     private FocusEvent focus_event;
     private RandomNumberGenerator rng = new();
     private Curve3D move_curve = new();
@@ -32,6 +36,8 @@ public partial class FocusTarget : Node3D
         UpdateSwimmer();
         UpdateDifficulty();
         UpdateMoveSpeed();
+
+        SetGlowVisible(true);
     }
 
     private void SetCharacter(FocusCharacterInfo info)
@@ -213,5 +219,14 @@ public partial class FocusTarget : Node3D
         move_curve.ClearPoints();
         move_curve.AddPoint(p1, @out: p1_out);
         move_curve.AddPoint(p2);
+    }
+
+    public void SetGlowVisible(bool visible)
+    {
+        if (glow_visible == visible) return;
+        glow_visible = visible;
+
+        var anim = visible ? "show" : "hide";
+        AnimationPlayer_Glow.Play(anim);
     }
 }
