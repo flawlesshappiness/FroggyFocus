@@ -107,6 +107,8 @@ public partial class GameScene : Scene
 
     public WorldBug GetClosestWorldBug()
     {
+        if (!IsInstanceValid(Player.Instance)) return null;
+
         var player_pos = Player.Instance.GlobalPosition;
         return world_bugs
             .Where(x => !x.IsRunning && x.GlobalPosition.DistanceTo(player_pos) > WorldBug.MIN_DIST_TO_PLAYER)

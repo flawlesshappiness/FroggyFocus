@@ -13,6 +13,12 @@ public partial class WeatherInfo : Resource
     public float BackgroundEnergyMultiplier = 1.0f;
 
     [Export]
+    public Environment.AmbientSource AmbientSource = Environment.AmbientSource.Sky;
+
+    [Export]
+    public Color AmbientColor;
+
+    [Export]
     public Color SunColor;
 
     [Export]

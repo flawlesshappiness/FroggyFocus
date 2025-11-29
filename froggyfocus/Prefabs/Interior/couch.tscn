@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2gx40b6sseb2"]
+
+[ext_resource type="PackedScene" uid="uid://vi2ock2q08t2" path="res://Assets/KayLousberg/Furniture/couch_pillows.fbx" id="1_ikab6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1wtlo"]
+size = Vector3(3.15015, 4, 1.71558)
+
+[node name="Couch" type="Node3D"]
+
+[node name="couch_pillows" parent="." instance=ExtResource("1_ikab6")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.0528564)
+shape = SubResource("BoxShape3D_1wtlo")

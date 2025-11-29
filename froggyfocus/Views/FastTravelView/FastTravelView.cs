@@ -64,31 +64,32 @@ public partial class FastTravelView : PanelView
         {
             v.SetContent_Search();
 
-            v.ContentSearch.AddItem(nameof(SwampScene), () => SceneActions(v, nameof(SwampScene)));
-            v.ContentSearch.AddItem(nameof(CaveScene), () => SceneActions(v, nameof(CaveScene)));
-            v.ContentSearch.AddItem(nameof(FactoryScene), () => SceneActions(v, nameof(FactoryScene)));
+            v.ContentSearch.AddItem(nameof(SwampScene), () => SceneActions(v, nameof(SwampScene), "StartBoat"));
+            v.ContentSearch.AddItem(nameof(CaveScene), () => SceneActions(v, nameof(CaveScene), "StartBoat"));
+            v.ContentSearch.AddItem(nameof(FactoryScene), () => SceneActions(v, nameof(FactoryScene), "StartBoat"));
             v.ContentSearch.AddItem(nameof(GlitchScene), () => SceneActions(v, nameof(GlitchScene)));
             v.ContentSearch.AddItem(nameof(EldritchScene), () => SceneActions(v, nameof(EldritchScene)));
             v.ContentSearch.AddItem(nameof(CrystalScene), () => SceneActions(v, nameof(CrystalScene)));
+            v.ContentSearch.AddItem(nameof(PartnerHomeScene), () => SceneActions(v, nameof(PartnerHomeScene)));
 
             v.ContentSearch.UpdateButtons();
         }
 
-        void SceneActions(DebugView v, string scene_name)
+        void SceneActions(DebugView v, string scene_name, string start_node = "")
         {
             v.SetContent_Search();
 
-            v.ContentSearch.AddItem("Goto", () => GotoScene(v, scene_name));
+            v.ContentSearch.AddItem("Goto", () => GotoScene(v, scene_name, start_node));
 
             v.ContentSearch.UpdateButtons();
         }
 
-        void GotoScene(DebugView v, string scene_name)
+        void GotoScene(DebugView v, string scene_name, string start_node)
         {
             v.Close();
 
             Data.Game.CurrentScene = scene_name;
-            Data.Game.StartingNode = "StartBoat";
+            Data.Game.StartingNode = start_node;
             Data.Game.Save();
 
             Scene.Goto(scene_name);

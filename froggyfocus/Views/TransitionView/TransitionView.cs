@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Collections;
 
@@ -9,16 +10,44 @@ public partial class TransitionView : View
     [Export]
     public AnimationPlayer AnimationPlayer;
 
-    public void StartTransition(Action on_full)
+    [Export]
+    public Array<Control> ColorControls;
+
+    public void StartTransition(TransitionSettings settings)
     {
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
             Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("shape_in");
-            on_full?.Invoke();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("shape_out");
+            Player.SetAllLocks(nameof(TransitionView), true);
+            AnimationPlayer.SpeedScale = 1f / settings.Duration;
+            SetColor(settings.Color);
+            yield return AnimationPlayer.PlayAndWaitForAnimation(settings.AnimationIn);
+            settings.OnTransition?.Invoke();
+            yield return AnimationPlayer.PlayAndWaitForAnimation(settings.AnimationOut);
+            Player.SetAllLocks(nameof(TransitionView), false);
             Hide();
         }
     }
+
+    private void SetColor(Color color)
+    {
+        ColorControls.ForEach(x => x.Modulate = color);
+    }
+}
+
+public class TransitionSettings
+{
+    public TransitionType Type { get; set; } = TransitionType.Color;
+    public float Duration { get; set; } = 1f;
+    public Color Color { get; set; } = Colors.Black;
+    public Action OnTransition { get; set; }
+
+    public string AnimationIn => $"{Type.ToString().ToLower()}_in";
+    public string AnimationOut => $"{Type.ToString().ToLower()}_out";
+}
+
+public enum TransitionType
+{
+    Color, Circles
 }

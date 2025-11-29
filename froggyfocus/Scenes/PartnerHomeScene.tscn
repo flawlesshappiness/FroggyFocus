@@ -1,0 +1,219 @@
+[gd_scene load_steps=22 format=3 uid="uid://jixjssv4ics8"]
+
+[ext_resource type="Script" uid="uid://46tvlnw081rs" path="res://Scenes/PartnerHomeScene.cs" id="1_bew2v"]
+[ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_bchqc"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_bsfui"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_hpje1"]
+[ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="3_ul0f8"]
+[ext_resource type="Material" uid="uid://wog5r0ocenqr" path="res://Materials/Rock.tres" id="7_36bes"]
+[ext_resource type="PackedScene" uid="uid://b6jeqt11pey36" path="res://Assets/FlawLizArt/Interior/wood_2x2.fbx" id="8_3ttb3"]
+[ext_resource type="PackedScene" uid="uid://0s1w31s14yve" path="res://Prefabs/Interior/shelf.tscn" id="10_1t2yw"]
+[ext_resource type="PackedScene" uid="uid://d2gx40b6sseb2" path="res://Prefabs/Interior/couch.tscn" id="10_i37a1"]
+[ext_resource type="PackedScene" uid="uid://cunj8p8hkba1x" path="res://Assets/KayLousberg/Furniture/pictureframe_large_A.fbx" id="11_6turq"]
+[ext_resource type="PackedScene" uid="uid://bi2tmg7ovyq80" path="res://Assets/KayLousberg/Furniture/rug_oval_B.fbx" id="11_m1avj"]
+[ext_resource type="PackedScene" uid="uid://jpa4rwfuils2" path="res://Prefabs/NPC/FrogPartnerNPC/frog_partner_npc.tscn" id="12_1t2yw"]
+[ext_resource type="PackedScene" uid="uid://ckawey6x8v1b3" path="res://Prefabs/Interior/house_door.tscn" id="12_70kua"]
+[ext_resource type="PackedScene" uid="uid://dhlfxf2c0jhu1" path="res://Assets/KayLousberg/Furniture/pictureframe_large_B.fbx" id="12_mks53"]
+[ext_resource type="PackedScene" uid="uid://ujeiug7m32mk" path="res://Prefabs/Interior/lamp_standing.tscn" id="13_mks53"]
+[ext_resource type="PackedScene" uid="uid://02ni1ffa1upd" path="res://Prefabs/Interior/bed_double.tscn" id="14_gh5p7"]
+[ext_resource type="PackedScene" uid="uid://cmxm0xr4fjssv" path="res://Assets/FlawLizArt/Interior/window_round.fbx" id="15_cnj5n"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ul0f8"]
+vertices = PackedVector3Array(-4.25, 0.5, -4.25, -4.25, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ul0f8"]
+size = Vector3(12, 1, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ttb3"]
+size = Vector3(12, 4, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3ttb3"]
+material = ExtResource("7_36bes")
+size = Vector2(10, 4)
+
+[node name="PartnerHomeScene" type="Node3D" node_paths=PackedStringArray("Camera", "DirectionalLight", "WorldEnvironment")]
+script = ExtResource("1_bew2v")
+Camera = NodePath("Camera3D")
+DirectionalLight = NodePath("DirectionalLight3D")
+WorldEnvironment = NodePath("WorldEnvironment")
+Weathers = Array[ExtResource("2_hpje1")]([ExtResource("3_ul0f8")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_bsfui")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, 0.183013, 0.183013, 0, -0.707107, 0.707107, 0.258819, -0.683013, -0.683013, 0, 5.72245, 10.5826)
+light_color = Color(1, 1, 0.7, 1)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_bchqc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0314896, 0, 3.69703)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
+navigation_mesh = SubResource("NavigationMesh_ul0f8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_ul0f8")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+shape = SubResource("BoxShape3D_ul0f8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 5.5)
+shape = SubResource("BoxShape3D_3ttb3")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -5.5)
+shape = SubResource("BoxShape3D_3ttb3")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, 2.5, 0)
+shape = SubResource("BoxShape3D_3ttb3")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.5, 2.5, 4.80825e-07)
+shape = SubResource("BoxShape3D_3ttb3")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31948, 0)
+height = 5.0
+vertices = PackedVector3Array(-6.93163, 0, -6.91977, -7.18039, 0, 7.17673, 6.83319, 0, 7.05235, 6.75027, 0, -6.79539)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false
+
+[node name="House" type="Node3D" parent="World"]
+
+[node name="wall" type="MeshInstance3D" parent="World/House"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.875, 5)
+mesh = SubResource("PlaneMesh_3ttb3")
+skeleton = NodePath("../..")
+
+[node name="wall2" type="MeshInstance3D" parent="World/House"]
+transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 0, 1, 1, 4.37114e-08, -4.37114e-08, -5, 1.875, 0)
+mesh = SubResource("PlaneMesh_3ttb3")
+skeleton = NodePath("../..")
+
+[node name="Floor" type="Node3D" parent="World/House"]
+
+[node name="wood_2x2" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="wood_2x3" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
+
+[node name="wood_2x4" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 0)
+
+[node name="wood_2x5" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0)
+
+[node name="wood_2x6" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 0)
+
+[node name="wood_2x7" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2)
+
+[node name="wood_2x8" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 2)
+
+[node name="wood_2x9" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 2)
+
+[node name="wood_2x10" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 2)
+
+[node name="wood_2x11" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 2)
+
+[node name="wood_2x12" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 4)
+
+[node name="wood_2x13" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 4)
+
+[node name="wood_2x14" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 4)
+
+[node name="wood_2x15" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 4)
+
+[node name="wood_2x16" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 4)
+
+[node name="wood_2x17" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -2)
+
+[node name="wood_2x18" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -2)
+
+[node name="wood_2x19" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -2)
+
+[node name="wood_2x20" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -2)
+
+[node name="wood_2x21" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -2)
+
+[node name="wood_2x22" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -4)
+
+[node name="wood_2x23" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -4)
+
+[node name="wood_2x24" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -4)
+
+[node name="wood_2x25" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -4)
+
+[node name="wood_2x26" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -4)
+
+[node name="Furniture" type="Node3D" parent="World"]
+
+[node name="Couch" parent="World/Furniture" instance=ExtResource("10_i37a1")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -3.26925, 0, 4.19384)
+
+[node name="rug_oval_B" parent="World/Furniture" instance=ExtResource("11_m1avj")]
+transform = Transform3D(2, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Shelf" parent="World/Furniture" instance=ExtResource("10_1t2yw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.38464, 2.27758, 5)
+
+[node name="pictureframe_large_A" parent="World/Furniture" instance=ExtResource("11_6turq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 2.31697, 3.32)
+
+[node name="pictureframe_large_B" parent="World/Furniture" instance=ExtResource("12_mks53")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1.95789, 1.32)
+
+[node name="Lamp_Standing" parent="World/Furniture" instance=ExtResource("13_mks53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15554, 4.76837e-07, -4.25241)
+
+[node name="Bed_Double" parent="World/Furniture" instance=ExtResource("14_gh5p7")]
+transform = Transform3D(1.39091e-08, 0, -1, 0, 1, 0, 1, 0, 1.39091e-08, 3.42835, 0, 3.47744)
+
+[node name="window_round" parent="World/Furniture" instance=ExtResource("15_cnj5n")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.62305, 2.31691, 5)
+
+[node name="FrogPartnerNPC" parent="World" instance=ExtResource("12_1t2yw")]
+transform = Transform3D(-0.0874339, 0, -0.99617, 0, 1, 0, 0.99617, 0, -0.0874339, -3.8289, 0, -0.78168)
+
+[node name="HouseDoor" parent="World" instance=ExtResource("12_70kua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+SceneName = "SwampScene"
+StartNode = "HouseStart"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.707107, -0.468229, 0.52987, 2.98023e-08, 0.749349, 0.662176, -0.707107, 0.468229, -0.52987, 5.00804, 8.09642, -5.03556)
+projection = 1
+size = 10.6385

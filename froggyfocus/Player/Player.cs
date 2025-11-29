@@ -123,7 +123,7 @@ public partial class Player : TopDownController
         if (dir.Length() < 0.1f) return;
         if (dir == Vector3.Zero) return;
 
-        Character.StartFacingDirection(Camera.GlobalBasis * dir);
+        Character.StartFacingDirection(CurrentCamera.GlobalBasis * dir);
     }
 
     private void Process_Jump()

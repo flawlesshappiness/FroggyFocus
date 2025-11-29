@@ -1,10 +1,9 @@
-[gd_scene load_steps=71 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=69 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ytafm"]
 [ext_resource type="Resource" uid="uid://dq8un1bylw425" path="res://Weather/Resources/Foggy.tres" id="3_firk2"]
 [ext_resource type="Resource" uid="uid://do4wv1bddfm6t" path="res://Weather/Resources/Rain.tres" id="4_8bjkg"]
 [ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="4_m0kej"]
@@ -12,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="6_qabxi"]
 [ext_resource type="Resource" uid="uid://bl2bg6tn8vsf5" path="res://Weather/Resources/Thunder.tres" id="7_o0yll"]
 [ext_resource type="PackedScene" uid="uid://dg28gg150qhoy" path="res://Prefabs/Ground/pond_corner_convex_002.tscn" id="8_iu42u"]
-[ext_resource type="PackedScene" uid="uid://c82d8w436imeq" path="res://Prefabs/Nature/rock.tscn" id="8_vvp34"]
 [ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="9_1p1c6"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="10_52an4"]
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="10_qfnsp"]
@@ -37,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://bjrocvyhabcve" path="res://Prefabs/Nature/grass_tuft_tall.tscn" id="17_lakbb"]
 [ext_resource type="PackedScene" uid="uid://cap2fnpuvvefh" path="res://Prefabs/Nature/mushroom_platform.tscn" id="17_riqag"]
 [ext_resource type="AudioStream" uid="uid://6t3iec200i6m" path="res://Sounds/Raw/amb_lake_001.wav" id="18_52an4"]
-[ext_resource type="PackedScene" uid="uid://jpa4rwfuils2" path="res://Prefabs/NPC/FrogPartnerNPC/frog_partner_npc.tscn" id="18_b0wg7"]
+[ext_resource type="PackedScene" uid="uid://dwgq45nx6dtef" path="res://Prefabs/Buildings/partner_home.tscn" id="18_qbb40"]
 [ext_resource type="PackedScene" uid="uid://dm7mhx4ojgeg3" path="res://Prefabs/Nature/grass_tuft_small.tscn" id="18_xsh2a"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="19_bmghv"]
 [ext_resource type="PackedScene" uid="uid://bvq1s6k4t5k0m" path="res://Prefabs/NPC/MushroomNPC/mushroom_npc.tscn" id="19_ghoyf"]
@@ -129,7 +127,7 @@ DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
 FocusEventParent = NodePath("World/FocusEvents")
-Weathers = Array[ExtResource("2_ytafm")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
+Weathers = [ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_f4fi4")
@@ -209,11 +207,6 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 8, 0, 
 [node name="pond_corner_convex_004" parent="World/Islands/Island 4" instance=ExtResource("8_iu42u")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -8, 0, 8)
 
-[node name="Details" type="Node3D" parent="World/Islands"]
-
-[node name="Rock" parent="World/Islands/Details" instance=ExtResource("8_vvp34")]
-transform = Transform3D(0.543054, 0, -9.98524, 0, 10, 0, 9.98524, 0, 0.543054, 44.1482, -4.00541, 24.7106)
-
 [node name="PathWaterSFX_Island" type="Path3D" parent="World/Islands"]
 curve = SubResource("Curve3D_bmghv")
 
@@ -242,15 +235,6 @@ DialogueNode = "##TUTORIAL_JUMP_001##"
 transform = Transform3D(1.49871, 0, -0.0621059, 0, 1.5, 0, 0.0621059, 0, 1.49871, 29.712, -1.90735e-06, 3.70221)
 DialogueNode = "##TUTORIAL_CATCH_BUGS_001##"
 
-[node name="FrogPartnerNPC" parent="World/Islands" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("18_b0wg7")]
-transform = Transform3D(0.98793, 0, 0.1549, 0, 1, 0, -0.1549, 0, 0.98793, 45.0217, 0, 18.857)
-DialogueCamera = NodePath("CameraTransform/Camera3D")
-
-[node name="CameraTransform" type="Node3D" parent="World/Islands/FrogPartnerNPC"]
-transform = Transform3D(-0.493153, 0.581846, -0.646727, -1.33393e-08, 0.743413, 0.668832, 0.869943, 0.329836, -0.366616, -1.21144, 1.93739, -2.05278)
-
-[node name="Camera3D" type="Camera3D" parent="World/Islands/FrogPartnerNPC/CameraTransform"]
-
 [node name="EldritchFlower3" parent="World/Islands" instance=ExtResource("41_uapja")]
 transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, 9.05607, -1.966, 5.25772)
 HandInInfo = ExtResource("19_o0yll")
@@ -258,6 +242,9 @@ HandInInfo = ExtResource("19_o0yll")
 [node name="TutorialSign3" parent="World/Islands" instance=ExtResource("12_8ow6q")]
 transform = Transform3D(1.49538, 0, 0.117583, 0, 1.5, 0, -0.117583, 0, 1.49538, 17.5305, 0, -1.53454)
 DialogueNode = "##TUTORIAL_SHIELD_001##"
+
+[node name="PartnerHome" parent="World/Islands" instance=ExtResource("18_qbb40")]
+transform = Transform3D(-0.999655, 0, -0.0262643, 0, 1, 0, 0.0262643, 0, -0.999655, 43.3806, 0, 24.5843)
 
 [node name="Lilypads" type="NavigationRegion3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.8815, -3.8147e-06, -42.688)

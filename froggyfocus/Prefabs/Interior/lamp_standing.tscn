@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ujeiug7m32mk"]
+
+[ext_resource type="PackedScene" uid="uid://85qdc7hi0v0y" path="res://Assets/KayLousberg/Furniture/lamp_standing.fbx" id="1_6yxvg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jtyxv"]
+height = 4.0
+radius = 0.602051
+
+[node name="Lamp_Standing" type="Node3D"]
+
+[node name="lamp_standing" parent="." instance=ExtResource("1_6yxvg")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_jtyxv")

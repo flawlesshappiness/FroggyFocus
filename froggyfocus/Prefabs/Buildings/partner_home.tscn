@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwgq45nx6dtef"]
+
+[ext_resource type="PackedScene" uid="uid://bkqubvttfi6nh" path="res://Assets/FlawLizArt/Building/house_rock.fbx" id="1_oxr77"]
+[ext_resource type="PackedScene" uid="uid://ckawey6x8v1b3" path="res://Prefabs/Interior/house_door.tscn" id="2_lu1ap"]
+[ext_resource type="PackedScene" uid="uid://cmxm0xr4fjssv" path="res://Assets/FlawLizArt/Interior/window_round.fbx" id="3_lu1ap"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxr77"]
+size = Vector3(10.0765, 7.23615, 7.62939)
+
+[node name="PartnerHome" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.320618, 3.58894, -3.77483)
+shape = SubResource("BoxShape3D_oxr77")
+
+[node name="house_rock" parent="." instance=ExtResource("1_oxr77")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="HouseDoor" parent="." instance=ExtResource("2_lu1ap")]
+SceneName = "PartnerHomeScene"
+
+[node name="HouseStart" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.66383)
+
+[node name="window_round" parent="." instance=ExtResource("3_lu1ap")]
+transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, -2.12038, 2.73829, 0)

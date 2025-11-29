@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0s1w31s14yve"]
+
+[ext_resource type="PackedScene" uid="uid://dpkmoy2aseg7r" path="res://Assets/KayLousberg/Furniture/shelf_A_big.fbx" id="1_7xnuy"]
+[ext_resource type="PackedScene" uid="uid://oxwtr1afsbv2" path="res://Assets/KayLousberg/Furniture/book_set.fbx" id="2_th30o"]
+
+[node name="Shelf" type="Node3D"]
+
+[node name="shelf_A_big" parent="." instance=ExtResource("1_7xnuy")]
+
+[node name="book_set" parent="." instance=ExtResource("2_th30o")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.216286, 0.346222, 0.22174)

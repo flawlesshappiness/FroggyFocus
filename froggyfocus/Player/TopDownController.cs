@@ -6,6 +6,9 @@ public partial class TopDownController : CharacterBody3D
     [Export]
     public Camera3D Camera;
 
+    public Camera3D OverrideCamera { get; set; }
+    public Camera3D CurrentCamera => OverrideCamera ?? Camera;
+
     public static MultiLock GravityLock = new();
     public Vector3 DesiredMoveVelocity { get; private set; }
     public Vector3 DesiredJumpVelocity { get; private set; }
@@ -101,7 +104,7 @@ public partial class TopDownController : CharacterBody3D
     {
         if (input.Length() > 0)
         {
-            Vector3 direction = Camera.GlobalBasis * (new Vector3(input.X, 0, input.Y)).Normalized();
+            Vector3 direction = CurrentCamera.GlobalBasis * (new Vector3(input.X, 0, input.Y)).Normalized();
             Move(direction * speed);
         }
         else

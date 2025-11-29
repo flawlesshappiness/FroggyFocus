@@ -204,6 +204,10 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         env.BackgroundColor = from.BackgroundColor.Lerp(to.BackgroundColor, t);
         env.BackgroundEnergyMultiplier = Mathf.Lerp(from.BackgroundEnergyMultiplier, to.BackgroundEnergyMultiplier, t);
 
+        // Ambient Color
+        env.AmbientLightSource = to.AmbientSource;
+        env.AmbientLightColor = from.AmbientColor.Lerp(to.AmbientColor, t);
+
         // Sun
         sun.LightColor = from.SunColor.Lerp(to.SunColor, Mathf.Clamp(t * 10, 0, 1));
         sun.ShadowEnabled = true;
