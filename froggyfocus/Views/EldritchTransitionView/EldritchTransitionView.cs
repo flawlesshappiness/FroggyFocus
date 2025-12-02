@@ -21,6 +21,53 @@ public partial class EldritchTransitionView : View
 
     private Action on_transition;
 
+    public void StartTransitionEnter()
+    {
+        WeatherController.Instance.StopWeather();
+
+        this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("splash");
+            var scene = Scene.Goto<EldritchTransitionScene>();
+            Hide();
+            yield return scene.StartTransition_Enter();
+            TransitionView.Instance.StartTransition(new TransitionSettings
+            {
+                Type = TransitionType.Color,
+                Color = Colors.Black,
+                Duration = 1.0f,
+                OnTransition = () =>
+                {
+                    Scene.Goto<EldritchScene>();
+                }
+            });
+        }
+    }
+
+    public void StartTransitionExit()
+    {
+        WeatherController.Instance.StopWeather();
+        var scene = Scene.Goto<EldritchTransitionScene>();
+
+        this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            yield return scene.StartTransition_Exit();
+            TransitionView.Instance.StartTransition(new TransitionSettings
+            {
+                Type = TransitionType.Color,
+                Color = Colors.Black,
+                Duration = 2.0f,
+                OnTransition = () =>
+                {
+                    Scene.Goto<SwampScene>();
+                }
+            });
+        }
+    }
+
     public void StartTransitionShort(Action on_transition)
     {
         this.on_transition = on_transition;

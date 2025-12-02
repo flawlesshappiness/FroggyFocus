@@ -39,6 +39,7 @@ public partial class EldritchReturn : Area3D, IInteractable
         EldritchTransitionView.Instance.StartTransitionShort(() =>
         {
             Player.Instance.GlobalPosition = ReturnNode.GlobalPosition;
+            Player.Instance.ThirdPersonCamera.SnapToPosition();
         });
     }
 }

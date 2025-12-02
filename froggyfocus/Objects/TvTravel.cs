@@ -59,7 +59,7 @@ public partial class TvTravel : Area3D, IInteractable
 
     private void RegisterDebugActions()
     {
-        var category = "ELDRITCH ENTRANCE";
+        var category = "GLITCH TVs";
 
         if (!IsGoingUp)
         {
@@ -88,6 +88,12 @@ public partial class TvTravel : Area3D, IInteractable
             Data.Game.Save();
             v.Close();
         }
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Debug.RemoveActions(DebugId);
     }
 
     private void InitializeMatrixLabels()

@@ -1,11 +1,27 @@
-[gd_scene load_steps=9 format=3 uid="uid://x7nclqu76y7s"]
+[gd_scene load_steps=10 format=3 uid="uid://x7nclqu76y7s"]
 
 [ext_resource type="Script" uid="uid://cce8dupkk10ay" path="res://Prefabs/Objects/FactoryEntryDoor.cs" id="1_vx0je"]
 [ext_resource type="PackedScene" uid="uid://b54uutheaw4em" path="res://Assets/FlawLizArt/Objects/security_door.fbx" id="1_vxr4f"]
 [ext_resource type="AudioStream" uid="uid://dfylhhmi52jlf" path="res://Sounds/Raw/sfx_door_close_001.wav" id="3_do0nf"]
+[ext_resource type="AudioStream" uid="uid://d3ebk3hsx5558" path="res://Sounds/Raw/sfx_door_open_metal_001.wav" id="4_qit5c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vx0je"]
 size = Vector3(2.4646, 4.23474, 0.639648)
+
+[sub_resource type="Animation" id="Animation_6nr6u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("security_door/doorway/door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_do0nf"]
 resource_name = "open"
@@ -24,21 +40,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 4.66935e-09, -0.0391694)]
 }
 
-[sub_resource type="Animation" id="Animation_6nr6u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("security_door/doorway/door:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1pnq"]
 _data = {
 &"RESET": SubResource("Animation_6nr6u"),
@@ -48,11 +49,12 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxr4f"]
 size = Vector3(2.59595, 4.3009, 1)
 
-[node name="SecurityDoor" type="Area3D" node_paths=PackedStringArray("SfxLocked")]
+[node name="FactoryEntryDoor" type="Area3D" node_paths=PackedStringArray("SfxLocked", "SfxDoor")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_vx0je")
 SfxLocked = NodePath("SfxLocked")
+SfxDoor = NodePath("SfxDoor")
 
 [node name="security_door" parent="." instance=ExtResource("1_vxr4f")]
 
@@ -78,5 +80,11 @@ shape = SubResource("BoxShape3D_vxr4f")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.758904, 0)
 stream = ExtResource("3_do0nf")
 bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="SfxDoor" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_qit5c")
+bus = &"SFX"
+attenuation_filter_db = 0.0
 
 [editable path="security_door"]

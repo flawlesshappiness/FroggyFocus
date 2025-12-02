@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxjbfafjxye2c"]
+
+[ext_resource type="PackedScene" uid="uid://dm21th1f28v6h" path="res://Assets/FlawLizArt/Interior/blackboard.fbx" id="1_gqr53"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7ik5"]
+size = Vector3(4.74585, 3.14832, 0.226563)
+
+[node name="Blackboard" type="Node3D"]
+
+[node name="blackboard" parent="." instance=ExtResource("1_gqr53")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51324, 0)
+shape = SubResource("BoxShape3D_l7ik5")

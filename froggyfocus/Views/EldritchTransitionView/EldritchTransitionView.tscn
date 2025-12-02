@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://v3dk0hx0sy6q"]
+[gd_scene load_steps=27 format=3 uid="uid://v3dk0hx0sy6q"]
 
 [ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="1_rdds2"]
 [ext_resource type="Script" uid="uid://cu425iglqq43d" path="res://Views/EldritchTransitionView/EldritchTransitionView.cs" id="1_yigmh"]
@@ -234,6 +234,61 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_q65o6"]
+resource_name = "splash"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/SplashScale:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0337919),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PlaySplashEffect"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxSplash:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0324161),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_15qts"]
 resource_name = "transition"
 length = 21.0
@@ -459,6 +514,7 @@ tracks/8/keys = {
 _data = {
 &"RESET": SubResource("Animation_yigmh"),
 &"hide": SubResource("Animation_4wy8w"),
+&"splash": SubResource("Animation_q65o6"),
 &"transition": SubResource("Animation_15qts"),
 &"transition_short": SubResource("Animation_fpjq7")
 }

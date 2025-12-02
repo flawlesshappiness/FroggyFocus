@@ -71,6 +71,7 @@ public partial class FastTravelView : PanelView
             v.ContentSearch.AddItem(nameof(EldritchScene), () => SceneActions(v, nameof(EldritchScene)));
             v.ContentSearch.AddItem(nameof(CrystalScene), () => SceneActions(v, nameof(CrystalScene)));
             v.ContentSearch.AddItem(nameof(PartnerHomeScene), () => SceneActions(v, nameof(PartnerHomeScene)));
+            v.ContentSearch.AddItem(nameof(ScientistLabScene), () => SceneActions(v, nameof(ScientistLabScene)));
 
             v.ContentSearch.UpdateButtons();
         }

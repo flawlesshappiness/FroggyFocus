@@ -1,0 +1,587 @@
+[gd_scene load_steps=28 format=3 uid="uid://btgocwrkes74n"]
+
+[ext_resource type="Script" uid="uid://cyd05rdcfsp2u" path="res://Scenes/EldritchTransitionScene.cs" id="1_s3kfn"]
+[ext_resource type="PackedScene" uid="uid://dneub1w482vjc" path="res://Assets/FlawLizArt/Eldritch/eye.fbx" id="1_vfsqn"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="2_s3kfn"]
+[ext_resource type="Environment" uid="uid://coth5clreluwp" path="res://Environment/EldritchTransition.tres" id="4_d24mt"]
+[ext_resource type="AudioStream" uid="uid://6n3om44qwvtv" path="res://Sounds/Raw/sfx_eldritch_transition_braam_001.wav" id="7_b5ovd"]
+[ext_resource type="AudioStream" uid="uid://ddbee7dh5iiup" path="res://Sounds/Raw/sfx_eldritch_transition_braam_002.wav" id="8_0qtok"]
+[ext_resource type="AudioStream" uid="uid://b3ywcc4tpipbu" path="res://Sounds/Raw/sfx_eldritch_transition_braam_003.wav" id="9_0x0jt"]
+[ext_resource type="AudioStream" uid="uid://gn0g8g4va1dn" path="res://Sounds/Raw/sfx_eldritch_transition_amb_001.wav" id="10_p17rk"]
+[ext_resource type="AudioStream" uid="uid://g6nbr6xoaeie" path="res://Sounds/Raw/sfx_eldritch_transition_hit_001.wav" id="11_duxw5"]
+[ext_resource type="AudioStream" uid="uid://dtyxe06md632t" path="res://Sounds/Raw/sfx_impact_water_001.wav" id="11_s5fum"]
+[ext_resource type="AudioStream" uid="uid://3iduexvwmbo0" path="res://Sounds/Raw/sfx_eldritch_transition_heartbeat_001.wav" id="12_awcgj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_erslq"]
+shading_mode = 0
+albedo_color = Color(1, 0.766, 0.22, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5fum"]
+albedo_color = Color(0.47, 0.22184, 0.1598, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0x0jt"]
+albedo_color = Color(0.47, 0.22184, 0.1598, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p17rk"]
+albedo_color = Color(0.47, 0.22184, 0.1598, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_duxw5"]
+albedo_color = Color(0.47, 0.22184, 0.1598, 1)
+
+[sub_resource type="Animation" id="Animation_4s0rg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-411.106, 12.231, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 31.2134, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxBraam001:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SfxBraam002:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxBraam003:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SfxAmb:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SfxHit:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera3D:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SfxHit:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vfsqn"]
+resource_name = "enter"
+length = 13.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.03471, 6, 6.05121, 9, 9.04522),
+"transitions": PackedFloat32Array(1, 0, 1, 0, 1, 0, 1),
+"update": 0,
+"values": [Vector3(2.622, 28, 0), Vector3(2.622, 28, 0), Vector3(15, 25, 0), Vector3(15, 25, 0), Vector3(51.6235, 12.2309, 0), Vector3(51.6235, 12.2309, 0), Vector3(-411.106, 12.231, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 31, 0), Vector3(0, 20, 0)]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Frog/frog/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("Armature|falling"),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("eye/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("Armature|idle_closed", "Armature|open"),
+"times": PackedFloat32Array(0, 6)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SfxBraam001:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0855776),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SfxBraam002:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SfxBraam003:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SfxAmb:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.114103, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SfxHit:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D:current")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "animation"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Heart/AnimationPlayer_Heart")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": PackedStringArray("heartbeat", "heartbeat", "heartbeat"),
+"times": PackedFloat32Array(0.814564, 3.72985, 6.75231)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("SfxHit:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(10.0277, 12.9161),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_s5fum"]
+resource_name = "exit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s3kfn"]
+_data = {
+&"RESET": SubResource("Animation_4s0rg"),
+&"enter": SubResource("Animation_vfsqn"),
+&"exit": SubResource("Animation_s5fum")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qtok"]
+albedo_color = Color(0.22, 0.1232, 0.1232, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_b36ui"]
+material = SubResource("StandardMaterial3D_0qtok")
+flip_faces = true
+radius = 300.0
+height = 600.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5ovd"]
+albedo_color = Color(0.4, 0.214133, 0.072, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0qtok"]
+material = SubResource("StandardMaterial3D_b5ovd")
+radius = 25.0
+height = 100.0
+
+[sub_resource type="Animation" id="Animation_p17rk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SfxHeatbeat:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimHeart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GlowClose:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GlowFar:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0x0jt"]
+resource_name = "heartbeat"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SfxHeatbeat:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00407522),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimHeart:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.043844, 0.124812, 0.237454, 1.92129),
+"transitions": PackedFloat32Array(0.5, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.25, 1.25, 1.25), Vector3(1, 1, 1), Vector3(1.25, 1.25, 1.25), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GlowClose:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0332026, 0.110883, 0.229464, 0.449857),
+"transitions": PackedFloat32Array(0.5, -2, -2, -2, -2),
+"update": 0,
+"values": [0.0, 2.0, 0.0, 2.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GlowFar:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.00178907, 0.0272521, 0.230213, 1.92828),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duxw5"]
+_data = {
+&"RESET": SubResource("Animation_p17rk"),
+&"heartbeat": SubResource("Animation_0x0jt")
+}
+
+[node name="EldritchTransitionScene" type="Node3D" node_paths=PackedStringArray("AnimationPlayer")]
+script = ExtResource("1_s3kfn")
+AnimationPlayer = NodePath("AnimationPlayer_Main")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 0.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_d24mt")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -411.106, 12.231, 0)
+current = true
+
+[node name="eye" parent="." instance=ExtResource("1_vfsqn")]
+transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, -25.0559, 0)
+
+[node name="eyeball" parent="eye" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_erslq")
+
+[node name="Skeleton3D" parent="eye/Armature" index="0"]
+bones/1/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+bones/3/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
+bones/3/scale = Vector3(1, 1, 1)
+
+[node name="eyelid_upper" parent="eye/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_s5fum")
+surface_material_override/1 = SubResource("StandardMaterial3D_0x0jt")
+
+[node name="eyelid_lower" parent="eye/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_p17rk")
+surface_material_override/1 = SubResource("StandardMaterial3D_duxw5")
+
+[node name="Frog" parent="." instance=ExtResource("2_s3kfn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 31.2134, 0)
+DisableAnimationStates = true
+
+[node name="Skeleton3D" parent="Frog/frog/Armature" index="0"]
+bones/1/position = Vector3(-0.00162057, -0.0124686, -0.0117448)
+bones/1/rotation = Quaternion(-0.129218, 1.1821e-07, -1.5404e-08, 0.991616)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.0803938, 0.00153089, -0.00847798, 0.996726)
+bones/3/rotation = Quaternion(0.110444, 1.18272e-07, -1.11947e-08, 0.993882)
+bones/6/rotation = Quaternion(0.0744583, -2.3805e-07, -1.74894e-08, 0.997224)
+bones/7/rotation = Quaternion(0.121352, -5.29267e-10, -5.68536e-08, 0.99261)
+bones/8/rotation = Quaternion(3.51058e-09, 0.998754, -0.0498975, -5.33472e-07)
+bones/11/rotation = Quaternion(0.739943, 0.00663617, -0.0553313, 0.670357)
+bones/12/rotation = Quaternion(-0.0010741, 0.521424, 0.00278866, 0.853292)
+bones/13/rotation = Quaternion(-0.059096, -0.637207, 0.144818, 0.754654)
+bones/23/rotation = Quaternion(0.759982, -0.00318229, 0.0972182, 0.642624)
+bones/24/rotation = Quaternion(-0.00106454, -0.521424, -0.00276376, 0.853293)
+bones/25/rotation = Quaternion(-0.0590959, 0.637207, -0.144818, 0.754654)
+bones/28/scale = Vector3(1, 1, 1)
+bones/34/rotation = Quaternion(0.213435, 0.195644, 0.896204, -0.336135)
+bones/35/rotation = Quaternion(-0.00290947, 0.0364387, -0.0005124, 0.999332)
+bones/36/rotation = Quaternion(0.035499, 0.980733, 0.189781, 0.0297572)
+bones/38/rotation = Quaternion(0.205698, -0.190055, -0.909825, -0.306245)
+bones/39/rotation = Quaternion(-0.00288279, -0.0364388, 0.000507695, 0.999332)
+bones/40/rotation = Quaternion(-0.035499, 0.980733, 0.189781, -0.0297572)
+bones/42/position = Vector3(0.0242467, 0.00846009, 0.00173028)
+bones/42/scale = Vector3(0.619324, 1, 0.941337)
+bones/44/position = Vector3(0.0294793, -0.0350963, 0.00115202)
+bones/48/position = Vector3(0.0185457, -0.00599798, 0.00173028)
+bones/50/position = Vector3(-0.0242467, 0.00846009, 0.00173028)
+bones/50/scale = Vector3(0.619324, 1, 0.941337)
+bones/52/position = Vector3(-0.0294793, -0.0350963, 0.00115202)
+bones/52/rotation = Quaternion(-0.334369, 0.623055, 0.623055, -0.334369)
+bones/54/rotation = Quaternion(-0.334369, 0.623055, 0.623055, -0.334369)
+bones/56/position = Vector3(-0.0185457, -0.00599798, 0.00173028)
+
+[node name="HatAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.999852, 0.0171813, 0.0012899, -0.0172296, 0.997046, 0.0748554, 2.48968e-08, -0.0748665, 0.997194, -0.00130669, 0.0116917, -0.0136399)
+
+[node name="FaceAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.999852, 0.0171813, 0.0012899, -0.0172296, 0.997046, 0.0748554, 2.48968e-08, -0.0748665, 0.997194, -0.00130669, 0.0116917, -0.0136399)
+
+[node name="AnimationPlayer" parent="Frog/frog" index="1"]
+blend_times = [&"Armature|jump_end", &"Armature|jump_end", 0.01, &"Armature|jump_end", &"Armature|jump_start", 0.01]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Frog"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.25356e-09, 1.65014, 0.0744328)
+light_energy = 0.1
+light_volumetric_fog_energy = 0.0
+omni_range = 10.0
+
+[node name="AnimationPlayer_Main" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s3kfn")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.70549, 0)
+light_color = Color(1, 0.466667, 0, 1)
+light_volumetric_fog_energy = 0.0
+omni_range = 56.0296
+
+[node name="GlowEye" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4032, -5.22454, 0)
+light_color = Color(1, 0.866667, 0, 1)
+light_volumetric_fog_energy = 3.0
+omni_range = 24.9486
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_b36ui")
+
+[node name="SfxBraam001" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_b5ovd")
+bus = &"BGM"
+
+[node name="SfxBraam002" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0qtok")
+bus = &"BGM"
+
+[node name="SfxBraam003" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0x0jt")
+bus = &"BGM"
+
+[node name="SfxAmb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_p17rk")
+bus = &"BGM"
+
+[node name="SfxHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_duxw5")
+bus = &"BGM"
+
+[node name="Heart" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.7235, 0, 0)
+
+[node name="AnimHeart" type="Node3D" parent="Heart"]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Heart/AnimHeart"]
+mesh = SubResource("SphereMesh_0qtok")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer_Heart" type="AnimationPlayer" parent="Heart"]
+libraries = {
+&"": SubResource("AnimationLibrary_duxw5")
+}
+playback_default_blend_time = 0.1
+
+[node name="SfxHeatbeat" type="AudioStreamPlayer" parent="Heart"]
+stream = ExtResource("12_awcgj")
+bus = &"BGM"
+
+[node name="GlowClose" type="OmniLight3D" parent="Heart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.0835, 32.6848, 0)
+light_color = Color(1, 0.866667, 0, 1)
+light_energy = 0.0
+light_volumetric_fog_energy = 0.5
+omni_range = 210.434
+
+[node name="GlowFar" type="OmniLight3D" parent="Heart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.0152, -0.549553, 0)
+light_color = Color(1, 0.546667, 0.32, 1)
+light_energy = 0.0
+light_volumetric_fog_energy = 2.0
+omni_range = 500.0
+
+[node name="SfxSplash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_s5fum")
+bus = &"SFX"
+
+[editable path="eye"]
+[editable path="Frog"]
+[editable path="Frog/frog"]

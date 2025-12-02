@@ -11,9 +11,9 @@ public partial class HouseDoor : Area3D, IInteractable
     [Export]
     public AudioStreamPlayer3D SfxDoor;
 
-    public void Interact()
+    public virtual void Interact()
     {
-        SfxDoor.Play();
+        SfxDoor?.Play();
 
         TransitionView.Instance.StartTransition(new TransitionSettings
         {

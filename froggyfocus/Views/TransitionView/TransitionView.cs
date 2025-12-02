@@ -24,8 +24,8 @@ public partial class TransitionView : View
             SetColor(settings.Color);
             yield return AnimationPlayer.PlayAndWaitForAnimation(settings.AnimationIn);
             settings.OnTransition?.Invoke();
-            yield return AnimationPlayer.PlayAndWaitForAnimation(settings.AnimationOut);
             Player.SetAllLocks(nameof(TransitionView), false);
+            yield return AnimationPlayer.PlayAndWaitForAnimation(settings.AnimationOut);
             Hide();
         }
     }

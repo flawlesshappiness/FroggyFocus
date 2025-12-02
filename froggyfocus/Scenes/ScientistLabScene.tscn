@@ -1,0 +1,227 @@
+[gd_scene load_steps=18 format=3 uid="uid://clx03k1vqd1xx"]
+
+[ext_resource type="Script" uid="uid://pw140x2mf78g" path="res://Scenes/ScientistLabScene.cs" id="1_xypfy"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_6dw5m"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_v02wp"]
+[ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="3_8ophw"]
+[ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_tqw4r"]
+[ext_resource type="PackedScene" uid="uid://x7nclqu76y7s" path="res://Prefabs/Objects/factory_entry_door.tscn" id="5_tqw4r"]
+[ext_resource type="PackedScene" uid="uid://ch71i4r1h8ofk" path="res://Prefabs/NPC/FrogScientistNPC/frog_scientist_npc.tscn" id="9_8ophw"]
+[ext_resource type="PackedScene" uid="uid://b73xd2pio1sq0" path="res://Assets/FlawLizArt/Interior/tile_2x2.fbx" id="9_fk7me"]
+[ext_resource type="PackedScene" uid="uid://cfbpfkqqtbtfh" path="res://Assets/FlawLizArt/Interior/wall_lab.fbx" id="10_bduu1"]
+[ext_resource type="PackedScene" uid="uid://dr5g3ygbk7grl" path="res://Prefabs/Interior/table_lab.tscn" id="10_oherf"]
+[ext_resource type="PackedScene" uid="uid://b4q50qn0su2fg" path="res://Assets/KayLousberg/Dungeon/potionLarge_blue.fbx" id="11_ihra4"]
+[ext_resource type="PackedScene" uid="uid://ov4o6mqhjh8y" path="res://Assets/KayLousberg/Dungeon/potionLarge_red.fbx" id="12_fk7me"]
+[ext_resource type="PackedScene" uid="uid://dwll0vuniex4i" path="res://Assets/FlawLizArt/Interior/chair_lab.fbx" id="14_bduu1"]
+[ext_resource type="PackedScene" uid="uid://cxjbfafjxye2c" path="res://Prefabs/Interior/blackboard.tscn" id="15_fqn58"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_nb64n"]
+vertices = PackedVector3Array(-4.25, 0.5, -4.25, -4.25, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yinag"]
+size = Vector3(12, 1, 12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v02wp"]
+size = Vector3(12, 4, 1)
+
+[node name="ScientistLabScene" type="Node3D" node_paths=PackedStringArray("Camera", "FactoryDoor", "DirectionalLight", "WorldEnvironment")]
+script = ExtResource("1_xypfy")
+Camera = NodePath("CameraParent/Camera3D")
+FactoryDoor = NodePath("World/Interior/FactoryEntryDoor2")
+DirectionalLight = NodePath("DirectionalLight3D")
+WorldEnvironment = NodePath("WorldEnvironment")
+Weathers = Array[ExtResource("2_v02wp")]([ExtResource("3_8ophw")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_6dw5m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.965926, 0.183013, 0.183013, 0, -0.707107, 0.707107, 0.258819, -0.683013, -0.683013, 0, 5.72245, 10.5826)
+light_color = Color(1, 1, 0.7, 1)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("3_tqw4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85207, 0, 3.69703)
+
+[node name="CameraParent" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, -2.98023e-08, 1, 0, 0, -2.98023e-08, 1, 5.00804, 8.09642, -5.03556)
+
+[node name="Camera3D" type="Camera3D" parent="CameraParent"]
+transform = Transform3D(-0.707107, -0.468229, 0.52987, 8.72886e-09, 0.749349, 0.662176, -0.707107, 0.468229, -0.52987, 0, 0, 0)
+projection = 1
+size = 10.6385
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
+navigation_mesh = SubResource("NavigationMesh_nb64n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_yinag")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+shape = SubResource("BoxShape3D_yinag")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 5.5)
+shape = SubResource("BoxShape3D_v02wp")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -5.5)
+shape = SubResource("BoxShape3D_v02wp")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.5, 2.5, 0)
+shape = SubResource("BoxShape3D_v02wp")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.5, 2.5, 4.80825e-07)
+shape = SubResource("BoxShape3D_v02wp")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="World/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.31948, 0)
+height = 5.0
+vertices = PackedVector3Array(-6.93163, 0, -6.91977, -7.18039, 0, 7.17673, 6.83319, 0, 7.05235, 6.75027, 0, -6.79539)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false
+
+[node name="FrogScientistNPC" parent="World" instance=ExtResource("9_8ophw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.89021, 0, 1.83498)
+
+[node name="Building" type="Node3D" parent="World"]
+
+[node name="tile_2x2" parent="World/Building" instance=ExtResource("9_fk7me")]
+
+[node name="tile_2x3" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="tile_2x4" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="tile_2x5" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="tile_2x6" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="tile_2x7" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="tile_2x8" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="tile_2x9" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+
+[node name="tile_2x10" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="tile_2x11" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+
+[node name="tile_2x12" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="tile_2x13" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="tile_2x14" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="tile_2x15" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="tile_2x16" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="tile_2x17" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="tile_2x18" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="tile_2x19" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="tile_2x20" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="tile_2x21" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="tile_2x22" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="tile_2x23" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="tile_2x24" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="tile_2x25" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="tile_2x26" parent="World/Building" instance=ExtResource("9_fk7me")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="wall_lab3" parent="World/Building" instance=ExtResource("10_bduu1")]
+transform = Transform3D(-2.5, 0, 8.74228e-08, 0, 1, 0, -2.18557e-07, 0, -1, 0, 0, 5)
+
+[node name="wall_lab4" parent="World/Building" instance=ExtResource("10_bduu1")]
+transform = Transform3D(3.27835e-07, 0, 1, 0, 1, 0, -2.5, 0, 1.31134e-07, -5, 0, 0)
+
+[node name="Interior" type="Node3D" parent="World"]
+
+[node name="FactoryEntryDoor" parent="World/Interior" instance=ExtResource("5_tqw4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88551, 0, 5)
+SceneName = "FactoryScene"
+StartNode = "LabStart"
+
+[node name="FactoryEntryDoor2" parent="World/Interior" instance=ExtResource("5_tqw4r")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.0213, 0, -2)
+
+[node name="table_lab" parent="World/Interior" instance=ExtResource("10_oherf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248843, 0, 4.29972)
+
+[node name="potionLarge_blue" parent="World/Interior/table_lab" instance=ExtResource("11_ihra4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.164359, 1.13872, 0.105837)
+
+[node name="potionLarge_blue2" parent="World/Interior/table_lab" instance=ExtResource("11_ihra4")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.364798, 1.13872, 0.192383)
+
+[node name="table_lab2" parent="World/Interior" instance=ExtResource("10_oherf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06044, 0, 4.29972)
+
+[node name="potionLarge_red" parent="World/Interior/table_lab2" instance=ExtResource("12_fk7me")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.557454, 1.13501, 0.233068)
+
+[node name="table_lab3" parent="World/Interior" instance=ExtResource("10_oherf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.212958, 0, -4.2369)
+
+[node name="table_lab4" parent="World/Interior" instance=ExtResource("10_oherf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.03567, 0, -4.2369)
+
+[node name="Blackboard" parent="World/Interior" instance=ExtResource("15_fqn58")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.24466, 0, 1.93685)
+
+[node name="chair_lab" parent="World/Interior" instance=ExtResource("14_bduu1")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.410129, 0, 3.24458)
+
+[node name="chair_lab2" parent="World/Interior" instance=ExtResource("14_bduu1")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.4309, 0, 3.28189)
+
+[node name="chair_lab3" parent="World/Interior" instance=ExtResource("14_bduu1")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.73217, 0, -3.23799)
+
+[node name="chair_lab4" parent="World/Interior" instance=ExtResource("14_bduu1")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.468115, 0, -3.23799)
+
+[node name="chair_lab5" parent="World/Interior" instance=ExtResource("14_bduu1")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.33912, -2.38419e-07, -4.3178)

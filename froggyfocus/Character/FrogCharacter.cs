@@ -5,6 +5,12 @@ using System.Collections;
 public partial class FrogCharacter : Character
 {
     [Export]
+    public bool DisableAnimationStates;
+
+    [Export]
+    public bool DisableAppearanceUpdates;
+
+    [Export]
     public Node3D Tongue;
 
     [Export]
@@ -59,8 +65,11 @@ public partial class FrogCharacter : Character
         InitializeAnimations();
         InitializeTongue();
 
-        ClearAppearance();
-        LoadAppearance();
+        if (!DisableAppearanceUpdates)
+        {
+            ClearAppearance();
+            LoadAppearance();
+        }
 
         CustomizeAppearanceControl.OnBodyColorChanged += BodyColorChanged;
         CustomizeAppearanceControl.OnHatChanged += HatChanged;
@@ -84,6 +93,8 @@ public partial class FrogCharacter : Character
 
     private void InitializeAnimations()
     {
+        if (DisableAnimationStates) return;
+
         var idle = Animation.CreateAnimation("Armature|idle", true);
         var walking = Animation.CreateAnimation("Armature|walking", true);
         var jump_start = Animation.CreateAnimation("Armature|jump_start", false);
@@ -166,6 +177,8 @@ public partial class FrogCharacter : Character
 
     private void BodyColorChanged()
     {
+        if (DisableAppearanceUpdates) return;
+
         var data_type = Data.Game.FrogAppearanceData.BodyColor;
         var type = data_type == ItemType.Color_Default ? ItemType.Color_Green : data_type;
         var color = AppearanceColorController.Instance.GetColor(type);
@@ -175,12 +188,16 @@ public partial class FrogCharacter : Character
 
     private void HatChanged()
     {
+        if (DisableAppearanceUpdates) return;
+
         var data = Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Hat);
         HatAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
     }
 
     private void FaceChanged()
     {
+        if (DisableAppearanceUpdates) return;
+
         var data = Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Face);
         FaceAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
     }

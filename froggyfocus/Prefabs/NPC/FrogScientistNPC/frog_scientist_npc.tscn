@@ -24,6 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369141, -0.396207)
 shape = SubResource("CylinderShape3D_rhrvr")
 
 [node name="Frog" parent="." instance=ExtResource("3_bytrc")]
+DisableAppearanceUpdates = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

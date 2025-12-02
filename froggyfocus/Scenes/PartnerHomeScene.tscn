@@ -35,7 +35,7 @@ size = Vector2(10, 4)
 
 [node name="PartnerHomeScene" type="Node3D" node_paths=PackedStringArray("Camera", "DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_bew2v")
-Camera = NodePath("Camera3D")
+Camera = NodePath("CameraParent/Camera3D")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 Weathers = Array[ExtResource("2_hpje1")]([ExtResource("3_ul0f8")])
@@ -50,6 +50,14 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_bchqc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0314896, 0, 3.69703)
+
+[node name="CameraParent" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, -2.98023e-08, 1, 0, 0, -2.98023e-08, 1, 5.00804, 8.09642, -5.03556)
+
+[node name="Camera3D" type="Camera3D" parent="CameraParent"]
+transform = Transform3D(-0.707107, -0.468229, 0.52987, 8.72886e-09, 0.749349, 0.662176, -0.707107, 0.468229, -0.52987, 0, 0, 0)
+projection = 1
+size = 10.6385
 
 [node name="World" type="Node3D" parent="."]
 
@@ -212,8 +220,3 @@ transform = Transform3D(-0.0874339, 0, -0.99617, 0, 1, 0, 0.99617, 0, -0.0874339
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 SceneName = "SwampScene"
 StartNode = "HouseStart"
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.707107, -0.468229, 0.52987, 2.98023e-08, 0.749349, 0.662176, -0.707107, 0.468229, -0.52987, 5.00804, 8.09642, -5.03556)
-projection = 1
-size = 10.6385

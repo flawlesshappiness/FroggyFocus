@@ -1,13 +1,22 @@
 using Godot;
 
-public partial class FactoryEntryDoor : Area3D, IInteractable
+public partial class FactoryEntryDoor : HouseDoor, IInteractable
 {
     [Export]
     public AudioStreamPlayer3D SfxLocked;
 
-    public void Interact()
+    public bool Locked { get; set; }
+
+    public override void Interact()
     {
-        SfxLocked.Play();
-        DialogueController.Instance.StartDialogue("##LOCKED##");
+        if (Locked)
+        {
+            SfxLocked.Play();
+            DialogueController.Instance.StartDialogue("##LOCKED##");
+        }
+        else
+        {
+            base.Interact();
+        }
     }
 }

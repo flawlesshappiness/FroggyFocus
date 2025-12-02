@@ -143,10 +143,14 @@ public partial class EldritchEntrance : Area3D
 
         Player.Instance.Disable();
 
-        EldritchTransitionView.Instance.StartTransition(() =>
+        if (IsEntrance)
         {
-            Scene.Goto(Data.Game.CurrentScene);
-        });
+            EldritchTransitionView.Instance.StartTransitionEnter();
+        }
+        else
+        {
+            EldritchTransitionView.Instance.StartTransitionExit();
+        }
     }
 
     private bool ValidateFlowers()

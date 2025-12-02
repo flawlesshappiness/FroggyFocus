@@ -122,7 +122,7 @@ public partial class ThirdPersonCamera : Node3D
 
     private void Process_Position()
     {
-        var speed = 10f;
+        var speed = 9f;
         var target = GetTargetPosition();
         GlobalPosition = GlobalPosition.Lerp(target, speed * GameTime.DeltaTime);
     }
@@ -143,7 +143,7 @@ public partial class ThirdPersonCamera : Node3D
     {
         if (Player.IsJumping)
         {
-            var y = 0.7f + Player.Velocity.Y * 0.2f;
+            var y = 0.7f + Player.Velocity.Y * 0.15f;
             y = Mathf.Max(y, 0.7f);
             return new Vector3(0, y, 0);
         }
