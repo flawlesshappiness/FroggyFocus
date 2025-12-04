@@ -5,10 +5,7 @@ using System.Linq;
 public partial class CrystalDoorway : Area3D, IInteractable
 {
     [Export]
-    public string SceneName;
-
-    [Export]
-    public string StartNode;
+    public bool IsEntrance;
 
     [Export]
     public AnimationPlayer AnimationPlayer;
@@ -16,6 +13,8 @@ public partial class CrystalDoorway : Area3D, IInteractable
     [Export]
     public Array<CrystalPillarContainer> Containers;
 
+    private string SceneName => IsEntrance ? nameof(CrystalScene) : nameof(CaveScene);
+    private string StartNode => IsEntrance ? "" : "CrystalStart";
     private bool AllContainersValid => Containers.Count == 0 || Containers.All(x => x.IsCompleted);
 
     private bool is_open;
@@ -60,7 +59,24 @@ public partial class CrystalDoorway : Area3D, IInteractable
         Data.Game.CurrentScene = SceneName;
         Data.Game.Save();
 
-        Scene.Goto(SceneName);
+        TransitionView.Instance.StartTransition(new TransitionSettings
+        {
+            Type = TransitionType.Color,
+            Color = Colors.Black,
+            Duration = 1f,
+            OnTransition = () =>
+            {
+                if (IsEntrance)
+                {
+                    var scene = Scene.Goto<CrystalScene>();
+                    scene.StartIntro();
+                }
+                else
+                {
+                    Scene.Goto(SceneName);
+                }
+            }
+        });
     }
 
     public void SetOpen(bool open)

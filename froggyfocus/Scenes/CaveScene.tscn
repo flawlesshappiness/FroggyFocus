@@ -634,7 +634,7 @@ transform = Transform3D(-0.635917, 0.492746, -0.593979, 0, 0.769645, 0.638472, 0
 
 [node name="CrystalDoorway" parent="World/Crystals" node_paths=PackedStringArray("Containers") instance=ExtResource("32_68c8r")]
 transform = Transform3D(-0.991406, 0, -0.13082, 0, 1, 0, 0.13082, 0, -0.991406, -52.4553, 23.6018, -28.4494)
-SceneName = "CrystalScene"
+IsEntrance = true
 Containers = [NodePath("../../CrystalPillars/CrystalPillarContainer1"), NodePath("../../CrystalPillars/CrystalPillarContainer2"), NodePath("../../CrystalPillars/CrystalPillarContainer3"), NodePath("../../CrystalPillars/CrystalPillarContainer4"), NodePath("../../CrystalPillars/CrystalPillarContainer5")]
 
 [node name="CrystalStart" type="Node3D" parent="World/Crystals/CrystalDoorway"]

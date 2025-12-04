@@ -109,7 +109,7 @@ transform = Transform3D(1, 2.21865e-16, -2.30976e-16, 2.30975e-16, -0.99919, 0.0
 transform = Transform3D(1, 1.89617e-16, -3.37584e-16, 3.37584e-16, -0.853957, 0.520342, -1.89617e-16, -0.520342, -0.853958, 5.24844e-19, -0.00236365, 0.0638836)
 
 [node name="EldritchExit" type="Area3D" parent="NavigationRegion3D/Exit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.782933)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.286242)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("6_7pl5y")
