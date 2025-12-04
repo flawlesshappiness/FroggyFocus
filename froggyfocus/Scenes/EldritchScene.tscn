@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://hka08c0m8os8" path="res://Prefabs/Water/water_bile.tscn" id="5_aut7b"]
 [ext_resource type="PackedScene" uid="uid://dcfuntqu5frvb" path="res://Prefabs/Ground/eldritch_corner_convex_001.tscn" id="5_qjlmc"]
 [ext_resource type="PackedScene" uid="uid://cvmh0jn7gf0a3" path="res://Prefabs/Objects/floating_bone_rib.tscn" id="5_ro7oi"]
+[ext_resource type="Script" uid="uid://byrrdr3mmbsyt" path="res://Prefabs/Eldritch/EldritchExit.cs" id="6_7pl5y"]
 [ext_resource type="PackedScene" uid="uid://c7whvf1sy2d0g" path="res://Prefabs/Eldritch/eldritch_pillar.tscn" id="6_ell4v"]
 [ext_resource type="PackedScene" uid="uid://pxtjfc22pib3" path="res://Prefabs/Eldritch/eldritch_tentacle_wall.tscn" id="6_hulv8"]
 [ext_resource type="PackedScene" uid="uid://b1rkrpd5uvu4o" path="res://Prefabs/Ground/eldritch_island_small_focus.tscn" id="7_5am1p"]
@@ -15,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="7_6636b"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="9_7a7gi"]
 [ext_resource type="Script" uid="uid://dmmkas04t7id3" path="res://Prefabs/Eldritch/EldritchReturn.cs" id="9_vmhyt"]
-[ext_resource type="PackedScene" uid="uid://c7qruwrt0l5pa" path="res://Prefabs/Eldritch/eldritch_entrance.tscn" id="10_c1m17"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="13_s322q"]
 [ext_resource type="Resource" uid="uid://byovumopjt2bh" path="res://FocusEvent/Resources/Eldritch_Syringe.tres" id="14_s322q"]
 [ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="15_ki66s"]
@@ -65,6 +65,61 @@ environment = ExtResource("2_lfqeu")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vole6")
 
+[node name="Exit" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(-0.985337, 0, -0.170622, 0, 1, 0, 0.170622, 0, -0.985337, 0.528736, -1, 5.33131)
+
+[node name="EldritchTentacle" parent="NavigationRegion3D/Exit" instance=ExtResource("15_ki66s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+StartState = 4
+
+[node name="BoneAttachment3D" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 1.89617e-16, -3.37584e-16, 3.37584e-16, -0.853957, 0.520342, -1.89617e-16, -0.520342, -0.853958, 2.42101e-18, -0.0109032, 0.0586802)
+
+[node name="Eldritch_Eye" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D/BoneAttachment3D" index="0"]
+StartState = 1
+
+[node name="Limb_001" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.19209e-09, -9.31323e-10)
+
+[node name="Limb_002" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, -4.29576e-17, -4.19501e-18, 4.19501e-18, 0.193464, -0.981107, 4.29576e-17, 0.981107, 0.193464, 0, -2.38419e-09, 0.01)
+
+[node name="Limb_003" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, -1.25782e-16, -3.9062e-17, 3.9062e-17, 0.566473, -0.82408, 1.25782e-16, 0.82408, 0.566473, -4.29576e-19, 0.00193464, 0.0198111)
+
+[node name="Limb_004" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, -1.95655e-16, -1.17055e-16, 1.17055e-16, 0.881154, -0.472829, 1.95655e-16, 0.472829, 0.881154, -1.6874e-18, 0.00759937, 0.0280519)
+
+[node name="Limb_005" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, -1.10923e-16, -2.96909e-17, 2.96909e-17, 0.499552, -0.866284, 1.10923e-16, 0.866284, 0.499552, -3.64395e-18, 0.0164109, 0.0327802)
+
+[node name="Limb_006" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, -6.91314e-18, -1.0772e-19, 1.07591e-19, 0.031135, -0.999515, 6.91318e-18, 0.999515, 0.031135, -4.75318e-18, 0.0214064, 0.041443)
+
+[node name="Limb_007" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="8"]
+transform = Transform3D(1, 1.11279e-16, -2.9897e-17, 2.98967e-17, -0.501156, -0.865356, -1.11279e-16, 0.865357, -0.501156, -4.82231e-18, 0.0217178, 0.0514381)
+
+[node name="Limb_008" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="9"]
+transform = Transform3D(1, 2.01571e-16, -1.28917e-16, 1.28917e-16, -0.907797, -0.41941, -2.01571e-16, 0.41941, -0.907797, -3.70952e-18, 0.0167062, 0.0600917)
+
+[node name="Limb_009" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="10"]
+transform = Transform3D(1, 2.21865e-16, -2.30976e-16, 2.30975e-16, -0.99919, 0.0402215, -2.21865e-16, -0.0402214, -0.999191, -1.69381e-18, 0.00762825, 0.0642858)
+
+[node name="Limb_010" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="11"]
+transform = Transform3D(1, 1.89617e-16, -3.37584e-16, 3.37584e-16, -0.853957, 0.520342, -1.89617e-16, -0.520342, -0.853958, 5.24844e-19, -0.00236365, 0.0638836)
+
+[node name="EldritchExit" type="Area3D" parent="NavigationRegion3D/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.782933)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("6_7pl5y")
+SceneName = "SwampScene"
+StartNode = "EldritchStart"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Exit/EldritchExit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+shape = SubResource("CylinderShape3D_ki66s")
+
 [node name="Start" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Island" type="Node3D" parent="NavigationRegion3D/Start"]
@@ -81,26 +136,8 @@ transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 
 [node name="pond_corner_convex_004" parent="NavigationRegion3D/Start/Island" instance=ExtResource("5_qjlmc")]
 transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
 
-[node name="TeleportBack" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(0.938884, 0, 0.344233, 0, 1, 0, -0.344233, 0, 0.938884, 2.55845, -4.76837e-07, 12.2472)
-
-[node name="Island" type="Node3D" parent="NavigationRegion3D/TeleportBack"]
-transform = Transform3D(0.977962, 0, -0.208782, 0, 1, 0, 0.208782, 0, 0.977962, 0, 0, 0)
-
-[node name="pond_corner_convex_001" parent="NavigationRegion3D/TeleportBack/Island" instance=ExtResource("5_qjlmc")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
-
-[node name="pond_corner_convex_002" parent="NavigationRegion3D/TeleportBack/Island" instance=ExtResource("5_qjlmc")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
-
-[node name="pond_corner_convex_003" parent="NavigationRegion3D/TeleportBack/Island" instance=ExtResource("5_qjlmc")]
-transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 4)
-
-[node name="pond_corner_convex_004" parent="NavigationRegion3D/TeleportBack/Island" instance=ExtResource("5_qjlmc")]
-transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
-
-[node name="EldritchStart" type="Node3D" parent="NavigationRegion3D/TeleportBack"]
-transform = Transform3D(0.938884, 0, -0.344233, 0, 1, 0, 0.344233, 0, 0.938884, -0.0198286, 4.76837e-07, -0.0251274)
+[node name="EldritchStart" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117614, 9.53674e-07, 0.134987)
 
 [node name="End" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.8322)
@@ -263,7 +300,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("9_vmhyt")
-ReturnNode = NodePath("../../TeleportBack/EldritchStart")
+ReturnNode = NodePath("../../EldritchStart")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Return1/EldritchReturn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
@@ -356,7 +393,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("9_vmhyt")
-ReturnNode = NodePath("../../TeleportBack/EldritchStart")
+ReturnNode = NodePath("../../EldritchStart")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Return2/EldritchReturn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
@@ -449,51 +486,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75, 0, 0)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("9_vmhyt")
-ReturnNode = NodePath("../../TeleportBack/EldritchStart")
+ReturnNode = NodePath("../../EldritchStart")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Return3/EldritchReturn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 shape = SubResource("CylinderShape3D_ki66s")
-
-[node name="EldritchEntrance" parent="NavigationRegion3D" instance=ExtResource("10_c1m17")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1317, -1, 23.1102)
-AlwaysActive = true
-
-[node name="EldritchTentacle" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(0.633948, 0, -0.773376, 0, 1, 0, 0.773376, 0, 0.633948, 5.64924, 0, -4.63077)
-StartState = 4
-
-[node name="EldritchTentacle2" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(-0.975006, 0, -0.222178, 0, 1, 0, 0.222178, 0, -0.975006, 1.40535, 0, 6.57873)
-StartState = 4
-
-[node name="EldritchTentacle3" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(-0.35814, 0, -0.933668, 0, 1, 0, 0.933668, 0, -0.35814, 6.53545, 0, 1.93757)
-StartState = 4
-
-[node name="EldritchTentacle4" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(-0.506756, 0, 0.862089, 0, 1, 0, -0.862089, 0, -0.506756, -6.57631, 0, 2.64841)
-StartState = 4
-
-[node name="EldritchTentacle5" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(-0.736899, 0, 0.311415, 0, 0.8, 0, -0.311415, 0, -0.736899, -3.03394, 0, 5.6262)
-StartState = 4
-
-[node name="EldritchTentacle6" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(-0.626521, 0, -0.497465, 0, 0.8, 0, 0.497465, 0, -0.626521, 4.7022, 0, 4.99955)
-StartState = 4
-
-[node name="EldritchTentacle7" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(0.22942, 0, -0.766398, 0, 0.8, 0, 0.766398, 0, 0.22942, 6.80852, 0, -1.63908)
-StartState = 4
-
-[node name="EldritchTentacle8" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(0.740723, 0, -0.302208, 0, 0.8, 0, 0.302208, 0, 0.740723, 2.81103, 0, -6.96342)
-StartState = 4
-
-[node name="EldritchTentacle9" parent="NavigationRegion3D/EldritchEntrance" instance=ExtResource("15_ki66s")]
-transform = Transform3D(-0.111117, 0, 0.792246, 0, 0.8, 0, -0.792246, 0, -0.111117, -7.29451, 0, -0.441965)
-StartState = 4
 
 [node name="World" type="Node3D" parent="."]
 
@@ -764,7 +761,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62624, 0, 56.1273)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.37141, 0, 63.9376)
 
 [node name="EldritchPillar114" parent="World/Pillars" instance=ExtResource("6_ell4v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6047, 0, 55.2442)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.429, 0, 22.386)
 
 [node name="EldritchPillar24" parent="World/Pillars" instance=ExtResource("6_ell4v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3736, 0, 9.84699)
@@ -1204,6 +1201,8 @@ volume_db = -5.0
 autoplay = true
 bus = &"Environment"
 
+[editable path="NavigationRegion3D/Exit/EldritchTentacle"]
+[editable path="NavigationRegion3D/Exit/EldritchTentacle/tentacle"]
 [editable path="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle"]
 [editable path="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle"]
 [editable path="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle"]

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class ThirdPersonCamera : Node3D
 {
@@ -51,7 +52,8 @@ public partial class ThirdPersonCamera : Node3D
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        Process_Position();
+        var fdelta = Convert.ToSingle(delta);
+        Process_Position(fdelta);
     }
 
     private void Initialize()
@@ -120,11 +122,11 @@ public partial class ThirdPersonCamera : Node3D
         PivotRotation = new Vector3(x, y, PivotRotation.Z);
     }
 
-    private void Process_Position()
+    private void Process_Position(float delta)
     {
-        var speed = 9f;
+        var speed = 4f * delta;
         var target = GetTargetPosition();
-        GlobalPosition = GlobalPosition.Lerp(target, speed * GameTime.DeltaTime);
+        GlobalPosition = GlobalPosition.Lerp(target, speed);
     }
 
     public void SnapToPosition()

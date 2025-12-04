@@ -446,9 +446,10 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 [node name="SfxWaterShake" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_fuej2")
 volume_db = -10.0
-max_distance = 16.0
+max_distance = 12.0
 max_polyphony = 5
 bus = &"SFX"
+attenuation_filter_db = 0.0
 
 [node name="SfxWaterPlop" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_8jtox")
@@ -456,3 +457,4 @@ volume_db = -10.0
 max_distance = 16.0
 max_polyphony = 5
 bus = &"SFX"
+attenuation_filter_db = 0.0
