@@ -12,9 +12,10 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_sb72h"]
 size = Vector2(500, 500)
 
-[node name="MainMenuScene" type="Node3D" node_paths=PackedStringArray("Camera", "DirectionalLight", "WorldEnvironment")]
+[node name="MainMenuScene" type="Node3D" node_paths=PackedStringArray("Camera", "Frog", "DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_sb72h")
 Camera = NodePath("Camera3D")
+Frog = NodePath("World/Frog")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 Weathers = Array[ExtResource("2_06svm")]([ExtResource("2_6xh72")])

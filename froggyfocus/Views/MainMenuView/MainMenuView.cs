@@ -12,7 +12,13 @@ public partial class MainMenuView : View
     public OptionsControl OptionsControl;
 
     [Export]
+    public SaveProfilesContainer SaveProfilesContainer;
+
+    [Export]
     public Button ContinueButton;
+
+    [Export]
+    public Button ProfilesButton;
 
     [Export]
     public Button OptionsButton;
@@ -32,9 +38,11 @@ public partial class MainMenuView : View
     {
         base._Ready();
         ContinueButton.Pressed += ClickContinue;
+        ProfilesButton.Pressed += ClickProfiles;
         OptionsButton.Pressed += ClickOptions;
         QuitButton.Pressed += ClickQuit;
         OptionsControl.BackPressed += ClickOptionsBack;
+        SaveProfilesContainer.ProfilePressed += ClickProfilesBack;
 
         InputBlocker.Hide();
     }
@@ -44,6 +52,8 @@ public partial class MainMenuView : View
         base.OnShow();
         PauseView.ToggleLock.SetLock(nameof(MainMenuView), true);
         MouseVisibility.Show(nameof(MainMenuView));
+
+        SaveProfilesContainer.LoadProfiles();
 
         GameView.Instance.Hide();
 
@@ -88,6 +98,44 @@ public partial class MainMenuView : View
             GameView.Instance.AnimateHideOverlay();
 
             InputBlocker.Hide();
+            animating = false;
+        }
+    }
+
+    private void ClickProfiles()
+    {
+        if (animating) return;
+        animating = true;
+
+        this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            ReleaseCurrentFocus();
+            InputBlocker.Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_main");
+            yield return AnimationPlayer.PlayAndWaitForAnimation("show_profiles");
+            InputBlocker.Hide();
+
+            SaveProfilesContainer.ProfileControl1.ProfileButton.GrabFocus();
+            animating = false;
+        }
+    }
+
+    private void ClickProfilesBack()
+    {
+        if (animating) return;
+        animating = true;
+
+        this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            ReleaseCurrentFocus();
+            InputBlocker.Show();
+            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_profiles");
+            yield return AnimationPlayer.PlayAndWaitForAnimation("show_main");
+            InputBlocker.Hide();
+
+            ProfilesButton.GrabFocus();
             animating = false;
         }
     }

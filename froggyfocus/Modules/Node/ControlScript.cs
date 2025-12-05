@@ -13,6 +13,12 @@ public partial class ControlScript : Control
         return Coroutine.Start(enumerator, id, this);
     }
 
+    public override void _Ready()
+    {
+        base._Ready();
+        VisibilityChanged += OnVisibilityChanged;
+    }
+
     protected virtual void Initialize()
     {
     }
@@ -21,24 +27,6 @@ public partial class ControlScript : Control
     {
         base._Process(delta);
         Process_Initialize();
-        Process_Visible();
-    }
-
-    private void Process_Visible()
-    {
-        var visible = IsVisibleInTree();
-        if (visible != _visible)
-        {
-            _visible = visible;
-            if (visible)
-            {
-                OnShow();
-            }
-            else
-            {
-                OnHide();
-            }
-        }
     }
 
     private void Process_Initialize()
@@ -63,5 +51,18 @@ public partial class ControlScript : Control
     protected void ReleaseCurrentFocus()
     {
         GetViewport().GuiReleaseFocus();
+    }
+
+    protected virtual void OnVisibilityChanged()
+    {
+        if (!_initialized) return;
+        if (Visible)
+        {
+            OnShow();
+        }
+        else
+        {
+            OnHide();
+        }
     }
 }

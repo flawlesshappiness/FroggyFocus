@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxjropn14cw2l"]
+
+[ext_resource type="Script" uid="uid://bgrkgarixldh4" path="res://Prefabs/UI/SaveProfiles/SaveProfilesContainer.cs" id="1_2gvbp"]
+[ext_resource type="PackedScene" uid="uid://xu2fe83a2er2" path="res://Prefabs/UI/SaveProfiles/save_profile_control.tscn" id="2_u3b82"]
+
+[node name="SaveProfilesContainer" type="MarginContainer" node_paths=PackedStringArray("ProfileControl1", "ProfileControl2", "ProfileControl3")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_2gvbp")
+ProfileControl1 = NodePath("VBoxContainer/HBoxContainer/SaveProfileControl1")
+ProfileControl2 = NodePath("VBoxContainer/HBoxContainer/SaveProfileControl2")
+ProfileControl3 = NodePath("VBoxContainer/HBoxContainer/SaveProfileControl3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="SaveProfileControl1" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_u3b82")]
+layout_mode = 2
+
+[node name="SaveProfileControl2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_u3b82")]
+layout_mode = 2
+
+[node name="SaveProfileControl3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_u3b82")]
+layout_mode = 2

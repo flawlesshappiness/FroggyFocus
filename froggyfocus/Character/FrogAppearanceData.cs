@@ -3,7 +3,7 @@ using System.Linq;
 
 public class FrogAppearanceData
 {
-    public ItemType BodyColor { get; set; }
+    public ItemType BodyColor { get; set; } = ItemType.Color_Default;
     public List<FrogAppearanceAttachmentData> Attachments { get; set; } = new();
 
     public FrogAppearanceAttachmentData GetAttachmentData(ItemCategory category)
@@ -13,6 +13,8 @@ public class FrogAppearanceData
         if (data == null)
         {
             data = new FrogAppearanceAttachmentData { Category = category };
+            data.PrimaryColor = ItemType.Color_Default;
+            data.SecondaryColor = ItemType.Color_Default;
             Attachments.Add(data);
         }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmuxgxi24ysym"]
+[gd_scene load_steps=19 format=3 uid="uid://cmuxgxi24ysym"]
 
 [ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="4_7iof8"]
 [ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/OptionsContainer.tscn" id="5_7iof8"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_7iof8"]
+[ext_resource type="PackedScene" uid="uid://cxjropn14cw2l" path="res://Prefabs/UI/SaveProfiles/save_profiles_container.tscn" id="6_cw4y5"]
 
 [sub_resource type="Animation" id="Animation_7iof8"]
 length = 0.001
@@ -92,6 +93,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CenterContainer/Center/UIScale/AnimProfiles:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1000)]
 }
 
 [sub_resource type="Animation" id="Animation_cw4y5"]
@@ -290,22 +303,106 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_l2o23"]
+resource_name = "show_profiles"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/UIScale/AnimProfiles:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(0, 1000), Vector2(0, -25), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxSwipe:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_iwxo5"]
+resource_name = "hide_profiles"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/Center/UIScale/AnimProfiles:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 1000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxSwipe:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7iof8"]
 _data = {
 &"RESET": SubResource("Animation_7iof8"),
 &"hide_main": SubResource("Animation_cw4y5"),
 &"hide_options": SubResource("Animation_87cds"),
 &"hide_overlay": SubResource("Animation_cejkn"),
+&"hide_profiles": SubResource("Animation_iwxo5"),
 &"show_main": SubResource("Animation_qaoud"),
 &"show_options": SubResource("Animation_rmme1"),
-&"show_overlay": SubResource("Animation_5370r")
+&"show_overlay": SubResource("Animation_5370r"),
+&"show_profiles": SubResource("Animation_l2o23")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7iof8"]
 streams_count = 1
 stream_0/stream = ExtResource("6_7iof8")
 
-[node name="MainMenuView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "OptionsControl", "ContinueButton", "OptionsButton", "QuitButton", "InputBlocker", "Overlay")]
+[node name="MainMenuView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "OptionsControl", "SaveProfilesContainer", "ContinueButton", "ProfilesButton", "OptionsButton", "QuitButton", "InputBlocker", "Overlay")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -316,7 +413,9 @@ theme = ExtResource("1_5j84w")
 script = ExtResource("1_qib6v")
 AnimationPlayer = NodePath("AnimationPlayer")
 OptionsControl = NodePath("CenterContainer/Center/UIScale/AnimOptions/Options/Options")
+SaveProfilesContainer = NodePath("CenterContainer/Center/UIScale/AnimProfiles/SaveProfilesContainer")
 ContinueButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ContinueButton")
+ProfilesButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ProfilesButton")
 OptionsButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/OptionsButton")
 QuitButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/QuitButton")
 InputBlocker = NodePath("InputBlocker")
@@ -404,6 +503,10 @@ alignment = 1
 layout_mode = 2
 text = "Continue"
 
+[node name="ProfilesButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
+layout_mode = 2
+text = "Save profile"
+
 [node name="OptionsButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
 layout_mode = 2
 text = "Options"
@@ -453,6 +556,30 @@ grow_vertical = 2
 
 [node name="Options" parent="CenterContainer/Center/UIScale/AnimOptions" instance=ExtResource("5_7iof8")]
 layout_mode = 1
+
+[node name="AnimProfiles" type="Control" parent="CenterContainer/Center/UIScale"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveProfilesContainer" parent="CenterContainer/Center/UIScale/AnimProfiles" instance=ExtResource("6_cw4y5")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -474.0
+offset_top = -154.0
+offset_right = 474.0
+offset_bottom = 154.0
 
 [node name="Overlay" type="ColorRect" parent="."]
 visible = false

@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://xu2fe83a2er2"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_nd4sc"]
+[ext_resource type="Script" uid="uid://b3hh1rjplhds4" path="res://Prefabs/UI/SaveProfiles/SaveProfileControl.cs" id="2_b18tc"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="2_rl3ma"]
+[ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="4_b18tc"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="6_3i36b"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5elr7"]
+viewport_path = NodePath("ItemSubViewport")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgdmn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f7fbw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwvsp"]
+
+[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog")]
+custom_minimum_size = Vector2(250, 0)
+theme = ExtResource("1_nd4sc")
+script = ExtResource("2_b18tc")
+TitleLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/TitleLabel")
+ProfileButton = NodePath("VBoxContainer/MarginContainer2/ProfileButton")
+DeleteButton = NodePath("VBoxContainer/HBoxContainer/DeleteButton")
+ConfirmDeleteButton = NodePath("VBoxContainer/HBoxContainer/ConfirmDeleteButton")
+CancelDeleteButton = NodePath("VBoxContainer/HBoxContainer/CancelDeleteButton")
+Frog = NodePath("ItemSubViewport/Anim/Origin/Frog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+texture = SubResource("ViewportTexture_5elr7")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -55.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ProfileButton" parent="VBoxContainer/MarginContainer2" instance=ExtResource("2_rl3ma")]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cgdmn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_f7fbw")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xwvsp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DeleteButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_rl3ma")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_b18tc")
+text = " Delete"
+
+[node name="ConfirmDeleteButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_rl3ma")]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_b18tc")
+text = "Yes, delete!"
+
+[node name="CancelDeleteButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_rl3ma")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
+
+[node name="ItemSubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1025, 1024)
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport"]
+transform = Transform3D(-0.769011, 0.319618, -0.553594, 0, 0.866025, 0.5, 0.639236, 0.384505, -0.665983, -1.67687, 1.41812, -1.68077)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="Anim" type="Node3D" parent="ItemSubViewport"]
+
+[node name="Origin" type="Node3D" parent="ItemSubViewport/Anim"]
+
+[node name="Frog" parent="ItemSubViewport/Anim/Origin" instance=ExtResource("6_3i36b")]
+DisableAppearanceUpdates = true

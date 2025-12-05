@@ -52,10 +52,9 @@ public abstract partial class View : ControlScript, IComparable<View>
 
     public override void _Ready()
     {
-        base._Ready();
-        ProcessMode = ProcessModeEnum.Always;
         Visible = false;
-        VisibilityChanged += OnVisibilityChanged;
+        ProcessMode = ProcessModeEnum.Always;
+        base._Ready();
     }
 
     public static T Get<T>() where T : View =>
@@ -63,18 +62,6 @@ public abstract partial class View : ControlScript, IComparable<View>
 
     public static void Show<T>() where T : View =>
         Get<T>().Show();
-
-    protected virtual void OnVisibilityChanged()
-    {
-        if (Visible)
-        {
-            OnShow();
-        }
-        else
-        {
-            OnHide();
-        }
-    }
 
     public int CompareTo(View other)
     {

@@ -73,10 +73,12 @@ public partial class AppearanceContainer : ControlScript
 
         foreach (var map in maps)
         {
+            var is_none = map.Info.Type == NoneType;
             var owned = Item.IsOwned(map.Info.Type);
             var shop_info = ShopController.Instance.GetInfo(map.Info.Type);
+            var show_if_none = !is_none || owns_any_item;
             var show_if_unowned = (!owned && ShowUnowned) && shop_info != null;
-            var show_if_owned = owned && ShowOwned;
+            var show_if_owned = show_if_none && owned && ShowOwned;
             map.Button.Visible = show_if_unowned || show_if_owned;
         }
     }
