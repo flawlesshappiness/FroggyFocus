@@ -29,8 +29,7 @@ public partial class SaveProfileControl : MarginContainer
         DeleteButton.Pressed += Delete_Pressed;
         ConfirmDeleteButton.Pressed += ConfirmDelete_Pressed;
         CancelDeleteButton.Pressed += CancelDelete_Pressed;
-
-        ClearDeleteButtons();
+        VisibilityChanged += OnVisibilityChanged;
     }
 
     public void LoadData(int profile)
@@ -88,5 +87,11 @@ public partial class SaveProfileControl : MarginContainer
 
         ClearDeleteButtons();
         ProfileButton.GrabFocus();
+    }
+
+    private void OnVisibilityChanged()
+    {
+        if (!IsVisibleInTree()) return;
+        ClearDeleteButtons();
     }
 }

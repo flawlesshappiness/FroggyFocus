@@ -66,6 +66,44 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
             Item.SetOwned(info.Type, !Item.IsOwned(info.Type));
             ListItemActions(v, info);
         }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Unlock everything",
+            Action = UnlockEverything
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Lock everything",
+            Action = LockEverything
+        });
+
+        void UnlockEverything(DebugView v)
+        {
+            var types = System.Enum.GetValues(typeof(ItemType)).Cast<ItemType>();
+
+            foreach (var type in types)
+            {
+                Item.SetOwned(type, true);
+            }
+
+            v.Close();
+        }
+
+        void LockEverything(DebugView v)
+        {
+            var types = System.Enum.GetValues(typeof(ItemType)).Cast<ItemType>();
+
+            foreach (var type in types)
+            {
+                Item.SetOwned(type, false);
+            }
+
+            v.Close();
+        }
     }
 
     public ItemInfo GetInfo(ItemType type)

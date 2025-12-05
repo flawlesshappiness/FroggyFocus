@@ -19,19 +19,13 @@ public partial class CustomizeAppearanceControl : ControlScript
     public AppearanceContainer HatContainer;
 
     [Export]
-    public AppearanceContainer HatPrimaryColorContainer;
-
-    [Export]
-    public AppearanceContainer HatSecondaryColorContainer;
+    public AppearanceColorControl HatColorControl;
 
     [Export]
     public AppearanceContainer FaceContainer;
 
     [Export]
-    public AppearanceContainer FacePrimaryColorContainer;
-
-    [Export]
-    public AppearanceContainer FaceSecondaryColorContainer;
+    public AppearanceColorControl FaceColorControl;
 
     [Export]
     public FrogCharacter Frog;
@@ -57,12 +51,10 @@ public partial class CustomizeAppearanceControl : ControlScript
         BodyPrimaryColorContainer.OnButtonPressed += BodyColor_Pressed;
 
         HatContainer.OnButtonPressed += HatButton_Pressed;
-        HatPrimaryColorContainer.OnButtonPressed += HatPrimaryColor_Pressed;
-        HatSecondaryColorContainer.OnButtonPressed += HatSecondaryColor_Pressed;
+        HatColorControl.OnColorSelected += HatColor_Selected;
 
         FaceContainer.OnButtonPressed += FaceButton_Pressed;
-        FacePrimaryColorContainer.OnButtonPressed += FacePrimaryColor_Pressed;
-        FaceSecondaryColorContainer.OnButtonPressed += FaceSecondaryColor_Pressed;
+        FaceColorControl.OnColorSelected += FaceColor_Selected;
 
 
         PreviewRotationSlider.ValueChanged += PreviewRotationSlider_ValueChanged;
@@ -120,17 +112,9 @@ public partial class CustomizeAppearanceControl : ControlScript
         OnBodyColorChanged?.Invoke();
     }
 
-    private void HatPrimaryColor_Pressed(AppearanceInfo info)
+    private void HatColor_Selected(AppearanceInfo info)
     {
         if (loading) return;
-        HatData.PrimaryColor = info.Type;
-        OnHatChanged?.Invoke();
-    }
-
-    private void HatSecondaryColor_Pressed(AppearanceInfo info)
-    {
-        if (loading) return;
-        HatData.SecondaryColor = info.Type;
         OnHatChanged?.Invoke();
     }
 
@@ -148,17 +132,9 @@ public partial class CustomizeAppearanceControl : ControlScript
         OnFaceChanged?.Invoke();
     }
 
-    private void FacePrimaryColor_Pressed(AppearanceInfo info)
+    private void FaceColor_Selected(AppearanceInfo info)
     {
         if (loading) return;
-        FaceData.PrimaryColor = info.Type;
-        OnFaceChanged?.Invoke();
-    }
-
-    private void FaceSecondaryColor_Pressed(AppearanceInfo info)
-    {
-        if (loading) return;
-        FaceData.SecondaryColor = info.Type;
         OnFaceChanged?.Invoke();
     }
 }

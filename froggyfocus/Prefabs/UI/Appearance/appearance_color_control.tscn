@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://v5mn7ism72n8"]
+
+[ext_resource type="Script" uid="uid://b8fkfnwiog1hg" path="res://Prefabs/UI/Appearance/AppearanceColorControl.cs" id="1_24n3i"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="1_sbj8h"]
+[ext_resource type="PackedScene" uid="uid://bqc4geie2toaj" path="res://Prefabs/UI/Appearance/appearance_container.tscn" id="2_24n3i"]
+
+[node name="AppearanceColorControl" type="VBoxContainer" node_paths=PackedStringArray("PrimaryButton", "SecondaryButton", "ButtonContainer", "ColorContainer", "OtherControls")]
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+script = ExtResource("1_24n3i")
+PrimaryButton = NodePath("HBoxContainer/PrimaryColorButton")
+SecondaryButton = NodePath("HBoxContainer/SecondaryColorButton")
+ButtonContainer = NodePath("HBoxContainer")
+ColorContainer = NodePath("ColorContainer")
+OtherControls = []
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PrimaryColorButton" parent="HBoxContainer" instance=ExtResource("1_sbj8h")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Primary"
+
+[node name="SecondaryColorButton" parent="HBoxContainer" instance=ExtResource("1_sbj8h")]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Secondary"
+
+[node name="ColorContainer" parent="." instance=ExtResource("2_24n3i")]
+visible = false
+layout_mode = 2
+ItemCategory = 2
+NoneType = 200
+ShowOwned = true
