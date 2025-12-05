@@ -176,3 +176,8 @@ locale/translations=PackedStringArray("res://Dialogue/dialogue.en.translation")
 3d_physics/layer_2="Player"
 3d_physics/layer_3="Interact"
 3d_physics/layer_4="Water"
+
+[physics]
+
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true

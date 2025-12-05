@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class NoClipPlayer : Node3D
 {
@@ -33,23 +32,8 @@ public partial class NoClipPlayer : Node3D
         {
             desired_velocity = Vector3.Zero;
         }
-    }
 
-    public override void _PhysicsProcess(double delta)
-    {
-        base._PhysicsProcess(delta);
-        var fdelta = Convert.ToSingle(delta);
-        PhysicsProcess_Move(fdelta);
-    }
-
-    private void PhysicsProcess_Move(float delta)
-    {
-        if (!Enabled) return;
-
-        if (desired_velocity.Length() >= 0.01f)
-        {
-            GlobalPosition += desired_velocity * delta;
-        }
+        GlobalPosition += desired_velocity * GameTime.DeltaTime;
     }
 
     public override void _Input(InputEvent e)
