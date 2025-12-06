@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbfgdqsf76g4j"]
+
+[ext_resource type="Script" uid="uid://ce112uv8auwkm" path="res://Prefabs/UI/Bestiary/BestiaryContainer.cs" id="1_khw1l"]
+[ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="1_y4oum"]
+
+[node name="bestiary_container" type="MarginContainer" node_paths=PackedStringArray("InventoryButtonTemplate")]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_khw1l")
+InventoryButtonTemplate = NodePath("GridContainer/InventoryPreviewButton")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 8
+
+[node name="InventoryPreviewButton" parent="GridContainer" instance=ExtResource("1_y4oum")]
+layout_mode = 2

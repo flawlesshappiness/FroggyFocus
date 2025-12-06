@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2mjpr6n1kw6f"]
+[gd_scene load_steps=13 format=3 uid="uid://2mjpr6n1kw6f"]
 
 [ext_resource type="Script" uid="uid://bviv37jaoxr1w" path="res://Views/PauseView/PauseView.cs" id="1_4uuhc"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_8a3o8"]
@@ -10,13 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://dsiem2e7uxtnt" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.tscn" id="5_t2mq0"]
 [ext_resource type="PackedScene" uid="uid://blseliwm3s1f1" path="res://Prefabs/UI/Inventory/inventory_control.tscn" id="6_om48w"]
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="9_3mg3l"]
+[ext_resource type="PackedScene" uid="uid://c3grtpowr0n5u" path="res://Prefabs/UI/Bestiary/bestiary_control.tscn" id="10_uhup0"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vwcev"]
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_vwcev")
 
-[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimatedOverlay_Behind", "AnimatedOverlay_Front", "AnimatedPanel_Pause", "AnimatedPanel_Options", "AnimatedPanel_Customize", "AnimatedPanel_Inventory", "InputBlocker", "Options", "CustomizeAppearanceControl", "InventoryControl", "ResumeButton", "CustomizeButton", "OptionsButton", "MainMenuButton", "InventoryButton")]
+[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimatedOverlay_Behind", "AnimatedOverlay_Front", "AnimatedPanel_Pause", "AnimatedPanel_Options", "AnimatedPanel_Customize", "AnimatedPanel_Inventory", "AnimatedPanel_Bestiary", "InputBlocker", "Options", "CustomizeAppearanceControl", "InventoryControl", "BestiaryControl", "ResumeButton", "CustomizeButton", "OptionsButton", "MainMenuButton", "InventoryButton", "BestiaryButton")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -31,15 +32,18 @@ AnimatedPanel_Pause = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pau
 AnimatedPanel_Options = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options")
 AnimatedPanel_Customize = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Customize")
 AnimatedPanel_Inventory = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Inventory")
+AnimatedPanel_Bestiary = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Bestiary")
 InputBlocker = NodePath("InputBlocker")
 Options = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options/Options/Options")
 CustomizeAppearanceControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Customize/CustomizeAppearance")
 InventoryControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Inventory/InventoryControl")
+BestiaryControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Bestiary/BestiaryControl")
 ResumeButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/ResumeButton")
 CustomizeButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/CustomizeButton")
 OptionsButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/OptionsButton")
 MainMenuButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/MainMenuButton")
 InventoryButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/InventoryButton")
+BestiaryButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/BestiaryButton")
 ChildOrder = 1
 
 [node name="AnimatedOverlay_Behind" parent="." instance=ExtResource("2_8a3o8")]
@@ -151,6 +155,10 @@ text = "Inventory"
 layout_mode = 2
 text = "Customize"
 
+[node name="BestiaryButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
+layout_mode = 2
+text = "Bestiary"
+
 [node name="OptionsButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
 layout_mode = 2
 text = " Options"
@@ -188,6 +196,20 @@ offset_bottom = 0.0
 
 [node name="InventoryControl" parent="CenterContainer/Center/UIScale/AnimatedPanel_Inventory" instance=ExtResource("6_om48w")]
 layout_mode = 1
+
+[node name="AnimatedPanel_Bestiary" parent="CenterContainer/Center/UIScale" instance=ExtResource("3_j78r4")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="BestiaryControl" parent="CenterContainer/Center/UIScale/AnimatedPanel_Bestiary" instance=ExtResource("10_uhup0")]
+layout_mode = 1
+offset_left = -50.0
+offset_top = -64.5
+offset_right = 50.0
+offset_bottom = 64.5
 
 [node name="AnimatedOverlay_Front" parent="." instance=ExtResource("2_8a3o8")]
 layout_mode = 1

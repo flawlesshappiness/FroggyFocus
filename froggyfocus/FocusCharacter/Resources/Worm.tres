@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("2_ikdgy")
 Scene = ExtResource("1_nia4a")
-Name = "Common Worm"
+Name = "Worm"
+Variation = "Worm"
 LocationHint = "##HINT_LOC_LAND##"
 Accessory = ""
 FocusValueOverride = 0.0

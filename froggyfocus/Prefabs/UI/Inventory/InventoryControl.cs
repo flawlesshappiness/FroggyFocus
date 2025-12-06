@@ -32,9 +32,14 @@ public partial class InventoryControl : ControlScript
         InfoContainer.SetCharacter(Data.Game.Inventory.Characters.FirstOrDefault());
     }
 
+    public Control GetFocusControl()
+    {
+        return InventoryContainer.GetFirstButton() ?? BackButton;
+    }
+
     public void GrabFocus_InventoryButton()
     {
-        var focus = InventoryContainer.GetFirstButton() ?? BackButton;
+        var focus = GetFocusControl();
         focus.GrabFocus();
     }
 

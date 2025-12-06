@@ -10,6 +10,9 @@ public partial class FocusCharacterInfo : Resource
     [Export]
     public string Name;
 
+    [Export]
+    public string Variation;
+
     [Export(PropertyHint.MultilineText)]
     public string LocationHint;
 
@@ -51,4 +54,7 @@ public partial class FocusCharacterInfo : Resource
 
     [Export]
     public Array<FocusCharacterTag> Tags;
+
+    [Export]
+    public bool ExcludeFromBestiary;
 }

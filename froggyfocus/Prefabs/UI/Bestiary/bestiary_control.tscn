@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3grtpowr0n5u"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_030oo"]
+[ext_resource type="Script" uid="uid://tpcinpljvlal" path="res://Prefabs/UI/Bestiary/BestiaryControl.cs" id="2_7eevx"]
+[ext_resource type="PackedScene" uid="uid://cbfgdqsf76g4j" path="res://Prefabs/UI/Bestiary/bestiary_container.tscn" id="3_dfjrq"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_7eevx"]
+
+[node name="BestiaryControl" type="MarginContainer" node_paths=PackedStringArray("BackButton")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -40.0
+offset_right = 37.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_030oo")
+script = ExtResource("2_7eevx")
+BackButton = NodePath("VBoxContainer/HBoxContainer/BackButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="bestiary_container" parent="VBoxContainer/MarginContainer" instance=ExtResource("3_dfjrq")]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_7eevx")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = " Back"

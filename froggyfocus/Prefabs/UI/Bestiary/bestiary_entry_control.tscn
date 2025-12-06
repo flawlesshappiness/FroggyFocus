@@ -1,0 +1,164 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmoecjh45fqje"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_2nm37"]
+[ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="2_ccfe5"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_k71fo"]
+[ext_resource type="Script" uid="uid://das35y2is2nh" path="res://Prefabs/UI/Bestiary/BestiaryEntryControl.cs" id="2_skhf4"]
+[ext_resource type="PackedScene" uid="uid://dp2ncvq06oerg" path="res://Prefabs/UI/DifficultyStars/difficulty_stars.tscn" id="3_k71fo"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2nm37"]
+viewport_path = NodePath(".")
+
+[node name="BestiaryEntryControl" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "CaughtLabel", "LocationLabel", "VariationLabel", "DifficultyStars", "ItemSubViewport")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2nm37")
+script = ExtResource("2_skhf4")
+NameLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/NameLabel")
+CaughtLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/CaughtLabel")
+LocationLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer/LocationLabel")
+VariationLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer/VariationsLabel")
+DifficultyStars = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/DifficultyStars")
+ItemSubViewport = NodePath("ItemSubViewport")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("2_k71fo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("ViewportTexture_2nm37")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_k71fo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Caught:"
+
+[node name="CaughtLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HighestRarityLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Highest rarity:"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -15
+theme_override_constants/margin_bottom = -15
+
+[node name="DifficultyStars" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer" instance=ExtResource("3_k71fo")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Location" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location"]
+layout_mode = 2
+theme = ExtResource("2_k71fo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Location"
+
+[node name="LocationLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Found at a location that is in a place"
+
+[node name="Variations" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations"]
+layout_mode = 2
+theme = ExtResource("2_k71fo")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Variations"
+
+[node name="VariationsLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Variation1
+Variation2
+Variation3"
+
+[node name="ItemSubViewport" parent="." instance=ExtResource("2_ccfe5")]

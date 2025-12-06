@@ -1,3 +1,4 @@
+using Godot;
 using System.Linq;
 
 public partial class StatsController : SingletonController
@@ -75,8 +76,10 @@ public partial class StatsController : SingletonController
 
     private void FocusEventCompleted(FocusEventCompletedResult result)
     {
-        var info = result.FocusEvent.Target.Info;
-        var data = GetOrCreateCharacterData(info.ResourcePath);
-        data.CountCaught++;
+        var info = FocusCharacterController.Instance.Collection.Resources.FirstOrDefault(x => x.Name == result.FocusEvent.Target.Info.Variation);
+        var data = result.FocusEvent.Target.CharacterData;
+        var stats = GetOrCreateCharacterData(info.ResourcePath);
+        stats.CountCaught++;
+        stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
     }
 }

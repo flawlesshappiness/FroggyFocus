@@ -22,6 +22,9 @@ public partial class PauseView : View
     public AnimatedPanel AnimatedPanel_Inventory;
 
     [Export]
+    public AnimatedPanel AnimatedPanel_Bestiary;
+
+    [Export]
     public Control InputBlocker;
 
     [Export]
@@ -32,6 +35,9 @@ public partial class PauseView : View
 
     [Export]
     public InventoryControl InventoryControl;
+
+    [Export]
+    public BestiaryControl BestiaryControl;
 
     [Export]
     public Button ResumeButton;
@@ -48,13 +54,21 @@ public partial class PauseView : View
     [Export]
     public Button InventoryButton;
 
+    [Export]
+    public Button BestiaryButton;
+
     public static readonly MultiLock ToggleLock = new();
 
     private bool animating;
-    private bool options_active;
-    private bool customize_active;
-    private bool inventory_active;
     private bool transitioning;
+    private MenuSettings current_menu;
+
+    private class MenuSettings
+    {
+        public AnimatedPanel MenuPanel { get; set; }
+        public Control FocusControl { get; set; }
+        public Control BackFocusControl { get; set; }
+    }
 
     public override void _Ready()
     {
@@ -64,9 +78,11 @@ public partial class PauseView : View
         OptionsButton.Pressed += ClickOptions;
         MainMenuButton.Pressed += ClickMainMenu;
         InventoryButton.Pressed += ClickInventory;
-        Options.BackPressed += ClickOptionsBack;
-        CustomizeAppearanceControl.OnBack += ClickCustomizeBack;
-        InventoryControl.OnBack += ClickInventoryBack;
+        BestiaryButton.Pressed += ClickBestiary;
+        Options.BackPressed += CloseMenu;
+        CustomizeAppearanceControl.OnBack += CloseMenu;
+        InventoryControl.OnBack += CloseMenu;
+        BestiaryControl.OnBack += CloseMenu;
     }
 
     protected override void OnShow()
@@ -102,11 +118,9 @@ public partial class PauseView : View
     private void Toggle()
     {
         if (ToggleLock.IsLocked && !Visible) return;
-        if (options_active) return;
-        if (customize_active) return;
-        if (inventory_active) return;
         if (transitioning) return;
         if (animating) return;
+        if (current_menu != null) return;
 
         if (Visible)
         {
@@ -168,9 +182,11 @@ public partial class PauseView : View
         Close();
     }
 
-    private void ClickCustomize()
+    private void ShowMenu(MenuSettings settings)
     {
-        customize_active = true;
+        if (animating) return;
+        if (current_menu != null) return;
+        current_menu = settings;
 
         Coroutine.Start(Cr)
             .SetRunWhilePaused();
@@ -181,18 +197,21 @@ public partial class PauseView : View
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
-            yield return AnimatedPanel_Customize.AnimatePopShow();
+            yield return settings.MenuPanel.AnimatePopShow();
             InputBlocker.Hide();
 
-            CustomizeAppearanceControl.TabContainer.GetTabBar().GrabFocus();
+            settings.FocusControl?.GrabFocus();
 
             animating = false;
         }
     }
 
-    private void ClickCustomizeBack()
+    private void CloseMenu()
     {
         if (animating) return;
+        if (current_menu == null) return;
+        var settings = current_menu;
+        current_menu = null;
 
         Coroutine.Start(Cr)
             .SetRunWhilePaused();
@@ -203,60 +222,33 @@ public partial class PauseView : View
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
-            yield return AnimatedPanel_Customize.AnimatePopHide();
+            yield return settings.MenuPanel.AnimatePopHide();
             InputBlocker.Hide();
 
-            CustomizeButton.GrabFocus();
+            settings.BackFocusControl.GrabFocus();
 
-            customize_active = false;
             animating = false;
         }
+    }
+
+    private void ClickCustomize()
+    {
+        ShowMenu(new MenuSettings
+        {
+            MenuPanel = AnimatedPanel_Customize,
+            FocusControl = CustomizeAppearanceControl.TabContainer.GetTabBar(),
+            BackFocusControl = CustomizeButton
+        });
     }
 
     private void ClickOptions()
     {
-        options_active = true;
-
-        Coroutine.Start(Cr)
-            .SetRunWhilePaused();
-        IEnumerator Cr()
+        ShowMenu(new MenuSettings
         {
-            animating = true;
-
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            AnimatedPanel_Pause.AnimateShrink();
-            yield return AnimatedPanel_Options.AnimatePopShow();
-            InputBlocker.Hide();
-
-            Options.Tabs.GetTabBar().GrabFocus();
-
-            animating = false;
-        }
-    }
-
-    private void ClickOptionsBack()
-    {
-        if (animating) return;
-        if (!options_active) return;
-
-        Coroutine.Start(Cr)
-            .SetRunWhilePaused();
-        IEnumerator Cr()
-        {
-            animating = true;
-
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            AnimatedPanel_Pause.AnimateGrow();
-            yield return AnimatedPanel_Options.AnimatePopHide();
-            InputBlocker.Hide();
-
-            OptionsButton.GrabFocus();
-
-            options_active = false;
-            animating = false;
-        }
+            MenuPanel = AnimatedPanel_Options,
+            FocusControl = Options.Tabs.GetTabBar(),
+            BackFocusControl = OptionsButton
+        });
     }
 
     private void ClickMainMenu()
@@ -294,47 +286,21 @@ public partial class PauseView : View
 
     private void ClickInventory()
     {
-        inventory_active = true;
-
-        Coroutine.Start(Cr)
-            .SetRunWhilePaused();
-        IEnumerator Cr()
+        ShowMenu(new MenuSettings
         {
-            animating = true;
-
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            AnimatedPanel_Pause.AnimateShrink();
-            yield return AnimatedPanel_Inventory.AnimatePopShow();
-            InputBlocker.Hide();
-
-            InventoryControl.GrabFocus_InventoryButton();
-
-            animating = false;
-        }
+            MenuPanel = AnimatedPanel_Inventory,
+            FocusControl = InventoryControl.GetFocusControl(),
+            BackFocusControl = InventoryButton
+        });
     }
 
-    private void ClickInventoryBack()
+    private void ClickBestiary()
     {
-        if (animating) return;
-        if (!inventory_active) return;
-
-        Coroutine.Start(Cr)
-            .SetRunWhilePaused();
-        IEnumerator Cr()
+        ShowMenu(new MenuSettings
         {
-            animating = true;
-
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            AnimatedPanel_Pause.AnimateGrow();
-            yield return AnimatedPanel_Inventory.AnimatePopHide();
-            InputBlocker.Hide();
-
-            InventoryButton.GrabFocus();
-
-            inventory_active = false;
-            animating = false;
-        }
+            MenuPanel = AnimatedPanel_Bestiary,
+            FocusControl = BestiaryControl.GetFocusControl(),
+            BackFocusControl = BestiaryButton
+        });
     }
 }

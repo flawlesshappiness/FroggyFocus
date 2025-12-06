@@ -9,9 +9,6 @@ public partial class InventoryContainer : ControlScript
     public bool ButtonsDisabled;
 
     [Export]
-    public GridContainer GridContainer;
-
-    [Export]
     public InventoryPreviewButton InventoryButtonTemplate;
 
     [Export]
