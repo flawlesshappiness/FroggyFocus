@@ -1,44 +1,125 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3grtpowr0n5u"]
+[gd_scene load_steps=7 format=3 uid="uid://c3grtpowr0n5u"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_030oo"]
 [ext_resource type="Script" uid="uid://tpcinpljvlal" path="res://Prefabs/UI/Bestiary/BestiaryControl.cs" id="2_7eevx"]
 [ext_resource type="PackedScene" uid="uid://cbfgdqsf76g4j" path="res://Prefabs/UI/Bestiary/bestiary_container.tscn" id="3_dfjrq"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_7eevx"]
+[ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="5_0qu6i"]
+[ext_resource type="PackedScene" uid="uid://bmoecjh45fqje" path="res://Prefabs/UI/Bestiary/bestiary_entry_control.tscn" id="5_dfjrq"]
 
-[node name="BestiaryControl" type="MarginContainer" node_paths=PackedStringArray("BackButton")]
+[node name="BestiaryControl" type="Control" node_paths=PackedStringArray("BackButton", "Container", "EntryControl", "AnimatedPanel_Container", "AnimatedPanel_EntryControl")]
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -37.5
-offset_top = -40.0
-offset_right = 37.5
-offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_030oo")
 script = ExtResource("2_7eevx")
-BackButton = NodePath("VBoxContainer/HBoxContainer/BackButton")
+BackButton = NodePath("CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/HBoxContainer/BackButton")
+Container = NodePath("CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/MarginContainer/bestiary_container")
+EntryControl = NodePath("CenterContainer/Center/AnimatedPanel_Entry/BestiaryEntryControl")
+AnimatedPanel_Container = NodePath("CenterContainer/Center/AnimatedPanel_Container")
+AnimatedPanel_EntryControl = NodePath("CenterContainer/Center/AnimatedPanel_Entry")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="Control" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="AnimatedPanel_Container" parent="CenterContainer/Center" instance=ExtResource("5_0qu6i")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Container"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -64.5
+offset_right = 50.0
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="bestiary_container" parent="VBoxContainer/MarginContainer" instance=ExtResource("3_dfjrq")]
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="Title" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.5
+offset_top = -37.815
+offset_right = 106.5
+offset_bottom = 36.185
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/MarginContainer/Panel/Title"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/MarginContainer/Panel/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/MarginContainer/Panel/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "BESTIARY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bestiary_container" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("3_dfjrq")]
+layout_mode = 2
+theme_override_constants/margin_top = 45
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="BackButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_7eevx")]
+[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_7eevx")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = " Back"
+
+[node name="AnimatedPanel_Entry" parent="CenterContainer/Center" instance=ExtResource("5_0qu6i")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="BestiaryEntryControl" parent="CenterContainer/Center/AnimatedPanel_Entry" instance=ExtResource("5_dfjrq")]
+layout_mode = 1

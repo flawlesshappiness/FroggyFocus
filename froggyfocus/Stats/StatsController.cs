@@ -37,20 +37,39 @@ public partial class StatsController : SingletonController
             v.HideContent();
             v.SetContent_Search();
 
-            foreach (var data in GetData().Characters)
+            var infos = FocusCharacterController.Instance.Collection.Resources;
+            foreach (var info in infos)
             {
+                var data = GetOrCreateCharacterData(info.ResourcePath);
                 var name = System.IO.Path.GetFileName(data.InfoPath).RemoveExtension();
-                v.ContentSearch.AddItem(name, () => ShowCharacter(v, data));
+                v.ContentSearch.AddItem(name, () => SelectCharacter(v, data));
             }
 
             v.ContentSearch.UpdateButtons();
         }
 
-        void ShowCharacter(DebugView v, StatsCharacterData data)
+        void SelectCharacter(DebugView v, StatsCharacterData data)
         {
             v.HideContent();
-            v.SetContent_List();
-            v.ContentList.AddText($"Caught: {data.CountCaught}");
+            v.SetContent_Search();
+            v.ContentSearch.AddItem($"Caught: {data.CountCaught}", () => EditCaught(v, data));
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void EditCaught(DebugView v, StatsCharacterData data)
+        {
+            v.HideContent();
+            v.SetContent_Search();
+            v.ContentSearch.AddItem($"0", () => SetCaught(v, data, 0));
+            v.ContentSearch.AddItem($"1", () => SetCaught(v, data, 1));
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void SetCaught(DebugView v, StatsCharacterData data, int amount)
+        {
+            data.CountCaught = amount;
+            Data.Game.Save();
+            SelectCharacter(v, data);
         }
     }
 

@@ -5,160 +5,213 @@
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_k71fo"]
 [ext_resource type="Script" uid="uid://das35y2is2nh" path="res://Prefabs/UI/Bestiary/BestiaryEntryControl.cs" id="2_skhf4"]
 [ext_resource type="PackedScene" uid="uid://dp2ncvq06oerg" path="res://Prefabs/UI/DifficultyStars/difficulty_stars.tscn" id="3_k71fo"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_4vslk"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2nm37"]
-viewport_path = NodePath(".")
-
-[node name="BestiaryEntryControl" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "CaughtLabel", "LocationLabel", "VariationLabel", "DifficultyStars", "ItemSubViewport")]
+[node name="BestiaryEntryControl" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "CaughtLabel", "LocationLabel", "VariationContainer", "VariationLabel", "DifficultyStars", "TextureRect", "ItemSubViewport", "BackButton")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -251.0
+offset_top = -153.0
+offset_right = 251.0
+offset_bottom = 153.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2nm37")
 script = ExtResource("2_skhf4")
-NameLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/NameLabel")
-CaughtLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/CaughtLabel")
-LocationLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer/LocationLabel")
-VariationLabel = NodePath("MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer/VariationsLabel")
-DifficultyStars = NodePath("MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/DifficultyStars")
+NameLabel = NodePath("VBoxContainer/MarginContainer/Panel/Title/MarginContainer/TitleLabel")
+CaughtLabel = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/CaughtLabel")
+LocationLabel = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer/LocationLabel")
+VariationContainer = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations")
+VariationLabel = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer/VariationsLabel")
+DifficultyStars = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/DifficultyStars")
+TextureRect = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureRect")
 ItemSubViewport = NodePath("ItemSubViewport")
+BackButton = NodePath("VBoxContainer/HBoxContainer/BackButton")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="MarginContainer" parent="VBoxContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_top = -38.0
+offset_right = 63.0
+offset_bottom = 36.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/Panel/Title"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/Panel/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/MarginContainer/Panel/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "BUG"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_top = 45
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 theme = ExtResource("2_k71fo")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture = SubResource("ViewportTexture_2nm37")
 expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("2_k71fo")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Name"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Caught:"
 
-[node name="CaughtLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="CaughtLabel" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "1"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HighestRarityLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HighestRarityLabel" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Highest rarity:"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = -15
 theme_override_constants/margin_bottom = -15
 
-[node name="DifficultyStars" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer" instance=ExtResource("3_k71fo")]
+[node name="DifficultyStars" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer" instance=ExtResource("3_k71fo")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Location" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Location" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location"]
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Location"]
 layout_mode = 2
 theme = ExtResource("2_k71fo")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Location"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Location"
 
-[node name="LocationLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer"]
+[node name="LocationLabel" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Found at a location that is in a place"
 
-[node name="Variations" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+[node name="Variations" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations"]
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations"]
 layout_mode = 2
 theme = ExtResource("2_k71fo")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Variations"
 
-[node name="VariationsLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer"]
+[node name="VariationsLabel" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Variation1
 Variation2
 Variation3"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("5_4vslk")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = " Back"
+
 [node name="ItemSubViewport" parent="." instance=ExtResource("2_ccfe5")]
+
+[node name="Camera3D" parent="ItemSubViewport" index="0"]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -1.5)
+
+[editable path="ItemSubViewport"]

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,8 @@ public partial class BestiaryContainer : ControlScript
 {
     [Export]
     public InventoryPreviewButton InventoryButtonTemplate;
+
+    public event Action<FocusCharacterInfo> CharacterPressed;
 
     private List<ButtonMap> maps = new();
 
@@ -15,9 +18,9 @@ public partial class BestiaryContainer : ControlScript
         public FocusCharacterInfo Info { get; set; }
     }
 
-    protected override void OnHide()
+    public override void _Ready()
     {
-        base.OnHide();
+        base._Ready();
         InventoryButtonTemplate.Hide();
     }
 
@@ -41,6 +44,8 @@ public partial class BestiaryContainer : ControlScript
 
             button.SetCharacter(info);
             button.Pressed += () => Button_Pressed(map);
+
+            maps.Add(map);
         }
     }
 
@@ -82,6 +87,9 @@ public partial class BestiaryContainer : ControlScript
 
     private void Button_Pressed(ButtonMap map)
     {
+        var stats = StatsController.Instance.GetOrCreateCharacterData(map.Info.ResourcePath);
+        if (stats.CountCaught == 0) return;
 
+        CharacterPressed?.Invoke(map.Info);
     }
 }

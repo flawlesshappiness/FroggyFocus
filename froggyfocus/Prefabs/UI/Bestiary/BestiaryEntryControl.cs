@@ -1,7 +1,8 @@
 using Godot;
+using System;
 using System.Linq;
 
-public partial class BestiaryEntryControl : MarginContainer
+public partial class BestiaryEntryControl : Control
 {
     [Export]
     public Label NameLabel;
@@ -13,19 +14,34 @@ public partial class BestiaryEntryControl : MarginContainer
     public Label LocationLabel;
 
     [Export]
+    public Control VariationContainer;
+
+    [Export]
     public Label VariationLabel;
 
     [Export]
     public DifficultyStarsTexture DifficultyStars;
 
     [Export]
+    public TextureRect TextureRect;
+
+    [Export]
     public ItemSubViewport ItemSubViewport;
+
+    [Export]
+    public Button BackButton;
+
+    public event Action BackPressed;
 
     public override void _Ready()
     {
         base._Ready();
         ItemSubViewport.SetCameraInventory();
-        ItemSubViewport.SetAnimationSpin();
+        ItemSubViewport.SetAnimationOscillate();
+
+        BackButton.Pressed += BackButton_Pressed;
+
+        TextureRect.Texture = ItemSubViewport.GetTexture();
     }
 
     public void Load(FocusCharacterInfo info)
@@ -37,15 +53,22 @@ public partial class BestiaryEntryControl : MarginContainer
         CaughtLabel.Text = $"{stats.CountCaught}";
         DifficultyStars.SetStars(stats.HighestRarity);
 
-        var variations = FocusCharacterController.Instance.Collection.Resources.Where(x => x != info && x.Variation == info.Variation);
+        var variations = FocusCharacterController.Instance.Collection.Resources.Where(x => x != info && x.Variation == info.Variation).ToList();
         var variation_text = string.Empty;
-        foreach (var v in variations)
+        for (int i = 0; i < variations.Count; i++)
         {
-            variation_text += $"{v.Name}\n";
+            var v = variations[i];
+            variation_text += i > 0 ? "\n" : string.Empty;
+            variation_text += $"{v.Name}";
         }
-        variation_text.TrimEnd('\n');
         VariationLabel.Text = variation_text;
+        VariationContainer.Visible = variations.Count > 0;
 
         ItemSubViewport.SetCharacter(info);
+    }
+
+    private void BackButton_Pressed()
+    {
+        BackPressed?.Invoke();
     }
 }

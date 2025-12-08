@@ -109,10 +109,6 @@ public partial class PauseView : View
         {
             Toggle();
         }
-        else if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
-        {
-            Toggle();
-        }
     }
 
     private void Toggle()
