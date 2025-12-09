@@ -79,6 +79,11 @@ public partial class BestiaryContainer : ControlScript
         return maps.First().Button;
     }
 
+    public Button GetButton(FocusCharacterInfo info)
+    {
+        return maps.FirstOrDefault(x => x.Info == info)?.Button;
+    }
+
     private IEnumerable<FocusCharacterInfo> GetCharacters()
     {
         return FocusCharacterController.Instance.Collection.Resources

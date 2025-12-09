@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="5_0qu6i"]
 [ext_resource type="PackedScene" uid="uid://bmoecjh45fqje" path="res://Prefabs/UI/Bestiary/bestiary_entry_control.tscn" id="5_dfjrq"]
 
-[node name="BestiaryControl" type="Control" node_paths=PackedStringArray("BackButton", "Container", "EntryControl", "AnimatedPanel_Container", "AnimatedPanel_EntryControl")]
+[node name="BestiaryControl" type="Control" node_paths=PackedStringArray("BackButton", "Container", "EntryControl", "AnimatedPanel_Container", "AnimatedPanel_EntryControl", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,6 +23,7 @@ Container = NodePath("CenterContainer/Center/AnimatedPanel_Container/MarginConta
 EntryControl = NodePath("CenterContainer/Center/AnimatedPanel_Entry/BestiaryEntryControl")
 AnimatedPanel_Container = NodePath("CenterContainer/Center/AnimatedPanel_Container")
 AnimatedPanel_EntryControl = NodePath("CenterContainer/Center/AnimatedPanel_Entry")
+InputBlocker = NodePath("InputBlocker")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -123,3 +124,17 @@ offset_bottom = 0.0
 
 [node name="BestiaryEntryControl" parent="CenterContainer/Center/AnimatedPanel_Entry" instance=ExtResource("5_dfjrq")]
 layout_mode = 1
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -553.0
+offset_top = -314.0
+offset_right = 553.0
+offset_bottom = 314.0
+grow_horizontal = 2
+grow_vertical = 2

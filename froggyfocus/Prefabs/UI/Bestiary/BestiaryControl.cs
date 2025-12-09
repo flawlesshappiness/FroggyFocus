@@ -1,7 +1,8 @@
 using Godot;
 using System;
+using System.Collections;
 
-public partial class BestiaryControl : Control
+public partial class BestiaryControl : ControlScript
 {
     [Export]
     public Button BackButton;
@@ -18,9 +19,13 @@ public partial class BestiaryControl : Control
     [Export]
     public AnimatedPanel AnimatedPanel_EntryControl;
 
+    [Export]
+    public Control InputBlocker;
+
     public event Action OnBack;
 
     private bool entry_active;
+    private FocusCharacterInfo selection;
 
     public override void _Ready()
     {
@@ -51,7 +56,7 @@ public partial class BestiaryControl : Control
         {
             if (entry_active)
             {
-                EntryBack_Pressed();
+                HideEntry();
             }
             else
             {
@@ -62,18 +67,47 @@ public partial class BestiaryControl : Control
 
     private void CharacterPressed(FocusCharacterInfo info)
     {
+        selection = info;
         EntryControl.Load(info);
-
-        AnimatedPanel_Container.AnimateShrink();
-        AnimatedPanel_EntryControl.AnimatePopShow();
-
-        entry_active = true;
+        ShowEntry();
     }
 
     private void EntryBack_Pressed()
     {
-        entry_active = false;
-        AnimatedPanel_EntryControl.AnimatePopHide();
-        AnimatedPanel_Container.AnimateGrow();
+        HideEntry();
+    }
+
+    private void ShowEntry()
+    {
+        entry_active = true;
+
+        this.StartCoroutine(Cr, "entry");
+        IEnumerator Cr()
+        {
+            ReleaseCurrentFocus();
+            InputBlocker.Show();
+            AnimatedPanel_Container.AnimateShrink();
+            yield return AnimatedPanel_EntryControl.AnimatePopShow();
+            InputBlocker.Hide();
+
+            EntryControl.BackButton.GrabFocus();
+        }
+    }
+
+    private void HideEntry()
+    {
+        this.StartCoroutine(Cr, "entry");
+        IEnumerator Cr()
+        {
+            ReleaseCurrentFocus();
+            InputBlocker.Show();
+            AnimatedPanel_Container.AnimateGrow();
+            yield return AnimatedPanel_EntryControl.AnimatePopHide();
+            InputBlocker.Hide();
+
+            var focus_control = Container.GetButton(selection) ?? BackButton;
+            focus_control.GrabFocus();
+            entry_active = false;
+        }
     }
 }
