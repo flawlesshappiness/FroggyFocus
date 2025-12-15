@@ -43,7 +43,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_f7hwf"]
 resource_name = "hide"
-length = 0.25
+length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -52,10 +52,10 @@ tracks/0/path = NodePath("Anim:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -3)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.2), Vector3(0, 0, -3)]
 }
 
 [sub_resource type="Animation" id="Animation_8pg71"]
