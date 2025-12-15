@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://bxoo3t5liy6xh"]
+
+[ext_resource type="Script" uid="uid://c0hxjo4l1xyif" path="res://Scenes/LetterScene.cs" id="1_58dxd"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_3ewb5"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_7fvhy"]
+[ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_5km1a"]
+[ext_resource type="Material" uid="uid://c0dwjdrp2kmvd" path="res://Materials/Grass.tres" id="5_5km1a"]
+[ext_resource type="PackedScene" uid="uid://bp1jbi7x8vkrl" path="res://Prefabs/Objects/letter.tscn" id="6_n8b8l"]
+[ext_resource type="FontFile" uid="uid://cnsoxlxwenjob" path="res://Fonts/times.ttf" id="7_f7hwf"]
+[ext_resource type="FontFile" uid="uid://bdxs8smtu50g1" path="res://Fonts/ITCBLKAD.TTF" id="8_6q7jr"]
+[ext_resource type="FontFile" uid="uid://u827mmbmbgg2" path="res://Fonts/cour.ttf" id="9_8pg71"]
+
+[sub_resource type="Animation" id="Animation_n8b8l"]
+resource_name = "show_letters"
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("World/Letter2/AnimationPlayer_Position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("show"),
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("World/Letter1/AnimationPlayer_Position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("show"),
+"times": PackedFloat32Array(0.2)
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("World/Letter3/AnimationPlayer_Position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("show"),
+"times": PackedFloat32Array(0.4)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f7hwf"]
+_data = {
+&"show_letters": SubResource("Animation_n8b8l")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n8b8l"]
+material = ExtResource("5_5km1a")
+size = Vector2(10, 10)
+
+[node name="LetterScene" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Letters", "DirectionalLight", "WorldEnvironment")]
+script = ExtResource("1_58dxd")
+AnimationPlayer = NodePath("AnimationPlayer")
+Letters = [NodePath("World/Letter1"), NodePath("World/Letter2"), NodePath("World/Letter3")]
+DirectionalLight = NodePath("DirectionalLight3D")
+WorldEnvironment = NodePath("WorldEnvironment")
+Weathers = Array[ExtResource("2_7fvhy")]([ExtResource("3_5km1a")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f7hwf")
+}
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_3ewb5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.17534, 0)
+current = true
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="World"]
+mesh = SubResource("PlaneMesh_n8b8l")
+skeleton = NodePath("../..")
+
+[node name="Letter1" parent="World" instance=ExtResource("6_n8b8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62776, 0.1, 0.00232732)
+Id = "manager"
+
+[node name="Envelope" parent="World/Letter1/Anim" index="0"]
+transform = Transform3D(0.988252, 0, 0.152831, 0, 1, 0, -0.152831, 0, 0.988252, 0, 0, 0)
+
+[node name="Label3D" parent="World/Letter1/Anim/Envelope" index="0"]
+font = ExtResource("7_f7hwf")
+
+[node name="Letter2" parent="World" instance=ExtResource("6_n8b8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -0.348868)
+Id = "partner"
+
+[node name="Label3D" parent="World/Letter2/Anim/Envelope" index="0"]
+font = ExtResource("8_6q7jr")
+
+[node name="Letter3" parent="World" instance=ExtResource("6_n8b8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55529, 0.1, 0.0636472)
+Id = "scientist"
+
+[node name="Envelope" parent="World/Letter3/Anim" index="0"]
+transform = Transform3D(0.97822, 0, -0.20757, 0, 1, 0, 0.20757, 0, 0.97822, 0, 0, 0)
+
+[node name="Label3D" parent="World/Letter3/Anim/Envelope" index="0"]
+font = ExtResource("9_8pg71")
+
+[editable path="World/Letter1"]
+[editable path="World/Letter2"]
+[editable path="World/Letter3"]

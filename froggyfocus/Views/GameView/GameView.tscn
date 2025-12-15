@@ -112,6 +112,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_v4b6a")
 AnimationPlayer = NodePath("AnimationPlayer_Overlay")
 Overlay = NodePath("Overlay")
@@ -132,6 +133,7 @@ theme_override_constants/margin_bottom = 25
 
 [node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MoneyBar" parent="MarginContainer/Control" instance=ExtResource("2_nrlgi")]
 layout_mode = 1
@@ -160,6 +162,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer_Overlay" type="AnimationPlayer" parent="."]
@@ -169,3 +172,4 @@ libraries = {
 
 [node name="TwoButtonPopup" parent="." instance=ExtResource("3_nrlgi")]
 layout_mode = 1
+mouse_filter = 2

@@ -40,7 +40,6 @@ public partial class DebugView : View
     public override void _Ready()
     {
         base._Ready();
-        Show();
         CategoryTemplate.Hide();
         HideContent();
         Close();
@@ -83,6 +82,7 @@ public partial class DebugView : View
     public void Close() => SetMenuVisible(false);
     public void SetMenuVisible(bool visible)
     {
+        Visible = visible;
         Main.Visible = visible;
         InputPopup.Visible = false;
 

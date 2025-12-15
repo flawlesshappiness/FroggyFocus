@@ -1,0 +1,271 @@
+[gd_scene load_steps=20 format=3 uid="uid://bp1jbi7x8vkrl"]
+
+[ext_resource type="Script" uid="uid://c0mlhypdqh6es" path="res://Prefabs/Objects/Letter.cs" id="1_53oij"]
+[ext_resource type="AudioStream" uid="uid://boblmgqg5kidk" path="res://Sounds/Raw/sfx_paper_004.wav" id="2_aolhh"]
+[ext_resource type="AudioStream" uid="uid://ch0jtykquyqxt" path="res://Sounds/Raw/sfx_paper_002.wav" id="2_y1nhs"]
+[ext_resource type="AudioStream" uid="uid://cu27gkeq1w46r" path="res://Sounds/Raw/sfx_paper_001.wav" id="3_rpplk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rbbgp"]
+size = Vector3(1.42676, 0.131104, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5km1a"]
+size = Vector3(1.4, 0.01, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_53oij"]
+size = Vector3(1.4, 1, 0.01)
+
+[sub_resource type="Animation" id="Animation_n8b8l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxMove:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f7hwf"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_8pg71"]
+resource_name = "lower"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6q7jr"]
+resource_name = "raise"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5km1a"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.2, 1),
+"update": 0,
+"values": [Vector3(0, 0, -3), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxMove:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f7hwf"]
+_data = {
+&"RESET": SubResource("Animation_n8b8l"),
+&"hide": SubResource("Animation_f7hwf"),
+&"lower": SubResource("Animation_8pg71"),
+&"raise": SubResource("Animation_6q7jr"),
+&"show": SubResource("Animation_5km1a")
+}
+
+[sub_resource type="Animation" id="Animation_y1nhs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim/Envelope/AnimOpen:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.87979, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxOpen:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3j1rp"]
+resource_name = "close"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim/Envelope/AnimOpen:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-2.87979, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_53oij"]
+resource_name = "open"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim/Envelope/AnimOpen:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-2.87979, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxOpen:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0244513),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aolhh"]
+_data = {
+&"RESET": SubResource("Animation_y1nhs"),
+&"close": SubResource("Animation_3j1rp"),
+&"open": SubResource("Animation_53oij")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3j1rp"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("2_aolhh")
+stream_1/stream = ExtResource("3_rpplk")
+stream_2/stream = ExtResource("2_y1nhs")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x66k1"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_aolhh")
+
+[node name="Letter" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "AnimationPlayer_Open")]
+script = ExtResource("1_53oij")
+AnimationPlayer = NodePath("AnimationPlayer_Position")
+AnimationPlayer_Open = NodePath("AnimationPlayer_Open")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rbbgp")
+
+[node name="Anim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="Envelope" type="MeshInstance3D" parent="Anim"]
+mesh = SubResource("BoxMesh_5km1a")
+skeleton = NodePath("../../..")
+
+[node name="Label3D" type="Label3D" parent="Anim/Envelope"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00723389, -3.16203e-10)
+modulate = Color(0.31, 0.386, 0.5, 1)
+text = "Froggy"
+outline_size = 0
+
+[node name="AnimOpen" type="Node3D" parent="Anim/Envelope"]
+transform = Transform3D(1, 0, 0, 0, -0.965925, 0.258822, 0, -0.258822, -0.965925, 0, 0, -0.5)
+
+[node name="Open" type="MeshInstance3D" parent="Anim/Envelope/AnimOpen"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -4.37114e-08, -0.5)
+mesh = SubResource("PrismMesh_53oij")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer_Position" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f7hwf")
+}
+playback_default_blend_time = 0.1
+
+[node name="AnimationPlayer_Open" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_aolhh")
+}
+
+[node name="SfxMove" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_3j1rp")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxOpen" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_x66k1")
+volume_db = -10.0
+bus = &"SFX"

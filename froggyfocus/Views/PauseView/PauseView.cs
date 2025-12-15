@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 
 public partial class PauseView : View
@@ -66,8 +67,8 @@ public partial class PauseView : View
     private class MenuSettings
     {
         public AnimatedPanel MenuPanel { get; set; }
-        public Control FocusControl { get; set; }
-        public Control BackFocusControl { get; set; }
+        public Func<Control> GetFocusControl { get; set; }
+        public Func<Control> GetBackFocusControl { get; set; }
     }
 
     public override void _Ready()
@@ -196,7 +197,7 @@ public partial class PauseView : View
             yield return settings.MenuPanel.AnimatePopShow();
             InputBlocker.Hide();
 
-            settings.FocusControl?.GrabFocus();
+            settings.GetFocusControl().GrabFocus();
 
             animating = false;
         }
@@ -221,7 +222,7 @@ public partial class PauseView : View
             yield return settings.MenuPanel.AnimatePopHide();
             InputBlocker.Hide();
 
-            settings.BackFocusControl.GrabFocus();
+            settings.GetBackFocusControl().GrabFocus();
 
             animating = false;
         }
@@ -232,8 +233,8 @@ public partial class PauseView : View
         ShowMenu(new MenuSettings
         {
             MenuPanel = AnimatedPanel_Customize,
-            FocusControl = CustomizeAppearanceControl.TabContainer.GetTabBar(),
-            BackFocusControl = CustomizeButton
+            GetFocusControl = () => CustomizeAppearanceControl.TabContainer.GetTabBar(),
+            GetBackFocusControl = () => CustomizeButton
         });
     }
 
@@ -242,8 +243,8 @@ public partial class PauseView : View
         ShowMenu(new MenuSettings
         {
             MenuPanel = AnimatedPanel_Options,
-            FocusControl = Options.Tabs.GetTabBar(),
-            BackFocusControl = OptionsButton
+            GetFocusControl = () => Options.Tabs.GetTabBar(),
+            GetBackFocusControl = () => OptionsButton
         });
     }
 
@@ -285,8 +286,8 @@ public partial class PauseView : View
         ShowMenu(new MenuSettings
         {
             MenuPanel = AnimatedPanel_Inventory,
-            FocusControl = InventoryControl.GetFocusControl(),
-            BackFocusControl = InventoryButton
+            GetFocusControl = () => InventoryControl.GetFocusControl(),
+            GetBackFocusControl = () => InventoryButton
         });
     }
 
@@ -295,8 +296,8 @@ public partial class PauseView : View
         ShowMenu(new MenuSettings
         {
             MenuPanel = AnimatedPanel_Bestiary,
-            FocusControl = BestiaryControl.GetFocusControl(),
-            BackFocusControl = BestiaryButton
+            GetFocusControl = () => BestiaryControl.GetFocusControl(),
+            GetBackFocusControl = () => BestiaryButton
         });
     }
 }
