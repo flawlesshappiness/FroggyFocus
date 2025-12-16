@@ -14,12 +14,13 @@ public partial class MainMenuScene : GameScene
         Camera.Current = true;
 
         GameProfileController.Instance.OnGameProfileSelected += ProfileSelected;
+        MainMenuView.Instance.Show();
     }
 
     protected override void Initialize()
     {
         base.Initialize();
-        MainMenuView.Instance.Show();
+        MainMenuView.Instance.AnimateHideOverlay();
     }
 
     public override void _ExitTree()

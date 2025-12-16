@@ -43,6 +43,7 @@ public partial class SaveProfileControl : MarginContainer
 
     private void LoadData(GameSaveData data)
     {
+        if (data == null) return;
         Frog.LoadAppearance(data);
     }
 

@@ -45,6 +45,9 @@ public partial class MainMenuView : View
         SaveProfilesContainer.ProfilePressed += ClickProfilesBack;
 
         InputBlocker.Hide();
+
+        Show();
+        OnShow();
     }
 
     protected override void OnShow()
@@ -58,6 +61,17 @@ public partial class MainMenuView : View
         GameView.Instance.Hide();
 
         Open();
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        SaveProfilesContainer.LoadProfiles();
+    }
+
+    public void AnimateHideOverlay()
+    {
+        AnimationPlayer.Play("hide_overlay");
     }
 
     private void Open()
@@ -93,7 +107,7 @@ public partial class MainMenuView : View
             Hide();
             PauseView.ToggleLock.SetLock(nameof(MainMenuView), false);
             MouseVisibility.Hide(nameof(MainMenuView));
-            Scene.Goto(Data.Game.CurrentScene ?? nameof(SwampScene));
+            Scene.Goto(Data.Game.CurrentScene);
             GameView.Instance.Show();
             GameView.Instance.AnimateHideOverlay();
 
