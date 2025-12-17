@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class ThirdPersonCamera : Node3D
 {
@@ -46,14 +47,14 @@ public partial class ThirdPersonCamera : Node3D
 
         Process_Gamepad();
         Process_Zoom();
-        Process_Position(GameTime.DeltaTime);
+        //Process_Position(GameTime.DeltaTime);
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        //var fdelta = Convert.ToSingle(delta);
-        //Process_Position(fdelta);
+        var fdelta = Convert.ToSingle(delta);
+        Process_Position(fdelta);
     }
 
     private void Initialize()

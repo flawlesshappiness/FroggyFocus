@@ -117,7 +117,20 @@ public partial class LetterScene : GameScene
             }
             else
             {
+                TransitionView.Instance.StartTransition(new TransitionSettings
+                {
+                    Type = TransitionType.Color,
+                    Color = Colors.Black,
+                    Duration = 2f,
+                    OnTransition = () =>
+                    {
+                        Data.Game.CurrentScene = nameof(SwampScene);
+                        Data.Game.StartingNode = "";
+                        Data.Game.Save();
 
+                        Scene.Goto<SwampScene>();
+                    }
+                });
             }
         }
     }

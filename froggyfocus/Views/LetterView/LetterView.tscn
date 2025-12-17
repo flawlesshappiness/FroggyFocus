@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bgkmtdbvk3w55"]
+[gd_scene load_steps=29 format=3 uid="uid://bgkmtdbvk3w55"]
 
 [ext_resource type="Script" uid="uid://csf4sulsog4nf" path="res://Views/LetterView/LetterView.cs" id="1_3td4a"]
 [ext_resource type="FontFile" uid="uid://cnsoxlxwenjob" path="res://Fonts/times.ttf" id="2_2ms5q"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cu27gkeq1w46r" path="res://Sounds/Raw/sfx_paper_001.wav" id="4_kmeew"]
 [ext_resource type="AudioStream" uid="uid://ch0jtykquyqxt" path="res://Sounds/Raw/sfx_paper_002.wav" id="5_fvw6r"]
 [ext_resource type="PackedScene" uid="uid://bdxjnb0m2kily" path="res://Views/LetterView/clickable_letter_arrow.tscn" id="5_pur1k"]
+[ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="6_idqbf"]
 [ext_resource type="AudioStream" uid="uid://boblmgqg5kidk" path="res://Sounds/Raw/sfx_paper_004.wav" id="6_l83my"]
 [ext_resource type="AudioStream" uid="uid://dh7h0pf4pfrt7" path="res://Sounds/Raw/sfx_paper_003.wav" id="7_fvw6r"]
 [ext_resource type="AudioStream" uid="uid://c22412w12iu4h" path="res://Sounds/Raw/sfx_writing_001.wav" id="8_r8724"]
@@ -466,6 +467,10 @@ autowrap_mode = 1
 
 [node name="ClickableLetterArrow" parent="CenterContainer/Center/Anim_Paper/Paper/MarginContainer/ContentScientist" instance=ExtResource("5_pur1k")]
 layout_mode = 2
+
+[node name="AnimatedOverlay" parent="." instance=ExtResource("6_idqbf")]
+layout_mode = 0
+anchors_preset = 0
 
 [node name="AnimationPlayer_Paper" type="AnimationPlayer" parent="."]
 libraries = {
