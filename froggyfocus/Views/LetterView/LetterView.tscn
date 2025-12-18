@@ -471,6 +471,10 @@ layout_mode = 2
 [node name="AnimatedOverlay" parent="." instance=ExtResource("6_idqbf")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="AnimationPlayer_Paper" type="AnimationPlayer" parent="."]
 libraries = {

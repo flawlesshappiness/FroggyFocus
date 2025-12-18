@@ -12,6 +12,51 @@ public partial class GameFlagsController : SingletonController
     {
         base.Initialize();
         GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
+        RegisterDebugActions();
+    }
+
+    private void RegisterDebugActions()
+    {
+        var category = "GAME FLAGS";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Select flag",
+            Action = ListFlags
+        });
+
+        void ListFlags(DebugView v)
+        {
+            v.SetContent_Search();
+
+            foreach (var flag in _flags)
+            {
+                v.ContentSearch.AddItem(flag.Key, () => AdjustFlag(v, flag.Value));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void AdjustFlag(DebugView v, GameFlagData data)
+        {
+            v.SetContent_Search();
+
+            v.ContentSearch.AddItem($"Value = {data.Value}", () => { });
+            v.ContentSearch.AddItem("0", () => DebugSetFlag(v, data, 0));
+            v.ContentSearch.AddItem("1", () => DebugSetFlag(v, data, 1));
+            v.ContentSearch.AddItem("+", () => DebugSetFlag(v, data, data.Value + 1));
+            v.ContentSearch.AddItem("-", () => DebugSetFlag(v, data, data.Value - 1));
+            v.ContentSearch.AddItem("Back", () => ListFlags(v));
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void DebugSetFlag(DebugView v, GameFlagData data, int value)
+        {
+            SetFlag(data.Id, value);
+            AdjustFlag(v, data);
+        }
     }
 
     private void GameProfileSelected(int i)

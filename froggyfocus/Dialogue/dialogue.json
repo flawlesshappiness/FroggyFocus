@@ -48,6 +48,22 @@
 	},
 	
 	{
+		"id": "##MANAGER_INTRO_001##",
+		"next": "##MANAGER_INTRO_002##"
+	},
+	{
+		"id": "##MANAGER_INTRO_002##",
+		"next": "##MANAGER_INTRO_003##"
+	},
+	{
+		"id": "##MANAGER_INTRO_003##",
+		"next": "##MANAGER_INTRO_004##"
+	},
+	{
+		"id": "##MANAGER_INTRO_004##"
+	},
+	
+	{
 		"id": "##MANAGER_REQUEST_001##",
 		"next": "##MANAGER_REQUEST_002##"
 	},
@@ -64,6 +80,22 @@
 	},
 	
 	{
+		"id": "##PARTNER_INTRO_001##",
+		"next": "##PARTNER_INTRO_002##"
+	},
+	{
+		"id": "##PARTNER_INTRO_002##",
+		"next": "##PARTNER_INTRO_003##"
+	},
+	{
+		"id": "##PARTNER_INTRO_003##",
+		"next": "##PARTNER_INTRO_004##"
+	},
+	{
+		"id": "##PARTNER_INTRO_004##"
+	},
+	
+	{
 		"id": "##PARTNER_REQUEST_001##",
 		"next": "##PARTNER_REQUEST_002##"
 	},
@@ -77,6 +109,22 @@
 	},
 	{
 		"id": "##PARTNER_REQUEST_FAIL_002##"
+	},
+	
+	{
+		"id": "##SCIENTIST_INTRO_001##",
+		"next": "##SCIENTIST_INTRO_002##"
+	},
+	{
+		"id": "##SCIENTIST_INTRO_002##",
+		"next": "##SCIENTIST_INTRO_003##"
+	},
+	{
+		"id": "##SCIENTIST_INTRO_003##",
+		"next": "##SCIENTIST_INTRO_004##"
+	},
+	{
+		"id": "##SCIENTIST_INTRO_004##"
 	},
 	
 	{
