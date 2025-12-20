@@ -1,0 +1,144 @@
+[gd_scene load_steps=11 format=3 uid="uid://tgy8kp0u0ikg"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_3rf2n"]
+[ext_resource type="Script" uid="uid://ip8jfcpi3jdu" path="res://Prefabs/UI/Pause/PauseContainer.cs" id="1_8p5tr"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="2_8p5tr"]
+[ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="3_6a3ra"]
+[ext_resource type="Texture2D" uid="uid://dkcxf14fw5t5w" path="res://Assets/KenneyNL/Icons/open.png" id="4_e28lo"]
+[ext_resource type="Texture2D" uid="uid://ch114vk21wll7" path="res://Assets/KenneyNL/Icons/pouch.png" id="5_cc0tm"]
+[ext_resource type="Texture2D" uid="uid://da6t8n8n62ch1" path="res://Assets/KenneyNL/Icons/wrench.png" id="5_nwimp"]
+[ext_resource type="Texture2D" uid="uid://c6e0ocx6stvsa" path="res://Assets/KenneyNL/Icons/book_open.png" id="7_crbx4"]
+[ext_resource type="Texture2D" uid="uid://vpahonc0c8l2" path="res://Assets/KenneyNL/Icons/gear.png" id="7_t23sg"]
+[ext_resource type="Texture2D" uid="uid://cja38oiou2gv0" path="res://Assets/KenneyNL/Icons/exit.png" id="8_crbx4"]
+
+[node name="PauseContainer" type="MarginContainer" node_paths=PackedStringArray("ResumeButton", "CustomizeButton", "OptionsButton", "MainMenuButton", "InventoryButton", "BestiaryButton")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -60.0
+offset_right = 190.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8p5tr")
+ResumeButton = NodePath("MarginContainer/MarginContainer/HBoxContainer/ResumeButton")
+CustomizeButton = NodePath("MarginContainer/MarginContainer/HBoxContainer/CustomizeButton")
+OptionsButton = NodePath("MarginContainer/MarginContainer/HBoxContainer/OptionsButton")
+MainMenuButton = NodePath("MarginContainer/MarginContainer/HBoxContainer/MainMenuButton")
+InventoryButton = NodePath("MarginContainer/MarginContainer/HBoxContainer/InventoryButton")
+BestiaryButton = NodePath("MarginContainer/MarginContainer/HBoxContainer/BestiaryButton")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme = ExtResource("1_3rf2n")
+
+[node name="Title" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = -57.5
+offset_right = 107.0
+offset_bottom = 16.5
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="Panel/Title"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Panel/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ResumeButton" parent="MarginContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_6a3ra")]
+layout_mode = 2
+icon = ExtResource("4_e28lo")
+LabelText = "Resume"
+
+[node name="InventoryButton" parent="MarginContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_6a3ra")]
+layout_mode = 2
+icon = ExtResource("5_cc0tm")
+LabelText = "Inventory"
+
+[node name="CustomizeButton" parent="MarginContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_6a3ra")]
+layout_mode = 2
+icon = ExtResource("5_nwimp")
+LabelText = "Customize"
+
+[node name="BestiaryButton" parent="MarginContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_6a3ra")]
+layout_mode = 2
+icon = ExtResource("7_crbx4")
+LabelText = "Bestiary"
+
+[node name="OptionsButton" parent="MarginContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_6a3ra")]
+layout_mode = 2
+icon = ExtResource("7_t23sg")
+LabelText = "Options"
+
+[node name="MainMenuButton" parent="MarginContainer/MarginContainer/HBoxContainer" instance=ExtResource("3_6a3ra")]
+layout_mode = 2
+icon = ExtResource("8_crbx4")
+LabelText = "Main Menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ResumeButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8p5tr")]
+layout_mode = 2
+text = " Resume"
+
+[node name="InventoryButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8p5tr")]
+layout_mode = 2
+text = "Inventory"
+
+[node name="CustomizeButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8p5tr")]
+layout_mode = 2
+text = "Customize"
+
+[node name="BestiaryButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8p5tr")]
+layout_mode = 2
+text = "Bestiary"
+
+[node name="OptionsButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8p5tr")]
+layout_mode = 2
+text = " Options"
+
+[node name="MainMenuButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8p5tr")]
+layout_mode = 2
+text = " Main menu"

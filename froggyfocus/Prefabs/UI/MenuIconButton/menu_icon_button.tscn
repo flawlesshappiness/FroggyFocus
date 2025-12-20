@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://byjcc0p66y3lu"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_orvnj"]
+[ext_resource type="Texture2D" uid="uid://rnr4g5bha2s0" path="res://Assets/KenneyNL/Cursor/Basic/cross_large.png" id="2_qdehy"]
+[ext_resource type="Script" uid="uid://bruf8d15skbpg" path="res://Prefabs/UI/MenuIconButton/MenuIconButton.cs" id="3_orvnj"]
+[ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="4_6s1bh"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="5_qdehy"]
+
+[node name="MenuIconButton" type="Button" node_paths=PackedStringArray("FocusLabel")]
+custom_minimum_size = Vector2(50, 50)
+theme = ExtResource("1_orvnj")
+theme_override_font_sizes/font_size = 25
+text = " "
+icon = ExtResource("2_qdehy")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("3_orvnj")
+FocusLabel = NodePath("VBoxContainer/MarginContainer/MarginContainer/Label")
+SfxFocusEnter = ExtResource("4_6s1bh")
+SfxPressed = ExtResource("4_6s1bh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 77.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_qdehy")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "Button"
+horizontal_alignment = 1
+vertical_alignment = 1

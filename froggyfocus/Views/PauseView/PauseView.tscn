@@ -1,12 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://2mjpr6n1kw6f"]
+[gd_scene load_steps=12 format=3 uid="uid://2mjpr6n1kw6f"]
 
 [ext_resource type="Script" uid="uid://bviv37jaoxr1w" path="res://Views/PauseView/PauseView.cs" id="1_4uuhc"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_8a3o8"]
-[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_fpy4r"]
-[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="3_33ygy"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_j78r4"]
 [ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/OptionsContainer.tscn" id="4_bcih6"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="4_vwcev"]
+[ext_resource type="PackedScene" uid="uid://tgy8kp0u0ikg" path="res://Prefabs/UI/Pause/pause_container.tscn" id="5_3mg3l"]
 [ext_resource type="PackedScene" uid="uid://dsiem2e7uxtnt" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.tscn" id="5_t2mq0"]
 [ext_resource type="PackedScene" uid="uid://blseliwm3s1f1" path="res://Prefabs/UI/Inventory/inventory_control.tscn" id="6_om48w"]
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="9_3mg3l"]
@@ -17,7 +16,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_vwcev")
 
-[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimatedOverlay_Behind", "AnimatedOverlay_Front", "AnimatedPanel_Pause", "AnimatedPanel_Options", "AnimatedPanel_Customize", "AnimatedPanel_Inventory", "AnimatedPanel_Bestiary", "InputBlocker", "Options", "CustomizeAppearanceControl", "InventoryControl", "BestiaryControl", "ResumeButton", "CustomizeButton", "OptionsButton", "MainMenuButton", "InventoryButton", "BestiaryButton")]
+[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimatedOverlay_Behind", "AnimatedOverlay_Front", "AnimatedPanel_Pause", "AnimatedPanel_Options", "AnimatedPanel_Customize", "AnimatedPanel_Inventory", "AnimatedPanel_Bestiary", "InputBlocker", "Options", "CustomizeAppearanceControl", "InventoryControl", "BestiaryControl", "PauseContainer")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -38,12 +37,7 @@ Options = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options/Options
 CustomizeAppearanceControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Customize/CustomizeAppearance")
 InventoryControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Inventory/InventoryControl")
 BestiaryControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Bestiary/BestiaryControl")
-ResumeButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/ResumeButton")
-CustomizeButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/CustomizeButton")
-OptionsButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/OptionsButton")
-MainMenuButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/MainMenuButton")
-InventoryButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/InventoryButton")
-BestiaryButton = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer/BestiaryButton")
+PauseContainer = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/PauseContainer")
 ChildOrder = 1
 
 [node name="AnimatedOverlay_Behind" parent="." instance=ExtResource("2_8a3o8")]
@@ -78,94 +72,10 @@ offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause"]
+[node name="PauseContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause" instance=ExtResource("5_3mg3l")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -160.0
-offset_right = 130.0
-offset_bottom = 160.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer"]
-layout_mode = 2
-theme = ExtResource("2_fpy4r")
-
-[node name="Title" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -106.5
-offset_top = -37.815
-offset_right = 106.5
-offset_bottom = 36.185
-grow_horizontal = 2
-
-[node name="Panel" type="Panel" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/Panel/Title"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/Panel/Title"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
-
-[node name="Label" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/Panel/Title/MarginContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = "PAUSED"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 25
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-
-[node name="ResumeButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
-layout_mode = 2
-text = " Resume"
-
-[node name="InventoryButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
-layout_mode = 2
-text = "Inventory"
-
-[node name="CustomizeButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
-layout_mode = 2
-text = "Customize"
-
-[node name="BestiaryButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
-layout_mode = 2
-text = "Bestiary"
-
-[node name="OptionsButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
-layout_mode = 2
-text = " Options"
-
-[node name="MainMenuButton" parent="CenterContainer/Center/UIScale/AnimatedPanel_Pause/MarginContainer/MarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_33ygy")]
-layout_mode = 2
-text = " Main menu"
+offset_left = -200.0
+offset_right = 200.0
 
 [node name="AnimatedPanel_Options" parent="CenterContainer/Center/UIScale" instance=ExtResource("3_j78r4")]
 layout_mode = 1

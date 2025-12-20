@@ -11,6 +11,7 @@ theme = ExtResource("1_2h73a")
 script = ExtResource("1_5km8g")
 TextureRect = NodePath("TextureRect")
 ItemSubViewport = NodePath("ItemSubViewport")
+SfxFocusEnter = ExtResource("2_5km8g")
 SfxPressed = ExtResource("2_5km8g")
 
 [node name="TextureRect" type="TextureRect" parent="."]

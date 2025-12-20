@@ -41,22 +41,7 @@ public partial class PauseView : View
     public BestiaryControl BestiaryControl;
 
     [Export]
-    public Button ResumeButton;
-
-    [Export]
-    public Button CustomizeButton;
-
-    [Export]
-    public Button OptionsButton;
-
-    [Export]
-    public Button MainMenuButton;
-
-    [Export]
-    public Button InventoryButton;
-
-    [Export]
-    public Button BestiaryButton;
+    public PauseContainer PauseContainer;
 
     public static readonly MultiLock ToggleLock = new();
 
@@ -74,12 +59,12 @@ public partial class PauseView : View
     public override void _Ready()
     {
         base._Ready();
-        ResumeButton.Pressed += ClickResume;
-        CustomizeButton.Pressed += ClickCustomize;
-        OptionsButton.Pressed += ClickOptions;
-        MainMenuButton.Pressed += ClickMainMenu;
-        InventoryButton.Pressed += ClickInventory;
-        BestiaryButton.Pressed += ClickBestiary;
+        PauseContainer.ResumeButton.Pressed += ClickResume;
+        PauseContainer.CustomizeButton.Pressed += ClickCustomize;
+        PauseContainer.OptionsButton.Pressed += ClickOptions;
+        PauseContainer.MainMenuButton.Pressed += ClickMainMenu;
+        PauseContainer.InventoryButton.Pressed += ClickInventory;
+        PauseContainer.BestiaryButton.Pressed += ClickBestiary;
         Options.BackPressed += CloseMenu;
         CustomizeAppearanceControl.OnBack += CloseMenu;
         InventoryControl.OnBack += CloseMenu;
@@ -145,7 +130,7 @@ public partial class PauseView : View
             yield return AnimatedPanel_Pause.AnimatePopShow();
             InputBlocker.Hide();
 
-            ResumeButton.GrabFocus();
+            PauseContainer.ResumeButton.GrabFocus();
 
             transitioning = false;
             animating = false;
@@ -234,7 +219,7 @@ public partial class PauseView : View
         {
             MenuPanel = AnimatedPanel_Customize,
             GetFocusControl = () => CustomizeAppearanceControl.TabContainer.GetTabBar(),
-            GetBackFocusControl = () => CustomizeButton
+            GetBackFocusControl = () => PauseContainer.CustomizeButton
         });
     }
 
@@ -244,7 +229,7 @@ public partial class PauseView : View
         {
             MenuPanel = AnimatedPanel_Options,
             GetFocusControl = () => Options.Tabs.GetTabBar(),
-            GetBackFocusControl = () => OptionsButton
+            GetBackFocusControl = () => PauseContainer.OptionsButton
         });
     }
 
@@ -287,7 +272,7 @@ public partial class PauseView : View
         {
             MenuPanel = AnimatedPanel_Inventory,
             GetFocusControl = () => InventoryControl.GetFocusControl(),
-            GetBackFocusControl = () => InventoryButton
+            GetBackFocusControl = () => PauseContainer.InventoryButton
         });
     }
 
@@ -297,7 +282,7 @@ public partial class PauseView : View
         {
             MenuPanel = AnimatedPanel_Bestiary,
             GetFocusControl = () => BestiaryControl.GetFocusControl(),
-            GetBackFocusControl = () => BestiaryButton
+            GetBackFocusControl = () => PauseContainer.BestiaryButton
         });
     }
 }

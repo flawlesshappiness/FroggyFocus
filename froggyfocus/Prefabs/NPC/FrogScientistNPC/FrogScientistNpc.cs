@@ -11,6 +11,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
     private readonly string DIALOGUE_ID = "SCIENTIST";
+    private string INTRO_ID => $"{DIALOGUE_ID}_INTRO";
 
     public override void _Ready()
     {
@@ -35,6 +36,11 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         {
             // TODO
             Debug.LogError("UNFINISHED");
+        }
+        else if (!GameFlags.HasFlag(INTRO_ID))
+        {
+            GameFlags.SetFlag(INTRO_ID, 1);
+            StartDialogue($"##{DIALOGUE_ID}_INTRO_001##");
         }
         else
         {

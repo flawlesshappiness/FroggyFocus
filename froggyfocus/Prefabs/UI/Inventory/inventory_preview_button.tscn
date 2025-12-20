@@ -13,6 +13,7 @@ script = ExtResource("1_c7vpv")
 TextureRect = NodePath("MarginContainer/TextureRect")
 ItemSubViewport = NodePath("ItemSubViewport")
 HiddenPreviewPrefab = ExtResource("3_knw73")
+SfxFocusEnter = ExtResource("3_sycv1")
 SfxPressed = ExtResource("3_sycv1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

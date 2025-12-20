@@ -3,10 +3,7 @@ using Godot;
 public partial class ButtonScript : Button
 {
     [Export]
-    public SoundInfo SfxMouseEnter;
-
-    [Export]
-    public SoundInfo SfxMouseExit;
+    public SoundInfo SfxFocusEnter;
 
     [Export]
     public SoundInfo SfxPressed;
@@ -14,23 +11,33 @@ public partial class ButtonScript : Button
     public override void _Ready()
     {
         base._Ready();
-        MouseExited += OnMouseExit;
-        MouseEntered += OnMouseEnter;
-        Pressed += OnPressed;
+        MouseExited += Button_MouseExit;
+        MouseEntered += Button_MouseEnter;
+        Pressed += Button_Pressed;
+        FocusEntered += Button_FocusEnter;
+        FocusExited += Button_FocusExit;
     }
 
-    private void OnMouseEnter()
+    protected virtual void Button_MouseEnter()
     {
-        SfxMouseEnter?.Play();
+        GrabFocus();
     }
 
-    private void OnMouseExit()
+    protected virtual void Button_MouseExit()
     {
-        SfxMouseExit?.Play();
     }
 
-    private void OnPressed()
+    protected virtual void Button_Pressed()
     {
         SfxPressed?.Play();
+    }
+
+    protected virtual void Button_FocusEnter()
+    {
+        SfxFocusEnter?.Play();
+    }
+
+    protected virtual void Button_FocusExit()
+    {
     }
 }

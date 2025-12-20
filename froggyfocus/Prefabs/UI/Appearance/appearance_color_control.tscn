@@ -8,21 +8,26 @@
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 script = ExtResource("1_24n3i")
-PrimaryButton = NodePath("HBoxContainer/PrimaryColorButton")
-SecondaryButton = NodePath("HBoxContainer/SecondaryColorButton")
-ButtonContainer = NodePath("HBoxContainer")
+PrimaryButton = NodePath("MarginContainer/HBoxContainer/PrimaryColorButton")
+SecondaryButton = NodePath("MarginContainer/HBoxContainer/SecondaryColorButton")
+ButtonContainer = NodePath("MarginContainer/HBoxContainer")
 ColorContainer = NodePath("ColorContainer")
 OtherControls = []
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="PrimaryColorButton" parent="HBoxContainer" instance=ExtResource("1_sbj8h")]
+[node name="PrimaryColorButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_sbj8h")]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Primary"
 
-[node name="SecondaryColorButton" parent="HBoxContainer" instance=ExtResource("1_sbj8h")]
+[node name="SecondaryColorButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_sbj8h")]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Secondary"
