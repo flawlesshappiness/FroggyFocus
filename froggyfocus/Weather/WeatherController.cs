@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
 {
     public static WeatherController Instance => Singleton.Get<WeatherController>();
     public override string Directory => "Weather";
+
+    public event Action<WeatherInfo> OnWeatherStart;
 
     private bool skip;
     private bool quick_transition;
@@ -106,7 +109,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
     public void StartWeather(Array<WeatherInfo> weathers)
     {
         var scene = GameScene.Instance;
-        var env = scene.WorldEnvironment.Environment.Duplicate() as Environment;
+        var env = scene.WorldEnvironment.Environment.Duplicate() as Godot.Environment;
         scene.WorldEnvironment.Environment = env;
 
         var sky_material = env.Sky.SkyMaterial.Duplicate() as ShaderMaterial;
@@ -129,8 +132,13 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
                 var previous_weather = current_weather;
                 current_weather = GetNextWeather(weathers);
 
+                OnWeatherStart?.Invoke(current_weather);
+
                 var transition_duration = GetTransitionDuration();
                 yield return WaitForWeatherTransition(previous_weather, current_weather, transition_duration);
+
+                next_transition_duration = null;
+                quick_transition = false;
             }
         }
 
@@ -171,13 +179,10 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         SetWeatherTransition(from, to, 1);
     }
 
-    private float GetTransitionDuration()
+    public float GetTransitionDuration()
     {
         var duration = quick_transition ? TRANSITION_DURATION_QUICK :
             next_transition_duration ?? TRANSITION_DURATION;
-
-        next_transition_duration = null;
-        quick_transition = false;
 
         return duration;
     }
@@ -192,6 +197,11 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         next ??= weathers.ToList().Random();
         next_weather = null;
         return next;
+    }
+
+    public WeatherInfo GetCurrentWeather()
+    {
+        return current_weather;
     }
 
     private void SetWeatherTransition(WeatherInfo from, WeatherInfo to, float t)

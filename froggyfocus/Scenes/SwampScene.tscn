@@ -1,10 +1,10 @@
-[gd_scene load_steps=70 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=71 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_yc6k2"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ytafm"]
 [ext_resource type="Resource" uid="uid://dq8un1bylw425" path="res://Weather/Resources/Foggy.tres" id="3_firk2"]
 [ext_resource type="Resource" uid="uid://do4wv1bddfm6t" path="res://Weather/Resources/Rain.tres" id="4_8bjkg"]
 [ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="4_m0kej"]
@@ -59,6 +59,7 @@
 [ext_resource type="Resource" uid="uid://dkcf81vj50ane" path="res://HandInQuest/Resources/Swamp_Flower_005.tres" id="42_yc6k2"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="49_b0wg7"]
+[ext_resource type="PackedScene" uid="uid://bninrdj8ogvt6" path="res://Prefabs/Nature/mushroom_shelf_glowing.tscn" id="57_1qynv"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_20fcr"]
 vertices = PackedVector3Array(3, 0.449998, -7.25, 2.25, 0.449998, -7.25, 2, 0.449998, -6.5, 4.25, 0.449998, -4.75, -7.25, 0.449998, -3.25, -7.25, 0.449998, -2.25, -5.25, 0.449998, -2.5, -3.25, 0.449998, -6, -3.75, 0.449998, -7, -5.5, 0.449998, -6, -2, 0.449998, -6, -4.75, 0.449998, -0.5, 7.5, 0.449998, 1.75, 7.25, 0.449998, -3, -7, 0.699998, 0, -7.5, 0.449998, -0.5, -7.25, 0.449998, 3, -4.75, 0.449998, 4.25, 3.25, 0.449998, 7.25, -5.25, 0.699998, 0, -3.25, 0.449998, 7, -1.75, 0.449998, 7.5, 5.5, 0.449998, 6, 7.25, 0.449998, 3.25, 20.75, 0.449998, -0.5, 19.5, 0.449998, -1.5, 18.25, 0.449998, -1.75, 22, 0.449998, 1.75, 13, 0.449998, 2, 11.75, 0.449998, 3.25, 11.75, 0.449998, 4.5, 13, 0.449998, 7.25, 21, 0.449998, 5.25, 22.25, 0.449998, 4, 14.75, 0.449998, 8.75, 16.25, 0.449998, 9, 15.5, 0.449998, -1.5, 13.5, 0.449998, -0.5, 20.5, 0.449998, 7.75, -6.5, 1.7, -1.25, -5.75, 1.7, -1, -6, 1.7, -1.5, 27.25, 0.449998, 5.25, 27.25, 0.449998, 6.75, 27.75, 0.449998, 7, 28.75, 0.449998, 3.5, 28, 0.449998, 8.5, 28.75, 0.449998, 9, 32, 0.449998, 4.25, 31.25, 0.449998, 3.75, 31, 0.449998, 9.25, 32.75, 0.449998, 7.25, 34.25, 0.449998, 21.5, 38, 0.449998, 25.5, 37.75, 0.449998, 22.5, 43.25, 0.449998, 10, 39.5, 0.449998, 9, 38.5, 0.449998, 9.5, 34.5, 0.449998, 13.75, 40.25, 0.449998, 18.25, 43.25, 0.449998, 19, 39, 0.449998, 18.5, 33.25, 0.449998, 17.75, 48, 0.449998, 21.75, 48.25, 0.449998, 25, 48.75, 0.449998, 25, 51.75, 0.449998, 21.75, 47.25, 0.449998, 20.25, 53, 0.449998, 17.5, 52, 0.449998, 14, 49, 0.449998, 10.5, 47, 0.449998, 9, 43.5, 3.95, 27.5, 44.25, 4.2, 27.25, 45.75, 5.45, 24.5, 43.75, 5.2, 20, 41.5, 5.2, 20.25, 41, 5.45, 22.75, 45.75, 5.45, 23.5, 41, 5.7, 24.5, 43.75, 0.449998, 25.5, 46.75, 0.449998, 26.25, 46.5, 0.449998, 23, 40, 0.449998, 20.25, 39.75, 0.449998, 22, 39.75, 0.449998, 24.25, 41, 0.449998, 26, 45.25, 0.449998, 21)
@@ -128,7 +129,7 @@ DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
 FocusEventParent = NodePath("World/FocusEvents")
-Weathers = Array[ExtResource("2_yc6k2")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
+Weathers = Array[ExtResource("2_ytafm")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_f4fi4")
@@ -1590,6 +1591,9 @@ Info = ExtResource("26_ghoyf")
 [node name="WorldBug15" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
 transform = Transform3D(0.0204013, 0, 0.999792, 0, 1, 0, -0.999792, 0, 0.0204013, 26.111, 1.62395, 83.1096)
 Info = ExtResource("26_ghoyf")
+
+[node name="Mushroom_Shelf_Glowing" parent="World" instance=ExtResource("57_1qynv")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 43.2706, 0.643396, 11.9879)
 
 [node name="Sounds" type="Node3D" parent="."]
 

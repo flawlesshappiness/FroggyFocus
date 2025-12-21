@@ -4,11 +4,20 @@
 
 [resource]
 script = ExtResource("1_524eg")
+BackgroundMode = 2
+BackgroundColor = Color(0, 0, 0, 0)
+BackgroundEnergyMultiplier = 1.0
+AmbientSource = 3
+AmbientColor = Color(0, 0, 0, 0)
 SunColor = Color(0.8, 1, 0.7, 1)
 SunShadowOpacity = 0.35
 FogEnabled = true
+FogType = 1
 FogColor = Color(0.308, 0.56, 0.5516, 1)
 FogDensity = 0.02
+FogAerialPerspective = 0.0
 Rain = 0.0
 Thunder = false
+Wind = false
+WindRange = Vector2(0, 0)
 metadata/_custom_type_script = "uid://br6wmaebrwebg"
