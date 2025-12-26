@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://1owu6wc18asa"]
+
+[ext_resource type="PackedScene" uid="uid://ch5ami6o86hlp" path="res://Appearance/Attachments/glasses_round.tscn" id="1_c4nqn"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_2lcpj"]
+
+[resource]
+script = ExtResource("2_2lcpj")
+Category = 1
+Type = 103
+DefaultPrimaryColor = 209
+DefaultSecondaryColor = 210
+Prefab = ExtResource("1_c4nqn")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

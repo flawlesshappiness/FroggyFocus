@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=31 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -22,6 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://bkbbk2nsx028o" path="res://Appearance/Attachments/bug_of_love.tscn" id="13_tev55"]
 [ext_resource type="PackedScene" uid="uid://bj017mypcst8m" path="res://Appearance/Attachments/moustache.tscn" id="13_uv7pe"]
 [ext_resource type="PackedScene" uid="uid://bycye7hwagma" path="res://Appearance/Attachments/glasses_scientist.tscn" id="14_50yl0"]
+[ext_resource type="PackedScene" uid="uid://ch5ami6o86hlp" path="res://Appearance/Attachments/glasses_round.tscn" id="16_aaljv"]
+[ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="17_cw7sr"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="21_uv7pe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_81ysc"]
@@ -217,6 +219,14 @@ visible = false
 
 [node name="Glasses_Scientist" parent="frog/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("14_50yl0")]
 transform = Transform3D(0.01, 0, 0, 0, -0.00258819, -0.00965926, 0, 0.00965926, -0.00258819, -8.51496e-10, 0.00545136, 0.00253093)
+visible = false
+
+[node name="Glasses_Round" parent="frog/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("16_aaljv")]
+transform = Transform3D(0.01, 0, 0, 0, -0.00233242, -0.00972419, 0, 0.00972419, -0.00233242, -7.40471e-16, 0.00534464, 0.00264625)
+visible = false
+
+[node name="Monocle" parent="frog/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("17_cw7sr")]
+transform = Transform3D(0.008, 0, 0, 0, -0.00224292, -0.00767915, 0, 0.00767915, -0.00224292, 0.00314199, 0.00494714, 0.00254643)
 visible = false
 
 [node name="AnimationPlayer" parent="frog" index="1"]

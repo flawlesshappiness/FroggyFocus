@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://bkekbyj3x8car"]
+
+[ext_resource type="Script" uid="uid://xn66d7btognw" path="res://Item/ItemInfo.cs" id="1_a4t3j"]
+
+[resource]
+script = ExtResource("1_a4t3j")
+Category = 1
+Type = 103
+Name = "Round Glasses"
+metadata/_custom_type_script = "uid://xn66d7btognw"

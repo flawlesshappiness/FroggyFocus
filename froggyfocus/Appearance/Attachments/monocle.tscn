@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwq50x64b18jh"]
+
+[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_l1p4l"]
+[ext_resource type="PackedScene" uid="uid://25xwsabswe3b" path="res://Assets/FlawLizArt/Face/monocle.fbx" id="2_l1p4l"]
+
+[node name="Monocle" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_l1p4l")
+Type = 104
+Mesh = NodePath("monocle/monocle")
+
+[node name="monocle" parent="." instance=ExtResource("2_l1p4l")]
+transform = Transform3D(0.755, 0, 0, 0, 0.755, 0, 0, 0, 0.755, 0, 0, 0)
+
+[editable path="monocle"]

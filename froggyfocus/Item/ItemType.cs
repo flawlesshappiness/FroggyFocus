@@ -16,6 +16,8 @@ public enum ItemType
     Face_None = 100,
     Face_Moustache = 101,
     Face_Glasses_Scientist = 102,
+    Face_Glasses_Round = 103,
+    Face_Monocle = 104,
 
     // Colors
     Color_Default = 200,

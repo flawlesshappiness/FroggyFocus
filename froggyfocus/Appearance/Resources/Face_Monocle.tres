@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://c3mqotrywq0mq"]
+
+[ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="1_m2ol2"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_iyqvm"]
+
+[resource]
+script = ExtResource("2_iyqvm")
+Category = 1
+Type = 104
+DefaultPrimaryColor = 204
+DefaultSecondaryColor = 210
+Prefab = ExtResource("1_m2ol2")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

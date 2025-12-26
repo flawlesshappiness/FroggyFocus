@@ -7,9 +7,13 @@
 [resource]
 script = ExtResource("4_y3xp2")
 Id = "magpie"
+UniqueRequests = false
+RequestPreviewHidden = false
+HasMoneyReward = true
 PossibleRequests = Array[Object]([ExtResource("1_jtwcu"), ExtResource("2_h0kk0")])
 CountRange = Vector2i(2, 4)
-ClaimCountToUnlock = 10
-HatUnlock = 0
+ClaimCountToUnlock = 5
+HasItemUnlock = true
+ItemUnlock = 104
 CooldownInSeconds = 600.0
 metadata/_custom_type_script = "uid://b2ulk5brsbi3l"
