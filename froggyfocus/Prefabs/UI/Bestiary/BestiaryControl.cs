@@ -35,6 +35,8 @@ public partial class BestiaryControl : ControlScript
         EntryControl.BackPressed += EntryBack_Pressed;
 
         AnimatedPanel_Container.AnimateGrow();
+
+        InputBlocker.Hide();
     }
 
     private void BackButton_Pressed()

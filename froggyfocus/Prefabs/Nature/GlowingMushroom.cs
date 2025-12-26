@@ -84,7 +84,7 @@ public partial class GlowingMushroom : Node3DScript
         }
     }
 
-    private bool ShouldGlow(WeatherInfo info)
+    public static bool ShouldGlow(WeatherInfo info)
     {
         var has_rain = info.Rain > 0;
         var has_fog = info.FogEnabled;

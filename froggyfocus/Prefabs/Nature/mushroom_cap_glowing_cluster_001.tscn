@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnwavkrtuiwhy"]
+
+[ext_resource type="PackedScene" uid="uid://dfqeqvr4aopbg" path="res://Prefabs/Nature/mushroom_cap_glowing.tscn" id="1_8vrv3"]
+[ext_resource type="Script" uid="uid://tufhylcgkmwb" path="res://Prefabs/Nature/GlowingMushroomCluster.cs" id="1_8yf6f"]
+
+[node name="mushroom_cap_glowing_cluster_001" type="Node3D" node_paths=PackedStringArray("Light")]
+script = ExtResource("1_8yf6f")
+Light = NodePath("OmniLight3D")
+
+[node name="Scale" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="mushroom_cap_glowing" parent="Scale" instance=ExtResource("1_8vrv3")]
+
+[node name="mushroom_cap_glowing2" parent="Scale" instance=ExtResource("1_8vrv3")]
+transform = Transform3D(0.445221, 0, 0.402217, 0, 0.6, 0, -0.402217, 0, 0.445221, -0.146735, 0, -0.073267)
+
+[node name="mushroom_cap_glowing3" parent="Scale" instance=ExtResource("1_8vrv3")]
+transform = Transform3D(0.429006, 0, -0.419469, 0, 0.6, 0, 0.419469, 0, 0.429006, 0.143889, 0, -0.0666127)
+
+[node name="mushroom_cap_glowing4" parent="Scale" instance=ExtResource("1_8vrv3")]
+transform = Transform3D(-0.0682281, 0, -0.414421, 0, 0.42, 0, 0.414421, 0, -0.0682281, 0.0645748, 0, 0.102443)
+
+[node name="mushroom_cap_glowing5" parent="Scale" instance=ExtResource("1_8vrv3")]
+transform = Transform3D(0.419999, 0, 0.000886962, 0, 0.42, 0, -0.000886962, 0, 0.419999, 0.00800631, 0, -0.183424)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575758, -0.0307606)
+light_color = Color(0.4, 0.93, 1, 1)
+omni_range = 16.0
+omni_attenuation = 0.25

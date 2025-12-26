@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfqeqvr4aopbg"]
+
+[ext_resource type="Script" uid="uid://cm8tpiukt3ci5" path="res://Prefabs/Nature/GlowingMushroom.cs" id="1_1kenx"]
+[ext_resource type="PackedScene" uid="uid://ophe6jv0r27t" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_cap.fbx" id="2_cvdg8"]
+[ext_resource type="Material" uid="uid://cbmunegfqh0sr" path="res://Materials/Mushroom_Glow_Secondary.tres" id="3_ryi1h"]
+[ext_resource type="Material" uid="uid://dotc4rkeb2jx7" path="res://Materials/Mushroom_Glow_Primary.tres" id="4_opd2r"]
+
+[node name="mushroom_cap_glowing" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_1kenx")
+EmissionColor = Color(0.4, 1, 0.69, 1)
+EmissionEnergy = 0.5
+Mesh = NodePath("mushroom_cap/mushroom_armillaria_gallica")
+
+[node name="mushroom_cap" parent="." instance=ExtResource("2_cvdg8")]
+
+[node name="mushroom_armillaria_gallica" parent="mushroom_cap" index="0"]
+surface_material_override/0 = ExtResource("3_ryi1h")
+surface_material_override/1 = ExtResource("4_opd2r")
+
+[editable path="mushroom_cap"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=71 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=75 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_1qynv"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ytafm"]
 [ext_resource type="Resource" uid="uid://dq8un1bylw425" path="res://Weather/Resources/Foggy.tres" id="3_firk2"]
 [ext_resource type="Resource" uid="uid://do4wv1bddfm6t" path="res://Weather/Resources/Rain.tres" id="4_8bjkg"]
 [ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="4_m0kej"]
@@ -59,12 +59,29 @@
 [ext_resource type="Resource" uid="uid://dkcf81vj50ane" path="res://HandInQuest/Resources/Swamp_Flower_005.tres" id="42_yc6k2"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="49_b0wg7"]
-[ext_resource type="PackedScene" uid="uid://bninrdj8ogvt6" path="res://Prefabs/Nature/mushroom_shelf_glowing.tscn" id="57_1qynv"]
+[ext_resource type="PackedScene" uid="uid://bqt37dnru0iu" path="res://Prefabs/Nature/mushroom_shelf_glowing_cluster_001.tscn" id="57_ytafm"]
+[ext_resource type="PackedScene" uid="uid://bnwavkrtuiwhy" path="res://Prefabs/Nature/mushroom_cap_glowing_cluster_001.tscn" id="58_m070k"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_20fcr"]
 vertices = PackedVector3Array(3, 0.449998, -7.25, 2.25, 0.449998, -7.25, 2, 0.449998, -6.5, 4.25, 0.449998, -4.75, -7.25, 0.449998, -3.25, -7.25, 0.449998, -2.25, -5.25, 0.449998, -2.5, -3.25, 0.449998, -6, -3.75, 0.449998, -7, -5.5, 0.449998, -6, -2, 0.449998, -6, -4.75, 0.449998, -0.5, 7.5, 0.449998, 1.75, 7.25, 0.449998, -3, -7, 0.699998, 0, -7.5, 0.449998, -0.5, -7.25, 0.449998, 3, -4.75, 0.449998, 4.25, 3.25, 0.449998, 7.25, -5.25, 0.699998, 0, -3.25, 0.449998, 7, -1.75, 0.449998, 7.5, 5.5, 0.449998, 6, 7.25, 0.449998, 3.25, 20.75, 0.449998, -0.5, 19.5, 0.449998, -1.5, 18.25, 0.449998, -1.75, 22, 0.449998, 1.75, 13, 0.449998, 2, 11.75, 0.449998, 3.25, 11.75, 0.449998, 4.5, 13, 0.449998, 7.25, 21, 0.449998, 5.25, 22.25, 0.449998, 4, 14.75, 0.449998, 8.75, 16.25, 0.449998, 9, 15.5, 0.449998, -1.5, 13.5, 0.449998, -0.5, 20.5, 0.449998, 7.75, -6.5, 1.7, -1.25, -5.75, 1.7, -1, -6, 1.7, -1.5, 27.25, 0.449998, 5.25, 27.25, 0.449998, 6.75, 27.75, 0.449998, 7, 28.75, 0.449998, 3.5, 28, 0.449998, 8.5, 28.75, 0.449998, 9, 32, 0.449998, 4.25, 31.25, 0.449998, 3.75, 31, 0.449998, 9.25, 32.75, 0.449998, 7.25, 34.25, 0.449998, 21.5, 38, 0.449998, 25.5, 37.75, 0.449998, 22.5, 43.25, 0.449998, 10, 39.5, 0.449998, 9, 38.5, 0.449998, 9.5, 34.5, 0.449998, 13.75, 40.25, 0.449998, 18.25, 43.25, 0.449998, 19, 39, 0.449998, 18.5, 33.25, 0.449998, 17.75, 48, 0.449998, 21.75, 48.25, 0.449998, 25, 48.75, 0.449998, 25, 51.75, 0.449998, 21.75, 47.25, 0.449998, 20.25, 53, 0.449998, 17.5, 52, 0.449998, 14, 49, 0.449998, 10.5, 47, 0.449998, 9, 43.5, 3.95, 27.5, 44.25, 4.2, 27.25, 45.75, 5.45, 24.5, 43.75, 5.2, 20, 41.5, 5.2, 20.25, 41, 5.45, 22.75, 45.75, 5.45, 23.5, 41, 5.7, 24.5, 43.75, 0.449998, 25.5, 46.75, 0.449998, 26.25, 46.5, 0.449998, 23, 40, 0.449998, 20.25, 39.75, 0.449998, 22, 39.75, 0.449998, 24.25, 41, 0.449998, 26, 45.25, 0.449998, 21)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 9), PackedInt32Array(6, 9, 7), PackedInt32Array(7, 9, 8), PackedInt32Array(7, 10, 6), PackedInt32Array(6, 10, 11), PackedInt32Array(3, 13, 12), PackedInt32Array(16, 15, 14), PackedInt32Array(11, 10, 17), PackedInt32Array(17, 10, 3), PackedInt32Array(17, 3, 12), PackedInt32Array(17, 12, 18), PackedInt32Array(16, 14, 19), PackedInt32Array(3, 10, 2), PackedInt32Array(19, 11, 16), PackedInt32Array(16, 11, 17), PackedInt32Array(20, 17, 21), PackedInt32Array(21, 17, 18), PackedInt32Array(23, 22, 12), PackedInt32Array(12, 22, 18), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(29, 28, 30), PackedInt32Array(30, 28, 31), PackedInt32Array(27, 33, 32), PackedInt32Array(35, 34, 31), PackedInt32Array(37, 36, 28), PackedInt32Array(28, 36, 26), PackedInt32Array(27, 32, 26), PackedInt32Array(26, 32, 28), PackedInt32Array(28, 32, 31), PackedInt32Array(31, 32, 35), PackedInt32Array(32, 38, 35), PackedInt32Array(41, 40, 39), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 45), PackedInt32Array(44, 47, 46), PackedInt32Array(49, 48, 45), PackedInt32Array(47, 44, 50), PackedInt32Array(50, 44, 51), PackedInt32Array(51, 44, 48), PackedInt32Array(48, 44, 45), PackedInt32Array(54, 53, 52), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58), PackedInt32Array(58, 55, 59), PackedInt32Array(59, 55, 60), PackedInt32Array(54, 52, 61), PackedInt32Array(61, 52, 62), PackedInt32Array(61, 62, 59), PackedInt32Array(59, 62, 58), PackedInt32Array(64, 63, 65), PackedInt32Array(65, 63, 66), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 67), PackedInt32Array(70, 67, 60), PackedInt32Array(70, 60, 55), PackedInt32Array(63, 67, 66), PackedInt32Array(66, 67, 68), PackedInt32Array(55, 71, 70), PackedInt32Array(74, 73, 72), PackedInt32Array(77, 76, 75), PackedInt32Array(74, 72, 78), PackedInt32Array(78, 72, 79), PackedInt32Array(78, 79, 77), PackedInt32Array(78, 77, 75), PackedInt32Array(82, 81, 80), PackedInt32Array(85, 84, 83), PackedInt32Array(86, 85, 80), PackedInt32Array(80, 85, 83), PackedInt32Array(80, 83, 87), PackedInt32Array(80, 87, 82)]
 geometry_parsed_geometry_type = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yc6k2"]
+height = 1.0
+radius = 7.85986
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ytafm"]
+height = 1.0
+radius = 5.30078
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1qynv"]
+height = 1.0
+radius = 2.94629
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m070k"]
+height = 1.0
+radius = 9.80322
 
 [sub_resource type="Curve3D" id="Curve3D_bmghv"]
 closed = true
@@ -73,9 +90,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_qfnsp"]
-radius = 8.33453
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_bmghv"]
 vertices = PackedVector3Array(-37.4589, -0.425248, -18.2349, -38.9589, -0.425248, -17.7349, -39.4589, -0.425248, -16.9849, -39.2089, -0.425248, -14.7349, -36.2089, -0.425248, -14.9849, -36.2089, -0.425248, -17.2349, -30.4589, -0.425248, -16.9849, -27.4589, -0.425248, -17.4849, -28.2089, -0.425248, -18.9849, -30.9589, -0.425248, -18.2349, -35.7089, -0.425248, -18.2349, -30.9589, -0.425248, -21.4849, -31.9589, -0.425248, -18.9849, -34.7089, -0.425248, -18.9849, -35.4589, -0.425248, -21.9849, -37.4589, -0.425248, -20.9849, -32.4589, -0.425248, -21.9849, -33.4589, -0.425248, -10.7349, -33.2089, -0.425248, -13.2349, -35.2089, -0.425248, -13.7349, -36.9589, -0.425248, -11.7349, -32.4589, -0.425248, -13.2349, -27.4589, -0.425248, -12.2349, -26.7089, -0.425248, -13.7349, -26.7089, -0.425248, -15.4849, -30.2089, -0.425248, -10.7349, -30.7089, -0.425248, -14.4849, -17.7089, -0.675248, -12.4849, -18.4589, -0.675248, -12.9849, -19.7089, -0.675248, -12.9849, -20.4589, -0.675248, -12.2349, -20.4589, -0.675248, -10.7349, -19.7089, -0.675248, -9.98493, -18.2089, -0.675248, -9.98493, -17.4589, -0.675248, -10.9849, -5.70886, -0.425248, -8.23493, -3.70886, -0.425248, -4.48493, -1.95886, -0.425248, -5.48493, -3.95886, -0.425248, -12.7349, -5.20886, -0.425248, -11.2349, 9.79114, -0.425248, -5.48493, 8.54114, -0.425248, -8.23493, 6.54114, -0.425248, -10.2349, 1.29114, -0.425248, -5.48493, 3.04114, -0.425248, -4.48493, 3.79114, -0.425248, -11.9849, 0.791142, -0.425248, -12.9849, -26.4589, -0.675248, -8.23493, -27.2089, -0.675248, -8.48493, -27.9589, -0.675248, -7.98493, -27.4589, -0.675248, -6.48493, -26.2089, -0.675248, -6.98493, -9.45886, -0.425248, -8.23493, -10.9589, -0.425248, -7.48493, -11.2089, -0.425248, -4.98493, -5.45886, -0.425248, -2.23493, -12.4589, -0.425248, 1.01507, -11.7089, -0.425248, 3.01507, -9.20886, -0.425248, 7.01507, -5.45886, -0.425248, 1.26507, -12.4589, -0.425248, -3.98493, -6.45886, -0.425248, 9.26507, -3.95886, -0.425248, 3.51507, -30.4589, -0.675248, -7.98493, -31.7089, -0.675248, -7.98493, -31.9589, -0.675248, -7.48493, -31.4589, -0.675248, -6.23493, -30.2089, -0.675248, -6.48493, -14.2089, 4.57475, -6.73493, -13.9589, 4.57475, -5.73493, -12.7089, 4.57475, -5.98493, -13.2089, 4.57475, -7.23493, 11.2911, -0.425248, -0.484932, 11.0411, -0.425248, -2.73493, 4.54114, -0.425248, -2.48493, 4.79114, -0.425248, -0.484932, -24.7089, -0.675248, -3.23493, -24.4589, -0.675248, -1.73493, -22.9589, -0.675248, -2.23493, -23.4589, -0.675248, -3.48493, -18.2089, -0.675248, -2.73493, -17.7089, -0.675248, -1.73493, -16.7089, -0.675248, -1.73493, -16.2089, -0.675248, -2.48493, -16.7089, -0.675248, -3.48493, -17.7089, -0.675248, -3.48493, 5.29114, -0.425248, 12.5151, 9.04114, -0.425248, 10.5151, 10.0411, -0.425248, 9.51507, 11.5411, -0.425248, 5.26507, 11.7911, -0.425248, 1.76507, 4.29114, -0.425248, 2.26507, 3.04114, -0.425248, 3.76507, -1.45886, -0.425248, 11.7651, 0.791142, -0.425248, 12.5151, 0.791142, -0.425248, 4.76507, -1.20886, -0.425248, 4.76507, -21.9589, -0.675248, 3.01507, -21.7089, -0.675248, 4.26507, -20.9589, -0.675248, 4.76507, -18.7089, -0.675248, 3.76507, -18.9589, -0.675248, 2.26507, -19.7089, -0.675248, 1.76507, -19.7089, -0.675248, 4.76507, -21.4589, -0.675248, 2.01507, -14.9589, -0.675248, 4.01507, -14.4589, -0.675248, 5.51507, -13.2089, -0.675248, 5.01507, -13.4589, -0.675248, 3.76507, 16.5411, -0.675248, 9.76507, 16.2911, -0.675248, 8.51507, 15.5411, -0.675248, 8.01507, 14.0411, -0.675248, 8.01507, 13.2911, -0.675248, 9.01507, 13.2911, -0.675248, 10.0151, 14.2911, -0.675248, 11.0151, 16.0411, -0.675248, 10.7651, -20.4589, -0.675248, 10.7651, -19.4589, -0.675248, 10.7651, -18.9589, -0.675248, 10.0151, -19.4589, -0.675248, 9.01507, -20.9589, -0.675248, 9.51507, -13.2089, -0.675248, 9.76507, -12.7089, -0.675248, 10.7651, -11.7089, -0.675248, 10.7651, -11.2089, -0.675248, 10.0151, -11.7089, -0.675248, 9.01507, -12.7089, -0.675248, 9.01507, -25.4589, -0.425248, 15.0151, -23.4589, -0.425248, 15.0151, -22.7089, -0.425248, 13.5151, -24.4589, -0.425248, 11.7651, -25.7089, -0.425248, 11.7651, -27.9589, -0.425248, 13.0151, -26.4589, -0.425248, 15.5151, -27.2089, -0.425248, 18.5151, -27.2089, -0.425248, 16.5151, -29.7089, -0.425248, 15.7651, -29.7089, -0.425248, 19.5151, -20.2089, -0.425248, 13.2651, -21.4589, -0.425248, 13.0151, -21.9589, -0.425248, 16.0151, -21.4589, -0.425248, 17.2651, -18.7089, -0.425248, 16.0151, -21.7089, -0.425248, 19.2651, -22.9589, -0.425248, 20.5151, -22.2089, -0.425248, 23.5151, -20.2089, -0.425248, 21.7651, -18.9589, -0.425248, 19.5151, -14.7089, -0.675248, 15.2651, -14.7089, -0.675248, 16.5151, -14.2089, -0.675248, 16.7651, -12.9589, -0.675248, 16.0151, -13.2089, -0.675248, 15.0151, 10.2911, -0.675248, 16.5151, 11.5411, -0.675248, 16.7651, 12.0411, -0.675248, 16.2651, 11.7911, -0.675248, 15.0151, 10.2911, -0.675248, 15.2651, 4.79114, -0.675248, 15.7651, 5.04114, -0.675248, 17.0151, 5.79114, -0.675248, 17.2651, 6.54114, -0.675248, 16.7651, 6.29114, -0.675248, 15.5151, 5.29114, -0.675248, 15.2651, -3.20886, -0.675248, 17.7651, -2.70886, -0.675248, 19.7651, -1.20886, -0.675248, 20.0151, -0.208858, -0.675248, 19.0151, -0.708858, -0.675248, 17.0151, -1.95886, -0.675248, 16.7651, -26.9589, -0.425248, 19.7651, -29.4589, -0.425248, 21.5151, -25.7089, -0.425248, 20.7651, -27.4589, -0.425248, 24.2651, -24.7089, -0.425248, 24.7651, 8.79114, -0.675248, 21.0151, 10.0411, -0.675248, 21.0151, 10.2911, -0.675248, 20.5151, 9.54114, -0.675248, 19.2651, 8.29114, -0.675248, 20.0151, 10.0411, -0.425248, 25.2651, 11.0411, -0.425248, 26.5151, 12.2911, -0.425248, 26.0151, 12.2911, -0.425248, 22.7651, 11.0411, -0.425248, 23.0151, 14.5411, -0.425248, 26.5151, 15.5411, -0.425248, 23.7651, 17.0411, -0.425248, 25.2651, 15.5411, -0.425248, 28.0151, 18.0411, -0.425248, 27.2651, 15.2911, -0.425248, 30.5151, 18.2911, -0.425248, 30.5151, -33.4589, -0.675248, 24.7651, -33.2089, -0.675248, 26.0151, -32.4589, -0.675248, 26.2651, -31.7089, -0.675248, 25.7651, -31.9589, -0.675248, 24.5151, -32.7089, -0.675248, 24.2651, 9.79114, -0.425248, 27.7651, 7.54114, -0.425248, 25.5151, 6.79114, -0.425248, 27.0151, 13.2911, -0.425248, 32.0151, 10.7911, -0.425248, 31.5151, 9.54114, -0.425248, 33.7651, 12.7911, -0.425248, 35.2651, 9.79114, -0.425248, 30.2651, 7.04114, -0.425248, 30.5151, 18.2911, -0.425248, 32.2651, 14.5411, -0.425248, 31.5151, 15.7911, -0.425248, 35.2651, 17.5411, -0.425248, 34.0151, -39.7089, -0.675248, 30.0151, -39.7089, -0.675248, 31.0151, -38.9589, -0.675248, 32.0151, -37.4589, -0.675248, 29.0151, -38.7089, -0.675248, 29.0151, -37.4589, -0.675248, 32.0151, -36.4589, -0.675248, 30.7651, -45.9589, -0.675248, 33.0151, -45.7089, -0.675248, 34.5151, -44.2089, -0.675248, 34.0151, -44.7089, -0.675248, 32.7651)
@@ -129,7 +143,7 @@ DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
 FocusEventParent = NodePath("World/FocusEvents")
-Weathers = Array[ExtResource("2_ytafm")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
+Weathers = Array[ExtResource("2_1qynv")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_f4fi4")
@@ -164,6 +178,18 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 8, 0, 
 [node name="pond_corner_convex_004" parent="World/Islands/Island 1" instance=ExtResource("8_iu42u")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -8, 0, 8)
 
+[node name="FocusEventArea" type="Area3D" parent="World/Islands/Island 1"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_52an4")
+Id = "land"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Islands/Island 1/FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_yc6k2")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
 [node name="Island 2" type="Node3D" parent="World/Islands"]
 transform = Transform3D(0.257676, 0, -0.650848, 0, 0.7, 0, 0.650848, 0, 0.257676, 16.9999, -1.90735e-06, 3.58725)
 
@@ -178,6 +204,19 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 8, 0, 
 
 [node name="pond_corner_convex_004" parent="World/Islands/Island 2" instance=ExtResource("8_iu42u")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -8, 0, 8)
+
+[node name="FocusEventArea2" type="Area3D" parent="World/Islands/Island 2"]
+transform = Transform3D(0.525869, 0, 1.32826, 0, 1.42857, 0, -1.32826, 0, 0.525869, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_52an4")
+Id = "land"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Islands/Island 2/FocusEventArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_ytafm")
+debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="Island 3" type="Node3D" parent="World/Islands"]
 transform = Transform3D(0.3675, 0, -0.157936, 0, 0.4, 0, 0.157936, 0, 0.3675, 29.9623, -1.90735e-06, 6.34768)
@@ -194,6 +233,19 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 8, 0, 
 [node name="pond_corner_convex_004" parent="World/Islands/Island 3" instance=ExtResource("8_iu42u")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -8, 0, 8)
 
+[node name="FocusEventArea3" type="Area3D" parent="World/Islands/Island 3"]
+transform = Transform3D(2.29687, 0, 0.9871, 0, 2.5, 0, -0.9871, 0, 2.29687, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_52an4")
+Id = "land"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Islands/Island 3/FocusEventArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_1qynv")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
 [node name="Island 4" type="Node3D" parent="World/Islands"]
 transform = Transform3D(-0.83258, 0, -0.864182, 0, 1.2, 0, 0.864182, 0, -0.83258, 43.1246, -1.90735e-06, 17.7365)
 
@@ -209,22 +261,24 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 8, 0, 
 [node name="pond_corner_convex_004" parent="World/Islands/Island 4" instance=ExtResource("8_iu42u")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -8, 0, 8)
 
-[node name="PathWaterSFX_Island" type="Path3D" parent="World/Islands"]
-curve = SubResource("Curve3D_bmghv")
-
-[node name="UpgradeShop" parent="World/Islands" instance=ExtResource("12_20fcr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.12665, 0, -1.18688)
-
-[node name="FocusEventArea" type="Area3D" parent="World/Islands"]
+[node name="FocusEventArea4" type="Area3D" parent="World/Islands/Island 4"]
+transform = Transform3D(-0.57818, 0, 0.600126, 0, 0.833333, 0, -0.600126, 0, -0.57818, 0, 0, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("10_52an4")
 Id = "land"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Islands/FocusEventArea"]
-shape = SubResource("SphereShape3D_qfnsp")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Islands/Island 4/FocusEventArea4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_m070k")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="PathWaterSFX_Island" type="Path3D" parent="World/Islands"]
+curve = SubResource("Curve3D_bmghv")
+
+[node name="UpgradeShop" parent="World/Islands" instance=ExtResource("12_20fcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.12665, 0, -1.18688)
 
 [node name="QuestBoard" parent="World/Islands" instance=ExtResource("33_brx17")]
 transform = Transform3D(0.995514, 0, 0.0946125, 0, 1, 0, -0.0946125, 0, 0.995514, -0.656114, 2.89054e-07, -7.03288)
@@ -1592,8 +1646,115 @@ Info = ExtResource("26_ghoyf")
 transform = Transform3D(0.0204013, 0, 0.999792, 0, 1, 0, -0.999792, 0, 0.0204013, 26.111, 1.62395, 83.1096)
 Info = ExtResource("26_ghoyf")
 
-[node name="Mushroom_Shelf_Glowing" parent="World" instance=ExtResource("57_1qynv")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 43.2706, 0.643396, 11.9879)
+[node name="GlowingMushrooms" type="Node3D" parent="World"]
+
+[node name="mushroom_shelf_glowing_cluster" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(-0.365235, -0.128432, -0.922013, 0, 0.990437, -0.137963, 0.930915, -0.050389, -0.361742, 39.5182, 0.872825, 25.4818)
+
+[node name="mushroom_shelf_glowing_cluster2" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(0.197448, 0.246709, -0.948762, 0.07533, 0.961135, 0.265603, 0.977415, -0.123913, 0.171189, 39.1685, 2.73453, 29.4685)
+
+[node name="mushroom_shelf_glowing_cluster3" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(-0.81837, 0, -0.574691, 0, 1, 0, 0.574691, 0, -0.81837, 62.2825, 2.73452, 14.0425)
+
+[node name="mushroom_shelf_glowing_cluster4" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(0.90444, 0, 0.4266, 0, 1, 0, -0.4266, 0, 0.90444, 64.8297, 3.74566, 6.51818)
+
+[node name="mushroom_shelf_glowing_cluster5" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(-0.354471, 0, 0.935067, 0, 1, 0, -0.935067, 0, -0.354471, 66.755, 2.7191, 2.85569)
+
+[node name="mushroom_shelf_glowing_cluster6" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(0.840075, 0, 0.542471, 0, 1, 0, -0.542471, 0, 0.840075, 64.928, 9.1679, 18.1387)
+
+[node name="mushroom_shelf_glowing_cluster7" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(-0.631339, 0, 0.775507, 0, 1, 0, -0.775507, 0, -0.631339, 65.8564, 7.69687, 14.5267)
+
+[node name="mushroom_shelf_glowing_cluster8" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(-0.888697, 0, -0.458494, 0, 1, 0, 0.458494, 0, -0.888697, 62.6086, 13.1119, 27.4561)
+
+[node name="mushroom_shelf_glowing_cluster9" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(0.786332, 0, -0.617805, 0, 1, 0, 0.617805, 0, 0.786332, 61.7084, 13.1119, 31.3977)
+
+[node name="mushroom_shelf_glowing_cluster10" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(-0.787452, 0, 0.616376, 0, 1, 0, -0.616376, 0, -0.787452, 52.4729, 16.0271, 54.165)
+
+[node name="mushroom_shelf_glowing_cluster11" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(0.946277, 0, -0.323356, 0, 1, 0, 0.323356, 0, 0.946277, 50.9674, 12.965, 58.0675)
+
+[node name="mushroom_shelf_glowing_cluster12" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(-0.787721, 0, 0.616033, 0, 1, 0, -0.616033, 0, -0.787721, 46.5743, 12.965, 68.3772)
+
+[node name="mushroom_shelf_glowing_cluster13" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(0.275621, 0, -0.961267, 0, 1, 0, 0.961267, 0, 0.275621, 42.9208, 7.05912, 70.4794)
+
+[node name="mushroom_shelf_glowing_cluster14" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(-0.969149, 0, -0.246475, 0, 1, 0, 0.246475, 0, -0.969149, 29.9354, 3.74776, 83.6615)
+
+[node name="mushroom_shelf_glowing_cluster15" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
+transform = Transform3D(0.999912, 0, -0.0132816, 0, 1, 0, 0.0132816, 0, 0.999912, 24.537, 3.7782, 73.5077)
+
+[node name="mushroom_cap_glowing_cluster_001" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(0.966331, 0, -0.257301, 0, 1, 0, 0.257301, 0, 0.966331, 39.8421, 0, 9.63483)
+
+[node name="mushroom_cap_glowing_cluster_002" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.53298, 0, -0.846128, 0, 1, 0, 0.846128, 0, -0.53298, 51.4077, 0, 21.4991)
+
+[node name="mushroom_cap_glowing_cluster_003" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.669895, 0, 0.742455, 0, 1, 0, -0.742455, 0, -0.669895, 33.7025, -9.53674e-07, 17.9842)
+
+[node name="mushroom_cap_glowing_cluster_004" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.905769, 0, 0.423773, 0, 1, 0, -0.423773, 0, -0.905769, 28.1371, -9.53674e-07, 8.13499)
+
+[node name="mushroom_cap_glowing_cluster_005" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.905769, 0, 0.423773, 0, 1, 0, -0.423773, 0, -0.905769, 12.1338, -9.53674e-07, 3.52154)
+
+[node name="mushroom_cap_glowing_cluster_006" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.595019, 0, -0.803711, 0, 1, 0, 0.803711, 0, -0.595019, 19.1076, -9.53674e-07, 7.89684)
+
+[node name="mushroom_cap_glowing_cluster_007" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.595019, 0, -0.803711, 0, 1, 0, 0.803711, 0, -0.595019, -4.02296, -9.53674e-07, 4.91836)
+
+[node name="mushroom_cap_glowing_cluster_008" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.595019, 0, -0.803711, 0, 1, 0, 0.803711, 0, -0.595019, -4.44598, -9.53674e-07, -6.23134)
+
+[node name="mushroom_cap_glowing_cluster_009" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.595019, 0, -0.803711, 0, 1, 0, 0.803711, 0, -0.595019, 60.1751, 2.08591, 18.0036)
+
+[node name="mushroom_cap_glowing_cluster_010" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.618943, 0, 0.785436, 0, 1, 0, -0.785436, 0, -0.618943, 61.4961, 4.12386, 4.82763)
+
+[node name="mushroom_cap_glowing_cluster_011" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(0.33583, 0, -0.941923, 0, 1, 0, 0.941923, 0, 0.33583, 66.6675, 7.03605, 16.6669)
+
+[node name="mushroom_cap_glowing_cluster_012" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.790775, 0, -0.612107, 0, 1, 0, 0.612107, 0, -0.790775, 57.0207, 12.6693, 62.6234)
+
+[node name="mushroom_cap_glowing_cluster_013" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.469703, 0, -0.882825, 0, 1, 0, 0.882825, 0, -0.469703, 53.8313, 15.9592, 73.8611)
+
+[node name="mushroom_cap_glowing_cluster_014" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.865169, 0, 0.501481, 0, 1, 0, -0.501481, 0, -0.865169, 47.4858, 15.9592, 73.8617)
+
+[node name="mushroom_cap_glowing_cluster_015" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.996001, 0, -0.0893463, 0, 1, 0, 0.0893463, 0, -0.996001, 32.9354, 2.46499, 83.3647)
+
+[node name="mushroom_cap_glowing_cluster_016" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(-0.975692, 0, 0.219148, 0, 1, 0, -0.219148, 0, -0.975692, 12.2949, -0.475104, 83.4261)
+
+[node name="mushroom_cap_glowing_cluster_017" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(0.92092, 0, -0.389751, 0, 1, 0, 0.389751, 0, 0.92092, 2.35014, -0.191038, 82.2089)
+
+[node name="mushroom_cap_glowing_cluster_018" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(0.92092, 0, -0.389751, 0, 1, 0, 0.389751, 0, 0.92092, -7.72959, -0.484825, 103.115)
+
+[node name="mushroom_cap_glowing_cluster_019" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(0.571029, 0, -0.82093, 0, 1, 0, 0.82093, 0, 0.571029, -49.7638, -0.484827, 71.437)
+
+[node name="mushroom_cap_glowing_cluster_020" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(0.571029, 0, -0.82093, 0, 1, 0, 0.82093, 0, 0.571029, -27.4041, -0.484827, 38.3276)
+
+[node name="mushroom_cap_glowing_cluster_021" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
+transform = Transform3D(0.163825, 0, 0.986489, 0, 1, 0, -0.986489, 0, 0.163825, -9.03424, -0.19967, 47.2811)
 
 [node name="Sounds" type="Node3D" parent="."]
 
