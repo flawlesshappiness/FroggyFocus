@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch71i4r1h8ofk"]
+[gd_scene load_steps=8 format=3 uid="uid://ch71i4r1h8ofk"]
 
 [ext_resource type="Script" uid="uid://d0kfbva5tuxd5" path="res://Prefabs/NPC/FrogScientistNPC/FrogScientistNpc.cs" id="1_3h7t5"]
 [ext_resource type="Resource" uid="uid://bvhdpbv1srgex" path="res://HandInQuest/Resources/Main_Scientist.tres" id="2_5asxe"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_bytrc"]
+[ext_resource type="AudioStream" uid="uid://blsf1wmo1ckdw" path="res://Sounds/Raw/sfx_frog_croak_004.wav" id="4_5asxe"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rhrvr"]
 height = 0.738281
@@ -12,12 +13,18 @@ radius = 0.710938
 height = 0.652832
 radius = 0.688477
 
-[node name="FrogScientistNPC" type="Area3D" node_paths=PackedStringArray("FrogCharacter")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_11g3p"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_5asxe")
+
+[node name="FrogScientistNPC" type="Area3D" node_paths=PackedStringArray("FrogCharacter", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_3h7t5")
 HandInInfo = ExtResource("2_5asxe")
 FrogCharacter = NodePath("Frog")
+SfxSpeak = NodePath("SfxSpeak")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369141, -0.396207)
@@ -31,3 +38,9 @@ DisableAppearanceUpdates = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326416, 0)
 shape = SubResource("CylinderShape3D_2d5ww")
+
+[node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_11g3p")
+pitch_scale = 0.5
+bus = &"SFX"
+attenuation_filter_db = 0.0

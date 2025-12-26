@@ -51,7 +51,8 @@ public partial class TopDownController : CharacterBody3D
 
             if (DesiredJumpVelocity.Length() >= 0.01f)
             {
-                velocity += DesiredJumpVelocity;
+                velocity = DesiredJumpVelocity;
+                DesiredJumpVelocity = Vector3.Zero;
             }
         }
         else
