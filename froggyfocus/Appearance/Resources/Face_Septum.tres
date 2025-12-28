@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://dycpdpxn5w7du"]
+
+[ext_resource type="PackedScene" uid="uid://bmg430dgy8ers" path="res://Appearance/Attachments/septum.tscn" id="1_f2tvf"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_0d7fj"]
+
+[resource]
+script = ExtResource("2_0d7fj")
+Category = 1
+Type = 105
+DefaultPrimaryColor = 204
+DefaultSecondaryColor = 204
+Prefab = ExtResource("1_f2tvf")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

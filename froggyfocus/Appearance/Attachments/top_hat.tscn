@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_4y6a1"]
 [ext_resource type="PackedScene" uid="uid://dqhdj1m74fp8" path="res://Assets/FlawLizArt/Hats/top_hat.fbx" id="2_uqvqn"]
 
-[node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="TopHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
 script = ExtResource("1_4y6a1")
 Type = 5
 Mesh = NodePath("top_hat/top_hat")

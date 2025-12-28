@@ -11,6 +11,7 @@ public enum ItemType
     Hat_Bow = 7,
     Hat_Mushroom = 8,
     Hat_BugOfLove = 9,
+    Hat_Plumbob = 10,
 
     // Faces
     Face_None = 100,
@@ -18,6 +19,7 @@ public enum ItemType
     Face_Glasses_Scientist = 102,
     Face_Glasses_Round = 103,
     Face_Monocle = 104,
+    Face_Septum = 105,
 
     // Colors
     Color_Default = 200,

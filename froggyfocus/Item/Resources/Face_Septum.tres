@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://byat5slp8mvad"]
+
+[ext_resource type="Script" uid="uid://xn66d7btognw" path="res://Item/ItemInfo.cs" id="1_cva58"]
+
+[resource]
+script = ExtResource("1_cva58")
+Category = 1
+Type = 105
+Name = "Septum"
+metadata/_custom_type_script = "uid://xn66d7btognw"
