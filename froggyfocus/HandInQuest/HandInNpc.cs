@@ -42,9 +42,16 @@ public partial class HandInNpc : CharacterNpc
 
     protected override void DialogueEnded()
     {
-        if (HasActiveDialogue && !claimed_hand_in)
+        if (HasActiveDialogue)
         {
-            HandInView.Instance.ShowPopup(HandInInfo.Id);
+            if (!claimed_hand_in)
+            {
+                HandInView.Instance.ShowPopup(HandInInfo.Id);
+            }
+            else
+            {
+                StopDialogueCamera();
+            }
         }
 
         base.DialogueEnded();

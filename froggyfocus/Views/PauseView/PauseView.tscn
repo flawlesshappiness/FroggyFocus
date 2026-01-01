@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://2mjpr6n1kw6f"]
+[gd_scene load_steps=17 format=3 uid="uid://2mjpr6n1kw6f"]
 
 [ext_resource type="Script" uid="uid://bviv37jaoxr1w" path="res://Views/PauseView/PauseView.cs" id="1_4uuhc"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_8a3o8"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_j78r4"]
+[ext_resource type="PackedScene" uid="uid://8iioxfkp1pru" path="res://Prefabs/UI/Pins/pins_container.tscn" id="3_uhup0"]
 [ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/OptionsContainer.tscn" id="4_bcih6"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="4_vwcev"]
 [ext_resource type="PackedScene" uid="uid://tgy8kp0u0ikg" path="res://Prefabs/UI/Pause/pause_container.tscn" id="5_3mg3l"]
@@ -16,7 +17,99 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_vwcev")
 
-[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimatedOverlay_Behind", "AnimatedOverlay_Front", "AnimatedPanel_Pause", "AnimatedPanel_Options", "AnimatedPanel_Customize", "AnimatedPanel_Inventory", "AnimatedPanel_Bestiary", "InputBlocker", "Options", "CustomizeAppearanceControl", "InventoryControl", "BestiaryControl", "PauseContainer")]
+[sub_resource type="Animation" id="Animation_wf5kr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pins_container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1169.97, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pins_container:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6ltfg"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pins_container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(860.05, 0), Vector2(1169.97, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pins_container:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_uhup0"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pins_container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1164.47, 0), Vector2(860.05, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pins_container:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ltfg"]
+_data = {
+&"RESET": SubResource("Animation_wf5kr"),
+&"hide": SubResource("Animation_6ltfg"),
+&"show": SubResource("Animation_uhup0")
+}
+
+[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimatedOverlay_Behind", "AnimatedOverlay_Front", "AnimatedPanel_Pause", "AnimatedPanel_Options", "AnimatedPanel_Customize", "AnimatedPanel_Inventory", "AnimatedPanel_Bestiary", "InputBlocker", "Options", "CustomizeAppearanceControl", "InventoryControl", "BestiaryControl", "PauseContainer", "PinsContainer", "AnimationPlayer_Pins")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -38,6 +131,8 @@ CustomizeAppearanceControl = NodePath("CenterContainer/Center/UIScale/AnimatedPa
 InventoryControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Inventory/InventoryControl")
 BestiaryControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Bestiary/BestiaryControl")
 PauseContainer = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/PauseContainer")
+PinsContainer = NodePath("pins_container")
+AnimationPlayer_Pins = NodePath("AnimationPlayer_Pins")
 ChildOrder = 1
 
 [node name="AnimatedOverlay_Behind" parent="." instance=ExtResource("2_8a3o8")]
@@ -117,6 +212,11 @@ offset_bottom = 0.0
 [node name="BestiaryControl" parent="CenterContainer/Center/UIScale/AnimatedPanel_Bestiary" instance=ExtResource("10_uhup0")]
 layout_mode = 1
 
+[node name="pins_container" parent="." instance=ExtResource("3_uhup0")]
+visible = false
+layout_mode = 1
+offset_left = -291.95
+
 [node name="AnimatedOverlay_Front" parent="." instance=ExtResource("2_8a3o8")]
 layout_mode = 1
 
@@ -131,6 +231,11 @@ grow_vertical = 2
 [node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_vwcev")
 volume_db = -20.0
+
+[node name="AnimationPlayer_Pins" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6ltfg")
+}
 
 [editable path="CenterContainer/Center/UIScale/AnimatedPanel_Options/Options"]
 [editable path="CenterContainer/Center/UIScale/AnimatedPanel_Options/Options/Options"]

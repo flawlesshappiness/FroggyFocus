@@ -68,10 +68,10 @@ public partial class UpgradeContainer : ControlScript
         }
 
         var first = upgrade_controls.First();
-        first.UpgradeButton.FocusEntered += ScrollToTop;
+        first.UpgradeButton.FocusEntered += ScrollContainer.ScrollVerticalToTop;
 
         var last = upgrade_controls.Last();
-        last.UpgradeButton.FocusEntered += ScrollToBottom;
+        last.UpgradeButton.FocusEntered += ScrollContainer.ScrollVerticalToBottom;
 
         UpgradeControlTemplate.Hide();
     }
@@ -79,15 +79,5 @@ public partial class UpgradeContainer : ControlScript
     public Button GetFirstButton()
     {
         return upgrade_controls.FirstOrDefault()?.UpgradeButton;
-    }
-
-    private void ScrollToTop()
-    {
-        ScrollContainer.ScrollVertical = 0;
-    }
-
-    private void ScrollToBottom()
-    {
-        ScrollContainer.ScrollVertical = 9999;
     }
 }

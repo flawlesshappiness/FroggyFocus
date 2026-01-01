@@ -8,6 +8,8 @@ public partial class HandInController : ResourceController<HandInCollection, Han
 
     public event Action<string> OnHandInClaimed;
     public event Action<string> OnHandInClosed;
+    public event Action<string> OnHandInPinned;
+    public event Action<string> OnHandInUnpinned;
 
     public override void _Ready()
     {
@@ -120,5 +122,21 @@ public partial class HandInController : ResourceController<HandInCollection, Han
     public void HandInClosed(HandInInfo info)
     {
         OnHandInClosed?.Invoke(info.Id);
+    }
+
+    public void PinHandIn(string id)
+    {
+        var data = HandIn.GetOrCreateData(id);
+        data.Pinned = true;
+        Data.Game.Save();
+
+        OnHandInPinned?.Invoke(id);
+    }
+
+    public void UnpinHandIn(string id)
+    {
+        var data = HandIn.GetOrCreateData(id);
+        data.Pinned = false;
+        OnHandInUnpinned?.Invoke(id);
     }
 }

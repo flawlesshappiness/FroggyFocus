@@ -20,6 +20,9 @@ public partial class HandInContainer : MarginContainer
     public Button ClaimButton;
 
     [Export]
+    public Button PinButton;
+
+    [Export]
     public Label TimerLabel;
 
     [Export]
@@ -65,6 +68,7 @@ public partial class HandInContainer : MarginContainer
         base._Ready();
 
         ClaimButton.Pressed += ClaimButton_Pressed;
+        PinButton.Pressed += PinButton_Pressed;
 
         InitializeRequestButtons();
     }
@@ -239,10 +243,12 @@ public partial class HandInContainer : MarginContainer
         }
 
         Data.Game.Save();
+        HandInController.Instance.UnpinHandIn(CurrentInfo.Id);
 
         ClaimButton.Disabled = true;
 
         OnClaim?.Invoke();
+
     }
 
     private void Validate()
@@ -263,5 +269,10 @@ public partial class HandInContainer : MarginContainer
             yield return RewardUnlockBar.WaitForFillNext();
             yield return new WaitForSeconds(0.25f);
         }
+    }
+
+    private void PinButton_Pressed()
+    {
+        HandInController.Instance.PinHandIn(CurrentInfo.Id);
     }
 }

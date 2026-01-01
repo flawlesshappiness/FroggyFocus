@@ -1,0 +1,152 @@
+[gd_scene load_steps=8 format=3 uid="uid://by13hd2hkf7ol"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_j1722"]
+[ext_resource type="Script" uid="uid://la1beg8afn8o" path="res://Prefabs/UI/Pins/PinnedHandInControl.cs" id="2_eyjhg"]
+[ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="2_nkcxu"]
+[ext_resource type="Texture2D" uid="uid://c46263udmgtp4" path="res://Assets/FlawLizArt/Textures/icon_pin.png" id="3_56fv2"]
+[ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="3_f2c7y"]
+[ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="4_yw5sa"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="5_sfm8m"]
+
+[node name="pinned_hand_in_control" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "LocationLabel", "UnpinButton", "PreviewButtons")]
+custom_minimum_size = Vector2(267, 0)
+theme = ExtResource("1_j1722")
+script = ExtResource("2_eyjhg")
+NameLabel = NodePath("VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/MarginContainer/TitleLabel")
+LocationLabel = NodePath("VBoxContainer/InfoContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/HoverLabel")
+UnpinButton = NodePath("VBoxContainer/HBoxContainer/VBoxContainer2/UnpinButton")
+ThemeNormal = ExtResource("1_j1722")
+ThemeCompleted = ExtResource("3_f2c7y")
+PreviewButtons = [NodePath("VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryPreviewButton"), NodePath("VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryPreviewButton2"), NodePath("VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryPreviewButton3"), NodePath("VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryPreviewButton"), NodePath("VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryPreviewButton2"), NodePath("VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryPreviewButton3")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="UnpinButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_nkcxu")]
+layout_mode = 2
+icon = ExtResource("3_56fv2")
+LabelText = "Unpin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_sfm8m")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "Request Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="InventoryPreviewButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_yw5sa")]
+layout_mode = 2
+disabled = true
+
+[node name="InventoryPreviewButton2" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_yw5sa")]
+layout_mode = 2
+disabled = true
+
+[node name="InventoryPreviewButton3" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_yw5sa")]
+visible = false
+layout_mode = 2
+disabled = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="InventoryPreviewButton" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("4_yw5sa")]
+visible = false
+layout_mode = 2
+disabled = true
+
+[node name="InventoryPreviewButton2" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("4_yw5sa")]
+visible = false
+layout_mode = 2
+disabled = true
+
+[node name="InventoryPreviewButton3" parent="VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("4_yw5sa")]
+visible = false
+layout_mode = 2
+disabled = true
+
+[node name="InfoContainer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("5_sfm8m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/InfoContainer"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -433.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/InfoContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/InfoContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/InfoContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/InfoContainer/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 2
+
+[node name="HoverLabel" type="Label" parent="VBoxContainer/InfoContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+text = "Location hint"
+horizontal_alignment = 1

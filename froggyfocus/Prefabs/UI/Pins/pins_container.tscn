@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://8iioxfkp1pru"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_uxgb1"]
+[ext_resource type="PackedScene" uid="uid://by13hd2hkf7ol" path="res://Prefabs/UI/Pins/pinned_hand_in_control.tscn" id="2_5msx2"]
+[ext_resource type="Script" uid="uid://cyc82rvrgj5br" path="res://Prefabs/UI/Pins/PinsContainer.cs" id="2_pp2yg"]
+
+[node name="pins_container" type="MarginContainer" node_paths=PackedStringArray("PinsParent", "ScrollContainer")]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_uxgb1")
+script = ExtResource("2_pp2yg")
+PinControlPrefab = ExtResource("2_5msx2")
+PinsParent = NodePath("ScrollContainer/MarginContainer/VBoxContainer")
+ScrollContainer = NodePath("ScrollContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(291.95, 0)
+layout_mode = 2
+follow_focus = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="pinned_hand_in_control" parent="ScrollContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("PreviewButtons") instance=ExtResource("2_5msx2")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+PreviewButtons = []

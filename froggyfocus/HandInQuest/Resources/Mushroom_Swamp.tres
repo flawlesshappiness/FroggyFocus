@@ -8,9 +8,14 @@
 [resource]
 script = ExtResource("4_trkri")
 Id = "mushroom"
+Name = "Swamp Mushroom"
+UniqueRequests = false
+RequestPreviewHidden = false
+HasMoneyReward = true
 PossibleRequests = Array[Object]([ExtResource("1_bxmoc"), ExtResource("2_c8oei"), ExtResource("3_rhkfr")])
 CountRange = Vector2i(1, 2)
 ClaimCountToUnlock = 10
-HatUnlock = 8
+HasItemUnlock = false
+ItemUnlock = 0
 CooldownInSeconds = 600.0
 metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

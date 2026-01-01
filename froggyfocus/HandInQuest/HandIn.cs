@@ -51,7 +51,7 @@ public static class HandIn
         var count = rng.RandiRange(info.CountRange.X, info.CountRange.Y);
 
         data.RequestInfos = info.PossibleRequests
-            .TakeRandom(count, allow_duplicates: !info.UniqueRequests)
+            .TakeRandom(count, allow_duplicates: false)
             .Select(x => x.ResourcePath)
             .ToList();
 

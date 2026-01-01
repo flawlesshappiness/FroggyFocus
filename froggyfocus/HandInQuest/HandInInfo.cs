@@ -8,7 +8,7 @@ public partial class HandInInfo : Resource
     public string Id;
 
     [Export]
-    public bool UniqueRequests;
+    public string Name;
 
     [Export]
     public bool RequestPreviewHidden;

@@ -43,6 +43,12 @@ public partial class PauseView : View
     [Export]
     public PauseContainer PauseContainer;
 
+    [Export]
+    public PinsContainer PinsContainer;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Pins;
+
     public static readonly MultiLock ToggleLock = new();
 
     private bool animating;
@@ -69,6 +75,7 @@ public partial class PauseView : View
         CustomizeAppearanceControl.OnBack += CloseMenu;
         InventoryControl.OnBack += CloseMenu;
         BestiaryControl.OnBack += CloseMenu;
+        PinsContainer.OnPinsEmpty += PinsEmpty;
     }
 
     protected override void OnShow()
@@ -127,6 +134,7 @@ public partial class PauseView : View
 
             InputBlocker.Show();
             AnimatedOverlay_Behind.AnimateBehindShow();
+            ShowPins();
             yield return AnimatedPanel_Pause.AnimatePopShow();
             InputBlocker.Hide();
 
@@ -150,6 +158,7 @@ public partial class PauseView : View
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedOverlay_Behind.AnimateBehindHide();
+            HidePins();
             yield return AnimatedPanel_Pause.AnimatePopHide();
             InputBlocker.Hide();
 
@@ -179,6 +188,7 @@ public partial class PauseView : View
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
+            HidePins();
             yield return settings.MenuPanel.AnimatePopShow();
             InputBlocker.Hide();
 
@@ -204,6 +214,7 @@ public partial class PauseView : View
             ReleaseCurrentFocus();
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
+            ShowPins();
             yield return settings.MenuPanel.AnimatePopHide();
             InputBlocker.Hide();
 
@@ -284,5 +295,20 @@ public partial class PauseView : View
             GetFocusControl = () => BestiaryControl.GetFocusControl(),
             GetBackFocusControl = () => PauseContainer.BestiaryButton
         });
+    }
+
+    private void ShowPins()
+    {
+        AnimationPlayer_Pins.Play("show");
+    }
+
+    private void HidePins()
+    {
+        AnimationPlayer_Pins.Play("hide");
+    }
+
+    private void PinsEmpty()
+    {
+        PauseContainer.MainMenuButton.GrabFocus();
     }
 }

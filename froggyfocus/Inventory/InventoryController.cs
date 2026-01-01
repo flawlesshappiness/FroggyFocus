@@ -119,6 +119,11 @@ public partial class InventoryController : SingletonController
             .ToList();
     }
 
+    public bool HasCharacter(FocusCharacterInfo info)
+    {
+        return Data.Game.Inventory.Characters.Any(x => x.InfoPath == info.ResourcePath);
+    }
+
     public bool IsDataValid(InventoryCharacterData data, InventoryFilterOptions options = null)
     {
         if (options == null) return true;

@@ -26,6 +26,7 @@ public partial class HandInView : View
     {
         base._Ready();
         HandInContainer.BackButton.Pressed += BackButton_Pressed;
+        HandInContainer.PinButton.Pressed += PinButton_Pressed;
         HandInContainer.OnClaim += HandInContainer_Claim;
     }
 
@@ -87,6 +88,11 @@ public partial class HandInView : View
     }
 
     private void BackButton_Pressed()
+    {
+        Close();
+    }
+
+    private void PinButton_Pressed()
     {
         Close();
     }

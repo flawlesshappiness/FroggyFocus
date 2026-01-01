@@ -1,16 +1,19 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbl0lxjgwiop8"]
+[gd_scene load_steps=13 format=3 uid="uid://cbl0lxjgwiop8"]
 
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="1_egl5y"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_gy4rq"]
 [ext_resource type="Script" uid="uid://nympupi6qvim" path="res://Prefabs/UI/HandIn/HandInContainer.cs" id="2_6tauf"]
 [ext_resource type="Texture2D" uid="uid://bonu8f811ddko" path="res://Assets/KenneyNL/Cursor/Basic/navigation_n.png" id="2_gy4rq"]
 [ext_resource type="PackedScene" uid="uid://byh5solck2yl" path="res://Prefabs/UI/RewardPreview/reward_preview.tscn" id="3_6tauf"]
+[ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="3_svgvs"]
+[ext_resource type="Texture2D" uid="uid://c46263udmgtp4" path="res://Assets/FlawLizArt/Textures/icon_pin.png" id="4_svgvs"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="4_we8yh"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_svgvs"]
 [ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="6_hgnx5"]
 [ext_resource type="PackedScene" uid="uid://f3kbwyvky2m8" path="res://Prefabs/UI/RewardUnlockBar/reward_unlock_bar.tscn" id="7_h3v2q"]
+[ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="11_hgnx5"]
 
-[node name="HandInContainer" type="MarginContainer" node_paths=PackedStringArray("ControlsContainer", "TimerContainer", "BackButton", "ClaimButton", "TimerLabel", "NameLabel", "LocationHintLabel", "RewardUnlockBar", "RequestButtons", "RewardPreviews")]
+[node name="HandInContainer" type="MarginContainer" node_paths=PackedStringArray("ControlsContainer", "TimerContainer", "BackButton", "ClaimButton", "PinButton", "TimerLabel", "NameLabel", "LocationHintLabel", "RewardUnlockBar", "RequestButtons", "RewardPreviews")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -28,6 +31,7 @@ ControlsContainer = NodePath("VBoxContainer/MainContainer/MarginContainer/Contro
 TimerContainer = NodePath("VBoxContainer/MainContainer/MarginContainer/TimerContainer")
 BackButton = NodePath("VBoxContainer/BackButtonContainer/BackButton")
 ClaimButton = NodePath("VBoxContainer/MainContainer/MarginContainer/ControlsContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ClaimButton")
+PinButton = NodePath("VBoxContainer/BackButtonContainer/PinButton")
 TimerLabel = NodePath("VBoxContainer/MainContainer/MarginContainer/TimerContainer/VBoxContainer/TimerLabel")
 NameLabel = NodePath("VBoxContainer/MainContainer/MarginContainer/ControlsContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer/MarginContainer/NameLabel")
 LocationHintLabel = NodePath("VBoxContainer/MainContainer/MarginContainer/ControlsContainer/VBoxContainer/HBoxContainer2/VBoxContainer/MarginContainer2/MarginContainer/LocationHintLabel")
@@ -274,7 +278,12 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="BackButton" parent="VBoxContainer/BackButtonContainer" instance=ExtResource("5_svgvs")]
-custom_minimum_size = Vector2(150, 0)
+[node name="BackButton" parent="VBoxContainer/BackButtonContainer" instance=ExtResource("3_svgvs")]
 layout_mode = 2
-text = " Back"
+icon = ExtResource("11_hgnx5")
+LabelText = "Back"
+
+[node name="PinButton" parent="VBoxContainer/BackButtonContainer" instance=ExtResource("3_svgvs")]
+layout_mode = 2
+icon = ExtResource("4_svgvs")
+LabelText = "Pin"
