@@ -58,8 +58,10 @@ public partial class BestiaryEntryControl : Control
         for (int i = 0; i < variations.Count; i++)
         {
             var v = variations[i];
+            var v_stats = StatsController.Instance.GetOrCreateCharacterData(v.ResourcePath);
+            var caught = v_stats.CountCaught > 0;
             variation_text += i > 0 ? "\n" : string.Empty;
-            variation_text += $"{v.Name}";
+            variation_text += caught ? $"{v.Name}" : "???";
         }
         VariationLabel.Text = variation_text;
         VariationContainer.Visible = variations.Count > 0;

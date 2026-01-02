@@ -137,6 +137,8 @@ public partial class HandInController : ResourceController<HandInCollection, Han
     {
         var data = HandIn.GetOrCreateData(id);
         data.Pinned = false;
+        Data.Game.Save();
+
         OnHandInUnpinned?.Invoke(id);
     }
 }

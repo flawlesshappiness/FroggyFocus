@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://blseliwm3s1f1"]
+[gd_scene load_steps=7 format=3 uid="uid://blseliwm3s1f1"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_w3kxo"]
 [ext_resource type="Script" uid="uid://bju7b4mhjacmp" path="res://Prefabs/UI/Inventory/InventoryControl.cs" id="2_v4q88"]
 [ext_resource type="PackedScene" uid="uid://s6oqyxkfywv7" path="res://Prefabs/UI/Inventory/inventory_container.tscn" id="3_gj1sa"]
+[ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="4_7pmmq"]
 [ext_resource type="PackedScene" uid="uid://d01a2ra0pi4" path="res://Prefabs/UI/Inventory/inventory_info_container.tscn" id="4_tufir"]
-[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_boh4b"]
+[ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="5_gj1sa"]
 
 [node name="InventoryControl" type="Control" node_paths=PackedStringArray("InventoryContainer", "BackButton", "InfoContainer")]
 layout_mode = 3
@@ -22,7 +23,7 @@ grow_vertical = 2
 theme = ExtResource("1_w3kxo")
 script = ExtResource("2_v4q88")
 InventoryContainer = NodePath("HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer/inventory_container")
-BackButton = NodePath("BackButton")
+BackButton = NodePath("HBoxContainer/ButtonsPanel/BackButton")
 InfoContainer = NodePath("HBoxContainer/InfoPanel/MarginContainer/InventoryInfoContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -92,6 +93,22 @@ text = "INVENTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BackButton" parent="HBoxContainer/ButtonsPanel" instance=ExtResource("4_7pmmq")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = 7.005
+offset_right = 25.0
+offset_bottom = 57.005
+grow_horizontal = 2
+grow_vertical = 0
+icon = ExtResource("5_gj1sa")
+LabelText = "Back"
+
 [node name="InfoPanel" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
@@ -110,18 +127,3 @@ theme_override_constants/margin_bottom = 25
 
 [node name="InventoryInfoContainer" parent="HBoxContainer/InfoPanel/MarginContainer" instance=ExtResource("4_tufir")]
 layout_mode = 2
-
-[node name="BackButton" parent="." instance=ExtResource("5_boh4b")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -49.5
-offset_top = 15.0
-offset_right = 49.5
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 0
-text = " Back"

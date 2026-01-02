@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://mptknyq7ry3j"]
+[gd_scene load_steps=9 format=3 uid="uid://mptknyq7ry3j"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_mdb82"]
 [ext_resource type="Script" uid="uid://cq32llc146g5v" path="res://Views/FastTravelView/FastTravelView.cs" id="1_t2eyx"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_jnp6d"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_icghx"]
-[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="5_mlxy5"]
 [ext_resource type="PackedScene" uid="uid://bcmkommv5s4ky" path="res://Prefabs/UI/FastTravel/fast_travel_button.tscn" id="5_uqba7"]
+[ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="6_sdg7h"]
 [ext_resource type="PackedScene" uid="uid://bs6jtqi04ls8t" path="res://Prefabs/UI/PurchasePopup/purchase_popup.tscn" id="7_22dsj"]
+[ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="7_d5wwr"]
 
 [node name="FastTravelView" type="Control" node_paths=PackedStringArray("BackButton", "Overlay", "LocationButtonTemplate", "PurchasePopup", "AnimatedPanel", "AnimatedOverlay", "InputBlocker")]
 layout_mode = 3
@@ -132,10 +133,10 @@ vertical_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel/VBoxContainer/BackButtonContainer" instance=ExtResource("5_mlxy5")]
-custom_minimum_size = Vector2(100, 0)
+[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel/VBoxContainer/BackButtonContainer" instance=ExtResource("6_sdg7h")]
 layout_mode = 2
-text = "Back"
+icon = ExtResource("7_d5wwr")
+LabelText = "Back"
 
 [node name="PurchasePopup" parent="." instance=ExtResource("7_22dsj")]
 layout_mode = 1

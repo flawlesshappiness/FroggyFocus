@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsiem2e7uxtnt"]
+[gd_scene load_steps=11 format=3 uid="uid://dsiem2e7uxtnt"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_oyo16"]
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_s4spg"]
 [ext_resource type="PackedScene" uid="uid://bqc4geie2toaj" path="res://Prefabs/UI/Appearance/appearance_container.tscn" id="3_eea5e"]
 [ext_resource type="Script" uid="uid://ir8udky37tgr" path="res://Prefabs/UI/CustomizeAppearance/AppearanceTabScrollContainer.cs" id="3_s4spg"]
-[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_ey1c2"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="5_bn128"]
 [ext_resource type="PackedScene" uid="uid://v5mn7ism72n8" path="res://Prefabs/UI/Appearance/appearance_color_control.tscn" id="5_eea5e"]
+[ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="6_eea5e"]
+[ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="7_ey1c2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uex8"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -193,20 +194,21 @@ ItemCategory = 1
 NoneType = 100
 ShowOwned = true
 
-[node name="BackButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("4_ey1c2")]
+[node name="BackButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("6_eea5e")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -49.5
-offset_top = 12.0
-offset_right = 49.5
-offset_bottom = 57.0
+offset_left = -25.0
+offset_top = 3.60501
+offset_right = 25.0
+offset_bottom = 53.605
 grow_horizontal = 2
 grow_vertical = 0
-text = " Back"
+icon = ExtResource("7_ey1c2")
+LabelText = "Back"
 
 [node name="TitlePanel" type="Panel" parent="."]
 layout_mode = 2

@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3grtpowr0n5u"]
+[gd_scene load_steps=8 format=3 uid="uid://c3grtpowr0n5u"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_030oo"]
 [ext_resource type="Script" uid="uid://tpcinpljvlal" path="res://Prefabs/UI/Bestiary/BestiaryControl.cs" id="2_7eevx"]
 [ext_resource type="PackedScene" uid="uid://cbfgdqsf76g4j" path="res://Prefabs/UI/Bestiary/bestiary_container.tscn" id="3_dfjrq"]
-[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_7eevx"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="5_0qu6i"]
 [ext_resource type="PackedScene" uid="uid://bmoecjh45fqje" path="res://Prefabs/UI/Bestiary/bestiary_entry_control.tscn" id="5_dfjrq"]
+[ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="5_uturq"]
+[ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="6_gcw56"]
 
 [node name="BestiaryControl" type="Control" node_paths=PackedStringArray("BackButton", "Container", "EntryControl", "AnimatedPanel_Container", "AnimatedPanel_EntryControl", "InputBlocker")]
 layout_mode = 3
@@ -110,10 +111,10 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 alignment = 1
 
-[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_7eevx")]
-custom_minimum_size = Vector2(100, 0)
+[node name="BackButton" parent="CenterContainer/Center/AnimatedPanel_Container/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_uturq")]
 layout_mode = 2
-text = " Back"
+icon = ExtResource("6_gcw56")
+LabelText = "Back"
 
 [node name="AnimatedPanel_Entry" parent="CenterContainer/Center" instance=ExtResource("5_0qu6i")]
 layout_mode = 1
