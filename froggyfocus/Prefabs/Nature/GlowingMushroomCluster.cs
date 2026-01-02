@@ -1,10 +1,14 @@
 using Godot;
+using Godot.Collections;
 using System.Collections;
 
 public partial class GlowingMushroomCluster : Node3DScript
 {
     [Export]
     public OmniLight3D Light;
+
+    [Export]
+    public Array<GpuParticles3D> Particles;
 
     private float light_energy;
 
@@ -45,11 +49,14 @@ public partial class GlowingMushroomCluster : Node3DScript
             {
                 Light.LightEnergy = Mathf.Lerp(e_light_start, e_light_end, f);
             });
+
+            Particles.ForEach(x => x.Emitting = glow);
         }
     }
 
     private void SetGlowing(bool glow)
     {
         Light.LightEnergy = glow ? light_energy : 0;
+        Particles.ForEach(x => x.Emitting = glow);
     }
 }

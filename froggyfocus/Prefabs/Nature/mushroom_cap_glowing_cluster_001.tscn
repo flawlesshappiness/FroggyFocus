@@ -1,11 +1,65 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnwavkrtuiwhy"]
+[gd_scene load_steps=14 format=3 uid="uid://bnwavkrtuiwhy"]
 
 [ext_resource type="PackedScene" uid="uid://dfqeqvr4aopbg" path="res://Prefabs/Nature/mushroom_cap_glowing.tscn" id="1_8vrv3"]
 [ext_resource type="Script" uid="uid://tufhylcgkmwb" path="res://Prefabs/Nature/GlowingMushroomCluster.cs" id="1_8yf6f"]
+[ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="3_wixtg"]
 
-[node name="mushroom_cap_glowing_cluster_001" type="Node3D" node_paths=PackedStringArray("Light")]
+[sub_resource type="Curve" id="Curve_2qgqx"]
+_data = [Vector2(0, 0), 0.0, 3.10278, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.89466, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wkkeo"]
+curve = SubResource("Curve_2qgqx")
+
+[sub_resource type="Curve" id="Curve_vuwa3"]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tds34"]
+curve = SubResource("Curve_vuwa3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rir8i"]
+gravity = Vector3(0, 0, 0)
+scale_min = 10.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_tds34")
+color = Color(0.52, 1, 0.896, 0.215686)
+alpha_curve = SubResource("CurveTexture_wkkeo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gr2l"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_wixtg")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_lpjoa"]
+material = SubResource("StandardMaterial3D_8gr2l")
+
+[sub_resource type="Curve" id="Curve_as4sb"]
+_data = [Vector2(0, 0), 0.0, 3.69461, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.34929, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8gr2l"]
+curve = SubResource("Curve_as4sb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v6hcw"]
+emission_shape = 3
+emission_box_extents = Vector3(1.5, 1.5, 1.5)
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.25
+initial_velocity_max = 0.25
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_8gr2l")
+color = Color(0.52, 1, 0.896, 1)
+
+[node name="mushroom_cap_glowing_cluster_001" type="Node3D" node_paths=PackedStringArray("Light", "Particles")]
 script = ExtResource("1_8yf6f")
 Light = NodePath("OmniLight3D")
+Particles = [NodePath("ps_glow"), NodePath("ps_fireflies")]
 
 [node name="Scale" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -29,3 +83,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575758, -0.0307606)
 light_color = Color(0.4, 0.93, 1, 1)
 omni_range = 16.0
 omni_attenuation = 0.25
+
+[node name="ps_glow" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.692041, -0.12605)
+amount = 2
+lifetime = 2.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_rir8i")
+draw_pass_1 = SubResource("QuadMesh_lpjoa")
+
+[node name="ps_fireflies" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58106, 0.0271783)
+amount = 10
+lifetime = 4.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_v6hcw")
+draw_pass_1 = SubResource("QuadMesh_lpjoa")
