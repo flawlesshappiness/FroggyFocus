@@ -27,15 +27,22 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     private void InitializeCharacter()
     {
         FrogCharacter.ClearAppearance();
-        FrogCharacter.HatAttachments.SetAttachment(ItemType.Hat_Bow, ItemType.Color_Default, ItemType.Color_Default);
+
+        if (HandInData.ClaimedCount > 0)
+        {
+            FrogCharacter.HatAttachments.SetAttachment(ItemType.Hat_BugOfLove, ItemType.Color_Default, ItemType.Color_Default);
+        }
+        else
+        {
+            FrogCharacter.HatAttachments.SetAttachment(ItemType.Hat_Bow, ItemType.Color_Default, ItemType.Color_Default);
+        }
     }
 
     public override void Interact()
     {
         if (HandInData.ClaimedCount > 0)
         {
-            // TODO
-            Debug.LogError("UNFINISHED");
+            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
         }
         else if (!GameFlags.HasFlag(INTRO_ID))
         {
@@ -54,9 +61,9 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         {
             HandInView.Instance.ShowPopup(HandInInfo.Id);
         }
-        else if (id == $"##{DIALOGUE_ID}_REQUEST_FAIL_002##")
+        else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_002##")
         {
-            StopDialogueCamera();
+            InitializeCharacter();
         }
     }
 
@@ -67,9 +74,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
-            // TODO
-            Debug.LogError("UNFINISHED");
-            //StartDialogue("##CRAB_REQUEST_COMPLETE_001##");
+            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }
     }
 

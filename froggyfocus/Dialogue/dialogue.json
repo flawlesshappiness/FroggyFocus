@@ -56,11 +56,7 @@
 		"next": "##MANAGER_INTRO_003##"
 	},
 	{
-		"id": "##MANAGER_INTRO_003##",
-		"next": "##MANAGER_INTRO_004##"
-	},
-	{
-		"id": "##MANAGER_INTRO_004##"
+		"id": "##MANAGER_INTRO_003##"
 	},
 	
 	{
@@ -77,6 +73,18 @@
 	},
 	{
 		"id": "##MANAGER_REQUEST_FAIL_002##"
+	},
+	
+	{
+		"id": "##MANAGER_REQUEST_COMPLETE_001##",
+		"next": "##MANAGER_REQUEST_COMPLETE_002##"
+	},
+	{
+		"id": "##MANAGER_REQUEST_COMPLETE_002##",
+		"next": "##MANAGER_REQUEST_COMPLETE_003##"
+	},
+	{
+		"id": "##MANAGER_REQUEST_COMPLETE_003##"
 	},
 	
 	{
@@ -112,6 +120,18 @@
 	},
 	
 	{
+		"id": "##PARTNER_REQUEST_COMPLETE_001##",
+		"next": "##PARTNER_REQUEST_COMPLETE_002##"
+	},
+	{
+		"id": "##PARTNER_REQUEST_COMPLETE_002##",
+		"next": "##PARTNER_REQUEST_COMPLETE_003##"
+	},
+	{
+		"id": "##PARTNER_REQUEST_COMPLETE_003##"
+	},
+	
+	{
 		"id": "##SCIENTIST_INTRO_001##",
 		"next": "##SCIENTIST_INTRO_002##"
 	},
@@ -141,6 +161,18 @@
 	},
 	{
 		"id": "##SCIENTIST_REQUEST_FAIL_002##"
+	},
+	
+	{
+		"id": "##SCIENTIST_REQUEST_COMPLETE_001##",
+		"next": "##SCIENTIST_REQUEST_COMPLETE_002##"
+	},
+	{
+		"id": "##SCIENTIST_REQUEST_COMPLETE_002##",
+		"next": "##SCIENTIST_REQUEST_COMPLETE_003##"
+	},
+	{
+		"id": "##SCIENTIST_REQUEST_COMPLETE_003##"
 	},
 	
 	{

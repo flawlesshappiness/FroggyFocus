@@ -35,8 +35,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
     {
         if (HandInData.ClaimedCount > 0)
         {
-            // TODO
-            Debug.LogError("UNFINISHED");
+            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
         }
         else if (!GameFlags.HasFlag(INTRO_ID))
         {
@@ -59,6 +58,14 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
         {
             StopDialogueCamera();
         }
+        else if (id == $"##{DIALOGUE_ID}_INTRO_003##")
+        {
+            StopDialogueCamera();
+        }
+        else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##")
+        {
+            StopDialogueCamera();
+        }
     }
 
     private void HandInClaimed(string id)
@@ -68,9 +75,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
-            // TODO
-            Debug.LogError("UNFINISHED");
-            //StartDialogue("##CRAB_REQUEST_COMPLETE_001##");
+            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }
     }
 

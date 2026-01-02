@@ -34,8 +34,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     {
         if (HandInData.ClaimedCount > 0)
         {
-            // TODO
-            Debug.LogError("UNFINISHED");
+            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
         }
         else if (!GameFlags.HasFlag(INTRO_ID))
         {
@@ -67,9 +66,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
-            // TODO
-            Debug.LogError("UNFINISHED");
-            //StartDialogue("##CRAB_REQUEST_COMPLETE_001##");
+            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }
     }
 
