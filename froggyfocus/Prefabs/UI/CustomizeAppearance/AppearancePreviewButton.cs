@@ -8,6 +8,9 @@ public partial class AppearancePreviewButton : ButtonScript
     [Export]
     public ItemSubViewport ItemSubViewport;
 
+    [Export]
+    public Label DefaultLabel;
+
     public bool IsLocked { get; private set; }
 
     public override void _Ready()
@@ -25,9 +28,9 @@ public partial class AppearancePreviewButton : ButtonScript
         TextureRect.Modulate = locked ? Colors.Black.SetA(0.5f) : Colors.White;
     }
 
-    public void SetAppearance(AppearanceInfo info)
+    public void SetAppearance(AppearanceInfo info, PackedScene prefab)
     {
-        var attachment = ItemSubViewport.SetPrefab<AppearanceAttachment>(info.Prefab);
+        var attachment = ItemSubViewport.SetPrefab<AppearanceAttachment>(prefab);
         attachment.SetDefaultColors();
         TextureRect.Show();
     }
@@ -40,5 +43,10 @@ public partial class AppearancePreviewButton : ButtonScript
     private void Button_FocusExited()
     {
         ItemSubViewport.SetAnimationIdle();
+    }
+
+    public void SetDefaultLabelVisible(bool visible)
+    {
+        DefaultLabel.Visible = visible;
     }
 }

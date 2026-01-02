@@ -5,12 +5,13 @@
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="2_5km8g"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="3_vkjdt"]
 
-[node name="AppearancePreviewButton" type="Button" node_paths=PackedStringArray("TextureRect", "ItemSubViewport")]
+[node name="AppearancePreviewButton" type="Button" node_paths=PackedStringArray("TextureRect", "ItemSubViewport", "DefaultLabel")]
 custom_minimum_size = Vector2(65, 65)
 theme = ExtResource("1_2h73a")
 script = ExtResource("1_5km8g")
 TextureRect = NodePath("TextureRect")
 ItemSubViewport = NodePath("ItemSubViewport")
+DefaultLabel = NodePath("DefaultLabel")
 SfxFocusEnter = ExtResource("2_5km8g")
 SfxPressed = ExtResource("2_5km8g")
 
@@ -25,3 +26,20 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="ItemSubViewport" parent="." instance=ExtResource("3_vkjdt")]
+
+[node name="DefaultLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = 32.0
+offset_right = -10.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785398
+text = "DEFAULT"
+horizontal_alignment = 1
+vertical_alignment = 1

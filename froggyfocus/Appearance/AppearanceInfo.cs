@@ -16,5 +16,8 @@ public partial class AppearanceInfo : Resource
     public ItemType DefaultSecondaryColor;
 
     [Export]
+    public bool HasSecondaryColor;
+
+    [Export]
     public PackedScene Prefab;
 }

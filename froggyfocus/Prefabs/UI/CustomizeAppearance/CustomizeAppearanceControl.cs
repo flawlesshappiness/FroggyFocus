@@ -123,6 +123,8 @@ public partial class CustomizeAppearanceControl : ControlScript
         if (loading) return;
         HatData.Type = info.Type;
         OnHatChanged?.Invoke();
+
+        HatColorControl.SetSecondaryEnabled(info.HasSecondaryColor);
     }
 
     private void FaceButton_Pressed(AppearanceInfo info)
@@ -130,6 +132,8 @@ public partial class CustomizeAppearanceControl : ControlScript
         if (loading) return;
         FaceData.Type = info.Type;
         OnFaceChanged?.Invoke();
+
+        FaceColorControl.SetSecondaryEnabled(info.HasSecondaryColor);
     }
 
     private void FaceColor_Selected(AppearanceInfo info)

@@ -91,4 +91,9 @@ public partial class AppearanceColorControl : VBoxContainer
         OtherControls.ForEach(x => x.Visible = !visible);
         ColorContainer.Visible = visible;
     }
+
+    public void SetSecondaryEnabled(bool enabled)
+    {
+        SecondaryButton.Disabled = !enabled;
+    }
 }

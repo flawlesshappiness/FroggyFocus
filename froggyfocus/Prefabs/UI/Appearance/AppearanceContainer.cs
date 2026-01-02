@@ -54,8 +54,9 @@ public partial class AppearanceContainer : ControlScript
         foreach (var info in infos)
         {
             var button = CreateAppearanceButton(info);
-            button.SetAppearance(info);
+            button.SetAppearance(info, info.Prefab);
             button.Pressed += () => AppearanceButtonPressed(info);
+            button.SetDefaultLabelVisible(info.Type == NoneType);
         }
     }
 
