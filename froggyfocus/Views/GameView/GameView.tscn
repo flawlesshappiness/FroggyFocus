@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bi33hifhhmwyo"]
+[gd_scene load_steps=16 format=3 uid="uid://bi33hifhhmwyo"]
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
 [ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="2_nrlgi"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="3_b56qe"]
 [ext_resource type="PackedScene" uid="uid://dolwflnwe75eq" path="res://Prefabs/UI/TwoButtonPopup/two_button_popup.tscn" id="3_nrlgi"]
+[ext_resource type="PackedScene" uid="uid://cxduyhinof8oq" path="res://Prefabs/UI/Quests/quest_updated_container.tscn" id="5_l7lip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7lip"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -105,7 +106,99 @@ _data = {
 &"show_overlay": SubResource("Animation_nrlgi")
 }
 
-[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup", "ShieldBar")]
+[sub_resource type="Animation" id="Animation_60bf7"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("quest_updated_container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(-300, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("quest_updated_container:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_umgkh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("quest_updated_container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-300, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("quest_updated_container:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dlfgm"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("quest_updated_container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-300, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("quest_updated_container:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dlfgm"]
+_data = {
+&"RESET": SubResource("Animation_umgkh"),
+&"hide": SubResource("Animation_dlfgm"),
+&"show": SubResource("Animation_60bf7")
+}
+
+[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup", "ShieldBar", "AnimationPlayer_Quests")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,6 +211,7 @@ AnimationPlayer = NodePath("AnimationPlayer_Overlay")
 Overlay = NodePath("Overlay")
 TwoButtonPopup = NodePath("TwoButtonPopup")
 ShieldBar = NodePath("MarginContainer/Control/ShieldBar")
+AnimationPlayer_Quests = NodePath("AnimationPlayer_QuestUpdated")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -170,6 +264,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_l7lip")
 }
 
+[node name="AnimationPlayer_QuestUpdated" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dlfgm")
+}
+
 [node name="TwoButtonPopup" parent="." instance=ExtResource("3_nrlgi")]
 layout_mode = 1
 mouse_filter = 2
+
+[node name="quest_updated_container" parent="." instance=ExtResource("5_l7lip")]
+visible = false
+layout_mode = 0
+anchors_preset = 0

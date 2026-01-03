@@ -1,0 +1,140 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs7vkttchkacm"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_erytu"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_d0a4i"]
+[ext_resource type="Script" uid="uid://dfju5dm8oy3x8" path="res://Prefabs/UI/Quests/MainQuestsContainer.cs" id="2_iwrdn"]
+
+[node name="main_quests_container" type="MarginContainer" node_paths=PackedStringArray("LabelPartner", "LabelManager", "LabelScientist", "PartnerControl", "ManagerControl", "ScientistControl")]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+theme = ExtResource("1_erytu")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("2_iwrdn")
+LabelPartner = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PartnerControl/MarginContainer/PartnerLabel")
+LabelManager = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ManagerControl/MarginContainer/ManagerLabel")
+LabelScientist = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ScientistControl/MarginContainer/ScientistLabel")
+PartnerControl = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PartnerControl")
+ManagerControl = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ManagerControl")
+ScientistControl = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ScientistControl")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 40
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.0
+offset_top = -35.0
+offset_right = 106.0
+offset_bottom = 12.0
+grow_horizontal = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/MarginContainer/Panel/Title"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/Panel/Title"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/MarginContainer/Panel/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.833333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_colors/font_outline_color = Color(0.701961, 0.466667, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "##QUESTS##"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PartnerControl" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PartnerControl"]
+layout_mode = 2
+theme = ExtResource("2_d0a4i")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PartnerControl"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="PartnerLabel" type="Label" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PartnerControl/MarginContainer"]
+custom_minimum_size = Vector2(250, 1)
+layout_mode = 2
+text = "Speak to Frooga"
+autowrap_mode = 3
+
+[node name="ManagerControl" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ManagerControl"]
+layout_mode = 2
+theme = ExtResource("2_d0a4i")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ManagerControl"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="ManagerLabel" type="Label" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ManagerControl/MarginContainer"]
+custom_minimum_size = Vector2(250, 1)
+layout_mode = 2
+text = "Speak to your manager"
+autowrap_mode = 3
+
+[node name="ScientistControl" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ScientistControl"]
+layout_mode = 2
+theme = ExtResource("2_d0a4i")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ScientistControl"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="ScientistLabel" type="Label" parent="ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ScientistControl/MarginContainer"]
+custom_minimum_size = Vector2(250, 1)
+layout_mode = 2
+text = "Speak to Froggius C. Roak"
+autowrap_mode = 3

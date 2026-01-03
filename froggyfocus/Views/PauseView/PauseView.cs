@@ -4,6 +4,8 @@ using System.Collections;
 
 public partial class PauseView : View
 {
+    public static PauseView Instance => Get<PauseView>();
+
     [Export]
     public AnimatedOverlay AnimatedOverlay_Behind;
 
@@ -49,7 +51,12 @@ public partial class PauseView : View
     [Export]
     public AnimationPlayer AnimationPlayer_Pins;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_Quests;
+
     public static readonly MultiLock ToggleLock = new();
+
+    public event Action OnViewShow;
 
     private bool animating;
     private bool transitioning;
@@ -84,6 +91,8 @@ public partial class PauseView : View
         //Scene.PauseLock.AddLock(nameof(PauseView));
         Player.SetAllLocks(nameof(PauseView), true);
         MouseVisibility.Show(nameof(PauseView));
+
+        OnViewShow?.Invoke();
     }
 
     protected override void OnHide()
@@ -135,6 +144,7 @@ public partial class PauseView : View
             InputBlocker.Show();
             AnimatedOverlay_Behind.AnimateBehindShow();
             ShowPins();
+            ShowQuests();
             yield return AnimatedPanel_Pause.AnimatePopShow();
             InputBlocker.Hide();
 
@@ -159,6 +169,7 @@ public partial class PauseView : View
             InputBlocker.Show();
             AnimatedOverlay_Behind.AnimateBehindHide();
             HidePins();
+            HideQuests();
             yield return AnimatedPanel_Pause.AnimatePopHide();
             InputBlocker.Hide();
 
@@ -189,6 +200,7 @@ public partial class PauseView : View
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateShrink();
             HidePins();
+            HideQuests();
             yield return settings.MenuPanel.AnimatePopShow();
             InputBlocker.Hide();
 
@@ -215,6 +227,7 @@ public partial class PauseView : View
             InputBlocker.Show();
             AnimatedPanel_Pause.AnimateGrow();
             ShowPins();
+            ShowQuests();
             yield return settings.MenuPanel.AnimatePopHide();
             InputBlocker.Hide();
 
@@ -310,5 +323,15 @@ public partial class PauseView : View
     private void PinsEmpty()
     {
         PauseContainer.MainMenuButton.GrabFocus();
+    }
+
+    private void ShowQuests()
+    {
+        AnimationPlayer_Quests.Play("show");
+    }
+
+    private void HideQuests()
+    {
+        AnimationPlayer_Quests.Play("hide");
     }
 }

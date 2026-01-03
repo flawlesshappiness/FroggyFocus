@@ -18,7 +18,11 @@ public partial class GameView : View
     [Export]
     public ProgressBar ShieldBar;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_Quests;
+
     private FocusEvent current_focus_event;
+    private bool skip_quest_advanced;
 
     public override void _Ready()
     {
@@ -27,8 +31,15 @@ public partial class GameView : View
         FocusEventController.Instance.OnFocusEventStarted += FocusEventStarted;
         FocusEventController.Instance.OnFocusEventCompleted += _ => FocusEventEnded();
         FocusEventController.Instance.OnFocusEventFailed += _ => FocusEventEnded();
+        MainQuestController.Instance.OnAnyQuestAdvanced += AnyQuestAdvanced;
 
         SetFocusEventControlsVisible(false);
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        PauseView.Instance.OnViewShow += PauseViewShow;
     }
 
     public override void _Process(double delta)
@@ -95,6 +106,30 @@ public partial class GameView : View
             }
 
             Player.SetAllLocks(id, false);
+        }
+    }
+
+    private void PauseViewShow()
+    {
+        skip_quest_advanced = true;
+    }
+
+    public void AnyQuestAdvanced()
+    {
+        skip_quest_advanced = false;
+        this.StartCoroutine(Cr, "quest_advanced");
+
+        IEnumerator Cr()
+        {
+            yield return AnimationPlayer_Quests.PlayAndWaitForAnimation("show");
+
+            var time_end = GameTime.Time + 5f;
+            while (GameTime.Time < time_end && !skip_quest_advanced)
+            {
+                yield return null;
+            }
+
+            yield return AnimationPlayer_Quests.PlayAndWaitForAnimation("hide");
         }
     }
 }

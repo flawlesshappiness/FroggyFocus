@@ -11,7 +11,6 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
     private readonly string DIALOGUE_ID = "PARTNER";
-    private string INTRO_ID => $"{DIALOGUE_ID}_INTRO";
 
     public override void _Ready()
     {
@@ -44,9 +43,8 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         {
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
         }
-        else if (!GameFlags.HasFlag(INTRO_ID))
+        else if (MainQuestController.Instance.GetPartnerStep() == 0)
         {
-            GameFlags.SetFlag(INTRO_ID, 1);
             StartDialogue($"##{DIALOGUE_ID}_INTRO_001##");
         }
         else
@@ -57,7 +55,11 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
 
     private void DialogueNodeEnded(string id)
     {
-        if (id == $"##{DIALOGUE_ID}_REQUEST_002##")
+        if (id == $"##{DIALOGUE_ID}_INTRO_004##")
+        {
+            MainQuestController.Instance.AdvancePartnerQuest(1);
+        }
+        else if (id == $"##{DIALOGUE_ID}_REQUEST_002##")
         {
             HandInView.Instance.ShowPopup(HandInInfo.Id);
         }
@@ -74,6 +76,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
+            MainQuestController.Instance.AdvancePartnerQuest(5);
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }
     }
