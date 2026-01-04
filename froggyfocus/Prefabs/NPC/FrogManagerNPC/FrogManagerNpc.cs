@@ -61,6 +61,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
         else if (id == $"##{DIALOGUE_ID}_INTRO_003##")
         {
             StopDialogueCamera();
+            MainQuestController.Instance.AdvanceManagerQuest(1);
         }
         else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##")
         {
@@ -75,6 +76,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
+            MainQuestController.Instance.AdvanceManagerQuest(5);
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }
     }

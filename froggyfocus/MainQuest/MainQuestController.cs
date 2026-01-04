@@ -14,6 +14,29 @@ public partial class MainQuestController : SingletonController
     public event Action<int> OnScientistQuestAdvanced;
     public event Action OnAnyQuestAdvanced;
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+        InventoryController.Instance.OnCharacterAdded += InventoryCharacterAdded;
+    }
+
+    private void InventoryCharacterAdded(InventoryCharacterData data)
+    {
+        var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
+        if (info == FocusCharacterController.Instance.Collection.BugOfLove)
+        {
+            AdvancePartnerQuest(4);
+        }
+        else if (info == FocusCharacterController.Instance.Collection.BugOfData)
+        {
+            AdvanceManagerQuest(4);
+        }
+        else if (info == FocusCharacterController.Instance.Collection.BugOfLife)
+        {
+            AdvanceScientistQuest(3);
+        }
+    }
+
     public void AdvancePartnerQuest(int step)
     {
         if (AdvanceQuest(PARTNER_QUEST_ID, step))
@@ -32,7 +55,7 @@ public partial class MainQuestController : SingletonController
 
     public void AdvanceScientistQuest(int step)
     {
-        if (AdvanceQuest(MANAGER_QUEST_ID, step))
+        if (AdvanceQuest(SCIENTIST_QUEST_ID, step))
         {
             OnScientistQuestAdvanced?.Invoke(step);
         }

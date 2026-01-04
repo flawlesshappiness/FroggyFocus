@@ -114,7 +114,12 @@ public partial class GameView : View
         skip_quest_advanced = true;
     }
 
-    public void AnyQuestAdvanced()
+    public void TriggerQuestAdvancedNotification()
+    {
+        AnyQuestAdvanced();
+    }
+
+    private void AnyQuestAdvanced()
     {
         skip_quest_advanced = false;
         this.StartCoroutine(Cr, "quest_advanced");

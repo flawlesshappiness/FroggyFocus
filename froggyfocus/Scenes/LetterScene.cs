@@ -12,6 +12,8 @@ public partial class LetterScene : GameScene
     [Export]
     public Array<Letter> Letters;
 
+    public const string INTRO_LETTERS_ID = "intro_letters";
+
     private int idx_letter;
     private bool letter_input_enabled;
     private Letter selected_letter;

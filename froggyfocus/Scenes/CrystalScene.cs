@@ -25,6 +25,8 @@ public partial class CrystalScene : GameScene
                 }
             });
             Player.SetAllLocks(id, false);
+
+            MainQuestController.Instance.AdvancePartnerQuest(3);
         }
     }
 }

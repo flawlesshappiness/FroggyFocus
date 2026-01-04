@@ -3,6 +3,9 @@ using Godot;
 public partial class MainQuestsContainer : ControlScript
 {
     [Export]
+    public Control MainContainer;
+
+    [Export]
     public Label LabelPartner;
 
     [Export]
@@ -20,6 +23,14 @@ public partial class MainQuestsContainer : ControlScript
     [Export]
     public Control ScientistControl;
 
+    private const int PARTNER_STEP_MAX = 5;
+    private const int MANAGER_STEP_MAX = 5;
+    private const int SCIENTIST_STEP_MAX = 4;
+
+    private bool PartnerFinished => MainQuestController.Instance.GetPartnerStep() >= PARTNER_STEP_MAX;
+    private bool ManagerFinished => MainQuestController.Instance.GetManagerStep() >= MANAGER_STEP_MAX;
+    private bool ScientistFinished => MainQuestController.Instance.GetScientistStep() >= SCIENTIST_STEP_MAX;
+
     public override void _Ready()
     {
         base._Ready();
@@ -33,6 +44,14 @@ public partial class MainQuestsContainer : ControlScript
         base.Initialize();
         GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
         Load();
+    }
+
+    protected override void OnShow()
+    {
+        base.OnShow();
+        var intro_finished = GameFlags.IsFlag(LetterScene.INTRO_LETTERS_ID, 1);
+        var quests_finished = PartnerFinished && ManagerFinished && ScientistFinished;
+        MainContainer.Visible = intro_finished && !quests_finished;
     }
 
     private void GameProfileSelected(int profile)
@@ -50,18 +69,18 @@ public partial class MainQuestsContainer : ControlScript
     private void PartnerQuestAdvanced(int step)
     {
         LabelPartner.Text = $"##QUEST_PARTNER_{step.ToString("000")}##";
-        PartnerControl.Visible = step < 5;
+        PartnerControl.Visible = !PartnerFinished;
     }
 
     private void ManagerQuestAdvanced(int step)
     {
         LabelManager.Text = $"##QUEST_MANAGER_{step.ToString("000")}##";
-        ManagerControl.Visible = step < 5;
+        ManagerControl.Visible = !ManagerFinished;
     }
 
     private void ScientistQuestAdvanced(int step)
     {
         LabelScientist.Text = $"##QUEST_SCIENTIST_{step.ToString("000")}##";
-        ScientistControl.Visible = step < 4;
+        ScientistControl.Visible = !ScientistFinished;
     }
 }

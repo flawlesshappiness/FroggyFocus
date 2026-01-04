@@ -7,6 +7,12 @@ public partial class EldritchScene : GameScene
         EldritchEye.SetOpenGlobal(true);
     }
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+        MainQuestController.Instance.AdvanceScientistQuest(2);
+    }
+
     public override void _ExitTree()
     {
         base._ExitTree();

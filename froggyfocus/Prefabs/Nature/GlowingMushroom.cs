@@ -22,6 +22,12 @@ public partial class GlowingMushroom : Node3DScript
         WeatherController.Instance.OnWeatherStart += WeatherStart;
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        WeatherController.Instance.OnWeatherStart -= WeatherStart;
+    }
+
     protected override void Initialize()
     {
         base.Initialize();

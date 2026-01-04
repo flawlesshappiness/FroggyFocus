@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_d0a4i"]
 [ext_resource type="Script" uid="uid://dfju5dm8oy3x8" path="res://Prefabs/UI/Quests/MainQuestsContainer.cs" id="2_iwrdn"]
 
-[node name="main_quests_container" type="MarginContainer" node_paths=PackedStringArray("LabelPartner", "LabelManager", "LabelScientist", "PartnerControl", "ManagerControl", "ScientistControl")]
+[node name="main_quests_container" type="MarginContainer" node_paths=PackedStringArray("MainContainer", "LabelPartner", "LabelManager", "LabelScientist", "PartnerControl", "ManagerControl", "ScientistControl")]
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
@@ -14,6 +14,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("2_iwrdn")
+MainContainer = NodePath("ScrollContainer")
 LabelPartner = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/PartnerControl/MarginContainer/PartnerLabel")
 LabelManager = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ManagerControl/MarginContainer/ManagerLabel")
 LabelScientist = NodePath("ScrollContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/ScientistControl/MarginContainer/ScientistLabel")

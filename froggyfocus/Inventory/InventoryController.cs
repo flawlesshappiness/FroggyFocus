@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +7,8 @@ public partial class InventoryController : SingletonController
 {
     public static InventoryController Instance => Singleton.Get<InventoryController>();
     public override string Directory => "Inventory";
+
+    public event Action<InventoryCharacterData> OnCharacterAdded;
 
     protected override void Initialize()
     {
@@ -77,7 +80,8 @@ public partial class InventoryController : SingletonController
     {
         var significant_tags = new List<FocusCharacterTag> {
             FocusCharacterTag.Sandy, FocusCharacterTag.Crystalized, FocusCharacterTag.Mossy,
-            FocusCharacterTag.Infested, FocusCharacterTag.Flower, FocusCharacterTag.Wooden };
+            FocusCharacterTag.Infested, FocusCharacterTag.Flower, FocusCharacterTag.Wooden,
+            FocusCharacterTag.Oily, FocusCharacterTag.Weeded, FocusCharacterTag.Polluted };
 
         var has_significant = info.Tags.Intersect(significant_tags).Any();
 
@@ -95,6 +99,8 @@ public partial class InventoryController : SingletonController
     {
         Data.Game.Inventory.Characters.Add(data);
         Data.Game.Save();
+
+        OnCharacterAdded?.Invoke(data);
     }
 
     public void RemoveCharacterData(InventoryCharacterData data)

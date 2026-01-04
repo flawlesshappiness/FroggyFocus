@@ -1,7 +1,13 @@
-[gd_resource type="Resource" script_class="FocusCharacterCollection" load_steps=2 format=3 uid="uid://duidyes2uyshm"]
+[gd_resource type="Resource" script_class="FocusCharacterCollection" load_steps=5 format=3 uid="uid://duidyes2uyshm"]
 
+[ext_resource type="Resource" uid="uid://bn6kwmsp5wc2v" path="res://FocusCharacter/Resources/Main_BugOfData.tres" id="1_8gt2w"]
 [ext_resource type="Script" uid="uid://drw7nxl5smj5g" path="res://FocusCharacter/FocusCharacterCollection.cs" id="1_ko66u"]
+[ext_resource type="Resource" uid="uid://ibdechxy4o7m" path="res://FocusCharacter/Resources/Main_BugOfLife.tres" id="2_vq8pv"]
+[ext_resource type="Resource" uid="uid://cee5gf2jhekao" path="res://FocusCharacter/Resources/Main_BugOfLove.tres" id="3_wf2js"]
 
 [resource]
 script = ExtResource("1_ko66u")
+BugOfData = ExtResource("1_8gt2w")
+BugOfLife = ExtResource("2_vq8pv")
+BugOfLove = ExtResource("3_wf2js")
 metadata/_custom_type_script = "uid://drw7nxl5smj5g"

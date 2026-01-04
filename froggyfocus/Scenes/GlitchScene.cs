@@ -14,6 +14,12 @@ public partial class GlitchScene : GameScene
         InitializeMatrixLabels();
     }
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+        MainQuestController.Instance.AdvanceManagerQuest(3);
+    }
+
     private void InitializeMatrixLabels()
     {
         var rng = new RandomNumberGenerator();

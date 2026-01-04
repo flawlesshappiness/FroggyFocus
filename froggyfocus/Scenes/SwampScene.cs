@@ -8,6 +8,17 @@ public partial class SwampScene : GameScene
         RegisterDebugActions();
     }
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+
+        if (GameFlags.IsFlag(LetterScene.INTRO_LETTERS_ID, 0))
+        {
+            GameFlags.SetFlag(LetterScene.INTRO_LETTERS_ID, 1);
+            GameView.Instance.TriggerQuestAdvancedNotification();
+        }
+    }
+
     public override void _ExitTree()
     {
         base._ExitTree();

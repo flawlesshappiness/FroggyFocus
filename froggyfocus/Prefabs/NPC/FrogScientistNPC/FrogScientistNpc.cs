@@ -49,7 +49,11 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
 
     private void DialogueNodeEnded(string id)
     {
-        if (id == $"##{DIALOGUE_ID}_REQUEST_002##")
+        if (id == $"##{DIALOGUE_ID}_INTRO_004##")
+        {
+            MainQuestController.Instance.AdvanceScientistQuest(1);
+        }
+        else if (id == $"##{DIALOGUE_ID}_REQUEST_002##")
         {
             HandInView.Instance.ShowPopup(HandInInfo.Id);
         }
@@ -66,6 +70,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
+            MainQuestController.Instance.AdvanceScientistQuest(4);
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }
     }
