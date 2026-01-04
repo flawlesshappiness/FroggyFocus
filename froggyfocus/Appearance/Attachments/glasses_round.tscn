@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ch5ami6o86hlp"]
 
-[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_jr10k"]
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_jr10k"]
 [ext_resource type="PackedScene" uid="uid://bol8tk2if4v08" path="res://Assets/FlawLizArt/Face/glasses_round.fbx" id="2_jr10k"]
 
 [node name="Glasses_Round" type="Node3D" node_paths=PackedStringArray("Mesh")]
 script = ExtResource("1_jr10k")
-Type = 103
 Mesh = NodePath("glasses_round/glasses_round")
+Type = 103
 
 [node name="glasses_round" parent="." instance=ExtResource("2_jr10k")]
 transform = Transform3D(0.83, 0, 0, 0, 0.83, 0, 0, 0, 0.83, 0, 0, 0)

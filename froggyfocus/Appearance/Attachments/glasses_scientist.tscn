@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bycye7hwagma"]
 
-[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_msxgk"]
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_msxgk"]
 [ext_resource type="PackedScene" uid="uid://b3i6nw3obpr61" path="res://Assets/FlawLizArt/Face/glasses_scientist.fbx" id="2_msxgk"]
 
 [node name="Glasses_Scientist" type="Node3D" node_paths=PackedStringArray("Mesh")]
 script = ExtResource("1_msxgk")
-Type = 102
 Mesh = NodePath("glasses_scientist/glasses_scientist")
+Type = 102
 
 [node name="glasses_scientist" parent="." instance=ExtResource("2_msxgk")]
 

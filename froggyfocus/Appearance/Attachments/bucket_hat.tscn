@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://0ey4wtg3hu5i"]
 
-[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_plwxu"]
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_plwxu"]
 [ext_resource type="PackedScene" uid="uid://mxgyl5pbqnyv" path="res://Assets/FlawLizArt/Hats/bucket_hat.fbx" id="2_wnbjw"]
 
 [node name="BucketHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
 script = ExtResource("1_plwxu")
-Type = 3
 Mesh = NodePath("bucket_hat/bucket_hat")
+Type = 3
 
 [node name="bucket_hat" parent="." instance=ExtResource("2_wnbjw")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -0.085345, 0)

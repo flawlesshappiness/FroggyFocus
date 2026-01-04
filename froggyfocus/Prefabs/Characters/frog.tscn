@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=39 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -26,7 +26,36 @@
 [ext_resource type="PackedScene" uid="uid://ch5ami6o86hlp" path="res://Appearance/Attachments/glasses_round.tscn" id="16_aaljv"]
 [ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="17_cw7sr"]
 [ext_resource type="PackedScene" uid="uid://bmg430dgy8ers" path="res://Appearance/Attachments/septum.tscn" id="19_n87ao"]
+[ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="20_ipay0"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="21_uv7pe"]
+
+[sub_resource type="Curve" id="Curve_bglj8"]
+_data = [Vector2(0, 0), 0.0, 4.56129, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.2511, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_23gsd"]
+curve = SubResource("Curve_bglj8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ngpn"]
+emission_shape = 3
+emission_box_extents = Vector3(0.02, 0.02, 0.02)
+direction = Vector3(0, 0, 1)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.25
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_23gsd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqtpj"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("20_ipay0")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_6l2mw"]
+material = SubResource("StandardMaterial3D_mqtpj")
 
 [sub_resource type="BoxMesh" id="BoxMesh_81ysc"]
 size = Vector3(0.15, 0.05, 1)
@@ -167,7 +196,7 @@ bones/56/position = Vector3(-0.0185457, -0.00599798, 0.00173028)
 bones/56/rotation = Quaternion(0.692591, -0.142541, -0.142541, 0.692591)
 
 [node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
+transform = Transform3D(1, 1.63709e-14, -8.51576e-14, 1.80205e-14, 0.998942, -0.0459942, 1.75211e-14, 0.0459944, 0.998942, -2.85359e-17, 0.0103008, 0.0153717)
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_6ia88")
@@ -213,7 +242,7 @@ transform = Transform3D(0.008, 0, 0, 0, 0.00155086, 0.00784824, 0, -0.00784824, 
 visible = false
 
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
+transform = Transform3D(1, 1.63709e-14, -8.51576e-14, 1.80205e-14, 0.998942, -0.0459942, 1.75211e-14, 0.0459944, 0.998942, -2.85359e-17, 0.0103008, 0.0153717)
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_6ia88")
@@ -237,6 +266,17 @@ visible = false
 [node name="Septum" parent="frog/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("19_n87ao")]
 transform = Transform3D(0.003, 0, 0, 0, -0.00202457, -0.00221385, 0, 0.00221385, -0.00202457, -2.53403e-16, 0.0110513, -0.000851177)
 visible = false
+
+[node name="AuraAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.002, 0)
+bone_name = "Root"
+bone_idx = 0
+
+[node name="Debug" type="GPUParticles3D" parent="frog/Armature/Skeleton3D/AuraAttachmentGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.77556e-17, 0.0191329)
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_6ngpn")
+draw_pass_1 = SubResource("QuadMesh_6l2mw")
 
 [node name="AnimationPlayer" parent="frog" index="1"]
 playback_default_blend_time = 0.15

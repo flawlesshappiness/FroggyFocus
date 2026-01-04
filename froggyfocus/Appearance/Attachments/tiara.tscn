@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://xqht7alrt8iv"]
 
-[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_fe0ri"]
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_x7b85"]
 [ext_resource type="PackedScene" uid="uid://bcyxhtn31dfxy" path="res://Assets/FlawLizArt/Hats/tiara.fbx" id="2_0v8o3"]
 
 [node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
-script = ExtResource("1_fe0ri")
-Type = 6
+script = ExtResource("1_x7b85")
 Mesh = NodePath("tiara/Tiara")
+Type = 6
 
 [node name="tiara" parent="." instance=ExtResource("2_0v8o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0723815, 0)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://5akea1cmi6ru"]
 
-[ext_resource type="Script" uid="uid://di36rb457lnvr" path="res://Appearance/AppearanceAttachment.cs" id="1_ond6d"]
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_d30dw"]
 [ext_resource type="PackedScene" uid="uid://ckxiq0ahfe7lv" path="res://Assets/FlawLizArt/Hats/plumbob.fbx" id="2_ond6d"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_d30dw"]
 
@@ -43,9 +43,9 @@ _data = {
 }
 
 [node name="Plumbob" type="Node3D" node_paths=PackedStringArray("Mesh")]
-script = ExtResource("1_ond6d")
-Type = 10
+script = ExtResource("1_d30dw")
 Mesh = NodePath("plumbob/plumbob")
+Type = 10
 
 [node name="plumbob" parent="." instance=ExtResource("2_ond6d")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
