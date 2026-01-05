@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -5,6 +6,8 @@ public partial class GameFlagsController : SingletonController
 {
     public override string Directory => $"{Paths.Modules}/GameFlags";
     public static GameFlagsController Instance => Singleton.Get<GameFlagsController>();
+
+    public event Action<string, int> OnFlagChanged;
 
     private Dictionary<string, GameFlagData> _flags = new();
 
@@ -102,5 +105,7 @@ public partial class GameFlagsController : SingletonController
     {
         GetOrCreateFlag(id).Value = value;
         UpdateData();
+
+        OnFlagChanged?.Invoke(id, value);
     }
 }

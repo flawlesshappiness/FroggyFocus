@@ -37,7 +37,7 @@ material = SubResource("StandardMaterial3D_mqtpj")
 transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0)
 script = ExtResource("1_opd06")
 Particles = NodePath("Particles")
-Type = 301
+Type = 302
 
 [node name="Particles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 1.86265e-09)

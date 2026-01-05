@@ -11,7 +11,8 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
     private readonly string DIALOGUE_ID = "SCIENTIST";
-    private string INTRO_ID => $"{DIALOGUE_ID}_INTRO";
+
+    private bool show_unlock;
 
     public override void _Ready()
     {
@@ -36,9 +37,8 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         {
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
         }
-        else if (!GameFlags.HasFlag(INTRO_ID))
+        else if (MainQuestController.Instance.GetScientistStep() == 0)
         {
-            GameFlags.SetFlag(INTRO_ID, 1);
             StartDialogue($"##{DIALOGUE_ID}_INTRO_001##");
         }
         else
@@ -61,6 +61,14 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         {
             StopDialogueCamera();
         }
+        else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##" && show_unlock)
+        {
+            Item.MakeOwned(ItemType.Particles_Hearts);
+            Data.Game.Save();
+
+            show_unlock = false;
+            UnlockView.Instance.ShowItemUnlock(ItemType.Particles_Bubbles);
+        }
     }
 
     private void HandInClaimed(string id)
@@ -70,6 +78,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
+            show_unlock = true;
             MainQuestController.Instance.AdvanceScientistQuest(4);
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }

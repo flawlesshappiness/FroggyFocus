@@ -31,17 +31,10 @@ public partial class MainQuestsContainer : ControlScript
     private bool ManagerFinished => MainQuestController.Instance.GetManagerStep() >= MANAGER_STEP_MAX;
     private bool ScientistFinished => MainQuestController.Instance.GetScientistStep() >= SCIENTIST_STEP_MAX;
 
-    public override void _Ready()
-    {
-        base._Ready();
-        MainQuestController.Instance.OnPartnerQuestAdvanced += PartnerQuestAdvanced;
-        MainQuestController.Instance.OnManagerQuestAdvanced += ManagerQuestAdvanced;
-        MainQuestController.Instance.OnScientistQuestAdvanced += ScientistQuestAdvanced;
-    }
-
     protected override void Initialize()
     {
         base.Initialize();
+        GameFlagsController.Instance.OnFlagChanged += FlagChanged;
         GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
         Load();
     }
@@ -64,6 +57,22 @@ public partial class MainQuestsContainer : ControlScript
         PartnerQuestAdvanced(MainQuestController.Instance.GetPartnerStep());
         ManagerQuestAdvanced(MainQuestController.Instance.GetManagerStep());
         ScientistQuestAdvanced(MainQuestController.Instance.GetScientistStep());
+    }
+
+    private void FlagChanged(string id, int step)
+    {
+        if (id == MainQuestController.PARTNER_QUEST_ID)
+        {
+            PartnerQuestAdvanced(step);
+        }
+        else if (id == MainQuestController.MANAGER_QUEST_ID)
+        {
+            ManagerQuestAdvanced(step);
+        }
+        else if (id == MainQuestController.SCIENTIST_QUEST_ID)
+        {
+            ScientistQuestAdvanced(step);
+        }
     }
 
     private void PartnerQuestAdvanced(int step)

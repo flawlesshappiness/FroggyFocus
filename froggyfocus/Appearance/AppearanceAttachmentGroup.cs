@@ -6,9 +6,8 @@ public partial class AppearanceAttachmentGroup : Node3D
 {
     private List<AppearanceAttachment> attachments = new();
 
-    public override void _Ready()
+    public void Initialize()
     {
-        base._Ready();
         attachments = this.GetNodesInChildren<AppearanceAttachment>();
     }
 
@@ -19,7 +18,10 @@ public partial class AppearanceAttachmentGroup : Node3D
 
     private void HideAll()
     {
-        attachments.ForEach(x => x.Hide());
+        foreach (var attachment in attachments)
+        {
+            attachment.Hide();
+        }
     }
 
     public void SetAttachment(ItemType type, ItemType color_primary, ItemType color_secondary)

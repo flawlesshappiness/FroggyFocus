@@ -11,7 +11,8 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
     private readonly string DIALOGUE_ID = "MANAGER";
-    private string INTRO_ID => $"{DIALOGUE_ID}_INTRO";
+
+    private bool show_unlock;
 
     public override void _Ready()
     {
@@ -37,9 +38,8 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
         {
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
         }
-        else if (!GameFlags.HasFlag(INTRO_ID))
+        else if (MainQuestController.Instance.GetManagerStep() == 0)
         {
-            GameFlags.SetFlag(INTRO_ID, 1);
             StartDialogue($"##{DIALOGUE_ID}_INTRO_001##");
         }
         else
@@ -66,6 +66,15 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
         else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##")
         {
             StopDialogueCamera();
+
+            if (show_unlock)
+            {
+                Item.MakeOwned(ItemType.Particles_Money);
+                Data.Game.Save();
+
+                show_unlock = false;
+                UnlockView.Instance.ShowItemUnlock(ItemType.Particles_Money);
+            }
         }
     }
 
@@ -76,6 +85,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
+            show_unlock = true;
             MainQuestController.Instance.AdvanceManagerQuest(5);
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }

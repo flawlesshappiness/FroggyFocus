@@ -60,11 +60,7 @@ public partial class UnlockPopup : PopupControl
     public void SetAppearanceItem(ItemType type)
     {
         var info = AppearanceController.Instance.GetInfo(type);
-        if (info.Category == ItemCategory.Hat || info.Category == ItemCategory.Face)
-        {
-            SetAppearanceAttachment(info);
-        }
-        // TODO COLOR?
+        SetAppearanceAttachment(info);
     }
 
     public void SetAppearanceAttachment(AppearanceInfo info)

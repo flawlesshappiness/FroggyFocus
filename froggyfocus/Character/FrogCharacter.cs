@@ -67,6 +67,9 @@ public partial class FrogCharacter : Character
         InitializeMesh();
         InitializeAnimations();
         InitializeTongue();
+        HatAttachments.Initialize();
+        FaceAttachments.Initialize();
+        ParticlesAttachments.Initialize();
 
         if (!DisableAppearanceUpdates)
         {

@@ -125,6 +125,7 @@ public partial class DebugView : View
         Content.Show();
         ContentSearch.Show();
         ContentSearch.ClearItems();
+        ContentSearch.ClearSearchText();
     }
 
     public void SetContent_List()

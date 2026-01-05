@@ -28,18 +28,21 @@ public partial class DebugContentSearch : ControlScript
 
         View = this.GetNodeInParents<DebugView>();
 
-        VisibilityChanged += OnVisibilityChanged;
         SearchField.TextChanged += OnTextChanged;
 
         ResultButtonPrefab.Visible = false;
     }
 
-    private void OnVisibilityChanged()
+    protected override void OnShow()
     {
-        if (Visible)
-        {
-            OnTextChanged(string.Empty);
-        }
+        base.OnShow();
+        ClearSearchText();
+    }
+
+    public void ClearSearchText()
+    {
+        SearchField.Text = string.Empty;
+        OnTextChanged(string.Empty);
     }
 
     private void OnTextChanged(string text)

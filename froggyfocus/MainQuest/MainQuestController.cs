@@ -5,19 +5,17 @@ public partial class MainQuestController : SingletonController
     public static MainQuestController Instance => Singleton.Get<MainQuestController>();
     public override string Directory => "MainQuest";
 
-    private readonly string PARTNER_QUEST_ID = "PARTNER_QUEST";
-    private readonly string MANAGER_QUEST_ID = "MANAGER_QUEST";
-    private readonly string SCIENTIST_QUEST_ID = "SCIENTIST_QUEST";
+    public const string PARTNER_QUEST_ID = "PARTNER_QUEST";
+    public const string MANAGER_QUEST_ID = "MANAGER_QUEST";
+    public const string SCIENTIST_QUEST_ID = "SCIENTIST_QUEST";
 
-    public event Action<int> OnPartnerQuestAdvanced;
-    public event Action<int> OnManagerQuestAdvanced;
-    public event Action<int> OnScientistQuestAdvanced;
     public event Action OnAnyQuestAdvanced;
 
     protected override void Initialize()
     {
         base.Initialize();
         InventoryController.Instance.OnCharacterAdded += InventoryCharacterAdded;
+        GameFlagsController.Instance.OnFlagChanged += FlagChanged;
     }
 
     private void InventoryCharacterAdded(InventoryCharacterData data)
@@ -37,28 +35,27 @@ public partial class MainQuestController : SingletonController
         }
     }
 
+    private void FlagChanged(string id, int step)
+    {
+        if (id == PARTNER_QUEST_ID || id == MANAGER_QUEST_ID || id == SCIENTIST_QUEST_ID)
+        {
+            OnAnyQuestAdvanced?.Invoke();
+        }
+    }
+
     public void AdvancePartnerQuest(int step)
     {
-        if (AdvanceQuest(PARTNER_QUEST_ID, step))
-        {
-            OnPartnerQuestAdvanced?.Invoke(step);
-        }
+        AdvanceQuest(PARTNER_QUEST_ID, step);
     }
 
     public void AdvanceManagerQuest(int step)
     {
-        if (AdvanceQuest(MANAGER_QUEST_ID, step))
-        {
-            OnManagerQuestAdvanced?.Invoke(step);
-        }
+        AdvanceQuest(MANAGER_QUEST_ID, step);
     }
 
     public void AdvanceScientistQuest(int step)
     {
-        if (AdvanceQuest(SCIENTIST_QUEST_ID, step))
-        {
-            OnScientistQuestAdvanced?.Invoke(step);
-        }
+        AdvanceQuest(SCIENTIST_QUEST_ID, step);
     }
 
     private bool AdvanceQuest(string id, int step)
@@ -75,7 +72,6 @@ public partial class MainQuestController : SingletonController
         GameFlags.SetFlag(id, step);
         Data.Game.Save();
 
-        OnAnyQuestAdvanced?.Invoke();
         return true;
     }
 

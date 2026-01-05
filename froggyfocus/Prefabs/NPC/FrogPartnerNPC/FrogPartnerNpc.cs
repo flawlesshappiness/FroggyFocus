@@ -12,6 +12,8 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
 
     private readonly string DIALOGUE_ID = "PARTNER";
 
+    private bool show_unlock;
+
     public override void _Ready()
     {
         base._Ready();
@@ -67,6 +69,14 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         {
             InitializeCharacter();
         }
+        else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##" && show_unlock)
+        {
+            Item.MakeOwned(ItemType.Particles_Hearts);
+            Data.Game.Save();
+
+            show_unlock = false;
+            UnlockView.Instance.ShowItemUnlock(ItemType.Particles_Hearts);
+        }
     }
 
     private void HandInClaimed(string id)
@@ -76,6 +86,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
             HandIn.ResetData(HandInInfo);
             Data.Game.Save();
 
+            show_unlock = true;
             MainQuestController.Instance.AdvancePartnerQuest(5);
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }
