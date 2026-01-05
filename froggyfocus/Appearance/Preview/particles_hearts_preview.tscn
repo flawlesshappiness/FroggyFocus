@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://mmymdha5qvbq"]
+
+[ext_resource type="Script" uid="uid://c4shgrg5t5hdg" path="res://Appearance/StandardMeshAppearanceAttachment.cs" id="1_qget5"]
+[ext_resource type="Texture2D" uid="uid://1klf7cb1o2k8" path="res://Assets/FlawLizArt/Textures/particle_heart.png" id="2_x8sx4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5q5u"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_x8sx4")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_w4xpm"]
+material = SubResource("StandardMaterial3D_m5q5u")
+
+[node name="ParticlesHeartsPreview" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_qget5")
+Mesh = NodePath("MeshInstance3D")
+Type = 302
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_w4xpm")

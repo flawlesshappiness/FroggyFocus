@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="10_ukmkn"]
 [ext_resource type="AudioStream" uid="uid://c4peoobo0xyd3" path="res://Sounds/Raw/sfx_fanfare_organ_001.wav" id="11_4nhvw"]
 
-[node name="UnlockPopup" type="Control" node_paths=PackedStringArray("TitleLabel", "ItemUnlockRewardPreview", "ItemUnlockControl", "ShopExpandRewardPreview", "ShopExpandNameLabel", "ShopExpandPriceControl", "ShopExpandControl", "InstructionsControl", "OkButton", "SfxFanfare", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
+[node name="UnlockPopup" type="Control" node_paths=PackedStringArray("TitleLabel", "ItemUnlockRewardPreview", "ItemUnlockControl", "ShopExpandRewardPreview", "ShopExpandNameLabel", "NameLabel", "ShopExpandPriceControl", "ShopExpandControl", "InstructionsControl", "OkButton", "SfxFanfare", "AnimatedOverlay", "AnimatedPanel", "InputBlocker", "FocusButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +26,7 @@ ItemUnlockRewardPreview = NodePath("CenterContainer/Center/UIScale/AnimatedPanel
 ItemUnlockControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer/ItemUnlockContent")
 ShopExpandRewardPreview = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer/ShopExpandContent/VBoxContainer/ShopExpandRewardPreview")
 ShopExpandNameLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer/ShopExpandContent/VBoxContainer2/NameControl/MarginContainer/MarginContainer/ShopExpandNameLabel")
+NameLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer/NameContainer/NameLabel")
 ShopExpandPriceControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer/ShopExpandContent/VBoxContainer2/CostControl/ShopExpandPriceControl")
 ShopExpandControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer/ShopExpandContent")
 InstructionsControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/PanelContainer/Instructions")
@@ -193,6 +194,14 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+
+[node name="NameContainer" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer/NameContainer"]
+layout_mode = 2
+text = "Item Name"
 
 [node name="ShopExpandContent" type="HBoxContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/ContentContainer/VBoxContainer"]
 visible = false

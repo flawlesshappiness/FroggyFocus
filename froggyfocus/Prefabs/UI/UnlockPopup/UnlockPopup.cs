@@ -18,6 +18,9 @@ public partial class UnlockPopup : PopupControl
     public Label ShopExpandNameLabel;
 
     [Export]
+    public Label NameLabel;
+
+    [Export]
     public PriceControl ShopExpandPriceControl;
 
     [Export]
@@ -71,6 +74,7 @@ public partial class UnlockPopup : PopupControl
         ItemUnlockRewardPreview.SetAppearanceItem(info);
         ShopExpandRewardPreview.SetAppearanceItem(info);
         ShopExpandNameLabel.Text = item_info.Name;
+        NameLabel.Text = item_info.Name;
     }
 
     private void OkButton_Pressed()
