@@ -33,4 +33,15 @@ public enum ItemType
     Color_White = 208,
     Color_Black = 209,
     Color_Cyan = 210,
+
+    // Aura
+    Particles_None = 300,
+    Particles_Debug = 301,
+    Particles_Hearts = 302,
+    Particles_Bubbles = 303,
+    Particles_Eyes = 304,
+    Particles_Water = 305,
+    Particles_Leaves = 306,
+    Particles_Money = 307,
+    Particles_Stars = 308,
 }

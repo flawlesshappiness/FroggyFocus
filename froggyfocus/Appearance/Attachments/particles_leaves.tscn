@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://8bnblf80wnws"]
+
+[ext_resource type="Script" uid="uid://ghts6qkv1flb" path="res://Appearance/ParticlesAppearanceAttachment.cs" id="1_wkugf"]
+[ext_resource type="Texture2D" uid="uid://2iibcc6b1soo" path="res://Assets/FlawLizArt/Textures/particle_leaf.png" id="2_3ep8w"]
+
+[sub_resource type="Curve" id="Curve_5mj6h"]
+_data = [Vector2(0, 0), 0.0, 4.56129, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.2511, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a2goj"]
+curve = SubResource("Curve_5mj6h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t4qis"]
+emission_shape = 3
+emission_box_extents = Vector3(0.02, 0.02, 0.02)
+direction = Vector3(0, 0, -1)
+initial_velocity_min = 0.01
+initial_velocity_max = 0.01
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_a2goj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4cs0"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_3ep8w")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_eoknm"]
+material = SubResource("StandardMaterial3D_m4cs0")
+
+[node name="ParticlesLeaves" type="Node3D" node_paths=PackedStringArray("Particles")]
+transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 0, 0)
+script = ExtResource("1_wkugf")
+Particles = NodePath("Particles")
+Type = 306
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 1.86265e-09)
+amount = 4
+lifetime = 4.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_t4qis")
+draw_pass_1 = SubResource("QuadMesh_eoknm")

@@ -126,5 +126,8 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
         var color_default = Item.GetOrCreateData(ItemType.Color_Default);
         color_default.Owned = true;
+
+        var paticles_none = Item.GetOrCreateData(ItemType.Particles_None);
+        paticles_none.Owned = true;
     }
 }

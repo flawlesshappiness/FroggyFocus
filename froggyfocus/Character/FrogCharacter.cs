@@ -37,6 +37,9 @@ public partial class FrogCharacter : Character
     [Export]
     public AppearanceAttachmentGroup FaceAttachments;
 
+    [Export]
+    public AppearanceAttachmentGroup ParticlesAttachments;
+
     public bool IsHandOut { get; private set; }
 
     private float time_hand_out;
@@ -74,6 +77,7 @@ public partial class FrogCharacter : Character
         CustomizeAppearanceControl.OnBodyColorChanged += BodyColorChanged;
         CustomizeAppearanceControl.OnHatChanged += HatChanged;
         CustomizeAppearanceControl.OnFaceChanged += FaceChanged;
+        CustomizeAppearanceControl.OnParticlesChanged += ParticlesChanged;
     }
 
     public override void _ExitTree()
@@ -83,6 +87,7 @@ public partial class FrogCharacter : Character
         CustomizeAppearanceControl.OnBodyColorChanged -= BodyColorChanged;
         CustomizeAppearanceControl.OnHatChanged -= HatChanged;
         CustomizeAppearanceControl.OnFaceChanged -= FaceChanged;
+        CustomizeAppearanceControl.OnParticlesChanged -= ParticlesChanged;
     }
 
     private void InitializeTongue()
@@ -164,6 +169,7 @@ public partial class FrogCharacter : Character
     {
         HatAttachments.Clear();
         FaceAttachments.Clear();
+        ParticlesAttachments.Clear();
     }
 
     public void LoadAppearance()
@@ -173,6 +179,7 @@ public partial class FrogCharacter : Character
         BodyColorChanged();
         HatChanged();
         FaceChanged();
+        ParticlesChanged();
     }
 
     public void LoadAppearance(GameSaveData data)
@@ -180,6 +187,7 @@ public partial class FrogCharacter : Character
         LoadBodyColor(data);
         LoadHat(data);
         LoadFace(data);
+        LoadParticles(data);
     }
 
     private void BodyColorChanged()
@@ -205,7 +213,7 @@ public partial class FrogCharacter : Character
 
     private void LoadHat(GameSaveData game_data)
     {
-        var data = game_data.FrogAppearanceData.GetAttachmentData(ItemCategory.Hat);
+        var data = game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Hat);
         HatAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
     }
 
@@ -217,8 +225,20 @@ public partial class FrogCharacter : Character
 
     private void LoadFace(GameSaveData game_data)
     {
-        var data = game_data.FrogAppearanceData.GetAttachmentData(ItemCategory.Face);
+        var data = game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Face);
         FaceAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
+    }
+
+    private void ParticlesChanged()
+    {
+        if (DisableAppearanceUpdates) return;
+        LoadParticles(Data.Game);
+    }
+
+    private void LoadParticles(GameSaveData game_data)
+    {
+        var data = game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Particles);
+        ParticlesAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
     }
 
     public override void _Process(double delta)

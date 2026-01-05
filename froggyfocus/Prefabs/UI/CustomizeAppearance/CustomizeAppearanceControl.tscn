@@ -19,7 +19,7 @@ corner_radius_bottom_left = 8
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
 
-[node name="CustomizeAppearanceControl" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "BodyPrimaryColorContainer", "HatContainer", "HatColorControl", "FaceContainer", "FaceColorControl", "Frog", "PreviewRotationNode")]
+[node name="CustomizeAppearanceControl" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "BodyPrimaryColorContainer", "HatContainer", "HatColorControl", "FaceContainer", "FaceColorControl", "ParticlesContainer", "ParticlesColorControl", "Frog", "PreviewRotationNode")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,6 +42,8 @@ HatContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollCont
 HatColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/HatColorControl")
 FaceContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/MarginContainer/FaceColorControl/FaceContainer")
 FaceColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/MarginContainer/FaceColorControl")
+ParticlesContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesColorControl/ParticlesContainer")
+ParticlesColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesColorControl")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
 PreviewRotationNode = NodePath("SubViewport_Frog/Origin")
 
@@ -192,6 +194,35 @@ OtherControls = [NodePath("FaceContainer")]
 layout_mode = 2
 ItemCategory = 1
 NoneType = 100
+ShowOwned = true
+
+[node name="Particles" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles" node_paths=PackedStringArray("TopContainer")]
+layout_mode = 2
+follow_focus = true
+script = ExtResource("3_s4spg")
+TopContainer = NodePath("MarginContainer/ParticlesColorControl/ParticlesContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ParticlesColorControl" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer" node_paths=PackedStringArray("OtherControls") instance=ExtResource("5_eea5e")]
+layout_mode = 2
+ItemCategory = 3
+NoneType = 300
+OtherControls = [NodePath("ParticlesContainer")]
+
+[node name="ParticlesContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesColorControl" instance=ExtResource("3_eea5e")]
+layout_mode = 2
+ItemCategory = 3
+NoneType = 300
 ShowOwned = true
 
 [node name="BackButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("6_eea5e")]

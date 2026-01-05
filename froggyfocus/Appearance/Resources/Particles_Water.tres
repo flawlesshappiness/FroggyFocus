@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://bobqxhkxklq52"]
+
+[ext_resource type="PackedScene" uid="uid://dr0be48ijgwb8" path="res://Appearance/Attachments/particles_water.tscn" id="1_8oetf"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_vdt6t"]
+
+[resource]
+script = ExtResource("2_vdt6t")
+Category = 3
+Type = 305
+DefaultPrimaryColor = 203
+DefaultSecondaryColor = 203
+HasSecondaryColor = false
+Prefab = ExtResource("1_8oetf")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

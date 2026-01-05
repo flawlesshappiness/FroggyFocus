@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://ia0gbvn481dx"]
+
+[ext_resource type="PackedScene" uid="uid://8i1okmguvft2" path="res://Appearance/Attachments/particles_eyes.tscn" id="1_s563a"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_n0bvh"]
+
+[resource]
+script = ExtResource("2_n0bvh")
+Category = 3
+Type = 304
+DefaultPrimaryColor = 204
+DefaultSecondaryColor = 204
+HasSecondaryColor = false
+Prefab = ExtResource("1_s563a")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

@@ -28,6 +28,12 @@ public partial class CustomizeAppearanceControl : ControlScript
     public AppearanceColorControl FaceColorControl;
 
     [Export]
+    public AppearanceContainer ParticlesContainer;
+
+    [Export]
+    public AppearanceColorControl ParticlesColorControl;
+
+    [Export]
     public FrogCharacter Frog;
 
     [Export]
@@ -38,11 +44,13 @@ public partial class CustomizeAppearanceControl : ControlScript
     public static event Action OnBodyColorChanged;
     public static event Action OnHatChanged;
     public static event Action OnFaceChanged;
+    public static event Action OnParticlesChanged;
 
     private bool loading;
 
-    private FrogAppearanceAttachmentData HatData => Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Hat);
-    private FrogAppearanceAttachmentData FaceData => Data.Game.FrogAppearanceData.GetAttachmentData(ItemCategory.Face);
+    private FrogAppearanceAttachmentData HatData => Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Hat);
+    private FrogAppearanceAttachmentData FaceData => Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Face);
+    private FrogAppearanceAttachmentData ParticlesData => Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Particles);
 
     public override void _Ready()
     {
@@ -56,6 +64,8 @@ public partial class CustomizeAppearanceControl : ControlScript
         FaceContainer.OnButtonPressed += FaceButton_Pressed;
         FaceColorControl.OnColorSelected += FaceColor_Selected;
 
+        ParticlesContainer.OnButtonPressed += ParticlesButton_Pressed;
+        ParticlesColorControl.OnColorSelected += ParticlesColor_Selected;
 
         PreviewRotationSlider.ValueChanged += PreviewRotationSlider_ValueChanged;
         PreviewRotationSlider_ValueChanged(PreviewRotationSlider.Value);
@@ -140,5 +150,20 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         if (loading) return;
         OnFaceChanged?.Invoke();
+    }
+
+    private void ParticlesButton_Pressed(AppearanceInfo info)
+    {
+        if (loading) return;
+        ParticlesData.Type = info.Type;
+        OnParticlesChanged?.Invoke();
+
+        ParticlesColorControl.SetSecondaryEnabled(info.HasSecondaryColor);
+    }
+
+    private void ParticlesColor_Selected(AppearanceInfo info)
+    {
+        if (loading) return;
+        OnParticlesChanged?.Invoke();
     }
 }

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://cs17bi1o160bg"]
+
+[ext_resource type="PackedScene" uid="uid://cus4rqyu4bcj" path="res://Appearance/Attachments/particles_none.tscn" id="1_nggfp"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_qlg1i"]
+
+[resource]
+script = ExtResource("2_qlg1i")
+Category = 3
+Type = 300
+DefaultPrimaryColor = 208
+DefaultSecondaryColor = 208
+HasSecondaryColor = false
+Prefab = ExtResource("1_nggfp")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

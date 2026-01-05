@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://duisqc4dxj6o"]
+
+[ext_resource type="PackedScene" uid="uid://cp8mhu2m3u6g4" path="res://Appearance/Attachments/particles_bubbles.tscn" id="1_wrv8j"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_6nrdj"]
+
+[resource]
+script = ExtResource("2_6nrdj")
+Category = 3
+Type = 303
+DefaultPrimaryColor = 210
+DefaultSecondaryColor = 210
+HasSecondaryColor = false
+Prefab = ExtResource("1_wrv8j")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

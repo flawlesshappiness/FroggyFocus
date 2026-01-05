@@ -6,7 +6,7 @@ public class FrogAppearanceData
     public ItemType BodyColor { get; set; } = ItemType.Color_Default;
     public List<FrogAppearanceAttachmentData> Attachments { get; set; } = new();
 
-    public FrogAppearanceAttachmentData GetAttachmentData(ItemCategory category)
+    public FrogAppearanceAttachmentData GetOrCreateAttachmentData(ItemCategory category)
     {
         var data = Attachments.FirstOrDefault(x => x.Category == category);
 

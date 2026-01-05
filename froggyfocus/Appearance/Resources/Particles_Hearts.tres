@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://pe4yw6c46hj6"]
+
+[ext_resource type="PackedScene" uid="uid://ddd347yst40yt" path="res://Appearance/Attachments/particles_hearts.tscn" id="1_3fvjb"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_gvgja"]
+
+[resource]
+script = ExtResource("2_gvgja")
+Category = 3
+Type = 302
+DefaultPrimaryColor = 202
+DefaultSecondaryColor = 202
+HasSecondaryColor = false
+Prefab = ExtResource("1_3fvjb")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

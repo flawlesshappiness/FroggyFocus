@@ -2,5 +2,6 @@ public enum ItemCategory
 {
     Hat,
     Face,
-    Color
+    Color,
+    Particles,
 }
