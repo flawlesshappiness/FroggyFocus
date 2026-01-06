@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://5c7u3eeq2lpn"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_olfn3"]
+[ext_resource type="PackedScene" uid="uid://b76p5lsr11bwe" path="res://Assets/FlawLizArt/Hats/detective_hat.fbx" id="2_go3xh"]
+
+[node name="DetectiveHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_olfn3")
+Mesh = NodePath("detective_hat/detective_hat")
+Type = 12
+
+[node name="detective_hat" parent="." instance=ExtResource("2_go3xh")]
+
+[editable path="detective_hat"]

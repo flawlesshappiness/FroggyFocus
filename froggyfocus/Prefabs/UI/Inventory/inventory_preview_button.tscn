@@ -1,18 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://defec4lhqg2fo"]
+[gd_scene load_steps=7 format=3 uid="uid://defec4lhqg2fo"]
 
 [ext_resource type="Script" uid="uid://cxxqv8hu5oi06" path="res://Prefabs/UI/Inventory/InventoryPreviewButton.cs" id="1_c7vpv"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ijjcq"]
 [ext_resource type="PackedScene" uid="uid://cplo4mx0f0qkx" path="res://Prefabs/Misc/question_mark_preview.tscn" id="3_knw73"]
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="3_sycv1"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="5_knw73"]
+[ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="5_o6ats"]
 
-[node name="InventoryPreviewButton" type="Button" node_paths=PackedStringArray("TextureRect", "ItemSubViewport")]
+[node name="InventoryPreviewButton" type="Button" node_paths=PackedStringArray("TextureRect", "ItemSubViewport", "BackgroundShadow")]
 custom_minimum_size = Vector2(65, 65)
 theme = ExtResource("1_ijjcq")
 script = ExtResource("1_c7vpv")
 TextureRect = NodePath("MarginContainer/TextureRect")
 ItemSubViewport = NodePath("ItemSubViewport")
 HiddenPreviewPrefab = ExtResource("3_knw73")
+BackgroundShadow = NodePath("MarginContainer/BG/BackgroundShadow")
 SfxFocusEnter = ExtResource("3_sycv1")
 SfxPressed = ExtResource("3_sycv1")
 
@@ -27,6 +29,28 @@ theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
+
+[node name="BG" type="Control" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BackgroundShadow" type="TextureRect" parent="MarginContainer/BG"]
+modulate = Color(0.0594, 0.08352, 0.18, 0.623529)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -50.5
+offset_right = 50.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_o6ats")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://igloh2tr434s"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_e5s7d"]
+[ext_resource type="PackedScene" uid="uid://bs0vsy7i0giiw" path="res://Assets/FlawLizArt/Hats/fishing_cap.fbx" id="2_qy503"]
+
+[node name="FishingCap" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_e5s7d")
+Mesh = NodePath("fishing_cap/fishing_cap")
+Type = 11
+
+[node name="fishing_cap" parent="." instance=ExtResource("2_qy503")]
+
+[editable path="fishing_cap"]

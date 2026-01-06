@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3hkrtmh6ohnl"]
+[gd_scene load_steps=11 format=3 uid="uid://c3hkrtmh6ohnl"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_f8bht"]
 [ext_resource type="PackedScene" uid="uid://3e5oppo6lmr7" path="res://Assets/FlawLizArt/Characters/Eel/eel.fbx" id="1_h0kul"]
 [ext_resource type="Resource" uid="uid://72vr17ea7883" path="res://HandInQuest/Resources/Eel_Factory.tres" id="2_f8bht"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_lq58h"]
+[ext_resource type="PackedScene" uid="uid://igloh2tr434s" path="res://Appearance/Attachments/fishing_cap.tscn" id="4_w8m0d"]
 [ext_resource type="AudioStream" uid="uid://ergbcag2wd4j" path="res://Sounds/Raw/sfx_eel_speak_001.wav" id="5_f8bht"]
 [ext_resource type="AudioStream" uid="uid://boesilsarb81k" path="res://Sounds/Raw/sfx_eel_speak_002.wav" id="6_w8m0d"]
 [ext_resource type="AudioStream" uid="uid://bvtqyp78h031r" path="res://Sounds/Raw/sfx_eel_speak_003.wav" id="7_gw57y"]
@@ -35,12 +36,20 @@ shape = SubResource("CylinderShape3D_uu23s")
 
 [node name="Skeleton3D" parent="eel/Armature" index="0"]
 bones/1/rotation = Quaternion(0.434473, 1.0737e-07, 5.17933e-08, 0.900685)
-bones/2/rotation = Quaternion(-0.0606936, -0.00351638, -0.066737, 0.995917)
-bones/3/rotation = Quaternion(-0.122491, -0.00851604, -0.067911, 0.990107)
-bones/4/rotation = Quaternion(-0.221663, 0.00991091, 0.0366708, 0.974383)
-bones/5/rotation = Quaternion(-0.116581, 0.010911, 0.12398, 0.985352)
-bones/6/rotation = Quaternion(-0.00491835, -0.000584863, 0.000199636, 0.999988)
-bones/8/rotation = Quaternion(0.175985, 0.000413241, -0.000229388, 0.984393)
+bones/2/rotation = Quaternion(-0.0608039, -2.12737e-14, -1.44968e-08, 0.99815)
+bones/3/rotation = Quaternion(-0.126071, -1.10873e-15, -3.00577e-08, 0.992021)
+bones/4/rotation = Quaternion(-0.246197, -8.76061e-15, -5.8698e-08, 0.96922)
+bones/5/rotation = Quaternion(-0.157756, -3.3677e-15, -3.76119e-08, 0.987478)
+bones/6/rotation = Quaternion(-0.00268523, -2.22017e-15, -6.4021e-10, 0.999996)
+bones/8/rotation = Quaternion(0.174304, -6.33827e-15, 4.15573e-08, 0.984692)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="eel/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 7.81597e-14, 2.38418e-07, -6.81616e-08, 0.958262, 0.285891, -2.28467e-07, -0.285891, 0.958262, 2.41153e-15, 0.0479951, 0.0240233)
+bone_name = "Body.005"
+bone_idx = 5
+
+[node name="FishingCap" parent="eel/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_w8m0d")]
+transform = Transform3D(-0.02, -5.13562e-10, -1.67133e-09, -1.74327e-09, 0.00438535, 0.0195133, -1.34596e-10, 0.0195133, -0.00438534, 1.01399e-10, 0.00765569, 0.00622997)
 
 [node name="AnimationPlayer" parent="eel" index="1"]
 playback_default_blend_time = 0.25

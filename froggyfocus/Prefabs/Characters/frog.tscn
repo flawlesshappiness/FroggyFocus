@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=44 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -23,13 +23,16 @@
 [ext_resource type="PackedScene" uid="uid://bj017mypcst8m" path="res://Appearance/Attachments/moustache.tscn" id="13_uv7pe"]
 [ext_resource type="PackedScene" uid="uid://bycye7hwagma" path="res://Appearance/Attachments/glasses_scientist.tscn" id="14_50yl0"]
 [ext_resource type="PackedScene" uid="uid://5akea1cmi6ru" path="res://Appearance/Attachments/plumbob.tscn" id="14_yiwxy"]
+[ext_resource type="PackedScene" uid="uid://igloh2tr434s" path="res://Appearance/Attachments/fishing_cap.tscn" id="15_a2goj"]
 [ext_resource type="PackedScene" uid="uid://ch5ami6o86hlp" path="res://Appearance/Attachments/glasses_round.tscn" id="16_aaljv"]
+[ext_resource type="PackedScene" uid="uid://5c7u3eeq2lpn" path="res://Appearance/Attachments/detective_hat.tscn" id="16_t4qis"]
 [ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="17_cw7sr"]
 [ext_resource type="PackedScene" uid="uid://bmg430dgy8ers" path="res://Appearance/Attachments/septum.tscn" id="19_n87ao"]
 [ext_resource type="PackedScene" uid="uid://cunbtykel0nks" path="res://Appearance/Attachments/particles_debug.tscn" id="20_ipay0"]
 [ext_resource type="PackedScene" uid="uid://ddd347yst40yt" path="res://Appearance/Attachments/particles_hearts.tscn" id="21_bglj8"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="21_uv7pe"]
 [ext_resource type="PackedScene" uid="uid://cp8mhu2m3u6g4" path="res://Appearance/Attachments/particles_bubbles.tscn" id="22_23gsd"]
+[ext_resource type="PackedScene" uid="uid://csqg2dp1eigui" path="res://Appearance/Attachments/cigarette.tscn" id="22_m4cs0"]
 [ext_resource type="PackedScene" uid="uid://8i1okmguvft2" path="res://Appearance/Attachments/particles_eyes.tscn" id="23_6ngpn"]
 [ext_resource type="PackedScene" uid="uid://dr0be48ijgwb8" path="res://Appearance/Attachments/particles_water.tscn" id="24_mqtpj"]
 [ext_resource type="PackedScene" uid="uid://8bnblf80wnws" path="res://Appearance/Attachments/particles_leaves.tscn" id="25_6l2mw"]
@@ -176,7 +179,7 @@ bones/56/position = Vector3(-0.0185457, -0.00599798, 0.00173028)
 bones/56/rotation = Quaternion(0.692591, -0.142541, -0.142541, 0.692591)
 
 [node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 1.63709e-14, -8.51576e-14, 1.80205e-14, 0.998942, -0.0459942, 1.75211e-14, 0.0459944, 0.998942, -2.85359e-17, 0.0103008, 0.0153717)
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_6ia88")
@@ -221,8 +224,16 @@ visible = false
 transform = Transform3D(0.008, 0, 0, 0, 0.00155086, 0.00784824, 0, -0.00784824, 0.00155086, -3.55807e-22, 4.63529e-10, 0.0106096)
 visible = false
 
+[node name="FishingCap" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("15_a2goj")]
+transform = Transform3D(-0.02, -3.5576e-10, 1.71188e-09, 1.74846e-09, -0.00406942, 0.0195816, 7.21714e-17, 0.0195816, 0.00406942, -9.08682e-13, -0.00494788, 0.00162249)
+visible = false
+
+[node name="DetectiveHat" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("16_t4qis")]
+transform = Transform3D(0.02, 0, 0, 0, -0.00446568, -0.0194951, 0, 0.0194951, -0.00446568, -2.22045e-15, -0.00430538, 0.0021766)
+visible = false
+
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 1.63709e-14, -8.51576e-14, 1.80205e-14, 0.998942, -0.0459942, 1.75211e-14, 0.0459944, 0.998942, -2.85359e-17, 0.0103008, 0.0153717)
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_6ia88")
@@ -245,6 +256,10 @@ visible = false
 
 [node name="Septum" parent="frog/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("19_n87ao")]
 transform = Transform3D(0.003, 0, 0, 0, -0.00202457, -0.00221385, 0, 0.00221385, -0.00202457, -2.53403e-16, 0.0110513, -0.000851177)
+visible = false
+
+[node name="Cigarette" parent="frog/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("22_m4cs0")]
+transform = Transform3D(0.00647409, -0.00736085, 0.00197587, 0.00704027, 0.00676889, 0.00214866, -0.00291904, 0, 0.00956448, 0.00599321, 0.0106821, -0.00313912)
 visible = false
 
 [node name="ParticlesAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="4"]

@@ -11,6 +11,9 @@ public partial class InventoryPreviewButton : ButtonScript
     [Export]
     public PackedScene HiddenPreviewPrefab;
 
+    [Export]
+    public TextureRect BackgroundShadow;
+
     public override void _Ready()
     {
         base._Ready();
@@ -40,6 +43,7 @@ public partial class InventoryPreviewButton : ButtonScript
     {
         var color = obscured ? Colors.Black.SetA(0.5f) : Colors.White;
         TextureRect.Modulate = color;
+        BackgroundShadow.Visible = !obscured;
     }
 
     private void Button_FocusEntered()

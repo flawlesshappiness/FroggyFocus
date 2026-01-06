@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://c6cu6jm27sw2w"]
+
+[ext_resource type="PackedScene" uid="uid://5c7u3eeq2lpn" path="res://Appearance/Attachments/detective_hat.tscn" id="1_asenp"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_6jt84"]
+
+[resource]
+script = ExtResource("2_6jt84")
+Category = 0
+Type = 12
+DefaultPrimaryColor = 207
+DefaultSecondaryColor = 207
+HasSecondaryColor = true
+Prefab = ExtResource("1_asenp")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

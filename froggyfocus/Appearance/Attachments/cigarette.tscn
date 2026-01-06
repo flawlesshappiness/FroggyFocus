@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://csqg2dp1eigui"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_oyp3n"]
+[ext_resource type="PackedScene" uid="uid://bc22i1xbpqh8g" path="res://Assets/FlawLizArt/Face/cigarette_notexture.fbx" id="2_o5va5"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_o5va5"]
+
+[sub_resource type="Curve" id="Curve_o5va5"]
+_data = [Vector2(0, 0), 0.0, 5.68776, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.87762, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a05d2"]
+curve = SubResource("Curve_o5va5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a05d2"]
+emission_shape = 1
+emission_sphere_radius = 0.05
+gravity = Vector3(0, 0.1, 0)
+scale_min = 0.04
+scale_max = 0.06
+scale_curve = SubResource("CurveTexture_a05d2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_o1g2i"]
+material = ExtResource("3_o5va5")
+
+[node name="Cigarette" type="Node3D" node_paths=PackedStringArray("Mesh")]
+script = ExtResource("1_oyp3n")
+Mesh = NodePath("cigarette_notexture/cigarette")
+Type = 106
+
+[node name="cigarette_notexture" parent="." instance=ExtResource("2_o5va5")]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.424964, 0, 0)
+amount = 16
+lifetime = 3.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_a05d2")
+draw_pass_1 = SubResource("SphereMesh_o1g2i")
+
+[editable path="cigarette_notexture"]

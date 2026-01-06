@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://cnjoiotlhaoie"]
+
+[ext_resource type="PackedScene" uid="uid://igloh2tr434s" path="res://Appearance/Attachments/fishing_cap.tscn" id="1_5lqv1"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_podom"]
+
+[resource]
+script = ExtResource("2_podom")
+Category = 0
+Type = 11
+DefaultPrimaryColor = 208
+DefaultSecondaryColor = 202
+HasSecondaryColor = true
+Prefab = ExtResource("1_5lqv1")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"
