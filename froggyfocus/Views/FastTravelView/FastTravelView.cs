@@ -96,6 +96,54 @@ public partial class FastTravelView : PanelView
 
             Scene.Goto(scene_name);
         }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Select location",
+            Action = ListLocations
+        });
+
+        void ListLocations(DebugView v)
+        {
+            v.SetContent_Search();
+
+            foreach (var info in LocationController.Instance.Collection.Resources)
+            {
+                v.ContentSearch.AddItem(info.Name, () => ListLocationActions(v, info));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void ListLocationActions(DebugView v, LocationInfo info)
+        {
+            v.SetContent_Search();
+
+            var data = Location.GetOrCreateData(info.Id);
+            var s_locked = data.Unlocked ? "Unlocked" : "Locked";
+
+            v.ContentSearch.AddItem("Travel", () => Travel(v, info));
+            v.ContentSearch.AddItem("Teleport", () => GotoScene(v, info.Scene, "StartBoat"));
+            v.ContentSearch.AddItem($"Toggle: {s_locked}", () => ToggleLocationLocked(v, info));
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void Travel(DebugView v, LocationInfo info)
+        {
+            v.Close();
+            LocationButton_PressedWhenUnlocked(info.Scene);
+        }
+
+        void ToggleLocationLocked(DebugView v, LocationInfo info)
+        {
+            var data = Location.GetOrCreateData(info.Id);
+            data.Unlocked = !data.Unlocked;
+            Data.Game.Save();
+
+            ListLocationActions(v, info);
+        }
     }
 
     private void InitializeButtons()
@@ -118,7 +166,12 @@ public partial class FastTravelView : PanelView
     {
         var scene_name = System.IO.Path.GetFileNameWithoutExtension(Data.Game.CurrentScene);
         var current_location = LocationController.Instance.Collection.Resources.FirstOrDefault(x => x.Scene == scene_name);
-        buttons.ForEach(x => x.Visible = x.LocationInfo != current_location);
+
+        foreach (var button in buttons)
+        {
+            button.Visible = button.LocationInfo != current_location;
+            button.UpdateLocked();
+        }
     }
 
     protected override void GrabFocusAfterOpen()
@@ -139,12 +192,11 @@ public partial class FastTravelView : PanelView
 
     private Button CreateLocationButton(LocationInfo info)
     {
-        var data = Location.GetOrCreateData(info.Id);
         var button = LocationButtonTemplate.Duplicate() as FastTravelButton;
         button.SetParent(LocationButtonTemplate.GetParent());
         button.Show();
         button.SetLocation(info);
-        button.SetLocked(!data.Unlocked);
+        button.UpdateLocked();
         button.PressedWhenUnlocked += () => LocationButton_PressedWhenUnlocked(info.Scene);
         button.PressedWhenLocked += () => LocationButton_PressedWhenLocked(info);
         buttons.Add(button);

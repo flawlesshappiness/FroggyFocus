@@ -25,6 +25,12 @@ public partial class FastTravelButton : ImageButton
         PriceControl.SetPrice(info.Price);
     }
 
+    public void UpdateLocked()
+    {
+        var data = Location.GetOrCreateData(LocationInfo.Id);
+        SetLocked(!data.Unlocked);
+    }
+
     public void SetLocked(bool locked)
     {
         IsLocked = locked;
