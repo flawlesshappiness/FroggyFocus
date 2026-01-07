@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeInfo" load_steps=2 format=3 uid="uid://do65evsany66l"]
+
+[ext_resource type="Script" uid="uid://fxfoc46ir0al" path="res://Upgrade/UpgradeInfo.cs" id="1_7afj8"]
+
+[resource]
+script = ExtResource("1_7afj8")
+Type = 20
+Name = "Steel Focus Max"
+Description = "Increases the Steel Focus bar"
+Values = Array[float]([1.8, 2.0, 2.2, 2.4, 2.6, 2.8, 3.0])
+OverridePrice = null
+metadata/_custom_type_script = "uid://fxfoc46ir0al"

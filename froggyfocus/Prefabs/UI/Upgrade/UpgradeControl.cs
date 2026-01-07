@@ -44,11 +44,11 @@ public partial class UpgradeControl : Control
         {
             var node = UpgradeLevelNodeTemplate.Instantiate<UpgradeLevelNode>();
             node.SetParent(LevelNodesParent);
-            node.Visible = i <= data.CappedLevel;
+            node.Visible = true;
             level_nodes.Add(node);
         }
 
-        Visible = data.CappedLevel > 0;
+        Visible = true;
     }
 
     public void Update()
@@ -62,13 +62,12 @@ public partial class UpgradeControl : Control
     private void UpdateButton(UpgradeType type)
     {
         var is_max = UpgradeController.Instance.IsMaxLevel(type);
-        var is_capped = UpgradeController.Instance.IsCappedLevel(type);
         var price = UpgradeController.Instance.GetCurrentPrice(type);
         PriceControl.SetPrice(price);
 
-        UpgradeButton.Visible = !is_max && !is_capped;
-        PriceControl.Visible = !is_max && !is_capped;
-        CappedLabel.Visible = is_capped && !is_max;
+        UpgradeButton.Visible = !is_max;
+        PriceControl.Visible = !is_max;
+        CappedLabel.Visible = false;
         MaxLabel.Visible = is_max;
     }
 

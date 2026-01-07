@@ -117,7 +117,7 @@ public partial class FocusCursor : Node3D
         FocusTickDecay = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickDecay);
         MoveSpeed = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorSpeed);
 
-        ShieldMax = 2f;
+        ShieldMax = UpgradeController.Instance.GetCurrentValue(UpgradeType.ShieldMax);
         ShieldValue = ShieldMax;
         ShieldGain = 0.1f;
     }

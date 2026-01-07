@@ -7,4 +7,7 @@ public enum UpgradeType
     CursorStartValue = 4,
 
     InventorySize = 10,
+
+    ShieldMax = 20,
+    ShieldRegen = 21,
 }

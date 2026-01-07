@@ -40,7 +40,15 @@ public partial class UpgradeContainer : ControlScript
     private void CreateUpgradeControls()
     {
         var parent = UpgradeControlTemplate.GetParent();
-        var types = System.Enum.GetValues(typeof(UpgradeType)).Cast<UpgradeType>();
+        var types = new List<UpgradeType>
+        {
+            UpgradeType.CursorRadius,
+            UpgradeType.CursorSpeed,
+            UpgradeType.CursorTickAmount,
+            UpgradeType.InventorySize,
+            UpgradeType.ShieldMax,
+        };
+
         foreach (var type in types)
         {
             var control = UpgradeControlTemplate.Duplicate() as UpgradeControl;
