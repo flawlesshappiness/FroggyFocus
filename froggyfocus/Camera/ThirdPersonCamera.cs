@@ -15,7 +15,7 @@ public partial class ThirdPersonCamera : Node3D
     public static MultiLock InputLock = new();
 
     private float MouseSensitivity => 0.004f * Data.Options.CameraSensitivity;
-    private float ControllerSensitivity => 0.02f * Data.Options.CameraSensitivity;
+    private float ControllerSensitivity => 0.09f * Data.Options.CameraSensitivity;
 
     private bool initialized;
     private float tilt_min = Mathf.DegToRad(-60);

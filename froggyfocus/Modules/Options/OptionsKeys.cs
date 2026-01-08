@@ -71,7 +71,7 @@ public partial class OptionsKeys : NodeScript
 
     private void UpdateKeyString(OptionsKeyRebindControl control)
     {
-        var e = InputMap.ActionGetEvents(control.Action).First();
+        var e = InputMap.ActionGetEvents(control.Action).First(x => x is InputEventKey || x is InputEventMouseButton);
         var text = e.AsText().Replace("(Physical)", "").Trim();
         control.RebindButton.Text = text;
     }
@@ -136,9 +136,13 @@ public partial class OptionsKeys : NodeScript
     private void ResetRebind(OptionsKeyRebindControl control)
     {
         var action = control.Action;
-        var binding = OptionsController.DefaultBindings[action];
+        var bindings = OptionsController.DefaultBindings[action];
         InputMap.ActionEraseEvents(action);
-        InputMap.ActionAddEvent(action, binding);
+
+        foreach (var binding in bindings)
+        {
+            InputMap.ActionAddEvent(action, binding);
+        }
         control.Rebind.Data = null;
 
         UpdateKeyString(control);
@@ -190,10 +194,12 @@ public partial class OptionsKeys : NodeScript
     private void StopRebinding()
     {
         current_control.SetWaitingForInput(false);
-        current_control = null;
         UpdateAllKeyStrings();
         UpdateDuplicateWarnings();
         RebindEnded();
+
+        current_control.RebindButton.GrabFocus();
+        current_control = null;
     }
 
     private void SetButtonsEnabled(bool enabled)

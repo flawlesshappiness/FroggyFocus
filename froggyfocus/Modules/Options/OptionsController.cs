@@ -9,7 +9,7 @@ public partial class OptionsController : SingletonController
     public static OptionsController Instance => Singleton.Get<OptionsController>();
     public static Window.ModeEnum CurrentWindowMode => WindowModes.GetClamped(Data.Options.WindowMode);
     public static DisplayServer.VSyncMode CurrentVSyncMode => VSyncModes.GetClamped(Data.Options.VSync);
-    public static Dictionary<string, InputEvent> DefaultBindings { get; set; } = new();
+    public static Dictionary<string, Godot.Collections.Array<InputEvent>> DefaultBindings { get; set; } = new();
     public static List<OptionsKeyRebind> Rebinds { get; set; } = new();
 
     public event Action OnBrightnessChanged;
@@ -134,8 +134,7 @@ public partial class OptionsController : SingletonController
         var actions = InputMap.GetActions();
         foreach (var action in actions)
         {
-            var e = InputMap.ActionGetEvents(action).FirstOrDefault();
-            if (e == null) continue;
+            var e = InputMap.ActionGetEvents(action);
             DefaultBindings.Add(action, e);
         }
     }
@@ -177,10 +176,14 @@ public partial class OptionsController : SingletonController
         Engine.MaxFps = mode;
     }
 
-    public void UpdateActionOverride(string action, InputEvent e)
+    public void UpdateActionOverride(string action, IEnumerable<InputEvent> bindings)
     {
         InputMap.ActionEraseEvents(action);
-        InputMap.ActionAddEvent(action, e);
+
+        foreach (var binding in bindings)
+        {
+            InputMap.ActionAddEvent(action, binding);
+        }
     }
 
     public void UpdateKeyOverride(InputEventKeyData data)
@@ -188,7 +191,11 @@ public partial class OptionsController : SingletonController
         Debug.LogMethod($"{data.Action}: {data.Key}");
         Debug.Indent++;
 
-        UpdateActionOverride(data.Action, data.ToEvent());
+        var bindings = DefaultBindings[data.Action]
+            .Where(x => x is not InputEventKey && x is not InputEventMouseButton)
+            .Append(data.ToEvent());
+
+        UpdateActionOverride(data.Action, bindings);
 
         Debug.Indent--;
     }
@@ -198,7 +205,11 @@ public partial class OptionsController : SingletonController
         Debug.LogMethod($"{data.Action}: {data.Button}");
         Debug.Indent++;
 
-        UpdateActionOverride(data.Action, data.ToEvent());
+        var bindings = DefaultBindings[data.Action]
+            .Where(x => x is not InputEventKey && x is not InputEventMouseButton)
+            .Append(data.ToEvent());
+
+        UpdateActionOverride(data.Action, bindings);
 
         Debug.Indent--;
     }
