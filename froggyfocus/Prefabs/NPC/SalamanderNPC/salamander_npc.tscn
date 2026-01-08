@@ -50,7 +50,8 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_vutm6")
 HandInInfo = ExtResource("2_vutm6")
-DialogueKey = "SALAMANDER"
+RequestDialogueId = "SALAMANDER_REQUEST"
+RequestCompleteDialogueId = Array[String](["SALAMANDER_SINGING_001", "SALAMANDER_BACKGROUND_001", "SALAMANDER_ENTRANCE_001"])
 IdleAnimation = "Armature|praising"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
@@ -91,7 +92,7 @@ bones/28/rotation = Quaternion(-0.222536, 0.247128, 0.490148, 0.805705)
 bones/29/rotation = Quaternion(-0.31116, 0.0399215, -0.276476, 0.908376)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="salamander/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.0134904, 0.155083, 0.987809, 0.819961, 0.567102, -0.0778352, -0.57226, 0.808915, -0.134812, 0.00143872, 0.0122884, 0.0248278)
+transform = Transform3D(-0.0134904, 0.155083, 0.987809, 0.819961, 0.567102, -0.0778351, -0.57226, 0.808915, -0.134812, 0.00143872, 0.0122884, 0.0248278)
 bone_name = "Head"
 bone_idx = 4
 

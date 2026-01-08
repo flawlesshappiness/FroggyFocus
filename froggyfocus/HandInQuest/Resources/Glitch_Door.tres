@@ -9,12 +9,11 @@
 script = ExtResource("3_yrb7q")
 Id = "glitch_door"
 Name = "Glitch Door"
-UniqueRequests = true
 RequestPreviewHidden = false
 HasMoneyReward = false
 PossibleRequests = Array[Object]([ExtResource("1_4garv"), ExtResource("2_yrb7q"), ExtResource("3_g6h4l")])
 CountRange = Vector2i(3, 3)
-ClaimCountToUnlock = 10
+ClaimCountToUnlock = 0
 HasItemUnlock = false
 ItemUnlock = 0
 CooldownInSeconds = 600.0

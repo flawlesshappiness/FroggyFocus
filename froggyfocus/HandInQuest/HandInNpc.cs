@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 public partial class HandInNpc : CharacterNpc
 {
@@ -6,7 +7,10 @@ public partial class HandInNpc : CharacterNpc
     public HandInInfo HandInInfo;
 
     [Export]
-    public string DialogueKey;
+    public string RequestDialogueId;
+
+    [Export]
+    public Array<string> RequestCompleteDialogueId;
 
     private bool claimed_hand_in;
 
@@ -32,7 +36,7 @@ public partial class HandInNpc : CharacterNpc
         claimed_hand_in = false;
         if (HandIn.IsAvailable(HandInInfo.Id))
         {
-            StartDialogue($"##{DialogueKey}_REQUEST##");
+            StartDialogue($"##{RequestDialogueId}##");
         }
         else
         {
@@ -78,16 +82,16 @@ public partial class HandInNpc : CharacterNpc
         }
     }
 
-    private string GetDialogueNumber()
+    private int GetDialogueNumber()
     {
         var data = HandIn.GetOrCreateData(HandInInfo.Id);
-        var max = Mathf.Max(HandInInfo.ClaimCountToUnlock, 1);
-        return (1 + data.ClaimedCount % max).ToString("000");
+        return Mathf.Clamp(data.ClaimedCount - 1, 0, RequestCompleteDialogueId.Count - 1);
     }
 
     private void StartRequestCompleteDialogue()
     {
         var dialogue_number = GetDialogueNumber();
-        StartDialogue($"##{DialogueKey}_COMPLETE_{dialogue_number}##");
+        var dialogue_id = RequestCompleteDialogueId[dialogue_number];
+        StartDialogue($"##{dialogue_id}##");
     }
 }

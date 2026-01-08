@@ -27,7 +27,8 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_pdcxf")
 HandInInfo = ExtResource("2_s8tk2")
-DialogueKey = "SNAIL"
+RequestDialogueId = "SNAIL_REQUEST"
+RequestCompleteDialogueId = Array[String](["SNAIL_LUSH_001", "SNAIL_SCARY_001", "SNAIL_CRYSTALS_001"])
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 
@@ -68,7 +69,7 @@ bones/14/rotation = Quaternion(0.999038, 1.37652e-08, -2.38022e-07, -0.0438479)
 bones/14/scale = Vector3(1, 1, 1.00003)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="snail/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.994552, -0.0272866, -0.10061, -0.00425202, 0.953712, -0.300691, 0.104158, 0.29948, 0.9484, 0.000671996, 0.0382134, 0.0253145)
+transform = Transform3D(0.994552, -0.0272865, -0.10061, -0.00425211, 0.953712, -0.300691, 0.104158, 0.29948, 0.9484, 0.000671996, 0.0382134, 0.0253146)
 bone_name = "Head"
 bone_idx = 5
 

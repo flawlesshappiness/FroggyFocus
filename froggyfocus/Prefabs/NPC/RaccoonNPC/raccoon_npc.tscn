@@ -25,7 +25,8 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_5t764")
 HandInInfo = ExtResource("2_lqyx2")
-DialogueKey = "RACCOON"
+RequestDialogueId = "RACCOON_REQUEST"
+RequestCompleteDialogueId = Array[String](["RACCOON_BACKGROUND_001", "RACCOON_POLLUTION_001", "RACCOON_TV_001"])
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 
@@ -67,7 +68,7 @@ bones/15/position = Vector3(-0.0851698, 0.00579122, 0.0400934)
 bones/15/rotation = Quaternion(0.641611, 0.297212, 0.297212, 0.641611)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="raccoon/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -5.38541e-17, -6.63045e-18, 5.38543e-17, 0.970143, 0.242535, -6.62901e-18, -0.242535, 0.970143, 1.11202e-17, 0.0132662, 0.0376316)
+transform = Transform3D(1, -5.38538e-17, -6.6302e-18, 5.38539e-17, 0.970143, 0.242535, -6.62916e-18, -0.242535, 0.970143, 1.11202e-17, 0.0132662, 0.0376316)
 bone_name = "Head"
 bone_idx = 3
 

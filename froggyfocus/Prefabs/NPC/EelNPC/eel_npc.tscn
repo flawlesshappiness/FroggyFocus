@@ -24,7 +24,8 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_f8bht")
 HandInInfo = ExtResource("2_f8bht")
-DialogueKey = "EEL"
+RequestDialogueId = "EEL_REQUEST"
+RequestCompleteDialogueId = Array[String](["EEL_FISH_001", "EEL_NASTY_001", "EEL_ZAP_001"])
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 
@@ -44,7 +45,7 @@ bones/6/rotation = Quaternion(-0.00268523, -2.22017e-15, -6.4021e-10, 0.999996)
 bones/8/rotation = Quaternion(0.174304, -6.33827e-15, 4.15573e-08, 0.984692)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="eel/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 7.81597e-14, 2.38418e-07, -6.81616e-08, 0.958262, 0.285891, -2.28467e-07, -0.285891, 0.958262, 2.41153e-15, 0.0479951, 0.0240233)
+transform = Transform3D(1, 7.10543e-14, 2.38418e-07, -6.81617e-08, 0.958262, 0.285891, -2.28467e-07, -0.285891, 0.958262, -2.90667e-15, 0.0479951, 0.0240232)
 bone_name = "Body.005"
 bone_idx = 5
 

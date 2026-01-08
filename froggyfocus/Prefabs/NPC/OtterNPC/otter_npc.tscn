@@ -36,7 +36,8 @@ collision_layer = 5
 collision_mask = 0
 script = ExtResource("1_1jh81")
 HandInInfo = ExtResource("2_qg8qc")
-DialogueKey = "OTTER"
+RequestDialogueId = "OTTER_REQUEST"
+RequestCompleteDialogueId = Array[String](["OTTER_SPIRITS_001", "OTTER_WINGS_001", "OTTER_FLOWER_001"])
 DialogueAnimation = "Armature|look"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
@@ -115,7 +116,7 @@ bones/36/position = Vector3(-0.0122999, 0.0128851, 0.00109781)
 bones/36/rotation = Quaternion(-0.371205, 0.601836, 0.601837, -0.371205)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="otter/Armature/Skeleton3D" index="5"]
-transform = Transform3D(1, -9.23706e-13, -1.42109e-14, 8.66862e-13, 0.999612, 0.0278424, -2.84217e-14, -0.0278424, 0.999612, -7.10954e-15, 0.00830898, 0.0211461)
+transform = Transform3D(1, -1.12266e-12, -1.27898e-13, 1.0516e-12, 0.999612, 0.0278422, 8.52651e-14, -0.0278422, 0.999612, -8.4567e-15, 0.00830899, 0.0211461)
 bone_name = "Head"
 bone_idx = 4
 
