@@ -1,11 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cydcvbdr705lc"]
+[gd_scene load_steps=15 format=3 uid="uid://cydcvbdr705lc"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ma85e"]
 [ext_resource type="Script" uid="uid://cenc4k0brpn5a" path="res://Prefabs/UI/Options/OptionsContainer.cs" id="2_3w48p"]
 [ext_resource type="PackedScene" uid="uid://dk5e5unescpcn" path="res://Modules/Options/OptionsControl.tscn" id="3_t6453"]
 [ext_resource type="PackedScene" uid="uid://ddkr2dahi2d8" path="res://Prefabs/UI/OptionsButtonControl/options_button_control.tscn" id="4_3w48p"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="5_lof4m"]
+[ext_resource type="PackedScene" uid="uid://bcs21fjyae67g" path="res://Prefabs/UI/GamepadIcon/gamepad_icon.tscn" id="5_t6453"]
+[ext_resource type="Texture2D" uid="uid://k83g0j5evkui" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_ls.png" id="6_krs6j"]
+[ext_resource type="Texture2D" uid="uid://dsrdehj3qvjf" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_stick_top_l.png" id="7_o73c3"]
+[ext_resource type="Texture2D" uid="uid://oj32m6tveh7g" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_button_color_b.png" id="8_bxtoj"]
+[ext_resource type="Texture2D" uid="uid://bwyjjdd5ofq46" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_button_color_circle.png" id="9_lof4m"]
+[ext_resource type="Texture2D" uid="uid://83d4g8yt2xq1" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_button_color_a.png" id="10_bxtoj"]
+[ext_resource type="Texture2D" uid="uid://brvivde6xprhr" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation3_button_start.png" id="11_0un1b"]
+[ext_resource type="Texture2D" uid="uid://16wf71kbo0cv" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_button_color_cross.png" id="11_lof4m"]
+[ext_resource type="Texture2D" uid="uid://8aw3gwbbrmsv" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_button_menu.png" id="12_b2kry"]
 
-[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions")]
+[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -25,12 +35,13 @@ Options = NodePath("Options")
 EnvironmentSlider = NodePath("Options/TabContainer/Audio/VBoxContainer/EnvironmentSlider")
 CameraSensitivtySlider = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer/HBoxContainer2/CameraSensitivitySlider")
 UIScaleOptions = NodePath("Options/TabContainer/Video/HBoxContainer/UIScale/UIScaleOptions")
+GamepadDisplayOptionButton = NodePath("Options/TabContainer/Gamepad/VBoxContainer/HBoxContainer/GamepadDisplayOptionButton")
 
 [node name="Options" parent="." instance=ExtResource("3_t6453")]
 layout_mode = 2
 
 [node name="TabContainer" parent="Options" index="0"]
-current_tab = 1
+current_tab = 3
 
 [node name="Audio" parent="Options/TabContainer" index="1"]
 visible = false
@@ -43,9 +54,6 @@ text = "Environment & Weather"
 layout_mode = 2
 max_value = 1.0
 step = 0.05
-
-[node name="Video" parent="Options/TabContainer" index="2"]
-visible = true
 
 [node name="Brightness" parent="Options/TabContainer/Video/HBoxContainer" index="4"]
 visible = false
@@ -62,14 +70,137 @@ text = "UI Scale"
 layout_mode = 2
 Options = Array[String](["80%", "90%", "100%", "110%", "120%"])
 
-[node name="Gameplay" type="MarginContainer" parent="Options/TabContainer" index="4"]
+[node name="Gamepad" type="MarginContainer" parent="Options/TabContainer" index="4"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Gamepad"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Display:"
+
+[node name="GamepadDisplayOptionButton" type="OptionButton" parent="Options/TabContainer/Gamepad/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "XBox"
+popup/item_0/id = 0
+popup/item_1/text = "Playstation"
+popup/item_1/id = 1
+
+[node name="Control" type="Control" parent="Options/TabContainer/Gamepad/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/TabContainer/Gamepad/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("5_lof4m")
+
+[node name="MarginContainer" type="MarginContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Move" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Move"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move/HBoxContainer" instance=ExtResource("5_t6453")]
+layout_mode = 2
+XboxTexture = ExtResource("6_krs6j")
+PlaystationTexture = ExtResource("7_o73c3")
+
+[node name="Jump" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Jump"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump/HBoxContainer" instance=ExtResource("5_t6453")]
+layout_mode = 2
+XboxTexture = ExtResource("8_bxtoj")
+PlaystationTexture = ExtResource("9_lof4m")
+
+[node name="Interact" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interact / Steel Focus"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact/HBoxContainer" instance=ExtResource("5_t6453")]
+layout_mode = 2
+XboxTexture = ExtResource("10_bxtoj")
+PlaystationTexture = ExtResource("11_lof4m")
+
+[node name="Pause" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pause"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause/HBoxContainer" instance=ExtResource("5_t6453")]
+layout_mode = 2
+XboxTexture = ExtResource("12_b2kry")
+PlaystationTexture = ExtResource("11_0un1b")
+
+[node name="Gameplay" type="MarginContainer" parent="Options/TabContainer" index="5"]
 visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Gameplay"]
 layout_mode = 2

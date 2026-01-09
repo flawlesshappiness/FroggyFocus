@@ -16,7 +16,11 @@ public partial class OptionsContainer : ControlScript
     [Export]
     public OptionsButtonControl UIScaleOptions;
 
+    [Export]
+    public OptionButton GamepadDisplayOptionButton;
+
     public static Action OnUIScaleChanged;
+    public static Action<int> OnGamepadDisplayChanged;
     public event Action BackPressed;
 
     private bool showing;
@@ -28,6 +32,7 @@ public partial class OptionsContainer : ControlScript
         EnvironmentSlider.ValueChanged += EnvironmentVolume_ValueChanged;
         CameraSensitivtySlider.ValueChanged += CameraSensitivity_ValueChanged;
         UIScaleOptions.IndexChanged += UIScaleOptions_IndexChanged;
+        GamepadDisplayOptionButton.ItemSelected += GamepadDisplayOptionButton_ItemSelected;
 
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
     }
@@ -41,6 +46,7 @@ public partial class OptionsContainer : ControlScript
         EnvironmentSlider.Value = Data.Options.EnvironmentVolume;
         CameraSensitivtySlider.Value = Data.Options.CameraSensitivity;
         UIScaleOptions.SetIndex(Data.Options.UIScaleIndex);
+        GamepadDisplayOptionButton.Selected = Data.Options.GamepadDisplayIndex;
 
         showing = false;
     }
@@ -70,5 +76,12 @@ public partial class OptionsContainer : ControlScript
         Data.Options.UIScale = scales.GetClamped(index);
         Data.Options.UIScaleIndex = index;
         OnUIScaleChanged?.Invoke();
+    }
+
+    private void GamepadDisplayOptionButton_ItemSelected(long l_index)
+    {
+        var index = (int)l_index;
+        Data.Options.GamepadDisplayIndex = index;
+        OnGamepadDisplayChanged?.Invoke(index);
     }
 }
