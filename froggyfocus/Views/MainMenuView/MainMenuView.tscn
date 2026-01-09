@@ -402,7 +402,7 @@ _data = {
 streams_count = 1
 stream_0/stream = ExtResource("6_7iof8")
 
-[node name="MainMenuView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "OptionsControl", "SaveProfilesContainer", "ContinueButton", "ProfilesButton", "OptionsButton", "QuitButton", "InputBlocker", "Overlay")]
+[node name="MainMenuView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "OptionsControl", "SaveProfilesContainer", "ContinueButton", "ProfilesButton", "OptionsButton", "QuitButton", "InputBlocker", "Overlay", "VersionLabel")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -420,6 +420,7 @@ OptionsButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UISca
 QuitButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/QuitButton")
 InputBlocker = NodePath("InputBlocker")
 Overlay = NodePath("Overlay")
+VersionLabel = NodePath("Main/Control/VersionLabel")
 
 [node name="Main" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -518,6 +519,24 @@ text = "Quit"
 [node name="Right" type="Control" parent="Main/VSplitContainer/Bottom/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="Main"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VersionLabel" type="Label" parent="Main/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -218.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0.1.0"
+horizontal_alignment = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 visible = false

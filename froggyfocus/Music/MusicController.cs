@@ -43,6 +43,7 @@ public partial class MusicController : SingletonController
 
     public void StartMusic()
     {
+        return; // TODO: Make better music
         Coroutine.Stop(cr_music);
         cr_music = this.StartCoroutine(Cr);
         IEnumerator Cr()

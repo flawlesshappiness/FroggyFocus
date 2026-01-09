@@ -14,4 +14,10 @@ public partial class ApplicationInfo : Resource
 
     [Export]
     public string StartScene;
+
+    public string GetVersionString()
+    {
+        var release = Release ? "Release" : "Demo";
+        return $"{release} v{Version}";
+    }
 }

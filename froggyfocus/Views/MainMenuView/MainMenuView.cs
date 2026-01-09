@@ -32,6 +32,9 @@ public partial class MainMenuView : View
     [Export]
     public ColorRect Overlay;
 
+    [Export]
+    public Label VersionLabel;
+
     private bool animating;
 
     public override void _Ready()
@@ -43,6 +46,8 @@ public partial class MainMenuView : View
         QuitButton.Pressed += ClickQuit;
         OptionsControl.BackPressed += ClickOptionsBack;
         SaveProfilesContainer.ProfilePressed += ClickProfilesBack;
+
+        VersionLabel.Text = ApplicationInfo.Instance.GetVersionString();
 
         InputBlocker.Hide();
 
