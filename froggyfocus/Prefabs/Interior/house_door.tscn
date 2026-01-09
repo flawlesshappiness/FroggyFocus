@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckawey6x8v1b3"]
+[gd_scene load_steps=7 format=3 uid="uid://ckawey6x8v1b3"]
 
 [ext_resource type="PackedScene" uid="uid://b5dj4tiflb65m" path="res://Assets/KayLousberg/Dungeon/door.fbx" id="1_5h2ks"]
 [ext_resource type="Script" uid="uid://dk3f8eorl14in" path="res://Prefabs/Interior/HouseDoor.cs" id="1_qkyns"]
+[ext_resource type="Resource" uid="uid://b27hx0twfxeop" path="res://Sounds/Resources/sfx_door.tres" id="2_7mw34"]
 [ext_resource type="AudioStream" uid="uid://c78iu23srhocr" path="res://Sounds/Raw/sfx_door_open_001.wav" id="3_s4hot"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qkyns"]
@@ -10,11 +11,11 @@ size = Vector3(2.31152, 2.9518, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_s4hot"]
 size = Vector3(2.05664, 2.7666, 0.505859)
 
-[node name="HouseDoor" type="Area3D" node_paths=PackedStringArray("SfxDoor")]
+[node name="HouseDoor" type="Area3D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_qkyns")
-SfxDoor = NodePath("SfxDoor")
+DoorSound = ExtResource("2_7mw34")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41154, 0)

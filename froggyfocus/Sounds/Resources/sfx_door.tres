@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SoundInfo" load_steps=3 format=3 uid="uid://b27hx0twfxeop"]
+
+[ext_resource type="AudioStream" uid="uid://c78iu23srhocr" path="res://Sounds/Raw/sfx_door_open_001.wav" id="1_0ykbd"]
+[ext_resource type="Script" uid="uid://blrvdsv0elqy5" path="res://Modules/Sound/SoundInfo.cs" id="2_6i0hp"]
+
+[resource]
+script = ExtResource("2_6i0hp")
+AudioStreams = Array[AudioStream]([ExtResource("1_0ykbd")])
+Volume = 0.0
+Looping = false
+PitchRange = Vector2(0.95, 1)
+Bus = "SFX"
+Distance = 0
+Attenuation = 0
+metadata/_custom_type_script = "uid://blrvdsv0elqy5"

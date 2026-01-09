@@ -9,11 +9,11 @@ public partial class HouseDoor : Area3D, IInteractable
     public string StartNode;
 
     [Export]
-    public AudioStreamPlayer3D SfxDoor;
+    public SoundInfo DoorSound;
 
     public virtual void Interact()
     {
-        SfxDoor?.Play();
+        DoorSound.Play();
 
         TransitionView.Instance.StartTransition(new TransitionSettings
         {
