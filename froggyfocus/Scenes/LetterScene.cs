@@ -14,16 +14,20 @@ public partial class LetterScene : GameScene
 
     public const string INTRO_LETTERS_ID = "intro_letters";
 
+    private string DebugId => $"{nameof(LetterScene)}_{GetInstanceId()}";
+
     private int idx_letter;
     private bool letter_input_enabled;
     private Letter selected_letter;
     private List<Letter> unpicked_letters;
+    private bool skip;
 
     public override void _Ready()
     {
         base._Ready();
         MouseVisibility.Show(nameof(LetterScene));
 
+        RegisterDebugActions();
         InitializeLetters();
     }
 
@@ -31,6 +35,28 @@ public partial class LetterScene : GameScene
     {
         base._ExitTree();
         MouseVisibility.Hide(nameof(LetterScene));
+        Debug.RemoveActions(DebugId);
+    }
+
+    private void RegisterDebugActions()
+    {
+        var category = "LETTER SCENE";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = DebugId,
+            Category = category,
+            Text = "Skip",
+            Action = Skip
+        });
+
+        void Skip(DebugView v)
+        {
+            skip = true;
+            v.Close();
+            unpicked_letters.Clear();
+            PickSelectedLetter();
+        }
     }
 
     private void InitializeLetters()
@@ -47,6 +73,7 @@ public partial class LetterScene : GameScene
         {
             letter_input_enabled = false;
             yield return AnimationPlayer.PlayAndWaitForAnimation("show_letters");
+
             letter_input_enabled = true;
             SetLetterIndex(0);
         }
@@ -77,6 +104,7 @@ public partial class LetterScene : GameScene
 
     private void SetLetterIndex(int i)
     {
+        if (skip) return;
         idx_letter = Mathf.Clamp(i, 0, unpicked_letters.Count);
         var letter = unpicked_letters.GetClamped(i);
         SelectLetter(letter);
@@ -103,13 +131,17 @@ public partial class LetterScene : GameScene
         IEnumerator Cr()
         {
             letter_input_enabled = false;
-            yield return selected_letter.AnimateOpen();
 
-            LetterView.Instance.Show();
-            yield return LetterView.Instance.AnimateLetter(selected_letter.Id);
-            LetterView.Instance.Hide();
+            if (!skip)
+            {
+                yield return selected_letter.AnimateOpen();
 
-            unpicked_letters.Remove(selected_letter);
+                LetterView.Instance.Show();
+                yield return LetterView.Instance.AnimateLetter(selected_letter.Id);
+                LetterView.Instance.Hide();
+
+                unpicked_letters.Remove(selected_letter);
+            }
 
             if (unpicked_letters.Count > 0)
             {

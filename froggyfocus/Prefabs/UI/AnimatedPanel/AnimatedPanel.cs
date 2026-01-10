@@ -19,6 +19,8 @@ public partial class AnimatedPanel : Control
     public Coroutine AnimateGrow() => Animate("grow");
     public Coroutine AnimateShrink() => Animate("shrink");
     public Coroutine AnimateBounce() => Animate("bounce");
+    public Coroutine AnimateFadeShow() => Animate("fade_show");
+    public Coroutine AnimateFadeHide() => Animate("fade_hide");
 
     private Coroutine Animate(string animation)
     {

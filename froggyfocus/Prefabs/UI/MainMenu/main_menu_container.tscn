@@ -1,0 +1,131 @@
+[gd_scene load_steps=4 format=3 uid="uid://d180feyonrdv5"]
+
+[ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="1_37hgo"]
+[ext_resource type="Script" uid="uid://c5igtc3vlqhjb" path="res://Prefabs/UI/MainMenu/MainMenuContainer.cs" id="1_bn65t"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="2_bn65t"]
+
+[node name="MainMenuContainer" type="MarginContainer" node_paths=PackedStringArray("NewGameButton", "ContinueButton", "ProfilesButton", "OptionsButton", "QuitButton", "VersionLabel")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+script = ExtResource("1_bn65t")
+NewGameButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/NewGameButton")
+ContinueButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ContinueButton")
+ProfilesButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ProfilesButton")
+OptionsButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/OptionsButton")
+QuitButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/QuitButton")
+VersionLabel = NodePath("Control/VersionLabel")
+
+[node name="VSplitContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Top" type="Control" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VSplitContainer/Top"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VSplitContainer/Top/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.490196)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 100
+text = "FROGGY FOCUS"
+
+[node name="Bottom" type="Control" parent="VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HBoxContainer" parent="VSplitContainer/Bottom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="VSplitContainer/Bottom/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UIScale" type="Control" parent="VSplitContainer/Bottom/HSplitContainer/Left"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_37hgo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -106.0
+offset_right = 202.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="NewGameButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+layout_mode = 2
+text = "New Game"
+
+[node name="ContinueButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+layout_mode = 2
+text = "Continue"
+
+[node name="ProfilesButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+layout_mode = 2
+text = "Save profile"
+
+[node name="OptionsButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+layout_mode = 2
+text = "Options"
+
+[node name="QuitButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+layout_mode = 2
+text = "Quit"
+
+[node name="Right" type="Control" parent="VSplitContainer/Bottom/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VersionLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -218.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0.1.0"
+horizontal_alignment = 2

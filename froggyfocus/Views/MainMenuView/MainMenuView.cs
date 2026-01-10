@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 
 public partial class MainMenuView : View
@@ -6,7 +7,7 @@ public partial class MainMenuView : View
     public static MainMenuView Instance => Get<MainMenuView>();
 
     [Export]
-    public AnimationPlayer AnimationPlayer;
+    public MainMenuContainer MainMenuContainer;
 
     [Export]
     public OptionsControl OptionsControl;
@@ -15,39 +16,43 @@ public partial class MainMenuView : View
     public SaveProfilesContainer SaveProfilesContainer;
 
     [Export]
-    public Button ContinueButton;
-
-    [Export]
-    public Button ProfilesButton;
-
-    [Export]
-    public Button OptionsButton;
-
-    [Export]
-    public Button QuitButton;
-
-    [Export]
     public Control InputBlocker;
 
     [Export]
-    public ColorRect Overlay;
+    public AnimatedOverlay Overlay;
 
     [Export]
-    public Label VersionLabel;
+    public AnimatedPanel AnimatedPanel_Main;
+
+    [Export]
+    public AnimatedPanel AnimatedPanel_Options;
+
+    [Export]
+    public AnimatedPanel AnimatedPanel_Profiles;
 
     private bool animating;
+    private MenuSettings current_menu;
+
+    private class MenuSettings
+    {
+        public AnimatedPanel Panel { get; set; }
+        public Func<Control> GetFocusControl { get; set; }
+        public Func<Control> GetBackFocusControl { get; set; }
+    }
 
     public override void _Ready()
     {
         base._Ready();
-        ContinueButton.Pressed += ClickContinue;
-        ProfilesButton.Pressed += ClickProfiles;
-        OptionsButton.Pressed += ClickOptions;
-        QuitButton.Pressed += ClickQuit;
-        OptionsControl.BackPressed += ClickOptionsBack;
-        SaveProfilesContainer.ProfilePressed += ClickProfilesBack;
+        MainMenuContainer.NewGameButton.Pressed += ClickContinue;
+        MainMenuContainer.ContinueButton.Pressed += ClickContinue;
+        MainMenuContainer.ProfilesButton.Pressed += ClickProfiles;
+        MainMenuContainer.OptionsButton.Pressed += ClickOptions;
+        MainMenuContainer.QuitButton.Pressed += ClickQuit;
+        OptionsControl.BackPressed += CloseMenu;
+        SaveProfilesContainer.ProfilePressed += CloseMenu;
+        GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
 
-        VersionLabel.Text = ApplicationInfo.Instance.GetVersionString();
+        Overlay.AnimateShowImmediate();
 
         InputBlocker.Hide();
 
@@ -74,9 +79,10 @@ public partial class MainMenuView : View
         SaveProfilesContainer.LoadProfiles();
     }
 
-    public void AnimateHideOverlay()
+    private void GameProfileSelected(int profile)
     {
-        AnimationPlayer.Play("hide_overlay");
+        MainMenuContainer.NewGameButton.Visible = Data.Game.Deleted;
+        MainMenuContainer.ContinueButton.Visible = !Data.Game.Deleted;
     }
 
     private void Open()
@@ -84,15 +90,64 @@ public partial class MainMenuView : View
         if (animating) return;
         animating = true;
 
-        Overlay.Show();
-        Overlay.Modulate = Overlay.Modulate.SetA(1);
+        Overlay.AnimateShowImmediate();
 
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_overlay");
+            yield return AnimatedPanel_Main.AnimateFadeShow();
 
-            ContinueButton.GrabFocus();
+            var button = Data.Game.Deleted ? MainMenuContainer.NewGameButton : MainMenuContainer.ContinueButton;
+            button.GrabFocus();
+            animating = false;
+        }
+    }
+
+    private void ShowMenu(MenuSettings settings)
+    {
+        if (animating) return;
+        if (current_menu != null) return;
+        current_menu = settings;
+
+        Coroutine.Start(Cr)
+            .SetRunWhilePaused();
+        IEnumerator Cr()
+        {
+            animating = true;
+
+            ReleaseCurrentFocus();
+            InputBlocker.Show();
+            yield return AnimatedPanel_Main.AnimateFadeHide();
+            yield return settings.Panel.AnimateMoveUp();
+            InputBlocker.Hide();
+
+            settings.GetFocusControl().GrabFocus();
+
+            animating = false;
+        }
+    }
+
+    private void CloseMenu()
+    {
+        if (animating) return;
+        if (current_menu == null) return;
+        var settings = current_menu;
+        current_menu = null;
+
+        Coroutine.Start(Cr)
+            .SetRunWhilePaused();
+        IEnumerator Cr()
+        {
+            animating = true;
+
+            ReleaseCurrentFocus();
+            InputBlocker.Show();
+            yield return settings.Panel.AnimateMoveDown();
+            yield return AnimatedPanel_Main.AnimateFadeShow();
+            InputBlocker.Hide();
+
+            settings.GetBackFocusControl().GrabFocus();
+
             animating = false;
         }
     }
@@ -102,12 +157,17 @@ public partial class MainMenuView : View
         if (animating) return;
         animating = true;
 
+        Data.Game.Deleted = false;
+        Data.Game.Save();
+
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
             ReleaseCurrentFocus();
             InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show_overlay");
+
+            yield return AnimatedPanel_Main.AnimateFadeHide();
+            yield return Overlay.AnimateFrontShow();
 
             Hide();
             PauseView.ToggleLock.SetLock(nameof(MainMenuView), false);
@@ -123,78 +183,22 @@ public partial class MainMenuView : View
 
     private void ClickProfiles()
     {
-        if (animating) return;
-        animating = true;
-
-        this.StartCoroutine(Cr, "transition");
-        IEnumerator Cr()
+        ShowMenu(new MenuSettings
         {
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_main");
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show_profiles");
-            InputBlocker.Hide();
-
-            SaveProfilesContainer.ProfileControl1.ProfileButton.GrabFocus();
-            animating = false;
-        }
-    }
-
-    private void ClickProfilesBack()
-    {
-        if (animating) return;
-        animating = true;
-
-        this.StartCoroutine(Cr, "transition");
-        IEnumerator Cr()
-        {
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_profiles");
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show_main");
-            InputBlocker.Hide();
-
-            ProfilesButton.GrabFocus();
-            animating = false;
-        }
+            Panel = AnimatedPanel_Profiles,
+            GetFocusControl = () => SaveProfilesContainer.ProfileControl1.ProfileButton,
+            GetBackFocusControl = () => MainMenuContainer.ProfilesButton
+        });
     }
 
     private void ClickOptions()
     {
-        if (animating) return;
-        animating = true;
-
-        this.StartCoroutine(Cr, "transition");
-        IEnumerator Cr()
+        ShowMenu(new MenuSettings
         {
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_main");
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show_options");
-            InputBlocker.Hide();
-
-            OptionsControl.Tabs.GetTabBar().GrabFocus();
-            animating = false;
-        }
-    }
-
-    private void ClickOptionsBack()
-    {
-        if (animating) return;
-        animating = true;
-
-        this.StartCoroutine(Cr, "transition");
-        IEnumerator Cr()
-        {
-            ReleaseCurrentFocus();
-            InputBlocker.Show();
-            yield return AnimationPlayer.PlayAndWaitForAnimation("hide_options");
-            yield return AnimationPlayer.PlayAndWaitForAnimation("show_main");
-            InputBlocker.Hide();
-
-            OptionsButton.GrabFocus();
-            animating = false;
-        }
+            Panel = AnimatedPanel_Options,
+            GetFocusControl = () => OptionsControl.Tabs.GetTabBar(),
+            GetBackFocusControl = () => MainMenuContainer.OptionsButton
+        });
     }
 
     private void ClickQuit()

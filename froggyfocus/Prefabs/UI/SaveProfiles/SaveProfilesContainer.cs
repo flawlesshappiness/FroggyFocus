@@ -22,6 +22,17 @@ public partial class SaveProfilesContainer : MarginContainer
         ProfileControl3.ProfileButton.Pressed += Profile_Pressed;
     }
 
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
+        {
+            ProfilePressed?.Invoke();
+            GetViewport().SetInputAsHandled();
+        }
+    }
+
     public void LoadProfiles()
     {
         ProfileControl1.LoadData(1);

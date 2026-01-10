@@ -10,6 +10,7 @@ public partial class AnimatedOverlay : ColorRect
     public Coroutine AnimateBehindHide() => Animate("behind_hide");
     public Coroutine AnimateFrontShow() => Animate("front_show");
     public Coroutine AnimateFrontHide() => Animate("front_hide");
+    public Coroutine AnimateShowImmediate() => Animate("show_immediate");
 
     private Coroutine Animate(string animation)
     {

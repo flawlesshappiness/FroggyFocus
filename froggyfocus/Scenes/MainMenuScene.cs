@@ -20,7 +20,7 @@ public partial class MainMenuScene : GameScene
     protected override void Initialize()
     {
         base.Initialize();
-        MainMenuView.Instance.AnimateHideOverlay();
+        MainMenuView.Instance.Overlay.AnimateFrontHide();
     }
 
     public override void _ExitTree()

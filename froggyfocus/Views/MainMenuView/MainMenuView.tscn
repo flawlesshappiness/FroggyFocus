@@ -1,408 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmuxgxi24ysym"]
+[gd_scene load_steps=11 format=3 uid="uid://cmuxgxi24ysym"]
 
 [ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
-[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="3_egmko"]
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="4_7iof8"]
 [ext_resource type="PackedScene" uid="uid://cydcvbdr705lc" path="res://Prefabs/UI/Options/OptionsContainer.tscn" id="5_7iof8"]
+[ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="5_87cds"]
+[ext_resource type="PackedScene" uid="uid://d180feyonrdv5" path="res://Prefabs/UI/MainMenu/main_menu_container.tscn" id="5_5370r"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_7iof8"]
 [ext_resource type="PackedScene" uid="uid://cxjropn14cw2l" path="res://Prefabs/UI/SaveProfiles/save_profiles_container.tscn" id="6_cw4y5"]
-
-[sub_resource type="Animation" id="Animation_7iof8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Main:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CenterContainer/Center/UIScale/AnimOptions:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1000)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CenterContainer:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Overlay:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Overlay:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SfxSwipe:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("CenterContainer/Center/UIScale/AnimProfiles:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 1000)]
-}
-
-[sub_resource type="Animation" id="Animation_cw4y5"]
-resource_name = "hide_main"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Main:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_87cds"]
-resource_name = "hide_options"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/Center/UIScale/AnimOptions:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.25),
-"transitions": PackedFloat32Array(0.5, 2, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 1000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SfxSwipe:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_cejkn"]
-resource_name = "hide_overlay"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Overlay:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Overlay:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_iwxo5"]
-resource_name = "hide_profiles"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/Center/UIScale/AnimProfiles:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.25),
-"transitions": PackedFloat32Array(0.5, -2, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 1000)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SfxSwipe:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_qaoud"]
-resource_name = "show_main"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Main:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_rmme1"]
-resource_name = "show_options"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer/Center/UIScale/AnimOptions:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.25),
-"transitions": PackedFloat32Array(0.5, -2, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, -25), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SfxSwipe:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_5370r"]
-resource_name = "show_overlay"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Overlay:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Overlay:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_l2o23"]
-resource_name = "show_profiles"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CenterContainer:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CenterContainer/Center/UIScale/AnimProfiles:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.25),
-"transitions": PackedFloat32Array(0.5, -2, 1),
-"update": 0,
-"values": [Vector2(0, 1000), Vector2(0, -25), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SfxSwipe:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.05),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7iof8"]
-_data = {
-&"RESET": SubResource("Animation_7iof8"),
-&"hide_main": SubResource("Animation_cw4y5"),
-&"hide_options": SubResource("Animation_87cds"),
-&"hide_overlay": SubResource("Animation_cejkn"),
-&"hide_profiles": SubResource("Animation_iwxo5"),
-&"show_main": SubResource("Animation_qaoud"),
-&"show_options": SubResource("Animation_rmme1"),
-&"show_overlay": SubResource("Animation_5370r"),
-&"show_profiles": SubResource("Animation_l2o23")
-}
+[ext_resource type="PackedScene" uid="uid://ddrdat0wxb0f6" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay_start_on.tscn" id="7_rmme1"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7iof8"]
 streams_count = 1
 stream_0/stream = ExtResource("6_7iof8")
 
-[node name="MainMenuView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "OptionsControl", "SaveProfilesContainer", "ContinueButton", "ProfilesButton", "OptionsButton", "QuitButton", "InputBlocker", "Overlay", "VersionLabel")]
+[node name="MainMenuView" type="Control" node_paths=PackedStringArray("MainMenuContainer", "OptionsControl", "SaveProfilesContainer", "InputBlocker", "Overlay", "AnimatedPanel_Main", "AnimatedPanel_Options", "AnimatedPanel_Profiles")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -411,135 +23,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_5j84w")
 script = ExtResource("1_qib6v")
-AnimationPlayer = NodePath("AnimationPlayer")
-OptionsControl = NodePath("CenterContainer/Center/UIScale/AnimOptions/Options/Options")
-SaveProfilesContainer = NodePath("CenterContainer/Center/UIScale/AnimProfiles/SaveProfilesContainer")
-ContinueButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ContinueButton")
-ProfilesButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ProfilesButton")
-OptionsButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/OptionsButton")
-QuitButton = NodePath("Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/QuitButton")
+MainMenuContainer = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Main/MainMenuContainer")
+OptionsControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options/Options/Options")
+SaveProfilesContainer = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Profiles/SaveProfilesContainer")
 InputBlocker = NodePath("InputBlocker")
-Overlay = NodePath("Overlay")
-VersionLabel = NodePath("Main/Control/VersionLabel")
-
-[node name="Main" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 25
-
-[node name="VSplitContainer" type="VBoxContainer" parent="Main"]
-layout_mode = 2
-
-[node name="Top" type="Control" parent="Main/VSplitContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="Main/VSplitContainer/Top"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Main/VSplitContainer/Top/CenterContainer"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.490196)
-theme_override_constants/shadow_offset_x = 5
-theme_override_constants/shadow_offset_y = 5
-theme_override_font_sizes/font_size = 100
-text = "FROGGY FOCUS"
-
-[node name="Bottom" type="Control" parent="Main/VSplitContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HSplitContainer" type="HBoxContainer" parent="Main/VSplitContainer/Bottom"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Left" type="Control" parent="Main/VSplitContainer/Bottom/HSplitContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="UIScale" type="Control" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_7iof8")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -106.0
-offset_right = 202.0
-offset_bottom = 107.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 10
-alignment = 1
-
-[node name="ContinueButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
-layout_mode = 2
-text = "Continue"
-
-[node name="ProfilesButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
-layout_mode = 2
-text = "Save profile"
-
-[node name="OptionsButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
-layout_mode = 2
-text = "Options"
-
-[node name="QuitButton" parent="Main/VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("3_egmko")]
-layout_mode = 2
-text = "Quit"
-
-[node name="Right" type="Control" parent="Main/VSplitContainer/Bottom/HSplitContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Control" type="Control" parent="Main"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="VersionLabel" type="Label" parent="Main/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -218.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "v0.1.0"
-horizontal_alignment = 2
+Overlay = NodePath("AnimatedOverlay")
+AnimatedPanel_Main = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Main")
+AnimatedPanel_Options = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options")
+AnimatedPanel_Profiles = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Profiles")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -561,53 +54,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_7iof8")
 
-[node name="AnimOptions" type="Control" parent="CenterContainer/Center/UIScale"]
+[node name="AnimatedPanel_Main" parent="CenterContainer/Center/UIScale" instance=ExtResource("5_87cds")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="MainMenuContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Main" instance=ExtResource("5_5370r")]
+layout_mode = 1
+offset_left = -578.0
+offset_top = -312.0
+offset_right = 578.0
+offset_bottom = 312.0
+
+[node name="AnimatedPanel_Options" parent="CenterContainer/Center/UIScale" instance=ExtResource("5_87cds")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Options" parent="CenterContainer/Center/UIScale/AnimatedPanel_Options" instance=ExtResource("5_7iof8")]
+layout_mode = 1
+offset_top = -218.5
+offset_bottom = 218.5
+
+[node name="AnimatedPanel_Profiles" parent="CenterContainer/Center/UIScale" instance=ExtResource("5_87cds")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="SaveProfilesContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Profiles" instance=ExtResource("6_cw4y5")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 1000.0
-offset_bottom = 1000.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -520.0
+offset_top = -184.5
+offset_right = 520.0
+offset_bottom = 184.5
 
-[node name="Options" parent="CenterContainer/Center/UIScale/AnimOptions" instance=ExtResource("5_7iof8")]
+[node name="AnimatedOverlay" parent="." instance=ExtResource("7_rmme1")]
 layout_mode = 1
-
-[node name="AnimProfiles" type="Control" parent="CenterContainer/Center/UIScale"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 1000.0
-offset_bottom = 1000.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SaveProfilesContainer" parent="CenterContainer/Center/UIScale/AnimProfiles" instance=ExtResource("6_cw4y5")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -474.0
-offset_top = -154.0
-offset_right = 474.0
-offset_bottom = 154.0
-
-[node name="Overlay" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
 
 [node name="InputBlocker" type="Control" parent="."]
 layout_mode = 1
@@ -617,14 +110,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7iof8")
-}
-
 [node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_7iof8")
 volume_db = -20.0
 
-[editable path="CenterContainer/Center/UIScale/AnimOptions/Options"]
-[editable path="CenterContainer/Center/UIScale/AnimOptions/Options/Options"]
+[editable path="CenterContainer/Center/UIScale/AnimatedPanel_Options/Options"]
+[editable path="CenterContainer/Center/UIScale/AnimatedPanel_Options/Options/Options"]

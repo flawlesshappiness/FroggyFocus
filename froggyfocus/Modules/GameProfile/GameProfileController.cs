@@ -96,7 +96,7 @@ public partial class GameProfileController : SingletonController
 
     public GameSaveData GetGameProfile(int profile)
     {
-        return Profiles.TryGetValue(profile, out var data) ? data : null;
+        return Profiles.TryGetValue(profile, out var data) ? data : new();
     }
 
     private GameSaveData GetMostRecentlyUpdated(GameSaveData data1, GameSaveData data2)

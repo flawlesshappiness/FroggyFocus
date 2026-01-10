@@ -6,6 +6,9 @@ public partial class SaveProfileControl : MarginContainer
     public Label TitleLabel;
 
     [Export]
+    public Label NoDataLabel;
+
+    [Export]
     public Button ProfileButton;
 
     [Export]
@@ -21,6 +24,7 @@ public partial class SaveProfileControl : MarginContainer
     public FrogCharacter Frog;
 
     private int profile;
+    private GameSaveData data;
 
     public override void _Ready()
     {
@@ -30,6 +34,7 @@ public partial class SaveProfileControl : MarginContainer
         ConfirmDeleteButton.Pressed += ConfirmDelete_Pressed;
         CancelDeleteButton.Pressed += CancelDelete_Pressed;
         VisibilityChanged += OnVisibilityChanged;
+        GameProfileController.Instance.OnGameProfileSelected += ProfileSelected;
     }
 
     public void LoadData(int profile)
@@ -37,14 +42,22 @@ public partial class SaveProfileControl : MarginContainer
         this.profile = profile;
         TitleLabel.Text = $"{profile}";
 
-        var data = GameProfileController.Instance.GetGameProfile(profile);
+        data = GameProfileController.Instance.GetGameProfile(profile);
         LoadData(data);
+
+        Frog.Visible = !data.Deleted;
+        NoDataLabel.Visible = data.Deleted;
     }
 
     private void LoadData(GameSaveData data)
     {
         if (data == null) return;
         Frog.LoadAppearance(data);
+    }
+
+    private void ProfileSelected(int selected_profile)
+    {
+        TitleLabel.Modulate = selected_profile == profile ? Colors.White : Colors.Black.SetA(0.5f);
     }
 
     private void Profile_Pressed()
@@ -55,7 +68,7 @@ public partial class SaveProfileControl : MarginContainer
 
     private void ClearDeleteButtons()
     {
-        DeleteButton.Show();
+        DeleteButton.Visible = !data.Deleted;
         ConfirmDeleteButton.Hide();
         CancelDeleteButton.Hide();
     }

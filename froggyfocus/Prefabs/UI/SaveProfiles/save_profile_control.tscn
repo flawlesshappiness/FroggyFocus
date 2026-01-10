@@ -15,11 +15,12 @@ viewport_path = NodePath("ItemSubViewport")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwvsp"]
 
-[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog")]
+[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "NoDataLabel", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog")]
 custom_minimum_size = Vector2(250, 0)
 theme = ExtResource("1_nd4sc")
 script = ExtResource("2_b18tc")
 TitleLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/TitleLabel")
+NoDataLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/NoDataLabel")
 ProfileButton = NodePath("VBoxContainer/MarginContainer2/ProfileButton")
 DeleteButton = NodePath("VBoxContainer/HBoxContainer/DeleteButton")
 ConfirmDeleteButton = NodePath("VBoxContainer/HBoxContainer/ConfirmDeleteButton")
@@ -28,7 +29,6 @@ Frog = NodePath("ItemSubViewport/Anim/Origin/Frog")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -67,6 +67,16 @@ theme_override_font_sizes/font_size = 100
 text = "1"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="NoDataLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "NO DATA"
+horizontal_alignment = 1
 
 [node name="ProfileButton" parent="VBoxContainer/MarginContainer2" instance=ExtResource("2_rl3ma")]
 layout_mode = 2
