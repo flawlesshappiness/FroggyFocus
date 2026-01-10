@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cydcvbdr705lc"]
+[gd_scene load_steps=19 format=3 uid="uid://cydcvbdr705lc"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ma85e"]
 [ext_resource type="Script" uid="uid://cenc4k0brpn5a" path="res://Prefabs/UI/Options/OptionsContainer.cs" id="2_3w48p"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://brvivde6xprhr" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation3_button_start.png" id="11_0un1b"]
 [ext_resource type="Texture2D" uid="uid://16wf71kbo0cv" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_button_color_cross.png" id="11_lof4m"]
 [ext_resource type="Texture2D" uid="uid://8aw3gwbbrmsv" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_button_menu.png" id="12_b2kry"]
+[ext_resource type="Texture2D" uid="uid://b3gbainfcgkgf" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_lt.png" id="15_itd67"]
+[ext_resource type="Texture2D" uid="uid://cgeh5skd04ld0" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_trigger_l2.png" id="16_6m8ks"]
+[ext_resource type="Texture2D" uid="uid://dfqja0yfvxqyl" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_rt.png" id="17_67nja"]
+[ext_resource type="Texture2D" uid="uid://x5iqlsw4jt5r" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_trigger_r2.png" id="18_nwtii"]
 
 [node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton")]
 anchors_preset = 8
@@ -192,6 +196,29 @@ alignment = 1
 layout_mode = 2
 XboxTexture = ExtResource("12_b2kry")
 PlaystationTexture = ExtResource("11_0un1b")
+
+[node name="Zoom" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Zoom"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom/HBoxContainer" instance=ExtResource("5_t6453")]
+layout_mode = 2
+XboxTexture = ExtResource("15_itd67")
+PlaystationTexture = ExtResource("16_6m8ks")
+
+[node name="gamepad_icon2" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom/HBoxContainer" instance=ExtResource("5_t6453")]
+layout_mode = 2
+XboxTexture = ExtResource("17_67nja")
+PlaystationTexture = ExtResource("18_nwtii")
 
 [node name="Gameplay" type="MarginContainer" parent="Options/TabContainer" index="5"]
 visible = false

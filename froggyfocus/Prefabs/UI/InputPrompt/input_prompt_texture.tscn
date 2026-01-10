@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp8kbr2tvdecr"]
+
+[ext_resource type="Texture2D" uid="uid://de7562x73hlw6" path="res://Assets/KenneyNL/Input Icons/Keyboard/keyboard_0.png" id="1_pgubu"]
+[ext_resource type="Script" uid="uid://bykx4k3kbn8f0" path="res://Prefabs/UI/InputPrompt/InputPromptTexture.cs" id="2_0kyjs"]
+
+[node name="InputPromptTexture" type="TextureRect"]
+texture = ExtResource("1_pgubu")
+expand_mode = 3
+script = ExtResource("2_0kyjs")

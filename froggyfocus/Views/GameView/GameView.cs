@@ -21,6 +21,9 @@ public partial class GameView : View
     [Export]
     public AnimationPlayer AnimationPlayer_Quests;
 
+    [Export]
+    public InputPromptControl InputPrompt;
+
     private FocusEvent current_focus_event;
     private bool skip_quest_advanced;
 

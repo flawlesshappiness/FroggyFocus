@@ -306,7 +306,7 @@ public partial class Player : TopDownController
 
             while (true)
             {
-                var wait_duration = rng.RandfRange(2f, 8f);
+                var wait_duration = rng.RandfRange(1f, 3f);
                 var wait_end = GameTime.Time + wait_duration;
                 while (GameTime.Time < wait_end)
                 {
@@ -355,12 +355,14 @@ public partial class Player : TopDownController
     {
         QuestionMark.AnimateShow();
         FocusEventLock.AddLock("interact");
+        GameView.Instance.InputPrompt.ShowInteract();
     }
 
     private void NoInteractables()
     {
         QuestionMark.AnimateHide();
         FocusEventLock.RemoveLock("interact");
+        GameView.Instance.InputPrompt.HidePrompt();
     }
 
     private void InteractLocked()
