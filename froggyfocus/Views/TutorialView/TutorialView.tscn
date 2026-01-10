@@ -1,8 +1,113 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8jml0sphang0"]
+[gd_scene load_steps=13 format=3 uid="uid://b8jml0sphang0"]
 
 [ext_resource type="Script" uid="uid://dj06piy035o2l" path="res://Views/TutorialView/TutorialView.cs" id="1_4w7iv"]
+[ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="2_4w7iv"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_m4dci"]
+[ext_resource type="PackedScene" uid="uid://cp8kbr2tvdecr" path="res://Prefabs/UI/InputPrompt/input_prompt_texture.tscn" id="2_p2qyr"]
+[ext_resource type="PackedScene" uid="uid://cqiudv26lubpf" path="res://Assets/FlawLizArt/Objects/sign.fbx" id="3_ve78c"]
+[ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_kl8r4"]
 
-[node name="TutorialView" type="Control"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ve78c"]
+viewport_path = NodePath("ItemSubViewport_Sign")
+
+[sub_resource type="Animation" id="Animation_p2qyr"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Sign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(576, 1000), Vector2(576, 324)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSwipe:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0138778),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_m4dci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Sign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 1000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSwipe:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kl8r4"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim_Sign:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(576, 324), Vector2(576, 300), Vector2(576, 1000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSwipe:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0555112),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kl8r4"]
+_data = {
+&"RESET": SubResource("Animation_m4dci"),
+&"hide": SubResource("Animation_kl8r4"),
+&"show": SubResource("Animation_p2qyr")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_35v6w"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("6_kl8r4")
+
+[node name="TutorialView" type="Control" node_paths=PackedStringArray("Animation_Sign", "JumpTutorial", "BugsTutorial", "ShieldTutorial")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +115,354 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4w7iv")
+Animation_Sign = NodePath("AnimationPlayer_Sign")
+JumpTutorial = NodePath("Anim_Sign/TutorialJump")
+BugsTutorial = NodePath("Anim_Sign/TutorialBugs")
+ShieldTutorial = NodePath("Anim_Sign/TutorialShield")
+
+[node name="Anim_Sign" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 676.0
+offset_bottom = 676.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Anim_Sign"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -398.0
+offset_top = -398.0
+offset_right = 398.0
+offset_bottom = 398.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_ve78c")
+expand_mode = 1
+
+[node name="TutorialJump" type="Control" parent="Anim_Sign"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -185.0
+offset_right = 328.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_m4dci")
+
+[node name="Label" type="Label" parent="Anim_Sign/TutorialJump"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -136.0
+offset_right = 307.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Is walking not good enough for you?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Anim_Sign/TutorialJump"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -44.0
+offset_right = 307.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Try jumping with"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Anim_Sign/TutorialJump"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = 51.0
+offset_right = 306.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Hold to cross larger gaps."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputPromptTexture" parent="Anim_Sign/TutorialJump" instance=ExtResource("2_p2qyr")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = -44.0
+offset_right = 209.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+StartingAction = "Jump"
+
+[node name="TutorialBugs" type="Control" parent="Anim_Sign"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -185.0
+offset_right = 328.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_m4dci")
+
+[node name="Label" type="Label" parent="Anim_Sign/TutorialBugs"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -156.0
+offset_right = 306.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Don't know how to catch bugs?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Anim_Sign/TutorialBugs"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = -97.0
+offset_right = 307.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Well, stop moving so much!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Anim_Sign/TutorialBugs"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.0
+offset_top = -32.0
+offset_right = 305.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Sit still, and wait for the exclamation mark to appear. "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="Anim_Sign/TutorialBugs"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = 56.0
+offset_right = 253.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Then press"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="InputPromptTexture" parent="Anim_Sign/TutorialBugs" instance=ExtResource("2_p2qyr")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = 68.0
+offset_right = 124.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+StartingAction = "Interact"
+
+[node name="TutorialShield" type="Control" parent="Anim_Sign"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -185.0
+offset_right = 328.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_m4dci")
+
+[node name="Label" type="Label" parent="Anim_Sign/TutorialShield"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -125.0
+offset_right = 314.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Are the bugs fighting back?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Anim_Sign/TutorialShield"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.0
+offset_top = -61.0
+offset_right = 305.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Steel your focus!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Anim_Sign/TutorialShield"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -363.0
+offset_top = -3.0
+offset_right = 247.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "When catching a bug, block with"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="InputPromptTexture" parent="Anim_Sign/TutorialShield" instance=ExtResource("2_p2qyr")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 188.0
+offset_top = 9.0
+offset_right = 268.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+StartingAction = "Interact"
+
+[node name="ItemSubViewport_Sign" type="SubViewport" parent="." node_paths=PackedStringArray("AnimationPlayer_Camera", "AnimationPlayer_Target", "Origin")]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("2_4w7iv")
+AnimationPlayer_Camera = NodePath("")
+AnimationPlayer_Target = NodePath("")
+Origin = NodePath("Anim/Origin")
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport_Sign"]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -1.28773)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport_Sign"]
+transform = Transform3D(1, 0, 0, 0, -0.912377, 0.40935, 0, -0.40935, -0.912377, 0, 1.96126, -1.43761)
+light_color = Color(0.44, 0.589333, 1, 1)
+light_energy = 2.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport_Sign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="Anim" type="Node3D" parent="ItemSubViewport_Sign"]
+
+[node name="Origin" type="Node3D" parent="ItemSubViewport_Sign/Anim"]
+
+[node name="sign" parent="ItemSubViewport_Sign/Anim/Origin" instance=ExtResource("3_ve78c")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.656101, 0)
+
+[node name="AnimationPlayer_Sign" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kl8r4")
+}
+
+[node name="SfxSwipe" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_35v6w")
+volume_db = -10.0
+bus = &"SFX"

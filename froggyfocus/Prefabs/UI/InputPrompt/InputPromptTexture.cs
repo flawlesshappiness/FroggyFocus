@@ -3,6 +3,9 @@ using System.Linq;
 
 public partial class InputPromptTexture : TextureRect
 {
+    [Export]
+    public string StartingAction;
+
     private string current_action;
     private bool is_gamepad;
 
@@ -10,6 +13,12 @@ public partial class InputPromptTexture : TextureRect
     {
         base._Ready();
         PlayerInputController.Instance.OnDeviceChanged += DeviceChanged;
+        VisibilityChanged += OnVisibilityChanged;
+
+        if (!string.IsNullOrEmpty(StartingAction))
+        {
+            UpdateIcon(StartingAction);
+        }
     }
 
     public bool UpdateIcon(InputEvent input)
@@ -77,6 +86,11 @@ public partial class InputPromptTexture : TextureRect
     private void DeviceChanged(bool is_gamepad)
     {
         this.is_gamepad = is_gamepad;
+        UpdateIcon(current_action);
+    }
+
+    private void OnVisibilityChanged()
+    {
         UpdateIcon(current_action);
     }
 }

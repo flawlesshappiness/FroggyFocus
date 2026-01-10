@@ -1,7 +1,6 @@
-[gd_scene load_steps=75 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=74 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_1qynv"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
@@ -143,7 +142,7 @@ DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
 FocusEventParent = NodePath("World/FocusEvents")
-Weathers = Array[ExtResource("2_1qynv")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
+Weathers = [ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_f4fi4")
@@ -290,6 +289,7 @@ DialogueNode = "##TUTORIAL_JUMP_001##"
 [node name="TutorialSign2" parent="World/Islands" instance=ExtResource("12_8ow6q")]
 transform = Transform3D(1.49871, 0, -0.0621059, 0, 1.5, 0, 0.0621059, 0, 1.49871, 29.712, -1.90735e-06, 3.70221)
 DialogueNode = "##TUTORIAL_CATCH_BUGS_001##"
+SignType = 1
 
 [node name="EldritchFlower3" parent="World/Islands" instance=ExtResource("41_uapja")]
 transform = Transform3D(1.97551, 0, 0.312041, 0, 2, 0, -0.312041, 0, 1.97551, 9.05607, -1.966, 5.25772)
@@ -298,6 +298,7 @@ HandInInfo = ExtResource("19_o0yll")
 [node name="TutorialSign3" parent="World/Islands" instance=ExtResource("12_8ow6q")]
 transform = Transform3D(1.49538, 0, 0.117583, 0, 1.5, 0, -0.117583, 0, 1.49538, 17.5305, 0, -1.53454)
 DialogueNode = "##TUTORIAL_SHIELD_001##"
+SignType = 2
 
 [node name="PartnerHome" parent="World/Islands" instance=ExtResource("18_qbb40")]
 transform = Transform3D(-0.999655, 0, -0.0262643, 0, 1, 0, 0.0262643, 0, -0.999655, 43.3806, 0, 24.5843)
