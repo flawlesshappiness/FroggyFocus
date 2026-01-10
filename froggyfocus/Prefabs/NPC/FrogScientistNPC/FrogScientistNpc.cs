@@ -76,6 +76,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         if (id == HandInInfo.Id)
         {
             HandIn.ResetData(HandInInfo);
+            Data.Game.ScientistQuestCompleted = true;
             Data.Game.Save();
 
             show_unlock = true;

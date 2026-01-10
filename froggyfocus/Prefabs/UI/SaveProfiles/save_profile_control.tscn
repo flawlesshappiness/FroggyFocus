@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://xu2fe83a2er2"]
+[gd_scene load_steps=13 format=3 uid="uid://xu2fe83a2er2"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_nd4sc"]
 [ext_resource type="Script" uid="uid://b3hh1rjplhds4" path="res://Prefabs/UI/SaveProfiles/SaveProfileControl.cs" id="2_b18tc"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="2_rl3ma"]
+[ext_resource type="Texture2D" uid="uid://p1q0pivauhp0" path="res://Assets/FlawLizArt/Textures/icon_lips.png" id="3_i7pwk"]
+[ext_resource type="Texture2D" uid="uid://db8bvkmkj785j" path="res://Assets/FlawLizArt/Textures/icon_money.png" id="4_4gccm"]
 [ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="4_b18tc"]
+[ext_resource type="Texture2D" uid="uid://j4y34d1ksddw" path="res://Assets/FlawLizArt/Textures/icon_potion.png" id="5_fw7x8"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="6_3i36b"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5elr7"]
@@ -15,7 +18,7 @@ viewport_path = NodePath("ItemSubViewport")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwvsp"]
 
-[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "NoDataLabel", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog")]
+[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "NoDataLabel", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog", "PartnerQuestIcon", "ManagerQuestIcon", "ScientistQuestIcon")]
 custom_minimum_size = Vector2(250, 0)
 theme = ExtResource("1_nd4sc")
 script = ExtResource("2_b18tc")
@@ -26,6 +29,9 @@ DeleteButton = NodePath("VBoxContainer/HBoxContainer/DeleteButton")
 ConfirmDeleteButton = NodePath("VBoxContainer/HBoxContainer/ConfirmDeleteButton")
 CancelDeleteButton = NodePath("VBoxContainer/HBoxContainer/CancelDeleteButton")
 Frog = NodePath("ItemSubViewport/Anim/Origin/Frog")
+PartnerQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer/IconPartner")
+ManagerQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer/IconManager")
+ScientistQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer/IconScientist")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -67,6 +73,37 @@ theme_override_font_sizes/font_size = 100
 text = "1"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="IconPartner" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_i7pwk")
+expand_mode = 1
+
+[node name="IconManager" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("4_4gccm")
+expand_mode = 1
+
+[node name="IconScientist" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("5_fw7x8")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2

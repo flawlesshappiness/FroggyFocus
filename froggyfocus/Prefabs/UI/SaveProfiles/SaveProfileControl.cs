@@ -23,6 +23,15 @@ public partial class SaveProfileControl : MarginContainer
     [Export]
     public FrogCharacter Frog;
 
+    [Export]
+    public TextureRect PartnerQuestIcon;
+
+    [Export]
+    public TextureRect ManagerQuestIcon;
+
+    [Export]
+    public TextureRect ScientistQuestIcon;
+
     private int profile;
     private GameSaveData data;
 
@@ -44,15 +53,19 @@ public partial class SaveProfileControl : MarginContainer
 
         data = GameProfileController.Instance.GetGameProfile(profile);
         LoadData(data);
-
-        Frog.Visible = !data.Deleted;
-        NoDataLabel.Visible = data.Deleted;
     }
 
     private void LoadData(GameSaveData data)
     {
         if (data == null) return;
         Frog.LoadAppearance(data);
+
+        Frog.Visible = !data.Deleted;
+        NoDataLabel.Visible = data.Deleted;
+
+        PartnerQuestIcon.Visible = data.PartnerQuestCompleted;
+        ManagerQuestIcon.Visible = data.ManagerQuestCompleted;
+        ScientistQuestIcon.Visible = data.ScientistQuestCompleted;
     }
 
     private void ProfileSelected(int selected_profile)

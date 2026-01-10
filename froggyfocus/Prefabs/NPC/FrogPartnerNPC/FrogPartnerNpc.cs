@@ -84,6 +84,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         if (id == HandInInfo.Id)
         {
             HandIn.ResetData(HandInInfo);
+            Data.Game.PartnerQuestCompleted = true;
             Data.Game.Save();
 
             show_unlock = true;

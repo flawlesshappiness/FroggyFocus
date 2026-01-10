@@ -83,6 +83,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
         if (id == HandInInfo.Id)
         {
             HandIn.ResetData(HandInInfo);
+            Data.Game.ManagerQuestCompleted = true;
             Data.Game.Save();
 
             show_unlock = true;
