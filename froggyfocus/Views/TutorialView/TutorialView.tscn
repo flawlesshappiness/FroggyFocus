@@ -448,6 +448,7 @@ light_energy = 2.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport_Sign"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+visible = false
 light_energy = 0.1
 
 [node name="Anim" type="Node3D" parent="ItemSubViewport_Sign"]

@@ -56,24 +56,58 @@ public partial class InventoryController : SingletonController
         data.InfoPath = info.ResourcePath;
 
         // Size
-        data.Size = info.OverrideSize > 0 ? info.OverrideSize : rng.RandfRange(0.5f, 0.8f);
+        data.Size = info.OverrideSize > 0 ? info.OverrideSize : rng.RandfRange(0.4f, 0.6f);
 
         // Stars
-        var start = rng.RandiRange(1, 3);
-        var hotspot = Player.Instance.HasHotspot ? 1 : 0;
-        data.Stars = info.OverrideRarity > 0 ? info.OverrideRarity : Mathf.Clamp(start + hotspot, 1, 5);
+        data.Stars = info.OverrideRarity > 0 ? info.OverrideRarity : GetRarity(Player.Instance.HasHotspot);
 
         // Value
-        var base_value = Constants.BUG_BASE_VALUE;
-        var base_multiplier = info.MoneyMultiplier;
-        var stars_value = 5 * data.Stars;
-        var stars_multiplier = 1f + Mathf.Clamp(-0.2f + 0.1f * data.Stars, 0f, 1f);
-        var size_value = (int)(20 * data.Size);
-        var tag_multiplier = GetTagMoneyMultiplier(info);
-        var multiplier = base_multiplier * stars_multiplier * tag_multiplier;
-        data.Value = (int)((base_value + stars_value + size_value) * multiplier);
+        data.Value = GetMoneyValue(info, data);
 
         return data;
+    }
+
+    private int GetRarity(bool is_hotspot)
+    {
+        var wrng = new WeightedRandom<int>();
+        if (is_hotspot)
+        {
+            wrng.AddElement(1, 5);
+            wrng.AddElement(2, 4);
+            wrng.AddElement(3, 3);
+            wrng.AddElement(4, 2);
+            wrng.AddElement(5, 1);
+        }
+        else
+        {
+            wrng.AddElement(1, 0);
+            wrng.AddElement(2, 4);
+            wrng.AddElement(3, 3);
+            wrng.AddElement(4, 2);
+            wrng.AddElement(5, 1);
+        }
+
+        return wrng.Random();
+    }
+
+    private int GetMoneyValue(FocusCharacterInfo info, InventoryCharacterData data)
+    {
+        var base_value = Constants.BUG_BASE_VALUE;
+        var base_multiplier = info.MoneyMultiplier;
+
+        var stars_value = 5 * data.Stars;
+        //var stars_multiplier = 1f + Mathf.Clamp(-0.2f + 0.1f * data.Stars, 0f, 1f);
+        var stars_mul_min = 1f;
+        var stars_mul_max = 2f;
+        var t_stars = (data.Stars - 1) / 4f;
+        var stars_mul = Mathf.Lerp(stars_mul_min, stars_mul_max, Curves.EaseInQuad.Evaluate(t_stars));
+
+        var size_value = (int)(20 * data.Size);
+        var tag_multiplier = GetTagMoneyMultiplier(info);
+        var multiplier = base_multiplier * stars_mul * tag_multiplier;
+
+        var value = (int)((base_value + stars_value + size_value) * multiplier);
+        return value;
     }
 
     private float GetTagMoneyMultiplier(FocusCharacterInfo info)

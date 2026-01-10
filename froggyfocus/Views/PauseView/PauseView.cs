@@ -54,6 +54,9 @@ public partial class PauseView : View
     [Export]
     public AnimationPlayer AnimationPlayer_Quests;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_Money;
+
     public static readonly MultiLock ToggleLock = new();
 
     public event Action OnViewShow;
@@ -145,6 +148,7 @@ public partial class PauseView : View
             AnimatedOverlay_Behind.AnimateBehindShow();
             ShowPins();
             ShowQuests();
+            ShowMoney();
             yield return AnimatedPanel_Pause.AnimatePopShow();
             InputBlocker.Hide();
 
@@ -170,6 +174,7 @@ public partial class PauseView : View
             AnimatedOverlay_Behind.AnimateBehindHide();
             HidePins();
             HideQuests();
+            HideMoney();
             yield return AnimatedPanel_Pause.AnimatePopHide();
             InputBlocker.Hide();
 
@@ -333,5 +338,15 @@ public partial class PauseView : View
     private void HideQuests()
     {
         AnimationPlayer_Quests.Play("hide");
+    }
+
+    private void ShowMoney()
+    {
+        AnimationPlayer_Money.Play("show");
+    }
+
+    private void HideMoney()
+    {
+        AnimationPlayer_Money.Play("hide");
     }
 }

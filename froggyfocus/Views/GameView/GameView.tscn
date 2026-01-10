@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bi33hifhhmwyo"]
+[gd_scene load_steps=21 format=3 uid="uid://bi33hifhhmwyo"]
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
 [ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="2_nrlgi"]
@@ -199,7 +199,63 @@ _data = {
 &"show": SubResource("Animation_60bf7")
 }
 
-[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup", "ShieldBar", "AnimationPlayer_Quests", "InputPrompt")]
+[sub_resource type="Animation" id="Animation_v3e6u"]
+resource_name = "show"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Control/MoneyBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6f4oo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Control/MoneyBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mg0w6"]
+resource_name = "hide"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Control/MoneyBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mg0w6"]
+_data = {
+&"RESET": SubResource("Animation_6f4oo"),
+&"hide": SubResource("Animation_mg0w6"),
+&"show": SubResource("Animation_v3e6u")
+}
+
+[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup", "ShieldBar", "AnimationPlayer_Quests", "AnimationPlayer_Money", "InputPrompt")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -213,6 +269,7 @@ Overlay = NodePath("Overlay")
 TwoButtonPopup = NodePath("TwoButtonPopup")
 ShieldBar = NodePath("MarginContainer/Control/ShieldBar")
 AnimationPlayer_Quests = NodePath("AnimationPlayer_QuestUpdated")
+AnimationPlayer_Money = NodePath("AnimationPlayer_Money")
 InputPrompt = NodePath("MarginContainer/Control/InputPromptControl")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -232,6 +289,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="MoneyBar" parent="MarginContainer/Control" instance=ExtResource("2_nrlgi")]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 
 [node name="ShieldBar" type="ProgressBar" parent="MarginContainer/Control"]
@@ -273,8 +331,6 @@ visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_bottom = 0.0
-offset_left = 0.0
-offset_right = 242.0
 offset_bottom = 51.0
 grow_vertical = 1
 
@@ -286,4 +342,9 @@ libraries = {
 [node name="AnimationPlayer_QuestUpdated" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_dlfgm")
+}
+
+[node name="AnimationPlayer_Money" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mg0w6")
 }

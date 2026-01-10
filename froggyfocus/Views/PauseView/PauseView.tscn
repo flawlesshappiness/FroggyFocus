@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://2mjpr6n1kw6f"]
+[gd_scene load_steps=27 format=3 uid="uid://2mjpr6n1kw6f"]
 
 [ext_resource type="Script" uid="uid://bviv37jaoxr1w" path="res://Views/PauseView/PauseView.cs" id="1_4uuhc"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_8a3o8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="9_3mg3l"]
 [ext_resource type="PackedScene" uid="uid://c3grtpowr0n5u" path="res://Prefabs/UI/Bestiary/bestiary_control.tscn" id="10_uhup0"]
 [ext_resource type="PackedScene" uid="uid://bs7vkttchkacm" path="res://Prefabs/UI/Quests/main_quests_container.tscn" id="11_wf5kr"]
+[ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="13_6ltfg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vwcev"]
 random_pitch = 1.1
@@ -202,7 +203,99 @@ _data = {
 &"show": SubResource("Animation_p7q7x")
 }
 
-[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimatedOverlay_Behind", "AnimatedOverlay_Front", "AnimatedPanel_Pause", "AnimatedPanel_Options", "AnimatedPanel_Customize", "AnimatedPanel_Inventory", "AnimatedPanel_Bestiary", "InputBlocker", "Options", "CustomizeAppearanceControl", "InventoryControl", "BestiaryControl", "PauseContainer", "PinsContainer", "AnimationPlayer_Pins", "AnimationPlayer_Quests")]
+[sub_resource type="Animation" id="Animation_8ggj8"]
+resource_name = "show"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoneyBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(625, -100), Vector2(625, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoneyBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6x6ud"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoneyBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(625, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoneyBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ihffh"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MoneyBar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(625, 20), Vector2(625, -100)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MoneyBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7y87"]
+_data = {
+&"RESET": SubResource("Animation_6x6ud"),
+&"hide": SubResource("Animation_ihffh"),
+&"show": SubResource("Animation_8ggj8")
+}
+
+[node name="PauseView" type="Control" node_paths=PackedStringArray("AnimatedOverlay_Behind", "AnimatedOverlay_Front", "AnimatedPanel_Pause", "AnimatedPanel_Options", "AnimatedPanel_Customize", "AnimatedPanel_Inventory", "AnimatedPanel_Bestiary", "InputBlocker", "Options", "CustomizeAppearanceControl", "InventoryControl", "BestiaryControl", "PauseContainer", "PinsContainer", "AnimationPlayer_Pins", "AnimationPlayer_Quests", "AnimationPlayer_Money")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -227,10 +320,23 @@ PauseContainer = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Pause/Pa
 PinsContainer = NodePath("pins_container")
 AnimationPlayer_Pins = NodePath("AnimationPlayer_Pins")
 AnimationPlayer_Quests = NodePath("AnimationPlayer_Quests")
+AnimationPlayer_Money = NodePath("AnimationPlayer_Money")
 ChildOrder = 1
 
 [node name="AnimatedOverlay_Behind" parent="." instance=ExtResource("2_8a3o8")]
 layout_mode = 1
+
+[node name="MoneyBar" parent="." instance=ExtResource("13_6ltfg")]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 49.0
+offset_top = -100.0
+offset_right = 49.0
+offset_bottom = -100.0
+grow_horizontal = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -340,6 +446,11 @@ libraries = {
 [node name="AnimationPlayer_Quests" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_i32d2")
+}
+
+[node name="AnimationPlayer_Money" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a7y87")
 }
 
 [editable path="CenterContainer/Center/UIScale/AnimatedPanel_Options/Options"]

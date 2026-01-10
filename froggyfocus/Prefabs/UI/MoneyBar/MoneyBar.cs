@@ -13,16 +13,10 @@ public partial class MoneyBar : Control
     public AnimationPlayer AnimationPlayer;
 
     [Export]
-    public AnimationPlayer AnimationPlayer_Visible;
-
-    [Export]
     public AudioStreamPlayer SfxValueChanged;
 
     private int animate_value;
     private Coroutine cr_animate;
-
-    private float time_show_end;
-    private Coroutine cr_show;
 
     public override void _Ready()
     {
@@ -46,7 +40,6 @@ public partial class MoneyBar : Control
 
     private void MoneyChanged(int amount)
     {
-        AnimateShow();
         Coroutine.Stop(cr_animate);
 
         if (amount > 0)
@@ -87,20 +80,5 @@ public partial class MoneyBar : Control
     public void AnimateShake()
     {
         AnimationPlayer.Play("shake");
-    }
-
-    private void AnimateShow()
-    {
-        time_show_end = GameTime.Time + 5f;
-        if (cr_show != null) return;
-
-        cr_show = this.StartCoroutine(Cr, "show");
-        IEnumerator Cr()
-        {
-            yield return AnimationPlayer_Visible.PlayAndWaitForAnimation("show");
-            while (GameTime.Time < time_show_end) yield return null;
-            cr_show = null;
-            yield return AnimationPlayer_Visible.PlayAndWaitForAnimation("hide");
-        }
     }
 }

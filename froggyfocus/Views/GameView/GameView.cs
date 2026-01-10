@@ -22,10 +22,16 @@ public partial class GameView : View
     public AnimationPlayer AnimationPlayer_Quests;
 
     [Export]
+    public AnimationPlayer AnimationPlayer_Money;
+
+    [Export]
     public InputPromptControl InputPrompt;
 
     private FocusEvent current_focus_event;
     private bool skip_quest_advanced;
+
+    private Coroutine cr_money;
+    private float time_money_show;
 
     public override void _Ready()
     {
@@ -35,6 +41,7 @@ public partial class GameView : View
         FocusEventController.Instance.OnFocusEventCompleted += _ => FocusEventEnded();
         FocusEventController.Instance.OnFocusEventFailed += _ => FocusEventEnded();
         MainQuestController.Instance.OnAnyQuestAdvanced += AnyQuestAdvanced;
+        Money.OnMoneyChanged += MoneyChanged;
 
         SetFocusEventControlsVisible(false);
     }
@@ -138,6 +145,21 @@ public partial class GameView : View
             }
 
             yield return AnimationPlayer_Quests.PlayAndWaitForAnimation("hide");
+        }
+    }
+
+    private void MoneyChanged(int value)
+    {
+        time_money_show = GameTime.Time + 5f;
+        if (cr_money != null) return;
+
+        cr_money = this.StartCoroutine(Cr, "show");
+        IEnumerator Cr()
+        {
+            yield return AnimationPlayer_Money.PlayAndWaitForAnimation("show");
+            while (GameTime.Time < time_money_show) yield return null;
+            cr_money = null;
+            yield return AnimationPlayer_Money.PlayAndWaitForAnimation("hide");
         }
     }
 }
