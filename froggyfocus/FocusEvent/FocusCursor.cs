@@ -214,7 +214,7 @@ public partial class FocusCursor : Node3D
             if (FocusGainLock.IsLocked) return;
 
             SetFocusValue(FocusValue + FocusTickAmount);
-            PlayFocusGainEffect();
+            //PlayFocusGainEffect();
             PlayFocusChangedSFX(FocusValue);
             AnimationPlayer_Gain.Play("BounceIn");
             OnFocusTarget?.Invoke();
