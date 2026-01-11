@@ -13,6 +13,9 @@ public partial class EldritchFlower : Area3D, IInteractable
     [Export]
     public CollisionShape3D Collider;
 
+    [Export]
+    public AnimationPlayer Animation_Breathing;
+
     public bool IsCompleted => HandIn.GetOrCreateData(HandInInfo.Id).ClaimedCount > 0;
 
     private bool active_dialogue;
@@ -44,6 +47,10 @@ public partial class EldritchFlower : Area3D, IInteractable
         if (IsCompleted)
         {
             DisableInteractive();
+        }
+        else
+        {
+            Animation_Breathing.Play("breathe");
         }
     }
 
@@ -81,6 +88,7 @@ public partial class EldritchFlower : Area3D, IInteractable
     {
         if (id != HandInInfo.Id) return;
 
+        Animation_Breathing.Stop();
         DisableInteractive();
         OnCompleted?.Invoke();
     }

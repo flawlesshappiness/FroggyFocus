@@ -106,7 +106,7 @@ public partial class FocusCursor : Node3D
         Radius = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorRadius);
         RadiusNode.Scale = Vector3.One * Radius;
 
-        var base_focus_value = 100f;
+        var base_focus_value = 80f;
         var focus_value_override = target.Info.FocusValueOverride;
         var focus_value = focus_value_override > 0 ? focus_value_override : base_focus_value;
 
