@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=4 format=3 uid="uid://b3hhun7nmjp8p"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://b3hhun7nmjp8p"]
 
 [ext_resource type="Resource" uid="uid://dk3orexdc33xx" path="res://FocusCharacter/Resources/Shrimp.tres" id="1_ry54i"]
 [ext_resource type="Resource" uid="uid://b6dnkd36tuxjy" path="res://FocusCharacter/Resources/Sandfly.tres" id="2_dj5qt"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_ry54i"]
+[ext_resource type="Resource" uid="uid://bq42s5l1lfwvq" path="res://FocusCharacter/Resources/Sandflea.tres" id="3_dj5qt"]
 
 [resource]
 script = ExtResource("2_ry54i")
@@ -10,7 +11,7 @@ Id = "crab"
 Name = "Beach Crab"
 RequestPreviewHidden = false
 HasMoneyReward = true
-PossibleRequests = Array[Object]([ExtResource("1_ry54i"), ExtResource("2_dj5qt"), ExtResource("2_dj5qt")])
+PossibleRequests = Array[Object]([ExtResource("1_ry54i"), ExtResource("2_dj5qt"), ExtResource("3_dj5qt")])
 CountRange = Vector2i(2, 3)
 ClaimCountToUnlock = 3
 HasItemUnlock = true

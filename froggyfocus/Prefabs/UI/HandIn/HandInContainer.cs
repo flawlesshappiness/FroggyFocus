@@ -115,6 +115,7 @@ public partial class HandInContainer : MarginContainer
         var is_available = HandIn.IsAvailable(data.Id);
         ControlsContainer.Visible = is_available;
         TimerContainer.Visible = !is_available;
+        PinButton.Visible = is_available;
 
         CurrentClaimed = false;
 
