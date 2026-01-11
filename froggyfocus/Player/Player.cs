@@ -51,6 +51,7 @@ public partial class Player : TopDownController
     public static MultiLock FocusHotSpotLock = new();
     private bool IsCharging { get; set; }
     public bool HasHotspot => FocusHotSpotLock.IsLocked;
+    public int MaxRarity { get; set; }
 
     private bool has_focus_target;
     private float jump_charge;

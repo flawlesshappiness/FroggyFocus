@@ -59,7 +59,7 @@ public partial class InventoryController : SingletonController
         data.Size = info.OverrideSize > 0 ? info.OverrideSize : rng.RandfRange(0.4f, 0.6f);
 
         // Stars
-        data.Stars = info.OverrideRarity > 0 ? info.OverrideRarity : GetRarity(Player.Instance.HasHotspot);
+        data.Stars = GetRarity(info, Player.Instance.HasHotspot);
 
         // Value
         data.Value = GetMoneyValue(info, data);
@@ -67,10 +67,21 @@ public partial class InventoryController : SingletonController
         return data;
     }
 
-    private int GetRarity(bool is_hotspot)
+    private int GetRarity(FocusCharacterInfo info, bool is_hotspot)
     {
         var wrng = new WeightedRandom<int>();
-        if (is_hotspot)
+        if (info.OverrideRarity > 0)
+        {
+            return info.OverrideRarity;
+        }
+        else if (Player.Instance.MaxRarity > 0)
+        {
+            for (int i = 1; i <= Player.Instance.MaxRarity; i++)
+            {
+                wrng.AddElement(i, 1f / i);
+            }
+        }
+        else if (is_hotspot)
         {
             wrng.AddElement(1, 5);
             wrng.AddElement(2, 4);
