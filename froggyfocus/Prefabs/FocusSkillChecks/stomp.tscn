@@ -219,6 +219,7 @@ stream_0/stream = ExtResource("5_7sk7n")
 
 [node name="Stomp" type="Node3D" node_paths=PackedStringArray("TargetParent", "TargetPosition", "AnimationPlayer")]
 script = ExtResource("1_ydbav")
+Radius = 1.0
 SpeedRange = Vector2(1, 1.25)
 TargetParent = NodePath("TargetPosition/Anim/TargetParent")
 TargetPosition = NodePath("TargetPosition")

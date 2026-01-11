@@ -19,7 +19,7 @@ public partial class FocusSkillCheck_Stomp : FocusSkillCheck
     public AnimationPlayer AnimationPlayer;
 
     private FocusCursor Cursor => FocusEvent.Cursor;
-    private bool NearCursor => GlobalPosition.DistanceTo(Cursor.GlobalPosition) < Cursor.Radius + Radius;
+    private bool NearCursor => Target.GlobalPosition.DistanceTo(Cursor.GlobalPosition) < Cursor.Radius + Radius;
 
     public override void Clear()
     {
