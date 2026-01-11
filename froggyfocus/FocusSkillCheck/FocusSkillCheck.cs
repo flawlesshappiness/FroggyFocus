@@ -9,6 +9,9 @@ public partial class FocusSkillCheck : Node3D
     [Export]
     public Vector2 Cooldown;
 
+    [Export]
+    public int MinimumRarity;
+
     public bool IsRunning { get; set; }
     public float TimeAvailable { get; set; }
     public FocusEvent FocusEvent { get; private set; }
@@ -58,7 +61,8 @@ public partial class FocusSkillCheck : Node3D
     {
         var inactive = !IsRunning;
         var cooldown = GameTime.Time > TimeAvailable;
-        return inactive && cooldown;
+        var rarity = FocusEvent.Target.CharacterData.Stars >= MinimumRarity;
+        return inactive && cooldown && rarity;
     }
 
     private void StartCooldown()

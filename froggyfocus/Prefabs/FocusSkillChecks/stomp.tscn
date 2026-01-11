@@ -224,7 +224,8 @@ TargetParent = NodePath("TargetPosition/Anim/TargetParent")
 TargetPosition = NodePath("TargetPosition")
 AnimationPlayer = NodePath("AnimationPlayer")
 Type = 22
-Cooldown = Vector2(5, 2)
+Cooldown = Vector2(15, 5)
+MinimumRarity = 3
 
 [node name="TargetPosition" type="Node3D" parent="."]
 
@@ -233,7 +234,7 @@ Cooldown = Vector2(5, 2)
 [node name="TargetParent" type="Node3D" parent="TargetPosition/Anim"]
 
 [node name="Sprite3D" type="Sprite3D" parent="TargetPosition"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.01, 0)
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("3_wxisb")
 

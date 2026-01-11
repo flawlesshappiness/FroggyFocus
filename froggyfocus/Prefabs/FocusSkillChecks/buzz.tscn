@@ -150,6 +150,7 @@ SfxWarn = NodePath("SfxWarn")
 SfxBuzz = NodePath("SfxAttack")
 Type = 20
 Cooldown = Vector2(10, 5)
+MinimumRarity = 2
 
 [node name="SfxWarn" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_rqtj8")

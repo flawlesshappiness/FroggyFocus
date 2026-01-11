@@ -4,6 +4,9 @@ using System.Collections;
 public partial class FocusSkillCheck_Stomp : FocusSkillCheck
 {
     [Export]
+    public float Radius;
+
+    [Export]
     public Vector2 SpeedRange;
 
     [Export]
@@ -14,6 +17,9 @@ public partial class FocusSkillCheck_Stomp : FocusSkillCheck
 
     [Export]
     public AnimationPlayer AnimationPlayer;
+
+    private FocusCursor Cursor => FocusEvent.Cursor;
+    private bool NearCursor => GlobalPosition.DistanceTo(Cursor.GlobalPosition) < Cursor.Radius + Radius;
 
     public override void Clear()
     {
@@ -40,6 +46,9 @@ public partial class FocusSkillCheck_Stomp : FocusSkillCheck
 
     public void Hurt()
     {
-        FocusEvent.Cursor.HurtFocusValuePercentage(0.2f);
+        if (NearCursor)
+        {
+            FocusEvent.Cursor.HurtFocusValuePercentage(0.2f);
+        }
     }
 }

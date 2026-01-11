@@ -5,10 +5,16 @@ using System.Linq;
 public partial class FocusTarget : Node3D
 {
     [Export]
+    public Node3D CharacterParent;
+
+    [Export]
     public GpuParticles3D PsWaterRipples;
 
     [Export]
     public AnimationPlayer AnimationPlayer_Glow;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Character;
 
     public FocusCharacterInfo Info { get; private set; }
     public FocusCharacter Character { get; private set; }
@@ -47,7 +53,7 @@ public partial class FocusTarget : Node3D
         Info = info;
         Character = info.Scene.Instantiate<FocusCharacter>();
         Character.Initialize(info);
-        Character.SetParent(this);
+        Character.SetParent(CharacterParent);
         Character.ClearPositionAndRotation();
 
         Scale = Vector3.One * CharacterData.Size;
@@ -228,5 +234,20 @@ public partial class FocusTarget : Node3D
 
         var anim = visible ? "show" : "hide";
         AnimationPlayer_Glow.Play(anim);
+    }
+
+    public void ResetCharacterAnimation()
+    {
+        AnimationPlayer_Character.Play("RESET");
+    }
+
+    public IEnumerator Animate_DigDown()
+    {
+        yield return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_down");
+    }
+
+    public IEnumerator Animate_DigUp()
+    {
+        yield return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_up");
     }
 }
