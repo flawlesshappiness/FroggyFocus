@@ -67,6 +67,7 @@ public partial class MainMenuView : View
         MouseVisibility.Show(nameof(MainMenuView));
 
         SaveProfilesContainer.LoadProfiles();
+        UpdateContinueButton();
 
         GameView.Instance.Hide();
 
@@ -80,6 +81,11 @@ public partial class MainMenuView : View
     }
 
     private void GameProfileSelected(int profile)
+    {
+        UpdateContinueButton();
+    }
+
+    private void UpdateContinueButton()
     {
         MainMenuContainer.NewGameButton.Visible = Data.Game.Deleted;
         MainMenuContainer.ContinueButton.Visible = !Data.Game.Deleted;
