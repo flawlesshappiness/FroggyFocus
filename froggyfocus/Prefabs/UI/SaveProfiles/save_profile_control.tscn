@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xu2fe83a2er2"]
+[gd_scene load_steps=16 format=3 uid="uid://xu2fe83a2er2"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_nd4sc"]
 [ext_resource type="Script" uid="uid://b3hh1rjplhds4" path="res://Prefabs/UI/SaveProfiles/SaveProfileControl.cs" id="2_b18tc"]
@@ -8,6 +8,9 @@
 [ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="4_b18tc"]
 [ext_resource type="Texture2D" uid="uid://j4y34d1ksddw" path="res://Assets/FlawLizArt/Textures/icon_potion.png" id="5_fw7x8"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="6_3i36b"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="6_4gccm"]
+[ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="7_fw7x8"]
+[ext_resource type="Texture2D" uid="uid://badknj108hdc5" path="res://Assets/FlawLizArt/Textures/icon_watch.png" id="8_1yp5k"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5elr7"]
 viewport_path = NodePath("ItemSubViewport")
@@ -18,20 +21,24 @@ viewport_path = NodePath("ItemSubViewport")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwvsp"]
 
-[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "NoDataLabel", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog", "PartnerQuestIcon", "ManagerQuestIcon", "ScientistQuestIcon")]
+[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "NoDataLabel", "MoneyLabel", "TimeLabel", "TopRightControls", "TopLeftControls", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog", "PartnerQuestIcon", "ManagerQuestIcon", "ScientistQuestIcon")]
 custom_minimum_size = Vector2(250, 0)
 theme = ExtResource("1_nd4sc")
 script = ExtResource("2_b18tc")
-TitleLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/TitleLabel")
+TitleLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TitleLabel")
 NoDataLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/NoDataLabel")
+MoneyLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money/MarginContainer/MarginContainer/HBoxContainer/MoneyLabel")
+TimeLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time/MarginContainer/MarginContainer/HBoxContainer/TimeLabel")
+TopRightControls = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight")
+TopLeftControls = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft")
 ProfileButton = NodePath("VBoxContainer/MarginContainer2/ProfileButton")
 DeleteButton = NodePath("VBoxContainer/HBoxContainer/DeleteButton")
 ConfirmDeleteButton = NodePath("VBoxContainer/HBoxContainer/ConfirmDeleteButton")
 CancelDeleteButton = NodePath("VBoxContainer/HBoxContainer/CancelDeleteButton")
 Frog = NodePath("ItemSubViewport/Anim/Origin/Frog")
-PartnerQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer/IconPartner")
-ManagerQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer/IconManager")
-ScientistQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer/IconScientist")
+PartnerQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer/IconPartner")
+ManagerQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer/IconManager")
+ScientistQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer/IconScientist")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -55,10 +62,10 @@ layout_mode = 2
 texture = SubResource("ViewportTexture_5elr7")
 expand_mode = 1
 
-[node name="Control" type="Control" parent="VBoxContainer/MarginContainer2/MarginContainer"]
+[node name="Content" type="Control" parent="VBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/Control"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/Content"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -74,7 +81,7 @@ text = "1"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Control"]
+[node name="Icons" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,26 +90,128 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/Icons"]
 layout_mode = 2
 columns = 3
 
-[node name="IconPartner" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer"]
+[node name="IconPartner" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("3_i7pwk")
 expand_mode = 1
 
-[node name="IconManager" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer"]
+[node name="IconManager" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("4_4gccm")
 expand_mode = 1
 
-[node name="IconScientist" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Control/VBoxContainer/GridContainer"]
+[node name="IconScientist" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("5_fw7x8")
+expand_mode = 1
+
+[node name="TopRight" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Money" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight"]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("6_4gccm")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money/MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money/MarginContainer/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_fw7x8")
+expand_mode = 1
+
+[node name="MoneyLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_nd4sc")
+text = "999999"
+
+[node name="TopLeft" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Time" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("6_4gccm")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "99:99:99"
+
+[node name="Control" type="Control" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time/MarginContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time/MarginContainer/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_1yp5k")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer"]

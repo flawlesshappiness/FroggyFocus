@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 
 public partial class SaveProfileControl : MarginContainer
 {
@@ -7,6 +8,18 @@ public partial class SaveProfileControl : MarginContainer
 
     [Export]
     public Label NoDataLabel;
+
+    [Export]
+    public Label MoneyLabel;
+
+    [Export]
+    public Label TimeLabel;
+
+    [Export]
+    public Control TopRightControls;
+
+    [Export]
+    public Control TopLeftControls;
 
     [Export]
     public Button ProfileButton;
@@ -62,6 +75,13 @@ public partial class SaveProfileControl : MarginContainer
 
         Frog.Visible = !data.Deleted;
         NoDataLabel.Visible = data.Deleted;
+        TopRightControls.Visible = !data.Deleted;
+        TopLeftControls.Visible = !data.Deleted;
+
+        var money = data.Currencies.FirstOrDefault(x => x.Type == CurrencyType.Money);
+        MoneyLabel.Text = money == null ? "0" : money.Value.ToString();
+
+        TimeLabel.Text = data.GameTime.ToString();
 
         PartnerQuestIcon.Visible = data.PartnerQuestCompleted;
         ManagerQuestIcon.Visible = data.ManagerQuestCompleted;

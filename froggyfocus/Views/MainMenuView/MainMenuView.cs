@@ -33,6 +33,9 @@ public partial class MainMenuView : View
     private bool animating;
     private MenuSettings current_menu;
 
+    public event Action OnMainMenuEnter;
+    public event Action OnGameStart;
+
     private class MenuSettings
     {
         public AnimatedPanel Panel { get; set; }
@@ -70,6 +73,8 @@ public partial class MainMenuView : View
         UpdateContinueButton();
 
         GameView.Instance.Hide();
+
+        OnMainMenuEnter?.Invoke();
 
         Open();
     }
@@ -181,6 +186,8 @@ public partial class MainMenuView : View
             Scene.Goto(Data.Game.CurrentScene);
             GameView.Instance.Show();
             GameView.Instance.AnimateHideOverlay();
+
+            OnGameStart?.Invoke();
 
             InputBlocker.Hide();
             animating = false;
