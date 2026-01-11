@@ -49,13 +49,14 @@ public partial class BestiaryControl : ControlScript
         return Container.GetFirstButton();
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _UnhandledInput(InputEvent @event)
     {
-        base._Input(@event);
-        if (!IsVisibleInTree()) return;
+        base._UnhandledInput(@event);
 
         if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
         {
+            GetViewport().SetInputAsHandled();
+
             if (entry_active)
             {
                 HideEntry();

@@ -53,7 +53,7 @@ SfxSplash = NodePath("SfxSplash")
 PsRipple = NodePath("PsRipples")
 SplashParticlePrefab = ExtResource("2_3xtrx")
 Type = 3
-Cooldown = Vector2(5, 0)
+Cooldown = Vector2(15, 10)
 
 [node name="SfxSplash" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_rfpcb")

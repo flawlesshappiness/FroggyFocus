@@ -106,11 +106,14 @@ public partial class PauseView : View
         MouseVisibility.Hide(nameof(PauseView));
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _UnhandledInput(InputEvent @event)
     {
-        base._Input(@event);
-
+        base._UnhandledInput(@event);
         if (PlayerInput.Pause.Pressed)
+        {
+            Toggle();
+        }
+        else if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree() && current_menu == null)
         {
             Toggle();
         }
@@ -122,6 +125,8 @@ public partial class PauseView : View
         if (transitioning) return;
         if (animating) return;
         if (current_menu != null) return;
+
+        GetViewport().SetInputAsHandled();
 
         if (Visible)
         {

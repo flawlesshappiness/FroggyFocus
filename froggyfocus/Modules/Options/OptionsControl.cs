@@ -79,15 +79,15 @@ public partial class OptionsControl : ControlScript
         Keys.UpdateDuplicateWarnings();
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _UnhandledInput(InputEvent @event)
     {
-        base._Input(@event);
+        base._UnhandledInput(@event);
 
         if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree())
         {
             if (Keys.IsRebinding) return;
-            BackButton_Pressed();
             GetViewport().SetInputAsHandled();
+            BackButton_Pressed();
         }
     }
 
