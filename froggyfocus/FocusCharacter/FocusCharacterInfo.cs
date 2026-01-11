@@ -57,4 +57,7 @@ public partial class FocusCharacterInfo : Resource
 
     [Export]
     public bool ExcludeFromBestiary;
+
+    [Export]
+    public Vector3 PreviewOffset;
 }

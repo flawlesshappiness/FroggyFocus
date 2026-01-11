@@ -13,6 +13,7 @@ public partial class ItemSubViewport : PreviewSubViewport
         var character = info.Scene.Instantiate<FocusCharacter>();
         character.Initialize(info);
         SetPreview(character);
+        character.Position = info.PreviewOffset;
     }
 
     public void SetCameraFront()
