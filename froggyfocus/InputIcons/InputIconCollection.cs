@@ -74,6 +74,7 @@ public partial class InputIconCollection : Resource
             { Key.Down, "keyboard_arrow_down" },
 
             { Key.Space, "keyboard_space_icon" },
+            { Key.Escape, "keyboard_escape" },
         };
 
         mouse_button_icons = new Dictionary<MouseButton, string>

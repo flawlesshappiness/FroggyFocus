@@ -288,11 +288,9 @@ transform = Transform3D(0.995514, 0, 0.0946125, 0, 1, 0, -0.0946125, 0, 0.995514
 
 [node name="TutorialSign" parent="World/Islands" instance=ExtResource("12_8ow6q")]
 transform = Transform3D(-0.30472, 0, 1.46872, 0, 1.5, 0, -1.46872, 0, -0.30472, 34.2133, -1.90735e-06, 14.6139)
-DialogueNode = "##TUTORIAL_JUMP_001##"
 
 [node name="TutorialSign2" parent="World/Islands" instance=ExtResource("12_8ow6q")]
 transform = Transform3D(1.49871, 0, -0.0621059, 0, 1.5, 0, 0.0621059, 0, 1.49871, 29.712, -1.90735e-06, 3.70221)
-DialogueNode = "##TUTORIAL_CATCH_BUGS_001##"
 SignType = 1
 
 [node name="EldritchFlower3" parent="World/Islands" instance=ExtResource("41_uapja")]
@@ -301,8 +299,11 @@ HandInInfo = ExtResource("19_o0yll")
 
 [node name="TutorialSign3" parent="World/Islands" instance=ExtResource("12_8ow6q")]
 transform = Transform3D(1.49538, 0, 0.117583, 0, 1.5, 0, -0.117583, 0, 1.49538, 17.5305, 0, -1.53454)
-DialogueNode = "##TUTORIAL_SHIELD_001##"
 SignType = 2
+
+[node name="TutorialSign4" parent="World/Islands" instance=ExtResource("12_8ow6q")]
+transform = Transform3D(-1.4851, 0, -0.210858, 0, 1.5, 0, 0.210858, 0, -1.4851, 16.9457, 0, 8.3545)
+SignType = 3
 
 [node name="PartnerHome" parent="World/Islands" instance=ExtResource("18_qbb40")]
 transform = Transform3D(-0.999655, 0, -0.0262643, 0, 1, 0, 0.0262643, 0, -0.999655, 43.3806, 0, 24.5843)

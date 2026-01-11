@@ -17,6 +17,9 @@ public partial class TutorialView : View
     [Export]
     public Control ShieldTutorial;
 
+    [Export]
+    public Control ForfeitTutorial;
+
     private bool input_received;
 
     protected override void OnShow()
@@ -64,5 +67,6 @@ public partial class TutorialView : View
         JumpTutorial.Visible = type == TutorialSign.Type.Jump;
         BugsTutorial.Visible = type == TutorialSign.Type.Bugs;
         ShieldTutorial.Visible = type == TutorialSign.Type.Shield;
+        ForfeitTutorial.Visible = type == TutorialSign.Type.Forfeit;
     }
 }

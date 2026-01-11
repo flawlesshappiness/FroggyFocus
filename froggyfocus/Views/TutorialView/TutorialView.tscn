@@ -119,7 +119,7 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("6_kl8r4")
 
-[node name="TutorialView" type="Control" node_paths=PackedStringArray("Animation_Sign", "JumpTutorial", "BugsTutorial", "ShieldTutorial")]
+[node name="TutorialView" type="Control" node_paths=PackedStringArray("Animation_Sign", "JumpTutorial", "BugsTutorial", "ShieldTutorial", "ForfeitTutorial")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -131,6 +131,7 @@ Animation_Sign = NodePath("AnimationPlayer_Sign")
 JumpTutorial = NodePath("Anim_Sign/TutorialJump")
 BugsTutorial = NodePath("Anim_Sign/TutorialBugs")
 ShieldTutorial = NodePath("Anim_Sign/TutorialShield")
+ForfeitTutorial = NodePath("Anim_Sign/TutorialForfeit")
 
 [node name="Anim_Sign" type="Control" parent="."]
 layout_mode = 1
@@ -353,6 +354,7 @@ grow_vertical = 2
 StartingAction = "Interact"
 
 [node name="TutorialShield" type="Control" parent="Anim_Sign"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -476,6 +478,92 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_35v6w")
 max_value = 1.0
 value = 0.6
 show_percentage = false
+
+[node name="TutorialForfeit" type="Control" parent="Anim_Sign"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -185.0
+offset_right = 328.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_m4dci")
+
+[node name="Label" type="Label" parent="Anim_Sign/TutorialForfeit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = -121.0
+offset_right = 318.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Some challenges are better tackled later."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Anim_Sign/TutorialForfeit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -301.0
+offset_top = -57.0
+offset_right = 309.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "If a bug is too difficult, you can"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Anim_Sign/TutorialForfeit"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -332.0
+offset_top = 1.0
+offset_right = 278.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "stop trying to catch it with"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="InputPromptTexture" parent="Anim_Sign/TutorialForfeit" instance=ExtResource("2_p2qyr")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 175.0
+offset_top = 14.0
+offset_right = 255.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+StartingAction = "Pause"
 
 [node name="ItemSubViewport_Sign" type="SubViewport" parent="." node_paths=PackedStringArray("Origin")]
 own_world_3d = true

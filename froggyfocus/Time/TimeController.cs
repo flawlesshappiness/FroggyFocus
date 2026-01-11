@@ -35,7 +35,6 @@ public partial class TimeController : SingletonController
 
         var time_in_seconds = (int)(GameTime.Time - time_game_started);
         Data.Game.GameTime = Data.Game.GameTime.Add(new System.TimeSpan(0, 0, time_in_seconds));
-        Debug.Log($"{time_in_seconds} > {Data.Game.GameTime}");
 
         time_game_started = GameTime.Time;
     }
