@@ -11,12 +11,16 @@ public partial class InventoryReplacePopup : PopupControl
     [Export]
     public Button DiscardButton;
 
+    [Export]
+    public InventoryInfoContainer InfoContainer;
+
     private FocusTarget current_target;
 
     public override void _Ready()
     {
         base._Ready();
         InventoryContainer.OnButtonPressed += InventoryButton_Pressed;
+        InventoryContainer.OnButtonFocus += InventoryButton_Focus;
         DiscardButton.Pressed += DiscardButton_Pressed;
         PreviewButton.Pressed += DiscardButton_Pressed;
     }
@@ -53,6 +57,11 @@ public partial class InventoryReplacePopup : PopupControl
         Data.Game.Save();
 
         ClosePopup();
+    }
+
+    private void InventoryButton_Focus(InventoryCharacterData data)
+    {
+        InfoContainer.SetCharacter(data);
     }
 
     private void DiscardButton_Pressed()
