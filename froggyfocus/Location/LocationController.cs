@@ -8,7 +8,12 @@ public partial class LocationController : ResourceController<LocationCollection,
     protected override void Initialize()
     {
         base.Initialize();
+        GameProfileController.Instance.OnGameProfileSelected += ProfileSelected;
+        ProfileSelected(Data.Options.Profile ?? 1);
+    }
 
+    private void ProfileSelected(int profile)
+    {
         if (!Data.Game.LocationsInitialized)
         {
             var data = Location.GetOrCreateData("swamp");
