@@ -36,17 +36,17 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="BackgroundShadow" type="TextureRect" parent="MarginContainer/BG"]
-modulate = Color(0.0594, 0.08352, 0.18, 0.623529)
+modulate = Color(0.6, 0.8, 1, 0.631373)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.5
-offset_top = -50.5
-offset_right = 50.5
-offset_bottom = 50.5
+offset_left = -76.5
+offset_top = -76.5
+offset_right = 76.5
+offset_bottom = 76.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_o6ats")

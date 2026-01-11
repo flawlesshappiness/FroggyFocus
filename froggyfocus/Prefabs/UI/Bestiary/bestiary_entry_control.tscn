@@ -1,14 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmoecjh45fqje"]
+[gd_scene load_steps=9 format=3 uid="uid://bmoecjh45fqje"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_2nm37"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="2_ccfe5"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_k71fo"]
 [ext_resource type="Script" uid="uid://das35y2is2nh" path="res://Prefabs/UI/Bestiary/BestiaryEntryControl.cs" id="2_skhf4"]
 [ext_resource type="PackedScene" uid="uid://dp2ncvq06oerg" path="res://Prefabs/UI/DifficultyStars/difficulty_stars.tscn" id="3_k71fo"]
+[ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="5_cb06p"]
 [ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="5_q1x1n"]
 [ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="6_cb06p"]
 
-[node name="BestiaryEntryControl" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "CaughtLabel", "LocationLabel", "VariationContainer", "VariationLabel", "DifficultyStars", "TextureRect", "ItemSubViewport", "BackButton")]
+[node name="BestiaryEntryControl" type="MarginContainer" node_paths=PackedStringArray("NameLabel", "CaughtLabel", "LocationLabel", "VariationContainer", "DifficultyStars", "TextureRect", "ItemSubViewport", "BackButton", "VariationPreviewButton")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -26,11 +27,11 @@ NameLabel = NodePath("VBoxContainer/MarginContainer/Panel/Title/MarginContainer/
 CaughtLabel = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer2/CaughtLabel")
 LocationLabel = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Location/MarginContainer/VBoxContainer/LocationLabel")
 VariationContainer = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations")
-VariationLabel = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer/VariationsLabel")
 DifficultyStars = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/DifficultyStars")
 TextureRect = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/TextureRect")
 ItemSubViewport = NodePath("ItemSubViewport")
 BackButton = NodePath("VBoxContainer/HBoxContainer/BackButton")
+VariationPreviewButton = NodePath("VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer/HBoxContainer/InventoryPreviewButton")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -201,11 +202,11 @@ layout_mode = 2
 layout_mode = 2
 text = "Variations"
 
-[node name="VariationsLabel" type="Label" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Variation1
-Variation2
-Variation3"
+
+[node name="InventoryPreviewButton" parent="VBoxContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Variations/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_cb06p")]
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
