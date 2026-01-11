@@ -28,6 +28,7 @@ public partial class InventoryReplacePopup : PopupControl
     protected override void OnShow()
     {
         base.OnShow();
+        InfoContainer.Clear();
         SetLocks(true);
     }
 

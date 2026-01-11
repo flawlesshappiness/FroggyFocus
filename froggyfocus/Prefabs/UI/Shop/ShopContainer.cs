@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class ShopContainer : Control
+public partial class ShopContainer : ControlScript
 {
     [Export]
     public Button BackButton;
@@ -33,6 +33,12 @@ public partial class ShopContainer : Control
         SellContainer.InventoryContainer.OnButtonFocus += SellContainer_ButtonFocus;
         TabContainer.TabChanged += TabContainer_TabChanged;
 
+        InventoryInfoContainer.Clear();
+    }
+
+    protected override void OnShow()
+    {
+        base.OnShow();
         InventoryInfoContainer.Clear();
     }
 
