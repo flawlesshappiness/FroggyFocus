@@ -95,10 +95,16 @@ public partial class StatsController : SingletonController
 
     private void FocusEventCompleted(FocusEventCompletedResult result)
     {
-        var info = FocusCharacterController.Instance.Collection.Resources.FirstOrDefault(x => x.Name == result.FocusEvent.Target.Info.Variation);
+        var info = result.FocusEvent.Target.Info;
         var data = result.FocusEvent.Target.CharacterData;
         var stats = GetOrCreateCharacterData(info.ResourcePath);
         stats.CountCaught++;
         stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
+
+        var v_info = FocusCharacterController.Instance.Collection.Resources.FirstOrDefault(x => x.Name == result.FocusEvent.Target.Info.Variation);
+        if (v_info == info) return;
+
+        var v_stats = GetOrCreateCharacterData(v_info.ResourcePath);
+        v_stats.CountCaught++;
     }
 }
