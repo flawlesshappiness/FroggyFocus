@@ -1516,7 +1516,7 @@ Id = "moss"
 Info = ExtResource("21_bistx")
 
 [node name="Stalagmite_Platform" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.02, 0)
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.0401225, 0)
 
 [node name="Stalagmite_Platform2" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.51813, -0.318687, 3.0903)
