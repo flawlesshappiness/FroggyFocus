@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=71 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -49,6 +49,12 @@
 [ext_resource type="PackedScene" uid="uid://bj2l6kqa3ibch" path="res://Appearance/Attachments/particles_money.tscn" id="26_w37ag"]
 [ext_resource type="PackedScene" uid="uid://cxtf7ngu24n84" path="res://Appearance/Attachments/particles_stars.tscn" id="27_5mj6h"]
 [ext_resource type="Material" uid="uid://yabsdnw7nro6" path="res://Materials/Plant.tres" id="27_rjun3"]
+[ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="28_88efh"]
+[ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="29_gwchp"]
+[ext_resource type="Material" uid="uid://dd4cr8a3qa3fa" path="res://Materials/Seaweed_003.tres" id="30_pdiv3"]
+[ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="31_a4mrg"]
+[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="32_3l0s6"]
+[ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="33_a8hx6"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gm5nm"]
 material = ExtResource("22_mkma6")
@@ -60,6 +66,25 @@ material = ExtResource("23_gm5nm")
 material = ExtResource("24_dbb2p")
 
 [sub_resource type="SphereMesh" id="SphereMesh_88efh"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_gwchp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_pdiv3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_a4mrg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdiv3"]
+albedo_color = Color(0.6, 0.4944, 0.312, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pdiv3"]
+material = SubResource("StandardMaterial3D_pdiv3")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a8hx6"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_81ysc"]
 size = Vector3(0.15, 0.05, 1)
@@ -409,6 +434,82 @@ transform = Transform3D(0.006, 0, 0, 0, 0.006, 0, 0, 0, 0.006, 8.26814e-05, -0.0
 mesh = SubResource("SphereMesh_88efh")
 surface_material_override/0 = ExtResource("27_rjun3")
 
+[node name="HatWeed" type="Node3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+visible = false
+script = ExtResource("22_xjqii")
+OnlySecondaryMeshes = [NodePath("ball"), NodePath("ball2"), NodePath("ball3")]
+Type = 18
+
+[node name="ClusterA" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatWeed"]
+transform = Transform3D(0.00091241, 0.0089121, -0.0044432, -0.00656643, 0.00389281, 0.00645972, 0.00748662, 0.0023282, 0.00620725, 0.00548451, -0.000574427, 0.00322789)
+mesh = SubResource("QuadMesh_gwchp")
+surface_material_override/0 = ExtResource("28_88efh")
+
+[node name="ClusterA2" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatWeed"]
+transform = Transform3D(0.00650579, -0.00646266, -0.00398857, -0.00696705, -0.00298878, -0.00652131, 0.0030224, 0.00702148, -0.00644701, -0.00459836, -0.00179334, 0.00309003)
+mesh = SubResource("QuadMesh_gwchp")
+surface_material_override/0 = ExtResource("28_88efh")
+
+[node name="ClusterB" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatWeed"]
+transform = Transform3D(-0.00846292, -0.00523607, -0.00098108, 0.00221282, -0.00513047, 0.00829348, -0.00484586, 0.00680161, 0.00550052, -0.00317038, -0.00389547, 0.00319334)
+mesh = SubResource("QuadMesh_pdiv3")
+surface_material_override/0 = ExtResource("29_gwchp")
+
+[node name="ClusterB2" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatWeed"]
+transform = Transform3D(-0.0093769, 0.00333337, -0.00098108, -0.00262172, -0.00493405, 0.00829348, 0.00228045, 0.00803392, 0.00550053, 0.00391621, -0.00343933, 0.00376957)
+mesh = SubResource("QuadMesh_pdiv3")
+surface_material_override/0 = ExtResource("29_gwchp")
+
+[node name="ClusterC" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatWeed"]
+transform = Transform3D(-0.015, 9.07297e-06, -1.97453e-05, -2.173e-05, -0.00626206, 0.0136303, 1.44937e-09, 0.0136304, 0.00626206, 0.000319871, -0.00348233, 0.0055067)
+mesh = SubResource("QuadMesh_a4mrg")
+surface_material_override/0 = ExtResource("30_pdiv3")
+
+[node name="ball" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatWeed"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.0029906, -0.0019391, 0.000251531)
+mesh = SubResource("SphereMesh_pdiv3")
+
+[node name="ball2" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatWeed"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.000239813, -0.00439006, 0.00124271)
+mesh = SubResource("SphereMesh_pdiv3")
+
+[node name="ball3" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatWeed"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.00384815, -0.00206287, 0.000619247)
+mesh = SubResource("SphereMesh_pdiv3")
+
+[node name="HatOily" type="Node3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+visible = false
+script = ExtResource("17_fneju")
+OnlySecondaryMeshes = []
+Type = 19
+
+[node name="oil_bug_accessory" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatOily" instance=ExtResource("31_a4mrg")]
+transform = Transform3D(0.009, 0, 0, 0, -0.00145076, -0.0047849, 0, 0.0047849, -0.00145076, 1.35052e-16, -0.00213521, 0.00117543)
+
+[node name="oil_bug_accessory2" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatOily" instance=ExtResource("31_a4mrg")]
+transform = Transform3D(-0.01, -6.06451e-10, 4.37114e-10, 1.12989e-09, -0.00174091, 0.0047849, -7.13611e-10, 0.00574188, 0.00145076, 2.04441e-16, -0.00410186, 0.00124134)
+
+[node name="HatPolluted" type="Node3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+visible = false
+script = ExtResource("17_fneju")
+OnlySecondaryMeshes = [NodePath("trash_paper/paper"), NodePath("trash_paper2/paper"), NodePath("trash_paper3/paper")]
+Type = 20
+
+[node name="hat" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted"]
+transform = Transform3D(0.04, 1.55535e-10, 6.078e-10, -6.26538e-10, 0.00789037, 0.0392141, 3.25849e-11, -0.0392141, 0.00789037, 5.83501e-12, -0.00305399, 0.00301353)
+mesh = SubResource("CylinderMesh_a8hx6")
+skeleton = NodePath("../../garbage")
+surface_material_override/0 = ExtResource("32_3l0s6")
+
+[node name="trash_paper" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted" instance=ExtResource("33_a8hx6")]
+transform = Transform3D(0.000884486, -0.00169888, -0.000575764, 0.00179355, 0.000848019, 0.000253045, 2.91838e-05, -0.000628239, 0.00189854, -0.00461088, -0.00186548, 0.00120255)
+
+[node name="trash_paper2" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted" instance=ExtResource("33_a8hx6")]
+transform = Transform3D(-0.00158372, -0.00122093, 3.41072e-05, 0.00121003, -0.00157597, -0.000228387, 0.000166298, -0.000160215, 0.00198662, -0.00187133, -0.00768522, 0.00116431)
+
+[node name="trash_paper3" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted" instance=ExtResource("33_a8hx6")]
+transform = Transform3D(-0.00147696, 0.00134811, 3.41072e-05, -0.00134236, -0.00146489, -0.000228387, -0.000128964, -0.000191552, 0.00198662, 0.00375487, -0.00557999, 0.00130974)
+
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 1.63709e-14, -8.51576e-14, 1.80205e-14, 0.998942, -0.0459942, 1.75211e-14, 0.0459944, 0.998942, -2.85359e-17, 0.0103008, 0.0153717)
 bone_name = "Head"
@@ -553,3 +654,6 @@ attenuation_filter_db = 0.0
 [editable path="frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
 [editable path="frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
 [editable path="frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]
+[editable path="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper"]
+[editable path="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper2"]
+[editable path="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper3"]

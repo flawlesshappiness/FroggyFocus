@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://cd10ocopq6k4f"]
+
+[ext_resource type="Script" uid="uid://c4shgrg5t5hdg" path="res://Appearance/StandardMeshAppearanceAttachment.cs" id="1_qk1ki"]
+[ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="2_xar0s"]
+[ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="3_xen4e"]
+[ext_resource type="Material" uid="uid://dd4cr8a3qa3fa" path="res://Materials/Seaweed_003.tres" id="4_wbcso"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_jn7a8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ijciq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3dle8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm42h"]
+albedo_color = Color(0.6, 0.4944, 0.312, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_o2ywa"]
+material = SubResource("StandardMaterial3D_dm42h")
+radius = 0.1
+height = 0.2
+
+[node name="HatWeededPreview" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_qk1ki")
+OnlySecondaryMeshes = [NodePath("Scale/ball"), NodePath("Scale/ball2"), NodePath("Scale/ball3")]
+Type = 18
+
+[node name="Scale" type="Node3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0, -0.127695, 5.58173e-09)
+
+[node name="ClusterA" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(0.00091241, 0.0089121, -0.0044432, -0.00656643, 0.00389281, 0.00645972, 0.00748662, 0.0023282, 0.00620725, 0.00548451, -0.000574427, 0.00322789)
+mesh = SubResource("QuadMesh_jn7a8")
+surface_material_override/0 = ExtResource("2_xar0s")
+
+[node name="ClusterA2" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(0.00650579, -0.00646266, -0.00398857, -0.00696705, -0.00298878, -0.00652131, 0.0030224, 0.00702148, -0.00644701, -0.00459836, -0.00179334, 0.00309003)
+mesh = SubResource("QuadMesh_jn7a8")
+surface_material_override/0 = ExtResource("2_xar0s")
+
+[node name="ClusterB" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(-0.00846292, -0.00523607, -0.00098108, 0.00221282, -0.00513047, 0.00829348, -0.00484586, 0.00680161, 0.00550052, -0.00317038, -0.00389547, 0.00319334)
+mesh = SubResource("QuadMesh_ijciq")
+surface_material_override/0 = ExtResource("3_xen4e")
+
+[node name="ClusterB2" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(-0.0093769, 0.00333337, -0.00098108, -0.00262172, -0.00493405, 0.00829348, 0.00228045, 0.00803392, 0.00550053, 0.00391621, -0.00343933, 0.00376957)
+mesh = SubResource("QuadMesh_ijciq")
+surface_material_override/0 = ExtResource("3_xen4e")
+
+[node name="ClusterC" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(-0.015, 9.07297e-06, -1.97453e-05, -2.173e-05, -0.00626206, 0.0136303, 1.44937e-09, 0.0136304, 0.00626206, 0.000319871, -0.00348233, 0.0055067)
+mesh = SubResource("QuadMesh_3dle8")
+surface_material_override/0 = ExtResource("4_wbcso")
+
+[node name="ball" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0.0029906, -0.0019391, 0.000251531)
+mesh = SubResource("SphereMesh_o2ywa")
+
+[node name="ball2" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.000239813, -0.00439006, 0.00124271)
+mesh = SubResource("SphereMesh_o2ywa")
+
+[node name="ball3" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, -0.00384815, -0.00206287, 0.000619247)
+mesh = SubResource("SphereMesh_o2ywa")

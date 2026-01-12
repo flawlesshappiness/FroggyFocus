@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://dnbr2bicilklc"]
+
+[ext_resource type="PackedScene" uid="uid://d0q85osej7ji1" path="res://Appearance/Preview/hat_polluted_preview.tscn" id="1_i8fef"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_ni15l"]
+
+[resource]
+script = ExtResource("2_ni15l")
+Category = 0
+Type = 20
+DefaultPrimaryColor = 202
+DefaultSecondaryColor = 208
+HasSecondaryColor = true
+Prefab = ExtResource("1_i8fef")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

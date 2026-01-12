@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://d1564k6wpf6sk"]
+
+[ext_resource type="PackedScene" uid="uid://dqya5bb7eay55" path="res://Appearance/Preview/hat_oily_preview.tscn" id="1_n5wft"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_mrhh6"]
+
+[resource]
+script = ExtResource("2_mrhh6")
+Category = 0
+Type = 19
+DefaultPrimaryColor = 209
+DefaultSecondaryColor = 209
+HasSecondaryColor = false
+Prefab = ExtResource("1_n5wft")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

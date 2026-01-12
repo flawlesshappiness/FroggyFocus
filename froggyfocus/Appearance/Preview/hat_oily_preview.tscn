@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqya5bb7eay55"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_v6cjd"]
+[ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="2_tqpul"]
+
+[node name="HatOilyPreview" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_v6cjd")
+OnlySecondaryMeshes = []
+Type = 19
+
+[node name="Scale" type="Node3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0, 0.0497225, -0.126692)
+
+[node name="oil_bug_accessory" parent="Scale" instance=ExtResource("2_tqpul")]
+transform = Transform3D(0.009, 0, 0, 0, -0.00145076, -0.0047849, 0, 0.0047849, -0.00145076, 1.35052e-16, -0.00213521, 0.00117543)
+
+[node name="oil_bug_accessory2" parent="Scale" instance=ExtResource("2_tqpul")]
+transform = Transform3D(-0.01, -6.06451e-10, 4.37114e-10, 1.12989e-09, -0.00174091, 0.0047849, -7.13611e-10, 0.00574188, 0.00145076, 2.04441e-16, -0.00410186, 0.00124134)
