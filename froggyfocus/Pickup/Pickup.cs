@@ -31,15 +31,20 @@ public partial class Pickup : Node3D
         if (!enabled) return;
         enabled = false;
 
-        OnPickup?.Invoke();
-
         this.StartCoroutine(Cr, "pickup");
         IEnumerator Cr()
         {
             yield return AnimationPlayer.PlayAndWaitForAnimation("pickup");
             CreatePickupEffect();
             SetPickupEnabled(false);
+
+            PickupCollected();
         }
+    }
+
+    protected virtual void PickupCollected()
+    {
+        OnPickup?.Invoke();
     }
 
     public void SetPickupEnabled(bool enabled)

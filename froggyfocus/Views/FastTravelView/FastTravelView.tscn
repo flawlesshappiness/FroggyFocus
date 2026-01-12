@@ -139,6 +139,7 @@ icon = ExtResource("7_d5wwr")
 LabelText = "Back"
 
 [node name="PurchasePopup" parent="." instance=ExtResource("7_22dsj")]
+visible = false
 layout_mode = 1
 
 [node name="WhiteOverlay" parent="." instance=ExtResource("2_jnp6d")]

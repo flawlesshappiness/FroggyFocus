@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=75 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -48,6 +48,7 @@
 [ext_resource type="Resource" uid="uid://r0ehnnp1jwbf" path="res://HandInQuest/Resources/Factory_Tv_004.tres" id="34_xv66q"]
 [ext_resource type="Resource" uid="uid://conmipikui7b5" path="res://FocusEvent/Resources/Factory_Trash_Water.tres" id="35_8mo76"]
 [ext_resource type="PackedScene" uid="uid://cvky4buvmgo3h" path="res://Prefabs/Objects/exhaust_pipe.tscn" id="37_la0tx"]
+[ext_resource type="PackedScene" uid="uid://x6f4qfn4tmgs" path="res://Prefabs/Objects/sign_boat.tscn" id="39_8kavb"]
 [ext_resource type="Resource" uid="uid://cnf7n65pa1ho" path="res://FocusEvent/Resources/Factory_Oil.tres" id="39_v2jd5"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/Shop.tscn" id="40_xv66q"]
 [ext_resource type="Resource" uid="uid://cm5mlcegogu6u" path="res://FocusEvent/Resources/Factory_Seaweed.tres" id="41_8g76t"]
@@ -55,6 +56,7 @@
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="42_v2jd5"]
 [ext_resource type="PackedScene" uid="uid://bjrocvyhabcve" path="res://Prefabs/Nature/grass_tuft_tall.tscn" id="43_b7s7t"]
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="43_xv66q"]
+[ext_resource type="PackedScene" uid="uid://dovpu07ffsnwv" path="res://Prefabs/Objects/sign_boat_flipped.tscn" id="45_12tkq"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="46_gteuj"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="47_ix7e4"]
 
@@ -591,6 +593,12 @@ Tvs = [NodePath("../TvGlitchy1"), NodePath("../../Building/TvGlitchy2"), NodePat
 [node name="Shop" parent="World/Garbage" instance=ExtResource("40_xv66q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1756, 3.73846, -41.8194)
 
+[node name="sign_boat" parent="World/Garbage" instance=ExtResource("39_8kavb")]
+transform = Transform3D(-0.00366524, 0, -1.5, 0, 1.5, 0, 1.5, 0, -0.00366524, 54.4676, 0.774316, -30.0201)
+
+[node name="sign_boat2" parent="World/Garbage" instance=ExtResource("39_8kavb")]
+transform = Transform3D(-0.355156, 0, -1.45735, 0, 1.5, 0, 1.45735, 0, -0.355156, 63.5395, 0.774316, -3.33958)
+
 [node name="Lighthouse" parent="World" instance=ExtResource("15_qfdwa")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 125.411, -25.807, -35.3942)
 
@@ -813,6 +821,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5571, -0.753436, 68.3066)
 
 [node name="QuestBoard" parent="World/Seaweed" instance=ExtResource("43_xv66q")]
 transform = Transform3D(0.67185, 0, 0.740687, 0, 1, 0, -0.740687, 0, 0.67185, 41.6043, -0.966648, 24.2988)
+
+[node name="sign_boat" parent="World/Seaweed" instance=ExtResource("45_12tkq")]
+transform = Transform3D(-0.207797, -0.017011, -1.48544, -0.110236, 1.49594, -0.00171055, 1.48144, 0.108929, -0.208485, 35.2524, -0.79443, 49.4881)
+
+[node name="sign_boat2" parent="World/Seaweed" instance=ExtResource("39_8kavb")]
+transform = Transform3D(1.49161, 0.0750224, 0.139489, -0.073476, 1.49807, -0.0200057, -0.14031, 0.0130611, 1.49337, -2.18154, -0.835164, 18.4143)
 
 [node name="Machine" type="Node3D" parent="World"]
 

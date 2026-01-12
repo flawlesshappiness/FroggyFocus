@@ -164,13 +164,9 @@ public partial class FastTravelView : PanelView
 
     private void UpdateButtonVisibility()
     {
-        var scene_name = System.IO.Path.GetFileNameWithoutExtension(Data.Game.CurrentScene);
-        var current_location = LocationController.Instance.Collection.Resources.FirstOrDefault(x => x.Scene == scene_name);
-
         foreach (var button in buttons)
         {
-            button.Visible = button.LocationInfo != current_location;
-            button.UpdateLocked();
+            button.UpdateVisible();
         }
     }
 
@@ -194,9 +190,8 @@ public partial class FastTravelView : PanelView
     {
         var button = LocationButtonTemplate.Duplicate() as FastTravelButton;
         button.SetParent(LocationButtonTemplate.GetParent());
-        button.Show();
         button.SetLocation(info);
-        button.UpdateLocked();
+        button.UpdateVisible();
         button.PressedWhenUnlocked += () => LocationButton_PressedWhenUnlocked(info.Scene);
         button.PressedWhenLocked += () => LocationButton_PressedWhenLocked(info);
         buttons.Add(button);

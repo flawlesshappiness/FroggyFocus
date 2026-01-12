@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://tiufcaqr16qp"]
+
+[ext_resource type="PackedScene" uid="uid://d03t2wdi2vxqy" path="res://Assets/KenneyNL/Watercraft/cargo-container-a.fbx" id="1_gyq2v"]
+[ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="2_kmsti"]
+[ext_resource type="Texture2D" uid="uid://cb0rnb05qdw2n" path="res://Assets/KenneyNL/Watercraft/Textures/colormap.png" id="3_4sgws"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xonv"]
+render_priority = 0
+shader = ExtResource("2_kmsti")
+shader_parameter/albedo = Color(0.76, 1, 0.956, 1)
+shader_parameter/albedo_texture = ExtResource("3_4sgws")
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bw13q"]
+size = Vector3(1.38452, 1.11328, 2.76465)
+
+[node name="CargoContainerRed" type="Node3D"]
+
+[node name="cargo-container-a" parent="." instance=ExtResource("1_gyq2v")]
+
+[node name="cargo-container-a" parent="cargo-container-a" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553223, 0)
+shape = SubResource("BoxShape3D_bw13q")
+
+[editable path="cargo-container-a"]

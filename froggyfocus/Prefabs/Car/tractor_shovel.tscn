@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cl10sxjrqex8y"]
+
+[ext_resource type="PackedScene" uid="uid://baxkfkxmeowy3" path="res://Assets/KenneyNL/Car/tractor-shovel.fbx" id="1_q5bpd"]
+[ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="2_q6onv"]
+[ext_resource type="Texture2D" uid="uid://baik7rur1gbjs" path="res://Assets/KenneyNL/Car/Textures/colormap.png" id="3_vnpej"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xonv"]
+render_priority = 0
+shader = ExtResource("2_q6onv")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_vnpej")
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xd3u5"]
+size = Vector3(1.66772, 1.51758, 2.49469)
+
+[node name="TractorShovel" type="Node3D"]
+
+[node name="tractor-shovel" parent="." instance=ExtResource("1_q5bpd")]
+
+[node name="body" parent="tractor-shovel/tractor-shovel" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="shovel" parent="tractor-shovel/tractor-shovel/body" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="wheel-back-left" parent="tractor-shovel/tractor-shovel" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="wheel-front-left" parent="tractor-shovel/tractor-shovel" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="wheel-front-right" parent="tractor-shovel/tractor-shovel" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="wheel-back-right" parent="tractor-shovel/tractor-shovel" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.762015, 0.0122295)
+shape = SubResource("BoxShape3D_xd3u5")
+
+[editable path="tractor-shovel"]

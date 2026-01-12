@@ -1,8 +1,12 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class FastTravelButton : ImageButton
 {
+    [Export]
+    public Label NameLabel;
+
     [Export]
     public PriceControl PriceControl;
 
@@ -23,12 +27,17 @@ public partial class FastTravelButton : ImageButton
         LocationInfo = info;
         TextureRect.Texture = info.PreviewImage;
         PriceControl.SetPrice(info.Price);
+        NameLabel.Text = info.Name;
     }
 
-    public void UpdateLocked()
+    public void UpdateVisible()
     {
+        var scene_name = System.IO.Path.GetFileNameWithoutExtension(Data.Game.CurrentScene);
+        var current_location = LocationController.Instance.Collection.Resources.FirstOrDefault(x => x.Scene == scene_name);
+
+        var not_current_scene = LocationInfo != current_location;
         var data = Location.GetOrCreateData(LocationInfo.Id);
-        SetLocked(!data.Unlocked);
+        Visible = data.Unlocked && not_current_scene;
     }
 
     public void SetLocked(bool locked)

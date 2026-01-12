@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=3 uid="uid://lg2khwy1q43s"]
+
+[ext_resource type="Script" uid="uid://bi76puckyq02u" path="res://Pickup/LocationPickup.cs" id="1_l5nnu"]
+[ext_resource type="PackedScene" uid="uid://1n2ew4h58wg" path="res://Prefabs/Effects/pickup.tscn" id="2_7xsqd"]
+[ext_resource type="PackedScene" uid="uid://pffifs722uk2" path="res://Assets/Quaternius/RPG/Scroll.fbx" id="3_76783"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="4_ggwr6"]
+[ext_resource type="Material" uid="uid://71pv1fsup32f" path="res://Materials/Color_Brown.tres" id="5_8hwnu"]
+[ext_resource type="AudioStream" uid="uid://cu27gkeq1w46r" path="res://Sounds/Raw/sfx_paper_001.wav" id="12_yppco"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cgxra"]
+height = 1.54535
+
+[sub_resource type="Animation" id="Animation_8dhrt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Offset/Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPickup:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cgxra"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.25, 0), Vector3(0, 0, 0), Vector3(0, 0.25, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Offset/Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6pllg"]
+resource_name = "pickup"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.233258, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Offset/Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 12.5664, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPickup:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pllg"]
+_data = {
+&"RESET": SubResource("Animation_8dhrt"),
+&"idle": SubResource("Animation_cgxra"),
+&"pickup": SubResource("Animation_6pllg")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ggwr6"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("12_yppco")
+
+[node name="LocationScrollPickup" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Area", "Target")]
+script = ExtResource("1_l5nnu")
+AnimationPlayer = NodePath("AnimationPlayer")
+Area = NodePath("Area3D")
+Target = NodePath("Offset/Anim")
+PsPickup = ExtResource("2_7xsqd")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772675, 0)
+shape = SubResource("CylinderShape3D_cgxra")
+
+[node name="Offset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Anim" type="Node3D" parent="Offset"]
+
+[node name="Scroll" parent="Offset/Anim" instance=ExtResource("3_76783")]
+transform = Transform3D(0.318513, -0.733859, 0, 0.733859, 0.318513, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="Scroll" parent="Offset/Anim/Scroll" index="0"]
+surface_material_override/0 = ExtResource("4_ggwr6")
+surface_material_override/1 = ExtResource("5_8hwnu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6pllg")
+}
+
+[node name="SfxPickup" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.672391, 0)
+stream = SubResource("AudioStreamRandomizer_ggwr6")
+volume_db = -10.0
+bus = &"SFX"
+
+[editable path="Offset/Anim/Scroll"]

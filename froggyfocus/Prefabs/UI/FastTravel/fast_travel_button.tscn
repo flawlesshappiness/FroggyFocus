@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcmkommv5s4ky"]
+[gd_scene load_steps=7 format=3 uid="uid://bcmkommv5s4ky"]
 
 [ext_resource type="Script" uid="uid://bn4bok5qn02fi" path="res://Prefabs/UI/FastTravel/FastTravelButton.cs" id="1_q8bxe"]
-[ext_resource type="Texture2D" uid="uid://c8nb0l6w6ex55" path="res://Textures/travel_swamp.png" id="2_df8sb"]
 [ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="2_lvdee"]
+[ext_resource type="Texture2D" uid="uid://d1678vwrypidl" path="res://Assets/FlawLizArt/Textures/icon_swamp.png" id="3_df8sb"]
 [ext_resource type="PackedScene" uid="uid://57h0lyjpo7q4" path="res://Prefabs/UI/Price/price_control.tscn" id="3_lvdee"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="3_oh73x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_safdx"]
 
-[node name="FastTravelButton" type="Button" node_paths=PackedStringArray("PriceControl", "TextureRect")]
+[node name="FastTravelButton" type="Button" node_paths=PackedStringArray("NameLabel", "PriceControl", "TextureRect")]
 custom_minimum_size = Vector2(200, 200)
 anchors_preset = 8
 anchor_left = 0.5
@@ -23,21 +24,34 @@ grow_vertical = 2
 theme_override_styles/hover = SubResource("StyleBoxEmpty_safdx")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_safdx")
 script = ExtResource("1_q8bxe")
+NameLabel = NodePath("VBoxContainer/NameLabel")
 PriceControl = NodePath("PriceControl")
-TextureRect = NodePath("TextureRect")
+TextureRect = NodePath("VBoxContainer/TextureRect")
 SfxPressed = ExtResource("2_lvdee")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_df8sb")
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_oh73x")
+text = "The Swamp"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_df8sb")
 expand_mode = 1
 
 [node name="PriceControl" parent="." instance=ExtResource("3_lvdee")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

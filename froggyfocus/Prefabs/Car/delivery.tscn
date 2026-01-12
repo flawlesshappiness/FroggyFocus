@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmvw2ergvsd6k"]
+
+[ext_resource type="PackedScene" uid="uid://bcw8n51uiyfmr" path="res://Assets/KenneyNL/Car/delivery.fbx" id="1_mswsn"]
+[ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="3_efdrd"]
+[ext_resource type="Texture2D" uid="uid://baik7rur1gbjs" path="res://Assets/KenneyNL/Car/Textures/colormap.png" id="4_nvt34"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xonv"]
+render_priority = 0
+shader = ExtResource("3_efdrd")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("4_nvt34")
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xd3u5"]
+size = Vector3(1.32397, 1.43695, 2.15247)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kistg"]
+size = Vector3(1.32397, 1.23508, 0.637268)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mswsn"]
+size = Vector3(1.32397, 0.619003, 0.432037)
+
+[node name="Delivery" type="Node3D"]
+
+[node name="delivery" parent="." instance=ExtResource("1_mswsn")]
+
+[node name="body" parent="delivery/delivery" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="door" parent="delivery/delivery" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="wheel-back-left" parent="delivery/delivery" index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="wheel-back-right" parent="delivery/delivery" index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="wheel-front-left" parent="delivery/delivery" index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="wheel-front-right" parent="delivery/delivery" index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_2xonv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.910666, -0.59742)
+shape = SubResource("BoxShape3D_xd3u5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.797033, 0.784184)
+shape = SubResource("BoxShape3D_kistg")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499535, 1.29281)
+shape = SubResource("BoxShape3D_mswsn")
+
+[editable path="delivery"]
