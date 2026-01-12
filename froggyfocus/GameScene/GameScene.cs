@@ -24,7 +24,9 @@ public partial class GameScene : Scene
 
     public List<FocusEvent> FocusEvents { get; private set; } = new();
 
-    private string current_focus_event_id;
+    private string CurrentFocusEventId => focus_event_ids.FirstOrDefault();
+
+    private List<string> focus_event_ids = new();
     private List<FocusHotSpotArea> hotspot_areas;
     private List<WorldBug> world_bugs;
 
@@ -69,19 +71,20 @@ public partial class GameScene : Scene
         }
     }
 
-    public void ClearFocusEventId()
+    public void ClearFocusEventId(string id)
     {
-        current_focus_event_id = string.Empty;
+        focus_event_ids.Remove(id);
     }
 
     public void SetFocusEventId(string id)
     {
-        current_focus_event_id = id;
+        focus_event_ids.Add(id);
     }
 
     public void StartFocusEvent()
     {
-        var focus_event = FocusEvents.FirstOrDefault(x => x.Id == current_focus_event_id) ?? FocusEvents.First();
+        var id = CurrentFocusEventId;
+        var focus_event = FocusEvents.FirstOrDefault(x => x.Id == id) ?? FocusEvents.First();
         focus_event.StartEvent();
     }
 
@@ -125,7 +128,8 @@ public partial class GameScene : Scene
 
     public bool HasFocusEvent()
     {
-        var focus_event = FocusEvents.FirstOrDefault(x => x.Id == current_focus_event_id);
+        var id = CurrentFocusEventId;
+        var focus_event = FocusEvents.FirstOrDefault(x => x.Id == id);
         return focus_event != null;
     }
 }

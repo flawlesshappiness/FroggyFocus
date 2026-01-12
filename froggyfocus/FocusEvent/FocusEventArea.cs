@@ -25,6 +25,6 @@ public partial class FocusEventArea : Area3D
     private void OnBodyExited(GodotObject bodt)
     {
         Player.Instance.MaxRarity = -1;
-        GameScene.Instance.ClearFocusEventId();
+        GameScene.Instance.ClearFocusEventId(Id);
     }
 }
