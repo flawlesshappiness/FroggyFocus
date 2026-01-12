@@ -9,5 +9,6 @@ UseTag = false
 RequirementTag = 0
 MinimumStars = 4
 Values = Array[int]([5, 10, 15, 20, 25])
-MoneyRewards = Array[int]([100, 200, 300, 400, 500])
+MoneyRewards = Array[int]([100, 200, 300, 400, 750])
+ItemRewards = null
 metadata/_custom_type_script = "uid://bvw1ud0pd0812"

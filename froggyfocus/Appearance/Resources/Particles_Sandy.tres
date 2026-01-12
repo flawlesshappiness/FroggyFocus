@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://hgmhq6mh1prk"]
+
+[ext_resource type="PackedScene" uid="uid://ckq1gij3u7v12" path="res://Appearance/Preview/particles_sandy_preview.tscn" id="1_b0u74"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_tm7ny"]
+
+[resource]
+script = ExtResource("2_tm7ny")
+Category = 3
+Type = 309
+DefaultPrimaryColor = 206
+DefaultSecondaryColor = 206
+HasSecondaryColor = false
+Prefab = ExtResource("1_b0u74")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

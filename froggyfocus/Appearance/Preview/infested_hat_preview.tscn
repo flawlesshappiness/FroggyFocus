@@ -4,10 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="1_c51vk"]
 
 [node name="InfestedHatPreview" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
-transform = Transform3D(-0.954459, 0, 0.298341, 0, 1, 0, -0.298341, 0, -0.954459, 0, 0, 0)
 script = ExtResource("1_7bjvu")
 OnlySecondaryMeshes = []
 Type = 13
 
 [node name="mushroom_bent" parent="." instance=ExtResource("1_c51vk")]
-transform = Transform3D(-0.20003, 0, 0.346393, 0, 0.4, 0, -0.346393, 0, -0.20003, 0, -0.263089, 0)
+transform = Transform3D(0.103561, 0, -0.386361, 0, 0.4, 0, 0.386361, 0, 0.103561, 0.117113, -0.263089, 0)
+
+[node name="mushroom_bent2" parent="." instance=ExtResource("1_c51vk")]
+transform = Transform3D(-0.161651, 0, 0.117766, 0, 0.2, 0, -0.117766, 0, -0.161651, 0.013893, -0.263089, 0.1127)
+
+[node name="mushroom_bent3" parent="." instance=ExtResource("1_c51vk")]
+transform = Transform3D(0.163502, 0, 0.25153, 0, 0.3, 0, -0.25153, 0, 0.163502, -0.0942738, -0.263089, -0.0570489)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq3agbekdhctm"]
+[gd_scene load_steps=10 format=3 uid="uid://dq3agbekdhctm"]
 
 [ext_resource type="Script" uid="uid://djpk8otvwke11" path="res://Views/ObjectiveView/ObjectiveView.cs" id="1_ierp1"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ip17i"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bvrt3lre4whxh" path="res://Prefabs/UI/Objective/objective_control.tscn" id="5_jv2vs"]
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="7_pauqc"]
 [ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="8_kgku2"]
+[ext_resource type="PackedScene" uid="uid://dtjh32wwairim" path="res://Prefabs/UI/UnlockPopup/unlock_popup.tscn" id="9_kgku2"]
 [ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="9_u8wu6"]
 
-[node name="ObjectiveView" type="Control" node_paths=PackedStringArray("ObjectiveControlTemplate", "CloseButton", "ScrollContainer", "AnimatedPanel", "AnimatedOverlay", "InputBlocker")]
+[node name="ObjectiveView" type="Control" node_paths=PackedStringArray("ObjectiveControlTemplate", "CloseButton", "ScrollContainer", "UnlockPopup", "AnimatedPanel", "AnimatedOverlay", "InputBlocker")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,6 +22,7 @@ script = ExtResource("1_ierp1")
 ObjectiveControlTemplate = NodePath("CenterContainer/Center/AnimatedPanel/UIScale/VBoxContainer/MarginContainer/MarginContainer/ScrollContainer/MarginContainer/VBoxContainer/ObjectiveControl")
 CloseButton = NodePath("CenterContainer/Center/AnimatedPanel/UIScale/VBoxContainer/HBoxContainer/BackButton")
 ScrollContainer = NodePath("CenterContainer/Center/AnimatedPanel/UIScale/VBoxContainer/MarginContainer/MarginContainer/ScrollContainer")
+UnlockPopup = NodePath("UnlockPopup")
 AnimatedPanel = NodePath("CenterContainer/Center/AnimatedPanel")
 AnimatedOverlay = NodePath("AnimatedOverlay")
 InputBlocker = NodePath("InputBlocker")
@@ -147,6 +149,9 @@ alignment = 1
 layout_mode = 2
 icon = ExtResource("9_u8wu6")
 LabelText = "Back"
+
+[node name="UnlockPopup" parent="." instance=ExtResource("9_kgku2")]
+layout_mode = 1
 
 [node name="InputBlocker" type="Control" parent="."]
 visible = false

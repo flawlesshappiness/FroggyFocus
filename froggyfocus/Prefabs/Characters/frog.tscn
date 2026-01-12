@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=72 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="31_a4mrg"]
 [ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="32_3l0s6"]
 [ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="33_a8hx6"]
+[ext_resource type="PackedScene" uid="uid://dtcsewnq52mof" path="res://Appearance/Attachments/particles_sandy.tscn" id="48_jmgr8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gm5nm"]
 material = ExtResource("22_mkma6")
@@ -498,7 +499,6 @@ Type = 20
 [node name="hat" type="MeshInstance3D" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted"]
 transform = Transform3D(0.04, 1.55535e-10, 6.078e-10, -6.26538e-10, 0.00789037, 0.0392141, 3.25849e-11, -0.0392141, 0.00789037, 5.83501e-12, -0.00305399, 0.00301353)
 mesh = SubResource("CylinderMesh_a8hx6")
-skeleton = NodePath("../../garbage")
 surface_material_override/0 = ExtResource("32_3l0s6")
 
 [node name="trash_paper" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted" instance=ExtResource("33_a8hx6")]
@@ -581,6 +581,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 4.218
 visible = false
 
 [node name="ParticlesStars" parent="frog/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("27_5mj6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 0, 0.0191329)
+visible = false
+
+[node name="ParticlesSandy" parent="frog/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("48_jmgr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 0, 0.0191329)
 visible = false
 

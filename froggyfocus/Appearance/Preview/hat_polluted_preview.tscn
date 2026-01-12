@@ -20,7 +20,6 @@ transform = Transform3D(50, 0, 0, 0, -13.9445, 48.0161, 0, -48.0161, -13.9445, 0
 [node name="hat" type="MeshInstance3D" parent="Scale"]
 transform = Transform3D(0.04, 1.55535e-10, 6.078e-10, -6.26538e-10, 0.00789037, 0.0392141, 3.25849e-11, -0.0392141, 0.00789037, 5.83501e-12, -0.00305399, 0.00301353)
 mesh = SubResource("CylinderMesh_gpw81")
-skeleton = NodePath("../../garbage")
 surface_material_override/0 = ExtResource("2_3heyv")
 
 [node name="trash_paper" parent="Scale" instance=ExtResource("3_hy8jf")]

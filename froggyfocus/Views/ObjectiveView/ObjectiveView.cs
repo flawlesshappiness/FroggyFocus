@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +17,9 @@ public partial class ObjectiveView : PanelView
     [Export]
     public ScrollContainer ScrollContainer;
 
+    [Export]
+    public UnlockPopup UnlockPopup;
+
     private bool animating;
     private List<ObjectiveControl> objective_controls = new();
 
@@ -29,6 +33,7 @@ public partial class ObjectiveView : PanelView
     {
         base._Ready();
         CloseButton.Pressed += CloseButton_Pressed;
+
         RegisterDebugActions();
     }
 
@@ -99,6 +104,7 @@ public partial class ObjectiveView : PanelView
         control.SetParent(ObjectiveControlTemplate.GetParent());
         control.SetInfo(info);
         control.Show();
+        control.OnItemUnlocked += ItemUnlocked;
         objective_controls.Add(control);
         return control;
     }
@@ -116,5 +122,20 @@ public partial class ObjectiveView : PanelView
     private void ScrollToBottom()
     {
         ScrollContainer.ScrollVertical = 9999;
+    }
+
+    private void ItemUnlocked(ItemType type)
+    {
+        animating = true;
+        this.StartCoroutine(Cr, "unlock");
+        IEnumerator Cr()
+        {
+            UnlockPopup.SetAppearanceItem(type);
+            AnimatedPanel.AnimateShrink();
+            yield return UnlockPopup.WaitForPopup();
+            yield return AnimatedPanel.AnimateMoveUp();
+            GrabFocusAfterOpen();
+            animating = false;
+        }
     }
 }

@@ -21,4 +21,7 @@ public partial class ObjectiveInfo : Resource
 
     [Export]
     public Array<int> MoneyRewards;
+
+    [Export]
+    public Array<ItemType> ItemRewards;
 }

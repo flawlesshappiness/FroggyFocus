@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 
 public static class Item
@@ -34,5 +35,11 @@ public static class Item
     {
         var data = GetOrCreateData(type);
         data.Owned = owned;
+    }
+
+    public static bool IsNoneType(ItemType type)
+    {
+        var none_types = new List<ItemType> { ItemType.Face_None, ItemType.Hat_None, ItemType.Particles_None };
+        return none_types.Contains(type);
     }
 }
