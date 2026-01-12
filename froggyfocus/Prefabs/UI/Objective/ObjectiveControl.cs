@@ -89,6 +89,8 @@ public partial class ObjectiveControl : Control
 
     private ItemType GetItemReward(int level)
     {
+        if (info.ItemRewards == null) return ItemType.Hat_None;
+        if (info.ItemRewards.Count == 0) return ItemType.Hat_None;
         return info.ItemRewards.ToList().GetClamped(level);
     }
 

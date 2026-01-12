@@ -1,6 +1,7 @@
-[gd_scene load_steps=91 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=92 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_3og0i"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_f4fi4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="2_qfnsp"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_qfos7"]
@@ -147,6 +148,21 @@ _data = {
 }
 point_count = 4
 
+[sub_resource type="Animation" id="Animation_ge0ns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Construction/Truck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-96.3065, -6.97895, -42.5895)]
+}
+
 [sub_resource type="Animation" id="Animation_rw3kn"]
 resource_name = "float"
 length = 8.0
@@ -165,25 +181,25 @@ tracks/0/keys = {
 "values": [Vector3(-96.3065, -6.97895, -42.5895), Vector3(-96.307, -7.699, -42.589), Vector3(-96.3065, -6.97895, -42.5895)]
 }
 
-[sub_resource type="Animation" id="Animation_ge0ns"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3og0i"]
+_data = {
+&"RESET": SubResource("Animation_ge0ns"),
+&"float": SubResource("Animation_rw3kn")
+}
+
+[sub_resource type="Animation" id="Animation_yq8nf"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../Construction/Truck:position")
+tracks/0/path = NodePath("../../Construction/TractorShovel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-96.3065, -6.97895, -42.5895)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3og0i"]
-_data = {
-&"RESET": SubResource("Animation_ge0ns"),
-&"float": SubResource("Animation_rw3kn")
+"values": [Vector3(-110.718, -1.81559, -24.9978)]
 }
 
 [sub_resource type="Animation" id="Animation_pg2ls"]
@@ -204,21 +220,6 @@ tracks/0/keys = {
 "values": [Vector3(-110.718, -1.81559, -24.9978), Vector3(-110.718, -2.426, -24.998), Vector3(-110.718, -1.81559, -24.9978)]
 }
 
-[sub_resource type="Animation" id="Animation_yq8nf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Construction/TractorShovel:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-110.718, -1.81559, -24.9978)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ckowb"]
 _data = {
 &"RESET": SubResource("Animation_yq8nf"),
@@ -231,7 +232,7 @@ DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 WorldBugParent = NodePath("World/WorldBugs")
 FocusEventParent = NodePath("World/FocusEvents")
-Weathers = [ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")]
+Weathers = Array[ExtResource("2_3og0i")]([ExtResource("3_firk2"), ExtResource("4_8bjkg"), ExtResource("5_uapja"), ExtResource("6_qabxi"), ExtResource("7_o0yll")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_f4fi4")

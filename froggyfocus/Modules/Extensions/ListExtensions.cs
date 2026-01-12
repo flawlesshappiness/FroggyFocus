@@ -19,6 +19,7 @@ public static class ListExtensions
 
     public static T GetClamped<T>(this List<T> list, int index)
     {
+        if (list.Count == 0) return default(T);
         return list[Mathf.Clamp(index, 0, list.Count - 1)];
     }
 
