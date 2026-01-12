@@ -106,5 +106,6 @@ public partial class StatsController : SingletonController
 
         var v_stats = GetOrCreateCharacterData(v_info.ResourcePath);
         v_stats.CountCaught++;
+        v_stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
     }
 }
