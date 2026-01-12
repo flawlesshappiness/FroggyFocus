@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://7h1bpslcmdju"]
+
+[ext_resource type="PackedScene" uid="uid://btj4ns6ljqmkn" path="res://Appearance/Preview/wooden_hat_preview.tscn" id="1_cmxx2"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_r1q5j"]
+
+[resource]
+script = ExtResource("2_r1q5j")
+Category = 0
+Type = 15
+DefaultPrimaryColor = 206
+DefaultSecondaryColor = 206
+HasSecondaryColor = false
+Prefab = ExtResource("1_cmxx2")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

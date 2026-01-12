@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://c4mrk6kwsj1a"]
+
+[ext_resource type="PackedScene" uid="uid://broq8stlaqy1g" path="res://Appearance/Preview/hat_crystallized_preview.tscn" id="1_ftri2"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_hcikf"]
+
+[resource]
+script = ExtResource("2_hcikf")
+Category = 0
+Type = 16
+DefaultPrimaryColor = 210
+DefaultSecondaryColor = 210
+HasSecondaryColor = false
+Prefab = ExtResource("1_ftri2")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn4xni30abo0w"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_jn6gl"]
+[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="2_behli"]
+[ext_resource type="PackedScene" uid="uid://hvkhlo4u24tl" path="res://Assets/FlawLizArt/Nature/Toon/algae_001.fbx" id="3_pe6gd"]
+
+[node name="FlowerHatPreview" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_jn6gl")
+OnlySecondaryMeshes = [NodePath("Scale/algae_001/algae"), NodePath("Scale/algae_002/algae"), NodePath("Scale/algae_003/algae")]
+Type = 14
+
+[node name="Scale" type="Node3D" parent="."]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+
+[node name="Lilypad_Flower" parent="Scale" instance=ExtResource("2_behli")]
+
+[node name="algae_001" parent="Scale" instance=ExtResource("3_pe6gd")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="algae_002" parent="Scale" instance=ExtResource("3_pe6gd")]
+transform = Transform3D(-0.162235, 0, -0.252349, 0, 0.3, 0, 0.252349, 0, -0.162235, 0, 0, 0)
+
+[node name="algae_003" parent="Scale" instance=ExtResource("3_pe6gd")]
+transform = Transform3D(-0.156249, 0, 0.256098, 0, 0.3, 0, -0.256098, 0, -0.156249, 0, 0, 0)
+
+[editable path="Scale/algae_001"]
+[editable path="Scale/algae_002"]
+[editable path="Scale/algae_003"]

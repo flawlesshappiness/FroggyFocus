@@ -1,44 +1,70 @@
 using Godot;
+using Godot.Collections;
+using System.Collections.Generic;
 
 public partial class MeshAppearanceAttachment : AppearanceAttachment
 {
     [Export]
-    public MeshInstance3D Mesh;
+    public Array<MeshInstance3D> OnlySecondaryMeshes;
 
-    private ShaderMaterial primary_material;
-    private ShaderMaterial secondary_material;
+    private List<MeshGroup> meshes = new();
+
+    private class MeshGroup
+    {
+        public MeshInstance3D Mesh { get; set; }
+        public ShaderMaterial PrimaryMaterial { get; set; }
+        public ShaderMaterial SecondaryMaterial { get; set; }
+    }
 
     public override void _Ready()
     {
         base._Ready();
-        InitializeMesh();
+        InitializeMeshes();
     }
 
-    private void InitializeMesh()
+    private void InitializeMeshes()
     {
-        if (Mesh == null) return;
-
-        var count = Mesh.GetSurfaceOverrideMaterialCount();
-
-        primary_material = Mesh.GetActiveMaterial(0).Duplicate() as ShaderMaterial;
-        Mesh.SetSurfaceOverrideMaterial(0, primary_material);
-
-        if (count > 1)
+        var ms = this.GetNodesInChildren<MeshInstance3D>();
+        foreach (var mesh in ms)
         {
-            secondary_material = Mesh.GetActiveMaterial(1).Duplicate() as ShaderMaterial;
-            Mesh.SetSurfaceOverrideMaterial(1, secondary_material);
+            var group = new MeshGroup();
+            meshes.Add(group);
+
+            var count = mesh.GetSurfaceOverrideMaterialCount();
+            var is_only_secondary = OnlySecondaryMeshes?.Contains(mesh) ?? false;
+
+            if (!is_only_secondary)
+            {
+                group.PrimaryMaterial = mesh.GetActiveMaterial(0).Duplicate() as ShaderMaterial;
+                mesh.SetSurfaceOverrideMaterial(0, group.PrimaryMaterial);
+            }
+            else
+            {
+                group.SecondaryMaterial = mesh.GetActiveMaterial(0).Duplicate() as ShaderMaterial;
+                mesh.SetSurfaceOverrideMaterial(0, group.SecondaryMaterial);
+            }
+
+            if (count > 1)
+            {
+                group.SecondaryMaterial = mesh.GetActiveMaterial(1).Duplicate() as ShaderMaterial;
+                mesh.SetSurfaceOverrideMaterial(1, group.SecondaryMaterial);
+            }
         }
     }
 
     public override void SetPrimaryColor(Color color)
     {
-        if (Mesh == null) return;
-        primary_material?.SetShaderParameter("albedo", color);
+        foreach (var mesh in meshes)
+        {
+            mesh.PrimaryMaterial?.SetShaderParameter("albedo", color);
+        }
     }
 
     public override void SetSecondaryColor(Color color)
     {
-        if (Mesh == null) return;
-        secondary_material?.SetShaderParameter("albedo", color);
+        foreach (var mesh in meshes)
+        {
+            mesh.SecondaryMaterial?.SetShaderParameter("albedo", color);
+        }
     }
 }

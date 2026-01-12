@@ -14,6 +14,14 @@ public enum ItemType
     Hat_Plumbob = 10,
     Hat_FishingCap = 11,
     Hat_Detective = 12,
+    Hat_Infested = 13,
+    Hat_Flower = 14,
+    Hat_Wooden = 15,
+    Hat_Crystalized = 16,
+    Hat_Moss = 17,
+    Hat_Weeded = 18,
+    Hat_Oily = 19,
+    Hat_Polluted = 20,
 
     // Faces
     Face_None = 100,
@@ -47,4 +55,5 @@ public enum ItemType
     Particles_Leaves = 306,
     Particles_Money = 307,
     Particles_Stars = 308,
+    Particles_Sandy = 309,
 }

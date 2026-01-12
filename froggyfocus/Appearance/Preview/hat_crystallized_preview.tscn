@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://broq8stlaqy1g"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_560mi"]
+[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="2_i6ab5"]
+
+[node name="HatCrystallizedPreview" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_560mi")
+OnlySecondaryMeshes = []
+Type = 16
+
+[node name="crystal_short" parent="." instance=ExtResource("2_i6ab5")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="crystal_short2" parent="." instance=ExtResource("2_i6ab5")]
+transform = Transform3D(0.384744, 0.109416, 0, -0.109416, 0.384744, 0, 0, 0, 0.4, 0.254277, -0.0182172, 0)
+
+[node name="crystal_short3" parent="." instance=ExtResource("2_i6ab5")]
+transform = Transform3D(0.365532, -0.162439, 0, 0.162439, 0.365532, 0, 0, 0, 0.4, -0.262666, -0.0182172, 0)

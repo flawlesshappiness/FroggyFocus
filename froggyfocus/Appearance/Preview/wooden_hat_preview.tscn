@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://btj4ns6ljqmkn"]
+
+[ext_resource type="Script" uid="uid://c4shgrg5t5hdg" path="res://Appearance/StandardMeshAppearanceAttachment.cs" id="1_j1dhr"]
+[ext_resource type="Material" uid="uid://db1u1f58aaaky" path="res://Materials/Branch_001_Texture.tres" id="2_w4hai"]
+[ext_resource type="Material" uid="uid://cj44kc16xji4y" path="res://Materials/Branch_003_Texture.tres" id="3_8pc2e"]
+[ext_resource type="Material" uid="uid://u2y5v44s2xc3" path="res://Materials/Branch_002_Texture.tres" id="4_8nhcp"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_8pc2e"]
+material = ExtResource("2_w4hai")
+
+[sub_resource type="QuadMesh" id="QuadMesh_wy7u0"]
+material = ExtResource("3_8pc2e")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0uhn2"]
+material = ExtResource("4_8nhcp")
+
+[node name="WoodenHatPreview" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_j1dhr")
+OnlySecondaryMeshes = []
+Type = 15
+
+[node name="Scale" type="Node3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(0.439002, -0.114855, 0.209966, 0.0984223, 0.48649, 0.0603344, -0.218152, -0.0116432, 0.449749, -0.0648907, 0.0364461, 0.0144713)
+mesh = SubResource("QuadMesh_8pc2e")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(0.47146, 0.166509, 0, -0.166509, 0.47146, 0, 0, 0, 0.5, 0.0782571, 0.0104379, 0.00449005)
+mesh = SubResource("QuadMesh_wy7u0")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Scale"]
+transform = Transform3D(-0.248555, 0, 0.433844, 0, 0.5, 0, -0.433844, 0, -0.248555, 0.0504973, 0.0613009, 0.0978364)
+mesh = SubResource("QuadMesh_0uhn2")
+skeleton = NodePath("../..")

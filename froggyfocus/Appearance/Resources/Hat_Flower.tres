@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://ouisvqr6wjfc"]
+
+[ext_resource type="PackedScene" uid="uid://bn4xni30abo0w" path="res://Appearance/Preview/flower_hat_preview.tscn" id="1_jimdv"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_b68y1"]
+
+[resource]
+script = ExtResource("2_b68y1")
+Category = 0
+Type = 14
+DefaultPrimaryColor = 205
+DefaultSecondaryColor = 201
+HasSecondaryColor = true
+Prefab = ExtResource("1_jimdv")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

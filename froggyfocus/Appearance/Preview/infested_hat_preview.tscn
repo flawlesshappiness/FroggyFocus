@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://s3d0f6d5svxu"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_7bjvu"]
+[ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="1_c51vk"]
+
+[node name="InfestedHatPreview" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+transform = Transform3D(-0.954459, 0, 0.298341, 0, 1, 0, -0.298341, 0, -0.954459, 0, 0, 0)
+script = ExtResource("1_7bjvu")
+OnlySecondaryMeshes = []
+Type = 13
+
+[node name="mushroom_bent" parent="." instance=ExtResource("1_c51vk")]
+transform = Transform3D(-0.20003, 0, 0.346393, 0, 0.4, 0, -0.346393, 0, -0.20003, 0, -0.263089, 0)
