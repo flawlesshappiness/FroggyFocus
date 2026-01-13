@@ -1,9 +1,12 @@
+using System;
 using System.Linq;
 
 public partial class ObjectiveController : ResourceController<ObjectiveCollection, ObjectiveInfo>
 {
     public static ObjectiveController Instance => Singleton.Get<ObjectiveController>();
     public override string Directory => "Objective";
+
+    public event Action OnObjectiveComplete;
 
     protected override void Initialize()
     {
@@ -120,9 +123,12 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
     {
         var target = result.FocusEvent.Target;
         var info = result.FocusEvent.Target.Info;
+        var any_complete = false;
 
         foreach (var objective in Collection.Resources)
         {
+            if (Objective.IsMaxLevel(objective)) continue;
+
             var valid_tag = !objective.UseTag || info.Tags.Any(x => x == objective.RequirementTag);
             var valid_rarity = target.CharacterData.Stars >= objective.MinimumStars;
             var valid = valid_tag && valid_rarity;
@@ -130,8 +136,26 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
             {
                 Objective.AddValue(objective, 1);
             }
+
+            any_complete = any_complete || Objective.IsMaxValue(objective);
+        }
+
+        if (any_complete)
+        {
+            OnObjectiveComplete?.Invoke();
         }
 
         Data.Game.Save();
+    }
+
+    public bool IsAnyObjectiveComplete()
+    {
+        foreach (var objective in Collection.Resources)
+        {
+            if (Objective.IsMaxLevel(objective)) continue;
+            if (Objective.IsMaxValue(objective)) return true;
+        }
+
+        return false;
     }
 }

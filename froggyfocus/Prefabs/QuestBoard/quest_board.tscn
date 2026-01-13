@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://jnh2kdwd3acg"]
+[gd_scene load_steps=10 format=3 uid="uid://jnh2kdwd3acg"]
 
 [ext_resource type="PackedScene" uid="uid://b0prnatdq234e" path="res://Assets/FlawLizArt/Furniture/quest_board.fbx" id="1_euyx5"]
 [ext_resource type="Script" uid="uid://c4rxnr7vq8jd7" path="res://Prefabs/QuestBoard/QuestBoard.cs" id="1_njkut"]
+[ext_resource type="PackedScene" uid="uid://dn2p8y4s4fbam" path="res://Assets/FlawLizArt/Other/ExclamationMark.fbx" id="3_rgob0"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="4_2jisf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_euyx5"]
 size = Vector3(4.3623, 3.35339, 1)
@@ -9,10 +11,50 @@ size = Vector3(4.3623, 3.35339, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_njkut"]
 size = Vector3(4.30957, 3.2356, 0.24707)
 
-[node name="QuestBoard" type="Area3D"]
+[sub_resource type="Animation" id="Animation_of0x8"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rgob0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38liw"]
+_data = {
+&"RESET": SubResource("Animation_rgob0"),
+&"idle": SubResource("Animation_of0x8")
+}
+
+[node name="QuestBoard" type="Area3D" node_paths=PackedStringArray("Exclamation")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_njkut")
+Exclamation = NodePath("Exclamation/Anim/ExclamationMark")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60443, 0)
@@ -25,3 +67,17 @@ shape = SubResource("BoxShape3D_euyx5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60159, 0)
 shape = SubResource("BoxShape3D_njkut")
+
+[node name="Exclamation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.86108, 0)
+
+[node name="Anim" type="Node3D" parent="Exclamation"]
+
+[node name="ExclamationMark" parent="Exclamation/Anim" instance=ExtResource("3_rgob0")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Exclamation"]
+libraries = {
+&"": SubResource("AnimationLibrary_38liw")
+}
+script = ExtResource("4_2jisf")
+Animation = "idle"
