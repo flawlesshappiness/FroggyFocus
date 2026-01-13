@@ -70,10 +70,10 @@ data = PackedVector3Array(-0.0246, -0.0076, -0.0211, -0.0241, -0.0111, -0.0086, 
 size = Vector3(10.1208, 1, 4.77539)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_54h6h"]
-size = Vector3(14.533, 9.49023, 40.2524)
+size = Vector3(14.533, 6.87781, 40.2524)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lljyu"]
-size = Vector3(34.8365, 9.49023, 48.422)
+size = Vector3(34.8365, 5.61059, 48.422)
 
 [sub_resource type="Curve3D" id="Curve3D_u3jh2"]
 _data = {
@@ -431,15 +431,15 @@ script = ExtResource("25_54h6h")
 Id = "sand"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/Beach/PlayerGround"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86781, -1.74572)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.561598, -1.74572)
 shape = SubResource("BoxShape3D_54h6h")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="World/Beach/PlayerGround"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7284, 1.86781, 1.31406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7284, 0.527235, 1.31406)
 shape = SubResource("BoxShape3D_lljyu")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="World/Beach/PlayerGround"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4839, 1.86781, 1.31406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4839, 1.26857, 1.31406)
 shape = SubResource("BoxShape3D_lljyu")
 
 [node name="PathWaterSFX_Ocean" type="Path3D" parent="World/Beach"]
@@ -449,7 +449,7 @@ curve = SubResource("Curve3D_u3jh2")
 transform = Transform3D(1.69974, -0.572883, -0.884702, 0.638779, 1.89525, 0, 0.838365, -0.282565, 1.79368, -27.7365, 1.65756, 121.813)
 
 [node name="SummerChair" parent="World/Beach" instance=ExtResource("26_jvqbs")]
-transform = Transform3D(2.19032, -0.931779, -3.2147, -0.239213, 3.78847, -1.26107, 3.33845, 0.882788, 2.01877, -25.2723, 2.57443, 123.977)
+transform = Transform3D(1.45991, -1.09287, -3.5601, -0.239213, 3.78847, -1.26107, 3.71637, 0.673168, 1.31735, -24.8217, 2.45709, 125.066)
 
 [node name="FrogManagerNPC" parent="World/Beach" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("27_68c8r")]
 transform = Transform3D(0.313609, -0.256934, -1.44417, 1.86265e-09, 1.47681, -0.262741, 1.46685, 0.0549318, 0.30876, -25.2376, 2.65458, 121.013)

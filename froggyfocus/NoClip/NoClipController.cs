@@ -46,6 +46,7 @@ public partial class NoClipController : SingletonController
         no_clip_player.Enabled = false;
         Player.Instance.GlobalPosition = no_clip_player.GlobalPosition;
         Player.Instance.SetCameraTarget();
+        Player.Instance.ThirdPersonCamera.SnapToPosition();
 
         Player.SetAllLocks(nameof(NoClipController), false);
     }

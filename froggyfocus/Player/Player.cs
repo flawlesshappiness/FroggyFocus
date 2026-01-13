@@ -265,7 +265,6 @@ public partial class Player : TopDownController
         var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), respawn_position);
         GlobalPosition = nav_position;
         ThirdPersonCamera.SnapToPosition();
-        //CameraController.Instance.TeleportCameraToTarget();
     }
 
     private void PlayDustStreamPS(float duration)

@@ -23,6 +23,12 @@ public partial class RespawnArea : Area3D
         BodyEntered += OnBodyEntered;
     }
 
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        CheckPlayerOutOfBounds();
+    }
+
     private void OnBodyEntered(GodotObject go)
     {
         RespawnPlayer();
@@ -45,6 +51,24 @@ public partial class RespawnArea : Area3D
             Player.Instance.Respawn();
             respawning = false;
         }
+    }
+
+    private void RespawnPlayerOutOfBounds()
+    {
+        if (respawning) return;
+        respawning = true;
+
+        TransitionView.Instance.StartTransition(new TransitionSettings
+        {
+            Type = TransitionType.Color,
+            Color = Colors.Black,
+            Duration = 0.5f,
+            OnTransition = () =>
+            {
+                Player.Instance.Respawn();
+                respawning = false;
+            }
+        });
     }
 
     private void SetCamera(Camera3D other)
@@ -70,5 +94,15 @@ public partial class RespawnArea : Area3D
         ps.GlobalPosition = Player.Instance.GlobalPosition;
         ps.Position = ps.Position.Set(y: 0);
         ps.Play(destroy: true);
+    }
+
+    private void CheckPlayerOutOfBounds()
+    {
+        if (Player.Instance == null) return;
+        if (respawning) return;
+        if (Player.Instance.GlobalPosition.Y < GlobalPosition.Y - 100)
+        {
+            RespawnPlayerOutOfBounds();
+        }
     }
 }
