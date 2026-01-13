@@ -5,9 +5,9 @@
 
 [node name="Seaweed" type="Node3D"]
 script = ExtResource("1_cmcfh")
-CountRange = Vector2i(2, 4)
-SizeRange = Vector2(1.5, 2)
+CountRange = Vector2i(1, 3)
+SizeRange = Vector2(1, 1.5)
 DurationRange = Vector2(8, 10)
 SeaweedPatchPrefab = ExtResource("2_mcr7s")
 Type = 9
-Cooldown = Vector2(5, 0)
+Cooldown = Vector2(10, 5)

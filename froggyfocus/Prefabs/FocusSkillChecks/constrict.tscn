@@ -5,7 +5,7 @@
 
 [node name="Constrict" type="Node3D" node_paths=PackedStringArray("Algae")]
 script = ExtResource("1_6h44y")
-CountRange = Vector2i(5, 15)
+CountRange = Vector2i(2, 10)
 Algae = NodePath("SkillCheck_ConstrictAlgae")
 Type = 4
 Cooldown = Vector2(10, 5)

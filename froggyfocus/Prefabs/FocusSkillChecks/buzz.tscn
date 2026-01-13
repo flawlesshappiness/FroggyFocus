@@ -149,7 +149,7 @@ AnimationPlayer_ChargeEffect = NodePath("Charge/AnimationPlayer")
 SfxWarn = NodePath("SfxWarn")
 SfxBuzz = NodePath("SfxAttack")
 Type = 20
-Cooldown = Vector2(10, 5)
+Cooldown = Vector2(15, 10)
 MinimumRarity = 2
 
 [node name="SfxWarn" type="AudioStreamPlayer" parent="."]

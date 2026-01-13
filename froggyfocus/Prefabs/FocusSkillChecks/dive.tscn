@@ -48,7 +48,7 @@ orientation = 1
 
 [node name="Dive" type="Node3D" node_paths=PackedStringArray("SfxSplash", "PsRipple")]
 script = ExtResource("1_67kc7")
-DistanceRange = Vector2(0.5, 2)
+DistanceRange = Vector2(0.5, 1.5)
 SfxSplash = NodePath("SfxSplash")
 PsRipple = NodePath("PsRipples")
 SplashParticlePrefab = ExtResource("2_3xtrx")
