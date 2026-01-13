@@ -96,6 +96,10 @@ public partial class CrystalDoorway : Area3D, IInteractable
         {
             DialogueController.Instance.StartDialogue("##CRYSTAL_CONTAINER_COMPLETED##");
         }
+        else
+        {
+            DialogueController.Instance.StartDialogue("##CRYSTAL_CONTAINER_MORE##");
+        }
     }
 
     private void ContainerNotCompleted()

@@ -167,6 +167,10 @@ public partial class EldritchEntrance : Area3D
         {
             Awaken();
         }
+        else
+        {
+            DialogueController.Instance.StartDialogue("##ELDRITCH_FLOWER_MORE##");
+        }
     }
 
     private void Awaken()

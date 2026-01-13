@@ -170,5 +170,9 @@ public partial class TvTravel : Area3D, IInteractable
             SfxComplete.Play();
             DialogueController.Instance.StartDialogue("##GLITCH_TV_COMPLETE##");
         }
+        else
+        {
+            DialogueController.Instance.StartDialogue("##GLITCH_TV_MORE##");
+        }
     }
 }
