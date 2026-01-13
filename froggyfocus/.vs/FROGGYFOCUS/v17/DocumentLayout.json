@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\objective\\objectivecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:objective\\objectivecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusevent\\focustarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusevent\\focustarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\questboard\\questboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\questboard\\questboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusevent\\focusevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusevent\\focusevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\views\\focusoutroview\\focusoutroview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:views\\focusoutroview\\focusoutroview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,27 +35,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ObjectiveController.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Objective\\ObjectiveController.cs",
-              "RelativeDocumentMoniker": "Objective\\ObjectiveController.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Objective\\ObjectiveController.cs",
-              "RelativeToolTip": "Objective\\ObjectiveController.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAIwHkAAABGAAAAAAAAAA==",
+              "Title": "FocusTarget.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusEvent\\FocusTarget.cs",
+              "RelativeDocumentMoniker": "FocusEvent\\FocusTarget.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusEvent\\FocusTarget.cs",
+              "RelativeToolTip": "FocusEvent\\FocusTarget.cs",
+              "ViewState": "AgIAAN8AAAAAAAAAAAAAAPsAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T05:56:48.274Z",
+              "WhenOpened": "2026-01-13T07:17:32.113Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "QuestBoard.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\QuestBoard\\QuestBoard.cs",
-              "RelativeDocumentMoniker": "Prefabs\\QuestBoard\\QuestBoard.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\QuestBoard\\QuestBoard.cs",
-              "RelativeToolTip": "Prefabs\\QuestBoard\\QuestBoard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Title": "FocusEvent.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusEvent\\FocusEvent.cs",
+              "RelativeDocumentMoniker": "FocusEvent\\FocusEvent.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusEvent\\FocusEvent.cs",
+              "RelativeToolTip": "FocusEvent\\FocusEvent.cs",
+              "ViewState": "AgIAACMBAAAAAAAAAAAlwEIBAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-13T05:56:26.758Z",
+              "WhenOpened": "2026-01-13T06:53:11.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FocusOutroView.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\FocusOutroView\\FocusOutroView.cs",
+              "RelativeDocumentMoniker": "Views\\FocusOutroView\\FocusOutroView.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Views\\FocusOutroView\\FocusOutroView.cs",
+              "RelativeToolTip": "Views\\FocusOutroView\\FocusOutroView.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAD4v58AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-13T06:39:23.388Z",
               "EditorCaption": ""
             },
             {
@@ -60,7 +77,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ItemType.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Item\\ItemType.cs",
               "RelativeDocumentMoniker": "Item\\ItemType.cs",
@@ -73,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Player\\Player.cs",

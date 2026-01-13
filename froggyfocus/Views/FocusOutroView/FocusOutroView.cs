@@ -39,6 +39,8 @@ public partial class FocusOutroView : View
     private FocusCharacterInfo current_info;
     private FocusCharacter current_character;
 
+    private bool IsFastCutscene => Data.Options.CutsceneTypeIndex == 1;
+
     public override void _Ready()
     {
         base._Ready();
@@ -55,27 +57,20 @@ public partial class FocusOutroView : View
         Frog.LoadAppearance();
         Show();
         SubViewport.AudioListenerEnable3D = true;
-        Frog.SetHandsBack();
-        yield return AnimationPlayer_Frog.PlayAndWaitForAnimation("eat_bug");
 
-        if (!success)
-        {
-            current_character.Hide();
-            PsDust.Emitting = true;
-            SfxSwish.Play();
-            yield return new WaitForSeconds(0.25f);
-        }
-
-        yield return Frog.AnimateEatTarget(current_character);
-        yield return new WaitForSeconds(0.25f);
+        yield return WaitForCutscene(success);
 
         if (success)
         {
             yield return WaitForInventory();
         }
 
-        PlayChord(success);
-        yield return new WaitForSeconds(0.25f);
+        if (!IsFastCutscene)
+        {
+            PlayChord(success);
+            yield return new WaitForSeconds(0.25f);
+        }
+
         SubViewport.AudioListenerEnable3D = false;
     }
 
@@ -138,5 +133,53 @@ public partial class FocusOutroView : View
         current_character.Rotation = Vector3.Zero;
         current_character.Scale = Vector3.One * 0.3f;
         current_character.Initialize(current_info);
+    }
+
+    private IEnumerator WaitForCutscene(bool success)
+    {
+        if (IsFastCutscene)
+        {
+            yield return FastCutscene(success);
+        }
+        else
+        {
+            yield return HandFocusCutscene(success);
+        }
+    }
+
+    private IEnumerator HandFocusCutscene(bool success)
+    {
+        Frog.SetHandsBack();
+        yield return AnimationPlayer_Frog.PlayAndWaitForAnimation("hand_focus");
+
+        if (!success)
+        {
+            current_character.Hide();
+            PsDust.Emitting = true;
+            SfxSwish.Play();
+            yield return new WaitForSeconds(0.25f);
+        }
+
+        yield return Frog.AnimateEatTarget(current_character);
+        yield return new WaitForSeconds(0.25f);
+    }
+
+    private IEnumerator FastCutscene(bool success)
+    {
+        yield return AnimationPlayer_Frog.PlayAndWaitForAnimation("fast");
+        yield return new WaitForSeconds(0.5f);
+
+        if (!success)
+        {
+            current_character.Hide();
+            PsDust.Emitting = true;
+            SfxSwish.Play();
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        if (success)
+        {
+            yield return Frog.AnimateEatTarget(current_character);
+        }
     }
 }

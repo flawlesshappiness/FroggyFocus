@@ -32,7 +32,9 @@ public partial class FocusIntroView : View
     {
         Frog.LoadAppearance();
         Show();
-        yield return AnimationPlayer.PlayAndWaitForAnimation("show2");
+
+        var anim = GetShowAnimation();
+        yield return AnimationPlayer.PlayAndWaitForAnimation(anim);
     }
 
     public IEnumerator AnimateHide()
@@ -74,5 +76,15 @@ public partial class FocusIntroView : View
     public void SetDifficultyStars(int count)
     {
         DifficultyStars.SetStars(count);
+    }
+
+    private string GetShowAnimation()
+    {
+        if (Data.Options.CutsceneTypeIndex == 1) // Fast
+        {
+            return "show_fast";
+        }
+
+        return "show_normal";
     }
 }

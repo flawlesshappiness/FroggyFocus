@@ -131,6 +131,10 @@ public partial class FrogCharacter : Character
         Animation.Connect(walking, jump_charge, param_charging.WhenTrue());
 
         Animation.Connect(idle, mouth_open, param_mouth_open.WhenTrue());
+        Animation.Connect(right_hand_forward_out, mouth_open, param_mouth_open.WhenTrue());
+        Animation.Connect(left_hand_forward_out, mouth_open, param_mouth_open.WhenTrue());
+        Animation.Connect(right_hand_right_out, mouth_open, param_mouth_open.WhenTrue());
+        Animation.Connect(left_hand_left_out, mouth_open, param_mouth_open.WhenTrue());
         Animation.Connect(mouth_open, mouth_close, param_mouth_open.WhenFalse());
         Animation.Connect(mouth_open, mouth_close, param_mouth_open.WhenFalse());
         Animation.Connect(mouth_close, idle);

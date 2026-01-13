@@ -16,6 +16,9 @@ public partial class FocusTarget : Node3D
     [Export]
     public AnimationPlayer AnimationPlayer_Character;
 
+    [Export]
+    public PackedScene SmokeDisappearEffect;
+
     public FocusCharacterInfo Info { get; private set; }
     public FocusCharacter Character { get; private set; }
     public InventoryCharacterData CharacterData { get; private set; }
@@ -43,7 +46,7 @@ public partial class FocusTarget : Node3D
         UpdateDifficulty();
         UpdateMoveSpeed();
 
-        SetGlowVisible(true);
+        ResetCharacterAnimation();
     }
 
     private void SetCharacter(FocusCharacterInfo info)
@@ -227,15 +230,6 @@ public partial class FocusTarget : Node3D
         move_curve.AddPoint(p2);
     }
 
-    public void SetGlowVisible(bool visible)
-    {
-        if (glow_visible == visible) return;
-        glow_visible = visible;
-
-        var anim = visible ? "show" : "hide";
-        AnimationPlayer_Glow.Play(anim);
-    }
-
     public void ResetCharacterAnimation()
     {
         AnimationPlayer_Character.Play("RESET");
@@ -249,5 +243,14 @@ public partial class FocusTarget : Node3D
     public IEnumerator Animate_DigUp()
     {
         yield return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_up");
+    }
+
+    public IEnumerator Animate_Disappear()
+    {
+        var ps = ParticleEffectGroup.Instantiate(SmokeDisappearEffect, GetParentNode3D());
+        ps.GlobalPosition = GlobalPosition;
+        ps.Play();
+
+        yield return AnimationPlayer_Character.PlayAndWaitForAnimation("disappear");
     }
 }

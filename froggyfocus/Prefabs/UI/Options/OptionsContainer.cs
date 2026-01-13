@@ -19,8 +19,12 @@ public partial class OptionsContainer : ControlScript
     [Export]
     public OptionButton GamepadDisplayOptionButton;
 
+    [Export]
+    public OptionButton CutsceneTypeOptionButton;
+
     public static Action OnUIScaleChanged;
     public static Action<int> OnGamepadDisplayChanged;
+    public static Action<int> OnCutsceneTypeChanged;
     public event Action BackPressed;
 
     private bool showing;
@@ -33,6 +37,7 @@ public partial class OptionsContainer : ControlScript
         CameraSensitivtySlider.ValueChanged += CameraSensitivity_ValueChanged;
         UIScaleOptions.IndexChanged += UIScaleOptions_IndexChanged;
         GamepadDisplayOptionButton.ItemSelected += GamepadDisplayOptionButton_ItemSelected;
+        CutsceneTypeOptionButton.ItemSelected += CutsceneTypeOptionButton_ItemSelected;
 
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
     }
@@ -47,6 +52,7 @@ public partial class OptionsContainer : ControlScript
         CameraSensitivtySlider.Value = Data.Options.CameraSensitivity;
         UIScaleOptions.SetIndex(Data.Options.UIScaleIndex);
         GamepadDisplayOptionButton.Selected = Data.Options.GamepadDisplayIndex;
+        CutsceneTypeOptionButton.Selected = Data.Options.CutsceneTypeIndex;
 
         showing = false;
     }
@@ -83,5 +89,12 @@ public partial class OptionsContainer : ControlScript
         var index = (int)l_index;
         Data.Options.GamepadDisplayIndex = index;
         OnGamepadDisplayChanged?.Invoke(index);
+    }
+
+    private void CutsceneTypeOptionButton_ItemSelected(long l_index)
+    {
+        var index = (int)l_index;
+        Data.Options.CutsceneTypeIndex = index;
+        OnCutsceneTypeChanged?.Invoke(index);
     }
 }

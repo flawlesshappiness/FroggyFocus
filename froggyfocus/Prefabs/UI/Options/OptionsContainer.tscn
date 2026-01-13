@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqja0yfvxqyl" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_rt.png" id="17_67nja"]
 [ext_resource type="Texture2D" uid="uid://x5iqlsw4jt5r" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_trigger_r2.png" id="18_nwtii"]
 
-[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton")]
+[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton", "CutsceneTypeOptionButton")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,12 +40,13 @@ EnvironmentSlider = NodePath("Options/TabContainer/Audio/VBoxContainer/Environme
 CameraSensitivtySlider = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer/HBoxContainer2/CameraSensitivitySlider")
 UIScaleOptions = NodePath("Options/TabContainer/Video/HBoxContainer/UIScale/UIScaleOptions")
 GamepadDisplayOptionButton = NodePath("Options/TabContainer/Gamepad/VBoxContainer/HBoxContainer/GamepadDisplayOptionButton")
+CutsceneTypeOptionButton = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer2/CutsceneTypeOptionButton")
 
 [node name="Options" parent="." instance=ExtResource("3_t6453")]
 layout_mode = 2
 
 [node name="TabContainer" parent="Options" index="0"]
-current_tab = 3
+current_tab = 4
 
 [node name="Audio" parent="Options/TabContainer" index="1"]
 visible = false
@@ -75,6 +76,7 @@ layout_mode = 2
 Options = Array[String](["80%", "90%", "100%", "110%", "120%"])
 
 [node name="Gamepad" type="MarginContainer" parent="Options/TabContainer" index="4"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -221,7 +223,6 @@ XboxTexture = ExtResource("17_67nja")
 PlaystationTexture = ExtResource("18_nwtii")
 
 [node name="Gameplay" type="MarginContainer" parent="Options/TabContainer" index="5"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -256,5 +257,24 @@ min_value = 0.05
 max_value = 2.0
 step = 0.01
 value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/TabContainer/Gameplay/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cutscenes"
+
+[node name="CutsceneTypeOptionButton" type="OptionButton" parent="Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Fast"
+popup/item_1/id = 1
 
 [editable path="Options"]

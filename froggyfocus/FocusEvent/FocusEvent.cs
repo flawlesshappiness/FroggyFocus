@@ -158,11 +158,14 @@ public partial class FocusEvent : Node3D
             // Disable cursor
             Cursor.Stop();
 
-            yield return new WaitForSeconds(1.0f);
-
-            // Eat target
-            FocusOutroView.Instance.CreateTarget(Target);
-            yield return FocusOutroView.Instance.EatBugSequence(completed);
+            if (completed)
+            {
+                yield return WaitForCatchTarget();
+            }
+            else
+            {
+                yield return WaitForLoseTarget();
+            }
 
             // Camera target player
             Player.Instance.SetCameraTarget();
@@ -240,7 +243,11 @@ public partial class FocusEvent : Node3D
 
     private IEnumerator WaitForRiff()
     {
-        if (!MusicController.Instance.IsMusicPlaying())
+        if (Data.Options.CutsceneTypeIndex == 1) // Fast
+        {
+            yield return new WaitForSeconds(0.25f);
+        }
+        else if (!MusicController.Instance.IsMusicPlaying())
         {
             MusicController.Instance.MuteLock.AddLock(nameof(FocusIntroView));
             FocusIntroView.Instance.PlayRiff();
@@ -303,5 +310,17 @@ public partial class FocusEvent : Node3D
                 player.Character.StartFacingDirection(end.DirectionTo(Target.GlobalPosition));
             });
         }
+    }
+
+    private IEnumerator WaitForCatchTarget()
+    {
+        yield return Frog.AnimateEatTarget(Target.Character);
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    private IEnumerator WaitForLoseTarget()
+    {
+        yield return Target.Animate_Disappear();
+        yield return new WaitForSeconds(0.5f);
     }
 }
