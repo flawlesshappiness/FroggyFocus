@@ -1,6 +1,10 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://cjoj1uvuy80p4"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=7 format=3 uid="uid://cjoj1uvuy80p4"]
 
-[ext_resource type="Resource" uid="uid://bi27kk1oi4nm4" path="res://FocusCharacter/Resources/ScorpionFly.tres" id="6_ocvwc"]
+[ext_resource type="Resource" uid="uid://cfk0ktgcciegi" path="res://FocusCharacter/Resources/Maggot.tres" id="1_lsc4i"]
+[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm.tres" id="2_c7cih"]
+[ext_resource type="Resource" uid="uid://dk3orexdc33xx" path="res://FocusCharacter/Resources/Shrimp.tres" id="3_0u6af"]
+[ext_resource type="Resource" uid="uid://dhaapoqb7w8s4" path="res://FocusCharacter/Resources/Seahorse.tres" id="4_3im6y"]
+[ext_resource type="Resource" uid="uid://dv4rlu765mpyd" path="res://FocusCharacter/Resources/Bloodworm.tres" id="5_qj78d"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="7_afjku"]
 
 [resource]
@@ -9,7 +13,7 @@ Id = "turtle"
 Name = "Factory Turtle"
 RequestPreviewHidden = false
 HasMoneyReward = true
-PossibleRequests = Array[Object]([ExtResource("6_ocvwc")])
+PossibleRequests = Array[Object]([ExtResource("1_lsc4i"), ExtResource("2_c7cih"), ExtResource("3_0u6af"), ExtResource("4_3im6y"), ExtResource("5_qj78d")])
 CountRange = Vector2i(2, 3)
 ClaimCountToUnlock = 3
 HasItemUnlock = true

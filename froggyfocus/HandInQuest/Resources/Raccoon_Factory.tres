@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://2yp6j8advpwu"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=7 format=3 uid="uid://2yp6j8advpwu"]
 
 [ext_resource type="Resource" uid="uid://bfoqlq1ax6u82" path="res://FocusCharacter/Resources/Cockroach.tres" id="2_pat33"]
 [ext_resource type="Resource" uid="uid://byqr557n1o5br" path="res://FocusCharacter/Resources/Lanternfly.tres" id="3_7fs1f"]
+[ext_resource type="Resource" uid="uid://f1g3j3g1vkbl" path="res://FocusCharacter/Resources/CommonFly.tres" id="4_ufnad"]
 [ext_resource type="Resource" uid="uid://b6qp4y2ey8oqk" path="res://FocusCharacter/Resources/TigerBeetle.tres" id="5_6n8rl"]
+[ext_resource type="Resource" uid="uid://cfk0ktgcciegi" path="res://FocusCharacter/Resources/Maggot.tres" id="5_ky848"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="7_17h4e"]
 
 [resource]
@@ -11,7 +13,7 @@ Id = "raccoon"
 Name = "Factory Racoon"
 RequestPreviewHidden = false
 HasMoneyReward = true
-PossibleRequests = Array[Object]([ExtResource("2_pat33"), ExtResource("5_6n8rl"), ExtResource("3_7fs1f")])
+PossibleRequests = Array[Object]([ExtResource("2_pat33"), ExtResource("5_6n8rl"), ExtResource("3_7fs1f"), ExtResource("4_ufnad"), ExtResource("5_ky848")])
 CountRange = Vector2i(2, 3)
 ClaimCountToUnlock = 3
 HasItemUnlock = true

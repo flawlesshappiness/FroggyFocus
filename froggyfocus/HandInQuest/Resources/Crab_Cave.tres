@@ -1,9 +1,19 @@
-[gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://b3hhun7nmjp8p"]
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=15 format=3 uid="uid://b3hhun7nmjp8p"]
 
-[ext_resource type="Resource" uid="uid://dk3orexdc33xx" path="res://FocusCharacter/Resources/Shrimp.tres" id="1_ry54i"]
-[ext_resource type="Resource" uid="uid://b6dnkd36tuxjy" path="res://FocusCharacter/Resources/Sandfly.tres" id="2_dj5qt"]
+[ext_resource type="Resource" uid="uid://boxkpaov1nsvm" path="res://FocusCharacter/Resources/CaveCricket_Crystal.tres" id="1_4k03j"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandInQuest/HandInInfo.cs" id="2_ry54i"]
-[ext_resource type="Resource" uid="uid://bq42s5l1lfwvq" path="res://FocusCharacter/Resources/Sandflea.tres" id="3_dj5qt"]
+[ext_resource type="Resource" uid="uid://dku4m8pbirgxs" path="res://FocusCharacter/Resources/CommonFly_Garbage.tres" id="2_vouhi"]
+[ext_resource type="Resource" uid="uid://c4oy02wvwofiy" path="res://FocusCharacter/Resources/GiantWaterBug_Garbage.tres" id="3_n86qr"]
+[ext_resource type="Resource" uid="uid://dgoo1uaf3kmwn" path="res://FocusCharacter/Resources/HorseFly_Oil.tres" id="4_ioxwa"]
+[ext_resource type="Resource" uid="uid://cvxeug6l1rgvk" path="res://FocusCharacter/Resources/HorseFly_Seaweed.tres" id="5_qshqw"]
+[ext_resource type="Resource" uid="uid://dwq60jhimefeo" path="res://FocusCharacter/Resources/Lanternfly_Garbage.tres" id="6_00i5g"]
+[ext_resource type="Resource" uid="uid://buq8htybs04o" path="res://FocusCharacter/Resources/Lanternfly_Seaweed.tres" id="7_phlp4"]
+[ext_resource type="Resource" uid="uid://c14c4axt0ra6" path="res://FocusCharacter/Resources/Mosquito_Wooden.tres" id="8_0ol4w"]
+[ext_resource type="Resource" uid="uid://dd5h5376rnp4" path="res://FocusCharacter/Resources/Mosquito_Mushroom.tres" id="9_ycjh6"]
+[ext_resource type="Resource" uid="uid://dfn68pry7clu7" path="res://FocusCharacter/Resources/ScorpionFly_Oil.tres" id="10_rbmur"]
+[ext_resource type="Resource" uid="uid://k0kvfyx68fnd" path="res://FocusCharacter/Resources/TigerBeetle_Seaweed.tres" id="11_4kbyt"]
+[ext_resource type="Resource" uid="uid://ddpbvp5jf57dp" path="res://FocusCharacter/Resources/Waterstrider_Flower.tres" id="12_mrqm0"]
+[ext_resource type="Resource" uid="uid://cx66qsueld33v" path="res://FocusCharacter/Resources/Waterstrider_Wooden.tres" id="13_ct5gp"]
 
 [resource]
 script = ExtResource("2_ry54i")
@@ -11,8 +21,8 @@ Id = "crab"
 Name = "Beach Crab"
 RequestPreviewHidden = false
 HasMoneyReward = true
-PossibleRequests = Array[Object]([ExtResource("1_ry54i"), ExtResource("2_dj5qt"), ExtResource("3_dj5qt")])
-CountRange = Vector2i(2, 3)
+PossibleRequests = Array[Object]([ExtResource("1_4k03j"), ExtResource("2_vouhi"), ExtResource("3_n86qr"), ExtResource("4_ioxwa"), ExtResource("5_qshqw"), ExtResource("6_00i5g"), ExtResource("7_phlp4"), ExtResource("8_0ol4w"), ExtResource("9_ycjh6"), ExtResource("10_rbmur"), ExtResource("11_4kbyt"), ExtResource("12_mrqm0"), ExtResource("13_ct5gp")])
+CountRange = Vector2i(1, 2)
 ClaimCountToUnlock = 3
 HasItemUnlock = true
 ItemUnlock = 105
