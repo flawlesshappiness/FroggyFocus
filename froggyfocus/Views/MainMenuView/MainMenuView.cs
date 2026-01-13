@@ -16,6 +16,9 @@ public partial class MainMenuView : View
     public SaveProfilesContainer SaveProfilesContainer;
 
     [Export]
+    public CreditsContainer CreditsContainer;
+
+    [Export]
     public Control InputBlocker;
 
     [Export]
@@ -29,6 +32,9 @@ public partial class MainMenuView : View
 
     [Export]
     public AnimatedPanel AnimatedPanel_Profiles;
+
+    [Export]
+    public AnimatedPanel AnimatedPanel_Credits;
 
     private bool animating;
     private MenuSettings current_menu;
@@ -50,9 +56,11 @@ public partial class MainMenuView : View
         MainMenuContainer.ContinueButton.Pressed += ClickContinue;
         MainMenuContainer.ProfilesButton.Pressed += ClickProfiles;
         MainMenuContainer.OptionsButton.Pressed += ClickOptions;
+        MainMenuContainer.CreditsButton.Pressed += ClickCredits;
         MainMenuContainer.QuitButton.Pressed += ClickQuit;
         OptionsControl.BackPressed += CloseMenu;
         SaveProfilesContainer.ProfilePressed += CloseMenu;
+        CreditsContainer.OnBackPressed += CloseMenu;
         GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
 
         Overlay.AnimateShowImmediate();
@@ -211,6 +219,16 @@ public partial class MainMenuView : View
             Panel = AnimatedPanel_Options,
             GetFocusControl = () => OptionsControl.Tabs.GetTabBar(),
             GetBackFocusControl = () => MainMenuContainer.OptionsButton
+        });
+    }
+
+    private void ClickCredits()
+    {
+        ShowMenu(new MenuSettings
+        {
+            Panel = AnimatedPanel_Credits,
+            GetFocusControl = () => CreditsContainer.BackButton,
+            GetBackFocusControl = () => MainMenuContainer.CreditsButton
         });
     }
 

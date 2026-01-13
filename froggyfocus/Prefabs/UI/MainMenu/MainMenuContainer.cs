@@ -15,6 +15,9 @@ public partial class MainMenuContainer : MarginContainer
     public Button OptionsButton;
 
     [Export]
+    public Button CreditsButton;
+
+    [Export]
     public Button QuitButton;
 
     [Export]

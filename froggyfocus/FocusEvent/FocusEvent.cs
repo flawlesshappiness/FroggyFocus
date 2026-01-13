@@ -167,6 +167,9 @@ public partial class FocusEvent : Node3D
                 yield return WaitForLoseTarget();
             }
 
+            // Transition
+            yield return WaitForTransition();
+
             // Camera target player
             Player.Instance.SetCameraTarget();
 
@@ -178,8 +181,6 @@ public partial class FocusEvent : Node3D
 
             // Enable player
             Player.SetAllLocks(nameof(FocusEvent), false);
-
-            yield return FocusOutroView.Instance.WaitForHide();
 
             // End
             EventStarted = false;
@@ -322,5 +323,22 @@ public partial class FocusEvent : Node3D
     {
         yield return Target.Animate_Disappear();
         yield return new WaitForSeconds(0.5f);
+    }
+
+    private IEnumerator WaitForTransition()
+    {
+        var transition_finished = false;
+        TransitionView.Instance.StartTransition(new TransitionSettings
+        {
+            Type = TransitionType.Color,
+            Color = Colors.Black,
+            Duration = 0.25f,
+            OnTransition = () => { transition_finished = true; }
+        });
+
+        while (!transition_finished)
+        {
+            yield return null;
+        }
     }
 }

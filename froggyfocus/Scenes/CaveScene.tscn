@@ -433,7 +433,7 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 54.8672, 30.1706, 104.508)
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 51.8481, 28.3708, 115.7)
 
 [node name="Lilypad_Boat" parent="World/Beach" instance=ExtResource("20_bktod")]
-transform = Transform3D(-0.841086, 0, -0.540901, 0, 1, 0, 0.540901, 0, -0.841086, 2.37682, -0.959282, 180.617)
+transform = Transform3D(-0.103365, 0, -0.994643, 0, 1, 0, 0.994643, 0, -0.103365, 2.37682, -0.959282, 181.504)
 
 [node name="QuestBoard" parent="World/Beach" instance=ExtResource("21_5oda3")]
 transform = Transform3D(0.490417, 0, -0.871488, 0, 1, 0, 0.871488, 0, 0.490417, 22.2957, 0.589287, 104.864)

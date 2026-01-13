@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmuxgxi24ysym"]
+[gd_scene load_steps=12 format=3 uid="uid://cmuxgxi24ysym"]
 
 [ext_resource type="Theme" uid="uid://dy3orii6kbqle" path="res://Themes/Grey.tres" id="1_5j84w"]
 [ext_resource type="Script" uid="uid://ccwavwllnbqg7" path="res://Views/MainMenuView/MainMenuView.cs" id="1_qib6v"]
@@ -9,12 +9,13 @@
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_7iof8"]
 [ext_resource type="PackedScene" uid="uid://cxjropn14cw2l" path="res://Prefabs/UI/SaveProfiles/save_profiles_container.tscn" id="6_cw4y5"]
 [ext_resource type="PackedScene" uid="uid://ddrdat0wxb0f6" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay_start_on.tscn" id="7_rmme1"]
+[ext_resource type="PackedScene" uid="uid://b1ys37l4nid0a" path="res://Prefabs/UI/Credits/credits_container.tscn" id="8_5370r"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7iof8"]
 streams_count = 1
 stream_0/stream = ExtResource("6_7iof8")
 
-[node name="MainMenuView" type="Control" node_paths=PackedStringArray("MainMenuContainer", "OptionsControl", "SaveProfilesContainer", "InputBlocker", "Overlay", "AnimatedPanel_Main", "AnimatedPanel_Options", "AnimatedPanel_Profiles")]
+[node name="MainMenuView" type="Control" node_paths=PackedStringArray("MainMenuContainer", "OptionsControl", "SaveProfilesContainer", "CreditsContainer", "InputBlocker", "Overlay", "AnimatedPanel_Main", "AnimatedPanel_Options", "AnimatedPanel_Profiles", "AnimatedPanel_Credits")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,11 +27,13 @@ script = ExtResource("1_qib6v")
 MainMenuContainer = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Main/MainMenuContainer")
 OptionsControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options/Options/Options")
 SaveProfilesContainer = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Profiles/SaveProfilesContainer")
+CreditsContainer = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Credits/CreditsContainer")
 InputBlocker = NodePath("InputBlocker")
 Overlay = NodePath("AnimatedOverlay")
 AnimatedPanel_Main = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Main")
 AnimatedPanel_Options = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Options")
 AnimatedPanel_Profiles = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Profiles")
+AnimatedPanel_Credits = NodePath("CenterContainer/Center/UIScale/AnimatedPanel_Credits")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -98,6 +101,16 @@ offset_left = -520.0
 offset_top = -184.5
 offset_right = 520.0
 offset_bottom = 184.5
+
+[node name="AnimatedPanel_Credits" parent="CenterContainer/Center/UIScale" instance=ExtResource("5_87cds")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="CreditsContainer" parent="CenterContainer/Center/UIScale/AnimatedPanel_Credits" instance=ExtResource("8_5370r")]
+layout_mode = 1
 
 [node name="AnimatedOverlay" parent="." instance=ExtResource("7_rmme1")]
 layout_mode = 1

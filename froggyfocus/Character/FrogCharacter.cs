@@ -256,6 +256,8 @@ public partial class FrogCharacter : Character
 
     public Coroutine AnimateEatTarget(Node3D target)
     {
+        SetHandsBack();
+
         return this.StartCoroutine(Cr, nameof(AnimateEatTarget));
         IEnumerator Cr()
         {

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c5igtc3vlqhjb" path="res://Prefabs/UI/MainMenu/MainMenuContainer.cs" id="1_bn65t"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="2_bn65t"]
 
-[node name="MainMenuContainer" type="MarginContainer" node_paths=PackedStringArray("NewGameButton", "ContinueButton", "ProfilesButton", "OptionsButton", "QuitButton", "VersionLabel")]
+[node name="MainMenuContainer" type="MarginContainer" node_paths=PackedStringArray("NewGameButton", "ContinueButton", "ProfilesButton", "OptionsButton", "CreditsButton", "QuitButton", "VersionLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,19 +15,20 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 script = ExtResource("1_bn65t")
-NewGameButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/NewGameButton")
-ContinueButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ContinueButton")
-ProfilesButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/ProfilesButton")
-OptionsButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/OptionsButton")
-QuitButton = NodePath("VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer/QuitButton")
+NewGameButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/NewGameButton")
+ContinueButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/ContinueButton")
+ProfilesButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/ProfilesButton")
+OptionsButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/OptionsButton")
+CreditsButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/CreditsButton")
+QuitButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/QuitButton")
 VersionLabel = NodePath("Control/VersionLabel")
 
 [node name="VSplitContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="Top" type="Control" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="VSplitContainer/Top"]
 layout_mode = 1
@@ -49,7 +50,7 @@ text = "FROGGY FOCUS"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSplitContainer" type="HBoxContainer" parent="VSplitContainer/Bottom"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VSplitContainer/Bottom"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,11 +58,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Left" type="Control" parent="VSplitContainer/Bottom/HSplitContainer"]
+[node name="Left" type="Control" parent="VSplitContainer/Bottom/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="UIScale" type="Control" parent="VSplitContainer/Bottom/HSplitContainer/Left"]
+[node name="UIScale" type="Control" parent="VSplitContainer/Bottom/HBoxContainer/Left"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_37hgo")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,27 +89,31 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="NewGameButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+[node name="NewGameButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
 layout_mode = 2
 text = "New Game"
 
-[node name="ContinueButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+[node name="ContinueButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
 layout_mode = 2
 text = "Continue"
 
-[node name="ProfilesButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+[node name="ProfilesButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
 layout_mode = 2
 text = "Save profile"
 
-[node name="OptionsButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+[node name="OptionsButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
 layout_mode = 2
 text = "Options"
 
-[node name="QuitButton" parent="VSplitContainer/Bottom/HSplitContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+[node name="CreditsButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+layout_mode = 2
+text = "Credits"
+
+[node name="QuitButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
 layout_mode = 2
 text = "Quit"
 
-[node name="Right" type="Control" parent="VSplitContainer/Bottom/HSplitContainer"]
+[node name="Right" type="Control" parent="VSplitContainer/Bottom/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 

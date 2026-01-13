@@ -1,0 +1,147 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ys37l4nid0a"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ug0jq"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_d3y20"]
+[ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="2_p3yg1"]
+[ext_resource type="Script" uid="uid://duwxmw6vmkf46" path="res://Prefabs/UI/Credits/CreditsContainer.cs" id="2_smsov"]
+[ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="3_p3yg1"]
+
+[node name="CreditsContainer" type="MarginContainer" node_paths=PackedStringArray("BackButton")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -569.0
+offset_top = -321.0
+offset_right = 569.0
+offset_bottom = 321.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ug0jq")
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("2_smsov")
+BackButton = NodePath("HBoxContainer2/VBoxContainer/BackButton")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="BackButton" parent="HBoxContainer2/VBoxContainer" instance=ExtResource("2_p3yg1")]
+layout_mode = 2
+icon = ExtResource("3_p3yg1")
+LabelText = "Back"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_d3y20")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "PRODUCTION"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "BRTL Games"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("2_d3y20")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "TESTING"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lindbulub"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Gray"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme = ExtResource("2_d3y20")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer3/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "FREE ASSETS"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "KayLousberg"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "KenneyNL"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quarternius"
+horizontal_alignment = 1
