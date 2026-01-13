@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections;
 
 public partial class ThirdPersonCamera : Node3D
 {
@@ -14,6 +15,7 @@ public partial class ThirdPersonCamera : Node3D
 
     public static MultiLock InputLock = new();
 
+    private string DebugId => nameof(ThirdPersonCamera) + GetInstanceId();
     private float MouseSensitivity => 0.004f * Data.Options.CameraSensitivity;
     private float ControllerSensitivity => 0.09f * Data.Options.CameraSensitivity;
 
@@ -22,10 +24,76 @@ public partial class ThirdPersonCamera : Node3D
     private float tilt_max = Mathf.DegToRad(-5);
     private Vector2 zoom_range = new Vector2(1f, 8f);
 
+    private Coroutine cr_debug_spin;
+
     private Vector3 PivotRotation
     {
         get => Rotation;
         set => Rotation = value;
+    }
+
+    private void Initialize()
+    {
+        if (initialized) return;
+        initialized = true;
+
+        this.SetParent(Scene.Current);
+        RegisterDebugActions();
+    }
+
+    private void RegisterDebugActions()
+    {
+        var category = "CAMERA";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = DebugId,
+            Category = category,
+            Text = "Start spin animation",
+            Action = StartSpinAnimation
+        });
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = DebugId,
+            Category = category,
+            Text = "Stop spin animation",
+            Action = StopSpinAnimation
+        });
+
+        void StartSpinAnimation(DebugView v)
+        {
+            v.Close();
+
+            Player.FocusEventLock.AddLock(DebugId);
+            InputLock.AddLock(DebugId);
+
+            cr_debug_spin = this.StartCoroutine(Cr, "spin");
+            IEnumerator Cr()
+            {
+                PivotRotation = new Vector3(-0.4f, 3.0f, 0f);
+                SetZoom(6f);
+                while (true)
+                {
+                    AdjustRotation(Vector2.Right * 0.003f);
+                    yield return null;
+                }
+            }
+        }
+
+        void StopSpinAnimation(DebugView v)
+        {
+            v.Close();
+            Player.FocusEventLock.RemoveLock(DebugId);
+            InputLock.RemoveLock(DebugId);
+            Coroutine.Stop(cr_debug_spin);
+        }
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        Debug.RemoveActions(DebugId);
     }
 
     public override void _Input(InputEvent e)
@@ -57,20 +125,12 @@ public partial class ThirdPersonCamera : Node3D
         Process_Position(fdelta);
     }
 
-    private void Initialize()
-    {
-        if (initialized) return;
-        initialized = true;
-
-        this.SetParent(Scene.Current);
-    }
-
     private void Input_Rotation(InputEvent e)
     {
         if (e is InputEventMouseMotion mouse_motion)
         {
             var relative = mouse_motion.Relative;
-            SetRotation(relative * MouseSensitivity);
+            AdjustRotation(relative * MouseSensitivity);
         }
     }
 
@@ -79,7 +139,7 @@ public partial class ThirdPersonCamera : Node3D
         var input = PlayerInput.GetLookInput();
         if (input.Length() < 0.1f) return;
 
-        SetRotation(input * ControllerSensitivity);
+        AdjustRotation(input * ControllerSensitivity);
     }
 
     private void Process_Zoom()
@@ -116,7 +176,7 @@ public partial class ThirdPersonCamera : Node3D
         SpringArm.SpringLength = Mathf.Clamp(value, zoom_range.X, zoom_range.Y);
     }
 
-    private void SetRotation(Vector2 input)
+    private void AdjustRotation(Vector2 input)
     {
         var x = Mathf.Clamp(PivotRotation.X - input.Y, tilt_min, tilt_max);
         var y = PivotRotation.Y - input.X;
