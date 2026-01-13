@@ -144,9 +144,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.237, 0)
 [node name="Stalagmite_Platform" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0humr")]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 70.5986, 15.2934, 0)
 
-[node name="Stalagmite_Platform4" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0humr")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 36.0246, 6.75816, 3.55567)
-
 [node name="Stalagmite_Platform5" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0humr")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 55.9897, 11.1764, 19.9644)
 
@@ -154,19 +151,7 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 55.9897, 11.1764, 19.9644)
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 68.2921, 13.4514, 24.1071)
 
 [node name="Stalagmite_Platform2" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0humr")]
-transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 62.92, 9.05077, 15.1537)
-
-[node name="Stalagmite_Platform3" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0humr")]
-transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 49.0953, 4.25601, -25.2034)
-
-[node name="Stalagmite_Platform7" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 33.6416, 22.1479, -66.9652)
-
-[node name="Stalagmite_Platform14" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 52.6258, 19.0711, -59.2331)
-
-[node name="Stalagmite_Platform16" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 66.6754, 11.9398, -44.251)
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 48.8409, 9.05077, 10.5914)
 
 [node name="Stalagmite_Platform8" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -36.2289, 22.7786, 4.06527)
@@ -175,7 +160,10 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -36.2289, 22.7786, 4.06527
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -30.7876, 24.701, -7.44664)
 
 [node name="Stalagmite_Platform31" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -51.4982, 23.6371, -25.6484)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -51.4982, 25.6035, -25.6484)
+
+[node name="Stalagmite_Platform41" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -59.4923, 24.1373, -30.1096)
 
 [node name="Stalagmite_Platform9" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -44.7834, 20.637, 12.2414)
@@ -193,7 +181,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -33.7214, 19.579, 16.5067)
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.865498, 19.579, 32.0165)
 
 [node name="Stalagmite_Platform22" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 27.2867, 19.579, 40.7857)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 27.2867, 11.2931, 40.7857)
 
 [node name="Stalagmite_Platform11" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -22.3047, 15.1034, 32.1411)
@@ -240,6 +228,18 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 22.9745, 7.99756, 32.2342)
 [node name="Stalagmite_Platform33" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 32.3871, 8.99241, 30.9683)
 
+[node name="Stalagmite_Platform37" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 31.5635, 10.8699, 20.8486)
+
+[node name="Stalagmite_Platform38" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 33.8354, 10.8699, -30.826)
+
+[node name="Stalagmite_Platform39" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 38.7705, 12.9502, -22.9203)
+
+[node name="Stalagmite_Platform40" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 49.8326, 15.2541, -24.0645)
+
 [node name="Stalagmite_Platform34" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -5.90982, 5.80558, 53.7774)
 
@@ -251,6 +251,18 @@ transform = Transform3D(-35, 0, -60.6218, 0, 70, 0, 60.6218, 0, -35, 9.91418, 34
 
 [node name="Stalagmite_Platform_Crystals2" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
 transform = Transform3D(-49.4975, 0, -49.4975, 0, 70, 0, 49.4975, 0, -49.4975, -22.8708, 27.2587, -46.2751)
+
+[node name="Stalagmite_Platform_Crystals8" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
+transform = Transform3D(-28.2843, 0, -28.2843, 0, 40, 0, 28.2843, 0, -28.2843, -32.4045, 56.3083, -75.2451)
+
+[node name="Stalagmite_Platform_Crystals10" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
+transform = Transform3D(-14.1421, 0, -14.1421, 0, 20, 0, 14.1421, 0, -14.1421, -30.2301, 43.0916, -56.1486)
+
+[node name="Stalagmite_Platform_Crystals11" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
+transform = Transform3D(-12.679, 0, -15.4675, 0, 20, 0, 15.4675, 0, -12.679, -62.587, 43.0916, -43.5857)
+
+[node name="Stalagmite_Platform_Crystals9" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
+transform = Transform3D(-28.2843, 0, -28.2843, 0, 40, 0, 28.2843, 0, -28.2843, -47.9142, 61.9201, -59.5577)
 
 [node name="Stalagmite_Platform_Crystals5" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
 transform = Transform3D(-9.8212, 0, -1.88256, 0, 10, 0, 1.88256, 0, -9.8212, -22.3223, 20.6481, 20.7338)
@@ -321,9 +333,6 @@ transform = Transform3D(-0.665947, 0.40981, -0.623354, 0, 0.835597, 0.549344, 0.
 [node name="CommonTree_1" parent="World/Moss/Trees" instance=ExtResource("8_j4raq")]
 transform = Transform3D(-0.166148, 0, -9.99862, 0, 10, 0, 9.99862, 0, -0.166148, 64.0485, 15.4456, -1.00793)
 
-[node name="CommonTree_3" parent="World/Moss/Trees" instance=ExtResource("9_h62w2")]
-transform = Transform3D(7.52668, 0, -6.58401, 0, 10, 0, 6.58401, 0, 7.52668, 46.0149, 3.15476, -11.6833)
-
 [node name="CommonTree_4" parent="World/Moss/Trees" instance=ExtResource("10_qwlrs")]
 transform = Transform3D(-2.53137, 0, -6.52627, 0, 7, 0, 6.52627, 0, -2.53137, 44.8274, 8.99522, 7.01241)
 
@@ -347,20 +356,11 @@ transform = Transform3D(-0.0498444, 0, -2.99959, 0, 3, 0, 2.99959, 0, -0.0498444
 [node name="Grass_Tuft_Small6" parent="World/Moss/Grass" instance=ExtResource("11_hitnx")]
 transform = Transform3D(-0.0498444, 0, -2.99959, 0, 3, 0, 2.99959, 0, -0.0498444, 45.4627, 8.99096, 7.0301)
 
-[node name="Grass_Tuft_Small7" parent="World/Moss/Grass" instance=ExtResource("11_hitnx")]
-transform = Transform3D(-0.0498444, 0, -2.99959, 0, 3, 0, 2.99959, 0, -0.0498444, 45.6376, 4.18183, -12.6199)
-
-[node name="Grass_Tuft_Small8" parent="World/Moss/Grass" instance=ExtResource("11_hitnx")]
-transform = Transform3D(-0.0498444, 0, -2.99959, 0, 3, 0, 2.99959, 0, -0.0498444, 45.483, 4.18183, -11.2487)
-
 [node name="Grass_Tuft_Small2" parent="World/Moss/Grass" instance=ExtResource("11_hitnx")]
 transform = Transform3D(-0.0498444, 0, -2.99959, 0, 3, 0, 2.99959, 0, -0.0498444, 63.0073, 15.3034, -1.11598)
 
 [node name="Grass_Tuft_Small3" parent="World/Moss/Grass" instance=ExtResource("11_hitnx")]
 transform = Transform3D(-0.0498444, 0, -2.99959, 0, 3, 0, 2.99959, 0, -0.0498444, 64.83, 15.3034, -1.0857)
-
-[node name="Shop" parent="World/Moss" instance=ExtResource("22_ns5ic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.8052, 11.9311, -42.5507)
 
 [node name="Beach" type="Node3D" parent="World"]
 
@@ -585,10 +585,13 @@ transform = Transform3D(6, 0, 0, 0, -6, 9.05975e-07, 0, -9.05975e-07, -6, -29.41
 transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, 23.1764, 78.5004, 26.2792)
 
 [node name="Shop" parent="World/Stalagmites" instance=ExtResource("22_ns5ic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.5205, 30.7031, -32.9002)
+transform = Transform3D(0.788677, 0, 0.614808, 0, 1, 0, -0.614808, 0, 0.788677, 27.4423, 34.361, -33.5867)
 
 [node name="Shop2" parent="World/Stalagmites" instance=ExtResource("22_ns5ic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.875647, 19.5807, 31.8297)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5772, 11.2683, 42.6912)
+
+[node name="Shop3" parent="World/Stalagmites" instance=ExtResource("22_ns5ic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.115, 17.4664, 30.053)
 
 [node name="PathWaterSFX_Cave_1" type="Path3D" parent="World/Stalagmites"]
 curve = SubResource("Curve3D_df6tn")
@@ -622,16 +625,13 @@ transform = Transform3D(4.60952, 0, -1.9371, 0, 5, 0, 1.9371, 0, 4.60952, 25.789
 transform = Transform3D(2.3526, 0, 4.41195, 0, 5, 0, -4.41195, 0, 2.3526, -21.2274, 35.6337, -46.6059)
 
 [node name="Crystal_Long12" parent="World/Crystals/Crystals" instance=ExtResource("27_lljyu")]
-transform = Transform3D(4.71716, 0, 1.65784, 0, 5, 0, -1.65784, 0, 4.71716, -58.3567, 32.7412, -37.3147)
+transform = Transform3D(4.71716, 0, 1.65784, 0, 5, 0, -1.65784, 0, 4.71716, -48.7125, 32.7412, -31.3393)
 
 [node name="Crystal_Long2" parent="World/Crystals/Crystals" instance=ExtResource("27_lljyu")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 36.0602, 35.6337, -52.9404)
 
 [node name="Crystal_Long3" parent="World/Crystals/Crystals" instance=ExtResource("27_lljyu")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.273534, 35.6337, -65.6033)
-
-[node name="Crystal_Long4" parent="World/Crystals/Crystals" instance=ExtResource("27_lljyu")]
-transform = Transform3D(9.99887, 0, 0.150267, 0, 10, 0, -0.150267, 0, 9.99887, -40.6362, 30.1721, -56.3756)
 
 [node name="Crystal_Long15" parent="World/Crystals/Crystals" instance=ExtResource("27_lljyu")]
 transform = Transform3D(5.76746, 0, -8.16923, 0, 10, 0, 8.16923, 0, 5.76746, -29.5643, 30.1721, -32.9568)
@@ -670,6 +670,15 @@ transform = Transform3D(2.89012, 0, -0.80449, 0, 3, 0, 0.80449, 0, 2.89012, 12.5
 
 [node name="Box6" parent="World/Crystals/Construction" instance=ExtResource("34_g6lmy")]
 transform = Transform3D(2.9318, 0, 0.636021, 0, 3, 0, -0.636021, 0, 2.9318, 9.55036, 34.3244, -31.7198)
+
+[node name="Box15" parent="World/Crystals/Construction" instance=ExtResource("34_g6lmy")]
+transform = Transform3D(2.77927, 0, 1.12945, 0, 3, 0, -1.12945, 0, 2.77927, -49.9043, 25.4373, -23.0015)
+
+[node name="Box16" parent="World/Crystals/Construction" instance=ExtResource("34_g6lmy")]
+transform = Transform3D(1.36551, 0, -2.67121, 0, 3, 0, 2.67121, 0, 1.36551, -39.6562, 27.1202, -24.8981)
+
+[node name="Box17" parent="World/Crystals/Construction" instance=ExtResource("34_g6lmy")]
+transform = Transform3D(2.93079, 0, -0.640675, 0, 3, 0, 0.640675, 0, 2.93079, -41.1642, 27.1202, -33.5145)
 
 [node name="Box10" parent="World/Crystals/Construction" instance=ExtResource("34_g6lmy")]
 transform = Transform3D(2.9318, 0, 0.636021, 0, 3, 0, -0.636021, 0, 2.9318, 27.5731, 34.3244, -42.4717)
@@ -714,7 +723,7 @@ transform = Transform3D(-0.635917, 0.492746, -0.593979, 0, 0.769645, 0.638472, 0
 [node name="Camera3D" type="Camera3D" parent="World/Crystals/SalamanderNPC/CameraTransform"]
 
 [node name="CrystalDoorway" parent="World/Crystals" node_paths=PackedStringArray("Containers") instance=ExtResource("32_68c8r")]
-transform = Transform3D(-0.991406, 0, -0.13082, 0, 1, 0, 0.13082, 0, -0.991406, -52.4553, 23.6018, -28.4494)
+transform = Transform3D(-1.58403, 0, 1.22101, 0, 2, 0, -1.22101, 0, -1.58403, -57.8444, 23.6018, -30.8084)
 IsEntrance = true
 Containers = [NodePath("../../CrystalPillars/CrystalPillarContainer1"), NodePath("../../CrystalPillars/CrystalPillarContainer2"), NodePath("../../CrystalPillars/CrystalPillarContainer3"), NodePath("../../CrystalPillars/CrystalPillarContainer4"), NodePath("../../CrystalPillars/CrystalPillarContainer5")]
 
@@ -1058,7 +1067,7 @@ transform = Transform3D(-0.988962, 0, 0.148171, 0, 1, 0, -0.148171, 0, -0.988962
 Info = ExtResource("20_rehxh")
 
 [node name="WorldBug46" parent="World/WorldBugs/Stalagmites" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.717846, 0, -0.696201, 0, 1, 0, 0.696201, 0, -0.717846, 29.6368, -0.999999, 19.9703)
+transform = Transform3D(-0.717846, 0, -0.696201, 0, 1, 0, 0.696201, 0, -0.717846, 23.9688, -0.999999, 2.1775)
 Info = ExtResource("20_rehxh")
 
 [node name="WorldBug47" parent="World/WorldBugs/Stalagmites" instance=ExtResource("38_tww0l")]
@@ -1123,48 +1132,8 @@ Info = ExtResource("20_rehxh")
 
 [node name="Moss" type="Node3D" parent="World/WorldBugs"]
 
-[node name="WorldBug" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.971689, 0, 0.236261, 0, 1, 0, -0.236261, 0, 0.971689, 25.9699, 4.29025, -16.929)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug2" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.214207, 0, -0.976788, 0, 1, 0, 0.976788, 0, 0.214207, 32.9404, 4.29025, -12.477)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug3" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.749487, 0, -0.662018, 0, 1, 0, 0.662018, 0, -0.749487, 33.7829, 4.29025, -22.739)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug4" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.452902, 0, -0.89156, 0, 1, 0, 0.89156, 0, 0.452902, 44.2655, 4.29025, -19.5762)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug5" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.993601, 0, 0.112943, 0, 1, 0, -0.112943, 0, 0.993601, 42.2955, 4.29025, -30.5088)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug6" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.197982, 0, -0.980205, 0, 1, 0, 0.980205, 0, 0.197982, 53.4901, 4.29025, -23.6945)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug7" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.791789, 0, -0.610795, 0, 1, 0, 0.610795, 0, -0.791789, 47.8759, 4.29025, -37.5076)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug8" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.791789, 0, -0.610795, 0, 1, 0, 0.610795, 0, -0.791789, 35.4665, 6.75094, -1.62729)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug9" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.780343, 0, 0.625351, 0, 1, 0, -0.625351, 0, -0.780343, 30.6461, 6.75094, 0.832956)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug10" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.75346, 0, 0.657493, 0, 1, 0, -0.657493, 0, 0.75346, 31.9554, 6.75094, 6.61556)
-Info = ExtResource("21_bistx")
-
 [node name="WorldBug11" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.73508, 0, -0.67798, 0, 1, 0, 0.67798, 0, 0.73508, 40.2713, 9.07265, 10.8545)
+transform = Transform3D(0.73508, 0, -0.67798, 0, 1, 0, 0.67798, 0, 0.73508, 38.7976, 9.07265, 10.963)
 Info = ExtResource("21_bistx")
 
 [node name="WorldBug12" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
@@ -1172,47 +1141,11 @@ transform = Transform3D(0.800302, 0, 0.599596, 0, 1, 0, -0.599596, 0, 0.800302, 
 Info = ExtResource("21_bistx")
 
 [node name="WorldBug13" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.290769, 0, 0.956793, 0, 1, 0, -0.956793, 0, -0.290769, 42.2992, 9.07265, 15.1165)
+transform = Transform3D(-0.290769, 0, 0.956793, 0, 1, 0, -0.956793, 0, -0.290769, 42.5191, 9.07265, 17.4628)
 Info = ExtResource("21_bistx")
 
 [node name="WorldBug14" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.975342, 0, 0.220697, 0, 1, 0, -0.220697, 0, -0.975342, 40.083, 9.07265, 19.7475)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug15" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.285053, 0, -0.958512, 0, 1, 0, 0.958512, 0, -0.285053, 43.9898, 9.07265, 24.7689)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug16" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.96689, 0, -0.255193, 0, 1, 0, 0.255193, 0, -0.96689, 44.8801, 9.07265, 31.0536)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug17" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.126199, 0, -0.992005, 0, 1, 0, 0.992005, 0, -0.126199, 51.1315, 9.07265, 31.0102)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug18" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.763525, 0, -0.645777, 0, 1, 0, 0.645777, 0, 0.763525, 53.8231, 9.07265, 36.3515)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug19" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.23755, 0, -0.971375, 0, 1, 0, 0.971375, 0, -0.23755, 58.8819, 9.07265, 34.5286)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug20" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.23755, 0, -0.971375, 0, 1, 0, 0.971375, 0, -0.23755, 61.7539, 9.07265, 38.7076)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug21" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.892286, 0, -0.451469, 0, 1, 0, 0.451469, 0, 0.892286, 66.7243, 9.07265, 36.184)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug22" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.892286, 0, -0.451469, 0, 1, 0, 0.451469, 0, 0.892286, 71.2686, 9.07265, 38.1938)
-Info = ExtResource("21_bistx")
-
-[node name="WorldBug23" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.118196, 0, -0.99299, 0, 1, 0, 0.99299, 0, 0.118196, 75.5912, 9.07265, 34.4045)
+transform = Transform3D(-0.975342, 0, 0.220697, 0, 1, 0, -0.220697, 0, -0.975342, 40.4848, 9.07265, 3.3713)
 Info = ExtResource("21_bistx")
 
 [node name="WorldBug24" parent="World/WorldBugs/Moss" instance=ExtResource("38_tww0l")]
@@ -1350,27 +1283,11 @@ transform = Transform3D(-0.360908, 0, 0.932601, 0, 1, 0, -0.932601, 0, -0.360908
 Info = ExtResource("32_k2kgv")
 
 [node name="WorldBug6" parent="World/WorldBugs/Crystals" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.95139, 0, -0.307988, 0, 1, 0, 0.307988, 0, 0.95139, -35.4527, 27.2725, -42.1243)
-Info = ExtResource("32_k2kgv")
-
-[node name="WorldBug7" parent="World/WorldBugs/Crystals" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.518012, 0, -0.855373, 0, 1, 0, 0.855373, 0, 0.518012, -43.0486, 27.2725, -48.5511)
+transform = Transform3D(0.95139, 0, -0.307988, 0, 1, 0, 0.307988, 0, 0.95139, -36.3938, 27.2725, -38.7445)
 Info = ExtResource("32_k2kgv")
 
 [node name="WorldBug8" parent="World/WorldBugs/Crystals" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.949447, 0, 0.313926, 0, 1, 0, -0.313926, 0, 0.949447, -29.9221, 27.2725, -48.0135)
-Info = ExtResource("32_k2kgv")
-
-[node name="WorldBug9" parent="World/WorldBugs/Crystals" instance=ExtResource("38_tww0l")]
-transform = Transform3D(0.821716, 0, -0.569896, 0, 1, 0, 0.569896, 0, 0.821716, -33.0742, 27.2725, -55.0206)
-Info = ExtResource("32_k2kgv")
-
-[node name="WorldBug10" parent="World/WorldBugs/Crystals" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.326855, 0, -0.945074, 0, 1, 0, 0.945074, 0, -0.326855, -25.6611, 27.2725, -59.7122)
-Info = ExtResource("32_k2kgv")
-
-[node name="WorldBug11" parent="World/WorldBugs/Crystals" instance=ExtResource("38_tww0l")]
-transform = Transform3D(-0.994551, 0, 0.104251, 0, 1, 0, -0.104251, 0, -0.994551, -29.0394, 27.2725, -67.5022)
+transform = Transform3D(0.949447, 0, 0.313926, 0, 1, 0, -0.313926, 0, 0.949447, -26.9418, 27.2725, -41.4512)
 Info = ExtResource("32_k2kgv")
 
 [node name="WorldBug12" parent="World/WorldBugs/Crystals" instance=ExtResource("38_tww0l")]
@@ -1481,7 +1398,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.74553, 33.5455, -26.6762)
 HandInInfo = ExtResource("31_7ifvp")
 
 [node name="CrystalPillarContainer2" parent="World/CrystalPillars" instance=ExtResource("30_pk032")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.5271, 3.3743, -29.2035)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 33.1926, 10.6972, -31.6899)
 HandInInfo = ExtResource("47_lndx7")
 
 [node name="CrystalPillarContainer3" parent="World/CrystalPillars" instance=ExtResource("30_pk032")]

@@ -87,6 +87,57 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_ub6t5"]
 material = SubResource("StandardMaterial3D_ff4wn")
 
+[sub_resource type="Animation" id="Animation_cwrtm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IntroCamera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(64.9324, 59.1396, -63.9494)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IntroCamera:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.8337, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxEnter:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IntroCamera:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_hckf8"]
 resource_name = "intro"
 length = 4.0
@@ -137,57 +188,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_cwrtm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("IntroCamera:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(64.9324, 59.1396, -63.9494)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("IntroCamera:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.8337, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SfxEnter:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("IntroCamera:current")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hpoj3"]
@@ -718,7 +718,7 @@ draw_pass_1 = SubResource("QuadMesh_ub6t5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.6948, 45.7615, -31.9684)
 
 [node name="CrystalDoorway" parent="World/Start" instance=ExtResource("24_ff4wn")]
-transform = Transform3D(0.700897, 0, 0.713263, 0, 1, 0, -0.713263, 0, 0.700897, 0.0568542, 0, 0.118223)
+transform = Transform3D(1.40179, 0, 1.42653, 0, 2, 0, -1.42653, 0, 1.40179, 0.0568542, 0, 0.118223)
 
 [node name="Amb" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("25_ub6t5")
@@ -734,7 +734,7 @@ libraries = {
 }
 
 [node name="IntroCamera" type="Camera3D" parent="Intro"]
-transform = Transform3D(-0.259881, 0, 0.965641, 0, 1, 0, -0.96564, 0, -0.259881, 64.9324, 59.1396, -63.9494)
+transform = Transform3D(-0.259885, 0, 0.96564, 0, 1, 0, -0.965639, 0, -0.259886, 64.9324, 59.1396, -63.9494)
 
 [node name="SfxEnter" type="AudioStreamPlayer" parent="Intro"]
 stream = ExtResource("26_6k6gf")
