@@ -62,7 +62,7 @@ public partial class FocusOutroView : View
 
         if (success)
         {
-            yield return WaitForInventory();
+            //yield return WaitForInventory();
         }
 
         if (!IsFastCutscene)
@@ -87,8 +87,10 @@ public partial class FocusOutroView : View
         AnimationPlayer_Transition.Play("RESET");
     }
 
-    private IEnumerator WaitForInventory()
+    public IEnumerator WaitForInventory(FocusTarget target)
     {
+        Show();
+        current_target = target;
         if (InventoryController.Instance.IsInventoryFull())
         {
             InventoryReplacePopup.SetTarget(current_target);
@@ -99,6 +101,7 @@ public partial class FocusOutroView : View
             InventoryController.Instance.AddCharacter(current_target.CharacterData);
             yield return null;
         }
+        Hide();
     }
 
     private void PlayChord(bool success)

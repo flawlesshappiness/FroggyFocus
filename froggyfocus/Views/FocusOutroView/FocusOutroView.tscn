@@ -43,35 +43,6 @@ tracks/1/keys = {
 "values": [Vector3(-0.533163, -2.74907, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_1gv4t"]
-resource_name = "eat_bug"
-length = 1.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SubViewport_Frog/Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.2, 1.5),
-"transitions": PackedFloat32Array(1, -2, 1, 1),
-"update": 0,
-"values": [Vector3(-0.489592, 0.426302, -0.797361), Vector3(-0.489592, 0.426302, -0.797361), Vector3(-0.207617, 0.0907945, -1.94924), Vector3(-0.207617, 0.0907945, -1.94924)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SubViewport_Frog/Camera3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.2, 1.5),
-"transitions": PackedFloat32Array(1, -2, 1, 1),
-"update": 0,
-"values": [Vector3(-0.533163, -2.74907, 0), Vector3(-0.533163, -2.74907, 0), Vector3(0.210155, -2.75469, -1.52364e-08), Vector3(0.210155, -2.75469, -1.52364e-08)]
-}
-
 [sub_resource type="Animation" id="Animation_krvnh"]
 resource_name = "fast"
 length = 0.1
@@ -99,6 +70,35 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.210155, -2.75469, -1.52364e-08)]
+}
+
+[sub_resource type="Animation" id="Animation_1gv4t"]
+resource_name = "eat_bug"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewport_Frog/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
+"update": 0,
+"values": [Vector3(-0.489592, 0.426302, -0.797361), Vector3(-0.489592, 0.426302, -0.797361), Vector3(-0.207617, 0.0907945, -1.94924), Vector3(-0.207617, 0.0907945, -1.94924)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewport_Frog/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.2, 1.5),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
+"update": 0,
+"values": [Vector3(-0.533163, -2.74907, 0), Vector3(-0.533163, -2.74907, 0), Vector3(0.210155, -2.75469, -1.52364e-08), Vector3(0.210155, -2.75469, -1.52364e-08)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r3lkl"]
@@ -257,6 +257,7 @@ PsDust = NodePath("SubViewport_Frog/Origin/TargetMarker/ps_dust")
 ChildOrder = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -278,6 +279,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Anim_CameraTexture" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

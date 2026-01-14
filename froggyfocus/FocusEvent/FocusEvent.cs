@@ -30,6 +30,24 @@ public partial class FocusEvent : Node3D
     [Export]
     public Node3D SkillCheckParent;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_Camera;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Frog;
+
+    [Export]
+    public AudioStreamPlayer SfxSuspenseNormal_Start;
+
+    [Export]
+    public AudioStreamPlayer SfxSuspenseFast_Start;
+
+    [Export]
+    public AudioStreamPlayer SfxSuspenseNormal_Success;
+
+    [Export]
+    public AudioStreamPlayer SfxSuspenseNormal_Fail;
+
     public FocusCharacterInfo OverrideTargetInfo { get; set; }
     public int? OverrideTargetStars { get; set; }
 
@@ -42,6 +60,7 @@ public partial class FocusEvent : Node3D
 
     private List<FocusSkillCheck> skill_checks = new();
 
+    private bool IsFastCutscene => Data.Options.CutsceneTypeIndex == 1;
     private bool EventStarted { get; set; }
     private bool EventEnabled { get; set; }
 
@@ -315,14 +334,46 @@ public partial class FocusEvent : Node3D
 
     private IEnumerator WaitForCatchTarget()
     {
+        Frog.SetHandsBack();
+        Target.Animate_Scared();
+        yield return WaitForSuspense();
+        Target.Animate_Unscared();
+        SfxSuspenseNormal_Success.Play();
+        GameView.Instance.AnimateVignetteHide(0.25f);
+        AnimateZoomOut(0.25f);
         yield return Frog.AnimateEatTarget(Target.Character);
-        yield return new WaitForSeconds(0.5f);
+        yield return FocusOutroView.Instance.WaitForInventory(Target);
+        yield return new WaitForSeconds(0.25f);
     }
 
     private IEnumerator WaitForLoseTarget()
     {
+        Frog.SetHandsBack();
+        yield return WaitForSuspense();
+        SfxSuspenseNormal_Fail.Play();
+        GameView.Instance.AnimateVignetteHide(0.25f);
+        AnimateZoomOut(0.25f);
+        AnimationPlayer_Frog.Play("scared");
+        Frog.SetMouthOpen(true);
         yield return Target.Animate_Disappear();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
+        Frog.SetMouthOpen(false);
+    }
+
+    private IEnumerator WaitForSuspense()
+    {
+        if (IsFastCutscene)
+        {
+            SfxSuspenseFast_Start.Play();
+            GameView.Instance.AnimateVignetteShow(1f);
+            yield return AnimateZoomIn(1f);
+        }
+        else
+        {
+            SfxSuspenseNormal_Start.Play();
+            GameView.Instance.AnimateVignetteShow(2f);
+            yield return AnimateZoomIn(2f);
+        }
     }
 
     private IEnumerator WaitForTransition()
@@ -340,5 +391,17 @@ public partial class FocusEvent : Node3D
         {
             yield return null;
         }
+    }
+
+    private Coroutine AnimateZoomIn(float duration)
+    {
+        AnimationPlayer_Camera.SpeedScale = 1f / duration;
+        return AnimationPlayer_Camera.PlayAndWaitForAnimation("zoom_in");
+    }
+
+    private Coroutine AnimateZoomOut(float duration)
+    {
+        AnimationPlayer_Camera.SpeedScale = 1f / duration;
+        return AnimationPlayer_Camera.PlayAndWaitForAnimation("zoom_out");
     }
 }

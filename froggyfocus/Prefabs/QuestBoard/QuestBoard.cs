@@ -12,6 +12,12 @@ public partial class QuestBoard : Area3D, IInteractable
         Exclamation.Visible = ObjectiveController.Instance.IsAnyObjectiveComplete();
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        ObjectiveController.Instance.OnObjectiveComplete -= ObjectiveComplete;
+    }
+
     public void Interact()
     {
         ObjectiveView.Instance.Show();

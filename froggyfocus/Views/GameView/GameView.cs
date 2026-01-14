@@ -25,6 +25,9 @@ public partial class GameView : View
     public AnimationPlayer AnimationPlayer_Money;
 
     [Export]
+    public AnimationPlayer AnimationPlayer_Vignette;
+
+    [Export]
     public InputPromptControl InputPrompt;
 
     private FocusEvent current_focus_event;
@@ -161,5 +164,17 @@ public partial class GameView : View
             cr_money = null;
             yield return AnimationPlayer_Money.PlayAndWaitForAnimation("hide");
         }
+    }
+
+    public Coroutine AnimateVignetteShow(float duration)
+    {
+        AnimationPlayer_Vignette.SpeedScale = 1f / duration;
+        return AnimationPlayer_Vignette.PlayAndWaitForAnimation("show");
+    }
+
+    public Coroutine AnimateVignetteHide(float duration)
+    {
+        AnimationPlayer_Vignette.SpeedScale = 1f / duration;
+        return AnimationPlayer_Vignette.PlayAndWaitForAnimation("hide");
     }
 }

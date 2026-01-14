@@ -227,7 +227,7 @@ bones/56/position = Vector3(-0.0185457, -0.00599798, 0.00173028)
 bones/56/rotation = Quaternion(0.692591, -0.142541, -0.142541, 0.692591)
 
 [node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 1.63709e-14, -8.51576e-14, 1.80205e-14, 0.998942, -0.0459942, 1.75211e-14, 0.0459944, 0.998942, -2.85359e-17, 0.0103008, 0.0153717)
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_6ia88")
@@ -511,7 +511,7 @@ transform = Transform3D(-0.00158372, -0.00122093, 3.41072e-05, 0.00121003, -0.00
 transform = Transform3D(-0.00147696, 0.00134811, 3.41072e-05, -0.00134236, -0.00146489, -0.000228387, -0.000128964, -0.000191552, 0.00198662, 0.00375487, -0.00557999, 0.00130974)
 
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 1.63709e-14, -8.51576e-14, 1.80205e-14, 0.998942, -0.0459942, 1.75211e-14, 0.0459944, 0.998942, -2.85359e-17, 0.0103008, 0.0153717)
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_6ia88")

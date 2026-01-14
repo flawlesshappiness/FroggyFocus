@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=51 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
@@ -29,6 +29,50 @@
 [ext_resource type="PackedScene" uid="uid://bbkdv22tcatiw" path="res://Prefabs/FocusSkillChecks/buzz.tscn" id="24_3q4gb"]
 [ext_resource type="PackedScene" uid="uid://cwlam1attaotg" path="res://Prefabs/FocusSkillChecks/stomp.tscn" id="25_8i2bm"]
 [ext_resource type="PackedScene" uid="uid://rum51macbtyh" path="res://Prefabs/FocusSkillChecks/dig.tscn" id="26_rqtj8"]
+[ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="30_p01lx"]
+[ext_resource type="AudioStream" uid="uid://vna3rejmp4h5" path="res://Sounds/Raw/sfx_focus_suspense_001.wav" id="30_q0yhd"]
+[ext_resource type="AudioStream" uid="uid://dviibhxxdeppr" path="res://Sounds/Raw/sfx_focus_suspense_002.wav" id="31_8uab8"]
+[ext_resource type="AudioStream" uid="uid://cxgx3x5mieqwe" path="res://Sounds/Raw/sfx_focus_suspense_003.wav" id="31_vaemt"]
+[ext_resource type="AudioStream" uid="uid://ckrqbl4voqiay" path="res://Sounds/Raw/sfx_focus_suspense_004.wav" id="33_p01lx"]
+
+[sub_resource type="Curve" id="Curve_4nfkp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_rfid0"]
+curve = SubResource("Curve_4nfkp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0w0c"]
+spread = 35.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_rfid0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfid0"]
+render_priority = 0
+shader = ExtResource("30_p01lx")
+shader_parameter/albedo = Color(0, 0.7, 1, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+
+[sub_resource type="SphereMesh" id="SphereMesh_7uk70"]
+material = SubResource("ShaderMaterial_rfid0")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pin3"]
 transparency = 1
@@ -47,7 +91,97 @@ geometry_parsed_geometry_type = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_4atv5"]
 size = Vector3(6, 1, 4)
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "SkillCheckParent")]
+[sub_resource type="Animation" id="Animation_rqtj8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8i2bm"]
+resource_name = "slow_zoom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.5, 0), Vector3(0, 3.25, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q0yhd"]
+resource_name = "zoom_out"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3.25, 0), Vector3(0, 3.5, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0yhd"]
+_data = {
+&"RESET": SubResource("Animation_rqtj8"),
+&"zoom_in": SubResource("Animation_8i2bm"),
+&"zoom_out": SubResource("Animation_q0yhd")
+}
+
+[sub_resource type="Animation" id="Animation_p01lx"]
+resource_name = "scared"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticleSystems/PsFrogSweating:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4nfkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticleSystems/PsFrogSweating:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u0w0c"]
+_data = {
+&"RESET": SubResource("Animation_4nfkp"),
+&"scared": SubResource("Animation_p01lx")
+}
+
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "SkillCheckParent", "AnimationPlayer_Camera", "AnimationPlayer_Frog", "SfxSuspenseNormal_Start", "SfxSuspenseFast_Start", "SfxSuspenseNormal_Success", "SfxSuspenseNormal_Fail")]
 script = ExtResource("1_p778c")
 Info = ExtResource("2_2i5pb")
 Camera = NodePath("Camera3D")
@@ -55,6 +189,12 @@ Cursor = NodePath("FocusCursor")
 Target = NodePath("FocusTarget")
 Frog = NodePath("Frog")
 SkillCheckParent = NodePath("SkillChecks")
+AnimationPlayer_Camera = NodePath("AnimationPlayer_Camera")
+AnimationPlayer_Frog = NodePath("AnimationPlayer_Frog")
+SfxSuspenseNormal_Start = NodePath("SfxSuspenseNormal_Start")
+SfxSuspenseFast_Start = NodePath("SfxSuspenseFast_Start")
+SfxSuspenseNormal_Success = NodePath("SfxSuspenseNormal_Success")
+SfxSuspenseNormal_Fail = NodePath("SfxSuspenseNormal_Fail")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5, 0)
@@ -112,9 +252,22 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5
 [node name="Frog" parent="." instance=ExtResource("7_yos1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
 
-[node name="RainEffect" parent="." instance=ExtResource("10_5w8tb")]
+[node name="ParticleSystems" type="Node3D" parent="."]
 
-[node name="WindEffect" parent="." instance=ExtResource("11_h8skc")]
+[node name="RainEffect" parent="ParticleSystems" instance=ExtResource("10_5w8tb")]
+
+[node name="WindEffect" parent="ParticleSystems" instance=ExtResource("11_h8skc")]
+
+[node name="PsFrogSweating" type="GPUParticles3D" parent="ParticleSystems"]
+transform = Transform3D(-4.3262e-08, 6.25188e-09, 1, 0.143026, 0.989719, 0, -0.989719, 0.143026, -4.37114e-08, 8.88178e-16, 0.649858, 1.8471)
+emitting = false
+amount = 5
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_u0w0c")
+draw_pass_1 = SubResource("SphereMesh_7uk70")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -129,3 +282,30 @@ navigation_mesh = SubResource("NavigationMesh_ef5u0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_4atv5")
+
+[node name="AnimationPlayer_Camera" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q0yhd")
+}
+playback_default_blend_time = 0.1
+
+[node name="AnimationPlayer_Frog" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u0w0c")
+}
+
+[node name="SfxSuspenseNormal_Start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_q0yhd")
+bus = &"SFX"
+
+[node name="SfxSuspenseFast_Start" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_vaemt")
+bus = &"SFX"
+
+[node name="SfxSuspenseNormal_Success" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_8uab8")
+bus = &"SFX"
+
+[node name="SfxSuspenseNormal_Fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_p01lx")
+bus = &"SFX"

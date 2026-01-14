@@ -47,6 +47,7 @@ public partial class FocusTarget : Node3D
         UpdateMoveSpeed();
 
         ResetCharacterAnimation();
+        ResetGlow();
     }
 
     private void SetCharacter(FocusCharacterInfo info)
@@ -230,27 +231,42 @@ public partial class FocusTarget : Node3D
         move_curve.AddPoint(p2);
     }
 
+    public void ResetGlow()
+    {
+        AnimationPlayer_Glow.Play("RESET");
+    }
+
     public void ResetCharacterAnimation()
     {
         AnimationPlayer_Character.Play("RESET");
     }
 
-    public IEnumerator Animate_DigDown()
+    public Coroutine Animate_DigDown()
     {
-        yield return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_down");
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_down");
     }
 
-    public IEnumerator Animate_DigUp()
+    public Coroutine Animate_DigUp()
     {
-        yield return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_up");
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_up");
     }
 
-    public IEnumerator Animate_Disappear()
+    public Coroutine Animate_Disappear()
     {
         var ps = ParticleEffectGroup.Instantiate(SmokeDisappearEffect, GetParentNode3D());
         ps.GlobalPosition = GlobalPosition;
         ps.Play();
 
-        yield return AnimationPlayer_Character.PlayAndWaitForAnimation("disappear");
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("disappear");
+    }
+
+    public Coroutine Animate_Scared()
+    {
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("scared");
+    }
+
+    public Coroutine Animate_Unscared()
+    {
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("unscared");
     }
 }

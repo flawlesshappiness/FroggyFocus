@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bi33hifhhmwyo"]
+[gd_scene load_steps=28 format=3 uid="uid://bi33hifhhmwyo"]
 
 [ext_resource type="Script" uid="uid://bcrb31ditl031" path="res://Views/GameView/GameView.cs" id="1_v4b6a"]
 [ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="2_nrlgi"]
+[ext_resource type="Texture2D" uid="uid://b5bjfixraaib0" path="res://Assets/FlawLizArt/Textures/vignette.png" id="2_v3e6u"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="3_b56qe"]
 [ext_resource type="PackedScene" uid="uid://dolwflnwe75eq" path="res://Prefabs/UI/TwoButtonPopup/two_button_popup.tscn" id="3_nrlgi"]
 [ext_resource type="PackedScene" uid="uid://orhp55vpvuf5" path="res://Prefabs/UI/InputPrompt/input_prompt_control.tscn" id="4_60bf7"]
@@ -257,7 +258,59 @@ _data = {
 &"show": SubResource("Animation_v3e6u")
 }
 
-[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup", "ShieldBar", "AnimationPlayer_Quests", "AnimationPlayer_Money", "InputPrompt")]
+[sub_resource type="Animation" id="Animation_k353k"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nlegc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_87d15"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxd45"]
+_data = {
+&"RESET": SubResource("Animation_nlegc"),
+&"hide": SubResource("Animation_87d15"),
+&"show": SubResource("Animation_k353k")
+}
+
+[node name="GameView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "Overlay", "TwoButtonPopup", "ShieldBar", "AnimationPlayer_Quests", "AnimationPlayer_Money", "AnimationPlayer_Vignette", "InputPrompt")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -272,7 +325,20 @@ TwoButtonPopup = NodePath("TwoButtonPopup")
 ShieldBar = NodePath("MarginContainer/Control/ShieldBar")
 AnimationPlayer_Quests = NodePath("AnimationPlayer_QuestUpdated")
 AnimationPlayer_Money = NodePath("AnimationPlayer_Money")
+AnimationPlayer_Vignette = NodePath("AnimationPlayer_Vignette")
 InputPrompt = NodePath("MarginContainer/Control/InputPromptControl")
+
+[node name="Vignette" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.882353)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v3e6u")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -373,6 +439,8 @@ visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_bottom = 0.0
+offset_left = 0.0
+offset_right = 242.0
 offset_bottom = 51.0
 grow_vertical = 1
 
@@ -389,4 +457,9 @@ libraries = {
 [node name="AnimationPlayer_Money" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mg0w6")
+}
+
+[node name="AnimationPlayer_Vignette" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lxd45")
 }
