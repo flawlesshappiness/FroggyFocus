@@ -130,6 +130,9 @@ public partial class FocusEvent : Node3D
             // Target
             CreateTarget();
 
+            // Frog
+            Frog.StartFacingPosition(GlobalPosition);
+
             // Clear skill checks
             skill_checks.ForEach(x =>
             {
@@ -335,6 +338,7 @@ public partial class FocusEvent : Node3D
     private IEnumerator WaitForCatchTarget()
     {
         Frog.SetHandsBack();
+        Frog.StartFacingPosition(Target.GlobalPosition);
         Target.Animate_Scared();
         yield return WaitForSuspense();
         Target.Animate_Unscared();

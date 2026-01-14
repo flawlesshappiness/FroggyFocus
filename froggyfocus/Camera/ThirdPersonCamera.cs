@@ -23,6 +23,9 @@ public partial class ThirdPersonCamera : Node3D
     private float tilt_min = Mathf.DegToRad(-60);
     private float tilt_max = Mathf.DegToRad(-5);
     private Vector2 zoom_range = new Vector2(1f, 8f);
+    private float zoom_value;
+
+    public float ZoomOffset { get; private set; }
 
     private Coroutine cr_debug_spin;
 
@@ -37,6 +40,7 @@ public partial class ThirdPersonCamera : Node3D
         if (initialized) return;
         initialized = true;
 
+        zoom_value = SpringArm.SpringLength;
         this.SetParent(Scene.Current);
         RegisterDebugActions();
     }
@@ -168,12 +172,19 @@ public partial class ThirdPersonCamera : Node3D
 
     private void AdjustZoom(float value)
     {
-        SetZoom(SpringArm.SpringLength + value);
+        SetZoom(zoom_value + value);
     }
 
     private void SetZoom(float value)
     {
-        SpringArm.SpringLength = Mathf.Clamp(value, zoom_range.X, zoom_range.Y);
+        zoom_value = value;
+        SpringArm.SpringLength = Mathf.Clamp(value, zoom_range.X, zoom_range.Y) + ZoomOffset;
+    }
+
+    public void SetZoomOffset(float value)
+    {
+        ZoomOffset = value;
+        SetZoom(zoom_value);
     }
 
     private void AdjustRotation(Vector2 input)

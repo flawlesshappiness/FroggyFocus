@@ -59,6 +59,7 @@ public partial class Player : TopDownController
     private Vector3 respawn_position;
 
     private Coroutine cr_wait_focus_target;
+    private Coroutine cr_look_focus_target;
 
     public override void _Ready()
     {
@@ -161,6 +162,14 @@ public partial class Player : TopDownController
         {
             Interact();
         }
+        else if (PlayerInput.Focus.Pressed)
+        {
+            StartLookForFocusTarget();
+        }
+        else if (PlayerInput.Focus.Released)
+        {
+            StopLookForFocusTarget();
+        }
     }
 
     private void Process_RespawnPosition()
@@ -192,12 +201,12 @@ public partial class Player : TopDownController
 
     private void FocusEventLocked()
     {
-        StopWaitForFocusTarget();
+        //StopWaitForFocusTarget();
     }
 
     private void FocusEventFree()
     {
-        StartWaitForFocusTarget();
+        //StartWaitForFocusTarget();
     }
 
     public void SetCameraTarget()
@@ -335,6 +344,48 @@ public partial class Player : TopDownController
         }
     }
 
+    private void StartLookForFocusTarget()
+    {
+        if (IsJumping || IsCharging) return;
+        if (!GameScene.Instance.HasFocusEvent()) return;
+        if (!GameScene.Instance.HasFocusEventTargets()) return;
+
+        var rng = new RandomNumberGenerator();
+        cr_look_focus_target = this.StartCoroutine(Cr, "focus_target");
+        IEnumerator Cr()
+        {
+            var time_wait = rng.RandfRange(3f, 5f);
+            GameView.Instance.AnimateVignetteShow(1f);
+            AnimateZoom(-1f, 5f);
+
+            yield return new WaitForSeconds(time_wait);
+
+            has_focus_target = true;
+            ExclamationMark.AnimateShow();
+            SfxFocusTargetFound.Play();
+        }
+    }
+
+    private void StopLookForFocusTarget()
+    {
+        if (cr_look_focus_target == null) return;
+        if (!GameScene.Instance.HasFocusEvent()) return;
+        if (!GameScene.Instance.HasFocusEventTargets()) return;
+
+        Coroutine.Stop(cr_look_focus_target);
+        cr_look_focus_target = null;
+        GameView.Instance.AnimateVignetteHide(0.5f);
+        AnimateZoom(0f, 0.5f);
+
+        if (has_focus_target)
+        {
+            ExclamationMark.AnimateHide();
+            StartFocusEvent();
+        }
+
+        has_focus_target = false;
+    }
+
     private void StartFocusEvent()
     {
         StopWaitForFocusTarget();
@@ -375,6 +426,22 @@ public partial class Player : TopDownController
         if (PlayerInteract.HasInteractables)
         {
             QuestionMark.AnimateShow();
+        }
+    }
+
+    private void AnimateZoom(float end, float duration)
+    {
+        this.StartCoroutine(Cr, "zoom");
+        IEnumerator Cr()
+        {
+            var curve = Curves.EaseOutQuad;
+            var start = ThirdPersonCamera.ZoomOffset;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var t = curve.Evaluate(f);
+                var value = Mathf.Lerp(start, end, t);
+                ThirdPersonCamera.SetZoomOffset(value);
+            });
         }
     }
 }

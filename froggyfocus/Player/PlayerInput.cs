@@ -8,6 +8,7 @@ public partial class PlayerInput : Node
     public static CustomInputAction Right = new CustomInputAction("Right");
     public static CustomInputAction Jump = new CustomInputAction("Jump");
     public static CustomInputAction Interact = new CustomInputAction("Interact");
+    public static CustomInputAction Focus = new CustomInputAction("Focus");
     public static CustomInputAction Pause = new CustomInputAction("Pause");
     public static CustomInputAction ZoomIn = new CustomInputAction("ZoomIn");
     public static CustomInputAction ZoomOut = new CustomInputAction("ZoomOut");
