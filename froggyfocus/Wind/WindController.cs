@@ -15,6 +15,9 @@ public partial class WindController : ResourceController<WindCollection, WindInf
     private Vector2 intensity_range;
     private Coroutine cr_wind;
     private float current_volume;
+    private float current_intensity;
+    private double wind_time;
+    private double wind_scale;
 
     public override void _Ready()
     {
@@ -51,6 +54,14 @@ public partial class WindController : ResourceController<WindCollection, WindInf
             SetIntensity(value);
             v.Close();
         }
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        var wind_time_mul = Mathf.Lerp(0.5, 20.0, current_intensity);
+        wind_time += delta * wind_time_mul;
+        RenderingServer.GlobalShaderParameterSet("wind_time", wind_time);
     }
 
     public void StartWind()
@@ -101,9 +112,13 @@ public partial class WindController : ResourceController<WindCollection, WindInf
 
     public void SetIntensity(float t)
     {
+        current_intensity = t;
         var target_volume = Mathf.Lerp(0.0f, 0.5f, t);
         current_volume = Mathf.Lerp(current_volume, target_volume, GameTime.DeltaTime);
         asp_wind.VolumeLinear = current_volume;
         OnWindIntensityChanged?.Invoke(t);
+
+        wind_scale = Mathf.Lerp(0.5, 1.0, current_intensity);
+        RenderingServer.GlobalShaderParameterSet("wind_scale", wind_scale);
     }
 }

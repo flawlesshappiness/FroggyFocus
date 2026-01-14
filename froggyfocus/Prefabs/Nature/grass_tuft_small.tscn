@@ -1,10 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm7mhx4ojgeg3"]
+[gd_scene load_steps=7 format=3 uid="uid://dm7mhx4ojgeg3"]
 
-[ext_resource type="Material" uid="uid://gkcs52l5yruo" path="res://Materials/grass_tuft_small.tres" id="1_vykhj"]
+[ext_resource type="Shader" uid="uid://bg8ot6xmfc8qw" path="res://Materials/windy_grass.gdshader" id="1_nhsdc"]
+[ext_resource type="Texture2D" uid="uid://dyh7trlopof1n" path="res://Textures/grass_002.png" id="2_vyqum"]
+
+[sub_resource type="Gradient" id="Gradient_maigs"]
+colors = PackedColorArray(0.00649999, 0.39, 0, 1, 0, 0.11, 0.00183333, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i5qwi"]
+gradient = SubResource("Gradient_maigs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aw1e8"]
+render_priority = -1
+shader = ExtResource("1_nhsdc")
+shader_parameter/grass_texture = ExtResource("2_vyqum")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_i5qwi")
+shader_parameter/gradient_blend = 1.0
+shader_parameter/alpha_scissor_threshold = 0.157
+shader_parameter/y_multiplier = 4.0
+shader_parameter/local_wind_scale = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_i5qwi"]
-material = ExtResource("1_vykhj")
+material = SubResource("ShaderMaterial_aw1e8")
 size = Vector2(2, 1)
+subdivide_depth = 5
 
 [node name="Grass_Tuft_Small" type="Node3D"]
 

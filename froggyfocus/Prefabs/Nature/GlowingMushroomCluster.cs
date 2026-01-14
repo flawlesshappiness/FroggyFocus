@@ -20,6 +20,12 @@ public partial class GlowingMushroomCluster : Node3DScript
         InitializeLight();
     }
 
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        WeatherController.Instance.OnWeatherStart -= WeatherStart;
+    }
+
     protected override void Initialize()
     {
         base.Initialize();

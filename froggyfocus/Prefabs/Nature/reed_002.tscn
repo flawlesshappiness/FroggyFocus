@@ -1,36 +1,50 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwk6asvxrt7yj"]
+[gd_scene load_steps=12 format=3 uid="uid://bwk6asvxrt7yj"]
 
-[ext_resource type="Texture2D" uid="uid://dv63rqjro2aw6" path="res://Textures/reed_group_002.png" id="1_wlpry"]
+[ext_resource type="Shader" uid="uid://bg8ot6xmfc8qw" path="res://Materials/windy_grass.gdshader" id="1_h08y3"]
+[ext_resource type="Texture2D" uid="uid://cpjk18iat4668" path="res://Textures/reed_group_003.png" id="2_jkucb"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8jctr"]
-load_path = "res://.godot/imported/reed_group_003.png-3f3ef90dabb6bfcb20fb3ba42239bf61.s3tc.ctex"
+[sub_resource type="Gradient" id="Gradient_7peya"]
+colors = PackedColorArray(0.0705917, 0.43, 0.0645, 1, 0, 0.18, 0.003, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h08y3"]
-render_priority = 1
-transparency = 2
-alpha_scissor_threshold = 0.157
-alpha_antialiasing_mode = 0
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.246, 0.6, 0.2755, 1)
-albedo_texture = SubResource("CompressedTexture2D_8jctr")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wlyoy"]
+gradient = SubResource("Gradient_7peya")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h08y3"]
+render_priority = -1
+shader = ExtResource("1_h08y3")
+shader_parameter/grass_texture = ExtResource("2_jkucb")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_wlyoy")
+shader_parameter/gradient_blend = 1.0
+shader_parameter/alpha_scissor_threshold = 0.157
+shader_parameter/y_multiplier = 4.0
+shader_parameter/local_wind_scale = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_jkucb"]
-material = SubResource("StandardMaterial3D_h08y3")
+material = SubResource("ShaderMaterial_h08y3")
 size = Vector2(4, 10)
+subdivide_depth = 25
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7peya"]
-render_priority = 1
-transparency = 2
-alpha_scissor_threshold = 0.704
-alpha_antialiasing_mode = 0
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.35, 0.312433, 0.189, 1)
-albedo_texture = ExtResource("1_wlpry")
+[sub_resource type="Gradient" id="Gradient_8jctr"]
+colors = PackedColorArray(0.43, 0.315333, 0, 1, 0.18, 0.141, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h08y3"]
+gradient = SubResource("Gradient_8jctr")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jkucb"]
+load_path = "res://.godot/imported/reed_group_002.png-e57672e7af800aadbba7265e54f0b4bd.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7peya"]
+render_priority = -1
+shader = ExtResource("1_h08y3")
+shader_parameter/grass_texture = SubResource("CompressedTexture2D_jkucb")
+shader_parameter/gradient_texture = SubResource("GradientTexture1D_h08y3")
+shader_parameter/gradient_blend = 1.0
+shader_parameter/alpha_scissor_threshold = 0.799
+shader_parameter/y_multiplier = 1.0
+shader_parameter/local_wind_scale = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_wlyoy"]
-material = SubResource("StandardMaterial3D_7peya")
+material = SubResource("ShaderMaterial_7peya")
 size = Vector2(4, 10)
 
 [node name="reed_002" type="Node3D"]
