@@ -29,16 +29,25 @@ uniform sampler2D ramp : source_color;
 uniform bool use_borders = false;
 uniform float border_width = 0.01f;
 
-varying vec3 vertex_pos;
-varying vec3 normal;
+uniform bool apply_wind = false;
+uniform float y_multiplier = 1.0;
+uniform float local_wind_scale = 1.0;
+
+global uniform float wind_time;
+global uniform float wind_scale;
 
 float split_specular(float specular) {
 	return step(0.5f, specular);
 }
 
 void vertex() {
-	vertex_pos = VERTEX;
-	normal = NORMAL;
+	if(apply_wind) {
+		float x_freq = NODE_POSITION_WORLD.x + wind_time * 1.25 + UV.y * y_multiplier;
+		float z_freq = NODE_POSITION_WORLD.z + wind_time * 0.45 + UV.y * y_multiplier;
+	    //NORMAL = vec3(0.0, 1.0, 0.0);
+	    VERTEX.x += wind_scale * local_wind_scale * sin(x_freq) * (1.0 - UV.y) * 0.2;
+	    VERTEX.z += wind_scale * local_wind_scale * cos(z_freq) * (1.0 - UV.y) * 0.15;
+	}
 }
 
 void fragment() {

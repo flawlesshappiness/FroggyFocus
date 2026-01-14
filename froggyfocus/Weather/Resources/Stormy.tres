@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeatherInfo" load_steps=2 format=3 uid="uid://d3lwnkei8venk"]
+
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="1_imk1n"]
+
+[resource]
+script = ExtResource("1_imk1n")
+BackgroundMode = 2
+BackgroundColor = Color(0, 0, 0, 0)
+BackgroundEnergyMultiplier = 1.0
+AmbientSource = 3
+AmbientColor = Color(0, 0, 0, 0)
+SunColor = Color(1, 1, 0.7, 1)
+SunShadowOpacity = 0.5
+FogEnabled = false
+FogType = 0
+FogColor = Color(0, 0, 0, 0)
+FogDensity = 0.0
+FogAerialPerspective = 0.0
+Rain = 0.0
+Thunder = false
+Wind = true
+WindRange = Vector2(0.75, 1)
+metadata/_custom_type_script = "uid://br6wmaebrwebg"

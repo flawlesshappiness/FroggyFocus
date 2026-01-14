@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmvkcktlif5ut"]
 
+[ext_resource type="PackedScene" uid="uid://dbksmrs5eb1hr" path="res://Prefabs/Nature/cattail.tscn" id="1_28uk4"]
 [ext_resource type="PackedScene" uid="uid://bwk6asvxrt7yj" path="res://Prefabs/Nature/reed_002.tscn" id="2_o65cf"]
-[ext_resource type="PackedScene" uid="uid://b1puinj13kpqv" path="res://Assets/FlawLizArt/Nature/Toon/cattail.fbx" id="2_yorcy"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_o65cf"]
 top_radius = 4.0
@@ -12,13 +12,13 @@ height = 0.1
 
 [node name="Cattails_Models" type="Node3D" parent="."]
 
-[node name="cattail" parent="Cattails_Models" instance=ExtResource("2_yorcy")]
+[node name="Cattail" parent="Cattails_Models" instance=ExtResource("1_28uk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.328306, 0, -1.61168)
 
-[node name="cattail2" parent="Cattails_Models" instance=ExtResource("2_yorcy")]
+[node name="Cattail2" parent="Cattails_Models" instance=ExtResource("1_28uk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4525, -1.31643, 0.328306)
 
-[node name="cattail3" parent="Cattails_Models" instance=ExtResource("2_yorcy")]
+[node name="Cattail3" parent="Cattails_Models" instance=ExtResource("1_28uk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41271, -0.732777, 0.815789)
 
 [node name="Leaves_002" type="Node3D" parent="."]

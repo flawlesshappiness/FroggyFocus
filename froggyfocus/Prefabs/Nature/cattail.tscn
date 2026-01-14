@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbksmrs5eb1hr"]
+
+[ext_resource type="PackedScene" uid="uid://b1puinj13kpqv" path="res://Assets/FlawLizArt/Nature/Toon/cattail.fbx" id="1_6ekiq"]
+[ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="2_wgr2s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rc26e"]
+render_priority = 0
+shader = ExtResource("2_wgr2s")
+shader_parameter/albedo = Color(0.256, 0.64, 0.3136, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/apply_wind = true
+shader_parameter/y_multiplier = 4.0
+shader_parameter/local_wind_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgr2s"]
+render_priority = 0
+shader = ExtResource("2_wgr2s")
+shader_parameter/albedo = Color(0.7, 0.466667, 0.35, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/apply_wind = true
+shader_parameter/y_multiplier = 4.0
+shader_parameter/local_wind_scale = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a5hta"]
+render_priority = 0
+shader = ExtResource("2_wgr2s")
+shader_parameter/albedo = Color(0.94, 0.7708, 0.564, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/apply_wind = true
+shader_parameter/y_multiplier = 4.0
+shader_parameter/local_wind_scale = 1.0
+
+[node name="Cattail" type="Node3D"]
+
+[node name="cattail" parent="." instance=ExtResource("1_6ekiq")]
+
+[node name="cattail" parent="cattail" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_rc26e")
+surface_material_override/1 = SubResource("ShaderMaterial_wgr2s")
+surface_material_override/2 = SubResource("ShaderMaterial_a5hta")
+
+[editable path="cattail"]
