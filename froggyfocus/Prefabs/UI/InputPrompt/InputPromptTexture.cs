@@ -69,7 +69,11 @@ public partial class InputPromptTexture : TextureRect
         current_action = action;
         var input_events = InputMap.ActionGetEvents(action);
 
-        if (input_events.Count > 0)
+        if (string.IsNullOrEmpty(action))
+        {
+            return false;
+        }
+        else if (input_events.Count > 0)
         {
             var kbm = input_events.FirstOrDefault(x => x is InputEventKey || x is InputEventMouseButton);
             var gamepad = input_events.FirstOrDefault(x => x is InputEventJoypadButton);

@@ -266,7 +266,7 @@ public partial class FocusCursor : Node3D
         if (FocusValue >= FocusMax)
         {
             Filled = true;
-            SfxFocusComplete.Play();
+            //SfxFocusComplete.Play();
             OnFocusFilled?.Invoke();
         }
         else if (FocusValue <= 0)

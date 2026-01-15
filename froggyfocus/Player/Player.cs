@@ -189,11 +189,7 @@ public partial class Player : TopDownController
 
         var interactable = PlayerInteract.GetInteractable();
 
-        if (has_focus_target)
-        {
-            StartFocusEvent();
-        }
-        else if (interactable != null)
+        if (interactable != null)
         {
             interactable?.Interact();
         }
@@ -346,7 +342,7 @@ public partial class Player : TopDownController
 
     private void StartLookForFocusTarget()
     {
-        if (IsJumping || IsCharging) return;
+        if (FocusEventLock.IsLocked) return;
         if (!GameScene.Instance.HasFocusEvent()) return;
         if (!GameScene.Instance.HasFocusEventTargets()) return;
 
@@ -354,11 +350,19 @@ public partial class Player : TopDownController
         cr_look_focus_target = this.StartCoroutine(Cr, "focus_target");
         IEnumerator Cr()
         {
-            var time_wait = rng.RandfRange(3f, 5f);
-            GameView.Instance.AnimateVignetteShow(1f);
-            AnimateZoom(-1f, 5f);
+            if (FocusHotSpotLock.IsFree)
+            {
+                var time_wait = rng.RandfRange(2f, 4f);
+                GameView.Instance.AnimateVignetteShow(1f);
+                AnimateZoom(-1f, 5f);
 
-            yield return new WaitForSeconds(time_wait);
+                yield return new WaitForSeconds(time_wait);
+            }
+            else
+            {
+                GameView.Instance.AnimateVignetteShow(0.5f);
+                AnimateZoom(-1f, 0.5f);
+            }
 
             has_focus_target = true;
             ExclamationMark.AnimateShow();
