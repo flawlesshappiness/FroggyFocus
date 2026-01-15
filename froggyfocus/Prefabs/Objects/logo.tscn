@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://doykhljt62m12"]
+
+[ext_resource type="PackedScene" uid="uid://c80spiont3dke" path="res://Assets/FlawLizArt/Logo/logo_o.fbx" id="1_joylj"]
+[ext_resource type="PackedScene" uid="uid://bfahjxox55wtl" path="res://Assets/FlawLizArt/Nature/Toon/lilypad_cut.fbx" id="2_vaat6"]
+[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="3_gs6lg"]
+[ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="4_depya"]
+
+[node name="Logo" type="Node3D"]
+process_mode = 3
+
+[node name="Anim" type="Node3D" parent="."]
+
+[node name="logo_o" parent="Anim" instance=ExtResource("1_joylj")]
+
+[node name="lilypad_cut" parent="Anim" instance=ExtResource("2_vaat6")]
+transform = Transform3D(0.226126, 0, 0.138174, 0, 0.265, 0, -0.138174, 0, 0.226126, -0.32266, -0.0320873, 0.301082)
+
+[node name="Lilypad_Flower" parent="Anim/lilypad_cut" instance=ExtResource("3_gs6lg")]
+transform = Transform3D(1.79109, 0, -1.09444, 0, 2.099, 0, 1.09444, 0, 1.79109, -0.0451519, 0.132472, 0.0738924)
+
+[node name="Eldritch_Eye" parent="Anim" instance=ExtResource("4_depya")]
+transform = Transform3D(0.183118, -1.86265e-09, -0.0263225, -0.0254255, -0.0478815, -0.176879, -0.00681274, 0.178696, -0.0473945, -0.478051, -0.0473451, -0.299439)
+StartState = 1

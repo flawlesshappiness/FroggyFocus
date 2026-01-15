@@ -18,6 +18,7 @@ public partial class FocusHotSpot : Area3D
         BodyExited += PlayerExited;
 
         FocusEventController.Instance.OnFocusEventStarted += FocusEventStarted;
+        FocusHotSpotController.OnDestroyAllHotspots += DestroyHotspot;
 
         enabled = true;
     }
@@ -26,6 +27,7 @@ public partial class FocusHotSpot : Area3D
     {
         base._ExitTree();
         FocusEventController.Instance.OnFocusEventStarted -= FocusEventStarted;
+        FocusHotSpotController.OnDestroyAllHotspots -= DestroyHotspot;
         SetLock(false);
     }
 
@@ -80,5 +82,10 @@ public partial class FocusHotSpot : Area3D
 
             QueueFree();
         }
+    }
+
+    private void DestroyHotspot()
+    {
+        Destroy();
     }
 }

@@ -1,5 +1,6 @@
 
 using Godot;
+using System;
 using System.Collections;
 using System.Linq;
 
@@ -7,6 +8,8 @@ public partial class FocusHotSpotController : SingletonController
 {
     public static FocusHotSpotController Instance => Singleton.Get<FocusHotSpotController>();
     public override string Directory => "FocusHotSpot";
+
+    public static Action OnDestroyAllHotspots;
 
     private const string HotSpotTemplatePath = $"res://Prefabs/FocusEvent/focus_hot_spot.tscn";
 
@@ -34,6 +37,45 @@ public partial class FocusHotSpotController : SingletonController
         void Skip(DebugView v)
         {
             skip = true;
+            v.Close();
+        }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Stop",
+            Action = StopHotspots
+        });
+
+        void StopHotspots(DebugView v)
+        {
+            Stop();
+            v.Close();
+        }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Start",
+            Action = StartHotspots
+        });
+
+        void StartHotspots(DebugView v)
+        {
+            Start();
+            v.Close();
+        }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Destroy all hotspots",
+            Action = DestroyAllHotspots
+        });
+
+        void DestroyAllHotspots(DebugView v)
+        {
+            OnDestroyAllHotspots?.Invoke();
             v.Close();
         }
     }

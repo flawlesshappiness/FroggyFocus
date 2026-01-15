@@ -5,6 +5,9 @@ public partial class ScreenshotController : SingletonController
 {
     public override string Directory => "Screenshots";
 
+    private bool prepared_screenshot;
+    private string prepared_filepath;
+
     public override void _Ready()
     {
         base._Ready();
@@ -30,6 +33,35 @@ public partial class ScreenshotController : SingletonController
                 view.Close();
                 TakeScreenshots($"res://Screenshots/Images/{s}");
             });
+        }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Id = category,
+            Category = category,
+            Text = "Prepare screenshots",
+            Action = DebugPrepareScreenshots
+        });
+
+        void DebugPrepareScreenshots(DebugView v)
+        {
+            v.PopupStringInput("Filename", s =>
+            {
+                v.Close();
+                prepared_screenshot = true;
+                prepared_filepath = $"res://Screenshots/Images/{s}";
+            });
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+
+        if (prepared_screenshot && PlayerInput.DebugScreenshot.Pressed)
+        {
+            prepared_screenshot = false;
+            TakeScreenshots(prepared_filepath);
         }
     }
 

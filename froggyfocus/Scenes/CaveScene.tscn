@@ -585,13 +585,13 @@ transform = Transform3D(6, 0, 0, 0, -6, 9.05975e-07, 0, -9.05975e-07, -6, -29.41
 transform = Transform3D(8, 0, 0, 0, -8, 1.20797e-06, 0, -1.20797e-06, -8, 23.1764, 78.5004, 26.2792)
 
 [node name="Shop" parent="World/Stalagmites" instance=ExtResource("22_ns5ic")]
-transform = Transform3D(0.788677, 0, 0.614808, 0, 1, 0, -0.614808, 0, 0.788677, 27.4423, 34.361, -33.5867)
+transform = Transform3D(0.788677, 0, 0.614808, 0, 1, 0, -0.614808, 0, 0.788677, 27.4423, 34.3819, -33.5867)
 
 [node name="Shop2" parent="World/Stalagmites" instance=ExtResource("22_ns5ic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5772, 11.2683, 42.6912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5772, 11.2965, 42.6912)
 
 [node name="Shop3" parent="World/Stalagmites" instance=ExtResource("22_ns5ic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.115, 17.4664, 30.053)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.115, 17.4879, 30.053)
 
 [node name="PathWaterSFX_Cave_1" type="Path3D" parent="World/Stalagmites"]
 curve = SubResource("Curve3D_df6tn")

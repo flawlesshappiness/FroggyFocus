@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d180feyonrdv5"]
+[gd_scene load_steps=7 format=3 uid="uid://d180feyonrdv5"]
 
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="1_37hgo"]
 [ext_resource type="Script" uid="uid://c5igtc3vlqhjb" path="res://Prefabs/UI/MainMenu/MainMenuContainer.cs" id="1_bn65t"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="2_bn65t"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="4_ju611"]
+[ext_resource type="PackedScene" uid="uid://doykhljt62m12" path="res://Prefabs/Objects/logo.tscn" id="6_cxsgc"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ju611"]
+viewport_path = NodePath("ItemSubViewport")
 
 [node name="MainMenuContainer" type="MarginContainer" node_paths=PackedStringArray("NewGameButton", "ContinueButton", "ProfilesButton", "OptionsButton", "CreditsButton", "QuitButton", "VersionLabel")]
 anchors_preset = 15
@@ -27,7 +32,7 @@ VersionLabel = NodePath("Control/VersionLabel")
 layout_mode = 2
 
 [node name="Top" type="Control" parent="VSplitContainer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="VSplitContainer/Top"]
@@ -39,12 +44,29 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="VSplitContainer/Top/CenterContainer"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.490196)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_font_sizes/font_size = 100
 text = "FOCUS FROGGY"
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/Top"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.0
+offset_top = -223.0
+offset_right = 360.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_ju611")
+expand_mode = 1
 
 [node name="Bottom" type="Control" parent="VSplitContainer"]
 layout_mode = 2
@@ -134,3 +156,30 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "v0.1.0"
 horizontal_alignment = 2
+
+[node name="ItemSubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(3840, 2160)
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport"]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -2.82153)
+environment = ExtResource("4_ju611")
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.775341, 0.631542, 0, -0.631542, -0.775341, 0, 1.96126, -1.43761)
+light_energy = 3.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+visible = false
+light_energy = 0.1
+
+[node name="Anim" type="Node3D" parent="ItemSubViewport"]
+
+[node name="Origin" type="Node3D" parent="ItemSubViewport/Anim"]
+
+[node name="Logo" parent="ItemSubViewport/Anim/Origin" instance=ExtResource("6_cxsgc")]
+transform = Transform3D(-1.25, -1.09278e-07, 4.77671e-15, 0, -5.46392e-08, -1.25, 1.09278e-07, -1.25, 5.46392e-08, 0, 0, 0)

@@ -28,7 +28,7 @@ shadow_enabled = true
 environment = ExtResource("2_c7qge")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.961694, 0.274127, 0, -0.274127, 0.961694, -1.74717, 1.01917, 1.64653)
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, -1.74717, 0.577646, 1.57595)
 
 [node name="World" type="Node3D" parent="."]
 
