@@ -350,6 +350,8 @@ public partial class Player : TopDownController
         cr_look_focus_target = this.StartCoroutine(Cr, "focus_target");
         IEnumerator Cr()
         {
+            MovementLock.SetLock("focus_target", true);
+
             if (FocusHotSpotLock.IsFree)
             {
                 var time_wait = rng.RandfRange(2f, 4f);
@@ -372,6 +374,8 @@ public partial class Player : TopDownController
 
     private void StopLookForFocusTarget()
     {
+        MovementLock.SetLock("focus_target", false);
+
         if (cr_look_focus_target == null) return;
         if (!GameScene.Instance.HasFocusEvent()) return;
         if (!GameScene.Instance.HasFocusEventTargets()) return;
