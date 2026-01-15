@@ -80,6 +80,7 @@ public partial class ScreenshotController : SingletonController
             //yield return SaveImageByResolution(new Vector2I(3840, 1240), file_path_no_ext);
             yield return SaveImageByResolution(new Vector2I(1920, 1080), file_path_no_ext);
             //yield return SaveImageByResolution(new Vector2I(1280, 720), file_path_no_ext);
+            //yield return SaveImageByResolution(new Vector2I(462, 462), file_path_no_ext);
 
             // Reset resolution
             Scene.Root.Size = current_size;

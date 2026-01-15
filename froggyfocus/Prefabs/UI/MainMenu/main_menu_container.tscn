@@ -109,7 +109,7 @@ offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
-alignment = 1
+alignment = 2
 
 [node name="NewGameButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
 layout_mode = 2
@@ -164,9 +164,11 @@ handle_input_locally = false
 size = Vector2i(3840, 2160)
 
 [node name="Camera3D" type="Camera3D" parent="ItemSubViewport"]
-transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -2.82153)
+transform = Transform3D(-0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, -0.984808, -0.54596, 0, -2.82153)
 environment = ExtResource("4_ju611")
+projection = 1
 fov = 50.0
+size = 2.63518
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport"]
 transform = Transform3D(1, 0, 0, 0, -0.775341, 0.631542, 0, -0.631542, -0.775341, 0, 1.96126, -1.43761)

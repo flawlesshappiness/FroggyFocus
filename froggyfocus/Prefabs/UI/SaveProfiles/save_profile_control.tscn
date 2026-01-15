@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://xu2fe83a2er2"]
+[gd_scene load_steps=17 format=3 uid="uid://xu2fe83a2er2"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_nd4sc"]
 [ext_resource type="Script" uid="uid://b3hh1rjplhds4" path="res://Prefabs/UI/SaveProfiles/SaveProfileControl.cs" id="2_b18tc"]
@@ -14,6 +14,27 @@
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5elr7"]
 viewport_path = NodePath("ItemSubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yp5k"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cgdmn"]
 
@@ -226,6 +247,7 @@ horizontal_alignment = 1
 
 [node name="ProfileButton" parent="VBoxContainer/MarginContainer2" instance=ExtResource("2_rl3ma")]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_1yp5k")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_cgdmn")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_f7fbw")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xwvsp")

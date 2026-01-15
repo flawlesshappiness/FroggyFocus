@@ -1,0 +1,67 @@
+[gd_scene load_steps=14 format=3 uid="uid://i6p5f6c6mvhv"]
+
+[ext_resource type="Script" uid="uid://d1h6aaidr5qrn" path="res://Scenes/ScreenshotScene.cs" id="1_g1bgp"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_kpux8"]
+[ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_t1sps"]
+[ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_qjatg"]
+[ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_xr1f7"]
+[ext_resource type="PackedScene" uid="uid://4urw2wytgf6c" path="res://Prefabs/Screenshots/logo.tscn" id="4_qjatg"]
+[ext_resource type="PackedScene" uid="uid://m45j5lev16gp" path="res://Prefabs/Screenshots/become_froggy.tscn" id="7_p4r7y"]
+[ext_resource type="PackedScene" uid="uid://bfx16sqkenaau" path="res://Prefabs/Screenshots/catch_bugs.tscn" id="8_a67ip"]
+[ext_resource type="PackedScene" uid="uid://bw82rxidwopas" path="res://Prefabs/Screenshots/meet_friends.tscn" id="9_il8t4"]
+[ext_resource type="PackedScene" uid="uid://cin7dwfbyc71r" path="res://Prefabs/Screenshots/capsule_horizontal.tscn" id="10_a67ip"]
+[ext_resource type="PackedScene" uid="uid://c3o7b7lec86od" path="res://Prefabs/Screenshots/capsule_small.tscn" id="11_il8t4"]
+[ext_resource type="PackedScene" uid="uid://ccr3snx464nmp" path="res://Prefabs/Screenshots/capsule_vertical.tscn" id="12_si4h8"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_t1sps"]
+
+[node name="ScreenshotScene" type="Node3D" node_paths=PackedStringArray("LogoSetup", "BecomeFroggySetup", "MeetFriendsSetup", "CatchBugsSetup", "HorizontalCapsuleSetup", "SmallCapsuleSetup", "VerticalCapsuleSetup", "DirectionalLight", "WorldEnvironment")]
+script = ExtResource("1_g1bgp")
+LogoSetup = NodePath("World/Logo")
+BecomeFroggySetup = NodePath("World/BecomeFroggy")
+MeetFriendsSetup = NodePath("World/MeetFriends")
+CatchBugsSetup = NodePath("World/CatchBugs")
+HorizontalCapsuleSetup = NodePath("World/Capsule_Horizontal")
+SmallCapsuleSetup = NodePath("World/Capsule_Small")
+VerticalCapsuleSetup = NodePath("World/Capsule_Vertical")
+DirectionalLight = NodePath("DirectionalLight3D")
+WorldEnvironment = NodePath("WorldEnvironment")
+Weathers = Array[ExtResource("2_kpux8")]([ExtResource("3_xr1f7")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_t1sps")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 5.72245, 3.27611)
+light_color = Color(1, 1, 0.7, 1)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("3_qjatg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.26)
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="World"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Ground"]
+shape = SubResource("WorldBoundaryShape3D_t1sps")
+
+[node name="Logo" parent="World" instance=ExtResource("4_qjatg")]
+visible = false
+
+[node name="BecomeFroggy" parent="World" instance=ExtResource("7_p4r7y")]
+visible = false
+
+[node name="MeetFriends" parent="World" instance=ExtResource("9_il8t4")]
+visible = false
+
+[node name="CatchBugs" parent="World" instance=ExtResource("8_a67ip")]
+visible = false
+
+[node name="Capsule_Horizontal" parent="World" instance=ExtResource("10_a67ip")]
+visible = false
+
+[node name="Capsule_Small" parent="World" instance=ExtResource("11_il8t4")]
+visible = false
+
+[node name="Capsule_Vertical" parent="World" instance=ExtResource("12_si4h8")]

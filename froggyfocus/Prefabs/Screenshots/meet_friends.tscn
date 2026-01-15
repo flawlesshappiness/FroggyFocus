@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw82rxidwopas"]
+
+[ext_resource type="Script" uid="uid://gbj03ov4lgdm" path="res://Prefabs/Screenshots/ScreenshotSceneSetup.cs" id="1_48vdk"]
+[ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="2_o27pl"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="3_mhqqg"]
+[ext_resource type="PackedScene" uid="uid://d363yjmwkuijr" path="res://Assets/FlawLizArt/Text/meet_friends.fbx" id="4_48vdk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_jjh3b"]
+flip_faces = true
+radius = 2.5
+height = 5.0
+
+[node name="MeetFriends" type="Node3D" node_paths=PackedStringArray("Camera")]
+script = ExtResource("1_48vdk")
+Camera = NodePath("Camera3D")
+Weather = ExtResource("2_o27pl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_jjh3b")
+surface_material_override/0 = ExtResource("3_mhqqg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 1.63181, 0.378373)
+projection = 1
+size = 2.4718
+
+[node name="meet_friends" parent="." instance=ExtResource("4_48vdk")]
+transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)

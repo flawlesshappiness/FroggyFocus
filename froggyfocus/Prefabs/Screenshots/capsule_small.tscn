@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3o7b7lec86od"]
+
+[ext_resource type="Script" uid="uid://gbj03ov4lgdm" path="res://Prefabs/Screenshots/ScreenshotSceneSetup.cs" id="1_l4sgb"]
+[ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="2_l65u5"]
+[ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="3_ehn6i"]
+[ext_resource type="PackedScene" uid="uid://doykhljt62m12" path="res://Prefabs/Objects/logo.tscn" id="4_trvls"]
+[ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds_dense.tscn" id="5_xke5g"]
+
+[node name="Capsule_Small" type="Node3D" node_paths=PackedStringArray("Camera")]
+script = ExtResource("1_l4sgb")
+Camera = NodePath("Camera3D")
+Weather = ExtResource("2_l65u5")
+
+[node name="Water" parent="." instance=ExtResource("3_ehn6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.02905, -2.63538e-07)
+
+[node name="Logo" parent="." instance=ExtResource("4_trvls")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.465901, 0)
+visible = false
+
+[node name="Plants" type="Node3D" parent="."]
+
+[node name="Reeds_Dense" parent="Plants" instance=ExtResource("5_xke5g")]
+transform = Transform3D(0.963924, 0, 0.266179, 0, 1, 0, -0.266179, 0, 0.963924, -6.55688, -2.44255, -4.98791)
+
+[node name="Reeds_Dense2" parent="Plants" instance=ExtResource("5_xke5g")]
+transform = Transform3D(0.899939, 0, 0.436017, 0, 1, 0, -0.436017, 0, 0.899939, 7.80572, -2.44255, -4.59989)
+
+[node name="Reeds_Dense3" parent="Plants" instance=ExtResource("5_xke5g")]
+transform = Transform3D(0.226668, 0, 0.973972, 0, 1, 0, -0.973972, 0, 0.226668, 0.154459, -2.44255, -6.50395)

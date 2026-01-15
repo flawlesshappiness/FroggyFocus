@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://doykhljt62m12"]
+[gd_scene load_steps=6 format=3 uid="uid://doykhljt62m12"]
 
 [ext_resource type="PackedScene" uid="uid://c80spiont3dke" path="res://Assets/FlawLizArt/Logo/logo_o.fbx" id="1_joylj"]
 [ext_resource type="PackedScene" uid="uid://bfahjxox55wtl" path="res://Assets/FlawLizArt/Nature/Toon/lilypad_cut.fbx" id="2_vaat6"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="3_gs6lg"]
 [ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="4_depya"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_gs6lg"]
 
 [node name="Logo" type="Node3D"]
 process_mode = 3
@@ -12,12 +13,88 @@ process_mode = 3
 
 [node name="logo_o" parent="Anim" instance=ExtResource("1_joylj")]
 
+[node name="Logo_O" parent="Anim/logo_o" index="0"]
+cast_shadow = 0
+
 [node name="lilypad_cut" parent="Anim" instance=ExtResource("2_vaat6")]
 transform = Transform3D(0.226126, 0, 0.138174, 0, 0.265, 0, -0.138174, 0, 0.226126, -0.32266, -0.0320873, 0.301082)
+
+[node name="lilypad_cut" parent="Anim/lilypad_cut" index="0"]
+cast_shadow = 0
 
 [node name="Lilypad_Flower" parent="Anim/lilypad_cut" instance=ExtResource("3_gs6lg")]
 transform = Transform3D(1.79109, 0, -1.09444, 0, 2.099, 0, 1.09444, 0, 1.79109, -0.0451519, 0.132472, 0.0738924)
 
+[node name="Flower" parent="Anim/lilypad_cut/Lilypad_Flower" index="0"]
+cast_shadow = 0
+
+[node name="Frog" parent="Anim/lilypad_cut" instance=ExtResource("4_gs6lg")]
+transform = Transform3D(0.0133172, 0, -0.654865, 0, 0.655, 0, 0.654865, 0, 0.0133172, 0, 0.128709, 0)
+visible = false
+DisableAnimationStates = true
+DisableAppearanceUpdates = true
+
+[node name="Skeleton3D" parent="Anim/lilypad_cut/Frog/frog/Armature" index="0"]
+bones/11/rotation = Quaternion(0.194115, -0.327013, 0.0279001, 0.924448)
+bones/12/rotation = Quaternion(-0.293298, 0.301429, 0.761442, 0.493278)
+bones/23/rotation = Quaternion(0.194832, 0.327516, -0.0278973, 0.924119)
+bones/24/rotation = Quaternion(-0.293298, -0.301429, -0.761442, 0.493278)
+bones/25/rotation = Quaternion(-0.0590959, 0.637207, -0.144818, 0.754654)
+bones/34/rotation = Quaternion(0.362007, 0.448896, 0.251745, -0.777218)
+bones/35/rotation = Quaternion(-0.947405, 0.00995158, -0.166846, 0.272923)
+bones/36/rotation = Quaternion(0.208934, 0.68748, 0.69525, 0.0185442)
+bones/38/rotation = Quaternion(0.381323, -0.44572, -0.226124, -0.777685)
+bones/39/rotation = Quaternion(-0.947405, -0.00995164, 0.166846, 0.272923)
+bones/40/rotation = Quaternion(-0.208934, 0.68748, 0.69525, -0.0185442)
+bones/42/position = Vector3(0.0140307, 0.0122016, 0.00173028)
+bones/44/position = Vector3(0.0125942, -0.0139934, 0.00115202)
+bones/48/position = Vector3(0.0253908, -0.00599798, 0.00824145)
+bones/50/position = Vector3(-0.0140307, 0.0122016, 0.00173028)
+bones/52/position = Vector3(-0.0125942, -0.0139934, 0.00115202)
+bones/56/position = Vector3(-0.0253908, -0.00599798, 0.00824145)
+
+[node name="HatAttachmentGroup" parent="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
+
+[node name="FaceAttachmentGroup" parent="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
+
+[node name="AnimationPlayer" parent="Anim/lilypad_cut/Frog/frog" index="1"]
+blend_times = [&"Armature|jump_end", &"Armature|jump_end", 0.01, &"Armature|jump_end", &"Armature|jump_start", 0.01]
+
 [node name="Eldritch_Eye" parent="Anim" instance=ExtResource("4_depya")]
 transform = Transform3D(0.183118, -1.86265e-09, -0.0263225, -0.0254255, -0.0478815, -0.176879, -0.00681274, 0.178696, -0.0473945, -0.478051, -0.0473451, -0.299439)
 StartState = 1
+
+[node name="eyeball" parent="Anim/Eldritch_Eye/eye" index="0"]
+cast_shadow = 0
+
+[node name="eyelid_upper" parent="Anim/Eldritch_Eye/eye/Armature/Skeleton3D" index="0"]
+cast_shadow = 0
+
+[node name="eyelid_lower" parent="Anim/Eldritch_Eye/eye/Armature/Skeleton3D" index="1"]
+cast_shadow = 0
+
+[editable path="Anim/logo_o"]
+[editable path="Anim/lilypad_cut"]
+[editable path="Anim/lilypad_cut/Lilypad_Flower"]
+[editable path="Anim/lilypad_cut/Frog"]
+[editable path="Anim/lilypad_cut/Frog/frog"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent2"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent4"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent5"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent3"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent6"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent7"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_002"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_005"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_006"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper2"]
+[editable path="Anim/lilypad_cut/Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper3"]
+[editable path="Anim/Eldritch_Eye"]
+[editable path="Anim/Eldritch_Eye/eye"]

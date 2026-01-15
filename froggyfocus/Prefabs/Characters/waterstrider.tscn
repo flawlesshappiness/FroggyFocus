@@ -19,7 +19,7 @@ material = ExtResource("8_4j3x0")
 [sub_resource type="QuadMesh" id="QuadMesh_o8aa0"]
 material = ExtResource("9_timqg")
 
-[node name="Locust" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+[node name="Waterstrider" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_7t4ty")
 Animation = NodePath("AnimationStateMachine")
 Accessories = [NodePath("waterstrider/Armature/Skeleton3D/flower"), NodePath("waterstrider/Armature/Skeleton3D/wooden")]

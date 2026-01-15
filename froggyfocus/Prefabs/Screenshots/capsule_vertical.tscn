@@ -1,0 +1,183 @@
+[gd_scene load_steps=15 format=3 uid="uid://ccr3snx464nmp"]
+
+[ext_resource type="Script" uid="uid://7mwj3wiroivp" path="res://Prefabs/Screenshots/CapsuleHorizontalSetup.cs" id="1_ehkre"]
+[ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="2_7rdsy"]
+[ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="3_j3166"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_nuw8h"]
+[ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="5_w5c6s"]
+[ext_resource type="PackedScene" uid="uid://doykhljt62m12" path="res://Prefabs/Objects/logo.tscn" id="6_q3s4i"]
+[ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds_dense.tscn" id="7_tpvti"]
+[ext_resource type="PackedScene" uid="uid://dhsta7k5pa82t" path="res://Prefabs/Characters/backswimmer.tscn" id="8_tlgwm"]
+[ext_resource type="PackedScene" uid="uid://ir8kqnw2coxy" path="res://Prefabs/Characters/mosquito.tscn" id="9_ygs75"]
+[ext_resource type="PackedScene" uid="uid://dkwf4pkxnfdjr" path="res://Prefabs/Characters/bee.tscn" id="10_s0shx"]
+[ext_resource type="PackedScene" uid="uid://c58rcew34bdig" path="res://Prefabs/Characters/waterstrider.tscn" id="11_v57v0"]
+[ext_resource type="PackedScene" uid="uid://dwbma2eixbj5y" path="res://Prefabs/Characters/dragonfly.tscn" id="12_1q2c2"]
+[ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="13_p5f4i"]
+[ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="14_k4qy8"]
+
+[node name="Capsule_Vertical" type="Node3D" node_paths=PackedStringArray("Bugs", "Camera")]
+script = ExtResource("1_ehkre")
+Bugs = [null, null, null, null, null]
+Camera = NodePath("Camera3D")
+Weather = ExtResource("2_7rdsy")
+
+[node name="Water" parent="." instance=ExtResource("3_j3166")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78237, 3.66356)
+
+[node name="Frog" parent="." instance=ExtResource("4_nuw8h")]
+transform = Transform3D(-0.972474, 0, -0.514096, 0, 1.1, 0, 0.514096, 0, -0.972474, -0.0189435, 0.693763, 1.07971)
+DisableAnimationStates = true
+DisableAppearanceUpdates = true
+
+[node name="Skeleton3D" parent="Frog/frog/Armature" index="0"]
+bones/1/position = Vector3(1.5626e-18, -0.0124686, 0.017827)
+bones/11/rotation = Quaternion(-0.0843659, -0.253129, 0.338995, 0.902159)
+bones/12/rotation = Quaternion(-0.151855, 0.472608, 0.394238, 0.773407)
+bones/13/rotation = Quaternion(-0.0133479, -0.449082, 0.127892, 0.884189)
+bones/23/rotation = Quaternion(-0.0837252, 0.253783, -0.3391, 0.901995)
+bones/24/rotation = Quaternion(-0.151855, -0.472608, -0.394238, 0.773407)
+bones/25/rotation = Quaternion(-0.0133477, 0.449083, -0.127892, 0.884189)
+bones/34/rotation = Quaternion(0.891889, 0.182025, 0.409774, -0.0590488)
+bones/35/rotation = Quaternion(-0.228165, 0.0354474, -0.0401817, 0.972147)
+bones/36/rotation = Quaternion(0.0425063, 0.982389, 0.181194, -0.0165508)
+bones/38/rotation = Quaternion(0.905668, -0.176937, -0.381305, -0.0553638)
+bones/39/rotation = Quaternion(-0.228162, -0.0354475, 0.0401812, 0.972148)
+bones/40/rotation = Quaternion(-0.0425063, 0.982389, 0.181194, 0.0165508)
+bones/42/position = Vector3(0.0122736, 0.0171983, 0.00931098)
+bones/44/position = Vector3(0.0125942, -0.0404196, 0.00895087)
+bones/48/position = Vector3(0.0253908, -0.00599798, 0.00824145)
+bones/50/position = Vector3(-0.0122736, 0.0171983, 0.00931098)
+bones/52/position = Vector3(-0.0125942, -0.0404196, 0.00895087)
+bones/56/position = Vector3(-0.0253908, -0.00599798, 0.00824145)
+
+[node name="HatAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0269697)
+
+[node name="FlowerHat" parent="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup" index="13" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+OnlySecondaryMeshes = [null, null, null, null, null, null]
+
+[node name="HatWeed" parent="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup" index="17" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+OnlySecondaryMeshes = [null, null, null]
+
+[node name="HatPolluted" parent="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup" index="19" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+OnlySecondaryMeshes = [null, null, null]
+
+[node name="FaceAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0269697)
+
+[node name="AnimationPlayer" parent="Frog/frog" index="1"]
+blend_times = [&"Armature|jump_end", &"Armature|jump_end", 0.01, &"Armature|jump_end", &"Armature|jump_start", 0.01]
+
+[node name="PlayerMoveSoundsGroup" parent="Frog/Sounds" index="3" node_paths=PackedStringArray("MoveSounds")]
+MoveSounds = [null, null, null]
+
+[node name="lilypad" parent="." instance=ExtResource("5_w5c6s")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -1.03806, 0, -2.01835)
+
+[node name="lilypad2" parent="." instance=ExtResource("5_w5c6s")]
+transform = Transform3D(-0.766995, 0, 2.9003, 0, 3, 0, -2.9003, 0, -0.766995, 4.90333, -0.205366, -10.1411)
+
+[node name="lilypad3" parent="." instance=ExtResource("5_w5c6s")]
+transform = Transform3D(-0.579267, 0, -1.91428, 0, 2, 0, 1.91428, 0, -0.579267, -5.73024, -0.205366, -15.0951)
+
+[node name="Logo" parent="." instance=ExtResource("6_q3s4i")]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 5.11095, -5.70802)
+visible = false
+
+[node name="Plants" type="Node3D" parent="."]
+
+[node name="Reeds_Dense" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.63453, -4.33884, -5.17658)
+
+[node name="Reeds_Dense7" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.76549, -3.71043, -4.40949)
+
+[node name="Reeds_Dense2" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4152, -2.25618, -3.24256)
+
+[node name="Reeds_Dense5" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3808, -2.25618, -7.39626)
+
+[node name="Reeds_Dense30" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2679, -2.2732, -29.0855)
+
+[node name="Reeds_Dense33" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6023, -3.62562, -29.0855)
+
+[node name="Reeds_Dense31" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4197, -3.62562, -21.8129)
+
+[node name="Reeds_Dense34" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5727, -3.62562, -59.5799)
+
+[node name="Reeds_Dense35" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1985, -3.62562, -59.5799)
+
+[node name="Reeds_Dense32" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1474, -3.62562, -21.8129)
+
+[node name="Reeds_Dense10" parent="Plants" instance=ExtResource("7_tpvti")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8098, -2.25618, -6.15769)
+
+[node name="Bugs" type="Node3D" parent="."]
+visible = false
+
+[node name="Backswimmer" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("8_tlgwm")]
+transform = Transform3D(-0.622873, 0, 1.36456, 0, 1.5, 0, -1.36456, 0, -0.622873, 2.41829, 0, -0.524099)
+visible = false
+Accessories = [null]
+
+[node name="Mosquito" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("9_ygs75")]
+transform = Transform3D(-0.954865, 0, -1.15682, 0, 1.5, 0, 1.15682, 0, -0.954865, -5.10074, 5.25178, -4.57918)
+Accessories = [null, null, null, null]
+
+[node name="Bee" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("10_s0shx")]
+transform = Transform3D(-0.954521, 0, 1.1571, 0, 1.5, 0, -1.1571, 0, -0.954521, 4.86208, 5.00527, -4.22784)
+Accessories = [null, null]
+
+[node name="Waterstrider" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("11_v57v0")]
+transform = Transform3D(-1.9303, 0, -0.523402, 0, 2, 0, 0.523402, 0, -1.9303, 6.44286, 0, -8.22762)
+visible = false
+Accessories = [null, null]
+
+[node name="Dragonfly" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("12_1q2c2")]
+transform = Transform3D(-1.83131, -0.291845, 0.749084, 2.98023e-08, 1.86356, 0.726047, -0.803927, 0.664809, -1.70638, -6.74008, 1.00944, -7.8946)
+visible = false
+Accessories = []
+
+[node name="Wood" type="Node3D" parent="."]
+visible = false
+
+[node name="Branch_Swamp_005" parent="Wood" instance=ExtResource("13_p5f4i")]
+transform = Transform3D(0.861621, 0, -1.80489, 0, 2, 0, 1.80489, 0, 0.861621, -24.3464, -0.6875, -94.8949)
+
+[node name="Branch_Swamp_006" parent="Wood" instance=ExtResource("13_p5f4i")]
+transform = Transform3D(0.861621, 0, -1.80489, 0, 2, 0, 1.80489, 0, 0.861621, 36.3876, -0.6875, -95.3864)
+
+[node name="Branch_Swamp_001" parent="Wood" instance=ExtResource("14_k4qy8")]
+transform = Transform3D(0.755705, 0, 0.654912, 0, 1, 0, -0.654912, 0, 0.755705, 43.439, 7.62939e-06, -65.6338)
+
+[node name="Branch_Swamp_003" parent="Wood" instance=ExtResource("14_k4qy8")]
+transform = Transform3D(-0.461749, 0, 0.887011, 0, 1, 0, -0.887011, 0, -0.461749, -39.0748, 3.8147e-06, -61.006)
+
+[editable path="Frog"]
+[editable path="Frog/frog"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent2"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent4"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent5"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent3"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent6"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent7"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_002"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_005"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_006"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper2"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper3"]
