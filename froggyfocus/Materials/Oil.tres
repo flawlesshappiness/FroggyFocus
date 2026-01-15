@@ -20,3 +20,6 @@ shader_parameter/rim_color = Color(0.195, 0.162, 0.36, 1)
 shader_parameter/use_ramp = false
 shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
+shader_parameter/apply_wind = false
+shader_parameter/y_multiplier = 1.0
+shader_parameter/local_wind_scale = 1.0

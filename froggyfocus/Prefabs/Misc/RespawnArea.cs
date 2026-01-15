@@ -46,10 +46,20 @@ public partial class RespawnArea : Area3D
             PlaySplashSFX(Player.Instance.GlobalPosition);
             CreateSplashPS(Player.Instance.GlobalPosition);
 
-            yield return new WaitForSeconds(1f);
-            Player.Instance.SetCameraTarget();
-            Player.Instance.Respawn();
-            respawning = false;
+            yield return new WaitForSeconds(0.5f);
+
+            TransitionView.Instance.StartTransition(new TransitionSettings
+            {
+                Type = TransitionType.Color,
+                Color = Colors.Black,
+                Duration = 0.5f,
+                OnTransition = () =>
+                {
+                    Player.Instance.SetCameraTarget();
+                    Player.Instance.Respawn();
+                    respawning = false;
+                }
+            });
         }
     }
 
