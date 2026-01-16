@@ -24,13 +24,13 @@ cast_shadow = 0
 
 [node name="Lilypad_Flower" parent="Anim/lilypad_cut" instance=ExtResource("3_gs6lg")]
 transform = Transform3D(1.79109, 0, -1.09444, 0, 2.099, 0, 1.09444, 0, 1.79109, -0.0451519, 0.132472, 0.0738924)
-visible = false
 
 [node name="Flower" parent="Anim/lilypad_cut/Lilypad_Flower" index="0"]
 cast_shadow = 0
 
 [node name="Frog" parent="Anim/lilypad_cut" instance=ExtResource("4_gs6lg")]
 transform = Transform3D(0.0133172, 0, -0.654865, 0, 0.655, 0, 0.654865, 0, 0.0133172, 0, 0.128709, 0)
+visible = false
 DisableAnimationStates = true
 DisableAppearanceUpdates = true
 

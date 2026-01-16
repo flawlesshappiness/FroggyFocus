@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cupubi2omwdbn"]
+
+[ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="1_w7lew"]
+[ext_resource type="PackedScene" uid="uid://dg28gg150qhoy" path="res://Prefabs/Ground/pond_corner_convex_002.tscn" id="2_j7juh"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="3_qy4tb"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ojau8"]
+height = 1.0
+radius = 3.77393
+
+[node name="swamp_platform" type="Node3D"]
+
+[node name="pond_corner_convex_001" parent="." instance=ExtResource("1_w7lew")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0, -4)
+
+[node name="pond_corner_convex_002" parent="." instance=ExtResource("2_j7juh")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 4, 0, -4)
+
+[node name="pond_corner_convex_003" parent="." instance=ExtResource("1_w7lew")]
+transform = Transform3D(-2, 0, -3.01992e-07, 0, 2, 0, 3.01992e-07, 0, -2, 4, 0, 4)
+
+[node name="pond_corner_convex_004" parent="." instance=ExtResource("2_j7juh")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -4, 0, 4)
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_qy4tb")
+Id = "land"
+MaxRarity = 2
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_ojau8")
+debug_color = Color(0.7, 0, 0, 0.419608)
