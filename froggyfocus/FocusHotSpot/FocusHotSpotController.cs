@@ -89,6 +89,8 @@ public partial class FocusHotSpotController : SingletonController
     {
         Stop();
 
+        if (GameScene.Instance.FocusEventParent == null) return;
+
         cr_hotspots = this.StartCoroutine(Cr, "hotspots");
         IEnumerator Cr()
         {

@@ -19,7 +19,7 @@
 
 [node name="Capsule_Horizontal" type="Node3D" node_paths=PackedStringArray("Bugs", "Camera")]
 script = ExtResource("1_vjupn")
-Bugs = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+Bugs = [NodePath("Bugs/Backswimmer"), NodePath("Bugs/Mosquito"), NodePath("Bugs/Bee"), NodePath("Bugs/Waterstrider"), NodePath("Bugs/Dragonfly")]
 Camera = NodePath("Camera3D")
 Weather = ExtResource("2_tniir")
 
@@ -56,13 +56,13 @@ bones/56/position = Vector3(-0.0253908, -0.00599798, 0.00824145)
 transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0269697)
 
 [node name="FlowerHat" parent="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup" index="13" node_paths=PackedStringArray("OnlySecondaryMeshes")]
-OnlySecondaryMeshes = [NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+OnlySecondaryMeshes = [null, null, null, null, null, null]
 
 [node name="HatWeed" parent="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup" index="17" node_paths=PackedStringArray("OnlySecondaryMeshes")]
-OnlySecondaryMeshes = [NodePath(""), NodePath(""), NodePath("")]
+OnlySecondaryMeshes = [null, null, null]
 
 [node name="HatPolluted" parent="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup" index="19" node_paths=PackedStringArray("OnlySecondaryMeshes")]
-OnlySecondaryMeshes = [NodePath(""), NodePath(""), NodePath("")]
+OnlySecondaryMeshes = [null, null, null]
 
 [node name="FaceAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0269697)
@@ -71,7 +71,7 @@ transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.
 blend_times = [&"Armature|jump_end", &"Armature|jump_end", 0.01, &"Armature|jump_end", &"Armature|jump_start", 0.01]
 
 [node name="PlayerMoveSoundsGroup" parent="Frog/Sounds" index="3" node_paths=PackedStringArray("MoveSounds")]
-MoveSounds = [NodePath(""), NodePath(""), NodePath("")]
+MoveSounds = [null, null, null]
 
 [node name="lilypad" parent="." instance=ExtResource("5_ygc21")]
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, -2.65979, 0, -2.01835)
@@ -131,20 +131,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4719, -2.25618, -6.15769)
 
 [node name="Backswimmer" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("8_vaiki")]
 transform = Transform3D(-0.622873, 0, 1.36456, 0, 1.5, 0, -1.36456, 0, -0.622873, 2.41829, 0, -0.524099)
-Accessories = [NodePath("")]
+Accessories = [null]
 
 [node name="Mosquito" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("9_bt57k")]
 transform = Transform3D(-0.954865, 0, -1.15682, 0, 1.5, 0, 1.15682, 0, -0.954865, -5.10074, 5.25178, -4.57918)
-Accessories = [NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+Accessories = [null, null, null, null]
 
 [node name="Bee" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("10_7q8j2")]
 transform = Transform3D(-0.954521, 0, 1.1571, 0, 1.5, 0, -1.1571, 0, -0.954521, 4.86208, 5.00527, -4.22784)
-Accessories = [NodePath(""), NodePath("")]
+Accessories = [null, null]
 
 [node name="Waterstrider" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("11_oqqjh")]
 transform = Transform3D(-1.9303, 0, -0.523402, 0, 2, 0, 0.523402, 0, -1.9303, 6.44286, 0, -8.22762)
 visible = false
-Accessories = [NodePath(""), NodePath("")]
+Accessories = [null, null]
 
 [node name="Dragonfly" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("12_ekddx")]
 transform = Transform3D(-1.83131, -0.291845, 0.749084, 2.98023e-08, 1.86356, 0.726047, -0.803927, 0.664809, -1.70638, -6.74008, 1.00944, -7.8946)

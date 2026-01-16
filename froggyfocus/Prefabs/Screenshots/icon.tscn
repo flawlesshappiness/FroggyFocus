@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbcmy30tm2clo"]
+
+[ext_resource type="Script" uid="uid://gbj03ov4lgdm" path="res://Prefabs/Screenshots/ScreenshotSceneSetup.cs" id="1_bkad3"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="2_ed47v"]
+[ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="2_r1eel"]
+[ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="3_uufdy"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uufdy"]
+flip_faces = true
+radius = 10.0
+height = 20.0
+
+[node name="Icon" type="Node3D" node_paths=PackedStringArray("Camera")]
+script = ExtResource("1_bkad3")
+Camera = NodePath("Camera3D")
+Weather = ExtResource("2_r1eel")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_uufdy")
+surface_material_override/0 = ExtResource("2_ed47v")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.971113, 0)
+
+[node name="lilypad_big_flower" parent="." instance=ExtResource("3_uufdy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

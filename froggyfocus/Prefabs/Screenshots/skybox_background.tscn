@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ul4dghmde0fl"]
+
+[ext_resource type="Script" uid="uid://gbj03ov4lgdm" path="res://Prefabs/Screenshots/ScreenshotSceneSetup.cs" id="1_naub5"]
+[ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="2_ku8g0"]
+
+[node name="Skybox_Background" type="Node3D" node_paths=PackedStringArray("Camera")]
+script = ExtResource("1_naub5")
+Camera = NodePath("Camera3D")
+Weather = ExtResource("2_ku8g0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.790433, -0.612548, 0, 0.612548, 0.790433, 0, 0.803386, 0)
+size = 23.465

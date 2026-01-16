@@ -17,7 +17,7 @@
 
 [node name="Capsule_Vertical" type="Node3D" node_paths=PackedStringArray("Bugs", "Camera")]
 script = ExtResource("1_ehkre")
-Bugs = [null, null, null, null, null]
+Bugs = []
 Camera = NodePath("Camera3D")
 Weather = ExtResource("2_7rdsy")
 

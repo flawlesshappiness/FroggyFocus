@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class DebugInputPopup : ControlScript
 {
@@ -26,19 +27,6 @@ public partial class DebugInputPopup : ControlScript
         CancelButton.Pressed += PressedCancel;
     }
 
-    public override void _Input(InputEvent e)
-    {
-        base._Input(e);
-
-        if (e is InputEventKey k)
-        {
-            if (k.Keycode == Key.Enter)
-            {
-                PressedAccept();
-            }
-        }
-    }
-
     public void Clear()
     {
         foreach (var input in _inputs)
@@ -59,6 +47,22 @@ public partial class DebugInputPopup : ControlScript
         input.Show();
 
         _inputs.Add(input);
+    }
+
+    public void SetInputTexts(List<string> texts)
+    {
+        for (int i = 0; i < _inputs.Count; i++)
+        {
+            if (i >= texts.Count) break;
+            var text = texts[i];
+            var input = _inputs[i];
+            input.Text.Text = text;
+        }
+    }
+
+    public void InputGrabFocus()
+    {
+        _inputs.FirstOrDefault().Text.GrabFocus();
     }
 
     private Dictionary<string, string> GetInputResults()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://i6p5f6c6mvhv"]
+[gd_scene load_steps=17 format=3 uid="uid://i6p5f6c6mvhv"]
 
 [ext_resource type="Script" uid="uid://d1h6aaidr5qrn" path="res://Scenes/ScreenshotScene.cs" id="1_g1bgp"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_kpux8"]
@@ -12,10 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://cin7dwfbyc71r" path="res://Prefabs/Screenshots/capsule_horizontal.tscn" id="10_a67ip"]
 [ext_resource type="PackedScene" uid="uid://c3o7b7lec86od" path="res://Prefabs/Screenshots/capsule_small.tscn" id="11_il8t4"]
 [ext_resource type="PackedScene" uid="uid://ccr3snx464nmp" path="res://Prefabs/Screenshots/capsule_vertical.tscn" id="12_si4h8"]
+[ext_resource type="PackedScene" uid="uid://cbyr5yw2ktqwr" path="res://Prefabs/Screenshots/library_hero.tscn" id="13_315g4"]
+[ext_resource type="PackedScene" uid="uid://ul4dghmde0fl" path="res://Prefabs/Screenshots/skybox_background.tscn" id="14_c8wsb"]
+[ext_resource type="PackedScene" uid="uid://cbcmy30tm2clo" path="res://Prefabs/Screenshots/icon.tscn" id="15_xqcbt"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_t1sps"]
 
-[node name="ScreenshotScene" type="Node3D" node_paths=PackedStringArray("LogoSetup", "BecomeFroggySetup", "MeetFriendsSetup", "CatchBugsSetup", "HorizontalCapsuleSetup", "SmallCapsuleSetup", "VerticalCapsuleSetup", "DirectionalLight", "WorldEnvironment")]
+[node name="ScreenshotScene" type="Node3D" node_paths=PackedStringArray("LogoSetup", "BecomeFroggySetup", "MeetFriendsSetup", "CatchBugsSetup", "HorizontalCapsuleSetup", "SmallCapsuleSetup", "VerticalCapsuleSetup", "LibraryHeroSetup", "SkyboxBackgroundSetup", "IconSetup", "DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_g1bgp")
 LogoSetup = NodePath("World/Logo")
 BecomeFroggySetup = NodePath("World/BecomeFroggy")
@@ -24,6 +27,9 @@ CatchBugsSetup = NodePath("World/CatchBugs")
 HorizontalCapsuleSetup = NodePath("World/Capsule_Horizontal")
 SmallCapsuleSetup = NodePath("World/Capsule_Small")
 VerticalCapsuleSetup = NodePath("World/Capsule_Vertical")
+LibraryHeroSetup = NodePath("World/Library_Hero")
+SkyboxBackgroundSetup = NodePath("World/Skybox_Background")
+IconSetup = NodePath("World/Icon")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 Weathers = Array[ExtResource("2_kpux8")]([ExtResource("3_xr1f7")])
@@ -37,7 +43,7 @@ light_color = Color(1, 1, 0.7, 1)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_qjatg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18.26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 102.344)
 
 [node name="World" type="Node3D" parent="."]
 
@@ -65,3 +71,12 @@ visible = false
 visible = false
 
 [node name="Capsule_Vertical" parent="World" instance=ExtResource("12_si4h8")]
+visible = false
+
+[node name="Library_Hero" parent="World" instance=ExtResource("13_315g4")]
+visible = false
+
+[node name="Skybox_Background" parent="World" instance=ExtResource("14_c8wsb")]
+visible = false
+
+[node name="Icon" parent="World" instance=ExtResource("15_xqcbt")]

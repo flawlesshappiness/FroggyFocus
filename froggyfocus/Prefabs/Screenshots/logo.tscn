@@ -22,4 +22,6 @@ surface_material_override/0 = ExtResource("2_5ti6j")
 [node name="Logo" parent="." instance=ExtResource("3_jiwrn")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.46217, -6.39133e-08)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 1.46217, 0.417272)
+projection = 1
+size = 2.08419

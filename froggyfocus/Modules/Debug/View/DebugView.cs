@@ -180,12 +180,14 @@ public partial class DebugView : View
         button.GetParent().MoveChild(button, label.GetIndex() + 1);
     }
 
-    public void PopupStringInput(string label, Action<string> onSuccess)
+    public void PopupStringInput(string label, string text, Action<string> onSuccess)
     {
         Main.Hide();
         InputPopup.Show();
         InputPopup.Clear();
         InputPopup.CreateStringInput("id", label);
+        InputPopup.SetInputTexts(new List<string> { text });
+        InputPopup.InputGrabFocus();
 
         _onInputPopupSuccess = OnSuccess;
 

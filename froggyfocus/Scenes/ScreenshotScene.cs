@@ -23,6 +23,15 @@ public partial class ScreenshotScene : GameScene
     [Export]
     public ScreenshotSceneSetup VerticalCapsuleSetup;
 
+    [Export]
+    public ScreenshotSceneSetup LibraryHeroSetup;
+
+    [Export]
+    public ScreenshotSceneSetup SkyboxBackgroundSetup;
+
+    [Export]
+    public ScreenshotSceneSetup IconSetup;
+
     private string DebugId => nameof(ScreenshotScene) + GetInstanceId();
 
     public override void _Ready()
@@ -76,6 +85,9 @@ public partial class ScreenshotScene : GameScene
             v.ContentSearch.AddItem("Capsule Horizontal", () => ShowSetup(v, HorizontalCapsuleSetup));
             v.ContentSearch.AddItem("Capsule Small", () => ShowSetup(v, SmallCapsuleSetup));
             v.ContentSearch.AddItem("Capsule Vertical", () => ShowSetup(v, VerticalCapsuleSetup));
+            v.ContentSearch.AddItem("Library Hero", () => ShowSetup(v, LibraryHeroSetup));
+            v.ContentSearch.AddItem("Skybox Background", () => ShowSetup(v, SkyboxBackgroundSetup));
+            v.ContentSearch.AddItem("Icon", () => ShowSetup(v, IconSetup));
 
             v.ContentSearch.UpdateButtons();
         }
@@ -96,5 +108,8 @@ public partial class ScreenshotScene : GameScene
         HorizontalCapsuleSetup.Hide();
         SmallCapsuleSetup.Hide();
         VerticalCapsuleSetup.Hide();
+        LibraryHeroSetup.Hide();
+        SkyboxBackgroundSetup.Hide();
+        IconSetup.Hide();
     }
 }

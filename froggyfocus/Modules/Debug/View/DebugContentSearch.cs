@@ -78,7 +78,7 @@ public partial class DebugContentSearch : ControlScript
         {
             var button = CreateButton();
             button.Text = item.Key;
-            button.Pressed += item.Value;
+            button.Pressed += () => item.Value?.Invoke();
             button.Pressed += () => View.SfxClick.Play();
             button.MouseEntered += () => View.SfxHover.Play();
         }
