@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bw6hjid8njf7a"]
+
+[ext_resource type="Shader" uid="uid://dge76tnkj3x5b" path="res://Shaders/PlantComplex.gdshader" id="1_yx7et"]
+[ext_resource type="Texture2D" uid="uid://cetxxxfuuewj5" path="res://Assets/FlawLizArt/Nature/Plants/Textures/monstera Base Color.png" id="2_rltih"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yx7et")
+shader_parameter/grass_texture = ExtResource("2_rltih")
+shader_parameter/alpha_scissor_threshold = 0.1
+shader_parameter/wind_scale = 0.1
+shader_parameter/frequency = Vector3(2, 0.5, 0.5)
+shader_parameter/wave = Vector3(1, 1, 1)
+shader_parameter/time_test = 7.595
+shader_parameter/scale_test = 1.0

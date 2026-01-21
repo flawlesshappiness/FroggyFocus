@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cva4fnfkp5o63"]
+
+[ext_resource type="PackedScene" uid="uid://bxgsr6a18lqow" path="res://Assets/FlawLizArt/Nature/Plants/monstera.fbx" id="1_yvnhe"]
+[ext_resource type="Material" uid="uid://bw6hjid8njf7a" path="res://Assets/FlawLizArt/Nature/Plants/Materials/plant_monstera.tres" id="2_h5w52"]
+
+[node name="Plant_Monstera" type="Node3D"]
+
+[node name="monstera" parent="." instance=ExtResource("1_yvnhe")]
+
+[node name="monstera" parent="monstera" index="0"]
+surface_material_override/0 = ExtResource("2_h5w52")
+
+[editable path="monstera"]

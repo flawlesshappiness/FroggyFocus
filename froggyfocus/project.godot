@@ -194,11 +194,15 @@ locale/translations=PackedStringArray("res://Dialogue/dialogue.en.translation")
 
 [shader_globals]
 
-wind_time={
+global_wind_time={
 "type": "float",
 "value": 0.0
 }
-wind_scale={
+global_wind_scale={
 "type": "float",
 "value": 0.0
+}
+global_player_position={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
 }

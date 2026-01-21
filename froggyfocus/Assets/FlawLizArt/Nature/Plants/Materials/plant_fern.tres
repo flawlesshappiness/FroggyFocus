@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://isaoufcbmhdw"]
+
+[ext_resource type="Shader" uid="uid://dge76tnkj3x5b" path="res://Shaders/PlantComplex.gdshader" id="1_b7ewd"]
+[ext_resource type="Texture2D" uid="uid://cwufcnky5vdyl" path="res://Assets/FlawLizArt/Nature/Plants/Textures/fern Base Color.png" id="2_q6p28"]
+
+[sub_resource type="Curve" id="Curve_b7ewd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q6p28"]
+curve = SubResource("Curve_b7ewd")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_b7ewd")
+shader_parameter/grass_texture = ExtResource("2_q6p28")
+shader_parameter/alpha_scissor_threshold = 0.1
+shader_parameter/wind_scale = 0.1
+shader_parameter/frequency = Vector3(2, 0.2, 2)
+shader_parameter/wave = Vector3(0.42, 1, 1.1)
+shader_parameter/time_offset = 0.0
+shader_parameter/time_test = 0.0
+shader_parameter/scale_test = 0.0
+shader_parameter/character_distance_falloff_curve = SubResource("CurveTexture_q6p28")
+shader_parameter/character_push_strength = 1.0

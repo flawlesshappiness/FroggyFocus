@@ -100,6 +100,7 @@ public partial class Player : TopDownController
         Process_Jump();
         Process_CameraOffset();
         Process_RespawnPosition();
+        Process_ShaderPosition();
     }
 
     private void Process_Move()
@@ -179,6 +180,11 @@ public partial class Player : TopDownController
         if (!on_stable_ground) return;
 
         respawn_position = GlobalPosition;
+    }
+
+    private void Process_ShaderPosition()
+    {
+        RenderingServer.GlobalShaderParameterSet("global_player_position", GlobalPosition);
     }
 
     private void Interact()

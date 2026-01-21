@@ -61,7 +61,7 @@ public partial class WindController : ResourceController<WindCollection, WindInf
         base._Process(delta);
         var wind_time_mul = Mathf.Lerp(0.5, 20.0, current_intensity);
         wind_time += delta * wind_time_mul;
-        RenderingServer.GlobalShaderParameterSet("wind_time", wind_time);
+        RenderingServer.GlobalShaderParameterSet("global_wind_time", wind_time);
     }
 
     public void StartWind()
@@ -119,6 +119,6 @@ public partial class WindController : ResourceController<WindCollection, WindInf
         OnWindIntensityChanged?.Invoke(t);
 
         wind_scale = Mathf.Lerp(0.5, 1.0, current_intensity);
-        RenderingServer.GlobalShaderParameterSet("wind_scale", wind_scale);
+        RenderingServer.GlobalShaderParameterSet("global_wind_scale", wind_scale);
     }
 }

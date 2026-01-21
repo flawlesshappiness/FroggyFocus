@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://vljga7igf232"]
+
+[ext_resource type="PackedScene" uid="uid://cva4fnfkp5o63" path="res://Prefabs/Nature/plant_monstera.tscn" id="1_tu11u"]
+
+[node name="plant_monstera_group" type="Node3D"]
+
+[node name="Plant_Monstera" parent="." instance=ExtResource("1_tu11u")]
+
+[node name="Plant_Monstera2" parent="." instance=ExtResource("1_tu11u")]
+transform = Transform3D(-0.335534, 0, -1.08427, 0, 1.135, 0, 1.08427, 0, -0.335534, 0.0225088, 0, 0)
+
+[node name="Plant_Monstera3" parent="." instance=ExtResource("1_tu11u")]
+transform = Transform3D(-0.670262, 0, 1.05511, 0, 1.25, 0, -1.05511, 0, -0.670262, -0.0231043, 0, 0.010056)
+
+[node name="Plant_Monstera4" parent="." instance=ExtResource("1_tu11u")]
+transform = Transform3D(-0.758765, 0, 0.546353, 0, 0.935, 0, -0.546353, 0, -0.758765, -0.000820879, 0, 0.022446)
+
+[node name="Plant_Monstera5" parent="." instance=ExtResource("1_tu11u")]
+transform = Transform3D(-0.591639, 0, -0.492812, 0, 0.77, 0, 0.492812, 0, -0.591639, 0.0148786, 0, 0.0291362)
+
+[node name="Plant_Monstera6" parent="." instance=ExtResource("1_tu11u")]
+transform = Transform3D(0.45316, 0, 0.622532, 0, 0.77, 0, -0.622532, 0, 0.45316, -0.0241742, 0, -0.00951904)

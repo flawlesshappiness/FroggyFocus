@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqyo5jd18ys25"]
+
+[ext_resource type="PackedScene" uid="uid://c8qixuo0tt84q" path="res://Prefabs/Nature/plant_fern.tscn" id="1_b65rm"]
+
+[node name="plant_fern_group" type="Node3D"]
+
+[node name="plant_fern" parent="." instance=ExtResource("1_b65rm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0945596)
+
+[node name="plant_fern4" parent="." instance=ExtResource("1_b65rm")]
+transform = Transform3D(0.646064, 0.3649, 0.930349, 0, 1.10784, -0.434513, -0.999351, 0.235902, 0.601455, -0.272122, 0, -0.11153)
+
+[node name="plant_fern5" parent="." instance=ExtResource("1_b65rm")]
+transform = Transform3D(0.286387, 0.125849, -0.494338, 0, 0.566917, 0.144326, 0.510106, -0.0706549, 0.277534, 0.322242, 0, -0.129912)
+
+[node name="plant_fern6" parent="." instance=ExtResource("1_b65rm")]
+transform = Transform3D(-0.584926, 0.00228807, -0.00902582, 2.32831e-10, 0.567063, 0.143752, 0.00931132, 0.143734, -0.566991, 0.0281234, 0, 0.311265)
+
+[node name="plant_fern2" parent="." instance=ExtResource("1_b65rm")]
+transform = Transform3D(-0.634515, 0, 0.772911, 0, 1, 0, -0.772911, 0, -0.634515, -0.0945597, 0, 0.0630397)
+
+[node name="plant_fern3" parent="." instance=ExtResource("1_b65rm")]
+transform = Transform3D(-0.468022, 0, -0.883717, 0, 1, 0, 0.883717, 0, -0.468022, 0.098581, 0, 0.045098)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjrocvyhabcve"]
 
 [ext_resource type="Texture2D" uid="uid://bulrhg2soh5g2" path="res://Textures/grass_001.png" id="1_5j4as"]
-[ext_resource type="Shader" uid="uid://bg8ot6xmfc8qw" path="res://Materials/windy_grass.gdshader" id="1_o47u0"]
+[ext_resource type="Shader" uid="uid://bg8ot6xmfc8qw" path="res://Shaders/PlantVertical.gdshader" id="1_o47u0"]
 
 [sub_resource type="Gradient" id="Gradient_kq31n"]
 colors = PackedColorArray(0.52, 0.461067, 0.078, 1, 0.18, 0.147, 0, 1)
