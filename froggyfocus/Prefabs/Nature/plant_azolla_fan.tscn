@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://oufd4g87i53a"]
+
+[ext_resource type="PackedScene" uid="uid://bbxfctwmfq2mh" path="res://Prefabs/Nature/plant_azolla.tscn" id="1_561ly"]
+
+[node name="plant_azolla_fan" type="Node3D"]
+
+[node name="fan 1" type="Node3D" parent="."]
+
+[node name="plant_azolla" parent="fan 1" instance=ExtResource("1_561ly")]
+transform = Transform3D(1, 0, 0, 0, 0.999391, -0.0348995, 0, 0.0348995, 0.999391, 0, 0.00969209, -0.0184644)
+
+[node name="plant_azolla2" parent="fan 1" instance=ExtResource("1_561ly")]
+transform = Transform3D(0.812505, 0.00743906, 0.213027, 0, 0.839489, -0.0293156, -0.213157, 0.028356, 0.81201, -0.202322, 0.00794552, -0.581007)
+
+[node name="plant_azolla4" parent="fan 1" instance=ExtResource("1_561ly")]
+transform = Transform3D(0.766781, -0.0119704, -0.342789, 0, 0.839489, -0.0293156, 0.342998, 0.0267603, 0.766314, 0.195414, 0.00794552, -0.581161)
+
+[node name="plant_azolla3" parent="fan 1" instance=ExtResource("1_561ly")]
+transform = Transform3D(0.675, 0, 0, 0, 0.673442, -0.0458398, 0, 0.0458398, 0.673442, 0, -0.0705031, -0.796588)
+
+[node name="plant_azolla5" parent="fan 1" instance=ExtResource("1_561ly")]
+transform = Transform3D(0.673812, 0.00139709, 0.0400074, 0, 0.674589, -0.0235572, -0.0400318, 0.0235157, 0.673401, -0.268823, 0.0119419, -1.12789)
+
+[node name="plant_azolla6" parent="fan 1" instance=ExtResource("1_561ly")]
+transform = Transform3D(0.657166, -0.0053793, -0.154043, 0, 0.674589, -0.0235572, 0.154137, 0.0229348, 0.656766, 0.231859, 0.00922799, -1.12791)
+
+[node name="plant_azolla7" parent="fan 1" instance=ExtResource("1_561ly")]
+transform = Transform3D(0.672826, -0.00188926, -0.0541013, 0, 0.674589, -0.0235572, 0.0541343, 0.0234813, 0.672416, -0.018716, 0.0098451, -1.31889)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://w815pnmujwlv"]
+
+[ext_resource type="PackedScene" uid="uid://cvic715j633wi" path="res://Assets/FlawLizArt/Nature/Plants/purple_loosestrife.fbx" id="1_qjf41"]
+
+[node name="plant_purple_loosestrife" type="Node3D"]
+
+[node name="purple_loosestrife" parent="." instance=ExtResource("1_qjf41")]

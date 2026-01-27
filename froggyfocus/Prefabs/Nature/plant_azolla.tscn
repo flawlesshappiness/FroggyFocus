@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbxfctwmfq2mh"]
+
+[ext_resource type="PackedScene" uid="uid://dj5nmd6lkxkqe" path="res://Assets/FlawLizArt/Nature/Plants/azolla.fbx" id="1_crx5t"]
+
+[node name="plant_azolla" type="Node3D"]
+
+[node name="azolla" parent="." instance=ExtResource("1_crx5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.311074)

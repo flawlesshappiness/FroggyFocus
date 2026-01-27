@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0y20fo4i3tlh"]
+
+[ext_resource type="PackedScene" uid="uid://w815pnmujwlv" path="res://Prefabs/Nature/plant_purple_loosestrife.tscn" id="1_6qsh0"]
+
+[node name="plant_purple_loosestrife_group" type="Node3D"]
+
+[node name="plant_purple_loosestrife" parent="." instance=ExtResource("1_6qsh0")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="plant_purple_loosestrife2" parent="." instance=ExtResource("1_6qsh0")]
+transform = Transform3D(1, 0, 0, 0, 0.968964, -0.247202, 0, 0.247202, 0.968964, 0, 1.42927, 0.0831987)
+
+[node name="plant_purple_loosestrife3" parent="." instance=ExtResource("1_6qsh0")]
+transform = Transform3D(1, 0, 0, 0, 0.958909, 0.283714, 0, -0.283714, 0.958909, 0, 2.14837, -0.0482175)
+
+[node name="plant_purple_loosestrife4" parent="." instance=ExtResource("1_6qsh0")]
+transform = Transform3D(0.539153, 0.208195, 0.816069, 0, 0.968964, -0.247202, -0.842208, 0.13328, 0.52242, 0.0553399, 2.14837, 0.0529173)
+
+[node name="plant_purple_loosestrife5" parent="." instance=ExtResource("1_6qsh0")]
+transform = Transform3D(0.539153, -0.238946, 0.807601, 0, 0.958909, 0.283714, -0.842208, -0.152965, 0.516999, -0.0553399, 1.42927, -0.0179362)
+
+[node name="plant_purple_loosestrife6" parent="." instance=ExtResource("1_6qsh0")]
+transform = Transform3D(-0.536902, 0.208551, 0.817461, 0, 0.968964, -0.247202, -0.843645, -0.132723, -0.520239, 0.0554343, 1.42927, -0.0177882)
+
+[node name="plant_purple_loosestrife7" parent="." instance=ExtResource("1_6qsh0")]
+transform = Transform3D(-0.536902, -0.239354, 0.808978, -1.25499e-08, 0.958909, 0.283714, -0.843645, 0.152327, -0.51484, -0.0554343, 2.14837, 0.0527694)

@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dpniphvepp687"]
+
+[ext_resource type="Shader" uid="uid://dge76tnkj3x5b" path="res://Shaders/PlantComplex.gdshader" id="1_vnx8i"]
+[ext_resource type="Texture2D" uid="uid://r3a66f4i8xot" path="res://Assets/FlawLizArt/Nature/Plants/Textures/loosestrife Base Color.png" id="2_vnx8i"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vnx8i")
+shader_parameter/grass_texture = ExtResource("2_vnx8i")
+shader_parameter/alpha_scissor_threshold = 0.1
+shader_parameter/wind_scale = 0.1
+shader_parameter/frequency = Vector3(0.1, 1, 0.2)
+shader_parameter/wave = Vector3(2, 0.5, 2)
+shader_parameter/time_offset = 0.0
+shader_parameter/time_test = 0.0
+shader_parameter/scale_test = 1.0
+shader_parameter/character_push_strength = 1.0
