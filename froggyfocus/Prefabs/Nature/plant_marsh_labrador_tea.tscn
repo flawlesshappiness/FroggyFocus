@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyq3k5yjx486b"]
+
+[ext_resource type="PackedScene" uid="uid://bmjblmsgseofh" path="res://Assets/FlawLizArt/Nature/Plants/marsh_labrador_tea.fbx" id="1_g1oe2"]
+
+[node name="plant_marsh_labrador_tea" type="Node3D"]
+
+[node name="marsh_labrador_tea" parent="." instance=ExtResource("1_g1oe2")]
