@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx7efigxjp1fj"]
+
+[ext_resource type="PackedScene" uid="uid://ddy4jr2ewwrp0" path="res://Assets/FlawLizArt/Nature/Plants/water_arum_flower.fbx" id="1_q3kkd"]
+
+[node name="water_arum_flower" type="Node3D"]
+
+[node name="water_arum_flower" parent="." instance=ExtResource("1_q3kkd")]

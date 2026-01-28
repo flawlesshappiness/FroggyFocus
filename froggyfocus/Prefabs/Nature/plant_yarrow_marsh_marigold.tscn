@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://donqu3jc0hq0r"]
+
+[ext_resource type="PackedScene" uid="uid://c28noak5d6j8e" path="res://Assets/FlawLizArt/Nature/Plants/yarrow_marsh_marigold.fbx" id="1_px7vq"]
+
+[node name="plant_yarrow_marsh_marigold" type="Node3D"]
+
+[node name="yarrow_marsh_marigold" parent="." instance=ExtResource("1_px7vq")]

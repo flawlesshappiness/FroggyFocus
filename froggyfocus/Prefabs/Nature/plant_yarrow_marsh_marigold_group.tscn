@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://diceyjubapljd"]
+
+[ext_resource type="PackedScene" uid="uid://donqu3jc0hq0r" path="res://Prefabs/Nature/plant_yarrow_marsh_marigold.tscn" id="1_ug4ib"]
+
+[node name="plant_yarrow_marsh_marigold_group" type="Node3D"]
+
+[node name="plant_yarrow_marsh_marigold" parent="." instance=ExtResource("1_ug4ib")]
+transform = Transform3D(1.2477, 0, -1.56308, 0, 2, 0, 1.56308, 0, 1.2477, 0.130784, 0, -0.236175)
+
+[node name="plant_yarrow_marsh_marigold5" parent="." instance=ExtResource("1_ug4ib")]
+transform = Transform3D(-0.200071, 0, 1.4866, 0, 1.5, 0, -1.4866, 0, -0.200071, 0.158241, 0, 0.00930998)
+
+[node name="plant_yarrow_marsh_marigold6" parent="." instance=ExtResource("1_ug4ib")]
+transform = Transform3D(-0.815421, 0, -1.259, 0, 1.5, 0, 1.259, 0, -0.815421, 0.12603, 0, 0.141216)
+
+[node name="plant_yarrow_marsh_marigold3" parent="." instance=ExtResource("1_ug4ib")]
+transform = Transform3D(-0.785233, -0.25532, 1.25229, -0.463824, 1.42649, 0, -1.19091, -0.387227, -0.825699, 0.00266594, -2.38419e-07, 0.0031576)
+
+[node name="plant_yarrow_marsh_marigold4" parent="." instance=ExtResource("1_ug4ib")]
+transform = Transform3D(0.733143, 0.236686, -1.28704, -0.460836, 1.42746, -1.63974e-09, 1.2248, 0.39541, 0.770402, 0.0275463, -2.38419e-07, -0.00422636)

@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://tgy4rx1jtv8w"]
+
+[ext_resource type="PackedScene" uid="uid://bx7efigxjp1fj" path="res://Prefabs/Nature/plant_water_arum_flower.tscn" id="1_0ab7m"]
+[ext_resource type="PackedScene" uid="uid://bb7t0vbvofq0r" path="res://Prefabs/Nature/plant_water_arum_leaf.tscn" id="2_xa5sa"]
+
+[node name="plant_water_arum_group" type="Node3D"]
+
+[node name="water_arum_flower" parent="." instance=ExtResource("1_0ab7m")]
+transform = Transform3D(0.762149, 0, 0.647402, 0, 1, 0, -0.647402, 0, 0.762149, -0.972146, 0, -0.150057)
+
+[node name="water_arum_flower2" parent="." instance=ExtResource("1_0ab7m")]
+transform = Transform3D(0.585198, 0, -0.81089, 0, 1, 0, 0.81089, 0, 0.585198, 0.751097, 0, -0.671334)
+
+[node name="water_arum_flower3" parent="." instance=ExtResource("1_0ab7m")]
+transform = Transform3D(0.144045, 0, 0.989571, 0, 1, 0, -0.989571, 0, 0.144045, 0.115406, 0, 0.93456)
+
+[node name="plant_water_arum_leaf" parent="." instance=ExtResource("2_xa5sa")]
+transform = Transform3D(1.16532, 0, 0.452254, 0, 1.25, 0, -0.452254, 0, 1.16532, -0.284328, 0, -0.726537)
+
+[node name="plant_water_arum_leaf2" parent="." instance=ExtResource("2_xa5sa")]
+transform = Transform3D(1.16141, 0, -0.462204, 0, 1.25, 0, 0.462204, 0, 1.16141, -0.701653, 0, 0.744832)
+
+[node name="plant_water_arum_leaf3" parent="." instance=ExtResource("2_xa5sa")]
+transform = Transform3D(1.22029, 0, 0.27089, 0, 1.25, 0, -0.27089, 0, 1.22029, 0.975482, 0, 0.407337)
+
+[node name="plant_water_arum_leaf4" parent="." instance=ExtResource("2_xa5sa")]
+transform = Transform3D(0.878612, 0, 0.195041, 0, 0.9, 0, -0.195041, 0, 0.878612, 0.245961, 0, -0.278753)
+
+[node name="plant_water_arum_leaf5" parent="." instance=ExtResource("2_xa5sa")]
+transform = Transform3D(0.148899, 0, 0.887597, 0, 0.9, 0, -0.887597, 0, 0.148899, -0.551271, 0, 0.206767)
+
+[node name="plant_water_arum_leaf6" parent="." instance=ExtResource("2_xa5sa")]
+transform = Transform3D(-0.239409, 0, -0.867573, 0, 0.9, 0, 0.867573, 0, -0.239409, 0.257787, 0, 0.33262)
