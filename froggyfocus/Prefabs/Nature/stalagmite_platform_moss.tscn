@@ -24,6 +24,7 @@ radius = 0.490234
 [node name="Stalagmite_Platform" type="Node3D"]
 
 [node name="stalagmite_flat_moss" parent="." instance=ExtResource("1_rebh7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00282964, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

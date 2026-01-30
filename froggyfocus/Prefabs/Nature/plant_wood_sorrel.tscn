@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://yinh8eng0ahn"]
+
+[ext_resource type="PackedScene" uid="uid://d1uff2lahrx1b" path="res://Assets/FlawLizArt/Nature/Plants/wood_sorrel.fbx" id="1_bdy1c"]
+
+[node name="plant_wood_sorrel" type="Node3D"]
+
+[node name="wood_sorrel" parent="." instance=ExtResource("1_bdy1c")]

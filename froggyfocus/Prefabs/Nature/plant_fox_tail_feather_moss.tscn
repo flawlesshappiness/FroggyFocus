@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://shyokv8532xu"]
+
+[ext_resource type="PackedScene" uid="uid://4kap1s0rtltj" path="res://Assets/FlawLizArt/Nature/Plants/fox_tail_feather_moss.fbx" id="1_y3dd3"]
+
+[node name="plant_fox_tail_feather_moss" type="Node3D"]
+
+[node name="fox_tail_feather_moss" parent="." instance=ExtResource("1_y3dd3")]

@@ -2,6 +2,8 @@ shader_type spatial;
 render_mode cull_disabled, depth_draw_opaque;
 
 uniform sampler2D grass_texture : filter_linear, source_color;
+uniform vec4 albedo : source_color = vec4(1.0f);
+uniform float albedo_mix : hint_range(0, 1) = 0.0;
 
 uniform float alpha_scissor_threshold : hint_range(0, 1) = 0.1;
 uniform float wind_scale = 1.0;
@@ -9,11 +11,12 @@ uniform vec3 frequency = vec3(1.0, 1.0, 1.0);
 uniform vec3 wave = vec3(1.0, 1.0, 1.0);
 uniform float time_test = 0.0;
 uniform sampler2D character_distance_falloff_curve : hint_default_black;
-uniform float character_push_strength = 1.0;
 
 uniform float bounce_distance_max = 1.0;
 uniform float bounce_settle_duration = 1.0;
 uniform vec3 bounce_amount_max = vec3(0.5, 0.1, 0.5);
+uniform bool dampening_y_enabled = true;
+uniform bool dampening_xz_enabled = true;
 uniform vec2 bounce_dampening = vec2(0.05, 0.05);
 
 global uniform float global_wind_time;
@@ -49,8 +52,8 @@ vec3 bounce(vec3 vertex_local, vec3 dir_to_vertex) {
 	float mul_move_time = clamp(1.0 - abs(time - global_time_player_move) / bounce_settle_duration, 0.0, 1.0);
 	float bounce_frequency = time * 20.0;
 	float v_xz = max(abs(vertex_local.x), abs(vertex_local.z));
-	float dampening_y = clamp(0, vertex_local.y, bounce_dampening.y) / bounce_dampening.y;
-	float dampening_xz = clamp(0, v_xz, bounce_dampening.x) / bounce_dampening.x;
+	float dampening_y = dampening_y_enabled ? clamp(0, vertex_local.y, bounce_dampening.y) / bounce_dampening.y : 1.0;
+	float dampening_xz = dampening_xz_enabled ? clamp(0, v_xz, bounce_dampening.x) / bounce_dampening.x : 1.0;
 	float dampening = dampening_xz * dampening_y;
 	float dist_to_vertex = length(dir_to_vertex);
 	float bounce_t = abs(bounce_distance_max - min(dist_to_vertex, bounce_distance_max)) / bounce_distance_max;
@@ -62,9 +65,6 @@ vec3 bounce(vec3 vertex_local, vec3 dir_to_vertex) {
 void vertex() {
 	vec3 vertex_global = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz; // global vertex position
 	vec3 dir_to_vertex = vertex_global - global_player_position;
-	//vec3 dir = (-1.0 * normalize(vertex_global - global_player_position));
-	//rotate_vel = dir * 30.0;
-	//VERTEX = Rotate(VERTEX, vec3(radians(-rotate_vel.z), 0.0, radians(-rotate_vel.x)));
 	
 	// PLAYER BOUNCE //
 	VERTEX += bounce(VERTEX, dir_to_vertex);
@@ -82,6 +82,7 @@ void vertex() {
 
 void fragment() {
     vec4 color = texture(grass_texture, UV);
+	color = mix(color, albedo, albedo_mix);
     ALBEDO = color.rgb;
     ALPHA = color.a;
 	ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
