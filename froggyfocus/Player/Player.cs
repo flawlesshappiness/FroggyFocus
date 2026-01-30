@@ -109,6 +109,7 @@ public partial class Player : TopDownController
         if (input.Length() > 0 && !MovementLock.IsLocked && !PlayerInput.Jump.Held)
         {
             Move(input, MoveSpeed);
+            RenderingServer.GlobalShaderParameterSet("global_time_player_move", GameTime.Time);
         }
         else
         {

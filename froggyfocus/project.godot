@@ -206,3 +206,11 @@ global_player_position={
 "type": "vec3",
 "value": Vector3(0, 0, 0)
 }
+global_time_player_move={
+"type": "float",
+"value": 0.0
+}
+global_game_time={
+"type": "float",
+"value": 0.0
+}

@@ -19,6 +19,8 @@ public partial class GameTime : Node
         DeltaTime = Convert.ToSingle(delta);
         Time += Scene.PauseLock.IsFree ? DeltaTime : 0;
         UnscaledTime += DeltaTime;
+
+        RenderingServer.GlobalShaderParameterSet("global_game_time", Time);
     }
 
     public static float T(float start, float duration)
