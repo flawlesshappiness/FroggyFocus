@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu4as1qqjduyd"]
+
+[ext_resource type="PackedScene" uid="uid://bblv2vsl5ypjh" path="res://Prefabs/Nature/plant_red_hot_poker.tscn" id="1_tdfcf"]
+
+[node name="plant_red_hot_poker_group" type="Node3D"]
+
+[node name="plant_red_hot_poker" parent="." instance=ExtResource("1_tdfcf")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="plant_red_hot_poker2" parent="." instance=ExtResource("1_tdfcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.365386, 0, 0.338205)
+
+[node name="plant_red_hot_poker3" parent="." instance=ExtResource("1_tdfcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142886, 0, -0.517061)
+
+[node name="plant_red_hot_poker4" parent="." instance=ExtResource("1_tdfcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.461127, 0, 0.146726)
+
+[node name="plant_red_hot_poker5" parent="." instance=ExtResource("1_tdfcf")]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0.367834, 0, -0.36905)
+
+[node name="plant_red_hot_poker6" parent="." instance=ExtResource("1_tdfcf")]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, 0.101495, 0, 0.461549)
+
+[node name="plant_red_hot_poker7" parent="." instance=ExtResource("1_tdfcf")]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, -0.634792, 0, -0.294465)
+
+[node name="plant_red_hot_poker8" parent="." instance=ExtResource("1_tdfcf")]
+transform = Transform3D(0.875, 0, 0, 0, 0.875, 0, 0, 0, 0.875, -0.820843, 0, 0.346958)

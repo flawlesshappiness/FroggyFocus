@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://5roulc18dqq5"]
+
+[ext_resource type="PackedScene" uid="uid://b1ph8oqe7g18l" path="res://Prefabs/Nature/plant_sea_holly.tscn" id="1_2r23t"]
+
+[node name="plant_sea_holly_group" type="Node3D"]
+
+[node name="plant_sea_holly" parent="." instance=ExtResource("1_2r23t")]
+
+[node name="plant_sea_holly2" parent="." instance=ExtResource("1_2r23t")]
+transform = Transform3D(0.469246, -0.123183, -0.874434, 0.25391, 0.967228, -7.45058e-09, 0.845777, -0.222027, 0.485145, -0.339941, 0, -0.824488)
+
+[node name="plant_sea_holly3" parent="." instance=ExtResource("1_2r23t")]
+transform = Transform3D(-0.958249, 0.251553, 0.13594, 0.25391, 0.967228, -1.11997e-08, -0.131485, 0.0345166, -0.990717, 1.02443, 0, 0.336538)
+
+[node name="plant_sea_holly4" parent="." instance=ExtResource("1_2r23t")]
+transform = Transform3D(0.521242, -0.136833, 0.842368, 0.25391, 0.967228, -3.76976e-09, -0.814762, 0.213885, 0.538903, -0.382883, 0, 0.903885)
+
+[node name="plant_sea_holly5" parent="." instance=ExtResource("1_2r23t")]
+transform = Transform3D(0.700844, -0.183981, 0.0243791, 0.184085, 0.70124, -1.67155e-08, -0.0235801, 0.00619011, 0.72459, -0.801977, 0, -0.06357)
+
+[node name="plant_sea_holly6" parent="." instance=ExtResource("1_2r23t")]
+transform = Transform3D(0.125949, -0.0330634, -0.71321, 0.184085, 0.70124, -1.69236e-08, 0.689837, -0.181091, 0.130217, 0.283503, 0, -1.10284)
+
+[node name="plant_sea_holly7" parent="." instance=ExtResource("1_2r23t")]
+transform = Transform3D(-0.462562, 0.121429, -0.5449, 0.184085, 0.70124, -2.05626e-08, 0.527043, -0.138356, -0.478235, 0.954142, 0, -0.535658)
+
+[node name="plant_sea_holly8" parent="." instance=ExtResource("1_2r23t")]
+transform = Transform3D(-0.289385, 0.0759673, 0.660387, 0.184085, 0.70124, -2.68727e-08, -0.638745, 0.167679, -0.29919, 0.379588, 0, 1.19549)

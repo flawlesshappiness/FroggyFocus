@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://l1t1lmrdvwpb"]
+
+[ext_resource type="PackedScene" uid="uid://ox0locer2qek" path="res://Assets/FlawLizArt/Nature/Plants/lance_leaf_coreopsis.fbx" id="1_eick1"]
+
+[node name="plant_lance_leaf_coreopsis" type="Node3D"]
+
+[node name="lance_leaf_coreopsis" parent="." instance=ExtResource("1_eick1")]

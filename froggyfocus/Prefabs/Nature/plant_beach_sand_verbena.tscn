@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct6wlio51lqpt"]
+
+[ext_resource type="PackedScene" uid="uid://ddfxb72x4n71x" path="res://Assets/FlawLizArt/Nature/Plants/beach_sand_verbena.fbx" id="1_2ndlm"]
+
+[node name="plant_beach_sand_verbena" type="Node3D"]
+
+[node name="beach_sand_verbena" parent="." instance=ExtResource("1_2ndlm")]

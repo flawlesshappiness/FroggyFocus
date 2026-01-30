@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bblv2vsl5ypjh"]
+
+[ext_resource type="PackedScene" uid="uid://stm48eeb23y0" path="res://Assets/FlawLizArt/Nature/Plants/red_hot_poker.fbx" id="1_31yli"]
+
+[node name="plant_red_hot_poker" type="Node3D"]
+
+[node name="red_hot_poker" parent="." instance=ExtResource("1_31yli")]

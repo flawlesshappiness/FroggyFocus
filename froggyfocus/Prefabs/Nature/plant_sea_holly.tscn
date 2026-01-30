@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ph8oqe7g18l"]
+
+[ext_resource type="PackedScene" uid="uid://dnxeurb81unym" path="res://Assets/FlawLizArt/Nature/Plants/sea_holly.fbx" id="1_o3n15"]
+
+[node name="plant_sea_holly" type="Node3D"]
+
+[node name="sea_holly" parent="." instance=ExtResource("1_o3n15")]

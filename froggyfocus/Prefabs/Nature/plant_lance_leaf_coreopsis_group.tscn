@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://djow5pgh6adau"]
+
+[ext_resource type="PackedScene" uid="uid://l1t1lmrdvwpb" path="res://Prefabs/Nature/plant_lance_leaf_coreopsis.tscn" id="1_f5gxy"]
+
+[node name="plant_lance_leaf_coreopsis_group" type="Node3D"]
+
+[node name="plant_lance_leaf_coreopsis" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="plant_lance_leaf_coreopsis2" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(0.424414, 0.19289, -1.07311, 0, 1.15155, 0.206988, 1.09031, -0.0750844, 0.41772, 0.389082, 0, -1.26953)
+
+[node name="plant_lance_leaf_coreopsis3" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(-0.823117, 0.147102, -0.818376, 0, 1.15155, 0.206988, 0.831492, 0.14562, -0.810134, 0.389968, 0, 0.359281)
+
+[node name="plant_lance_leaf_coreopsis4" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(-0.441242, -0.191704, 1.06652, -1.07879e-08, 1.15155, 0.206988, -1.08361, 0.0780613, -0.434282, -0.955146, 0, 0.417435)
+
+[node name="plant_lance_leaf_coreopsis5" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(-1.04728, -0.0225424, 0.125411, -3.79881e-09, 1.03836, 0.186643, -0.127421, 0.185277, -1.03076, -0.326547, -2.38419e-07, 0.798678)
+
+[node name="plant_lance_leaf_coreopsis6" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(0.813455, -0.11885, 0.661204, -3.74682e-09, 1.03836, 0.186643, -0.671801, -0.143911, 0.800624, -0.809234, -2.38419e-07, -0.810807)
+
+[node name="plant_lance_leaf_coreopsis7" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(0.0294278, -0.166217, 0.92472, -1.22578e-08, 0.925173, 0.166298, -0.939539, -0.00520616, 0.0289636, -0.832252, -2.38419e-07, -0.029172)
+
+[node name="plant_lance_leaf_coreopsis8" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(0.0730483, 0.165795, -0.922375, -6.97373e-09, 0.925173, 0.166298, 0.937157, -0.0129232, 0.0718961, 0.612247, -2.38419e-07, -0.349736)
+
+[node name="plant_lance_leaf_coreopsis9" parent="." instance=ExtResource("1_f5gxy")]
+transform = Transform3D(0.939992, -0.000693679, 0.0038593, -2.86483e-09, 0.925173, 0.166298, -0.00392111, -0.166297, 0.925165, 0.0224711, -2.38419e-07, -1.14968)
