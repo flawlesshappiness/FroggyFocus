@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://db8cs0byctivl"]
+
+[ext_resource type="PackedScene" uid="uid://bbq3554n0uqv" path="res://Prefabs/Nature/plant_maidenhair_spleenwort.tscn" id="1_3se3o"]
+
+[node name="plant_maidenhair_spleenwort_group_001" type="Node3D"]
+
+[node name="plant_maidenhair_spleenwort" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(1, 0, 0, 0, 0.989684, -0.143268, 0, 0.143268, 0.989684, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort2" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(-0.515457, 0.122769, 0.848075, 0, 0.989684, -0.143268, -0.856915, -0.0738485, -0.510139, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort3" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(-0.255176, -0.138525, -0.95692, 0, 0.989684, -0.143268, 0.966895, -0.0365585, -0.252543, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort4" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(-0.767936, 0.0642407, 0.249496, 1.19375e-09, 0.784415, -0.201973, -0.257633, -0.191484, -0.743679, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort5" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(-0.702714, -0.100452, -0.390131, 5.03279e-09, 0.784415, -0.201973, 0.402856, -0.175221, -0.680518, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort6" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(0.34653, 0.182556, 0.709006, -1.73761e-09, 0.784415, -0.201973, -0.732131, 0.086407, 0.335585, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort7" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(0.394517, -0.169395, -0.433314, 0, 0.56813, -0.222099, 0.465248, 0.143643, 0.367438, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort8" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(-0.0766963, 0.220336, 0.563622, 6.93274e-09, 0.56813, -0.222099, -0.605159, -0.0279249, -0.0714319, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort9" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(-0.280117, -0.197297, -0.504687, 4.67835e-09, 0.56813, -0.222099, 0.541881, -0.10199, -0.26089, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort10" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(-0.483881, 0.135236, 0.345934, 4.67835e-09, 0.56813, -0.222099, -0.371429, -0.176179, -0.450668, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort11" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(-0.480809, -0.0783705, -0.133063, 5.58794e-09, 0.435136, -0.256284, 0.154427, -0.244007, -0.414292, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort12" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(0.176054, -0.240206, -0.407837, -1.57668e-09, 0.435136, -0.256284, 0.473318, 0.0893461, 0.151698, 0, 0, 0)
+
+[node name="plant_maidenhair_spleenwort13" parent="." instance=ExtResource("1_3se3o")]
+transform = Transform3D(0.379464, 0.169104, 0.287116, -3.38286e-09, 0.435136, -0.256284, -0.333215, 0.192575, 0.326967, 0, 0, 0)

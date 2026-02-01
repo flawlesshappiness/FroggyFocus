@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkuswqdxw2c15"]
+
+[ext_resource type="PackedScene" uid="uid://duy8lfq55h60o" path="res://Assets/FlawLizArt/Nature/Plants/ivy.fbx" id="1_v4omf"]
+
+[node name="plant_ivy" type="Node3D"]
+
+[node name="ivy" parent="." instance=ExtResource("1_v4omf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448521, 1.11474)

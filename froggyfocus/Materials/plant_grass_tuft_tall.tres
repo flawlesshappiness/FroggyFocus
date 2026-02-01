@@ -7,8 +7,6 @@
 render_priority = 0
 shader = ExtResource("1_dmo4x")
 shader_parameter/grass_texture = ExtResource("2_dmo4x")
-shader_parameter/albedo = Color(0.67, 0.55744, 0.2479, 1)
-shader_parameter/albedo_mix = 1.0
 shader_parameter/alpha_scissor_threshold = 0.1
 shader_parameter/wind_vertical = true
 shader_parameter/wind_scale = 1.0

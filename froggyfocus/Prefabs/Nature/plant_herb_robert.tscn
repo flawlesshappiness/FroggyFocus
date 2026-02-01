@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmesq7ts7mipe"]
+
+[ext_resource type="PackedScene" uid="uid://d0wfatk5uups" path="res://Assets/FlawLizArt/Nature/Plants/herb_robert.fbx" id="1_gv68t"]
+
+[node name="plant_herb_robert" type="Node3D"]
+
+[node name="herb_robert" parent="." instance=ExtResource("1_gv68t")]

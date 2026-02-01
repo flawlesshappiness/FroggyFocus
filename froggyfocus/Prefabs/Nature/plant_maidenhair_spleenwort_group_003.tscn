@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://doy7sxvjr2ejp"]
+
+[ext_resource type="PackedScene" uid="uid://bbq3554n0uqv" path="res://Prefabs/Nature/plant_maidenhair_spleenwort.tscn" id="1_qu0xq"]
+
+[node name="plant_maidenhair_spleenwort_group_003" type="Node3D"]
+
+[node name="plant_maidenhair_spleenwort" parent="." instance=ExtResource("1_qu0xq")]
+transform = Transform3D(1, 0, 0, 0, 0.997356, -0.0726638, 0, 0.0726638, 0.997356, 0, 0, -0.0203232)
+
+[node name="plant_maidenhair_spleenwort2" parent="." instance=ExtResource("1_qu0xq")]
+transform = Transform3D(0.813317, 0.0179488, 0.246359, 0, 0.847753, -0.0617642, -0.247012, 0.0590987, 0.811167, -0.78215, 0, -0.0203232)
+
+[node name="plant_maidenhair_spleenwort3" parent="." instance=ExtResource("1_qu0xq")]
+transform = Transform3D(0.794365, -0.0219782, -0.301665, -1.84038e-09, 0.847753, -0.0617642, 0.302465, 0.0577215, 0.792265, 1.19023, 0, -0.0203232)
+
+[node name="plant_maidenhair_spleenwort4" parent="." instance=ExtResource("1_qu0xq")]
+transform = Transform3D(0.639729, -0.00597962, -0.0820741, 8.49016e-10, 0.643295, -0.0468681, 0.0822916, 0.0464851, 0.638038, 0.666065, 0, -0.0203232)

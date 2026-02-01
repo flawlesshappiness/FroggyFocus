@@ -7,8 +7,6 @@
 render_priority = 0
 shader = ExtResource("1_mmwnk")
 shader_parameter/grass_texture = ExtResource("2_mmwnk")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_mix = 0.0
 shader_parameter/alpha_scissor_threshold = 0.1
 shader_parameter/wind_vertical = false
 shader_parameter/wind_scale = 0.5

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbq3554n0uqv"]
+
+[ext_resource type="PackedScene" uid="uid://bhpagxpnn8gwa" path="res://Assets/FlawLizArt/Nature/Plants/maidenhair_spleenwort.fbx" id="1_3twdk"]
+
+[node name="plant_maidenhair_spleenwort" type="Node3D"]
+
+[node name="maidenhair_spleenwort" parent="." instance=ExtResource("1_3twdk")]

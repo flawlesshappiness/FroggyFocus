@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxu4y5kfa1vl8"]
+
+[ext_resource type="PackedScene" uid="uid://bkuswqdxw2c15" path="res://Prefabs/Nature/plant_ivy.tscn" id="1_cgxdj"]
+
+[node name="plant_ivy_group_001" type="Node3D"]
+
+[node name="plant_ivy" parent="." instance=ExtResource("1_cgxdj")]
+
+[node name="plant_ivy4" parent="." instance=ExtResource("1_cgxdj")]
+transform = Transform3D(0.990483, 0, -0.137635, 0, 1, 0, 0.137635, 0, 0.990483, -0.0349035, 0, -2.90625)
+
+[node name="plant_ivy2" parent="." instance=ExtResource("1_cgxdj")]
+transform = Transform3D(0.79298, 0, -0.261547, 0, 0.835, 0, 0.261547, 0, 0.79298, -0.607151, 0, -0.824802)
+
+[node name="plant_ivy6" parent="." instance=ExtResource("1_cgxdj")]
+transform = Transform3D(0.723583, 0, 0.416717, 0, 0.835, 0, -0.416717, 0, 0.723583, 0.547761, 0, -2.99603)
+
+[node name="plant_ivy3" parent="." instance=ExtResource("1_cgxdj")]
+transform = Transform3D(0.742981, 0, 0.10237, 0, 0.75, 0, -0.10237, 0, 0.742981, 0.574217, 0, -1.23246)
+
+[node name="plant_ivy5" parent="." instance=ExtResource("1_cgxdj")]
+transform = Transform3D(0.703734, 0, -0.259342, 0, 0.75, 0, 0.259342, 0, 0.703734, -0.9022, 0, -2.34103)
