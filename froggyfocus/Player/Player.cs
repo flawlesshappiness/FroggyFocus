@@ -109,7 +109,6 @@ public partial class Player : TopDownController
         if (input.Length() > 0 && !MovementLock.IsLocked && !PlayerInput.Jump.Held)
         {
             Move(input, MoveSpeed);
-            RenderingServer.GlobalShaderParameterSet("global_time_player_move", GameTime.Time);
         }
         else
         {
@@ -185,7 +184,17 @@ public partial class Player : TopDownController
 
     private void Process_ShaderPosition()
     {
-        RenderingServer.GlobalShaderParameterSet("global_player_position", GlobalPosition);
+        RenderingServer.GlobalShaderParameterSet("global_player_position", GlobalPosition.Add(y: 0.5f));
+
+        if (IsMoving && !IsJumping)
+        {
+            UpdateGlobalShaderMoveTime();
+        }
+    }
+
+    private void UpdateGlobalShaderMoveTime()
+    {
+        RenderingServer.GlobalShaderParameterSet("global_time_player_move", GameTime.Time);
     }
 
     private void Interact()
@@ -254,6 +263,8 @@ public partial class Player : TopDownController
         }
         else
         {
+            UpdateGlobalShaderMoveTime();
+
             FocusEventLock.SetLock("jumping", false);
             PsDustLand.Emitting = true;
             StopDustStreamPS();

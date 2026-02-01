@@ -1,22 +1,20 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://1ggf1a2a67vw"]
 
-[ext_resource type="Shader" uid="uid://dge76tnkj3x5b" path="res://Shaders/PlantComplex.gdshader" id="1_4nbbe"]
+[ext_resource type="Shader" uid="uid://dge76tnkj3x5b" path="res://Shaders/Plant.gdshader" id="1_4nbbe"]
 [ext_resource type="Texture2D" uid="uid://drylm40rdlh1l" path="res://Assets/FlawLizArt/Nature/Plants/Textures/wood_sorrel Base Color.png" id="2_4nbbe"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_4nbbe")
 shader_parameter/grass_texture = ExtResource("2_4nbbe")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/albedo_mix = 0.0
 shader_parameter/alpha_scissor_threshold = 0.1
+shader_parameter/wind_vertical = false
 shader_parameter/wind_scale = 0.1
-shader_parameter/frequency = Vector3(0.2, 1, 0.4)
-shader_parameter/wave = Vector3(0.5, 0.1, 0.5)
-shader_parameter/time_test = 0.0
+shader_parameter/frequency = Vector3(1, 1, 1)
+shader_parameter/wave = Vector3(2, 0.2, 1.5)
 shader_parameter/bounce_distance_max = 1.0
 shader_parameter/bounce_settle_duration = 1.0
-shader_parameter/bounce_amount_max = Vector3(0.5, 0.1, 0.5)
+shader_parameter/bounce_amount_max = Vector3(0.05, 0.05, 0.05)
 shader_parameter/dampening_y_enabled = true
 shader_parameter/dampening_xz_enabled = false
 shader_parameter/bounce_dampening = Vector2(0.05, 0.05)

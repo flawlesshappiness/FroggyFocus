@@ -1,50 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwk6asvxrt7yj"]
+[gd_scene load_steps=5 format=3 uid="uid://bwk6asvxrt7yj"]
 
-[ext_resource type="Shader" uid="uid://bg8ot6xmfc8qw" path="res://Shaders/PlantVertical.gdshader" id="1_h08y3"]
-[ext_resource type="Texture2D" uid="uid://cpjk18iat4668" path="res://Textures/reed_group_003.png" id="2_jkucb"]
-
-[sub_resource type="Gradient" id="Gradient_7peya"]
-colors = PackedColorArray(0.0705917, 0.43, 0.0645, 1, 0, 0.18, 0.003, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wlyoy"]
-gradient = SubResource("Gradient_7peya")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h08y3"]
-render_priority = -1
-shader = ExtResource("1_h08y3")
-shader_parameter/grass_texture = ExtResource("2_jkucb")
-shader_parameter/gradient_texture = SubResource("GradientTexture1D_wlyoy")
-shader_parameter/gradient_blend = 1.0
-shader_parameter/alpha_scissor_threshold = 0.157
-shader_parameter/y_multiplier = 4.0
-shader_parameter/local_wind_scale = 1.0
+[ext_resource type="Material" uid="uid://6mfuu7bh0hrh" path="res://Materials/plant_reed_001.tres" id="1_8jctr"]
+[ext_resource type="Material" uid="uid://drsle4rgnwo5p" path="res://Materials/plant_reed_002.tres" id="2_8jctr"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_jkucb"]
-material = SubResource("ShaderMaterial_h08y3")
+material = ExtResource("1_8jctr")
 size = Vector2(4, 10)
 subdivide_depth = 25
 
-[sub_resource type="Gradient" id="Gradient_8jctr"]
-colors = PackedColorArray(0.43, 0.315333, 0, 1, 0.18, 0.141, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_h08y3"]
-gradient = SubResource("Gradient_8jctr")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jkucb"]
-load_path = "res://.godot/imported/reed_group_002.png-e57672e7af800aadbba7265e54f0b4bd.s3tc.ctex"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7peya"]
-render_priority = -1
-shader = ExtResource("1_h08y3")
-shader_parameter/grass_texture = SubResource("CompressedTexture2D_jkucb")
-shader_parameter/gradient_texture = SubResource("GradientTexture1D_h08y3")
-shader_parameter/gradient_blend = 1.0
-shader_parameter/alpha_scissor_threshold = 0.799
-shader_parameter/y_multiplier = 1.0
-shader_parameter/local_wind_scale = 1.0
-
 [sub_resource type="QuadMesh" id="QuadMesh_wlyoy"]
-material = SubResource("ShaderMaterial_7peya")
+material = ExtResource("2_8jctr")
 size = Vector2(4, 10)
 
 [node name="reed_002" type="Node3D"]

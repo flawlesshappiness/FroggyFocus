@@ -1,26 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjrocvyhabcve"]
+[gd_scene load_steps=3 format=3 uid="uid://bjrocvyhabcve"]
 
-[ext_resource type="Texture2D" uid="uid://bulrhg2soh5g2" path="res://Textures/grass_001.png" id="1_5j4as"]
-[ext_resource type="Shader" uid="uid://bg8ot6xmfc8qw" path="res://Shaders/PlantVertical.gdshader" id="1_o47u0"]
-
-[sub_resource type="Gradient" id="Gradient_kq31n"]
-colors = PackedColorArray(0.52, 0.461067, 0.078, 1, 0.18, 0.147, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_p630d"]
-gradient = SubResource("Gradient_kq31n")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rwm7k"]
-render_priority = -1
-shader = ExtResource("1_o47u0")
-shader_parameter/grass_texture = ExtResource("1_5j4as")
-shader_parameter/gradient_texture = SubResource("GradientTexture1D_p630d")
-shader_parameter/gradient_blend = 1.0
-shader_parameter/alpha_scissor_threshold = 0.157
-shader_parameter/y_multiplier = 4.0
-shader_parameter/local_wind_scale = 2.0
+[ext_resource type="Material" uid="uid://bxmwaa3kq3ld8" path="res://Materials/plant_grass_tuft_tall.tres" id="1_xmmmm"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_dmrsx"]
-material = SubResource("ShaderMaterial_rwm7k")
+material = ExtResource("1_xmmmm")
 size = Vector2(4, 10)
 subdivide_depth = 25
 

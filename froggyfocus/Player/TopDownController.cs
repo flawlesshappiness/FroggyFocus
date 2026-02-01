@@ -15,6 +15,7 @@ public partial class TopDownController : CharacterBody3D
     private float Gravity => GravityLock.IsLocked ? 0 : 20;
 
     public bool IsJumping => _jumping;
+    public bool IsMoving => _moving;
 
     private bool _moving;
     private bool _jumping;
@@ -52,11 +53,15 @@ public partial class TopDownController : CharacterBody3D
             if (DesiredJumpVelocity.Length() >= 0.01f)
             {
                 velocity = DesiredJumpVelocity;
-                DesiredJumpVelocity = Vector3.Zero;
             }
         }
         else
         {
+            if (IsJumping) // Reapply horizontal jump velocity
+            {
+                velocity = DesiredJumpVelocity.Set(y: velocity.Y);
+            }
+
             velocity.Y -= Gravity * (float)delta;
         }
 

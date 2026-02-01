@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bh2yt4h1isf13"]
+
+[ext_resource type="Shader" uid="uid://dge76tnkj3x5b" path="res://Shaders/Plant.gdshader" id="1_2euva"]
+[ext_resource type="Texture2D" uid="uid://dyh7trlopof1n" path="res://Textures/grass_002.png" id="2_g0wnr"]
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_2euva")
+shader_parameter/grass_texture = ExtResource("2_g0wnr")
+shader_parameter/alpha_scissor_threshold = 0.734
+shader_parameter/wind_vertical = false
+shader_parameter/wind_scale = 1.0
+shader_parameter/frequency = Vector3(1, 1, 1)
+shader_parameter/wave = Vector3(0.2, 1, 0.2)
+shader_parameter/bounce_distance_max = 1.0
+shader_parameter/bounce_settle_duration = 1.0
+shader_parameter/bounce_amount_max = Vector3(0.5, 0.1, 0.5)
+shader_parameter/dampening_y_enabled = true
+shader_parameter/dampening_xz_enabled = true
+shader_parameter/bounce_dampening = Vector2(0.05, 0.05)
