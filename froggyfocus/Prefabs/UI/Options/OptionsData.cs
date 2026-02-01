@@ -6,4 +6,5 @@ public partial class OptionsData
     public int UIScaleIndex { get; set; } = 2;
     public int GamepadDisplayIndex { get; set; } = 0;
     public int CutsceneTypeIndex { get; set; } = 0;
+    public int FadePlantsIndex { get; set; } = 0;
 }

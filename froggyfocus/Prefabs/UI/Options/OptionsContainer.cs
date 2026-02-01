@@ -22,6 +22,9 @@ public partial class OptionsContainer : ControlScript
     [Export]
     public OptionButton CutsceneTypeOptionButton;
 
+    [Export]
+    public OptionButton FadePlantsOptionButton;
+
     public static Action OnUIScaleChanged;
     public static Action<int> OnGamepadDisplayChanged;
     public static Action<int> OnCutsceneTypeChanged;
@@ -38,8 +41,10 @@ public partial class OptionsContainer : ControlScript
         UIScaleOptions.IndexChanged += UIScaleOptions_IndexChanged;
         GamepadDisplayOptionButton.ItemSelected += GamepadDisplayOptionButton_ItemSelected;
         CutsceneTypeOptionButton.ItemSelected += CutsceneTypeOptionButton_ItemSelected;
+        FadePlantsOptionButton.ItemSelected += FadePlantsOptionButtonn_ItemSelected;
 
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
+        FadePlantsOptionButtonn_ItemSelected(Data.Options.FadePlantsIndex);
     }
 
     protected override void OnShow()
@@ -53,6 +58,7 @@ public partial class OptionsContainer : ControlScript
         UIScaleOptions.SetIndex(Data.Options.UIScaleIndex);
         GamepadDisplayOptionButton.Selected = Data.Options.GamepadDisplayIndex;
         CutsceneTypeOptionButton.Selected = Data.Options.CutsceneTypeIndex;
+        FadePlantsOptionButton.Selected = Data.Options.FadePlantsIndex;
 
         showing = false;
     }
@@ -96,5 +102,13 @@ public partial class OptionsContainer : ControlScript
         var index = (int)l_index;
         Data.Options.CutsceneTypeIndex = index;
         OnCutsceneTypeChanged?.Invoke(index);
+    }
+
+    private void FadePlantsOptionButtonn_ItemSelected(long l_index)
+    {
+        var index = (int)l_index;
+        Data.Options.FadePlantsIndex = index;
+        RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_view", index == 0 || index == 2);
+        RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_player", index == 1 || index == 2);
     }
 }

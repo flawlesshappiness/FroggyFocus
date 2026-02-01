@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqja0yfvxqyl" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_rt.png" id="17_67nja"]
 [ext_resource type="Texture2D" uid="uid://x5iqlsw4jt5r" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_trigger_r2.png" id="18_nwtii"]
 
-[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton", "CutsceneTypeOptionButton")]
+[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton", "CutsceneTypeOptionButton", "FadePlantsOptionButton")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -41,12 +41,13 @@ CameraSensitivtySlider = NodePath("Options/TabContainer/Gameplay/VBoxContainer/H
 UIScaleOptions = NodePath("Options/TabContainer/Video/HBoxContainer/UIScale/UIScaleOptions")
 GamepadDisplayOptionButton = NodePath("Options/TabContainer/Gamepad/VBoxContainer/HBoxContainer/GamepadDisplayOptionButton")
 CutsceneTypeOptionButton = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer2/CutsceneTypeOptionButton")
+FadePlantsOptionButton = NodePath("Options/TabContainer/Video/HBoxContainer/HBoxContainer/FadePlantsDropdown")
 
 [node name="Options" parent="." instance=ExtResource("3_t6453")]
 layout_mode = 2
 
 [node name="TabContainer" parent="Options" index="0"]
-current_tab = 4
+current_tab = 1
 
 [node name="Audio" parent="Options/TabContainer" index="1"]
 visible = false
@@ -59,6 +60,9 @@ text = "Environment & Weather"
 layout_mode = 2
 max_value = 1.0
 step = 0.05
+
+[node name="Video" parent="Options/TabContainer" index="2"]
+visible = true
 
 [node name="Brightness" parent="Options/TabContainer/Video/HBoxContainer" index="4"]
 visible = false
@@ -74,6 +78,27 @@ text = "UI Scale"
 [node name="UIScaleOptions" parent="Options/TabContainer/Video/HBoxContainer/UIScale" instance=ExtResource("4_3w48p")]
 layout_mode = 2
 Options = Array[String](["80%", "90%", "100%", "110%", "120%"])
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Video/HBoxContainer" index="6"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Video/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fade plants"
+
+[node name="FadePlantsDropdown" type="OptionButton" parent="Options/TabContainer/Video/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 4
+popup/item_0/text = "Near camera"
+popup/item_0/id = 0
+popup/item_1/text = "Near player"
+popup/item_1/id = 1
+popup/item_2/text = "Near camera & player"
+popup/item_2/id = 3
+popup/item_3/text = "Never"
+popup/item_3/id = 2
 
 [node name="Gamepad" type="MarginContainer" parent="Options/TabContainer" index="4"]
 visible = false
@@ -223,6 +248,7 @@ XboxTexture = ExtResource("17_67nja")
 PlaystationTexture = ExtResource("18_nwtii")
 
 [node name="Gameplay" type="MarginContainer" parent="Options/TabContainer" index="5"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
