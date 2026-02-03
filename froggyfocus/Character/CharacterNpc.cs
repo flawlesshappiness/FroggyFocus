@@ -25,6 +25,8 @@ public partial class CharacterNpc : Area3D, IInteractable
 
     protected BoolParameter param_dialogue = new BoolParameter("dialogue", false);
 
+    private bool dialogue_camera_in;
+
     public override void _Ready()
     {
         base._Ready();
@@ -93,7 +95,7 @@ public partial class CharacterNpc : Area3D, IInteractable
 
     protected void StartDialogueCamera()
     {
-        if (DialogueCamera == null) return;
+        if (!IsInstanceValid(DialogueCamera)) return;
         if (DialogueCamera.Current) return;
 
         AnimateDialogueCamera(true);
@@ -101,13 +103,16 @@ public partial class CharacterNpc : Area3D, IInteractable
 
     protected void StopDialogueCamera()
     {
-        if (DialogueCamera == null) return;
+        if (!IsInstanceValid(DialogueCamera)) return;
+        if (!dialogue_camera_in) return;
 
         AnimateDialogueCamera(false);
     }
 
     private Coroutine AnimateDialogueCamera(bool to_dialogue)
     {
+        dialogue_camera_in = to_dialogue;
+
         var player_camera = Player.Instance.Camera;
         var start = to_dialogue ? player_camera.GlobalTransform : DialogueCamera.GlobalTransform;
         var end = to_dialogue ? DialogueCamera.GetParentNode3D().GlobalTransform : player_camera.GlobalTransform;

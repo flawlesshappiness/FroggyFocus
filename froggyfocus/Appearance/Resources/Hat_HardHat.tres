@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://bpdt4lokl7hcc"]
+
+[ext_resource type="PackedScene" uid="uid://e7cotww31f4o" path="res://Appearance/Attachments/hard_hat.tscn" id="1_56ki5"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_xnm4i"]
+
+[resource]
+script = ExtResource("2_xnm4i")
+Category = 0
+Type = 21
+DefaultPrimaryColor = 204
+DefaultSecondaryColor = 204
+HasSecondaryColor = false
+Prefab = ExtResource("1_56ki5")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

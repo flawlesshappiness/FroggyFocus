@@ -22,6 +22,7 @@ public enum ItemType
     Hat_Weeded = 18,
     Hat_Oily = 19,
     Hat_Polluted = 20,
+    Hat_HardHat = 21,
 
     // Faces
     Face_None = 100,

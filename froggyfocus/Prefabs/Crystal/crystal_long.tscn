@@ -48,13 +48,6 @@ vertices = PackedVector3Array(-0.383666, 0, 0.383713, -0.380127, 0, -0.384241, 0
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.692297, 0)
-light_color = Color(0, 0.8, 1, 1)
-light_energy = 2.0
-omni_range = 20.0
-omni_attenuation = 0.0
-
 [node name="SfxCrystal" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.830639, 0)
 stream = SubResource("AudioStreamRandomizer_8gn5n")

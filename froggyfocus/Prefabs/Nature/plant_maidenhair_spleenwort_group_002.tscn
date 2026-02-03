@@ -7,24 +7,6 @@
 [node name="plant_maidenhair_spleenwort" parent="." instance=ExtResource("1_poivl")]
 transform = Transform3D(1, 0, 0, 0, 0.992905, -0.118907, 0, 0.118907, 0.992905, 0, 0, -0.0259629)
 
-[node name="plant_maidenhair_spleenwort11" parent="." instance=ExtResource("1_poivl")]
-transform = Transform3D(-0.596021, -0.00883807, -0.129543, 0.129845, -0.0405691, -0.594638, 1.23684e-10, -0.608585, 0.0415206, 0.160933, 0, -0.0259629)
-
-[node name="plant_maidenhair_spleenwort12" parent="." instance=ExtResource("1_poivl")]
-transform = Transform3D(-0.608853, 0.00254562, 0.0373122, -0.037399, -0.0414425, -0.60744, 1.05166e-09, -0.608585, 0.0415206, -0.379078, 0, -0.0259629)
-
-[node name="plant_maidenhair_spleenwort13" parent="." instance=ExtResource("1_poivl")]
-transform = Transform3D(-0.483142, 0.00288698, 0.0423156, -0.0424139, -0.0328858, -0.482021, 0, -0.483875, 0.0330123, -0.0210509, 0, -0.0259629)
-
-[node name="plant_maidenhair_spleenwort14" parent="." instance=ExtResource("1_poivl")]
-transform = Transform3D(-0.647498, -0.00387827, -0.0568465, 0.0569612, -0.0280115, -0.646893, 0.00140995, -0.649384, 0.0282436, 0.0228335, 0, -0.107796)
-
-[node name="plant_maidenhair_spleenwort15" parent="." instance=ExtResource("1_poivl")]
-transform = Transform3D(-0.585361, -0.013547, -0.282256, 0.282577, -0.0248227, -0.584837, 0.00140995, -0.649385, 0.0282436, 0.451989, 0, -0.107796)
-
-[node name="plant_maidenhair_spleenwort16" parent="." instance=ExtResource("1_poivl")]
-transform = Transform3D(-0.64427, 0.00234533, 0.0860873, -0.0861077, -0.0281813, -0.643655, 0.00140995, -0.649384, 0.0282436, -0.719782, 0, -0.107796)
-
 [node name="plant_maidenhair_spleenwort5" parent="." instance=ExtResource("1_poivl")]
 transform = Transform3D(0.803382, 0.0270865, 0.0997156, 0, 0.781674, -0.212332, -0.103329, 0.210598, 0.775288, -0.407655, 0, -0.0259629)
 

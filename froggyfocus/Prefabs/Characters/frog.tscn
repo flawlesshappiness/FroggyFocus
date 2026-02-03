@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://d1fokxnejbet4"]
+[gd_scene load_steps=73 format=3 uid="uid://d1fokxnejbet4"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
 [ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_w1eid"]
@@ -55,6 +55,7 @@
 [ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="31_a4mrg"]
 [ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="32_3l0s6"]
 [ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="33_a8hx6"]
+[ext_resource type="PackedScene" uid="uid://e7cotww31f4o" path="res://Appearance/Attachments/hard_hat.tscn" id="34_egsq7"]
 [ext_resource type="PackedScene" uid="uid://dtcsewnq52mof" path="res://Appearance/Attachments/particles_sandy.tscn" id="48_jmgr8"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gm5nm"]
@@ -509,6 +510,10 @@ transform = Transform3D(-0.00158372, -0.00122093, 3.41072e-05, 0.00121003, -0.00
 
 [node name="trash_paper3" parent="frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted" instance=ExtResource("33_a8hx6")]
 transform = Transform3D(-0.00147696, 0.00134811, 3.41072e-05, -0.00134236, -0.00146489, -0.000228387, -0.000128964, -0.000191552, 0.00198662, 0.00375487, -0.00557999, 0.00130974)
+
+[node name="HardHat" parent="frog/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("34_egsq7")]
+transform = Transform3D(0.01, 0, 0, 0, -0.00216354, -0.00976315, 0, 0.00976315, -0.00216354, -3.61392e-15, -0.00288365, 0.00456271)
+visible = false
 
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)

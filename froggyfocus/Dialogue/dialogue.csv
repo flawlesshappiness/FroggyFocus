@@ -14,6 +14,7 @@ keys;en
 ##PRIMARY##;Primary
 ##SECONDARY##;Secondary
 ##NEW_REQUEST_COMING##;New request coming shortly!
+##DO_NOTHING##;Do nothing.
 ##LOCATION_NONE##;You don't know any locations to go to.
 ##LOCATION_PICKUP_CAVE##;The document describes directions to a nearby island with a cave.
 ##LOCATION_PICKUP_FACTORY##;The document describes directions to a nearby factory.
@@ -34,6 +35,13 @@ keys;en
 ##CRYSTAL_CONTAINER_MORE##;This pillar is closed, but nothing happened yet...
 ##CRYSTAL_CONTAINER_COMPLETED##;Somewhere a doorway opened.
 ##CRYSTAL_DOORWAY_CLOSED##;Crystals are blocking the doorway.
+##CRYSTAL_DOOR_LOCKED##;It's locked with a security code.
+##CRYSTAL_DOOR_INCORRECT##;The code was incorrect.
+##CRYSTAL_DOOR_ATTEMPT_001##;Try 1234
+##CRYSTAL_DOOR_ATTEMPT_002##;Try 5678
+##CRYSTAL_DOOR_ATTEMPT_003##;Try 0000
+##CRYSTAL_DOOR_ATTEMPT_004##;Try ADMIN
+##CRYSTAL_DOOR_ATTEMPT_005##;Try something random
 ##TEST_001##;Test 1
 ##TEST_002##;Test 2
 ##TEST_003##;Test 3
