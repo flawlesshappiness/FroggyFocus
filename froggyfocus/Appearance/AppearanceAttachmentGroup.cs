@@ -4,11 +4,11 @@ using System.Linq;
 
 public partial class AppearanceAttachmentGroup : Node3D
 {
-    private List<AppearanceAttachment> attachments = new();
+    private List<AppearanceAttachment> attachments;
 
-    public void Initialize()
+    private void InitializeAttachments()
     {
-        attachments = this.GetNodesInChildren<AppearanceAttachment>();
+        attachments ??= this.GetNodesInChildren<AppearanceAttachment>();
     }
 
     public void Clear()
@@ -18,6 +18,7 @@ public partial class AppearanceAttachmentGroup : Node3D
 
     private void HideAll()
     {
+        InitializeAttachments();
         foreach (var attachment in attachments)
         {
             attachment.Hide();
@@ -26,6 +27,8 @@ public partial class AppearanceAttachmentGroup : Node3D
 
     public void SetAttachment(ItemType type, ItemType color_primary, ItemType color_secondary)
     {
+        InitializeAttachments();
+
         HideAll();
 
         var attachment = attachments.FirstOrDefault(x => x.Info.Type == type);

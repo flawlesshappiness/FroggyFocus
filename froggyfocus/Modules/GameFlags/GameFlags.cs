@@ -9,11 +9,13 @@ public static class GameFlags
 
     public static void IncrementFlag(string id)
     {
-        Controller.GetOrCreateFlag(id).Value++;
+        var flag = Controller.GetOrCreateFlag(id);
+        Controller.SetFlag(id, flag.Value + 1);
     }
 
     public static void DecrementFlag(string id)
     {
-        Controller.GetOrCreateFlag(id).Value--;
+        var flag = Controller.GetOrCreateFlag(id);
+        Controller.SetFlag(id, flag.Value - 1);
     }
 }

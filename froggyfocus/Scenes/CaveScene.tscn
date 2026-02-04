@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=72 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
@@ -43,6 +43,7 @@
 [ext_resource type="PackedScene" uid="uid://dptbcsgggi5jt" path="res://Prefabs/Crystal/crystal_doorway.tscn" id="32_68c8r"]
 [ext_resource type="Resource" uid="uid://dapgvgfcw8bk4" path="res://FocusEvent/Resources/Cave_Crystal.tres" id="32_k2kgv"]
 [ext_resource type="PackedScene" uid="uid://djd1j2ihew3ck" path="res://Prefabs/Car/box.tscn" id="34_g6lmy"]
+[ext_resource type="PackedScene" uid="uid://krhivawcaxef" path="res://Prefabs/NPC/WorkerNPC/frog_worker_npc.tscn" id="35_phexc"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="37_u3jh2"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="38_df6tn"]
 [ext_resource type="PackedScene" uid="uid://2euuwanf2rrc" path="res://Prefabs/Nature/plant_wood_sorrel_group.tscn" id="38_ift05"]
@@ -792,14 +793,19 @@ transform = Transform3D(-0.635917, 0.492746, -0.593979, 0, 0.769645, 0.638472, 0
 [node name="Camera3D" type="Camera3D" parent="World/Crystals/SalamanderNPC/CameraTransform"]
 
 [node name="CrystalDoorway" parent="World/Crystals" instance=ExtResource("32_68c8r")]
-transform = Transform3D(-1.49131, 0, 1.33268, 0, 2, 0, -1.33268, 0, -1.49131, 9.92075, 5.45074, -60.847)
+transform = Transform3D(-0.745651, 0, 0.666337, 0, 1, 0, -0.666337, 0, -0.745651, 10.3623, 5.45074, -60.4525)
 IsEntrance = true
 
 [node name="CrystalStart" type="Node3D" parent="World/Crystals/CrystalDoorway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247047, 0, -1.87223)
 
 [node name="Shop2" parent="World/Crystals" instance=ExtResource("22_ns5ic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56375, 5.5906, -43.6807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56375, 5.59224, -43.6807)
+
+[node name="FrogWorkerNPC" parent="World/Crystals" instance=ExtResource("35_phexc")]
+transform = Transform3D(-0.729721, 0, -0.173225, 0, 0.75, 0, 0.173225, 0, -0.729721, 3.00945, 5.57831, -58.5779)
+DialogueFlag = "WORKER_CRYSTAL_DOOR"
+DialogueNodes = Array[String](["##WORKER_SUSPENDED_001##", "##WORKER_ROCK_FACTS_001##"])
 
 [node name="Plants" type="Node3D" parent="World"]
 

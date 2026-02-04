@@ -445,6 +445,7 @@ public partial class Player : TopDownController
     private void InteractLocked()
     {
         QuestionMark.AnimateHide();
+        GameView.Instance.InputPrompt.HidePrompt();
     }
 
     private void InteractFree()
@@ -452,6 +453,7 @@ public partial class Player : TopDownController
         if (PlayerInteract.HasInteractables)
         {
             QuestionMark.AnimateShow();
+            GameView.Instance.InputPrompt.ShowInteract();
         }
     }
 

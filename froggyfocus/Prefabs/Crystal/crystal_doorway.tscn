@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dptbcsgggi5jt"]
+[gd_scene load_steps=6 format=3 uid="uid://dptbcsgggi5jt"]
 
 [ext_resource type="Script" uid="uid://78gwiv82or78" path="res://Prefabs/Crystal/CrystalDoorway.cs" id="1_nsfgp"]
 [ext_resource type="PackedScene" uid="uid://b54uutheaw4em" path="res://Assets/FlawLizArt/Objects/security_door.fbx" id="2_vrfma"]
+[ext_resource type="AudioStream" uid="uid://dfylhhmi52jlf" path="res://Sounds/Raw/sfx_door_close_001.wav" id="3_nsfgp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ub6t5"]
 size = Vector3(2.39868, 2.82062, 1)
@@ -9,11 +10,11 @@ size = Vector3(2.39868, 2.82062, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6k6gf"]
 size = Vector3(2.4209, 4.70325, 0.60437)
 
-[node name="CrystalDoorway" type="Area3D" node_paths=PackedStringArray("Containers")]
+[node name="CrystalDoorway" type="Area3D" node_paths=PackedStringArray("SfxLocked")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_nsfgp")
-Containers = []
+SfxLocked = NodePath("SfxLocked")
 
 [node name="security_door" parent="." instance=ExtResource("2_vrfma")]
 
@@ -26,3 +27,9 @@ shape = SubResource("BoxShape3D_ub6t5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.62939e-06, 1.85162, -0.00420568)
 shape = SubResource("BoxShape3D_6k6gf")
+
+[node name="SfxLocked" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.022, 0)
+stream = ExtResource("3_nsfgp")
+bus = &"SFX"
+attenuation_filter_db = 0.0

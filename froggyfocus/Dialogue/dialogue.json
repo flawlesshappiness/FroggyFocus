@@ -50,6 +50,11 @@
 	},
 	
 	{
+		"id": "##CRYSTAL_DOOR_RANDOM_RESULT##",
+		"next": "##CRYSTAL_DOOR_INCORRECT##"
+	},
+	
+	{
 		"id": "##LEECH_UPGRADE_START_001##"
 	},
 	
@@ -523,6 +528,30 @@
 	},
 	{
 		"id": "##SCIENTIST_REQUEST_COMPLETE_003##"
+	},
+	
+	{
+		"id": "##WORKER_SUSPENDED_001##",
+		"next": "##WORKER_SUSPENDED_002##"
+	},
+	{
+		"id": "##WORKER_SUSPENDED_002##",
+		"next": "##WORKER_SUSPENDED_003##"
+	},
+	{
+		"id": "##WORKER_SUSPENDED_003##"
+	},
+	
+	{
+		"id": "##WORKER_ROCK_FACTS_001##",
+		"next": "##WORKER_ROCK_FACTS_002##"
+	},
+	{
+		"id": "##WORKER_ROCK_FACTS_002##",
+		"next": "##WORKER_ROCK_FACTS_003##"
+	},
+	{
+		"id": "##WORKER_ROCK_FACTS_003##"
 	},
 	
 	{

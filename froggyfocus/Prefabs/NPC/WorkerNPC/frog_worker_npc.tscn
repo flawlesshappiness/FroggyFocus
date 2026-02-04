@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://krhivawcaxef"]
+
+[ext_resource type="Script" uid="uid://b7h8ihcq0rn4f" path="res://Prefabs/NPC/WorkerNPC/FrogWorkerNpc.cs" id="1_e8d2s"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_nxnu1"]
+[ext_resource type="AudioStream" uid="uid://blsf1wmo1ckdw" path="res://Sounds/Raw/sfx_frog_croak_004.wav" id="4_0wwsf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rhrvr"]
+height = 0.738281
+radius = 0.710938
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2d5ww"]
+height = 0.652832
+radius = 0.688477
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_11g3p"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_0wwsf")
+
+[node name="FrogWorkerNPC" type="Area3D" node_paths=PackedStringArray("FrogCharacter", "SfxSpeak")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_e8d2s")
+FrogCharacter = NodePath("Frog")
+SfxSpeak = NodePath("SfxSpeak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369141, -0.396207)
+shape = SubResource("CylinderShape3D_rhrvr")
+
+[node name="Frog" parent="." instance=ExtResource("3_nxnu1")]
+DisableAppearanceUpdates = true
+
+[node name="HatAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
+
+[node name="HardHat" parent="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup" index="20"]
+visible = true
+
+[node name="FaceAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
+
+[node name="AnimationPlayer" parent="Frog/frog" index="1"]
+blend_times = [&"Armature|jump_end", &"Armature|jump_end", 0.01, &"Armature|jump_end", &"Armature|jump_start", 0.01]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326416, 0)
+shape = SubResource("CylinderShape3D_2d5ww")
+
+[node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_11g3p")
+pitch_scale = 0.5
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[editable path="Frog"]
+[editable path="Frog/frog"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent2"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent4"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent5"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent3"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent6"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent7"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_002"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_005"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_006"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper2"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper3"]

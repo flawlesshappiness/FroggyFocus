@@ -1,0 +1,190 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwfrccxjr05sr"]
+
+[ext_resource type="Script" uid="uid://2hf25gs6lva5" path="res://Views/DialogueOptionsView/DialogueOptionsView.cs" id="1_yuhnh"]
+[ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_y6wlx"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="3_2q1uv"]
+[ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_j1r1i"]
+[ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="5_6ymq7"]
+
+[node name="DialogueOptionsView" type="Control" node_paths=PackedStringArray("Overlay", "InputBlocker", "AnimatedPanels", "OptionButtons")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yuhnh")
+Overlay = NodePath("AnimatedOverlay")
+InputBlocker = NodePath("InputBlocker")
+AnimatedPanels = [NodePath("Horizontal/Left/Center/LeftButton_AnimatedPanel"), NodePath("Horizontal/Right/Center/RightButton_AnimatedPanel"), NodePath("Vertical/Top/Center/TopButton_AnimatedPanel"), NodePath("Vertical/Bottom/Center/BottomButton_AnimatedPanel")]
+OptionButtons = [NodePath("Horizontal/Left/Center/LeftButton_AnimatedPanel/LeftButton"), NodePath("Horizontal/Right/Center/RightButton_AnimatedPanel/RightButton"), NodePath("Vertical/Top/Center/TopButton_AnimatedPanel/TopButton"), NodePath("Vertical/Bottom/Center/BottomButton_AnimatedPanel/BottomButton")]
+ChildOrder = 1
+
+[node name="AnimatedOverlay" parent="." instance=ExtResource("2_y6wlx")]
+layout_mode = 1
+
+[node name="Vertical" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="CenterContainer" parent="Vertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Center" type="Control" parent="Vertical/Top"]
+layout_mode = 2
+
+[node name="TopButton_AnimatedPanel" parent="Vertical/Top/Center" instance=ExtResource("3_j1r1i")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="TopButton" parent="Vertical/Top/Center/TopButton_AnimatedPanel" instance=ExtResource("3_2q1uv")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -25.0
+offset_right = 49.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bottom" type="CenterContainer" parent="Vertical"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Center" type="Control" parent="Vertical/Bottom"]
+layout_mode = 2
+
+[node name="BottomButton_AnimatedPanel" parent="Vertical/Bottom/Center" instance=ExtResource("3_j1r1i")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="BottomButton" parent="Vertical/Bottom/Center/BottomButton_AnimatedPanel" instance=ExtResource("3_2q1uv")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -25.0
+offset_right = 49.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Horizontal" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="CenterContainer" parent="Horizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Center" type="Control" parent="Horizontal/Left"]
+layout_mode = 2
+
+[node name="LeftButton_AnimatedPanel" parent="Horizontal/Left/Center" instance=ExtResource("3_j1r1i")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="LeftButton" parent="Horizontal/Left/Center/LeftButton_AnimatedPanel" instance=ExtResource("3_2q1uv")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -25.0
+offset_right = 49.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="CenterContainer" parent="Horizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Center" type="Control" parent="Horizontal/Right"]
+layout_mode = 2
+
+[node name="RightButton_AnimatedPanel" parent="Horizontal/Right/Center" instance=ExtResource("3_j1r1i")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="RightButton" parent="Horizontal/Right/Center/RightButton_AnimatedPanel" instance=ExtResource("3_2q1uv")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -25.0
+offset_right = 49.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemSubViewport" type="SubViewport" parent="." node_paths=PackedStringArray("Origin")]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("5_6ymq7")
+Origin = NodePath("Anim/Origin")
+
+[node name="Camera3D" type="Camera3D" parent="ItemSubViewport"]
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -1.5)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="ItemSubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
+light_energy = 0.1
+
+[node name="Anim" type="Node3D" parent="ItemSubViewport"]
+
+[node name="Origin" type="Node3D" parent="ItemSubViewport/Anim"]
