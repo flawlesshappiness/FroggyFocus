@@ -1,7 +1,6 @@
-[gd_scene load_steps=62 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=60 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ixab2"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
@@ -55,7 +54,6 @@
 [ext_resource type="PackedScene" uid="uid://cyq3k5yjx486b" path="res://Prefabs/Nature/plant_marsh_labrador_tea.tscn" id="53_xokew"]
 [ext_resource type="PackedScene" uid="uid://tgy4rx1jtv8w" path="res://Prefabs/Nature/plant_water_arum_group.tscn" id="54_haihv"]
 [ext_resource type="PackedScene" uid="uid://diceyjubapljd" path="res://Prefabs/Nature/plant_yarrow_marsh_marigold_group.tscn" id="54_xp4so"]
-[ext_resource type="PackedScene" uid="uid://2euuwanf2rrc" path="res://Prefabs/Nature/plant_wood_sorrel_group.tscn" id="56_x6pk1"]
 [ext_resource type="PackedScene" uid="uid://dmesq7ts7mipe" path="res://Prefabs/Nature/plant_herb_robert.tscn" id="57_f0eae"]
 [ext_resource type="PackedScene" uid="uid://dxu4y5kfa1vl8" path="res://Prefabs/Nature/plant_ivy_group_001.tscn" id="57_ixab2"]
 
@@ -77,7 +75,7 @@ script = ExtResource("1_lc5f6")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 FocusEventParent = NodePath("World/FocusEvents")
-Weathers = Array[ExtResource("2_ixab2")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
+Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -937,11 +935,6 @@ transform = Transform3D(1.78839, 0, -0.895362, 0, 2, 0, 0.895362, 0, 1.78839, -5
 
 [node name="plant_water_arum_group5" parent="World/Plants/Water Arum" instance=ExtResource("54_haihv")]
 transform = Transform3D(1.78839, 0, -0.895362, 0, 2, 0, 0.895362, 0, 1.78839, -8.6625, -2.0986, -13.5445)
-
-[node name="Wood Sorrel" type="Node3D" parent="World/Plants"]
-
-[node name="plant_wood_sorrel_group" parent="World/Plants/Wood Sorrel" instance=ExtResource("56_x6pk1")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="Ivy" type="Node3D" parent="World/Plants"]
 

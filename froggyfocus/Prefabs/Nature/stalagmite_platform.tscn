@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkwjjn4ng1tqy"]
+[gd_scene load_steps=13 format=3 uid="uid://dkwjjn4ng1tqy"]
 
 [ext_resource type="PackedScene" uid="uid://crkfm1vapfehx" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat.fbx" id="1_l5e3m"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_fwo67"]
 [ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="3_rbsk4"]
 [ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="4_gbcoi"]
+[ext_resource type="PackedScene" uid="uid://dba3xv6w25kpx" path="res://Prefabs/Nature/rock_decorative_group_001.tscn" id="5_kmi48"]
+[ext_resource type="PackedScene" uid="uid://bbct2gyjk8v8j" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_001.fbx" id="6_gi033"]
+[ext_resource type="PackedScene" uid="uid://ddilxvix6isb1" path="res://Prefabs/Nature/rock_decorative_group_002.tscn" id="6_ysd6t"]
+[ext_resource type="PackedScene" uid="uid://cprcurqn1yqys" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_002.fbx" id="8_y5804"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gi033"]
 height = 3.021
@@ -67,5 +71,70 @@ metadata/_custom_type_script = "uid://cnv6mhgukc6u3"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerGround"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0102539, 0)
 shape = SubResource("CylinderShape3D_kmi48")
+
+[node name="Decor" type="Node3D" parent="."]
+
+[node name="rock_decorative_group_001" parent="Decor" instance=ExtResource("5_kmi48")]
+transform = Transform3D(0.946396, 0, -0.323009, 0, 1, 0, 0.323009, 0, 0.946396, 0.128204, 0, -0.299256)
+
+[node name="rock_decorative_group_004" parent="Decor" instance=ExtResource("5_kmi48")]
+transform = Transform3D(0.522156, 0, -0.85285, 0, 1, 0, 0.85285, 0, 0.522156, -0.269584, 0, -0.0374451)
+
+[node name="rock_decorative_group_002" parent="Decor" instance=ExtResource("6_ysd6t")]
+transform = Transform3D(-0.346314, 0, -0.938119, 0, 1, 0, 0.938119, 0, -0.346314, -0.142232, 2.98023e-08, 0.295134)
+
+[node name="rock_decorative_group_003" parent="Decor" instance=ExtResource("6_ysd6t")]
+transform = Transform3D(0.620901, 0, 0.783889, 0, 1, 0, -0.783889, 0, 0.620901, 0.307309, 2.98023e-08, 0.0710175)
+
+[node name="rock_decorative_001" parent="Decor" instance=ExtResource("6_gi033")]
+transform = Transform3D(0.0491844, 0, 0.0089942, 0, 0.05, 0, -0.0089942, 0, 0.0491844, 0.230394, 0, -0.158453)
+
+[node name="rock_decorative_002" parent="Decor" instance=ExtResource("6_gi033")]
+transform = Transform3D(0.048774, 0, -0.0110042, 0, 0.05, 0, 0.0110042, 0, 0.048774, 0.147282, 0, 0.152387)
+
+[node name="rock_decorative_003" parent="Decor" instance=ExtResource("6_gi033")]
+transform = Transform3D(-0.015032, 0, 0.0476869, 0, 0.05, 0, -0.0476869, 0, -0.015032, -0.00398232, 0, 0.303652)
+
+[node name="rock_decorative_004" parent="Decor" instance=ExtResource("6_gi033")]
+transform = Transform3D(-0.0416726, 0, 0.0276296, 0, 0.05, 0, -0.0276296, 0, -0.0416726, -0.286564, 0, 0.165685)
+
+[node name="rock_decorative_005" parent="Decor" instance=ExtResource("6_gi033")]
+transform = Transform3D(-0.0416726, 0, 0.0276296, 0, 0.05, 0, -0.0276296, 0, -0.0416726, -0.12034, 0, -0.125208)
+
+[node name="rock_decorative_006" parent="Decor" instance=ExtResource("6_gi033")]
+transform = Transform3D(0.00428736, 0, 0.0498158, 0, 0.05, 0, -0.0498158, 0, 0.00428736, -0.125326, 0, -0.314704)
+
+[node name="rock_decorative_007" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0279473, 0, -0.0109063, 0, 0.03, 0, 0.0109063, 0, 0.0279473, -0.182847, 0, -0.239363)
+
+[node name="rock_decorative_008" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0131516, 0, -0.0269636, 0, 0.03, 0, 0.0269636, 0, 0.0131516, 0.362369, 0, -0.171211)
+
+[node name="rock_decorative_009" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0295158, 0, 0.00536819, 0, 0.03, 0, -0.00536819, 0, 0.0295158, 0.272608, 0, -0.0398939)
+
+[node name="rock_decorative_010" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0286576, 0, -0.00887374, 0, 0.03, 0, 0.00887374, 0, 0.0286576, 0.237701, 0, 0.236039)
+
+[node name="rock_decorative_011" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0298201, 0, 0.00328058, 0, 0.03, 0, -0.00328058, 0, 0.0298201, 0.0847746, 0, 0.265959)
+
+[node name="rock_decorative_012" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0233729, 0, -0.0188071, 0, 0.03, 0, 0.0188071, 0, 0.0233729, 0.17786, 0, 0.345747)
+
+[node name="rock_decorative_013" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0298155, 0, -0.00332221, 0, 0.03, 0, 0.00332221, 0, 0.0298155, -0.0581785, 0, 0.201132)
+
+[node name="rock_decorative_014" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0202314, 0, -0.0221515, 0, 0.03, 0, 0.0221515, 0, 0.0202314, -0.211105, 0, 0.139629)
+
+[node name="rock_decorative_015" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.033719, 0, -0.0369192, 0, 0.05, 0, 0.0369192, 0, 0.033719, -0.284244, 0, -0.257648)
+
+[node name="rock_decorative_016" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0495914, 0, -0.0063792, 0, 0.05, 0, 0.0063792, 0, 0.0495914, 0.127993, 0, -0.0548542)
+
+[node name="rock_decorative_017" parent="Decor" instance=ExtResource("8_y5804")]
+transform = Transform3D(0.0434941, 0, 0.0246629, 0, 0.05, 0, -0.0246629, 0, 0.0434941, -0.0531917, 0, 0.0282581)
 
 [editable path="stalagmite_flat"]

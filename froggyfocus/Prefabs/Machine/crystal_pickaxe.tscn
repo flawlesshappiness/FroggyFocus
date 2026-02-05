@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://6lqmpii3xsj0"]
+[gd_scene load_steps=21 format=3 uid="uid://6lqmpii3xsj0"]
 
 [ext_resource type="PackedScene" uid="uid://ovwxdjwc4ssw" path="res://Assets/FlawLizArt/Machine/crystal_pickaxe.fbx" id="1_l2glv"]
 [ext_resource type="Script" uid="uid://bkf0diy1g46pi" path="res://Prefabs/Machine/CrystalPickaxe.cs" id="1_nw7g2"]
 [ext_resource type="PackedScene" uid="uid://dvpx4jardwnmt" path="res://Assets/FlawLizArt/Machine/crystal_pickaxe_joint.fbx" id="2_nw7g2"]
 [ext_resource type="AudioStream" uid="uid://c3x4s2lyeaxjv" path="res://Sounds/Raw/sfx_pickaxe_hit.wav" id="3_pxjy1"]
 [ext_resource type="AudioStream" uid="uid://cyrfi06rx8njs" path="res://Sounds/Raw/sfx_pickaxe_move_down.wav" id="4_g1u68"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="6_lajqu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l2glv"]
 size = Vector3(1.13184, 1, 4.13869)
@@ -48,6 +49,18 @@ tracks/2/path = NodePath("Anim/SfxMoveDown:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ps_dust:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -126,6 +139,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ps_dust:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.95),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pxjy1"]
 _data = {
@@ -134,6 +159,33 @@ _data = {
 &"move_down": SubResource("Animation_g1u68"),
 &"move_up": SubResource("Animation_pxjy1")
 }
+
+[sub_resource type="Curve" id="Curve_oxc44"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0960699, 0.808989), 0.0, 0.0, 0, 0, Vector2(0.20524, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vs670"]
+curve = SubResource("Curve_oxc44")
+
+[sub_resource type="Curve" id="Curve_8v037"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.36719, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_absat"]
+curve = SubResource("Curve_8v037")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ckdo0"]
+spread = 90.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 3, 0)
+damping_min = 100.0
+damping_max = 100.0
+damping_curve = SubResource("CurveTexture_vs670")
+scale_curve = SubResource("CurveTexture_absat")
+
+[sub_resource type="SphereMesh" id="SphereMesh_54mq6"]
+material = ExtResource("6_lajqu")
 
 [node name="CrystalPickaxe" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "MiddleNode")]
 script = ExtResource("1_nw7g2")
@@ -187,3 +239,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08258, 0)
 libraries = {
 &"": SubResource("AnimationLibrary_pxjy1")
 }
+
+[node name="ps_dust" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.2047e-08, 4.34509, 2.80053)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.59
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ckdo0")
+draw_pass_1 = SubResource("SphereMesh_54mq6")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dba3xv6w25kpx"]
+
+[ext_resource type="PackedScene" uid="uid://bbct2gyjk8v8j" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_001.fbx" id="1_muur8"]
+[ext_resource type="PackedScene" uid="uid://cprcurqn1yqys" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_002.fbx" id="2_j3isa"]
+
+[node name="rock_decorative_group_001" type="Node3D"]
+
+[node name="rock_decorative_001" parent="." instance=ExtResource("1_muur8")]
+transform = Transform3D(0.07, 0, 0, 0, 0.07, 0, 0, 0, 0.07, 0, 0, 0)
+
+[node name="rock_decorative_002" parent="." instance=ExtResource("1_muur8")]
+transform = Transform3D(0.0462883, 0, 0.018905, 0, 0.05, 0, -0.018905, 0, 0.0462883, -0.0887724, 0, 0.0622915)
+
+[node name="rock_decorative_003" parent="." instance=ExtResource("1_muur8")]
+transform = Transform3D(0.0456545, 0, -0.0203878, 0, 0.05, 0, 0.0203878, 0, 0.0456545, 0.0868281, 0, -0.0250501)
+
+[node name="rock_decorative_004" parent="." instance=ExtResource("2_j3isa")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, -0.0664648, 0, -0.0554866)
+
+[node name="rock_decorative_005" parent="." instance=ExtResource("2_j3isa")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0.0507278, 0, 0.0834985)

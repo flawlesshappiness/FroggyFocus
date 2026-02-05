@@ -5,7 +5,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_clbpx")
-shader_parameter/albedo = Color(0.6, 0.6, 0.6, 1)
+shader_parameter/albedo = Color(0.55, 0.55, 0.55, 1)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 3
 shader_parameter/wrap = 0.0

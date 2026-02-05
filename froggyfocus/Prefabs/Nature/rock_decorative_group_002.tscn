@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddilxvix6isb1"]
+
+[ext_resource type="PackedScene" uid="uid://bbct2gyjk8v8j" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_001.fbx" id="1_6kprp"]
+[ext_resource type="PackedScene" uid="uid://cprcurqn1yqys" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_002.fbx" id="2_pafoe"]
+
+[node name="rock_decorative_group_002" type="Node3D"]
+
+[node name="rock_decorative_001" parent="." instance=ExtResource("1_6kprp")]
+transform = Transform3D(0.0294326, 0, 0.005807, 0, 0.03, 0, -0.005807, 0, 0.0294326, -0.0543855, 0, 0.0511475)
+
+[node name="rock_decorative_003" parent="." instance=ExtResource("1_6kprp")]
+transform = Transform3D(0.0341544, 0, -0.0208201, 0, 0.04, 0, 0.0208201, 0, 0.0341544, 0.0405731, 0, 0.0596075)
+
+[node name="rock_decorative_002" parent="." instance=ExtResource("2_pafoe")]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 0, 0)

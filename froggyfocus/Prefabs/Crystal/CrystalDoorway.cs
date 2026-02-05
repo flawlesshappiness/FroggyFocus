@@ -11,10 +11,11 @@ public partial class CrystalDoorway : Area3D, IInteractable
 
     private string SceneName => IsEntrance ? nameof(CrystalScene) : nameof(CaveScene);
     private string StartNode => IsEntrance ? "" : "CrystalStart";
-    private bool IsOpen => !IsEntrance;
+    private bool IsOpen => !IsEntrance || GameFlags.IsFlag(IsOpenFlag, 1);
 
-    private const string TryCodeFlag = "crystal_door_try_code";
-    public const string HasCodeFlag = "has_crystal_door_code";
+    private const string TryCodeFlag = "CRYSTAL_DOOR_TRY_CODE";
+    public const string HasCodeFlag = "CRYSTAL_DOOR_HAS_CODE";
+    public const string IsOpenFlag = "CRYSTAL_DOOR_OPEN";
 
     private readonly List<string> TryCodeDialogueNodes = new()
     {
@@ -56,6 +57,8 @@ public partial class CrystalDoorway : Area3D, IInteractable
         Data.Game.CurrentScene = SceneName;
         Data.Game.Save();
 
+        SfxLocked.Play();
+
         TransitionView.Instance.StartTransition(new TransitionSettings
         {
             Type = TransitionType.Color,
@@ -82,12 +85,16 @@ public partial class CrystalDoorway : Area3D, IInteractable
         {
             if (GameFlags.IsFlag(HasCodeFlag, 1))
             {
-
+                ShowCorrectCodeOptions();
             }
             else
             {
                 ShowIncorrectCodeOptions();
             }
+        }
+        else if (id == "##CRYSTAL_DOOR_UNLOCK##")
+        {
+            ChangeScene();
         }
     }
 
@@ -104,6 +111,14 @@ public partial class CrystalDoorway : Area3D, IInteractable
 
             DialogueController.Instance.StartDialogue("##CRYSTAL_DOOR_INCORRECT##");
         }
+    }
+
+    private void TryCorrectCode()
+    {
+        GameFlags.SetFlag(IsOpenFlag, 1);
+        Data.Game.Save();
+
+        DialogueController.Instance.StartDialogue("##CRYSTAL_DOOR_UNLOCK##");
     }
 
     private void ShowIncorrectCodeOptions()
@@ -137,7 +152,7 @@ public partial class CrystalDoorway : Area3D, IInteractable
                     new()
                     {
                         Text = "##CRYSTAL_DOOR_ATTEMPT_REAL_CODE##",
-                        Action = TryIncorrectCode
+                        Action = TryCorrectCode
                     },
 
                     new()

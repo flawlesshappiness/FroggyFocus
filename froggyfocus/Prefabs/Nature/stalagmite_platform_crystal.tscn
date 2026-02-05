@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf5uwumydynrl"]
+[gd_scene load_steps=13 format=3 uid="uid://cf5uwumydynrl"]
 
 [ext_resource type="PackedScene" uid="uid://crkfm1vapfehx" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat.fbx" id="1_exw41"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_wdauh"]
 [ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="3_sgb5n"]
 [ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="4_u8s8f"]
 [ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="5_wdauh"]
+[ext_resource type="PackedScene" uid="uid://dba3xv6w25kpx" path="res://Prefabs/Nature/rock_decorative_group_001.tscn" id="6_u8s8f"]
+[ext_resource type="PackedScene" uid="uid://ddilxvix6isb1" path="res://Prefabs/Nature/rock_decorative_group_002.tscn" id="7_7eude"]
+[ext_resource type="PackedScene" uid="uid://bbct2gyjk8v8j" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_001.fbx" id="8_7eude"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sgb5n"]
 height = 3.021
@@ -69,197 +72,265 @@ metadata/_custom_type_script = "uid://cnv6mhgukc6u3"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010498, 0)
 shape = SubResource("CylinderShape3D_kmi48")
 
-[node name="Crystals" type="Node3D" parent="."]
+[node name="Crystals_Decor" type="Node3D" parent="."]
 
-[node name="Side" type="Node3D" parent="Crystals"]
+[node name="Side" type="Node3D" parent="Crystals_Decor"]
 
-[node name="crystal_short" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.096395, -0.110396, -0.455314)
 
-[node name="crystal_short2" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short2" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.19927, -0.286784, -0.408875)
 
-[node name="crystal_short24" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short24" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.143709, -0.248653, -0.433956)
 
-[node name="crystal_short25" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short25" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.261894, -0.25372, -0.380606)
 
-[node name="crystal_short26" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short26" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.145616, -0.140358, -0.433096)
 
-[node name="crystal_short27" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short27" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.284742, -0.06432, -0.370292)
 
-[node name="crystal_short28" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short28" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.249359, -0.0372425, -0.386264)
 
-[node name="crystal_short29" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short29" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.0753834, -0.0602231, -0.464799)
 
-[node name="crystal_short30" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short30" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.155251, -0.0264404, -0.428746)
 
-[node name="crystal_short31" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short31" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.0436648, -0.229189, -0.479117)
 
-[node name="crystal_short3" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short3" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.0776166, -0.549084, -0.448121)
 
-[node name="crystal_short4" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short4" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.263067, -0.24838, -0.381903)
 
-[node name="crystal_short19" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short19" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.107623, -0.172698, -0.458126)
 
-[node name="crystal_short20" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short20" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.169574, -0.117753, -0.427748)
 
-[node name="crystal_short21" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short21" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.200308, -0.246541, -0.412677)
 
-[node name="crystal_short22" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short22" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.26409, -0.0592826, -0.381402)
 
-[node name="crystal_short23" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short23" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.071901, -0.0317986, -0.475642)
 
-[node name="crystal_short5" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short5" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.0888363, -0.116561, -0.462476)
 
-[node name="crystal_short6" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short6" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.222012, -0.363808, -0.397174)
 
-[node name="crystal_short7" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short7" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.456854, -0.0964038, -0.0712199)
 
-[node name="crystal_short15" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short15" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.451861, -0.146677, -0.108568)
 
-[node name="crystal_short16" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short16" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.367447, -0.0415847, -0.301079)
 
-[node name="crystal_short17" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short17" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.401931, -0.0883314, -0.222435)
 
-[node name="crystal_short18" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short18" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.441355, -0.043052, -0.132528)
 
-[node name="crystal_short8" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short8" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.401588, -0.345095, -0.197257)
 
-[node name="crystal_short9" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short9" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.441221, -0.634006, -0.0778764)
 
-[node name="crystal_short10" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short10" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0390763, -0.0920491, -1.79844e-09, -2.9645e-09, 3.21226e-09, -0.1, 0.0920491, -0.0390763, -3.98403e-09, 0.440362, -0.110707, 0.120261)
 
-[node name="crystal_short11" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short11" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0390763, -0.0920491, -1.79844e-09, -2.9645e-09, 3.21226e-09, -0.1, 0.0920491, -0.0390763, -3.98403e-09, 0.402368, -0.201167, 0.20976)
 
-[node name="crystal_short12" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short12" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.411309, -0.128619, 0.188697)
 
-[node name="crystal_short13" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short13" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.365237, -0.0765665, 0.297226)
 
-[node name="crystal_short14" parent="Crystals/Side" instance=ExtResource("5_wdauh")]
+[node name="crystal_short14" parent="Crystals_Decor/Side" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.462574, -0.0442182, 0.0679371)
 
-[node name="Side2" type="Node3D" parent="Crystals"]
+[node name="Side2" type="Node3D" parent="Crystals_Decor"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="crystal_short" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.096395, -0.110396, -0.455314)
 
-[node name="crystal_short2" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short2" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.19927, -0.286784, -0.408875)
 
-[node name="crystal_short24" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short24" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.143709, -0.248653, -0.433956)
 
-[node name="crystal_short25" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short25" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.261894, -0.25372, -0.380606)
 
-[node name="crystal_short26" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short26" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.145616, -0.140358, -0.433096)
 
-[node name="crystal_short27" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short27" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.284742, -0.06432, -0.370292)
 
-[node name="crystal_short28" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short28" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.249359, -0.0372425, -0.386264)
 
-[node name="crystal_short29" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short29" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.0753834, -0.0602231, -0.464799)
 
-[node name="crystal_short30" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short30" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.155251, -0.0264404, -0.428746)
 
-[node name="crystal_short31" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short31" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.045572, 0.0205717, -8.99219e-10, 0, -2.18557e-09, -0.05, -0.0205717, 0.045572, -1.99201e-09, -0.0436648, -0.229189, -0.479117)
 
-[node name="crystal_short3" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short3" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0911439, 0.0411435, -1.79844e-09, 0, -4.37114e-09, -0.1, -0.0411435, 0.0911439, -3.98403e-09, -0.0776166, -0.549084, -0.448121)
 
-[node name="crystal_short4" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short4" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.263067, -0.24838, -0.381903)
 
-[node name="crystal_short19" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short19" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.107623, -0.172698, -0.458126)
 
-[node name="crystal_short20" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short20" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.169574, -0.117753, -0.427748)
 
-[node name="crystal_short21" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short21" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.200308, -0.246541, -0.412677)
 
-[node name="crystal_short22" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short22" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.26409, -0.0592826, -0.381402)
 
-[node name="crystal_short23" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short23" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0448933, -0.0220134, 9.62237e-10, 0, -2.18557e-09, -0.05, 0.0220134, 0.0448933, -1.96235e-09, 0.071901, -0.0317986, -0.475642)
 
-[node name="crystal_short5" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short5" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.0888363, -0.116561, -0.462476)
 
-[node name="crystal_short6" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short6" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.0897866, -0.0440268, -1.79844e-09, -3.3688e-09, -2.78533e-09, -0.1, 0.0440268, 0.0897866, -3.98403e-09, 0.222012, -0.363808, -0.397174)
 
-[node name="crystal_short7" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short7" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.456854, -0.0964038, -0.0712199)
 
-[node name="crystal_short15" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short15" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.451861, -0.146677, -0.108568)
 
-[node name="crystal_short16" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short16" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.367447, -0.0415847, -0.301079)
 
-[node name="crystal_short17" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short17" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.401931, -0.0883314, -0.222435)
 
-[node name="crystal_short18" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short18" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.020079, -0.0457912, 2.0016e-09, 0, -2.18557e-09, -0.05, 0.0457912, 0.020079, -8.77681e-10, 0.441355, -0.043052, -0.132528)
 
-[node name="crystal_short8" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short8" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.401588, -0.345095, -0.197257)
 
-[node name="crystal_short9" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short9" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(0.040158, -0.0915824, -1.79844e-09, -4.37088e-09, 4.71476e-11, -0.1, 0.0915824, 0.040158, -3.98403e-09, 0.441221, -0.634006, -0.0778764)
 
-[node name="crystal_short10" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short10" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0390763, -0.0920491, -1.79844e-09, -2.9645e-09, 3.21226e-09, -0.1, 0.0920491, -0.0390763, -3.98403e-09, 0.440362, -0.110707, 0.120261)
 
-[node name="crystal_short11" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short11" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0390763, -0.0920491, -1.79844e-09, -2.9645e-09, 3.21226e-09, -0.1, 0.0920491, -0.0390763, -3.98403e-09, 0.402368, -0.201167, 0.20976)
 
-[node name="crystal_short12" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short12" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.411309, -0.128619, 0.188697)
 
-[node name="crystal_short13" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short13" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.365237, -0.0765665, 0.297226)
 
-[node name="crystal_short14" parent="Crystals/Side2" instance=ExtResource("5_wdauh")]
+[node name="crystal_short14" parent="Crystals_Decor/Side2" instance=ExtResource("5_wdauh")]
 transform = Transform3D(-0.0195382, -0.0460246, 2.0118e-09, 0, -2.18557e-09, -0.05, 0.0460246, -0.0195382, 8.5404e-10, 0.462574, -0.0442182, 0.0679371)
+
+[node name="Rocks_Decor" type="Node3D" parent="."]
+
+[node name="rock_decorative_group_001" parent="Rocks_Decor" instance=ExtResource("6_u8s8f")]
+transform = Transform3D(0.567838, 0, -0.193805, 0, 0.6, 0, 0.193805, 0, 0.567838, 0.0512932, 0, -0.406181)
+
+[node name="rock_decorative_group_005" parent="Rocks_Decor" instance=ExtResource("6_u8s8f")]
+transform = Transform3D(0.00593753, 0, -0.599971, 0, 0.6, 0, 0.599971, 0, 0.00593753, 0.0437898, 0, 0.0721682)
+
+[node name="rock_decorative_group_002" parent="Rocks_Decor" instance=ExtResource("7_7eude")]
+transform = Transform3D(-0.346314, 0, -0.938119, 0, 1, 0, 0.938119, 0, -0.346314, -0.142232, 2.98023e-08, 0.295134)
+
+[node name="rock_decorative_group_003" parent="Rocks_Decor" instance=ExtResource("7_7eude")]
+transform = Transform3D(-0.933437, 0, -0.358743, 0, 1, 0, 0.358743, 0, -0.933437, 0.27984, 2.98023e-08, -0.0200139)
+
+[node name="rock_decorative_group_004" parent="Rocks_Decor" instance=ExtResource("7_7eude")]
+transform = Transform3D(-0.415265, 0, 0.909701, 0, 1, 0, -0.909701, 0, -0.415265, -0.23415, 2.98023e-08, -0.138194)
+
+[node name="rock_decorative_001" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.0282654, 0, 0.0100532, 0, 0.03, 0, -0.0100532, 0, 0.0282654, -0.121529, 0, 0.10776)
+
+[node name="rock_decorative_002" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.0255491, 0, -0.015724, 0, 0.03, 0, 0.015724, 0, 0.0255491, -0.340762, 0, -0.121125)
+
+[node name="rock_decorative_003" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.00651619, 0, -0.0292838, 0, 0.03, 0, 0.0292838, 0, 0.00651619, -0.358687, 0, 0.102245)
+
+[node name="rock_decorative_004" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.0220872, 0, -0.0203017, 0, 0.03, 0, 0.0203017, 0, 0.0220872, -0.244244, 0, -0.00254584)
+
+[node name="rock_decorative_005" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.0100941, 0, -0.0282508, 0, 0.03, 0, 0.0282508, 0, 0.0100941, 0.170783, 0, 0.0512284)
+
+[node name="rock_decorative_006" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.0298382, 0, -0.0031119, 0, 0.03, 0, 0.0031119, 0, 0.0298382, 0.212148, 0, 0.202899)
+
+[node name="rock_decorative_007" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.00745715, 0, -0.0290584, 0, 0.03, 0, 0.0290584, 0, 0.00745715, 0.327969, 0, 0.0925932)
+
+[node name="rock_decorative_008" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(-0.00175671, 0, -0.0299485, 0, 0.03, 0, 0.0299485, 0, -0.00175671, -0.0126015, 0, 0.229097)
+
+[node name="rock_decorative_009" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.0220631, 0, -0.0203278, 0, 0.03, 0, 0.0203278, 0, 0.0220631, 0.123902, 0, 0.3201)
+
+[node name="rock_decorative_010" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.0220631, 0, -0.0203278, 0, 0.03, 0, 0.0203278, 0, 0.0220631, 0.0995161, 0, -0.178884)
+
+[node name="rock_decorative_011" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.00149164, 0, -0.0299629, 0, 0.03, 0, 0.0299629, 0, 0.00149164, -0.0978983, 0, -0.224987)
+
+[node name="rock_decorative_012" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(-0.0284583, 0, -0.00949332, 0, 0.03, 0, 0.00949332, 0, -0.0284583, 0.0167675, 0, -0.286457)
+
+[node name="rock_decorative_013" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(-0.0284583, 0, -0.00949332, 0, 0.03, 0, 0.00949332, 0, -0.0284583, -0.207836, 0, -0.320739)
+
+[node name="rock_decorative_014" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(-0.00100669, 0, -0.0299831, 0, 0.03, 0, 0.0299831, 0, -0.00100669, -0.297677, 0, -0.25454)
+
+[node name="rock_decorative_015" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(-0.00100669, 0, -0.0299831, 0, 0.03, 0, 0.0299831, 0, -0.00100669, 0.17399, 0, -0.320739)
+
+[node name="rock_decorative_016" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(0.0209375, 0, -0.0214854, 0, 0.03, 0, 0.0214854, 0, 0.0209375, 0.299295, 0, -0.222623)
+
+[node name="rock_decorative_017" parent="Rocks_Decor" instance=ExtResource("8_7eude")]
+transform = Transform3D(-0.00994162, 0, -0.0283048, 0, 0.03, 0, 0.0283048, 0, -0.00994162, 0.209453, 0, -0.208437)
 
 [editable path="stalagmite_flat"]

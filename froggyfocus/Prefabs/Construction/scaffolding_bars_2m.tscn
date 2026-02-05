@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://b48cueepn0f72"]
+
+[ext_resource type="PackedScene" uid="uid://car8oxh7s0uqh" path="res://Assets/FlawLizArt/Construction/scaffolding_bars_2m.fbx" id="1_xgxep"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wjfww"]
+size = Vector3(0.2, 4, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxd3o"]
+size = Vector3(0.16, 0.16, 1.6)
+
+[node name="scaffolding_bars_2m" type="Node3D"]
+
+[node name="scaffolding_bars_2m" parent="." instance=ExtResource("1_xgxep")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 2, 0.9)
+shape = SubResource("BoxShape3D_wjfww")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 2, 0.9)
+shape = SubResource("BoxShape3D_wjfww")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 2, -0.9)
+shape = SubResource("BoxShape3D_wjfww")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 2, -0.9)
+shape = SubResource("BoxShape3D_wjfww")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 2.91535, 0)
+shape = SubResource("BoxShape3D_lxd3o")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 2.915, 0)
+shape = SubResource("BoxShape3D_lxd3o")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 1.915, 0)
+shape = SubResource("BoxShape3D_lxd3o")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0.915, 0)
+shape = SubResource("BoxShape3D_lxd3o")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 1.91535, 0)
+shape = SubResource("BoxShape3D_lxd3o")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.91535, 0)
+shape = SubResource("BoxShape3D_lxd3o")

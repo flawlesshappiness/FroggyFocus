@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd6c641sy8eye"]
+
+[ext_resource type="PackedScene" uid="uid://d4foiwy4ulppc" path="res://Assets/FlawLizArt/Construction/scaffolding_platform_4x4.fbx" id="1_cn5km"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6dijs"]
+size = Vector3(4, 0.103, 4)
+
+[node name="scaffolding_platform_4x4" type="Node3D"]
+
+[node name="scaffolding_platform_4x4" parent="." instance=ExtResource("1_cn5km")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0512695, 0)
+shape = SubResource("BoxShape3D_6dijs")

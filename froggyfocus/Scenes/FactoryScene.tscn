@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=78 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://bwc0ley5ipxwr" path="res://Prefabs/Nature/seaweed_cluster_small.tscn" id="25_i5qij"]
 [ext_resource type="PackedScene" uid="uid://cp64pfqrxicn2" path="res://Prefabs/Machine/gear_big.tscn" id="26_3yuby"]
 [ext_resource type="PackedScene" uid="uid://b6wxew74nf10j" path="res://Prefabs/Machine/gear_big_seaweed.tscn" id="26_fpcwk"]
+[ext_resource type="PackedScene" uid="uid://cd6c641sy8eye" path="res://Prefabs/Construction/scaffolding_platform_4x4.tscn" id="26_i8uf5"]
 [ext_resource type="PackedScene" uid="uid://drkw8kmks10q4" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_dish.fbx" id="27_f1l0q"]
 [ext_resource type="PackedScene" uid="uid://jyb4tasp37gp" path="res://Prefabs/Nature/seaweed_cluster_bridge.tscn" id="27_k0l20"]
 [ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="28_ev2yv"]
@@ -59,6 +60,7 @@
 [ext_resource type="PackedScene" uid="uid://dovpu07ffsnwv" path="res://Prefabs/Objects/sign_boat_flipped.tscn" id="45_12tkq"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="46_gteuj"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="47_ix7e4"]
+[ext_resource type="PackedScene" uid="uid://cie8jtojk5lgv" path="res://Prefabs/Construction/scaffolding_bars_4m.tscn" id="49_1xjcp"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="60_12tkq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_s3kaw"]
@@ -500,6 +502,44 @@ transform = Transform3D(-0.499117, 0, 3.96874, 0, 4, 0, -3.96874, 0, -0.499117, 
 [node name="Seaweed_Cluster_Bridge8" parent="World/NavigationRegion3D/Platforms/Weeds" instance=ExtResource("27_k0l20")]
 transform = Transform3D(-1.86128, 0, 3.54057, 0, 4, 0, -3.54057, 0, -1.86128, 52.2832, -0.690371, 12.0289)
 
+[node name="Scaffolding" type="Node3D" parent="World/NavigationRegion3D/Platforms"]
+
+[node name="scaffolding_platform_4x4" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 18, -56)
+
+[node name="scaffolding_platform_4x5" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, 18, -56)
+
+[node name="scaffolding_platform_4x6" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 18, -48)
+
+[node name="scaffolding_platform_4x7" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, 18, -48)
+
+[node name="scaffolding_platform_4x8" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 16, 14, -48)
+
+[node name="scaffolding_platform_4x9" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 16, 2, -48)
+
+[node name="scaffolding_platform_4x10" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 2, -56)
+
+[node name="scaffolding_platform_4x12" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, 6, -56)
+
+[node name="scaffolding_platform_4x13" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, 10, -48)
+
+[node name="scaffolding_platform_4x15" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 16, 10, -48)
+
+[node name="scaffolding_platform_4x14" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 10, -48)
+
+[node name="scaffolding_platform_4x11" parent="World/NavigationRegion3D/Platforms/Scaffolding" instance=ExtResource("26_i8uf5")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 2, -48)
+
 [node name="Building" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.55, 0, 0)
 
@@ -875,6 +915,53 @@ transform = Transform3D(-0.683778, 0, 1.87948, 0, 2, 0, -1.87948, 0, -0.683778, 
 
 [node name="ExhaustPipe4" parent="World/Machine" instance=ExtResource("37_la0tx")]
 transform = Transform3D(-0.683778, 0, 1.87948, 0, 2, 0, -1.87948, 0, -0.683778, -76.6788, -8.12274, 70.6713)
+
+[node name="Scaffolding" type="Node3D" parent="World"]
+
+[node name="scaffolding_bars_4m" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, -4, -56)
+
+[node name="scaffolding_bars_4m2" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 4, -56)
+
+[node name="scaffolding_bars_4m3" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 12, -56)
+
+[node name="scaffolding_bars_4m13" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 16, -4, -48)
+
+[node name="scaffolding_bars_4m14" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 16, 4, -48)
+
+[node name="scaffolding_bars_4m15" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 16, 12, -48)
+
+[node name="scaffolding_bars_4m7" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, -4, -56)
+
+[node name="scaffolding_bars_4m8" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, 4, -56)
+
+[node name="scaffolding_bars_4m9" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, 12, -56)
+
+[node name="scaffolding_bars_4m10" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, -4, -48)
+
+[node name="scaffolding_bars_4m11" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, 4, -48)
+
+[node name="scaffolding_bars_4m12" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8, 12, -48)
+
+[node name="scaffolding_bars_4m4" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 12, -48)
+
+[node name="scaffolding_bars_4m5" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, 4, -48)
+
+[node name="scaffolding_bars_4m6" parent="World/Scaffolding" instance=ExtResource("49_1xjcp")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, -4, -48)
 
 [node name="Lilypad_Boat" parent="World" instance=ExtResource("12_qubeh")]
 transform = Transform3D(-0.356461, 0, -0.93431, 0, 1, 0, 0.93431, 0, -0.356461, 62.9172, -0.95356, 13.7017)
