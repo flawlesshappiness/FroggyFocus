@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b82px6inj2esr"]
+
+[ext_resource type="PackedScene" uid="uid://xgwpu3bu10hq" path="res://Assets/FlawLizArt/Exterior/ac_unit.fbx" id="1_jilo3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hgl38"]
+size = Vector3(1.59766, 1, 0.5)
+
+[node name="ac_unit" type="Node3D"]
+
+[node name="ac_unit" parent="." instance=ExtResource("1_jilo3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("BoxShape3D_hgl38")

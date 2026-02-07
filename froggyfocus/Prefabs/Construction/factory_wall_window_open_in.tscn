@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8s0hgxmst58v"]
+
+[ext_resource type="PackedScene" uid="uid://b10b0t25q36j1" path="res://Assets/FlawLizArt/Construction/factory_deco_window.fbx" id="1_jtjo1"]
+[ext_resource type="PackedScene" uid="uid://db6r511rhkuyn" path="res://Assets/FlawLizArt/Construction/factory_wall_window_open.fbx" id="1_kefw2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6fdd"]
+size = Vector3(1, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtjo1"]
+size = Vector3(2, 1, 1)
+
+[node name="factory_wall_window_open_in" type="Node3D"]
+
+[node name="factory_deco_window" parent="." instance=ExtResource("1_jtjo1")]
+transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 2.08053, -0.99039)
+
+[node name="factory_wall_window_open" parent="." instance=ExtResource("1_kefw2")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -0.5)
+shape = SubResource("BoxShape3D_y6fdd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -0.5)
+shape = SubResource("BoxShape3D_y6fdd")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+shape = SubResource("BoxShape3D_jtjo1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -0.5)
+shape = SubResource("BoxShape3D_jtjo1")

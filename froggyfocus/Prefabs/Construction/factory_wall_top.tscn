@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ci870rbscmth7"]
+
+[ext_resource type="PackedScene" uid="uid://cdavs5xa2sdbl" path="res://Assets/FlawLizArt/Construction/factory_wall_top.fbx" id="1_fnb7d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6fdd"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bxugl"]
+size = Vector3(4, 1.43115, 0.422363)
+
+[node name="factory_wall_top" type="Node3D"]
+
+[node name="factory_wall_top" parent="." instance=ExtResource("1_fnb7d")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.5)
+shape = SubResource("BoxShape3D_y6fdd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.28442, 0.211182)
+shape = SubResource("BoxShape3D_bxugl")

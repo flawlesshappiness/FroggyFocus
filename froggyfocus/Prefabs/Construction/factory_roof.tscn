@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcbp105gj0ued"]
+
+[ext_resource type="PackedScene" uid="uid://bpecqdkfs7xjj" path="res://Assets/FlawLizArt/Construction/factory_roof.fbx" id="1_2fhbs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y6fdd"]
+size = Vector3(4, 4, 2)
+
+[node name="factory_roof" type="Node3D"]
+
+[node name="factory_roof" parent="." instance=ExtResource("1_2fhbs")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+shape = SubResource("BoxShape3D_y6fdd")
