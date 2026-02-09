@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://tv4gbhgj63hb"]
+
+[ext_resource type="PackedScene" uid="uid://c6a5dhuqr5ji3" path="res://Assets/KenneyNL/Furniture/computerScreen.fbx" id="1_g8n5e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nues8"]
+size = Vector3(1.04395, 0.74469, 0.217773)
+
+[node name="computer_monitor" type="Node3D"]
+
+[node name="Scale" type="Node3D" parent="."]
+
+[node name="computerScreen" parent="Scale" instance=ExtResource("1_g8n5e")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.480397, 0, -0.161122)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.372345, 0)
+shape = SubResource("BoxShape3D_nues8")

@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd6c641sy8eye"]
+[gd_scene load_steps=5 format=3 uid="uid://cd6c641sy8eye"]
 
 [ext_resource type="PackedScene" uid="uid://d4foiwy4ulppc" path="res://Assets/FlawLizArt/Construction/scaffolding_platform_4x4.fbx" id="1_cn5km"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_0paxm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6dijs"]
 size = Vector3(4, 0.103, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r4egn"]
+size = Vector3(4, 0.5, 4)
 
 [node name="scaffolding_platform_4x4" type="Node3D"]
 
@@ -14,3 +18,15 @@ size = Vector3(4, 0.103, 4)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0512695, 0)
 shape = SubResource("BoxShape3D_6dijs")
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_0paxm")
+Id = "scaffolding"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_r4egn")
+debug_color = Color(0.7, 0, 0, 0.419608)

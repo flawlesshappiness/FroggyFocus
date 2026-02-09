@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=65 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -20,9 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwq5ouf0ihjq" path="res://Prefabs/Objects/bottle_cleaning_simple.tscn" id="19_ea7wq"]
 [ext_resource type="PackedScene" uid="uid://pndnf2awnmp0" path="res://Prefabs/Objects/bottle_cleaning_dish.tscn" id="20_16r1r"]
 [ext_resource type="PackedScene" uid="uid://c482un0ek3woo" path="res://Prefabs/Objects/bottle_cleaning_soap.tscn" id="21_lxndu"]
-[ext_resource type="Resource" uid="uid://ddvwvkdj0vgft" path="res://HandInQuest/Resources/Factory_Tv_002.tres" id="21_yhogp"]
 [ext_resource type="PackedScene" uid="uid://cat6wqg4h8oqa" path="res://Prefabs/Objects/bottle_cleaning_toilet.tscn" id="22_01srd"]
-[ext_resource type="Resource" uid="uid://b8lbfg478ik28" path="res://HandInQuest/Resources/Factory_Tv_005.tres" id="22_gihq3"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="24_0lfya"]
 [ext_resource type="Material" uid="uid://bwype3h3t71r7" path="res://Materials/Oil.tres" id="24_gihq3"]
 [ext_resource type="PackedScene" uid="uid://cuc22dure6gn7" path="res://Prefabs/Nature/seaweed_cluster_circle.tscn" id="24_uf1yc"]
@@ -35,12 +33,9 @@
 [ext_resource type="PackedScene" uid="uid://jyb4tasp37gp" path="res://Prefabs/Nature/seaweed_cluster_bridge.tscn" id="27_k0l20"]
 [ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="28_ev2yv"]
 [ext_resource type="PackedScene" uid="uid://btfkqop4kbh8e" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_toilet.fbx" id="29_3aqke"]
-[ext_resource type="PackedScene" uid="uid://dq6j0lsuirc0k" path="res://Prefabs/Glitch/tv_glitchy.tscn" id="29_ix7e4"]
 [ext_resource type="PackedScene" uid="uid://c3hkrtmh6ohnl" path="res://Prefabs/NPC/EelNPC/eel_npc.tscn" id="30_8g76t"]
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="30_kso58"]
 [ext_resource type="PackedScene" uid="uid://c8y0kfo5jh0t8" path="res://Prefabs/Glitch/tv_travel.tscn" id="30_lajby"]
-[ext_resource type="Resource" uid="uid://646tu350bkvf" path="res://HandInQuest/Resources/Factory_Tv_001.tres" id="33_b7s7t"]
-[ext_resource type="Resource" uid="uid://r0ehnnp1jwbf" path="res://HandInQuest/Resources/Factory_Tv_004.tres" id="34_xv66q"]
 [ext_resource type="PackedScene" uid="uid://cx8bqg4u53dsn" path="res://Prefabs/Buildings/building_factory.tscn" id="35_1xjcp"]
 [ext_resource type="Resource" uid="uid://conmipikui7b5" path="res://FocusEvent/Resources/Factory_Trash_Water.tres" id="35_8mo76"]
 [ext_resource type="PackedScene" uid="uid://cvky4buvmgo3h" path="res://Prefabs/Objects/exhaust_pipe.tscn" id="37_la0tx"]
@@ -48,13 +43,14 @@
 [ext_resource type="Resource" uid="uid://cnf7n65pa1ho" path="res://FocusEvent/Resources/Factory_Oil.tres" id="39_v2jd5"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/Shop.tscn" id="40_xv66q"]
 [ext_resource type="Resource" uid="uid://cm5mlcegogu6u" path="res://FocusEvent/Resources/Factory_Seaweed.tres" id="41_8g76t"]
-[ext_resource type="Resource" uid="uid://0u3j4imv7nko" path="res://HandInQuest/Resources/Factory_Tv_003.tres" id="42_8kavb"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="42_v2jd5"]
 [ext_resource type="PackedScene" uid="uid://bjrocvyhabcve" path="res://Prefabs/Nature/grass_tuft_tall.tscn" id="43_b7s7t"]
 [ext_resource type="PackedScene" uid="uid://jnh2kdwd3acg" path="res://Prefabs/QuestBoard/quest_board.tscn" id="43_xv66q"]
 [ext_resource type="PackedScene" uid="uid://dovpu07ffsnwv" path="res://Prefabs/Objects/sign_boat_flipped.tscn" id="45_12tkq"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="46_gteuj"]
+[ext_resource type="PackedScene" uid="uid://d4foiwy4ulppc" path="res://Assets/FlawLizArt/Construction/scaffolding_platform_4x4.fbx" id="47_inr37"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="47_ix7e4"]
+[ext_resource type="PackedScene" uid="uid://cdlkowmgv487x" path="res://Assets/FlawLizArt/Construction/scaffolding_bars_4m_short.fbx" id="48_relfh"]
 [ext_resource type="PackedScene" uid="uid://cie8jtojk5lgv" path="res://Prefabs/Construction/scaffolding_bars_4m.tscn" id="49_1xjcp"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="60_12tkq"]
 
@@ -161,16 +157,19 @@ navigation_mesh = SubResource("NavigationMesh_s3kaw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.55, 0, 0)
 
 [node name="Barrel_Oil8" parent="World/NavigationRegion3D/Platforms/Barrels" instance=ExtResource("13_btv2t")]
-transform = Transform3D(2.47838, 1.69045, -6.13677e-08, 1.15999e-07, -6.11592e-08, 3, 1.69045, -2.47838, -1.15889e-07, -4.21849, 1.77636e-15, -45.3086)
+transform = Transform3D(2.47838, 1.69045, -6.13677e-08, 1.15999e-07, -6.11592e-08, 3, 1.69045, -2.47838, -1.15889e-07, -2.37068, 1.77636e-15, -66.8908)
+
+[node name="Barrel_Oil17" parent="World/NavigationRegion3D/Platforms/Barrels" instance=ExtResource("13_btv2t")]
+transform = Transform3D(2.47838, 1.69045, -6.13677e-08, 1.15999e-07, -6.11592e-08, 3, 1.69045, -2.47838, -1.15889e-07, -4.50951, 1.77636e-15, -56.5683)
 
 [node name="Barrel_Oil9" parent="World/NavigationRegion3D/Platforms/Barrels" instance=ExtResource("13_btv2t")]
-transform = Transform3D(-1.56942, 2.55674, -6.13677e-08, 6.66621e-08, 1.12926e-07, 3, 2.55674, 1.56942, -1.15889e-07, -14.9121, 1.90735e-06, -44.891)
+transform = Transform3D(-1.56942, 2.55674, -6.13677e-08, 6.66621e-08, 1.12926e-07, 3, 2.55674, 1.56942, -1.15889e-07, -13.0643, 1.90735e-06, -66.4732)
 
 [node name="Barrel_Oil2" parent="World/NavigationRegion3D/Platforms/Barrels" instance=ExtResource("13_btv2t")]
 transform = Transform3D(2.99899, 0.0779028, -6.13677e-08, 6.43563e-08, -1.14256e-07, 3, 0.0779028, -2.99899, -1.15889e-07, -1.85889, 1.90735e-06, -18.296)
 
 [node name="Barrel_Oil4" parent="World/NavigationRegion3D/Platforms/Barrels" instance=ExtResource("13_btv2t")]
-transform = Transform3D(2.32923, -1.89069, -1.21975e-07, 6.43563e-08, -1.14256e-07, 3, -1.89069, -2.32923, -4.81505e-08, -12.5701, -0.836642, 39.3436)
+transform = Transform3D(1.4224, -2.64136, -1.31111e-07, 6.43563e-08, -1.14256e-07, 3, -2.64136, -1.4224, 2.49003e-09, -15.2908, -0.836642, 39.3436)
 
 [node name="Barrel_Oil3" parent="World/NavigationRegion3D/Platforms/Barrels" instance=ExtResource("13_btv2t")]
 transform = Transform3D(2.13284, 2.10974, -6.13676e-08, 1.25127e-07, -3.92341e-08, 3, 2.10974, -2.13284, -1.15889e-07, 3.13488, 1.90735e-06, -27.5102)
@@ -200,7 +199,7 @@ transform = Transform3D(2.94933, 0.549026, -6.13676e-08, 8.154e-08, -1.02701e-07
 transform = Transform3D(2.11196, 2.13063, 1.55362e-08, 8.154e-08, -1.02701e-07, 3, 2.13063, -2.11196, -1.30211e-07, 14.7814, 1.37135e-12, -64.2912)
 
 [node name="Barrel_Oil6" parent="World/NavigationRegion3D/Platforms/Barrels" instance=ExtResource("13_btv2t")]
-transform = Transform3D(-2.1238, 2.11884, -6.13676e-08, 3.84056e-08, 1.25384e-07, 3, 2.11884, 2.1238, -1.15889e-07, -9.02368, 8.17124e-14, -23.7995)
+transform = Transform3D(-0.203157, 2.99311, -1.22496e-07, 3.84056e-08, 1.25384e-07, 3, 2.99311, 0.203157, -4.68086e-08, -12.9474, 8.17124e-14, -17.1054)
 
 [node name="Bags" type="Node3D" parent="World/NavigationRegion3D/Platforms"]
 
@@ -450,19 +449,11 @@ curve = SubResource("Curve3D_la0tx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9606, 0, -21.2489)
 curve = SubResource("Curve3D_xdgi3")
 
-[node name="TvGlitchy2" parent="World/Building" instance=ExtResource("29_ix7e4")]
-transform = Transform3D(0.91541, 0, -0.402523, 0, 1, 0, 0.402523, 0, 0.91541, -10.1981, 0.256041, -15.2812)
-HandInInfo = ExtResource("21_yhogp")
-
-[node name="TvGlitchy5" parent="World/Building" instance=ExtResource("29_ix7e4")]
-transform = Transform3D(0.833548, 0, -0.552446, 0, 1, 0, 0.552446, 0, 0.833548, -20.8653, 0.947139, -83.1346)
-HandInInfo = ExtResource("22_gihq3")
-
 [node name="ExhaustPipe" parent="World/Building" instance=ExtResource("37_la0tx")]
-transform = Transform3D(-8.74232e-08, 0, 2, 0, 2, 0, -2, 0, -8.74232e-08, -17.8688, -8.99999, -73.3635)
+transform = Transform3D(0.798523, 0, -1.83367, 0, 2, 0, 1.83367, 0, 0.798523, 18.0628, -8.99999, -45.7456)
 
 [node name="ExhaustPipe2" parent="World/Building" instance=ExtResource("37_la0tx")]
-transform = Transform3D(-8.74232e-08, 0, 2, 0, 2, 0, -2, 0, -8.74232e-08, -17.8688, -4.89409, -68.3635)
+transform = Transform3D(-8.74232e-08, 0, 2, 0, 2, 0, -2, 0, -8.74232e-08, -2.93565, -4.89409, -33.2165)
 
 [node name="Particles" type="Node3D" parent="World/Building"]
 
@@ -505,18 +496,9 @@ transform = Transform3D(-0.389622, 0.554513, -0.73533, 0, 0.798425, 0.602094, 0.
 
 [node name="Camera3D" type="Camera3D" parent="World/Garbage/RaccoonNPC/CameraTransform"]
 
-[node name="TvGlitchy1" parent="World/Garbage" instance=ExtResource("29_ix7e4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2215, 0, -93.9949)
-HandInInfo = ExtResource("33_b7s7t")
-
-[node name="TvGlitchy4" parent="World/Garbage" instance=ExtResource("29_ix7e4")]
-transform = Transform3D(0.779699, 0, 0.626155, 0, 1, 0, -0.626155, 0, 0.779699, 37.4147, 0, -19.0407)
-HandInInfo = ExtResource("34_xv66q")
-
-[node name="tv_travel" parent="World/Garbage" node_paths=PackedStringArray("Tvs") instance=ExtResource("30_lajby")]
+[node name="tv_travel" parent="World/Garbage" instance=ExtResource("30_lajby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12146, -1.90735e-06, -12)
 TravelScene = "GlitchScene"
-Tvs = [NodePath("../TvGlitchy1"), NodePath("../../Building/TvGlitchy2"), NodePath("../../Seaweed/TvGlitchy3"), NodePath("../TvGlitchy4"), NodePath("../../Building/TvGlitchy5")]
 
 [node name="StartTv" type="Node3D" parent="World/Garbage/tv_travel"]
 
@@ -553,10 +535,6 @@ curve = SubResource("Curve3D_inr37")
 [node name="Path_SfxWater8" type="Path3D" parent="World/Seaweed"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7067, 0, 15.0323)
 curve = SubResource("Curve3D_relfh")
-
-[node name="TvGlitchy3" parent="World/Seaweed" instance=ExtResource("29_ix7e4")]
-transform = Transform3D(0.853141, 0, 0.52168, 0, 1, 0, -0.52168, 0, 0.853141, -8.98858, 7.62939e-06, 48.5937)
-HandInInfo = ExtResource("42_8kavb")
 
 [node name="Weeds" type="Node3D" parent="World/Seaweed"]
 
@@ -722,6 +700,9 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6.96319, -2.43669, 59.
 [node name="Grass_Tuft_Tall47" parent="World/Seaweed/Weeds" instance=ExtResource("43_b7s7t")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.21844, -2.43669, 43.5782)
 
+[node name="Grass_Tuft_Tall64" parent="World/Seaweed/Weeds" instance=ExtResource("43_b7s7t")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -8.36579, -2.43669, 48.6605)
+
 [node name="Grass_Tuft_Tall55" parent="World/Seaweed/Weeds" instance=ExtResource("43_b7s7t")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 5.72188, -2.43669, 37.0214)
 
@@ -768,6 +749,12 @@ transform = Transform3D(15, 0, -1.78814e-06, 0, 15, 0, 1.78814e-06, 0, 15, -46.8
 
 [node name="Gear_Big15" parent="World/Machine" instance=ExtResource("26_3yuby")]
 transform = Transform3D(15, 0, -1.78814e-06, 0, 15, 0, 1.78814e-06, 0, 15, -1.68911, -2.75003, -109.525)
+
+[node name="Gear_Big17" parent="World/Machine" instance=ExtResource("26_3yuby")]
+transform = Transform3D(1.13247e-06, 0, 15, 0, 15, 0, -15, 0, 1.13247e-06, -73.3593, -2.75003, -100.044)
+
+[node name="Gear_Big18" parent="World/Machine" instance=ExtResource("26_3yuby")]
+transform = Transform3D(1.13247e-06, 0, 15, 0, 15, 0, -15, 0, 1.13247e-06, -64.3767, -2.75003, -111.062)
 
 [node name="Gear_Big16" parent="World/Machine" instance=ExtResource("26_3yuby")]
 transform = Transform3D(15, 0, -1.78814e-06, 0, 15, 0, 1.78814e-06, 0, 15, 31.2998, -2.75003, -109.525)
@@ -844,7 +831,7 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0, -4,
 transform = Transform3D(-0.356461, 0, -0.93431, 0, 1, 0, 0.93431, 0, -0.356461, 62.9172, -0.95356, 13.7017)
 
 [node name="FocusEvents" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.617, 0, 113.425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.531, 0, 113.425)
 
 [node name="Trash_Water" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
 visible = false
@@ -882,6 +869,22 @@ transform = Transform3D(1.82859, -0.810092, -3.54102e-08, 0, -8.74228e-08, 2, -0
 
 [node name="oil_barrel3" parent="World/FocusEvents/Oil" instance=ExtResource("30_kso58")]
 transform = Transform3D(-1.01065, 1.72586, 7.54396e-08, 0, -8.74228e-08, 2, 1.72586, 1.01065, 4.4177e-08, -5.17816, -1.40012, -2.24979)
+
+[node name="Scaffolding" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
+Id = "scaffolding"
+Info = ExtResource("39_v2jd5")
+
+[node name="oil_spill" parent="World/FocusEvents/Scaffolding" instance=ExtResource("12_sptoi")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1.16229, -3.61816)
+
+[node name="oil_spill2" parent="World/FocusEvents/Scaffolding" instance=ExtResource("12_sptoi")]
+transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, 0, -1.16229, 4.00499)
+
+[node name="scaffolding_platform_4x4" parent="World/FocusEvents/Scaffolding" instance=ExtResource("47_inr37")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 5.25938)
+
+[node name="scaffolding_bars_4m_short" parent="World/FocusEvents/Scaffolding/scaffolding_platform_4x4" instance=ExtResource("48_relfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Seaweed" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
 visible = false

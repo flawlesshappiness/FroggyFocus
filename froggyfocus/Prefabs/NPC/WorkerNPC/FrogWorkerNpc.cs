@@ -18,10 +18,18 @@ public partial class FrogWorkerNpc : CharacterNpc, IInteractable
     public override void Interact()
     {
         base.Interact();
-        var id_dialogue = DialogueNodes.ToList().GetClamped(GameFlags.GetFlag(DialogueFlag));
-        DialogueController.Instance.StartDialogue(id_dialogue);
 
-        GameFlags.IncrementFlag(DialogueFlag);
-        Data.Game.Save();
+        if (string.IsNullOrEmpty(DialogueFlag))
+        {
+            DialogueController.Instance.StartDialogue(DialogueNodes.First());
+        }
+        else
+        {
+            var id_dialogue = DialogueNodes.ToList().GetClamped(GameFlags.GetFlag(DialogueFlag));
+            DialogueController.Instance.StartDialogue(id_dialogue);
+
+            GameFlags.IncrementFlag(DialogueFlag);
+            Data.Game.Save();
+        }
     }
 }

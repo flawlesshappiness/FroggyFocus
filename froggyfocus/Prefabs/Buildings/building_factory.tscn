@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://cx8bqg4u53dsn"]
+[gd_scene load_steps=32 format=3 uid="uid://cx8bqg4u53dsn"]
 
 [ext_resource type="PackedScene" uid="uid://mtiuvb6c26ox" path="res://Prefabs/Construction/factory_wall_bottom_arch.tscn" id="1_7oje7"]
+[ext_resource type="PackedScene" uid="uid://krhivawcaxef" path="res://Prefabs/NPC/WorkerNPC/frog_worker_npc.tscn" id="1_8tq2e"]
 [ext_resource type="Script" uid="uid://7pw7mx1sasbl" path="res://GameScene/ChangeSceneArea.cs" id="2_0qf17"]
 [ext_resource type="PackedScene" uid="uid://d4ibshetmwndn" path="res://Prefabs/Construction/factory_wall_doorway_arch.tscn" id="2_lgpjs"]
 [ext_resource type="PackedScene" uid="uid://cxfgbijgm3f1e" path="res://Prefabs/Construction/factory_wall_window.tscn" id="3_uw6in"]
@@ -26,6 +27,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_0qf17"]
 size = Vector3(2, 2, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhj6b"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.886275)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8tq2e"]
+material = SubResource("StandardMaterial3D_xhj6b")
+size = Vector2(12, 2)
+
 [sub_resource type="BoxMesh" id="BoxMesh_5ovk1"]
 material = ExtResource("14_7ycw3")
 size = Vector3(3, 1, 3)
@@ -46,6 +56,10 @@ material = ExtResource("14_7ycw3")
 size = Vector3(13, 1, 7)
 
 [node name="building_factory" type="Node3D"]
+
+[node name="FrogWorkerNPC" parent="." instance=ExtResource("1_8tq2e")]
+transform = Transform3D(-0.176447, 0, -0.0941624, 0, 0.2, 0, 0.0941624, 0, -0.176447, -5.44546, 2.5, 0.887666)
+DialogueNodes = Array[String](["##WORKER_WINDOW_001##"])
 
 [node name="SecurityDoor" parent="." instance=ExtResource("13_hm4y8")]
 transform = Transform3D(0.63, 0, 0, 0, 0.63, 0, 0, 0, 0.63, 8.01752, 0, -0.571192)
@@ -209,6 +223,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="factory_wall_window_open_out" parent="Middle" instance=ExtResource("6_2ql6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Middle/factory_wall_window_open_out"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
+mesh = SubResource("QuadMesh_8tq2e")
 
 [node name="factory_wall_window_left" parent="Middle" instance=ExtResource("5_7fnxh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4, 0)
@@ -558,6 +576,24 @@ transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 
 [node name="scaffolding_bars_4m14" parent="Scaffolding" instance=ExtResource("17_u0nhs")]
 transform = Transform3D(9.73536e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 9.73536e-08, -13, -1, 1.5)
 
+[node name="scaffolding_bars_4m22" parent="Scaffolding" instance=ExtResource("17_u0nhs")]
+transform = Transform3D(9.73536e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 9.73536e-08, -19, -1, 1.5)
+
+[node name="scaffolding_bars_4m23" parent="Scaffolding" instance=ExtResource("17_u0nhs")]
+transform = Transform3D(9.73536e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 9.73536e-08, -21, -1, 1.5)
+
+[node name="scaffolding_bars_4m24" parent="Scaffolding" instance=ExtResource("17_u0nhs")]
+transform = Transform3D(9.73536e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 9.73536e-08, -19, 1, 1.5)
+
+[node name="scaffolding_bars_4m25" parent="Scaffolding" instance=ExtResource("17_u0nhs")]
+transform = Transform3D(9.73536e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 9.73536e-08, -21, 1, 1.5)
+
+[node name="scaffolding_bars_4m26" parent="Scaffolding" instance=ExtResource("17_u0nhs")]
+transform = Transform3D(9.73536e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 9.73536e-08, -19, 3, 1.5)
+
+[node name="scaffolding_bars_4m27" parent="Scaffolding" instance=ExtResource("17_u0nhs")]
+transform = Transform3D(9.73536e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 9.73536e-08, -21, 3, 1.5)
+
 [node name="scaffolding_bars_4m15" parent="Scaffolding" instance=ExtResource("17_u0nhs")]
 transform = Transform3D(9.73536e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 9.73536e-08, -11, 1, 1.5)
 
@@ -626,6 +662,12 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 
 [node name="scaffolding_platform_4x11" parent="Scaffolding" instance=ExtResource("19_thv0k")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -11, 2.5, 1.5)
+
+[node name="scaffolding_platform_4x15" parent="Scaffolding" instance=ExtResource("19_thv0k")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -19, 1.5, 1.5)
+
+[node name="scaffolding_platform_4x16" parent="Scaffolding" instance=ExtResource("19_thv0k")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -21, 0.5, 1.5)
 
 [node name="scaffolding_platform_4x13" parent="Scaffolding" instance=ExtResource("19_thv0k")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -13, 3.5, 1.5)

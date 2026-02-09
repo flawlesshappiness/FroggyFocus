@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cviyy8u2qw4yw"]
+[gd_scene load_steps=30 format=3 uid="uid://cviyy8u2qw4yw"]
 
 [ext_resource type="Script" uid="uid://cku2ayw82wpw0" path="res://Scenes/ForemanOfficeScene.cs" id="1_sff8w"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_hs2kd"]
@@ -13,6 +13,15 @@
 [ext_resource type="Material" uid="uid://dh1ks5j63h53" path="res://Materials/Whiteness.tres" id="9_pt7n0"]
 [ext_resource type="Script" uid="uid://7pw7mx1sasbl" path="res://GameScene/ChangeSceneArea.cs" id="10_r33ll"]
 [ext_resource type="PackedScene" uid="uid://cdhrwkpsysclu" path="res://Prefabs/Interior/file_cabinet.tscn" id="13_tc7g8"]
+[ext_resource type="PackedScene" uid="uid://c5p2d2kfqxf2p" path="res://Prefabs/Interior/closet.tscn" id="14_pbsbv"]
+[ext_resource type="PackedScene" uid="uid://ff70npsac6ah" path="res://Prefabs/Interior/desk.tscn" id="15_a3jo0"]
+[ext_resource type="PackedScene" uid="uid://b6aiwwjxac8" path="res://Prefabs/Interior/chair_desk.tscn" id="16_w2hbt"]
+[ext_resource type="PackedScene" uid="uid://tv4gbhgj63hb" path="res://Prefabs/Interior/computer_monitor.tscn" id="17_utafj"]
+[ext_resource type="PackedScene" uid="uid://c1dclo8rkjhfp" path="res://Assets/KenneyNL/Furniture/computerMouse.fbx" id="18_sx6hs"]
+[ext_resource type="PackedScene" uid="uid://ch3a7arxk8twh" path="res://Assets/KenneyNL/Furniture/computerKeyboard.fbx" id="19_ujuxy"]
+[ext_resource type="PackedScene" uid="uid://qu03tkykhn46" path="res://Assets/FlawLizArt/Interior/paper.fbx" id="20_ujuxy"]
+[ext_resource type="PackedScene" uid="uid://o27vfqewrf4x" path="res://Assets/FlawLizArt/Interior/paper_stack.fbx" id="21_xyfqv"]
+[ext_resource type="Script" uid="uid://cv8x4flgypj4e" path="res://GameScene/ForemanPaper.cs" id="22_xyfqv"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_pt7n0"]
 vertices = PackedVector3Array(-5.25, 0.5, -4.25, -5.25, 0.5, 4.5, 5.5, 0.5, 4.5, 5.5, 0.5, -4.25)
@@ -36,6 +45,8 @@ size = Vector3(8, 4, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfyto"]
 size = Vector3(2, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dfe0u"]
 
 [node name="ForemanOfficeScene" type="Node3D" node_paths=PackedStringArray("Camera", "DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_sff8w")
@@ -246,3 +257,177 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 
 
 [node name="file_cabinet5" parent="World/Interior" instance=ExtResource("13_tc7g8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 0, -1.5)
+
+[node name="Closet" parent="World/Interior" instance=ExtResource("14_pbsbv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.42729, 0, -3.38684)
+
+[node name="desk" parent="World/Interior" instance=ExtResource("15_a3jo0")]
+transform = Transform3D(1.25, 0, -2.98023e-07, 0, 1.25, 0, 2.98023e-07, 0, 1.25, 4.57611, 0, 0)
+
+[node name="chair_desk" parent="World/Interior" instance=ExtResource("16_w2hbt")]
+transform = Transform3D(-0.613569, 0, -0.789641, 0, 1, 0, 0.789641, 0, -0.613569, 3.32069, -4.76837e-07, -1.37892)
+
+[node name="computer_monitor" parent="World/Interior" instance=ExtResource("17_utafj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38273, 1.20196, 0.309756)
+
+[node name="computerMouse" parent="World/Interior" instance=ExtResource("18_sx6hs")]
+transform = Transform3D(0.233937, 0, 0.0536045, 0, 0.24, 0, -0.0536045, 0, 0.233937, 3.73843, 1.19779, -0.33015)
+
+[node name="computerKeyboard" parent="World/Interior" instance=ExtResource("19_ujuxy")]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 4.71349, 1.19757, -0.379401)
+
+[node name="paper" type="Node3D" parent="World/Interior"]
+
+[node name="paper" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.463189, 0, -0.188298, 0, 0.5, 0, 0.188298, 0, 0.463189, 5.36584, 1.20311, -0.233894)
+
+[node name="paper3" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.463189, 0, -0.188298, 0, 0.5, 0, 0.188298, 0, 0.463189, -0.894462, 0, -3.10628)
+
+[node name="paper4" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.499991, 0, -0.00301066, 0, 0.5, 0, 0.00301066, 0, 0.499991, -1.95651, 0, -3.80277)
+
+[node name="paper5" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.392637, 0, -0.309574, 0, 0.5, 0, 0.309574, 0, 0.392637, -1.19126, 0, -4.03028)
+
+[node name="paper6" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.450637, 0, 0.216625, 0, 0.5, 0, -0.216625, 0, 0.450637, -2.5046, 0, -3.18229)
+
+[node name="paper7" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.120969, 0, -0.485146, 0, 0.5, 0, 0.485146, 0, 0.120969, -4.44696, 0, -0.659449)
+
+[node name="paper8" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.15717, 0, -0.474655, 0, 0.5, 0, 0.474655, 0, -0.15717, -3.06275, 0, 0.546157)
+
+[node name="paper9" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.0718154, 0, -0.494816, 0, 0.5, 0, 0.494816, 0, 0.0718154, -3.33066, 0, -0.547819)
+
+[node name="paper10" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.491407, 0, -0.0923016, 0, 0.5, 0, 0.0923016, 0, -0.491407, -3.95579, 0, 0.63546)
+
+[node name="paper11" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.0913751, 0, -0.49158, 0, 0.5, 0, 0.49158, 0, -0.0913751, -4.45579, 0, 2.13546)
+
+[node name="paper12" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.0460289, 0, -0.497877, 0, 0.5, 0, 0.497877, 0, 0.0460289, -3.40647, 0, 1.64429)
+
+[node name="paper13" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.110238, 0, -0.487696, 0, 0.5, 0, 0.487696, 0, -0.110238, -1.39712, 0, 0.639616)
+
+[node name="paper14" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.110238, 0, -0.487696, 0, 0.5, 0, 0.487696, 0, -0.110238, -2.20086, 0, 1.35405)
+
+[node name="paper15" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.110238, 0, -0.487696, 0, 0.5, 0, 0.487696, 0, -0.110238, -4.85766, 0, 4.50202)
+
+[node name="paper16" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.499591, 0, -0.0202229, 0, 0.5, 0, 0.0202229, 0, -0.499591, -4.7372, 0, 3.83691)
+
+[node name="paper17" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.354496, 0, -0.352608, 0, 0.5, 0, 0.352608, 0, -0.354496, -4.20137, 0, 4.32808)
+
+[node name="paper18" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.462027, 0, 0.191132, 0, 0.5, 0, -0.191132, 0, -0.462027, -3.75485, 0, 4.06017)
+
+[node name="paper19" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.462027, 0, 0.191132, 0, 0.5, 0, -0.191132, 0, -0.462027, -4.15672, 0, 3.47969)
+
+[node name="paper20" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.462027, 0, 0.191132, 0, 0.5, 0, -0.191132, 0, -0.462027, 5.08626, 0, 3.34574)
+
+[node name="paper21" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.0088833, 0, 0.499921, 0, 0.5, 0, -0.499921, 0, 0.0088833, 4.3495, 0, 3.569)
+
+[node name="paper22" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(-0.142359, 0, 0.479306, 0, 0.5, 0, -0.479306, 0, -0.142359, 5.15323, 0, 4.01552)
+
+[node name="paper23" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.453647, 0, 0.210249, 0, 0.5, 0, -0.210249, 0, 0.453647, 4.72904, 0, 4.37273)
+
+[node name="paper24" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.453647, 0, 0.210249, 0, 0.5, 0, -0.210249, 0, 0.453647, 3.38948, 0, 2.98852)
+
+[node name="paper25" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.395313, 0, 0.30615, 0, 0.5, 0, -0.30615, 0, 0.395313, 3.72437, 0, 3.99319)
+
+[node name="paper26" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.315791, 0, 0.387654, 0, 0.5, 0, -0.387654, 0, 0.315791, 3.99228, 0, 1.98385)
+
+[node name="paper27" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.315791, 0, 0.387654, 0, 0.5, 0, -0.387654, 0, 0.315791, 4.7462, 0, -0.974923)
+
+[node name="paper28" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.475808, 0, 0.153645, 0, 0.5, 0, -0.153645, 0, 0.475808, 5.18717, 0, -1.92799)
+
+[node name="paper29" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.499556, 0, -0.0210687, 0, 0.5, 0, 0.0210687, 0, 0.499556, 5.47166, 0, -1.0745)
+
+[node name="paper2" parent="World/Interior/paper" instance=ExtResource("20_ujuxy")]
+transform = Transform3D(0.474167, 0, 0.158636, 0, 0.5, 0, -0.158636, 0, 0.474167, 4.95739, 1.20311, -0.233894)
+
+[node name="paper_stack" parent="World/Interior/paper" instance=ExtResource("21_xyfqv")]
+transform = Transform3D(0.496382, 0, 0.0600424, 0, 0.5, 0, -0.0600424, 0, 0.496382, 5.18471, 1.19875, 0.0750225)
+
+[node name="paper_stack2" parent="World/Interior/paper" instance=ExtResource("21_xyfqv")]
+transform = Transform3D(0.467056, 0, 0.178491, 0, 0.5, 0, -0.178491, 0, 0.467056, 5.34483, 0, 4.31724)
+
+[node name="paper_stack3" parent="World/Interior/paper" instance=ExtResource("21_xyfqv")]
+transform = Transform3D(0.251163, 0, 0.432339, 0, 0.5, 0, -0.432339, 0, 0.251163, 5.41497, 0, 3.62698)
+
+[node name="paper_stack4" parent="World/Interior/paper" instance=ExtResource("21_xyfqv")]
+transform = Transform3D(0.229542, 0, -0.444196, 0, 0.5, 0, 0.444196, 0, 0.229542, -5.40038, 0, 4.54123)
+
+[node name="paper_stack5" parent="World/Interior/paper" instance=ExtResource("21_xyfqv")]
+transform = Transform3D(-0.0138474, 0, -0.499808, 0, 0.5, 0, 0.499808, 0, -0.0138474, -5.42911, 0, 3.89411)
+
+[node name="paper_stack6" parent="World/Interior/paper" instance=ExtResource("21_xyfqv")]
+transform = Transform3D(0.492152, 0, 0.0882418, 0, 0.5, 0, -0.0882418, 0, 0.492152, -3.79727, 0, 4.54895)
+
+[node name="paper_stack7" parent="World/Interior/paper" instance=ExtResource("21_xyfqv")]
+transform = Transform3D(0.420227, 0, -0.270942, 0, 0.5, 0, 0.270942, 0, 0.420227, -2.14367, 0, -3.1544)
+
+[node name="paper_stack8" parent="World/Interior/paper" instance=ExtResource("21_xyfqv")]
+transform = Transform3D(0.499394, 0, -0.0246166, 0, 0.5, 0, 0.0246166, 0, 0.499394, -1.67138, 0, -2.79738)
+
+[node name="Papers" type="Node3D" parent="World"]
+
+[node name="Paper_Code" type="Area3D" parent="World/Papers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97199, 0.394329, -0.627241)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("22_xyfqv")
+DialogueNode = "##FOREMAN_PAPER_CODE_001##"
+IsForemanCode = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Papers/Paper_Code"]
+shape = SubResource("BoxShape3D_dfe0u")
+
+[node name="Paper_Chair" type="Area3D" parent="World/Papers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27962, 0.394329, -1.38712)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("22_xyfqv")
+DialogueNode = "##FOREMAN_CHAIR_001##"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Papers/Paper_Chair"]
+shape = SubResource("BoxShape3D_dfe0u")
+
+[node name="Paper_Horse" type="Area3D" parent="World/Papers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8472, 0.394329, 3.79943)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("22_xyfqv")
+DialogueNode = "##FOREMAN_PAPER_COPIES_001##"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Papers/Paper_Horse"]
+shape = SubResource("BoxShape3D_dfe0u")
+
+[node name="Paper_Review" type="Area3D" parent="World/Papers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.22041, 0.394329, 4.18317)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("22_xyfqv")
+DialogueNode = "##FOREMAN_PAPER_CODE_REVIEW_001##"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Papers/Paper_Review"]
+shape = SubResource("BoxShape3D_dfe0u")

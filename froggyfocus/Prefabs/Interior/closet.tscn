@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5p2d2kfqxf2p"]
+
+[ext_resource type="PackedScene" uid="uid://dwk77uxev06ej" path="res://Assets/KenneyNL/Furniture/bookcaseClosedDoors.fbx" id="1_mfudl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3cvfy"]
+size = Vector3(1.69727, 3.39844, 1.02393)
+
+[node name="Closet" type="Node3D"]
+
+[node name="Scale" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="bookcaseClosedDoors" parent="Scale" instance=ExtResource("1_mfudl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.24387)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69922, 0.000732422)
+shape = SubResource("BoxShape3D_3cvfy")
