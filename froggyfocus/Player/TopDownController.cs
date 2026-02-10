@@ -50,14 +50,14 @@ public partial class TopDownController : CharacterBody3D
                 velocity.Z = Mathf.MoveToward(Velocity.Z, 0, decel);
             }
 
-            if (DesiredJumpVelocity.Length() >= 0.01f)
+            if (!IsJumping && DesiredJumpVelocity.Length() >= 0.01f)
             {
                 velocity = DesiredJumpVelocity;
             }
         }
         else
         {
-            if (IsJumping) // Reapply horizontal jump velocity
+            if (IsJumping) // Keep applying horizontal jump velocity
             {
                 velocity = DesiredJumpVelocity.Set(y: velocity.Y);
             }

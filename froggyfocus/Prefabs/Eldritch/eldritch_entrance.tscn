@@ -108,7 +108,7 @@ _data = {
 &"show": SubResource("Animation_5plrw")
 }
 
-[node name="EldritchEntrance" type="Area3D" node_paths=PackedStringArray("MeshEntrance", "MeshExit", "Collider", "AnimationPlayer", "SfxWakeUp", "Flowers")]
+[node name="EldritchEntrance" type="Area3D" node_paths=PackedStringArray("MeshEntrance", "MeshExit", "Collider", "AnimationPlayer", "SfxWakeUp")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_5dlgc")
@@ -117,7 +117,6 @@ MeshExit = NodePath("Shadow/MeshExit")
 Collider = NodePath("CollisionShape3D")
 AnimationPlayer = NodePath("AnimationPlayer")
 SfxWakeUp = NodePath("SfxWakeUp")
-Flowers = []
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

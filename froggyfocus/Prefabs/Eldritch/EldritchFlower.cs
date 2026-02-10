@@ -1,123 +1,106 @@
-using FlawLizArt.Animation.StateMachine;
 using Godot;
-using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public partial class EldritchFlower : Area3D, IInteractable
 {
     [Export]
-    public HandInInfo HandInInfo;
-
-    [Export]
-    public AnimationStateMachine Animation;
-
-    [Export]
     public CollisionShape3D Collider;
 
     [Export]
-    public AnimationPlayer Animation_Breathing;
+    public AnimationPlayer Animation;
 
-    public bool IsCompleted => HandIn.GetOrCreateData(HandInInfo.Id).ClaimedCount > 0;
+    public bool IsAwake => GameFlags.IsFlag(IsAwakeFlag, 1);
 
-    private bool active_dialogue;
-    private BoolParameter param_open = new BoolParameter("open", false);
-
-    public event Action OnCompleted;
+    public const string IsAwakeFlag = "ELDRITCH_FLOWER_AWAKE";
+    public const string HasSaltsFlag = "ELDRITCH_FLOWER_HAS_SALTS";
 
     public override void _Ready()
     {
         base._Ready();
-        InitializeHandIn();
-        InitializeAnimations();
-
-        HandInController.Instance.OnHandInClaimed += HandInClaimed;
+        Initialize();
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        HandInController.Instance.OnHandInClaimed -= HandInClaimed;
         DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
     }
 
-    private void InitializeHandIn()
+    private void Initialize()
     {
-        HandIn.InitializeData(HandInInfo);
-
-        if (IsCompleted)
+        if (IsAwake)
         {
             DisableInteractive();
+            Animation.Play("inactive");
         }
         else
         {
-            Animation_Breathing.Play("breathe");
+            Animation.Play("breathe");
         }
-    }
-
-    private void InitializeAnimations()
-    {
-        var idle_open = Animation.CreateAnimation("Armature|idle_open", true);
-        var idle_closed = Animation.CreateAnimation("Armature|idle_closed", true);
-        var open_to_closed = Animation.CreateAnimation("Armature|open_to_closed", false);
-        var closed_to_open = Animation.CreateAnimation("Armature|closed_to_open", false);
-
-        Animation.Connect(idle_open, open_to_closed, param_open.WhenFalse());
-        Animation.Connect(idle_closed, closed_to_open, param_open.WhenTrue());
-        Animation.Connect(open_to_closed, idle_closed);
-        Animation.Connect(closed_to_open, idle_open);
-
-        param_open.Set(!IsCompleted);
-        var start = IsCompleted ? idle_closed : idle_open;
-        Animation.Start(start.Node);
     }
 
     public void Interact()
     {
-        if (IsCompleted)
+        if (IsAwake)
         {
 
         }
         else
         {
-            active_dialogue = true;
-            DialogueController.Instance.StartDialogue("##ELDRITCH_FLOWER_HUNGRY##");
+            DialogueController.Instance.StartDialogue("##ELDRITCH_FLOWER_SNORING##");
         }
-    }
-
-    private void HandInClaimed(string id)
-    {
-        if (id != HandInInfo.Id) return;
-
-        Animation_Breathing.Stop();
-        DisableInteractive();
-        OnCompleted?.Invoke();
     }
 
     private void DisableInteractive()
     {
         Collider.Disabled = true;
-        param_open.Set(false);
     }
 
     private void DialogueNodeEnded(string id)
     {
-        if (!active_dialogue) return;
-
-        if (id == "##ELDRITCH_FLOWER_HUNGRY##")
+        if (id == "##ELDRITCH_FLOWER_SNORING##")
         {
-            var data = HandIn.GetOrCreateData(HandInInfo.Id);
-            HandInView.Instance.ShowPopup(data);
+            ShowOptions();
         }
-
-        active_dialogue = false;
     }
 
-    public void DebugSetCompleted(bool completed)
+    private void ShowOptions()
     {
-        var count = completed ? 1 : 0;
-        var data = HandIn.GetOrCreateData(HandInInfo.Id);
-        data.ClaimedCount = count;
+        var options = new List<DialogueOptionsView.Option>();
 
-        param_open.Set(!completed);
+        if (GameFlags.IsFlag(HasSaltsFlag, 1))
+        {
+            options.Add(new()
+            {
+                Text = "##ELDRITCH_FLOWER_USE_SALTS##",
+                Action = UseSalts
+            });
+        }
+
+        options.Add(new()
+        {
+            Text = "##DO_NOTHING##",
+        });
+
+        DialogueOptionsView.Instance.ShowDialogueOptions(new()
+        {
+            Options = options
+        });
+    }
+
+    private void UseSalts()
+    {
+        DisableInteractive();
+
+        this.StartCoroutine(Cr, "awaken");
+        IEnumerator Cr()
+        {
+            yield return Animation.PlayAndWaitForAnimation("coughing");
+            Animation.Play("hide");
+            GameFlags.SetFlag(IsAwakeFlag, 1);
+            DialogueController.Instance.StartDialogue("##ELDRITCH_FLOWER_RUMBLE##");
+        }
     }
 }
