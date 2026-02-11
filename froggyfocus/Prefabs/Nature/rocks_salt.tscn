@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://mptfyyirpkg4"]
+
+[ext_resource type="PackedScene" uid="uid://bbct2gyjk8v8j" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_001.fbx" id="1_rn74i"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="2_q5xmk"]
+[ext_resource type="PackedScene" uid="uid://cprcurqn1yqys" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_002.fbx" id="3_en66e"]
+
+[node name="rocks_salt" type="Node3D"]
+
+[node name="rock_decorative_001" parent="." instance=ExtResource("1_rn74i")]
+transform = Transform3D(0.0759226, 0, -0.0650827, 0, 0.1, 0, 0.0650827, 0, 0.0759226, -0.498254, 0, -0.495198)
+
+[node name="rock_decorative_001" parent="rock_decorative_001" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_003" parent="." instance=ExtResource("1_rn74i")]
+transform = Transform3D(0.0811238, 0, 0.0742894, 0, 0.11, 0, -0.0742894, 0, 0.0811238, 0.406551, 0, -0.449346)
+
+[node name="rock_decorative_001" parent="rock_decorative_003" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_005" parent="." instance=ExtResource("1_rn74i")]
+transform = Transform3D(0.0969893, 0, 0.024353, 0, 0.1, 0, -0.024353, 0, 0.0969893, -0.313665, 0, 0.39566)
+
+[node name="rock_decorative_001" parent="rock_decorative_005" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_006" parent="." instance=ExtResource("1_rn74i")]
+transform = Transform3D(0.0947277, 0, -0.0320415, 0, 0.1, 0, 0.0320415, 0, 0.0947277, 0.27463, 0, 0.253043)
+
+[node name="rock_decorative_001" parent="rock_decorative_006" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_007" parent="." instance=ExtResource("1_rn74i")]
+transform = Transform3D(0.099819, 0, 0.00601427, 0, 0.1, 0, -0.00601427, 0, 0.099819, -0.0177343, 0, -0.673968)
+
+[node name="rock_decorative_001" parent="rock_decorative_007" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_008" parent="." instance=ExtResource("1_rn74i")]
+transform = Transform3D(0.0880701, 0, -0.0473673, 0, 0.1, 0, 0.0473673, 0, 0.0880701, -0.638118, 0, 0.0355518)
+
+[node name="rock_decorative_001" parent="rock_decorative_008" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_004" parent="." instance=ExtResource("1_rn74i")]
+transform = Transform3D(0.121686, 0, 0.111434, 0, 0.165, 0, -0.111434, 0, 0.121686, -0.18035, 0, -0.0917033)
+
+[node name="rock_decorative_001" parent="rock_decorative_004" index="0"]
+transform = Transform3D(0.244986, 0, -0.969527, 0, 1, 0, 0.969527, 0, 0.244986, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_002" parent="." instance=ExtResource("3_en66e")]
+transform = Transform3D(0.0989116, 0, 0.0147136, 0, 0.1, 0, -0.0147136, 0, 0.0989116, 0.242449, 0, -0.12479)
+
+[node name="rock_decorative_002" parent="rock_decorative_002" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_009" parent="." instance=ExtResource("3_en66e")]
+transform = Transform3D(0.0791202, 0, -0.0611555, 0, 0.1, 0, 0.0611555, 0, 0.0791202, -0.274538, 0, -0.413589)
+
+[node name="rock_decorative_002" parent="rock_decorative_009" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_010" parent="." instance=ExtResource("3_en66e")]
+transform = Transform3D(0.0302662, 0, -0.157111, 0, 0.16, 0, 0.157111, 0, 0.0302662, -0.631081, 0, -0.24958)
+
+[node name="rock_decorative_002" parent="rock_decorative_010" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_011" parent="." instance=ExtResource("3_en66e")]
+transform = Transform3D(0.13198, 0, -0.0467053, 0, 0.14, 0, 0.0467053, 0, 0.13198, 0.0106956, 0, 0.156879)
+
+[node name="rock_decorative_002" parent="rock_decorative_011" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_012" parent="." instance=ExtResource("3_en66e")]
+transform = Transform3D(0.0739549, 0, -0.0673103, 0, 0.1, 0, 0.0673103, 0, 0.0739549, 0.274537, 0, -0.495594)
+
+[node name="rock_decorative_002" parent="rock_decorative_012" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[node name="rock_decorative_013" parent="." instance=ExtResource("3_en66e")]
+transform = Transform3D(0.00857126, 0, -0.099632, 0, 0.1, 0, 0.099632, 0, 0.00857126, 0.0606117, 0, 0.591861)
+
+[node name="rock_decorative_002" parent="rock_decorative_013" index="0"]
+surface_material_override/0 = ExtResource("2_q5xmk")
+
+[editable path="rock_decorative_001"]
+[editable path="rock_decorative_003"]
+[editable path="rock_decorative_005"]
+[editable path="rock_decorative_006"]
+[editable path="rock_decorative_007"]
+[editable path="rock_decorative_008"]
+[editable path="rock_decorative_004"]
+[editable path="rock_decorative_002"]
+[editable path="rock_decorative_009"]
+[editable path="rock_decorative_010"]
+[editable path="rock_decorative_011"]
+[editable path="rock_decorative_012"]
+[editable path="rock_decorative_013"]

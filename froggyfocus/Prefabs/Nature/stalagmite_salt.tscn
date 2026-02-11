@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfhrxa5ifrfj7"]
+
+[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="1_0bsym"]
+[ext_resource type="PackedScene" uid="uid://cyoi4u7vbb4jc" path="res://Assets/FlawLizArt/Nature/Toon/stalagtite.fbx" id="1_toek5"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="2_0bsym"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nr1mm"]
+height = 4.0
+
+[node name="stalagmite_salt" type="Node3D"]
+
+[node name="crystal_short" parent="." instance=ExtResource("1_0bsym")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 3.16812, 0.1083)
+
+[node name="crystal_short" parent="crystal_short" index="0"]
+surface_material_override/0 = ExtResource("2_0bsym")
+
+[node name="crystal_short2" parent="." instance=ExtResource("1_0bsym")]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 2.70699, -0.133714)
+
+[node name="crystal_short" parent="crystal_short2" index="0"]
+surface_material_override/0 = ExtResource("2_0bsym")
+
+[node name="crystal_short3" parent="." instance=ExtResource("1_0bsym")]
+transform = Transform3D(0.164425, 0.472191, 0, 2.06401e-08, -7.18725e-09, -0.5, -0.472191, 0.164425, -2.18557e-08, -0.20358, 2.24325, -0.0855662)
+
+[node name="crystal_short" parent="crystal_short3" index="0"]
+surface_material_override/0 = ExtResource("2_0bsym")
+
+[node name="crystal_short4" parent="." instance=ExtResource("1_0bsym")]
+transform = Transform3D(0.164425, 0.472191, 0, 2.06401e-08, -7.18725e-09, -0.5, -0.472191, 0.164425, -2.18557e-08, 0.241651, 1.81031, 0.0443394)
+
+[node name="crystal_short" parent="crystal_short4" index="0"]
+surface_material_override/0 = ExtResource("2_0bsym")
+
+[node name="stalagtite" parent="." instance=ExtResource("1_toek5")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Stalagtite" parent="stalagtite" index="0"]
+surface_material_override/0 = ExtResource("2_0bsym")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_nr1mm")
+
+[editable path="crystal_short"]
+[editable path="crystal_short2"]
+[editable path="crystal_short3"]
+[editable path="crystal_short4"]
+[editable path="stalagtite"]

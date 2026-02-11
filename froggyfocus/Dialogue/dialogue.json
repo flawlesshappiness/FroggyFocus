@@ -55,6 +55,14 @@
 	},
 	
 	{
+		"id": "##SALT_ROCK_LICK_001##",
+		"next": "##SALT_ROCK_LICK_002##"
+	},
+	{
+		"id": "##SALT_ROCK_LICK_002##"
+	},
+	
+	{
 		"id": "##LEECH_UPGRADE_START_001##"
 	},
 	
@@ -592,6 +600,18 @@
 	},
 	{
 		"id": "##WORKER_WINDOW_003##"
+	},
+	
+	{
+		"id": "##WORKER_SALT_001##",
+		"next": "##WORKER_SALT_002##"
+	},
+	{
+		"id": "##WORKER_SALT_002##",
+		"next": "##WORKER_SALT_003##"
+	},
+	{
+		"id": "##WORKER_SALT_003##"
 	},
 	
 	{
