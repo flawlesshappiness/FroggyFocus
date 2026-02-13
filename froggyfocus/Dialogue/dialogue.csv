@@ -19,16 +19,21 @@ keys;en
 ##LOCATION_PICKUP_CAVE##;The document describes directions to a nearby island with a cave.
 ##LOCATION_PICKUP_FACTORY##;The document describes directions to a nearby factory.
 ##LOCATION_PICKUP_UNLOCKED##;You can now travel to a new location at the lilypad boat!
-##GLITCH_TV_REQUEST##;The flickering screen displays an image.
-##GLITCH_TV_MORE##;This screen is fixed, but nothing happened yet...
-##GLITCH_TV_COMPLETE##;Another screen turned on somewhere.
-##TV_TRAVEL_OFF##;The screen is off.
+##REMOTE_PICKUP##;You picked up a lonesome tv remove.
+##TV_OFF##;The screen is off.
+##TV_LICK_OPTION##;Lick screen
+##TV_REMOTE_OPTION##;Use tv remote
+##TV_ENTER_OPTION##;Enter
+##TV_LICK_001##;You lick the screen.
+##TV_LICK_002##;It crackles on your tongue. It must be powered somehow.
+##TV_REMOTE_001##;You press the power button on the remote.
+##TV_REMOTE_002##;The screen is flickering.
 ##ELDRITCH_RETURN_EYE##;The eye reflects where you started.
 ##ELDRITCH_RETURN_TEXT##;Return?
 ##ELDRITCH_EXIT_EYE##;The eye reflects an exit.
 ##ELDRITCH_EXIT_TEXT##;Exit?
 ##ELDRITCH_FLOWER_SNORING##;The flower is... snoring?
-##ELDRITCH_FLOWER_USE_SALTS##;Use putrid salts
+##ELDRITCH_FLOWER_USE_SALTS##;Use smelly rocks
 ##ELDRITCH_FLOWER_AWAKE##;It has awoken.
 ##CRYSTAL_POWER_SOURCE##;It's missing a power source.
 ##CRYSTAL_CONTAINER_REQUEST##;The crystal has an indent of a certain bug.
@@ -98,14 +103,14 @@ keys;en
 ##MUSHROOM_FLOWER_003##;Does it disturb or disrupt? Are we threatened?
 ##MUSHROOM_FLOWER_004##;If this is the end, we welcome it all the same.
 ##MAGPIE_REQUEST##;Need worm. I give pay.
-##MAGPIE_BACKGROUND_001##;Rich home not here. Rich home far away.
+##MAGPIE_BACKGROUND_001##;Bird home not here. Bird home far away.
 ##MAGPIE_BACKGROUND_002##;Here many bug, so staying for a bit.
 ##MAGPIE_BACKGROUND_003##;After all, why leave good place?
-##MAGPIE_STEALING_001##;Find many things when travel. Take many things rich home.
-##MAGPIE_STEALING_002##;Home not born rich. Home rich from effort.
-##MAGPIE_STEALING_003##;Effort of taking rich.
+##MAGPIE_STEALING_001##;Find many things when travel. Take many things bird home.
+##MAGPIE_STEALING_002##;Bird home born empty. Now bird home rich from effort.
+##MAGPIE_STEALING_003##;Effort of stealing rich.
 ##MAGPIE_FLOWER_001##;Never seen weird flower before. Have you seen?
-##MAGPIE_FLOWER_002##;Rich home have shiny flower. Pretty flower.
+##MAGPIE_FLOWER_002##;Bird home have shiny flower. Pretty flower.
 ##MAGPIE_FLOWER_003##;Not weird flower. Hungry flower. Better not touch.
 ##OTTER_REQUEST##;Help me catch the winged ones.
 ##OTTER_SPIRITS_001##;I spend most days looking at those with wings.
@@ -114,9 +119,9 @@ keys;en
 ##OTTER_WINGS_001##;Sometimes I wonder what it would be like to have wings.
 ##OTTER_WINGS_002##;To glide across the sky and run my paws through the clouds.
 ##OTTER_WINGS_003##;My parents said I would look silly with wings, and I will never have them so I should stop dreaming.
-##OTTER_FLOWER_001##;The new flowers sticking out of the water, they're not really flowers are they?
-##OTTER_FLOWER_002##;I've seen them nip after anything that gets too close. Especially the flying ones.
-##OTTER_FLOWER_003##;They never get them, of course. Having wings is just better.
+##OTTER_FLOWER_001##;The new flower sticking out of the water, it is not really flowers is it?
+##OTTER_FLOWER_002##;It sleeps and snores, and yet the winged ones fly around it fearlessly.
+##OTTER_FLOWER_003##;Perhaps it isn't dangerous? Perhaps the spirits know something we don't.
 ##LEECH_UPGRADE_START_001##;Looking to become stronger?
 ##LEECH_UPGRADE_START_002##;Let's unlock your potential.
 ##LEECH_UPGRADE_START_003##;There is true focus hidden inside you.
@@ -137,9 +142,9 @@ keys;en
 ##CRAB_MANAGER_001##;Click-clack, I've been looking at that guy in the sand, over there.
 ##CRAB_MANAGER_002##;He is here pretty often. It looks like he is just relaxing, but he said something about "overseeing the project".
 ##CRAB_MANAGER_003##;Must be a tough job, if it requires so much relaxing. Some day I'll get a tough job too. Click-clack.
-##CRAB_CRYSTAL_001##;Click-clack, have you seen those crystal pillars?
-##CRAB_CRYSTAL_002##;They've opened up, it looks like they're expecting something.
-##CRAB_CRYSTAL_003##;Those crystals, they're real tough. I'd get a crystal shell if I could.
+##CRAB_CRYSTAL_001##;Click-clack, used to come a lot of soft guys around here.
+##CRAB_CRYSTAL_002##;I know they're soft cause they were wearing pretend shells on their heads.
+##CRAB_CRYSTAL_003##;A real tough guy would grow the shell themselves. Like me.
 ##SALAMANDER_REQUEST##;Guess who's still stuck in a crystal. It's me! And I'm hungryyyyy...
 ##SALAMANDER_SINGING_001##;Ooooh, do you hear them singing?
 ##SALAMANDER_SINGING_002##;The crystals, all around us! They sing for us both!
@@ -150,8 +155,8 @@ keys;en
 ##SALAMANDER_BACKGROUND_004##;Now I don't sleep anymore. I almost miss it.
 ##SALAMANDER_ENTRANCE_001##;Ooooh, once the crystals were not happy. They sang a song of anger!
 ##SALAMANDER_ENTRANCE_002##;There was machines and construction, a noise to no end.
-##SALAMANDER_ENTRANCE_003##;But ooooh, the crystals closed the hole, the door, the entrance.
-##SALAMANDER_ENTRANCE_004##;Now only the song of my sweet crystals echo the cavern walls again.
+##SALAMANDER_ENTRANCE_003##;But ooooh, now there is sweet silence.
+##SALAMANDER_ENTRANCE_004##;Only the song of my sweet crystals echo the cavern walls again.
 ##RACCOON_REQUEST##;There is so much to dig through! Found any clues?
 ##RACCOON_BACKGROUND_001##;Smell that? Something fishy is going on.
 ##RACCOON_BACKGROUND_002##;I snuck onto one of those big cargo ships, and I jumped off here while they off-loaded some machinery.
@@ -160,8 +165,8 @@ keys;en
 ##RACCOON_POLLUTION_002##;The factory churns unending so it must be something huge.
 ##RACCOON_POLLUTION_003##;However, this trash pile has got me no clues as of yet. Perhaps I should expand my search.
 ##RACCOON_TV_001##;I took a look around the perimeter. Some nasty work, I must say. Did you see the oil spill?
-##RACCOON_TV_002##;And those flickering TVs, what is up with those?
-##RACCOON_TV_003##;All this faulty electricity can't be good for the wildlife here. When I return I will put in my vote for more regulations.
+##RACCOON_TV_002##;And all this scaffolding. There's a TV up there, did you see?
+##RACCOON_TV_003##;Everything about this building can't be good for the wildlife. When I return I will put in my vote for more regulations.
 ##EEL_REQUEST##;Ugh! If only I could sink my teeth in a fish.
 ##EEL_FISH_001##;Ugh! The fish! Where are the fish?
 ##EEL_FISH_002##;I've been hunting for so long, and no luck. It's just bugs on bugs on bugs.
@@ -180,7 +185,7 @@ keys;en
 ##TURTLE_THANKS_002##;While I've been lying here, I've been thinking that maybe being stuck is just a good reason to ask for help.
 ##TURTLE_THANKS_003##;And asking for help is nothing to feel ashamed of, right?
 ##TURTLE_FRIENDS_001##;The oil just keeps on coming, huh? No chance I'll be freed anytime soon I guess.
-##TURTLE_FRIENDS_002##;Well, you've been helping me, and I had a chat with that raccoon guy when they stopped by sniffing the flickering TVs.
+##TURTLE_FRIENDS_002##;Well, you've been helping me, and I had a chat with that raccoon guy when they stopped were climbing the scaffolding.
 ##TURTLE_FRIENDS_003##;It's nice to have someone stop by and check in, you know?
 ##MANAGER_INTRO_001##;Sigh... Yeah, I saw the message from HR.
 ##MANAGER_INTRO_002##;I'm not going to chew you out over it, since I'm really just here to relax.

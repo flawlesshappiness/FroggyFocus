@@ -531,9 +531,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 6, 
 
 [node name="tv_travel" parent="World/Stairway" instance=ExtResource("24_udo3y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
-TravelScene = "FactoryScene"
-StartNode = "StartTv"
-IsGoingUp = true
 
 [node name="Sounds" type="Node3D" parent="World"]
 

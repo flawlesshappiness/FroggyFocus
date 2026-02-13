@@ -16,24 +16,30 @@ size = Vector2(4, 10)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39074, 0)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_jkucb")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3.39074, 0)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_jkucb")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 3.39074, 0)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_jkucb")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 3.39074, 0)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_jkucb")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360416, 4.59291, 0.032932)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_wlyoy")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0794518, 4.59291, -0.296875)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_wlyoy")

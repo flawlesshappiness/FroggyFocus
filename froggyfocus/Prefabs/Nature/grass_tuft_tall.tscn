@@ -11,16 +11,20 @@ subdivide_depth = 25
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.95185, 0)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_dmrsx")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3.95185, 0)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_dmrsx")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 3.95185, 0)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_dmrsx")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 3.95185, 0)
+visibility_range_end = 150.0
 mesh = SubResource("QuadMesh_dmrsx")

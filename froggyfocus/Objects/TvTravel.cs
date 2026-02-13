@@ -1,178 +1,129 @@
 using Godot;
-using Godot.Collections;
-using System.Linq;
+using System.Collections.Generic;
 
 public partial class TvTravel : Area3D, IInteractable
 {
     [Export]
-    public string TravelScene;
-
-    [Export]
-    public string StartNode;
-
-    [Export]
-    public bool IsGoingUp;
+    public bool IsEntrance;
 
     [Export]
     public AnimationPlayer AnimationPlayer;
 
-    [Export]
-    public Node3D MatrixLabelParent;
+    public const string HasRemoteFlag = "HAS_TV_REMOTE";
+    public const string TvOnFlag = "IS_TV_ON";
 
-    [Export]
-    public PackedScene MatrixLabelPrefab;
-
-    [Export]
-    public AudioStreamPlayer SfxComplete;
-
-    [Export]
-    public Array<TvGlitchy> Tvs;
-
+    private bool HasRemote => GameFlags.IsFlag(HasRemoteFlag, 1);
+    private bool IsOn => GameFlags.IsFlag(TvOnFlag, 1);
     private string DebugId => nameof(TvTravel) + GetInstanceId();
 
-    private bool is_on;
     private bool initialized;
 
     public override void _Ready()
     {
         base._Ready();
+        SetOn(IsOn);
 
-        RegisterDebugActions();
-        InitializeMatrixLabels();
-
-        foreach (var tv in Tvs)
-        {
-            tv.OnCompleted += TvChanged;
-        }
-    }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-
-        if (!initialized)
-        {
-            initialized = true;
-            Initialize();
-        }
-    }
-
-    private void RegisterDebugActions()
-    {
-        var category = "GLITCH TVs";
-
-        if (!IsGoingUp)
-        {
-            Debug.RegisterAction(new DebugAction
-            {
-                Id = DebugId,
-                Category = category,
-                Text = "Open",
-                Action = v => SetOpen(v, true)
-            });
-
-            Debug.RegisterAction(new DebugAction
-            {
-                Id = DebugId,
-                Category = category,
-                Text = "Close",
-                Action = v => SetOpen(v, false)
-            });
-        }
-
-        void SetOpen(DebugView v, bool open)
-        {
-            Tvs.ForEach(x => x.DebugSetCompleted(open));
-            TvChanged();
-
-            Data.Game.Save();
-            v.Close();
-        }
+        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        GameFlagsController.Instance.OnFlagChanged += GameFlagChanged;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        Debug.RemoveActions(DebugId);
+        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+        GameFlagsController.Instance.OnFlagChanged -= GameFlagChanged;
     }
 
-    private void InitializeMatrixLabels()
+    private void GameFlagChanged(string id, int i)
     {
-        var rng = new RandomNumberGenerator();
-        var count = 20;
-        var extent = 2.5f;
-        var scale_range = new Vector2(0.005f, 0.02f);
-
-        for (int i = 0; i < count; i++)
+        if (id == TvOnFlag)
         {
-            var label = MatrixLabelPrefab.Instantiate<Node3D>();
-            label.SetParent(MatrixLabelParent);
-
-            var x = rng.RandfRange(-extent, extent);
-            var z = rng.RandfRange(-extent, extent);
-            label.Position = new Vector3(x, 0, z);
-
-            label.Scale = Vector3.One * scale_range.Range(rng.Randf());
+            SetOn(i == 1);
         }
     }
 
-    private void Initialize()
+    private void DialogueNodeEnded(string id)
     {
-        var all_on = IsAllTVsOn();
-        SetOn(all_on);
+        if (id == "##TV_OFF##")
+        {
+            ShowOptions();
+        }
     }
 
     public void Interact()
     {
-        if (is_on)
+        if (IsOn)
         {
-            Travel();
+            ShowOptions();
         }
         else
         {
-            DialogueController.Instance.StartDialogue("##TV_TRAVEL_OFF##");
+            DialogueController.Instance.StartDialogue("##TV_OFF##");
         }
     }
 
     private void SetOn(bool on)
     {
-        is_on = on;
-        MatrixLabelParent.Visible = on;
-
         var anim = on ? "on" : "off";
         AnimationPlayer.Play(anim);
-
-        MatrixLabelParent.Visible = on;
-    }
-
-    private bool IsAllTVsOn()
-    {
-        return Tvs.Count == 0 || Tvs.All(x => x.IsCompleted);
     }
 
     private void Travel()
     {
-        Data.Game.CurrentScene = TravelScene;
-        Data.Game.StartingNode = StartNode;
+        Data.Game.CurrentScene = IsEntrance ? nameof(GlitchScene) : nameof(FactoryScene);
+        Data.Game.StartingNode = IsEntrance ? string.Empty : "TvStart";
         Data.Game.Save();
 
-        GlitchTransitionView.Instance.IsGoingUp = IsGoingUp;
+        GlitchTransitionView.Instance.IsGoingUp = !IsEntrance;
         GlitchTransitionView.Instance.StartTransition();
     }
 
-    private void TvChanged()
+    private void ShowOptions()
     {
-        var all_on = IsAllTVsOn();
-        SetOn(all_on || IsGoingUp);
+        var options = new List<DialogueOptionsView.Option>();
 
-        if (all_on)
+        if (IsOn)
         {
-            SfxComplete.Play();
-            DialogueController.Instance.StartDialogue("##GLITCH_TV_COMPLETE##");
+            options.Add(new()
+            {
+                Text = "##TV_ENTER_OPTION##",
+                Action = Travel
+            });
         }
-        else
+        else if (HasRemote)
         {
-            DialogueController.Instance.StartDialogue("##GLITCH_TV_MORE##");
+            options.Add(new()
+            {
+                Text = "##TV_REMOTE_OPTION##",
+                Action = RemoteOption
+            });
         }
+
+        options.Add(new()
+        {
+            Text = "##DO_NOTHING##",
+        });
+
+        options.Add(new()
+        {
+            Text = "##TV_LICK_OPTION##",
+            Action = LickOption
+        });
+
+        DialogueOptionsView.Instance.ShowDialogueOptions(new()
+        {
+            Options = options
+        });
+    }
+
+    private void LickOption()
+    {
+        DialogueController.Instance.StartDialogue("##TV_LICK_001##");
+    }
+
+    private void RemoteOption()
+    {
+        DialogueController.Instance.StartDialogue("##TV_REMOTE_001##");
+        GameFlags.SetFlag(TvOnFlag, 1);
     }
 }

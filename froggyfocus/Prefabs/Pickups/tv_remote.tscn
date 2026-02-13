@@ -1,0 +1,166 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbjwqmb58icms"]
+
+[ext_resource type="Script" uid="uid://d00qp7uamu8jo" path="res://Pickup/TvRemotePickup.cs" id="1_tpsn8"]
+[ext_resource type="PackedScene" uid="uid://1n2ew4h58wg" path="res://Prefabs/Effects/pickup.tscn" id="2_yumtp"]
+[ext_resource type="PackedScene" uid="uid://bompr4qqk62wv" path="res://Assets/FlawLizArt/Interior/remote_tv.fbx" id="3_kp63q"]
+[ext_resource type="AudioStream" uid="uid://cu27gkeq1w46r" path="res://Sounds/Raw/sfx_paper_001.wav" id="6_c6tdk"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cgxra"]
+height = 1.54535
+
+[sub_resource type="Animation" id="Animation_8dhrt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Offset/Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPickup:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cgxra"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.25, 0), Vector3(0, 0, 0), Vector3(0, 0.25, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Offset/Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6pllg"]
+resource_name = "pickup"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Offset/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.233258, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Offset/Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 12.5664, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPickup:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pllg"]
+_data = {
+&"RESET": SubResource("Animation_8dhrt"),
+&"idle": SubResource("Animation_cgxra"),
+&"pickup": SubResource("Animation_6pllg")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ggwr6"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("6_c6tdk")
+
+[node name="tv_remote_pickup" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Area", "Target")]
+script = ExtResource("1_tpsn8")
+PickupDialogue = "##REMOTE_PICKUP##"
+AnimationPlayer = NodePath("AnimationPlayer")
+Area = NodePath("Area3D")
+Target = NodePath("Offset/Anim")
+PsPickup = ExtResource("2_yumtp")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772675, 0)
+shape = SubResource("CylinderShape3D_cgxra")
+
+[node name="Offset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Anim" type="Node3D" parent="Offset"]
+
+[node name="remote_tv" parent="Offset/Anim" instance=ExtResource("3_kp63q")]
+transform = Transform3D(-1.09405e-07, -1.1979, -0.517734, 2.26309e-08, 0.517734, -1.1979, 1.305, -1.09405e-07, -2.26309e-08, 0.0945684, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6pllg")
+}
+
+[node name="SfxPickup" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.672391, 0)
+stream = SubResource("AudioStreamRandomizer_ggwr6")
+volume_db = -10.0
+bus = &"SFX"

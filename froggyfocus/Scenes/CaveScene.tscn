@@ -389,10 +389,10 @@ transform = Transform3D(-28.2843, 0, -28.2843, 0, 40, 0, 28.2843, 0, -28.2843, -
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0.860665, 2.74167, 87.1831)
 
 [node name="Stalagmite_Platform43" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -66.4459, 1.66789, 109.816)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -65.0202, 1.66789, 111.347)
 
 [node name="Stalagmite_Platform44" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -76.2578, 0.961406, 102.04)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -75.4719, 0.961406, 103.595)
 
 [node name="Stalagmite_Platform45" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -76.3318, 2.40586, 90.5304)
