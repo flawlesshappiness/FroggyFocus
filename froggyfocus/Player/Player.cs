@@ -98,6 +98,7 @@ public partial class Player : TopDownController
         Process_Move();
         Process_Interact();
         Process_Jump();
+        Process_Charge();
         Process_CameraOffset();
         Process_RespawnPosition();
         Process_ShaderPosition();
@@ -137,24 +138,31 @@ public partial class Player : TopDownController
         if (PlayerInput.Jump.Held)
         {
             FocusEventLock.SetLock("jumping", true);
-
             IsCharging = true;
-            jump_charge += GameTime.DeltaTime * 0.5f;
-            Character.SetCharging(true);
         }
         else if (PlayerInput.Jump.Released)
         {
             IsCharging = false;
-            var t = Mathf.Clamp(jump_charge, 0, 1);
-            jump_charge = 0;
-            var height = JumpHeightCurve.Sample(t);
-            var length = JumpLengthCurve.Sample(t);
+            var height = JumpHeightCurve.Sample(jump_charge);
+            var length = JumpLengthCurve.Sample(jump_charge);
             var velocity = Character.Basis * new Vector3(0, height, -length);
             Jump(velocity);
-            Character.SetCharging(false);
 
+            jump_charge = 0;
             on_stable_ground = false;
         }
+    }
+
+    private void Process_Charge()
+    {
+        Character.SetCharging(IsCharging);
+        Character.Animation.Animator.SpeedScale = Mathf.Lerp(1.0f, 4.0f, jump_charge);
+
+        if (!IsCharging) return;
+
+        var duration = 2.0f;
+        var mul = 1f / duration;
+        jump_charge = Mathf.Clamp(jump_charge + GameTime.DeltaTime * mul, 0, 1);
     }
 
     private void Process_Interact()
@@ -260,6 +268,8 @@ public partial class Player : TopDownController
         {
             PsDustJump.Emitting = true;
             PlayDustStreamPS(0.4f);
+
+            Character.MoveSounds.PlayJump();
         }
         else
         {
@@ -269,6 +279,8 @@ public partial class Player : TopDownController
             PsDustLand.Emitting = true;
             StopDustStreamPS();
             EvaluateStableGround();
+
+            Character.MoveSounds.PlayLand();
         }
     }
 

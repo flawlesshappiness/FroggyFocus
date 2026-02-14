@@ -5,6 +5,7 @@ public class AnimationState
     public string Animation { get; private set; } = string.Empty;
     public StateNode Node { get; set; }
     public bool Looping { get; set; }
+    public float SpeedScale { get; set; } = 1.0f;
 
     private WeightedRandom<AnimationState> Variations = new();
 

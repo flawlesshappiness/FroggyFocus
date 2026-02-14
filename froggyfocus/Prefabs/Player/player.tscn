@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://bhuic2i3dy7q5"]
 
-[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="1_6dc14"]
 [ext_resource type="Script" uid="uid://c2ko138plrgx1" path="res://Player/Player.cs" id="1_hnwp3"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="2_ine62"]
 [ext_resource type="Script" uid="uid://xvqq6jouue22" path="res://Player/PlayerInteract.cs" id="3_sysjd"]
 [ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="5_you5p"]
 [ext_resource type="PackedScene" uid="uid://erpmejfh3e8c" path="res://Prefabs/Effects/question_mark.tscn" id="6_tt850"]
@@ -90,16 +90,16 @@ scale_curve = SubResource("CurveTexture_m5xj4")
 collision_layer = 2
 script = ExtResource("1_hnwp3")
 MoveSpeed = 2.0
-PlayerInteract = NodePath("Frog/Interact")
-Character = NodePath("Frog")
+PlayerInteract = NodePath("FrogCute/Interact")
+Character = NodePath("FrogCute")
 ThirdPersonCamera = NodePath("ThirdPersonCamera")
-ExclamationMark = NodePath("Frog/ExclamationMark")
-QuestionMark = NodePath("Frog/QuestionMark")
+ExclamationMark = NodePath("FrogCute/ExclamationMark")
+QuestionMark = NodePath("FrogCute/QuestionMark")
 SfxFocusTargetFound = NodePath("SfxFocusTargetFound")
 SfxFocusTargetStarted = NodePath("SfxFocusTargetStarted")
-PsDustStream = NodePath("Frog/ps_dust_stream")
-PsDustJump = NodePath("Frog/ps_dust_jump")
-PsDustLand = NodePath("Frog/ps_dust_land")
+PsDustStream = NodePath("FrogCute/ps_dust_stream")
+PsDustJump = NodePath("FrogCute/ps_dust_jump")
+PsDustLand = NodePath("FrogCute/ps_dust_land")
 JumpLengthCurve = SubResource("Curve_sysjd")
 JumpHeightCurve = SubResource("Curve_21ygf")
 Camera = NodePath("ThirdPersonCamera/SpringArm3D/Camera3D")
@@ -108,19 +108,19 @@ Camera = NodePath("ThirdPersonCamera/SpringArm3D/Camera3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_hnwp3")
 
-[node name="Frog" parent="." instance=ExtResource("1_6dc14")]
+[node name="FrogCute" parent="." instance=ExtResource("2_ine62")]
 
-[node name="Interact" type="Area3D" parent="Frog"]
+[node name="Interact" type="Area3D" parent="FrogCute"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39572)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_sysjd")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Frog/Interact"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrogCute/Interact"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_sysjd")
 
-[node name="ps_dust_stream" type="GPUParticles3D" parent="Frog"]
+[node name="ps_dust_stream" type="GPUParticles3D" parent="FrogCute"]
 transform = Transform3D(1, 0, 0, 0, -0.877431, 0.479703, 0, -0.479703, -0.877431, 0, 0.337921, 1.05057)
 emitting = false
 amount = 3
@@ -129,7 +129,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_ine62")
 draw_pass_1 = SubResource("SphereMesh_m5xj4")
 
-[node name="ps_dust_jump" type="GPUParticles3D" parent="Frog"]
+[node name="ps_dust_jump" type="GPUParticles3D" parent="FrogCute"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.143062, 0.21224)
 emitting = false
 amount = 5
@@ -140,7 +140,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_m5xj4")
 draw_pass_1 = SubResource("SphereMesh_m5xj4")
 
-[node name="ps_dust_land" type="GPUParticles3D" parent="Frog"]
+[node name="ps_dust_land" type="GPUParticles3D" parent="FrogCute"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110518, 0.129853)
 emitting = false
 amount = 5
@@ -151,10 +151,10 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_a00l3")
 draw_pass_1 = SubResource("SphereMesh_m5xj4")
 
-[node name="ExclamationMark" parent="Frog" instance=ExtResource("6_ucnkw")]
+[node name="ExclamationMark" parent="FrogCute" instance=ExtResource("6_ucnkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.946484, -0.547889)
 
-[node name="QuestionMark" parent="Frog" instance=ExtResource("6_tt850")]
+[node name="QuestionMark" parent="FrogCute" instance=ExtResource("6_tt850")]
 transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.894119, -0.435538)
 
 [node name="SfxFocusTargetFound" type="AudioStreamPlayer3D" parent="."]

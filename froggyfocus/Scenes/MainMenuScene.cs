@@ -31,6 +31,6 @@ public partial class MainMenuScene : GameScene
 
     private void ProfileSelected(int profile)
     {
-        Frog.LoadAppearance();
+        //Frog.LoadAppearance();
     }
 }

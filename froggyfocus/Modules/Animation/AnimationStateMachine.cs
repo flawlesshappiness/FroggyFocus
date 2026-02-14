@@ -51,7 +51,7 @@ public partial class AnimationStateMachine : BaseStateMachine
             var animation_name = state.Animation;
             var animation = Animator.GetAnimation(animation_name);
             animation.LoopMode = state.Looping ? Animation.LoopModeEnum.Linear : Animation.LoopModeEnum.None;
-            Animator.Play(animation_name);
+            Animator.Play(animation_name, customSpeed: state.SpeedScale);
 
             StopVariation();
             if (state.HasVariations())

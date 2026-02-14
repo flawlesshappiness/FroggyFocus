@@ -75,11 +75,11 @@ material = ExtResource("24_dbb2p")
 
 [sub_resource type="QuadMesh" id="QuadMesh_a4mrg"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdiv3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egsq7"]
 albedo_color = Color(0.6, 0.4944, 0.312, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_pdiv3"]
-material = SubResource("StandardMaterial3D_pdiv3")
+material = SubResource("StandardMaterial3D_egsq7")
 radius = 0.1
 height = 0.2
 

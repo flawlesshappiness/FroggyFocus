@@ -5,6 +5,24 @@ using System.Collections;
 public partial class FrogCharacter : Character
 {
     [Export]
+    public string AnimationName_Prefix = "Armature|";
+
+    [Export]
+    public string AnimationName_Idle = "idle";
+
+    [Export]
+    public string AnimationName_Walk = "walking";
+
+    [Export]
+    public string AnimationName_Charge = "charging";
+
+    [Export]
+    public string AnimationName_Jump = "jump_start";
+
+    [Export]
+    public string AnimationName_Fall = "falling";
+
+    [Export]
     public bool DisableAnimationStates;
 
     [Export]
@@ -100,11 +118,12 @@ public partial class FrogCharacter : Character
     {
         if (DisableAnimationStates) return;
 
-        var idle = Animation.CreateAnimation("Armature|idle", true);
-        var walking = Animation.CreateAnimation("Armature|walking", true);
-        var jump_start = Animation.CreateAnimation("Armature|jump_start", false);
-        var jump_end = Animation.CreateAnimation("Armature|jump_end", false);
-        var jump_charge = Animation.CreateAnimation("Armature|jump_charge", false);
+        var idle = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Idle}", true);
+        var walking = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Walk}", true);
+        walking.SpeedScale = 1.5f;
+        var jump_start = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Jump}", false);
+        state_falling = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Fall}", true);
+        var jump_charge = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Charge}", true);
         var mouth_open = Animation.CreateAnimation("Armature|mouth_open", false);
         var mouth_close = Animation.CreateAnimation("Armature|mouth_close", false);
 
@@ -119,7 +138,6 @@ public partial class FrogCharacter : Character
         var left_hand_left_in = Animation.CreateAnimation("Armature|left_hand_left_in", false);
 
         state_in_sand = Animation.CreateAnimation("Armature|in_sand", true);
-        state_falling = Animation.CreateAnimation("Armature|falling", true);
 
         Animation.Connect(idle, walking, param_moving.WhenTrue());
         Animation.Connect(walking, idle, param_moving.WhenFalse());
@@ -139,8 +157,8 @@ public partial class FrogCharacter : Character
         Animation.Connect(jump_charge, jump_start, param_jumping.WhenTrue());
         Animation.Connect(idle, jump_start, param_jumping.WhenTrue());
         Animation.Connect(walking, jump_start, param_jumping.WhenTrue());
-        Animation.Connect(jump_start, jump_end, param_jumping.WhenFalse());
-        Animation.Connect(jump_end, idle);
+        Animation.Connect(jump_start, state_falling);
+        Animation.Connect(state_falling, idle, param_jumping.WhenFalse());
 
         Animation.Connect(idle, right_hand_forward_out, param_right_hand_forward.WhenTrue());
         Animation.Connect(idle, left_hand_forward_out, param_left_hand_forward.WhenTrue());
@@ -163,10 +181,10 @@ public partial class FrogCharacter : Character
     private void InitializeMesh()
     {
         body_material = BodyMesh.GetActiveMaterial(0).Duplicate() as ShaderMaterial;
-        mouth_material = BodyMesh.GetActiveMaterial(1).Duplicate() as ShaderMaterial;
+        //mouth_material = BodyMesh.GetActiveMaterial(1).Duplicate() as ShaderMaterial;
 
         BodyMesh.SetSurfaceOverrideMaterial(0, body_material);
-        BodyMesh.SetSurfaceOverrideMaterial(1, mouth_material);
+        //BodyMesh.SetSurfaceOverrideMaterial(1, mouth_material);
     }
 
     public void ClearAppearance()
@@ -206,7 +224,7 @@ public partial class FrogCharacter : Character
         var type = data_type == ItemType.Color_Default ? ItemType.Color_Green : data_type;
         var color = AppearanceColorController.Instance.GetColor(type);
         body_material.SetShaderParameter("albedo", color);
-        mouth_material.SetShaderParameter("albedo", color * 0.5f);
+        //mouth_material.SetShaderParameter("albedo", color * 0.5f);
     }
 
     private void HatChanged()

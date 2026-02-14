@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://fg7gyfek0hwc"]
+
+[ext_resource type="Shader" uid="uid://bk2fnv8pklps8" path="res://Shaders/Frog.gdshader" id="1_ecnj5"]
+[ext_resource type="Texture2D" uid="uid://cgb5fof02bmel" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/frog_cute_base.png" id="2_f8i0p"]
+[ext_resource type="Texture2D" uid="uid://dgnkbm18bpkge" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/top_robot.png" id="3_dtblj"]
+[ext_resource type="Texture2D" uid="uid://cav4eugtj0t3" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/pattern_dots.png" id="4_dtblj"]
+[ext_resource type="Texture2D" uid="uid://l6mno7ic5koh" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/eye_robot.png" id="5_dtblj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ecnj5")
+shader_parameter/texture1 = ExtResource("2_f8i0p")
+shader_parameter/texture2 = ExtResource("3_dtblj")
+shader_parameter/texture3 = ExtResource("4_dtblj")
+shader_parameter/texture4 = ExtResource("5_dtblj")
+shader_parameter/albedo1 = Color(0.62, 0.62, 0.62, 1)
+shader_parameter/albedo2 = Color(0.35, 0.631667, 1, 1)
+shader_parameter/albedo3 = Color(0.22, 0.22, 0.22, 0)
+shader_parameter/albedo4 = Color(1, 0, 0, 1)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/apply_wind = false
+shader_parameter/y_multiplier = 1.0
+shader_parameter/local_wind_scale = 1.0

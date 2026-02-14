@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://me1v1ty7uru2"]
+
+[ext_resource type="Script" uid="uid://lku040o4lior" path="res://Scenes/NoiseToImageScene.cs" id="1_e2k8d"]
+
+[sub_resource type="Gradient" id="Gradient_e2k8d"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.506073, 0.534413)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4ij43"]
+frequency = 0.023
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_550fm"]
+color_ramp = SubResource("Gradient_e2k8d")
+noise = SubResource("FastNoiseLite_4ij43")
+
+[node name="NoiseToImageScene" type="Node3D" node_paths=PackedStringArray("NoiseSprite")]
+script = ExtResource("1_e2k8d")
+NoiseSprite = NodePath("NoiseTexture")
+
+[node name="NoiseTexture" type="Sprite3D" parent="."]
+texture = SubResource("NoiseTexture2D_550fm")
