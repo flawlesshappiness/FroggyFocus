@@ -2,21 +2,21 @@
 
 [ext_resource type="Shader" uid="uid://bk2fnv8pklps8" path="res://Shaders/Frog.gdshader" id="1_ecnj5"]
 [ext_resource type="Texture2D" uid="uid://cgb5fof02bmel" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/frog_cute_base.png" id="2_f8i0p"]
-[ext_resource type="Texture2D" uid="uid://dgnkbm18bpkge" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/top_robot.png" id="3_dtblj"]
-[ext_resource type="Texture2D" uid="uid://cav4eugtj0t3" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/pattern_dots.png" id="4_dtblj"]
-[ext_resource type="Texture2D" uid="uid://l6mno7ic5koh" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/eye_robot.png" id="5_dtblj"]
+[ext_resource type="Texture2D" uid="uid://boaxbbol4hiku" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/top_noise.png" id="3_dtblj"]
+[ext_resource type="Texture2D" uid="uid://bqfv265pa4kog" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/pattern_noise.png" id="4_5lw5e"]
+[ext_resource type="Texture2D" uid="uid://c70ampeq4tknx" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/eye_001.png" id="5_omjoj"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_ecnj5")
 shader_parameter/texture1 = ExtResource("2_f8i0p")
 shader_parameter/texture2 = ExtResource("3_dtblj")
-shader_parameter/texture3 = ExtResource("4_dtblj")
-shader_parameter/texture4 = ExtResource("5_dtblj")
-shader_parameter/albedo1 = Color(0.62, 0.62, 0.62, 1)
-shader_parameter/albedo2 = Color(0.35, 0.631667, 1, 1)
-shader_parameter/albedo3 = Color(0.22, 0.22, 0.22, 0)
-shader_parameter/albedo4 = Color(1, 0, 0, 1)
+shader_parameter/texture3 = ExtResource("4_5lw5e")
+shader_parameter/texture4 = ExtResource("5_omjoj")
+shader_parameter/albedo1 = Color(0.39438, 0.63, 0.2142, 1)
+shader_parameter/albedo2 = Color(0.35344, 0.47, 0.1786, 1)
+shader_parameter/albedo3 = Color(0.2485, 0.35, 0.14, 1)
+shader_parameter/albedo4 = Color(1, 1, 1, 1)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 3
 shader_parameter/wrap = 0.0
