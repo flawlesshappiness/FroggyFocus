@@ -1,12 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsiem2e7uxtnt"]
+[gd_scene load_steps=19 format=3 uid="uid://dsiem2e7uxtnt"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_oyo16"]
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_s4spg"]
+[ext_resource type="Script" uid="uid://ds6njx8eq011e" path="res://Modules/Node/TabContainerScript.cs" id="3_bn128"]
 [ext_resource type="PackedScene" uid="uid://bqc4geie2toaj" path="res://Prefabs/UI/Appearance/appearance_container.tscn" id="3_eea5e"]
 [ext_resource type="Script" uid="uid://ir8udky37tgr" path="res://Prefabs/UI/CustomizeAppearance/AppearanceTabScrollContainer.cs" id="3_s4spg"]
+[ext_resource type="Texture2D" uid="uid://db2f1el656f08" path="res://Assets/FlawLizArt/Textures/icon_tab_body.png" id="4_yl78k"]
+[ext_resource type="Texture2D" uid="uid://cqvf3oqcu7gm2" path="res://Assets/FlawLizArt/Textures/icon_tab_coat.png" id="5_4opoe"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="5_bn128"]
 [ext_resource type="PackedScene" uid="uid://v5mn7ism72n8" path="res://Prefabs/UI/Appearance/appearance_color_control.tscn" id="5_eea5e"]
+[ext_resource type="Texture2D" uid="uid://bwmbi2f1o65hj" path="res://Assets/FlawLizArt/Textures/icon_tab_hats.png" id="5_jybhe"]
+[ext_resource type="Texture2D" uid="uid://7mkh0imhiq1s" path="res://Assets/FlawLizArt/Textures/icon_tab_accessories.png" id="6_0dqwt"]
 [ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="6_eea5e"]
+[ext_resource type="Texture2D" uid="uid://bgl58vgod1hb7" path="res://Assets/FlawLizArt/Textures/icon_tab_pattern.png" id="6_ff3q0"]
+[ext_resource type="Texture2D" uid="uid://cjvrq0b0mtlax" path="res://Assets/FlawLizArt/Textures/icon_tab_particles.png" id="7_4opoe"]
+[ext_resource type="Texture2D" uid="uid://cvrjoln06tg2h" path="res://Assets/FlawLizArt/Textures/icon_tab_eye.png" id="7_e6q7d"]
 [ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="7_ey1c2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uex8"]
@@ -40,8 +48,8 @@ BackButton = NodePath("HBoxContainer/OptionsPanel/BackButton")
 BodyPrimaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Body/ScrollContainer/VBoxContainer/BodyColorContainer")
 HatContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/HatColorControl/HatsContainer")
 HatColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/HatColorControl")
-FaceContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/MarginContainer/FaceColorControl/FaceContainer")
-FaceColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/MarginContainer/FaceColorControl")
+FaceContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/FaceColorControl/FaceContainer")
+FaceColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/FaceColorControl")
 ParticlesContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesColorControl/ParticlesContainer")
 ParticlesColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesColorControl")
 Frog = NodePath("SubViewport_Frog/Origin/Frog")
@@ -110,14 +118,14 @@ layout_mode = 2
 offset_right = 389.0
 offset_bottom = 400.0
 size_flags_horizontal = 3
-current_tab = 0
+current_tab = 4
+script = ExtResource("3_bn128")
+IconMaxWidth = 32
+Icons = Array[Texture2D]([ExtResource("4_yl78k"), ExtResource("5_4opoe"), ExtResource("6_ff3q0"), ExtResource("7_e6q7d"), ExtResource("5_jybhe"), ExtResource("6_0dqwt"), ExtResource("7_4opoe")])
 
 [node name="Body" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Body" node_paths=PackedStringArray("TopContainer")]
@@ -142,10 +150,24 @@ ItemCategory = 2
 NoneType = 200
 ShowOwned = true
 
-[node name="Hats" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+[node name="Coat" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
+
+[node name="Pattern" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Eye" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Hats" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 4
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats" node_paths=PackedStringArray("TopContainer")]
 layout_mode = 2
@@ -167,30 +189,30 @@ OtherControls = [NodePath("HatsContainer")]
 layout_mode = 2
 ShowOwned = true
 
-[node name="Accessories" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+[node name="Acc" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories" node_paths=PackedStringArray("TopContainer")]
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc" node_paths=PackedStringArray("TopContainer")]
 layout_mode = 2
 follow_focus = true
 script = ExtResource("3_s4spg")
 TopContainer = NodePath("MarginContainer/FaceColorControl/FaceContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="FaceColorControl" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/MarginContainer" node_paths=PackedStringArray("OtherControls") instance=ExtResource("5_eea5e")]
+[node name="FaceColorControl" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer" node_paths=PackedStringArray("OtherControls") instance=ExtResource("5_eea5e")]
 layout_mode = 2
 ItemCategory = 1
 NoneType = 100
 OtherControls = [NodePath("FaceContainer")]
 
-[node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Accessories/ScrollContainer/MarginContainer/FaceColorControl" instance=ExtResource("3_eea5e")]
+[node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/FaceColorControl" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 1
 NoneType = 100
@@ -199,7 +221,7 @@ ShowOwned = true
 [node name="Particles" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 6
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles" node_paths=PackedStringArray("TopContainer")]
 layout_mode = 2

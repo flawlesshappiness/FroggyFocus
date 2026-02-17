@@ -484,6 +484,7 @@ visible = false
 
 [node name="ParticlesHearts" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("42_vgclg")]
 transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0.0191329)
+visible = false
 
 [node name="ParticlesBubbles" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("43_hhhs5")]
 transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0.0191329)

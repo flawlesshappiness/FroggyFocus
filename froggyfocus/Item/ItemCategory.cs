@@ -4,4 +4,7 @@ public enum ItemCategory
     Face,
     Color,
     Particles,
+    BodyTop,
+    BodyPattern,
+    BodyEye,
 }

@@ -57,4 +57,27 @@ public enum ItemType
     Particles_Money = 307,
     Particles_Stars = 308,
     Particles_Sandy = 309,
+
+    // Body Top
+    BodyTop_Gradient = 400,
+    BodyTop_GradientShort = 401,
+    BodyTop_GradientLong = 402,
+    BodyTop_Legs = 403,
+    BodyTop_Noise = 404,
+    BodyTop_Robot = 405,
+
+    // Body Pattern
+    BodyPattern_Desert = 500,
+    BodyPattern_Dots = 501,
+    BodyPattern_Half = 502,
+    BodyPattern_Noise = 503,
+    BodyPattern_Stripe = 504,
+
+    // Body Eye
+    BodyEye_Cute = 600,
+    BodyEye_Derp = 601,
+    BodyEye_Robot = 602,
+    BodyEye_SlitH = 603,
+    BodyEye_SlitV = 604,
+    BodyEye_Toad = 605,
 }
