@@ -18,18 +18,10 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
     {
         base._Ready();
         HandIn.InitializeData(HandInInfo);
-        InitializeCharacter();
 
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
-    }
-
-    private void InitializeCharacter()
-    {
-        FrogCharacter.SetInSand();
-        FrogCharacter.ClearAppearance();
-        FrogCharacter.FaceAttachments.SetAttachment(ItemType.Face_Moustache, ItemType.Color_Default, ItemType.Color_Default);
     }
 
     public override void Interact()

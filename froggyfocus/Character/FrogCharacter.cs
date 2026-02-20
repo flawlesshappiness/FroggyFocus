@@ -92,20 +92,13 @@ public partial class FrogCharacter : Character
             LoadAppearance();
         }
 
-        CustomizeAppearanceControl.OnBodyColorChanged += BodyColorChanged;
-        CustomizeAppearanceControl.OnHatChanged += HatChanged;
-        CustomizeAppearanceControl.OnFaceChanged += FaceChanged;
-        CustomizeAppearanceControl.OnParticlesChanged += ParticlesChanged;
+        CustomizeAppearanceControl.OnAppearanceChanged += AppearanceChanged;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-
-        CustomizeAppearanceControl.OnBodyColorChanged -= BodyColorChanged;
-        CustomizeAppearanceControl.OnHatChanged -= HatChanged;
-        CustomizeAppearanceControl.OnFaceChanged -= FaceChanged;
-        CustomizeAppearanceControl.OnParticlesChanged -= ParticlesChanged;
+        CustomizeAppearanceControl.OnAppearanceChanged -= AppearanceChanged;
     }
 
     private void InitializeTongue()
@@ -197,11 +190,7 @@ public partial class FrogCharacter : Character
     public void LoadAppearance()
     {
         if (Data.Game == null) return;
-
-        BodyColorChanged();
-        HatChanged();
-        FaceChanged();
-        ParticlesChanged();
+        LoadAppearance(Data.Game);
     }
 
     public void LoadAppearance(GameSaveData data)
@@ -212,10 +201,10 @@ public partial class FrogCharacter : Character
         LoadParticles(data);
     }
 
-    private void BodyColorChanged()
+    private void AppearanceChanged()
     {
         if (DisableAppearanceUpdates) return;
-        LoadBodyColor(Data.Game);
+        LoadAppearance();
     }
 
     private void LoadBodyColor(GameSaveData game_data)
@@ -227,34 +216,16 @@ public partial class FrogCharacter : Character
         //mouth_material.SetShaderParameter("albedo", color * 0.5f);
     }
 
-    private void HatChanged()
-    {
-        if (DisableAppearanceUpdates) return;
-        LoadHat(Data.Game);
-    }
-
     private void LoadHat(GameSaveData game_data)
     {
         var data = game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Hat);
         HatAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
     }
 
-    private void FaceChanged()
-    {
-        if (DisableAppearanceUpdates) return;
-        LoadFace(Data.Game);
-    }
-
     private void LoadFace(GameSaveData game_data)
     {
         var data = game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Face);
         FaceAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
-    }
-
-    private void ParticlesChanged()
-    {
-        if (DisableAppearanceUpdates) return;
-        LoadParticles(Data.Game);
     }
 
     private void LoadParticles(GameSaveData game_data)

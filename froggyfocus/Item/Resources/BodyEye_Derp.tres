@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://c4bl5xunq10yc"]
+
+[ext_resource type="Script" uid="uid://xn66d7btognw" path="res://Item/ItemInfo.cs" id="1_mwytd"]
+
+[resource]
+script = ExtResource("1_mwytd")
+Category = 6
+Type = 601
+Name = "Derp Eyes"
+metadata/_custom_type_script = "uid://xn66d7btognw"

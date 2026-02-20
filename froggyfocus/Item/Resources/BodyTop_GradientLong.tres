@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://cc4vf3gi8ostx"]
+
+[ext_resource type="Script" uid="uid://xn66d7btognw" path="res://Item/ItemInfo.cs" id="1_qyx6l"]
+
+[resource]
+script = ExtResource("1_qyx6l")
+Category = 4
+Type = 401
+Name = "Long Gradient Coat"
+metadata/_custom_type_script = "uid://xn66d7btognw"

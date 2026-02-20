@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4pnwbu2rai8l"]
+
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_nl62a"]
+[ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="1_uoqbv"]
+[ext_resource type="Script" uid="uid://1yv0302l5dfg" path="res://Prefabs/UI/RGBColor/AppearanceRGBColorControl.cs" id="2_nl62a"]
+[ext_resource type="Script" uid="uid://qcx2d6o18ka1" path="res://Modules/Node/HSliderScript.cs" id="4_c6orh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl62a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6orh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ipv4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgr8f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wknu3"]
+
+[node name="rgb_color_control" type="MarginContainer" node_paths=PackedStringArray("FocusButton", "Sliders", "Labels")]
+offset_right = 257.0
+offset_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_nl62a")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("2_nl62a")
+FocusButton = NodePath("FocusButton")
+Sliders = [NodePath("MarginContainer/VboxContainer/HBoxContainer/R"), NodePath("MarginContainer/VboxContainer/HBoxContainer2/G"), NodePath("MarginContainer/VboxContainer/HBoxContainer3/B")]
+Labels = [NodePath("MarginContainer/VboxContainer/HBoxContainer/R_Label"), NodePath("MarginContainer/VboxContainer/HBoxContainer2/G_Label"), NodePath("MarginContainer/VboxContainer/HBoxContainer3/B_Label")]
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme = ExtResource("1_uoqbv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 2
+
+[node name="VboxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VboxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VboxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+text = "R"
+
+[node name="R" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 255.0
+editable = false
+scrollable = false
+script = ExtResource("4_c6orh")
+
+[node name="R_Label" type="Label" parent="MarginContainer/VboxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(29, 0)
+layout_mode = 2
+text = "255"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VboxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VboxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+text = "G"
+
+[node name="G" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 255.0
+editable = false
+scrollable = false
+script = ExtResource("4_c6orh")
+
+[node name="G_Label" type="Label" parent="MarginContainer/VboxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(29, 0)
+layout_mode = 2
+text = "255"
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VboxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VboxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(13, 0)
+layout_mode = 2
+text = "B"
+
+[node name="B" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 255.0
+editable = false
+scrollable = false
+script = ExtResource("4_c6orh")
+
+[node name="B_Label" type="Label" parent="MarginContainer/VboxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(29, 0)
+layout_mode = 2
+text = "255"
+horizontal_alignment = 2
+
+[node name="FocusButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nl62a")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_c6orh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ipv4p")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mgr8f")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wknu3")

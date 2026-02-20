@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://dr0gwcnacxttn"]
+
+[ext_resource type="Script" uid="uid://xn66d7btognw" path="res://Item/ItemInfo.cs" id="1_8gkao"]
+
+[resource]
+script = ExtResource("1_8gkao")
+Category = 4
+Type = 403
+Name = "Leg Coat"
+metadata/_custom_type_script = "uid://xn66d7btognw"

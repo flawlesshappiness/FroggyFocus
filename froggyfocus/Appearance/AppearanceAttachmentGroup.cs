@@ -25,7 +25,7 @@ public partial class AppearanceAttachmentGroup : Node3D
         }
     }
 
-    public void SetAttachment(ItemType type, ItemType color_primary, ItemType color_secondary)
+    public void SetAttachment(ItemType type, Color color_primary, Color color_secondary)
     {
         InitializeAttachments();
 
@@ -37,11 +37,8 @@ public partial class AppearanceAttachmentGroup : Node3D
         var category = attachment.Info.Category;
         var info = AppearanceController.Instance.GetInfo(type);
 
-        var primary_color_type = color_primary == ItemType.Color_Default ? info.DefaultPrimaryColor : color_primary;
-        var secondary_color_type = color_secondary == ItemType.Color_Default ? info.DefaultSecondaryColor : color_secondary;
-
-        var primary_color = AppearanceColorController.Instance.GetColor(primary_color_type);
-        var secondary_color = AppearanceColorController.Instance.GetColor(secondary_color_type);
+        var primary_color = color_primary;
+        var secondary_color = color_secondary;
 
         attachment.SetPrimaryColor(primary_color);
         attachment.SetSecondaryColor(secondary_color);

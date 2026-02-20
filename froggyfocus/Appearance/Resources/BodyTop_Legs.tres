@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://b0bufh0iwnnjx"]
+
+[ext_resource type="PackedScene" uid="uid://w0vgt447eedi" path="res://Appearance/Preview/body_top_gradient.tscn" id="1_gm3m1"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_jmg46"]
+
+[resource]
+script = ExtResource("2_jmg46")
+Category = 4
+Type = 403
+DefaultPrimaryColor = 209
+DefaultSecondaryColor = 209
+HasSecondaryColor = false
+Prefab = ExtResource("1_gm3m1")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

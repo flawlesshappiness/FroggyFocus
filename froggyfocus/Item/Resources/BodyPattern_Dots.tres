@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemInfo" load_steps=2 format=3 uid="uid://dhtiacsc651ok"]
+
+[ext_resource type="Script" uid="uid://xn66d7btognw" path="res://Item/ItemInfo.cs" id="1_2cp25"]
+
+[resource]
+script = ExtResource("1_2cp25")
+Category = 5
+Type = 501
+Name = "Dots Pattern"
+metadata/_custom_type_script = "uid://xn66d7btognw"

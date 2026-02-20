@@ -18,17 +18,10 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     {
         base._Ready();
         HandIn.InitializeData(HandInInfo);
-        InitializeCharacter();
 
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
-    }
-
-    private void InitializeCharacter()
-    {
-        FrogCharacter.ClearAppearance();
-        FrogCharacter.FaceAttachments.SetAttachment(ItemType.Face_Glasses_Scientist, ItemType.Color_Default, ItemType.Color_Default);
     }
 
     public override void Interact()

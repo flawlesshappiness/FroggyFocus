@@ -7,8 +7,6 @@
 [ext_resource type="Script" uid="uid://ir8udky37tgr" path="res://Prefabs/UI/CustomizeAppearance/AppearanceTabScrollContainer.cs" id="3_s4spg"]
 [ext_resource type="Texture2D" uid="uid://db2f1el656f08" path="res://Assets/FlawLizArt/Textures/icon_tab_body.png" id="4_yl78k"]
 [ext_resource type="Texture2D" uid="uid://cqvf3oqcu7gm2" path="res://Assets/FlawLizArt/Textures/icon_tab_coat.png" id="5_4opoe"]
-[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="5_bn128"]
-[ext_resource type="PackedScene" uid="uid://v5mn7ism72n8" path="res://Prefabs/UI/Appearance/appearance_color_control.tscn" id="5_eea5e"]
 [ext_resource type="Texture2D" uid="uid://bwmbi2f1o65hj" path="res://Assets/FlawLizArt/Textures/icon_tab_hats.png" id="5_jybhe"]
 [ext_resource type="Texture2D" uid="uid://7mkh0imhiq1s" path="res://Assets/FlawLizArt/Textures/icon_tab_accessories.png" id="6_0dqwt"]
 [ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="6_eea5e"]
@@ -16,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://cjvrq0b0mtlax" path="res://Assets/FlawLizArt/Textures/icon_tab_particles.png" id="7_4opoe"]
 [ext_resource type="Texture2D" uid="uid://cvrjoln06tg2h" path="res://Assets/FlawLizArt/Textures/icon_tab_eye.png" id="7_e6q7d"]
 [ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="7_ey1c2"]
+[ext_resource type="PackedScene" uid="uid://b4pnwbu2rai8l" path="res://Prefabs/UI/RGBColor/rgb_color_control.tscn" id="13_ff3q0"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="16_4opoe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uex8"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -27,7 +27,7 @@ corner_radius_bottom_left = 8
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
 
-[node name="CustomizeAppearanceControl" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "BodyPrimaryColorContainer", "HatContainer", "HatColorControl", "FaceContainer", "FaceColorControl", "ParticlesContainer", "ParticlesColorControl", "Frog", "PreviewRotationNode")]
+[node name="CustomizeAppearanceControl" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "Frog", "PreviewRotationNode", "AppearanceContainers", "ColorControls")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -45,15 +45,10 @@ script = ExtResource("2_s4spg")
 TabContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer")
 PreviewRotationSlider = NodePath("HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/RotationSlider")
 BackButton = NodePath("HBoxContainer/OptionsPanel/BackButton")
-BodyPrimaryColorContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Body/ScrollContainer/VBoxContainer/BodyColorContainer")
-HatContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/HatColorControl/HatsContainer")
-HatColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/HatColorControl")
-FaceContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/FaceColorControl/FaceContainer")
-FaceColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/FaceColorControl")
-ParticlesContainer = NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesColorControl/ParticlesContainer")
-ParticlesColorControl = NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesColorControl")
-Frog = NodePath("SubViewport_Frog/Origin/Frog")
+Frog = NodePath("SubViewport_Frog/Origin/FrogCute")
 PreviewRotationNode = NodePath("SubViewport_Frog/Origin")
+AppearanceContainers = [NodePath("HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer/CoatContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer/PatternContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer/EyeContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HatsContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/FaceContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesContainer")]
+ColorControls = [NodePath("HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer/CoatColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer/PatternColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer/EyeColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/HatPrimaryColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/HatSecondaryColor")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -102,9 +97,10 @@ theme_override_constants/margin_top = 10
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 texture = SubResource("ViewportTexture_ntf0j")
-expand_mode = 1
+expand_mode = 3
 
 [node name="RotationSlider" type="HSlider" parent="HBoxContainer/CameraPanel/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 max_value = 360.0
 value = 25.0
@@ -118,54 +114,113 @@ layout_mode = 2
 offset_right = 389.0
 offset_bottom = 400.0
 size_flags_horizontal = 3
-current_tab = 4
+current_tab = 0
 script = ExtResource("3_bn128")
 IconMaxWidth = 32
 Icons = Array[Texture2D]([ExtResource("4_yl78k"), ExtResource("5_4opoe"), ExtResource("6_ff3q0"), ExtResource("7_e6q7d"), ExtResource("5_jybhe"), ExtResource("6_0dqwt"), ExtResource("7_4opoe")])
 
 [node name="Body" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Body" node_paths=PackedStringArray("TopContainer")]
+[node name="BodyColor" parent="HBoxContainer/OptionsPanel/TabContainer/Body" instance=ExtResource("13_ff3q0")]
 layout_mode = 2
-follow_focus = true
-script = ExtResource("3_s4spg")
-TopContainer = NodePath("VBoxContainer/BodyColorContainer")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Body/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/OptionsPanel/TabContainer/Body/ScrollContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-text = "Primary Color"
-
-[node name="BodyColorContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Body/ScrollContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
-layout_mode = 2
-ItemCategory = 2
-NoneType = 200
-ShowOwned = true
 
 [node name="Coat" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Coat" node_paths=PackedStringArray("TopContainer")]
+layout_mode = 2
+follow_focus = true
+script = ExtResource("3_s4spg")
+TopContainer = NodePath("MarginContainer/VBoxContainer/CoatContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CoatColor" parent="HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+Category = 4
+IsPrimary = true
+
+[node name="CoatContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
+layout_mode = 2
+ItemCategory = 4
+NoneType = 406
+ShowOwned = true
+
 [node name="Pattern" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Pattern" node_paths=PackedStringArray("TopContainer")]
+layout_mode = 2
+follow_focus = true
+script = ExtResource("3_s4spg")
+TopContainer = NodePath("MarginContainer/VBoxContainer/PatternContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PatternColor" parent="HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+Category = 5
+IsPrimary = true
+
+[node name="PatternContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
+layout_mode = 2
+ItemCategory = 5
+NoneType = 505
+ShowOwned = true
 
 [node name="Eye" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Eye" node_paths=PackedStringArray("TopContainer")]
+layout_mode = 2
+follow_focus = true
+script = ExtResource("3_s4spg")
+TopContainer = NodePath("MarginContainer/VBoxContainer/EyeContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="EyeColor" parent="HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+Category = 6
+IsPrimary = true
+
+[node name="EyeContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
+layout_mode = 2
+ItemCategory = 6
+NoneType = 606
+ShowOwned = true
+
 [node name="Hats" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 4
 
@@ -173,7 +228,7 @@ metadata/_tab_index = 4
 layout_mode = 2
 follow_focus = true
 script = ExtResource("3_s4spg")
-TopContainer = NodePath("MarginContainer/HatColorControl/HatsContainer")
+TopContainer = NodePath("MarginContainer/VBoxContainer/HatsContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer"]
 layout_mode = 2
@@ -181,11 +236,20 @@ size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HatColorControl" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer" node_paths=PackedStringArray("OtherControls") instance=ExtResource("5_eea5e")]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer"]
 layout_mode = 2
-OtherControls = [NodePath("HatsContainer")]
 
-[node name="HatsContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/HatColorControl" instance=ExtResource("3_eea5e")]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HatPrimaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+IsPrimary = true
+
+[node name="HatSecondaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+
+[node name="HatsContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ShowOwned = true
 
@@ -198,7 +262,7 @@ metadata/_tab_index = 5
 layout_mode = 2
 follow_focus = true
 script = ExtResource("3_s4spg")
-TopContainer = NodePath("MarginContainer/FaceColorControl/FaceContainer")
+TopContainer = NodePath("MarginContainer/FaceContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer"]
 layout_mode = 2
@@ -206,13 +270,7 @@ size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="FaceColorControl" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer" node_paths=PackedStringArray("OtherControls") instance=ExtResource("5_eea5e")]
-layout_mode = 2
-ItemCategory = 1
-NoneType = 100
-OtherControls = [NodePath("FaceContainer")]
-
-[node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/FaceColorControl" instance=ExtResource("3_eea5e")]
+[node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 1
 NoneType = 100
@@ -227,7 +285,7 @@ metadata/_tab_index = 6
 layout_mode = 2
 follow_focus = true
 script = ExtResource("3_s4spg")
-TopContainer = NodePath("MarginContainer/ParticlesColorControl/ParticlesContainer")
+TopContainer = NodePath("MarginContainer/ParticlesContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer"]
 layout_mode = 2
@@ -235,13 +293,7 @@ size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ParticlesColorControl" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer" node_paths=PackedStringArray("OtherControls") instance=ExtResource("5_eea5e")]
-layout_mode = 2
-ItemCategory = 3
-NoneType = 300
-OtherControls = [NodePath("ParticlesContainer")]
-
-[node name="ParticlesContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesColorControl" instance=ExtResource("3_eea5e")]
+[node name="ParticlesContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 3
 NoneType = 300
@@ -311,7 +363,7 @@ transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694
 
 [node name="Origin" type="Node3D" parent="SubViewport_Frog"]
 
-[node name="Frog" parent="SubViewport_Frog/Origin" instance=ExtResource("5_bn128")]
+[node name="FrogCute" parent="SubViewport_Frog/Origin" instance=ExtResource("16_4opoe")]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewport_Frog/Origin"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00594005, 0.233429, -2.1338)

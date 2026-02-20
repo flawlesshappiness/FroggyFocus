@@ -25,7 +25,6 @@ public partial class AppearanceAttachment : Node3D
 
     public virtual void SetPrimaryColor(Color color)
     {
-
     }
 
     public virtual void SetSecondaryColor(Color color)
@@ -34,17 +33,7 @@ public partial class AppearanceAttachment : Node3D
 
     public void SetDefaultColors()
     {
-        SetDefaultPrimaryColor();
-        SetDefaultSecondaryColor();
-    }
-
-    public void SetDefaultPrimaryColor()
-    {
-        SetPrimaryColor(AppearanceColorController.Instance.GetColor(Info.DefaultPrimaryColor));
-    }
-
-    public void SetDefaultSecondaryColor()
-    {
-        SetSecondaryColor(AppearanceColorController.Instance.GetColor(Info.DefaultSecondaryColor));
+        SetPrimaryColor(Info.DefaultPrimaryColor);
+        SetSecondaryColor(Info.DefaultSecondaryColor);
     }
 }

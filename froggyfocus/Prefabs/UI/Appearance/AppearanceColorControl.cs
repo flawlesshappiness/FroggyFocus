@@ -64,8 +64,8 @@ public partial class AppearanceColorControl : VBoxContainer
     private void Color_Pressed(AppearanceInfo info)
     {
         var data = Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory);
-        data.PrimaryColor = is_primary ? info.Type : data.PrimaryColor;
-        data.SecondaryColor = !is_primary ? info.Type : data.SecondaryColor;
+        //data.PrimaryColor = is_primary ? info.Type : data.PrimaryColor;
+        //data.SecondaryColor = !is_primary ? info.Type : data.SecondaryColor;
         SetColorsVisible(false);
 
         OnColorSelected?.Invoke(info);

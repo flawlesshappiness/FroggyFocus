@@ -99,6 +99,9 @@ public partial class AppearanceContainer : ControlScript
 
     private void AppearanceButtonPressed(AppearanceInfo info)
     {
+        var data = Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory);
+        data.Type = info.Type;
+
         OnButtonPressed?.Invoke(info);
     }
 

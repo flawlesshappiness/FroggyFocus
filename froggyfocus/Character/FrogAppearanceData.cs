@@ -13,8 +13,6 @@ public class FrogAppearanceData
         if (data == null)
         {
             data = new FrogAppearanceAttachmentData { Category = category };
-            data.PrimaryColor = ItemType.Color_Default;
-            data.SecondaryColor = ItemType.Color_Default;
             Attachments.Add(data);
         }
 

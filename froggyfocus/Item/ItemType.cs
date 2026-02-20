@@ -65,6 +65,7 @@ public enum ItemType
     BodyTop_Legs = 403,
     BodyTop_Noise = 404,
     BodyTop_Robot = 405,
+    BodyTop_None = 406,
 
     // Body Pattern
     BodyPattern_Desert = 500,
@@ -72,6 +73,7 @@ public enum ItemType
     BodyPattern_Half = 502,
     BodyPattern_Noise = 503,
     BodyPattern_Stripe = 504,
+    BodyPattern_None = 505,
 
     // Body Eye
     BodyEye_Cute = 600,
@@ -80,4 +82,5 @@ public enum ItemType
     BodyEye_SlitH = 603,
     BodyEye_SlitV = 604,
     BodyEye_Toad = 605,
+    BodyEye_None = 606,
 }

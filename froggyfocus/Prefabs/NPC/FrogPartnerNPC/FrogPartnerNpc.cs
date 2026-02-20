@@ -18,25 +18,10 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     {
         base._Ready();
         HandIn.InitializeData(HandInInfo);
-        InitializeCharacter();
 
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
-    }
-
-    private void InitializeCharacter()
-    {
-        FrogCharacter.ClearAppearance();
-
-        if (HandInData.ClaimedCount > 0)
-        {
-            FrogCharacter.HatAttachments.SetAttachment(ItemType.Hat_BugOfLove, ItemType.Color_Default, ItemType.Color_Default);
-        }
-        else
-        {
-            FrogCharacter.HatAttachments.SetAttachment(ItemType.Hat_Bow, ItemType.Color_Default, ItemType.Color_Default);
-        }
     }
 
     public override void Interact()
@@ -67,7 +52,8 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         }
         else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_002##")
         {
-            InitializeCharacter();
+            // TODO
+            //InitializeCharacter();
         }
         else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##" && show_unlock)
         {

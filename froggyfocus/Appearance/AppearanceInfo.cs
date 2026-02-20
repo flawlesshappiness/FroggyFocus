@@ -10,10 +10,10 @@ public partial class AppearanceInfo : Resource
     public ItemType Type;
 
     [Export]
-    public ItemType DefaultPrimaryColor;
+    public Color DefaultPrimaryColor;
 
     [Export]
-    public ItemType DefaultSecondaryColor;
+    public Color DefaultSecondaryColor;
 
     [Export]
     public bool HasSecondaryColor;
