@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=4 format=3 uid="uid://hute4bmjy0oq"]
+
+[ext_resource type="PackedScene" uid="uid://bhp0a6ujgqqsw" path="res://Appearance/Preview/body_top_none.tscn" id="1_28p26"]
+[ext_resource type="Texture2D" uid="uid://dwoaun3wpx7m1" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/frog_transparent.png" id="2_28p26"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="3_r7xue"]
+
+[resource]
+script = ExtResource("3_r7xue")
+Category = 4
+Type = 406
+DefaultPrimaryColor = Color(0, 0, 0, 0)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
+HasSecondaryColor = false
+Texture = ExtResource("2_28p26")
+Prefab = ExtResource("1_28p26")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

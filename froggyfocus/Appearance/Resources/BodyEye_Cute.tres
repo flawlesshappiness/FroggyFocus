@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://byjx6or080xfe"]
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=4 format=3 uid="uid://byjx6or080xfe"]
 
-[ext_resource type="PackedScene" uid="uid://w0vgt447eedi" path="res://Appearance/Preview/body_top_gradient.tscn" id="1_cvwh2"]
+[ext_resource type="PackedScene" uid="uid://6kud8vhtgtes" path="res://Appearance/Preview/body_eye_cute.tscn" id="1_5plp7"]
 [ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_5plp7"]
+[ext_resource type="Texture2D" uid="uid://c70ampeq4tknx" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/eye_001.png" id="2_vglon"]
 
 [resource]
 script = ExtResource("2_5plp7")
 Category = 6
 Type = 600
-DefaultPrimaryColor = 209
-DefaultSecondaryColor = 209
+DefaultPrimaryColor = Color(0, 0, 0, 0)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
 HasSecondaryColor = false
-Prefab = ExtResource("1_cvwh2")
+Texture = ExtResource("2_vglon")
+Prefab = ExtResource("1_5plp7")
 metadata/_custom_type_script = "uid://cmxxcum28w14t"

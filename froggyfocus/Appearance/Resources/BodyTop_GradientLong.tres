@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://denhloeioxkah"]
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=4 format=3 uid="uid://denhloeioxkah"]
 
 [ext_resource type="PackedScene" uid="uid://buqt8ri4mictk" path="res://Appearance/Preview/body_top_gradient_long.tscn" id="1_2m5ak"]
 [ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_c67rb"]
+[ext_resource type="Texture2D" uid="uid://bktmrf58suuli" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/top_gradient_long.png" id="2_ka5vs"]
 
 [resource]
 script = ExtResource("2_c67rb")
 Category = 4
 Type = 402
-DefaultPrimaryColor = 209
-DefaultSecondaryColor = 209
+DefaultPrimaryColor = Color(0, 0, 0, 0)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
 HasSecondaryColor = false
+Texture = ExtResource("2_ka5vs")
 Prefab = ExtResource("1_2m5ak")
 metadata/_custom_type_script = "uid://cmxxcum28w14t"

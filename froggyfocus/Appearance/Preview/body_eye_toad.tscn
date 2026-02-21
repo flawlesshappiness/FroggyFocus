@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciskrxlimuds4"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_ciu81"]
+[ext_resource type="Shader" uid="uid://bk2fnv8pklps8" path="res://Shaders/Frog.gdshader" id="2_fkxa7"]
+[ext_resource type="Texture2D" uid="uid://d3o0kemsm5cla" path="res://Assets/FlawLizArt/Textures/preview_body_eye_toad.png" id="3_ciu81"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_osrt7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okxec"]
+render_priority = 0
+shader = ExtResource("2_fkxa7")
+shader_parameter/texture1 = ExtResource("3_ciu81")
+shader_parameter/albedo1 = Color(1, 1, 1, 1)
+shader_parameter/albedo2 = Color(1, 1, 1, 0)
+shader_parameter/albedo3 = Color(1, 1, 1, 0)
+shader_parameter/albedo4 = Color(1, 1, 1, 0)
+shader_parameter/clamp_diffuse_to_max = false
+shader_parameter/cuts = 3
+shader_parameter/wrap = 2.0
+shader_parameter/steepness = 8.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = false
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/use_rim = false
+shader_parameter/rim_width = 8.0
+shader_parameter/rim_color = Color(1, 1, 1, 1)
+shader_parameter/use_ramp = false
+shader_parameter/use_borders = false
+shader_parameter/border_width = 0.01
+shader_parameter/apply_wind = false
+shader_parameter/y_multiplier = 1.0
+shader_parameter/local_wind_scale = 1.0
+
+[node name="body_eye_toad" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_ciu81")
+OnlySecondaryMeshes = []
+Type = 605
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_osrt7")
+surface_material_override/0 = SubResource("ShaderMaterial_okxec")

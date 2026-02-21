@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhp0a6ujgqqsw"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_ilffj"]
+
+[node name="body_top_none" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_ilffj")
+OnlySecondaryMeshes = []
+Type = 406

@@ -19,5 +19,8 @@ public partial class AppearanceInfo : Resource
     public bool HasSecondaryColor;
 
     [Export]
+    public Texture2D Texture;
+
+    [Export]
     public PackedScene Prefab;
 }

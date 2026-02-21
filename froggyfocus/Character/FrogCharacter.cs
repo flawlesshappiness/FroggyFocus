@@ -213,6 +213,13 @@ public partial class FrogCharacter : Character
         body_material.SetShaderParameter("albedo2", albedo2);
         body_material.SetShaderParameter("albedo3", albedo3);
         body_material.SetShaderParameter("albedo4", albedo4);
+
+        var texture2 = AppearanceController.Instance.GetInfo(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyTop).Type).Texture;
+        var texture3 = AppearanceController.Instance.GetInfo(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyPattern).Type).Texture;
+        var texture4 = AppearanceController.Instance.GetInfo(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyEye).Type).Texture;
+        body_material.SetShaderParameter("texture2", texture2);
+        body_material.SetShaderParameter("texture3", texture3);
+        body_material.SetShaderParameter("texture4", texture4);
     }
 
     private void LoadHat(GameSaveData game_data)
