@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://5c7u3eeq2lpn"]
+[gd_scene load_steps=4 format=3 uid="uid://5c7u3eeq2lpn"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_olfn3"]
 [ext_resource type="PackedScene" uid="uid://b76p5lsr11bwe" path="res://Assets/FlawLizArt/Hats/detective_hat.fbx" id="2_go3xh"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_go3xh"]
 
-[node name="DetectiveHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="DetectiveHat" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_olfn3")
-Mesh = NodePath("detective_hat/detective_hat")
+OnlySecondaryMeshes = []
 Type = 12
 
 [node name="detective_hat" parent="." instance=ExtResource("2_go3xh")]
+
+[node name="detective_hat" parent="detective_hat" index="0"]
+surface_material_override/0 = ExtResource("3_go3xh")
+surface_material_override/1 = ExtResource("3_go3xh")
 
 [editable path="detective_hat"]

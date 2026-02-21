@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://e7cotww31f4o"]
+[gd_scene load_steps=4 format=3 uid="uid://e7cotww31f4o"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_28bgr"]
 [ext_resource type="PackedScene" uid="uid://cads8wfmn5lfj" path="res://Assets/FlawLizArt/Hats/hard_hat.fbx" id="2_28bgr"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_nohf4"]
 
 [node name="HardHat" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_28bgr")
@@ -10,5 +11,8 @@ Type = 21
 
 [node name="hard_hat" parent="." instance=ExtResource("2_28bgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.198661, 0)
+
+[node name="hard_hat" parent="hard_hat" index="0"]
+surface_material_override/0 = ExtResource("3_nohf4")
 
 [editable path="hard_hat"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://5akea1cmi6ru"]
+[gd_scene load_steps=8 format=3 uid="uid://5akea1cmi6ru"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_d30dw"]
 [ext_resource type="PackedScene" uid="uid://ckxiq0ahfe7lv" path="res://Assets/FlawLizArt/Hats/plumbob.fbx" id="2_ond6d"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_d30dw"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_rmsrg"]
 
 [sub_resource type="Animation" id="Animation_d30dw"]
 length = 0.001
@@ -42,13 +43,16 @@ _data = {
 &"idle": SubResource("Animation_rmsrg")
 }
 
-[node name="Plumbob" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="Plumbob" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_d30dw")
-Mesh = NodePath("plumbob/plumbob")
+OnlySecondaryMeshes = []
 Type = 10
 
 [node name="plumbob" parent="." instance=ExtResource("2_ond6d")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="plumbob" parent="plumbob" index="0"]
+surface_material_override/0 = ExtResource("3_rmsrg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

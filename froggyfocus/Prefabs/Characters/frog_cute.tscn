@@ -166,65 +166,53 @@ bone_name = "Head"
 bone_idx = 2
 script = ExtResource("4_6q0t7")
 
-[node name="Crown" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("5_mjxwm")]
+[node name="Crown" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("5_mjxwm")]
 transform = Transform3D(0.005, -5.5843e-12, -5.24102e-10, -5.24102e-10, -0.000106539, -0.00499886, -5.5843e-12, 0.00499886, -0.000106539, 1.179e-09, -6.82443e-05, 0.00326047)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="CatEars" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("6_heb1e")]
+[node name="CatEars" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("6_heb1e")]
 transform = Transform3D(0.008, -3.71881e-17, 1.62554e-24, 0, -3.49691e-10, -0.008, 3.71881e-17, 0.008, -3.49691e-10, 1.18071e-10, -5.92615e-05, 0.0024482)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="BucketHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("7_cfbqg")]
+[node name="BucketHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("7_cfbqg")]
 transform = Transform3D(0.008, -1.734e-11, -2.81638e-10, -2.80119e-10, 0.000473202, -0.00798599, 3.39689e-11, 0.00798599, 0.000473202, 1.86051e-10, -0.000499837, 0.00314865)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="CowboyHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("8_l04e1")]
+[node name="CowboyHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("8_l04e1")]
 transform = Transform3D(0.008, 3.30443e-11, -4.21348e-10, -4.19879e-10, 0.00153195, -0.00785195, 4.82528e-11, 0.00785195, 0.00153195, 2.24915e-10, -0.000792715, 0.00356225)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="TopHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("9_e32dk")]
+[node name="TopHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("9_e32dk")]
 transform = Transform3D(0.006, -1.33194e-11, -2.26514e-10, -2.25113e-10, 0.000402033, -0.00598652, 2.84675e-11, 0.00598652, 0.000402033, 5.43003e-10, -0.000376652, 0.00426763)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Tiara" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("10_5qfyh")]
+[node name="Tiara" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("10_5qfyh")]
 transform = Transform3D(0.005, 3.40891e-11, -2.59143e-10, -2.37871e-10, -0.00146111, -0.00478175, -1.08328e-10, 0.00478175, -0.00146111, -6.44746e-11, -0.00149453, 0.00234234)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Bow" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("11_50sw0")]
+[node name="Bow" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("11_50sw0")]
 transform = Transform3D(0.006, -3.73624e-11, -2.57493e-10, -2.57493e-10, -0.0017053, -0.00575256, -3.7362e-11, 0.00575256, -0.0017053, -2.71935e-11, -0.000454616, 0.00280943)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Mushroom" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("12_imckj")]
+[node name="Mushroom" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("12_imckj")]
 transform = Transform3D(0.007, -9.97029e-12, -5.03931e-10, -5.03931e-10, -0.000276896, -0.00699452, -9.97056e-12, 0.00699452, -0.000276896, 1.94084e-09, -0.000672566, 0.00308799)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="BugOfLove" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("13_ld1e8")]
+[node name="BugOfLove" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("13_ld1e8")]
 transform = Transform3D(4.0893e-11, 2.59222e-10, 0.006, 0.0059557, -0.00072779, -9.1478e-12, 0.00072779, 0.0059557, -2.62268e-10, 1.07605e-09, 0.000627997, 0.00218716)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Plumbob" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("14_xj466")]
+[node name="Plumbob" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("14_xj466")]
 transform = Transform3D(0.004, 1.61262e-11, 1.23683e-10, -1.24463e-10, 0.000256665, 0.00399176, 8.15687e-12, -0.00399176, 0.000256665, 1.27316e-09, 0.000968245, 0.00526958)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="FishingCap" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("15_a03ps")]
-transform = Transform3D(-0.01, 7.99e-10, 1.35962e-09, 1.36789e-09, 0.000104381, 0.00999945, 7.84767e-10, 0.00999945, -0.000104381, -8.38893e-11, -0.000630767, 0.00197054)
+[node name="FishingCap" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("15_a03ps")]
+transform = Transform3D(0.01, -5.56282e-09, -2.25552e-09, -2.14644e-09, 0.000195309, -0.00999809, 5.60582e-09, 0.00999809, 0.000195309, -8.38892e-11, -0.000630767, 0.00197054)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="DetectiveHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("16_rmq88")]
+[node name="DetectiveHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("16_rmq88")]
 transform = Transform3D(0.008, -2.99598e-11, -6.88695e-10, -6.77997e-10, 0.00110233, -0.00792369, 1.24571e-10, 0.00792369, 0.00110233, 3.53967e-11, 0.000214095, 0.00202812)
 visible = false
-OnlySecondaryMeshes = []
 
 [node name="InfestedHat" type="Node3D" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 transform = Transform3D(0.5, 0, -1.35135e-15, 1.11022e-16, 0.5, -4.65661e-10, 5.74887e-15, 4.65661e-10, 0.5, -3.23047e-10, 0.000673153, 0.00135496)
@@ -443,35 +431,29 @@ bone_name = "Head"
 bone_idx = 2
 script = ExtResource("4_6q0t7")
 
-[node name="Moustache" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("35_vpi5f")]
+[node name="Moustache" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("35_vpi5f")]
 transform = Transform3D(-0.006, 0, -9.05975e-10, 0, 0.006, 0, 9.05975e-10, 0, -0.006, -3.13081e-11, 0.00294419, 0.000131312)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Glasses_Scientist" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("36_fib4k")]
+[node name="Glasses_Scientist" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("36_fib4k")]
 transform = Transform3D(0.005, 8.59333e-10, -1.13133e-10, 1.13133e-10, -0.0012941, -0.00482963, -8.59333e-10, 0.00482963, -0.0012941, -5.54154e-10, 0.00267361, 0.00128379)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Glasses_Round" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("37_thh0y")]
+[node name="Glasses_Round" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("37_thh0y")]
 transform = Transform3D(0.006, -1.03461e-09, 1.22344e-10, -1.22344e-10, -0.00139945, -0.00583451, 1.03461e-09, 0.00583451, -0.00139945, 2.93045e-10, 0.00259501, 0.00141713)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Monocle" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("38_tlkit")]
+[node name="Monocle" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("38_tlkit")]
 transform = Transform3D(0.004, -1.40249e-11, -9.80412e-11, -9.80411e-11, -0.00112146, -0.00383957, -1.40249e-11, 0.00383957, -0.00112146, 0.00220274, 0.0022665, 0.00115372)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Septum" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("39_67a6f")]
+[node name="Septum" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("39_67a6f")]
 transform = Transform3D(0.003, -2.68882e-17, -3.64292e-17, 8.67362e-19, -0.00202457, -0.00221385, 4.17011e-17, 0.00221385, -0.00202457, -1.60949e-10, 0.00338926, -0.000176113)
 visible = false
-OnlySecondaryMeshes = []
 
-[node name="Cigarette" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes") instance=ExtResource("40_o6l1w")]
+[node name="Cigarette" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("40_o6l1w")]
 transform = Transform3D(0.00194223, -0.00220826, 0.000592759, 0.00211208, 0.00203067, 0.000644598, -0.000875711, -1.29148e-10, 0.00286934, 0.00168826, 0.00410301, -0.000862591)
 visible = false
-OnlySecondaryMeshes = []
 
 [node name="ParticlesAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="3"]
 bone_name = "Root"

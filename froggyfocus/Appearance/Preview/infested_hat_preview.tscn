@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://s3d0f6d5svxu"]
+[gd_scene load_steps=4 format=3 uid="uid://s3d0f6d5svxu"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_7bjvu"]
 [ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="1_c51vk"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_dmkex"]
 
 [node name="InfestedHatPreview" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_7bjvu")
@@ -11,8 +12,24 @@ Type = 13
 [node name="mushroom_bent" parent="." instance=ExtResource("1_c51vk")]
 transform = Transform3D(0.103561, 0, -0.386361, 0, 0.4, 0, 0.386361, 0, 0.103561, 0.117113, -0.263089, 0)
 
+[node name="mushroom_bent" parent="mushroom_bent" index="0"]
+surface_material_override/0 = ExtResource("3_dmkex")
+surface_material_override/1 = ExtResource("3_dmkex")
+
 [node name="mushroom_bent2" parent="." instance=ExtResource("1_c51vk")]
 transform = Transform3D(-0.161651, 0, 0.117766, 0, 0.2, 0, -0.117766, 0, -0.161651, 0.013893, -0.263089, 0.1127)
 
+[node name="mushroom_bent" parent="mushroom_bent2" index="0"]
+surface_material_override/0 = ExtResource("3_dmkex")
+surface_material_override/1 = ExtResource("3_dmkex")
+
 [node name="mushroom_bent3" parent="." instance=ExtResource("1_c51vk")]
 transform = Transform3D(0.163502, 0, 0.25153, 0, 0.3, 0, -0.25153, 0, 0.163502, -0.0942738, -0.263089, -0.0570489)
+
+[node name="mushroom_bent" parent="mushroom_bent3" index="0"]
+surface_material_override/0 = ExtResource("3_dmkex")
+surface_material_override/1 = ExtResource("3_dmkex")
+
+[editable path="mushroom_bent"]
+[editable path="mushroom_bent2"]
+[editable path="mushroom_bent3"]

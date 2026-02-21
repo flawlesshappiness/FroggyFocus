@@ -7,7 +7,8 @@
 script = ExtResource("1_rkg05")
 Category = 1
 Type = 101
-DefaultPrimaryColor = 206
-DefaultSecondaryColor = 206
+DefaultPrimaryColor = Color(0.41, 0.241627, 0.0943, 1)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
+HasSecondaryColor = false
 Prefab = ExtResource("1_1ne18")
 metadata/_custom_type_script = "uid://cmxxcum28w14t"

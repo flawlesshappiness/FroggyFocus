@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://0ey4wtg3hu5i"]
+[gd_scene load_steps=4 format=3 uid="uid://0ey4wtg3hu5i"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_plwxu"]
 [ext_resource type="PackedScene" uid="uid://mxgyl5pbqnyv" path="res://Assets/FlawLizArt/Hats/bucket_hat.fbx" id="2_wnbjw"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_mhm3o"]
 
-[node name="BucketHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="BucketHat" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_plwxu")
-Mesh = NodePath("bucket_hat/bucket_hat")
+OnlySecondaryMeshes = []
 Type = 3
 
 [node name="bucket_hat" parent="." instance=ExtResource("2_wnbjw")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -0.085345, 0)
+
+[node name="bucket_hat" parent="bucket_hat" index="0"]
+surface_material_override/0 = ExtResource("3_mhm3o")
 
 [editable path="bucket_hat"]

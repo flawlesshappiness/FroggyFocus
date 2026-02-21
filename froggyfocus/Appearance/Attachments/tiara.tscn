@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://xqht7alrt8iv"]
+[gd_scene load_steps=4 format=3 uid="uid://xqht7alrt8iv"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_x7b85"]
 [ext_resource type="PackedScene" uid="uid://bcyxhtn31dfxy" path="res://Assets/FlawLizArt/Hats/tiara.fbx" id="2_0v8o3"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_fe0ri"]
 
-[node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_x7b85")
-Mesh = NodePath("tiara/Tiara")
+OnlySecondaryMeshes = []
 Type = 6
 
 [node name="tiara" parent="." instance=ExtResource("2_0v8o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0723815, 0)
+
+[node name="Tiara" parent="tiara" index="0"]
+surface_material_override/0 = ExtResource("3_fe0ri")
+surface_material_override/1 = ExtResource("3_fe0ri")
 
 [editable path="tiara"]

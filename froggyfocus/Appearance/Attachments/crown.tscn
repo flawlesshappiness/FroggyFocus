@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://n068dxjwbk4n"]
+[gd_scene load_steps=4 format=3 uid="uid://n068dxjwbk4n"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_jgi5u"]
 [ext_resource type="PackedScene" uid="uid://dvmei7w1bcnhp" path="res://Assets/Quaternius/RPG/crown2.fbx" id="2_3g8sv"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_of515"]
 
-[node name="Crown" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="Crown" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_jgi5u")
-Mesh = NodePath("Crown2/Crown2")
+OnlySecondaryMeshes = []
 Type = 1
 
 [node name="Crown2" parent="." instance=ExtResource("2_3g8sv")]
 transform = Transform3D(1, -4.23516e-22, 1.69407e-21, -1.69407e-21, 1, -2.98023e-08, 3.38813e-21, 0, 1, 1.42109e-14, -0.13248, 0)
+
+[node name="Crown2" parent="Crown2" index="0"]
+surface_material_override/0 = ExtResource("3_of515")
+surface_material_override/1 = ExtResource("3_of515")
 
 [editable path="Crown2"]

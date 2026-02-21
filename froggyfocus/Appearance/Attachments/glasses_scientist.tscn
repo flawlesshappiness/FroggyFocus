@@ -1,13 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bycye7hwagma"]
+[gd_scene load_steps=4 format=3 uid="uid://bycye7hwagma"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_msxgk"]
 [ext_resource type="PackedScene" uid="uid://b3i6nw3obpr61" path="res://Assets/FlawLizArt/Face/glasses_scientist.fbx" id="2_msxgk"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_7vcat"]
 
-[node name="Glasses_Scientist" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="Glasses_Scientist" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_msxgk")
-Mesh = NodePath("glasses_scientist/glasses_scientist")
+OnlySecondaryMeshes = []
 Type = 102
 
 [node name="glasses_scientist" parent="." instance=ExtResource("2_msxgk")]
+
+[node name="glasses_scientist" parent="glasses_scientist" index="0"]
+surface_material_override/0 = ExtResource("3_7vcat")
+surface_material_override/1 = ExtResource("3_7vcat")
 
 [editable path="glasses_scientist"]

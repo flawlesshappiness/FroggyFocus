@@ -22,12 +22,16 @@ scale_curve = SubResource("CurveTexture_a05d2")
 [sub_resource type="SphereMesh" id="SphereMesh_o1g2i"]
 material = ExtResource("3_o5va5")
 
-[node name="Cigarette" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="Cigarette" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_oyp3n")
-Mesh = NodePath("cigarette_notexture/cigarette")
+OnlySecondaryMeshes = []
 Type = 106
 
 [node name="cigarette_notexture" parent="." instance=ExtResource("2_o5va5")]
+
+[node name="cigarette" parent="cigarette_notexture" index="0"]
+surface_material_override/0 = ExtResource("3_o5va5")
+surface_material_override/1 = ExtResource("3_o5va5")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.424964, 0, 0)

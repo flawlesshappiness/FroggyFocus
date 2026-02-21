@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj017mypcst8m"]
+[gd_scene load_steps=4 format=3 uid="uid://bj017mypcst8m"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_4i3yg"]
 [ext_resource type="PackedScene" uid="uid://bdo0ubmy2w6mu" path="res://Assets/FlawLizArt/Face/beard_moustache.fbx" id="1_71t62"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_c2xlh"]
 
-[node name="Moustache" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="Moustache" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_4i3yg")
-Mesh = NodePath("beard_moustache/moustache")
+OnlySecondaryMeshes = []
 Type = 101
 
 [node name="beard_moustache" parent="." instance=ExtResource("1_71t62")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0529135, 0)
+
+[node name="moustache" parent="beard_moustache" index="0"]
+surface_material_override/0 = ExtResource("3_c2xlh")
 
 [editable path="beard_moustache"]

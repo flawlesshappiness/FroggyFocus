@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://u6g71t3e8loy"]
+[gd_scene load_steps=12 format=3 uid="uid://u6g71t3e8loy"]
 
 [ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="1_avf3k"]
+[ext_resource type="Environment" uid="uid://b5aywq3k0pd6t" path="res://Environment/Preview.tres" id="2_4r435"]
 
 [sub_resource type="Animation" id="Animation_4r435"]
 length = 0.001
@@ -190,15 +191,12 @@ Origin = NodePath("Anim/Origin")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, -1.5)
+environment = ExtResource("2_4r435")
 current = true
 fov = 50.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36706, -0.822494)
-light_energy = 0.1
 
 [node name="Anim" type="Node3D" parent="."]
 

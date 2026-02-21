@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://oth00eq3xg17"]
+[gd_scene load_steps=4 format=3 uid="uid://oth00eq3xg17"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_oi7hi"]
 [ext_resource type="PackedScene" uid="uid://cl4p6ip4r8foe" path="res://Assets/FlawLizArt/Hats/cat_ears.fbx" id="2_t3bge"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_w8fs5"]
 
-[node name="CatEars" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="CatEars" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_oi7hi")
-Mesh = NodePath("cat_ears/ears_002")
+OnlySecondaryMeshes = []
 Type = 2
 
 [node name="cat_ears" parent="." instance=ExtResource("2_t3bge")]
 transform = Transform3D(0.55, -3.20284e-21, -2.79521e-21, 3.20284e-21, 0.55, 2.04891e-09, 2.79521e-21, -2.04891e-09, 0.55, -3.15538e-23, -0.081107, 3.02148e-10)
+
+[node name="ears_002" parent="cat_ears" index="0"]
+surface_material_override/0 = ExtResource("3_w8fs5")
+surface_material_override/1 = ExtResource("3_w8fs5")
 
 [editable path="cat_ears"]

@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkbbk2nsx028o"]
+[gd_scene load_steps=5 format=3 uid="uid://bkbbk2nsx028o"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_mb6qw"]
 [ext_resource type="PackedScene" uid="uid://onmrfwh06en5" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_tiara.fbx" id="2_awynv"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_mb6qw"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_qv6xv"]
 
-[node name="BugOfLove" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="BugOfLove" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_mb6qw")
-Mesh = NodePath("crystal_tiara/Armature/Skeleton3D/bug_of_love")
+OnlySecondaryMeshes = []
 Type = 9
 
 [node name="crystal_tiara" parent="." instance=ExtResource("2_awynv")]
+
+[node name="bug_of_love" parent="crystal_tiara/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_qv6xv")
+surface_material_override/1 = ExtResource("3_qv6xv")
 
 [node name="AnimationPlayer" parent="crystal_tiara" index="1"]
 script = ExtResource("3_mb6qw")

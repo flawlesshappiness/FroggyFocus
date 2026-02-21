@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmg430dgy8ers"]
+[gd_scene load_steps=4 format=3 uid="uid://bmg430dgy8ers"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_g8sym"]
 [ext_resource type="PackedScene" uid="uid://ddhgdgl8n18g4" path="res://Assets/FlawLizArt/Face/septum.fbx" id="2_g8sym"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_uvns7"]
 
-[node name="Septum" type="Node3D" node_paths=PackedStringArray("Mesh")]
+[node name="Septum" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_g8sym")
-Mesh = NodePath("septum/septum")
+OnlySecondaryMeshes = []
 Type = 105
 
 [node name="septum" parent="." instance=ExtResource("2_g8sym")]
 transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 0, 0, 0)
+
+[node name="septum" parent="septum" index="0"]
+surface_material_override/0 = ExtResource("3_uvns7")
 
 [editable path="septum"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsiem2e7uxtnt"]
+[gd_scene load_steps=20 format=3 uid="uid://dsiem2e7uxtnt"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_oyo16"]
 [ext_resource type="Script" uid="uid://cfoxkfpwrg7um" path="res://Prefabs/UI/CustomizeAppearance/CustomizeAppearanceControl.cs" id="2_s4spg"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="7_ey1c2"]
 [ext_resource type="PackedScene" uid="uid://b4pnwbu2rai8l" path="res://Prefabs/UI/RGBColor/rgb_color_control.tscn" id="13_ff3q0"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="16_4opoe"]
+[ext_resource type="Environment" uid="uid://b5aywq3k0pd6t" path="res://Environment/Preview.tres" id="16_ff3q0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uex8"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -390,6 +391,7 @@ render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport_Frog"]
 transform = Transform3D(-1, 4.13117e-08, -7.7046e-08, 0, 0.881304, 0.472551, 8.74228e-08, 0.472551, -0.881304, 0, 0.89, -1.2)
+environment = ExtResource("16_ff3q0")
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport_Frog"]
@@ -398,16 +400,6 @@ transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694
 [node name="Origin" type="Node3D" parent="SubViewport_Frog"]
 
 [node name="FrogCute" parent="SubViewport_Frog/Origin" instance=ExtResource("16_4opoe")]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport_Frog/Origin"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00594005, 0.233429, -2.1338)
-light_energy = 0.1
-omni_range = 12.0
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="SubViewport_Frog/Origin"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00593987, -1.003, 0.0109953)
-light_energy = 0.1
-omni_range = 12.0
 
 [node name="TabContainerBlocker" type="Control" parent="."]
 anchors_preset = 0
