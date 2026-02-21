@@ -16,34 +16,73 @@ public partial class AppearanceRGBColorControl : RGBColorControl
 
     private void ProfileSelected(int i)
     {
-        var data = Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(Category);
-        if (IsPrimary)
+        if (Category == ItemCategory.BodyBase)
         {
-            Load(data.PrimaryColor);
+            Load(Data.Game.FrogAppearanceData.BaseColor.Color);
+        }
+        else if (Category == ItemCategory.BodyTop)
+        {
+            Load(Data.Game.FrogAppearanceData.CoatColor.Color);
+        }
+        else if (Category == ItemCategory.BodyPattern)
+        {
+            Load(Data.Game.FrogAppearanceData.PatternColor.Color);
+        }
+        else if (Category == ItemCategory.BodyEye)
+        {
+            Load(Data.Game.FrogAppearanceData.EyeColor.Color);
         }
         else
         {
-            Load(data.SecondaryColor);
+            var data = Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(Category);
+            if (IsPrimary)
+            {
+                Load(data.PrimaryColor);
+            }
+            else
+            {
+                Load(data.SecondaryColor);
+            }
         }
     }
 
     protected override void ColorChanged()
     {
         base.ColorChanged();
-        var data = Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(Category);
-        var c = Color;
 
-        if (IsPrimary)
+        if (Category == ItemCategory.BodyBase)
         {
-            data.PrimaryR = c.R;
-            data.PrimaryG = c.G;
-            data.PrimaryB = c.B;
+            Data.Game.FrogAppearanceData.BaseColor.Color = Color;
+        }
+        else if (Category == ItemCategory.BodyTop)
+        {
+            Data.Game.FrogAppearanceData.CoatColor.Color = Color;
+        }
+        else if (Category == ItemCategory.BodyPattern)
+        {
+            Data.Game.FrogAppearanceData.PatternColor.Color = Color;
+        }
+        else if (Category == ItemCategory.BodyEye)
+        {
+            Data.Game.FrogAppearanceData.EyeColor.Color = Color;
         }
         else
         {
-            data.SecondaryR = c.R;
-            data.SecondaryG = c.G;
-            data.SecondaryB = c.B;
+            var data = Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(Category);
+            var c = Color;
+
+            if (IsPrimary)
+            {
+                data.PrimaryR = c.R;
+                data.PrimaryG = c.G;
+                data.PrimaryB = c.B;
+            }
+            else
+            {
+                data.SecondaryR = c.R;
+                data.SecondaryG = c.G;
+                data.SecondaryB = c.B;
+            }
         }
     }
 }

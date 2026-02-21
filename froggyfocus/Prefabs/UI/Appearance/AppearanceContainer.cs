@@ -110,6 +110,11 @@ public partial class AppearanceContainer : ControlScript
         return maps.FirstOrDefault(x => x.Info == info)?.Button;
     }
 
+    public IEnumerable<Button> GetButtons()
+    {
+        return maps.Select(x => x.Button);
+    }
+
     public Button GetFirstButton()
     {
         return maps.FirstOrDefault().Button;
@@ -137,6 +142,14 @@ public partial class AppearanceContainer : ControlScript
         if (top_buttons.Contains(button))
         {
             TopButtonFocusEntered?.Invoke();
+        }
+    }
+
+    public void SetFocusMode(FocusModeEnum mode)
+    {
+        foreach (var map in maps)
+        {
+            map.Button.FocusMode = mode;
         }
     }
 }

@@ -64,7 +64,6 @@ public partial class FrogCharacter : Character
     private Node3D _attached_target;
 
     private ShaderMaterial body_material;
-    private ShaderMaterial mouth_material;
 
     private AnimationState state_in_sand;
     private AnimationState state_falling;
@@ -174,10 +173,7 @@ public partial class FrogCharacter : Character
     private void InitializeMesh()
     {
         body_material = BodyMesh.GetActiveMaterial(0).Duplicate() as ShaderMaterial;
-        //mouth_material = BodyMesh.GetActiveMaterial(1).Duplicate() as ShaderMaterial;
-
         BodyMesh.SetSurfaceOverrideMaterial(0, body_material);
-        //BodyMesh.SetSurfaceOverrideMaterial(1, mouth_material);
     }
 
     public void ClearAppearance()
@@ -209,11 +205,14 @@ public partial class FrogCharacter : Character
 
     private void LoadBodyColor(GameSaveData game_data)
     {
-        var data_type = game_data.FrogAppearanceData.BodyColor;
-        var type = data_type == ItemType.Color_Default ? ItemType.Color_Green : data_type;
-        var color = AppearanceColorController.Instance.GetColor(type);
-        body_material.SetShaderParameter("albedo", color);
-        //mouth_material.SetShaderParameter("albedo", color * 0.5f);
+        var albedo1 = game_data.FrogAppearanceData.BaseColor.Color;
+        var albedo2 = game_data.FrogAppearanceData.CoatColor.Color;
+        var albedo3 = game_data.FrogAppearanceData.PatternColor.Color;
+        var albedo4 = game_data.FrogAppearanceData.EyeColor.Color;
+        body_material.SetShaderParameter("albedo1", albedo1);
+        body_material.SetShaderParameter("albedo2", albedo2);
+        body_material.SetShaderParameter("albedo3", albedo3);
+        body_material.SetShaderParameter("albedo4", albedo4);
     }
 
     private void LoadHat(GameSaveData game_data)

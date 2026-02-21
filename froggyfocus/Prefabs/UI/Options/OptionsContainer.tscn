@@ -87,7 +87,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Fade plants"
 
-[node name="FadePlantsDropdown" type="OptionButton" parent="Options/TabContainer/Video/HBoxContainer/HBoxContainer"]
+[node name="FadePlantsDropdown" type="OptionButton" parent="Options/TabContainer/Video/HBoxContainer/HBoxContainer" groups=["Controls"]]
 layout_mode = 2
 size_flags_horizontal = 3
 item_count = 4

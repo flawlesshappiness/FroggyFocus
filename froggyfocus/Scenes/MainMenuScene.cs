@@ -21,6 +21,9 @@ public partial class MainMenuScene : GameScene
     {
         base.Initialize();
         MainMenuView.Instance.Overlay.AnimateFrontHide();
+
+        var master = AudioBus.Get(AudioBusNames.Master);
+        master.SetMuted(false);
     }
 
     public override void _ExitTree()

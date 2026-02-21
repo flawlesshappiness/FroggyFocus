@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System;
 
 public partial class TabContainerScript : TabContainer
 {
@@ -27,5 +28,19 @@ public partial class TabContainerScript : TabContainer
                 SetTabTitle(i, string.Empty);
             }
         }
+    }
+
+    public void ForeachTab(Action<int> action)
+    {
+        var tab_count = GetChildCount();
+        for (int i = 0; i < tab_count; i++)
+        {
+            action?.Invoke(i);
+        }
+    }
+
+    public void SetAllTabsEnabled(bool enabled)
+    {
+        ForeachTab(i => SetTabDisabled(i, !enabled));
     }
 }

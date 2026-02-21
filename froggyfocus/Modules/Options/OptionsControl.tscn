@@ -45,7 +45,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Master"
 
-[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer" groups=["Controls", "Sliders"]]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
@@ -54,7 +54,7 @@ step = 0.05
 layout_mode = 2
 text = "SFX"
 
-[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer" groups=["Controls", "Sliders"]]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
@@ -63,7 +63,7 @@ step = 0.05
 layout_mode = 2
 text = "BGM"
 
-[node name="BGMSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer"]
+[node name="BGMSlider" type="HSlider" parent="TabContainer/Audio/VBoxContainer" groups=["Controls", "Sliders"]]
 layout_mode = 2
 max_value = 1.0
 step = 0.05
@@ -96,7 +96,7 @@ text = "Window Mode"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="WindowModeDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/WindowMode/Right"]
+[node name="WindowModeDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/WindowMode/Right" groups=["Controls"]]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -116,7 +116,7 @@ text = "Resolution"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResolutionDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/Resolution/Right"]
+[node name="ResolutionDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/Resolution/Right" groups=["Controls"]]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -136,7 +136,7 @@ text = "VSync"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VSyncDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/VSync/Right"]
+[node name="VSyncDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/VSync/Right" groups=["Controls"]]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -156,7 +156,7 @@ text = "FPS Limit"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FPSLimitDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/FPSLimit/Right"]
+[node name="FPSLimitDropdown" type="OptionButton" parent="TabContainer/Video/HBoxContainer/FPSLimit/Right" groups=["Controls"]]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -176,7 +176,7 @@ text = "Brightness"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BrightnessSlider" type="HSlider" parent="TabContainer/Video/HBoxContainer/Brightness/Right"]
+[node name="BrightnessSlider" type="HSlider" parent="TabContainer/Video/HBoxContainer/Brightness/Right" groups=["Controls", "Sliders"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -236,7 +236,7 @@ label_settings = SubResource("LabelSettings_hi6fc")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RebindButton" type="Button" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp/Right"]
+[node name="RebindButton" type="Button" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp/Right" groups=["Buttons", "Controls"]]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "A"
@@ -248,7 +248,7 @@ size_flags_horizontal = 3
 text = "Waiting for input..."
 horizontal_alignment = 1
 
-[node name="ResetButton" type="Button" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp"]
+[node name="ResetButton" type="Button" parent="TabContainer/Keys/VBoxContainer/ScrollContainer/VBoxContainer/KeyRebindTemp" groups=["Buttons", "Controls"]]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "X"
@@ -261,7 +261,7 @@ text = "Reset all"
 layout_mode = 2
 alignment = 1
 
-[node name="BackButton" type="Button" parent="HBoxContainer"]
+[node name="BackButton" type="Button" parent="HBoxContainer" groups=["Buttons", "Controls"]]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "Save & Back"

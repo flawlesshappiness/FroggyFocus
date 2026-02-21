@@ -27,7 +27,7 @@ corner_radius_bottom_left = 8
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntf0j"]
 viewport_path = NodePath("SubViewport_Frog")
 
-[node name="CustomizeAppearanceControl" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "Frog", "PreviewRotationNode", "AppearanceContainers", "ColorControls")]
+[node name="CustomizeAppearanceControl" type="Control" node_paths=PackedStringArray("TabContainer", "PreviewRotationSlider", "BackButton", "Frog", "PreviewRotationNode", "TabContainerBlocker", "TabContentBlocker", "AppearanceContainers", "ColorControls")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -47,8 +47,10 @@ PreviewRotationSlider = NodePath("HBoxContainer/CameraPanel/MarginContainer/VBox
 BackButton = NodePath("HBoxContainer/OptionsPanel/BackButton")
 Frog = NodePath("SubViewport_Frog/Origin/FrogCute")
 PreviewRotationNode = NodePath("SubViewport_Frog/Origin")
-AppearanceContainers = [NodePath("HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer/CoatContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer/PatternContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer/EyeContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HatsContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/FaceContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/ParticlesContainer")]
-ColorControls = [NodePath("HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer/CoatColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer/PatternColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer/EyeColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/HatPrimaryColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/HatSecondaryColor")]
+TabContainerBlocker = NodePath("TabContainerBlocker")
+TabContentBlocker = NodePath("TabContentBlocker")
+AppearanceContainers = [NodePath("HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer/CoatContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer/PatternContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer/EyeContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HatsContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/VBoxContainer/FaceContainer"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/VBoxContainer/ParticlesContainer")]
+ColorControls = [NodePath("HBoxContainer/OptionsPanel/TabContainer/Body/BodyColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer/CoatColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer/PatternColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer/EyeColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/HatPrimaryColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Hats/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/HatSecondaryColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/AccPrimaryColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/AccSecondaryColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/PSPrimaryColor"), NodePath("HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/PSSecondaryColor")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -125,6 +127,8 @@ metadata/_tab_index = 0
 
 [node name="BodyColor" parent="HBoxContainer/OptionsPanel/TabContainer/Body" instance=ExtResource("13_ff3q0")]
 layout_mode = 2
+Category = 7
+IsPrimary = true
 
 [node name="Coat" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
 visible = false
@@ -262,7 +266,7 @@ metadata/_tab_index = 5
 layout_mode = 2
 follow_focus = true
 script = ExtResource("3_s4spg")
-TopContainer = NodePath("MarginContainer/FaceContainer")
+TopContainer = NodePath("MarginContainer/VBoxContainer/FaceContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer"]
 layout_mode = 2
@@ -270,7 +274,22 @@ size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer" instance=ExtResource("3_eea5e")]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AccPrimaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+Category = 1
+IsPrimary = true
+
+[node name="AccSecondaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+Category = 1
+
+[node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 1
 NoneType = 100
@@ -285,7 +304,7 @@ metadata/_tab_index = 6
 layout_mode = 2
 follow_focus = true
 script = ExtResource("3_s4spg")
-TopContainer = NodePath("MarginContainer/ParticlesContainer")
+TopContainer = NodePath("MarginContainer/VBoxContainer/ParticlesContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer"]
 layout_mode = 2
@@ -293,7 +312,22 @@ size_flags_horizontal = 3
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ParticlesContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer" instance=ExtResource("3_eea5e")]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PSPrimaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+Category = 3
+IsPrimary = true
+
+[node name="PSSecondaryColor" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13_ff3q0")]
+layout_mode = 2
+Category = 3
+
+[node name="ParticlesContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Particles/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 3
 NoneType = 300
@@ -374,3 +408,17 @@ omni_range = 12.0
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00593987, -1.003, 0.0109953)
 light_energy = 0.1
 omni_range = 12.0
+
+[node name="TabContainerBlocker" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 393.0
+offset_top = -25.0
+offset_right = 815.0
+offset_bottom = 40.0
+
+[node name="TabContentBlocker" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -36.0
+offset_top = 131.0
+offset_right = 815.0
+offset_bottom = 493.0

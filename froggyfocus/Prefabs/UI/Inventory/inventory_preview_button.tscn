@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://defec4lhqg2fo"]
+[gd_scene load_steps=6 format=3 uid="uid://defec4lhqg2fo"]
 
 [ext_resource type="Script" uid="uid://cxxqv8hu5oi06" path="res://Prefabs/UI/Inventory/InventoryPreviewButton.cs" id="1_c7vpv"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ijjcq"]
 [ext_resource type="PackedScene" uid="uid://cplo4mx0f0qkx" path="res://Prefabs/Misc/question_mark_preview.tscn" id="3_knw73"]
-[ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="3_sycv1"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="5_knw73"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="5_o6ats"]
 
@@ -15,8 +14,6 @@ TextureRect = NodePath("MarginContainer/TextureRect")
 ItemSubViewport = NodePath("ItemSubViewport")
 HiddenPreviewPrefab = ExtResource("3_knw73")
 BackgroundShadow = NodePath("MarginContainer/BG/BackgroundShadow")
-SfxFocusEnter = ExtResource("3_sycv1")
-SfxPressed = ExtResource("3_sycv1")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

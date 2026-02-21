@@ -5,7 +5,7 @@ using System;
 public partial class CustomizeAppearanceControl : ControlScript
 {
     [Export]
-    public TabContainer TabContainer;
+    public TabContainerScript TabContainer;
 
     [Export]
     public Slider PreviewRotationSlider;
@@ -18,6 +18,12 @@ public partial class CustomizeAppearanceControl : ControlScript
 
     [Export]
     public Node3D PreviewRotationNode;
+
+    [Export]
+    public Control TabContainerBlocker;
+
+    [Export]
+    public Control TabContentBlocker;
 
     [Export]
     public Array<AppearanceContainer> AppearanceContainers;
@@ -35,6 +41,9 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         base._Ready();
 
+        TabContainerBlocker.Hide();
+        TabContentBlocker.Hide();
+
         foreach (var container in AppearanceContainers)
         {
             container.OnButtonPressed += AppearanceButton_Pressed;
@@ -43,6 +52,7 @@ public partial class CustomizeAppearanceControl : ControlScript
         foreach (var control in ColorControls)
         {
             control.OnColorChanged += ColorControl_ColorChanged;
+            control.OnFocusChanged += ColorControl_FocusChanged;
         }
 
         PreviewRotationSlider.ValueChanged += PreviewRotationSlider_ValueChanged;
@@ -104,5 +114,20 @@ public partial class CustomizeAppearanceControl : ControlScript
     {
         if (loading) return;
         OnAppearanceChanged?.Invoke();
+    }
+
+    private void ColorControl_FocusChanged(bool focus)
+    {
+        var focus_mode = focus ? FocusModeEnum.None : FocusModeEnum.All;
+        TabContainer.GetTabBar().FocusMode = focus_mode;
+        BackButton.FocusMode = focus_mode;
+
+        TabContainerBlocker.Visible = focus;
+        TabContentBlocker.Visible = focus;
+
+        foreach (var container in AppearanceContainers)
+        {
+            container.SetFocusMode(focus_mode);
+        }
     }
 }

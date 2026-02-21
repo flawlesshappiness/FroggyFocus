@@ -7,4 +7,5 @@ public enum ItemCategory
     BodyTop,
     BodyPattern,
     BodyEye,
+    BodyBase,
 }

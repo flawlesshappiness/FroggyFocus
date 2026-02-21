@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm8elguud56aj"]
+
+[ext_resource type="Script" uid="uid://bvdlog27flkul" path="res://Views/ControlSoundsView/ControlSoundsView.cs" id="1_3x8ja"]
+[ext_resource type="AudioStream" uid="uid://cfp4llpkmhinw" path="res://Sounds/Raw/sfx_button_hover_001.wav" id="1_wbowk"]
+[ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="2_3x8ja"]
+
+[node name="ControlSoundsView" type="Control" node_paths=PackedStringArray("SfxFocusEntered", "SfxButtonPressed", "SfxSliderValueChanged", "SfxTabSelected")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3x8ja")
+SfxFocusEntered = NodePath("control_focus_enter")
+SfxButtonPressed = NodePath("button_pressed")
+SfxSliderValueChanged = NodePath("button_pressed")
+SfxTabSelected = NodePath("control_focus_enter")
+
+[node name="control_focus_enter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_wbowk")
+max_polyphony = 3
+bus = &"SFX"
+
+[node name="button_pressed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3x8ja")
+max_polyphony = 3
+bus = &"SFX"

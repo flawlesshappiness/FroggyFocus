@@ -1,19 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4pnwbu2rai8l"]
+[gd_scene load_steps=11 format=3 uid="uid://b4pnwbu2rai8l"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_nl62a"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="1_uoqbv"]
 [ext_resource type="Script" uid="uid://1yv0302l5dfg" path="res://Prefabs/UI/RGBColor/AppearanceRGBColorControl.cs" id="2_nl62a"]
 [ext_resource type="Script" uid="uid://qcx2d6o18ka1" path="res://Modules/Node/HSliderScript.cs" id="4_c6orh"]
+[ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="6_wknu3"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nl62a"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mkc1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6orh"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13wuw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ipv4p"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f3w6b"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mgr8f"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ea12y"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wknu3"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qoqhs"]
 
 [node name="rgb_color_control" type="MarginContainer" node_paths=PackedStringArray("FocusButton", "Sliders", "Labels")]
 offset_right = 257.0
@@ -52,7 +53,7 @@ custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 text = "R"
 
-[node name="R" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer"]
+[node name="R" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer" groups=["Controls", "Sliders"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -75,7 +76,7 @@ custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 text = "G"
 
-[node name="G" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer2"]
+[node name="G" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer2" groups=["Controls", "Sliders"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -98,7 +99,7 @@ custom_minimum_size = Vector2(13, 0)
 layout_mode = 2
 text = "B"
 
-[node name="B" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer3"]
+[node name="B" type="HSlider" parent="MarginContainer/VboxContainer/HBoxContainer3" groups=["Controls", "Sliders"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -113,10 +114,10 @@ layout_mode = 2
 text = "255"
 horizontal_alignment = 2
 
-[node name="FocusButton" type="Button" parent="."]
+[node name="FocusButton" parent="." instance=ExtResource("6_wknu3")]
 layout_mode = 2
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_nl62a")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_c6orh")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ipv4p")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_mgr8f")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wknu3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8mkc1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_13wuw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_f3w6b")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ea12y")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qoqhs")

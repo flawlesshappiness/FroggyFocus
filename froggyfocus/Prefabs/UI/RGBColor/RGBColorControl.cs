@@ -87,9 +87,9 @@ public partial class RGBColorControl : MarginContainer
     public void Load(Color color)
     {
         is_loading = true;
-        var r = color.R * 255;
-        var g = color.G * 255;
-        var b = color.B * 255;
+        var r = (int)(color.R * 255);
+        var g = (int)(color.G * 255);
+        var b = (int)(color.B * 255);
         Sliders[0].Value = r;
         Sliders[1].Value = g;
         Sliders[2].Value = b;

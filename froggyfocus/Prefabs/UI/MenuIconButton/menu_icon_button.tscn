@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://byjcc0p66y3lu"]
+[gd_scene load_steps=5 format=3 uid="uid://byjcc0p66y3lu"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_orvnj"]
 [ext_resource type="Texture2D" uid="uid://rnr4g5bha2s0" path="res://Assets/KenneyNL/Cursor/Basic/cross_large.png" id="2_qdehy"]
 [ext_resource type="Script" uid="uid://bruf8d15skbpg" path="res://Prefabs/UI/MenuIconButton/MenuIconButton.cs" id="3_orvnj"]
-[ext_resource type="Resource" uid="uid://dgfd5f45fjde" path="res://Sounds/Resources/sfx_button_pressed.tres" id="4_6s1bh"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="5_qdehy"]
 
 [node name="MenuIconButton" type="Button" node_paths=PackedStringArray("FocusLabel")]
@@ -16,8 +15,6 @@ icon_alignment = 1
 expand_icon = true
 script = ExtResource("3_orvnj")
 FocusLabel = NodePath("VBoxContainer/MarginContainer/MarginContainer/Label")
-SfxFocusEnter = ExtResource("4_6s1bh")
-SfxPressed = ExtResource("4_6s1bh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
