@@ -20,7 +20,10 @@ public partial class ButtonScript : Button
 
     protected virtual void Button_MouseEnter()
     {
-        GrabFocus();
+        if (FocusMode == FocusModeEnum.All)
+        {
+            GrabFocus();
+        }
     }
 
     protected virtual void Button_MouseExit()

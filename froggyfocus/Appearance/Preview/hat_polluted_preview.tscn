@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0q85osej7ji1"]
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_q4aju"]
-[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="2_3heyv"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="2_3heyv"]
 [ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="3_hy8jf"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gpw81"]
@@ -25,11 +25,20 @@ surface_material_override/0 = ExtResource("2_3heyv")
 [node name="trash_paper" parent="Scale" instance=ExtResource("3_hy8jf")]
 transform = Transform3D(0.000884486, -0.00169888, -0.000575764, 0.00179355, 0.000848019, 0.000253045, 2.91838e-05, -0.000628239, 0.00189854, -0.00461088, -0.00186548, 0.00120255)
 
+[node name="paper" parent="Scale/trash_paper" index="0"]
+surface_material_override/0 = ExtResource("2_3heyv")
+
 [node name="trash_paper2" parent="Scale" instance=ExtResource("3_hy8jf")]
 transform = Transform3D(-0.00158372, -0.00122093, 3.41072e-05, 0.00121003, -0.00157597, -0.000228387, 0.000166298, -0.000160215, 0.00198662, -0.00187133, -0.00768522, 0.00116431)
 
+[node name="paper" parent="Scale/trash_paper2" index="0"]
+surface_material_override/0 = ExtResource("2_3heyv")
+
 [node name="trash_paper3" parent="Scale" instance=ExtResource("3_hy8jf")]
 transform = Transform3D(-0.00147696, 0.00134811, 3.41072e-05, -0.00134236, -0.00146489, -0.000228387, -0.000128964, -0.000191552, 0.00198662, 0.00375487, -0.00557999, 0.00130974)
+
+[node name="paper" parent="Scale/trash_paper3" index="0"]
+surface_material_override/0 = ExtResource("2_3heyv")
 
 [editable path="Scale/trash_paper"]
 [editable path="Scale/trash_paper2"]

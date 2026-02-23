@@ -129,5 +129,11 @@ public partial class CustomizeAppearanceControl : ControlScript
         {
             container.SetFocusMode(focus_mode);
         }
+
+        foreach (var control in ColorControls)
+        {
+            control.FocusButton.FocusMode = focus_mode;
+            control.FocusButton.Disabled = focus;
+        }
     }
 }

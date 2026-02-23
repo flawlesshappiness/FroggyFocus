@@ -12,7 +12,7 @@ curve = SubResource("Curve_w37ag")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a2goj"]
 emission_shape = 3
-emission_box_extents = Vector3(0.02, 0.02, 0.02)
+emission_box_extents = Vector3(0.01, 0.01, 0.01)
 direction = Vector3(0, 0, 1)
 spread = 0.0
 gravity = Vector3(0, -0.4, 0)
