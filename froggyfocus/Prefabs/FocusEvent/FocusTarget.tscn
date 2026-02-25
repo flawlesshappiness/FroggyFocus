@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=45 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="3_a4ffy"]
 [ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="3_leg0t"]
 [ext_resource type="AudioStream" uid="uid://chsmvnuk5ocu2" path="res://Sounds/Raw/sfx_mole_show_001.wav" id="4_mk5ib"]
+[ext_resource type="PackedScene" uid="uid://cey3ab7wyq26l" path="res://Prefabs/FocusEvent/focus_circle.tscn" id="4_rfid0"]
 [ext_resource type="AudioStream" uid="uid://t6fyf7iejqbk" path="res://Sounds/Raw/sfx_mole_show_002.wav" id="5_v23j6"]
 [ext_resource type="AudioStream" uid="uid://dva886cuu6ksw" path="res://Sounds/Raw/sfx_swish_001.wav" id="6_u4nem"]
 [ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="7_u4nem"]
@@ -530,13 +531,17 @@ shader_parameter/rim_color = Color(1, 1, 1, 1)
 shader_parameter/use_ramp = false
 shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
+shader_parameter/apply_wind = false
+shader_parameter/y_multiplier = 1.0
+shader_parameter/local_wind_scale = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_3etrv"]
 material = SubResource("ShaderMaterial_rfid0")
 
-[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("CharacterParent", "PsWaterRipples", "AnimationPlayer_Glow", "AnimationPlayer_Character")]
+[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("CharacterParent", "FocusCircle", "PsWaterRipples", "AnimationPlayer_Glow", "AnimationPlayer_Character")]
 script = ExtResource("1_hmctk")
 CharacterParent = NodePath("Anim/Parent")
+FocusCircle = NodePath("FocusCircle")
 PsWaterRipples = NodePath("PsWaterRipple")
 AnimationPlayer_Glow = NodePath("AnimationPlayer_Glow")
 AnimationPlayer_Character = NodePath("AnimationPlayer_Character")
@@ -548,6 +553,8 @@ SmokeDisappearEffect = ExtResource("2_nimdh")
 
 [node name="Beetle" parent="Anim/Parent" instance=ExtResource("3_leg0t")]
 visible = false
+
+[node name="FocusCircle" parent="." instance=ExtResource("4_rfid0")]
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

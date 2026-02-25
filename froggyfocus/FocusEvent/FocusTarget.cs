@@ -8,6 +8,9 @@ public partial class FocusTarget : Node3D
     public Node3D CharacterParent;
 
     [Export]
+    public FocusCircle FocusCircle;
+
+    [Export]
     public GpuParticles3D PsWaterRipples;
 
     [Export]
@@ -24,6 +27,9 @@ public partial class FocusTarget : Node3D
     public InventoryCharacterData CharacterData { get; private set; }
     public float Difficulty { get; private set; }
     public float Radius => CharacterData.Size * 0.5f;
+    public bool HasCursor { get; private set; }
+    public float FocusValue { get; private set; }
+    public float FocusMax { get; private set; }
 
     public float UpdatedMoveSpeed { get; private set; }
 
@@ -31,6 +37,22 @@ public partial class FocusTarget : Node3D
     private FocusEvent focus_event;
     private RandomNumberGenerator rng = new();
     private Curve3D move_curve = new();
+    private Coroutine state_cr;
+    private State state;
+    private float time_cursor_tick;
+
+    private enum State
+    {
+        Idle,
+        Moving,
+        Skillcheck,
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        Process_HasCursor();
+    }
 
     public void Initialize(FocusEvent focus_event)
     {
@@ -42,6 +64,7 @@ public partial class FocusTarget : Node3D
         CharacterData = data;
         Info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
         SetCharacter(Info);
+        UpdateFocusValue();
         UpdateSwimmer();
         UpdateDifficulty();
         UpdateMoveSpeed();
@@ -63,6 +86,13 @@ public partial class FocusTarget : Node3D
         Scale = Vector3.One * CharacterData.Size;
     }
 
+    private void UpdateFocusValue()
+    {
+        FocusCircle.SetFill(0);
+        FocusValue = 0f;
+        FocusMax = 100f;
+    }
+
     private void UpdateDifficulty()
     {
         Difficulty = Mathf.Clamp((CharacterData.Stars - 1) / 4f, 0, 1);
@@ -79,6 +109,99 @@ public partial class FocusTarget : Node3D
 
         Character.QueueFree();
         Character = null;
+    }
+
+    public void SetHasCursor(bool has_cursor)
+    {
+        HasCursor = has_cursor;
+        FocusCircle.SetEyeVisible(has_cursor);
+    }
+
+    private void Process_HasCursor()
+    {
+        if (GameTime.Time < time_cursor_tick) return;
+        time_cursor_tick += 0.2f;
+
+        if (HasCursor)
+        {
+            AdjustFocusValue(5.0f); // TODO: Based on upgrade
+            FocusCircle.AnimateBounce(FocusValue >= FocusMax);
+        }
+        else
+        {
+            AdjustFocusValue(-1.0f);
+        }
+
+        var t = Mathf.Clamp(FocusValue / FocusMax, 0f, 1f);
+        FocusCircle.SetFill(t);
+    }
+
+    private void AdjustFocusValue(float amount)
+    {
+        SetFocusValue(FocusValue + amount);
+    }
+
+    private void SetFocusValue(float value)
+    {
+        FocusValue = Mathf.Clamp(value, 0f, FocusMax);
+    }
+
+    public void StartState()
+    {
+        GlobalPosition = GetRandomPosition();
+        SetState(State.Moving);
+    }
+
+    private void SetState(State state)
+    {
+        this.state = state;
+        var e = GetStateCr(state);
+        state_cr = this.StartCoroutine(e, "state");
+    }
+
+    private IEnumerator GetStateCr(State state) => state switch
+    {
+        State.Idle => StateIdle(),
+        State.Moving => StateMoving(),
+        State.Skillcheck => StateSkillcheck(),
+    };
+
+    private IEnumerator StateIdle()
+    {
+        var duration = GetMoveDelay();
+        if (duration > 0)
+        {
+            StopMoving();
+            yield return new WaitForSeconds(duration);
+        }
+
+        SetState(State.Moving);
+    }
+
+    private IEnumerator StateMoving()
+    {
+        if (!Info.IsStationary)
+        {
+            yield return WaitForMoveToRandomPosition();
+        }
+
+        SetState(State.Skillcheck);
+    }
+
+    private IEnumerator StateSkillcheck()
+    {
+        /*
+            var has_override_skill_check = OverrideSkillCheck != null;
+            var has_skill_checks = Target.Info.SkillChecks?.Count > 0 || has_override_skill_check;
+            var is_skill_check = true || rng.Randf() < 0.5f;
+            if (has_skill_checks && is_skill_check)
+            {
+                Target.StopMoving();
+                yield return WaitForSkillCheck();
+            }
+        */
+        yield return null;
+        SetState(State.Idle);
     }
 
     public IEnumerator WaitForMoveToRandomPosition()

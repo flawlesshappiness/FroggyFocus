@@ -5,7 +5,7 @@ public partial class FocusSkillCheck_Dig : FocusSkillCheck
     public override void Clear()
     {
         base.Clear();
-        Target.ResetCharacterAnimation();
+        //Target.ResetCharacterAnimation();
     }
 
     protected override IEnumerator Run()

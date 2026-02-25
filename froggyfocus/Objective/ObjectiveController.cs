@@ -121,6 +121,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
 
     private void FocusEventCompleted(FocusEventCompletedResult result)
     {
+        /*
         var target = result.FocusEvent.Target;
         var info = result.FocusEvent.Target.Info;
         var any_complete = false;
@@ -146,6 +147,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
         }
 
         Data.Game.Save();
+        */
     }
 
     public bool IsAnyObjectiveComplete()

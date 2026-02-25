@@ -7,19 +7,13 @@ using System.Linq;
 public partial class FocusEvent : Node3D
 {
     [Export]
-    public string Id;
-
-    [Export]
-    public FocusEventInfo Info;
-
-    [Export]
     public Camera3D Camera;
 
     [Export]
     public FocusCursor Cursor;
 
     [Export]
-    public FocusTarget Target;
+    public PackedScene FocusTargetPrefab;
 
     [Export]
     public FrogCharacter Frog;
@@ -48,32 +42,52 @@ public partial class FocusEvent : Node3D
     [Export]
     public AudioStreamPlayer SfxSuspenseNormal_Fail;
 
-    public FocusCharacterInfo OverrideTargetInfo { get; set; }
-    public int? OverrideTargetStars { get; set; }
-
     public event Action<FocusEventCompletedResult> OnCompleted;
     public event Action<FocusEventFailedResult> OnFailed;
     public event Action OnStopped;
-    public event Action OnStarted;
     public event Action OnEnabled;
     public event Action OnDisabled;
 
+    public Settings CurrentSettings { get; private set; }
+    public List<FocusTarget> Targets { get; private set; } = new();
+
     private List<FocusSkillCheck> skill_checks = new();
+    private RandomNumberGenerator rng = new();
 
     private bool IsFastCutscene => Data.Options.CutsceneTypeIndex == 1;
     private bool EventStarted { get; set; }
     private bool EventEnabled { get; set; }
 
+    public class Settings
+    {
+        public string Id { get; set; }
+        public FocusEventInfo EventInfo => event_info ?? (event_info = GetEventInfo());
+        public FocusCharacterInfo OverrideTargetInfo { get; set; }
+        public int? OverrideTargetStars { get; set; }
+
+        private FocusEventInfo event_info;
+
+        private FocusEventInfo GetEventInfo()
+        {
+            var info = FocusEventController.Instance.GetInfo(Id);
+            if (info == null)
+            {
+                Debug.LogError($"FocusEvent.Settings: No FocusEventInfo found with id {Id}");
+            }
+
+            return info;
+        }
+
+        public FocusCharacterInfo GetRandomTargetInfo()
+        {
+            return OverrideTargetInfo ?? EventInfo.Characters.PickRandom();
+        }
+    }
+
     public override void _Ready()
     {
         base._Ready();
-        Cursor.OnFocusFilled += FocusFilled;
-        Cursor.OnFocusEmpty += FocusEmpty;
-        Cursor.OnFocusTarget += FocusTarget;
-        Cursor.Initialize(Target);
-
-        Target.Initialize(this);
-
+        InitializeCursor();
         InitializeSkillChecks();
     }
 
@@ -81,6 +95,14 @@ public partial class FocusEvent : Node3D
     {
         base._ExitTree();
         Player.SetAllLocks(nameof(FocusEvent), false);
+    }
+
+    private void InitializeCursor()
+    {
+        //Cursor.OnFocusFilled += FocusFilled;
+        //Cursor.OnFocusEmpty += FocusEmpty;
+        //Cursor.OnFocusTarget += FocusTarget;
+        Cursor.Initialize(this);
     }
 
     private void InitializeSkillChecks()
@@ -95,23 +117,54 @@ public partial class FocusEvent : Node3D
 
         if (PlayerInput.Pause.Released)
         {
-            EndEventPrematurely();
+            //EndEventPrematurely();
         }
     }
 
-    private void CreateTarget()
+    private FocusTarget CreateTarget()
     {
-        var info = OverrideTargetInfo ?? Info.GetRandomCharacter();
-        OverrideTargetInfo = null;
-
+        var info = CurrentSettings.GetRandomTargetInfo();
         var data = InventoryController.Instance.CreateCharacterData(info);
+        data.Stars = CurrentSettings.OverrideTargetStars ?? data.Stars;
 
-        data.Stars = OverrideTargetStars ?? data.Stars;
-        OverrideTargetStars = null;
+        var target = FocusTargetPrefab.Instantiate<FocusTarget>();
+        target.SetParent(this);
 
-        Target.GlobalPosition = GlobalPosition;
-        Target.SetData(data);
-        Target.Show();
+        target.GlobalPosition = GlobalPosition; // TODO: Random start position
+        target.SetData(data);
+        target.Show();
+        target.Initialize(this);
+
+        return target;
+    }
+
+    private void CreateTargets()
+    {
+        Targets.Clear();
+
+        var count = CurrentSettings.EventInfo.TargetCount.Range(rng.Randf());
+        for (int i = 0; i < count; i++)
+        {
+            var target = CreateTarget();
+            Targets.Add(target);
+        }
+    }
+
+    private void StartTargets()
+    {
+        foreach (var target in Targets)
+        {
+            target.StartState();
+        }
+    }
+
+    private void ResetSkillchecks()
+    {
+        skill_checks.ForEach(x =>
+        {
+            x.Clear();
+            x.ResetCooldown();
+        });
     }
 
     private void HijackCamera()
@@ -119,7 +172,41 @@ public partial class FocusEvent : Node3D
         Camera.Current = true;
     }
 
-    public virtual void StartEvent()
+    private void StartCursor()
+    {
+        Cursor.Load();
+        Cursor.Show();
+        Cursor.GlobalPosition = GlobalPosition;
+    }
+
+    public void StartEvent(Settings settings)
+    {
+        CurrentSettings = settings;
+        Player.SetAllLocks(nameof(FocusEvent), true);
+        CreateTargets();
+        //ResetSkillchecks();
+        TransitionToEvent();
+    }
+
+    private Coroutine TransitionToEvent()
+    {
+        return this.StartCoroutine(Cr, "transition");
+        IEnumerator Cr()
+        {
+            FocusIntroView.Instance.LoadTarget(Targets.First());
+            yield return FocusIntroView.Instance.AnimateShow();
+            Show();
+            StartCursor();
+            HijackCamera();
+            StartTargets();
+            yield return FocusIntroView.Instance.AnimateHide();
+            EventStarted = true;
+            FocusEventController.Instance.FocusEventStarted(this);
+        }
+    }
+
+    /*
+    public virtual void StartEvent_OLD()
     {
         // Disable player
         Player.SetAllLocks(nameof(FocusEvent), true);
@@ -134,11 +221,7 @@ public partial class FocusEvent : Node3D
             Frog.StartFacingPosition(GlobalPosition);
 
             // Clear skill checks
-            skill_checks.ForEach(x =>
-            {
-                x.Clear();
-                x.ResetCooldown();
-            });
+            ResetSkillchecks();
 
             // Transition start
             FocusIntroView.Instance.LoadTarget(Target);
@@ -163,13 +246,13 @@ public partial class FocusEvent : Node3D
 
             // Start
             EventStarted = true;
-            OnStarted?.Invoke();
             FocusEventController.Instance.FocusEventStarted(this);
             this.StartCoroutine(EventCr, "event")
                 .SetRunWhilePaused(true);
         }
     }
-
+    */
+    /*
     protected virtual void EndEvent(bool completed)
     {
         OnStopped?.Invoke();
@@ -319,22 +402,6 @@ public partial class FocusEvent : Node3D
         Frog.SetHandToPosition(Target.GlobalPosition);
     }
 
-    private Coroutine AnimatePlayerToPosition(Node3D node, float duration)
-    {
-        return this.StartCoroutine(Cr, nameof(AnimatePlayerToPosition));
-        IEnumerator Cr()
-        {
-            var player = Player.Instance;
-            var start = player.GlobalPosition;
-            var end = node.GlobalPosition;
-            yield return LerpEnumerator.Lerp01(duration, f =>
-            {
-                player.GlobalPosition = start.Lerp(end, f);
-                player.Character.StartFacingDirection(end.DirectionTo(Target.GlobalPosition));
-            });
-        }
-    }
-
     private IEnumerator WaitForCatchTarget()
     {
         Frog.SetHandsBack();
@@ -363,6 +430,7 @@ public partial class FocusEvent : Node3D
         yield return new WaitForSeconds(0.25f);
         Frog.SetMouthOpen(false);
     }
+    */
 
     private IEnumerator WaitForSuspense()
     {

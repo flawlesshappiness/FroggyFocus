@@ -68,7 +68,10 @@ public partial class EldritchTentacleObjective : Node3D
     public void Interact()
     {
         active_event = true;
-        FocusEvent.StartEvent();
+        FocusEvent.StartEvent(new FocusEvent.Settings
+        {
+            Id = "eldritch"
+        });
     }
 
     private void FocusEventCompleted(FocusEventCompletedResult result)

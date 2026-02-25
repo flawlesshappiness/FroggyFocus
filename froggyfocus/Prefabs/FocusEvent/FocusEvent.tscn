@@ -1,12 +1,10 @@
-[gd_scene load_steps=51 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=50 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
-[ext_resource type="Resource" uid="uid://b88llwje1ai5f" path="res://FocusEvent/Resources/Debug.tres" id="2_2i5pb"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
 [ext_resource type="PackedScene" uid="uid://c7v778qpl5v6w" path="res://Prefabs/FocusEvent/FocusTarget.tscn" id="3_2i5pb"]
 [ext_resource type="PackedScene" uid="uid://bc86o50qja4fn" path="res://Prefabs/FocusSkillChecks/bombs.tscn" id="6_dbk1m"]
 [ext_resource type="PackedScene" uid="uid://bjfec2tbico8w" path="res://Prefabs/FocusSkillChecks/dash.tscn" id="7_xhohg"]
-[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="7_yos1q"]
 [ext_resource type="PackedScene" uid="uid://bk1jnky7aenmk" path="res://Prefabs/FocusSkillChecks/dive.tscn" id="8_201f2"]
 [ext_resource type="PackedScene" uid="uid://bs35n1mp074rd" path="res://Prefabs/FocusSkillChecks/constrict.tscn" id="9_ixd7q"]
 [ext_resource type="PackedScene" uid="uid://duhs0m2x7kjpk" path="res://Prefabs/FocusSkillChecks/spike.tscn" id="10_4atv5"]
@@ -29,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://bbkdv22tcatiw" path="res://Prefabs/FocusSkillChecks/buzz.tscn" id="24_3q4gb"]
 [ext_resource type="PackedScene" uid="uid://cwlam1attaotg" path="res://Prefabs/FocusSkillChecks/stomp.tscn" id="25_8i2bm"]
 [ext_resource type="PackedScene" uid="uid://rum51macbtyh" path="res://Prefabs/FocusSkillChecks/dig.tscn" id="26_rqtj8"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="27_p01lx"]
 [ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="30_p01lx"]
 [ext_resource type="AudioStream" uid="uid://vna3rejmp4h5" path="res://Sounds/Raw/sfx_focus_suspense_001.wav" id="30_q0yhd"]
 [ext_resource type="AudioStream" uid="uid://dviibhxxdeppr" path="res://Sounds/Raw/sfx_focus_suspense_002.wav" id="31_8uab8"]
@@ -70,6 +69,9 @@ shader_parameter/rim_color = Color(1, 1, 1, 1)
 shader_parameter/use_ramp = false
 shader_parameter/use_borders = false
 shader_parameter/border_width = 0.01
+shader_parameter/apply_wind = false
+shader_parameter/y_multiplier = 1.0
+shader_parameter/local_wind_scale = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_7uk70"]
 material = SubResource("ShaderMaterial_rfid0")
@@ -84,12 +86,12 @@ top_radius = 3.0
 bottom_radius = 3.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ef5u0"]
-vertices = PackedVector3Array(-2.5, 0.5, -1.5, -2.5, 0.5, 1.5, 2.5, 0.5, 1.5, 2.5, 0.5, -1.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(0, 0.5, 1.75, 0, 0.5, 0.5, -0.5, 0.5, 0.5, -2.5, 0.5, 1.75, -0.5, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, -1.75, -2.5, 0.5, -1.75, 0.5, 0.5, 0.5, 2.5, 0.5, 1.75, 0.5, 0.5, -0.5, 2.5, 0.5, -1.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 7), PackedInt32Array(1, 8, 0), PackedInt32Array(0, 8, 9), PackedInt32Array(5, 6, 10), PackedInt32Array(10, 6, 11), PackedInt32Array(10, 11, 8), PackedInt32Array(8, 11, 9)]
 geometry_parsed_geometry_type = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4atv5"]
-size = Vector3(6, 1, 4)
+size = Vector3(6, 1, 4.5)
 
 [sub_resource type="Animation" id="Animation_rqtj8"]
 length = 0.001
@@ -144,6 +146,21 @@ _data = {
 &"zoom_out": SubResource("Animation_q0yhd")
 }
 
+[sub_resource type="Animation" id="Animation_4nfkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParticleSystems/PsFrogSweating:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_p01lx"]
 resource_name = "scared"
 length = 0.25
@@ -160,34 +177,18 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_4nfkp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ParticleSystems/PsFrogSweating:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u0w0c"]
 _data = {
 &"RESET": SubResource("Animation_4nfkp"),
 &"scared": SubResource("Animation_p01lx")
 }
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Target", "Frog", "SkillCheckParent", "AnimationPlayer_Camera", "AnimationPlayer_Frog", "SfxSuspenseNormal_Start", "SfxSuspenseFast_Start", "SfxSuspenseNormal_Success", "SfxSuspenseNormal_Fail")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Frog", "SkillCheckParent", "AnimationPlayer_Camera", "AnimationPlayer_Frog", "SfxSuspenseNormal_Start", "SfxSuspenseFast_Start", "SfxSuspenseNormal_Success", "SfxSuspenseNormal_Fail")]
 script = ExtResource("1_p778c")
-Info = ExtResource("2_2i5pb")
 Camera = NodePath("Camera3D")
 Cursor = NodePath("FocusCursor")
-Target = NodePath("FocusTarget")
-Frog = NodePath("Frog")
+FocusTargetPrefab = ExtResource("3_2i5pb")
+Frog = NodePath("FrogCute")
 SkillCheckParent = NodePath("SkillChecks")
 AnimationPlayer_Camera = NodePath("AnimationPlayer_Camera")
 AnimationPlayer_Frog = NodePath("AnimationPlayer_Frog")
@@ -200,8 +201,6 @@ SfxSuspenseNormal_Fail = NodePath("SfxSuspenseNormal_Fail")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5, 0)
 
 [node name="FocusCursor" parent="." instance=ExtResource("2_tceec")]
-
-[node name="FocusTarget" parent="." instance=ExtResource("3_2i5pb")]
 
 [node name="SkillChecks" type="Node3D" parent="."]
 
@@ -249,8 +248,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5
 
 [node name="Dig" parent="SkillChecks" instance=ExtResource("26_rqtj8")]
 
-[node name="Frog" parent="." instance=ExtResource("7_yos1q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+[node name="FrogCute" parent="." instance=ExtResource("27_p01lx")]
 
 [node name="ParticleSystems" type="Node3D" parent="."]
 
@@ -282,6 +280,12 @@ navigation_mesh = SubResource("NavigationMesh_ef5u0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_4atv5")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.133745, 0)
+vertices = PackedVector3Array(0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
 
 [node name="AnimationPlayer_Camera" type="AnimationPlayer" parent="."]
 libraries = {

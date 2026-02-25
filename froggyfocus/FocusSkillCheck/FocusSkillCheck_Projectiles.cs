@@ -103,7 +103,7 @@ public partial class FocusSkillCheck_Projectiles : FocusSkillCheck
     {
         yield return base.Run();
 
-        FocusEvent.Target.Hide();
+        Target.Hide();
 
         var count = 2;
         var deg_offset = rng.RandfRange(0f, 360f);
@@ -126,8 +126,8 @@ public partial class FocusSkillCheck_Projectiles : FocusSkillCheck
             yield return group.Coroutine;
         }
 
-        FocusEvent.Target.GlobalPosition = groups.Random().CurrentPosition;
-        FocusEvent.Target.Show();
+        Target.GlobalPosition = groups.Random().CurrentPosition;
+        Target.Show();
     }
 
     private void OnGroupSuccess()
@@ -164,7 +164,7 @@ public partial class FocusSkillCheck_Projectiles : FocusSkillCheck
 
     private Node3D CreateMover()
     {
-        var mover = FocusEvent.Target.Info.Scene.Instantiate<FocusCharacter>();
+        var mover = Target.Info.Scene.Instantiate<FocusCharacter>();
         mover.SetParent(this);
         mover.Show();
         return mover;

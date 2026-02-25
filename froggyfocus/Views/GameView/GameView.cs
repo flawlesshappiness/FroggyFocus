@@ -55,19 +55,6 @@ public partial class GameView : View
         PauseView.Instance.OnViewShow += PauseViewShow;
     }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        Process_ShieldBar();
-    }
-
-    private void Process_ShieldBar()
-    {
-        if (current_focus_event == null) return;
-
-        ShieldBar.Value = current_focus_event.Cursor.ShieldPercentage;
-    }
-
     public void SetFocusEventControlsVisible(bool visible)
     {
         ShieldBar.Visible = visible;

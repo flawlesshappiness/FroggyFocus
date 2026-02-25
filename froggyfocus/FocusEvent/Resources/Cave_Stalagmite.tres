@@ -7,5 +7,7 @@
 
 [resource]
 script = ExtResource("2_ho03u")
+Id = "cave_land"
+TargetCount = Vector2i(0, 0)
 Characters = Array[Object]([ExtResource("1_4qcai"), ExtResource("2_cdjgg"), ExtResource("3_d2b0t")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"

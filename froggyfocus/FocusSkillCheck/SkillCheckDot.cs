@@ -33,13 +33,14 @@ public partial class SkillCheckDot : Node3D
     public class Settings
     {
         public FocusEvent FocusEvent { get; set; }
+        public FocusTarget Target { get; set; }
     }
 
     public Coroutine StartDot(Settings settings)
     {
         IsRunning = true;
         this.settings = settings;
-        var duration = Duration.Range(settings.FocusEvent.Target.Difficulty);
+        var duration = Duration.Range(settings.Target.Difficulty);
         return this.StartCoroutine(Cr, "dot");
 
         IEnumerator Cr()

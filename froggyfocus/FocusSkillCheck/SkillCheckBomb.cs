@@ -67,7 +67,7 @@ public partial class SkillCheckBomb : Node3D
             PlayExplodePS();
 
             projectile = SpawnProjectile();
-            yield return projectile.StartProjectile(new SkillCheckProjectile.Settings { FocusEvent = focus_event });
+            //yield return projectile.StartProjectile(new SkillCheckProjectile.Settings { SkillCheck = this });
 
             while (!projectile.IsHit)
             {

@@ -18,13 +18,12 @@ public partial class FocusSkillCheck_Stomp : FocusSkillCheck
     [Export]
     public AnimationPlayer AnimationPlayer;
 
-    private FocusCursor Cursor => FocusEvent.Cursor;
     private bool NearCursor => Target.GlobalPosition.DistanceTo(Cursor.GlobalPosition) < Cursor.Radius + Radius;
 
     public override void Clear()
     {
         base.Clear();
-        Target.SetParent(FocusEvent);
+        //Target.SetParent(FocusEvent);
     }
 
     protected override void Stop()

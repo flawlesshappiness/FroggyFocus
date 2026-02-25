@@ -5,13 +5,11 @@ using Godot.Collections;
 public partial class FocusEventInfo : Resource
 {
     [Export]
-    public FocusCharacterInfo OverrideCharacter;
+    public string Id;
+
+    [Export]
+    public Vector2I TargetCount;
 
     [Export]
     public Array<FocusCharacterInfo> Characters;
-
-    public FocusCharacterInfo GetRandomCharacter()
-    {
-        return OverrideCharacter ?? Characters.PickRandom();
-    }
 }
