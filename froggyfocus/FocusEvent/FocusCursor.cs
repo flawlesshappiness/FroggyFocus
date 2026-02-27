@@ -7,6 +7,12 @@ public partial class FocusCursor : Node3D
     [Export]
     public Node3D RadiusNode;
 
+    [Export]
+    public AudioStreamPlayer SfxFocusStart;
+
+    [Export]
+    public AudioStreamPlayer SfxFocusEnd;
+
     public float Radius { get; private set; }
     private Vector3 DesiredVelocity { get; set; }
     private FocusEvent FocusEvent { get; set; }
@@ -20,13 +26,11 @@ public partial class FocusCursor : Node3D
 
     public event Action OnFocusStarted;
     public event Action OnFocusStopped;
-    public event Action OnFocusTarget;
-    public event Action OnFocusTargetEnter;
-    public event Action OnFocusTargetExit;
-    public event Action OnFocusFilled;
-    public event Action OnFocusEmpty;
     public event Action OnMoveStarted;
     public event Action OnMoveEnded;
+
+    public event Action<FocusTarget> OnTarget;
+    public event Action<FocusTarget> OnTargetReleased;
 
     public void Initialize(FocusEvent focus_event)
     {
@@ -52,6 +56,11 @@ public partial class FocusCursor : Node3D
         FocusTickAmount = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickAmount);
         FocusTickDecay = UpgradeController.Instance.GetCurrentValue(UpgradeType.CursorTickDecay);
         */
+    }
+
+    public void Stop()
+    {
+        EndFocusTarget();
     }
 
     public override void _Process(double delta)
@@ -106,6 +115,8 @@ public partial class FocusCursor : Node3D
 
     private void StartFocusTarget()
     {
+        if (!FocusEvent.IsRunning) return;
+        if (MoveLock.IsLocked) return;
         if (current_target != null) return;
 
         var target = GetNearTarget();
@@ -114,16 +125,25 @@ public partial class FocusCursor : Node3D
         current_target = target;
         current_target.SetHasCursor(true);
         Hide();
+
+        SfxFocusStart.Play();
+
+        OnTarget?.Invoke(current_target);
     }
 
     private void EndFocusTarget()
     {
         if (current_target == null) return;
+        var target = current_target;
+        current_target = null;
 
         Show();
-        GlobalPosition = current_target.GlobalPosition;
-        current_target.SetHasCursor(false);
-        current_target = null;
+        GlobalPosition = target.GlobalPosition;
+        target.SetHasCursor(false);
+
+        SfxFocusEnd.Play();
+
+        OnTargetReleased?.Invoke(target);
     }
 
     private void Process_Target()
@@ -150,7 +170,10 @@ public partial class FocusCursor : Node3D
 
     private FocusTarget GetNearTarget()
     {
-        return FocusEvent.Targets.FirstOrDefault(x => x.GlobalPosition.DistanceTo(GlobalPosition) < Radius);
+        return FocusEvent.Targets
+            .Where(x => x.GlobalPosition.DistanceTo(GlobalPosition) < Radius && !x.IsFocusMax)
+            .OrderBy(x => x.GlobalPosition.DistanceTo(GlobalPosition))
+            .FirstOrDefault();
     }
 
     public bool IsNearTarget()

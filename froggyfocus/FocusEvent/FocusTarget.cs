@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 using System.Linq;
 
@@ -30,8 +31,11 @@ public partial class FocusTarget : Node3D
     public bool HasCursor { get; private set; }
     public float FocusValue { get; private set; }
     public float FocusMax { get; private set; }
-
+    public bool IsFocusMax { get; private set; }
+    public bool IsCaught { get; private set; }
     public float UpdatedMoveSpeed { get; private set; }
+
+    public event Action OnCaught;
 
     private bool glow_visible;
     private FocusEvent focus_event;
@@ -40,6 +44,8 @@ public partial class FocusTarget : Node3D
     private Coroutine state_cr;
     private State state;
     private float time_cursor_tick;
+
+    private const float TICK_TIME = 0.2f;
 
     private enum State
     {
@@ -113,6 +119,7 @@ public partial class FocusTarget : Node3D
 
     public void SetHasCursor(bool has_cursor)
     {
+        time_cursor_tick = GameTime.Time + TICK_TIME;
         HasCursor = has_cursor;
         FocusCircle.SetEyeVisible(has_cursor);
     }
@@ -120,20 +127,24 @@ public partial class FocusTarget : Node3D
     private void Process_HasCursor()
     {
         if (GameTime.Time < time_cursor_tick) return;
-        time_cursor_tick += 0.2f;
+        time_cursor_tick += TICK_TIME;
 
         if (HasCursor)
         {
             AdjustFocusValue(5.0f); // TODO: Based on upgrade
             FocusCircle.AnimateBounce(FocusValue >= FocusMax);
         }
-        else
+        else if (!IsFocusMax)
         {
             AdjustFocusValue(-1.0f);
         }
 
-        var t = Mathf.Clamp(FocusValue / FocusMax, 0f, 1f);
-        FocusCircle.SetFill(t);
+        if (!IsFocusMax)
+        {
+            var t = Mathf.Clamp(FocusValue / FocusMax, 0f, 1f);
+            IsFocusMax = t >= 1.0f;
+            FocusCircle.SetFill(t);
+        }
     }
 
     private void AdjustFocusValue(float amount)
@@ -146,10 +157,20 @@ public partial class FocusTarget : Node3D
         FocusValue = Mathf.Clamp(value, 0f, FocusMax);
     }
 
+    public void Caught()
+    {
+        IsCaught = true;
+        OnCaught?.Invoke();
+    }
+
     public void StartState()
     {
-        GlobalPosition = GetRandomPosition();
         SetState(State.Moving);
+    }
+
+    public void StopState()
+    {
+        Coroutine.Stop(state_cr);
     }
 
     private void SetState(State state)
@@ -273,8 +294,8 @@ public partial class FocusTarget : Node3D
     public Vector3 GetRandomPosition()
     {
         var center = focus_event.GlobalPosition;
-        var rx = 4;
-        var rz = 2;
+        var rx = focus_event.Size.X;
+        var rz = focus_event.Size.Y;
         var x = rng.RandfRange(-rx, rx);
         var z = rng.RandfRange(-rz, rz);
         var position = center + new Vector3(x, 0, z);
@@ -357,6 +378,11 @@ public partial class FocusTarget : Node3D
     public void ResetGlow()
     {
         AnimationPlayer_Glow.Play("RESET");
+    }
+
+    public void HideGlow()
+    {
+        AnimationPlayer_Glow.Play("hide");
     }
 
     public void ResetCharacterAnimation()

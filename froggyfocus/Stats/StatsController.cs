@@ -1,3 +1,4 @@
+using Godot;
 using System.Linq;
 
 public partial class StatsController : SingletonController
@@ -8,7 +9,7 @@ public partial class StatsController : SingletonController
     protected override void Initialize()
     {
         base.Initialize();
-        FocusEventController.Instance.OnFocusEventCompleted += FocusEventCompleted;
+        FocusEventController.Instance.OnFocusEventEnded += FocusEventCompleted;
         RegisterDebugActions();
     }
 
@@ -92,21 +93,24 @@ public partial class StatsController : SingletonController
         return character;
     }
 
-    private void FocusEventCompleted(FocusEventCompletedResult result)
+    private void FocusEventCompleted(FocusEventResult result)
     {
-        /*
-        var info = result.FocusEvent.Target.Info;
-        var data = result.FocusEvent.Target.CharacterData;
-        var stats = GetOrCreateCharacterData(info.ResourcePath);
-        stats.CountCaught++;
-        stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
+        var targets = result.FocusEvent.Targets.Where(x => x.IsCaught);
 
-        var v_info = FocusCharacterController.Instance.Collection.Resources.FirstOrDefault(x => x.Name == result.FocusEvent.Target.Info.Variation);
-        if (v_info == info) return;
+        foreach (var target in result.FocusEvent.Targets)
+        {
+            var info = target.Info;
+            var data = target.CharacterData;
+            var stats = GetOrCreateCharacterData(info.ResourcePath);
+            stats.CountCaught++;
+            stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
 
-        var v_stats = GetOrCreateCharacterData(v_info.ResourcePath);
-        v_stats.CountCaught++;
-        v_stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
-        */
+            var v_info = FocusCharacterController.Instance.Collection.Resources.FirstOrDefault(x => x.Name == target.Info.Variation);
+            if (v_info == info) return;
+
+            var v_stats = GetOrCreateCharacterData(v_info.ResourcePath);
+            v_stats.CountCaught++;
+            v_stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
+        }
     }
 }

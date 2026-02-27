@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=49 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
@@ -28,10 +28,14 @@
 [ext_resource type="PackedScene" uid="uid://cwlam1attaotg" path="res://Prefabs/FocusSkillChecks/stomp.tscn" id="25_8i2bm"]
 [ext_resource type="PackedScene" uid="uid://rum51macbtyh" path="res://Prefabs/FocusSkillChecks/dig.tscn" id="26_rqtj8"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="27_p01lx"]
+[ext_resource type="PackedScene" uid="uid://cb8q4quglh4xu" path="res://Prefabs/FocusEventBackground/swamp_land.tscn" id="30_4nfkp"]
 [ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="30_p01lx"]
 [ext_resource type="AudioStream" uid="uid://vna3rejmp4h5" path="res://Sounds/Raw/sfx_focus_suspense_001.wav" id="30_q0yhd"]
+[ext_resource type="PackedScene" uid="uid://3my6iuqyk6l0" path="res://Prefabs/FocusEventBackground/swamp_lilypads.tscn" id="31_4nfkp"]
 [ext_resource type="AudioStream" uid="uid://dviibhxxdeppr" path="res://Sounds/Raw/sfx_focus_suspense_002.wav" id="31_8uab8"]
 [ext_resource type="AudioStream" uid="uid://cxgx3x5mieqwe" path="res://Sounds/Raw/sfx_focus_suspense_003.wav" id="31_vaemt"]
+[ext_resource type="PackedScene" uid="uid://guslwpuh5hsm" path="res://Prefabs/FocusEventBackground/swamp_mushroom.tscn" id="32_u0w0c"]
+[ext_resource type="PackedScene" uid="uid://chwsteqk4rmet" path="res://Prefabs/FocusEventBackground/swamp_woods.tscn" id="33_7uk70"]
 [ext_resource type="AudioStream" uid="uid://ckrqbl4voqiay" path="res://Sounds/Raw/sfx_focus_suspense_004.wav" id="33_p01lx"]
 
 [sub_resource type="Curve" id="Curve_4nfkp"]
@@ -76,75 +80,16 @@ shader_parameter/local_wind_scale = 1.0
 [sub_resource type="SphereMesh" id="SphereMesh_7uk70"]
 material = SubResource("ShaderMaterial_rfid0")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pin3"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.180392)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_4atv5"]
-material = SubResource("StandardMaterial3D_1pin3")
-top_radius = 3.0
-bottom_radius = 3.0
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_ef5u0"]
-vertices = PackedVector3Array(0, 0.5, 1.75, 0, 0.5, 0.5, -0.5, 0.5, 0.5, -2.5, 0.5, 1.75, -0.5, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, -1.75, -2.5, 0.5, -1.75, 0.5, 0.5, 0.5, 2.5, 0.5, 1.75, 0.5, 0.5, -0.5, 2.5, 0.5, -1.75)
+vertices = PackedVector3Array(0, 0.5, 3.5, 0, 0.5, 0.5, -0.5, 0.5, 0.5, -4.5, 0.5, 3.5, -0.5, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, -3.5, -4.5, 0.5, -3.5, 0.5, 0.5, 0.5, 4.5, 0.5, 3.5, 0.5, 0.5, -0.5, 4.5, 0.5, -3.5)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 7), PackedInt32Array(1, 8, 0), PackedInt32Array(0, 8, 9), PackedInt32Array(5, 6, 10), PackedInt32Array(10, 6, 11), PackedInt32Array(10, 11, 8), PackedInt32Array(8, 11, 9)]
 geometry_parsed_geometry_type = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4atv5"]
-size = Vector3(6, 1, 4.5)
+size = Vector3(10, 1, 8)
 
-[sub_resource type="Animation" id="Animation_rqtj8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.5, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_8i2bm"]
-resource_name = "slow_zoom"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 3.5, 0), Vector3(0, 3.25, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_q0yhd"]
-resource_name = "zoom_out"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 3.25, 0), Vector3(0, 3.5, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0yhd"]
-_data = {
-&"RESET": SubResource("Animation_rqtj8"),
-&"zoom_in": SubResource("Animation_8i2bm"),
-&"zoom_out": SubResource("Animation_q0yhd")
-}
+[sub_resource type="PlaneMesh" id="PlaneMesh_vaemt"]
+size = Vector2(10, 8)
 
 [sub_resource type="Animation" id="Animation_4nfkp"]
 length = 0.001
@@ -183,22 +128,26 @@ _data = {
 &"scared": SubResource("Animation_p01lx")
 }
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "Frog", "SkillCheckParent", "AnimationPlayer_Camera", "AnimationPlayer_Frog", "SfxSuspenseNormal_Start", "SfxSuspenseFast_Start", "SfxSuspenseNormal_Success", "SfxSuspenseNormal_Fail")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "Cursor", "CursorStart", "Frog", "SkillCheckParent", "AnimationPlayer_Frog", "SfxSuspenseNormal_Start", "SfxSuspenseFast_Start", "SfxSuspenseNormal_Success", "SfxSuspenseNormal_Fail")]
 script = ExtResource("1_p778c")
+Size = Vector2(10, 8)
 Camera = NodePath("Camera3D")
 Cursor = NodePath("FocusCursor")
+CursorStart = NodePath("CursorStart")
 FocusTargetPrefab = ExtResource("3_2i5pb")
 Frog = NodePath("FrogCute")
 SkillCheckParent = NodePath("SkillChecks")
-AnimationPlayer_Camera = NodePath("AnimationPlayer_Camera")
 AnimationPlayer_Frog = NodePath("AnimationPlayer_Frog")
 SfxSuspenseNormal_Start = NodePath("SfxSuspenseNormal_Start")
 SfxSuspenseFast_Start = NodePath("SfxSuspenseFast_Start")
 SfxSuspenseNormal_Success = NodePath("SfxSuspenseNormal_Success")
 SfxSuspenseNormal_Fail = NodePath("SfxSuspenseNormal_Fail")
 
+[node name="CursorStart" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.92974)
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.5, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
 
 [node name="FocusCursor" parent="." instance=ExtResource("2_tceec")]
 
@@ -267,10 +216,19 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_u0w0c")
 draw_pass_1 = SubResource("SphereMesh_7uk70")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="Backgrounds" type="Node3D" parent="."]
+
+[node name="swamp_land" parent="Backgrounds" instance=ExtResource("30_4nfkp")]
 visible = false
-mesh = SubResource("CylinderMesh_4atv5")
+
+[node name="swamp_lilypads" parent="Backgrounds" instance=ExtResource("31_4nfkp")]
+visible = false
+
+[node name="swamp_mushroom" parent="Backgrounds" instance=ExtResource("32_u0w0c")]
+visible = false
+
+[node name="swamp_woods" parent="Backgrounds" instance=ExtResource("33_7uk70")]
+visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ef5u0")
@@ -281,17 +239,16 @@ navigation_mesh = SubResource("NavigationMesh_ef5u0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_4atv5")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0450282, 0)
+visible = false
+mesh = SubResource("PlaneMesh_vaemt")
+
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.133745, 0)
 vertices = PackedVector3Array(0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
-
-[node name="AnimationPlayer_Camera" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_q0yhd")
-}
-playback_default_blend_time = 0.1
 
 [node name="AnimationPlayer_Frog" type="AnimationPlayer" parent="."]
 libraries = {

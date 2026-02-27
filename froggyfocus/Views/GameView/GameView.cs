@@ -16,9 +16,6 @@ public partial class GameView : View
     public TwoButtonPopup TwoButtonPopup;
 
     [Export]
-    public ProgressBar ShieldBar;
-
-    [Export]
     public AnimationPlayer AnimationPlayer_Quests;
 
     [Export]
@@ -41,23 +38,15 @@ public partial class GameView : View
         base._Ready();
 
         FocusEventController.Instance.OnFocusEventStarted += FocusEventStarted;
-        FocusEventController.Instance.OnFocusEventCompleted += _ => FocusEventEnded();
-        FocusEventController.Instance.OnFocusEventFailed += _ => FocusEventEnded();
+        FocusEventController.Instance.OnFocusEventEnded += _ => FocusEventEnded();
         MainQuestController.Instance.OnAnyQuestAdvanced += AnyQuestAdvanced;
         Money.OnMoneyChanged += MoneyChanged;
-
-        SetFocusEventControlsVisible(false);
     }
 
     protected override void Initialize()
     {
         base.Initialize();
         PauseView.Instance.OnViewShow += PauseViewShow;
-    }
-
-    public void SetFocusEventControlsVisible(bool visible)
-    {
-        ShieldBar.Visible = visible;
     }
 
     private void FocusEventStarted(FocusEvent e)

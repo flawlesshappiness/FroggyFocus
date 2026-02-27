@@ -376,6 +376,8 @@ public partial class Player : TopDownController
         if (!GameScene.Instance.HasFocusEvent()) return;
         if (!GameScene.Instance.HasFocusEventTargets()) return;
 
+        Character.SetSearching(true);
+
         var rng = new RandomNumberGenerator();
         cr_look_focus_target = this.StartCoroutine(Cr, "focus_target");
         IEnumerator Cr()
@@ -409,6 +411,8 @@ public partial class Player : TopDownController
         if (cr_look_focus_target == null) return;
         if (!GameScene.Instance.HasFocusEvent()) return;
         if (!GameScene.Instance.HasFocusEventTargets()) return;
+
+        Character.SetSearching(false);
 
         Coroutine.Stop(cr_look_focus_target);
         cr_look_focus_target = null;

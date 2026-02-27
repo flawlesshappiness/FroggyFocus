@@ -27,9 +27,8 @@ public partial class FocusSkillCheck : Node3D
     public virtual void Initialize(FocusEvent focus_event)
     {
         FocusEvent = focus_event;
-        FocusEvent.OnCompleted += _ => Clear();
-        FocusEvent.OnFailed += _ => Clear();
-        FocusEvent.OnStopped += () => Stop();
+        //FocusEvent.OnEnded += _ => Clear();
+        //FocusEvent.OnStopped += () => Stop();
     }
 
     public virtual void Clear()

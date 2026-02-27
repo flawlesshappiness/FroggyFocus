@@ -1,7 +1,6 @@
-[gd_scene load_steps=50 format=3 uid="uid://1fq5vb2vmge2"]
+[gd_scene load_steps=47 format=3 uid="uid://1fq5vb2vmge2"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_mjor8"]
-[ext_resource type="Resource" uid="uid://clyygqpwfqi2h" path="res://Sounds/Resources/sfx_swallow.tres" id="2_i40vi"]
 [ext_resource type="PackedScene" uid="uid://kbio5754ibiy" path="res://Assets/FlawLizArt/Characters/Frog_Cute/frog_cute.fbx" id="3_nfx8u"]
 [ext_resource type="Script" uid="uid://bh70kviwhy4x4" path="res://Appearance/AppearanceAttachmentGroup.cs" id="4_6q0t7"]
 [ext_resource type="PackedScene" uid="uid://n068dxjwbk4n" path="res://Appearance/Attachments/crown.tscn" id="5_mjxwm"]
@@ -38,30 +37,21 @@
 [ext_resource type="PackedScene" uid="uid://ddd347yst40yt" path="res://Appearance/Attachments/particles_hearts.tscn" id="42_vgclg"]
 [ext_resource type="PackedScene" uid="uid://cp8mhu2m3u6g4" path="res://Appearance/Attachments/particles_bubbles.tscn" id="43_hhhs5"]
 [ext_resource type="PackedScene" uid="uid://8i1okmguvft2" path="res://Appearance/Attachments/particles_eyes.tscn" id="44_tnjrl"]
+[ext_resource type="PackedScene" uid="uid://b8q6cqe5wp2e1" path="res://Prefabs/Objects/frog_tongue.tscn" id="45_am06j"]
 [ext_resource type="PackedScene" uid="uid://dr0be48ijgwb8" path="res://Appearance/Attachments/particles_water.tscn" id="45_ht4c0"]
 [ext_resource type="PackedScene" uid="uid://8bnblf80wnws" path="res://Appearance/Attachments/particles_leaves.tscn" id="46_gdmi5"]
 [ext_resource type="PackedScene" uid="uid://bj2l6kqa3ibch" path="res://Appearance/Attachments/particles_money.tscn" id="47_gty1n"]
 [ext_resource type="PackedScene" uid="uid://cxtf7ngu24n84" path="res://Appearance/Attachments/particles_stars.tscn" id="48_v21xf"]
 [ext_resource type="PackedScene" uid="uid://dtcsewnq52mof" path="res://Appearance/Attachments/particles_sandy.tscn" id="49_vyagh"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="50_0gbed"]
-[ext_resource type="PackedScene" uid="uid://dmlnvb2o65uy1" path="res://Assets/FlawLizArt/Frog/tongue.fbx" id="51_oaoqd"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="57_7y2xd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_m850p"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_81ysc"]
-size = Vector3(0.15, 0.05, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c7gfj"]
-albedo_color = Color(0.6, 0.402, 0.402, 1)
-
-[node name="FrogCute" type="Node3D" node_paths=PackedStringArray("Tongue", "TongueTargetMarker", "TongueStartMarker", "Animation", "MoveSounds", "BodyMesh", "HatAttachments", "FaceAttachments", "ParticlesAttachments")]
+[node name="FrogCute" type="Node3D" node_paths=PackedStringArray("Tongue", "Animation", "MoveSounds", "BodyMesh", "HatAttachments", "FaceAttachments", "ParticlesAttachments")]
 script = ExtResource("1_mjor8")
 Tongue = NodePath("Tongue")
-TongueTargetMarker = NodePath("Tongue/TongueTargetMarker")
-TongueStartMarker = NodePath("TongueStartMarker")
 Animation = NodePath("AnimationStateMachine")
-SfxSwallow = ExtResource("2_i40vi")
 MoveSounds = NodePath("PlayerMoveSoundsGroup")
 BodyMesh = NodePath("frog_cute/Armature/Skeleton3D/body")
 HatAttachments = NodePath("frog_cute/Armature/Skeleton3D/HatAttachmentGroup")
@@ -120,10 +110,14 @@ bones/21/scale = Vector3(1, 1, 1)
 bones/22/position = Vector3(3.66092e-10, 0.00119806, -1.53666e-10)
 bones/22/rotation = Quaternion(0.0504764, 0.00933311, -0.126859, 0.990592)
 bones/22/scale = Vector3(1, 1, 1)
+bones/24/position = Vector3(0.0049072, -0.000721394, 0.000192849)
 bones/24/rotation = Quaternion(0.00431191, 0.232923, -0.0179997, 0.972319)
 bones/24/scale = Vector3(1, 1, 1)
+bones/26/position = Vector3(0.00532999, 0.00326517, 0.000475276)
 bones/26/rotation = Quaternion(0.00884065, 0.0561205, -0.15536, 0.986223)
+bones/28/position = Vector3(-0.00532999, 0.00326517, 0.000475276)
 bones/28/rotation = Quaternion(0.00884065, -0.0561205, 0.15536, 0.986223)
+bones/30/position = Vector3(-0.0049072, -0.000721394, 0.000192849)
 bones/30/rotation = Quaternion(0.00431191, -0.232923, 0.0179997, 0.972319)
 bones/30/scale = Vector3(1, 1, 1)
 
@@ -395,25 +389,8 @@ script = ExtResource("50_0gbed")
 Animator = NodePath("../frog_cute/AnimationPlayer")
 metadata/_custom_type_script = "uid://ckv4mr7osps52"
 
-[node name="TongueStartMarker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70299e-07, 0.478981, -0.58676)
-
-[node name="Tongue" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96047e-08, 0.313384, -0.541548)
-visible = false
-
-[node name="Tongue_Mesh" type="MeshInstance3D" parent="Tongue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
-visible = false
-mesh = SubResource("BoxMesh_81ysc")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_c7gfj")
-
-[node name="TongueTargetMarker" type="Marker3D" parent="Tongue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="tongue" parent="Tongue" instance=ExtResource("51_oaoqd")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.5)
+[node name="Tongue" parent="." instance=ExtResource("45_am06j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96047e-08, 0.38217, -0.504603)
 
 [node name="PlayerMoveSoundsGroup" parent="." instance=ExtResource("57_7y2xd")]
 

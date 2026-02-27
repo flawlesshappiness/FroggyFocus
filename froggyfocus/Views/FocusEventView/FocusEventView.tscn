@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cihueqye8hd4b"]
+
+[ext_resource type="Script" uid="uid://bxkqwg5ht2ro7" path="res://Views/FocusEventView/FocusEventView.cs" id="1_i3ks8"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_vpq2w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wygtd"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 2
+corner_radius_top_right = 16
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwilq"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 16
+corner_radius_bottom_left = 2
+
+[node name="FocusEventView" type="Control" node_paths=PackedStringArray("TimerBar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i3ks8")
+TimerBar = NodePath("Timer/VBoxContainer/TimerBar")
+
+[node name="Timer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Timer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TimerBar" type="ProgressBar" parent="Timer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme = ExtResource("2_vpq2w")
+theme_override_styles/background = SubResource("StyleBoxFlat_wygtd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pwilq")
+max_value = 1.0
+step = 0.001
+value = 1.0
+show_percentage = false
