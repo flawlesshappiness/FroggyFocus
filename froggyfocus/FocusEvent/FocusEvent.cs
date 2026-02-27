@@ -13,10 +13,16 @@ public partial class FocusEvent : Node3D
     public Camera3D Camera;
 
     [Export]
+    public Camera3D IntroCamera;
+
+    [Export]
     public FocusCursor Cursor;
 
     [Export]
     public Marker3D CursorStart;
+
+    [Export]
+    public Marker3D CameraIntroMarker;
 
     [Export]
     public PackedScene FocusTargetPrefab;
@@ -280,8 +286,7 @@ public partial class FocusEvent : Node3D
         IEnumerator Cr()
         {
             CurrentState = State.Starting;
-            FocusIntroView.Instance.LoadTarget(Targets.First());
-            yield return FocusIntroView.Instance.AnimateShow();
+            yield return AnimateCameraUp();
             Show();
             StartCursor();
             HijackCamera();
@@ -292,6 +297,32 @@ public partial class FocusEvent : Node3D
             FocusEventView.Instance.Show();
             FocusEventController.Instance.FocusEventStarted(this);
             yield return FocusIntroView.Instance.AnimateHide();
+        }
+    }
+
+    private Coroutine AnimateCameraUp()
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateCameraUp));
+        IEnumerator Cr()
+        {
+            TransitionView.Instance.StartTransition(new TransitionSettings
+            {
+                Type = TransitionType.Color,
+                Color = Colors.Black,
+                Duration = 1f,
+            });
+
+            CameraIntroMarker.GlobalPosition = Player.Instance.GlobalPosition.Add(y: 6f);
+            var start = Player.Instance.Camera.GlobalTransform;
+            var end = CameraIntroMarker.GlobalTransform;
+            var curve = Curves.EaseInOutQuad;
+            IntroCamera.GlobalTransform = start;
+            IntroCamera.Current = true;
+            yield return LerpEnumerator.Lerp01(1f, f =>
+            {
+                var t = curve.Evaluate(f);
+                IntroCamera.GlobalTransform = start.InterpolateWith(end, t);
+            });
         }
     }
 
