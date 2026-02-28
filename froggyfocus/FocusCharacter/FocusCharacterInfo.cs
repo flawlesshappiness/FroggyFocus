@@ -26,22 +26,16 @@ public partial class FocusCharacterInfo : Resource
     public float MoneyMultiplier = 1f;
 
     [Export]
-    public Vector2 MoveSpeedRange = new Vector2(1, 1);
-
-    [Export]
-    public Vector2 MoveLengthRange = new Vector2(1, 1);
-
-    [Export]
-    public Vector2 MoveDelayRange = new Vector2(1, 1);
-
-    [Export]
     public FocusCharacterMoveType MoveType = FocusCharacterMoveType.Walk;
 
     [Export]
-    public bool IsGlitch;
+    public FocusCharacterSpeedType SpeedType = FocusCharacterSpeedType.Normal;
 
     [Export]
-    public bool IsStationary;
+    public FocusCharacterDistanceType DistanceType = FocusCharacterDistanceType.Normal;
+
+    [Export]
+    public FocusCharacterDelayType DelayType = FocusCharacterDelayType.Normal;
 
     [Export]
     public float OverrideSize;

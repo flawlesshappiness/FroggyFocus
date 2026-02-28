@@ -133,13 +133,11 @@ public partial class FocusSkillCheck_Projectiles : FocusSkillCheck
     private void OnGroupSuccess()
     {
         SfxSuccess.Play();
-        FocusEvent.Cursor.AdjustFocusValue(0.05f);
     }
 
     private void OnGroupFail()
     {
         SfxFail.Play();
-        FocusEvent.Cursor.AdjustFocusValue(-0.1f);
     }
 
     private TargetClone CreateGroup()

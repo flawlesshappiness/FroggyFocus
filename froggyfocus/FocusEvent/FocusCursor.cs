@@ -66,9 +66,7 @@ public partial class FocusCursor : Node3D
     public override void _Process(double delta)
     {
         base._Process(delta);
-        var fdelta = Convert.ToSingle(delta);
         Process_Input();
-        Process_Target();
     }
 
     public override void _PhysicsProcess(double delta)
@@ -146,28 +144,6 @@ public partial class FocusCursor : Node3D
         OnTargetReleased?.Invoke(target);
     }
 
-    private void Process_Target()
-    {
-        /*
-        if (GameTime.Time < next_tick) return;
-        next_tick = GameTime.Time + FocusTickTime;
-
-        if (IsNearTarget())
-        {
-            //SetFocusValue(FocusValue + FocusTickAmount);
-            //PlayFocusGainEffect();
-            //PlayFocusChangedSFX(FocusValue);
-            //AnimationPlayer_Gain.Play("BounceIn");
-            //OnFocusTarget?.Invoke();
-        }
-        else
-        {
-            //SetFocusValue(FocusValue - FocusTickDecay);
-            //PlayFocusChangedSFX(0);
-        }
-        */
-    }
-
     private FocusTarget GetNearTarget()
     {
         return FocusEvent.Targets
@@ -187,47 +163,6 @@ public partial class FocusCursor : Node3D
 
     public void HurtFocusValuePercentage(float percentage)
     {
-        /*
-        percentage = Mathf.Clamp(percentage, 0, 1);
-        var value = FocusMax * percentage;
-        HurtFocusValue(value);
-        */
-    }
-
-    public void AdjustFocusValue(float value)
-    {
-        //SetFocusValue(FocusValue + value);
-    }
-
-    private void SetFocusValue(float value)
-    {
-        /*
-        FocusValue = Mathf.Clamp(value, 0f, FocusMax);
-        var t = FocusValue / FocusMax;
-        //FillNode.Scale = Vector3.One * t;
-
-        if (FocusValue >= FocusMax)
-        {
-            Filled = true;
-            //SfxFocusComplete.Play();
-            OnFocusFilled?.Invoke();
-        }
-        else if (FocusValue <= 0)
-        {
-            Empty = true;
-            OnFocusEmpty?.Invoke();
-        }
-        */
-    }
-
-    public void PlayFocusChangedSFX(float value)
-    {
-        /*
-        var pitch_min = 0.5f;
-        var pitch_max = 1.5f;
-        var t = value / FocusMax;
-        //SfxFocusChanged.PitchScale = Mathf.Lerp(pitch_min, pitch_max, t);
-        */
     }
 
     private void MoveStarted()

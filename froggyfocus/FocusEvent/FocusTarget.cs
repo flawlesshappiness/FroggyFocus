@@ -6,6 +6,9 @@ using System.Linq;
 public partial class FocusTarget : Node3D
 {
     [Export]
+    public NavigationAgent3D NavAgent;
+
+    [Export]
     public Node3D CharacterParent;
 
     [Export]
@@ -33,14 +36,16 @@ public partial class FocusTarget : Node3D
     public float FocusMax { get; private set; }
     public bool IsFocusMax { get; private set; }
     public bool IsCaught { get; private set; }
-    public float UpdatedMoveSpeed { get; private set; }
+    public float MoveSpeed { get; private set; }
+    public Vector2 MoveDistance { get; private set; }
+    public Vector2 MoveDelay { get; private set; }
+    public int MovePoints { get; private set; }
 
     public event Action OnCaught;
 
     private bool glow_visible;
     private FocusEvent focus_event;
     private RandomNumberGenerator rng = new();
-    private Curve3D move_curve = new();
     private Coroutine state_cr;
     private State state;
     private float time_cursor_tick;
@@ -73,7 +78,6 @@ public partial class FocusTarget : Node3D
         UpdateFocusValue();
         UpdateSwimmer();
         UpdateDifficulty();
-        UpdateMoveSpeed();
 
         ResetCharacterAnimation();
         ResetGlow();
@@ -102,11 +106,62 @@ public partial class FocusTarget : Node3D
     private void UpdateDifficulty()
     {
         Difficulty = Mathf.Clamp((CharacterData.Stars - 1) / 4f, 0, 1);
+
+        UpdateMoveSpeed();
+        UpdateMoveDistance();
+        UpdateMoveDelay();
+        UpdateMovePoints();
     }
 
     private void UpdateMoveSpeed()
     {
-        UpdatedMoveSpeed = Info.MoveSpeedRange.Range(Difficulty);
+        MoveSpeed = Info.SpeedType switch
+        {
+            FocusCharacterSpeedType.Stationary => 0f,
+            FocusCharacterSpeedType.Slow => Mathf.Lerp(0.5f, 1.0f, Difficulty),
+            FocusCharacterSpeedType.Normal => Mathf.Lerp(1.0f, 2.0f, Difficulty),
+            FocusCharacterSpeedType.Fast => Mathf.Lerp(2.0f, 3.0f, Difficulty),
+            FocusCharacterSpeedType.Glitch => Mathf.Lerp(10.0f, 15.0f, Difficulty),
+        };
+    }
+
+    private void UpdateMoveDistance()
+    {
+        MoveDistance = Info.DistanceType switch
+        {
+            FocusCharacterDistanceType.Short => new Vector2(Mathf.Lerp(0.25f, 0.5f, Difficulty), Mathf.Lerp(1.0f, 1.5f, Difficulty)),
+            FocusCharacterDistanceType.Normal => new Vector2(Mathf.Lerp(0.5f, 1.0f, Difficulty), Mathf.Lerp(1.5f, 2.0f, Difficulty)),
+            FocusCharacterDistanceType.Long => new Vector2(Mathf.Lerp(1.0f, 2.0f, Difficulty), Mathf.Lerp(2.0f, 3.0f, Difficulty)),
+        };
+    }
+
+    private void UpdateMoveDelay()
+    {
+        MoveDelay = Info.DelayType switch
+        {
+            FocusCharacterDelayType.None => new Vector2(0.0f, 0.0f),
+            FocusCharacterDelayType.Short => new Vector2(Mathf.Lerp(0.1f, 0.2f, Difficulty), Mathf.Lerp(0.4f, 0.5f, Difficulty)),
+            FocusCharacterDelayType.Normal => new Vector2(Mathf.Lerp(0.5f, 1.0f, Difficulty), Mathf.Lerp(1.5f, 2.0f, Difficulty)),
+            FocusCharacterDelayType.Long => new Vector2(Mathf.Lerp(1.0f, 1.5f, Difficulty), Mathf.Lerp(2.0f, 3.0f, Difficulty)),
+        };
+    }
+
+    private void UpdateMovePoints()
+    {
+        if (Info.SpeedType == FocusCharacterSpeedType.Stationary)
+        {
+            MovePoints = 0;
+        }
+        else
+        {
+            MovePoints = Info.DistanceType switch
+            {
+                FocusCharacterDistanceType.Short => 0,
+                FocusCharacterDistanceType.Normal => new Vector2I(2, 3).Range(Difficulty),
+                FocusCharacterDistanceType.Long => new Vector2I(4, 5).Range(Difficulty),
+                _ => 0,
+            };
+        }
     }
 
     private void RemoveCharacter()
@@ -189,7 +244,7 @@ public partial class FocusTarget : Node3D
 
     private IEnumerator StateIdle()
     {
-        var duration = GetMoveDelay();
+        var duration = MoveDelay.Range(rng.Randf());
         if (duration > 0)
         {
             StopMoving();
@@ -201,7 +256,7 @@ public partial class FocusTarget : Node3D
 
     private IEnumerator StateMoving()
     {
-        if (!Info.IsStationary)
+        if (Info.SpeedType != FocusCharacterSpeedType.Stationary)
         {
             yield return WaitForMoveToRandomPosition();
         }
@@ -221,33 +276,44 @@ public partial class FocusTarget : Node3D
                 yield return WaitForSkillCheck();
             }
         */
-        yield return null;
-        SetState(State.Idle);
+
+        if (Info.DelayType == FocusCharacterDelayType.None)
+        {
+            SetState(State.Moving);
+        }
+        else
+        {
+            yield return null;
+            SetState(State.Idle);
+        }
     }
 
-    public IEnumerator WaitForMoveToRandomPosition()
+    private IEnumerator WaitForMoveToRandomPosition()
     {
-        // Select position
-        var position = GetNextPosition();
-        var dir_to_position = GlobalPosition.DirectionTo(position);
+        NavAgent.TargetPosition = GetNextPosition();
 
-        CalculateMovePath(position);
+        while (NavAgent.IsNavigationFinished())
+            yield return null;
 
-        // Move to position
         Character.SetMoving(true);
 
-        var is_glitch = Info.IsGlitch;
+        var curve = CalculateMoveCurve();
+        yield return WaitForMoveThroughCurve(curve);
+    }
+
+    private IEnumerator WaitForMoveThroughCurve(Curve3D curve)
+    {
+        var is_glitch = Info.SpeedType == FocusCharacterSpeedType.Glitch;
         var velocity = Vector3.Zero;
-        var start = GlobalPosition;
-        var length = move_curve.GetBakedLength();
+        var length = curve.GetBakedLength();
         var dist = 0f;
         while (dist < length)
         {
             var speed_mul = is_glitch ? 1.0f : GameTime.DeltaTime;
-            var sample = move_curve.SampleBaked(dist);
-            velocity = (start + sample) - GlobalPosition;
+            var sample = curve.SampleBaked(dist);
+            velocity = sample - GlobalPosition;
             Move(velocity);
-            dist += UpdatedMoveSpeed * speed_mul;
+            dist += MoveSpeed * speed_mul;
 
             if (is_glitch)
             {
@@ -261,7 +327,7 @@ public partial class FocusTarget : Node3D
             }
         }
 
-        velocity = (start + move_curve.SampleBaked(length)) - GlobalPosition;
+        velocity = curve.SampleBaked(length) - GlobalPosition;
         Move(velocity);
         yield return null;
     }
@@ -275,16 +341,6 @@ public partial class FocusTarget : Node3D
     {
         GlobalPosition += velocity;
     }
-
-    private float GetDifficultyRange(Vector2 range)
-    {
-        var variance = rng.RandfRange(-0.1f, 0f);
-        var t = Mathf.Clamp(Difficulty + variance, 0, 1);
-        return range.Range(t);
-    }
-
-    public float GetMoveLength() => GetDifficultyRange(Info.MoveLengthRange);
-    public float GetMoveDelay() => GetDifficultyRange(Info.MoveDelayRange);
 
     public Vector3 GetApproximatePosition(Vector3 position)
     {
@@ -312,8 +368,8 @@ public partial class FocusTarget : Node3D
     public Vector3 GetNextPosition()
     {
         var dir = GetNextDirection();
-        var length = GetMoveLength();
-        var position = GetApproximatePosition(GlobalPosition + dir * length);
+        var distance = MoveDistance.Range(rng.Randf());
+        var position = GetApproximatePosition(GlobalPosition + dir * distance);
         return position;
     }
 
@@ -323,20 +379,18 @@ public partial class FocusTarget : Node3D
         PsWaterRipples.Emitting = is_swimmer;
     }
 
-    private void CalculateMovePath(Vector3 global_destination)
+    private Curve3D CalculateMoveCurve()
     {
-        if (Info.MoveType == FocusCharacterMoveType.Flying)
+        return Info.MoveType switch
         {
-            CalculateCurvedMovePath(global_destination);
-        }
-        else
-        {
-            CalculateStraightMovePath(global_destination);
-        }
+            FocusCharacterMoveType.Flying => CalculateMoveCurve_Flying(),
+            _ => CalculateMoveCurve_Walking()
+        };
     }
 
-    private void CalculateCurvedMovePath(Vector3 global_destination)
+    private Curve3D CalculateMoveCurve_Flying()
     {
+        /*
         var destination = global_destination - GlobalPosition;
         var dir = destination.Normalized();
         var perp = dir.Cross(Vector3.Up).Normalized();
@@ -353,26 +407,78 @@ public partial class FocusTarget : Node3D
         var p2_in = ((p1 - p2) * 0.5f + perp * width);
         var p2_out = (p2.Lerp(p3, 0.5f) - perp * width) - p2;
 
-        move_curve.ClearPoints();
-        move_curve.AddPoint(p1, @out: p1_out);
-        move_curve.AddPoint(p2, @in: p2_in, @out: p2_out);
-        move_curve.AddPoint(p3);
+        var curve = new Curve3D();
+        curve.ClearPoints();
+        curve.AddPoint(p1, @out: p1_out);
+        curve.AddPoint(p2, @in: p2_in, @out: p2_out);
+        curve.AddPoint(p3);
+        */
+
+        var curve = CalculateMoveCurve_Walking();
+        return curve;
     }
 
-    private void CalculateStraightMovePath(Vector3 global_destination)
+    private Curve3D CalculateMoveCurve_Walking()
     {
-        var destination = global_destination - GlobalPosition;
-        var dir = destination.Normalized();
-        var dir_face = -Character.GlobalBasis.Z;
+        var y = GlobalPosition.Y;
+        var curve = new Curve3D();
+        var nav_points = NavAgent.GetCurrentNavigationPath();
+        var points = CalculateMovePoints(nav_points);
 
-        var p1 = Vector3.Zero;
-        var p2 = dir;
+        // Create curve
+        for (int i = 0; i < points.Length; i++)
+        {
+            var point = points[i].Set(y: y);
 
-        var p1_out = dir_face * 0.5f;
+            if (i == 0) // First point
+            {
+                curve.AddPoint(point);
+            }
+            else // In-between points
+            {
+                var prev = points[i - 1].Set(y: y);
+                var middle = prev.Lerp(point, 0.5f);
+                var p_in = prev - middle;
+                var p_out = point - middle;
 
-        move_curve.ClearPoints();
-        move_curve.AddPoint(p1, @out: p1_out);
-        move_curve.AddPoint(p2);
+                curve.AddPoint(middle, p_in, p_out);
+
+                if (i == points.Length - 1) // Last point
+                {
+                    curve.AddPoint(point);
+                }
+            }
+        }
+
+        return curve;
+    }
+
+    private Vector3[] CalculateMovePoints(Vector3[] nav_points)
+    {
+        var points = new Vector3[MovePoints + 2];
+        var curve = new Curve3D();
+        nav_points.ForEach(x => curve.AddPoint(x));
+        var length = curve.GetBakedLength();
+        var dist_per_point = length / (MovePoints + 1);
+        var is_offset_right = true;
+        var move_offset = 0.15f; // arbitrary offset
+
+        points[0] = curve.SampleBaked(0);
+        var prev_point = points[0];
+        for (int i = 0; i < MovePoints; i++)
+        {
+            var point = curve.SampleBaked((i + 1) * dist_per_point);
+            var dir = point - prev_point;
+            var cross = dir.Cross(Vector3.Up).Normalized();
+            var mul = is_offset_right ? 1 : -1;
+            points[i + 1] = prev_point + dir + cross * mul * move_offset;
+
+            prev_point = point;
+            is_offset_right = !is_offset_right;
+        }
+        points[points.Length - 1] = curve.SampleBaked(length);
+
+        return points;
     }
 
     public void ResetGlow()

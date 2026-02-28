@@ -538,14 +538,19 @@ shader_parameter/local_wind_scale = 1.0
 [sub_resource type="SphereMesh" id="SphereMesh_3etrv"]
 material = SubResource("ShaderMaterial_rfid0")
 
-[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("CharacterParent", "FocusCircle", "PsWaterRipples", "AnimationPlayer_Glow", "AnimationPlayer_Character")]
+[node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("NavAgent", "CharacterParent", "FocusCircle", "PsWaterRipples", "AnimationPlayer_Glow", "AnimationPlayer_Character")]
 script = ExtResource("1_hmctk")
+NavAgent = NodePath("NavigationAgent3D")
 CharacterParent = NodePath("Anim/Parent")
 FocusCircle = NodePath("FocusCircle")
 PsWaterRipples = NodePath("PsWaterRipple")
 AnimationPlayer_Glow = NodePath("AnimationPlayer_Glow")
 AnimationPlayer_Character = NodePath("AnimationPlayer_Character")
 SmokeDisappearEffect = ExtResource("2_nimdh")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
 
 [node name="Anim" type="Node3D" parent="."]
 
