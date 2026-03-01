@@ -1,7 +1,10 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+
+namespace FlawLizArt.FocusEvent;
 
 public partial class FocusTarget : Node3D
 {
@@ -26,6 +29,7 @@ public partial class FocusTarget : Node3D
     [Export]
     public PackedScene SmokeDisappearEffect;
 
+    public FocusEvent FocusEvent { get; private set; }
     public FocusCharacterInfo Info { get; private set; }
     public FocusCharacter Character { get; private set; }
     public InventoryCharacterData CharacterData { get; private set; }
@@ -42,21 +46,25 @@ public partial class FocusTarget : Node3D
     public int MovePoints { get; private set; }
 
     public event Action OnCaught;
+    public event Action OnCursorEnter;
+    public event Action OnCursorExit;
+    public event Action OnStarted;
+    public event Action OnStopped;
 
-    private bool glow_visible;
-    private FocusEvent focus_event;
     private RandomNumberGenerator rng = new();
     private Coroutine state_cr;
     private State state;
     private float time_cursor_tick;
 
+    private List<FocusAttack> attacks = new();
+
     private const float TICK_TIME = 0.2f;
 
-    private enum State
+    public enum State
     {
         Idle,
         Moving,
-        Skillcheck,
+        Attack
     }
 
     public override void _Process(double delta)
@@ -67,7 +75,7 @@ public partial class FocusTarget : Node3D
 
     public void Initialize(FocusEvent focus_event)
     {
-        this.focus_event = focus_event;
+        this.FocusEvent = focus_event;
     }
 
     public void SetData(InventoryCharacterData data)
@@ -78,9 +86,19 @@ public partial class FocusTarget : Node3D
         UpdateFocusValue();
         UpdateSwimmer();
         UpdateDifficulty();
+        InitializeAttacks();
 
         ResetCharacterAnimation();
         ResetGlow();
+    }
+
+    private void InitializeAttacks()
+    {
+        attacks = this.GetNodesInChildren<FocusAttack>();
+        foreach (var attack in attacks)
+        {
+            attack.Initialize(this);
+        }
     }
 
     private void SetCharacter(FocusCharacterInfo info)
@@ -177,6 +195,15 @@ public partial class FocusTarget : Node3D
         time_cursor_tick = GameTime.Time + TICK_TIME;
         HasCursor = has_cursor;
         FocusCircle.SetEyeVisible(has_cursor);
+
+        if (has_cursor)
+        {
+            OnCursorEnter?.Invoke();
+        }
+        else
+        {
+            OnCursorExit?.Invoke();
+        }
     }
 
     private void Process_HasCursor()
@@ -202,6 +229,13 @@ public partial class FocusTarget : Node3D
         }
     }
 
+    public void HurtFocusValue(float perc)
+    {
+        var amount = FocusMax * perc;
+        IsFocusMax = false;
+        AdjustFocusValue(-amount);
+    }
+
     private void AdjustFocusValue(float amount)
     {
         SetFocusValue(FocusValue + amount);
@@ -221,14 +255,16 @@ public partial class FocusTarget : Node3D
     public void StartState()
     {
         SetState(State.Moving);
+        OnStarted?.Invoke();
     }
 
     public void StopState()
     {
         Coroutine.Stop(state_cr);
+        OnStopped?.Invoke();
     }
 
-    private void SetState(State state)
+    public void SetState(State state)
     {
         this.state = state;
         var e = GetStateCr(state);
@@ -239,7 +275,7 @@ public partial class FocusTarget : Node3D
     {
         State.Idle => StateIdle(),
         State.Moving => StateMoving(),
-        State.Skillcheck => StateSkillcheck(),
+        State.Attack => StateAttack(),
     };
 
     private IEnumerator StateIdle()
@@ -261,30 +297,21 @@ public partial class FocusTarget : Node3D
             yield return WaitForMoveToRandomPosition();
         }
 
-        SetState(State.Skillcheck);
-    }
-
-    private IEnumerator StateSkillcheck()
-    {
-        /*
-            var has_override_skill_check = OverrideSkillCheck != null;
-            var has_skill_checks = Target.Info.SkillChecks?.Count > 0 || has_override_skill_check;
-            var is_skill_check = true || rng.Randf() < 0.5f;
-            if (has_skill_checks && is_skill_check)
-            {
-                Target.StopMoving();
-                yield return WaitForSkillCheck();
-            }
-        */
-
         if (Info.DelayType == FocusCharacterDelayType.None)
         {
             SetState(State.Moving);
         }
         else
         {
-            yield return null;
             SetState(State.Idle);
+        }
+    }
+
+    private IEnumerator StateAttack()
+    {
+        while (true)
+        {
+            yield return null; // Wait for attack to set new state
         }
     }
 
@@ -349,9 +376,9 @@ public partial class FocusTarget : Node3D
 
     public Vector3 GetRandomPosition()
     {
-        var center = focus_event.GlobalPosition;
-        var rx = focus_event.Size.X;
-        var rz = focus_event.Size.Y;
+        var center = FocusEvent.GlobalPosition;
+        var rx = FocusEvent.Size.X;
+        var rz = FocusEvent.Size.Y;
         var x = rng.RandfRange(-rx, rx);
         var z = rng.RandfRange(-rz, rz);
         var position = center + new Vector3(x, 0, z);
@@ -380,45 +407,6 @@ public partial class FocusTarget : Node3D
     }
 
     private Curve3D CalculateMoveCurve()
-    {
-        return Info.MoveType switch
-        {
-            FocusCharacterMoveType.Flying => CalculateMoveCurve_Flying(),
-            _ => CalculateMoveCurve_Walking()
-        };
-    }
-
-    private Curve3D CalculateMoveCurve_Flying()
-    {
-        /*
-        var destination = global_destination - GlobalPosition;
-        var dir = destination.Normalized();
-        var perp = dir.Cross(Vector3.Up).Normalized();
-        var dir_face = -Character.GlobalBasis.Z;
-
-        var width_mul = Mathf.Lerp(0.25f, 0.4f, Difficulty);
-        var width = dir.Length() * width_mul;
-
-        var p1 = Vector3.Zero;
-        var p3 = dir;
-        var p2 = p1.Lerp(p3, 0.5f);
-
-        var p1_out = dir_face * 0.5f;
-        var p2_in = ((p1 - p2) * 0.5f + perp * width);
-        var p2_out = (p2.Lerp(p3, 0.5f) - perp * width) - p2;
-
-        var curve = new Curve3D();
-        curve.ClearPoints();
-        curve.AddPoint(p1, @out: p1_out);
-        curve.AddPoint(p2, @in: p2_in, @out: p2_out);
-        curve.AddPoint(p3);
-        */
-
-        var curve = CalculateMoveCurve_Walking();
-        return curve;
-    }
-
-    private Curve3D CalculateMoveCurve_Walking()
     {
         var y = GlobalPosition.Y;
         var curve = new Curve3D();

@@ -44,7 +44,7 @@ public partial class FocusCharacterInfo : Resource
     public int OverrideRarity;
 
     [Export]
-    public Array<FocusSkillCheckType> SkillChecks;
+    public Array<FocusAttackType> Attacks;
 
     [Export]
     public Array<FocusCharacterTag> Tags;

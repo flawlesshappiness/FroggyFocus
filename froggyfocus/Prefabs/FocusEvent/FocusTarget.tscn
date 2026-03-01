@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=46 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="3_leg0t"]
 [ext_resource type="AudioStream" uid="uid://chsmvnuk5ocu2" path="res://Sounds/Raw/sfx_mole_show_001.wav" id="4_mk5ib"]
 [ext_resource type="PackedScene" uid="uid://cey3ab7wyq26l" path="res://Prefabs/FocusEvent/focus_circle.tscn" id="4_rfid0"]
+[ext_resource type="Script" uid="uid://cro2yuknrjg6s" path="res://FocusAttack/Dig.cs" id="5_3etrv"]
 [ext_resource type="AudioStream" uid="uid://t6fyf7iejqbk" path="res://Sounds/Raw/sfx_mole_show_002.wav" id="5_v23j6"]
 [ext_resource type="AudioStream" uid="uid://dva886cuu6ksw" path="res://Sounds/Raw/sfx_swish_001.wav" id="6_u4nem"]
 [ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="7_u4nem"]
@@ -560,6 +561,11 @@ target_desired_distance = 0.1
 visible = false
 
 [node name="FocusCircle" parent="." instance=ExtResource("4_rfid0")]
+
+[node name="Attacks" type="Node3D" parent="."]
+
+[node name="Dig" type="Node3D" parent="Attacks"]
+script = ExtResource("5_3etrv")
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

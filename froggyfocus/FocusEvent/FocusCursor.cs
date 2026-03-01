@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Linq;
 
+namespace FlawLizArt.FocusEvent;
+
 public partial class FocusCursor : Node3D
 {
     [Export]
@@ -129,7 +131,7 @@ public partial class FocusCursor : Node3D
         OnTarget?.Invoke(current_target);
     }
 
-    private void EndFocusTarget()
+    public void EndFocusTarget()
     {
         if (current_target == null) return;
         var target = current_target;

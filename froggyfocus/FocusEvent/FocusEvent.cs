@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+namespace FlawLizArt.FocusEvent;
+
 public partial class FocusEvent : Node3D
 {
     [Export]
@@ -212,6 +214,7 @@ public partial class FocusEvent : Node3D
             foreach (var target in Targets)
             {
                 if (target.IsCaught) continue;
+                if (target.IsFocusMax) continue;
 
                 target.Animate_Disappear();
                 yield return new WaitForSeconds(0.05f);
