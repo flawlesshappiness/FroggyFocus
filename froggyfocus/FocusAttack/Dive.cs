@@ -1,8 +1,7 @@
+using FlawLizArt.FocusEvent;
 using System.Collections;
 
-namespace FlawLizArt.FocusEvent;
-
-public partial class Dig : FocusAttack
+public partial class Dive : FocusAttack
 {
     private Coroutine cr_start;
 
@@ -29,12 +28,12 @@ public partial class Dig : FocusAttack
             StopCursorFocus();
 
             Target.Animate_Exclamation();
-            yield return Target.Animate_DigDown();
+            yield return Target.Animate_DiveDown();
 
             var position = Target.GetNextPosition();
             Target.GlobalPosition = position;
 
-            yield return Target.Animate_DigUp();
+            yield return Target.Animate_DiveUp();
 
             EndState();
         }

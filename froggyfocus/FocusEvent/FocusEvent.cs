@@ -216,7 +216,19 @@ public partial class FocusEvent : Node3D
                 if (target.IsCaught) continue;
                 if (target.IsFocusMax) continue;
 
-                target.Animate_Disappear();
+                if (target.Info.Tags.Contains(FocusCharacterTag.Water))
+                {
+                    target.Animate_DiveDown();
+                }
+                else if (target.Info.Tags.Contains(FocusCharacterTag.Flying))
+                {
+                    target.Animate_Disappear();
+                }
+                else
+                {
+                    target.Animate_DigDown();
+                }
+
                 yield return new WaitForSeconds(0.05f);
             }
         }

@@ -27,6 +27,9 @@ public partial class FocusTarget : Node3D
     public AnimationPlayer AnimationPlayer_Character;
 
     [Export]
+    public AnimationPlayer AnimationPlayer_Exclamation;
+
+    [Export]
     public PackedScene SmokeDisappearEffect;
 
     public FocusEvent FocusEvent { get; private set; }
@@ -233,7 +236,7 @@ public partial class FocusTarget : Node3D
     {
         var amount = FocusMax * perc;
         IsFocusMax = false;
-        AdjustFocusValue(-amount);
+        AdjustFocusValue(-Mathf.Abs(amount));
     }
 
     private void AdjustFocusValue(float amount)
@@ -385,18 +388,18 @@ public partial class FocusTarget : Node3D
         return position;
     }
 
-    public Vector3 GetNextDirection()
+    public Vector3 GetNextDirection(Vector3? from = null)
     {
         var position = GetRandomPosition();
-        var dir = GlobalPosition.DirectionTo(position).Normalized();
+        var dir = (from ?? GlobalPosition).DirectionTo(position).Normalized();
         return dir;
     }
 
-    public Vector3 GetNextPosition()
+    public Vector3 GetNextPosition(Vector3? from = null)
     {
-        var dir = GetNextDirection();
+        var dir = GetNextDirection(from);
         var distance = MoveDistance.Range(rng.Randf());
-        var position = GetApproximatePosition(GlobalPosition + dir * distance);
+        var position = GetApproximatePosition((from ?? GlobalPosition) + dir * distance);
         return position;
     }
 
@@ -449,7 +452,7 @@ public partial class FocusTarget : Node3D
         var length = curve.GetBakedLength();
         var dist_per_point = length / (MovePoints + 1);
         var is_offset_right = true;
-        var move_offset = 0.15f; // arbitrary offset
+        var move_offset = 0.25f; // arbitrary offset
 
         points[0] = curve.SampleBaked(0);
         var prev_point = points[0];
@@ -494,6 +497,16 @@ public partial class FocusTarget : Node3D
         return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_up");
     }
 
+    public Coroutine Animate_DiveDown()
+    {
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("dive_down");
+    }
+
+    public Coroutine Animate_DiveUp()
+    {
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("dive_up");
+    }
+
     public Coroutine Animate_Disappear()
     {
         var ps = ParticleEffectGroup.Instantiate(SmokeDisappearEffect, GetParentNode3D());
@@ -511,5 +524,10 @@ public partial class FocusTarget : Node3D
     public Coroutine Animate_Unscared()
     {
         return AnimationPlayer_Character.PlayAndWaitForAnimation("unscared");
+    }
+
+    public Coroutine Animate_Exclamation()
+    {
+        return AnimationPlayer_Exclamation.PlayAndWaitForAnimation("show");
     }
 }

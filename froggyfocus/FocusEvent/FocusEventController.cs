@@ -53,14 +53,15 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
             v.ContentSearch.UpdateButtons();
         }
 
-        void StartFocusEvent(DebugView v, FocusCharacterInfo info, int stars)
+        void StartFocusEvent(DebugView v, FocusCharacterInfo character_info, int stars)
         {
-            var infos = Collection.Resources.First(x => x.Characters.Contains(info));
+            var info = Collection.Resources.First(x => x.Characters.Contains(character_info));
             var focus_event = GameScene.Instance.FocusEvent;
 
             focus_event.StartEvent(new FocusEvent.Settings
             {
-                OverrideTargetInfo = info,
+                Id = info.Id,
+                OverrideTargetInfo = character_info,
                 OverrideTargetStars = stars
             });
 
