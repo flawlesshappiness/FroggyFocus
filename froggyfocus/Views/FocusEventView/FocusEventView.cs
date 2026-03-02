@@ -8,7 +8,16 @@ public partial class FocusEventView : View
     [Export]
     public ProgressBar TimerBar;
 
+    [Export]
+    public InputPromptFocus InputPrompt;
+
     private FocusEvent FocusEvent { get; set; }
+
+    public override void _Ready()
+    {
+        base._Ready();
+        InputPrompt.Hide();
+    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -42,5 +51,20 @@ public partial class FocusEventView : View
 
             TimerBar.Value = 1.0f - t;
         }
+    }
+
+    public void ShowInputPrompt(string action, Vector3 world_position, InputPromptFocus.AnimationType type)
+    {
+        var camera = FocusEvent.Camera;
+        var position = camera.UnprojectPosition(world_position);
+        InputPrompt.GlobalPosition = position;
+        InputPrompt.SetAnimation(type);
+        InputPrompt.SetInputAction(action);
+        InputPrompt.Show();
+    }
+
+    public void HideInputPrompt()
+    {
+        InputPrompt.Hide();
     }
 }

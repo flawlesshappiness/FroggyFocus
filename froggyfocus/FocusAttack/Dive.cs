@@ -3,23 +3,17 @@ using System.Collections;
 
 public partial class Dive : FocusAttack
 {
-    private Coroutine cr_start;
-
     protected override void CursorEnter()
     {
         base.CursorEnter();
         var duration = rng.RandfRange(2, 6);
-        cr_start = WaitFor(duration, Run);
-    }
-
-    protected override void CursorExit()
-    {
-        base.CursorExit();
-        Coroutine.Stop(cr_start);
+        WaitFor(duration, Run);
     }
 
     private void Run()
     {
+        if (!Target.HasCursor) return;
+
         this.StartCoroutine(Cr, "run");
         IEnumerator Cr()
         {

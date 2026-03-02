@@ -54,7 +54,6 @@ public partial class FocusEvent : Node3D
     public AudioStreamPlayer SfxSuspenseNormal_Fail;
 
     public event Action<FocusEventResult> OnEnded;
-    public event Action OnStopped;
     public event Action OnEnabled;
     public event Action OnDisabled;
 
@@ -279,7 +278,7 @@ public partial class FocusEvent : Node3D
 
     private void StartTimer()
     {
-        TimerDuration = 10f; // TODO: Based on upgrade
+        TimerDuration = 20f; // TODO: Based on upgrade
         TimerStart = GameTime.Time;
         TimerEnd = TimerStart + TimerDuration;
     }
