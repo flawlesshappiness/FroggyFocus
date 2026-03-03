@@ -230,15 +230,15 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
 
         // Fog
         env.FogEnabled = FogLock.IsFree;
-        env.FogDensity = Mathf.Lerp(from.FogEnabled ? from.FogDensity : 0, to.FogEnabled ? to.FogDensity : 0, t);
-        env.FogLightColor = from.FogColor.Lerp(to.FogEnabled ? to.FogColor : from.FogColor, t);
-        env.FogAerialPerspective = Mathf.Lerp(from.FogEnabled ? from.FogAerialPerspective : 1, to.FogEnabled ? to.FogAerialPerspective : 1, t);
+        env.FogDensity = Mathf.Lerp(from.IsNormalFog ? from.FogDensity : 0, to.IsNormalFog ? to.FogDensity : 0, t);
+        env.FogLightColor = from.FogColor.Lerp(to.IsNormalFog ? to.FogColor : from.FogColor, t);
+        env.FogAerialPerspective = Mathf.Lerp(from.IsNormalFog ? from.FogAerialPerspective : 1, to.IsNormalFog ? to.FogAerialPerspective : 1, t);
 
         // Volumetric
         env.VolumetricFogEnabled = FogLock.IsFree;
-        env.VolumetricFogDensity = Mathf.Lerp(from.FogEnabled ? from.FogDensity : 0, to.FogEnabled ? to.FogDensity : 0, t);
-        env.VolumetricFogAlbedo = from.FogColor.Lerp(to.FogEnabled ? to.FogColor : from.FogColor, t);
-        env.VolumetricFogEmission = from.FogColor.Lerp(to.FogEnabled ? to.FogColor : from.FogColor, t);
+        env.VolumetricFogDensity = Mathf.Lerp(from.IsVolumetricFog ? from.FogDensity : 0, to.IsVolumetricFog ? to.FogDensity : 0, t);
+        env.VolumetricFogAlbedo = from.FogColor.Lerp(to.IsVolumetricFog ? to.FogColor : from.FogColor, t);
+        env.VolumetricFogEmission = from.FogColor.Lerp(to.IsVolumetricFog ? to.FogColor : from.FogColor, t);
 
         // Rain
         RainController.Instance.SetIntensity(Mathf.Lerp(from.Rain, to.Rain, t));
@@ -263,7 +263,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
     private void FogLock_Changed()
     {
         var env = GameScene.Instance.WorldEnvironment.Environment;
-        env.VolumetricFogEnabled = current_weather.FogEnabled && FogLock.IsFree;
-        env.FogEnabled = current_weather.FogEnabled && FogLock.IsFree;
+        env.FogEnabled = current_weather.IsNormalFog && FogLock.IsFree;
+        env.VolumetricFogEnabled = current_weather.IsVolumetricFog && FogLock.IsFree;
     }
 }

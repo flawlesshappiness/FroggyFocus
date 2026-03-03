@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=79 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_3og0i"]
@@ -61,8 +61,6 @@
 [ext_resource type="PackedScene" uid="uid://djd1j2ihew3ck" path="res://Prefabs/Car/box.tscn" id="44_jq217"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="45_rw3kn"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="49_b0wg7"]
-[ext_resource type="PackedScene" uid="uid://bqt37dnru0iu" path="res://Prefabs/Nature/mushroom_shelf_glowing_cluster_001.tscn" id="57_ytafm"]
-[ext_resource type="PackedScene" uid="uid://bnwavkrtuiwhy" path="res://Prefabs/Nature/mushroom_cap_glowing_cluster_001.tscn" id="58_m070k"]
 [ext_resource type="AudioStream" uid="uid://caxy4mgrtkque" path="res://Sounds/Raw/bgm_swamp_001.wav" id="62_ul5a4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_20fcr"]
@@ -1557,116 +1555,6 @@ Info = ExtResource("26_ghoyf")
 [node name="WorldBug15" parent="World/WorldBugs/Mushrooms" instance=ExtResource("49_b0wg7")]
 transform = Transform3D(0.0204013, 0, 0.999792, 0, 1, 0, -0.999792, 0, 0.0204013, 26.111, 1.62395, 83.1096)
 Info = ExtResource("26_ghoyf")
-
-[node name="GlowingMushrooms" type="Node3D" parent="World"]
-
-[node name="mushroom_shelf_glowing_cluster" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(-0.365235, -0.128432, -0.922013, 0, 0.990437, -0.137963, 0.930915, -0.050389, -0.361742, 39.5182, 0.872825, 25.4818)
-
-[node name="mushroom_shelf_glowing_cluster2" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(0.197448, 0.246709, -0.948762, 0.07533, 0.961135, 0.265603, 0.977415, -0.123913, 0.171189, 39.1685, 2.73453, 29.4685)
-
-[node name="mushroom_shelf_glowing_cluster3" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(-0.81837, 0, -0.574691, 0, 1, 0, 0.574691, 0, -0.81837, 62.2825, 2.73452, 14.0425)
-
-[node name="mushroom_shelf_glowing_cluster4" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(0.90444, 0, 0.4266, 0, 1, 0, -0.4266, 0, 0.90444, 64.8297, 3.74566, 6.51818)
-
-[node name="mushroom_shelf_glowing_cluster5" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(-0.354471, 0, 0.935067, 0, 1, 0, -0.935067, 0, -0.354471, 66.755, 2.7191, 2.85569)
-
-[node name="mushroom_shelf_glowing_cluster6" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(0.840075, 0, 0.542471, 0, 1, 0, -0.542471, 0, 0.840075, 64.928, 9.1679, 18.1387)
-
-[node name="mushroom_shelf_glowing_cluster7" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(-0.631339, 0, 0.775507, 0, 1, 0, -0.775507, 0, -0.631339, 65.8564, 7.69687, 14.5267)
-
-[node name="mushroom_shelf_glowing_cluster8" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(-0.888697, 0, -0.458494, 0, 1, 0, 0.458494, 0, -0.888697, 62.6086, 13.1119, 27.4561)
-
-[node name="mushroom_shelf_glowing_cluster9" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(0.786332, 0, -0.617805, 0, 1, 0, 0.617805, 0, 0.786332, 61.7084, 13.1119, 31.3977)
-
-[node name="mushroom_shelf_glowing_cluster10" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(-0.787452, 0, 0.616376, 0, 1, 0, -0.616376, 0, -0.787452, 52.4729, 16.0271, 54.165)
-
-[node name="mushroom_shelf_glowing_cluster11" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(0.946277, 0, -0.323356, 0, 1, 0, 0.323356, 0, 0.946277, 50.9674, 12.965, 58.0675)
-
-[node name="mushroom_shelf_glowing_cluster12" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(-0.787721, 0, 0.616033, 0, 1, 0, -0.616033, 0, -0.787721, 46.5743, 12.965, 68.3772)
-
-[node name="mushroom_shelf_glowing_cluster13" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(0.275621, 0, -0.961267, 0, 1, 0, 0.961267, 0, 0.275621, 42.9208, 7.05912, 70.4794)
-
-[node name="mushroom_shelf_glowing_cluster14" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(-0.969149, 0, -0.246475, 0, 1, 0, 0.246475, 0, -0.969149, 29.9354, 3.74776, 83.6615)
-
-[node name="mushroom_shelf_glowing_cluster15" parent="World/GlowingMushrooms" instance=ExtResource("57_ytafm")]
-transform = Transform3D(0.999912, 0, -0.0132816, 0, 1, 0, 0.0132816, 0, 0.999912, 24.537, 3.7782, 73.5077)
-
-[node name="mushroom_cap_glowing_cluster_001" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(0.966331, 0, -0.257301, 0, 1, 0, 0.257301, 0, 0.966331, 39.8421, 0, 9.63483)
-
-[node name="mushroom_cap_glowing_cluster_002" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.53298, 0, -0.846128, 0, 1, 0, 0.846128, 0, -0.53298, 51.4077, 0, 21.4991)
-
-[node name="mushroom_cap_glowing_cluster_003" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.669895, 0, 0.742455, 0, 1, 0, -0.742455, 0, -0.669895, 33.7025, -9.53674e-07, 17.9842)
-
-[node name="mushroom_cap_glowing_cluster_004" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.905769, 0, 0.423773, 0, 1, 0, -0.423773, 0, -0.905769, 28.1371, -9.53674e-07, 8.13499)
-
-[node name="mushroom_cap_glowing_cluster_005" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.905769, 0, 0.423773, 0, 1, 0, -0.423773, 0, -0.905769, 12.1338, -9.53674e-07, 3.52154)
-
-[node name="mushroom_cap_glowing_cluster_006" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.595019, 0, -0.803711, 0, 1, 0, 0.803711, 0, -0.595019, 19.1076, -9.53674e-07, 7.89684)
-
-[node name="mushroom_cap_glowing_cluster_007" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.595019, 0, -0.803711, 0, 1, 0, 0.803711, 0, -0.595019, -4.02296, -9.53674e-07, 4.91836)
-
-[node name="mushroom_cap_glowing_cluster_008" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.595019, 0, -0.803711, 0, 1, 0, 0.803711, 0, -0.595019, -4.44598, -9.53674e-07, -6.23134)
-
-[node name="mushroom_cap_glowing_cluster_009" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.595019, 0, -0.803711, 0, 1, 0, 0.803711, 0, -0.595019, 60.1751, 2.08591, 18.0036)
-
-[node name="mushroom_cap_glowing_cluster_010" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.618943, 0, 0.785436, 0, 1, 0, -0.785436, 0, -0.618943, 61.4961, 4.12386, 4.82763)
-
-[node name="mushroom_cap_glowing_cluster_011" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(0.33583, 0, -0.941923, 0, 1, 0, 0.941923, 0, 0.33583, 66.6675, 7.03605, 16.6669)
-
-[node name="mushroom_cap_glowing_cluster_012" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.790775, 0, -0.612107, 0, 1, 0, 0.612107, 0, -0.790775, 57.0207, 12.6693, 62.6234)
-
-[node name="mushroom_cap_glowing_cluster_013" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.469703, 0, -0.882825, 0, 1, 0, 0.882825, 0, -0.469703, 53.8313, 15.9592, 73.8611)
-
-[node name="mushroom_cap_glowing_cluster_014" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.865169, 0, 0.501481, 0, 1, 0, -0.501481, 0, -0.865169, 47.4858, 15.9592, 73.8617)
-
-[node name="mushroom_cap_glowing_cluster_015" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.996001, 0, -0.0893463, 0, 1, 0, 0.0893463, 0, -0.996001, 32.9354, 2.46499, 83.3647)
-
-[node name="mushroom_cap_glowing_cluster_016" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(-0.975692, 0, 0.219148, 0, 1, 0, -0.219148, 0, -0.975692, 12.2949, -0.475104, 83.4261)
-
-[node name="mushroom_cap_glowing_cluster_017" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(0.92092, 0, -0.389751, 0, 1, 0, 0.389751, 0, 0.92092, 2.35014, -0.191038, 82.2089)
-
-[node name="mushroom_cap_glowing_cluster_018" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(0.92092, 0, -0.389751, 0, 1, 0, 0.389751, 0, 0.92092, -7.72959, -0.484825, 103.115)
-
-[node name="mushroom_cap_glowing_cluster_019" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(0.571029, 0, -0.82093, 0, 1, 0, 0.82093, 0, 0.571029, -49.7638, -0.484827, 71.437)
-
-[node name="mushroom_cap_glowing_cluster_020" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(0.571029, 0, -0.82093, 0, 1, 0, 0.82093, 0, 0.571029, -27.4041, -0.484827, 38.3276)
-
-[node name="mushroom_cap_glowing_cluster_021" parent="World/GlowingMushrooms" instance=ExtResource("58_m070k")]
-transform = Transform3D(0.163825, 0, 0.986489, 0, 1, 0, -0.986489, 0, 0.163825, -9.03424, -0.19967, 47.2811)
 
 [node name="Trees" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61978, -3.8147e-06, 44.1012)
