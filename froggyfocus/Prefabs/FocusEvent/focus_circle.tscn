@@ -1,0 +1,341 @@
+[gd_scene load_steps=21 format=3 uid="uid://cey3ab7wyq26l"]
+
+[ext_resource type="Script" uid="uid://b8k6ylw6wp06p" path="res://FocusEvent/FocusCircle.cs" id="1_rhly1"]
+[ext_resource type="Texture2D" uid="uid://6tevrdvf1tud" path="res://Assets/FlawLizArt/Textures/focus_circle.png" id="2_4iq22"]
+[ext_resource type="Texture2D" uid="uid://cgvw1bv4nyiyt" path="res://Assets/FlawLizArt/Textures/focus_circle_outline.png" id="3_vfvjx"]
+[ext_resource type="Texture2D" uid="uid://crw5sovw50jt1" path="res://Assets/FlawLizArt/Textures/particle_eye.png" id="4_lyxe2"]
+[ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="5_lyxe2"]
+[ext_resource type="AudioStream" uid="uid://dj2xwyehx2u1n" path="res://Sounds/Raw/sfx_frog_croak_007.wav" id="5_vfvjx"]
+[ext_resource type="AudioStream" uid="uid://bjgvjv7tgquhi" path="res://Sounds/Raw/sfx_focus_block.wav" id="7_vxk2y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1eh1j"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.0980392)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vxk2y"]
+material = SubResource("StandardMaterial3D_1eh1j")
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.01
+
+[sub_resource type="Animation" id="Animation_x77ch"]
+resource_name = "BounceIn"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt/Anim_Gain:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.9, 0.9, 0.9), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Radius/Anim_Hurt/Anim_Gain/OutlineFlash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxFocusGain:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.00210804),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yd0hp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt/Anim_Gain:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Radius/Anim_Hurt/Anim_Gain/OutlineFlash:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxFocusGain:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rpbmh"]
+_data = {
+&"BounceIn": SubResource("Animation_x77ch"),
+&"RESET": SubResource("Animation_yd0hp")
+}
+
+[sub_resource type="Animation" id="Animation_h2wen"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxHurt:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_uogcp"]
+resource_name = "hurt"
+length = 0.15
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.21, 0, 0), Vector3(-0.177387, 0, 0.155761), Vector3(0.0141396, 0, -0.192105), Vector3(0.139467, 0, 0.137589), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxHurt:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o0fwo"]
+_data = {
+&"RESET": SubResource("Animation_h2wen"),
+&"hurt": SubResource("Animation_uogcp")
+}
+
+[sub_resource type="Animation" id="Animation_wuree"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt/Anim_Gain/Fill/Circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Radius/Anim_Hurt/Anim_Gain/Outline:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_eephl"]
+resource_name = "hide"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt/Anim_Gain/Fill/Circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Radius/Anim_Hurt/Anim_Gain/Outline:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.392157), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vxk2y"]
+resource_name = "show"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radius/Anim_Hurt/Anim_Gain/Fill/Circle:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Radius/Anim_Hurt/Anim_Gain/Outline:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eephl"]
+_data = {
+&"RESET": SubResource("Animation_wuree"),
+&"hide": SubResource("Animation_eephl"),
+&"show": SubResource("Animation_vxk2y")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lyxe2"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_vfvjx")
+
+[node name="FocusCircle" type="Node3D" node_paths=PackedStringArray("FillNode", "Eye", "AnimationPlayer_Gain", "AnimationPlayer_Hurt", "AnimationPlayer_Show", "SfxFocusGain", "SfxFocusMax")]
+script = ExtResource("1_rhly1")
+FillNode = NodePath("Radius/Anim_Hurt/Anim_Gain/Fill")
+Eye = NodePath("Radius/Anim_Hurt/Anim_Gain/Eye")
+AnimationPlayer_Gain = NodePath("AnimationPlayer_Gain")
+AnimationPlayer_Hurt = NodePath("AnimationPlayer_Hurt")
+AnimationPlayer_Show = NodePath("AnimationPlayer_Show")
+SfxFocusGain = NodePath("SfxFocusGain")
+SfxFocusMax = NodePath("SfxFocusMax")
+
+[node name="Radius" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.01, 0)
+
+[node name="Anim_Hurt" type="Node3D" parent="Radius"]
+
+[node name="Anim_Gain" type="Node3D" parent="Radius/Anim_Hurt"]
+
+[node name="Fill" type="Node3D" parent="Radius/Anim_Hurt/Anim_Gain"]
+
+[node name="Circle" type="Sprite3D" parent="Radius/Anim_Hurt/Anim_Gain/Fill"]
+transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, 0.8, 0, -0.8, -3.49691e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0.392157)
+texture = ExtResource("2_4iq22")
+
+[node name="Outline" type="Sprite3D" parent="Radius/Anim_Hurt/Anim_Gain"]
+transform = Transform3D(0.822222, 0, 0, 0, -3.59405e-08, 0.822222, 0, -0.822222, -3.59405e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0.392157)
+texture = ExtResource("3_vfvjx")
+
+[node name="Eye" type="Sprite3D" parent="Radius/Anim_Hurt/Anim_Gain"]
+transform = Transform3D(1.737, 0, 0, 0, -7.59267e-08, 1.737, 0, -1.737, -7.59267e-08, 0, 0.01, 0)
+modulate = Color(0, 0, 0, 0.588235)
+texture = ExtResource("4_lyxe2")
+
+[node name="OutlineFlash" type="Sprite3D" parent="Radius/Anim_Hurt/Anim_Gain"]
+transform = Transform3D(0.987, 0, 0, 0, -4.31431e-08, 0.987, 0, -0.987, -4.31431e-08, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_vfvjx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Radius/Anim_Hurt/Anim_Gain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
+visible = false
+mesh = SubResource("CylinderMesh_vxk2y")
+skeleton = NodePath("../../../..")
+
+[node name="AnimationPlayer_Gain" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rpbmh")
+}
+
+[node name="AnimationPlayer_Hurt" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o0fwo")
+}
+
+[node name="AnimationPlayer_Show" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eephl")
+}
+
+[node name="SfxHurt" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_lyxe2")
+max_polyphony = 6
+bus = &"SFX"
+
+[node name="SfxFocusGain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lyxe2")
+volume_db = -5.0
+max_polyphony = 6
+bus = &"SFX"
+
+[node name="SfxFocusMax" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vxk2y")
+volume_db = -10.0
+max_polyphony = 6
+bus = &"SFX"

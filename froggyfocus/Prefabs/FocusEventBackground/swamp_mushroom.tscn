@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://guslwpuh5hsm"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_j67u3"]
+[ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="2_covcb"]
+[ext_resource type="PackedScene" uid="uid://dphy7mkttpwga" path="res://Assets/Quaternius/Nature/CommonTree_Dead_5.fbx" id="3_4hhec"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="4_2mcq0"]
+[ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/Water.tres" id="5_savom"]
+
+[node name="swamp_mushroom" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_j67u3")
+Id = "swamp_mushroom"
+SoundEffects = []
+
+[node name="Floor" type="Node3D" parent="."]
+transform = Transform3D(0.915, 0, 0, 0, 0.915, 0, 0, 0, 0.915, 0, -0.00313839, 0)
+
+[node name="mushroom_platform" parent="Floor" instance=ExtResource("2_covcb")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 3.38824)
+
+[node name="mushroom_platform2" parent="Floor" instance=ExtResource("2_covcb")]
+transform = Transform3D(-4.48633, 0, -8.93716, 0, 10, 0, 8.93716, 0, -4.48633, -2.986, 0, -0.958)
+
+[node name="mushroom_platform3" parent="Floor" instance=ExtResource("2_covcb")]
+transform = Transform3D(-5.9572, 0, 8.03192, 0, 10, 0, -8.03192, 0, -5.9572, 1.982, 0, -1.289)
+
+[node name="CommonTree_Dead_5" parent="Floor" instance=ExtResource("3_4hhec")]
+transform = Transform3D(-5.46047, 0, -13.9708, 0, 15, 0, 13.9708, 0, -5.46047, -5.78461, -6.35527, -3.00241)
+
+[node name="CommonTree_Dead_6" parent="Floor" instance=ExtResource("3_4hhec")]
+transform = Transform3D(-9.88093, 0, 11.2857, 0, 15, 0, -11.2857, 0, -9.88093, 4.27317, -6.35527, -2.88821)
+
+[node name="CommonTree_Dead_7" parent="Floor" instance=ExtResource("3_4hhec")]
+transform = Transform3D(14.9571, 0, -1.13408, 0, 15, 0, 1.13408, 0, 14.9571, 0.54985, -6.35527, 6.9454)
+
+[node name="Water" parent="." instance=ExtResource("4_2mcq0")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -4.23531, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("5_savom")
+
+[editable path="Water"]

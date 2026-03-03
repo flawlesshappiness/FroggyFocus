@@ -35,23 +35,23 @@ public partial class FocusSkillCheck_Dash : FocusSkillCheck
         var count = DashCountRange.Range(Difficulty);
         for (int i = 0; i < count; i++)
         {
-            GlobalPosition = FocusEvent.Target.GlobalPosition;
+            GlobalPosition = Target.GlobalPosition;
 
-            var position = FocusEvent.Target.GetNextPosition();
-            var dir = FocusEvent.Target.GlobalPosition.DirectionTo(position);
+            var position = Target.GetNextPosition();
+            var dir = Target.GlobalPosition.DirectionTo(position);
             var angle = Mathf.RadToDeg(Vector3.Forward.SignedAngleTo(dir, Vector3.Up));
             RotationNode.GlobalRotationDegrees = new Vector3(0, angle, 0);
-            FocusEvent.Target.Character.StartFacingDirection(dir);
+            Target.Character.StartFacingDirection(dir);
             yield return AnimationPlayer.PlayAndWaitForAnimation("telegraph");
 
             SfxMove.Play();
 
             var curve = Curves.EaseOutQuad;
-            var start = FocusEvent.Target.GlobalPosition;
+            var start = Target.GlobalPosition;
             yield return LerpEnumerator.Lerp01(0.25f, f =>
             {
                 var t = curve.Evaluate(f);
-                FocusEvent.Target.GlobalPosition = start.Lerp(position, t);
+                Target.GlobalPosition = start.Lerp(position, t);
             });
         }
 

@@ -1,8 +1,12 @@
+using FlawLizArt.FocusEvent;
 using Godot;
 using System.Collections;
 
 public partial class FocusSkillCheck : Node3D
 {
+    [Export]
+    public FocusTarget Target;
+
     [Export]
     public FocusSkillCheckType Type;
 
@@ -15,18 +19,17 @@ public partial class FocusSkillCheck : Node3D
     public bool IsRunning { get; set; }
     public float TimeAvailable { get; set; }
     public FocusEvent FocusEvent { get; private set; }
-
-    protected FocusTarget Target => FocusEvent?.Target;
-    protected float Difficulty => FocusEvent.Target.Difficulty;
+    protected FocusCursor Cursor => FocusEvent.Cursor;
+    protected float Difficulty => Target.Difficulty;
+    protected bool IsNearCursor => GlobalPosition.DistanceTo(Cursor.GlobalPosition) < Cursor.Radius;
 
     protected RandomNumberGenerator rng = new();
 
     public virtual void Initialize(FocusEvent focus_event)
     {
         FocusEvent = focus_event;
-        FocusEvent.OnCompleted += _ => Clear();
-        FocusEvent.OnFailed += _ => Clear();
-        FocusEvent.OnStopped += () => Stop();
+        //FocusEvent.OnEnded += _ => Clear();
+        //FocusEvent.OnStopped += () => Stop();
     }
 
     public virtual void Clear()
@@ -61,12 +64,12 @@ public partial class FocusSkillCheck : Node3D
     {
         var inactive = !IsRunning;
         var cooldown = GameTime.Time > TimeAvailable;
-        var rarity = FocusEvent.Target.CharacterData.Stars >= MinimumRarity;
+        var rarity = Target.CharacterData.Stars >= MinimumRarity;
         return inactive && cooldown && rarity;
     }
 
     private void StartCooldown()
     {
-        TimeAvailable = GameTime.Time + Cooldown.Range(Target.Difficulty);
+        //TimeAvailable = GameTime.Time + Cooldown.Range(Target.Difficulty);
     }
 }

@@ -56,9 +56,8 @@ scale_max = 0.4
 scale_curve = SubResource("CurveTexture_8gr2l")
 color = Color(0.52, 1, 0.896, 1)
 
-[node name="mushroom_cap_glowing_cluster_001" type="Node3D" node_paths=PackedStringArray("Light", "Particles")]
+[node name="mushroom_cap_glowing_cluster_001" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_8yf6f")
-Light = NodePath("OmniLight3D")
 Particles = [NodePath("ps_glow"), NodePath("ps_fireflies")]
 
 [node name="Scale" type="Node3D" parent="."]
@@ -77,14 +76,6 @@ transform = Transform3D(-0.0682281, 0, -0.414421, 0, 0.42, 0, 0.414421, 0, -0.06
 
 [node name="mushroom_cap_glowing5" parent="Scale" instance=ExtResource("1_8vrv3")]
 transform = Transform3D(0.419999, 0, 0.000886962, 0, 0.42, 0, -0.000886962, 0, 0.419999, 0.00800631, 0, -0.183424)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.575758, -0.0307606)
-light_color = Color(0.4, 0.93, 1, 1)
-distance_fade_enabled = true
-distance_fade_begin = 50.0
-omni_range = 16.0
-omni_attenuation = 0.25
 
 [node name="ps_glow" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.692041, -0.12605)

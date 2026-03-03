@@ -1,3 +1,4 @@
+using FlawLizArt.FocusEvent;
 using Godot;
 using System.Collections;
 using System.Collections.Generic;
@@ -46,11 +47,11 @@ public partial class SkillCheckProjectile : Node3D
 
     public class Settings
     {
-        public FocusEvent FocusEvent { get; set; }
+        public FocusSkillCheck SkillCheck { get; set; }
         public List<Vector3> HitPositions { get; set; } = new();
         public FocusCursor Cursor => FocusEvent.Cursor;
-        public FocusCursorShield Shield => Cursor.Shield;
-        public FocusTarget Target => FocusEvent.Target;
+        public FocusEvent FocusEvent => SkillCheck.FocusEvent;
+        public FocusTarget Target => SkillCheck.Target;
     }
 
     public Coroutine StartProjectile(Settings settings)
@@ -118,8 +119,8 @@ public partial class SkillCheckProjectile : Node3D
     private float GetNextSpeed()
     {
         var mul = Movement == MoveType.Glitch ? 1.0f : GameTime.DeltaTime;
-        var min = SpeedMin.Range(settings.FocusEvent.Target.Difficulty);
-        var max = SpeedMax.Range(settings.FocusEvent.Target.Difficulty);
+        var min = SpeedMin.Range(settings.Target.Difficulty);
+        var max = SpeedMax.Range(settings.Target.Difficulty);
         var t_time = (GameTime.Time - time_start) / 0.5f;
         var curve = Curves.GetCurve(SpeedCurve);
         var t = curve.Evaluate(t_time);
@@ -133,9 +134,8 @@ public partial class SkillCheckProjectile : Node3D
 
         var shield_radius = Radius + settings.Cursor.Radius;
         var near_shield = DistanceToCursor < shield_radius;
-        var is_shielded = settings.Shield.IsShielded;
 
-        if (near_shield && (can_hurt || is_shielded))
+        if (near_shield && can_hurt)
         {
             IsHit = true;
             HurtPlayer();
@@ -154,11 +154,7 @@ public partial class SkillCheckProjectile : Node3D
             settings.Cursor.HurtFocusValue(Damage);
         }
 
-        if (!settings.Shield.IsShielded)
-        {
-            PlayHurtPS();
-        }
-
+        PlayHurtPS();
         StopIdlePS();
     }
 

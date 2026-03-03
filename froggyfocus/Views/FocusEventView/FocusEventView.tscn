@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://cihueqye8hd4b"]
+
+[ext_resource type="Script" uid="uid://bxkqwg5ht2ro7" path="res://Views/FocusEventView/FocusEventView.cs" id="1_i3ks8"]
+[ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_se34s"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_vpq2w"]
+[ext_resource type="PackedScene" uid="uid://32jwjogrnnmr" path="res://Prefabs/UI/InputPrompt/input_prompt_focus.tscn" id="3_wygtd"]
+[ext_resource type="PackedScene" uid="uid://cp8kbr2tvdecr" path="res://Prefabs/UI/InputPrompt/input_prompt_texture.tscn" id="4_pwilq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wygtd"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 2
+corner_radius_top_right = 16
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwilq"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 16
+corner_radius_bottom_left = 2
+
+[node name="FocusEventView" type="Control" node_paths=PackedStringArray("TimerBar", "InputPrompt", "Overlay_Flash")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i3ks8")
+TimerBar = NodePath("Timer/VBoxContainer/TimerBar")
+InputPrompt = NodePath("InputPromptFocus")
+Overlay_Flash = NodePath("Control/AnimatedOverlay_Flash")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimatedOverlay_Flash" parent="Control" instance=ExtResource("2_se34s")]
+layout_mode = 1
+
+[node name="Timer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Timer"]
+layout_mode = 2
+alignment = 2
+
+[node name="TimerBar" type="ProgressBar" parent="Timer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme = ExtResource("2_vpq2w")
+theme_override_styles/background = SubResource("StyleBoxFlat_wygtd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pwilq")
+max_value = 1.0
+step = 0.001
+value = 1.0
+show_percentage = false
+
+[node name="InputPromptFocus" parent="." instance=ExtResource("3_wygtd")]
+layout_mode = 1
+
+[node name="Controls" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls"]
+layout_mode = 2
+alignment = 2
+
+[node name="Focus" type="HBoxContainer" parent="Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="InputPromptTexture" parent="Controls/VBoxContainer/Focus" instance=ExtResource("4_pwilq")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+StartingAction = "Interact"
+
+[node name="Label" type="Label" parent="Controls/VBoxContainer/Focus"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Focus on target"
+
+[node name="Cover eyes" type="HBoxContainer" parent="Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="InputPromptTexture" parent="Controls/VBoxContainer/Cover eyes" instance=ExtResource("4_pwilq")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+StartingAction = "Focus"
+
+[node name="Label" type="Label" parent="Controls/VBoxContainer/Cover eyes"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cover eyes"

@@ -1,6 +1,8 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 public partial class ResourceCollection<T> : Resource
     where T : Resource
@@ -96,5 +98,15 @@ public partial class ResourceCollection<T> : Resource
     public T GetResource(string name)
     {
         return _resource_maps.TryGetValue(name, out var resource) ? resource : null;
+    }
+
+    public T GetResource(Func<T, bool> predicate)
+    {
+        return Resources.FirstOrDefault(predicate);
+    }
+
+    public IEnumerable<T> GetResources(Func<T, bool> predicate)
+    {
+        return Resources.Where(predicate);
     }
 }

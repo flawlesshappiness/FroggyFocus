@@ -85,7 +85,7 @@ public partial class FocusSkillCheck_Bombs : FocusSkillCheck
     {
         var radius_mul = rng.RandfRange(0.75f, 1f);
         var radius = Mathf.Lerp(DistanceRange.X, DistanceRange.Y, Difficulty);
-        var center = FocusEvent.Target.GlobalPosition;
+        var center = Target.GlobalPosition;
         var dir = Vector3.Forward.Rotated(Vector3.Up, Mathf.DegToRad(angle));
         var position = center + dir * radius * radius_mul;
         return position;

@@ -1,23 +1,15 @@
 using Godot;
 using Godot.Collections;
-using System.Collections;
 
 public partial class GlowingMushroomCluster : Node3DScript
 {
     [Export]
-    public OmniLight3D Light;
-
-    [Export]
     public Array<GpuParticles3D> Particles;
-
-    private float light_energy;
 
     public override void _Ready()
     {
         base._Ready();
         WeatherController.Instance.OnWeatherStart += WeatherStart;
-
-        InitializeLight();
     }
 
     public override void _ExitTree()
@@ -35,34 +27,14 @@ public partial class GlowingMushroomCluster : Node3DScript
         SetGlowing(glow);
     }
 
-    private void InitializeLight()
-    {
-        light_energy = Light.LightEnergy;
-        Light.LightEnergy = 0;
-    }
-
     private void WeatherStart(WeatherInfo info)
     {
         var glow = GlowingMushroom.ShouldGlow(info);
-
-        this.StartCoroutine(Cr, "glow");
-        IEnumerator Cr()
-        {
-            var e_light_start = Light.LightEnergy;
-            var e_light_end = glow ? light_energy : 0;
-            var duration = WeatherController.Instance.GetTransitionDuration();
-            yield return LerpEnumerator.Lerp01(duration, f =>
-            {
-                Light.LightEnergy = Mathf.Lerp(e_light_start, e_light_end, f);
-            });
-
-            Particles.ForEach(x => x.Emitting = glow);
-        }
+        Particles.ForEach(x => x.Emitting = glow);
     }
 
     private void SetGlowing(bool glow)
     {
-        Light.LightEnergy = glow ? light_energy : 0;
         Particles.ForEach(x => x.Emitting = glow);
     }
 }

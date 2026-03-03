@@ -58,7 +58,7 @@ color = Color(0.52, 1, 0.896, 1)
 
 [node name="mushroom_shelf_glowing_cluster" type="Node3D" node_paths=PackedStringArray("Light", "Particles")]
 script = ExtResource("1_sshe5")
-Light = NodePath("OmniLight3D")
+Light = NodePath("")
 Particles = [NodePath("ps_glow"), NodePath("ps_fireflies")]
 
 [node name="Scale" type="Node3D" parent="."]
@@ -81,14 +81,6 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.130195, -0.0442229, 
 
 [node name="Mushroom_Shelf_Glowing6" parent="Scale" instance=ExtResource("1_djtft")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.118029, -0.0996993, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.427231, 0.889888)
-light_color = Color(0.4, 0.93, 1, 1)
-distance_fade_enabled = true
-distance_fade_begin = 50.0
-omni_range = 16.0
-omni_attenuation = 0.25
 
 [node name="ps_glow" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16782, 0.294194)

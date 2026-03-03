@@ -63,7 +63,7 @@ public partial class MainMenuView : View
         CreditsContainer.OnBackPressed += CloseMenu;
         GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
 
-        Overlay.AnimateShowImmediate();
+        Overlay.ShowImmediate();
 
         InputBlocker.Hide();
 
@@ -109,7 +109,7 @@ public partial class MainMenuView : View
         if (animating) return;
         animating = true;
 
-        Overlay.AnimateShowImmediate();
+        Overlay.ShowImmediate();
 
         this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()

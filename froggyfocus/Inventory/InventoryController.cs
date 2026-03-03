@@ -55,11 +55,12 @@ public partial class InventoryController : SingletonController
         // Info
         data.InfoPath = info.ResourcePath;
 
-        // Size
-        data.Size = info.OverrideSize > 0 ? info.OverrideSize : rng.RandfRange(0.4f, 0.6f);
-
         // Stars
         data.Stars = GetRarity(info, Player.Instance.HasHotspot);
+        var t_stars = Mathf.Clamp((data.Stars - 1) / 4f, 0, 1);
+
+        // Size
+        data.Size = info.OverrideSize > 0 ? info.OverrideSize : Mathf.Lerp(0.7f, 1.5f, t_stars);
 
         // Value
         data.Value = GetMoneyValue(info, data);
@@ -107,7 +108,6 @@ public partial class InventoryController : SingletonController
         var base_multiplier = info.MoneyMultiplier;
 
         var stars_value = 5 * data.Stars;
-        //var stars_multiplier = 1f + Mathf.Clamp(-0.2f + 0.1f * data.Stars, 0f, 1f);
         var stars_mul_min = 1f;
         var stars_mul_max = 2f;
         var t_stars = (data.Stars - 1) / 4f;

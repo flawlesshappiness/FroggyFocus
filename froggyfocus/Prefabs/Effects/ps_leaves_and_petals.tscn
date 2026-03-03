@@ -36,6 +36,7 @@ material = ExtResource("3_6s556")
 [node name="PsLeavesAndPetals" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_f1o6k")
 PlayOnReady = true
+DestroyDelay = 1.0
 Particles = [NodePath("PsLeaves"), NodePath("PsPetals")]
 
 [node name="PsLeaves" type="GPUParticles3D" parent="."]

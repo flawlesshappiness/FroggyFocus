@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("2_xrtbu")
+Id = "glitch_flying"
+TargetCount = Vector2i(0, 0)
 Characters = Array[Object]([ExtResource("1_gtwb2")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"

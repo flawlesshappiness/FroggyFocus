@@ -19,13 +19,13 @@ public partial class GlowingMushroom : Node3DScript
     {
         base._Ready();
         InitializeMaterials();
-        WeatherController.Instance.OnWeatherStart += WeatherStart;
+        //WeatherController.Instance.OnWeatherStart += WeatherStart;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        WeatherController.Instance.OnWeatherStart -= WeatherStart;
+        //WeatherController.Instance.OnWeatherStart -= WeatherStart;
     }
 
     protected override void Initialize()
@@ -34,7 +34,8 @@ public partial class GlowingMushroom : Node3DScript
 
         var weather = WeatherController.Instance.GetCurrentWeather();
         var glow = ShouldGlow(weather);
-        SetGlowing(glow);
+        //SetGlowing(glow);
+        SetGlowing(false);
     }
 
     private void InitializeMaterials()
@@ -93,8 +94,7 @@ public partial class GlowingMushroom : Node3DScript
     public static bool ShouldGlow(WeatherInfo info)
     {
         var has_rain = info.Rain > 0;
-        var has_fog = info.FogEnabled;
-        var glow = has_rain || has_fog;
+        var glow = has_rain;
         return glow;
     }
 }

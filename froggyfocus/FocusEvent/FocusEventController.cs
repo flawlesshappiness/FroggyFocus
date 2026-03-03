@@ -1,3 +1,4 @@
+using FlawLizArt.FocusEvent;
 using System;
 using System.Linq;
 
@@ -7,8 +8,7 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
     public static FocusEventController Instance => Singleton.Get<FocusEventController>();
 
     public event Action<FocusEvent> OnFocusEventStarted;
-    public event Action<FocusEventCompletedResult> OnFocusEventCompleted;
-    public event Action<FocusEventFailedResult> OnFocusEventFailed;
+    public event Action<FocusEventResult> OnFocusEventEnded;
 
     public override void _Ready()
     {
@@ -53,18 +53,25 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
             v.ContentSearch.UpdateButtons();
         }
 
-        void StartFocusEvent(DebugView v, FocusCharacterInfo info, int stars)
+        void StartFocusEvent(DebugView v, FocusCharacterInfo character_info, int stars)
         {
-            var focus_event = GameScene.Instance.FocusEvents
-                .FirstOrDefault(x => x.Info.Characters.Contains(info))
-                ?? GameScene.Instance.FocusEvents.FirstOrDefault();
+            var info = Collection.Resources.First(x => x.Characters.Contains(character_info));
+            var focus_event = GameScene.Instance.FocusEvent;
 
-            focus_event.OverrideTargetInfo = info;
-            focus_event.OverrideTargetStars = stars;
-            focus_event.StartEvent();
+            focus_event.StartEvent(new FocusEvent.Settings
+            {
+                Id = info.Id,
+                OverrideTargetInfo = character_info,
+                OverrideTargetStars = stars
+            });
 
             v.Close();
         }
+    }
+
+    public FocusEventInfo GetInfo(string id)
+    {
+        return Collection.GetResource(x => x.Id == id);
     }
 
     public void FocusEventStarted(FocusEvent e)
@@ -72,33 +79,19 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
         OnFocusEventStarted?.Invoke(e);
     }
 
-    public void FocusEventCompleted(FocusEventCompletedResult result)
+    public void FocusEventEnded(FocusEventResult result)
     {
-        OnFocusEventCompleted?.Invoke(result);
-    }
-
-    public void FocusEventFailed(FocusEventFailedResult result)
-    {
-        OnFocusEventFailed?.Invoke(result);
+        OnFocusEventEnded?.Invoke(result);
     }
 }
 
 public class FocusEventResult
 {
     public FocusEvent FocusEvent { get; set; }
+    public bool EndedPrematurely { get; set; }
 
     public FocusEventResult(FocusEvent e)
     {
         FocusEvent = e;
     }
-}
-
-public class FocusEventCompletedResult : FocusEventResult
-{
-    public FocusEventCompletedResult(FocusEvent e) : base(e) { }
-}
-
-public class FocusEventFailedResult : FocusEventResult
-{
-    public FocusEventFailedResult(FocusEvent e) : base(e) { }
 }

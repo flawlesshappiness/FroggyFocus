@@ -23,7 +23,7 @@ radius = 0.64502
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_g2ctm")
-Id = "lilypad"
+Id = "swamp_lilypads"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
