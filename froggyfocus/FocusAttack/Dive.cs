@@ -1,5 +1,6 @@
-using FlawLizArt.FocusEvent;
 using System.Collections;
+
+namespace FlawLizArt.FocusEvent;
 
 public partial class Dive : FocusAttack
 {

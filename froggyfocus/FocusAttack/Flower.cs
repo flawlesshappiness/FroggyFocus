@@ -1,6 +1,7 @@
-using FlawLizArt.FocusEvent;
 using Godot;
 using System.Collections;
+
+namespace FlawLizArt.FocusEvent;
 
 public partial class Flower : FocusAttack
 {

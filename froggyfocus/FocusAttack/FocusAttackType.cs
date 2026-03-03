@@ -4,4 +4,5 @@ public enum FocusAttackType
     Dive,
     Flash,
     Flower,
+    Mushroom,
 }

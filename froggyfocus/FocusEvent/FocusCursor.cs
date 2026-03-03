@@ -165,6 +165,10 @@ public partial class FocusCursor : Node3D
 
     public void HurtFocusValuePercentage(float percentage)
     {
+        if (current_target != null)
+        {
+            current_target.HurtFocusValue(percentage);
+        }
     }
 
     private void MoveStarted()

@@ -1,5 +1,6 @@
 using FlawLizArt.FocusEvent;
 using Godot;
+using System.Collections;
 
 public partial class FocusEventView : View
 {
@@ -10,6 +11,9 @@ public partial class FocusEventView : View
 
     [Export]
     public InputPromptFocus InputPrompt;
+
+    [Export]
+    public AnimatedOverlay Overlay_Flash;
 
     private FocusEvent FocusEvent { get; set; }
 
@@ -66,5 +70,17 @@ public partial class FocusEventView : View
     public void HideInputPrompt()
     {
         InputPrompt.Hide();
+    }
+
+    public void Flash(float duration, Color color)
+    {
+        this.StartCoroutine(Cr, "flash");
+        IEnumerator Cr()
+        {
+            var overlay = Overlay_Flash.Duplicate() as AnimatedOverlay;
+            overlay.SetParent(Overlay_Flash.GetParent());
+            yield return overlay.AnimateHide(duration, color);
+            overlay.QueueFree();
+        }
     }
 }
