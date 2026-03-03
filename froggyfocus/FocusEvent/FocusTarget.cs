@@ -214,6 +214,8 @@ public partial class FocusTarget : Node3D
         if (GameTime.Time < time_cursor_tick) return;
         time_cursor_tick += TICK_TIME;
 
+        if (FocusEvent.IsCoveringEyes) return;
+
         if (HasCursor)
         {
             AdjustFocusValue(5.0f); // TODO: Based on upgrade

@@ -32,6 +32,12 @@ public partial class FrogCharacter : Character
     public string AnimationName_Searching = "searching";
 
     [Export]
+    public string AnimationName_CoverEyes = "cover_eyes";
+
+    [Export]
+    public string AnimationName_UncoverEyes = "uncover_eyes";
+
+    [Export]
     public bool DisableAnimationStates;
 
     [Export]
@@ -70,6 +76,7 @@ public partial class FrogCharacter : Character
     private BoolParameter param_jumping = new BoolParameter("jumping", false);
     private BoolParameter param_charging = new BoolParameter("charging", false);
     private BoolParameter param_searching = new BoolParameter("searching", false);
+    private BoolParameter param_cover_eyes = new BoolParameter("cover_eyes", false);
 
     public override void _Ready()
     {
@@ -105,6 +112,8 @@ public partial class FrogCharacter : Character
         var tongue_out = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_TongueOut}", false);
         var tongue_in = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_TongueIn}", false);
         var searching = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Searching}", false);
+        var cover_eyes = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_CoverEyes}", false);
+        var uncover_eyes = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_UncoverEyes}", false);
 
         state_in_sand = Animation.CreateAnimation("Armature|in_sand", true);
 
@@ -116,6 +125,10 @@ public partial class FrogCharacter : Character
 
         Animation.Connect(idle, searching, param_searching.WhenTrue());
         Animation.Connect(searching, idle, param_searching.WhenFalse());
+
+        Animation.Connect(idle, cover_eyes, param_cover_eyes.WhenTrue());
+        Animation.Connect(cover_eyes, uncover_eyes, param_cover_eyes.WhenFalse());
+        Animation.Connect(uncover_eyes, idle);
 
         Animation.Connect(idle, tongue_out, param_tongue_out.WhenTrue());
         Animation.Connect(tongue_out, tongue_in, param_tongue_out.WhenFalse());
@@ -234,6 +247,11 @@ public partial class FrogCharacter : Character
     public void SetSearching(bool searching)
     {
         param_searching.Set(searching);
+    }
+
+    public void SetCoveringEyes(bool cover_eyes)
+    {
+        param_cover_eyes.Set(cover_eyes);
     }
 
     public Coroutine AnimateEatTarget(Node3D target)

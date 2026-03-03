@@ -69,6 +69,7 @@ public partial class FocusEvent : Node3D
     public float TimerEnd { get; private set; }
     public Settings CurrentSettings { get; private set; }
     public List<FocusTarget> Targets { get; private set; } = new();
+    public bool IsCoveringEyes { get; private set; }
 
     private List<FocusSkillCheck> skill_checks = new();
     private List<FocusEventBackground> backgrounds = new();
@@ -141,10 +142,24 @@ public partial class FocusEvent : Node3D
         base._Process(delta);
 
         Process_Timer();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
 
         if (PlayerInput.Pause.Released)
         {
             EndEvent();
+        }
+
+        if (PlayerInput.Focus.Pressed)
+        {
+            SetCoveringEyes(true);
+        }
+        else if (PlayerInput.Focus.Released)
+        {
+            SetCoveringEyes(false);
         }
     }
 
@@ -423,6 +438,21 @@ public partial class FocusEvent : Node3D
         HideBackgrounds();
         var background = backgrounds.FirstOrDefault(x => x.Id == id) ?? backgrounds.First();
         background.Show();
+    }
+
+    private void SetCoveringEyes(bool is_covering)
+    {
+        IsCoveringEyes = is_covering;
+        Frog.SetCoveringEyes(is_covering);
+
+        if (is_covering)
+        {
+            GameView.Instance.AnimateVignetteShow(0.25f);
+        }
+        else
+        {
+            GameView.Instance.AnimateVignetteHide(0.5f);
+        }
     }
 
     /*
