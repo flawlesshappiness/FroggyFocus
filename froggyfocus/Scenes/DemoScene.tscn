@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=59 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_fqf33"]
@@ -33,19 +33,13 @@
 [ext_resource type="PackedScene" uid="uid://bt47rt4wstm5n" path="res://Prefabs/NPC/OtterNPC/otter_npc.tscn" id="30_gwqf8"]
 [ext_resource type="PackedScene" uid="uid://bw057fcfnoby7" path="res://Prefabs/NPC/MagpieNPC/magpie_npc.tscn" id="31_wmjds"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="32_i7ql3"]
-[ext_resource type="Resource" uid="uid://4t23pgixusyd" path="res://FocusEvent/Resources/Swamp Land.tres" id="33_hqkc0"]
 [ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="34_7doow"]
-[ext_resource type="Resource" uid="uid://domnlcvrorsml" path="res://FocusEvent/Resources/Swamp Mushroom.tres" id="35_ialcb"]
 [ext_resource type="PackedScene" uid="uid://b1u4e4w1ce5jn" path="res://Assets/FlawLizArt/Nature/Toon/mushroom_platform.fbx" id="36_134bg"]
 [ext_resource type="PackedScene" uid="uid://dphy7mkttpwga" path="res://Assets/Quaternius/Nature/CommonTree_Dead_5.fbx" id="37_bmvqj"]
-[ext_resource type="Resource" uid="uid://dapgvgfcw8bk4" path="res://FocusEvent/Resources/Cave_Crystal.tres" id="38_byxdh"]
-[ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Water Lilypads.tres" id="38_fpkb8"]
-[ext_resource type="Resource" uid="uid://dho360gt3kik5" path="res://FocusEvent/Resources/Cave_Stalagmite.tres" id="38_y1jgi"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="39_2o8dq"]
 [ext_resource type="PackedScene" uid="uid://crkfm1vapfehx" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat.fbx" id="39_3nau4"]
 [ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="39_ugs8i"]
 [ext_resource type="PackedScene" uid="uid://b0uor5n0v8ykv" path="res://Assets/Quaternius/Nature/Lilypad_Cut.fbx" id="40_y1jgi"]
-[ext_resource type="Resource" uid="uid://c7a2ryrxyjyti" path="res://FocusEvent/Resources/Swamp Water Woods.tres" id="41_3nau4"]
 [ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="42_byxdh"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="43_ugs8i"]
 [ext_resource type="PackedScene" uid="uid://vljga7igf232" path="res://Prefabs/Nature/plant_monstera_group.tscn" id="49_t8ctw"]
@@ -627,8 +621,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
 
 [node name="FocusEvent_Land" parent="World/FocusEvents/Land" instance=ExtResource("32_i7ql3")]
 visible = false
-Id = "land"
-Info = ExtResource("33_hqkc0")
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Land/FocusEvent_Land"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -648,8 +640,6 @@ transform = Transform3D(5.24537e-07, 0, 4, 0, 4, 0, -4, 0, 5.24537e-07, -8, 0, 8
 [node name="FocusEvent_Mushroom" parent="World/FocusEvents/Land" instance=ExtResource("32_i7ql3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 visible = false
-Id = "mushroom"
-Info = ExtResource("35_ialcb")
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Land/FocusEvent_Mushroom"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -674,8 +664,6 @@ transform = Transform3D(14.9571, 0, -1.13408, 0, 15, 0, 1.13408, 0, 14.9571, 0.5
 
 [node name="Crystal" parent="World/FocusEvents/Land" instance=ExtResource("32_i7ql3")]
 visible = false
-Id = "crystal"
-Info = ExtResource("38_byxdh")
 
 [node name="Platforms" type="Node3D" parent="World/FocusEvents/Land/Crystal"]
 
@@ -744,8 +732,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
 [node name="FocusEvent_Lilypad" parent="World/FocusEvents/Water" instance=ExtResource("32_i7ql3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.895, 0)
 visible = false
-Id = "lilypad"
-Info = ExtResource("38_fpkb8")
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Water/FocusEvent_Lilypad"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
@@ -795,8 +781,6 @@ transform = Transform3D(-2.17038, 0, -2.07109, 0, 3, 0, 2.07109, 0, -2.17038, 6.
 [node name="FocusEvent_Wood" parent="World/FocusEvents/Water" instance=ExtResource("32_i7ql3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.895, 0)
 visible = false
-Id = "wood"
-Info = ExtResource("41_3nau4")
 
 [node name="Floor" type="Node3D" parent="World/FocusEvents/Water/FocusEvent_Wood"]
 
@@ -818,8 +802,6 @@ transform = Transform3D(0.236716, 0, -0.0804094, 0, 0.25, 0, 0.0804094, 0, 0.236
 [node name="Stalagmite" parent="World/FocusEvents/Water" instance=ExtResource("32_i7ql3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.913, 0)
 visible = false
-Id = "stalagmite"
-Info = ExtResource("38_y1jgi")
 
 [node name="stalagmite_flat2" parent="World/FocusEvents/Water/Stalagmite" instance=ExtResource("39_3nau4")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3.00555)

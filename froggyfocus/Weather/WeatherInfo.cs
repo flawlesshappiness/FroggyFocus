@@ -25,9 +25,6 @@ public partial class WeatherInfo : Resource
     public float SunShadowOpacity;
 
     [Export]
-    public bool FogEnabled;
-
-    [Export]
     public FogType FogType;
 
     [Export]
@@ -50,6 +47,10 @@ public partial class WeatherInfo : Resource
 
     [Export]
     public Vector2 WindRange;
+
+    public bool IsNormalFog => FogType == FogType.Fog || FogType == FogType.Both;
+    public bool IsVolumetricFog => FogType == FogType.Volumetric || FogType == FogType.Both;
+    public bool IsFogdisabled => FogType == FogType.None;
 }
 
-public enum FogType { Fog, Volumetric }
+public enum FogType { None, Fog, Volumetric, Both }

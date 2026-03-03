@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=8 format=3 uid="uid://c8rw7h48k3o4k"]
+
+[ext_resource type="Resource" uid="uid://m31nw5wfia48" path="res://FocusCharacter/Resources/Waterstrider.tres" id="1_bemnq"]
+[ext_resource type="Resource" uid="uid://ddpbvp5jf57dp" path="res://FocusCharacter/Resources/Waterstrider_Flower.tres" id="2_h5kpf"]
+[ext_resource type="Resource" uid="uid://dgedy1cyq8sdd" path="res://FocusCharacter/Resources/Backswimmer.tres" id="3_qnies"]
+[ext_resource type="Resource" uid="uid://cnjvqov7aslvq" path="res://FocusCharacter/Resources/Backswimmer_Flower.tres" id="4_bdulb"]
+[ext_resource type="Resource" uid="uid://d3biw384eh4mn" path="res://FocusCharacter/Resources/Mosquito.tres" id="5_sric6"]
+[ext_resource type="Resource" uid="uid://dtaq1s53cx6bt" path="res://FocusCharacter/Resources/Dragonfly.tres" id="6_11d7p"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="7_owowr"]
+
+[resource]
+script = ExtResource("7_owowr")
+Id = "swamp_lilypads"
+TargetCount = Vector2i(2, 4)
+Characters = Array[Object]([ExtResource("1_bemnq"), ExtResource("2_h5kpf"), ExtResource("3_qnies"), ExtResource("4_bdulb"), ExtResource("5_sric6"), ExtResource("6_11d7p")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

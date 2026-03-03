@@ -11,7 +11,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
     protected override void Initialize()
     {
         base.Initialize();
-        FocusEventController.Instance.OnFocusEventCompleted += FocusEventCompleted;
+        FocusEventController.Instance.OnFocusEventEnded += FocusEventEnded;
         RegisterDebugActions();
     }
 
@@ -119,8 +119,9 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
         return Collection.Resources.FirstOrDefault(x => x.ResourcePath == path);
     }
 
-    private void FocusEventCompleted(FocusEventCompletedResult result)
+    private void FocusEventEnded(FocusEventResult result)
     {
+        /*
         var target = result.FocusEvent.Target;
         var info = result.FocusEvent.Target.Info;
         var any_complete = false;
@@ -146,6 +147,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
         }
 
         Data.Game.Save();
+        */
     }
 
     public bool IsAnyObjectiveComplete()

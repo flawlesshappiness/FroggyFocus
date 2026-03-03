@@ -23,25 +23,31 @@ public partial class FrogCharacter : Character
     public string AnimationName_Fall = "falling";
 
     [Export]
+    public string AnimationName_TongueOut = "tongue_out";
+
+    [Export]
+    public string AnimationName_TongueIn = "tongue_in";
+
+    [Export]
+    public string AnimationName_Searching = "searching";
+
+    [Export]
+    public string AnimationName_CoverEyes = "cover_eyes";
+
+    [Export]
+    public string AnimationName_UncoverEyes = "uncover_eyes";
+
+    [Export]
     public bool DisableAnimationStates;
 
     [Export]
     public bool DisableAppearanceUpdates;
 
     [Export]
-    public Node3D Tongue;
-
-    [Export]
-    public Marker3D TongueTargetMarker;
-
-    [Export]
-    public Marker3D TongueStartMarker;
+    public FrogTongue Tongue;
 
     [Export]
     public AnimationStateMachine Animation;
-
-    [Export]
-    public SoundInfo SfxSwallow;
 
     [Export]
     public PlayerMoveSoundsGroup MoveSounds;
@@ -60,30 +66,23 @@ public partial class FrogCharacter : Character
 
     public bool IsHandOut { get; private set; }
 
-    private float time_hand_out;
-    private Node3D _attached_target;
-
     private ShaderMaterial body_material;
 
     private AnimationState state_in_sand;
     private AnimationState state_falling;
 
     private BoolParameter param_moving = new BoolParameter("moving", false);
-    private BoolParameter param_mouth_open = new BoolParameter("mouth_open", false);
+    private BoolParameter param_tongue_out = new BoolParameter("mouth_open", false);
     private BoolParameter param_jumping = new BoolParameter("jumping", false);
     private BoolParameter param_charging = new BoolParameter("charging", false);
-
-    private BoolParameter param_right_hand_forward = new BoolParameter("right_hand_forward", false);
-    private BoolParameter param_left_hand_forward = new BoolParameter("left_hand_forward", false);
-    private BoolParameter param_right_hand_right = new BoolParameter("right_hand_right", false);
-    private BoolParameter param_left_hand_left = new BoolParameter("left_hand_left", false);
+    private BoolParameter param_searching = new BoolParameter("searching", false);
+    private BoolParameter param_cover_eyes = new BoolParameter("cover_eyes", false);
 
     public override void _Ready()
     {
         base._Ready();
         InitializeMesh();
         InitializeAnimations();
-        InitializeTongue();
 
         if (!DisableAppearanceUpdates)
         {
@@ -100,12 +99,6 @@ public partial class FrogCharacter : Character
         CustomizeAppearanceControl.OnAppearanceChanged -= AppearanceChanged;
     }
 
-    private void InitializeTongue()
-    {
-        Tongue.Scale = new Vector3(1, 1, 0);
-        Tongue.Hide();
-    }
-
     private void InitializeAnimations()
     {
         if (DisableAnimationStates) return;
@@ -116,18 +109,11 @@ public partial class FrogCharacter : Character
         var jump_start = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Jump}", false);
         state_falling = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Fall}", true);
         var jump_charge = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Charge}", true);
-        var mouth_open = Animation.CreateAnimation("Armature|mouth_open", false);
-        var mouth_close = Animation.CreateAnimation("Armature|mouth_close", false);
-
-        var left_hand_forward_out = Animation.CreateAnimation("Armature|left_hand_forward_out", false);
-        var left_hand_forward_in = Animation.CreateAnimation("Armature|left_hand_forward_in", false);
-        var right_hand_forward_out = Animation.CreateAnimation("Armature|right_hand_forward_out", false);
-        var right_hand_forward_in = Animation.CreateAnimation("Armature|right_hand_forward_in", false);
-
-        var right_hand_right_out = Animation.CreateAnimation("Armature|right_hand_right_out", false);
-        var right_hand_right_in = Animation.CreateAnimation("Armature|right_hand_right_in", false);
-        var left_hand_left_out = Animation.CreateAnimation("Armature|left_hand_left_out", false);
-        var left_hand_left_in = Animation.CreateAnimation("Armature|left_hand_left_in", false);
+        var tongue_out = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_TongueOut}", false);
+        var tongue_in = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_TongueIn}", false);
+        var searching = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Searching}", false);
+        var cover_eyes = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_CoverEyes}", false);
+        var uncover_eyes = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_UncoverEyes}", false);
 
         state_in_sand = Animation.CreateAnimation("Armature|in_sand", true);
 
@@ -137,35 +123,23 @@ public partial class FrogCharacter : Character
         Animation.Connect(idle, jump_charge, param_charging.WhenTrue());
         Animation.Connect(walking, jump_charge, param_charging.WhenTrue());
 
-        Animation.Connect(idle, mouth_open, param_mouth_open.WhenTrue());
-        Animation.Connect(right_hand_forward_out, mouth_open, param_mouth_open.WhenTrue());
-        Animation.Connect(left_hand_forward_out, mouth_open, param_mouth_open.WhenTrue());
-        Animation.Connect(right_hand_right_out, mouth_open, param_mouth_open.WhenTrue());
-        Animation.Connect(left_hand_left_out, mouth_open, param_mouth_open.WhenTrue());
-        Animation.Connect(mouth_open, mouth_close, param_mouth_open.WhenFalse());
-        Animation.Connect(mouth_open, mouth_close, param_mouth_open.WhenFalse());
-        Animation.Connect(mouth_close, idle);
+        Animation.Connect(idle, searching, param_searching.WhenTrue());
+        Animation.Connect(searching, idle, param_searching.WhenFalse());
+
+        Animation.Connect(idle, cover_eyes, param_cover_eyes.WhenTrue());
+        Animation.Connect(cover_eyes, uncover_eyes, param_cover_eyes.WhenFalse());
+        Animation.Connect(uncover_eyes, idle);
+
+        Animation.Connect(idle, tongue_out, param_tongue_out.WhenTrue());
+        Animation.Connect(tongue_out, tongue_in, param_tongue_out.WhenFalse());
+        Animation.Connect(tongue_out, tongue_in, param_tongue_out.WhenFalse());
+        Animation.Connect(tongue_in, idle);
 
         Animation.Connect(jump_charge, jump_start, param_jumping.WhenTrue());
         Animation.Connect(idle, jump_start, param_jumping.WhenTrue());
         Animation.Connect(walking, jump_start, param_jumping.WhenTrue());
         Animation.Connect(jump_start, state_falling);
         Animation.Connect(state_falling, idle, param_jumping.WhenFalse());
-
-        Animation.Connect(idle, right_hand_forward_out, param_right_hand_forward.WhenTrue());
-        Animation.Connect(idle, left_hand_forward_out, param_left_hand_forward.WhenTrue());
-        Animation.Connect(idle, right_hand_right_out, param_right_hand_right.WhenTrue());
-        Animation.Connect(idle, left_hand_left_out, param_left_hand_left.WhenTrue());
-
-        Animation.Connect(right_hand_forward_out, right_hand_forward_in, param_right_hand_forward.WhenFalse());
-        Animation.Connect(left_hand_forward_out, left_hand_forward_in, param_left_hand_forward.WhenFalse());
-        Animation.Connect(right_hand_right_out, right_hand_right_in, param_right_hand_right.WhenFalse());
-        Animation.Connect(left_hand_left_out, left_hand_left_in, param_left_hand_left.WhenFalse());
-
-        Animation.Connect(right_hand_forward_in, idle);
-        Animation.Connect(left_hand_forward_in, idle);
-        Animation.Connect(right_hand_right_in, idle);
-        Animation.Connect(left_hand_left_in, idle);
 
         Animation.Start(idle.Node);
     }
@@ -240,113 +214,6 @@ public partial class FrogCharacter : Character
         ParticlesAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
     }
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        Process_AttachedTarget();
-    }
-
-    public Coroutine AnimateEatTarget(Node3D target)
-    {
-        SetHandsBack();
-
-        return this.StartCoroutine(Cr, nameof(AnimateEatTarget));
-        IEnumerator Cr()
-        {
-            yield return AnimateTongueTowards(target.GlobalPosition);
-            AttachToTongue(target);
-            yield return AnimateTongueBack();
-            SfxSwallow.Play(GlobalPosition);
-        }
-    }
-
-    public Coroutine AnimateInteract(Node3D target)
-    {
-        return this.StartCoroutine(Cr, nameof(AnimateEatTarget));
-        IEnumerator Cr()
-        {
-            var empty_length = 2.5f;
-            var empty_position = GlobalPosition + Basis * (Vector3.Forward * empty_length + Vector3.Up * 0.25f);
-            var position = target == null ? empty_position : target.GlobalPosition;
-
-            if (target != null)
-            {
-                StartFacingPosition(position);
-                yield return new WaitForSeconds(0.25f);
-            }
-
-            yield return AnimateTongueTowards(position);
-            AnimateTongueBack();
-        }
-    }
-
-    public Coroutine AnimateTongueTowards(Vector3 position)
-    {
-        Tongue.GlobalPosition = TongueStartMarker.GlobalPosition;
-        Tongue.LookAt(position);
-        Tongue.Show();
-
-        var dist = Tongue.GlobalPosition.DistanceTo(position);
-        return this.StartCoroutine(Cr, nameof(AnimateTongueTowards));
-        IEnumerator Cr()
-        {
-            param_mouth_open.Set(true);
-            yield return new WaitForSeconds(0.2f);
-
-            var start = Tongue.Scale.Z;
-            var end = dist;
-            yield return LerpEnumerator.Lerp01(0.08f, f =>
-            {
-                var z = Mathf.Lerp(start, end, f);
-                Tongue.Scale = new Vector3(1, 1, z);
-            });
-        }
-    }
-
-    public Coroutine AnimateTongueBack()
-    {
-        return this.StartCoroutine(Cr, nameof(AnimateTongueBack));
-        IEnumerator Cr()
-        {
-            var start = Tongue.Scale.Z;
-            var end = 0;
-            yield return LerpEnumerator.Lerp01(0.1f, f =>
-            {
-                var z = Mathf.Lerp(start, end, f);
-                Tongue.Scale = new Vector3(1, 1, z);
-            });
-
-            ClearTongueAttachement();
-            Tongue.Hide();
-
-            param_mouth_open.Set(false);
-            yield return new WaitForSeconds(0.25f);
-        }
-    }
-
-    public void AttachToTongue(Node3D target)
-    {
-        if (target == null) return;
-
-        _attached_target = target;
-        target.SetParent(this);
-    }
-
-    public void ClearTongueAttachement()
-    {
-        if (_attached_target == null) return;
-
-        _attached_target.Disable();
-        _attached_target = null;
-    }
-
-    private void Process_AttachedTarget()
-    {
-        if (_attached_target == null) return;
-
-        _attached_target.GlobalPosition = TongueTargetMarker.GlobalPosition;
-    }
-
     public void SetMoving(bool moving)
     {
         param_moving.Set(moving);
@@ -364,85 +231,7 @@ public partial class FrogCharacter : Character
 
     public void SetMouthOpen(bool open)
     {
-        param_mouth_open.Set(open);
-    }
-
-    public void SetHandToPosition(Vector3 position)
-    {
-        var dir = position - GlobalPosition;
-        var forward = GlobalBasis * Vector3.Forward;
-        var angle = Mathf.RadToDeg(forward.SignedAngleTo(dir, Vector3.Up));
-        var right = angle < 0;
-        var abs = Mathf.Abs(angle);
-        var far = abs > 50;
-
-        if (GameTime.Time < time_hand_out) return;
-        time_hand_out = GameTime.Time + 10f;
-
-        if (IsHandOut)
-        {
-            SetHandsBack();
-        }
-        else if (right)
-        {
-            if (far)
-            {
-                SetRightHandRight();
-            }
-            else
-            {
-                SetRightHandForward();
-            }
-        }
-        else
-        {
-            if (far)
-            {
-                SetLeftHandLeft();
-            }
-            else
-            {
-                SetLeftHandForward();
-            }
-        }
-    }
-
-    public void SetHandsBack()
-    {
-        param_right_hand_forward.Set(false);
-        param_right_hand_right.Set(false);
-        param_left_hand_forward.Set(false);
-        param_left_hand_left.Set(false);
-
-        IsHandOut = false;
-    }
-
-    public void SetRightHandForward()
-    {
-        SetHandsBack();
-        param_right_hand_forward.Set(true);
-        IsHandOut = true;
-    }
-
-    public void SetRightHandRight()
-    {
-        SetHandsBack();
-        param_right_hand_right.Set(true);
-        IsHandOut = true;
-    }
-
-    public void SetLeftHandForward()
-    {
-        SetHandsBack();
-        param_left_hand_forward.Set(true);
-        IsHandOut = true;
-    }
-
-    public void SetLeftHandLeft()
-    {
-        SetHandsBack();
-        param_left_hand_left.Set(true);
-        IsHandOut = true;
+        param_tongue_out.Set(open);
     }
 
     public void SetInSand()
@@ -453,5 +242,29 @@ public partial class FrogCharacter : Character
     public void SetFalling()
     {
         Animation.SetCurrentState(state_falling.Node);
+    }
+
+    public void SetSearching(bool searching)
+    {
+        param_searching.Set(searching);
+    }
+
+    public void SetCoveringEyes(bool cover_eyes)
+    {
+        param_cover_eyes.Set(cover_eyes);
+    }
+
+    public Coroutine AnimateEatTarget(Node3D target)
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateEatTarget));
+        IEnumerator Cr()
+        {
+            param_tongue_out.Set(true);
+            yield return Tongue.AnimateTongueTowards(target.GlobalPosition);
+            Tongue.AttachToTongue(target);
+            param_tongue_out.Set(false);
+            yield return new WaitForSeconds(0.05f);
+            yield return Tongue.AnimateTongueBack();
+        }
     }
 }

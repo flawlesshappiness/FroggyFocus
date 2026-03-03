@@ -73,14 +73,7 @@ public partial class FocusSkillCheck_EldritchSlap : FocusSkillCheck
 
         FocusEvent.Cursor.HurtFocusValuePercentage(0.1f);
 
-        if (FocusEvent.Cursor.Shield.IsShielded)
-        {
-
-        }
-        else
-        {
-            var dir = -Vector3.Forward.Rotated(Vector3.Up, Mathf.DegToRad(angle));
-            FocusEvent.Cursor.GlobalPosition += dir * 0.8f;
-        }
+        var dir = -Vector3.Forward.Rotated(Vector3.Up, Mathf.DegToRad(angle));
+        FocusEvent.Cursor.GlobalPosition += dir * 0.8f;
     }
 }

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb8q4quglh4xu"]
+
+[ext_resource type="PackedScene" uid="uid://b5ugxirtiwk1s" path="res://Prefabs/Ground/pond_corner_convex_001.tscn" id="1_3b2pr"]
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_dqsdi"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="4_j1ks1"]
+[ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/Water.tres" id="5_7jqn7"]
+
+[node name="swamp_land" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_dqsdi")
+Id = "swamp_land"
+SoundEffects = []
+
+[node name="Water" parent="." instance=ExtResource("4_j1ks1")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -1.01789, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("5_7jqn7")
+
+[node name="pond_corner_convex_001" parent="." instance=ExtResource("1_3b2pr")]
+transform = Transform3D(2.78, 0, 0, 0, 2.78, 0, 0, 0, 2.78, -5.56, 0, -5.56)
+
+[node name="pond_corner_convex_002" parent="." instance=ExtResource("1_3b2pr")]
+transform = Transform3D(-1.21518e-07, 0, -2.78, 0, 2.78, 0, 2.78, 0, -1.21518e-07, 5.56, 0, -5.56)
+
+[node name="pond_corner_convex_003" parent="." instance=ExtResource("1_3b2pr")]
+transform = Transform3D(-2.78, 0, 2.43035e-07, 0, 2.78, 0, -2.43035e-07, 0, -2.78, 5.56, 0, 5.56)
+
+[node name="pond_corner_convex_004" parent="." instance=ExtResource("1_3b2pr")]
+transform = Transform3D(3.64553e-07, 0, 2.78, 0, 2.78, 0, -2.78, 0, 3.64553e-07, -5.56, 0, 5.56)
+
+[editable path="Water"]

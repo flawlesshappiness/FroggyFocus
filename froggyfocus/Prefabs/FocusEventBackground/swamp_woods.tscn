@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://chwsteqk4rmet"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_4qsyw"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="2_8yrcg"]
+[ext_resource type="PackedScene" uid="uid://bp74boiwwnt1p" path="res://Assets/Quaternius/Nature/TreeStump_Flat.fbx" id="3_hkscd"]
+[ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="4_qipd6"]
+[ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="5_nadld"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="6_7lg2j"]
+[ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/Water.tres" id="7_61ptw"]
+
+[node name="swamp_woods" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_4qsyw")
+Id = "swamp_woods"
+SoundEffects = [NodePath("AmbWater")]
+
+[node name="AmbWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8yrcg")
+volume_db = -5.0
+autoplay = true
+bus = &"Environment"
+
+[node name="TreeStump_Flat" parent="." instance=ExtResource("3_hkscd")]
+transform = Transform3D(2.29, 0, 0, 0, 2.29, 0, 0, 0, 2.29, 0, -0.819903, 0.00371265)
+
+[node name="Branches" type="Node3D" parent="."]
+transform = Transform3D(1.48, 0, 0, 0, 1.48, 0, 0, 0, 1.48, 0, 0, 0)
+
+[node name="Branch_Swamp_002" parent="Branches" instance=ExtResource("4_qipd6")]
+transform = Transform3D(0.659359, 0, 0.751828, 0, 1, 0, -0.751828, 0, 0.659359, 0.0672531, 0, -4.68146)
+
+[node name="Branch_Swamp_001" parent="Branches" instance=ExtResource("5_nadld")]
+transform = Transform3D(0.136127, 0, 0.209689, 0, 0.25, 0, -0.209689, 0, 0.136127, -4.43494, 0, 1.41582)
+
+[node name="Branch_Swamp_003" parent="Branches" instance=ExtResource("5_nadld")]
+transform = Transform3D(0.236716, 0, -0.0804094, 0, 0.25, 0, 0.0804094, 0, 0.236716, 4.34867, 0, 1.68118)
+
+[node name="Water" parent="." instance=ExtResource("6_7lg2j")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -0.175637, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("7_61ptw")
+
+[editable path="Water"]

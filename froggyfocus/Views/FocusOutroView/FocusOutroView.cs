@@ -1,3 +1,4 @@
+using FlawLizArt.FocusEvent;
 using Godot;
 using System.Collections;
 
@@ -49,7 +50,6 @@ public partial class FocusOutroView : View
 
     private void ResetFrog()
     {
-        Frog.SetLeftHandForward();
     }
 
     public IEnumerator EatBugSequence(bool success)
@@ -152,7 +152,6 @@ public partial class FocusOutroView : View
 
     private IEnumerator HandFocusCutscene(bool success)
     {
-        Frog.SetHandsBack();
         yield return AnimationPlayer_Frog.PlayAndWaitForAnimation("hand_focus");
 
         if (!success)
@@ -163,7 +162,7 @@ public partial class FocusOutroView : View
             yield return new WaitForSeconds(0.25f);
         }
 
-        yield return Frog.AnimateEatTarget(current_character);
+        //yield return Frog.AnimateEatTarget(current_character);
         yield return new WaitForSeconds(0.25f);
     }
 
@@ -182,7 +181,7 @@ public partial class FocusOutroView : View
 
         if (success)
         {
-            yield return Frog.AnimateEatTarget(current_character);
+            //yield return Frog.AnimateEatTarget(current_character);
         }
     }
 }

@@ -8,5 +8,7 @@
 
 [resource]
 script = ExtResource("5_et7e0")
+Id = "swamp_land"
+TargetCount = Vector2i(2, 4)
 Characters = Array[Object]([ExtResource("1_cxc55"), ExtResource("3_jfp7u"), ExtResource("4_mkaqi"), ExtResource("4_cxc55")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"

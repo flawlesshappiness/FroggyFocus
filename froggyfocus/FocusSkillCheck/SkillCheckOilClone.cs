@@ -1,3 +1,4 @@
+using FlawLizArt.FocusEvent;
 using Godot;
 using System.Collections;
 
@@ -57,7 +58,7 @@ public partial class SkillCheckOilClone : Character
                 while (GlobalPosition.DistanceTo(next_position) > 0.1f)
                 {
                     var dir = GlobalPosition.DirectionTo(next_position).Normalized();
-                    var speed = target.UpdatedMoveSpeed * 0.7f;
+                    var speed = target.MoveSpeed * 0.7f;
                     var velocity = dir * speed * GameTime.DeltaTime;
                     GlobalPosition += velocity;
                     yield return null;

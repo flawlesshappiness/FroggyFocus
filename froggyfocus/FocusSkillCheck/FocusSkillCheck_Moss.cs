@@ -45,7 +45,7 @@ public partial class FocusSkillCheck_Moss : FocusSkillCheck
 
         var delay = DelayRange.Range(Difficulty);
         var time_wait_end = GameTime.Time + delay;
-        while (GameTime.Time < time_wait_end && !FocusEvent.Cursor.IsTargetInRange)
+        while (GameTime.Time < time_wait_end && !IsNearCursor)
         {
             yield return null;
         }

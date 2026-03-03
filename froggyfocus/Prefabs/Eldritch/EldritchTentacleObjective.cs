@@ -1,5 +1,7 @@
+using FlawLizArt.FocusEvent;
 using Godot;
 using System;
+using System.Linq;
 
 public partial class EldritchTentacleObjective : Node3D
 {
@@ -29,8 +31,7 @@ public partial class EldritchTentacleObjective : Node3D
     public override void _Ready()
     {
         base._Ready();
-        FocusEvent.OnCompleted += FocusEventCompleted;
-        FocusEvent.OnFailed += FocusEventFailed;
+        FocusEvent.OnEnded += FocusEventEnded;
         Interactable.OnInteract += Interact;
 
         if (IsCompleted)
@@ -68,23 +69,21 @@ public partial class EldritchTentacleObjective : Node3D
     public void Interact()
     {
         active_event = true;
-        FocusEvent.StartEvent();
+        FocusEvent.StartEvent(new FocusEvent.Settings
+        {
+            Id = "eldritch"
+        });
     }
 
-    private void FocusEventCompleted(FocusEventCompletedResult result)
+    private void FocusEventEnded(FocusEventResult result)
     {
-        if (active_event)
+        if (active_event && result.FocusEvent.Targets.All(x => x.IsCaught))
         {
             GameFlags.SetFlag(GameFlagId, 1);
             Complete();
             OnCompleted?.Invoke();
         }
 
-        active_event = false;
-    }
-
-    private void FocusEventFailed(FocusEventFailedResult result)
-    {
         active_event = false;
     }
 

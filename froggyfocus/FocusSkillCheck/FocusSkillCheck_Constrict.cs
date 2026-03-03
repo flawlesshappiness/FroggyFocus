@@ -1,3 +1,4 @@
+using FlawLizArt.FocusEvent;
 using Godot;
 using System.Collections;
 
@@ -26,7 +27,6 @@ public partial class FocusSkillCheck_Constrict : FocusSkillCheck
     {
         var id = nameof(FocusSkillCheck_Constrict);
         FocusCursor.MoveLock.SetLock(id, locked);
-        FocusCursor.ShieldLock.SetLock(id, locked);
     }
 
     public override void Clear()

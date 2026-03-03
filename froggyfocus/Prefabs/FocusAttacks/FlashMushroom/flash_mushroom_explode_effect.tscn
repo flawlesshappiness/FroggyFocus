@@ -1,0 +1,79 @@
+[gd_scene load_steps=12 format=3 uid="uid://b304tcixf2r25"]
+
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_b8woc"]
+[ext_resource type="Material" uid="uid://bs7gnasxvanql" path="res://Materials/PS_Yellow.tres" id="2_tvoto"]
+
+[sub_resource type="Curve" id="Curve_o5ruh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_i4lud"]
+curve = SubResource("Curve_o5ruh")
+
+[sub_resource type="Curve" id="Curve_khnpm"]
+_data = [Vector2(0, 0.5), 0.0, 0.164938, 0, 0, Vector2(0.7, 1), 1.16202, 0.0, 0, 0, Vector2(1, 0), -8.42084, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xefh6"]
+curve = SubResource("Curve_khnpm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i4lud"]
+lifetime_randomness = 0.5
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 0.6
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.2, 0)
+damping_min = 1.0
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_i4lud")
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_xefh6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_khnpm"]
+material = ExtResource("2_tvoto")
+
+[sub_resource type="Curve" id="Curve_i4lud"]
+_data = [Vector2(0, 0), 0.0, 10.8639, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.85893, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_khnpm"]
+curve = SubResource("Curve_i4lud")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xefh6"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(10, 0, 10)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0.2, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_khnpm")
+
+[node name="flash_mushroom_explode_effect" type="Node3D" node_paths=PackedStringArray("Particles")]
+script = ExtResource("1_b8woc")
+PlayOnReady = true
+DestroyDelay = 5.0
+Particles = [NodePath("ps_explode"), NodePath("ps_particles")]
+
+[node name="ps_explode" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14935, -0.0371058)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_i4lud")
+draw_pass_1 = SubResource("SphereMesh_khnpm")
+
+[node name="ps_particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14935, -0.0371058)
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_xefh6")
+draw_pass_1 = SubResource("SphereMesh_khnpm")

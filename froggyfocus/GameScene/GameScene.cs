@@ -1,3 +1,4 @@
+using FlawLizArt.FocusEvent;
 using Godot;
 using Godot.Collections;
 using System.Collections.Generic;
@@ -20,9 +21,10 @@ public partial class GameScene : Scene
     public Node3D FocusEventParent;
 
     [Export]
-    public Array<WeatherInfo> Weathers = new();
+    public FocusEvent FocusEvent { get; private set; }
 
-    public List<FocusEvent> FocusEvents { get; private set; } = new();
+    [Export]
+    public Array<WeatherInfo> Weathers = new();
 
     private string CurrentFocusEventId => focus_event_ids.FirstOrDefault();
 
@@ -35,25 +37,12 @@ public partial class GameScene : Scene
         base._Ready();
         Instance = this;
 
-        FocusEventController.Instance.OnFocusEventCompleted += FocusEventEnded;
-        FocusEventController.Instance.OnFocusEventFailed += FocusEventEnded;
-
         world_bugs = WorldBugParent?.GetNodesInChildren<WorldBug>() ?? new List<WorldBug>();
-        FocusEvents = FocusEventParent?.GetNodesInChildren<FocusEvent>() ?? new List<FocusEvent>();
 
         MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather(Weathers);
         FocusHotSpotController.Instance.Start();
         WorldBugController.Instance.Start();
-
-        HideFocusEvents();
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        FocusEventController.Instance.OnFocusEventCompleted -= FocusEventEnded;
-        FocusEventController.Instance.OnFocusEventFailed -= FocusEventEnded;
     }
 
     protected override void Initialize()
@@ -83,19 +72,10 @@ public partial class GameScene : Scene
 
     public void StartFocusEvent()
     {
-        var id = CurrentFocusEventId;
-        var focus_event = FocusEvents.FirstOrDefault(x => x.Id == id) ?? FocusEvents.First();
-        focus_event.StartEvent();
-    }
-
-    private void HideFocusEvents()
-    {
-        FocusEvents.ForEach(x => x.Hide());
-    }
-
-    private void FocusEventEnded(FocusEventResult result)
-    {
-        HideFocusEvents();
+        FocusEvent.StartEvent(new FocusEvent.Settings
+        {
+            Id = CurrentFocusEventId
+        });
     }
 
     public List<FocusHotSpotArea> GetFocusHotSpotAreas()
@@ -123,13 +103,13 @@ public partial class GameScene : Scene
 
     public bool HasFocusEventTargets()
     {
-        return FocusEvents.Any(x => x.Info.Characters.Count > 0);
+        var id = CurrentFocusEventId;
+        var info = FocusEventController.Instance.GetInfo(id);
+        return info != null;
     }
 
     public bool HasFocusEvent()
     {
-        var id = CurrentFocusEventId;
-        var focus_event = FocusEvents.FirstOrDefault(x => x.Id == id);
-        return focus_event != null;
+        return !string.IsNullOrEmpty(CurrentFocusEventId);
     }
 }

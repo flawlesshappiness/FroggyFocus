@@ -17,6 +17,10 @@ public partial class ControlSoundsView : View
     public override void _Ready()
     {
         base._Ready();
+
+        var bus = AudioBus.Get(AudioBusNames.Master);
+        bus.SetMuted(true);
+
         ConnectExistingNodes();
         GetTree().NodeAdded += NodeAdded;
     }

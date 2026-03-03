@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://3my6iuqyk6l0"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_rksci"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="2_54rdg"]
+[ext_resource type="PackedScene" uid="uid://bfahjxox55wtl" path="res://Assets/FlawLizArt/Nature/Toon/lilypad_cut.fbx" id="3_c3qxq"]
+[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="4_ewj17"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="5_54rdg"]
+[ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/Water.tres" id="6_c3qxq"]
+
+[node name="swamp_lilypads" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_rksci")
+Id = "swamp_lilypads"
+SoundEffects = [NodePath("AmbWater")]
+
+[node name="AmbWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_54rdg")
+volume_db = -5.0
+autoplay = true
+bus = &"Environment"
+
+[node name="Lilypads" type="Node3D" parent="."]
+
+[node name="lilypad_cut" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(0.676593, 0, -0.736357, 0, 1, 0, 0.736357, 0, 0.676593, 0, -0.146749, 0)
+
+[node name="lilypad_cut2" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(0.676593, 0, -0.736357, 0, 1, 0, 0.736357, 0, 0.676593, -6.15508, -0.146749, -3.24168)
+
+[node name="lilypad_cut3" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(0.492484, 0, 0.870321, 0, 1, 0, -0.870321, 0, 0.492484, -6.48336, -0.146749, 3.09806)
+
+[node name="lilypad_cut4" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(0.904939, 0, 0.425542, 0, 1, 0, -0.425542, 0, 0.904939, 6.46284, -0.146749, -4.47269)
+
+[node name="lilypad_cut5" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(0.659267, 0, -0.751909, 0, 1, 0, 0.751909, 0, 0.659267, 7.30403, -0.146749, -0.205168)
+
+[node name="lilypad_cut6" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(-0.998825, 0, -0.0484663, 0, 1, 0, 0.0484663, 0, -0.998825, 6.25767, -0.146749, 1.90808)
+
+[node name="lilypad_cut7" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(-0.970951, 0, 0.239279, 0, 1, 0, -0.239279, 0, -0.970951, 2.19531, -0.146749, 4.92407)
+
+[node name="lilypad_cut8" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(0.217496, 0, 0.976061, 0, 1, 0, -0.976061, 0, 0.217496, -2.421, -0.146749, 4.55476)
+
+[node name="lilypad_cut9" parent="Lilypads" instance=ExtResource("3_c3qxq")]
+transform = Transform3D(-0.35884, 0, 0.933399, 0, 1, 0, -0.933399, 0, -0.35884, -0.495, -0.146749, -4.71238)
+
+[node name="Flowers" type="Node3D" parent="."]
+
+[node name="Lilypad_Flower" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -4.31621, -0.112644, 4.69204)
+
+[node name="Lilypad_Flower2" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -5.69085, -0.112644, 1.3683)
+
+[node name="Lilypad_Flower3" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -6.73721, -0.112644, -0.642365)
+
+[node name="Lilypad_Flower4" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -5.79876, -0.112644, -1.49875)
+
+[node name="Lilypad_Flower5" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -2.16726, -0.112644, -4.45319)
+
+[node name="Lilypad_Flower6" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 1.71044, -0.112644, -5.13025)
+
+[node name="Lilypad_Flower7" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 4.13144, -0.112644, -4.49422)
+
+[node name="Lilypad_Flower8" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 5.38297, -0.112644, -2.48356)
+
+[node name="Lilypad_Flower9" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 5.79331, -0.112644, 0.327263)
+
+[node name="Lilypad_Flower10" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 7.16795, -0.112644, -1.8065)
+
+[node name="Lilypad_Flower11" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 5.34194, -0.112644, 4.26652)
+
+[node name="Lilypad_Flower12" parent="Flowers" instance=ExtResource("4_ewj17")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.212706, -0.112644, 5.29236)
+
+[node name="Water" parent="." instance=ExtResource("5_54rdg")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -0.0804466, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("6_c3qxq")
+
+[editable path="Water"]

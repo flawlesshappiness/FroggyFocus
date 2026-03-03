@@ -10,5 +10,7 @@
 
 [resource]
 script = ExtResource("4_n11k3")
+Id = "factory_oil"
+TargetCount = Vector2i(0, 0)
 Characters = Array[Object]([ExtResource("1_ygal0"), ExtResource("2_i7i7x"), ExtResource("2_74ll4"), ExtResource("4_r5qv3"), ExtResource("3_5kjw3"), ExtResource("5_evh5w")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"
