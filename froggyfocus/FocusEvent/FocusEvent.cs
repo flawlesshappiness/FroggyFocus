@@ -304,7 +304,6 @@ public partial class FocusEvent : Node3D
         result = new FocusEventResult(this);
         Player.SetAllLocks(nameof(FocusEvent), true);
         CreateTargets();
-        //ResetSkillchecks();
         TransitionToStart();
         SetBackground(settings.Id);
     }
@@ -325,7 +324,6 @@ public partial class FocusEvent : Node3D
             FocusEventView.Instance.SetFocusEvent(this);
             FocusEventView.Instance.Show();
             FocusEventController.Instance.FocusEventStarted(this);
-            yield return FocusIntroView.Instance.AnimateHide();
         }
     }
 
@@ -336,8 +334,7 @@ public partial class FocusEvent : Node3D
         {
             TransitionView.Instance.StartTransition(new TransitionSettings
             {
-                Type = TransitionType.Color,
-                Color = Colors.Black,
+                Type = TransitionType.Lilypads,
                 Duration = 1f,
             });
 
@@ -366,8 +363,7 @@ public partial class FocusEvent : Node3D
 
         TransitionView.Instance.StartTransition(new TransitionSettings
         {
-            Type = TransitionType.Color,
-            Color = Colors.Black,
+            Type = TransitionType.Lilypads,
             Duration = 1.0f,
             OnTransition = OnTransition
         });

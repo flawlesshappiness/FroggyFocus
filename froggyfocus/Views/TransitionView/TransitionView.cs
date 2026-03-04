@@ -8,7 +8,13 @@ public partial class TransitionView : View
     public static TransitionView Instance => Get<TransitionView>();
 
     [Export]
-    public AnimationPlayer AnimationPlayer;
+    public AnimationPlayer AnimationPlayer_Color;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Shapes;
+
+    [Export]
+    public AnimationPlayer AnimationPlayer_Lilypads;
 
     [Export]
     public Array<Control> ColorControls;
@@ -20,12 +26,13 @@ public partial class TransitionView : View
         {
             Show();
             Player.SetAllLocks(nameof(TransitionView), true);
-            AnimationPlayer.SpeedScale = 1f / settings.Duration;
+            var animation = GetAnimationPlayer(settings.Type);
+            animation.SpeedScale = 1f / settings.Duration;
             SetColor(settings.Color);
-            yield return AnimationPlayer.PlayAndWaitForAnimation(settings.AnimationIn);
+            yield return animation.PlayAndWaitForAnimation("show");
             settings.OnTransition?.Invoke();
             Player.SetAllLocks(nameof(TransitionView), false);
-            yield return AnimationPlayer.PlayAndWaitForAnimation(settings.AnimationOut);
+            yield return animation.PlayAndWaitForAnimation("hide");
             Hide();
         }
     }
@@ -33,6 +40,17 @@ public partial class TransitionView : View
     private void SetColor(Color color)
     {
         ColorControls.ForEach(x => x.Modulate = color);
+    }
+
+    private AnimationPlayer GetAnimationPlayer(TransitionType type)
+    {
+        return type switch
+        {
+            TransitionType.Color => AnimationPlayer_Color,
+            TransitionType.Circles => AnimationPlayer_Shapes,
+            TransitionType.Lilypads => AnimationPlayer_Lilypads,
+            _ => AnimationPlayer_Color
+        };
     }
 }
 
@@ -42,12 +60,9 @@ public class TransitionSettings
     public float Duration { get; set; } = 1f;
     public Color Color { get; set; } = Colors.Black;
     public Action OnTransition { get; set; }
-
-    public string AnimationIn => $"{Type.ToString().ToLower()}_in";
-    public string AnimationOut => $"{Type.ToString().ToLower()}_out";
 }
 
 public enum TransitionType
 {
-    Color, Circles
+    Color, Circles, Lilypads
 }
