@@ -14,8 +14,6 @@ public partial class MagpieNpc : CharacterNpc
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
-
-        HandIn.InitializeData(HandInInfo);
     }
 
     protected override void InitializeAnimations()
@@ -47,14 +45,7 @@ public partial class MagpieNpc : CharacterNpc
 
     public override void Interact()
     {
-        if (HandIn.IsAvailable(HandInInfo.Id))
-        {
-            StartDialogue("##MAGPIE_SWAMP_REQUEST_001##");
-        }
-        else
-        {
-            StartDialogue("##MAGPIE_SWAMP_IDLE_001##");
-        }
+        StartDialogue("##MAGPIE_SWAMP_REQUEST_001##");
     }
 
     private void DialogueNodeEnded(string id)
@@ -72,9 +63,6 @@ public partial class MagpieNpc : CharacterNpc
     {
         if (id == HandInInfo.Id)
         {
-            HandIn.ResetData(HandInInfo);
-            Data.Game.Save();
-
             StartDialogue("##MAGPIE_SWAMP_REQUEST_COMPLETE_001##");
         }
     }

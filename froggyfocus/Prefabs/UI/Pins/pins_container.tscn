@@ -32,8 +32,7 @@ theme_override_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="pinned_hand_in_control" parent="ScrollContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("PreviewButtons") instance=ExtResource("2_5msx2")]
+[node name="pinned_hand_in_control" parent="ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_5msx2")]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-PreviewButtons = []

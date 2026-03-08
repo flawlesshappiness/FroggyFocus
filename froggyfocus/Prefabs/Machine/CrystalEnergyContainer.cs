@@ -24,7 +24,7 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
     [Export]
     public Material GreenMaterial;
 
-    public bool IsCompleted => HandInInfo.Data.ClaimedCount > 0;
+    public bool IsCompleted => HandInInfo.Data.ClaimCount > 0;
 
     private string DebugId => $"{nameof(CrystalEnergyContainer)}{GetInstanceId()}";
 
@@ -37,9 +37,9 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
     {
         base._Ready();
         RegisterDebugActions();
-        InitializeHandIn();
         InitializeCrystal();
         InitializeMaterials();
+        SetInteractive(!IsCompleted);
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
@@ -79,7 +79,7 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
         void SetCompleted(bool completed)
         {
             var count = completed ? 1 : 0;
-            HandInInfo.Data.ClaimedCount = count;
+            HandInInfo.Data.ClaimCount = count;
             Data.Game.Save();
 
             SetPowered(completed);
@@ -95,12 +95,6 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
                 OnNotCompleted?.Invoke();
             }
         }
-    }
-
-    private void InitializeHandIn()
-    {
-        HandIn.InitializeData(HandInInfo);
-        SetInteractive(!IsCompleted);
     }
 
     private void InitializeCrystal()

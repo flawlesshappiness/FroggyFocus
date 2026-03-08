@@ -28,7 +28,7 @@ public partial class RewardUnlockBar : Control
         Clear();
 
         var data = HandIn.GetOrCreateData(info.Id);
-        SetBar(data.ClaimedCount, info.ClaimCountToUnlock);
+        SetBar(data.ClaimCount, info.Requests.Count);
 
         var appearance_info = AppearanceController.Instance.GetInfo(info.ItemUnlock);
         RewardPreview.SetAppearanceItem(appearance_info);

@@ -74,7 +74,7 @@ vec3 vertex_bounce(vec3 vertex_local) {
 void vertex() {
 	vec3 vertex_global = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz; // global vertex position
 	dir_to_vertex = vertex_global - global_player_position; // direction from player to vertex
-	
+
 	VERTEX += vertex_bounce(VERTEX);
 	VERTEX += vertex_wind(NODE_POSITION_WORLD, VERTEX, UV);
 	NORMAL = vec3(0.0, 1.0, 0.0);

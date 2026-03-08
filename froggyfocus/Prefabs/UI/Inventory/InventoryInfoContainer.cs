@@ -3,19 +3,46 @@ using Godot;
 public partial class InventoryInfoContainer : Control
 {
     [Export]
+    public bool ShowPreview;
+
+    [Export]
+    public bool ShowValue;
+
+    [Export]
+    public bool ShowCaught;
+
+    [Export]
+    public bool ShowRarity;
+
+    [Export]
+    public Control PreviewParent;
+
+    [Export]
     public TextureRect PreviewTextureRect;
 
     [Export]
     public ItemSubViewport ItemSubViewport;
 
     [Export]
+    public Control NameParent;
+
+    [Export]
     public Label NameLabel;
+
+    [Export]
+    public Control PriceParent;
 
     [Export]
     public PriceControl PriceControl;
 
     [Export]
+    public Control CaughtParent;
+
+    [Export]
     public Label CaughtLabel;
+
+    [Export]
+    public Control RarityParent;
 
     [Export]
     public DifficultyStarsTexture RarityTexture;
@@ -25,6 +52,11 @@ public partial class InventoryInfoContainer : Control
         base._Ready();
         PreviewTextureRect.Texture = ItemSubViewport.GetTexture();
         ItemSubViewport.SetCameraInventory();
+
+        PreviewParent.Visible = ShowPreview;
+        PriceParent.Visible = ShowValue;
+        CaughtParent.Visible = ShowCaught;
+        RarityParent.Visible = ShowRarity;
     }
 
     public void Clear()

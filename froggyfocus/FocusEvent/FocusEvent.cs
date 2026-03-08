@@ -148,6 +148,8 @@ public partial class FocusEvent : Node3D
     {
         base._Input(@event);
 
+        if (!IsRunning) return;
+
         if (PlayerInput.Pause.Released)
         {
             EndEvent();

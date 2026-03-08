@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://bm7kofjv3i0ne"]
 
 [ext_resource type="PackedScene" uid="uid://dvfygd4a40ea8" path="res://Assets/FlawLizArt/Characters/Salamander/salamander.fbx" id="1_j0ej6"]
-[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_vutm6"]
-[ext_resource type="Resource" uid="uid://bskmlj4soy5e6" path="res://HandInQuest/Resources/Salamander_Cave.tres" id="2_vutm6"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_vutm6"]
+[ext_resource type="Resource" uid="uid://bskmlj4soy5e6" path="res://HandIn/Resources/Salamander_Cave.tres" id="2_vutm6"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_4eavn"]
 [ext_resource type="AudioStream" uid="uid://dus52jqi1sq06" path="res://Sounds/Raw/sfx_crystal_a1.wav" id="4_rlkyt"]
 [ext_resource type="PackedScene" uid="uid://5akea1cmi6ru" path="res://Appearance/Attachments/plumbob.tscn" id="4_va4mm"]

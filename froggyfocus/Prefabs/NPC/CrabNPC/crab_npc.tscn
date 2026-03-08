@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://ct6yxfuwur3fl"]
 
 [ext_resource type="PackedScene" uid="uid://ccgpgjg58jqqs" path="res://Assets/FlawLizArt/Characters/Crab/crab.fbx" id="1_hm23q"]
-[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_yw2n1"]
-[ext_resource type="Resource" uid="uid://b3hhun7nmjp8p" path="res://HandInQuest/Resources/Crab_Cave.tres" id="2_djhky"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_yw2n1"]
+[ext_resource type="Resource" uid="uid://b3hhun7nmjp8p" path="res://HandIn/Resources/Crab_Cave.tres" id="2_djhky"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vub6u"]
 [ext_resource type="PackedScene" uid="uid://bmg430dgy8ers" path="res://Appearance/Attachments/septum.tscn" id="4_yv4qu"]
 [ext_resource type="AudioStream" uid="uid://dbtow33lxh7up" path="res://Sounds/Raw/sfx_crab_speak_001.wav" id="4_yw2n1"]

@@ -18,7 +18,7 @@ public partial class TvGlitchy : Area3D, IInteractable
     [Export]
     public PackedScene MatrixLabelPrefab;
 
-    public bool IsCompleted => HandIn.GetOrCreateData(HandInInfo.Id).ClaimedCount > 0;
+    public bool IsCompleted => HandIn.GetOrCreateData(HandInInfo.Id).ClaimCount > 0;
 
     private bool active_dialogue;
 
@@ -28,7 +28,7 @@ public partial class TvGlitchy : Area3D, IInteractable
     {
         base._Ready();
         //InitializeMatrixLabels();
-        InitializeHandIn();
+        SetCompleted(IsCompleted);
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
@@ -39,12 +39,6 @@ public partial class TvGlitchy : Area3D, IInteractable
         base._ExitTree();
         HandInController.Instance.OnHandInClaimed -= HandInClaimed;
         DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
-    }
-
-    private void InitializeHandIn()
-    {
-        HandIn.InitializeData(HandInInfo);
-        SetCompleted(IsCompleted);
     }
 
     private void InitializeMatrixLabels()
@@ -105,7 +99,7 @@ public partial class TvGlitchy : Area3D, IInteractable
     {
         var count = completed ? 1 : 0;
         var data = HandIn.GetOrCreateData(HandInInfo.Id);
-        data.ClaimedCount = count;
+        data.ClaimCount = count;
 
         SetCompleted(completed);
     }

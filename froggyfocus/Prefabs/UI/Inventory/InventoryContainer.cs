@@ -14,24 +14,33 @@ public partial class InventoryContainer : ControlScript
     [Export]
     public Label EmptyLabel;
 
+    [Export]
+    public GridContainer GridContainer;
+
+    [Export]
+    public ScrollContainerScript ScrollContainer;
+
+    public enum Mode { Press, Select }
+    public Mode ButtonMode { get; set; } = Mode.Press;
+    public List<InventoryCharacterData> Selection { get; private set; } = new();
+
     public event Action<InventoryCharacterData> OnButtonPressed;
     public event Action<InventoryCharacterData> OnButtonFocus;
 
-    private ButtonMap selected_map;
     private List<ButtonMap> maps = new();
 
     private class ButtonMap
     {
-        public Button Button { get; set; }
+        public InventoryPreviewButton Button { get; set; }
         public FocusCharacterInfo Info { get; set; }
         public InventoryCharacterData Data { get; set; }
     }
 
     public void Clear()
     {
-        selected_map = null;
         maps.ForEach(x => x.Button.QueueFree());
         maps.Clear();
+        Selection.Clear();
     }
 
     public void UpdateButtons(InventoryFilterOptions filter = null)
@@ -71,7 +80,7 @@ public partial class InventoryContainer : ControlScript
 
     private void Button_Pressed(ButtonMap map)
     {
-        selected_map = map;
+        ToggleSelected(map);
         OnButtonPressed?.Invoke(map.Data);
     }
 
@@ -87,8 +96,26 @@ public partial class InventoryContainer : ControlScript
         return maps.First().Button;
     }
 
-    public InventoryCharacterData GetSelectedData()
+    public void SetMode(Mode mode)
     {
-        return selected_map?.Data;
+        ButtonMode = mode;
+        Selection.Clear();
+        maps.ForEach(x => x.Button.SetChecked(false));
+    }
+
+    private void ToggleSelected(ButtonMap map)
+    {
+        if (ButtonMode != Mode.Select) return;
+
+        if (map.Button.IsChecked)
+        {
+            Selection.Remove(map.Data);
+        }
+        else
+        {
+            Selection.Add(map.Data);
+        }
+
+        map.Button.SetChecked(!map.Button.IsChecked);
     }
 }

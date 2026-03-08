@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://bw057fcfnoby7"]
 
-[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_201og"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_201og"]
 [ext_resource type="PackedScene" uid="uid://dhsttkfn7e2io" path="res://Assets/FlawLizArt/Characters/Magpie/magpie.fbx" id="1_vhir8"]
-[ext_resource type="Resource" uid="uid://but43q22crqx3" path="res://HandInQuest/Resources/Magpie_Swamp.tres" id="2_4y8sw"]
+[ext_resource type="Resource" uid="uid://but43q22crqx3" path="res://HandIn/Resources/Magpie_Swamp.tres" id="2_4y8sw"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_xbyyc"]
 [ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="4_4y8sw"]
 [ext_resource type="AudioStream" uid="uid://bspgktdfssm0j" path="res://Sounds/Raw/sfx_magpie_speak_001.wav" id="4_rqusm"]

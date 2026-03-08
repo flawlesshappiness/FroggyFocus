@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://bt47rt4wstm5n"]
 
-[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_1jh81"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_1jh81"]
 [ext_resource type="PackedScene" uid="uid://b35nb5vv80ma7" path="res://Assets/FlawLizArt/Characters/Otter/otter.fbx" id="1_tb71d"]
-[ext_resource type="Resource" uid="uid://dqvmw518u62ae" path="res://HandInQuest/Resources/Otter_Swamp.tres" id="2_qg8qc"]
+[ext_resource type="Resource" uid="uid://dqvmw518u62ae" path="res://HandIn/Resources/Otter_Swamp.tres" id="2_qg8qc"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_uqt75"]
 [ext_resource type="PackedScene" uid="uid://ch5ami6o86hlp" path="res://Appearance/Attachments/glasses_round.tscn" id="4_rj2d4"]
 [ext_resource type="AudioStream" uid="uid://bmhtl4g6sc5eh" path="res://Sounds/Raw/sfx_otter_speak_001.wav" id="5_1jh81"]

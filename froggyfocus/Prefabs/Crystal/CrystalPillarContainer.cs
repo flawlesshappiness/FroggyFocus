@@ -12,7 +12,7 @@ public partial class CrystalPillarContainer : Area3D, IInteractable
     [Export]
     public AnimationPlayer AnimationPlayer;
 
-    public bool IsCompleted => HandInInfo.Data.ClaimedCount > 0;
+    public bool IsCompleted => HandInInfo.Data.ClaimCount > 0;
 
     private string DebugId => $"{nameof(CrystalEnergyContainer)}{GetInstanceId()}";
 
@@ -25,8 +25,8 @@ public partial class CrystalPillarContainer : Area3D, IInteractable
     {
         base._Ready();
         RegisterDebugActions();
-        InitializeHandIn();
         InitializeOpen();
+        SetInteractive(!IsCompleted);
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
@@ -66,7 +66,7 @@ public partial class CrystalPillarContainer : Area3D, IInteractable
         void SetCompleted(bool completed)
         {
             var count = completed ? 1 : 0;
-            HandInInfo.Data.ClaimedCount = count;
+            HandInInfo.Data.ClaimCount = count;
             Data.Game.Save();
 
             SetOpen(!completed);
@@ -81,12 +81,6 @@ public partial class CrystalPillarContainer : Area3D, IInteractable
                 OnNotCompleted?.Invoke();
             }
         }
-    }
-
-    private void InitializeHandIn()
-    {
-        HandIn.InitializeData(HandInInfo);
-        SetInteractive(!IsCompleted);
     }
 
     private void InitializeOpen()

@@ -39,7 +39,14 @@ public static class Item
 
     public static bool IsNoneType(ItemType type)
     {
-        var none_types = new List<ItemType> { ItemType.Face_None, ItemType.Hat_None, ItemType.Particles_None };
+        var none_types = new List<ItemType> {
+            ItemType.BodyEye_None,
+            ItemType.BodyPattern_None,
+            ItemType.BodyTop_None,
+            ItemType.Face_None,
+            ItemType.Hat_None,
+            ItemType.Particles_None,
+        };
         return none_types.Contains(type);
     }
 }

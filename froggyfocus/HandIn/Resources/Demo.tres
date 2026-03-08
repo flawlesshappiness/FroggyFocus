@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://dv1lgptwlfi6u"]
+
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandIn/HandInInfo.cs" id="1_5v8oi"]
+[ext_resource type="Resource" uid="uid://ci4a3av0vtyki" path="res://HandInRequest/Resources/Demo_01.tres" id="1_q18h4"]
+[ext_resource type="Resource" uid="uid://yiynvyy15fb1" path="res://HandInRequest/Resources/Demo_02.tres" id="2_rysof"]
+[ext_resource type="Resource" uid="uid://diqt60xostfeu" path="res://HandInRequest/Resources/Demo_03.tres" id="3_0htje"]
+
+[resource]
+script = ExtResource("1_5v8oi")
+Id = "demo"
+Name = "Demo Guy"
+ItemUnlock = 0
+Requests = Array[Object]([ExtResource("1_q18h4"), ExtResource("2_rysof"), ExtResource("3_0htje")])
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

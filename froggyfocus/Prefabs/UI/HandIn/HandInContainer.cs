@@ -1,17 +1,16 @@
 using Godot;
-using Godot.Collections;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class HandInContainer : MarginContainer
+public partial class HandInContainer : ControlScript
 {
     [Export]
-    public Control ControlsContainer;
+    public Label RequestLabel;
 
     [Export]
-    public Control TimerContainer;
+    public InventoryContainer Inventory;
 
     [Export]
     public Button BackButton;
@@ -23,22 +22,7 @@ public partial class HandInContainer : MarginContainer
     public Button PinButton;
 
     [Export]
-    public Label TimerLabel;
-
-    [Export]
-    public Label NameLabel;
-
-    [Export]
-    public RichTextLabel LocationHintLabel;
-
-    [Export]
     public RewardUnlockBar RewardUnlockBar;
-
-    [Export]
-    public Array<InventoryPreviewButton> RequestButtons;
-
-    [Export]
-    public Array<RewardPreview> RewardPreviews;
 
     private List<ButtonMap> maps = new();
 
@@ -46,10 +30,10 @@ public partial class HandInContainer : MarginContainer
 
     public HandInData CurrentData { get; private set; }
     public HandInInfo CurrentInfo { get; private set; }
-    public bool CurrentClaimed { get; private set; }
+    public HandInRequestInfo CurrentRequest { get; private set; }
+    public bool IsClaimed { get; private set; }
     public bool HasItemUnlock => CurrentInfo?.HasItemUnlock ?? false;
-    public bool IsMaxClaim => CurrentData?.ClaimedCount >= CurrentInfo?.ClaimCountToUnlock;
-    private List<InventoryCharacterData> Submissions => maps.Select(x => x.Submission).Where(x => x != null).ToList();
+    public bool IsMaxClaim => CurrentData?.ClaimCount >= CurrentInfo?.Requests.Count;
 
     private class ButtonMap
     {
@@ -69,31 +53,7 @@ public partial class HandInContainer : MarginContainer
 
         ClaimButton.Pressed += ClaimButton_Pressed;
         PinButton.Pressed += PinButton_Pressed;
-
-        InitializeRequestButtons();
-    }
-
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
-        Process_TimerLabel();
-    }
-
-    private void InitializeRequestButtons()
-    {
-        for (int i = 0; i < RequestButtons.Count; i++)
-        {
-            var idx = i;
-            var button = RequestButtons[i];
-            var map = new ButtonMap
-            {
-                Index = idx,
-                Button = button,
-            };
-
-            button.FocusEntered += () => RequestButton_FocusEntered(map);
-            maps.Add(map);
-        }
+        Inventory.OnButtonPressed += InventoryButton_Pressed;
     }
 
     private void Clear()
@@ -102,7 +62,8 @@ public partial class HandInContainer : MarginContainer
         ClaimButton.Disabled = true;
         CurrentData = null;
         RewardUnlockBar.Clear();
-        CurrentClaimed = false;
+        IsClaimed = false;
+        Inventory.Clear();
     }
 
     public void Load(HandInData data)
@@ -111,110 +72,15 @@ public partial class HandInContainer : MarginContainer
 
         CurrentData = data;
         CurrentInfo = HandInController.Instance.GetInfo(data.Id);
+        CurrentRequest = CurrentInfo.Requests.ToList().GetClamped(data.ClaimCount);
+        IsClaimed = false;
 
-        var is_available = HandIn.IsAvailable(data.Id);
-        ControlsContainer.Visible = is_available;
-        TimerContainer.Visible = !is_available;
-        PinButton.Visible = is_available;
+        RequestLabel.Text = CurrentRequest.GetRequestText();
 
-        CurrentClaimed = false;
+        Inventory.UpdateButtons();
+        Inventory.SetMode(InventoryContainer.Mode.Select);
 
-        LoadControls(data);
-    }
-
-    private void LoadControls(HandInData data)
-    {
-        RequestButtons.ForEach(x => x.Hide());
-
-        for (int i = 0; i < data.RequestInfos.Count; i++)
-        {
-            // Info
-            var request = data.RequestInfos[i];
-            var info = FocusCharacterController.Instance.GetInfoFromPath(request);
-
-            // Submission
-            var map = maps[i];
-            map.Submission = InventoryController.Instance.GetCharactersInInventory(new InventoryFilterOptions
-            {
-                ValidCharacters = new List<FocusCharacterInfo> { info },
-                ExcludedDatas = Submissions
-            }).FirstOrDefault();
-
-            var has_submission = map.Submission != null;
-
-            // Button
-            var button = RequestButtons[i];
-            button.SetObscured(!has_submission);
-            button.Show();
-
-            if (CurrentInfo.RequestPreviewHidden && !has_submission)
-            {
-                button.SetHiddenPreview();
-            }
-            else
-            {
-                button.SetCharacter(info);
-            }
-
-            if (i == 0)
-            {
-                ShowInfo(info);
-            }
-        }
-
-        RewardPreviews.ForEach(x => x.Hide());
-        if (data.MoneyReward > 0)
-        {
-            var preview = RewardPreviews[0];
-            preview.SetObscured(CurrentInfo.HasMoneyReward);
-            preview.Show();
-
-            if (CurrentInfo.HasMoneyReward)
-            {
-                preview.SetCoinStack(data.MoneyReward);
-            }
-            else
-            {
-                preview.SetHiddenPreview();
-            }
-        }
-
-        var already_unlocked = Item.IsOwned(CurrentInfo.ItemUnlock);
-        var show_unlock_bar = HasItemUnlock && !already_unlocked;
-        RewardUnlockBar.Visible = show_unlock_bar;
-        if (show_unlock_bar)
-        {
-            RewardUnlockBar.Load(CurrentInfo);
-        }
-
-        Validate();
-    }
-
-    private void Process_TimerLabel()
-    {
-        if (CurrentData == null) return;
-
-        var date_now = GameTime.GetCurrentDateTime();
-        var date_next = GameTime.ParseDateTime(CurrentData.DateTimeNext);
-        var span_next = date_next.Subtract(date_now);
-
-        if (span_next >= TimeSpan.Zero)
-        {
-            TimerLabel.Text = span_next.ToString("hh':'mm':'ss");
-        }
-    }
-
-    private void ShowInfo(FocusCharacterInfo info)
-    {
-        NameLabel.Text = Tr(info.Name);
-        LocationHintLabel.Text = Tr(info.LocationHint);
-    }
-
-    private void RequestButton_FocusEntered(ButtonMap map)
-    {
-        var request = CurrentData.RequestInfos[map.Index];
-        var info = FocusCharacterController.Instance.GetInfoFromPath(request);
-        ShowInfo(info);
+        RewardUnlockBar.Visible = HasItemUnlock;
     }
 
     private void ClaimButton_Pressed()
@@ -224,17 +90,17 @@ public partial class HandInContainer : MarginContainer
 
     private void Claim()
     {
-        CurrentClaimed = true;
-        CurrentData.ClaimedCount++;
+        IsClaimed = true;
+        CurrentData.ClaimCount++;
 
         foreach (var map in maps)
         {
             InventoryController.Instance.RemoveCharacterData(map.Submission);
         }
 
-        if (CurrentInfo.HasMoneyReward && CurrentData.MoneyReward > 0)
+        if (CurrentRequest.HasMoney)
         {
-            Money.Add(CurrentData.MoneyReward);
+            Money.Add(CurrentRequest.Money);
         }
 
         if (HasItemUnlock && IsMaxClaim)
@@ -254,18 +120,18 @@ public partial class HandInContainer : MarginContainer
 
     private void Validate()
     {
-        var is_valid = Submissions.Count == CurrentData.RequestInfos.Count;
+        var is_valid = Inventory.Selection.Count == CurrentRequest.Count;
         ClaimButton.Disabled = !is_valid;
     }
 
     public Button GetFirstButton()
     {
-        return RequestButtons.First();
+        return Inventory.GetFirstButton() ?? ClaimButton;
     }
 
     public IEnumerator WaitForRewardBarFill()
     {
-        if (CurrentClaimed && RewardUnlockBar.Visible)
+        if (IsClaimed && RewardUnlockBar.Visible)
         {
             yield return RewardUnlockBar.WaitForFillNext();
             yield return new WaitForSeconds(0.25f);
@@ -275,5 +141,10 @@ public partial class HandInContainer : MarginContainer
     private void PinButton_Pressed()
     {
         HandInController.Instance.PinHandIn(CurrentInfo.Id);
+    }
+
+    private void InventoryButton_Pressed(InventoryCharacterData data)
+    {
+        Validate();
     }
 }

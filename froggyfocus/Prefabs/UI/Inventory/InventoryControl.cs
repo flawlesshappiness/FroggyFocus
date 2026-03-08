@@ -29,6 +29,7 @@ public partial class InventoryControl : ControlScript
 
         Clear();
         InventoryContainer.UpdateButtons();
+        InventoryContainer.SetMode(InventoryContainer.Mode.Press);
         InfoContainer.SetCharacter(Data.Game.Inventory.Characters.FirstOrDefault());
     }
 
@@ -68,19 +69,5 @@ public partial class InventoryControl : ControlScript
     private void BackPressed()
     {
         OnBack?.Invoke();
-    }
-
-    private void DiscardPressed()
-    {
-        var data = InventoryContainer.GetSelectedData();
-        if (data == null) return;
-
-        InventoryController.Instance.RemoveCharacterData(data);
-        Data.Game.Save();
-
-        Clear();
-
-        InventoryContainer.UpdateButtons();
-        GrabFocus_InventoryButton();
     }
 }

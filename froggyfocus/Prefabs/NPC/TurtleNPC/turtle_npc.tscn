@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://tg0kj2q60vm6"]
 
-[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_i6cp7"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_i6cp7"]
 [ext_resource type="PackedScene" uid="uid://p4h2xy11rfgg" path="res://Assets/FlawLizArt/Characters/Turtle/turtle.fbx" id="1_lfy8r"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_5nm1e"]
-[ext_resource type="Resource" uid="uid://cjoj1uvuy80p4" path="res://HandInQuest/Resources/Turtle_Factory.tres" id="2_bd5m3"]
+[ext_resource type="Resource" uid="uid://cjoj1uvuy80p4" path="res://HandIn/Resources/Turtle_Factory.tres" id="2_bd5m3"]
 [ext_resource type="PackedScene" uid="uid://csqg2dp1eigui" path="res://Appearance/Attachments/cigarette.tscn" id="4_porhg"]
 [ext_resource type="AudioStream" uid="uid://d1j10627f8dhw" path="res://Sounds/Raw/sfx_turtle_speak_001.wav" id="5_i6cp7"]
 [ext_resource type="AudioStream" uid="uid://dv733v2x2ukif" path="res://Sounds/Raw/sfx_turtle_speak_002.wav" id="6_porhg"]

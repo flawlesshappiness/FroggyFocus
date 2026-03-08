@@ -28,10 +28,8 @@ public partial class GlitchLockedDoor : Area3D, IInteractable
 
     private void InitializeHandIn()
     {
-        HandIn.InitializeData(HandInInfo);
-
         var data = HandIn.GetOrCreateData(HandInInfo.Id);
-        var is_claimed = data.ClaimedCount > 0;
+        var is_claimed = data.ClaimCount > 0;
         Collider.Disabled = is_claimed;
 
         if (is_claimed)

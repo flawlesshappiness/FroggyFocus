@@ -1,44 +1,55 @@
-[gd_scene load_steps=7 format=3 uid="uid://d01a2ra0pi4"]
+[gd_scene load_steps=8 format=3 uid="uid://d01a2ra0pi4"]
 
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="1_fqwn7"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_l1r8g"]
 [ext_resource type="Script" uid="uid://dt4g5343i33at" path="res://Prefabs/UI/Inventory/InventoryInfoContainer.cs" id="1_wkwsq"]
 [ext_resource type="PackedScene" uid="uid://57h0lyjpo7q4" path="res://Prefabs/UI/Price/price_control.tscn" id="3_fqwn7"]
+[ext_resource type="Texture2D" uid="uid://bgl58vgod1hb7" path="res://Assets/FlawLizArt/Textures/icon_tab_pattern.png" id="4_2n2s5"]
 [ext_resource type="PackedScene" uid="uid://u6g71t3e8loy" path="res://Prefabs/UI/SubViewport/item_sub_viewport.tscn" id="4_fqwn7"]
 [ext_resource type="PackedScene" uid="uid://dp2ncvq06oerg" path="res://Prefabs/UI/DifficultyStars/difficulty_stars.tscn" id="5_p2r82"]
 
-[node name="InventoryInfoContainer" type="MarginContainer" node_paths=PackedStringArray("PreviewTextureRect", "ItemSubViewport", "NameLabel", "PriceControl", "CaughtLabel", "RarityTexture")]
+[node name="InventoryInfoContainer" type="MarginContainer" node_paths=PackedStringArray("PreviewParent", "PreviewTextureRect", "ItemSubViewport", "NameParent", "NameLabel", "PriceParent", "PriceControl", "CaughtParent", "CaughtLabel", "RarityParent", "RarityTexture")]
+offset_right = 237.0
+offset_bottom = 227.0
 theme = ExtResource("1_l1r8g")
 script = ExtResource("1_wkwsq")
-PreviewTextureRect = NodePath("VBoxContainer/HBoxContainer/Panel/PreviewTextureRect")
+ShowPreview = true
+ShowValue = true
+ShowCaught = true
+ShowRarity = true
+PreviewParent = NodePath("VBoxContainer/Preview")
+PreviewTextureRect = NodePath("VBoxContainer/Preview/MarginContainer/PreviewTextureRect")
 ItemSubViewport = NodePath("ItemSubViewport")
+NameParent = NodePath("VBoxContainer/NameLabel")
 NameLabel = NodePath("VBoxContainer/NameLabel")
-PriceControl = NodePath("VBoxContainer/HBoxContainer3/PriceControl")
-CaughtLabel = NodePath("VBoxContainer/HBoxContainer2/CountLabel")
-RarityTexture = NodePath("VBoxContainer/HBoxContainer4/VBoxContainer/Control/DifficultyStars")
+PriceParent = NodePath("VBoxContainer/Price")
+PriceControl = NodePath("VBoxContainer/Price/PriceControl")
+CaughtParent = NodePath("VBoxContainer/Caught")
+CaughtLabel = NodePath("VBoxContainer/Caught/CountLabel")
+RarityParent = NodePath("VBoxContainer/Rarity")
+RarityTexture = NodePath("VBoxContainer/Rarity/VBoxContainer/Control/DifficultyStars")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Preview" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(180, 180)
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Preview"]
 layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Preview/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("1_fqwn7")
 
-[node name="PreviewTextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/Panel"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
+[node name="PreviewTextureRect" type="TextureRect" parent="VBoxContainer/Preview/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_2n2s5")
+expand_mode = 2
 stretch_mode = 4
 
 [node name="NameLabel" type="Label" parent="VBoxContainer"]
@@ -48,31 +59,32 @@ theme_override_font_sizes/font_size = 22
 text = "Name"
 autowrap_mode = 3
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Price" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="ValueStringLabel" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="ValueStringLabel" type="Label" parent="VBoxContainer/Price"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Value:"
 vertical_alignment = 1
 
-[node name="PriceControl" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("3_fqwn7")]
+[node name="PriceControl" parent="VBoxContainer/Price" instance=ExtResource("3_fqwn7")]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Panel" parent="VBoxContainer/HBoxContainer3/PriceControl" index="0"]
+[node name="Panel" parent="VBoxContainer/Price/PriceControl" index="0"]
 visible = false
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Caught" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="CountStringLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="CountStringLabel" type="Label" parent="VBoxContainer/Caught"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Caught:"
 vertical_alignment = 1
 
-[node name="CountLabel" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="CountLabel" type="Label" parent="VBoxContainer/Caught"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
@@ -80,25 +92,25 @@ text = "999"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Rarity" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="RarityStringlabel" type="Label" parent="VBoxContainer/HBoxContainer4"]
+[node name="RarityStringlabel" type="Label" parent="VBoxContainer/Rarity"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Rarity:"
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Rarity"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer4/VBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/Rarity/VBoxContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 
-[node name="DifficultyStars" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Control" instance=ExtResource("5_p2r82")]
+[node name="DifficultyStars" parent="VBoxContainer/Rarity/VBoxContainer/Control" instance=ExtResource("5_p2r82")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 8
@@ -117,4 +129,4 @@ stretch_mode = 4
 
 [node name="ItemSubViewport" parent="." instance=ExtResource("4_fqwn7")]
 
-[editable path="VBoxContainer/HBoxContainer3/PriceControl"]
+[editable path="VBoxContainer/Price/PriceControl"]

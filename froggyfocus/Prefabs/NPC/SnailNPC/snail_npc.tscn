@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://cdn0ulu4iqvsm"]
 
-[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandInQuest/HandInNpc.cs" id="1_pdcxf"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_pdcxf"]
 [ext_resource type="PackedScene" uid="uid://mg3lbs614k3d" path="res://Assets/FlawLizArt/Characters/Snail/snail.fbx" id="2_pdcxf"]
-[ext_resource type="Resource" uid="uid://buwjkq6ue7rvb" path="res://HandInQuest/Resources/Snail_Cave.tres" id="2_s8tk2"]
+[ext_resource type="Resource" uid="uid://buwjkq6ue7rvb" path="res://HandIn/Resources/Snail_Cave.tres" id="2_s8tk2"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_gs18x"]
 [ext_resource type="PackedScene" uid="uid://bibw10cs8fov6" path="res://Appearance/Attachments/top_hat.tscn" id="4_451uh"]
 [ext_resource type="AudioStream" uid="uid://csiclebykw5p4" path="res://Sounds/Raw/sfx_snail_speak_001.wav" id="4_pdcxf"]

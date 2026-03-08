@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://s6oqyxkfywv7"]
+[gd_scene load_steps=4 format=3 uid="uid://s6oqyxkfywv7"]
 
 [ext_resource type="Script" uid="uid://dkuu2ydy618rx" path="res://Prefabs/UI/Inventory/InventoryContainer.cs" id="1_sxc53"]
 [ext_resource type="PackedScene" uid="uid://defec4lhqg2fo" path="res://Prefabs/UI/Inventory/inventory_preview_button.tscn" id="1_vowir"]
+[ext_resource type="Script" uid="uid://ckjxcr878qs2o" path="res://Modules/Node/ScrollContainerScript.cs" id="2_b3205"]
 
-[node name="inventory_container" type="MarginContainer" node_paths=PackedStringArray("GridContainer", "InventoryButtonTemplate", "EmptyLabel")]
+[node name="inventory_container" type="MarginContainer" node_paths=PackedStringArray("InventoryButtonTemplate", "EmptyLabel", "GridContainer", "ScrollContainer")]
+custom_minimum_size = Vector2(360, 0)
+offset_right = 351.0
+offset_bottom = 210.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 5
@@ -11,15 +15,28 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 script = ExtResource("1_sxc53")
-GridContainer = NodePath("GridContainer")
-InventoryButtonTemplate = NodePath("GridContainer/InventoryPreviewButton")
+InventoryButtonTemplate = NodePath("ScrollContainer/MarginContainer/GridContainer/InventoryPreviewButton")
 EmptyLabel = NodePath("EmptyLabel")
+GridContainer = NodePath("ScrollContainer/MarginContainer/GridContainer")
+ScrollContainer = NodePath("ScrollContainer")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+script = ExtResource("2_b3205")
+UpdateOnChildrenChanged = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer"]
 layout_mode = 2
 columns = 5
 
-[node name="InventoryPreviewButton" parent="GridContainer" instance=ExtResource("1_vowir")]
+[node name="InventoryPreviewButton" parent="ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("1_vowir")]
 layout_mode = 2
 
 [node name="EmptyLabel" type="Label" parent="."]

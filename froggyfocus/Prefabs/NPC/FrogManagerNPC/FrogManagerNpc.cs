@@ -17,8 +17,6 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
     public override void _Ready()
     {
         base._Ready();
-        HandIn.InitializeData(HandInInfo);
-
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
@@ -26,7 +24,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
 
     public override void Interact()
     {
-        if (HandInData.ClaimedCount > 0)
+        if (HandInData.ClaimCount > 0)
         {
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
         }
@@ -74,11 +72,8 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
     {
         if (id == HandInInfo.Id)
         {
-            HandIn.ResetData(HandInInfo);
-            Data.Game.ManagerQuestCompleted = true;
-            Data.Game.Save();
-
             show_unlock = true;
+            Data.Game.ManagerQuestCompleted = true;
             MainQuestController.Instance.AdvanceManagerQuest(5);
             StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
         }

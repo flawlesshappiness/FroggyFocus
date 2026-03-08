@@ -8,21 +8,12 @@ public partial class TestHandInNpc : Area3D, IInteractable
     public override void _Ready()
     {
         base._Ready();
-        HandIn.InitializeData(HandInInfo);
         DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
-        HandInController.Instance.OnHandInClaimed += HandInClaimed;
     }
 
     public void Interact()
     {
-        if (HandIn.IsAvailable(HandInInfo.Id))
-        {
-            DialogueController.Instance.StartDialogue("##TEST_HAND_IN_001##");
-        }
-        else
-        {
-            DialogueController.Instance.StartDialogue("##TEST_HAND_IN_COMPLETED_001##");
-        }
+        DialogueController.Instance.StartDialogue("##TEST_HAND_IN_001##");
     }
 
     private void DialogueNodeEnded(string id)
@@ -31,14 +22,6 @@ public partial class TestHandInNpc : Area3D, IInteractable
         {
             var data = HandIn.GetOrCreateData(HandInInfo.Id);
             HandInView.Instance.ShowPopup(data);
-        }
-    }
-
-    private void HandInClaimed(string id)
-    {
-        if (id == HandInInfo.Id)
-        {
-            HandIn.ResetData(HandInInfo);
         }
     }
 }
