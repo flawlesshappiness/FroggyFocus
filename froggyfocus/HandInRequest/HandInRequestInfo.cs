@@ -17,6 +17,22 @@ public partial class HandInRequestInfo : Resource
 
     public bool HasMoney => Money > 0;
 
+    public InventoryFilterOptions GetInventoryFilterOptions()
+    {
+        var filter = new InventoryFilterOptions();
+
+        if (TargetInfo != null)
+        {
+            filter.ValidCharacters = new() { TargetInfo };
+        }
+        else
+        {
+            filter.ValidTags = new() { TargetTag };
+        }
+
+        return filter;
+    }
+
     public string GetRequestText()
     {
         if (TargetInfo != null)

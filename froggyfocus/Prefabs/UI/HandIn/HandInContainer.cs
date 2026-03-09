@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
 public partial class HandInContainer : ControlScript
@@ -10,7 +9,13 @@ public partial class HandInContainer : ControlScript
     public Label RequestLabel;
 
     [Export]
+    public RewardPreview MoneyPreview;
+
+    [Export]
     public InventoryContainer Inventory;
+
+    [Export]
+    public InventoryInfoContainer InventoryInfo;
 
     [Export]
     public Button BackButton;
@@ -24,28 +29,15 @@ public partial class HandInContainer : ControlScript
     [Export]
     public RewardUnlockBar RewardUnlockBar;
 
-    private List<ButtonMap> maps = new();
-
     public event Action OnClaim;
 
     public HandInData CurrentData { get; private set; }
     public HandInInfo CurrentInfo { get; private set; }
     public HandInRequestInfo CurrentRequest { get; private set; }
     public bool IsClaimed { get; private set; }
+    public bool IsClaimedItem { get; private set; }
     public bool HasItemUnlock => CurrentInfo?.HasItemUnlock ?? false;
     public bool IsMaxClaim => CurrentData?.ClaimCount >= CurrentInfo?.Requests.Count;
-
-    private class ButtonMap
-    {
-        public int Index { get; set; }
-        public InventoryPreviewButton Button { get; set; }
-        public InventoryCharacterData Submission { get; set; }
-        public void Clear()
-        {
-            Button.Clear();
-            Submission = null;
-        }
-    }
 
     public override void _Ready()
     {
@@ -54,16 +46,19 @@ public partial class HandInContainer : ControlScript
         ClaimButton.Pressed += ClaimButton_Pressed;
         PinButton.Pressed += PinButton_Pressed;
         Inventory.OnButtonPressed += InventoryButton_Pressed;
+        Inventory.OnButtonFocus += InventoryButton_Focus;
     }
 
     private void Clear()
     {
-        maps.ForEach(x => x.Clear());
         ClaimButton.Disabled = true;
         CurrentData = null;
         RewardUnlockBar.Clear();
         IsClaimed = false;
+        IsClaimedItem = false;
         Inventory.Clear();
+        InventoryInfo.Clear();
+        MoneyPreview.Hide();
     }
 
     public void Load(HandInData data)
@@ -77,10 +72,17 @@ public partial class HandInContainer : ControlScript
 
         RequestLabel.Text = CurrentRequest.GetRequestText();
 
-        Inventory.UpdateButtons();
+        Inventory.UpdateButtons(CurrentRequest.GetInventoryFilterOptions());
         Inventory.SetMode(InventoryContainer.Mode.Select);
 
+        RewardUnlockBar.Load(CurrentInfo);
         RewardUnlockBar.Visible = HasItemUnlock;
+
+        if (CurrentRequest.HasMoney)
+        {
+            MoneyPreview.Show();
+            MoneyPreview.SetCoinStack(CurrentRequest.Money);
+        }
     }
 
     private void ClaimButton_Pressed()
@@ -93,9 +95,9 @@ public partial class HandInContainer : ControlScript
         IsClaimed = true;
         CurrentData.ClaimCount++;
 
-        foreach (var map in maps)
+        foreach (var data in Inventory.Selection)
         {
-            InventoryController.Instance.RemoveCharacterData(map.Submission);
+            InventoryController.Instance.RemoveCharacterData(data);
         }
 
         if (CurrentRequest.HasMoney)
@@ -107,6 +109,7 @@ public partial class HandInContainer : ControlScript
         {
             var data = Item.GetOrCreateData(CurrentInfo.ItemUnlock);
             data.Owned = true;
+            IsClaimedItem = true;
         }
 
         Data.Game.Save();
@@ -124,9 +127,9 @@ public partial class HandInContainer : ControlScript
         ClaimButton.Disabled = !is_valid;
     }
 
-    public Button GetFirstButton()
+    public Button GetFocusButton()
     {
-        return Inventory.GetFirstButton() ?? ClaimButton;
+        return BackButton;
     }
 
     public IEnumerator WaitForRewardBarFill()
@@ -146,5 +149,10 @@ public partial class HandInContainer : ControlScript
     private void InventoryButton_Pressed(InventoryCharacterData data)
     {
         Validate();
+    }
+
+    private void InventoryButton_Focus(InventoryCharacterData data)
+    {
+        InventoryInfo.SetCharacter(data);
     }
 }

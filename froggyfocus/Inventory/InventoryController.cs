@@ -181,6 +181,7 @@ public partial class InventoryController : SingletonController
 
         var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
 
+        if (options.ValidTags?.Intersect(info.Tags).Count() == 0) return false;
         if (options.ExcludedDatas?.Contains(data) ?? false) return false;
         if (!options.ValidCharacters?.Contains(info) ?? false) return false;
         if (options.ExcludedCharacters?.Contains(info) ?? false) return false;
@@ -191,6 +192,7 @@ public partial class InventoryController : SingletonController
 
 public class InventoryFilterOptions
 {
+    public List<FocusCharacterTag> ValidTags { get; set; }
     public List<FocusCharacterInfo> ValidCharacters { get; set; }
     public List<FocusCharacterInfo> ExcludedCharacters { get; set; }
     public List<InventoryCharacterData> ExcludedDatas { get; set; }

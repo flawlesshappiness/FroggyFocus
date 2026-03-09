@@ -73,7 +73,7 @@ public partial class HandInView : View
             InputBlocker.Show();
             AnimatedOverlay.AnimateBehindShow();
             yield return AnimatedPanel_HandIn.AnimatePopShow();
-            HandInContainer.GetFirstButton().GrabFocus();
+            HandInContainer.GetFocusButton().GrabFocus();
             InputBlocker.Hide();
 
             animating = false;
@@ -127,23 +127,13 @@ public partial class HandInView : View
         }
     }
 
-    private bool CanShowPopup()
-    {
-        return HandInContainer.HasItemUnlock &&
-            HandInContainer.IsMaxClaim &&
-            HandInContainer.RewardUnlockBar.Visible;
-    }
-
     private IEnumerator WaitForPopup()
     {
-        if (HandInContainer.IsClaimed)
+        if (HandInContainer.IsClaimedItem)
         {
-            if (CanShowPopup())
-            {
-                UnlockPopup.SetItemUnlock();
-                UnlockPopup.SetAppearanceItem(HandInContainer.CurrentInfo.ItemUnlock);
-                yield return UnlockPopup.WaitForPopup();
-            }
+            UnlockPopup.SetItemUnlock();
+            UnlockPopup.SetAppearanceItem(HandInContainer.CurrentInfo.ItemUnlock);
+            yield return UnlockPopup.WaitForPopup();
 
             HandInController.Instance.HandInClaimed(HandInContainer.CurrentData);
         }

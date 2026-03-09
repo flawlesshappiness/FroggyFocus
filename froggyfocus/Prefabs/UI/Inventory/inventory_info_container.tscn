@@ -49,8 +49,7 @@ theme = ExtResource("1_fqwn7")
 [node name="PreviewTextureRect" type="TextureRect" parent="VBoxContainer/Preview/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("4_2n2s5")
-expand_mode = 2
-stretch_mode = 4
+expand_mode = 3
 
 [node name="NameLabel" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(1, 1)
