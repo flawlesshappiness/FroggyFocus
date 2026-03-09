@@ -37,11 +37,11 @@ public partial class HandInRequestInfo : Resource
     {
         if (TargetInfo != null)
         {
-            return $"Catch {Count} {TargetInfo.Name}";
+            return $"Deliver {Count} {TargetInfo.Name}";
         }
         else
         {
-            return $"Catch {Count} {GetTagText(TargetTag)}";
+            return $"Deliver {Count} {GetTagText(TargetTag)}";
         }
     }
 

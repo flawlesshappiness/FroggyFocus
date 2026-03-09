@@ -27,6 +27,12 @@ public partial class HandInContainer : ControlScript
     public Button PinButton;
 
     [Export]
+    public ProgressBar ProgressBar;
+
+    [Export]
+    public Label ProgressLabel;
+
+    [Export]
     public RewardUnlockBar RewardUnlockBar;
 
     public event Action OnClaim;
@@ -51,7 +57,6 @@ public partial class HandInContainer : ControlScript
 
     private void Clear()
     {
-        ClaimButton.Disabled = true;
         CurrentData = null;
         RewardUnlockBar.Clear();
         IsClaimed = false;
@@ -59,6 +64,11 @@ public partial class HandInContainer : ControlScript
         Inventory.Clear();
         InventoryInfo.Clear();
         MoneyPreview.Hide();
+
+        ProgressBar.Value = 0;
+        ProgressBar.Show();
+        ClaimButton.Hide();
+        ClaimButton.Disabled = true;
     }
 
     public void Load(HandInData data)
@@ -83,6 +93,8 @@ public partial class HandInContainer : ControlScript
             MoneyPreview.Show();
             MoneyPreview.SetCoinStack(CurrentRequest.Money);
         }
+
+        Validate();
     }
 
     private void ClaimButton_Pressed()
@@ -125,6 +137,28 @@ public partial class HandInContainer : ControlScript
     {
         var is_valid = Inventory.Selection.Count == CurrentRequest.Count;
         ClaimButton.Disabled = !is_valid;
+        ClaimButton.Visible = is_valid;
+
+        ProgressBar.Visible = !is_valid;
+        ProgressLabel.Text = $"{Inventory.Selection.Count} / {CurrentRequest.Count}";
+
+        AnimateProgressBar();
+    }
+
+    private void AnimateProgressBar()
+    {
+        this.StartCoroutine(Cr, "progress");
+        IEnumerator Cr()
+        {
+            var start = ProgressBar.Value;
+            var end = Inventory.Selection.Count / (float)CurrentRequest.Count;
+            var curve = Curves.EaseOutQuad;
+            yield return LerpEnumerator.Lerp01(0.2f, f =>
+            {
+                var t = curve.Evaluate(f);
+                ProgressBar.Value = Mathf.Lerp(start, end, t);
+            });
+        }
     }
 
     public Button GetFocusButton()
