@@ -647,6 +647,66 @@
 	},
 	
 	{
+		"id": "##DEMO_FROG_INTRO_001##",
+		"next": "##DEMO_FROG_INTRO_002##"
+	},
+	{
+		"id": "##DEMO_FROG_INTRO_002##",
+		"next": "##DEMO_FROG_INTRO_003##"
+	},
+	{
+		"id": "##DEMO_FROG_INTRO_003##",
+		"next": "##DEMO_FROG_INTRO_004##"
+	},
+	{
+		"id": "##DEMO_FROG_INTRO_004##"
+	},
+	
+	{
+		"id": "##DEMO_FROG_FLYING_001##",
+		"next": "##DEMO_FROG_FLYING_002##"
+	},
+	{
+		"id": "##DEMO_FROG_FLYING_002##",
+		"next": "##DEMO_FROG_FLYING_003##"
+	},
+	{
+		"id": "##DEMO_FROG_FLYING_003##"
+	},
+	
+	{
+		"id": "##DEMO_FROG_BLOOMING_001##",
+		"next": "##DEMO_FROG_BLOOMING_002##"
+	},
+	{
+		"id": "##DEMO_FROG_BLOOMING_002##",
+		"next": "##DEMO_FROG_BLOOMING_003##"
+	},
+	{
+		"id": "##DEMO_FROG_BLOOMING_003##",
+		"next": "##DEMO_FROG_BLOOMING_004##"
+	},
+	{
+		"id": "##DEMO_FROG_BLOOMING_004##"
+	},
+	
+	{
+		"id": "##DEMO_FROG_FINISHED_001##",
+		"next": "##DEMO_FROG_FINISHED_002##"
+	},
+	{
+		"id": "##DEMO_FROG_FINISHED_002##",
+		"next": "##DEMO_FROG_FINISHED_003##"
+	},
+	{
+		"id": "##DEMO_FROG_FINISHED_003##",
+		"next": "##DEMO_FROG_FINISHED_004##"
+	},
+	{
+		"id": "##DEMO_FROG_FINISHED_004##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

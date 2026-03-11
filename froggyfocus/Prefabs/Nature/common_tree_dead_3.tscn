@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmloypqnkthro"]
+[gd_scene load_steps=5 format=3 uid="uid://dmloypqnkthro"]
 
 [ext_resource type="PackedScene" uid="uid://cp3wr6wdum6k2" path="res://Assets/Quaternius/Nature/CommonTree_Dead_3.fbx" id="1_53njm"]
 [ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_7h6gf"]
+[ext_resource type="PackedScene" uid="uid://d2vmuxevdfnb" path="res://Prefabs/Nature/mushroom_shelf_cluster_001.tscn" id="3_e15c0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_llb6d"]
 radius = 0.111611
@@ -24,3 +25,17 @@ transform = Transform3D(-1.31134e-09, 0, 0.03, 0, 0.03, 0, -0.03, 0, -1.31134e-0
 
 [node name="Eldritch_Eye3" parent="." instance=ExtResource("2_7h6gf")]
 transform = Transform3D(-0.0234068, 0, -0.0324364, 0, 0.04, 0, 0.0324364, 0, -0.0234068, 0.0294368, 1.01709, 0.0171399)
+
+[node name="Mushrooms" type="Node3D" parent="."]
+
+[node name="mushroom_shelf_glowing_cluster" parent="Mushrooms" instance=ExtResource("3_e15c0")]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 0.00834899, 0.654281, 0.0407152)
+
+[node name="mushroom_shelf_glowing_cluster2" parent="Mushrooms" instance=ExtResource("3_e15c0")]
+transform = Transform3D(0.053054, 0, -0.107635, 0, 0.12, 0, 0.107635, 0, 0.053054, -0.0410772, 0.560692, 0.012221)
+
+[node name="mushroom_shelf_glowing_cluster3" parent="Mushrooms" instance=ExtResource("3_e15c0")]
+transform = Transform3D(-0.104631, 0, 0.0587569, 0, 0.12, 0, -0.0587569, 0, -0.104631, 0.0488271, 0.318271, -0.0718813)
+
+[node name="mushroom_shelf_glowing_cluster4" parent="Mushrooms" instance=ExtResource("3_e15c0")]
+transform = Transform3D(0.0243468, 0, 0.117504, 0, 0.12, 0, -0.117504, 0, 0.0243468, 0.0720124, 0.223609, 0.0118543)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://6g12i01jce7m"]
+
+[ext_resource type="PackedScene" uid="uid://bn1belfgy4l0k" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_shelf.fbx" id="1_2v6fc"]
+
+[node name="mushroom_shelf" type="Node3D"]
+
+[node name="mushroom_shelf" parent="." instance=ExtResource("1_2v6fc")]

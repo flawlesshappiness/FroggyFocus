@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://hydc75vf8glw"]
+
+[ext_resource type="Script" uid="uid://b31jphwp5o3x3" path="res://Prefabs/NPC/FrogDemoNPC/FrogDemoNpc.cs" id="1_4umcv"]
+[ext_resource type="Resource" uid="uid://dv1lgptwlfi6u" path="res://HandIn/Resources/Demo.tres" id="2_k3x21"]
+[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_t75hq"]
+[ext_resource type="AudioStream" uid="uid://cps4ajn0wt6cq" path="res://Sounds/Raw/sfx_frog_croak_005.wav" id="4_fl5qn"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rhrvr"]
+height = 0.738281
+radius = 0.710938
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_baqoe"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8nlqi"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_fl5qn")
+
+[node name="FrogDemoNpc" type="Area3D" node_paths=PackedStringArray("SfxSpeak", "DialogueCamera")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_4umcv")
+HandInInfo = ExtResource("2_k3x21")
+SfxSpeak = NodePath("SfxSpeak")
+DialogueCamera = NodePath("CameraTransition/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369141, -0.396207)
+shape = SubResource("CylinderShape3D_rhrvr")
+
+[node name="Frog" parent="." instance=ExtResource("3_t75hq")]
+DisableAppearanceUpdates = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.242242, 0)
+shape = SubResource("BoxShape3D_baqoe")
+
+[node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8nlqi")
+volume_db = -10.0
+pitch_scale = 0.8
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="CameraTransition" type="Node3D" parent="."]
+transform = Transform3D(-0.238252, 0.678822, -0.694575, 0.0096135, 0.716783, 0.697229, 0.971155, 0.15944, -0.177301, -1.57246, 1.60381, -1.27965)
+
+[node name="Camera3D" type="Camera3D" parent="CameraTransition"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

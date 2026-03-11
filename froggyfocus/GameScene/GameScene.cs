@@ -18,9 +18,6 @@ public partial class GameScene : Scene
     public Node3D WorldBugParent;
 
     [Export]
-    public Node3D FocusEventParent;
-
-    [Export]
     public FocusEvent FocusEvent { get; private set; }
 
     [Export]
@@ -41,7 +38,7 @@ public partial class GameScene : Scene
 
         MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather(Weathers);
-        FocusHotSpotController.Instance.Start();
+        //FocusHotSpotController.Instance.Start();
         WorldBugController.Instance.Start();
     }
 

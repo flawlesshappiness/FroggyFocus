@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cstu4xwk8m2au"]
+[gd_scene load_steps=5 format=3 uid="uid://cstu4xwk8m2au"]
 
 [ext_resource type="PackedScene" uid="uid://c4imw11qm1cig" path="res://Assets/Quaternius/Nature/CommonTree_Dead_1.fbx" id="1_sqsy7"]
 [ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_llb6d"]
+[ext_resource type="PackedScene" uid="uid://dxu4y5kfa1vl8" path="res://Prefabs/Nature/plant_ivy_group_001.tscn" id="3_vnwbp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_llb6d"]
 radius = 0.10951
@@ -24,3 +25,20 @@ transform = Transform3D(0.00882196, 0, 0.0593479, 0, 0.06, 0, -0.0593479, 0, 0.0
 
 [node name="Eldritch_Eye2" parent="." instance=ExtResource("2_llb6d")]
 transform = Transform3D(-0.00553151, -0.00199801, -0.0395653, -0.0135889, 0.037621, 0, 0.0372121, 0.0134412, -0.0058813, 0.0544972, 0.519382, 0.0465323)
+
+[node name="Ivy" type="Node3D" parent="."]
+
+[node name="plant_ivy_group_001" parent="Ivy" instance=ExtResource("3_vnwbp")]
+transform = Transform3D(-0.03, -2.41143e-09, -1.66826e-09, 1.31134e-09, 0.00423274, -0.0296999, 2.62268e-09, -0.0296999, -0.00423274, 1.34219e-09, 0.143001, -0.0614606)
+
+[node name="plant_ivy_group_002" parent="Ivy" instance=ExtResource("3_vnwbp")]
+transform = Transform3D(-0.03, -2.41143e-09, -1.66826e-09, 1.31134e-09, 0.00423274, -0.0296999, 2.62268e-09, -0.0296999, -0.00423274, 1.34219e-09, 0.273383, -0.04971)
+
+[node name="plant_ivy_group_003" parent="Ivy" instance=ExtResource("3_vnwbp")]
+transform = Transform3D(-0.017404, 0.0241912, 0.00344765, 8.94252e-10, 0.00423274, -0.0296999, -0.0244356, -0.0172299, -0.00245556, 0.0707427, 0.195805, -0.0167023)
+
+[node name="plant_ivy_group_004" parent="Ivy" instance=ExtResource("3_vnwbp")]
+transform = Transform3D(0.0124599, 0.0271263, 0.00298567, 7.567e-10, 0.00328214, -0.0298199, -0.0272901, 0.0123851, 0.00136316, 0.0689871, 0.243688, 0.0597956)
+
+[node name="plant_ivy_group_005" parent="Ivy" instance=ExtResource("3_vnwbp")]
+transform = Transform3D(0.0124599, 0.0271263, 0.00298567, 7.567e-10, 0.00328214, -0.0298199, -0.0272901, 0.0123851, 0.00136316, 0.0618492, 0.377646, 0.0565366)

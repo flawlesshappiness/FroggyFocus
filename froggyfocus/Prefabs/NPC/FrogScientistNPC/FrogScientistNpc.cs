@@ -5,9 +5,6 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     [Export]
     public HandInInfo HandInInfo;
 
-    [Export]
-    public FrogCharacter FrogCharacter;
-
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
     private readonly string DIALOGUE_ID = "SCIENTIST";

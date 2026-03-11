@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://db3tbp4x07eca"]
+[gd_scene load_steps=5 format=3 uid="uid://db3tbp4x07eca"]
 
 [ext_resource type="PackedScene" uid="uid://co7swh50mcpgb" path="res://Assets/Quaternius/Nature/CommonTree_Dead_2.fbx" id="1_8ckw0"]
 [ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_2884l"]
+[ext_resource type="PackedScene" uid="uid://dxu4y5kfa1vl8" path="res://Prefabs/Nature/plant_ivy_group_001.tscn" id="3_ic4xo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_llb6d"]
 radius = 0.12976
@@ -30,3 +31,26 @@ transform = Transform3D(0.00237778, 0, 0.0299056, 0, 0.03, 0, -0.0299056, 0, 0.0
 
 [node name="Eldritch_Eye3" parent="." instance=ExtResource("2_2884l")]
 transform = Transform3D(0.00206964, 0.00117066, 0.0299056, -0.01477, 0.0261122, 0, -0.0260301, -0.0147235, 0.00237778, -0.0889152, 0.740759, -0.0205185)
+
+[node name="Ivy" type="Node3D" parent="."]
+
+[node name="plant_ivy_group_001" parent="Ivy" instance=ExtResource("3_ic4xo")]
+transform = Transform3D(0.04, 0, 0, 0, 0.0015955, -0.0399682, 0, 0.0399682, 0.0015955, 2.98023e-08, 0.20301, 0.107383)
+
+[node name="plant_ivy_group_006" parent="Ivy" instance=ExtResource("3_ic4xo")]
+transform = Transform3D(0.00182917, 0.0395616, 0.00561565, -0.00159383, 0.0056893, -0.0395612, -0.0399264, 0.00158534, 0.00183653, 0.0978677, 0.259947, 0.0189031)
+
+[node name="plant_ivy_group_007" parent="Ivy" instance=ExtResource("3_ic4xo")]
+transform = Transform3D(0.0191097, 0.0346884, 0.00561565, 0.00108208, 0.0058084, -0.0395612, -0.0351233, 0.019052, 0.00183653, 0.081108, 0.438914, 0.0516997)
+
+[node name="plant_ivy_group_002" parent="Ivy" instance=ExtResource("3_ic4xo")]
+transform = Transform3D(0.04, 0, 0, 0, 0.0015955, -0.0399682, 0, 0.0399682, 0.0015955, 2.98023e-08, 0.393603, 0.110392)
+
+[node name="plant_ivy_group_003" parent="Ivy" instance=ExtResource("3_ic4xo")]
+transform = Transform3D(0.0212666, -0.0338782, 0, 0.00135132, 0.000848273, -0.0399682, 0.0338512, 0.0212497, 0.0015955, -0.0850379, 0.265272, 0.0639706)
+
+[node name="plant_ivy_group_004" parent="Ivy" instance=ExtResource("3_ic4xo")]
+transform = Transform3D(-0.0236686, -0.0320323, -0.00370523, 0.00101386, 0.0038547, -0.0398009, 0.0322299, -0.0236447, -0.00146898, -0.0826428, 0.493775, -0.0464502)
+
+[node name="plant_ivy_group_005" parent="Ivy" instance=ExtResource("3_ic4xo")]
+transform = Transform3D(-0.0236686, -0.0320323, -0.00370523, 0.00101386, 0.0038547, -0.0398009, 0.0322299, -0.0236447, -0.00146898, -0.0907543, 0.314692, -0.0467736)

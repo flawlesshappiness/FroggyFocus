@@ -8,7 +8,7 @@ top_radius = 4.0
 bottom_radius = 4.0
 height = 0.1
 
-[node name="Reeds_Dense" type="Node3D"]
+[node name="reeds_sparse" type="Node3D"]
 
 [node name="Cattails_Models" type="Node3D" parent="."]
 

@@ -135,6 +135,10 @@ public partial class HandInView : View
             UnlockPopup.SetAppearanceItem(HandInContainer.CurrentInfo.ItemUnlock);
             yield return UnlockPopup.WaitForPopup();
 
+        }
+
+        if (HandInContainer.IsClaimed)
+        {
             HandInController.Instance.HandInClaimed(HandInContainer.CurrentData);
         }
     }
