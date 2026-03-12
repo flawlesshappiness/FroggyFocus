@@ -10,6 +10,9 @@ public partial class SaveProfileControl : MarginContainer
     public Label NoDataLabel;
 
     [Export]
+    public Label DemoLabel;
+
+    [Export]
     public Label MoneyLabel;
 
     [Export]
@@ -77,6 +80,7 @@ public partial class SaveProfileControl : MarginContainer
         NoDataLabel.Visible = data.Deleted;
         TopRightControls.Visible = !data.Deleted;
         TopLeftControls.Visible = !data.Deleted;
+        DemoLabel.Visible = !data.Deleted && data.ApplicationType == ApplicationType.Demo;
 
         var money = data.Currencies.FirstOrDefault(x => x.Type == CurrencyType.Money);
         MoneyLabel.Text = money == null ? "0" : money.Value.ToString();

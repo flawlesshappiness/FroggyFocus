@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://db8bvkmkj785j" path="res://Assets/FlawLizArt/Textures/icon_money.png" id="4_4gccm"]
 [ext_resource type="Theme" uid="uid://2stgn2l8fv6" path="res://Themes/Red.tres" id="4_b18tc"]
 [ext_resource type="Texture2D" uid="uid://j4y34d1ksddw" path="res://Assets/FlawLizArt/Textures/icon_potion.png" id="5_fw7x8"]
-[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="6_3i36b"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="6_4gccm"]
 [ext_resource type="Texture2D" uid="uid://1jbnm7wqxhqh" path="res://Assets/Quaternius/RPG/Icons/Coin.png" id="7_fw7x8"]
 [ext_resource type="Texture2D" uid="uid://badknj108hdc5" path="res://Assets/FlawLizArt/Textures/icon_watch.png" id="8_1yp5k"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="11_1yp5k"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5elr7"]
 viewport_path = NodePath("ItemSubViewport")
@@ -42,12 +42,13 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwvsp"]
 
-[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "NoDataLabel", "MoneyLabel", "TimeLabel", "TopRightControls", "TopLeftControls", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog", "PartnerQuestIcon", "ManagerQuestIcon", "ScientistQuestIcon")]
+[node name="SaveProfileControl" type="MarginContainer" node_paths=PackedStringArray("TitleLabel", "NoDataLabel", "DemoLabel", "MoneyLabel", "TimeLabel", "TopRightControls", "TopLeftControls", "ProfileButton", "DeleteButton", "ConfirmDeleteButton", "CancelDeleteButton", "Frog", "PartnerQuestIcon", "ManagerQuestIcon", "ScientistQuestIcon")]
 custom_minimum_size = Vector2(250, 0)
 theme = ExtResource("1_nd4sc")
 script = ExtResource("2_b18tc")
 TitleLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TitleLabel")
 NoDataLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer/NoDataLabel")
+DemoLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TopMiddle/HBoxContainer/DemoLabel")
 MoneyLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight/Money/MarginContainer/MarginContainer/HBoxContainer/MoneyLabel")
 TimeLabel = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TopLeft/Time/MarginContainer/MarginContainer/HBoxContainer/TimeLabel")
 TopRightControls = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/TopRight")
@@ -56,7 +57,7 @@ ProfileButton = NodePath("VBoxContainer/MarginContainer2/ProfileButton")
 DeleteButton = NodePath("VBoxContainer/HBoxContainer/DeleteButton")
 ConfirmDeleteButton = NodePath("VBoxContainer/HBoxContainer/ConfirmDeleteButton")
 CancelDeleteButton = NodePath("VBoxContainer/HBoxContainer/CancelDeleteButton")
-Frog = NodePath("ItemSubViewport/Anim/Origin/Frog")
+Frog = NodePath("ItemSubViewport/Anim/Origin/FrogCute")
 PartnerQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer/IconPartner")
 ManagerQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer/IconManager")
 ScientistQuestIcon = NodePath("VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer/IconScientist")
@@ -111,9 +112,8 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/Icons"]
+[node name="GridContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/Icons"]
 layout_mode = 2
-columns = 3
 
 [node name="IconPartner" type="TextureRect" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/Icons/GridContainer"]
 custom_minimum_size = Vector2(32, 32)
@@ -235,6 +235,22 @@ grow_vertical = 2
 texture = ExtResource("8_1yp5k")
 expand_mode = 1
 
+[node name="TopMiddle" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopMiddle"]
+layout_mode = 2
+alignment = 1
+
+[node name="DemoLabel" type="Label" parent="VBoxContainer/MarginContainer2/MarginContainer/Content/TopMiddle/HBoxContainer"]
+layout_mode = 2
+text = "DEMO"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/MarginContainer"]
 layout_mode = 2
 alignment = 1
@@ -279,7 +295,7 @@ handle_input_locally = false
 size = Vector2i(1025, 1024)
 
 [node name="Camera3D" type="Camera3D" parent="ItemSubViewport"]
-transform = Transform3D(-0.769011, 0.319618, -0.553594, 0, 0.866025, 0.5, 0.639236, 0.384505, -0.665983, -1.67687, 1.41812, -1.68077)
+transform = Transform3D(-0.769011, 0.319618, -0.553594, 0, 0.866025, 0.5, 0.639236, 0.384505, -0.665983, -1.33695, 1.36071, -1.68077)
 current = true
 fov = 50.0
 
@@ -294,5 +310,4 @@ light_energy = 0.1
 
 [node name="Origin" type="Node3D" parent="ItemSubViewport/Anim"]
 
-[node name="Frog" parent="ItemSubViewport/Anim/Origin" instance=ExtResource("6_3i36b")]
-DisableAppearanceUpdates = true
+[node name="FrogCute" parent="ItemSubViewport/Anim/Origin" instance=ExtResource("11_1yp5k")]
