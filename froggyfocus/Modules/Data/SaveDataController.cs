@@ -79,7 +79,7 @@ public partial class SaveDataController : Node
         var data_version = Version.Parse(data.Version);
         var is_lesser_version = data_version.CompareTo(current_version) < 0;
 
-        if (!data.IsRelease && is_lesser_version)
+        if (is_lesser_version)
         {
             Debug.Log($"Data version {data_version} < current version {current_version} - Creating new save");
             data = Create<T>();

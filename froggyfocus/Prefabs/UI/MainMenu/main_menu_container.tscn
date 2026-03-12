@@ -9,7 +9,7 @@
 [sub_resource type="ViewportTexture" id="ViewportTexture_ju611"]
 viewport_path = NodePath("ItemSubViewport")
 
-[node name="MainMenuContainer" type="MarginContainer" node_paths=PackedStringArray("NewGameButton", "ContinueButton", "ProfilesButton", "OptionsButton", "CreditsButton", "QuitButton", "VersionLabel")]
+[node name="MainMenuContainer" type="MarginContainer" node_paths=PackedStringArray("PlayDemoButton", "NewGameButton", "ContinueButton", "ProfilesButton", "OptionsButton", "CreditsButton", "QuitButton", "VersionLabel")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,6 +20,7 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 script = ExtResource("1_bn65t")
+PlayDemoButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/PlayDemoButton")
 NewGameButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/NewGameButton")
 ContinueButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/ContinueButton")
 ProfilesButton = NodePath("VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer/ProfilesButton")
@@ -110,6 +111,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 2
+
+[node name="PlayDemoButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
+layout_mode = 2
+text = "Play Demo"
 
 [node name="NewGameButton" parent="VSplitContainer/Bottom/HBoxContainer/Left/UIScale/VBoxContainer" instance=ExtResource("2_bn65t")]
 layout_mode = 2

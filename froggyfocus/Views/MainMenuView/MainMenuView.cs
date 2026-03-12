@@ -52,6 +52,7 @@ public partial class MainMenuView : View
     public override void _Ready()
     {
         base._Ready();
+        MainMenuContainer.PlayDemoButton.Pressed += ClickPlayDemo;
         MainMenuContainer.NewGameButton.Pressed += ClickContinue;
         MainMenuContainer.ContinueButton.Pressed += ClickContinue;
         MainMenuContainer.ProfilesButton.Pressed += ClickProfiles;
@@ -100,8 +101,10 @@ public partial class MainMenuView : View
 
     private void UpdateContinueButton()
     {
-        MainMenuContainer.NewGameButton.Visible = Data.Game.Deleted;
-        MainMenuContainer.ContinueButton.Visible = !Data.Game.Deleted;
+        var is_demo = ApplicationInfo.Instance.Type == ApplicationType.Demo;
+        MainMenuContainer.PlayDemoButton.Visible = is_demo;
+        MainMenuContainer.NewGameButton.Visible = Data.Game.Deleted && !is_demo;
+        MainMenuContainer.ContinueButton.Visible = !Data.Game.Deleted && !is_demo;
     }
 
     private void Open()
@@ -169,6 +172,16 @@ public partial class MainMenuView : View
 
             animating = false;
         }
+    }
+
+    private void ClickPlayDemo()
+    {
+        if (animating) return;
+
+        Data.Game.CurrentScene = "DemoScene";
+        Data.Game.Save();
+
+        ClickContinue();
     }
 
     private void ClickContinue()

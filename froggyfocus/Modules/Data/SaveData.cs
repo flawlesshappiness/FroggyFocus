@@ -4,13 +4,13 @@ using System.Text.Json.Serialization;
 public abstract class SaveData
 {
     public string Version { get; set; } = string.Empty;
-    public bool IsRelease { get; set; } = false;
+    public ApplicationType ApplicationType { get; set; } = ApplicationType.Internal;
     public string TimeUpdated { get; set; } = string.Empty;
     public int? Profile { get; set; } = null;
     public bool Deleted { get; set; } = false;
 
     public void UpdateVersion() => Version = ApplicationInfo.Instance.Version;
-    public void UpdateRelease() => IsRelease = ApplicationInfo.Instance.Release;
+    public void UpdateApplicationType() => ApplicationType = ApplicationInfo.Instance.Type;
     public void UpdateTimestamp() => TimeUpdated = DateTime.UtcNow.ToString();
 
     [JsonIgnore]
@@ -22,7 +22,7 @@ public abstract class SaveData
     public void Update()
     {
         UpdateVersion();
-        UpdateRelease();
+        UpdateApplicationType();
         UpdateTimestamp();
     }
 

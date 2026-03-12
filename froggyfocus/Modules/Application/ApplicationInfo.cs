@@ -10,14 +10,19 @@ public partial class ApplicationInfo : Resource
     public string Version { get; set; }
 
     [Export]
-    public bool Release { get; set; }
+    public ApplicationType Type { get; set; }
 
     [Export]
     public string StartScene;
 
     public string GetVersionString()
     {
-        var release = Release ? "Release" : "Demo";
-        return $"{release} v{Version}";
+        var prefix = Type switch
+        {
+            ApplicationType.Demo => "Demo",
+            ApplicationType.Release => "Release",
+            _ => "Internal"
+        };
+        return $"{prefix} v{Version}";
     }
 }

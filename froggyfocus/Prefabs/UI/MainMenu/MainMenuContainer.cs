@@ -3,6 +3,9 @@ using Godot;
 public partial class MainMenuContainer : MarginContainer
 {
     [Export]
+    public Button PlayDemoButton;
+
+    [Export]
     public Button NewGameButton;
 
     [Export]

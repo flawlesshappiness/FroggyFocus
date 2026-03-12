@@ -63,14 +63,15 @@ public partial class DebugView : View
         Main.Show();
     }
 
-    public override void _Input(InputEvent @event)
+    public override void _Input(InputEvent e)
     {
-        base._Input(@event);
+        base._Input(e);
 
-        if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+        if (e is InputEventKey keyEvent && keyEvent.Pressed)
         {
             if (Input.IsActionJustPressed("ui_text_indent"))
             {
+                if (ApplicationInfo.Instance.Type != ApplicationType.Internal) return;
                 ToggleVisible();
                 SfxOpen.Play();
             }
