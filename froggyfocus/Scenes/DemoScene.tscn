@@ -1,7 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=41 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_fqf33"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
@@ -51,7 +50,7 @@ script = ExtResource("1_lc5f6")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
-Weathers = Array[ExtResource("2_fqf33")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
+Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -716,6 +715,42 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -33.6549, -1, 15.3906)
 
 [node name="Lilypad_Flower25" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.6511, -1, 13.8888)
+
+[node name="Lilypad_Flower26" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -29.0382, -1, 18.6167)
+
+[node name="Lilypad_Flower27" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -27.245, -1, 24.9441)
+
+[node name="Lilypad_Flower28" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -22.921, -1, 28.9318)
+
+[node name="Lilypad_Flower29" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -29.413, -1, 29.2171)
+
+[node name="Lilypad_Flower30" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.4841, -1, 32.2663)
+
+[node name="Lilypad_Flower31" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.8298, -1, 31.9698)
+
+[node name="Lilypad_Flower32" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -14.1605, -1, 28.2112)
+
+[node name="Lilypad_Flower33" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.48274, -1, 25.3514)
+
+[node name="Lilypad_Flower34" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.87708, -1, 18.8)
+
+[node name="Lilypad_Flower35" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11.8373, -1, 13.0313)
+
+[node name="Lilypad_Flower36" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -20.5216, -1, 10.2952)
+
+[node name="Lilypad_Flower37" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -17.2866, -1, 5.91347)
 
 [node name="Lilypad_Flower2" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -27.9739, -1, 1.66348)

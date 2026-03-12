@@ -26,9 +26,13 @@ public partial class MainMenuContainer : MarginContainer
     [Export]
     public Label VersionLabel;
 
+    [Export]
+    public Label DemoLabel;
+
     public override void _Ready()
     {
         base._Ready();
         VersionLabel.Text = ApplicationInfo.Instance.GetVersionString();
+        DemoLabel.Visible = ApplicationInfo.Instance.Type == ApplicationType.Demo;
     }
 }
