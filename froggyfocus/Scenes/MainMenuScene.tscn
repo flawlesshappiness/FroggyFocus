@@ -1,23 +1,67 @@
-[gd_scene load_steps=9 format=3 uid="uid://dclfilqvmuilh"]
+[gd_scene load_steps=20 format=3 uid="uid://dclfilqvmuilh"]
 
 [ext_resource type="Script" uid="uid://chh8ncpnh214i" path="res://Scenes/MainMenuScene.cs" id="1_sb72h"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_06svm"]
-[ext_resource type="Resource" uid="uid://cr6w4xkj1cp6h" path="res://Weather/Resources/Sunny-Windy.tres" id="2_6xh72"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_c7qge"]
-[ext_resource type="Material" uid="uid://c0dwjdrp2kmvd" path="res://Materials/Grass.tres" id="2_mxhvt"]
-[ext_resource type="PackedScene" uid="uid://d108tu8l4gbmx" path="res://Assets/FlawLizArt/Nature/Toon/bush_001.fbx" id="5_c7qge"]
-[ext_resource type="PackedScene" uid="uid://81i8koe64106" path="res://Assets/FlawLizArt/Nature/Toon/bush_002.fbx" id="6_6xh72"]
+[ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_6xh72"]
+[ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="5_x260n"]
+[ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="6_c7qge"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="7_6xh72"]
+[ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds_dense.tscn" id="8_06svm"]
+[ext_resource type="PackedScene" uid="uid://dpuju18h6r0al" path="res://Prefabs/Nature/plant_azolla_group.tscn" id="9_12npo"]
+[ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="10_i4kjn"]
+[ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="11_opcln"]
+[ext_resource type="PackedScene" uid="uid://cstu4xwk8m2au" path="res://Prefabs/Nature/common_tree_dead_1.tscn" id="12_7ylgr"]
+[ext_resource type="PackedScene" uid="uid://db3tbp4x07eca" path="res://Prefabs/Nature/common_tree_dead_2.tscn" id="13_ken5u"]
+[ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="14_ken5u"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="15_fpk5n"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="16_8nr32"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_sb72h"]
-size = Vector2(500, 500)
+[sub_resource type="Animation" id="Animation_8nr32"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lilypads/lilypad:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector3(3.02965, 0, -5.1776), Vector3(3.03, -0.1, -5.178), Vector3(3.02965, 0, -5.1776)]
+}
 
-[node name="MainMenuScene" type="Node3D" node_paths=PackedStringArray("Camera", "Frog", "DirectionalLight", "WorldEnvironment")]
+[sub_resource type="Animation" id="Animation_t0ggr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lilypads/lilypad:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.02965, 0, -5.1776)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vu4y4"]
+_data = {
+&"RESET": SubResource("Animation_t0ggr"),
+&"idle": SubResource("Animation_8nr32")
+}
+
+[node name="MainMenuScene" type="Node3D" node_paths=PackedStringArray("Camera", "DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_sb72h")
 Camera = NodePath("Camera3D")
-Frog = NodePath("")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-Weathers = Array[ExtResource("2_06svm")]([ExtResource("2_6xh72")])
+Weathers = Array[ExtResource("2_06svm")]([ExtResource("3_6xh72")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.363072, 0.931761, 0, -0.931761, 0.363072, 0, 9.01286, 0)
@@ -27,31 +71,105 @@ shadow_enabled = true
 environment = ExtResource("2_c7qge")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, -1.74717, 0.577646, 1.57595)
+transform = Transform3D(1, 0, 0, 0, 0.996918, 0.0784591, 0, -0.0784591, 0.996918, 0, 2.33167, 0.411137)
 
-[node name="World" type="Node3D" parent="."]
+[node name="Swamp" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
-mesh = SubResource("PlaneMesh_sb72h")
-surface_material_override/0 = ExtResource("2_mxhvt")
+[node name="Water" parent="Swamp" instance=ExtResource("5_x260n")]
 
-[node name="bush_001" parent="World" instance=ExtResource("5_c7qge")]
-transform = Transform3D(0.947233, 0, 0.320547, 0, 1, 0, -0.320547, 0, 0.947233, -4.13726, 0, -3.04494)
+[node name="Lilypads" type="Node3D" parent="Swamp"]
 
-[node name="bush_006" parent="World" instance=ExtResource("5_c7qge")]
-transform = Transform3D(0.950651, 0, -0.310262, 0, 1, 0, 0.310262, 0, 0.950651, 10.7647, 0, -7.71998)
+[node name="lilypad" parent="Swamp/Lilypads" instance=ExtResource("6_c7qge")]
+transform = Transform3D(-2.06202, 0, 2.179, 0, 3, 0, -2.179, 0, -2.06202, 3.02965, 0, -5.1776)
 
-[node name="bush_005" parent="World" instance=ExtResource("5_c7qge")]
-transform = Transform3D(1.28865, 0, -0.767704, 0, 1.5, 0, 0.767704, 0, 1.28865, 5.68309, -4.76837e-07, -7.98575)
+[node name="FrogCute" parent="Swamp/Lilypads/lilypad" instance=ExtResource("7_6xh72")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.0731747, 0)
 
-[node name="bush_002" parent="World" instance=ExtResource("6_6xh72")]
-transform = Transform3D(-0.901115, 0, 0.43358, 0, 1, 0, -0.43358, 0, -0.901115, 0.260797, 0, -3.2567)
+[node name="lilypad2" parent="Swamp/Lilypads" instance=ExtResource("6_c7qge")]
+transform = Transform3D(-0.833982, 0, -2.35679, 0, 2.5, 0, 2.35679, 0, -0.833982, 0.926216, 3.8147e-06, -9.75426)
 
-[node name="bush_003" parent="World" instance=ExtResource("6_6xh72")]
-transform = Transform3D(1.87543, 0, 0.69482, 0, 2, 0, -0.69482, 0, 1.87543, -3.47493, 0, -16.6105)
+[node name="lilypad3" parent="Swamp/Lilypads" instance=ExtResource("6_c7qge")]
+transform = Transform3D(1.69912, 0, 1.83385, 0, 2.5, 0, -1.83385, 0, 1.69912, 4.28053, 3.8147e-06, -17.5469)
 
-[node name="bush_007" parent="World" instance=ExtResource("6_6xh72")]
-transform = Transform3D(1.80498, 0, -0.861432, 0, 2, 0, 0.861432, 0, 1.80498, 3.0358, 0, -36.5777)
+[node name="lilypad4" parent="Swamp/Lilypads" instance=ExtResource("6_c7qge")]
+transform = Transform3D(-0.0250891, 0, 2.49987, 0, 2.5, 0, -2.49987, 0, -0.0250891, 1.94027, -4.54747e-13, -27.4945)
 
-[node name="bush_004" parent="World" instance=ExtResource("6_6xh72")]
-transform = Transform3D(-1.23904, 0, -1.56996, 0, 2, 0, 1.56996, 0, -1.23904, -13.556, 0, -9.20037)
+[node name="Reeds" type="Node3D" parent="Swamp"]
+
+[node name="Reeds_Dense" parent="Swamp/Reeds" instance=ExtResource("8_06svm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.3146, 1.90735e-06, -8.55246)
+
+[node name="Reeds_Dense8" parent="Swamp/Reeds" instance=ExtResource("8_06svm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7014, 1.90735e-06, -3.59683)
+
+[node name="Reeds_Dense5" parent="Swamp/Reeds" instance=ExtResource("8_06svm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8697, 1.90735e-06, -13.5817)
+
+[node name="Reeds_Dense6" parent="Swamp/Reeds" instance=ExtResource("8_06svm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.938, 1.90735e-06, -23.7005)
+
+[node name="Reeds_Dense7" parent="Swamp/Reeds" instance=ExtResource("8_06svm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4792, -1.2079, -36.3926)
+
+[node name="Reeds_Dense2" parent="Swamp/Reeds" instance=ExtResource("8_06svm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2875, 1.90735e-06, -17.1352)
+
+[node name="Reeds_Dense3" parent="Swamp/Reeds" instance=ExtResource("8_06svm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6554, -0.96092, -28.8069)
+
+[node name="Reeds_Dense4" parent="Swamp/Reeds" instance=ExtResource("8_06svm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.56083, -2.53228, -41.9778)
+
+[node name="Azolla" type="Node3D" parent="Swamp"]
+
+[node name="plant_azolla_group" parent="Swamp/Azolla" instance=ExtResource("9_12npo")]
+transform = Transform3D(1.74135, 0, -0.983723, 0, 2, 0, 0.983723, 0, 1.74135, 9.70572, -1.90735e-06, -10.8205)
+
+[node name="plant_azolla_group2" parent="Swamp/Azolla" instance=ExtResource("9_12npo")]
+transform = Transform3D(1.98587, 0, -0.237328, 0, 2, 0, 0.237328, 0, 1.98587, 12.7075, -1.90735e-06, -2.94843)
+
+[node name="plant_azolla_group3" parent="Swamp/Azolla" instance=ExtResource("9_12npo")]
+transform = Transform3D(1.19841, 0, -1.60119, 0, 2, 0, 1.60119, 0, 1.19841, 10.2909, -3.8147e-06, -22.6959)
+
+[node name="Branches" type="Node3D" parent="Swamp"]
+
+[node name="Branch_Swamp_001" parent="Swamp/Branches" instance=ExtResource("10_i4kjn")]
+transform = Transform3D(0.726587, 0, -0.687075, 0, 1, 0, 0.687075, 0, 0.726587, -17.8438, 0, -27.9597)
+
+[node name="Branch_Swamp_003" parent="Swamp/Branches" instance=ExtResource("10_i4kjn")]
+transform = Transform3D(-1.79038, 0, 0.891364, 0, 2, 0, -0.891364, 0, -1.79038, -116.766, -3.8147e-06, -121.849)
+
+[node name="Branch_Swamp_002" parent="Swamp/Branches" instance=ExtResource("11_opcln")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96975, 0, -47.4535)
+
+[node name="Trees" type="Node3D" parent="Swamp"]
+
+[node name="CommonTree_Dead_1" parent="Swamp/Trees" instance=ExtResource("12_7ylgr")]
+transform = Transform3D(-15.3337, 0, -12.8405, 0, 20, 0, 12.8405, 0, -15.3337, 33.2116, -7.46659, -70.3802)
+
+[node name="CommonTree_Dead_2" parent="Swamp/Trees" instance=ExtResource("12_7ylgr")]
+transform = Transform3D(8.62944, 0, -18.0425, 0, 20, 0, 18.0425, 0, 8.62944, -56.8414, -7.46659, -128.864)
+
+[node name="CommonTree_Dead_3" parent="Swamp/Trees" instance=ExtResource("13_ken5u")]
+transform = Transform3D(5.31517, 0, 8.47048, 0, 10, 0, -8.47048, 0, 5.31517, 10.1094, -1.68165, -128.189)
+
+[node name="Woods" type="Node3D" parent="Swamp"]
+
+[node name="WoodLog" parent="Swamp/Woods" instance=ExtResource("14_ken5u")]
+transform = Transform3D(2.65985, 0, -1.38752, 0, 3, 0, 1.38752, 0, 2.65985, -13.832, -0.831838, -14.8394)
+
+[node name="WoodLog2" parent="Swamp/Woods" instance=ExtResource("14_ken5u")]
+transform = Transform3D(2.94598, 0, 0.566721, 0, 3, 0, -0.566721, 0, 2.94598, -8.01782, -0.831837, -21.6116)
+
+[node name="SfxWater" type="AudioStreamPlayer" parent="Swamp"]
+stream = ExtResource("15_fpk5n")
+volume_db = -5.0
+autoplay = true
+bus = &"SFX"
+
+[node name="AnimationPlayer_Lilypad" type="AnimationPlayer" parent="Swamp"]
+libraries = {
+&"": SubResource("AnimationLibrary_vu4y4")
+}
+script = ExtResource("16_8nr32")
+Animation = "idle"

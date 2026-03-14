@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://i6p5f6c6mvhv"]
+[gd_scene load_steps=18 format=3 uid="uid://i6p5f6c6mvhv"]
 
 [ext_resource type="Script" uid="uid://d1h6aaidr5qrn" path="res://Scenes/ScreenshotScene.cs" id="1_g1bgp"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_kpux8"]
@@ -15,21 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://cbyr5yw2ktqwr" path="res://Prefabs/Screenshots/library_hero.tscn" id="13_315g4"]
 [ext_resource type="PackedScene" uid="uid://ul4dghmde0fl" path="res://Prefabs/Screenshots/skybox_background.tscn" id="14_c8wsb"]
 [ext_resource type="PackedScene" uid="uid://cbcmy30tm2clo" path="res://Prefabs/Screenshots/icon.tscn" id="15_xqcbt"]
+[ext_resource type="PackedScene" uid="uid://dk8evkkubgnqu" path="res://Prefabs/Screenshots/character.tscn" id="16_1sn63"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_t1sps"]
 
-[node name="ScreenshotScene" type="Node3D" node_paths=PackedStringArray("LogoSetup", "BecomeFroggySetup", "MeetFriendsSetup", "CatchBugsSetup", "HorizontalCapsuleSetup", "SmallCapsuleSetup", "VerticalCapsuleSetup", "LibraryHeroSetup", "SkyboxBackgroundSetup", "IconSetup", "DirectionalLight", "WorldEnvironment")]
+[node name="ScreenshotScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_g1bgp")
-LogoSetup = NodePath("World/Logo")
-BecomeFroggySetup = NodePath("World/BecomeFroggy")
-MeetFriendsSetup = NodePath("World/MeetFriends")
-CatchBugsSetup = NodePath("World/CatchBugs")
-HorizontalCapsuleSetup = NodePath("World/Capsule_Horizontal")
-SmallCapsuleSetup = NodePath("World/Capsule_Small")
-VerticalCapsuleSetup = NodePath("World/Capsule_Vertical")
-LibraryHeroSetup = NodePath("World/Library_Hero")
-SkyboxBackgroundSetup = NodePath("World/Skybox_Background")
-IconSetup = NodePath("World/Icon")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 Weathers = Array[ExtResource("2_kpux8")]([ExtResource("3_xr1f7")])
@@ -40,6 +31,7 @@ environment = ExtResource("2_t1sps")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 5.72245, 3.27611)
 light_color = Color(1, 1, 0.7, 1)
+light_energy = 1.5
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_qjatg")]
@@ -54,29 +46,42 @@ shape = SubResource("WorldBoundaryShape3D_t1sps")
 
 [node name="Logo" parent="World" instance=ExtResource("4_qjatg")]
 visible = false
+Id = "Logo"
 
 [node name="BecomeFroggy" parent="World" instance=ExtResource("7_p4r7y")]
 visible = false
+Id = "Become Froggy"
 
 [node name="MeetFriends" parent="World" instance=ExtResource("9_il8t4")]
 visible = false
+Id = "Meet Friends"
 
 [node name="CatchBugs" parent="World" instance=ExtResource("8_a67ip")]
 visible = false
+Id = "Catch Bugs"
 
 [node name="Capsule_Horizontal" parent="World" instance=ExtResource("10_a67ip")]
 visible = false
+Id = "Capsule Horizontal"
 
 [node name="Capsule_Small" parent="World" instance=ExtResource("11_il8t4")]
 visible = false
+Id = "Capsule Small"
 
 [node name="Capsule_Vertical" parent="World" instance=ExtResource("12_si4h8")]
 visible = false
+Id = "Capsule Vertical"
 
 [node name="Library_Hero" parent="World" instance=ExtResource("13_315g4")]
 visible = false
 
 [node name="Skybox_Background" parent="World" instance=ExtResource("14_c8wsb")]
 visible = false
+Id = "Skybox Background"
 
 [node name="Icon" parent="World" instance=ExtResource("15_xqcbt")]
+visible = false
+Id = "Icon"
+
+[node name="Character" parent="World" instance=ExtResource("16_1sn63")]
+visible = false

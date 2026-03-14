@@ -50,7 +50,7 @@ public partial class WeatherInfo : Resource
 
     public bool IsNormalFog => FogType == FogType.Fog || FogType == FogType.Both;
     public bool IsVolumetricFog => FogType == FogType.Volumetric || FogType == FogType.Both;
-    public bool IsFogdisabled => FogType == FogType.None;
+    public bool IsFogDisabled => FogType == FogType.None;
 }
 
 public enum FogType { None, Fog, Volumetric, Both }

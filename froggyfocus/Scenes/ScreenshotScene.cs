@@ -1,42 +1,15 @@
-using Godot;
+using System.Collections.Generic;
 
 public partial class ScreenshotScene : GameScene
 {
-    [Export]
-    public ScreenshotSceneSetup LogoSetup;
-
-    [Export]
-    public ScreenshotSceneSetup BecomeFroggySetup;
-
-    [Export]
-    public ScreenshotSceneSetup MeetFriendsSetup;
-
-    [Export]
-    public ScreenshotSceneSetup CatchBugsSetup;
-
-    [Export]
-    public ScreenshotSceneSetup HorizontalCapsuleSetup;
-
-    [Export]
-    public ScreenshotSceneSetup SmallCapsuleSetup;
-
-    [Export]
-    public ScreenshotSceneSetup VerticalCapsuleSetup;
-
-    [Export]
-    public ScreenshotSceneSetup LibraryHeroSetup;
-
-    [Export]
-    public ScreenshotSceneSetup SkyboxBackgroundSetup;
-
-    [Export]
-    public ScreenshotSceneSetup IconSetup;
-
     private string DebugId => nameof(ScreenshotScene) + GetInstanceId();
+
+    private List<ScreenshotSceneSetup> screenshot_setups = new();
 
     public override void _Ready()
     {
         base._Ready();
+        InitializeSetups();
         RegisterDebugActions();
         HideAllSetups();
     }
@@ -45,6 +18,11 @@ public partial class ScreenshotScene : GameScene
     {
         base._ExitTree();
         Debug.RemoveActions(DebugId);
+    }
+
+    private void InitializeSetups()
+    {
+        screenshot_setups = this.GetNodesInChildren<ScreenshotSceneSetup>();
     }
 
     private void RegisterDebugActions()
@@ -78,16 +56,10 @@ public partial class ScreenshotScene : GameScene
         {
             v.SetContent_Search();
 
-            v.ContentSearch.AddItem("Logo", () => ShowSetup(v, LogoSetup));
-            v.ContentSearch.AddItem("Become Froggy", () => ShowSetup(v, BecomeFroggySetup));
-            v.ContentSearch.AddItem("Meet Friends", () => ShowSetup(v, MeetFriendsSetup));
-            v.ContentSearch.AddItem("Catch Bugs", () => ShowSetup(v, CatchBugsSetup));
-            v.ContentSearch.AddItem("Capsule Horizontal", () => ShowSetup(v, HorizontalCapsuleSetup));
-            v.ContentSearch.AddItem("Capsule Small", () => ShowSetup(v, SmallCapsuleSetup));
-            v.ContentSearch.AddItem("Capsule Vertical", () => ShowSetup(v, VerticalCapsuleSetup));
-            v.ContentSearch.AddItem("Library Hero", () => ShowSetup(v, LibraryHeroSetup));
-            v.ContentSearch.AddItem("Skybox Background", () => ShowSetup(v, SkyboxBackgroundSetup));
-            v.ContentSearch.AddItem("Icon", () => ShowSetup(v, IconSetup));
+            foreach (var setup in screenshot_setups)
+            {
+                v.ContentSearch.AddItem(setup.Id, () => ShowSetup(v, setup));
+            }
 
             v.ContentSearch.UpdateButtons();
         }
@@ -101,15 +73,6 @@ public partial class ScreenshotScene : GameScene
 
     private void HideAllSetups()
     {
-        LogoSetup.Hide();
-        BecomeFroggySetup.Hide();
-        MeetFriendsSetup.Hide();
-        CatchBugsSetup.Hide();
-        HorizontalCapsuleSetup.Hide();
-        SmallCapsuleSetup.Hide();
-        VerticalCapsuleSetup.Hide();
-        LibraryHeroSetup.Hide();
-        SkyboxBackgroundSetup.Hide();
-        IconSetup.Hide();
+        screenshot_setups.ForEach(x => x.Hide());
     }
 }

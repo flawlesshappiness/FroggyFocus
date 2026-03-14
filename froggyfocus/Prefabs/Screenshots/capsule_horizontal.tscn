@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://cin7dwfbyc71r"]
 
 [ext_resource type="Script" uid="uid://7mwj3wiroivp" path="res://Prefabs/Screenshots/CapsuleHorizontalSetup.cs" id="1_vjupn"]
-[ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="2_tniir"]
+[ext_resource type="Resource" uid="uid://unk2w7hk1714" path="res://Weather/Resources/Screenshot.tres" id="2_vjupn"]
 [ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="3_1f3ta"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_63ad1"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="5_ygc21"]
@@ -21,13 +21,14 @@
 script = ExtResource("1_vjupn")
 Bugs = [NodePath("Bugs/Backswimmer"), NodePath("Bugs/Mosquito"), NodePath("Bugs/Bee"), NodePath("Bugs/Waterstrider"), NodePath("Bugs/Dragonfly")]
 Camera = NodePath("Camera3D")
-Weather = ExtResource("2_tniir")
+Weather = ExtResource("2_vjupn")
 
 [node name="Water" parent="." instance=ExtResource("3_1f3ta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 
 [node name="Frog" parent="." instance=ExtResource("4_63ad1")]
 transform = Transform3D(-0.848616, 0, -0.699894, 0, 1.1, 0, 0.699894, 0, -0.848616, -0.801478, 0.693763, 1.07971)
+visible = false
 DisableAnimationStates = true
 DisableAppearanceUpdates = true
 
@@ -128,23 +129,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5809, -2.25618, -4.57778)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4719, -2.25618, -6.15769)
 
 [node name="Bugs" type="Node3D" parent="."]
+visible = false
 
-[node name="Backswimmer" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("8_vaiki")]
+[node name="Backswimmer" parent="Bugs" instance=ExtResource("8_vaiki")]
 transform = Transform3D(-0.622873, 0, 1.36456, 0, 1.5, 0, -1.36456, 0, -0.622873, 2.41829, 0, -0.524099)
-Accessories = [null]
 
-[node name="Mosquito" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("9_bt57k")]
+[node name="Mosquito" parent="Bugs" instance=ExtResource("9_bt57k")]
 transform = Transform3D(-0.954865, 0, -1.15682, 0, 1.5, 0, 1.15682, 0, -0.954865, -5.10074, 5.25178, -4.57918)
-Accessories = [null, null, null, null]
 
-[node name="Bee" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("10_7q8j2")]
+[node name="Bee" parent="Bugs" instance=ExtResource("10_7q8j2")]
 transform = Transform3D(-0.954521, 0, 1.1571, 0, 1.5, 0, -1.1571, 0, -0.954521, 4.86208, 5.00527, -4.22784)
-Accessories = [null, null]
 
-[node name="Waterstrider" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("11_oqqjh")]
+[node name="Waterstrider" parent="Bugs" instance=ExtResource("11_oqqjh")]
 transform = Transform3D(-1.9303, 0, -0.523402, 0, 2, 0, 0.523402, 0, -1.9303, 6.44286, 0, -8.22762)
 visible = false
-Accessories = [null, null]
 
 [node name="Dragonfly" parent="Bugs" node_paths=PackedStringArray("Accessories") instance=ExtResource("12_ekddx")]
 transform = Transform3D(-1.83131, -0.291845, 0.749084, 2.98023e-08, 1.86356, 0.726047, -0.803927, 0.664809, -1.70638, -6.74008, 1.00944, -7.8946)

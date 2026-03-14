@@ -1,17 +1,19 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class MainMenuScene : GameScene
 {
     [Export]
     public Camera3D Camera;
 
-    [Export]
-    public FrogCharacter Frog;
+    private List<FrogCharacter> frogs = new();
 
     public override void _Ready()
     {
         base._Ready();
         Camera.Current = true;
+
+        InitializeFrogs();
 
         GameProfileController.Instance.OnGameProfileSelected += ProfileSelected;
         MainMenuView.Instance.Show();
@@ -26,6 +28,16 @@ public partial class MainMenuScene : GameScene
         master.SetMuted(false);
     }
 
+    private void InitializeFrogs()
+    {
+        frogs = this.GetNodesInChildren<FrogCharacter>();
+    }
+
+    private void LoadFrogs()
+    {
+        frogs.ForEach(x => x.LoadAppearance());
+    }
+
     public override void _ExitTree()
     {
         base._ExitTree();
@@ -34,6 +46,6 @@ public partial class MainMenuScene : GameScene
 
     private void ProfileSelected(int profile)
     {
-        //Frog.LoadAppearance();
+        LoadFrogs();
     }
 }
