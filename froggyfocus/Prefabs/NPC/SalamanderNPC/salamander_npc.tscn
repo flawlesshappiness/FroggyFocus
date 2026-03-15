@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bm7kofjv3i0ne"]
+[gd_scene load_steps=24 format=3 uid="uid://bm7kofjv3i0ne"]
 
 [ext_resource type="PackedScene" uid="uid://dvfygd4a40ea8" path="res://Assets/FlawLizArt/Characters/Salamander/salamander.fbx" id="1_j0ej6"]
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_vutm6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_4eavn"]
 [ext_resource type="AudioStream" uid="uid://dus52jqi1sq06" path="res://Sounds/Raw/sfx_crystal_a1.wav" id="4_rlkyt"]
 [ext_resource type="PackedScene" uid="uid://5akea1cmi6ru" path="res://Appearance/Attachments/plumbob.tscn" id="4_va4mm"]
+[ext_resource type="Material" uid="uid://dqix01s7vhtmd" path="res://Materials/Crystal1.tres" id="5_iql42"]
 [ext_resource type="AudioStream" uid="uid://byvk4svtnxi3" path="res://Sounds/Raw/sfx_crystal_c1.wav" id="5_ooxsf"]
 [ext_resource type="AudioStream" uid="uid://ka8mn8mvfg7b" path="res://Sounds/Raw/sfx_crystal_c2.wav" id="6_q3a16"]
 [ext_resource type="AudioStream" uid="uid://ccy2ni8a4kkmw" path="res://Sounds/Raw/sfx_crystal_d1.wav" id="7_mpmco"]
@@ -99,6 +100,9 @@ bone_idx = 4
 [node name="Plumbob" parent="salamander/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_va4mm")]
 transform = Transform3D(-0.000575206, 0.0049668, 0, -0.0049668, -0.000575206, 0, 0, 0, 0.005, -0.00644808, 0.00224682, 1.63509e-10)
 
+[node name="plumbob" parent="salamander/Armature/Skeleton3D/BoneAttachment3D/Plumbob/plumbob" index="0"]
+surface_material_override/0 = ExtResource("5_iql42")
+
 [node name="AnimationPlayer" parent="salamander" index="2"]
 playback_default_blend_time = 0.25
 
@@ -136,3 +140,5 @@ affect_navigation_mesh = true
 carve_navigation_mesh = true
 
 [editable path="salamander"]
+[editable path="salamander/Armature/Skeleton3D/BoneAttachment3D/Plumbob"]
+[editable path="salamander/Armature/Skeleton3D/BoneAttachment3D/Plumbob/plumbob"]

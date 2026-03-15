@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3hkrtmh6ohnl"]
+[gd_scene load_steps=12 format=3 uid="uid://c3hkrtmh6ohnl"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_f8bht"]
 [ext_resource type="PackedScene" uid="uid://3e5oppo6lmr7" path="res://Assets/FlawLizArt/Characters/Eel/eel.fbx" id="1_h0kul"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_lq58h"]
 [ext_resource type="PackedScene" uid="uid://igloh2tr434s" path="res://Appearance/Attachments/fishing_cap.tscn" id="4_w8m0d"]
 [ext_resource type="AudioStream" uid="uid://ergbcag2wd4j" path="res://Sounds/Raw/sfx_eel_speak_001.wav" id="5_f8bht"]
+[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="5_gw57y"]
 [ext_resource type="AudioStream" uid="uid://boesilsarb81k" path="res://Sounds/Raw/sfx_eel_speak_002.wav" id="6_w8m0d"]
 [ext_resource type="AudioStream" uid="uid://bvtqyp78h031r" path="res://Sounds/Raw/sfx_eel_speak_003.wav" id="7_gw57y"]
 
@@ -52,6 +53,9 @@ bone_idx = 5
 [node name="FishingCap" parent="eel/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_w8m0d")]
 transform = Transform3D(-0.02, -5.13562e-10, -1.67133e-09, -1.74327e-09, 0.00438535, 0.0195133, -1.34596e-10, 0.0195133, -0.00438534, 1.01399e-10, 0.00765569, 0.00622997)
 
+[node name="fishing_cap" parent="eel/Armature/Skeleton3D/BoneAttachment3D/FishingCap/fishing_cap" index="0"]
+surface_material_override/1 = ExtResource("5_gw57y")
+
 [node name="AnimationPlayer" parent="eel" index="1"]
 playback_default_blend_time = 0.25
 
@@ -66,3 +70,5 @@ stream = SubResource("AudioStreamRandomizer_7ucp6")
 bus = &"SFX"
 
 [editable path="eel"]
+[editable path="eel/Armature/Skeleton3D/BoneAttachment3D/FishingCap"]
+[editable path="eel/Armature/Skeleton3D/BoneAttachment3D/FishingCap/fishing_cap"]

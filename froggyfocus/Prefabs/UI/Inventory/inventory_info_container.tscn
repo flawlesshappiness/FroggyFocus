@@ -10,7 +10,7 @@
 
 [node name="InventoryInfoContainer" type="MarginContainer" node_paths=PackedStringArray("PreviewParent", "PreviewTextureRect", "ItemSubViewport", "NameParent", "NameLabel", "PriceParent", "PriceControl", "CaughtParent", "CaughtLabel", "RarityParent", "RarityTexture")]
 offset_right = 237.0
-offset_bottom = 227.0
+offset_bottom = 432.0
 theme = ExtResource("1_l1r8g")
 script = ExtResource("1_wkwsq")
 ShowPreview = true
@@ -34,7 +34,6 @@ layout_mode = 2
 
 [node name="Preview" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 10
 alignment = 1
 
@@ -47,9 +46,11 @@ size_flags_horizontal = 3
 theme = ExtResource("1_fqwn7")
 
 [node name="PreviewTextureRect" type="TextureRect" parent="VBoxContainer/Preview/MarginContainer"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 texture = ExtResource("4_2n2s5")
-expand_mode = 3
+expand_mode = 1
+stretch_mode = 4
 
 [node name="NameLabel" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(1, 1)

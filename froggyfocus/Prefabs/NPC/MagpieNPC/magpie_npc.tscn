@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bw057fcfnoby7"]
+[gd_scene load_steps=17 format=3 uid="uid://bw057fcfnoby7"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_201og"]
 [ext_resource type="PackedScene" uid="uid://dhsttkfn7e2io" path="res://Assets/FlawLizArt/Characters/Magpie/magpie.fbx" id="1_vhir8"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="4_4y8sw"]
 [ext_resource type="AudioStream" uid="uid://bspgktdfssm0j" path="res://Sounds/Raw/sfx_magpie_speak_001.wav" id="4_rqusm"]
 [ext_resource type="AudioStream" uid="uid://b7a42shuyqvi1" path="res://Sounds/Raw/sfx_magpie_speak_002.wav" id="5_201og"]
+[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="5_n80yi"]
+[ext_resource type="Material" uid="uid://q8jecixud5c4" path="res://Materials/Color_Blue.tres" id="6_1io3b"]
 [ext_resource type="AudioStream" uid="uid://dhhm15ska3tqu" path="res://Sounds/Raw/sfx_magpie_speak_003.wav" id="6_4y8sw"]
 [ext_resource type="AudioStream" uid="uid://bd4x2kg882ldm" path="res://Sounds/Raw/sfx_magpie_speak_004.wav" id="7_pf135"]
 [ext_resource type="AudioStream" uid="uid://cdom776pb6o07" path="res://Sounds/Raw/sfx_magpie_speak_005.wav" id="8_n80yi"]
@@ -111,6 +113,10 @@ bone_idx = 5
 [node name="Glasses_Round" parent="magpie/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_4y8sw")]
 transform = Transform3D(0.0018572, -3.09164e-05, -0.000741508, -0.000416235, 0.00161101, -0.00110968, 0.000614441, 0.00118478, 0.00148955, 0.00145292, 0.0020416, -0.000217771)
 
+[node name="monocle" parent="magpie/Armature/Skeleton3D/BoneAttachment3D/Glasses_Round/monocle" index="0"]
+surface_material_override/0 = ExtResource("5_n80yi")
+surface_material_override/1 = ExtResource("6_1io3b")
+
 [node name="AnimationPlayer" parent="magpie" index="1"]
 playback_default_blend_time = 0.25
 
@@ -135,3 +141,5 @@ stream = SubResource("AudioStreamRandomizer_mp1k3")
 bus = &"SFX"
 
 [editable path="magpie"]
+[editable path="magpie/Armature/Skeleton3D/BoneAttachment3D/Glasses_Round"]
+[editable path="magpie/Armature/Skeleton3D/BoneAttachment3D/Glasses_Round/monocle"]

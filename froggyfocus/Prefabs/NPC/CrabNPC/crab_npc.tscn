@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ct6yxfuwur3fl"]
+[gd_scene load_steps=13 format=3 uid="uid://ct6yxfuwur3fl"]
 
 [ext_resource type="PackedScene" uid="uid://ccgpgjg58jqqs" path="res://Assets/FlawLizArt/Characters/Crab/crab.fbx" id="1_hm23q"]
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_yw2n1"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vub6u"]
 [ext_resource type="PackedScene" uid="uid://bmg430dgy8ers" path="res://Appearance/Attachments/septum.tscn" id="4_yv4qu"]
 [ext_resource type="AudioStream" uid="uid://dbtow33lxh7up" path="res://Sounds/Raw/sfx_crab_speak_001.wav" id="4_yw2n1"]
+[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="5_62n7s"]
 [ext_resource type="AudioStream" uid="uid://dco7hjmgtsvyt" path="res://Sounds/Raw/sfx_crab_speak_002.wav" id="5_djhky"]
 [ext_resource type="AudioStream" uid="uid://c0j6dmpdtn01i" path="res://Sounds/Raw/sfx_crab_speak_003.wav" id="6_yv4qu"]
 
@@ -199,6 +200,9 @@ bone_idx = 1
 [node name="Septum" parent="crab/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_yv4qu")]
 transform = Transform3D(0.003, 0, 0, 0, -0.00178931, -0.00240798, 0, 0.00240798, -0.00178931, 0, 0.00574657, -0.000150464)
 
+[node name="septum" parent="crab/Armature/Skeleton3D/BoneAttachment3D/Septum/septum" index="0"]
+surface_material_override/0 = ExtResource("5_62n7s")
+
 [node name="AnimationPlayer" parent="crab" index="1"]
 playback_default_blend_time = 0.25
 
@@ -211,3 +215,5 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 stream = SubResource("AudioStreamRandomizer_62n7s")
 
 [editable path="crab"]
+[editable path="crab/Armature/Skeleton3D/BoneAttachment3D/Septum"]
+[editable path="crab/Armature/Skeleton3D/BoneAttachment3D/Septum/septum"]

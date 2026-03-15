@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfva58jqvweh5"]
+[gd_scene load_steps=12 format=3 uid="uid://bfva58jqvweh5"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_5t764"]
 [ext_resource type="PackedScene" uid="uid://bdegnjmdaok2p" path="res://Assets/FlawLizArt/Characters/Raccoon/raccoon.fbx" id="1_a28l7"]
 [ext_resource type="Resource" uid="uid://2yp6j8advpwu" path="res://HandIn/Resources/Raccoon_Factory.tres" id="2_lqyx2"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_lqyx2"]
 [ext_resource type="PackedScene" uid="uid://5c7u3eeq2lpn" path="res://Appearance/Attachments/detective_hat.tscn" id="4_36cau"]
+[ext_resource type="Material" uid="uid://rnk6jdfmxtgj" path="res://Materials/Color_Grey.tres" id="5_4uecp"]
 [ext_resource type="AudioStream" uid="uid://byagvoxwvkekh" path="res://Sounds/Raw/sfx_raccoon_speak_001.wav" id="5_5t764"]
 [ext_resource type="AudioStream" uid="uid://uhussb8ao1h4" path="res://Sounds/Raw/sfx_raccoon_speak_002.wav" id="6_36cau"]
 [ext_resource type="AudioStream" uid="uid://fhpsnhus3sm5" path="res://Sounds/Raw/sfx_raccoon_speak_003.wav" id="7_4uecp"]
@@ -75,6 +76,10 @@ bone_idx = 3
 [node name="DetectiveHat" parent="raccoon/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_36cau")]
 transform = Transform3D(0.04, 0, 0, 0, -0.0189352, -0.0352343, 0, 0.0352343, -0.0189352, -7.23382e-20, -0.00330015, 0.0158946)
 
+[node name="detective_hat" parent="raccoon/Armature/Skeleton3D/BoneAttachment3D/DetectiveHat/detective_hat" index="0"]
+surface_material_override/0 = ExtResource("5_4uecp")
+surface_material_override/1 = ExtResource("5_4uecp")
+
 [node name="AnimationPlayer" parent="raccoon" index="1"]
 playback_default_blend_time = 0.25
 
@@ -88,3 +93,5 @@ stream = SubResource("AudioStreamRandomizer_a0w4v")
 bus = &"SFX"
 
 [editable path="raccoon"]
+[editable path="raccoon/Armature/Skeleton3D/BoneAttachment3D/DetectiveHat"]
+[editable path="raccoon/Armature/Skeleton3D/BoneAttachment3D/DetectiveHat/detective_hat"]

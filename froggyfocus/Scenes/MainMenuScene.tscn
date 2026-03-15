@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://dclfilqvmuilh"]
+[gd_scene load_steps=21 format=3 uid="uid://dclfilqvmuilh"]
 
 [ext_resource type="Script" uid="uid://chh8ncpnh214i" path="res://Scenes/MainMenuScene.cs" id="1_sb72h"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_06svm"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_c7qge"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_6xh72"]
-[ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="5_x260n"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="5_t0ggr"]
 [ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="6_c7qge"]
+[ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/Water.tres" id="6_vu4y4"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="7_6xh72"]
 [ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds_dense.tscn" id="8_06svm"]
 [ext_resource type="PackedScene" uid="uid://dpuju18h6r0al" path="res://Prefabs/Nature/plant_azolla_group.tscn" id="9_12npo"]
@@ -16,6 +17,21 @@
 [ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="14_ken5u"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="15_fpk5n"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="16_8nr32"]
+
+[sub_resource type="Animation" id="Animation_t0ggr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lilypads/lilypad:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.02965, 0, -5.1776)]
+}
 
 [sub_resource type="Animation" id="Animation_8nr32"]
 resource_name = "idle"
@@ -33,21 +49,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2, 1),
 "update": 0,
 "values": [Vector3(3.02965, 0, -5.1776), Vector3(3.03, -0.1, -5.178), Vector3(3.02965, 0, -5.1776)]
-}
-
-[sub_resource type="Animation" id="Animation_t0ggr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Lilypads/lilypad:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(3.02965, 0, -5.1776)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vu4y4"]
@@ -75,7 +76,11 @@ transform = Transform3D(1, 0, 0, 0, 0.996918, 0.0784591, 0, -0.0784591, 0.996918
 
 [node name="Swamp" type="Node3D" parent="."]
 
-[node name="Water" parent="Swamp" instance=ExtResource("5_x260n")]
+[node name="Water" parent="Swamp" instance=ExtResource("5_t0ggr")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, 0, 0)
+
+[node name="Circle" parent="Swamp/Water" index="0"]
+surface_material_override/0 = ExtResource("6_vu4y4")
 
 [node name="Lilypads" type="Node3D" parent="Swamp"]
 
@@ -173,3 +178,5 @@ libraries = {
 }
 script = ExtResource("16_8nr32")
 Animation = "idle"
+
+[editable path="Swamp/Water"]

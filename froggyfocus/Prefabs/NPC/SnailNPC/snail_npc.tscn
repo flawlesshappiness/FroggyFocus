@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdn0ulu4iqvsm"]
+[gd_scene load_steps=14 format=3 uid="uid://cdn0ulu4iqvsm"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_pdcxf"]
 [ext_resource type="PackedScene" uid="uid://mg3lbs614k3d" path="res://Assets/FlawLizArt/Characters/Snail/snail.fbx" id="2_pdcxf"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_gs18x"]
 [ext_resource type="PackedScene" uid="uid://bibw10cs8fov6" path="res://Appearance/Attachments/top_hat.tscn" id="4_451uh"]
 [ext_resource type="AudioStream" uid="uid://csiclebykw5p4" path="res://Sounds/Raw/sfx_snail_speak_001.wav" id="4_pdcxf"]
+[ext_resource type="Material" uid="uid://cngrguaiyjtgk" path="res://Materials/Color_Black.tres" id="5_05rbx"]
 [ext_resource type="AudioStream" uid="uid://crw57o2x3cr5q" path="res://Sounds/Raw/sfx_snail_speak_002.wav" id="5_s8tk2"]
 [ext_resource type="AudioStream" uid="uid://wu0g0ihtt6po" path="res://Sounds/Raw/sfx_snail_speak_003.wav" id="6_451uh"]
+[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="6_rfphn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gs18x"]
 height = 3.27051
@@ -76,6 +78,10 @@ bone_idx = 5
 [node name="TopHat" parent="snail/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_451uh")]
 transform = Transform3D(0.015, 0, 0, 0, -0.00388229, -0.0144889, 0, 0.0144889, -0.00388229, 1.7504e-18, -0.000447548, 0.00948217)
 
+[node name="top_hat" parent="snail/Armature/Skeleton3D/BoneAttachment3D/TopHat/top_hat" index="0"]
+surface_material_override/0 = ExtResource("5_05rbx")
+surface_material_override/1 = ExtResource("6_rfphn")
+
 [node name="AnimationPlayer" parent="snail" index="1"]
 playback_default_blend_time = 0.25
 
@@ -94,3 +100,5 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 stream = SubResource("AudioStreamRandomizer_o24ko")
 
 [editable path="snail"]
+[editable path="snail/Armature/Skeleton3D/BoneAttachment3D/TopHat"]
+[editable path="snail/Armature/Skeleton3D/BoneAttachment3D/TopHat/top_hat"]

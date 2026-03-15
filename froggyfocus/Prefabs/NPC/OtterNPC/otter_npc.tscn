@@ -1,12 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bt47rt4wstm5n"]
+[gd_scene load_steps=18 format=3 uid="uid://bt47rt4wstm5n"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_1jh81"]
 [ext_resource type="PackedScene" uid="uid://b35nb5vv80ma7" path="res://Assets/FlawLizArt/Characters/Otter/otter.fbx" id="1_tb71d"]
 [ext_resource type="Resource" uid="uid://dqvmw518u62ae" path="res://HandIn/Resources/Otter_Swamp.tres" id="2_qg8qc"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_uqt75"]
 [ext_resource type="PackedScene" uid="uid://ch5ami6o86hlp" path="res://Appearance/Attachments/glasses_round.tscn" id="4_rj2d4"]
+[ext_resource type="Material" uid="uid://rnk6jdfmxtgj" path="res://Materials/Color_Grey.tres" id="5_0pkqb"]
 [ext_resource type="AudioStream" uid="uid://bmhtl4g6sc5eh" path="res://Sounds/Raw/sfx_otter_speak_001.wav" id="5_1jh81"]
 [ext_resource type="AudioStream" uid="uid://yqai10lnwmyb" path="res://Sounds/Raw/sfx_otter_speak_002.wav" id="6_rj2d4"]
+[ext_resource type="Material" uid="uid://q8jecixud5c4" path="res://Materials/Color_Blue.tres" id="6_wfibu"]
 [ext_resource type="AudioStream" uid="uid://doxw6cirvavdr" path="res://Sounds/Raw/sfx_otter_speak_003.wav" id="7_aoa5w"]
 [ext_resource type="AudioStream" uid="uid://bi8gydppycy2f" path="res://Sounds/Raw/sfx_otter_speak_004.wav" id="8_0pkqb"]
 [ext_resource type="AudioStream" uid="uid://bkwmkjnmjjen1" path="res://Sounds/Raw/sfx_otter_speak_005.wav" id="9_wfibu"]
@@ -123,6 +125,10 @@ bone_idx = 4
 [node name="Glasses_Round" parent="otter/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_rj2d4")]
 transform = Transform3D(0.01, -8.99548e-15, -9.3771e-15, -9.2797e-15, 0.000107685, -0.00999942, 9.09593e-15, 0.00999942, 0.000107685, 7.63239e-15, 0.00821722, 0.00296227)
 
+[node name="glasses_round" parent="otter/Armature/Skeleton3D/BoneAttachment3D/Glasses_Round/glasses_round" index="0"]
+surface_material_override/0 = ExtResource("5_0pkqb")
+surface_material_override/1 = ExtResource("6_wfibu")
+
 [node name="AnimationPlayer" parent="otter" index="1"]
 playback_default_blend_time = 0.25
 
@@ -144,3 +150,5 @@ max_polyphony = 5
 bus = &"SFX"
 
 [editable path="otter"]
+[editable path="otter/Armature/Skeleton3D/BoneAttachment3D/Glasses_Round"]
+[editable path="otter/Armature/Skeleton3D/BoneAttachment3D/Glasses_Round/glasses_round"]

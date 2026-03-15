@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://hydc75vf8glw"]
+[gd_scene load_steps=9 format=3 uid="uid://hydc75vf8glw"]
 
 [ext_resource type="Script" uid="uid://b31jphwp5o3x3" path="res://Prefabs/NPC/FrogDemoNPC/FrogDemoNpc.cs" id="1_4umcv"]
 [ext_resource type="Resource" uid="uid://dv1lgptwlfi6u" path="res://HandIn/Resources/Demo.tres" id="2_k3x21"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_t75hq"]
 [ext_resource type="AudioStream" uid="uid://cps4ajn0wt6cq" path="res://Sounds/Raw/sfx_frog_croak_005.wav" id="4_fl5qn"]
+[ext_resource type="Material" uid="uid://71pv1fsup32f" path="res://Materials/Color_Brown.tres" id="4_k0qxw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rhrvr"]
 height = 0.738281
@@ -31,6 +32,21 @@ shape = SubResource("CylinderShape3D_rhrvr")
 [node name="Frog" parent="." instance=ExtResource("3_t75hq")]
 DisableAppearanceUpdates = true
 
+[node name="HatAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
+
+[node name="FaceAttachmentGroup" parent="Frog/frog/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.0459937, -7.21443e-13, 0.045994, 0.998942, 1.77219e-15, 0.0103008, 0.0153717)
+
+[node name="Moustache" parent="Frog/frog/Armature/Skeleton3D/FaceAttachmentGroup" index="0"]
+visible = true
+
+[node name="moustache" parent="Frog/frog/Armature/Skeleton3D/FaceAttachmentGroup/Moustache/beard_moustache" index="0"]
+surface_material_override/0 = ExtResource("4_k0qxw")
+
+[node name="AnimationPlayer" parent="Frog/frog" index="1"]
+blend_times = [&"Armature|jump_end", &"Armature|jump_end", 0.01, &"Armature|jump_end", &"Armature|jump_start", 0.01]
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -48,4 +64,24 @@ attenuation_filter_db = 0.0
 transform = Transform3D(-0.238252, 0.678822, -0.694575, 0.0096135, 0.716783, 0.697229, 0.971155, 0.15944, -0.177301, -1.57246, 1.60381, -1.27965)
 
 [node name="Camera3D" type="Camera3D" parent="CameraTransition"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[editable path="Frog"]
+[editable path="Frog/frog"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent2"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent4"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent5"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent3"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent6"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent7"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_002"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_005"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_006"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper2"]
+[editable path="Frog/frog/Armature/Skeleton3D/HatAttachmentGroup/HatPolluted/trash_paper3"]
+[editable path="Frog/frog/Armature/Skeleton3D/FaceAttachmentGroup/Moustache"]
+[editable path="Frog/frog/Armature/Skeleton3D/FaceAttachmentGroup/Moustache/beard_moustache"]

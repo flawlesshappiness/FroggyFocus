@@ -119,7 +119,7 @@ public partial class OptionsControl : ControlScript
             var item = mode switch
             {
                 Window.ModeEnum.Windowed => "Windowed",
-                Window.ModeEnum.ExclusiveFullscreen => "Fullscreen",
+                Window.ModeEnum.ExclusiveFullscreen => "Borderless Fullscreen",
                 _ => ""
             };
 
