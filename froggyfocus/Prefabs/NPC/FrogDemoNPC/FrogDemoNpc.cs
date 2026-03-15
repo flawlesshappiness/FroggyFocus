@@ -54,6 +54,7 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
         else if (id == "##DEMO_FROG_FINISHED_004##")
         {
             StopDialogueCamera();
+            DemoView.Instance.AnimateShow();
         }
     }
 

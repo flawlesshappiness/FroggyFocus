@@ -1,0 +1,107 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjuj2adq6s6uo"]
+
+[ext_resource type="Script" uid="uid://d15cmqateda4e" path="res://Views/DemoView/DemoView.cs" id="1_vkdfw"]
+[ext_resource type="Texture2D" uid="uid://1mwm78dwhp8m" path="res://Assets/FlawLizArt/Textures/store_capsule_main.png" id="2_t0fxq"]
+[ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="3_vkdfw"]
+
+[node name="DemoView" type="Control" node_paths=PackedStringArray("ContinueButton", "ModulateControl", "InputBlocker")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vkdfw")
+ContinueButton = NodePath("Modulate/VBoxContainer/ContinueButton")
+ModulateControl = NodePath("Modulate")
+InputBlocker = NodePath("InputBlocker")
+ChildOrder = 1
+
+[node name="Modulate" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Modulate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_t0fxq")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Modulate"]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 309.0
+offset_right = 1053.0
+offset_bottom = 613.0
+theme_override_constants/separation = 10
+
+[node name="ThankYou" type="MarginContainer" parent="Modulate/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Modulate/VBoxContainer/ThankYou"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="MarginContainer" type="MarginContainer" parent="Modulate/VBoxContainer/ThankYou"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Modulate/VBoxContainer/ThankYou/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "Thank you for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Wishlist" type="MarginContainer" parent="Modulate/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Modulate/VBoxContainer/Wishlist"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.686275)
+
+[node name="MarginContainer" type="MarginContainer" parent="Modulate/VBoxContainer/Wishlist"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="Modulate/VBoxContainer/Wishlist/MarginContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "Wishlist the game on Steam to get notified about the release!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ContinueButton" type="Button" parent="Modulate/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_vkdfw")
+theme_override_font_sizes/font_size = 40
+text = "Keep playing"
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
