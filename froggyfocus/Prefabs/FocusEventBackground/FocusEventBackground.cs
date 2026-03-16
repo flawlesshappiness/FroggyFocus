@@ -12,12 +12,17 @@ public partial class FocusEventBackground : Node3D
     public override void _Ready()
     {
         base._Ready();
+        SetSoundEnabled(false);
         VisibilityChanged += _VisibilityChanged;
     }
 
     private void _VisibilityChanged()
     {
-        var visible = IsVisibleInTree();
-        SoundEffects.ForEach(x => x.Playing = visible);
+        SetSoundEnabled(IsVisibleInTree());
+    }
+
+    private void SetSoundEnabled(bool enabled)
+    {
+        SoundEffects.ForEach(x => x.Playing = enabled);
     }
 }

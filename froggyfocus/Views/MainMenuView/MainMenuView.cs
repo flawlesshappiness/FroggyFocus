@@ -36,6 +36,8 @@ public partial class MainMenuView : View
     [Export]
     public AnimatedPanel AnimatedPanel_Credits;
 
+    private bool IsDemo => ApplicationInfo.Instance.Type == ApplicationType.Demo;
+
     private bool animating;
     private MenuSettings current_menu;
 
@@ -101,10 +103,9 @@ public partial class MainMenuView : View
 
     private void UpdateContinueButton()
     {
-        var is_demo = ApplicationInfo.Instance.Type == ApplicationType.Demo;
-        MainMenuContainer.PlayDemoButton.Visible = is_demo;
-        MainMenuContainer.NewGameButton.Visible = Data.Game.Deleted && !is_demo;
-        MainMenuContainer.ContinueButton.Visible = !Data.Game.Deleted && !is_demo;
+        MainMenuContainer.PlayDemoButton.Visible = IsDemo;
+        MainMenuContainer.NewGameButton.Visible = Data.Game.Deleted && !IsDemo;
+        MainMenuContainer.ContinueButton.Visible = !Data.Game.Deleted && !IsDemo;
     }
 
     private void Open()
@@ -119,8 +120,19 @@ public partial class MainMenuView : View
         {
             yield return AnimatedPanel_Main.AnimateFadeShow();
 
-            var button = Data.Game.Deleted ? MainMenuContainer.NewGameButton : MainMenuContainer.ContinueButton;
-            button.GrabFocus();
+            if (IsDemo)
+            {
+                MainMenuContainer.PlayDemoButton.GrabFocus();
+            }
+            else if (Data.Game.Deleted)
+            {
+                MainMenuContainer.NewGameButton.GrabFocus();
+            }
+            else
+            {
+                MainMenuContainer.ContinueButton.GrabFocus();
+            }
+
             animating = false;
         }
     }

@@ -89,6 +89,7 @@ public partial class InputIconCollection : Resource
             { JoyButton.B, "xbox_button_color_b" },
             { JoyButton.X, "xbox_button_color_x" },
             { JoyButton.Y, "xbox_button_color_y" },
+            { JoyButton.Start, "xbox_button_menu" },
         };
 
         playstation_icons = new Dictionary<JoyButton, string>
@@ -97,6 +98,7 @@ public partial class InputIconCollection : Resource
             { JoyButton.B, "playstation_button_color_circle" },
             { JoyButton.X, "playstation_button_color_square" },
             { JoyButton.Y, "playstation_button_color_triangle" },
+            { JoyButton.Start, "playstation3_button_start" },
         };
     }
 

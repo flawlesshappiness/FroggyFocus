@@ -1,52 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://d180feyonrdv5"]
+[gd_scene load_steps=7 format=3 uid="uid://d180feyonrdv5"]
 
 [ext_resource type="Script" uid="uid://c7i6blmrvdtj3" path="res://Prefabs/UI/Options/UIScale.cs" id="1_37hgo"]
 [ext_resource type="Script" uid="uid://c5igtc3vlqhjb" path="res://Prefabs/UI/MainMenu/MainMenuContainer.cs" id="1_bn65t"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="2_bn65t"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="4_ju611"]
 [ext_resource type="PackedScene" uid="uid://doykhljt62m12" path="res://Prefabs/Objects/logo.tscn" id="6_cxsgc"]
-[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="6_emqf1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ju611"]
 viewport_path = NodePath("ItemSubViewport")
-
-[sub_resource type="Animation" id="Animation_cxsgc"]
-resource_name = "idle"
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VSplitContainer/Top/DemoLabel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(-2, -2, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_go2tt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VSplitContainer/Top/DemoLabel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_suq10"]
-_data = {
-&"RESET": SubResource("Animation_go2tt"),
-&"idle": SubResource("Animation_cxsgc")
-}
 
 [node name="MainMenuContainer" type="MarginContainer" node_paths=PackedStringArray("PlayDemoButton", "NewGameButton", "ContinueButton", "ProfilesButton", "OptionsButton", "CreditsButton", "QuitButton", "VersionLabel", "DemoLabel")]
 anchors_preset = 15
@@ -123,6 +84,7 @@ offset_bottom = 204.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.523599
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "DEMO"
 
@@ -247,10 +209,3 @@ light_energy = 0.1
 
 [node name="Logo" parent="ItemSubViewport/Anim/Origin" instance=ExtResource("6_cxsgc")]
 transform = Transform3D(-1.25, -1.09278e-07, 4.77671e-15, 0, -5.46392e-08, -1.25, 1.09278e-07, -1.25, 5.46392e-08, 0, 0, 0)
-
-[node name="AnimationPlayer_Demo" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_suq10")
-}
-script = ExtResource("6_emqf1")
-Animation = "idle"
