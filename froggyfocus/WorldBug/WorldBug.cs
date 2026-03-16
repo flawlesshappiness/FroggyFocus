@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections;
 
-public partial class WorldBug : Node3D
+public partial class WorldBug : Node3DScript
 {
     [Export]
     public FocusEventInfo Info;
@@ -21,6 +21,13 @@ public partial class WorldBug : Node3D
     protected FocusCharacter current_character;
 
     public const float MIN_DIST_TO_PLAYER = 6.0f;
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        this.SetParent(Scene.Current);
+        Scale = Vector3.One;
+    }
 
     protected void Clear()
     {

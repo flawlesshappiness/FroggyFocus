@@ -1,7 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=44 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ialcb"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
@@ -29,6 +28,9 @@
 [ext_resource type="PackedScene" uid="uid://hydc75vf8glw" path="res://Prefabs/NPC/FrogDemoNPC/frog_demo_npc.tscn" id="29_fpkb8"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="32_i7ql3"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="39_2o8dq"]
+[ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="41_bmvqj"]
+[ext_resource type="Resource" uid="uid://c7a2ryrxyjyti" path="res://FocusEvent/Resources/Swamp Woods.tres" id="42_bmvqj"]
+[ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Lilypads.tres" id="42_fpkb8"]
 [ext_resource type="PackedScene" uid="uid://vljga7igf232" path="res://Prefabs/Nature/plant_monstera_group.tscn" id="49_t8ctw"]
 [ext_resource type="PackedScene" uid="uid://bqyo5jd18ys25" path="res://Prefabs/Nature/plant_fern_group.tscn" id="50_810dt"]
 [ext_resource type="PackedScene" uid="uid://dpuju18h6r0al" path="res://Prefabs/Nature/plant_azolla_group.tscn" id="51_hhc6j"]
@@ -51,7 +53,7 @@ script = ExtResource("1_lc5f6")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
-Weathers = Array[ExtResource("2_ialcb")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
+Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -190,116 +192,6 @@ SignType = 1
 [node name="TutorialSign_Forfeit" parent="World/Signs" instance=ExtResource("13_ibcjm")]
 transform = Transform3D(-0.741812, 0, -0.670608, 0, 1, 0, 0.670608, 0, -0.741812, -13.4677, -0.125165, -28.2004)
 SignType = 3
-
-[node name="Trees" type="Node3D" parent="World"]
-
-[node name="CommonTree_Dead_1" parent="World/Trees" instance=ExtResource("19_6jk5p")]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 28.7065, -1.44061, -35.2176)
-
-[node name="CommonTree_Dead_5" parent="World/Trees" instance=ExtResource("19_6jk5p")]
-transform = Transform3D(-10.1545, 0, 11.0402, 0, 15, 0, -11.0402, 0, -10.1545, 10.943, -1.44061, -41.2206)
-
-[node name="CommonTree_Dead_2" parent="World/Trees" instance=ExtResource("20_ktv6u")]
-transform = Transform3D(-14.8951, 0, 1.77112, 0, 15, 0, -1.77112, 0, -14.8951, 23.5179, -1.79622, -49.4606)
-
-[node name="CommonTree_Dead_4" parent="World/Trees" instance=ExtResource("20_ktv6u")]
-transform = Transform3D(10.9537, 0, -10.2478, 0, 15, 0, 10.2478, 0, 10.9537, 26.6055, -1.79622, -15.2284)
-
-[node name="CommonTree_Dead_3" parent="World/Trees" instance=ExtResource("21_o68er")]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 24.1582, -2.56331, -17.292)
-visible = false
-
-[node name="CommonTree_Dead_6" parent="World/Trees" instance=ExtResource("21_o68er")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 42.8102, 0, -12.475)
-
-[node name="CommonTree_Dead_7" parent="World/Trees" instance=ExtResource("21_o68er")]
-transform = Transform3D(-0.0624831, 0, -19.9999, 0, 20, 0, 19.9999, 0, -0.0624831, 33.2489, 3.8147e-06, 0.672175)
-
-[node name="CommonTree_Dead_8" parent="World/Trees" instance=ExtResource("21_o68er")]
-transform = Transform3D(-0.0624831, 0, -19.9999, 0, 20, 0, 19.9999, 0, -0.0624831, 16.7828, 3.8147e-06, 10.7724)
-
-[node name="CommonTree_Dead_9" parent="World/Trees" instance=ExtResource("21_o68er")]
-transform = Transform3D(-12.1725, 0, 15.8692, 0, 20, 0, -15.8692, 0, -12.1725, 31.1111, 3.8147e-06, 21.6925)
-
-[node name="CommonTree_Dead_10" parent="World/Trees" instance=ExtResource("21_o68er")]
-transform = Transform3D(-12.1725, 0, 15.8692, 0, 20, 0, -15.8692, 0, -12.1725, 13.0321, 3.8147e-06, 28.4069)
-
-[node name="CommonTree_Dead_11" parent="World/Trees" instance=ExtResource("21_o68er")]
-transform = Transform3D(-12.1725, 0, 15.8692, 0, 20, 0, -15.8692, 0, -12.1725, -4.83544, 3.8147e-06, 18.7317)
-
-[node name="CommonTree_Dead_12" parent="World/Trees" instance=ExtResource("21_o68er")]
-transform = Transform3D(19.7918, 0, 2.87849, 0, 20, 0, -2.87849, 0, 19.7918, -3.52062, 3.8147e-06, 37.0914)
-
-[node name="Branches" type="Node3D" parent="World"]
-
-[node name="Branch_Swamp_001" parent="World/Branches" instance=ExtResource("22_o68er")]
-transform = Transform3D(1.44558, 0, -2.62874, 0, 3, 0, 2.62874, 0, 1.44558, 32.395, 0, 52.119)
-
-[node name="Branch_Swamp_004" parent="World/Branches" instance=ExtResource("22_o68er")]
-transform = Transform3D(1.6735, 0, 2.48986, 0, 3, 0, -2.48986, 0, 1.6735, -59.6855, 0, 30.5737)
-
-[node name="Branch_Swamp_005" parent="World/Branches" instance=ExtResource("22_o68er")]
-transform = Transform3D(-2.07439, 0, 2.16724, 0, 3, 0, -2.16724, 0, -2.07439, -68.6653, 0, -40.4017)
-
-[node name="Branch_Swamp_006" parent="World/Branches" instance=ExtResource("22_o68er")]
-transform = Transform3D(2.42659, 0, -1.76399, 0, 3, 0, 1.76399, 0, 2.42659, 18.1597, 0, -96.6283)
-
-[node name="Branch_Swamp_003" parent="World/Branches" instance=ExtResource("22_o68er")]
-transform = Transform3D(-2.65856, 0, -1.38998, 0, 3, 0, 1.38998, 0, -2.65856, 65.2513, 0, -37.0913)
-
-[node name="Branch_Swamp_002" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(3.96845, 0, 0.501334, 0, 4, 0, -0.501334, 0, 3.96845, 67.132, 0, 17.7787)
-
-[node name="Branch_Swamp_007" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(3.96845, 0, 0.501334, 0, 4, 0, -0.501334, 0, 3.96845, -29.0444, 0, 80.6821)
-
-[node name="Branch_Swamp_008" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(3.96845, 0, 0.501334, 0, 4, 0, -0.501334, 0, 3.96845, -59.5713, 0, -53.0427)
-
-[node name="Branch_Swamp_015" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-0.241126, 0, 0.970494, 0, 1, 0, -0.970494, 0, -0.241126, 18.4473, -1.81888, -44.6327)
-
-[node name="Branch_Swamp_016" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-0.996066, 0, -0.0886167, 0, 1, 0, 0.0886167, 0, -0.996066, 24.6128, -1.81888, -27.7074)
-
-[node name="Branch_Swamp_017" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(0.670348, 0, 0.742046, 0, 1, 0, -0.742046, 0, 0.670348, 46.2403, -1.81888, -31.6281)
-
-[node name="Branch_Swamp_018" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(0.927354, 0, -0.374185, 0, 1, 0, 0.374185, 0, 0.927354, 37.2697, -1.81888, -52.205)
-
-[node name="Branch_Swamp_019" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(0.426901, 0, -0.904299, 0, 1, 0, 0.904299, 0, 0.426901, 28.8237, -1.81889, -5.81928)
-
-[node name="Branch_Swamp_020" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-0.812368, 0, -0.583145, 0, 1, 0, 0.583145, 0, -0.812368, 29.3211, -1.81889, 10.2586)
-
-[node name="Branch_Swamp_021" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(0.785079, 0, 0.619396, 0, 1, 0, -0.619396, 0, 0.785079, 14.2232, -1.81888, 21.0201)
-
-[node name="Branch_Swamp_022" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(0.785079, 0, 0.619396, 0, 1, 0, -0.619396, 0, 0.785079, -11.4056, -1.81889, 35.1916)
-
-[node name="Branch_Swamp_023" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-1.81437, 0, -0.841471, 0, 2, 0, 0.841471, 0, -1.81437, -11.7978, -1.81889, 59.7248)
-
-[node name="Branch_Swamp_009" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-3.88555, 0, -0.949998, 0, 4, 0, 0.949998, 0, -3.88555, -71.5411, 0, -2.25582)
-
-[node name="Branch_Swamp_010" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-3.9857, 0, 0.33791, 0, 4, 0, -0.33791, 0, -3.9857, -83.8791, 0, 57.8676)
-
-[node name="Branch_Swamp_014" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-3.02209, 0, 2.62049, 0, 4, 0, -2.62049, 0, -3.02209, -61.2102, -1.90735e-06, 59.3107)
-
-[node name="Branch_Swamp_011" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-3.9857, 0, 0.33791, 0, 4, 0, -0.33791, 0, -3.9857, 63.1894, 0, -105.43)
-
-[node name="Branch_Swamp_012" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(-3.9857, 0, 0.33791, 0, 4, 0, -0.33791, 0, -3.9857, -18.4922, 0, -104.157)
-
-[node name="Branch_Swamp_013" parent="World/Branches" instance=ExtResource("23_awkdr")]
-transform = Transform3D(3.18468, 0, -2.42028, 0, 4, 0, 2.42028, 0, 3.18468, -57.6791, -1.52561, -8.76694)
 
 [node name="NPCs" type="Node3D" parent="World"]
 
@@ -813,17 +705,379 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.53198, -1, -27.1683)
 [node name="Lilypad_Flower21" parent="World/Plants/Lilypad Flowers" instance=ExtResource("39_2o8dq")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.15647, -1, -34.1976)
 
-[node name="building_factory" parent="World" instance=ExtResource("57_n5llf")]
+[node name="Trees" type="Node3D" parent="World/Plants"]
+
+[node name="CommonTree_Dead_1" parent="World/Plants/Trees" instance=ExtResource("19_6jk5p")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 28.7065, -1.44061, -35.2176)
+
+[node name="CommonTree_Dead_5" parent="World/Plants/Trees" instance=ExtResource("19_6jk5p")]
+transform = Transform3D(-10.1545, 0, 11.0402, 0, 15, 0, -11.0402, 0, -10.1545, 10.943, -1.44061, -41.2206)
+
+[node name="CommonTree_Dead_2" parent="World/Plants/Trees" instance=ExtResource("20_ktv6u")]
+transform = Transform3D(-14.8951, 0, 1.77112, 0, 15, 0, -1.77112, 0, -14.8951, 23.5179, -1.79622, -49.4606)
+
+[node name="CommonTree_Dead_4" parent="World/Plants/Trees" instance=ExtResource("20_ktv6u")]
+transform = Transform3D(10.9537, 0, -10.2478, 0, 15, 0, 10.2478, 0, 10.9537, 26.6055, -1.79622, -15.2284)
+
+[node name="CommonTree_Dead_3" parent="World/Plants/Trees" instance=ExtResource("21_o68er")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 24.1582, -2.56331, -17.292)
+visible = false
+
+[node name="CommonTree_Dead_6" parent="World/Plants/Trees" instance=ExtResource("21_o68er")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 42.8102, 0, -12.475)
+
+[node name="CommonTree_Dead_7" parent="World/Plants/Trees" instance=ExtResource("21_o68er")]
+transform = Transform3D(-0.0624831, 0, -19.9999, 0, 20, 0, 19.9999, 0, -0.0624831, 33.2489, 3.8147e-06, 0.672175)
+
+[node name="CommonTree_Dead_8" parent="World/Plants/Trees" instance=ExtResource("21_o68er")]
+transform = Transform3D(-0.0624831, 0, -19.9999, 0, 20, 0, 19.9999, 0, -0.0624831, 16.7828, 3.8147e-06, 10.7724)
+
+[node name="CommonTree_Dead_9" parent="World/Plants/Trees" instance=ExtResource("21_o68er")]
+transform = Transform3D(-12.1725, 0, 15.8692, 0, 20, 0, -15.8692, 0, -12.1725, 31.1111, 3.8147e-06, 21.6925)
+
+[node name="CommonTree_Dead_10" parent="World/Plants/Trees" instance=ExtResource("21_o68er")]
+transform = Transform3D(-12.1725, 0, 15.8692, 0, 20, 0, -15.8692, 0, -12.1725, 13.0321, 3.8147e-06, 28.4069)
+
+[node name="CommonTree_Dead_11" parent="World/Plants/Trees" instance=ExtResource("21_o68er")]
+transform = Transform3D(-12.1725, 0, 15.8692, 0, 20, 0, -15.8692, 0, -12.1725, -4.83544, 3.8147e-06, 18.7317)
+
+[node name="CommonTree_Dead_12" parent="World/Plants/Trees" instance=ExtResource("21_o68er")]
+transform = Transform3D(19.7918, 0, 2.87849, 0, 20, 0, -2.87849, 0, 19.7918, -3.52062, 3.8147e-06, 37.0914)
+
+[node name="Branches" type="Node3D" parent="World/Plants"]
+
+[node name="Branch_Swamp_001" parent="World/Plants/Branches" instance=ExtResource("22_o68er")]
+transform = Transform3D(1.44558, 0, -2.62874, 0, 3, 0, 2.62874, 0, 1.44558, 32.395, 0, 52.119)
+
+[node name="Branch_Swamp_004" parent="World/Plants/Branches" instance=ExtResource("22_o68er")]
+transform = Transform3D(1.6735, 0, 2.48986, 0, 3, 0, -2.48986, 0, 1.6735, -59.6855, 0, 30.5737)
+
+[node name="Branch_Swamp_005" parent="World/Plants/Branches" instance=ExtResource("22_o68er")]
+transform = Transform3D(-2.07439, 0, 2.16724, 0, 3, 0, -2.16724, 0, -2.07439, -68.6653, 0, -40.4017)
+
+[node name="Branch_Swamp_006" parent="World/Plants/Branches" instance=ExtResource("22_o68er")]
+transform = Transform3D(2.42659, 0, -1.76399, 0, 3, 0, 1.76399, 0, 2.42659, 18.1597, 0, -96.6283)
+
+[node name="Branch_Swamp_003" parent="World/Plants/Branches" instance=ExtResource("22_o68er")]
+transform = Transform3D(-2.65856, 0, -1.38998, 0, 3, 0, 1.38998, 0, -2.65856, 65.2513, 0, -37.0913)
+
+[node name="Branch_Swamp_002" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(3.96845, 0, 0.501334, 0, 4, 0, -0.501334, 0, 3.96845, 67.132, 0, 17.7787)
+
+[node name="Branch_Swamp_007" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(3.96845, 0, 0.501334, 0, 4, 0, -0.501334, 0, 3.96845, -29.0444, 0, 80.6821)
+
+[node name="Branch_Swamp_008" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(3.96845, 0, 0.501334, 0, 4, 0, -0.501334, 0, 3.96845, -59.5713, 0, -53.0427)
+
+[node name="Branch_Swamp_015" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-0.241126, 0, 0.970494, 0, 1, 0, -0.970494, 0, -0.241126, 18.4473, -1.81888, -44.6327)
+
+[node name="Branch_Swamp_016" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-0.996066, 0, -0.0886167, 0, 1, 0, 0.0886167, 0, -0.996066, 24.6128, -1.81888, -27.7074)
+
+[node name="Branch_Swamp_017" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(0.670348, 0, 0.742046, 0, 1, 0, -0.742046, 0, 0.670348, 46.2403, -1.81888, -31.6281)
+
+[node name="Branch_Swamp_018" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(0.927354, 0, -0.374185, 0, 1, 0, 0.374185, 0, 0.927354, 37.2697, -1.81888, -52.205)
+
+[node name="Branch_Swamp_019" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(0.426901, 0, -0.904299, 0, 1, 0, 0.904299, 0, 0.426901, 28.8237, -1.81889, -5.81928)
+
+[node name="Branch_Swamp_020" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-0.812368, 0, -0.583145, 0, 1, 0, 0.583145, 0, -0.812368, 29.3211, -1.81889, 10.2586)
+
+[node name="Branch_Swamp_021" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(0.785079, 0, 0.619396, 0, 1, 0, -0.619396, 0, 0.785079, 14.2232, -1.81888, 21.0201)
+
+[node name="Branch_Swamp_022" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(0.785079, 0, 0.619396, 0, 1, 0, -0.619396, 0, 0.785079, -11.4056, -1.81889, 35.1916)
+
+[node name="Branch_Swamp_023" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-1.81437, 0, -0.841471, 0, 2, 0, 0.841471, 0, -1.81437, -11.7978, -1.81889, 59.7248)
+
+[node name="Branch_Swamp_009" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-3.88555, 0, -0.949998, 0, 4, 0, 0.949998, 0, -3.88555, -71.5411, 0, -2.25582)
+
+[node name="Branch_Swamp_010" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-3.9857, 0, 0.33791, 0, 4, 0, -0.33791, 0, -3.9857, -83.8791, 0, 57.8676)
+
+[node name="Branch_Swamp_014" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-3.02209, 0, 2.62049, 0, 4, 0, -2.62049, 0, -3.02209, -61.2102, -1.90735e-06, 59.3107)
+
+[node name="Branch_Swamp_011" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-3.9857, 0, 0.33791, 0, 4, 0, -0.33791, 0, -3.9857, 63.1894, 0, -105.43)
+
+[node name="Branch_Swamp_012" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(-3.9857, 0, 0.33791, 0, 4, 0, -0.33791, 0, -3.9857, -18.4922, 0, -104.157)
+
+[node name="Branch_Swamp_013" parent="World/Plants/Branches" instance=ExtResource("23_awkdr")]
+transform = Transform3D(3.18468, 0, -2.42028, 0, 4, 0, 2.42028, 0, 3.18468, -57.6791, -1.52561, -8.76694)
+
+[node name="Structures" type="Node3D" parent="World"]
+
+[node name="building_factory" parent="World/Structures" instance=ExtResource("57_n5llf")]
 transform = Transform3D(0.981992, 0, 0.188924, 0, 1, 0, -0.188924, 0, 0.981992, -25.9208, 0, -229.407)
 
-[node name="Lighthouse" parent="World" instance=ExtResource("58_ixab2")]
-transform = Transform3D(1.655, 0, 0, 0, 1.655, 0, 0, 0, 1.655, 25.8235, 0, -188.959)
+[node name="Lighthouse" parent="World/Structures" instance=ExtResource("58_ixab2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 25.8235, -2.48375, -188.959)
 
-[node name="Cave" parent="World" instance=ExtResource("59_5vqjt")]
+[node name="Cave" parent="World/Structures" instance=ExtResource("59_5vqjt")]
 transform = Transform3D(0.0181661, 0, -0.239311, 0, 0.24, 0, 0.239311, 0, 0.0181661, 254.177, 0, -54.7091)
 
-[node name="beach_flat" parent="World/Cave" instance=ExtResource("60_fqf33")]
+[node name="beach_flat" parent="World/Structures/Cave" instance=ExtResource("60_fqf33")]
 transform = Transform3D(-9.27, 0, -1.39973e-06, 0, 9.27, 0, 1.39973e-06, 0, -9.27, -1.7435e-06, -7.65573, 89.5499)
 
 [node name="FocusEvent" parent="World" instance=ExtResource("32_i7ql3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+
+[node name="WorldBugs" type="Node3D" parent="World"]
+
+[node name="lilypads" type="Node3D" parent="World/WorldBugs"]
+
+[node name="swamp_lilypads" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67876, -1, -0.648193)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads2" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257321, -1, 5.32705)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads3" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65962, -1, -0.21098)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads4" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.31664, -1, -4.99117)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads5" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891826, -1, -8.96447)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads6" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6902, -1, -11.8382)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads7" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.911898, -1, -15.6617)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads8" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38587, -1, -19.0615)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads9" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17368, -1, -25.3851)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads10" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35387, -1, -26.745)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads11" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7255, -1, -27.119)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads12" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76152, -1, -30.8429)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads13" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9966, -1, -26.2032)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads14" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2546, -1, -24.0172)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads15" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7858, -1, -29.7301)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads16" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.8956, -1, -29.7301)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads17" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8193, -1, -24.4835)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads18" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.2767, -1, -19.0621)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads19" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6692, -1, -13.6698)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads20" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6041, -1, -9.21025)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads21" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.1108, -1, -13.6407)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads22" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0457, -1, -4.40091)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads23" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4472, -1, -5.013)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads24" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5189, -1, 0.962236)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads25" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5818, -1, 1.31201)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads26" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1715, -1, 3.32319)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads27" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5325, -1, 11.5428)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads28" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.0054, -1, 9.21098)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads29" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.5412, -1, 15.6526)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads30" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.992, -1, 15.6817)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads31" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.9986, -1, 3.67296)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads32" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0568, -1, 10.8487)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads33" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3327, -1, 21.8331)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads34" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.57926, -1, 12.2763)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads35" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.1377, -1, 27.4245)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads36" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2688, -1, 30.9141)
+Info = ExtResource("42_fpkb8")
+
+[node name="swamp_lilypads37" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3188, -1, 22.4279)
+Info = ExtResource("42_fpkb8")
+
+[node name="woods" type="Node3D" parent="World/WorldBugs"]
+
+[node name="swamp_woods" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8236, -1, -36.7768)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods2" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3731, -1, -39.5039)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods3" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96118, -1, -42.1645)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods4" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.37389, -1, -45.324)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods5" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1494, -1, -46.8539)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods6" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79716, -1, -50.9113)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods7" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9428, -1, -50.745)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods8" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57344, -1, -54.2371)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods9" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80069, -1, -42.5304)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods10" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6452, -1, -43.3936)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods11" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3306, -1, -41.9119)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods12" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.396, -1, -43.464)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods13" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0889, -1, -48.2343)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods14" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6484, -1, -52.7041)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods15" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.50671, -1, -53.656)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods16" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6856, -1, -33.5522)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods17" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.4538, -1, -18.2841)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods18" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1201, -1, -30.015)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods19" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7514, -1, -30.3855)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods20" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7397, -1, -44.0505)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods21" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.634, -1, -49.646)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods22" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1086, -1, -31.7918)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods23" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.2629, -1, -23.8383)
+Info = ExtResource("42_bmvqj")
+
+[node name="swamp_woods24" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.4791, -1, -16.0724)
+Info = ExtResource("42_bmvqj")

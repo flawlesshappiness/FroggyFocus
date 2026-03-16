@@ -19,12 +19,13 @@ public partial class FocusCursor : Node3D
     private Vector3 DesiredVelocity { get; set; }
     private FocusEvent FocusEvent { get; set; }
     private float MoveSpeed { get; set; }
+    public bool HasTarget => CurrentTarget != null;
+    public FocusTarget CurrentTarget { get; private set; }
 
     public static readonly MultiLock MoveLock = new();
     public static readonly MultiLock SlowLock = new();
 
     private bool moving;
-    private FocusTarget current_target;
 
     public event Action OnFocusStarted;
     public event Action OnFocusStopped;
@@ -117,25 +118,25 @@ public partial class FocusCursor : Node3D
     {
         if (!FocusEvent.IsRunning) return;
         if (MoveLock.IsLocked) return;
-        if (current_target != null) return;
+        if (CurrentTarget != null) return;
 
         var target = GetNearTarget();
         if (target == null) return;
 
-        current_target = target;
-        current_target.SetHasCursor(true);
+        CurrentTarget = target;
+        CurrentTarget.SetHasCursor(true);
         Hide();
 
         SfxFocusStart.Play();
 
-        OnTarget?.Invoke(current_target);
+        OnTarget?.Invoke(CurrentTarget);
     }
 
     public void EndFocusTarget()
     {
-        if (current_target == null) return;
-        var target = current_target;
-        current_target = null;
+        if (CurrentTarget == null) return;
+        var target = CurrentTarget;
+        CurrentTarget = null;
 
         Show();
         GlobalPosition = target.GlobalPosition;
@@ -165,9 +166,9 @@ public partial class FocusCursor : Node3D
 
     public void HurtFocusValuePercentage(float percentage)
     {
-        if (current_target != null)
+        if (CurrentTarget != null)
         {
-            current_target.HurtFocusValue(percentage);
+            CurrentTarget.HurtFocusValue(percentage);
         }
     }
 

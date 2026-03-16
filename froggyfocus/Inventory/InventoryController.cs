@@ -60,7 +60,7 @@ public partial class InventoryController : SingletonController
         var t_stars = Mathf.Clamp((data.Stars - 1) / 4f, 0, 1);
 
         // Size
-        data.Size = info.OverrideSize > 0 ? info.OverrideSize : Mathf.Lerp(0.7f, 1.5f, t_stars);
+        data.Size = info.OverrideSize > 0 ? info.OverrideSize : Mathf.Lerp(0.6f, 1.0f, t_stars);
 
         // Value
         data.Value = GetMoneyValue(info, data);

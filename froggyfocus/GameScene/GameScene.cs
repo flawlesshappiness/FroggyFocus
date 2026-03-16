@@ -15,9 +15,6 @@ public partial class GameScene : Scene
     public WorldEnvironment WorldEnvironment;
 
     [Export]
-    public Node3D WorldBugParent;
-
-    [Export]
     public FocusEvent FocusEvent { get; private set; }
 
     [Export]
@@ -27,14 +24,14 @@ public partial class GameScene : Scene
 
     private List<string> focus_event_ids = new();
     private List<FocusHotSpotArea> hotspot_areas;
-    private List<WorldBug> world_bugs;
+    private List<WorldBug> world_bugs = new();
 
     public override void _Ready()
     {
         base._Ready();
         Instance = this;
 
-        world_bugs = WorldBugParent?.GetNodesInChildren<WorldBug>() ?? new List<WorldBug>();
+        world_bugs = this.GetNodesInChildren<WorldBug>() ?? new List<WorldBug>();
 
         MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather(Weathers);

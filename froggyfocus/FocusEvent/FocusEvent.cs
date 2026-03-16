@@ -142,6 +142,7 @@ public partial class FocusEvent : Node3D
         base._Process(delta);
 
         Process_Timer();
+        Process_Facing();
     }
 
     public override void _Input(InputEvent @event)
@@ -171,6 +172,14 @@ public partial class FocusEvent : Node3D
         if (GameTime.Time < TimerEnd) return;
 
         EndEvent();
+    }
+
+    private void Process_Facing()
+    {
+        if (!IsRunning) return;
+        if (!Cursor.HasTarget) return;
+
+        Frog.StartFacingPosition(Cursor.CurrentTarget.GlobalPosition);
     }
 
     private FocusTarget CreateTarget()
