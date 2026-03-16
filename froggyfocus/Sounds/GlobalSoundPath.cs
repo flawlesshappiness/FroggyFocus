@@ -1,29 +1,30 @@
 using Godot;
 using Godot.Collections;
 
-public partial class SoundPath : AudioStreamPlayer3D
+public partial class GlobalSoundPath : AudioStreamPlayer
 {
     [Export]
-    public Array<Path3D> Paths;
+    public Vector2 DistanceRange;
 
-    private Vector3 target_position;
+    [Export]
+    public float VolumeMax;
+
+    [Export]
+    public Array<Path3D> Paths;
 
     public override void _Process(double delta)
     {
         base._Process(delta);
-        Process_TargetPosition();
-        Process_Move();
+        Process_Volume();
     }
 
-    private void Process_Move()
+    private void Process_Volume()
     {
-        var speed = 2f;
-        GlobalPosition = GlobalPosition.Lerp(target_position, speed * GameTime.DeltaTime);
-    }
-
-    private void Process_TargetPosition()
-    {
-        target_position = GetClosestPosition() ?? GlobalPosition;
+        var position = GetClosestPosition() ?? Player.Instance.GlobalPosition;
+        var distance = Player.Instance.GlobalPosition.DistanceTo(position);
+        var t = Mathf.Clamp((distance - DistanceRange.X) / DistanceRange.Y, 0, 1);
+        var volume = Mathf.Lerp(VolumeMax, 0, t);
+        VolumeLinear = volume;
     }
 
     private Vector3? GetClosestPosition()
