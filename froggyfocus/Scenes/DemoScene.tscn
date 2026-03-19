@@ -1,7 +1,6 @@
-[gd_scene load_steps=50 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=51 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_bmvqj"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
@@ -35,6 +34,8 @@
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="44_2o8dq"]
 [ext_resource type="Script" uid="uid://bkfv11csksi7b" path="res://Sounds/GlobalSoundPath.cs" id="45_3nau4"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="45_y1jgi"]
+[ext_resource type="AudioStream" uid="uid://bptyvdck5m1oc" path="res://Sounds/Raw/bgm_swamp_003.wav" id="46_3nau4"]
+[ext_resource type="AudioStream" uid="uid://cnehdj6b3ol0i" path="res://Sounds/Raw/bgm_swamp_003_focus.wav" id="47_byxdh"]
 [ext_resource type="PackedScene" uid="uid://vljga7igf232" path="res://Prefabs/Nature/plant_monstera_group.tscn" id="49_t8ctw"]
 [ext_resource type="PackedScene" uid="uid://bqyo5jd18ys25" path="res://Prefabs/Nature/plant_fern_group.tscn" id="50_810dt"]
 [ext_resource type="PackedScene" uid="uid://dpuju18h6r0al" path="res://Prefabs/Nature/plant_azolla_group.tscn" id="51_hhc6j"]
@@ -66,12 +67,14 @@ _data = {
 }
 point_count = 3
 
-[node name="DemoScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvent")]
+[node name="DemoScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
 script = ExtResource("1_lc5f6")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
-Weathers = Array[ExtResource("2_bmvqj")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
+BgmMain = NodePath("World/Sounds/BgmMain")
+BgmFocus = NodePath("World/Sounds/BgmFocus")
+Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -1124,3 +1127,11 @@ Paths = [NodePath("../Path3D"), NodePath("../Path3D2")]
 stream = ExtResource("45_y1jgi")
 autoplay = true
 bus = &"Environment"
+
+[node name="BgmMain" type="AudioStreamPlayer" parent="World/Sounds"]
+stream = ExtResource("46_3nau4")
+bus = &"BGM"
+
+[node name="BgmFocus" type="AudioStreamPlayer" parent="World/Sounds"]
+stream = ExtResource("47_byxdh")
+bus = &"BGM"

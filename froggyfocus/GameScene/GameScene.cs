@@ -15,7 +15,13 @@ public partial class GameScene : Scene
     public WorldEnvironment WorldEnvironment;
 
     [Export]
-    public FocusEvent FocusEvent { get; private set; }
+    public FocusEvent FocusEvent;
+
+    [Export]
+    public AudioStreamPlayer BgmMain;
+
+    [Export]
+    public AudioStreamPlayer BgmFocus;
 
     [Export]
     public Array<WeatherInfo> Weathers = new();
@@ -37,11 +43,23 @@ public partial class GameScene : Scene
         WeatherController.Instance.StartWeather(Weathers);
         //FocusHotSpotController.Instance.Start();
         WorldBugController.Instance.Start();
+
+        FocusEventController.Instance.OnFocusEventStarted += FocusEvent_Started;
+        FocusEventController.Instance.OnFocusEventEnded += FocusEvent_Ended;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        FocusEventController.Instance.OnFocusEventStarted -= FocusEvent_Started;
+        FocusEventController.Instance.OnFocusEventEnded -= FocusEvent_Ended;
     }
 
     protected override void Initialize()
     {
         base.Initialize();
+
+        InitializeMusic();
 
         if (!string.IsNullOrEmpty(Data.Game.StartingNode))
         {
@@ -51,6 +69,21 @@ public partial class GameScene : Scene
                 Player.Instance.GlobalPosition = node.GlobalPosition;
                 Player.Instance.SetRespawnPosition(node.GlobalPosition);
             }
+        }
+    }
+
+    private void InitializeMusic()
+    {
+        if (BgmMain != null)
+        {
+            BgmMain.Play();
+            BgmMain.FadeIn(0.5f, BgmMain.VolumeDb);
+        }
+
+        if (BgmFocus != null)
+        {
+            BgmFocus.Play();
+            BgmFocus.VolumeLinear = 0f;
         }
     }
 
@@ -105,5 +138,15 @@ public partial class GameScene : Scene
     public bool HasFocusEvent()
     {
         return !string.IsNullOrEmpty(CurrentFocusEventId);
+    }
+
+    private void FocusEvent_Started(FocusEvent focus_event)
+    {
+        BgmFocus.FadeIn(1f, 0f);
+    }
+
+    private void FocusEvent_Ended(FocusEventResult result)
+    {
+        BgmFocus.FadeOut(1f);
     }
 }
