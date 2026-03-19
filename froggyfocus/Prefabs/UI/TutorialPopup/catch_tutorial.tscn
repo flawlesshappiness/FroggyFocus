@@ -1,0 +1,351 @@
+[gd_scene load_steps=19 format=3 uid="uid://0keq3gpw3fi0"]
+
+[ext_resource type="Script" uid="uid://cth1028di1r1h" path="res://Views/FocusEventTutorialView/TutorialPopup.cs" id="1_4k8s4"]
+[ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_33cw0"]
+[ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="2_hkk15"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="3_j1uog"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="4_p4fxr"]
+[ext_resource type="Texture2D" uid="uid://crw5sovw50jt1" path="res://Assets/FlawLizArt/Textures/particle_eye.png" id="5_33cw0"]
+[ext_resource type="Texture2D" uid="uid://cgvw1bv4nyiyt" path="res://Assets/FlawLizArt/Textures/focus_circle_outline.png" id="6_etalh"]
+[ext_resource type="Texture2D" uid="uid://6tevrdvf1tud" path="res://Assets/FlawLizArt/Textures/focus_circle.png" id="7_82dcw"]
+[ext_resource type="Script" uid="uid://bl1w51h0tw0yh" path="res://Misc/SubViewportTextureRect.cs" id="8_fa6m8"]
+[ext_resource type="Theme" uid="uid://ru5cmmvv4gtr" path="res://Themes/Yellow.tres" id="9_byci8"]
+[ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="10_p4fxr"]
+[ext_resource type="Environment" uid="uid://b5aywq3k0pd6t" path="res://Environment/Preview.tres" id="11_33cw0"]
+[ext_resource type="PackedScene" uid="uid://cp8kbr2tvdecr" path="res://Prefabs/UI/InputPrompt/input_prompt_texture.tscn" id="11_etalh"]
+[ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="12_etalh"]
+
+[sub_resource type="Animation" id="Animation_4swlg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/eye:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/circle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-160, -30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/focus:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.01, 0.01)]
+}
+
+[sub_resource type="Animation" id="Animation_6jd44"]
+resource_name = "move"
+length = 4.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/eye:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/circle:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-160, -30), Vector2(-160, -30), Vector2(130, -30), Vector2(130, -30), Vector2(130, -30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/focus:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oc535"]
+_data = {
+&"RESET": SubResource("Animation_4swlg"),
+&"move": SubResource("Animation_6jd44")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p4fxr"]
+viewport_path = NodePath("Beetle_SubViewport")
+
+[node name="CatchTutorial" type="Control" node_paths=PackedStringArray("Overlay", "Panel", "InputBlocker", "ContinueButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4k8s4")
+Overlay = NodePath("AnimatedOverlay")
+Panel = NodePath("CenterContainer/Center/Catch_AnimatedPanel")
+InputBlocker = NodePath("InputBlocker")
+ContinueButton = NodePath("CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer/ContinueButton")
+
+[node name="AnimatedOverlay" parent="." instance=ExtResource("2_33cw0")]
+layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Center" type="Control" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Catch_AnimatedPanel" parent="CenterContainer/Center" instance=ExtResource("2_hkk15")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Catch_AnimatedPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -228.0
+offset_top = -107.0
+offset_right = 228.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_j1uog")
+
+[node name="Panel" type="Panel" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "How to catch bugs:"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Move the eye under the bug"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Press and hold             to focus"
+horizontal_alignment = 1
+
+[node name="AnimControl" type="Control" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/AnimControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/AnimControl/Control"]
+libraries = {
+&"": SubResource("AnimationLibrary_oc535")
+}
+script = ExtResource("4_p4fxr")
+Animation = "move"
+
+[node name="Control" type="Control" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/AnimControl/Control"]
+anchors_preset = 0
+offset_left = -160.0
+offset_top = -30.0
+offset_right = -100.0
+offset_bottom = 30.0
+
+[node name="eye" type="TextureRect" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/AnimControl/Control/Control"]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 60.0
+texture = ExtResource("5_33cw0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="circle" type="TextureRect" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/AnimControl/Control/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_etalh")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="focus" type="TextureRect" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/AnimControl/Control/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.01, 0.01)
+pivot_offset = Vector2(30, 30)
+texture = ExtResource("7_82dcw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="beetle" type="TextureRect" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/AnimControl/Control" node_paths=PackedStringArray("SubViewport")]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 0
+offset_left = 124.0
+offset_top = -35.0
+offset_right = 194.0
+offset_bottom = 35.0
+texture = SubResource("ViewportTexture_p4fxr")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("8_fa6m8")
+SubViewport = NodePath("../../../../../../../../../Beetle_SubViewport")
+
+[node name="Label3" type="Label" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Release when the circle is filled"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("9_byci8")
+text = "Continue"
+
+[node name="Control" type="Control" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="InputPromptTexture" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/Control" instance=ExtResource("11_etalh")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 214.0
+offset_top = 52.0
+offset_right = 254.0
+offset_bottom = 92.0
+StartingAction = "Interact"
+
+[node name="InputBlocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Beetle_SubViewport" type="SubViewport" parent="." node_paths=PackedStringArray("Origin")]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1024, 1024)
+script = ExtResource("10_p4fxr")
+Origin = NodePath("Anim/Origin")
+
+[node name="Camera3D" type="Camera3D" parent="Beetle_SubViewport"]
+transform = Transform3D(1, 2.44776e-06, 0, -2.17811e-13, 4.37114e-08, 1, 2.44776e-06, -1, 4.37114e-08, -3.80277e-06, 1.19456, -1.33513e-08)
+environment = ExtResource("11_33cw0")
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Beetle_SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -0.355694, 0.934602, 0, -0.934602, -0.355694, 0, 1.96126, -1.43761)
+
+[node name="Anim" type="Node3D" parent="Beetle_SubViewport"]
+
+[node name="Origin" type="Node3D" parent="Beetle_SubViewport/Anim"]
+
+[node name="Beetle" parent="Beetle_SubViewport/Anim/Origin" node_paths=PackedStringArray("Accessories") instance=ExtResource("12_etalh")]
+Accessories = [null]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://fri7scrdqgsj"]
+
+[ext_resource type="Script" uid="uid://dohs1iqodgbmq" path="res://Views/FocusEventTutorialView/FocusEventTutorialView.cs" id="1_bs51w"]
+[ext_resource type="PackedScene" uid="uid://0keq3gpw3fi0" path="res://Prefabs/UI/TutorialPopup/catch_tutorial.tscn" id="3_chb3n"]
+
+[node name="FocusEventTutorialView" type="Control" node_paths=PackedStringArray("CatchTutorial")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bs51w")
+CatchTutorial = NodePath("CatchTutorial")
+
+[node name="CatchTutorial" parent="." instance=ExtResource("3_chb3n")]
+layout_mode = 1

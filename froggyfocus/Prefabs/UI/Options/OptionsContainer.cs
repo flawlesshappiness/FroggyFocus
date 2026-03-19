@@ -25,6 +25,9 @@ public partial class OptionsContainer : ControlScript
     [Export]
     public OptionButton FadePlantsOptionButton;
 
+    [Export]
+    public OptionButton CatchBugTutorialOptionButton;
+
     public static Action OnUIScaleChanged;
     public static Action<int> OnGamepadDisplayChanged;
     public static Action<int> OnCutsceneTypeChanged;
@@ -41,10 +44,11 @@ public partial class OptionsContainer : ControlScript
         UIScaleOptions.IndexChanged += UIScaleOptions_IndexChanged;
         GamepadDisplayOptionButton.ItemSelected += GamepadDisplayOptionButton_ItemSelected;
         CutsceneTypeOptionButton.ItemSelected += CutsceneTypeOptionButton_ItemSelected;
-        FadePlantsOptionButton.ItemSelected += FadePlantsOptionButtonn_ItemSelected;
+        FadePlantsOptionButton.ItemSelected += FadePlantsOptionButton_ItemSelected;
+        CatchBugTutorialOptionButton.ItemSelected += CatchBugTutorialOptionButton_ItemSelected;
 
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
-        FadePlantsOptionButtonn_ItemSelected(Data.Options.FadePlantsIndex);
+        FadePlantsOptionButton_ItemSelected(Data.Options.FadePlantsIndex);
     }
 
     protected override void OnShow()
@@ -59,6 +63,7 @@ public partial class OptionsContainer : ControlScript
         GamepadDisplayOptionButton.Selected = Data.Options.GamepadDisplayIndex;
         CutsceneTypeOptionButton.Selected = Data.Options.CutsceneTypeIndex;
         FadePlantsOptionButton.Selected = Data.Options.FadePlantsIndex;
+        CatchBugTutorialOptionButton.Selected = Data.Options.CatchTutorialEnabled ? 0 : 1;
 
         showing = false;
     }
@@ -104,11 +109,17 @@ public partial class OptionsContainer : ControlScript
         OnCutsceneTypeChanged?.Invoke(index);
     }
 
-    private void FadePlantsOptionButtonn_ItemSelected(long l_index)
+    private void FadePlantsOptionButton_ItemSelected(long l_index)
     {
         var index = (int)l_index;
         Data.Options.FadePlantsIndex = index;
         RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_view", index == 0 || index == 2);
         RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_player", index == 1 || index == 2);
+    }
+
+    private void CatchBugTutorialOptionButton_ItemSelected(long l_index)
+    {
+        var index = (int)l_index;
+        Data.Options.CatchTutorialEnabled = index == 0;
     }
 }

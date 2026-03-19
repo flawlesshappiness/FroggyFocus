@@ -335,6 +335,10 @@ public partial class FocusEvent : Node3D
             FocusEventView.Instance.SetFocusEvent(this);
             FocusEventView.Instance.Show();
             FocusEventController.Instance.FocusEventStarted(this);
+
+            yield return new WaitForSeconds(1.0f);
+
+            FocusEventTutorialView.Instance.StartCatchTutorial();
         }
     }
 

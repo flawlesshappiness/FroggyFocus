@@ -7,4 +7,5 @@ public partial class OptionsData
     public int GamepadDisplayIndex { get; set; } = 0;
     public int CutsceneTypeIndex { get; set; } = 0;
     public int FadePlantsIndex { get; set; } = 0;
+    public bool CatchTutorialEnabled { get; set; } = false;
 }
