@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://0keq3gpw3fi0"]
 
-[ext_resource type="Script" uid="uid://cth1028di1r1h" path="res://Views/FocusEventTutorialView/TutorialPopup.cs" id="1_4k8s4"]
+[ext_resource type="Script" uid="uid://cth1028di1r1h" path="res://Prefabs/UI/TutorialPopup/TutorialPopup.cs" id="1_4k8s4"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_33cw0"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="2_hkk15"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="3_j1uog"]
@@ -308,6 +308,7 @@ text = "Continue"
 
 [node name="Control" type="Control" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="InputPromptTexture" parent="CenterContainer/Center/Catch_AnimatedPanel/MarginContainer/MarginContainer/Control" instance=ExtResource("11_etalh")]
 custom_minimum_size = Vector2(40, 40)
