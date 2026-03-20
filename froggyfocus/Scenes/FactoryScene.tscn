@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=64 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -29,10 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cp64pfqrxicn2" path="res://Prefabs/Machine/gear_big.tscn" id="26_3yuby"]
 [ext_resource type="PackedScene" uid="uid://b6wxew74nf10j" path="res://Prefabs/Machine/gear_big_seaweed.tscn" id="26_fpcwk"]
 [ext_resource type="PackedScene" uid="uid://cd6c641sy8eye" path="res://Prefabs/Construction/scaffolding_platform_4x4.tscn" id="26_i8uf5"]
-[ext_resource type="PackedScene" uid="uid://drkw8kmks10q4" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_dish.fbx" id="27_f1l0q"]
 [ext_resource type="PackedScene" uid="uid://jyb4tasp37gp" path="res://Prefabs/Nature/seaweed_cluster_bridge.tscn" id="27_k0l20"]
-[ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="28_ev2yv"]
-[ext_resource type="PackedScene" uid="uid://btfkqop4kbh8e" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_toilet.fbx" id="29_3aqke"]
 [ext_resource type="PackedScene" uid="uid://c3hkrtmh6ohnl" path="res://Prefabs/NPC/EelNPC/eel_npc.tscn" id="30_8g76t"]
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="30_kso58"]
 [ext_resource type="PackedScene" uid="uid://c8y0kfo5jh0t8" path="res://Prefabs/Glitch/tv_travel.tscn" id="30_lajby"]
@@ -52,6 +49,8 @@
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="47_ix7e4"]
 [ext_resource type="PackedScene" uid="uid://cdlkowmgv487x" path="res://Assets/FlawLizArt/Construction/scaffolding_bars_4m_short.fbx" id="48_relfh"]
 [ext_resource type="PackedScene" uid="uid://cie8jtojk5lgv" path="res://Prefabs/Construction/scaffolding_bars_4m.tscn" id="49_1xjcp"]
+[ext_resource type="AudioStream" uid="uid://xtqp6ttgarq" path="res://Sounds/Raw/bgm_factory_001.wav" id="50_inr37"]
+[ext_resource type="AudioStream" uid="uid://b6c7qts3i5ebq" path="res://Sounds/Raw/bgm_factory_001_focus.wav" id="51_relfh"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="60_12tkq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_s3kaw"]
@@ -124,12 +123,13 @@ _data = {
 }
 point_count = 4
 
-[node name="FactoryScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
+[node name="FactoryScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
 script = ExtResource("1_net23")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-WorldBugParent = NodePath("World/WorldBugs")
-FocusEventParent = NodePath("World/FocusEvents")
+FocusEvent = NodePath("World/FocusEvent")
+BgmMain = NodePath("World/Sounds/Bgm")
+BgmFocus = NodePath("World/Sounds/BgmFocus")
 Weathers = Array[ExtResource("2_jmf1t")]([ExtResource("3_s3kaw"), ExtResource("4_g0uh1"), ExtResource("6_pkxqc")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -999,30 +999,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 [node name="Lilypad_Boat" parent="World" instance=ExtResource("12_qubeh")]
 transform = Transform3D(-0.356461, 0, -0.93431, 0, 1, 0, 0.93431, 0, -0.356461, 62.9172, -0.95356, 13.7017)
 
+[node name="FocusEvent" parent="World" instance=ExtResource("24_0lfya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+
 [node name="FocusEvents" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.531, 0, 113.425)
 
-[node name="Trash_Water" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
-visible = false
-Id = "trash_water"
-Info = ExtResource("35_8mo76")
-
-[node name="Trash_Bag_Black" parent="World/FocusEvents/Trash_Water" instance=ExtResource("16_fivwh")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0104218, 0, 3.42182)
-
-[node name="bottle_cleaning_dish" parent="World/FocusEvents/Trash_Water" instance=ExtResource("27_f1l0q")]
-transform = Transform3D(1.65262, -0.553472, 0.981078, 0.635139, 1.89647, 0, -0.930292, 0.31156, 1.74284, -3.53822, -3.07065, 0.809975)
-
-[node name="bottle_cleaning_simple" parent="World/FocusEvents/Trash_Water" instance=ExtResource("28_ev2yv")]
-transform = Transform3D(1.30569, 0.378869, 1.46684, -0.557345, 1.92077, 1.20116e-08, -1.40874, -0.408769, 1.35955, 3.35431, -4.03977, 1.41536)
-
-[node name="bottle_cleaning_toilet" parent="World/FocusEvents/Trash_Water" instance=ExtResource("29_3aqke")]
-transform = Transform3D(-8.53555e-08, 1.95271, -0.432368, -2, -8.74228e-08, 0, -1.88994e-08, 0.432368, 1.95271, -1.53165, -1.14518, -4.4596)
-
 [node name="Oil" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
 visible = false
-Id = "oil"
-Info = ExtResource("39_v2jd5")
 
 [node name="oil_spill" parent="World/FocusEvents/Oil" instance=ExtResource("12_sptoi")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1.16229, -3.61816)
@@ -1041,8 +1025,6 @@ transform = Transform3D(-1.01065, 1.72586, 7.54396e-08, 0, -8.74228e-08, 2, 1.72
 
 [node name="Scaffolding" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
 visible = false
-Id = "scaffolding"
-Info = ExtResource("39_v2jd5")
 
 [node name="oil_spill" parent="World/FocusEvents/Scaffolding" instance=ExtResource("12_sptoi")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1.16229, -3.61816)
@@ -1058,8 +1040,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="Seaweed" parent="World/FocusEvents" instance=ExtResource("24_0lfya")]
 visible = false
-Id = "seaweed"
-Info = ExtResource("41_8g76t")
 
 [node name="Seaweed_Cluster_Circle" parent="World/FocusEvents/Seaweed" instance=ExtResource("24_uf1yc")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -1406,6 +1386,14 @@ panning_strength = 0.5
 bus = &"Environment"
 script = ExtResource("47_ix7e4")
 Paths = [NodePath("../../NavigationRegion3D/Platforms/Bags/Trash_Bag_Island/Path_SfxWater"), NodePath("../../NavigationRegion3D/Platforms/Bags/Trash_Bag_Island2/Path_SfxWater2"), NodePath("../../NavigationRegion3D/Platforms/Bags/Trash_bag_Island2/Path_SfxWater3"), NodePath("../../Building/Path_SfxWater5"), NodePath("../../Building/Path_SfxWater6"), NodePath("../../Seaweed/Path_SfxWater7"), NodePath("../../Seaweed/Path_SfxWater8")]
+
+[node name="Bgm" type="AudioStreamPlayer" parent="World/Sounds"]
+stream = ExtResource("50_inr37")
+bus = &"BGM"
+
+[node name="BgmFocus" type="AudioStreamPlayer" parent="World/Sounds"]
+stream = ExtResource("51_relfh")
+bus = &"BGM"
 
 [node name="LeechNPC" parent="World" instance=ExtResource("60_12tkq")]
 transform = Transform3D(-0.995019, 0, -0.0996844, 0, 1, 0, 0.0996844, 0, -0.995019, -53.4572, -1.58764, 37.7762)

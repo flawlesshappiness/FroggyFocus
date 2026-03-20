@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=71 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
@@ -18,8 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://darn03h463tff" path="res://Assets/FlawLizArt/Nature/Toon/beach_flat.fbx" id="12_ift05"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="14_byi1e"]
 [ext_resource type="PackedScene" uid="uid://cdn0ulu4iqvsm" path="res://Prefabs/NPC/SnailNPC/snail_npc.tscn" id="14_fjshb"]
-[ext_resource type="Material" uid="uid://dacqxr0yochmh" path="res://Materials/Sand.tres" id="15_lrn65"]
-[ext_resource type="PackedScene" uid="uid://crkfm1vapfehx" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat.fbx" id="17_k0g6b"]
 [ext_resource type="PackedScene" uid="uid://bd1p385ni06q4" path="res://Prefabs/Objects/pier.tscn" id="17_pteap"]
 [ext_resource type="PackedScene" uid="uid://kvtix1ndn4h1" path="res://Prefabs/Nature/stalagtite.tscn" id="17_wkocx"]
 [ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="20_bktod"]
@@ -40,7 +38,6 @@
 [ext_resource type="PackedScene" uid="uid://dh4a2fdmnah0r" path="res://Prefabs/NPC/FrogManagerNPC/frog_manager_npc.tscn" id="27_68c8r"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="27_df6tn"]
 [ext_resource type="PackedScene" uid="uid://db303mjlt45f4" path="res://Prefabs/Crystal/crystal_long.tscn" id="27_lljyu"]
-[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="28_8vus0"]
 [ext_resource type="PackedScene" uid="uid://dovpu07ffsnwv" path="res://Prefabs/Objects/sign_boat_flipped.tscn" id="28_pwhu0"]
 [ext_resource type="PackedScene" uid="uid://bm7kofjv3i0ne" path="res://Prefabs/NPC/SalamanderNPC/salamander_npc.tscn" id="30_hexkd"]
 [ext_resource type="PackedScene" uid="uid://dptbcsgggi5jt" path="res://Prefabs/Crystal/crystal_doorway.tscn" id="32_68c8r"]
@@ -105,20 +102,11 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="SphereMesh" id="SphereMesh_24njm"]
-radius = 10.0
-height = 20.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_byi1e"]
-material = ExtResource("15_lrn65")
-size = Vector2(20, 10)
-
-[node name="CaveScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
+[node name="CaveScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvent")]
 script = ExtResource("1_q8md0")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-WorldBugParent = NodePath("World/WorldBugs")
-FocusEventParent = NodePath("World/FocusEvents")
+FocusEvent = NodePath("World/FocusEvent")
 Weathers = Array[ExtResource("2_k0g6b")]([ExtResource("3_wkocx"), ExtResource("4_pteap")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -2002,139 +1990,9 @@ stream = ExtResource("39_tww0l")
 autoplay = true
 bus = &"Environment"
 
-[node name="FocusEvents" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2732, 0, -168.932)
-
-[node name="Stalagmite" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.913065, 0)
+[node name="FocusEvent" parent="World" instance=ExtResource("14_byi1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
 visible = false
-Id = "stalagmite"
-Info = ExtResource("20_rehxh")
-
-[node name="stalagmite_flat2" parent="World/FocusEvents/Stalagmite" instance=ExtResource("17_k0g6b")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 3.00555)
-
-[node name="stalagmite_flat3" parent="World/FocusEvents/Stalagmite" instance=ExtResource("17_k0g6b")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.92558, 0.470133, 1.46738)
-
-[node name="stalagmite_flat4" parent="World/FocusEvents/Stalagmite" instance=ExtResource("17_k0g6b")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.45906, 0.470133, -0.181152)
-
-[node name="stalagmite_flat5" parent="World/FocusEvents/Stalagmite" instance=ExtResource("17_k0g6b")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.26651, 0.470133, -3.7597)
-
-[node name="stalagmite_flat6" parent="World/FocusEvents/Stalagmite" instance=ExtResource("17_k0g6b")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -5.70535, 1.1317, -0.826035)
-
-[node name="stalagmite_flat7" parent="World/FocusEvents/Stalagmite" instance=ExtResource("17_k0g6b")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1.02107, 1.1317, -4.04268)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Stalagmite"]
-mesh = SubResource("SphereMesh_24njm")
-
-[node name="Moss" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
-visible = false
-Id = "moss"
-Info = ExtResource("21_bistx")
-
-[node name="Stalagmite_Platform" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.0401225, 0)
-
-[node name="Stalagmite_Platform2" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.51813, -0.318687, 3.0903)
-
-[node name="Stalagmite_Platform3" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.03122, -0.653644, -1.94382)
-
-[node name="Stalagmite_Platform4" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.50494, -0.653644, -1.94382)
-
-[node name="Stalagmite_Platform5" parent="World/FocusEvents/Moss" instance=ExtResource("6_0humr")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.50494, -0.351599, 2.10547)
-
-[node name="Crystal" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
-visible = false
-Id = "crystal"
-Info = ExtResource("32_k2kgv")
-
-[node name="Platforms" type="Node3D" parent="World/FocusEvents/Crystal"]
-
-[node name="Stalagmite_Platform_Crystals" parent="World/FocusEvents/Crystal/Platforms" instance=ExtResource("27_8vus0")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -0.02, 0)
-
-[node name="Stalagmite_Platform_Crystals2" parent="World/FocusEvents/Crystal/Platforms" instance=ExtResource("27_8vus0")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -2.51813, -0.318687, 3.0903)
-
-[node name="Stalagmite_Platform_Crystals3" parent="World/FocusEvents/Crystal/Platforms" instance=ExtResource("27_8vus0")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -4.03122, -0.653644, -1.94382)
-
-[node name="Stalagmite_Platform_Crystals4" parent="World/FocusEvents/Crystal/Platforms" instance=ExtResource("27_8vus0")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.50494, -0.653644, -1.94382)
-
-[node name="Stalagmite_Platform_Crystals5" parent="World/FocusEvents/Crystal/Platforms" instance=ExtResource("27_8vus0")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 4.50494, -0.351599, 2.10547)
-
-[node name="Crystals" type="Node3D" parent="World/FocusEvents/Crystal"]
-
-[node name="Crystal_Long" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("27_lljyu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15531, 0, 3.27121)
-
-[node name="Crystal_Long2" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("27_lljyu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4715, -0.131291, -3.04489)
-
-[node name="Crystal_Long3" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("27_lljyu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.96518, -0.131291, -2.02963)
-
-[node name="Crystal_Long4" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("27_lljyu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60589, 0.175396, 3.46808)
-
-[node name="crystal_short" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(0.718551, 0, -0.695474, 0, 1, 0, 0.695474, 0, 0.718551, -1.74038, -0.302805, 3.76215)
-
-[node name="crystal_short2" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(0.22988, 0, -0.973219, 0, 1, 0, 0.973219, 0, 0.22988, -4.05697, -0.302805, 1.59842)
-
-[node name="crystal_short3" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(-0.538491, 0, -0.842631, 0, 1, 0, 0.842631, 0, -0.538491, -3.53917, -0.302805, 2.68066)
-
-[node name="crystal_short8" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(-0.538491, 0, -0.842631, 0, 1, 0, 0.842631, 0, -0.538491, 4.83959, -0.302805, -0.463348)
-
-[node name="crystal_short9" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(0.549285, 0, -0.835635, 0, 1, 0, 0.835635, 0, 0.549285, 3.82742, -0.302805, 2.60541)
-
-[node name="crystal_short4" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(-0.858557, 0, -0.512717, 0, 1, 0, 0.512717, 0, -0.858557, -4.34069, -0.646052, -1.00421)
-
-[node name="crystal_short5" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(-0.388497, 0, -0.92145, 0, 1, 0, 0.92145, 0, -0.388497, -2.458, -0.646052, -3.58304)
-
-[node name="crystal_short6" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(-0.813659, 0, -0.581342, 0, 1, 0, 0.581342, 0, -0.813659, -3.76795, -0.646052, -3.05009)
-
-[node name="crystal_short7" parent="World/FocusEvents/Crystal/Crystals" instance=ExtResource("28_8vus0")]
-transform = Transform3D(-0.813659, 0, -0.581342, 0, 1, 0, 0.581342, 0, -0.813659, 2.47229, -0.646052, -3.86378)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Crystal"]
-mesh = SubResource("SphereMesh_24njm")
-
-[node name="Pier" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.971666, 0)
-visible = false
-Id = "pier"
-Info = ExtResource("22_7d81n")
-
-[node name="Pier" parent="World/FocusEvents/Pier" instance=ExtResource("17_pteap")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20, -5.18, 7)
-
-[node name="Beach" parent="World/FocusEvents" instance=ExtResource("14_byi1e")]
-visible = false
-Id = "beach"
-Info = ExtResource("23_fjshb")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Beach"]
-mesh = SubResource("PlaneMesh_byi1e")
 
 [node name="Pickups" type="Node3D" parent="World"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=50 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://guslwpuh5hsm" path="res://Prefabs/FocusEventBackground/swamp_mushroom.tscn" id="32_u0w0c"]
 [ext_resource type="PackedScene" uid="uid://chwsteqk4rmet" path="res://Prefabs/FocusEventBackground/swamp_woods.tscn" id="33_7uk70"]
 [ext_resource type="AudioStream" uid="uid://ckrqbl4voqiay" path="res://Sounds/Raw/sfx_focus_suspense_004.wav" id="33_p01lx"]
+[ext_resource type="PackedScene" uid="uid://c2hpmsdt0r2mr" path="res://Prefabs/FocusEventBackground/factory_trash_water.tscn" id="34_uktrp"]
 
 [sub_resource type="Curve" id="Curve_4nfkp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -236,6 +237,9 @@ visible = false
 visible = false
 
 [node name="swamp_woods" parent="Backgrounds" instance=ExtResource("33_7uk70")]
+visible = false
+
+[node name="factory_trash_water" parent="Backgrounds" instance=ExtResource("34_uktrp")]
 visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

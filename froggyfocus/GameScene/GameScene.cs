@@ -142,11 +142,17 @@ public partial class GameScene : Scene
 
     private void FocusEvent_Started(FocusEvent focus_event)
     {
-        BgmFocus.FadeIn(1f, 0f);
+        if (BgmFocus != null)
+        {
+            BgmFocus.FadeIn(1f, 0f);
+        }
     }
 
     private void FocusEvent_Ended(FocusEventResult result)
     {
-        BgmFocus.FadeOut(1f);
+        if (BgmFocus != null)
+        {
+            BgmFocus.FadeOut(1f);
+        }
     }
 }

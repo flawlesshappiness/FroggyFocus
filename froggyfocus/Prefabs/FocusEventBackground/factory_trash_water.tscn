@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2hpmsdt0r2mr"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_24dsb"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="2_kxhm3"]
+[ext_resource type="Material" uid="uid://bbu4qi3npvrm" path="res://Materials/Water_Factory.tres" id="3_w3xxw"]
+[ext_resource type="PackedScene" uid="uid://dh0g8nwc8a2dv" path="res://Prefabs/Objects/trash_bag_black.tscn" id="4_ebk00"]
+[ext_resource type="PackedScene" uid="uid://drkw8kmks10q4" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_dish.fbx" id="5_4kjnl"]
+[ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="6_aol0w"]
+[ext_resource type="PackedScene" uid="uid://btfkqop4kbh8e" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_toilet.fbx" id="7_tjj4q"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="8_cf8h2"]
+
+[node name="factory_trash_water" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_24dsb")
+Id = "factory_trash_water"
+SoundEffects = [NodePath("AmbWater")]
+
+[node name="Water" parent="." instance=ExtResource("2_kxhm3")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -0.404772, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("3_w3xxw")
+
+[node name="Trash_Bag_Black" parent="." instance=ExtResource("4_ebk00")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0104218, 0.0472594, -0.123748)
+
+[node name="bottle_cleaning_dish" parent="." instance=ExtResource("5_4kjnl")]
+transform = Transform3D(1.65262, -0.553472, 0.981078, 0.635139, 1.89647, 0, -0.930292, 0.31156, 1.74284, -4.24275, -3.07065, 0.809975)
+
+[node name="bottle_cleaning_simple" parent="." instance=ExtResource("6_aol0w")]
+transform = Transform3D(1.30569, 0.378869, 1.46684, -0.557345, 1.92077, 1.20116e-08, -1.40874, -0.408769, 1.35955, 3.93761, -3.82107, 1.41536)
+
+[node name="bottle_cleaning_toilet" parent="." instance=ExtResource("7_tjj4q")]
+transform = Transform3D(-8.53555e-08, 1.95271, -0.432368, -2, -8.74228e-08, 0, -1.88994e-08, 0.432368, 1.95271, -1.53165, -0.506874, -4.90224)
+
+[node name="AmbWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cf8h2")
+volume_db = -5.0
+autoplay = true
+bus = &"Environment"
+
+[editable path="Water"]
