@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=58 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
@@ -41,6 +41,11 @@
 [ext_resource type="PackedScene" uid="uid://cksrpp0fxbin8" path="res://Prefabs/FocusEventBackground/factory_oil.tscn" id="35_ggumm"]
 [ext_resource type="PackedScene" uid="uid://flafg5vv01xa" path="res://Prefabs/FocusEventBackground/factory_scaffolding.tscn" id="36_unko1"]
 [ext_resource type="PackedScene" uid="uid://dfxfuotoykf3j" path="res://Prefabs/FocusEventBackground/factory_seaweed.tscn" id="37_kl100"]
+[ext_resource type="PackedScene" uid="uid://bh3eypj3ka06x" path="res://Prefabs/FocusEventBackground/beach_land.tscn" id="38_5b2ly"]
+[ext_resource type="PackedScene" uid="uid://b57vlgan34ltd" path="res://Prefabs/FocusEventBackground/beach_water.tscn" id="39_0y8j5"]
+[ext_resource type="PackedScene" uid="uid://c1fg0euksj7pd" path="res://Prefabs/FocusEventBackground/cave_stalagmite.tscn" id="40_6fwkr"]
+[ext_resource type="PackedScene" uid="uid://eyskwgcel5l" path="res://Prefabs/FocusEventBackground/cave_moss.tscn" id="41_txf87"]
+[ext_resource type="PackedScene" uid="uid://cq0rt6jkt2q6a" path="res://Prefabs/FocusEventBackground/cave_crystal.tscn" id="42_cqyr8"]
 
 [sub_resource type="Curve" id="Curve_4nfkp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -252,6 +257,21 @@ visible = false
 visible = false
 
 [node name="factory_seaweed" parent="Backgrounds" instance=ExtResource("37_kl100")]
+visible = false
+
+[node name="beach_land" parent="Backgrounds" instance=ExtResource("38_5b2ly")]
+visible = false
+
+[node name="beach_water" parent="Backgrounds" instance=ExtResource("39_0y8j5")]
+visible = false
+
+[node name="cave_stalagmite" parent="Backgrounds" instance=ExtResource("40_6fwkr")]
+visible = false
+
+[node name="cave_moss" parent="Backgrounds" instance=ExtResource("41_txf87")]
+visible = false
+
+[node name="cave_crystal" parent="Backgrounds" instance=ExtResource("42_cqyr8")]
 visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

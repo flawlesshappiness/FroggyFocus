@@ -1,0 +1,173 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq0rt6jkt2q6a"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_40cu1"]
+[ext_resource type="PackedScene" uid="uid://crkfm1vapfehx" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat.fbx" id="2_krj7b"]
+[ext_resource type="PackedScene" uid="uid://cprcurqn1yqys" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_002.fbx" id="3_b24ug"]
+[ext_resource type="Material" uid="uid://dqix01s7vhtmd" path="res://Materials/Crystal1.tres" id="4_1poff"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="5_8qxrm"]
+[ext_resource type="Material" uid="uid://11q5a3upx7bp" path="res://Materials/Water_Beach.tres" id="6_1vgsy"]
+
+[node name="cave_crystal" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_40cu1")
+Id = "cave_crystal"
+SoundEffects = []
+
+[node name="stalagmite_flat" parent="." instance=ExtResource("2_krj7b")]
+transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0)
+
+[node name="crystals" type="Node3D" parent="."]
+
+[node name="rock_decorative_002" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.01543, 0, 1.51925)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_002" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_003" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.11171, 0, -0.487361, 0, 0.5, 0, 0.487361, 0, 0.11171, -1.60059, 0, 1.96888)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_003" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_004" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.443187, 0, -0.231486, 0, 0.5, 0, 0.231486, 0, 0.443187, -2.43853, 0, -0.790201)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_004" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_005" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.0266821, 0, -0.499288, 0, 0.5, 0, 0.499288, 0, 0.0266821, -3.54216, 0, 1.51925)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_005" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_006" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.19284, 0, -0.461316, 0, 0.5, 0, 0.461316, 0, -0.19284, 0.524928, 0, 3.35864)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_006" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_007" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.443795, 0, -0.230317, 0, 0.5, 0, 0.230317, 0, -0.443795, 2.97744, 0, -0.626701)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_007" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_008" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.492803, 0, 0.0845286, 0, 0.5, 0, -0.0845286, 0, -0.492803, 1.03587, 0, -2.07777)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_008" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_009" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.427755, 0, -0.258894, 0, 0.5, 0, 0.258894, 0, -0.427755, -2.64291, 0, -2.91572)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_009" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_010" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.213245, 0, -0.452246, 0, 0.5, 0, 0.452246, 0, -0.213245, 0.340987, 0, -4.08066)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_010" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_011" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.085298, 0, -0.180898, 0, 0.2, 0, 0.180898, 0, -0.085298, -1.06921, 0, -3.46753)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_011" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_012" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.169682, 0, -0.105868, 0, 0.2, 0, 0.105868, 0, -0.169682, -3.97135, 0, -0.136198)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_012" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_013" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.0871656, 0, -0.180006, 0, 0.2, 0, 0.180006, 0, -0.0871656, -1.72321, 0, 2.62288)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_013" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_014" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.184093, 0, -0.0781655, 0, 0.2, 0, 0.0781655, 0, -0.184093, 2.77307, 0, 0.313431)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_014" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_015" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.0176502, 0, -0.19922, 0, 0.2, 0, 0.19922, 0, -0.0176502, 2.11906, 0, 1.96888)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_015" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_016" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.175143, 0, -0.0965648, 0, 0.2, 0, 0.0965648, 0, 0.175143, 4.18326, 0, 1.78494)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_016" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_017" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.0650971, 0, -0.189109, 0, 0.2, 0, 0.189109, 0, 0.0650971, 2.03731, 0, -2.38434)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_017" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_018" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.159449, 0, -0.120731, 0, 0.2, 0, 0.120731, 0, 0.159449, 3.83582, 0, -2.75222)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_018" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_019" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.159449, 0, -0.120731, 0, 0.2, 0, 0.120731, 0, 0.159449, 2.85482, 0, -3.85585)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_019" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_020" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(-0.00572737, 0, -0.199918, 0, 0.2, 0, 0.199918, 0, -0.00572737, 2.53942, 0, 3.69613)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_020" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_021" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.144393, 0, -0.138386, 0, 0.2, 0, 0.138386, 0, 0.144393, -1.77099, 0, 4.02904)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_021" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="rock_decorative_022" parent="crystals" instance=ExtResource("3_b24ug")]
+transform = Transform3D(0.144393, 0, -0.138386, 0, 0.2, 0, 0.138386, 0, 0.144393, -1.77099, 0, 4.02904)
+
+[node name="rock_decorative_002" parent="crystals/rock_decorative_022" index="0"]
+surface_material_override/0 = ExtResource("4_1poff")
+
+[node name="Water" parent="." instance=ExtResource("5_8qxrm")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -1.01789, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("6_1vgsy")
+
+[editable path="crystals/rock_decorative_002"]
+[editable path="crystals/rock_decorative_003"]
+[editable path="crystals/rock_decorative_004"]
+[editable path="crystals/rock_decorative_005"]
+[editable path="crystals/rock_decorative_006"]
+[editable path="crystals/rock_decorative_007"]
+[editable path="crystals/rock_decorative_008"]
+[editable path="crystals/rock_decorative_009"]
+[editable path="crystals/rock_decorative_010"]
+[editable path="crystals/rock_decorative_011"]
+[editable path="crystals/rock_decorative_012"]
+[editable path="crystals/rock_decorative_013"]
+[editable path="crystals/rock_decorative_014"]
+[editable path="crystals/rock_decorative_015"]
+[editable path="crystals/rock_decorative_016"]
+[editable path="crystals/rock_decorative_017"]
+[editable path="crystals/rock_decorative_018"]
+[editable path="crystals/rock_decorative_019"]
+[editable path="crystals/rock_decorative_020"]
+[editable path="crystals/rock_decorative_021"]
+[editable path="crystals/rock_decorative_022"]
+[editable path="Water"]

@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://eyskwgcel5l"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_0fy87"]
+[ext_resource type="Material" uid="uid://cukhg4fyffggk" path="res://Materials/Plant_Dark.tres" id="2_x5f4t"]
+[ext_resource type="PackedScene" uid="uid://2euuwanf2rrc" path="res://Prefabs/Nature/plant_wood_sorrel_group.tscn" id="3_8v6ss"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cqyr8"]
+material = ExtResource("2_x5f4t")
+size = Vector2(20, 20)
+
+[node name="cave_moss" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_0fy87")
+Id = "cave_moss"
+SoundEffects = []
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_cqyr8")
+
+[node name="plant_wood_sorrel_group" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="plant_wood_sorrel_group2" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.28813, 0, 0)
+
+[node name="plant_wood_sorrel_group3" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.58006, 0, 0)
+
+[node name="plant_wood_sorrel_group4" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.9761, 0, 0)
+
+[node name="plant_wood_sorrel_group5" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.36387, 0, 0)
+
+[node name="plant_wood_sorrel_group6" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.67295, 0, 0)
+
+[node name="plant_wood_sorrel_group7" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.0281, 0, 0)
+
+[node name="plant_wood_sorrel_group8" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.960556, 0, -3.62554)
+
+[node name="plant_wood_sorrel_group9" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.32758, 0, -3.62554)
+
+[node name="plant_wood_sorrel_group10" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.6195, 0, -3.62554)
+
+[node name="plant_wood_sorrel_group11" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -9.01555, 0, -3.62554)
+
+[node name="plant_wood_sorrel_group12" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.32443, 0, -3.62554)
+
+[node name="plant_wood_sorrel_group13" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.63351, 0, -3.62554)
+
+[node name="plant_wood_sorrel_group14" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.9886, 0, -3.62554)
+
+[node name="plant_wood_sorrel_group15" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.559256, 0, 3.64409)
+
+[node name="plant_wood_sorrel_group16" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.84739, 0, 3.64409)
+
+[node name="plant_wood_sorrel_group17" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.13931, 0, 3.64409)
+
+[node name="plant_wood_sorrel_group18" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.5354, 0, 3.64409)
+
+[node name="plant_wood_sorrel_group19" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.80462, 0, 3.64409)
+
+[node name="plant_wood_sorrel_group20" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6.1137, 0, 3.64409)
+
+[node name="plant_wood_sorrel_group21" parent="." instance=ExtResource("3_8v6ss")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.46883, 0, 3.64409)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1fg0euksj7pd"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_v3e64"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="2_wekud"]
+[ext_resource type="Material" uid="uid://11q5a3upx7bp" path="res://Materials/Water_Beach.tres" id="3_nhtfw"]
+[ext_resource type="PackedScene" uid="uid://crkfm1vapfehx" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat.fbx" id="4_h2lmo"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="5_gyqub"]
+
+[node name="cave_stalagmite" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_v3e64")
+Id = "cave_stalagmite"
+SoundEffects = [NodePath("AmbWater")]
+
+[node name="Water" parent="." instance=ExtResource("2_wekud")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -1.01789, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("3_nhtfw")
+
+[node name="stalagmite_flat" parent="." instance=ExtResource("4_h2lmo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="stalagmite_flat2" parent="." instance=ExtResource("4_h2lmo")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -6.10211, -4.76837e-07, 3.95832)
+
+[node name="stalagmite_flat4" parent="." instance=ExtResource("4_h2lmo")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5.76499, -4.76837e-07, -4.36927)
+
+[node name="stalagmite_flat5" parent="." instance=ExtResource("4_h2lmo")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.08451, 0.929385, -5.40356)
+
+[node name="stalagmite_flat3" parent="." instance=ExtResource("4_h2lmo")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4.25571, 0.330062, 5.39125)
+
+[node name="AmbWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gyqub")
+volume_db = -5.0
+autoplay = true
+bus = &"Environment"
+
+[editable path="Water"]

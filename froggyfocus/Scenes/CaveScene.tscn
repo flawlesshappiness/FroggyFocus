@@ -406,7 +406,7 @@ transform = Transform3D(-8, 0, 1.20797e-06, 0, 8, 0, -1.20797e-06, 0, -8, 8.7506
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("12_0humr")
-Id = "beach"
+Id = "beach_land"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Beach/FocusEventArea"]

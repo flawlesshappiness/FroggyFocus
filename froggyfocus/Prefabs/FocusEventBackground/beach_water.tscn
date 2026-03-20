@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b57vlgan34ltd"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_ohwk0"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="2_mb4y5"]
+[ext_resource type="Material" uid="uid://11q5a3upx7bp" path="res://Materials/Water_Beach.tres" id="3_ej1tn"]
+[ext_resource type="PackedScene" uid="uid://2vddpwr2n2uy" path="res://Prefabs/Objects/pole_wooden.tscn" id="4_r4ckd"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="5_yb0hv"]
+
+[node name="beach_water" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_ohwk0")
+Id = "beach_water"
+SoundEffects = [NodePath("AmbWater")]
+
+[node name="Water" parent="." instance=ExtResource("2_mb4y5")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -1.01789, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("3_ej1tn")
+
+[node name="Pole_Wooden" parent="." instance=ExtResource("4_r4ckd")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -8, 0)
+
+[node name="AmbWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yb0hv")
+volume_db = -5.0
+autoplay = true
+bus = &"Environment"
+
+[editable path="Water"]

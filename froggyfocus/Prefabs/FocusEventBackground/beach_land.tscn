@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh3eypj3ka06x"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_h2xfh"]
+[ext_resource type="Material" uid="uid://dacqxr0yochmh" path="res://Materials/Sand.tres" id="2_2w43r"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6fwkr"]
+material = ExtResource("2_2w43r")
+size = Vector2(20, 20)
+
+[node name="beach_land" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_h2xfh")
+Id = "beach_land"
+SoundEffects = []
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_6fwkr")
