@@ -20,6 +20,9 @@ public partial class FrogCharacter : Character
     public string AnimationName_Jump = "jump_start";
 
     [Export]
+    public string AnimationName_JumpEnd = "jump_end";
+
+    [Export]
     public string AnimationName_Fall = "falling";
 
     [Export]
@@ -107,7 +110,7 @@ public partial class FrogCharacter : Character
         var walking = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Walk}", true);
         walking.SpeedScale = 1.5f;
         var jump_start = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Jump}", false);
-        state_falling = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Fall}", true);
+        var jump_end = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_JumpEnd}", true);
         var jump_charge = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Charge}", true);
         var tongue_out = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_TongueOut}", false);
         var tongue_in = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_TongueIn}", false);
@@ -115,6 +118,7 @@ public partial class FrogCharacter : Character
         var cover_eyes = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_CoverEyes}", false);
         var uncover_eyes = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_UncoverEyes}", false);
 
+        state_falling = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Fall}", false);
         state_in_sand = Animation.CreateAnimation("Armature|in_sand", true);
 
         Animation.Connect(idle, walking, param_moving.WhenTrue());
@@ -138,8 +142,8 @@ public partial class FrogCharacter : Character
         Animation.Connect(jump_charge, jump_start, param_jumping.WhenTrue());
         Animation.Connect(idle, jump_start, param_jumping.WhenTrue());
         Animation.Connect(walking, jump_start, param_jumping.WhenTrue());
-        Animation.Connect(jump_start, state_falling);
-        Animation.Connect(state_falling, idle, param_jumping.WhenFalse());
+        Animation.Connect(jump_start, jump_end);
+        Animation.Connect(jump_end, idle, param_jumping.WhenFalse());
 
         Animation.Start(idle.Node);
     }

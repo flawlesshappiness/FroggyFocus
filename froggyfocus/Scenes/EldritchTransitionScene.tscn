@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cyd05rdcfsp2u" path="res://Scenes/EldritchTransitionScene.cs" id="1_s3kfn"]
 [ext_resource type="PackedScene" uid="uid://dneub1w482vjc" path="res://Assets/FlawLizArt/Eldritch/eye.fbx" id="1_vfsqn"]
-[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="2_s3kfn"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="4_0x0jt"]
 [ext_resource type="Environment" uid="uid://coth5clreluwp" path="res://Environment/EldritchTransition.tres" id="4_d24mt"]
 [ext_resource type="AudioStream" uid="uid://6n3om44qwvtv" path="res://Sounds/Raw/sfx_eldritch_transition_braam_001.wav" id="7_b5ovd"]
 [ext_resource type="AudioStream" uid="uid://ddbee7dh5iiup" path="res://Sounds/Raw/sfx_eldritch_transition_braam_002.wav" id="8_0qtok"]
@@ -32,19 +32,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Enter/Frog:position")
+tracks/1/path = NodePath("Enter/SfxBraam001:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 31.2134, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Enter/SfxBraam001:playing")
+tracks/2/path = NodePath("Enter/SfxBraam002:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -56,7 +56,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Enter/SfxBraam002:playing")
+tracks/3/path = NodePath("Enter/SfxBraam003:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -68,7 +68,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Enter/SfxBraam003:playing")
+tracks/4/path = NodePath("Enter/SfxAmb:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -80,7 +80,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Enter/SfxAmb:playing")
+tracks/5/path = NodePath("Enter/SfxHit:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -92,79 +92,79 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Enter/SfxHit:playing")
+tracks/6/path = NodePath("Enter/Camera3D:current")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Enter/Camera3D:current")
+tracks/7/path = NodePath("Enter/SfxHit:volume_db")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Enter/SfxHit:volume_db")
+tracks/8/path = NodePath("Exit/Camera3D:current")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Exit/Camera3D:current")
+tracks/9/path = NodePath("Exit/Camera3D:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Exit/Camera3D:position")
+tracks/10/path = NodePath("Exit/GlowEye2:light_energy")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [1.0]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Exit/GlowEye2:light_energy")
+tracks/11/path = NodePath("Exit/SfxRiser001:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"update": 1,
+"values": [false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Exit/SfxRiser001:playing")
+tracks/12/path = NodePath("Exit/SfxRiser002:playing")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
@@ -176,14 +176,14 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Exit/SfxRiser002:playing")
+tracks/13/path = NodePath("Enter/FrogCute:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 31, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vfsqn"]
@@ -202,131 +202,131 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(2.622, 28, 0), Vector3(2.622, 28, 0), Vector3(15, 25, 0), Vector3(15, 25, 0), Vector3(51.6235, 12.2309, 0), Vector3(51.6235, 12.2309, 0), Vector3(-411.106, 12.231, 0)]
 }
-tracks/1/type = "value"
+tracks/1/type = "animation"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Enter/Frog:position")
+tracks/1/path = NodePath("Enter/eye/AnimationPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 31, 0), Vector3(0, 20, 0)]
-}
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Enter/Frog/frog/AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": PackedStringArray("Armature|falling"),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "animation"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Enter/eye/AnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "clips": PackedStringArray("Armature|idle_closed", "Armature|open"),
 "times": PackedFloat32Array(0, 6)
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Enter/SfxBraam001:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Enter/SfxBraam001:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.0855776),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Enter/SfxBraam002:playing")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Enter/SfxBraam002:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Enter/SfxBraam003:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Enter/SfxBraam003:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(6, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Enter/SfxAmb:playing")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Enter/SfxAmb:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.114103, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Enter/SfxHit:playing")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Enter/SfxHit:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(9),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Enter/Camera3D:current")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Enter/Camera3D:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/10/type = "animation"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Enter/Heart/AnimationPlayer_Heart")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/8/type = "animation"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Enter/Heart/AnimationPlayer_Heart")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "clips": PackedStringArray("heartbeat", "heartbeat", "heartbeat"),
 "times": PackedFloat32Array(0.814564, 3.72985, 6.75231)
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Enter/SfxHit:volume_db")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Enter/SfxHit:volume_db")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(10.0277, 12),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [0.0, -80.0]
+}
+tracks/10/type = "animation"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Enter/FrogCute/frog_cute/AnimationPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": PackedStringArray("Armature|falling"),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Enter/FrogCute:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 3, 12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 31, 0), Vector3(0, 27.205, 0), Vector3(0, 20, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_s5fum"]
@@ -564,8 +564,8 @@ transform = Transform3D(20, 0, 0, 0, -8.74228e-07, -20, 0, 20, -8.74228e-07, 0, 
 surface_material_override/1 = SubResource("StandardMaterial3D_erslq")
 
 [node name="Skeleton3D" parent="Enter/eye/Armature" index="0"]
-bones/1/rotation = Quaternion(0.707107, 0, 0, 0.707107)
-bones/3/rotation = Quaternion(-0.5, -0.5, 0.5, 0.5)
+bones/1/rotation = Quaternion(0.887011, 4.72136e-17, -4.72136e-17, 0.461749)
+bones/3/rotation = Quaternion(-0.627211, -0.326506, 0.627211, 0.326506)
 bones/3/scale = Vector3(1, 1, 1)
 
 [node name="eyelid_upper" parent="Enter/eye/Armature/Skeleton3D" index="0"]
@@ -576,57 +576,42 @@ surface_material_override/1 = SubResource("StandardMaterial3D_0x0jt")
 surface_material_override/0 = SubResource("StandardMaterial3D_p17rk")
 surface_material_override/1 = SubResource("StandardMaterial3D_duxw5")
 
-[node name="Frog" parent="Enter" instance=ExtResource("2_s3kfn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 31.2134, 0)
+[node name="FrogCute" parent="Enter" instance=ExtResource("4_0x0jt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 31, 0)
 DisableAnimationStates = true
 
-[node name="Skeleton3D" parent="Enter/Frog/frog/Armature" index="0"]
-bones/1/position = Vector3(-0.000849132, -0.0124686, -0.0117448)
-bones/1/rotation = Quaternion(-0.129218, 1.1821e-07, -1.54039e-08, 0.991616)
-bones/1/scale = Vector3(1, 1, 1)
-bones/2/rotation = Quaternion(0.0804477, 0.0089402, -0.0495469, 0.995486)
-bones/3/rotation = Quaternion(0.110444, 1.18272e-07, -1.11947e-08, 0.993882)
-bones/6/rotation = Quaternion(0.0744583, -2.3805e-07, -1.74894e-08, 0.997224)
-bones/7/rotation = Quaternion(0.121352, -5.29267e-10, -5.68536e-08, 0.99261)
-bones/8/rotation = Quaternion(3.51058e-09, 0.998754, -0.0498975, -5.33472e-07)
-bones/11/rotation = Quaternion(0.768375, 0.00134461, -0.0212396, 0.639646)
-bones/12/rotation = Quaternion(-0.00107065, 0.521424, 0.00277981, 0.853293)
-bones/13/rotation = Quaternion(-0.059096, -0.637207, 0.144818, 0.754654)
-bones/23/rotation = Quaternion(0.729782, -0.00738721, 0.130046, 0.671157)
-bones/24/rotation = Quaternion(-0.00106812, -0.521424, -0.00277294, 0.853293)
-bones/25/rotation = Quaternion(-0.0590959, 0.637207, -0.144818, 0.754654)
-bones/28/scale = Vector3(1, 1, 1)
-bones/34/rotation = Quaternion(0.20546, 0.192061, 0.900846, -0.330719)
-bones/35/rotation = Quaternion(-0.0029032, 0.0364387, -0.000511262, 0.999332)
-bones/36/rotation = Quaternion(0.035499, 0.980733, 0.189781, 0.0297572)
-bones/38/rotation = Quaternion(0.215277, -0.194159, -0.904721, -0.312152)
-bones/39/rotation = Quaternion(-0.00288921, -0.0364388, 0.000508832, 0.999332)
-bones/40/rotation = Quaternion(-0.035499, 0.980733, 0.189781, -0.0297572)
-bones/42/position = Vector3(0.0242467, 0.00846009, 0.00173028)
-bones/42/scale = Vector3(0.619324, 1, 0.941337)
-bones/44/position = Vector3(0.0294793, -0.0350963, 0.00115202)
-bones/48/position = Vector3(0.0185457, -0.00599798, 0.00173028)
-bones/50/position = Vector3(-0.0242467, 0.00846009, 0.00173028)
-bones/50/scale = Vector3(0.619324, 1, 0.941337)
-bones/52/position = Vector3(-0.0294793, -0.0350963, 0.00115202)
-bones/52/rotation = Quaternion(-0.334369, 0.623055, 0.623055, -0.334369)
-bones/54/rotation = Quaternion(-0.334369, 0.623055, 0.623055, -0.334369)
-bones/56/position = Vector3(-0.0185457, -0.00599798, 0.00173028)
+[node name="Skeleton3D" parent="Enter/FrogCute/frog_cute/Armature" index="0"]
+bones/1/position = Vector3(7.7273e-19, -0.00108669, 0.00326005)
+bones/1/rotation = Quaternion(0.0975514, 2.197e-21, -1.29559e-17, 0.995231)
+bones/2/rotation = Quaternion(-0.0902607, 1.18723e-07, -1.07599e-08, 0.995918)
+bones/5/rotation = Quaternion(0.35743, 0.155523, 0.445527, 0.805955)
+bones/6/rotation = Quaternion(0.0518353, -0.0674139, 0.21861, 0.9721)
+bones/7/rotation = Quaternion(0.493191, -0.161086, 0.0181069, 0.854685)
+bones/10/rotation = Quaternion(0.429172, 0.235217, 0.486086, 0.72402)
+bones/11/rotation = Quaternion(0.199831, 0.0389299, 0.364628, 0.908624)
+bones/12/rotation = Quaternion(0.0647489, 0.0425271, 0.006232, 0.996976)
+bones/15/rotation = Quaternion(0.357278, -0.180838, -0.467397, 0.788156)
+bones/16/rotation = Quaternion(0.0655244, 0.0480432, -0.278365, 0.957033)
+bones/17/rotation = Quaternion(0.442465, 0.231376, 0.00191894, 0.866421)
+bones/20/rotation = Quaternion(0.457002, -0.242439, -0.575184, 0.633668)
+bones/21/rotation = Quaternion(0.153657, -0.0498705, -0.289576, 0.943424)
+bones/22/rotation = Quaternion(0.0530996, 0.0346564, -0.100119, 0.992953)
+bones/24/position = Vector3(0.00508073, -0.00213941, 0.00358465)
+bones/24/rotation = Quaternion(0.670012, -0.0458934, -0.0668826, 0.737905)
+bones/26/position = Vector3(0.00514381, 0.00355399, 0.00435939)
+bones/26/rotation = Quaternion(0.707971, -0.375357, -0.183294, 0.569463)
+bones/26/scale = Vector3(1.005, 1.005, 1.005)
+bones/28/position = Vector3(-0.0048381, 0.00355399, 0.0045012)
+bones/28/rotation = Quaternion(0.710747, 0.384164, 0.172235, 0.563553)
+bones/28/scale = Vector3(1.005, 1.005, 1.005)
+bones/30/position = Vector3(-0.00474019, -0.00213941, 0.0039039)
+bones/30/rotation = Quaternion(0.673231, 0.123566, -0.00424579, 0.729022)
 
-[node name="HatAttachmentGroup" parent="Enter/Frog/frog/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.99493, 0.100287, 0.00749824, -0.100566, 0.992161, 0.0741821, -2.11751e-09, -0.0745601, 0.997216, 0.000982902, 0.011602, -0.0136343)
+[node name="HatAttachmentGroup" parent="Enter/FrogCute/frog_cute/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -5.30325e-15, 2.38419e-07, 3.49183e-09, 0.999893, -0.0146457, -2.38393e-07, 0.0146457, 0.999893, 8.78475e-19, 0.00293574, 0.00405625)
 
-[node name="FaceAttachmentGroup" parent="Enter/Frog/frog/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.99493, 0.100287, 0.00749824, -0.100566, 0.992161, 0.0741821, -2.11751e-09, -0.0745601, 0.997216, 0.000982902, 0.011602, -0.0136343)
-
-[node name="AnimationPlayer" parent="Enter/Frog/frog" index="1"]
-blend_times = [&"Armature|jump_end", &"Armature|jump_end", 0.01, &"Armature|jump_end", &"Armature|jump_start", 0.01]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enter/Frog"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.25356e-09, 1.65014, 0.0744328)
-light_energy = 0.1
-light_volumetric_fog_energy = 0.0
-omni_range = 10.0
+[node name="FaceAttachmentGroup" parent="Enter/FrogCute/frog_cute/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -5.30325e-15, 2.38419e-07, 3.49183e-09, 0.999893, -0.0146457, -2.38393e-07, 0.0146457, 0.999893, 8.78475e-19, 0.00293574, 0.00405625)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Enter"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.70549, 0)
@@ -672,7 +657,7 @@ transform = Transform3D(-1.74846e-06, 0, 40, 0, 40, 0, -40, 0, -1.74846e-06, 0, 
 
 [node name="Skeleton3D" parent="Enter/Heart/heart/Armature" index="0"]
 bones/1/rotation = Quaternion(5.14238e-08, -7.76332e-08, 0.164935, 0.986305)
-bones/1/scale = Vector3(1.07226, 1.07226, 1.07226)
+bones/1/scale = Vector3(1.00104, 1.00104, 1.00104)
 
 [node name="Heart2" parent="Enter/Heart/heart/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_awcgj")
@@ -754,7 +739,18 @@ volume_db = -20.0
 bus = &"BGM"
 
 [editable path="Enter/eye"]
-[editable path="Enter/Frog"]
-[editable path="Enter/Frog/frog"]
+[editable path="Enter/FrogCute"]
+[editable path="Enter/FrogCute/frog_cute"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent2"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent4"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent5"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent3"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent6"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent7"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/Lilypad_Flower"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
+[editable path="Enter/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]
 [editable path="Enter/Heart/heart"]
 [editable path="Exit/eye"]
