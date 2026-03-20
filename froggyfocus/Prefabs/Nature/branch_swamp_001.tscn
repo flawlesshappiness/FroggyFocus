@@ -97,32 +97,11 @@ transform = Transform3D(6.55671e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.55671e-08, -1
 [node name="Eldritch_Eye9" parent="Eyes" instance=ExtResource("5_ee002")]
 transform = Transform3D(-0.0216858, 0.997292, -0.0702818, 0.680506, -0.0367758, -0.731819, -0.732421, -0.0636973, -0.677866, -0.389441, 6.6248, 11.1556)
 
-[node name="Eldritch_Eye10" parent="Eyes" instance=ExtResource("5_ee002")]
-transform = Transform3D(0.0078708, 0.797833, -0.0583123, 0.739954, -0.0294206, -0.302659, -0.303984, -0.0509578, -0.738239, -0.0142625, 4.2698, 12.8586)
-
 [node name="Eldritch_Eye11" parent="Eyes" instance=ExtResource("5_ee002")]
 transform = Transform3D(0.26158, 0.279997, 0.321212, -0.0090673, 0.380478, -0.324274, -0.426021, 0.163823, 0.204129, -5.90468, 3.4123, 7.40914)
-
-[node name="Eldritch_Eye12" parent="Eyes" instance=ExtResource("5_ee002")]
-transform = Transform3D(0.288465, 0.162879, 0.224183, 0.0333128, 0.300876, -0.261465, -0.275096, 0.207229, 0.203416, -5.2788, 4.19418, 7.7768)
-
-[node name="Eldritch_Eye13" parent="Eyes" instance=ExtResource("5_ee002")]
-transform = Transform3D(0.245048, 0.0269125, 0.17096, 0.137626, 0.149378, -0.220783, -0.104932, 0.25877, 0.10967, -5.10049, 4.85059, 8.41061)
-
-[node name="Eldritch_Eye6" parent="Eyes" instance=ExtResource("5_ee002")]
-transform = Transform3D(2.26494e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, 2.26494e-08, -1.11319, 6.11126, 3.31612)
-
-[node name="Eldritch_Eye7" parent="Eyes" instance=ExtResource("5_ee002")]
-transform = Transform3D(2.26494e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, 2.26494e-08, -0.83045, 3.86658, -3.49947)
 
 [node name="Eldritch_Eye8" parent="Eyes" instance=ExtResource("5_ee002")]
 transform = Transform3D(2.26494e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, 2.26494e-08, -0.751311, 3.37344, -7.86192)
 
-[node name="Eldritch_Eye2" parent="Eyes" instance=ExtResource("5_ee002")]
-transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.824605, 4.03419, -2.55656)
-
 [node name="Eldritch_Eye3" parent="Eyes" instance=ExtResource("5_ee002")]
 transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.748644, 3.61668, -5.99787)
-
-[node name="Eldritch_Eye4" parent="Eyes" instance=ExtResource("5_ee002")]
-transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.748644, 3.51637, -6.79268)
