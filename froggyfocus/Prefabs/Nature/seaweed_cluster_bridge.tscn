@@ -48,7 +48,7 @@ transform = Transform3D(0.141851, 0, -0.989888, 0, 1, 0, 0.989888, 0, 0.141851, 
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_fegj0")
-Id = "seaweed"
+Id = "factory_seaweed"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]

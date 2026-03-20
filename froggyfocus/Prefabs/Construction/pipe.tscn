@@ -22,7 +22,7 @@ shape = SubResource("ConcavePolygonShape3D_5u4b4")
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_jsowv")
-Id = "oil"
+Id = "factory_oil"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]

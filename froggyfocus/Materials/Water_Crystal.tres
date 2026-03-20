@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://babyxm8yext4w" path="res://Shaders/ToonWater.gdshader" id="1_gs5eo"]
 
 [resource]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("1_gs5eo")
 shader_parameter/WATER_COL = Color(0.05, 0.445833, 1, 1)
 shader_parameter/WATER2_COL = Color(0, 0.333333, 0.8, 1)

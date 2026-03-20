@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://flafg5vv01xa"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_1a38h"]
+[ext_resource type="PackedScene" uid="uid://dptay8dphttdl" path="res://Assets/FlawLizArt/Objects/oil_spill.fbx" id="2_5aw3u"]
+[ext_resource type="PackedScene" uid="uid://d4foiwy4ulppc" path="res://Assets/FlawLizArt/Construction/scaffolding_platform_4x4.fbx" id="3_6jqg4"]
+[ext_resource type="PackedScene" uid="uid://cdlkowmgv487x" path="res://Assets/FlawLizArt/Construction/scaffolding_bars_4m_short.fbx" id="4_66ahd"]
+[ext_resource type="AudioStream" uid="uid://i5khoaknvq17" path="res://Sounds/Raw/sfx_oil_flow_001.wav" id="5_b36jo"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="6_6jqg4"]
+[ext_resource type="Material" uid="uid://bbu4qi3npvrm" path="res://Materials/Water_Factory.tres" id="7_66ahd"]
+
+[node name="factory_scaffolding" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_1a38h")
+Id = "factory_scaffolding"
+SoundEffects = [NodePath("SfxOil")]
+
+[node name="oil_spill" parent="." instance=ExtResource("2_5aw3u")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -3.41265, -0.622584, -0.34501)
+
+[node name="oil_spill2" parent="." instance=ExtResource("2_5aw3u")]
+transform = Transform3D(6.55671e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.55671e-08, 3.48596, -0.622584, -0.412052)
+
+[node name="scaffolding_platform_4x4" parent="." instance=ExtResource("3_6jqg4")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, -0.0232396)
+
+[node name="scaffolding_bars_4m_short" parent="scaffolding_platform_4x4" instance=ExtResource("4_66ahd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="SfxOil" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b36jo")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Water" parent="." instance=ExtResource("6_6jqg4")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -0.404772, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("7_66ahd")
+
+[editable path="Water"]

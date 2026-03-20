@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cksrpp0fxbin8"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_damc4"]
+[ext_resource type="PackedScene" uid="uid://dptay8dphttdl" path="res://Assets/FlawLizArt/Objects/oil_spill.fbx" id="2_hith6"]
+[ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="3_f33hj"]
+[ext_resource type="AudioStream" uid="uid://i5khoaknvq17" path="res://Sounds/Raw/sfx_oil_flow_001.wav" id="4_hith6"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="5_0my2j"]
+[ext_resource type="Material" uid="uid://bbu4qi3npvrm" path="res://Materials/Water_Factory.tres" id="6_plmba"]
+
+[node name="factory_oil" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_damc4")
+Id = "factory_oil"
+SoundEffects = [NodePath("SfxOil")]
+
+[node name="oil_spill" parent="." instance=ExtResource("2_hith6")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -3.5721, -0.607814, -0.0487767)
+
+[node name="oil_spill2" parent="." instance=ExtResource("2_hith6")]
+transform = Transform3D(6.55671e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.55671e-08, 3.554, -0.607814, -0.306585)
+
+[node name="oil_barrel" parent="." instance=ExtResource("3_f33hj")]
+transform = Transform3D(1.2, 0, 0, 0, -1.2, -1.81195e-07, 0, 1.81195e-07, -1.2, 0, -1.11622, -0.13509)
+
+[node name="SfxOil" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hith6")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Water" parent="." instance=ExtResource("5_0my2j")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -0.404772, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("6_plmba")
+
+[editable path="Water"]

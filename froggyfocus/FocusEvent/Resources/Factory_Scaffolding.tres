@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=8 format=3 uid="uid://c7xuit2ego7d1"]
+
+[ext_resource type="Resource" uid="uid://dv4rlu765mpyd" path="res://FocusCharacter/Resources/Bloodworm.tres" id="1_p3hys"]
+[ext_resource type="Resource" uid="uid://dsnwhqreyw75v" path="res://FocusCharacter/Resources/Bloodworm_Oil.tres" id="2_j2skw"]
+[ext_resource type="Resource" uid="uid://joxldpuv0xuf" path="res://FocusCharacter/Resources/HorseFly.tres" id="3_wl6x2"]
+[ext_resource type="Resource" uid="uid://dgoo1uaf3kmwn" path="res://FocusCharacter/Resources/HorseFly_Oil.tres" id="4_vqmcn"]
+[ext_resource type="Resource" uid="uid://bi27kk1oi4nm4" path="res://FocusCharacter/Resources/ScorpionFly.tres" id="5_qhlb5"]
+[ext_resource type="Resource" uid="uid://dfn68pry7clu7" path="res://FocusCharacter/Resources/ScorpionFly_Oil.tres" id="6_kfed5"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="7_c7wbo"]
+
+[resource]
+script = ExtResource("7_c7wbo")
+Id = "factory_scaffolding"
+TargetCount = Vector2i(2, 4)
+Characters = Array[Object]([ExtResource("1_p3hys"), ExtResource("2_j2skw"), ExtResource("3_wl6x2"), ExtResource("4_vqmcn"), ExtResource("5_qhlb5"), ExtResource("6_kfed5")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

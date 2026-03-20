@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfxfuotoykf3j"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_sbc2a"]
+[ext_resource type="PackedScene" uid="uid://cuc22dure6gn7" path="res://Prefabs/Nature/seaweed_cluster_circle.tscn" id="2_owc3y"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="3_vcch2"]
+[ext_resource type="Material" uid="uid://bbu4qi3npvrm" path="res://Materials/Water_Factory.tres" id="4_jn71w"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="5_xhntg"]
+
+[node name="factory_seaweed" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_sbc2a")
+Id = "factory_seaweed"
+SoundEffects = [NodePath("AmbWater")]
+
+[node name="Seaweed_Cluster_Circle" parent="." instance=ExtResource("2_owc3y")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="Water" parent="." instance=ExtResource("3_vcch2")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -0.404772, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("4_jn71w")
+
+[node name="AmbWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xhntg")
+volume_db = -5.0
+autoplay = true
+bus = &"Environment"
+
+[editable path="Water"]

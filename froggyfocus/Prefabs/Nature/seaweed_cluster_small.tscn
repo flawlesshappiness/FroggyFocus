@@ -21,7 +21,7 @@ height = 1.0
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_qlgfd")
-Id = "seaweed"
+Id = "factory_seaweed"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
