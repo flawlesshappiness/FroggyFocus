@@ -158,6 +158,7 @@ icon = ExtResource("11_hgnx5")
 LabelText = "Back"
 
 [node name="PinButton" parent="HBoxContainer/Controls/VBoxContainer/Buttons" instance=ExtResource("3_svgvs")]
+visible = false
 layout_mode = 2
 icon = ExtResource("4_svgvs")
 LabelText = "Pin"

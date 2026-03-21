@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://dv1lgptwlfi6u"]
+
+[ext_resource type="Resource" uid="uid://ci4a3av0vtyki" path="res://HandInRequest/Resources/Demo_01.tres" id="1_v0ehf"]
+[ext_resource type="Resource" uid="uid://yiynvyy15fb1" path="res://HandInRequest/Resources/Demo_02.tres" id="2_y0y23"]
+[ext_resource type="Resource" uid="uid://diqt60xostfeu" path="res://HandInRequest/Resources/Demo_03.tres" id="3_ow62c"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandIn/HandInInfo.cs" id="4_4diao"]
+
+[resource]
+script = ExtResource("4_4diao")
+Id = "demo"
+Name = "Employer"
+ItemUnlock = 11
+Requests = Array[Object]([ExtResource("1_v0ehf"), ExtResource("2_y0y23"), ExtResource("3_ow62c")])
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

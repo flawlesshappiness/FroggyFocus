@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HandInInfo" load_steps=3 format=3 uid="uid://jollnsp7sq23"]
+
+[ext_resource type="Resource" uid="uid://dt8umidmm0i74" path="res://HandInRequest/Resources/Demo_Mushroom_01.tres" id="1_wjalx"]
+[ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandIn/HandInInfo.cs" id="2_q5dw6"]
+
+[resource]
+script = ExtResource("2_q5dw6")
+Id = "demo_magpie"
+Name = "Magpie"
+ItemUnlock = 104
+Requests = Array[Object]([ExtResource("1_wjalx")])
+metadata/_custom_type_script = "uid://b2ulk5brsbi3l"
