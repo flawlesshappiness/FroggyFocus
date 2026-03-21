@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2ij224fhij05"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_jtbf8"]
+[ext_resource type="PackedScene" uid="uid://d3c3r4kr07et5" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_platform.fbx" id="2_nc2ho"]
+[ext_resource type="Material" uid="uid://0od1oea7n2ob" path="res://Materials/Crystal3.tres" id="3_u57fc"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="4_4h5j7"]
+[ext_resource type="Material" uid="uid://n7pavxsxx0u2" path="res://Materials/Water_Crystal.tres" id="5_hfgfa"]
+
+[node name="crystal_summit" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_jtbf8")
+Id = "crystal_summit"
+SoundEffects = []
+
+[node name="platforms" type="Node3D" parent="."]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
+
+[node name="crystal_platform" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(7, 0, 0, 0, 20, 0, 0, 0, 7, 0, -10, 0.124741)
+
+[node name="Cylinder" parent="platforms/crystal_platform" index="0"]
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="crystal_platform2" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(0.957043, 5.08067, 4.74033, 0, 19.3185, -1.2941, -4.90755, 0.990804, 0.924433, -5.3466, -11.439, -0.781113)
+
+[node name="Cylinder" parent="platforms/crystal_platform2" index="0"]
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="crystal_platform3" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(4.90638, -0.997011, -0.930223, -1.42611e-08, 19.3185, -1.2941, 0.963038, 5.07946, 4.7392, 1.66854, -11.439, -4.74387)
+
+[node name="Cylinder" parent="platforms/crystal_platform3" index="0"]
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="crystal_platform4" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(-0.845458, -5.10184, -4.76008, 3.66447e-08, 19.3185, -1.2941, 4.928, -0.875283, -0.81665, 5.52418, -11.439, 1.02176)
+
+[node name="Cylinder" parent="platforms/crystal_platform4" index="0"]
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="crystal_platform6" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(-3.3131, -6.33045, -3.39392, 0, 18.1262, -2.11309, 3.74478, -5.60071, -3.00269, 5.05955, -12.829, 6.09423)
+
+[node name="Cylinder" parent="platforms/crystal_platform6" index="0"]
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="crystal_platform7" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(-2.6005, 7.21921, 3.87041, 2.10341e-07, 18.1262, -2.11309, -4.27053, -4.39608, -2.35686, -7.3254, -12.829, 5.17924)
+
+[node name="Cylinder" parent="platforms/crystal_platform7" index="0"]
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="crystal_platform8" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(4.73608, 2.7098, 1.4528, 2.10341e-07, 18.1262, -2.11309, -1.60298, 8.00622, 4.29235, -2.84852, -12.829, -6.71554)
+
+[node name="Cylinder" parent="platforms/crystal_platform8" index="0"]
+transform = Transform3D(100, 3.8147e-06, 0, 2.38419e-07, -1.23978e-05, 100, 0, -100, -1.52588e-05, -0.0256085, -0.0275667, -0.236469)
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="crystal_platform9" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(2.48903, -7.33064, -3.93015, 2.58114e-07, 18.1262, -2.11309, 4.33644, 4.20764, 2.25583, 7.83717, -12.829, -4.33005)
+
+[node name="Cylinder" parent="platforms/crystal_platform9" index="0"]
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="crystal_platform5" parent="platforms" instance=ExtResource("2_nc2ho")]
+transform = Transform3D(-4.90143, 1.0228, 0.954282, 4.24047e-08, 19.3185, -1.2941, -0.987945, -5.07433, -4.73441, -1.21742, -11.439, 5.38398)
+
+[node name="Cylinder" parent="platforms/crystal_platform5" index="0"]
+surface_material_override/0 = ExtResource("3_u57fc")
+
+[node name="Water" parent="." instance=ExtResource("4_4h5j7")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -5.08045, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("5_hfgfa")
+
+[editable path="platforms/crystal_platform"]
+[editable path="platforms/crystal_platform2"]
+[editable path="platforms/crystal_platform3"]
+[editable path="platforms/crystal_platform4"]
+[editable path="platforms/crystal_platform6"]
+[editable path="platforms/crystal_platform7"]
+[editable path="platforms/crystal_platform8"]
+[editable path="platforms/crystal_platform9"]
+[editable path="platforms/crystal_platform5"]
+[editable path="Water"]

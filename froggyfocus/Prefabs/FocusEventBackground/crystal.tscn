@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://60sl07ycvpvu"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_gujl2"]
+[ext_resource type="PackedScene" uid="uid://d3c3r4kr07et5" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_platform.fbx" id="2_4aoym"]
+[ext_resource type="Material" uid="uid://0od1oea7n2ob" path="res://Materials/Crystal3.tres" id="3_v4jdn"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="4_2v754"]
+[ext_resource type="Material" uid="uid://n7pavxsxx0u2" path="res://Materials/Water_Crystal.tres" id="5_1gfxw"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="6_2lqs0"]
+
+[node name="crystal" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_gujl2")
+Id = "crystal"
+SoundEffects = [NodePath("AmbWater")]
+
+[node name="crystal_platform" parent="." instance=ExtResource("2_4aoym")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, -6, 0.125)
+
+[node name="Cylinder" parent="crystal_platform" index="0"]
+surface_material_override/0 = ExtResource("3_v4jdn")
+
+[node name="Water" parent="." instance=ExtResource("4_2v754")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -1.08045, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("5_1gfxw")
+
+[node name="AmbWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2lqs0")
+volume_db = -5.0
+autoplay = true
+bus = &"Environment"
+
+[editable path="crystal_platform"]
+[editable path="Water"]

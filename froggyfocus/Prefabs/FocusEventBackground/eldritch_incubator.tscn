@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c61wxd2kinmvh"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_cd31x"]
+[ext_resource type="PackedScene" uid="uid://u816b8cey38j" path="res://Prefabs/Ground/eldritch_island_small.tscn" id="2_26jwa"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="3_17ne7"]
+[ext_resource type="Material" uid="uid://bvh21lkq01ocn" path="res://Materials/Water_Bile.tres" id="4_46f5f"]
+[ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="5_2qp7k"]
+
+[node name="eldritch_incubator" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_cd31x")
+Id = "eldritch_incubator"
+SoundEffects = [NodePath("AmbWater")]
+
+[node name="EldritchIslandSmall" parent="." instance=ExtResource("2_26jwa")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0.0579147)
+
+[node name="EldritchIslandSmall2" parent="." instance=ExtResource("2_26jwa")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -2.58465)
+
+[node name="Water" parent="." instance=ExtResource("3_17ne7")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -0.291697, 0)
+
+[node name="Circle" parent="Water" index="0"]
+surface_material_override/0 = ExtResource("4_46f5f")
+
+[node name="AmbWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2qp7k")
+volume_db = -5.0
+pitch_scale = 0.4
+autoplay = true
+bus = &"Environment"
+
+[editable path="Water"]

@@ -71,7 +71,7 @@ public partial class EldritchTentacleObjective : Node3D
         active_event = true;
         FocusEvent.StartEvent(new FocusEvent.Settings
         {
-            Id = "eldritch"
+            Id = "eldritch_syringe"
         });
     }
 

@@ -7,6 +7,9 @@ public partial class FocusEventBackground : Node3D
     public string Id;
 
     [Export]
+    public Array<string> Aliases;
+
+    [Export]
     public Array<AudioStreamPlayer> SoundEffects;
 
     public override void _Ready()

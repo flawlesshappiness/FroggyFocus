@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b2gamstk3nwpo"]
+[gd_scene load_steps=34 format=3 uid="uid://b2gamstk3nwpo"]
 
 [ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
 [ext_resource type="PackedScene" uid="uid://0jmsiis7i0p6" path="res://Prefabs/Glitch/matrix_label.tscn" id="2_cq1bo"]
@@ -27,35 +27,17 @@
 [ext_resource type="AudioStream" uid="uid://biug0yyfjoxvi" path="res://Sounds/Raw/amb_water_glitch_001.wav" id="25_cq1bo"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="26_3jere"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_8f2ml"]
-size = Vector2(10, 10)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ttjhv"]
-material = ExtResource("4_bxtix")
-flip_faces = true
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_jfqyu"]
-vertices = PackedVector3Array(6.5, 7.5, -13.5, 6.5, 7.5, -10.5, 9.5, 7.5, -10.5, 9.5, 7.5, -13.5, 6.5, 7.5, -5.5, 6.5, 7.5, -2.5, 9.5, 7.5, -2.5, 9.5, 7.5, -5.5, 22.5, 11.5, -3.5, 22.5, 11.5, 3.5, 29.5, 11.5, 3.5, 29.5, 11.5, -3.5, -9.5, 0.5, -1.5, -9.5, 0.5, 1.5, -6.5, 0.5, 1.5, -6.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 14.5, 11.5, -1.5, 14.5, 11.5, 1.5, 17.5, 11.5, 1.5, 17.5, 11.5, -1.5, 6.5, 3.5, 2.5, 6.5, 3.5, 5.5, 9.5, 3.5, 5.5, 9.5, 3.5, 2.5, 6.5, 3.5, 10.5, 6.5, 3.5, 13.5, 9.5, 3.5, 13.5, 9.5, 3.5, 10.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29)]
+[sub_resource type="NavigationMesh" id="NavigationMesh_cq1bo"]
+vertices = PackedVector3Array(-3.5, 6.5, -79.5, -3.5, 6.5, -72.5, 3.5, 6.5, -72.5, 3.5, 6.5, -79.5, -1.5, 6.5, -67.5, -1.5, 6.5, -56.5, 1.5, 6.5, -56.5, 1.5, 6.5, -67.5, -1.5, 4.5, -45.5, -1.5, 4.5, -42.5, 1.5, 4.5, -42.5, 1.5, 4.5, -45.5, -1.5, 2.5, -33.5, -1.5, 2.5, -30.5, 1.5, 2.5, -30.5, 1.5, 2.5, -33.5, -1.5, 0.5, -21.5, -1.5, 0.5, -18.5, 1.5, 0.5, -18.5, 1.5, 0.5, -21.5, -31.5, 0.5, -13.5, -31.5, 0.5, -10.5, -28.5, 0.5, -10.5, -28.5, 0.5, -13.5, 24.5, 7.5, -13.5, 24.5, 7.5, -10.5, 27.5, 7.5, -10.5, 27.5, 7.5, -13.5, -1.5, 0.5, -11.5, -1.5, 0.5, -8.5, 1.5, 0.5, -8.5, 1.5, 0.5, -11.5, 24.5, 7.5, -5.5, 24.5, 7.5, -2.5, 27.5, 7.5, -2.5, 27.5, 7.5, -5.5, -51.5, 0.5, -3.5, -51.5, 0.5, 3.5, -44.5, 0.5, 3.5, -44.5, 0.5, -3.5, 40.5, 11.5, -3.5, 40.5, 11.5, 3.5, 47.5, 11.5, 3.5, 47.5, 11.5, -3.5, -31.5, 0.5, -1.5, -31.5, 0.5, 1.5, -28.5, 0.5, 1.5, -28.5, 0.5, -1.5, -19.5, 0.5, -1.5, -19.5, 0.5, 1.5, -16.5, 0.5, 1.5, -16.5, 0.5, -1.5, -11.5, 0.5, -1.5, -11.5, 0.5, 1.5, -8.5, 0.5, 1.5, -8.5, 0.5, -1.5, 8.5, 0.5, -1.5, 8.5, 0.5, 1.5, 11.5, 0.5, 1.5, 11.5, 0.5, -1.5, 16.5, 0.5, -1.5, 16.5, 0.5, 1.5, 19.5, 0.5, 1.5, 19.5, 0.5, -1.5, 32.5, 11.5, -1.5, 32.5, 11.5, 1.5, 35.5, 11.5, 1.5, 35.5, 11.5, -1.5, 24.5, 3.5, 2.5, 24.5, 3.5, 5.5, 27.5, 3.5, 5.5, 27.5, 3.5, 2.5, -1.5, 0.5, 8.5, -1.5, 0.5, 11.5, 1.5, 0.5, 11.5, 1.5, 0.5, 8.5, -31.5, 0.5, 10.5, -31.5, 0.5, 13.5, -28.5, 0.5, 13.5, -28.5, 0.5, 10.5, 24.5, 3.5, 10.5, 24.5, 3.5, 13.5, 27.5, 3.5, 13.5, 27.5, 3.5, 10.5, -1.5, 0.5, 19.5, -1.5, 0.5, 22.5, 1.5, 0.5, 22.5, 1.5, 0.5, 19.5, -12.5, 0.5, 31.5, -12.5, 0.5, 34.5, -9.5, 0.5, 34.5, -9.5, 0.5, 31.5, -1.5, 0.5, 31.5, -1.5, 0.5, 34.5, 1.5, 0.5, 34.5, 1.5, 0.5, 31.5, 20.5, 0.5, 37.5, 20.5, 0.5, 44.5, 27.5, 0.5, 44.5, 27.5, 0.5, 37.5, -3.5, 0.5, 43.5, -3.5, 0.5, 46.5, -0.5, 0.5, 46.5, -0.5, 0.5, 43.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(51, 50, 48), PackedInt32Array(48, 50, 49), PackedInt32Array(55, 54, 52), PackedInt32Array(52, 54, 53), PackedInt32Array(59, 58, 56), PackedInt32Array(56, 58, 57), PackedInt32Array(63, 62, 60), PackedInt32Array(60, 62, 61), PackedInt32Array(67, 66, 64), PackedInt32Array(64, 66, 65), PackedInt32Array(71, 70, 68), PackedInt32Array(68, 70, 69), PackedInt32Array(75, 74, 72), PackedInt32Array(72, 74, 73), PackedInt32Array(79, 78, 76), PackedInt32Array(76, 78, 77), PackedInt32Array(83, 82, 80), PackedInt32Array(80, 82, 81), PackedInt32Array(87, 86, 84), PackedInt32Array(84, 86, 85), PackedInt32Array(91, 90, 88), PackedInt32Array(88, 90, 89), PackedInt32Array(95, 94, 92), PackedInt32Array(92, 94, 93), PackedInt32Array(99, 98, 96), PackedInt32Array(96, 98, 97), PackedInt32Array(103, 102, 100), PackedInt32Array(100, 102, 101)]
 geometry_parsed_geometry_type = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpaxj"]
 size = Vector3(8, 2, 8)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_546co"]
-vertices = PackedVector3Array(-13.5, 0.5, -13.5, -13.5, 0.5, -10.5, -10.5, 0.5, -10.5, -10.5, 0.5, -13.5, -33.5, 0.5, -3.5, -33.5, 0.5, 3.5, -26.5, 0.5, 3.5, -26.5, 0.5, -3.5, -13.5, 0.5, -1.5, -13.5, 0.5, 1.5, -10.5, 0.5, 1.5, -10.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 6.5, 0.5, -1.5, 6.5, 0.5, 1.5, 9.5, 0.5, 1.5, 9.5, 0.5, -1.5, -13.5, 0.5, 10.5, -13.5, 0.5, 13.5, -10.5, 0.5, 13.5, -10.5, 0.5, 10.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21)]
-geometry_parsed_geometry_type = 1
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_cpcb0"]
-vertices = PackedVector3Array(-1.5, 0.5, -24.5, -1.5, 0.5, -21.5, 1.5, 0.5, -21.5, 1.5, 0.5, -24.5, -1.5, 0.5, -13.5, -1.5, 0.5, -10.5, 1.5, 0.5, -10.5, 1.5, 0.5, -13.5, -12.5, 0.5, -1.5, -12.5, 0.5, 1.5, -9.5, 0.5, 1.5, -9.5, 0.5, -1.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, 20.5, 0.5, 4.5, 20.5, 0.5, 11.5, 27.5, 0.5, 11.5, 27.5, 0.5, 4.5, -3.5, 0.5, 10.5, -3.5, 0.5, 13.5, -0.5, 0.5, 13.5, -0.5, 0.5, 10.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21)]
-geometry_parsed_geometry_type = 1
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_iviy3"]
-vertices = PackedVector3Array(-3.5, 6.5, -69.5, -3.5, 6.5, -62.5, 3.5, 6.5, -62.5, 3.5, 6.5, -69.5, -1.5, 6.5, -57.5, -1.5, 6.5, -46.5, 1.5, 6.5, -46.5, 1.5, 6.5, -57.5, -1.5, 4.5, -35.5, -1.5, 4.5, -32.5, 1.5, 4.5, -32.5, 1.5, 4.5, -35.5, -1.5, 2.5, -23.5, -1.5, 2.5, -20.5, 1.5, 2.5, -20.5, 1.5, 2.5, -23.5, -1.5, 0.5, -11.5, -1.5, 0.5, -8.5, 1.5, 0.5, -8.5, 1.5, 0.5, -11.5, -1.5, 0.5, -1.5, -1.5, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.5, -3.5, 0.5, 6.5, -3.5, 0.5, 13.5, 3.5, 0.5, 13.5, 3.5, 0.5, 6.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25)]
-geometry_parsed_geometry_type = 1
+[sub_resource type="SphereMesh" id="SphereMesh_ttjhv"]
+material = ExtResource("4_bxtix")
+flip_faces = true
 
 [sub_resource type="Curve3D" id="Curve3D_cq1bo"]
 _data = {
@@ -85,14 +67,13 @@ _data = {
 }
 point_count = 12
 
-[node name="GlitchScene" type="Node3D" node_paths=PackedStringArray("MatrixLabelParent", "DirectionalLight", "WorldEnvironment", "WorldBugParent", "FocusEventParent")]
+[node name="GlitchScene" type="Node3D" node_paths=PackedStringArray("MatrixLabelParent", "DirectionalLight", "WorldEnvironment", "FocusEvent")]
 script = ExtResource("1_6t126")
 MatrixLabelParent = NodePath("World/Decorations/Labels")
 MatrixLabelPrefab = ExtResource("2_cq1bo")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-WorldBugParent = NodePath("World/WorldBugs")
-FocusEventParent = NodePath("World/FocusEvents")
+FocusEvent = NodePath("World/FocusEvent")
 Weathers = Array[ExtResource("2_iviy3")]([ExtResource("3_ossgx")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -104,53 +85,143 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_bxtix")]
 
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_cq1bo")
+
+[node name="Stack" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="GlitchPlatform_4x4x1" parent="NavigationRegion3D/Stack" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="GlitchPlatform_4x4x7" parent="NavigationRegion3D/Stack" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="GlitchPlatform_4x4x2" parent="NavigationRegion3D/Stack" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3, 4)
+
+[node name="GlitchPlatform_4x4x6" parent="NavigationRegion3D/Stack" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 3, 12)
+
+[node name="GlitchPlatform_4x4x3" parent="NavigationRegion3D/Stack" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 7, -12)
+
+[node name="GlitchPlatform_4x4x5" parent="NavigationRegion3D/Stack" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 7, -4)
+
+[node name="GlitchPlatform_4x4x4" parent="NavigationRegion3D/Stack" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 11, 0)
+
+[node name="GlitchPlatform_8x8x1" parent="NavigationRegion3D/Stack" instance=ExtResource("10_ylbj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44, 11, 0)
+
+[node name="FocusEventArea2" type="Area3D" parent="NavigationRegion3D/Stack/GlitchPlatform_8x8x1"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "glitch_flying"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Stack/GlitchPlatform_8x8x1/FocusEventArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_qpaxj")
+
+[node name="Bridges" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="GlitchPlatform_4x4x1" parent="NavigationRegion3D/Bridges" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+
+[node name="GlitchPlatform_4x4x5" parent="NavigationRegion3D/Bridges" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="GlitchPlatform_4x4x4" parent="NavigationRegion3D/Bridges" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+
+[node name="GlitchPlatform_4x4x2" parent="NavigationRegion3D/Bridges" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 12)
+
+[node name="GlitchPlatform_4x4x3" parent="NavigationRegion3D/Bridges" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -12)
+
+[node name="GlitchPlatform_8x8x1" parent="NavigationRegion3D/Bridges" instance=ExtResource("10_ylbj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 0, 0)
+
+[node name="FocusEventArea2" type="Area3D" parent="NavigationRegion3D/Bridges/GlitchPlatform_8x8x1"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "glitch_worm"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Bridges/GlitchPlatform_8x8x1/FocusEventArea2"]
+shape = SubResource("BoxShape3D_qpaxj")
+
+[node name="Doors" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="GlitchPlatform_4x4x1" parent="NavigationRegion3D/Doors" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33)
+
+[node name="GlitchPlatform_4x4x2" parent="NavigationRegion3D/Doors" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="GlitchPlatform_4x4x6" parent="NavigationRegion3D/Doors" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 33)
+
+[node name="GlitchPlatform_4x4x5" parent="NavigationRegion3D/Doors" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
+
+[node name="GlitchPlatform_4x4x4" parent="NavigationRegion3D/Doors" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 45)
+
+[node name="GlitchPlatform_8x8x1" parent="NavigationRegion3D/Doors" instance=ExtResource("10_ylbj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 41)
+
+[node name="FocusEventArea2" type="Area3D" parent="NavigationRegion3D/Doors/GlitchPlatform_8x8x1"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "glitch_legs"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Doors/GlitchPlatform_8x8x1/FocusEventArea2"]
+shape = SubResource("BoxShape3D_qpaxj")
+
+[node name="Stairway" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="GlitchPlatform_4x4x1" parent="NavigationRegion3D/Stairway" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="GlitchPlatform_4x4x4" parent="NavigationRegion3D/Stairway" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="GlitchPlatform_4x4x2" parent="NavigationRegion3D/Stairway" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -32)
+
+[node name="GlitchPlatform_4x4x3" parent="NavigationRegion3D/Stairway" instance=ExtResource("9_xtd18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -44)
+
+[node name="GlitchPlatform_4x12x1" parent="NavigationRegion3D/Stairway" instance=ExtResource("21_cpcb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -62)
+
+[node name="GlitchPlatform_8x8x2" parent="NavigationRegion3D/Stairway" instance=ExtResource("10_ylbj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -76)
+
+[node name="FocusEventArea2" type="Area3D" parent="NavigationRegion3D/Stairway/GlitchPlatform_8x8x2"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_qpaxj")
+Id = "glitch_bug_of_data"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Stairway/GlitchPlatform_8x8x2/FocusEventArea2"]
+shape = SubResource("BoxShape3D_qpaxj")
+
 [node name="World" type="Node3D" parent="."]
+
+[node name="FocusEvent" parent="World" instance=ExtResource("10_8f2ml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 0)
 
 [node name="Water" parent="World" instance=ExtResource("5_ttjhv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-
-[node name="FocusEvents" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.617, 0, 113.425)
-
-[node name="Legs" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
-visible = false
-Id = "legs"
-Info = ExtResource("11_8f2ml")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Legs"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-mesh = SubResource("QuadMesh_8f2ml")
-surface_material_override/0 = ExtResource("4_bxtix")
-
-[node name="mantis" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
-visible = false
-Id = "mantis"
-Info = ExtResource("13_7ck8m")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/mantis"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-mesh = SubResource("QuadMesh_8f2ml")
-surface_material_override/0 = ExtResource("4_bxtix")
-
-[node name="Flying" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
-visible = false
-Id = "flying"
-Info = ExtResource("12_oj01c")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Flying"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-mesh = SubResource("QuadMesh_8f2ml")
-surface_material_override/0 = ExtResource("4_bxtix")
-
-[node name="Worm" parent="World/FocusEvents" instance=ExtResource("10_8f2ml")]
-visible = false
-Id = "worm"
-Info = ExtResource("13_12xjm")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="World/FocusEvents/Worm"]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-mesh = SubResource("QuadMesh_8f2ml")
-surface_material_override/0 = ExtResource("4_bxtix")
 
 [node name="WorldBugs" type="Node3D" parent="World"]
 
@@ -218,43 +289,6 @@ skeleton = NodePath("../..")
 [node name="Stacks" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World/Stacks"]
-navigation_mesh = SubResource("NavigationMesh_jfqyu")
-
-[node name="GlitchPlatform_4x4x1" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-
-[node name="GlitchPlatform_4x4x7" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
-
-[node name="GlitchPlatform_4x4x2" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 4)
-
-[node name="GlitchPlatform_4x4x6" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 3, 12)
-
-[node name="GlitchPlatform_4x4x3" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, -12)
-
-[node name="GlitchPlatform_4x4x5" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, -4)
-
-[node name="GlitchPlatform_4x4x4" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 11, 0)
-
-[node name="GlitchPlatform_8x8x1" parent="World/Stacks/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 11, 0)
-
-[node name="FocusEventArea2" type="Area3D" parent="World/Stacks/NavigationRegion3D/GlitchPlatform_8x8x1"]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("9_qpaxj")
-Id = "flying"
-metadata/_custom_type_script = "uid://dt4o28x6fcqym"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Stacks/NavigationRegion3D/GlitchPlatform_8x8x1/FocusEventArea2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("BoxShape3D_qpaxj")
-
 [node name="ColorBlocks" type="Node3D" parent="World/Stacks"]
 
 [node name="ColorWall_Block" parent="World/Stacks/ColorBlocks" instance=ExtResource("9_ijwup")]
@@ -280,36 +314,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7, -12)
 
 [node name="Bridges" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World/Bridges"]
-navigation_mesh = SubResource("NavigationMesh_546co")
-
-[node name="GlitchPlatform_4x4x1" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-
-[node name="GlitchPlatform_4x4x5" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
-
-[node name="GlitchPlatform_4x4x4" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-
-[node name="GlitchPlatform_4x4x2" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
-
-[node name="GlitchPlatform_4x4x3" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
-
-[node name="GlitchPlatform_8x8x1" parent="World/Bridges/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
-
-[node name="FocusEventArea2" type="Area3D" parent="World/Bridges/NavigationRegion3D/GlitchPlatform_8x8x1"]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("9_qpaxj")
-Id = "worm"
-metadata/_custom_type_script = "uid://dt4o28x6fcqym"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Bridges/NavigationRegion3D/GlitchPlatform_8x8x1/FocusEventArea2"]
-shape = SubResource("BoxShape3D_qpaxj")
 
 [node name="ColorBlocks" type="Node3D" parent="World/Bridges"]
 
@@ -343,36 +347,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -12, 0
 
 [node name="Doors" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World/Doors"]
-navigation_mesh = SubResource("NavigationMesh_cpcb0")
-
-[node name="GlitchPlatform_4x4x1" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-
-[node name="GlitchPlatform_4x4x2" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23)
-
-[node name="GlitchPlatform_4x4x6" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
-
-[node name="GlitchPlatform_4x4x5" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-
-[node name="GlitchPlatform_4x4x4" parent="World/Doors/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 12)
-
-[node name="GlitchPlatform_8x8x1" parent="World/Doors/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 8)
-
-[node name="FocusEventArea2" type="Area3D" parent="World/Doors/NavigationRegion3D/GlitchPlatform_8x8x1"]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("9_qpaxj")
-Id = "legs"
-metadata/_custom_type_script = "uid://dt4o28x6fcqym"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Doors/NavigationRegion3D/GlitchPlatform_8x8x1/FocusEventArea2"]
-shape = SubResource("BoxShape3D_qpaxj")
 
 [node name="ColorBlocks" type="Node3D" parent="World/Doors"]
 
@@ -447,36 +421,6 @@ Type = 1
 
 [node name="Stairway" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="World/Stairway"]
-navigation_mesh = SubResource("NavigationMesh_iviy3")
-
-[node name="GlitchPlatform_4x4x1" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
-
-[node name="GlitchPlatform_4x4x4" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-
-[node name="GlitchPlatform_4x4x2" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -22)
-
-[node name="GlitchPlatform_4x4x3" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("9_xtd18")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -34)
-
-[node name="GlitchPlatform_4x12x1" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("21_cpcb0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -52)
-
-[node name="GlitchPlatform_8x8x2" parent="World/Stairway/NavigationRegion3D" instance=ExtResource("10_ylbj5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -66)
-
-[node name="FocusEventArea2" type="Area3D" parent="World/Stairway/NavigationRegion3D/GlitchPlatform_8x8x2"]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("9_qpaxj")
-Id = "mantis"
-metadata/_custom_type_script = "uid://dt4o28x6fcqym"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Stairway/NavigationRegion3D/GlitchPlatform_8x8x2/FocusEventArea2"]
-shape = SubResource("BoxShape3D_qpaxj")
 
 [node name="ColorBlocks" type="Node3D" parent="World/Stairway"]
 

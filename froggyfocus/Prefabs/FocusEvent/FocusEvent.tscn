@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=63 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
@@ -46,6 +46,11 @@
 [ext_resource type="PackedScene" uid="uid://c1fg0euksj7pd" path="res://Prefabs/FocusEventBackground/cave_stalagmite.tscn" id="40_6fwkr"]
 [ext_resource type="PackedScene" uid="uid://eyskwgcel5l" path="res://Prefabs/FocusEventBackground/cave_moss.tscn" id="41_txf87"]
 [ext_resource type="PackedScene" uid="uid://cq0rt6jkt2q6a" path="res://Prefabs/FocusEventBackground/cave_crystal.tscn" id="42_cqyr8"]
+[ext_resource type="PackedScene" uid="uid://60sl07ycvpvu" path="res://Prefabs/FocusEventBackground/crystal.tscn" id="43_7kjqe"]
+[ext_resource type="PackedScene" uid="uid://d2ij224fhij05" path="res://Prefabs/FocusEventBackground/crystal_summit.tscn" id="44_b35uy"]
+[ext_resource type="PackedScene" uid="uid://daf05cqj6ms4y" path="res://Prefabs/FocusEventBackground/eldritch_syringe.tscn" id="45_0lb7u"]
+[ext_resource type="PackedScene" uid="uid://c61wxd2kinmvh" path="res://Prefabs/FocusEventBackground/eldritch_incubator.tscn" id="46_d0loq"]
+[ext_resource type="PackedScene" uid="uid://cchihqjk17021" path="res://Prefabs/FocusEventBackground/glitch.tscn" id="47_bo0wf"]
 
 [sub_resource type="Curve" id="Curve_4nfkp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(0.6, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -272,6 +277,21 @@ visible = false
 visible = false
 
 [node name="cave_crystal" parent="Backgrounds" instance=ExtResource("42_cqyr8")]
+visible = false
+
+[node name="crystal" parent="Backgrounds" instance=ExtResource("43_7kjqe")]
+visible = false
+
+[node name="crystal_summit" parent="Backgrounds" instance=ExtResource("44_b35uy")]
+visible = false
+
+[node name="eldritch_syringe" parent="Backgrounds" instance=ExtResource("45_0lb7u")]
+visible = false
+
+[node name="eldritch_incubator" parent="Backgrounds" instance=ExtResource("46_d0loq")]
+visible = false
+
+[node name="glitch" parent="Backgrounds" instance=ExtResource("47_bo0wf")]
 visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
