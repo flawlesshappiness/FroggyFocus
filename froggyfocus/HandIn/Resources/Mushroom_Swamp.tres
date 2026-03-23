@@ -1,20 +1,14 @@
 [gd_resource type="Resource" script_class="HandInInfo" load_steps=5 format=3 uid="uid://ylb24pr0q6w6"]
 
-[ext_resource type="Resource" uid="uid://3objvy6bb7dt" path="res://FocusCharacter/Resources/Beetle_Mushroom.tres" id="1_bxmoc"]
-[ext_resource type="Resource" uid="uid://nfqmx7nyg08u" path="res://FocusCharacter/Resources/Waxworm_Mushroom.tres" id="2_c8oei"]
-[ext_resource type="Resource" uid="uid://dd5h5376rnp4" path="res://FocusCharacter/Resources/Mosquito_Mushroom.tres" id="3_rhkfr"]
+[ext_resource type="Resource" uid="uid://d1ns0pg41av00" path="res://HandInRequest/Resources/Mushroom_01.tres" id="1_qvxv2"]
+[ext_resource type="Resource" uid="uid://cgidyciesy53" path="res://HandInRequest/Resources/Mushroom_02.tres" id="2_nj37l"]
+[ext_resource type="Resource" uid="uid://dctv8f6acvcqr" path="res://HandInRequest/Resources/Mushroom_03.tres" id="3_yxjcc"]
 [ext_resource type="Script" uid="uid://b2ulk5brsbi3l" path="res://HandIn/HandInInfo.cs" id="4_trkri"]
 
 [resource]
 script = ExtResource("4_trkri")
 Id = "mushroom"
 Name = "Swamp Mushroom"
-RequestPreviewHidden = false
-HasMoneyReward = true
-PossibleRequests = Array[Object]([ExtResource("1_bxmoc"), ExtResource("2_c8oei"), ExtResource("3_rhkfr")])
-CountRange = Vector2i(1, 2)
-ClaimCountToUnlock = 3
-HasItemUnlock = true
 ItemUnlock = 8
-CooldownInSeconds = 600.0
+Requests = Array[Object]([ExtResource("1_qvxv2"), ExtResource("2_nj37l"), ExtResource("3_yxjcc")])
 metadata/_custom_type_script = "uid://b2ulk5brsbi3l"

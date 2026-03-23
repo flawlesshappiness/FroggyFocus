@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://1k2hrdyfcosc"]
+
+[ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="1_j7tp4"]
+[ext_resource type="Resource" uid="uid://inwyiv20wmwr" path="res://FocusCharacter/Resources/Worm.tres" id="1_vkp1a"]
+
+[resource]
+script = ExtResource("1_j7tp4")
+Count = 5
+TargetTag = 0
+TargetInfo = ExtResource("1_vkp1a")
+Money = 50
+metadata/_custom_type_script = "uid://dm1b320n5x14n"

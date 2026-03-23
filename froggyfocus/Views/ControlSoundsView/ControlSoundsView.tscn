@@ -19,6 +19,7 @@ SfxTabSelected = NodePath("control_focus_enter")
 
 [node name="control_focus_enter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_wbowk")
+volume_db = -10.0
 max_polyphony = 3
 bus = &"SFX"
 

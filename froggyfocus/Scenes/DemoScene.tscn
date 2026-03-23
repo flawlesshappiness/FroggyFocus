@@ -1,7 +1,7 @@
-[gd_scene load_steps=52 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=53 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ugs8i"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_t8ctw"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="14_gf4p4"]
 [ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="15_xpcd3"]
 [ext_resource type="PackedScene" uid="uid://cap2fnpuvvefh" path="res://Prefabs/Nature/mushroom_platform.tscn" id="17_ugs8i"]
+[ext_resource type="PackedScene" uid="uid://uvlg3jxf133w" path="res://Prefabs/NPC/MushroomNPC/mushroom_demo_npc.tscn" id="18_ugs8i"]
 [ext_resource type="PackedScene" uid="uid://cstu4xwk8m2au" path="res://Prefabs/Nature/common_tree_dead_1.tscn" id="19_6jk5p"]
 [ext_resource type="PackedScene" uid="uid://db3tbp4x07eca" path="res://Prefabs/Nature/common_tree_dead_2.tscn" id="20_ktv6u"]
 [ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="21_o68er"]
@@ -75,7 +76,7 @@ WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
 BgmMain = NodePath("World/Sounds/BgmMain")
 BgmFocus = NodePath("World/Sounds/BgmFocus")
-Weathers = Array[ExtResource("2_ugs8i")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
+Weathers = Array[ExtResource("2_t8ctw")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -217,8 +218,11 @@ SignType = 3
 
 [node name="NPCs" type="Node3D" parent="World"]
 
-[node name="FrogManagerNPC" parent="World/NPCs" instance=ExtResource("29_fpkb8")]
+[node name="FrogDemoNPC" parent="World/NPCs" instance=ExtResource("29_fpkb8")]
 transform = Transform3D(-0.0911285, 0, -1.49723, 0, 1.5, 0, 1.49723, 0, -0.0911285, -19.5249, -0.127254, -31.3776)
+
+[node name="MushroomDemoNPC" parent="World/NPCs" instance=ExtResource("18_ugs8i")]
+transform = Transform3D(0.984239, -0.0260232, 0.174919, 0, 0.989114, 0.147153, -0.176844, -0.144834, 0.973524, 30.2448, 11.9223, 20.6237)
 
 [node name="Plants" type="Node3D" parent="World"]
 

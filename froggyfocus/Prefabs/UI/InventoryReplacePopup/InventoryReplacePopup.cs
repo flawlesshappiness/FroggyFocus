@@ -50,7 +50,7 @@ public partial class InventoryReplacePopup : PopupControl
     {
         current_target = target;
         PreviewButton.SetCharacter(target.Info);
-        InventoryContainer.UpdateButtons();
+        InventoryContainer.Update();
     }
 
     private void InventoryButton_Pressed(InventoryCharacterData data)

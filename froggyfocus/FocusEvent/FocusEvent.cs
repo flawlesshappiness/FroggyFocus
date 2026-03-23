@@ -447,7 +447,7 @@ public partial class FocusEvent : Node3D
     private void SetBackground(string id)
     {
         HideBackgrounds();
-        var background = backgrounds.FirstOrDefault(x => x.Id == id || x.Aliases.Contains(id)) ?? backgrounds.First();
+        var background = backgrounds.FirstOrDefault(x => x.Id == id || (x.Aliases?.Contains(id) ?? false)) ?? backgrounds.First();
         background.Show();
     }
 

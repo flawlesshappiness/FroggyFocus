@@ -38,7 +38,6 @@ collision_layer = 5
 collision_mask = 0
 script = ExtResource("1_1jh81")
 HandInInfo = ExtResource("2_qg8qc")
-RequestDialogueId = "OTTER_REQUEST"
 RequestCompleteDialogueId = Array[String](["OTTER_SPIRITS_001", "OTTER_WINGS_001", "OTTER_FLOWER_001"])
 DialogueAnimation = "Armature|look"
 Animation = NodePath("AnimationStateMachine")

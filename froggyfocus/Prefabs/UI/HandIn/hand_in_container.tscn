@@ -65,6 +65,7 @@ layout_mode = 2
 
 [node name="inventory_container" parent="HBoxContainer/Inventory/MarginContainer/VBoxContainer" instance=ExtResource("13_h3v2q")]
 layout_mode = 2
+RowCount = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Inventory/MarginContainer/VBoxContainer"]
 layout_mode = 2

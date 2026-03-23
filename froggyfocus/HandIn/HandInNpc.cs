@@ -7,10 +7,10 @@ public partial class HandInNpc : CharacterNpc
     public HandInInfo HandInInfo;
 
     [Export]
-    public string RequestDialogueId;
-
-    [Export]
     public Array<string> RequestCompleteDialogueId;
+
+    private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
+    private int ClaimCount => HandInData.ClaimCount;
 
     private bool claimed_hand_in;
 
@@ -40,7 +40,9 @@ public partial class HandInNpc : CharacterNpc
     {
         if (HasActiveDialogue)
         {
-            if (!claimed_hand_in)
+            var final_index = AllRequestsClaimed();
+            var valid_hand_in = HandInInfo?.Requests?.Count > 0;
+            if (!final_index && valid_hand_in)
             {
                 HandInView.Instance.ShowPopup(HandInInfo.Id);
             }
@@ -70,10 +72,14 @@ public partial class HandInNpc : CharacterNpc
         }
     }
 
+    private bool AllRequestsClaimed()
+    {
+        return ClaimCount >= HandInInfo.Requests?.Count;
+    }
+
     private int GetDialogueNumber()
     {
-        var data = HandIn.GetOrCreateData(HandInInfo.Id);
-        return Mathf.Clamp(data.ClaimCount - 1, 0, RequestCompleteDialogueId.Count - 1);
+        return Mathf.Clamp(ClaimCount, 0, RequestCompleteDialogueId.Count - 1);
     }
 
     private void StartRequestCompleteDialogue()

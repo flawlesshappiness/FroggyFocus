@@ -1270,7 +1270,7 @@ PickupDialogue = "LOCATION_PICKUP_CAVE"
 LocationId = "cave"
 
 [node name="FocusEvent" parent="World" instance=ExtResource("12_yvk0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 0)
 
 [node name="WorldBugs" type="Node3D" parent="World"]
 

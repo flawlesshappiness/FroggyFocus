@@ -28,8 +28,8 @@ public partial class InventoryControl : ControlScript
         base.OnShow();
 
         Clear();
-        InventoryContainer.UpdateButtons();
         InventoryContainer.SetMode(InventoryContainer.Mode.Press);
+        InventoryContainer.Update();
         InfoContainer.SetCharacter(Data.Game.Inventory.Characters.FirstOrDefault());
     }
 

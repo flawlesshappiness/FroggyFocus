@@ -1,0 +1,91 @@
+[gd_scene load_steps=15 format=3 uid="uid://uvlg3jxf133w"]
+
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_vmtvj"]
+[ext_resource type="Resource" uid="uid://1wt6fplkn8uw" path="res://HandIn/Resources/Demo_Mushroom.tres" id="2_vmtvj"]
+[ext_resource type="PackedScene" uid="uid://c7ukmmer4ocw7" path="res://Assets/FlawLizArt/MushroomGuy/mushroom_guy.fbx" id="3_8nc7t"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="4_pquk8"]
+[ext_resource type="AudioStream" uid="uid://gs33ibo3tgrg" path="res://Sounds/Raw/sfx_mushroom_move_001.wav" id="5_xat8a"]
+[ext_resource type="AudioStream" uid="uid://coekrfq7dgg7u" path="res://Sounds/Raw/sfx_mushroom_move_003.wav" id="6_gxjjv"]
+[ext_resource type="AudioStream" uid="uid://dswc610roeotq" path="res://Sounds/Raw/sfx_mushroom_move_004.wav" id="7_6k3f8"]
+[ext_resource type="AudioStream" uid="uid://bveb0tfeioss1" path="res://Sounds/Raw/sfx_mushroom_speak_001.wav" id="8_sg62r"]
+[ext_resource type="AudioStream" uid="uid://bhpdwtfgggiat" path="res://Sounds/Raw/sfx_mushroom_speak_002.wav" id="9_pjypb"]
+[ext_resource type="AudioStream" uid="uid://r5vrgq26gbw" path="res://Sounds/Raw/sfx_mushroom_speak_003.wav" id="10_cpj1o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1y4e"]
+size = Vector3(1.97949, 2.56787, 2.74756)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mjd21"]
+radius = 1.22306
+height = 4.98991
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tx3gk"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("5_xat8a")
+stream_1/stream = ExtResource("6_gxjjv")
+stream_2/stream = ExtResource("7_6k3f8")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v8ynh"]
+streams_count = 3
+stream_0/stream = ExtResource("8_sg62r")
+stream_1/stream = ExtResource("9_pjypb")
+stream_2/stream = ExtResource("10_cpj1o")
+
+[node name="MushroomDemoNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_vmtvj")
+HandInInfo = ExtResource("2_vmtvj")
+RequestCompleteDialogueId = Array[String](["MUSHROOM_BACKGROUND_001"])
+DialogueAnimation = "Armature|idle_dialogue"
+Animation = NodePath("AnimationStateMachine")
+SfxSpeak = NodePath("SfxSpeak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0744629, -1.95496)
+shape = SubResource("BoxShape3D_v1y4e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82308, -0.761708)
+shape = SubResource("CapsuleShape3D_mjd21")
+
+[node name="mushroom_guy" parent="." instance=ExtResource("3_8nc7t")]
+
+[node name="Skeleton3D" parent="mushroom_guy/Armature" index="0"]
+bones/1/position = Vector3(-3.28447e-20, -0.00155846, -0.000951274)
+bones/1/rotation = Quaternion(0.339181, -5.90143e-24, -4.89696e-17, 0.940721)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(2.47245e-26, 0.00719796, 1.02884e-10)
+bones/2/rotation = Quaternion(0.250012, 2.26211e-17, -7.87628e-17, 0.968243)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-1.70645e-25, 0.00810257, -8.14488e-10)
+bones/3/rotation = Quaternion(0.0881501, 1.18745e-07, 1.05083e-08, 0.996107)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(-5.88352e-16, 0.00977423, 1.29009e-09)
+bones/4/rotation = Quaternion(-0.156185, 2.23905e-10, -3.9624e-08, 0.987728)
+bones/4/scale = Vector3(1, 1, 1)
+
+[node name="AnimationPlayer" parent="mushroom_guy" index="1"]
+playback_default_blend_time = 0.25
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("4_pquk8")
+Animator = NodePath("../mushroom_guy/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[node name="SfxMove" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_tx3gk")
+volume_db = -20.0
+max_distance = 12.0
+max_polyphony = 6
+bus = &"SFX"
+
+[node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88884, -1.10603)
+stream = SubResource("AudioStreamRandomizer_v8ynh")
+max_polyphony = 6
+bus = &"SFX"
+
+[editable path="mushroom_guy"]

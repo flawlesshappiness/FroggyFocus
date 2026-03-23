@@ -22,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_w3kxo")
 script = ExtResource("2_v4q88")
-InventoryContainer = NodePath("HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer/inventory_container")
+InventoryContainer = NodePath("HBoxContainer/ButtonsPanel/MarginContainer/inventory_container")
 BackButton = NodePath("HBoxContainer/ButtonsPanel/BackButton")
 InfoContainer = NodePath("HBoxContainer/InfoPanel/MarginContainer/InventoryInfoContainer")
 
@@ -50,11 +50,9 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ButtonsPanel/MarginContainer"]
+[node name="inventory_container" parent="HBoxContainer/ButtonsPanel/MarginContainer" instance=ExtResource("3_gj1sa")]
 layout_mode = 2
-
-[node name="inventory_container" parent="HBoxContainer/ButtonsPanel/MarginContainer/ScrollContainer" instance=ExtResource("3_gj1sa")]
-layout_mode = 2
+RowCount = 4
 ButtonsDisabled = true
 
 [node name="TitlePanel" type="Panel" parent="HBoxContainer/ButtonsPanel"]

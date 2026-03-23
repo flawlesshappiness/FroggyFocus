@@ -1991,7 +1991,7 @@ autoplay = true
 bus = &"Environment"
 
 [node name="FocusEvent" parent="World" instance=ExtResource("14_byi1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 0)
 visible = false
 
 [node name="Pickups" type="Node3D" parent="World"]

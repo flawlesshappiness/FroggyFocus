@@ -142,7 +142,7 @@ public partial class FocusTarget : Node3D
             FocusCharacterSpeedType.Slow => Mathf.Lerp(0.5f, 1.0f, Difficulty),
             FocusCharacterSpeedType.Normal => Mathf.Lerp(1.0f, 2.0f, Difficulty),
             FocusCharacterSpeedType.Fast => Mathf.Lerp(2.0f, 3.0f, Difficulty),
-            FocusCharacterSpeedType.Glitch => Mathf.Lerp(10.0f, 15.0f, Difficulty),
+            FocusCharacterSpeedType.Glitch => Mathf.Lerp(0.3f, 0.5f, Difficulty),
         };
     }
 

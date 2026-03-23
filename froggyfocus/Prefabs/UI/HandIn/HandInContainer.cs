@@ -82,8 +82,8 @@ public partial class HandInContainer : ControlScript
 
         RequestLabel.Text = CurrentRequest.GetRequestText();
 
-        Inventory.UpdateButtons(CurrentRequest.GetInventoryFilterOptions());
         Inventory.SetMode(InventoryContainer.Mode.Select);
+        Inventory.Update(CurrentRequest.GetInventoryFilterOptions());
 
         RewardUnlockBar.Load(CurrentInfo);
         RewardUnlockBar.Visible = HasItemUnlock;

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://03bx8payjjwa"]
+
+[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm.tres" id="1_rjdta"]
+[ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="2_swnol"]
+
+[resource]
+script = ExtResource("2_swnol")
+Count = 5
+TargetTag = 0
+TargetInfo = ExtResource("1_rjdta")
+Money = 50
+metadata/_custom_type_script = "uid://dm1b320n5x14n"

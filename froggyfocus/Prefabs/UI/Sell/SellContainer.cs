@@ -22,7 +22,8 @@ public partial class SellContainer : ControlScript
     protected override void OnShow()
     {
         base.OnShow();
-        InventoryContainer.UpdateButtons();
+        InventoryContainer.SetMode(InventoryContainer.Mode.Press);
+        InventoryContainer.Update();
         UpdateSellAllButton();
     }
 
@@ -32,7 +33,7 @@ public partial class SellContainer : ControlScript
         InventoryController.Instance.RemoveCharacterData(data);
         Data.Game.Save();
 
-        InventoryContainer.UpdateButtons();
+        InventoryContainer.Update();
         UpdateSellAllButton();
         OnSell?.Invoke();
     }
@@ -47,7 +48,7 @@ public partial class SellContainer : ControlScript
 
         Data.Game.Save();
 
-        InventoryContainer.UpdateButtons();
+        InventoryContainer.Update();
         UpdateSellAllButton();
         OnSell?.Invoke();
     }
