@@ -1,13 +1,6 @@
 public enum UpgradeType
 {
-    CursorRadius = 0,
+    FocusTime = 0,
     CursorSpeed = 1,
-    CursorTickAmount = 2,
-    CursorTickDecay = 3,
-    CursorStartValue = 4,
-
-    InventorySize = 10,
-
-    ShieldMax = 20,
-    ShieldRegen = 21,
+    TickAmount = 2,
 }

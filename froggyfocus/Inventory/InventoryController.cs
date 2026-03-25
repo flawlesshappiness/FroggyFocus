@@ -153,16 +153,6 @@ public partial class InventoryController : SingletonController
         Data.Game.Inventory.Characters.Remove(data);
     }
 
-    public int GetCurrentSize()
-    {
-        return (int)UpgradeController.Instance.GetCurrentValue(UpgradeType.InventorySize);
-    }
-
-    public bool IsInventoryFull()
-    {
-        return Data.Game.Inventory.Characters.Count >= GetCurrentSize();
-    }
-
     public List<InventoryCharacterData> GetCharactersInInventory(InventoryFilterOptions options = null)
     {
         return Data.Game.Inventory.Characters

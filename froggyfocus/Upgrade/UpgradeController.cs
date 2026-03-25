@@ -6,7 +6,7 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
     public static UpgradeController Instance => Singleton.Get<UpgradeController>();
     public override string Directory => "Upgrade";
 
-    private int[] DefaultPrices = [500, 600, 700, 800, 900, 1000, 1500, 2000];
+    private int[] DefaultPrices = [250, 500, 750, 1000, 1200, 1500, 2000, 2500, 3000, 3500, 4000];
 
     public override void _Ready()
     {
@@ -157,7 +157,7 @@ public partial class UpgradeController : ResourceController<UpgradeCollection, U
 
     public int GetDefaultPrice(int level)
     {
-        if (DefaultPrices.Length <= level) return 100000;
+        if (DefaultPrices.Length <= level) return DefaultPrices.Last();
         return DefaultPrices[level];
     }
 

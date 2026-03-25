@@ -41,6 +41,7 @@ public partial class FocusTarget : Node3D
     public bool HasCursor { get; private set; }
     public float FocusValue { get; private set; }
     public float FocusMax { get; private set; }
+    public float FocusTick { get; private set; }
     public bool IsFocusMax { get; private set; }
     public bool IsCaught { get; private set; }
     public float MoveSpeed { get; private set; }
@@ -122,6 +123,7 @@ public partial class FocusTarget : Node3D
         FocusCircle.SetFill(0);
         FocusValue = 0f;
         FocusMax = 100f;
+        FocusTick = UpgradeController.Instance.GetCurrentValue(UpgradeType.TickAmount);
     }
 
     private void UpdateDifficulty()
@@ -218,7 +220,7 @@ public partial class FocusTarget : Node3D
 
         if (HasCursor)
         {
-            AdjustFocusValue(5.0f); // TODO: Based on upgrade
+            AdjustFocusValue(FocusTick);
             FocusCircle.AnimateBounce(FocusValue >= FocusMax);
         }
         else if (!IsFocusMax)

@@ -42,11 +42,9 @@ public partial class UpgradeContainer : ControlScript
         var parent = UpgradeControlTemplate.GetParent();
         var types = new List<UpgradeType>
         {
-            UpgradeType.CursorRadius,
             UpgradeType.CursorSpeed,
-            UpgradeType.CursorTickAmount,
-            UpgradeType.InventorySize,
-            UpgradeType.ShieldMax,
+            UpgradeType.TickAmount,
+            UpgradeType.FocusTime,
         };
 
         foreach (var type in types)

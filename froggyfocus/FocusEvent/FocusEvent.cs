@@ -304,7 +304,7 @@ public partial class FocusEvent : Node3D
 
     private void StartTimer()
     {
-        TimerDuration = 20f; // TODO: Based on upgrade
+        TimerDuration = UpgradeController.Instance.GetCurrentValue(UpgradeType.FocusTime);
         TimerStart = GameTime.Time;
         TimerEnd = TimerStart + TimerDuration;
     }

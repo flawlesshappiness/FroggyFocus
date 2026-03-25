@@ -6,6 +6,7 @@ public partial class DemoScene : GameScene
     {
         base._Ready();
         InitializeItems();
+        InitializeUpgrades();
     }
 
     private void InitializeItems()
@@ -25,5 +26,17 @@ public partial class DemoScene : GameScene
             var item = Item.GetOrCreateData(type);
             item.Owned = true;
         }
+    }
+
+    private void InitializeUpgrades()
+    {
+        var speed = UpgradeController.Instance.GetOrCreateData(UpgradeType.CursorSpeed);
+        speed.Level = 0;
+
+        var tick = UpgradeController.Instance.GetOrCreateData(UpgradeType.TickAmount);
+        tick.Level = 0;
+
+        var time = UpgradeController.Instance.GetOrCreateData(UpgradeType.FocusTime);
+        time.Level = 2;
     }
 }
