@@ -118,16 +118,19 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
     private void GameProfileSelected(int i)
     {
-        var hat_none = Item.GetOrCreateData(ItemType.Hat_None);
-        hat_none.Owned = true;
+        var items = new List<ItemType>()
+        {
+            ItemType.BodyTop_None,
+            ItemType.BodyPattern_None,
+            ItemType.BodyEye_None,
+            ItemType.Face_None,
+            ItemType.Hat_None,
+        };
 
-        var face_none = Item.GetOrCreateData(ItemType.Face_None);
-        face_none.Owned = true;
-
-        var color_default = Item.GetOrCreateData(ItemType.Color_Default);
-        color_default.Owned = true;
-
-        var paticles_none = Item.GetOrCreateData(ItemType.Particles_None);
-        paticles_none.Owned = true;
+        foreach (var type in items)
+        {
+            var item = Item.GetOrCreateData(type);
+            item.Owned = true;
+        }
     }
 }
