@@ -12,15 +12,6 @@ public partial class ShopContainer : ControlScript
     public SellContainer SellContainer;
 
     [Export]
-    public AppearanceContainer HatsContainer;
-
-    [Export]
-    public AppearanceContainer FaceContainer;
-
-    [Export]
-    public AppearanceContainer ColorContainer;
-
-    [Export]
     public Control InventoryInfoPanel;
 
     [Export]

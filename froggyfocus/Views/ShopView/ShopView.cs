@@ -42,6 +42,18 @@ public partial class ShopView : PanelView
         });
     }
 
+    protected override void OnShow()
+    {
+        base.OnShow();
+        GameView.Instance.MoneyLock.SetLock(nameof(ShopView), true);
+    }
+
+    protected override void OnHide()
+    {
+        base.OnHide();
+        GameView.Instance.MoneyLock.SetLock(nameof(ShopView), false);
+    }
+
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);

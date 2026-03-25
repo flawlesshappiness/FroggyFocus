@@ -28,6 +28,8 @@ public partial class GameView : View
     [Export]
     public InputPromptControl InputPrompt;
 
+    public MultiLock MoneyLock = new();
+
     private FocusEvent current_focus_event;
     private bool skip_quest_advanced;
 
@@ -130,6 +132,8 @@ public partial class GameView : View
 
     private void MoneyChanged(int value)
     {
+        if (MoneyLock.IsLocked) return;
+
         time_money_show = GameTime.Time + 5f;
         if (cr_money != null) return;
 

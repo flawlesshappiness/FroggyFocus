@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://w7rjdy2elbei"]
+[gd_scene load_steps=10 format=3 uid="uid://w7rjdy2elbei"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_f2gf6"]
 [ext_resource type="Script" uid="uid://b48kuv4pap1xp" path="res://Views/ShopView/ShopView.cs" id="2_idlmi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://du35rtcreuxfe" path="res://Prefabs/UI/Shop/shop_container.tscn" id="4_ikh5b"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="8_n8kem"]
 [ext_resource type="PackedScene" uid="uid://bs6jtqi04ls8t" path="res://Prefabs/UI/PurchasePopup/purchase_popup.tscn" id="8_sxpp3"]
+[ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="8_xcjs6"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bsdmw"]
 random_pitch = 1.2
@@ -29,6 +30,26 @@ AnimatedOverlay = NodePath("AnimatedOverlay")
 InputBlocker = NodePath("InputBlocker")
 
 [node name="AnimatedOverlay" parent="." instance=ExtResource("3_aeg22")]
+layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MoneyBar" parent="MarginContainer/Control" instance=ExtResource("8_xcjs6")]
 layout_mode = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
