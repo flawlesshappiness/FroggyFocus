@@ -158,7 +158,6 @@ IsPrimary = true
 [node name="CoatContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Coat/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 4
-NoneType = 406
 ShowOwned = true
 
 [node name="Pattern" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
@@ -189,7 +188,6 @@ IsPrimary = true
 [node name="PatternContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Pattern/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 5
-NoneType = 505
 ShowOwned = true
 
 [node name="Eye" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
@@ -220,7 +218,6 @@ IsPrimary = true
 [node name="EyeContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Eye/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 6
-NoneType = 606
 ShowOwned = true
 
 [node name="Hats" type="MarginContainer" parent="HBoxContainer/OptionsPanel/TabContainer"]
@@ -292,7 +289,6 @@ Category = 1
 [node name="FaceContainer" parent="HBoxContainer/OptionsPanel/TabContainer/Acc/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_eea5e")]
 layout_mode = 2
 ItemCategory = 1
-NoneType = 100
 ShowOwned = true
 
 [node name="BackButton" parent="HBoxContainer/OptionsPanel" instance=ExtResource("6_eea5e")]

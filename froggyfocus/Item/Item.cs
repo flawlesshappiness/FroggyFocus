@@ -49,4 +49,14 @@ public static class Item
         };
         return none_types.Contains(type);
     }
+
+    public static ItemType GetNoneType(ItemCategory category) => category switch
+    {
+        ItemCategory.Hat => ItemType.Hat_None,
+        ItemCategory.Face => ItemType.Face_None,
+        ItemCategory.BodyTop => ItemType.BodyTop_None,
+        ItemCategory.BodyPattern => ItemType.BodyPattern_None,
+        ItemCategory.BodyEye => ItemType.BodyEye_None,
+        _ => ItemType.Hat_None
+    };
 }

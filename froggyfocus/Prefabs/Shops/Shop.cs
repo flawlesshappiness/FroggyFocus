@@ -4,18 +4,30 @@ using System.Collections;
 public partial class Shop : Area3D, IInteractable
 {
     [Export]
+    public string IntroDialogue;
+
+    [Export]
     public MoleNpc Mole;
+
+    private const string IntroDialogueFlag = "shop_intro_dialogue";
 
     private static Shop current;
 
     private bool animating;
     private bool mole_up;
     private float time_mole_down;
+    private bool active_dialogue;
 
     public override void _Ready()
     {
         base._Ready();
         ShopView.Instance.OnClosed += ShopClosed;
+        DialogueController.Instance.OnDialogueEnded += DialogueEnded;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
     }
 
     public void Interact()
@@ -26,7 +38,7 @@ public partial class Shop : Area3D, IInteractable
 
         if (mole_up)
         {
-            ShopView.Instance.Show();
+            ShowShop();
         }
         else
         {
@@ -63,7 +75,7 @@ public partial class Shop : Area3D, IInteractable
             TurnTowardsPlayer();
             Mole.AnimateShow();
             yield return new WaitForSeconds(1f);
-            ShopView.Instance.Show();
+            ShowShop();
             SetLocks(false);
 
             mole_up = true;
@@ -92,5 +104,34 @@ public partial class Shop : Area3D, IInteractable
     {
         var id = nameof(Shop);
         Player.SetAllLocks(id, locked);
+    }
+
+    private void ShowShop()
+    {
+        if (!string.IsNullOrEmpty(IntroDialogue) && GameFlags.IsFlag(IntroDialogueFlag, 0))
+        {
+            GameFlags.SetFlag(IntroDialogueFlag, 1);
+            StartDialogue(IntroDialogue);
+        }
+        else
+        {
+            ShopView.Instance.Show();
+        }
+    }
+
+    private void StartDialogue(string id)
+    {
+        active_dialogue = true;
+        DialogueController.Instance.StartDialogue(id);
+    }
+
+    private void DialogueEnded()
+    {
+        if (active_dialogue)
+        {
+            ShowShop();
+        }
+
+        active_dialogue = false;
     }
 }

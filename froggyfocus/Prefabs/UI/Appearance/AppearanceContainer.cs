@@ -9,9 +9,6 @@ public partial class AppearanceContainer : ControlScript
     public ItemCategory ItemCategory;
 
     [Export]
-    public ItemType NoneType;
-
-    [Export]
     public bool ShowUnowned;
 
     [Export]
@@ -26,6 +23,8 @@ public partial class AppearanceContainer : ControlScript
     [Export]
     public GridContainer GridContainer;
 
+    private ItemType NoneType { get; set; }
+
     public event Action<AppearanceInfo> OnButtonPressed;
     public event Action TopButtonFocusEntered;
 
@@ -35,6 +34,12 @@ public partial class AppearanceContainer : ControlScript
     {
         public AppearancePreviewButton Button { get; set; }
         public AppearanceInfo Info { get; set; }
+    }
+
+    public override void _Ready()
+    {
+        base._Ready();
+        NoneType = Item.GetNoneType(ItemCategory);
     }
 
     protected override void Initialize()
@@ -77,8 +82,9 @@ public partial class AppearanceContainer : ControlScript
             var is_none = map.Info.Type == NoneType;
             var owned = Item.IsOwned(map.Info.Type);
             var shop_info = ShopController.Instance.GetInfo(map.Info.Type);
+            var show_if_demo = shop_info != null && (ApplicationInfo.Instance.Type != ApplicationType.Demo || shop_info.AvailableInDemo);
             var show_if_none = !is_none || owns_any_item;
-            var show_if_unowned = (!owned && ShowUnowned) && shop_info != null;
+            var show_if_unowned = (!owned && ShowUnowned) && show_if_demo;
             var show_if_owned = show_if_none && owned && ShowOwned;
             map.Button.Visible = show_if_unowned || show_if_owned;
         }
@@ -99,9 +105,6 @@ public partial class AppearanceContainer : ControlScript
 
     private void AppearanceButtonPressed(AppearanceInfo info)
     {
-        var data = Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory);
-        data.Type = info.Type;
-
         OnButtonPressed?.Invoke(info);
     }
 

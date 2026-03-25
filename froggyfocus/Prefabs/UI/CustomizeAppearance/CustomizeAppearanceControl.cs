@@ -107,6 +107,9 @@ public partial class CustomizeAppearanceControl : ControlScript
     private void AppearanceButton_Pressed(AppearanceInfo info)
     {
         if (loading) return;
+
+        var data = Data.Game.FrogAppearanceData.GetOrCreateAttachmentData(info.Category);
+        data.Type = info.Type;
         OnAppearanceChanged?.Invoke();
     }
 

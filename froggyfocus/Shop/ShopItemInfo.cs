@@ -11,4 +11,7 @@ public partial class ShopItemInfo : Resource
 
     [Export]
     public int Price;
+
+    [Export]
+    public bool AvailableInDemo;
 }

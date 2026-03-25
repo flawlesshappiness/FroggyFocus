@@ -1,4 +1,5 @@
 using Godot;
+using System.Text.Json.Serialization;
 
 public class FrogAppearanceAttachmentData
 {
@@ -11,6 +12,9 @@ public class FrogAppearanceAttachmentData
     public float SecondaryG { get; set; }
     public float SecondaryB { get; set; }
 
+    [JsonIgnore]
     public Color PrimaryColor => new Color(PrimaryR, PrimaryG, PrimaryB);
+
+    [JsonIgnore]
     public Color SecondaryColor => new Color(SecondaryR, SecondaryG, SecondaryB);
 }

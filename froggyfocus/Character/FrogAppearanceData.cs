@@ -15,10 +15,7 @@ public class FrogAppearanceData
 
         if (data == null)
         {
-            data = new FrogAppearanceAttachmentData { Category = category };
-            if (category == ItemCategory.BodyTop) data.Type = ItemType.BodyTop_None;
-            if (category == ItemCategory.BodyPattern) data.Type = ItemType.BodyPattern_None;
-            if (category == ItemCategory.BodyEye) data.Type = ItemType.BodyEye_None;
+            data = new FrogAppearanceAttachmentData { Category = category, Type = Item.GetNoneType(category) };
             Attachments.Add(data);
         }
 

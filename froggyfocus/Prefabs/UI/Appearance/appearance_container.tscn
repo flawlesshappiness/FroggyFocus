@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://7g3y8bn480iw" path="res://Prefabs/UI/CustomizeAppearance/appearance_preview_button.tscn" id="1_u17em"]
 
 [node name="appearance_container" type="MarginContainer" node_paths=PackedStringArray("ButtonTemplate", "UnlockHintLabel", "GridContainer")]
+custom_minimum_size = Vector2(360, 0)
 offset_right = 487.0
 offset_bottom = 75.0
 size_flags_horizontal = 3

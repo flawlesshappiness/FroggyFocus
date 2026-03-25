@@ -16,11 +16,18 @@ public partial class ShopView : PanelView
     {
         base._Ready();
         RegisterDebugActions();
+        InitializeAppearanceContainers();
 
         ShopContainer.BackButton.Pressed += BackClicked;
+    }
 
-        ShopContainer.HatsContainer.OnButtonPressed += HatButton_Pressed;
-        ShopContainer.ColorContainer.OnButtonPressed += ColorButton_Pressed;
+    private void InitializeAppearanceContainers()
+    {
+        var containers = this.GetNodesInChildren<AppearanceContainer>();
+        foreach (var container in containers)
+        {
+            container.OnButtonPressed += info => AppearanceButton_Pressed(container, info);
+        }
     }
 
     private void RegisterDebugActions()
@@ -62,9 +69,9 @@ public partial class ShopView : PanelView
         Close();
     }
 
-    private void HatButton_Pressed(AppearanceInfo info)
+    private void AppearanceButton_Pressed(AppearanceContainer container, AppearanceInfo info)
     {
-        var focus_button = ShopContainer.HatsContainer.GetButton(info);
+        var focus_button = container.GetButton(info);
         PurchasePopup.SetAppearanceItem(info);
 
         this.StartCoroutine(Cr, "popup");
@@ -77,37 +84,12 @@ public partial class ShopView : PanelView
                 Item.MakeOwned(info.Type);
                 Data.Game.Save();
 
-                ShopContainer.HatsContainer.UpdateButtons();
+                container.UpdateButtons();
                 ShopContainer.TabContainer.GetTabBar().GrabFocus();
             }
             else if (PurchasePopup.Cancelled)
             {
-                ShopContainer.HatsContainer.GetButton(info).GrabFocus();
-            }
-        }
-    }
-
-    private void ColorButton_Pressed(AppearanceInfo info)
-    {
-        var focus_button = ShopContainer.ColorContainer.GetButton(info);
-        PurchasePopup.SetAppearanceItem(info);
-
-        this.StartCoroutine(Cr, "popup");
-        IEnumerator Cr()
-        {
-            yield return PurchasePopup.WaitForPopup();
-
-            if (PurchasePopup.Purchased)
-            {
-                Item.MakeOwned(info.Type);
-                Data.Game.Save();
-
-                ShopContainer.ColorContainer.UpdateButtons();
-                ShopContainer.TabContainer.GetTabBar().GrabFocus();
-            }
-            else if (PurchasePopup.Cancelled)
-            {
-                ShopContainer.ColorContainer.GetButton(info).GrabFocus();
+                container.GetButton(info).GrabFocus();
             }
         }
     }
