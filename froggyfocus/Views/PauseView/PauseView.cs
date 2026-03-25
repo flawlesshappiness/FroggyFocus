@@ -337,11 +337,15 @@ public partial class PauseView : View
 
     private void ShowQuests()
     {
+        if (ApplicationInfo.Instance.Type == ApplicationType.Demo) return;
+
         AnimationPlayer_Quests.Play("show");
     }
 
     private void HideQuests()
     {
+        if (ApplicationInfo.Instance.Type == ApplicationType.Demo) return;
+
         AnimationPlayer_Quests.Play("hide");
     }
 
