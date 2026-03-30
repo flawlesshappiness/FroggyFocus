@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://uvlg3jxf133w"]
+[gd_scene load_steps=16 format=3 uid="uid://uvlg3jxf133w"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_vmtvj"]
 [ext_resource type="Resource" uid="uid://1wt6fplkn8uw" path="res://HandIn/Resources/Demo_Mushroom.tres" id="2_vmtvj"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="3_5mesk"]
 [ext_resource type="PackedScene" uid="uid://c7ukmmer4ocw7" path="res://Assets/FlawLizArt/MushroomGuy/mushroom_guy.fbx" id="3_8nc7t"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="4_pquk8"]
 [ext_resource type="AudioStream" uid="uid://gs33ibo3tgrg" path="res://Sounds/Raw/sfx_mushroom_move_001.wav" id="5_xat8a"]
@@ -14,9 +15,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1y4e"]
 size = Vector3(1.97949, 2.56787, 2.74756)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mjd21"]
-radius = 1.22306
-height = 4.98991
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8nc7t"]
+height = 4.67236
+radius = 2.26367
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tx3gk"]
 random_pitch = 1.1
@@ -45,11 +46,13 @@ SfxSpeak = NodePath("SfxSpeak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0744629, -1.95496)
 shape = SubResource("BoxShape3D_v1y4e")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NpcCollisionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37908, -0.9157)
+script = ExtResource("3_5mesk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.82308, -0.761708)
-shape = SubResource("CapsuleShape3D_mjd21")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcCollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824951, 0)
+shape = SubResource("CylinderShape3D_8nc7t")
 
 [node name="mushroom_guy" parent="." instance=ExtResource("3_8nc7t")]
 

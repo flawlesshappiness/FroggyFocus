@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkrqmphtqlmnh"]
+[gd_scene load_steps=6 format=3 uid="uid://bkrqmphtqlmnh"]
 
 [ext_resource type="Script" uid="uid://c77p5fb0fthf1" path="res://Prefabs/Shops/Shop.cs" id="1_syha2"]
 [ext_resource type="PackedScene" uid="uid://be6g2mx8tk63k" path="res://Prefabs/NPC/MoleNPC/mole_npc.tscn" id="3_1kjt3"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="3_6qvon"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1kjt3"]
 radius = 1.4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6qvon"]
+height = 1.0
+radius = 1.48291
 
 [node name="Shop" type="Area3D" node_paths=PackedStringArray("Mole")]
 collision_layer = 4
@@ -17,3 +22,12 @@ shape = SubResource("SphereShape3D_1kjt3")
 
 [node name="MoleNPC" parent="." instance=ExtResource("3_1kjt3")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="NpcCollisionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_6qvon")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcCollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_6qvon")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://be6g2mx8tk63k"]
+[gd_scene load_steps=17 format=3 uid="uid://be6g2mx8tk63k"]
 
 [ext_resource type="PackedScene" uid="uid://18t2msk6ooj" path="res://Assets/FlawLizArt/Mole/mole_dirt.fbx" id="1_oavxq"]
 [ext_resource type="Script" uid="uid://7w4hqarb3iov" path="res://Prefabs/NPC/MoleNPC/MoleNpc.cs" id="1_rghp5"]
@@ -10,14 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://dh3m5xwbxhnjo" path="res://Sounds/Raw/sfx_oink_002.wav" id="8_gxa8v"]
 [ext_resource type="AudioStream" uid="uid://043vn8c8n6d6" path="res://Sounds/Raw/sfx_oink_003.wav" id="9_mr668"]
 [ext_resource type="Material" uid="uid://dhdvn3r0w3aee" path="res://Materials/Dirt.tres" id="10_gxa8v"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ume8u"]
-radius = 1.1916
-height = 4.61557
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ume8u"]
-height = 0.422119
-radius = 1.96973
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6ab0l"]
 random_pitch = 1.2
@@ -183,16 +175,6 @@ playback_default_blend_time = 0.25
 script = ExtResource("4_ume8u")
 Animator = NodePath("../mole/AnimationPlayer")
 metadata/_custom_type_script = "uid://ckv4mr7osps52"
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.268464, 0)
-shape = SubResource("CapsuleShape3D_ume8u")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.208157, 0)
-shape = SubResource("CylinderShape3D_ume8u")
 
 [node name="SfxShow" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_6ab0l")

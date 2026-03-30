@@ -1,7 +1,6 @@
-[gd_scene load_steps=56 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=55 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_t8ctw"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
@@ -79,7 +78,7 @@ WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
 BgmMain = NodePath("World/Sounds/BgmMain")
 BgmFocus = NodePath("World/Sounds/BgmFocus")
-Weathers = Array[ExtResource("2_t8ctw")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
+Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -228,7 +227,7 @@ SignType = 3
 [node name="NPCs" type="Node3D" parent="World"]
 
 [node name="FrogDemoNPC" parent="World/NPCs" instance=ExtResource("29_fpkb8")]
-transform = Transform3D(-0.0911285, 0, -1.49723, 0, 1.5, 0, 1.49723, 0, -0.0911285, -19.5249, -0.127254, -31.3776)
+transform = Transform3D(-0.0607523, 0, -0.998153, 0, 1, 0, 0.998153, 0, -0.0607523, -19.5249, -0.127254, -31.3776)
 
 [node name="MushroomDemoNPC" parent="World/NPCs" instance=ExtResource("18_ugs8i")]
 transform = Transform3D(0.984239, -0.0260232, 0.174919, 0, 0.989114, 0.147153, -0.176844, -0.144834, 0.973524, 30.2448, 11.9223, 20.6237)
@@ -239,7 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5156, -0.0862674, -38.758
 IntroDialogue = "##DEMO_MOLE_001##"
 
 [node name="MagpieNPC" parent="World/NPCs" instance=ExtResource("21_hhc6j")]
-transform = Transform3D(-0.121749, 0, 1.99629, 0, 2, 0, -1.99629, 0, -0.121749, 38.8849, 0, -33.78)
+transform = Transform3D(-0.0608743, 0, 0.998145, 0, 1, 0, -0.998145, 0, -0.0608743, 38.8849, 0, -33.78)
 HandInInfo = ExtResource("22_qor8m")
 RequestCompleteDialogueId = ["DEMO_MAGPIE_INTRO_001", "DEMO_MAGPIE_FINISHED_001"]
 
