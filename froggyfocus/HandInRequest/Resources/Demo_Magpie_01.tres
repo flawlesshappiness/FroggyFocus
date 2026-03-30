@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=2 format=3 uid="uid://crpd6v2ak2m3o"]
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://crpd6v2ak2m3o"]
 
 [ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="1_32eny"]
+[ext_resource type="Resource" uid="uid://ctcbxhnj4xrku" path="res://FocusCharacter/Resources/Waxworm.tres" id="1_tnlb4"]
 
 [resource]
 script = ExtResource("1_32eny")
-Count = 10
-TargetTag = 3
+Count = 5
+TargetTag = 0
+TargetInfo = ExtResource("1_tnlb4")
 Money = 0
 metadata/_custom_type_script = "uid://dm1b320n5x14n"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=56 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_t8ctw"]
@@ -21,8 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://cstu4xwk8m2au" path="res://Prefabs/Nature/common_tree_dead_1.tscn" id="19_6jk5p"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/Shop.tscn" id="20_810dt"]
 [ext_resource type="PackedScene" uid="uid://db3tbp4x07eca" path="res://Prefabs/Nature/common_tree_dead_2.tscn" id="20_ktv6u"]
+[ext_resource type="PackedScene" uid="uid://bw057fcfnoby7" path="res://Prefabs/NPC/MagpieNPC/magpie_npc.tscn" id="21_hhc6j"]
 [ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="21_o68er"]
 [ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="22_o68er"]
+[ext_resource type="Resource" uid="uid://jollnsp7sq23" path="res://HandIn/Resources/Demo_Magpie.tres" id="22_qor8m"]
 [ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="23_awkdr"]
 [ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds_dense.tscn" id="24_awkdr"]
 [ext_resource type="PackedScene" uid="uid://78t0bt36x8b2" path="res://Prefabs/Nature/reeds_sparse.tscn" id="25_0q7ep"]
@@ -178,6 +180,9 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26.7286, -1.77575, -25.4543)
 [node name="TreeStump3" parent="World/NavigationRegion3D/Wood" instance=ExtResource("15_xpcd3")]
 transform = Transform3D(0.859816, 0, -5.93807, 0, 6, 0, 5.93807, 0, 0.859816, 21.7024, -2.34409, -35.8564)
 
+[node name="TreeStump5" parent="World/NavigationRegion3D/Wood" instance=ExtResource("15_xpcd3")]
+transform = Transform3D(0.859817, 0, -5.93807, 0, 6, 0, 5.93807, 0, 0.859817, 37.3028, -2.16436, -33.7664)
+
 [node name="Mushrooms" type="Node3D" parent="World/NavigationRegion3D"]
 
 [node name="Mushroom_Platform" parent="World/NavigationRegion3D/Mushrooms" instance=ExtResource("17_ugs8i")]
@@ -232,6 +237,11 @@ RequestCompleteDialogueId = Array[String](["DEMO_MUSHROOM_INTRO_001", "DEMO_MUSH
 [node name="Shop" parent="World/NPCs" instance=ExtResource("20_810dt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5156, -0.0862674, -38.7588)
 IntroDialogue = "##DEMO_MOLE_001##"
+
+[node name="MagpieNPC" parent="World/NPCs" instance=ExtResource("21_hhc6j")]
+transform = Transform3D(-0.121749, 0, 1.99629, 0, 2, 0, -1.99629, 0, -0.121749, 38.8849, 0, -33.78)
+HandInInfo = ExtResource("22_qor8m")
+RequestCompleteDialogueId = ["DEMO_MAGPIE_INTRO_001", "DEMO_MAGPIE_FINISHED_001"]
 
 [node name="Plants" type="Node3D" parent="World"]
 
@@ -413,7 +423,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 40.2246, -1.31995, -40.1383)
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 16.8662, -1.31995, -31.4057)
 
 [node name="plant_yarrow_marsh_marigold_group7" parent="World/Plants/Yarrow Marsh Marigold" instance=ExtResource("54_xp4so")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 35.9747, -1.31995, -28.3684)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 47.1454, -1.31995, -17.5529)
 
 [node name="plant_yarrow_marsh_marigold_group8" parent="World/Plants/Yarrow Marsh Marigold" instance=ExtResource("54_xp4so")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 24.73, -1.31995, -21.0828)
@@ -515,7 +525,7 @@ transform = Transform3D(-0.146046, 0, -0.989278, 0, 1, 0, 0.989278, 0, -0.146046
 [node name="Grass_Tall" type="Node3D" parent="World/Plants"]
 
 [node name="Grass_Tuft_Tall" parent="World/Plants/Grass_Tall" instance=ExtResource("25_g0kbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.4074, -0.856771, -34.1642)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4033, -0.856771, -34.1642)
 
 [node name="Grass_Tuft_Tall2" parent="World/Plants/Grass_Tall" instance=ExtResource("25_g0kbm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.2263, -0.856771, -23.519)
@@ -1112,7 +1122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.634, -1, -49.646)
 Info = ExtResource("42_bmvqj")
 
 [node name="swamp_woods22" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1086, -1, -31.7918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.818, -1, -26.5352)
 Info = ExtResource("42_bmvqj")
 
 [node name="swamp_woods23" parent="World/WorldBugs/woods" instance=ExtResource("41_bmvqj")]

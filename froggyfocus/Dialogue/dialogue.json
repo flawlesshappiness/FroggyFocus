@@ -739,6 +739,30 @@
 	},
 	
 	{
+		"id": "##DEMO_MAGPIE_INTRO_001##",
+		"next": "##DEMO_MAGPIE_INTRO_002##"
+	},
+	{
+		"id": "##DEMO_MAGPIE_INTRO_002##",
+		"next": "##DEMO_MAGPIE_INTRO_003##"
+	},
+	{
+		"id": "##DEMO_MAGPIE_INTRO_003##"
+	},
+	
+	{
+		"id": "##DEMO_MAGPIE_FINISHED_001##",
+		"next": "##DEMO_MAGPIE_FINISHED_002##"
+	},
+	{
+		"id": "##DEMO_MAGPIE_FINISHED_002##",
+		"next": "##DEMO_MAGPIE_FINISHED_003##"
+	},
+	{
+		"id": "##DEMO_MAGPIE_FINISHED_003##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},
