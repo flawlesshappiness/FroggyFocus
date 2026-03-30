@@ -227,6 +227,7 @@ transform = Transform3D(-0.0911285, 0, -1.49723, 0, 1.5, 0, 1.49723, 0, -0.09112
 
 [node name="MushroomDemoNPC" parent="World/NPCs" instance=ExtResource("18_ugs8i")]
 transform = Transform3D(0.984239, -0.0260232, 0.174919, 0, 0.989114, 0.147153, -0.176844, -0.144834, 0.973524, 30.2448, 11.9223, 20.6237)
+RequestCompleteDialogueId = Array[String](["DEMO_MUSHROOM_INTRO_001", "DEMO_MUSHROOM_FINISHED_001"])
 
 [node name="Shop" parent="World/NPCs" instance=ExtResource("20_810dt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5156, -0.0862674, -38.7588)

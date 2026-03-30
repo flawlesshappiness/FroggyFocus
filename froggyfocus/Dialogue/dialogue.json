@@ -719,6 +719,26 @@
 	},
 	
 	{
+		"id": "##DEMO_MUSHROOM_INTRO_001##",
+		"next": "##DEMO_MUSHROOM_INTRO_002##"
+	},
+	{
+		"id": "##DEMO_MUSHROOM_INTRO_002##",
+		"next": "##DEMO_MUSHROOM_INTRO_003##"
+	},
+	{
+		"id": "##DEMO_MUSHROOM_INTRO_003##"
+	},
+	
+	{
+		"id": "##DEMO_MUSHROOM_FINISHED_001##",
+		"next": "##DEMO_MUSHROOM_FINISHED_002##"
+	},
+	{
+		"id": "##DEMO_MUSHROOM_FINISHED_002##"
+	},
+	
+	{
 		"id": "##TEST_001##",
 		"next": "##TEST_002##"
 	},

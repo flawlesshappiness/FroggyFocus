@@ -34,6 +34,8 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
 
     private void DialogueNodeEnded(string id)
     {
+        if (!HasActiveDialogue) return;
+
         if (id == "##DEMO_FROG_INTRO_004##")
         {
             GameFlags.SetFlag(IntroDialogueId, 1);
@@ -60,6 +62,7 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
 
     private void HandInClaimed(string id)
     {
+        if (!HasActiveDialogue) return;
         if (HandInData.ClaimCount == 1)
         {
             StartDialogue("##DEMO_FROG_FLYING_001##");
@@ -76,6 +79,7 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
 
     private void HandInClosed(string id)
     {
+        if (!HasActiveDialogue) return;
         if (HandInData.ClaimCount == 0)
         {
             StartDialogue("##DEMO_FROG_CATCH_001##");
