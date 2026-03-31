@@ -326,7 +326,8 @@ public partial class FocusTarget : Node3D
     {
         NavAgent.TargetPosition = GetNextPosition();
 
-        while (NavAgent.IsNavigationFinished())
+        var time_safety = GameTime.Time + 1f;
+        while (NavAgent.IsNavigationFinished() && GameTime.Time < time_safety)
             yield return null;
 
         Character.SetMoving(true);
@@ -456,7 +457,7 @@ public partial class FocusTarget : Node3D
         var length = curve.GetBakedLength();
         var dist_per_point = length / (MovePoints + 1);
         var is_offset_right = true;
-        var move_offset = 0.25f; // arbitrary offset
+        var move_offset = GetMovePointsOffset();
 
         points[0] = curve.SampleBaked(0);
         var prev_point = points[0];
@@ -475,6 +476,14 @@ public partial class FocusTarget : Node3D
 
         return points;
     }
+
+    private float GetMovePointsOffset() => Info.DistanceType switch
+    {
+        FocusCharacterDistanceType.Short => 0.05f,
+        FocusCharacterDistanceType.Normal => 0.1f,
+        FocusCharacterDistanceType.Long => 0.25f,
+        _ => 0.1f
+    };
 
     public void ResetGlow()
     {
