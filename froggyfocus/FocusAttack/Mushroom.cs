@@ -10,13 +10,6 @@ public partial class Mushroom : FocusAttack
 
     private Coroutine cr_run;
 
-    protected override void CursorEnter()
-    {
-        base.CursorEnter();
-        var duration = rng.RandfRange(2, 6);
-        WaitFor(duration, Spawn);
-    }
-
     protected override void Started()
     {
         base.Started();
@@ -35,6 +28,12 @@ public partial class Mushroom : FocusAttack
         }
     }
 
+    protected override void Caught()
+    {
+        base.Caught();
+        Coroutine.Stop(cr_run);
+    }
+
     protected override void Stopped()
     {
         base.Stopped();
@@ -48,6 +47,7 @@ public partial class Mushroom : FocusAttack
         {
             StartState();
             SpawnMushroom();
+            Target.Animate_Exclamation();
             yield return new WaitForSeconds(0.5f);
             EndState();
         }

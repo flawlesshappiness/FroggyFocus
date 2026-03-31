@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cta4lwmtk36u"]
+[gd_scene load_steps=6 format=3 uid="uid://cta4lwmtk36u"]
 
 [ext_resource type="Script" uid="uid://bpbdt4x46g0ir" path="res://FocusEvent/FocusCursor.cs" id="1_x77ch"]
 [ext_resource type="AudioStream" uid="uid://cps4ajn0wt6cq" path="res://Sounds/Raw/sfx_frog_croak_005.wav" id="3_rptds"]
 [ext_resource type="AudioStream" uid="uid://dvdubl1liar4a" path="res://Sounds/Raw/sfx_frog_croak_006.wav" id="4_7kn4i"]
 [ext_resource type="Texture2D" uid="uid://crw5sovw50jt1" path="res://Assets/FlawLizArt/Textures/particle_eye.png" id="4_o0fwo"]
+[ext_resource type="AudioStream" uid="uid://cnjbveslxr8uq" path="res://Sounds/Raw/sfx_focus_hit.wav" id="5_7kn4i"]
 
-[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("RadiusNode", "SfxFocusStart", "SfxFocusEnd")]
+[node name="FocusCursor" type="Node3D" node_paths=PackedStringArray("RadiusNode", "SfxFocusStart", "SfxFocusEnd", "SfxFocusHurt")]
 script = ExtResource("1_x77ch")
 RadiusNode = NodePath("Radius")
 SfxFocusStart = NodePath("SfxFocusStart")
 SfxFocusEnd = NodePath("SfxFocusEnd")
+SfxFocusHurt = NodePath("SfxFocusHurt")
 
 [node name="Radius" type="Node3D" parent="."]
 
@@ -26,5 +28,10 @@ bus = &"SFX"
 [node name="SfxFocusEnd" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_7kn4i")
 volume_db = -15.0
+max_polyphony = 6
+bus = &"SFX"
+
+[node name="SfxFocusHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7kn4i")
 max_polyphony = 6
 bus = &"SFX"

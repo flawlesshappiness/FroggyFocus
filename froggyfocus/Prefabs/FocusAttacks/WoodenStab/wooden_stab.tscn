@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3ccv31s7nhx0"]
+
+[ext_resource type="Script" uid="uid://b75m7mi5eppwn" path="res://Prefabs/FocusAttacks/WoodenStab/WoodenStab.cs" id="1_jix4h"]
+[ext_resource type="PackedScene" uid="uid://cj0wol0qe4nq5" path="res://Assets/FlawLizArt/Nature/Toon/branch_002.fbx" id="1_pn3fb"]
+[ext_resource type="AudioStream" uid="uid://cjujq6hhnkdkf" path="res://Sounds/Raw/sfx_step_water_high_001.wav" id="3_oi5jl"]
+[ext_resource type="AudioStream" uid="uid://bhlhbpuh6jvtl" path="res://Sounds/Raw/sfx_step_water_high_002.wav" id="4_iildq"]
+[ext_resource type="AudioStream" uid="uid://dr6lnaq404371" path="res://Sounds/Raw/sfx_step_water_high_003.wav" id="5_s4d4q"]
+[ext_resource type="AudioStream" uid="uid://b2u08d1tpaako" path="res://Sounds/Raw/sfx_creak_001.wav" id="6_iildq"]
+
+[sub_resource type="Animation" id="Animation_yjblj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.81, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim/branch_002:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxOutOfWater:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jix4h"]
+resource_name = "stab"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 2),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, -0.775, 0), Vector3(0, 0, 0), Vector3(0, -0.775, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim/branch_002:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxOutOfWater:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0233254),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uvrl"]
+_data = {
+&"RESET": SubResource("Animation_yjblj"),
+&"stab": SubResource("Animation_jix4h")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jy0wq"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("3_oi5jl")
+stream_1/stream = ExtResource("4_iildq")
+stream_2/stream = ExtResource("5_s4d4q")
+
+[node name="wooden_stab" type="Node3D" node_paths=PackedStringArray("Animation", "SfxWarn")]
+script = ExtResource("1_jix4h")
+Animation = NodePath("AnimationPlayer")
+SfxWarn = NodePath("SfxWarn")
+
+[node name="anim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.81, 0)
+
+[node name="branch_002" parent="anim" instance=ExtResource("1_pn3fb")]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0.132441, 0)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6uvrl")
+}
+
+[node name="SfxOutOfWater" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_jy0wq")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxWarn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_iildq")
+bus = &"SFX"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=66 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://c6qshmoaqjxck" path="res://Prefabs/FocusAttacks/FlashMushroom/mushroom.tscn" id="10_bmfsg"]
 [ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="10_leg0t"]
 [ext_resource type="AudioStream" uid="uid://iupdbu38bkq0" path="res://Sounds/Raw/sfx_impact_water_low_002.wav" id="11_8w7j2"]
+[ext_resource type="Script" uid="uid://bbt1y7ubc2bqk" path="res://FocusAttack/Wooden.cs" id="11_bmfsg"]
+[ext_resource type="PackedScene" uid="uid://c3ccv31s7nhx0" path="res://Prefabs/FocusAttacks/WoodenStab/wooden_stab.tscn" id="12_fr8uf"]
 [ext_resource type="AudioStream" uid="uid://mvr5nhm1lqiv" path="res://Sounds/Raw/sfx_impact_water_low_003.wav" id="12_pls14"]
 [ext_resource type="AudioStream" uid="uid://bu3w1t785m70f" path="res://Sounds/Raw/sfx_impact_water_low_004.wav" id="13_665xe"]
 
@@ -812,6 +814,11 @@ Type = 3
 script = ExtResource("9_s7jln")
 MushroomPrefab = ExtResource("10_bmfsg")
 Type = 4
+
+[node name="Wooden" type="Node3D" parent="Attacks"]
+script = ExtResource("11_bmfsg")
+WoodPrefab = ExtResource("12_fr8uf")
+Type = 5
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

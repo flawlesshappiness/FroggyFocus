@@ -1,6 +1,7 @@
-using FlawLizArt.FocusEvent;
 using Godot;
 using System.Collections;
+
+namespace FlawLizArt.FocusEvent;
 
 public partial class FlashMushroom : Node3D
 {
@@ -80,7 +81,6 @@ public partial class FlashMushroom : Node3D
             Cursor.EndFocusTarget();
             FocusEventView.Instance.Flash(1f, FlashColor);
         }
-
 
         var ps = ExplodeEffectPrefab.Instantiate<ParticleEffectGroup>();
         ps.SetParent(FocusEvent);

@@ -15,6 +15,9 @@ public partial class FocusCursor : Node3D
     [Export]
     public AudioStreamPlayer SfxFocusEnd;
 
+    [Export]
+    public AudioStreamPlayer SfxFocusHurt;
+
     public float Radius { get; private set; }
     private Vector3 DesiredVelocity { get; set; }
     private FocusEvent FocusEvent { get; set; }
@@ -155,6 +158,7 @@ public partial class FocusCursor : Node3D
     {
         if (CurrentTarget != null)
         {
+            SfxFocusHurt.Play();
             CurrentTarget.HurtFocusValue(percentage);
         }
     }

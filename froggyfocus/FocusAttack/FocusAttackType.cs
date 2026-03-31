@@ -5,4 +5,5 @@ public enum FocusAttackType
     Flash,
     Flower,
     Mushroom,
+    Wooden,
 }
