@@ -1,7 +1,8 @@
-[gd_scene load_steps=55 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=60 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_xokew"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
 [ext_resource type="Resource" uid="uid://cr6w4xkj1cp6h" path="res://Weather/Resources/Sunny-Windy.tres" id="4_rrqgf"]
@@ -42,10 +43,13 @@
 [ext_resource type="AudioStream" uid="uid://cnehdj6b3ol0i" path="res://Sounds/Raw/bgm_swamp_003_focus.wav" id="47_byxdh"]
 [ext_resource type="PackedScene" uid="uid://vljga7igf232" path="res://Prefabs/Nature/plant_monstera_group.tscn" id="49_t8ctw"]
 [ext_resource type="PackedScene" uid="uid://bqyo5jd18ys25" path="res://Prefabs/Nature/plant_fern_group.tscn" id="50_810dt"]
+[ext_resource type="AudioStream" uid="uid://b1thnrk403bwe" path="res://Sounds/Raw/sfx_birds_loop_001.wav" id="50_haihv"]
 [ext_resource type="PackedScene" uid="uid://dpuju18h6r0al" path="res://Prefabs/Nature/plant_azolla_group.tscn" id="51_hhc6j"]
 [ext_resource type="PackedScene" uid="uid://b0y20fo4i3tlh" path="res://Prefabs/Nature/plant_purple_loosestrife_group.tscn" id="52_qor8m"]
 [ext_resource type="PackedScene" uid="uid://cyq3k5yjx486b" path="res://Prefabs/Nature/plant_marsh_labrador_tea.tscn" id="53_xokew"]
+[ext_resource type="AudioStream" uid="uid://divh8xfthnl3o" path="res://Sounds/Raw/sfx_wood_creak_loop_001.wav" id="53_xp4so"]
 [ext_resource type="PackedScene" uid="uid://tgy4rx1jtv8w" path="res://Prefabs/Nature/plant_water_arum_group.tscn" id="54_haihv"]
+[ext_resource type="Script" uid="uid://43lk3cm0igii" path="res://Sounds/AudioAutoPlay.cs" id="54_x6pk1"]
 [ext_resource type="PackedScene" uid="uid://diceyjubapljd" path="res://Prefabs/Nature/plant_yarrow_marsh_marigold_group.tscn" id="54_xp4so"]
 [ext_resource type="PackedScene" uid="uid://cx8bqg4u53dsn" path="res://Prefabs/Buildings/building_factory.tscn" id="57_n5llf"]
 [ext_resource type="PackedScene" uid="uid://bovnbfopscqpk" path="res://Prefabs/Buildings/lighthouse.tscn" id="58_ixab2"]
@@ -71,6 +75,13 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve3D" id="Curve3D_xp4so"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 50.12, 4.90366, -13.3928, 0, 0, 0, 0, 0, 0, 27.8492, 12.4626, 18.3988, 0, 0, 0, 0, 0, 0, 4.69755, 4.40217, 26.5891),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
 [node name="DemoScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
 script = ExtResource("1_lc5f6")
 DirectionalLight = NodePath("DirectionalLight3D")
@@ -78,7 +89,7 @@ WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
 BgmMain = NodePath("World/Sounds/BgmMain")
 BgmFocus = NodePath("World/Sounds/BgmFocus")
-Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
+Weathers = Array[ExtResource("2_xokew")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -1134,13 +1145,17 @@ Info = ExtResource("42_bmvqj")
 
 [node name="Sounds" type="Node3D" parent="World"]
 
-[node name="Path3D" type="Path3D" parent="World/Sounds"]
+[node name="WaterPath1" type="Path3D" parent="World/Sounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
 curve = SubResource("Curve3D_3nau4")
 
-[node name="Path3D2" type="Path3D" parent="World/Sounds"]
+[node name="WaterPath2" type="Path3D" parent="World/Sounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
 curve = SubResource("Curve3D_byxdh")
+
+[node name="BirdPath1" type="Path3D" parent="World/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+curve = SubResource("Curve3D_xp4so")
 
 [node name="AmbWater" type="AudioStreamPlayer" parent="World/Sounds" node_paths=PackedStringArray("Paths")]
 stream = ExtResource("44_2o8dq")
@@ -1150,7 +1165,16 @@ bus = &"Environment"
 script = ExtResource("45_3nau4")
 DistanceRange = Vector2(5, 10)
 VolumeMax = 0.9
-Paths = [NodePath("../Path3D"), NodePath("../Path3D2")]
+Paths = [NodePath("../WaterPath1"), NodePath("../WaterPath2")]
+
+[node name="AmbBirds" type="AudioStreamPlayer" parent="World/Sounds" node_paths=PackedStringArray("Paths")]
+stream = ExtResource("50_haihv")
+autoplay = true
+bus = &"Environment"
+script = ExtResource("45_3nau4")
+DistanceRange = Vector2(5, 10)
+VolumeMax = 0.9
+Paths = [NodePath("../BirdPath1")]
 
 [node name="AmbWind" type="AudioStreamPlayer" parent="World/Sounds"]
 stream = ExtResource("45_y1jgi")
@@ -1164,3 +1188,33 @@ bus = &"BGM"
 [node name="BgmFocus" type="AudioStreamPlayer" parent="World/Sounds"]
 stream = ExtResource("47_byxdh")
 bus = &"BGM"
+
+[node name="SfxWoodCreak1" type="AudioStreamPlayer3D" parent="World/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.839, 4.21271, -34.6923)
+stream = ExtResource("53_xp4so")
+volume_db = 5.0
+max_distance = 30.0
+bus = &"Environment"
+attenuation_filter_db = 0.0
+script = ExtResource("54_x6pk1")
+RandomStart = true
+
+[node name="SfxWoodCreak2" type="AudioStreamPlayer3D" parent="World/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9719, 4.21271, -49.5216)
+stream = ExtResource("53_xp4so")
+volume_db = 5.0
+max_distance = 30.0
+bus = &"Environment"
+attenuation_filter_db = 0.0
+script = ExtResource("54_x6pk1")
+RandomStart = true
+
+[node name="SfxWoodCreak3" type="AudioStreamPlayer3D" parent="World/Sounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5138, 4.21271, -41.4706)
+stream = ExtResource("53_xp4so")
+volume_db = 5.0
+max_distance = 30.0
+bus = &"Environment"
+attenuation_filter_db = 0.0
+script = ExtResource("54_x6pk1")
+RandomStart = true
