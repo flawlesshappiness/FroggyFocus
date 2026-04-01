@@ -79,7 +79,8 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
 
     private void HandInClosed(string id)
     {
-        if (!HasActiveDialogue) return;
+        if (id != HandInInfo.Id) return;
+
         if (HandInData.ClaimCount == 0)
         {
             StartDialogue("##DEMO_FROG_CATCH_001##");
