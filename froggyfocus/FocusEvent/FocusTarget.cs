@@ -327,8 +327,16 @@ public partial class FocusTarget : Node3D
         NavAgent.TargetPosition = GetNextPosition();
 
         var time_safety = GameTime.Time + 1f;
-        while (NavAgent.IsNavigationFinished() && GameTime.Time < time_safety)
+        while (NavAgent.IsNavigationFinished())
+        {
+            if (GameTime.Time > time_safety)
+            {
+                // Bad position, try again
+                NavAgent.TargetPosition = GetNextPosition();
+                time_safety = GameTime.Time + 1f;
+            }
             yield return null;
+        }
 
         Character.SetMoving(true);
 
@@ -402,9 +410,19 @@ public partial class FocusTarget : Node3D
 
     public Vector3 GetNextPosition(Vector3? from = null)
     {
-        var dir = GetNextDirection(from);
-        var distance = MoveDistance.Range(rng.Randf());
-        var position = GetApproximatePosition((from ?? GlobalPosition) + dir * distance);
+        int safety = 99;
+        float distance = 0f;
+        Vector3 position = GlobalPosition;
+
+        do
+        {
+            safety--;
+            var dir = GetNextDirection(from);
+            distance = MoveDistance.Range(rng.Randf());
+            position = GetApproximatePosition((from ?? GlobalPosition) + dir * distance);
+        }
+        while (GlobalPosition.DistanceTo(position) < distance * 0.5f && safety > 0);
+
         return position;
     }
 
