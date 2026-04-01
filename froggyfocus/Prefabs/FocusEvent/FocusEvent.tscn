@@ -147,14 +147,15 @@ _data = {
 &"scared": SubResource("Animation_p01lx")
 }
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "IntroCamera", "Cursor", "CursorStart", "CameraIntroMarker", "Frog", "SkillCheckParent", "AnimationPlayer_Frog", "SfxSuspenseNormal_Start", "SfxSuspenseFast_Start", "SfxSuspenseNormal_Success", "SfxSuspenseNormal_Fail")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "IntroCamera", "Cursor", "CursorStart", "CameraIntroMarker", "MainCameraMarker", "Frog", "SkillCheckParent", "AnimationPlayer_Frog", "SfxSuspenseNormal_Start", "SfxSuspenseFast_Start", "SfxSuspenseNormal_Success", "SfxSuspenseNormal_Fail")]
 script = ExtResource("1_p778c")
 Size = Vector2(10, 8)
 Camera = NodePath("MainCamera")
 IntroCamera = NodePath("IntroCamera")
 Cursor = NodePath("FocusCursor")
 CursorStart = NodePath("CursorStart")
-CameraIntroMarker = NodePath("CameraIntroMarker")
+CameraIntroMarker = NodePath("IntroCameraMarker")
+MainCameraMarker = NodePath("MainCameraMarker")
 FocusTargetPrefab = ExtResource("3_2i5pb")
 Frog = NodePath("FrogCute")
 SkillCheckParent = NodePath("SkillChecks")
@@ -170,10 +171,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.92974)
 [node name="IntroCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
 
-[node name="CameraIntroMarker" type="Marker3D" parent="."]
+[node name="IntroCameraMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="MainCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
+
+[node name="MainCameraMarker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
 
 [node name="FocusCursor" parent="." instance=ExtResource("2_tceec")]
