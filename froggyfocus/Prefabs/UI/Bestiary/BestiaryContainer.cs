@@ -69,6 +69,7 @@ public partial class BestiaryContainer : ControlScript
     {
         var button = InventoryButtonTemplate.Duplicate() as InventoryPreviewButton;
         button.SetParent(InventoryButtonTemplate.GetParent());
+        button.SetChecked(false);
         button.Show();
         return button;
     }

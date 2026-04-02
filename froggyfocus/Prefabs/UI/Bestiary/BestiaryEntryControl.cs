@@ -104,6 +104,7 @@ public partial class BestiaryEntryControl : Control
         button.Show();
         button.SetCharacter(info);
         button.SetObscured(stats.CountCaught == 0);
+        button.SetChecked(false);
         variation_buttons.Add(button);
 
         if (stats.CountCaught > 0)
