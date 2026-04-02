@@ -128,7 +128,7 @@ public partial class InventoryContainer : ControlScript
     private DataMap GetMap(int button_index)
     {
         var map_index = ButtonCount * Page + button_index;
-        return maps[map_index];
+        return filtered_maps[map_index];
     }
 
     private void SetPage(int index)
