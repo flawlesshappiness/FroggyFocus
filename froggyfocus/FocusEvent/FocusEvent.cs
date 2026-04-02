@@ -44,18 +44,6 @@ public partial class FocusEvent : Node3D
     [Export]
     public AnimationPlayer AnimationPlayer_Frog;
 
-    [Export]
-    public AudioStreamPlayer SfxSuspenseNormal_Start;
-
-    [Export]
-    public AudioStreamPlayer SfxSuspenseFast_Start;
-
-    [Export]
-    public AudioStreamPlayer SfxSuspenseNormal_Success;
-
-    [Export]
-    public AudioStreamPlayer SfxSuspenseNormal_Fail;
-
     public event Action<FocusEventResult> OnEnded;
     public event Action OnEnabled;
     public event Action OnDisabled;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=61 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
@@ -30,13 +30,9 @@
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="27_p01lx"]
 [ext_resource type="PackedScene" uid="uid://cb8q4quglh4xu" path="res://Prefabs/FocusEventBackground/swamp_land.tscn" id="30_4nfkp"]
 [ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="30_p01lx"]
-[ext_resource type="AudioStream" uid="uid://vna3rejmp4h5" path="res://Sounds/Raw/sfx_focus_suspense_001.wav" id="30_q0yhd"]
 [ext_resource type="PackedScene" uid="uid://3my6iuqyk6l0" path="res://Prefabs/FocusEventBackground/swamp_lilypads.tscn" id="31_4nfkp"]
-[ext_resource type="AudioStream" uid="uid://dviibhxxdeppr" path="res://Sounds/Raw/sfx_focus_suspense_002.wav" id="31_8uab8"]
-[ext_resource type="AudioStream" uid="uid://cxgx3x5mieqwe" path="res://Sounds/Raw/sfx_focus_suspense_003.wav" id="31_vaemt"]
 [ext_resource type="PackedScene" uid="uid://guslwpuh5hsm" path="res://Prefabs/FocusEventBackground/swamp_mushroom.tscn" id="32_u0w0c"]
 [ext_resource type="PackedScene" uid="uid://chwsteqk4rmet" path="res://Prefabs/FocusEventBackground/swamp_woods.tscn" id="33_7uk70"]
-[ext_resource type="AudioStream" uid="uid://ckrqbl4voqiay" path="res://Sounds/Raw/sfx_focus_suspense_004.wav" id="33_p01lx"]
 [ext_resource type="PackedScene" uid="uid://c2hpmsdt0r2mr" path="res://Prefabs/FocusEventBackground/factory_trash_water.tscn" id="34_uktrp"]
 [ext_resource type="PackedScene" uid="uid://cksrpp0fxbin8" path="res://Prefabs/FocusEventBackground/factory_oil.tscn" id="35_ggumm"]
 [ext_resource type="PackedScene" uid="uid://flafg5vv01xa" path="res://Prefabs/FocusEventBackground/factory_scaffolding.tscn" id="36_unko1"]
@@ -147,7 +143,7 @@ _data = {
 &"scared": SubResource("Animation_p01lx")
 }
 
-[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "IntroCamera", "Cursor", "CursorStart", "CameraIntroMarker", "MainCameraMarker", "Frog", "SkillCheckParent", "AnimationPlayer_Frog", "SfxSuspenseNormal_Start", "SfxSuspenseFast_Start", "SfxSuspenseNormal_Success", "SfxSuspenseNormal_Fail")]
+[node name="FocusEvent" type="Node3D" node_paths=PackedStringArray("Camera", "IntroCamera", "Cursor", "CursorStart", "CameraIntroMarker", "MainCameraMarker", "Frog", "SkillCheckParent", "AnimationPlayer_Frog")]
 script = ExtResource("1_p778c")
 Size = Vector2(10, 8)
 Camera = NodePath("MainCamera")
@@ -160,10 +156,6 @@ FocusTargetPrefab = ExtResource("3_2i5pb")
 Frog = NodePath("FrogCute")
 SkillCheckParent = NodePath("SkillChecks")
 AnimationPlayer_Frog = NodePath("AnimationPlayer_Frog")
-SfxSuspenseNormal_Start = NodePath("SfxSuspenseNormal_Start")
-SfxSuspenseFast_Start = NodePath("SfxSuspenseFast_Start")
-SfxSuspenseNormal_Success = NodePath("SfxSuspenseNormal_Success")
-SfxSuspenseNormal_Fail = NodePath("SfxSuspenseNormal_Fail")
 
 [node name="CursorStart" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.92974)
@@ -331,19 +323,3 @@ carve_navigation_mesh = true
 libraries = {
 &"": SubResource("AnimationLibrary_u0w0c")
 }
-
-[node name="SfxSuspenseNormal_Start" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("30_q0yhd")
-bus = &"SFX"
-
-[node name="SfxSuspenseFast_Start" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("31_vaemt")
-bus = &"SFX"
-
-[node name="SfxSuspenseNormal_Success" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("31_8uab8")
-bus = &"SFX"
-
-[node name="SfxSuspenseNormal_Fail" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("33_p01lx")
-bus = &"SFX"

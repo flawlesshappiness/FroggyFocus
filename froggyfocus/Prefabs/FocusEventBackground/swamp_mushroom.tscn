@@ -12,25 +12,13 @@ Id = "swamp_mushroom"
 SoundEffects = []
 
 [node name="Floor" type="Node3D" parent="."]
-transform = Transform3D(0.915, 0, 0, 0, 0.915, 0, 0, 0, 0.915, 0, -0.00313839, 0)
-
-[node name="mushroom_platform" parent="Floor" instance=ExtResource("2_covcb")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 3.38824)
+transform = Transform3D(1.65, 0, 0, 0, 1.65, 0, 0, 0, 1.65, 0, -0.00313839, 0)
 
 [node name="mushroom_platform2" parent="Floor" instance=ExtResource("2_covcb")]
-transform = Transform3D(-4.48633, 0, -8.93716, 0, 10, 0, 8.93716, 0, -4.48633, -2.986, 0, -0.958)
-
-[node name="mushroom_platform3" parent="Floor" instance=ExtResource("2_covcb")]
-transform = Transform3D(-5.9572, 0, 8.03192, 0, 10, 0, -8.03192, 0, -5.9572, 1.982, 0, -1.289)
+transform = Transform3D(-0.0738236, 0, 9.99973, 0, 10, 0, -9.99973, 0, -0.0738236, -0.0863411, -0.0100001, 0.264607)
 
 [node name="CommonTree_Dead_5" parent="Floor" instance=ExtResource("3_4hhec")]
-transform = Transform3D(-5.46047, 0, -13.9708, 0, 15, 0, 13.9708, 0, -5.46047, -5.78461, -6.35527, -3.00241)
-
-[node name="CommonTree_Dead_6" parent="Floor" instance=ExtResource("3_4hhec")]
-transform = Transform3D(-9.88093, 0, 11.2857, 0, 15, 0, -11.2857, 0, -9.88093, 4.27317, -6.35527, -2.88821)
-
-[node name="CommonTree_Dead_7" parent="Floor" instance=ExtResource("3_4hhec")]
-transform = Transform3D(14.9571, 0, -1.13408, 0, 15, 0, 1.13408, 0, 14.9571, 0.54985, -6.35527, 6.9454)
+transform = Transform3D(-1.49787, 0, 14.925, 0, 15, 0, -14.925, 0, -1.49787, 3.33614, -6.35527, 0.218071)
 
 [node name="Water" parent="." instance=ExtResource("4_2mcq0")]
 transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -4.23531, 0)

@@ -9,7 +9,7 @@ public partial class StatsController : SingletonController
     protected override void Initialize()
     {
         base.Initialize();
-        FocusEventController.Instance.OnFocusEventEnded += FocusEventCompleted;
+        InventoryController.Instance.OnCharacterAdded += InventoryCharacter_Added;
         RegisterDebugActions();
     }
 
@@ -93,24 +93,18 @@ public partial class StatsController : SingletonController
         return character;
     }
 
-    private void FocusEventCompleted(FocusEventResult result)
+    private void InventoryCharacter_Added(InventoryCharacterData data)
     {
-        var targets = result.FocusEvent.Targets.Where(x => x.IsCaught);
+        var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
+        var stats = GetOrCreateCharacterData(info.ResourcePath);
+        stats.CountCaught++;
+        stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
 
-        foreach (var target in result.FocusEvent.Targets)
-        {
-            var info = target.Info;
-            var data = target.CharacterData;
-            var stats = GetOrCreateCharacterData(info.ResourcePath);
-            stats.CountCaught++;
-            stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
+        var v_info = FocusCharacterController.Instance.Collection.Resources.FirstOrDefault(x => x.Name == info.Variation);
+        if (v_info == info) return;
 
-            var v_info = FocusCharacterController.Instance.Collection.Resources.FirstOrDefault(x => x.Name == target.Info.Variation);
-            if (v_info == info) return;
-
-            var v_stats = GetOrCreateCharacterData(v_info.ResourcePath);
-            v_stats.CountCaught++;
-            v_stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
-        }
+        var v_stats = GetOrCreateCharacterData(v_info.ResourcePath);
+        v_stats.CountCaught++;
+        v_stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
     }
 }
