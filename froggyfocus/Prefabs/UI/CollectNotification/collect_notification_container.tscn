@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://8w5jx7i40vgg"]
+
+[ext_resource type="Script" uid="uid://b66liatgmsffc" path="res://Prefabs/UI/CollectNotification/CollectNotificationContainer.cs" id="1_0wf2w"]
+[ext_resource type="PackedScene" uid="uid://brhwdwi8i8lme" path="res://Prefabs/UI/CollectNotification/collect_notification_control.tscn" id="1_etd01"]
+[ext_resource type="AudioStream" uid="uid://ct6xqh3g76eec" path="res://Sounds/Raw/sfx_collect_001.wav" id="3_kw31w"]
+
+[node name="CollectNotificationContainer" type="MarginContainer" node_paths=PackedStringArray("NotificationTemplate", "SfxCollect")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 40
+script = ExtResource("1_0wf2w")
+NotificationTemplate = NodePath("Control/VBoxContainer/CollectNotificationControl")
+SfxCollect = NodePath("SfxCollect")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="CollectNotificationControl" parent="Control/VBoxContainer" instance=ExtResource("1_etd01")]
+layout_mode = 2
+
+[node name="SfxCollect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kw31w")
+volume_db = -5.0
+max_polyphony = 3
+bus = &"SFX"

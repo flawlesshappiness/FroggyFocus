@@ -28,6 +28,9 @@ public partial class OptionsContainer : ControlScript
     [Export]
     public OptionButton CatchBugTutorialOptionButton;
 
+    [Export]
+    public OptionButton CollectBugSoundOptionButton;
+
     public static Action OnUIScaleChanged;
     public static Action<int> OnGamepadDisplayChanged;
     public static Action<int> OnCutsceneTypeChanged;
@@ -46,6 +49,7 @@ public partial class OptionsContainer : ControlScript
         CutsceneTypeOptionButton.ItemSelected += CutsceneTypeOptionButton_ItemSelected;
         FadePlantsOptionButton.ItemSelected += FadePlantsOptionButton_ItemSelected;
         CatchBugTutorialOptionButton.ItemSelected += CatchBugTutorialOptionButton_ItemSelected;
+        CollectBugSoundOptionButton.ItemSelected += CollectBugSoundOptionButton_ItemSelected;
 
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
         FadePlantsOptionButton_ItemSelected(Data.Options.FadePlantsIndex);
@@ -64,6 +68,7 @@ public partial class OptionsContainer : ControlScript
         CutsceneTypeOptionButton.Selected = Data.Options.CutsceneTypeIndex;
         FadePlantsOptionButton.Selected = Data.Options.FadePlantsIndex;
         CatchBugTutorialOptionButton.Selected = Data.Options.CatchTutorialEnabled ? 0 : 1;
+        CollectBugSoundOptionButton.Selected = Data.Options.CollectBugSoundEnabled ? 0 : 1;
 
         showing = false;
     }
@@ -121,5 +126,11 @@ public partial class OptionsContainer : ControlScript
     {
         var index = (int)l_index;
         Data.Options.CatchTutorialEnabled = index == 0;
+    }
+
+    private void CollectBugSoundOptionButton_ItemSelected(long l_index)
+    {
+        var index = (int)l_index;
+        Data.Options.CollectBugSoundEnabled = index == 0;
     }
 }

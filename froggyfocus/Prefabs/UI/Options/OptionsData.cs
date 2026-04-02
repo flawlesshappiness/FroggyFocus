@@ -8,4 +8,5 @@ public partial class OptionsData
     public int CutsceneTypeIndex { get; set; } = 0;
     public int FadePlantsIndex { get; set; } = 0;
     public bool CatchTutorialEnabled { get; set; } = false;
+    public bool CollectBugSoundEnabled { get; set; } = true;
 }
