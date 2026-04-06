@@ -12,6 +12,10 @@ public partial class TvTravel : Area3D, IInteractable
     public const string HasRemoteFlag = "HAS_TV_REMOTE";
     public const string TvOnFlag = "IS_TV_ON";
 
+    private const string DialogueTvOff = "TV_OFF";
+    private const string DialogueTvLick = "TV_LICK";
+    private const string DialogueTvRemote = "TV_REMOTE";
+
     private bool HasRemote => GameFlags.IsFlag(HasRemoteFlag, 1);
     private bool IsOn => GameFlags.IsFlag(TvOnFlag, 1);
     private string DebugId => nameof(TvTravel) + GetInstanceId();
@@ -23,14 +27,14 @@ public partial class TvTravel : Area3D, IInteractable
         base._Ready();
         SetOn(IsOn);
 
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnDialogueEnded += DialogueEnded;
         GameFlagsController.Instance.OnFlagChanged += GameFlagChanged;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+        DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
         GameFlagsController.Instance.OnFlagChanged -= GameFlagChanged;
     }
 
@@ -42,9 +46,9 @@ public partial class TvTravel : Area3D, IInteractable
         }
     }
 
-    private void DialogueNodeEnded(string id)
+    private void DialogueEnded(string id)
     {
-        if (id == "##TV_OFF##")
+        if (id == DialogueTvOff)
         {
             ShowOptions();
         }
@@ -58,7 +62,7 @@ public partial class TvTravel : Area3D, IInteractable
         }
         else
         {
-            DialogueController.Instance.StartDialogue("##TV_OFF##");
+            DialogueController.Instance.StartDialogue(DialogueTvOff);
         }
     }
 
@@ -118,12 +122,12 @@ public partial class TvTravel : Area3D, IInteractable
 
     private void LickOption()
     {
-        DialogueController.Instance.StartDialogue("##TV_LICK_001##");
+        DialogueController.Instance.StartDialogue(DialogueTvLick);
     }
 
     private void RemoteOption()
     {
-        DialogueController.Instance.StartDialogue("##TV_REMOTE_001##");
+        DialogueController.Instance.StartDialogue(DialogueTvRemote);
         GameFlags.SetFlag(TvOnFlag, 1);
     }
 }

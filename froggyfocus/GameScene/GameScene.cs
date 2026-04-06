@@ -39,7 +39,6 @@ public partial class GameScene : Scene
 
         world_bugs = this.GetNodesInChildren<WorldBug>() ?? new List<WorldBug>();
 
-        MusicController.Instance.StartMusic();
         WeatherController.Instance.StartWeather(Weathers);
         //FocusHotSpotController.Instance.Start();
         WorldBugController.Instance.Start();

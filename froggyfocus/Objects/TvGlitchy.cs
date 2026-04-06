@@ -31,14 +31,14 @@ public partial class TvGlitchy : Area3D, IInteractable
         SetCompleted(IsCompleted);
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
         HandInController.Instance.OnHandInClaimed -= HandInClaimed;
-        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded -= DialogueNodeEnded;
     }
 
     private void InitializeMatrixLabels()

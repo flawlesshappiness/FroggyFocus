@@ -19,23 +19,23 @@ public partial class CrystalDoorway : Area3D, IInteractable
 
     private readonly List<string> TryCodeDialogueNodes = new()
     {
-        "##CRYSTAL_DOOR_ATTEMPT_001##",
-        "##CRYSTAL_DOOR_ATTEMPT_002##",
-        "##CRYSTAL_DOOR_ATTEMPT_003##",
-        "##CRYSTAL_DOOR_ATTEMPT_004##",
-        "##CRYSTAL_DOOR_ATTEMPT_005##",
+        "CRYSTAL_DOOR_ATTEMPT_001",
+        "CRYSTAL_DOOR_ATTEMPT_002",
+        "CRYSTAL_DOOR_ATTEMPT_003",
+        "CRYSTAL_DOOR_ATTEMPT_004",
+        "CRYSTAL_DOOR_ATTEMPT_005",
     };
 
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded -= DialogueNodeEnded;
     }
 
     public void Interact()

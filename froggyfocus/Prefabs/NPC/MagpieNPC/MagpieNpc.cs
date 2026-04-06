@@ -13,7 +13,7 @@ public partial class MagpieNpc : CharacterNpc
         base._Ready();
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
     }
 
     protected override void InitializeAnimations()

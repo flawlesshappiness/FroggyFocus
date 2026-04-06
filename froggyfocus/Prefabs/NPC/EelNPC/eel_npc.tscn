@@ -25,8 +25,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_f8bht")
 HandInInfo = ExtResource("2_f8bht")
-RequestDialogueId = "EEL_REQUEST"
-RequestCompleteDialogueId = Array[String](["EEL_FISH_001", "EEL_NASTY_001", "EEL_ZAP_001"])
+RequestCompleteDialogueId = Array[String](["EEL_FISH", "EEL_NASTY", "EEL_ZAP"])
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 

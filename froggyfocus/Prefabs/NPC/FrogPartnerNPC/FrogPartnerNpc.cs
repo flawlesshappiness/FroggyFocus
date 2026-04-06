@@ -10,14 +10,17 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
 
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
-    private readonly string DIALOGUE_ID = "PARTNER";
+    private const string DialogueIntro = "PARTNER_INTRO";
+    private const string DialogueRequest = "PARTNER_REQUEST";
+    private const string DialogueRequestFail = "PARTNER_REQUEST_FAIL";
+    private const string DialogueRequestComplete = "PARTNER_REQUEST_COMPLETE";
+    private const string DialogueRequestCompleteRepeat = "PARTNER_REQUEST_COMPLETE_003";
 
     private bool show_unlock;
 
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
     }
@@ -26,40 +29,40 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     {
         if (HandInData.ClaimCount > 0)
         {
-            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
+            StartDialogue(DialogueRequestCompleteRepeat);
         }
         else if (MainQuestController.Instance.GetPartnerStep() == 0)
         {
-            StartDialogue($"##{DIALOGUE_ID}_INTRO_001##");
+            StartDialogue(DialogueIntro);
         }
         else
         {
-            StartDialogue($"##{DIALOGUE_ID}_REQUEST_001##");
+            StartDialogue(DialogueRequest);
         }
     }
 
-    private void DialogueNodeEnded(string id)
+    protected override void DialogueEnded(string id)
     {
-        if (id == $"##{DIALOGUE_ID}_INTRO_004##")
+        base.DialogueEnded(id);
+
+        if (id == DialogueIntro)
         {
             MainQuestController.Instance.AdvancePartnerQuest(1);
         }
-        else if (id == $"##{DIALOGUE_ID}_REQUEST_002##")
+        else if (id == DialogueRequest)
         {
             HandInView.Instance.ShowPopup(HandInInfo.Id);
         }
-        else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_002##")
+        else if (id == DialogueRequestComplete || id == DialogueRequestCompleteRepeat)
         {
-            // TODO
-            //InitializeCharacter();
-        }
-        else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##" && show_unlock)
-        {
-            Item.MakeOwned(ItemType.Particles_Hearts);
-            Data.Game.Save();
-
-            show_unlock = false;
-            UnlockView.Instance.ShowItemUnlock(ItemType.Particles_Hearts);
+            if (show_unlock)
+            {
+                // TODO: Unlock something
+                // Show unlock
+                //InitializeCharacter();
+                Data.Game.Save();
+                show_unlock = false;
+            }
         }
     }
 
@@ -70,7 +73,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
             show_unlock = true;
             Data.Game.PartnerQuestCompleted = true;
             MainQuestController.Instance.AdvancePartnerQuest(5);
-            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
+            StartDialogue(DialogueRequestComplete);
         }
     }
 
@@ -78,7 +81,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     {
         if (id == HandInInfo.Id)
         {
-            StartDialogue($"##{DIALOGUE_ID}_REQUEST_FAIL_001##");
+            StartDialogue(DialogueRequestFail);
         }
     }
 }

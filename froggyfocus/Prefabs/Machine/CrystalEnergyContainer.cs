@@ -42,14 +42,14 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
         SetInteractive(!IsCompleted);
 
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
         HandInController.Instance.OnHandInClaimed -= HandInClaimed;
-        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded -= DialogueNodeEnded;
 
         Debug.RemoveActions(DebugId);
     }

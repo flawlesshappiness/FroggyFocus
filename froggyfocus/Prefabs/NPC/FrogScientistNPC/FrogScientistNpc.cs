@@ -7,14 +7,17 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
 
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
-    private readonly string DIALOGUE_ID = "SCIENTIST";
+    private const string DialogueIntro = "SCIENTIST_INTRO";
+    private const string DialogueRequest = "SCIENTIST_REQUEST";
+    private const string DialogueRequestFail = "SCIENTIST_REQUEST_FAIL";
+    private const string DialogueRequestComplete = "SCIENTIST_REQUEST_COMPLETE";
+    private const string DialogueRequestCompleteRepeat = "SCIENTIST_REQUEST_COMPLETE_003";
 
     private bool show_unlock;
 
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
     }
@@ -23,39 +26,44 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     {
         if (HandInData.ClaimCount > 0)
         {
-            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##");
+            StartDialogue(DialogueRequestCompleteRepeat);
         }
         else if (MainQuestController.Instance.GetScientistStep() == 0)
         {
-            StartDialogue($"##{DIALOGUE_ID}_INTRO_001##");
+            StartDialogue(DialogueIntro);
         }
         else
         {
-            StartDialogue($"##{DIALOGUE_ID}_REQUEST_001##");
+            StartDialogue(DialogueRequest);
         }
     }
 
-    private void DialogueNodeEnded(string id)
+    protected override void DialogueEnded(string id)
     {
-        if (id == $"##{DIALOGUE_ID}_INTRO_004##")
+        base.DialogueEnded(id);
+
+        if (id == DialogueIntro)
         {
             MainQuestController.Instance.AdvanceScientistQuest(1);
         }
-        else if (id == $"##{DIALOGUE_ID}_REQUEST_002##")
+        else if (id == DialogueRequest)
         {
             HandInView.Instance.ShowPopup(HandInInfo.Id);
         }
-        else if (id == $"##{DIALOGUE_ID}_REQUEST_FAIL_002##")
+        else if (id == DialogueRequestFail)
         {
             StopDialogueCamera();
         }
-        else if (id == $"##{DIALOGUE_ID}_REQUEST_COMPLETE_003##" && show_unlock)
+        else if (id == DialogueRequestComplete)
         {
-            Item.MakeOwned(ItemType.Particles_Hearts);
-            Data.Game.Save();
+            if (show_unlock)
+            {
+                // TODO: Unlock something
+                Data.Game.Save();
 
-            show_unlock = false;
-            UnlockView.Instance.ShowItemUnlock(ItemType.Particles_Bubbles);
+                show_unlock = false;
+                //UnlockView.Instance.ShowItemUnlock(ItemType.Particles_Bubbles);
+            }
         }
     }
 
@@ -66,7 +74,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
             show_unlock = true;
             Data.Game.ScientistQuestCompleted = true;
             MainQuestController.Instance.AdvanceScientistQuest(4);
-            StartDialogue($"##{DIALOGUE_ID}_REQUEST_COMPLETE_001##");
+            StartDialogue(DialogueRequestComplete);
         }
     }
 
@@ -74,7 +82,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     {
         if (id == HandInInfo.Id)
         {
-            StartDialogue($"##{DIALOGUE_ID}_REQUEST_FAIL_001##");
+            StartDialogue(DialogueRequestFail);
         }
     }
 }

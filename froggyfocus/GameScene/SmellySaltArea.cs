@@ -3,26 +3,30 @@ using System.Collections.Generic;
 
 public partial class SmellySaltArea : Area3D, IInteractable
 {
+    private string DialogueSaltRock = "SALT_ROCK";
+    private string DialogueSaltRockTake = "SALT_ROCK_TAKE";
+    private string DialogueSaltRockLick = "SALT_ROCK_LICK";
+
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnDialogueEnded += DialogueEnded;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+        DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
     }
 
     public void Interact()
     {
-        DialogueController.Instance.StartDialogue("##SALT_ROCK_001##");
+        DialogueController.Instance.StartDialogue(DialogueSaltRock);
     }
 
-    private void DialogueNodeEnded(string id)
+    private void DialogueEnded(string id)
     {
-        if (id == "##SALT_ROCK_001##")
+        if (id == DialogueSaltRock)
         {
             StartOptions();
         }
@@ -63,11 +67,11 @@ public partial class SmellySaltArea : Area3D, IInteractable
         GameFlags.SetFlag(EldritchFlower.HasSaltsFlag, 1);
         Data.Game.Save();
 
-        DialogueController.Instance.StartDialogue("##SALT_ROCK_TAKE_001##");
+        DialogueController.Instance.StartDialogue(DialogueSaltRockTake);
     }
 
     private void LickSalt()
     {
-        DialogueController.Instance.StartDialogue("##SALT_ROCK_LICK_001##");
+        DialogueController.Instance.StartDialogue(DialogueSaltRockLick);
     }
 }

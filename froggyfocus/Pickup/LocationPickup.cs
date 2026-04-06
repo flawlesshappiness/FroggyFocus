@@ -23,6 +23,6 @@ public partial class LocationPickup : Pickup
         data.Unlocked = true;
         Data.Game.Save();
 
-        DialogueController.Instance.StartDialogue($"##{PickupDialogue}##");
+        DialogueController.Instance.StartDialogue(PickupDialogue);
     }
 }

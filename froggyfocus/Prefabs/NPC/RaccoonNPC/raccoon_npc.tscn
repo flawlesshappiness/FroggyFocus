@@ -26,8 +26,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_5t764")
 HandInInfo = ExtResource("2_lqyx2")
-RequestDialogueId = "RACCOON_REQUEST"
-RequestCompleteDialogueId = Array[String](["RACCOON_BACKGROUND_001", "RACCOON_POLLUTION_001", "RACCOON_TV_001"])
+RequestCompleteDialogueId = Array[String](["RACCOON_BACKGROUND", "RACCOON_POLLUTION", "RACCOON_TV"])
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 

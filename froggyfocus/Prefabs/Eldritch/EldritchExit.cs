@@ -8,7 +8,7 @@ public partial class EldritchExit : Area3D, IInteractable
     [Export]
     public string StartNode;
 
-    private bool active_dialogue;
+    private const string ExitId = "##ELDRITCH_EXIT_EYE##";
 
     public override void _Ready()
     {
@@ -18,23 +18,22 @@ public partial class EldritchExit : Area3D, IInteractable
 
     public void Interact()
     {
-        active_dialogue = true;
-        DialogueController.Instance.StartDialogue("##ELDRITCH_EXIT_EYE##");
+        DialogueController.Instance.StartDialogue(ExitId);
     }
 
-    private void DialogueEnded()
+    private void DialogueEnded(string id)
     {
-        if (!active_dialogue) return;
-        active_dialogue = false;
-
-        GameView.Instance.ShowPopup("##ELDRITCH_EXIT_TEXT##", "##OK##", "##CANCEL##", () =>
+        if (id == ExitId)
         {
-            Return();
-        },
-        () =>
-        {
+            GameView.Instance.ShowPopup("##ELDRITCH_EXIT_TEXT##", "##OK##", "##CANCEL##", () =>
+            {
+                Return();
+            },
+            () =>
+            {
 
-        });
+            });
+        }
     }
 
     private void Return()

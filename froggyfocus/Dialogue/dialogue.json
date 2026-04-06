@@ -1,81 +1,71 @@
 [
 	{
-		"id": "##TUTORIAL_JUMP_001##",
-		"next": "##TUTORIAL_JUMP_002##"
-	},
-	{
-		"id": "##TUTORIAL_JUMP_002##",
-		"next": "##TUTORIAL_JUMP_003##"
-	},
-	{
-		"id": "##TUTORIAL_JUMP_003##"
-	},
-	
-	{
-		"id": "##TUTORIAL_SHIELD_001##",
-		"next": "##TUTORIAL_SHIELD_002##"
-	},
-	{
-		"id": "##TUTORIAL_SHIELD_002##",
-		"next": "##TUTORIAL_SHIELD_003##"
-	},
-	{
-		"id": "##TUTORIAL_SHIELD_003##"
-	},
-	
-	{
-		"id": "##TUTORIAL_CATCH_BUGS_001##",
-		"next": "##TUTORIAL_CATCH_BUGS_002##"
-	},
-	{
-		"id": "##TUTORIAL_CATCH_BUGS_002##",
-		"next": "##TUTORIAL_CATCH_BUGS_003##"
-	},
-	{
-		"id": "##TUTORIAL_CATCH_BUGS_003##"
-	},
-	
-	{
 		"id": "##LOCATION_PICKUP_CAVE##",
-		"next": "##LOCATION_PICKUP_UNLOCKED##"
+		"entries": [
+			"##LOCATION_PICKUP_CAVE##",
+			"##LOCATION_PICKUP_UNLOCKED##"
+		]
 	},
 	
 	{
 		"id": "##LOCATION_PICKUP_FACTORY##",
-		"next": "##LOCATION_PICKUP_UNLOCKED##"
-	},
-	
-	{
-		"id": "##LOCATION_PICKUP_UNLOCKED##"
+		"entries": [
+			"##LOCATION_PICKUP_FACTORY##",
+			"##LOCATION_PICKUP_UNLOCKED##"
+		]
 	},
 	
 	{
 		"id": "##CRYSTAL_DOOR_RANDOM_RESULT##",
-		"next": "##CRYSTAL_DOOR_INCORRECT##"
+		"entries": [
+			"##CRYSTAL_DOOR_RANDOM_RESULT##",
+			"##CRYSTAL_DOOR_INCORRECT##"
+		]
 	},
 	
 	{
-		"id": "##SALT_ROCK_LICK_001##",
-		"next": "##SALT_ROCK_LICK_002##"
-	},
-	{
-		"id": "##SALT_ROCK_LICK_002##"
-	},
-	
-	{
-		"id": "##TV_LICK_001##",
-		"next": "##TV_LICK_002##"
-	},
-	{
-		"id": "##TV_LICK_002##"
+		"id": "##SALT_ROCK##",
+		"entries": [
+			"##SALT_ROCK_001##"
+		]
 	},
 	
 	{
-		"id": "##TV_REMOTE_001##",
-		"next": "##TV_REMOTE_002##"
+		"id": "##SALT_ROCK_LICK##",
+		"entries": [
+			"##SALT_ROCK_LICK_001##",
+			"##SALT_ROCK_LICK_002##"
+		]
 	},
+	
 	{
-		"id": "##TV_REMOTE_002##"
+		"id": "##SALT_ROCK_TAKE##",
+		"entries": [
+			"##SALT_ROCK_TAKE_001##"
+		]
+	},
+	
+	{
+		"id": "##TV_OFF##",
+		"entries": [
+			"##TV_OFF##"
+		]
+	},
+	
+	{
+		"id": "##TV_LICK##",
+		"entries": [
+			"##TV_LICK_001##",
+			"##TV_LICK_002##"
+		]
+	},
+	
+	{
+		"id": "##TV_REMOTE##",
+		"entries": [
+			"##TV_REMOTE_001##",
+			"##TV_REMOTE_002##"
+		]
 	},
 	
 	{
@@ -91,698 +81,506 @@
 	},
 	
 	{
-		"id": "##MUSHROOM_BACKGROUND_001##",
-		"next": "##MUSHROOM_BACKGROUND_002##"
-	},
-	{
-		"id": "##MUSHROOM_BACKGROUND_002##",
-		"next": "##MUSHROOM_BACKGROUND_003##"
-	},
-	{
-		"id": "##MUSHROOM_BACKGROUND_003##"
+		"id": "##MUSHROOM_BACKGROUND##",
+		"entries": [
+			"##MUSHROOM_BACKGROUND_001##",
+			"##MUSHROOM_BACKGROUND_002##",
+			"##MUSHROOM_BACKGROUND_003##"
+		]
 	},
 	
 	{
-		"id": "##MUSHROOM_LIFE_001##",
-		"next": "##MUSHROOM_LIFE_002##"
-	},
-	{
-		"id": "##MUSHROOM_LIFE_002##",
-		"next": "##MUSHROOM_LIFE_003##"
-	},
-	{
-		"id": "##MUSHROOM_LIFE_003##"
+		"id": "##MUSHROOM_LIFE##",
+		"entries": [
+			"##MUSHROOM_LIFE_001##",
+			"##MUSHROOM_LIFE_002##",
+			"##MUSHROOM_LIFE_003##"
+		]
 	},
 	
 	{
-		"id": "##MUSHROOM_FLOWER_001##",
-		"next": "##MUSHROOM_FLOWER_002##"
-	},
-	{
-		"id": "##MUSHROOM_FLOWER_002##",
-		"next": "##MUSHROOM_FLOWER_003##"
-	},
-	{
-		"id": "##MUSHROOM_FLOWER_003##",
-		"next": "##MUSHROOM_FLOWER_004##"
-	},
-	{
-		"id": "##MUSHROOM_FLOWER_004##"
+		"id": "##MUSHROOM_FLOWER##",
+		"entries": [
+			"##MUSHROOM_FLOWER_001##",
+			"##MUSHROOM_FLOWER_002##",
+			"##MUSHROOM_FLOWER_003##",
+			"##MUSHROOM_FLOWER_004##"
+		]
 	},
 	
 	{
-		"id": "##MAGPIE_BACKGROUND_001##",
-		"next": "##MAGPIE_BACKGROUND_002##"
-	},
-	{
-		"id": "##MAGPIE_BACKGROUND_002##",
-		"next": "##MAGPIE_BACKGROUND_003##"
-	},
-	{
-		"id": "##MAGPIE_BACKGROUND_003##"
+		"id": "##MAGPIE_BACKGROUND##",
+		"entries": [
+			"##MAGPIE_BACKGROUND_001##",
+			"##MAGPIE_BACKGROUND_002##",
+			"##MAGPIE_BACKGROUND_003##"
+		]
 	},
 	
 	{
-		"id": "##MAGPIE_STEALING_001##",
-		"next": "##MAGPIE_STEALING_002##"
-	},
-	{
-		"id": "##MAGPIE_STEALING_002##",
-		"next": "##MAGPIE_STEALING_003##"
-	},
-	{
-		"id": "##MAGPIE_STEALING_003##"
+		"id": "##MAGPIE_STEALING##",
+		"entries": [
+			"##MAGPIE_STEALING_001##",
+			"##MAGPIE_STEALING_002##",
+			"##MAGPIE_STEALING_003##"
+		]
 	},
 	
 	{
-		"id": "##MAGPIE_FLOWER_001##",
-		"next": "##MAGPIE_FLOWER_002##"
-	},
-	{
-		"id": "##MAGPIE_FLOWER_002##",
-		"next": "##MAGPIE_FLOWER_003##"
-	},
-	{
-		"id": "##MAGPIE_FLOWER_003##"
+		"id": "##MAGPIE_FLOWER##",
+		"entries": [
+			"##MAGPIE_FLOWER_001##",
+			"##MAGPIE_FLOWER_002##",
+			"##MAGPIE_FLOWER_003##"
+		]
 	},
 	
 	{
-		"id": "##OTTER_SPIRITS_001##",
-		"next": "##OTTER_SPIRITS_002##"
-	},
-	{
-		"id": "##OTTER_SPIRITS_002##",
-		"next": "##OTTER_SPIRITS_003##"
-	},
-	{
-		"id": "##OTTER_SPIRITS_003##"
+		"id": "##OTTER_SPIRITS##",
+		"entries": [
+			"##OTTER_SPIRITS_001##",
+			"##OTTER_SPIRITS_002##",
+			"##OTTER_SPIRITS_003##"
+		]
 	},
 	
 	{
-		"id": "##OTTER_WINGS_001##",
-		"next": "##OTTER_WINGS_002##"
-	},
-	{
-		"id": "##OTTER_WINGS_002##",
-		"next": "##OTTER_WINGS_003##"
-	},
-	{
-		"id": "##OTTER_WINGS_003##"
+		"id": "##OTTER_WINGS##",
+		"entries": [
+			"##OTTER_WINGS_001##",
+			"##OTTER_WINGS_002##",
+			"##OTTER_WINGS_003##"
+		]
 	},
 	
 	{
-		"id": "##OTTER_FLOWER_001##",
-		"next": "##OTTER_FLOWER_002##"
-	},
-	{
-		"id": "##OTTER_FLOWER_002##",
-		"next": "##OTTER_FLOWER_003##"
-	},
-	{
-		"id": "##OTTER_FLOWER_003##"
+		"id": "##OTTER_FLOWER##",
+		"entries": [
+			"##OTTER_FLOWER_001##",
+			"##OTTER_FLOWER_002##",
+			"##OTTER_FLOWER_003##"
+		]
 	},
 	
 	{
-		"id": "##SNAIL_LUSH_001##",
-		"next": "##SNAIL_LUSH_002##"
-	},
-	{
-		"id": "##SNAIL_LUSH_002##",
-		"next": "##SNAIL_LUSH_003##"
-	},
-	{
-		"id": "##SNAIL_LUSH_003##"
+		"id": "##SNAIL_LUSH##",
+		"entries": [
+			"##SNAIL_LUSH_001##",
+			"##SNAIL_LUSH_002##",
+			"##SNAIL_LUSH_003##"
+		]
 	},
 	
 	{
-		"id": "##SNAIL_SCARY_001##",
-		"next": "##SNAIL_SCARY_002##"
-	},
-	{
-		"id": "##SNAIL_SCARY_002##",
-		"next": "##SNAIL_SCARY_003##"
-	},
-	{
-		"id": "##SNAIL_SCARY_003##"
+		"id": "##SNAIL_SCARY##",
+		"entries": [
+			"##SNAIL_SCARY_001##",
+			"##SNAIL_SCARY_002##",
+			"##SNAIL_SCARY_003##"
+		]
 	},
 	
 	{
-		"id": "##SNAIL_CRYSTALS_001##",
-		"next": "##SNAIL_CRYSTALS_002##"
-	},
-	{
-		"id": "##SNAIL_CRYSTALS_002##",
-		"next": "##SNAIL_CRYSTALS_003##"
-	},
-	{
-		"id": "##SNAIL_CRYSTALS_003##"
+		"id": "##SNAIL_CRYSTALS##",
+		"entries": [
+			"##SNAIL_CRYSTALS_001##",
+			"##SNAIL_CRYSTALS_002##",
+			"##SNAIL_CRYSTALS_003##"
+		]
 	},
 	
 	{
-		"id": "##CRAB_TOUGH_001##",
-		"next": "##CRAB_TOUGH_002##"
-	},
-	{
-		"id": "##CRAB_TOUGH_002##",
-		"next": "##CRAB_TOUGH_003##"
-	},
-	{
-		"id": "##CRAB_TOUGH_003##"
+		"id": "##CRAB_TOUGH##",
+		"entries": [
+			"##CRAB_TOUGH_001##",
+			"##CRAB_TOUGH_002##",
+			"##CRAB_TOUGH_003##"
+		]
 	},
 	
 	{
-		"id": "##CRAB_MANAGER_001##",
-		"next": "##CRAB_MANAGER_002##"
-	},
-	{
-		"id": "##CRAB_MANAGER_002##",
-		"next": "##CRAB_MANAGER_003##"
-	},
-	{
-		"id": "##CRAB_MANAGER_003##"
+		"id": "##CRAB_MANAGER##",
+		"entries": [
+			"##CRAB_MANAGER_001##",
+			"##CRAB_MANAGER_002##",
+			"##CRAB_MANAGER_003##"
+		]
 	},
 	
 	{
-		"id": "##CRAB_CRYSTAL_001##",
-		"next": "##CRAB_CRYSTAL_002##"
-	},
-	{
-		"id": "##CRAB_CRYSTAL_002##",
-		"next": "##CRAB_CRYSTAL_003##"
-	},
-	{
-		"id": "##CRAB_CRYSTAL_003##"
+		"id": "##CRAB_CRYSTAL##",
+		"entries": [
+			"##CRAB_CRYSTAL_001##",
+			"##CRAB_CRYSTAL_002##",
+			"##CRAB_CRYSTAL_003##"
+		]
 	},
 	
 	{
-		"id": "##SALAMANDER_SINGING_001##",
-		"next": "##SALAMANDER_SINGING_002##"
-	},
-	{
-		"id": "##SALAMANDER_SINGING_002##",
-		"next": "##SALAMANDER_SINGING_003##"
-	},
-	{
-		"id": "##SALAMANDER_SINGING_003##"
+		"id": "##SALAMANDER_SINGING##",
+		"entries": [
+			"##SALAMANDER_SINGING_001##",
+			"##SALAMANDER_SINGING_002##",
+			"##SALAMANDER_SINGING_003##"
+		]
 	},
 	
 	{
-		"id": "##SALAMANDER_BACKGROUND_001##",
-		"next": "##SALAMANDER_BACKGROUND_002##"
-	},
-	{
-		"id": "##SALAMANDER_BACKGROUND_002##",
-		"next": "##SALAMANDER_BACKGROUND_003##"
-	},
-	{
-		"id": "##SALAMANDER_BACKGROUND_003##",
-		"next": "##SALAMANDER_BACKGROUND_004##"
-	},
-	{
-		"id": "##SALAMANDER_BACKGROUND_004##"
+		"id": "##SALAMANDER_BACKGROUND##",
+		"entries": [
+			"##SALAMANDER_BACKGROUND_001##",
+			"##SALAMANDER_BACKGROUND_002##",
+			"##SALAMANDER_BACKGROUND_003##",
+			"##SALAMANDER_BACKGROUND_004##"
+		]
 	},
 	
 	{
-		"id": "##SALAMANDER_ENTRANCE_001##",
-		"next": "##SALAMANDER_ENTRANCE_002##"
-	},
-	{
-		"id": "##SALAMANDER_ENTRANCE_002##",
-		"next": "##SALAMANDER_ENTRANCE_003##"
-	},
-	{
-		"id": "##SALAMANDER_ENTRANCE_003##",
-		"next": "##SALAMANDER_ENTRANCE_004##"
-	},
-	{
-		"id": "##SALAMANDER_ENTRANCE_004##"
+		"id": "##SALAMANDER_ENTRANCE##",
+		"entries": [
+			"##SALAMANDER_ENTRANCE_001##",
+			"##SALAMANDER_ENTRANCE_002##",
+			"##SALAMANDER_ENTRANCE_003##",
+			"##SALAMANDER_ENTRANCE_004##"
+		]
 	},
 	
 	{
-		"id": "##RACCOON_BACKGROUND_001##",
-		"next": "##RACCOON_BACKGROUND_002##"
-	},
-	{
-		"id": "##RACCOON_BACKGROUND_002##",
-		"next": "##RACCOON_BACKGROUND_003##"
-	},
-	{
-		"id": "##RACCOON_BACKGROUND_003##"
+		"id": "##RACCOON_BACKGROUND##",
+		"entries": [
+			"##RACCOON_BACKGROUND_001##",
+			"##RACCOON_BACKGROUND_002##",
+			"##RACCOON_BACKGROUND_003##"
+		]
 	},
 	
 	{
-		"id": "##RACCOON_POLLUTION_001##",
-		"next": "##RACCOON_POLLUTION_002##"
-	},
-	{
-		"id": "##RACCOON_POLLUTION_002##",
-		"next": "##RACCOON_POLLUTION_003##"
-	},
-	{
-		"id": "##RACCOON_POLLUTION_003##"
+		"id": "##RACCOON_POLLUTION##",
+		"entries": [
+			"##RACCOON_POLLUTION_001##",
+			"##RACCOON_POLLUTION_002##",
+			"##RACCOON_POLLUTION_003##"
+		]
 	},
 	
 	{
-		"id": "##RACCOON_TV_001##",
-		"next": "##RACCOON_TV_002##"
-	},
-	{
-		"id": "##RACCOON_TV_002##",
-		"next": "##RACCOON_TV_003##"
-	},
-	{
-		"id": "##RACCOON_TV_003##"
+		"id": "##RACCOON_TV##",
+		"entries": [
+			"##RACCOON_TV_001##",
+			"##RACCOON_TV_002##",
+			"##RACCOON_TV_003##"
+		]
 	},
 	
 	{
-		"id": "##EEL_FISH_001##",
-		"next": "##EEL_FISH_002##"
-	},
-	{
-		"id": "##EEL_FISH_002##",
-		"next": "##EEL_FISH_003##"
-	},
-	{
-		"id": "##EEL_FISH_003##"
+		"id": "##EEL_FISH##",
+		"entries": [
+			"##EEL_FISH_001##",
+			"##EEL_FISH_002##",
+			"##EEL_FISH_003##"
+		]
 	},
 	
 	{
-		"id": "##EEL_NASTY_001##",
-		"next": "##EEL_NASTY_002##"
-	},
-	{
-		"id": "##EEL_NASTY_002##",
-		"next": "##EEL_NASTY_003##"
-	},
-	{
-		"id": "##EEL_NASTY_003##"
+		"id": "##EEL_NASTY##",
+		"entries": [
+			"##EEL_NASTY_001##",
+			"##EEL_NASTY_002##",
+			"##EEL_NASTY_003##"
+		]
 	},
 	
 	{
-		"id": "##EEL_ZAP_001##",
-		"next": "##EEL_ZAP_002##"
-	},
-	{
-		"id": "##EEL_ZAP_002##",
-		"next": "##EEL_ZAP_003##"
-	},
-	{
-		"id": "##EEL_ZAP_003##"
+		"id": "##EEL_ZAP##",
+		"entries": [
+			"##EEL_ZAP_001##",
+			"##EEL_ZAP_002##",
+			"##EEL_ZAP_003##"
+		]
 	},
 	
 	{
-		"id": "##TURTLE_DEPRESSED_001##",
-		"next": "##TURTLE_DEPRESSED_002##"
-	},
-	{
-		"id": "##TURTLE_DEPRESSED_002##",
-		"next": "##TURTLE_DEPRESSED_003##"
-	},
-	{
-		"id": "##TURTLE_DEPRESSED_003##"
+		"id": "##TURTLE_DEPRESSED##",
+		"entries": [
+			"##TURTLE_DEPRESSED_001##",
+			"##TURTLE_DEPRESSED_002##",
+			"##TURTLE_DEPRESSED_003##"
+		]
 	},
 	
 	{
-		"id": "##TURTLE_THANKS_001##",
-		"next": "##TURTLE_THANKS_002##"
-	},
-	{
-		"id": "##TURTLE_THANKS_002##",
-		"next": "##TURTLE_THANKS_003##"
-	},
-	{
-		"id": "##TURTLE_THANKS_003##"
+		"id": "##TURTLE_THANKS##",
+		"entries": [
+			"##TURTLE_THANKS_001##",
+			"##TURTLE_THANKS_002##",
+			"##TURTLE_THANKS_003##"
+		]
 	},
 	
 	{
-		"id": "##TURTLE_FRIENDS_001##",
-		"next": "##TURTLE_FRIENDS_002##"
-	},
-	{
-		"id": "##TURTLE_FRIENDS_002##",
-		"next": "##TURTLE_FRIENDS_003##"
-	},
-	{
-		"id": "##TURTLE_FRIENDS_003##"
+		"id": "##TURTLE_FRIENDS##",
+		"entries": [
+			"##TURTLE_FRIENDS_001##",
+			"##TURTLE_FRIENDS_002##",
+			"##TURTLE_FRIENDS_003##"
+		]
 	},
 	
 	{
-		"id": "##MANAGER_INTRO_001##",
-		"next": "##MANAGER_INTRO_002##"
-	},
-	{
-		"id": "##MANAGER_INTRO_002##",
-		"next": "##MANAGER_INTRO_003##"
-	},
-	{
-		"id": "##MANAGER_INTRO_003##"
+		"id": "##MANAGER_INTRO##",
+		"entries": [
+			"##MANAGER_INTRO_001##",
+			"##MANAGER_INTRO_002##",
+			"##MANAGER_INTRO_003##"
+		]
 	},
 	
 	{
-		"id": "##MANAGER_REQUEST_001##",
-		"next": "##MANAGER_REQUEST_002##"
-	},
-	{
-		"id": "##MANAGER_REQUEST_002##"
-	},
-	
-	{
-		"id": "##MANAGER_REQUEST_FAIL_001##",
-		"next": "##MANAGER_REQUEST_FAIL_002##"
-	},
-	{
-		"id": "##MANAGER_REQUEST_FAIL_002##"
+		"id": "##MANAGER_REQUEST##",
+		"entries": [
+			"##MANAGER_REQUEST_001##",
+			"##MANAGER_REQUEST_002##"
+		]
 	},
 	
 	{
-		"id": "##MANAGER_REQUEST_COMPLETE_001##",
-		"next": "##MANAGER_REQUEST_COMPLETE_002##"
-	},
-	{
-		"id": "##MANAGER_REQUEST_COMPLETE_002##",
-		"next": "##MANAGER_REQUEST_COMPLETE_003##"
-	},
-	{
-		"id": "##MANAGER_REQUEST_COMPLETE_003##"
+		"id": "##MANAGER_REQUEST_FAIL##",
+		"entries": [
+			"##MANAGER_REQUEST_FAIL_001##",
+			"##MANAGER_REQUEST_FAIL_002##"
+		]
 	},
 	
 	{
-		"id": "##PARTNER_INTRO_001##",
-		"next": "##PARTNER_INTRO_002##"
-	},
-	{
-		"id": "##PARTNER_INTRO_002##",
-		"next": "##PARTNER_INTRO_003##"
-	},
-	{
-		"id": "##PARTNER_INTRO_003##",
-		"next": "##PARTNER_INTRO_004##"
-	},
-	{
-		"id": "##PARTNER_INTRO_004##"
+		"id": "##MANAGER_REQUEST_COMPLETE##",
+		"entries": [
+			"##MANAGER_REQUEST_COMPLETE_001##",
+			"##MANAGER_REQUEST_COMPLETE_002##",
+			"##MANAGER_REQUEST_COMPLETE_003##"
+		]
 	},
 	
 	{
-		"id": "##PARTNER_REQUEST_001##",
-		"next": "##PARTNER_REQUEST_002##"
-	},
-	{
-		"id": "##PARTNER_REQUEST_002##"
-	},
-	
-	{
-		"id": "##PARTNER_REQUEST_FAIL_001##",
-		"next": "##PARTNER_REQUEST_FAIL_002##"
-	},
-	{
-		"id": "##PARTNER_REQUEST_FAIL_002##"
+		"id": "##PARTNER_INTRO##",
+		"entries": [
+			"##PARTNER_INTRO_001##",
+			"##PARTNER_INTRO_002##",
+			"##PARTNER_INTRO_003##",
+			"##PARTNER_INTRO_004##"
+		]
 	},
 	
 	{
-		"id": "##PARTNER_REQUEST_COMPLETE_001##",
-		"next": "##PARTNER_REQUEST_COMPLETE_002##"
-	},
-	{
-		"id": "##PARTNER_REQUEST_COMPLETE_002##",
-		"next": "##PARTNER_REQUEST_COMPLETE_003##"
-	},
-	{
-		"id": "##PARTNER_REQUEST_COMPLETE_003##"
+		"id": "##PARTNER_REQUEST##",
+		"entries": [
+			"##PARTNER_REQUEST_001##",
+			"##PARTNER_REQUEST_002##"
+		]
 	},
 	
 	{
-		"id": "##SCIENTIST_INTRO_001##",
-		"next": "##SCIENTIST_INTRO_002##"
-	},
-	{
-		"id": "##SCIENTIST_INTRO_002##",
-		"next": "##SCIENTIST_INTRO_003##"
-	},
-	{
-		"id": "##SCIENTIST_INTRO_003##",
-		"next": "##SCIENTIST_INTRO_004##"
-	},
-	{
-		"id": "##SCIENTIST_INTRO_004##"
+		"id": "##PARTNER_REQUEST_FAIL##",
+		"entries": [
+			"##PARTNER_REQUEST_FAIL_001##",
+			"##PARTNER_REQUEST_FAIL_002##"
+		]
 	},
 	
 	{
-		"id": "##SCIENTIST_REQUEST_001##",
-		"next": "##SCIENTIST_REQUEST_002##"
-	},
-	{
-		"id": "##SCIENTIST_REQUEST_002##"
-	},
-	
-	{
-		"id": "##SCIENTIST_REQUEST_FAIL_001##",
-		"next": "##SCIENTIST_REQUEST_FAIL_002##"
-	},
-	{
-		"id": "##SCIENTIST_REQUEST_FAIL_002##"
+		"id": "##PARTNER_REQUEST_COMPLETE##",
+		"entries": [
+			"##PARTNER_REQUEST_COMPLETE_001##",
+			"##PARTNER_REQUEST_COMPLETE_002##",
+			"##PARTNER_REQUEST_COMPLETE_003##"
+		]
 	},
 	
 	{
-		"id": "##SCIENTIST_REQUEST_COMPLETE_001##",
-		"next": "##SCIENTIST_REQUEST_COMPLETE_002##"
-	},
-	{
-		"id": "##SCIENTIST_REQUEST_COMPLETE_002##",
-		"next": "##SCIENTIST_REQUEST_COMPLETE_003##"
-	},
-	{
-		"id": "##SCIENTIST_REQUEST_COMPLETE_003##"
+		"id": "##SCIENTIST_INTRO##",
+		"entries": [
+			"##SCIENTIST_INTRO_001##",
+			"##SCIENTIST_INTRO_002##",
+			"##SCIENTIST_INTRO_003##",
+			"##SCIENTIST_INTRO_004##"
+		]
 	},
 	
 	{
-		"id": "##WORKER_SUSPENDED_001##",
-		"next": "##WORKER_SUSPENDED_002##"
-	},
-	{
-		"id": "##WORKER_SUSPENDED_002##",
-		"next": "##WORKER_SUSPENDED_003##"
-	},
-	{
-		"id": "##WORKER_SUSPENDED_003##"
+		"id": "##SCIENTIST_REQUEST##",
+		"entries": [
+			"##SCIENTIST_REQUEST_001##",
+			"##SCIENTIST_REQUEST_002##"
+		]
 	},
 	
 	{
-		"id": "##WORKER_ROCK_FACTS_001##",
-		"next": "##WORKER_ROCK_FACTS_002##"
-	},
-	{
-		"id": "##WORKER_ROCK_FACTS_002##",
-		"next": "##WORKER_ROCK_FACTS_003##"
-	},
-	{
-		"id": "##WORKER_ROCK_FACTS_003##"
+		"id": "##SCIENTIST_REQUEST_FAIL##",
+		"entries": [
+			"##SCIENTIST_REQUEST_FAIL_001##",
+			"##SCIENTIST_REQUEST_FAIL_002##"
+		]
 	},
 	
 	{
-		"id": "##FOREMAN_PAPER_CODE_001##",
-		"next": "##FOREMAN_PAPER_CODE_002##"
-	},
-	{
-		"id": "##FOREMAN_PAPER_CODE_002##",
-		"next": "##FOREMAN_PAPER_CODE_003##"
-	},
-	{
-		"id": "##FOREMAN_PAPER_CODE_003##",
-		"next": "##FOREMAN_PAPER_CODE_004##"
-	},
-	{
-		"id": "##FOREMAN_PAPER_CODE_004##",
-		"next": "##FOREMAN_PAPER_CODE_005##"
-	},
-	{
-		"id": "##FOREMAN_PAPER_CODE_005##"
+		"id": "##SCIENTIST_REQUEST_COMPLETE##",
+		"entries": [
+			"##SCIENTIST_REQUEST_COMPLETE_001##",
+			"##SCIENTIST_REQUEST_COMPLETE_002##",
+			"##SCIENTIST_REQUEST_COMPLETE_003##"
+		]
 	},
 	
 	{
-		"id": "##FOREMAN_PAPER_CRYSTAL_001##",
-		"next": "##FOREMAN_PAPER_CRYSTAL_002##"
-	},
-	{
-		"id": "##FOREMAN_PAPER_CRYSTAL_002##"
-	},
-	
-	{
-		"id": "##WORKER_WINDOW_001##",
-		"next": "##WORKER_WINDOW_002##"
-	},
-	{
-		"id": "##WORKER_WINDOW_002##",
-		"next": "##WORKER_WINDOW_003##"
-	},
-	{
-		"id": "##WORKER_WINDOW_003##"
+		"id": "##WORKER_SUSPENDED##",
+		"entries": [
+			"##WORKER_SUSPENDED_001##",
+			"##WORKER_SUSPENDED_002##",
+			"##WORKER_SUSPENDED_003##"
+		]
 	},
 	
 	{
-		"id": "##WORKER_SALT_001##",
-		"next": "##WORKER_SALT_002##"
-	},
-	{
-		"id": "##WORKER_SALT_002##",
-		"next": "##WORKER_SALT_003##"
-	},
-	{
-		"id": "##WORKER_SALT_003##"
+		"id": "##WORKER_ROCK_FACTS##",
+		"entries": [
+			"##WORKER_ROCK_FACTS_001##",
+			"##WORKER_ROCK_FACTS_002##",
+			"##WORKER_ROCK_FACTS_003##"
+		]
 	},
 	
 	{
-		"id": "##FOREMAN_PAPER_COPIES_001##",
-		"next": "##FOREMAN_PAPER_COPIES_002##"
-	},
-	{
-		"id": "##FOREMAN_PAPER_COPIES_002##"
-	},
-	
-	{
-		"id": "##FOREMAN_PAPER_CODE_REVIEW_001##",
-		"next": "##FOREMAN_PAPER_CODE_REVIEW_002##"
-	},
-	{
-		"id": "##FOREMAN_PAPER_CODE_REVIEW_002##"
+		"id": "##FOREMAN_PAPER_CODE##",
+		"entries": [
+			"##FOREMAN_PAPER_CODE_001##",
+			"##FOREMAN_PAPER_CODE_002##",
+			"##FOREMAN_PAPER_CODE_003##",
+			"##FOREMAN_PAPER_CODE_004##",
+			"##FOREMAN_PAPER_CODE_005##"
+		]
 	},
 	
 	{
-		"id": "##DEMO_FROG_INTRO_001##",
-		"next": "##DEMO_FROG_INTRO_002##"
-	},
-	{
-		"id": "##DEMO_FROG_INTRO_002##",
-		"next": "##DEMO_FROG_INTRO_003##"
-	},
-	{
-		"id": "##DEMO_FROG_INTRO_003##",
-		"next": "##DEMO_FROG_INTRO_004##"
-	},
-	{
-		"id": "##DEMO_FROG_INTRO_004##"
+		"id": "##FOREMAN_PAPER_CRYSTAL##",
+		"entries": [
+			"##FOREMAN_PAPER_CRYSTAL_001##",
+			"##FOREMAN_PAPER_CRYSTAL_002##"
+		]
 	},
 	
 	{
-		"id": "##DEMO_FROG_FLYING_001##",
-		"next": "##DEMO_FROG_FLYING_002##"
-	},
-	{
-		"id": "##DEMO_FROG_FLYING_002##",
-		"next": "##DEMO_FROG_FLYING_003##"
-	},
-	{
-		"id": "##DEMO_FROG_FLYING_003##"
+		"id": "##FOREMAN_PAPER_COPIES##",
+		"entries": [
+			"##FOREMAN_PAPER_COPIES_001##",
+			"##FOREMAN_PAPER_COPIES_002##"
+		]
 	},
 	
 	{
-		"id": "##DEMO_FROG_BLOOMING_001##",
-		"next": "##DEMO_FROG_BLOOMING_002##"
-	},
-	{
-		"id": "##DEMO_FROG_BLOOMING_002##",
-		"next": "##DEMO_FROG_BLOOMING_003##"
-	},
-	{
-		"id": "##DEMO_FROG_BLOOMING_003##",
-		"next": "##DEMO_FROG_BLOOMING_004##"
-	},
-	{
-		"id": "##DEMO_FROG_BLOOMING_004##"
+		"id": "##FOREMAN_PAPER_CODE_REVIEW##",
+		"entries": [
+			"##FOREMAN_PAPER_CODE_REVIEW_001##",
+			"##FOREMAN_PAPER_CODE_REVIEW_002##"
+		]
 	},
 	
 	{
-		"id": "##DEMO_FROG_FINISHED_001##",
-		"next": "##DEMO_FROG_FINISHED_002##"
-	},
-	{
-		"id": "##DEMO_FROG_FINISHED_002##",
-		"next": "##DEMO_FROG_FINISHED_003##"
-	},
-	{
-		"id": "##DEMO_FROG_FINISHED_003##",
-		"next": "##DEMO_FROG_FINISHED_004##"
-	},
-	{
-		"id": "##DEMO_FROG_FINISHED_004##"
+		"id": "##WORKER_WINDOW##",
+		"entries": [
+			"##WORKER_WINDOW_001##",
+			"##WORKER_WINDOW_002##",
+			"##WORKER_WINDOW_003##"
+		]
 	},
 	
 	{
-		"id": "##DEMO_MOLE_001##",
-		"next": "##DEMO_MOLE_002##"
-	},
-	{
-		"id": "##DEMO_MOLE_002##",
-		"next": "##DEMO_MOLE_003##"
-	},
-	{
-		"id": "##DEMO_MOLE_003##"
+		"id": "##WORKER_SALT##",
+		"entries": [
+			"##WORKER_SALT_001##",
+			"##WORKER_SALT_002##",
+			"##WORKER_SALT_003##"
+		]
 	},
 	
 	{
-		"id": "##DEMO_MUSHROOM_INTRO_001##",
-		"next": "##DEMO_MUSHROOM_INTRO_002##"
-	},
-	{
-		"id": "##DEMO_MUSHROOM_INTRO_002##",
-		"next": "##DEMO_MUSHROOM_INTRO_003##"
-	},
-	{
-		"id": "##DEMO_MUSHROOM_INTRO_003##"
+		"id": "##DEMO_FROG_INTRO##",
+		"entries": [
+			"##DEMO_FROG_INTRO_001##",
+			"##DEMO_FROG_INTRO_002##",
+			"##DEMO_FROG_INTRO_003##",
+			"##DEMO_FROG_INTRO_004##"
+		]
 	},
 	
 	{
-		"id": "##DEMO_MUSHROOM_FINISHED_001##",
-		"next": "##DEMO_MUSHROOM_FINISHED_002##"
-	},
-	{
-		"id": "##DEMO_MUSHROOM_FINISHED_002##"
-	},
-	
-	{
-		"id": "##DEMO_MAGPIE_INTRO_001##",
-		"next": "##DEMO_MAGPIE_INTRO_002##"
-	},
-	{
-		"id": "##DEMO_MAGPIE_INTRO_002##",
-		"next": "##DEMO_MAGPIE_INTRO_003##"
-	},
-	{
-		"id": "##DEMO_MAGPIE_INTRO_003##"
+		"id": "##DEMO_FROG_FLYING##",
+		"entries": [
+			"##DEMO_FROG_FLYING_001##",
+			"##DEMO_FROG_FLYING_002##",
+			"##DEMO_FROG_FLYING_003##"
+		]
 	},
 	
 	{
-		"id": "##DEMO_MAGPIE_FINISHED_001##",
-		"next": "##DEMO_MAGPIE_FINISHED_002##"
-	},
-	{
-		"id": "##DEMO_MAGPIE_FINISHED_002##",
-		"next": "##DEMO_MAGPIE_FINISHED_003##"
-	},
-	{
-		"id": "##DEMO_MAGPIE_FINISHED_003##"
+		"id": "##DEMO_FROG_BLOOMING##",
+		"entries": [
+			"##DEMO_FROG_BLOOMING_001##",
+			"##DEMO_FROG_BLOOMING_002##",
+			"##DEMO_FROG_BLOOMING_003##",
+			"##DEMO_FROG_BLOOMING_004##"
+		]
 	},
 	
 	{
-		"id": "##TEST_001##",
-		"next": "##TEST_002##"
-	},
-	{
-		"id": "##TEST_002##",
-		"next": "##TEST_003##"
-	},
-	{
-		"id": "##TEST_003##"
+		"id": "##DEMO_FROG_FINISHED##",
+		"entries": [
+			"##DEMO_FROG_FINISHED_001##",
+			"##DEMO_FROG_FINISHED_002##",
+			"##DEMO_FROG_FINISHED_003##",
+			"##DEMO_FROG_FINISHED_004##"
+		]
 	},
 	
 	{
-		"id": "##TEST_HAND_IN_001##",
-		"next": "##TEST_HAND_IN_002##"
-	},
-	{
-		"id": "##TEST_HAND_IN_002##"
+		"id": "##DEMO_MOLE##",
+		"entries": [
+			"##DEMO_MOLE_001##",
+			"##DEMO_MOLE_002##",
+			"##DEMO_MOLE_003##"
+		]
 	},
 	
 	{
-		"id": "##TEST_HAND_IN_COMPLETED_001##"
+		"id": "##DEMO_MUSHROOM_INTRO##",
+		"entries": [
+			"##DEMO_MUSHROOM_INTRO_001##",
+			"##DEMO_MUSHROOM_INTRO_002##",
+			"##DEMO_MUSHROOM_INTRO_003##"
+		]
+	},
+	
+	{
+		"id": "##DEMO_MUSHROOM_FINISHED##",
+		"entries": [
+			"##DEMO_MUSHROOM_FINISHED_001##",
+			"##DEMO_MUSHROOM_FINISHED_002##"
+		]
+	},
+	
+	{
+		"id": "##DEMO_MAGPIE_INTRO##",
+		"entries": [
+			"##DEMO_MAGPIE_INTRO_001##",
+			"##DEMO_MAGPIE_INTRO_002##",
+			"##DEMO_MAGPIE_INTRO_003##"
+		]
+	},
+	
+	{
+		"id": "##DEMO_MAGPIE_FINISHED##",
+		"entries": [
+			"##DEMO_MAGPIE_FINISHED_001##",
+			"##DEMO_MAGPIE_FINISHED_002##",
+			"##DEMO_MAGPIE_FINISHED_003##"
+		]
 	}
 ]

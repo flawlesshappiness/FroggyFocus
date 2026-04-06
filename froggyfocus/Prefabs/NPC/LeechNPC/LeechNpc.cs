@@ -8,7 +8,7 @@ public partial class LeechNpc : CharacterNpc
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
     }
 
     public override void Interact()

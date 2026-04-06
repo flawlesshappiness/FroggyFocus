@@ -28,8 +28,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_i6cp7")
 HandInInfo = ExtResource("2_bd5m3")
-RequestDialogueId = "TURTLE_REQUEST"
-RequestCompleteDialogueId = Array[String](["TURTLE_DEPRESSED_001", "TURTLE_THANKS_001", "TURTLE_FRIENDS_001"])
+RequestCompleteDialogueId = Array[String](["TURTLE_DEPRESSED", "TURTLE_THANKS", "TURTLE_FRIENDS"])
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 

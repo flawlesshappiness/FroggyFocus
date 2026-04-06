@@ -1,19 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://bw057fcfnoby7"]
+[gd_scene load_steps=18 format=3 uid="uid://d1otght5hc7ca"]
 
-[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_201og"]
-[ext_resource type="PackedScene" uid="uid://dhsttkfn7e2io" path="res://Assets/FlawLizArt/Characters/Magpie/magpie.fbx" id="1_vhir8"]
-[ext_resource type="Resource" uid="uid://but43q22crqx3" path="res://HandIn/Resources/Magpie_Swamp.tres" id="2_4y8sw"]
-[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_xbyyc"]
-[ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="4_4y8sw"]
-[ext_resource type="AudioStream" uid="uid://bspgktdfssm0j" path="res://Sounds/Raw/sfx_magpie_speak_001.wav" id="4_rqusm"]
-[ext_resource type="AudioStream" uid="uid://b7a42shuyqvi1" path="res://Sounds/Raw/sfx_magpie_speak_002.wav" id="5_201og"]
-[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="5_n80yi"]
-[ext_resource type="Material" uid="uid://q8jecixud5c4" path="res://Materials/Color_Blue.tres" id="6_1io3b"]
-[ext_resource type="AudioStream" uid="uid://dhhm15ska3tqu" path="res://Sounds/Raw/sfx_magpie_speak_003.wav" id="6_4y8sw"]
-[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="7_1io3b"]
-[ext_resource type="AudioStream" uid="uid://bd4x2kg882ldm" path="res://Sounds/Raw/sfx_magpie_speak_004.wav" id="7_pf135"]
-[ext_resource type="AudioStream" uid="uid://cdom776pb6o07" path="res://Sounds/Raw/sfx_magpie_speak_005.wav" id="8_n80yi"]
-[ext_resource type="AudioStream" uid="uid://dchselrmxo2m4" path="res://Sounds/Raw/sfx_magpie_speak_006.wav" id="9_1io3b"]
+[ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_u4r48"]
+[ext_resource type="Resource" uid="uid://jollnsp7sq23" path="res://HandIn/Resources/Demo_Magpie.tres" id="2_u4r48"]
+[ext_resource type="PackedScene" uid="uid://dhsttkfn7e2io" path="res://Assets/FlawLizArt/Characters/Magpie/magpie.fbx" id="3_3qkvf"]
+[ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="4_x1gat"]
+[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="5_32i0s"]
+[ext_resource type="Material" uid="uid://q8jecixud5c4" path="res://Materials/Color_Blue.tres" id="6_iwhvd"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="7_mwegg"]
+[ext_resource type="AudioStream" uid="uid://bspgktdfssm0j" path="res://Sounds/Raw/sfx_magpie_speak_001.wav" id="8_qdihm"]
+[ext_resource type="AudioStream" uid="uid://b7a42shuyqvi1" path="res://Sounds/Raw/sfx_magpie_speak_002.wav" id="9_3hb5k"]
+[ext_resource type="AudioStream" uid="uid://dhhm15ska3tqu" path="res://Sounds/Raw/sfx_magpie_speak_003.wav" id="10_4ahex"]
+[ext_resource type="AudioStream" uid="uid://bd4x2kg882ldm" path="res://Sounds/Raw/sfx_magpie_speak_004.wav" id="11_ghisk"]
+[ext_resource type="AudioStream" uid="uid://cdom776pb6o07" path="res://Sounds/Raw/sfx_magpie_speak_005.wav" id="12_iwrtv"]
+[ext_resource type="AudioStream" uid="uid://dchselrmxo2m4" path="res://Sounds/Raw/sfx_magpie_speak_006.wav" id="13_1a84a"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="14_0x23b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vhir8"]
 size = Vector3(2.60938, 2.23486, 2.74854)
@@ -21,23 +21,23 @@ size = Vector3(2.60938, 2.23486, 2.74854)
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mp1k3"]
 playback_mode = 2
 streams_count = 6
-stream_0/stream = ExtResource("4_rqusm")
-stream_1/stream = ExtResource("5_201og")
-stream_2/stream = ExtResource("6_4y8sw")
-stream_3/stream = ExtResource("7_pf135")
-stream_4/stream = ExtResource("8_n80yi")
-stream_5/stream = ExtResource("9_1io3b")
+stream_0/stream = ExtResource("8_qdihm")
+stream_1/stream = ExtResource("9_3hb5k")
+stream_2/stream = ExtResource("10_4ahex")
+stream_3/stream = ExtResource("11_ghisk")
+stream_4/stream = ExtResource("12_iwrtv")
+stream_5/stream = ExtResource("13_1a84a")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1io3b"]
 height = 2.77686
 radius = 1.39648
 
-[node name="MagpieNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
+[node name="MagpieDemoNPC" type="Area3D" node_paths=PackedStringArray("Animation", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_201og")
-HandInInfo = ExtResource("2_4y8sw")
-RequestCompleteDialogueId = ["MAGPIE_BACKGROUND", "MAGPIE_STEALING", "MAGPIE_FLOWER"]
+script = ExtResource("1_u4r48")
+HandInInfo = ExtResource("2_u4r48")
+RequestCompleteDialogueId = ["DEMO_MAGPIE_INTRO", "DEMO_MAGPIE_FINISHED"]
 DialogueAnimation = "Armature|look"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
@@ -46,7 +46,7 @@ SfxSpeak = NodePath("SfxSpeak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08365, -0.477417)
 shape = SubResource("BoxShape3D_vhir8")
 
-[node name="magpie" parent="." instance=ExtResource("1_vhir8")]
+[node name="magpie" parent="." instance=ExtResource("3_3qkvf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="Skeleton3D" parent="magpie/Armature" index="0"]
@@ -110,18 +110,18 @@ transform = Transform3D(1, 6.05134e-14, 2.38419e-07, 1.97392e-07, 0.560849, -0.8
 bone_name = "Spine.004"
 bone_idx = 5
 
-[node name="Glasses_Round" parent="magpie/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_4y8sw")]
+[node name="Glasses_Round" parent="magpie/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("4_x1gat")]
 transform = Transform3D(0.0018572, -3.09164e-05, -0.000741508, -0.000416235, 0.00161101, -0.00110968, 0.000614441, 0.00118478, 0.00148955, 0.00145292, 0.0020416, -0.000217771)
 
 [node name="monocle" parent="magpie/Armature/Skeleton3D/BoneAttachment3D/Glasses_Round/monocle" index="0"]
-surface_material_override/0 = ExtResource("5_n80yi")
-surface_material_override/1 = ExtResource("6_1io3b")
+surface_material_override/0 = ExtResource("5_32i0s")
+surface_material_override/1 = ExtResource("6_iwhvd")
 
 [node name="AnimationPlayer" parent="magpie" index="1"]
 playback_default_blend_time = 0.25
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
-script = ExtResource("3_xbyyc")
+script = ExtResource("7_mwegg")
 Animator = NodePath("../magpie/AnimationPlayer")
 metadata/_custom_type_script = "uid://ckv4mr7osps52"
 
@@ -136,7 +136,7 @@ bus = &"SFX"
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.317308)
-script = ExtResource("7_1io3b")
+script = ExtResource("14_0x23b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38843, 0)

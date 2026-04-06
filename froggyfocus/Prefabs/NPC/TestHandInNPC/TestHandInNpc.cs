@@ -8,7 +8,7 @@ public partial class TestHandInNpc : Area3D, IInteractable
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
     }
 
     public void Interact()

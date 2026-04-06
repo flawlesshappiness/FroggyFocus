@@ -31,7 +31,7 @@ public partial class CharacterNpc : Area3D, IInteractable
     {
         base._Ready();
 
-        DialogueController.Instance.OnNodeStarted += DialogueNodeStarted;
+        DialogueController.Instance.OnEntryStarted += DialogueNodeStarted;
         DialogueController.Instance.OnDialogueStarted += DialogueStarted;
         DialogueController.Instance.OnDialogueEnded += DialogueEnded;
 
@@ -41,7 +41,7 @@ public partial class CharacterNpc : Area3D, IInteractable
     public override void _ExitTree()
     {
         base._ExitTree();
-        DialogueController.Instance.OnNodeStarted -= DialogueNodeStarted;
+        DialogueController.Instance.OnEntryStarted -= DialogueNodeStarted;
         DialogueController.Instance.OnDialogueStarted -= DialogueStarted;
         DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
     }
@@ -79,7 +79,7 @@ public partial class CharacterNpc : Area3D, IInteractable
         }
     }
 
-    protected virtual void DialogueStarted()
+    protected virtual void DialogueStarted(string id)
     {
         if (HasActiveDialogue)
         {
@@ -87,7 +87,7 @@ public partial class CharacterNpc : Area3D, IInteractable
         }
     }
 
-    protected virtual void DialogueEnded()
+    protected virtual void DialogueEnded(string id)
     {
         param_dialogue.Set(false);
         HasActiveDialogue = false;

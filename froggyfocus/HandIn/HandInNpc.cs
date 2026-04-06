@@ -36,7 +36,7 @@ public partial class HandInNpc : CharacterNpc
         StartRequestCompleteDialogue();
     }
 
-    protected override void DialogueEnded()
+    protected override void DialogueEnded(string id)
     {
         if (HasActiveDialogue)
         {
@@ -52,7 +52,7 @@ public partial class HandInNpc : CharacterNpc
             }
         }
 
-        base.DialogueEnded();
+        base.DialogueEnded(id);
     }
 
     private void HandInClaimed(string id)

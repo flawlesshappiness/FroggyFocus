@@ -19,13 +19,13 @@ public partial class EldritchFlower : Area3D, IInteractable
     {
         base._Ready();
         Initialize();
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        DialogueController.Instance.OnNodeEnded -= DialogueNodeEnded;
+        DialogueController.Instance.OnEntryEnded -= DialogueNodeEnded;
     }
 
     private void Initialize()

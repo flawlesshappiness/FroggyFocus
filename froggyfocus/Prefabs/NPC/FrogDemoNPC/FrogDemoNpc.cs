@@ -6,54 +6,61 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
     public HandInInfo HandInInfo;
 
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
-    private string IntroDialogueId => "demo_frog_intro";
+
+    private const string FlagIntro = "demo_frog_intro";
+    private const string DialogueIntro = "DEMO_FROG_INTRO";
+    private const string DialogueFlying = "DEMO_FROG_FLYING";
+    private const string DialogueBlooming = "DEMO_FROG_BLOOMING";
+    private const string DialogueFinished = "DEMO_FROG_FINISHED";
+    private const string DialogueFinishedRepeat = "DEMO_FROG_FINISHED_004";
+    private const string DialogueTask = "DEMO_FROG_TASK_001";
+    private const string DialogueCatch = "DEMO_FROG_CATCH_001";
 
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnNodeEnded += DialogueNodeEnded;
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
     }
 
     public override void Interact()
     {
-        if (GameFlags.IsFlag(IntroDialogueId, 0))
+        if (GameFlags.IsFlag(FlagIntro, 0))
         {
-            StartDialogue("##DEMO_FROG_INTRO_001##");
+            StartDialogue(DialogueIntro);
         }
         else if (HandInData.ClaimCount >= 3)
         {
-            StartDialogue("##DEMO_FROG_FINISHED_004##");
+            StartDialogue(DialogueFinishedRepeat);
         }
         else
         {
-            StartDialogue("##DEMO_FROG_TASK_001##");
+            StartDialogue(DialogueTask);
         }
     }
 
-    private void DialogueNodeEnded(string id)
+    protected override void DialogueEnded(string id)
     {
-        if (!HasActiveDialogue) return;
+        base.DialogueEnded(id);
 
-        if (id == "##DEMO_FROG_INTRO_004##")
+        if (id == DialogueIntro)
         {
-            GameFlags.SetFlag(IntroDialogueId, 1);
+            GameFlags.SetFlag(FlagIntro, 1);
             HandInView.Instance.ShowPopup(HandInInfo.Id);
         }
-        else if (id == "##DEMO_FROG_TASK_001##")
-        {
-            HandInView.Instance.ShowPopup(HandInInfo.Id);
-        }
-        else if (id == "##DEMO_FROG_FLYING_003##")
+        else if (id == DialogueTask)
         {
             HandInView.Instance.ShowPopup(HandInInfo.Id);
         }
-        else if (id == "##DEMO_FROG_BLOOMING_004##")
+        else if (id == DialogueFlying)
         {
             HandInView.Instance.ShowPopup(HandInInfo.Id);
         }
-        else if (id == "##DEMO_FROG_FINISHED_004##")
+        else if (id == DialogueBlooming)
+        {
+            HandInView.Instance.ShowPopup(HandInInfo.Id);
+        }
+        else if (id == DialogueFinished || id == DialogueFinishedRepeat)
         {
             StopDialogueCamera();
             DemoView.Instance.AnimateShow();
@@ -66,15 +73,15 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
 
         if (HandInData.ClaimCount == 1)
         {
-            StartDialogue("##DEMO_FROG_FLYING_001##");
+            StartDialogue(DialogueFlying);
         }
         else if (HandInData.ClaimCount == 2)
         {
-            StartDialogue("##DEMO_FROG_BLOOMING_001##");
+            StartDialogue(DialogueBlooming);
         }
         else if (HandInData.ClaimCount == 3)
         {
-            StartDialogue("##DEMO_FROG_FINISHED_001##");
+            StartDialogue(DialogueFinished);
         }
     }
 
@@ -84,7 +91,7 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
 
         if (HandInData.ClaimCount == 0)
         {
-            StartDialogue("##DEMO_FROG_CATCH_001##");
+            StartDialogue(DialogueCatch);
         }
 
         StopDialogueCamera();

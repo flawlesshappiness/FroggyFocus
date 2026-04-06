@@ -59,7 +59,7 @@ size = Vector3(13, 1, 7)
 
 [node name="FrogWorkerNPC" parent="." instance=ExtResource("1_8tq2e")]
 transform = Transform3D(-0.176447, 0, -0.0941624, 0, 0.2, 0, 0.0941624, 0, -0.176447, -5.44546, 2.5, 0.887666)
-DialogueNodes = Array[String](["##WORKER_WINDOW_001##"])
+DialogueNodes = Array[String](["WORKER_WINDOW"])
 
 [node name="SecurityDoor" parent="." instance=ExtResource("13_hm4y8")]
 transform = Transform3D(0.63, 0, 0, 0, 0.63, 0, 0, 0, 0.63, 8.01752, 0, -0.571192)

@@ -644,7 +644,7 @@ transform = Transform3D(-0.458008, -0.0711644, 1.4266, -0.249762, 1.47905, -0.00
 
 [node name="FrogWorkerNPC" parent="World/Beach" instance=ExtResource("35_phexc")]
 transform = Transform3D(-0.729721, 0, -0.173225, 0, 0.75, 0, 0.173225, 0, -0.729721, -63.0815, 0.536023, 77.8461)
-DialogueNodes = Array[String](["##WORKER_SALT_001##"])
+DialogueNodes = Array[String](["WORKER_SALT"])
 
 [node name="Stalagmites" type="Node3D" parent="World"]
 
@@ -875,7 +875,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56375, 5.59224, -43.6807)
 [node name="FrogWorkerNPC" parent="World/Crystals" instance=ExtResource("35_phexc")]
 transform = Transform3D(-0.729721, 0, -0.173225, 0, 0.75, 0, 0.173225, 0, -0.729721, 3.00945, 5.57831, -58.5779)
 DialogueFlag = "WORKER_CRYSTAL_DOOR"
-DialogueNodes = Array[String](["##WORKER_SUSPENDED_001##", "##WORKER_ROCK_FACTS_001##"])
+DialogueNodes = Array[String](["WORKER_SUSPENDED", "WORKER_ROCK_FACTS"])
 
 [node name="Plants" type="Node3D" parent="World"]
 

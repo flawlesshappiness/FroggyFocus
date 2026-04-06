@@ -29,8 +29,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_yw2n1")
 HandInInfo = ExtResource("2_djhky")
-RequestDialogueId = "CRAB_REQUEST"
-RequestCompleteDialogueId = Array[String](["CRAB_TOUGH_001", "CRAB_MANAGER_001", "CRAB_CRYSTAL_001"])
+RequestCompleteDialogueId = Array[String](["CRAB_TOUGH", "CRAB_MANAGER", "CRAB_CRYSTAL"])
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
 

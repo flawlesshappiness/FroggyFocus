@@ -9,14 +9,13 @@ public partial class Shop : Area3D, IInteractable
     [Export]
     public MoleNpc Mole;
 
-    private const string IntroDialogueFlag = "shop_intro_dialogue";
+    private const string IntroFlag = "shop_intro_dialogue";
 
     private static Shop current;
 
     private bool animating;
     private bool mole_up;
     private float time_mole_down;
-    private bool active_dialogue;
 
     public override void _Ready()
     {
@@ -28,6 +27,8 @@ public partial class Shop : Area3D, IInteractable
     public override void _ExitTree()
     {
         base._ExitTree();
+        ShopView.Instance.OnClosed -= ShopClosed;
+        DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
     }
 
     public void Interact()
@@ -108,9 +109,9 @@ public partial class Shop : Area3D, IInteractable
 
     private void ShowShop()
     {
-        if (!string.IsNullOrEmpty(IntroDialogue) && GameFlags.IsFlag(IntroDialogueFlag, 0))
+        if (!string.IsNullOrEmpty(IntroDialogue) && GameFlags.IsFlag(IntroFlag, 0))
         {
-            GameFlags.SetFlag(IntroDialogueFlag, 1);
+            GameFlags.SetFlag(IntroFlag, 1);
             StartDialogue(IntroDialogue);
         }
         else
@@ -121,17 +122,14 @@ public partial class Shop : Area3D, IInteractable
 
     private void StartDialogue(string id)
     {
-        active_dialogue = true;
         DialogueController.Instance.StartDialogue(id);
     }
 
-    private void DialogueEnded()
+    private void DialogueEnded(string id)
     {
-        if (active_dialogue)
+        if (id == IntroDialogue)
         {
             ShowShop();
         }
-
-        active_dialogue = false;
     }
 }

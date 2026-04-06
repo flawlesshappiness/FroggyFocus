@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 public partial class DialogueController : SingletonController
 {
@@ -10,20 +9,20 @@ public partial class DialogueController : SingletonController
 
     private readonly string json_path = "res://Dialogue/dialogue.json";
 
-    public event Action<string> OnNodeStarted;
-    public event Action<string> OnNodeEnded;
-    public event Action OnDialogueStarted;
-    public event Action OnDialogueEnded;
+    public event Action<string> OnEntryStarted;
+    public event Action<string> OnEntryEnded;
+    public event Action<string> OnDialogueStarted;
+    public event Action<string> OnDialogueEnded;
 
     private DialogueNode current_node;
-    private Dictionary<string, string> dialogue_variables = new();
+    private int current_entry_index;
 
     protected override void Initialize()
     {
         base.Initialize();
         Collection = new DialogueNodeCollection(json_path);
 
-        View.OnNextDialogue += NextDialogue;
+        View.OnNextDialogue += NextEntry;
 
         RegisterDebugActions();
     }
@@ -35,20 +34,37 @@ public partial class DialogueController : SingletonController
         Debug.RegisterAction(new DebugAction
         {
             Category = category,
-            Text = "Test dialogue",
-            Action = DebugTest
+            Text = "Start dialogue",
+            Action = ListDialogueIds
         });
 
-        void DebugTest(DebugView v)
+        void ListDialogueIds(DebugView v)
+        {
+            v.SetContent_Search();
+
+            foreach (var node in Collection.Nodes)
+            {
+                v.ContentSearch.AddItem($"{node.Key} ({node.Value.entries?.Length})", () => DebugStartDialogue(v, node.Key));
+            }
+
+            v.ContentSearch.UpdateButtons();
+        }
+
+        void DebugStartDialogue(DebugView v, string id)
         {
             v.Close();
-            StartDialogue("##TEST_001##");
+            StartDialogue(id);
         }
     }
 
     public void StartDialogue(string id)
     {
         Debug.TraceMethod(id);
+
+        id = id.Replace("#", "");
+        id = $"##{id}##";
+
+        current_entry_index = 0;
         SetNode(id);
     }
 
@@ -57,7 +73,8 @@ public partial class DialogueController : SingletonController
         Debug.TraceMethod(id);
         var node = Collection.GetNode(id) ?? new DialogueNode
         {
-            id = id
+            id = id,
+            entries = [id]
         };
 
         SetNode(node);
@@ -74,57 +91,42 @@ public partial class DialogueController : SingletonController
 
         if (current_node == null)
         {
-            OnDialogueStarted?.Invoke();
+            OnDialogueStarted?.Invoke(node.id.Replace("#", ""));
         }
 
         current_node = node;
-
-        var text = FormatText(Tr(node.id));
-        View.AnimateDialogue(text);
-
-        OnNodeStarted?.Invoke(node.id);
+        StartEntry(node, current_entry_index);
     }
 
-    private void NextDialogue()
+    private void StartEntry(DialogueNode node, int entry_index)
+    {
+        var entry = node.entries[entry_index];
+        var text = Tr(entry);
+        View.AnimateDialogue(text);
+
+        OnEntryStarted?.Invoke(entry.Replace("#", ""));
+    }
+
+    private void NextEntry()
     {
         if (current_node != null)
         {
-            OnNodeEnded?.Invoke(current_node.id);
+            OnEntryEnded?.Invoke(current_node.id.Replace("#", ""));
         }
 
-        if (string.IsNullOrEmpty(current_node?.next))
+        current_entry_index++;
+        if (current_entry_index < current_node?.entries?.Length)
         {
-            current_node = null;
-            ClearVariables();
-            View.AnimateClose();
-            OnDialogueEnded?.Invoke();
+            StartEntry(current_node, current_entry_index);
         }
         else
         {
-            SetNode(current_node.next);
+            var id = current_node?.id ?? string.Empty;
+            current_node = null;
+            current_entry_index = 0;
+            View.AnimateClose();
+
+            OnDialogueEnded?.Invoke(id.Replace("#", ""));
         }
-    }
-
-    private void ClearVariables()
-    {
-        dialogue_variables.Clear();
-    }
-
-    public void AddVariable(string key, string value)
-    {
-        dialogue_variables.Add(key, value);
-    }
-
-    private string FormatText(string text)
-    {
-        foreach (var variable in dialogue_variables)
-        {
-            if (text.Contains(variable.Key))
-            {
-                text = text.Replace(variable.Key, Tr(variable.Value));
-            }
-        }
-
-        return text;
     }
 }
