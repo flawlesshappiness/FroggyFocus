@@ -15,7 +15,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="FocusFroggy"
-config/version="0.1.9"
+config/version="0.1.10"
 run/main_scene="uid://67r24dfs74br"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
@@ -240,3 +240,8 @@ setting_hide_mesh_near_view={
 "type": "bool",
 "value": false
 }
+
+[steam]
+
+initialization/initialize_on_startup=true
+initialization/app_id=4518140

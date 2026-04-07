@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=61 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://tgy4rx1jtv8w" path="res://Prefabs/Nature/plant_water_arum_group.tscn" id="54_haihv"]
 [ext_resource type="Script" uid="uid://43lk3cm0igii" path="res://Sounds/AudioAutoPlay.cs" id="54_x6pk1"]
 [ext_resource type="PackedScene" uid="uid://diceyjubapljd" path="res://Prefabs/Nature/plant_yarrow_marsh_marigold_group.tscn" id="54_xp4so"]
+[ext_resource type="Script" uid="uid://kgfhnxrh558q" path="res://Misc/AnimatedPathFollow3D.cs" id="55_haihv"]
 [ext_resource type="PackedScene" uid="uid://cx8bqg4u53dsn" path="res://Prefabs/Buildings/building_factory.tscn" id="57_n5llf"]
 [ext_resource type="PackedScene" uid="uid://bovnbfopscqpk" path="res://Prefabs/Buildings/lighthouse.tscn" id="58_ixab2"]
 [ext_resource type="PackedScene" uid="uid://blvlbd5nsd7qv" path="res://Prefabs/Nature/cave.tscn" id="59_5vqjt"]
@@ -81,8 +82,17 @@ _data = {
 }
 point_count = 3
 
-[node name="DemoScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
+[sub_resource type="Curve3D" id="Curve3D_haihv"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, -5, -5, -10, -23.9932, 14.4265, 8.78229, -20, 0, 0, 15, 0, 0, -8.63932, 3.68376, -29.1992, 0, 0, -10, 0, 0, 0, 0.00884748, 1.03673, -2.39108),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[node name="DemoScene" type="Node3D" node_paths=PackedStringArray("IntroCameraPath", "DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
 script = ExtResource("1_lc5f6")
+IntroCameraPath = NodePath("World/IntroCamera/Path3D/IntroCameraPath")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
@@ -1216,3 +1226,18 @@ bus = &"Environment"
 attenuation_filter_db = 0.0
 script = ExtResource("54_x6pk1")
 RandomStart = true
+
+[node name="IntroCamera" type="Node3D" parent="World"]
+
+[node name="Path3D" type="Path3D" parent="World/IntroCamera"]
+curve = SubResource("Curve3D_haihv")
+
+[node name="IntroCameraPath" type="PathFollow3D" parent="World/IntroCamera/Path3D" node_paths=PackedStringArray("Camera")]
+transform = Transform3D(-0.236992, 0.0352167, -0.970868, -2.52759e-06, 0.999335, 0.0362501, 0.971505, 0.00859347, -0.236837, -5.13944, 3.62524, -28.8206)
+progress = 53.1001
+script = ExtResource("55_haihv")
+Duration = 10.0
+Ease = 2
+Camera = NodePath("IntroCamera")
+
+[node name="IntroCamera" type="Camera3D" parent="World/IntroCamera/Path3D/IntroCameraPath"]
