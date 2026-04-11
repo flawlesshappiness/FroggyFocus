@@ -189,10 +189,18 @@ public partial class ThirdPersonCamera : Node3D
 
     private void AdjustRotation(Vector2 input)
     {
-        var x = Mathf.Clamp(PivotRotation.X - input.Y, tilt_min, tilt_max);
+        var x = PivotRotation.X - input.Y;
         var y = PivotRotation.Y - input.X;
-        PivotRotation = new Vector3(x, y, PivotRotation.Z);
+        SetRotation(new Vector2(x, y));
     }
+
+    public void SetRotation(Vector2 rotation)
+    {
+        var x = Mathf.Clamp(rotation.X, tilt_min, tilt_max);
+        PivotRotation = new Vector3(x, rotation.Y, PivotRotation.Z);
+    }
+
+    public void SetRotation(Vector3 rotation) => SetRotation(new Vector2(rotation.X, rotation.Y));
 
     private void Process_Position(float delta)
     {

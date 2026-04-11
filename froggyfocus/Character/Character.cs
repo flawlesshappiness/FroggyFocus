@@ -33,6 +33,7 @@ public partial class Character : Node3D
 
     public void RotateToDirectionImmediate(Vector3 direction)
     {
+        StopFacingDirection();
         var ry = Mathf.Atan2(-direction.X, -direction.Z);
         Rotation = new Vector3(0, ry, 0);
     }

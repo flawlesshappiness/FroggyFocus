@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://i6p5f6c6mvhv"]
+[gd_scene load_steps=24 format=3 uid="uid://i6p5f6c6mvhv"]
 
 [ext_resource type="Script" uid="uid://d1h6aaidr5qrn" path="res://Scenes/ScreenshotScene.cs" id="1_g1bgp"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_kpux8"]
@@ -16,8 +16,22 @@
 [ext_resource type="PackedScene" uid="uid://ul4dghmde0fl" path="res://Prefabs/Screenshots/skybox_background.tscn" id="14_c8wsb"]
 [ext_resource type="PackedScene" uid="uid://cbcmy30tm2clo" path="res://Prefabs/Screenshots/icon.tscn" id="15_xqcbt"]
 [ext_resource type="PackedScene" uid="uid://dk8evkkubgnqu" path="res://Prefabs/Screenshots/character.tscn" id="16_1sn63"]
+[ext_resource type="Script" uid="uid://gbj03ov4lgdm" path="res://Prefabs/Screenshots/ScreenshotSceneSetup.cs" id="17_r7k5r"]
+[ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="18_1yghv"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="20_axqi3"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="21_y5i3l"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_t1sps"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8b757"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0.1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1yghv"]
+material = SubResource("StandardMaterial3D_8b757")
+flip_faces = true
+radius = 5.0
+height = 10.0
 
 [node name="ScreenshotScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_g1bgp")
@@ -85,3 +99,67 @@ Id = "Icon"
 
 [node name="Character" parent="World" instance=ExtResource("16_1sn63")]
 visible = false
+
+[node name="FrogHowdy" type="Node3D" parent="World" node_paths=PackedStringArray("Camera")]
+script = ExtResource("17_r7k5r")
+Id = "FrogHowdy"
+Camera = NodePath("Camera3D")
+Weather = ExtResource("18_1yghv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/FrogHowdy"]
+mesh = SubResource("SphereMesh_1yghv")
+
+[node name="Camera3D" type="Camera3D" parent="World/FrogHowdy"]
+transform = Transform3D(0.784679, 0.13434, -0.605171, -7.45058e-09, 0.976236, 0.216712, 0.619902, -0.17005, 0.766032, -0.855563, 0.683721, 1.20881)
+
+[node name="FrogCute" parent="World/FrogHowdy" instance=ExtResource("20_axqi3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+DisableAnimationStates = true
+
+[node name="Skeleton3D" parent="World/FrogHowdy/FrogCute/frog_cute/Armature" index="0"]
+bones/1/rotation = Quaternion(0.0977202, -5.21992e-26, -1.29559e-17, 0.995214)
+bones/2/rotation = Quaternion(-0.0902607, 1.18723e-07, -1.07599e-08, 0.995918)
+bones/5/rotation = Quaternion(-0.105116, -0.10517, 0.180284, 0.972311)
+bones/6/rotation = Quaternion(-0.111431, -0.206605, 0.269159, 0.934051)
+bones/7/rotation = Quaternion(0.350915, -0.0617668, 0.155729, 0.921299)
+bones/10/rotation = Quaternion(-0.0259569, -0.111161, 0.360256, 0.925843)
+bones/11/rotation = Quaternion(0.0394004, -0.108791, 0.314714, 0.942108)
+bones/12/rotation = Quaternion(0.0504765, -0.00933309, 0.12686, 0.990592)
+bones/15/rotation = Quaternion(-0.105116, 0.10517, -0.180284, 0.972311)
+bones/16/rotation = Quaternion(-0.111431, 0.206605, -0.269159, 0.934051)
+bones/17/rotation = Quaternion(0.350915, 0.0617668, -0.155729, 0.921299)
+bones/20/rotation = Quaternion(-0.0259569, 0.111161, -0.360256, 0.925843)
+bones/21/rotation = Quaternion(0.0394004, 0.108791, -0.314714, 0.942108)
+bones/22/rotation = Quaternion(0.0504765, 0.00933309, -0.12686, 0.990592)
+bones/24/position = Vector3(0.0049072, -0.000721394, 0.000192849)
+bones/24/rotation = Quaternion(0.00431191, 0.232923, -0.0179997, 0.972319)
+bones/26/position = Vector3(0.00532999, 0.00326517, 0.000475276)
+bones/26/rotation = Quaternion(0.00884065, 0.0561205, -0.15536, 0.986223)
+bones/28/position = Vector3(-0.00532999, 0.00326517, 0.000475276)
+bones/28/rotation = Quaternion(0.00884065, -0.0561205, 0.15536, 0.986223)
+bones/30/position = Vector3(-0.0049072, -0.000721394, 0.000192849)
+bones/30/rotation = Quaternion(0.00431191, -0.232923, 0.0179997, 0.972319)
+
+[node name="HatAttachmentGroup" parent="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 3.57854e-15, 2.38419e-07, 3.57267e-09, 0.999888, -0.0149849, -2.38392e-07, 0.0149849, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
+
+[node name="FaceAttachmentGroup" parent="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 3.57854e-15, 2.38419e-07, 3.57267e-09, 0.999888, -0.0149849, -2.38392e-07, 0.0149849, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
+
+[node name="AnimationPlayer" parent="World/FrogHowdy/FrogCute/frog_cute" index="1"]
+script = ExtResource("21_y5i3l")
+Animation = "Armature|idle_wave"
+
+[editable path="World/FrogHowdy/FrogCute"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent2"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent4"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent5"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent3"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent6"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent7"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/Lilypad_Flower"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
+[editable path="World/FrogHowdy/FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]

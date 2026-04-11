@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://1elgfrjbfv2i"]
+
+[ext_resource type="Script" uid="uid://c5finnd5jv078" path="res://Prefabs/NPC/FrogRaceNPC/FrogRaceNpc.cs" id="1_8c572"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="2_xrcx1"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="3_xrcx1"]
+[ext_resource type="AudioStream" uid="uid://cps4ajn0wt6cq" path="res://Sounds/Raw/sfx_frog_croak_005.wav" id="4_hyq8d"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xrcx1"]
+height = 1.00781
+radius = 1.07373
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hyq8d"]
+height = 1.07227
+radius = 1.22607
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q6q2x"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_hyq8d")
+
+[node name="FrogRaceNPC" type="Area3D" node_paths=PackedStringArray("SfxSpeak")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_8c572")
+SfxSpeak = NodePath("SfxSpeak")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503907, -0.678035)
+shape = SubResource("CylinderShape3D_xrcx1")
+
+[node name="FrogCute" parent="." instance=ExtResource("2_xrcx1")]
+
+[node name="NpcCollisionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.134243)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_xrcx1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcCollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528375, 0)
+shape = SubResource("CylinderShape3D_hyq8d")
+
+[node name="SfxSpeak" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_q6q2x")
+volume_db = -10.0
+bus = &"SFX"
+attenuation_filter_db = 0.0

@@ -1,8 +1,7 @@
-[gd_scene load_steps=61 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=63 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_xp4so"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
 [ext_resource type="Resource" uid="uid://cr6w4xkj1cp6h" path="res://Weather/Resources/Sunny-Windy.tres" id="4_rrqgf"]
@@ -24,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://d1otght5hc7ca" path="res://Prefabs/NPC/MagpieNPC/magpie_demo_npc.tscn" id="20_xokew"]
 [ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="21_o68er"]
 [ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="22_o68er"]
+[ext_resource type="PackedScene" uid="uid://1elgfrjbfv2i" path="res://Prefabs/NPC/FrogRaceNPC/frog_race_npc.tscn" id="22_x6pk1"]
 [ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="23_awkdr"]
 [ext_resource type="PackedScene" uid="uid://dmvkcktlif5ut" path="res://Prefabs/Nature/reeds_dense.tscn" id="24_awkdr"]
 [ext_resource type="PackedScene" uid="uid://78t0bt36x8b2" path="res://Prefabs/Nature/reeds_sparse.tscn" id="25_0q7ep"]
@@ -51,6 +51,8 @@
 [ext_resource type="Script" uid="uid://43lk3cm0igii" path="res://Sounds/AudioAutoPlay.cs" id="54_x6pk1"]
 [ext_resource type="PackedScene" uid="uid://diceyjubapljd" path="res://Prefabs/Nature/plant_yarrow_marsh_marigold_group.tscn" id="54_xp4so"]
 [ext_resource type="Script" uid="uid://kgfhnxrh558q" path="res://Misc/AnimatedPathFollow3D.cs" id="55_haihv"]
+[ext_resource type="PackedScene" uid="uid://cvvv52xadk4j4" path="res://Prefabs/Race/RaceCheckpoint.tscn" id="56_x6pk1"]
+[ext_resource type="Script" uid="uid://b6ufgjqyhc0wl" path="res://Race/RaceTrack.cs" id="57_ixab2"]
 [ext_resource type="PackedScene" uid="uid://cx8bqg4u53dsn" path="res://Prefabs/Buildings/building_factory.tscn" id="57_n5llf"]
 [ext_resource type="PackedScene" uid="uid://bovnbfopscqpk" path="res://Prefabs/Buildings/lighthouse.tscn" id="58_ixab2"]
 [ext_resource type="PackedScene" uid="uid://blvlbd5nsd7qv" path="res://Prefabs/Nature/cave.tscn" id="59_5vqjt"]
@@ -98,7 +100,7 @@ WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
 BgmMain = NodePath("World/Sounds/BgmMain")
 BgmFocus = NodePath("World/Sounds/BgmFocus")
-Weathers = Array[ExtResource("2_xp4so")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
+Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -258,6 +260,10 @@ IntroDialogue = "DEMO_MOLE"
 
 [node name="MagpieDemoNPC" parent="World/NPCs" instance=ExtResource("20_xokew")]
 transform = Transform3D(-0.0608743, 0, 0.998145, 0, 1, 0, -0.998145, 0, -0.0608743, 38.8849, 0, -33.78)
+
+[node name="FrogRaceNPC" parent="World/NPCs" node_paths=PackedStringArray("RaceTrack") instance=ExtResource("22_x6pk1")]
+transform = Transform3D(0.949107, 0, 0.314953, 0, 1, 0, -0.314953, 0, 0.949107, -22.9032, -0.8986, 24.6374)
+RaceTrack = NodePath("../../Race")
 
 [node name="Plants" type="Node3D" parent="World"]
 
@@ -1233,7 +1239,7 @@ RandomStart = true
 curve = SubResource("Curve3D_haihv")
 
 [node name="IntroCameraPath" type="PathFollow3D" parent="World/IntroCamera/Path3D" node_paths=PackedStringArray("Camera")]
-transform = Transform3D(-0.236992, 0.0352167, -0.970868, -2.52759e-06, 0.999335, 0.0362501, 0.971505, 0.00859347, -0.236837, -5.13944, 3.62524, -28.8206)
+transform = Transform3D(-0.236994, 0.0352169, -0.970867, -2.52945e-06, 0.999335, 0.0362503, 0.971504, 0.00859361, -0.236839, -5.13942, 3.62524, -28.8207)
 progress = 53.1001
 script = ExtResource("55_haihv")
 Duration = 10.0
@@ -1241,3 +1247,44 @@ Ease = 2
 Camera = NodePath("IntroCamera")
 
 [node name="IntroCamera" type="Camera3D" parent="World/IntroCamera/Path3D/IntroCameraPath"]
+
+[node name="Race" type="Node3D" parent="World" node_paths=PackedStringArray("PlayerStart", "PlayerEnd", "Checkpoints")]
+script = ExtResource("57_ixab2")
+PlayerStart = NodePath("PlayerStart")
+PlayerEnd = NodePath("PlayerEnd")
+Checkpoints = [NodePath("Checkpoints/CP1"), NodePath("Checkpoints/CP2"), NodePath("Checkpoints/CP3"), NodePath("Checkpoints/CP4"), NodePath("Checkpoints/CP5"), NodePath("Checkpoints/CP6"), NodePath("Checkpoints/CP7"), NodePath("Checkpoints/CP8"), NodePath("Checkpoints/CP1")]
+
+[node name="Checkpoints" type="Node3D" parent="World/Race"]
+
+[node name="CP1" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
+transform = Transform3D(0.998337, 0, 0.0576512, 0, 1, 0, -0.0576512, 0, 0.998337, -24.0283, -1, 20.2591)
+
+[node name="CP2" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
+transform = Transform3D(0.999989, 0, -0.00462545, 0, 1, 0, 0.00462545, 0, 0.999989, -30.3343, -1, -2.31408)
+
+[node name="CP3" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
+transform = Transform3D(0.864178, 0, -0.503186, 0, 1, 0, 0.503186, 0, 0.864178, -23.404, -1, -23.4582)
+
+[node name="CP4" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
+transform = Transform3D(0.804489, 0, -0.593967, 0, 1, 0, 0.593967, 0, 0.804489, -12.3755, -0.999999, -43.2017)
+
+[node name="CP5" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
+transform = Transform3D(-0.768026, 0, -0.640418, 0, 1, 0, 0.640418, 0, -0.768026, 16.3695, -1, -44.9075)
+
+[node name="CP6" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
+transform = Transform3D(-0.981171, 0, 0.193139, 0, 1, 0, -0.193139, 0, -0.981171, 37.9791, 3.02052, -14.0344)
+
+[node name="CP7" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
+transform = Transform3D(-0.866409, 0, 0.499335, 0, 1, 0, -0.499335, 0, -0.866409, 37.135, 9.60934, 3.40461)
+
+[node name="CP8" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
+transform = Transform3D(-0.117936, 0, 0.993021, 0, 1, 0, -0.993021, 0, -0.117936, -4.03526, 2.88484, 23.4036)
+
+[node name="PlayerStart" type="Marker3D" parent="World/Race"]
+transform = Transform3D(0.999681, 0, -0.0252522, 0, 1, 0, 0.0252522, 0, 0.999681, -24.8826, -0.903017, 21.5381)
+
+[node name="GhostStart" type="Marker3D" parent="World/Race"]
+transform = Transform3D(0.999681, 0, -0.0252522, 0, 1, 0, 0.0252522, 0, 0.999681, -24.8826, -0.903017, 21.5381)
+
+[node name="PlayerEnd" type="Marker3D" parent="World/Race"]
+transform = Transform3D(-0.997565, 0, -0.0697391, 0, 1, 0, 0.0697391, 0, -0.997565, -23.3763, -0.903017, 23.0115)

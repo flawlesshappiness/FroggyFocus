@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public partial class DemoScene : GameScene
 {
     [Export]
+    public bool PlayIntroWhenInternal;
+
+    [Export]
     public AnimatedPathFollow3D IntroCameraPath;
 
     public override void _Ready()
@@ -13,7 +16,10 @@ public partial class DemoScene : GameScene
         InitializeItems();
         InitializeUpgrades();
 
-        AnimateIntroCamera();
+        if (ApplicationInfo.Instance.Type != ApplicationType.Internal || PlayIntroWhenInternal)
+        {
+            AnimateIntroCamera();
+        }
     }
 
     private void InitializeItems()
