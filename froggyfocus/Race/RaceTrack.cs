@@ -5,7 +5,13 @@ using System;
 public partial class RaceTrack : Node3D
 {
     [Export]
+    public string Id;
+
+    [Export]
     public Marker3D PlayerStart;
+
+    [Export]
+    public Marker3D GhostStart;
 
     [Export]
     public Marker3D PlayerEnd;
@@ -89,6 +95,7 @@ public partial class RaceTrack : Node3D
         {
             checkpoint.Visible = visible;
             checkpoint.AnimateHideImmediate();
+            checkpoint.SetFinish(false);
         }
     }
 }

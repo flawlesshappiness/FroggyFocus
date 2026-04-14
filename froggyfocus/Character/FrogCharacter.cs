@@ -1,5 +1,6 @@
 using FlawLizArt.Animation.StateMachine;
 using Godot;
+using System;
 using System.Collections;
 
 public partial class FrogCharacter : Character
@@ -69,6 +70,8 @@ public partial class FrogCharacter : Character
 
     public bool IsHandOut { get; private set; }
 
+    public event Action<string> OnAnimationStarted;
+
     private ShaderMaterial body_material;
 
     private AnimationState state_in_sand;
@@ -80,6 +83,10 @@ public partial class FrogCharacter : Character
     private BoolParameter param_charging = new BoolParameter("charging", false);
     private BoolParameter param_searching = new BoolParameter("searching", false);
     private BoolParameter param_cover_eyes = new BoolParameter("cover_eyes", false);
+
+    private bool is_charging;
+    private bool is_moving;
+    private bool is_jumping;
 
     public override void _Ready()
     {
@@ -104,6 +111,8 @@ public partial class FrogCharacter : Character
 
     private void InitializeAnimations()
     {
+        Animation.Animator.AnimationStarted += AnimationStarted;
+
         if (DisableAnimationStates) return;
 
         var idle = Animation.CreateAnimation($"{AnimationName_Prefix}{AnimationName_Idle}", true);
@@ -220,16 +229,25 @@ public partial class FrogCharacter : Character
 
     public void SetMoving(bool moving)
     {
+        if (is_moving == moving) return;
+
+        is_moving = moving;
         param_moving.Set(moving);
     }
 
     public void SetJumping(bool jumping)
     {
+        if (is_jumping == jumping) return;
+
+        is_jumping = jumping;
         param_jumping.Set(jumping);
     }
 
     public void SetCharging(bool charging)
     {
+        if (is_charging == charging) return;
+
+        is_charging = charging;
         param_charging.Set(charging);
     }
 
@@ -270,5 +288,10 @@ public partial class FrogCharacter : Character
             yield return new WaitForSeconds(0.05f);
             yield return Tongue.AnimateTongueBack();
         }
+    }
+
+    private void AnimationStarted(StringName animName)
+    {
+        OnAnimationStarted?.Invoke($"{animName}");
     }
 }

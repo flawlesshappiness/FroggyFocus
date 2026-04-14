@@ -1,3 +1,5 @@
+using Godot;
+
 public partial class NoClipController : SingletonController
 {
     public static NoClipController Instance => Singleton.Get<NoClipController>();
@@ -45,8 +47,10 @@ public partial class NoClipController : SingletonController
     {
         no_clip_player.Enabled = false;
         Player.Instance.GlobalPosition = no_clip_player.GlobalPosition;
+        Player.Instance.Character.RotateToDirectionImmediate(no_clip_player.Basis * Vector3.Forward);
         Player.Instance.SetCameraTarget();
         Player.Instance.ThirdPersonCamera.SnapToPosition();
+        Player.Instance.ThirdPersonCamera.SetRotation(no_clip_player.GlobalRotation);
 
         Player.SetAllLocks(nameof(NoClipController), false);
     }

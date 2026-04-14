@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RaceGhostCollection" load_steps=3 format=3 uid="uid://i8hrko1vq28h"]
+
+[ext_resource type="PackedScene" uid="uid://usxc1hldpbpu" path="res://Prefabs/Race/race_ghost.tscn" id="1_ky86h"]
+[ext_resource type="Script" uid="uid://bpdi1ybiyu5rd" path="res://Race/RaceGhostCollection.cs" id="1_xgbyh"]
+
+[resource]
+script = ExtResource("1_xgbyh")
+RaceGhostPrefab = ExtResource("1_ky86h")
+metadata/_custom_type_script = "uid://bpdi1ybiyu5rd"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=63 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=64 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ixab2"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
@@ -100,7 +101,7 @@ WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
 BgmMain = NodePath("World/Sounds/BgmMain")
 BgmFocus = NodePath("World/Sounds/BgmFocus")
-Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
+Weathers = Array[ExtResource("2_ixab2")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -1248,9 +1249,11 @@ Camera = NodePath("IntroCamera")
 
 [node name="IntroCamera" type="Camera3D" parent="World/IntroCamera/Path3D/IntroCameraPath"]
 
-[node name="Race" type="Node3D" parent="World" node_paths=PackedStringArray("PlayerStart", "PlayerEnd", "Checkpoints")]
+[node name="Race" type="Node3D" parent="World" node_paths=PackedStringArray("PlayerStart", "GhostStart", "PlayerEnd", "Checkpoints")]
 script = ExtResource("57_ixab2")
+Id = "demo"
 PlayerStart = NodePath("PlayerStart")
+GhostStart = NodePath("GhostStart")
 PlayerEnd = NodePath("PlayerEnd")
 Checkpoints = [NodePath("Checkpoints/CP1"), NodePath("Checkpoints/CP2"), NodePath("Checkpoints/CP3"), NodePath("Checkpoints/CP4"), NodePath("Checkpoints/CP5"), NodePath("Checkpoints/CP6"), NodePath("Checkpoints/CP7"), NodePath("Checkpoints/CP8"), NodePath("Checkpoints/CP1")]
 
@@ -1284,7 +1287,7 @@ transform = Transform3D(-0.117936, 0, 0.993021, 0, 1, 0, -0.993021, 0, -0.117936
 transform = Transform3D(0.999681, 0, -0.0252522, 0, 1, 0, 0.0252522, 0, 0.999681, -24.8826, -0.903017, 21.5381)
 
 [node name="GhostStart" type="Marker3D" parent="World/Race"]
-transform = Transform3D(0.999681, 0, -0.0252522, 0, 1, 0, 0.0252522, 0, 0.999681, -24.8826, -0.903017, 21.5381)
+transform = Transform3D(0.996908, 0, 0.0785809, 0, 1, 0, -0.0785809, 0, 0.996908, -23.1496, -0.903017, 21.478)
 
 [node name="PlayerEnd" type="Marker3D" parent="World/Race"]
 transform = Transform3D(-0.997565, 0, -0.0697391, 0, 1, 0, 0.0697391, 0, -0.997565, -23.3763, -0.903017, 23.0115)

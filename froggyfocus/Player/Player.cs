@@ -138,11 +138,11 @@ public partial class Player : TopDownController
         if (PlayerInput.Jump.Held)
         {
             FocusEventLock.SetLock("jumping", true);
-            IsCharging = true;
+            ChargeChanged(true);
         }
         else if (PlayerInput.Jump.Released)
         {
-            IsCharging = false;
+            ChargeChanged(false);
             var height = JumpHeightCurve.Sample(jump_charge);
             var length = JumpLengthCurve.Sample(jump_charge);
             var velocity = Character.Basis * new Vector3(0, height, -length);
@@ -155,7 +155,6 @@ public partial class Player : TopDownController
 
     private void Process_Charge()
     {
-        Character.SetCharging(IsCharging);
         Character.Animation.Animator.SpeedScale = Mathf.Lerp(1.0f, 4.0f, jump_charge);
 
         if (!IsCharging) return;
@@ -258,6 +257,14 @@ public partial class Player : TopDownController
     {
         Character.SetMoving(moving);
         FocusEventLock.SetLock("moving", moving);
+    }
+
+    private void ChargeChanged(bool is_charging)
+    {
+        if (IsCharging == is_charging) return;
+
+        Character.SetCharging(is_charging);
+        IsCharging = is_charging;
     }
 
     private void JumpChanged(bool jumping)

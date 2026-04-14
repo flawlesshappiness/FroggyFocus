@@ -37,6 +37,8 @@ public abstract partial class BaseStateMachine : Node
     protected bool TryProcessAnyState(bool include_conditionless) => TryProcessNode(Any, include_conditionless);
     private bool TryProcessNode(StateNode node, bool include_conditionless)
     {
+        if (node == null) return false;
+
         var connection = node.ValidConnection(include_conditionless);
         if (connection == null) return false;
 
