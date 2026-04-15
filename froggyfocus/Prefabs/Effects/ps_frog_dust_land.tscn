@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://bt84kb17fu0fs"]
+
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_js3vc"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="2_sdufh"]
+
+[sub_resource type="Curve" id="Curve_js3vc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sdufh"]
+curve = SubResource("Curve_js3vc")
+
+[sub_resource type="Curve" id="Curve_ine62"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_m5xj4"]
+curve = SubResource("Curve_ine62")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a00l3"]
+lifetime_randomness = 0.2
+direction = Vector3(0, 0, -1)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 1, 0)
+damping_min = 25.0
+damping_max = 25.0
+damping_curve = SubResource("CurveTexture_sdufh")
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_m5xj4")
+
+[sub_resource type="SphereMesh" id="SphereMesh_m5xj4"]
+material = ExtResource("2_sdufh")
+
+[node name="ps_frog_dust_land" type="Node3D" node_paths=PackedStringArray("Particles")]
+script = ExtResource("1_js3vc")
+PlayOnReady = true
+DestroyDelay = 1.0
+Particles = [NodePath("ps_frog_dust_land")]
+
+[node name="ps_frog_dust_land" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 10
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_a00l3")
+draw_pass_1 = SubResource("SphereMesh_m5xj4")

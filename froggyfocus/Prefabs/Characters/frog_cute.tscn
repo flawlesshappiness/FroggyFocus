@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://1fq5vb2vmge2"]
+[gd_scene load_steps=55 format=3 uid="uid://1fq5vb2vmge2"]
 
 [ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_mjor8"]
 [ext_resource type="PackedScene" uid="uid://kbio5754ibiy" path="res://Assets/FlawLizArt/Characters/Frog_Cute/frog_cute.fbx" id="3_nfx8u"]
@@ -39,16 +39,40 @@
 [ext_resource type="PackedScene" uid="uid://8i1okmguvft2" path="res://Appearance/Attachments/particles_eyes.tscn" id="44_tnjrl"]
 [ext_resource type="PackedScene" uid="uid://b8q6cqe5wp2e1" path="res://Prefabs/Objects/frog_tongue.tscn" id="45_am06j"]
 [ext_resource type="PackedScene" uid="uid://dr0be48ijgwb8" path="res://Appearance/Attachments/particles_water.tscn" id="45_ht4c0"]
+[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="46_am06j"]
 [ext_resource type="PackedScene" uid="uid://8bnblf80wnws" path="res://Appearance/Attachments/particles_leaves.tscn" id="46_gdmi5"]
 [ext_resource type="PackedScene" uid="uid://bj2l6kqa3ibch" path="res://Appearance/Attachments/particles_money.tscn" id="47_gty1n"]
+[ext_resource type="Script" uid="uid://cvxw4w4ebf8um" path="res://Prefabs/Effects/ParticleEffectSpawner.cs" id="47_x7gts"]
+[ext_resource type="PackedScene" uid="uid://bt84kb17fu0fs" path="res://Prefabs/Effects/ps_frog_dust_land.tscn" id="48_qloaa"]
 [ext_resource type="PackedScene" uid="uid://cxtf7ngu24n84" path="res://Appearance/Attachments/particles_stars.tscn" id="48_v21xf"]
+[ext_resource type="PackedScene" uid="uid://svjino32ea6i" path="res://Prefabs/Effects/ps_frog_dust_jump.tscn" id="49_ki8i6"]
 [ext_resource type="PackedScene" uid="uid://dtcsewnq52mof" path="res://Appearance/Attachments/particles_sandy.tscn" id="49_vyagh"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="50_0gbed"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="57_7y2xd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_m850p"]
 
-[node name="FrogCute" type="Node3D" node_paths=PackedStringArray("Tongue", "Animation", "MoveSounds", "BodyMesh", "HatAttachments", "FaceAttachments", "ParticlesAttachments")]
+[sub_resource type="Curve" id="Curve_x7gts"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_27c8n"]
+curve = SubResource("Curve_x7gts")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h0pt7"]
+direction = Vector3(0, 0, -1)
+spread = 5.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_27c8n")
+
+[sub_resource type="SphereMesh" id="SphereMesh_qloaa"]
+material = ExtResource("46_am06j")
+
+[node name="FrogCute" type="Node3D" node_paths=PackedStringArray("Tongue", "Animation", "MoveSounds", "BodyMesh", "HatAttachments", "FaceAttachments", "ParticlesAttachments", "PsDustStream", "PsJump", "PsLand")]
 script = ExtResource("1_mjor8")
 Tongue = NodePath("Tongue")
 Animation = NodePath("AnimationStateMachine")
@@ -57,6 +81,9 @@ BodyMesh = NodePath("frog_cute/Armature/Skeleton3D/body")
 HatAttachments = NodePath("frog_cute/Armature/Skeleton3D/HatAttachmentGroup")
 FaceAttachments = NodePath("frog_cute/Armature/Skeleton3D/FaceAttachmentGroup")
 ParticlesAttachments = NodePath("frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup")
+PsDustStream = NodePath("ps_frog_dust_stream")
+PsJump = NodePath("ps_dust_jump")
+PsLand = NodePath("ps_dust_land")
 
 [node name="frog_cute" parent="." instance=ExtResource("3_nfx8u")]
 
@@ -129,7 +156,7 @@ bones/30/rotation = Quaternion(0.00431191, -0.232923, 0.0179997, 0.972319)
 bones/30/scale = Vector3(1, 1, 1)
 
 [node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, -8.85596e-15, 2.38419e-07, 3.57268e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293548, 0.00405697)
+transform = Transform3D(1, -8.8792e-14, 2.38419e-07, 3.57274e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
 bone_name = "Head"
 bone_idx = 2
 script = ExtResource("4_6q0t7")
@@ -318,7 +345,7 @@ transform = Transform3D(0.004, -2.16345e-11, -2.48962e-10, -2.47746e-10, 0.00017
 visible = false
 
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, -8.85596e-15, 2.38419e-07, 3.57268e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293548, 0.00405697)
+transform = Transform3D(1, -8.8792e-14, 2.38419e-07, 3.57274e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
 bone_name = "Head"
 bone_idx = 2
 script = ExtResource("4_6q0t7")
@@ -400,6 +427,25 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96047e-08, 0.38217, -0.504603)
 
 [node name="PlayerMoveSoundsGroup" parent="." instance=ExtResource("57_7y2xd")]
+
+[node name="ps_frog_dust_stream" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.877431, 0.479703, 0, -0.479703, -0.877431, 0, 0.288217, 0.410995)
+emitting = false
+amount = 3
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_h0pt7")
+draw_pass_1 = SubResource("SphereMesh_qloaa")
+
+[node name="ps_dust_jump" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.197634, 0.24089)
+script = ExtResource("47_x7gts")
+Effect = ExtResource("49_ki8i6")
+
+[node name="ps_dust_land" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.165031, 0)
+script = ExtResource("47_x7gts")
+Effect = ExtResource("48_qloaa")
 
 [editable path="frog_cute"]
 [editable path="frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]

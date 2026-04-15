@@ -28,7 +28,7 @@ public partial class RaceGhost : Node3D
 
     private void Process_PositionAndRotation()
     {
-        var speed = 6f;
+        var speed = 10f;
         GlobalPosition = GlobalPosition.Lerp(TargetPosition, speed * GameTime.DeltaTime);
         GlobalRotation = GlobalRotation.Lerp(TargetRotation, speed * GameTime.DeltaTime);
     }
@@ -72,12 +72,16 @@ public partial class RaceGhost : Node3D
             {
                 IsJumping = true;
                 Character.MoveSounds.PlayJump();
+                Character.PlayJumpPS();
+                Character.PlayDustStreamPS(0.4f);
             }
         }
         else if (IsJumping)
         {
             IsJumping = false;
             Character.MoveSounds.PlayLand();
+            Character.PlayLandPS();
+            Character.StopDustStreamPS();
         }
     }
 

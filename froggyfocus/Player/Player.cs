@@ -29,15 +29,6 @@ public partial class Player : TopDownController
     public AudioStreamPlayer3D SfxFocusTargetStarted;
 
     [Export]
-    public GpuParticles3D PsDustStream;
-
-    [Export]
-    public GpuParticles3D PsDustJump;
-
-    [Export]
-    public GpuParticles3D PsDustLand;
-
-    [Export]
     public Godot.Curve JumpLengthCurve;
 
     [Export]
@@ -273,9 +264,8 @@ public partial class Player : TopDownController
 
         if (jumping)
         {
-            PsDustJump.Emitting = true;
-            PlayDustStreamPS(0.4f);
-
+            Character.PlayJumpPS();
+            Character.PlayDustStreamPS(0.4f);
             Character.MoveSounds.PlayJump();
         }
         else
@@ -283,11 +273,10 @@ public partial class Player : TopDownController
             UpdateGlobalShaderMoveTime();
 
             FocusEventLock.SetLock("jumping", false);
-            PsDustLand.Emitting = true;
-            StopDustStreamPS();
-            EvaluateStableGround();
-
+            Character.PlayLandPS();
+            Character.StopDustStreamPS();
             Character.MoveSounds.PlayLand();
+            EvaluateStableGround();
         }
     }
 
@@ -307,22 +296,6 @@ public partial class Player : TopDownController
         var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), respawn_position);
         GlobalPosition = nav_position;
         ThirdPersonCamera.SnapToPosition();
-    }
-
-    private void PlayDustStreamPS(float duration)
-    {
-        this.StartCoroutine(Cr, nameof(PlayDustStreamPS));
-        IEnumerator Cr()
-        {
-            PsDustStream.Emitting = true;
-            yield return new WaitForSeconds(duration);
-            PsDustStream.Emitting = false;
-        }
-    }
-
-    private void StopDustStreamPS()
-    {
-        PsDustStream.Emitting = false;
     }
 
     private void StopWaitForFocusTarget()

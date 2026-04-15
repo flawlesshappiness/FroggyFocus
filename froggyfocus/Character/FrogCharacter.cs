@@ -68,6 +68,15 @@ public partial class FrogCharacter : Character
     [Export]
     public AppearanceAttachmentGroup ParticlesAttachments;
 
+    [Export]
+    public GpuParticles3D PsDustStream;
+
+    [Export]
+    public ParticleEffectSpawner PsJump;
+
+    [Export]
+    public ParticleEffectSpawner PsLand;
+
     public bool IsHandOut { get; private set; }
 
     public event Action<string> OnAnimationStarted;
@@ -293,5 +302,31 @@ public partial class FrogCharacter : Character
     private void AnimationStarted(StringName animName)
     {
         OnAnimationStarted?.Invoke($"{animName}");
+    }
+
+    public void PlayDustStreamPS(float duration)
+    {
+        this.StartCoroutine(Cr, nameof(PlayDustStreamPS));
+        IEnumerator Cr()
+        {
+            PsDustStream.Emitting = true;
+            yield return new WaitForSeconds(duration);
+            PsDustStream.Emitting = false;
+        }
+    }
+
+    public void StopDustStreamPS()
+    {
+        PsDustStream.Emitting = false;
+    }
+
+    public void PlayJumpPS()
+    {
+        PsJump.Spawn();
+    }
+
+    public void PlayLandPS()
+    {
+        PsLand.Spawn();
     }
 }
