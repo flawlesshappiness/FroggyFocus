@@ -1,6 +1,6 @@
 [gd_scene load_steps=70 format=3 uid="uid://d1fokxnejbet4"]
 
-[ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_c7gfj"]
+[ext_resource type="Script" uid="uid://cjoxwwkt8nm5l" path="res://Character/NormalFrogCharacter.cs" id="1_jmgr8"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ps7tr"]
 [ext_resource type="Script" uid="uid://bh70kviwhy4x4" path="res://Appearance/AppearanceAttachmentGroup.cs" id="4_6ia88"]
 [ext_resource type="PackedScene" uid="uid://dxfvux2lo6jac" path="res://Assets/FlawLizArt/Frog/frog.fbx" id="4_db7or"]
@@ -105,17 +105,12 @@ streams_count = 2
 stream_0/stream = ExtResource("9_qta17")
 stream_1/stream = ExtResource("10_w1eid")
 
-[node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "Animation", "MoveSounds", "BodyMesh", "HatAttachments", "FaceAttachments", "ParticlesAttachments")]
-script = ExtResource("1_c7gfj")
-AnimationName_TongueOut = "mouth_open"
-AnimationName_TongueIn = "mouth_closed"
+[node name="Frog" type="Node3D" node_paths=PackedStringArray("Tongue", "Animation", "MoveSounds", "BodyMesh")]
+script = ExtResource("1_jmgr8")
 Tongue = NodePath("Tongue")
 Animation = NodePath("AnimationStateMachine")
 MoveSounds = NodePath("Sounds/PlayerMoveSoundsGroup")
 BodyMesh = NodePath("frog/Armature/Skeleton3D/frog")
-HatAttachments = NodePath("frog/Armature/Skeleton3D/HatAttachmentGroup")
-FaceAttachments = NodePath("frog/Armature/Skeleton3D/FaceAttachmentGroup")
-ParticlesAttachments = NodePath("frog/Armature/Skeleton3D/ParticlesAttachmentGroup")
 
 [node name="frog" parent="." instance=ExtResource("4_db7or")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
@@ -500,6 +495,7 @@ transform = Transform3D(1, -1.93172e-13, 6.69969e-13, 2.59605e-13, 0.998942, -0.
 bone_name = "Head"
 bone_idx = 4
 script = ExtResource("4_6ia88")
+Category = 1
 
 [node name="Moustache" parent="frog/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("13_uv7pe")]
 transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 5.06157e-20, 0.0102936, 3.7835e-11)
@@ -530,6 +526,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.002, 0)
 bone_name = "Root"
 bone_idx = 0
 script = ExtResource("4_6ia88")
+Category = 3
 
 [node name="ParticlesDebug" parent="frog/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("20_ipay0")]
 transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0.0191329)

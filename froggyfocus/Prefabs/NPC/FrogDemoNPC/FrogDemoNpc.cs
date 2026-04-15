@@ -5,6 +5,9 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
     [Export]
     public HandInInfo HandInInfo;
 
+    [Export]
+    public FrogCharacter Character;
+
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
     private const string FlagIntro = "demo_frog_intro";
@@ -21,6 +24,12 @@ public partial class FrogDemoNpc : CharacterNpc, IInteractable
         base._Ready();
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        Character.SetAppearanceAttachment(ItemCategory.Face, ItemType.Face_Moustache, new Color(0.5f, 0.3f, 0.1f));
     }
 
     public override void Interact()

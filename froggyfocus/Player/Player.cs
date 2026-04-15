@@ -11,7 +11,7 @@ public partial class Player : TopDownController
     public PlayerInteract PlayerInteract;
 
     [Export]
-    public FrogCharacter Character;
+    public CuteFrogCharacter Character;
 
     [Export]
     public ThirdPersonCamera ThirdPersonCamera;

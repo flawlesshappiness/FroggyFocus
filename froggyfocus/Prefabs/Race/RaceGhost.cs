@@ -4,7 +4,7 @@ using System.Collections;
 public partial class RaceGhost : Node3D
 {
     [Export]
-    public FrogCharacter Character;
+    public CuteFrogCharacter Character;
 
     public bool IsFinished { get; set; }
     private AnimationPlayer Animation_Frog { get; set; }

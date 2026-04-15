@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://1fq5vb2vmge2"]
 
-[ext_resource type="Script" uid="uid://ddva1gfnrf7ro" path="res://Character/FrogCharacter.cs" id="1_mjor8"]
+[ext_resource type="Script" uid="uid://ckww7miv2hssb" path="res://Character/CuteFrogCharacter.cs" id="1_qloaa"]
 [ext_resource type="PackedScene" uid="uid://kbio5754ibiy" path="res://Assets/FlawLizArt/Characters/Frog_Cute/frog_cute.fbx" id="3_nfx8u"]
 [ext_resource type="Script" uid="uid://bh70kviwhy4x4" path="res://Appearance/AppearanceAttachmentGroup.cs" id="4_6q0t7"]
 [ext_resource type="PackedScene" uid="uid://n068dxjwbk4n" path="res://Appearance/Attachments/crown.tscn" id="5_mjxwm"]
@@ -72,15 +72,15 @@ scale_curve = SubResource("CurveTexture_27c8n")
 [sub_resource type="SphereMesh" id="SphereMesh_qloaa"]
 material = ExtResource("46_am06j")
 
-[node name="FrogCute" type="Node3D" node_paths=PackedStringArray("Tongue", "Animation", "MoveSounds", "BodyMesh", "PsDustStream", "PsJump", "PsLand")]
-script = ExtResource("1_mjor8")
+[node name="FrogCute" type="Node3D" node_paths=PackedStringArray("PsDustStream", "PsJump", "PsLand", "Tongue", "Animation", "MoveSounds", "BodyMesh")]
+script = ExtResource("1_qloaa")
+PsDustStream = NodePath("ps_frog_dust_stream")
+PsJump = NodePath("ps_dust_jump")
+PsLand = NodePath("ps_dust_land")
 Tongue = NodePath("Tongue")
 Animation = NodePath("AnimationStateMachine")
 MoveSounds = NodePath("PlayerMoveSoundsGroup")
 BodyMesh = NodePath("frog_cute/Armature/Skeleton3D/body")
-PsDustStream = NodePath("ps_frog_dust_stream")
-PsJump = NodePath("ps_dust_jump")
-PsLand = NodePath("ps_dust_land")
 
 [node name="frog_cute" parent="." instance=ExtResource("3_nfx8u")]
 

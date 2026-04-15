@@ -26,7 +26,7 @@ public partial class FocusIntroView : View
     public override void _Ready()
     {
         base._Ready();
-        Frog.SetMouthOpen(true);
+        Frog.SetTongueOut(true);
     }
 
     public IEnumerator AnimateShow()
