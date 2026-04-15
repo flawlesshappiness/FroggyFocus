@@ -25,6 +25,7 @@ public partial class CharacterNpc : Area3D, IInteractable
 
     protected BoolParameter param_dialogue = new BoolParameter("dialogue", false);
 
+    private bool initialized;
     private bool dialogue_camera_in;
 
     public override void _Ready()
@@ -45,6 +46,18 @@ public partial class CharacterNpc : Area3D, IInteractable
         DialogueController.Instance.OnDialogueStarted -= DialogueStarted;
         DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
     }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        if (!initialized)
+        {
+            initialized = true;
+            Initialize();
+        }
+    }
+
+    protected virtual void Initialize() { }
 
     protected virtual void InitializeAnimations()
     {

@@ -72,15 +72,12 @@ scale_curve = SubResource("CurveTexture_27c8n")
 [sub_resource type="SphereMesh" id="SphereMesh_qloaa"]
 material = ExtResource("46_am06j")
 
-[node name="FrogCute" type="Node3D" node_paths=PackedStringArray("Tongue", "Animation", "MoveSounds", "BodyMesh", "HatAttachments", "FaceAttachments", "ParticlesAttachments", "PsDustStream", "PsJump", "PsLand")]
+[node name="FrogCute" type="Node3D" node_paths=PackedStringArray("Tongue", "Animation", "MoveSounds", "BodyMesh", "PsDustStream", "PsJump", "PsLand")]
 script = ExtResource("1_mjor8")
 Tongue = NodePath("Tongue")
 Animation = NodePath("AnimationStateMachine")
 MoveSounds = NodePath("PlayerMoveSoundsGroup")
 BodyMesh = NodePath("frog_cute/Armature/Skeleton3D/body")
-HatAttachments = NodePath("frog_cute/Armature/Skeleton3D/HatAttachmentGroup")
-FaceAttachments = NodePath("frog_cute/Armature/Skeleton3D/FaceAttachmentGroup")
-ParticlesAttachments = NodePath("frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup")
 PsDustStream = NodePath("ps_frog_dust_stream")
 PsJump = NodePath("ps_dust_jump")
 PsLand = NodePath("ps_dust_land")

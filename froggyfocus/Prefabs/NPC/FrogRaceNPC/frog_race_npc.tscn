@@ -18,10 +18,11 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_hyq8d")
 
-[node name="FrogRaceNPC" type="Area3D" node_paths=PackedStringArray("SfxSpeak")]
+[node name="FrogRaceNPC" type="Area3D" node_paths=PackedStringArray("Character", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_8c572")
+Character = NodePath("FrogCute")
 SfxSpeak = NodePath("SfxSpeak")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -29,6 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503907, -0.678035)
 shape = SubResource("CylinderShape3D_xrcx1")
 
 [node name="FrogCute" parent="." instance=ExtResource("2_xrcx1")]
+DisableAppearanceUpdates = true
 
 [node name="NpcCollisionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.134243)

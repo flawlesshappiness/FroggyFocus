@@ -2,6 +2,8 @@ using FlawLizArt.Animation.StateMachine;
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class FrogCharacter : Character
 {
@@ -60,15 +62,6 @@ public partial class FrogCharacter : Character
     public MeshInstance3D BodyMesh;
 
     [Export]
-    public AppearanceAttachmentGroup HatAttachments;
-
-    [Export]
-    public AppearanceAttachmentGroup FaceAttachments;
-
-    [Export]
-    public AppearanceAttachmentGroup ParticlesAttachments;
-
-    [Export]
     public GpuParticles3D PsDustStream;
 
     [Export]
@@ -93,6 +86,8 @@ public partial class FrogCharacter : Character
     private BoolParameter param_searching = new BoolParameter("searching", false);
     private BoolParameter param_cover_eyes = new BoolParameter("cover_eyes", false);
 
+    private List<AppearanceAttachmentGroup> attachment_groups = new();
+
     private bool is_charging;
     private bool is_moving;
     private bool is_jumping;
@@ -100,7 +95,7 @@ public partial class FrogCharacter : Character
     public override void _Ready()
     {
         base._Ready();
-        InitializeMesh();
+        InitializeAppearance();
         InitializeAnimations();
 
         if (!DisableAppearanceUpdates)
@@ -166,6 +161,13 @@ public partial class FrogCharacter : Character
         Animation.Start(idle.Node);
     }
 
+    private void InitializeAppearance()
+    {
+        InitializeMesh();
+
+        attachment_groups = this.GetNodesInChildren<AppearanceAttachmentGroup>();
+    }
+
     private void InitializeMesh()
     {
         body_material = BodyMesh.GetActiveMaterial(0).Duplicate() as ShaderMaterial;
@@ -174,9 +176,7 @@ public partial class FrogCharacter : Character
 
     public void ClearAppearance()
     {
-        HatAttachments.Clear();
-        FaceAttachments.Clear();
-        ParticlesAttachments.Clear();
+        attachment_groups.ForEach(x => x.Clear());
     }
 
     public void LoadAppearance()
@@ -187,10 +187,8 @@ public partial class FrogCharacter : Character
 
     public void LoadAppearance(GameSaveData data)
     {
-        LoadBodyColor(data);
-        LoadHat(data);
-        LoadFace(data);
-        LoadParticles(data);
+        LoadBody(data);
+        LoadAttachments(data);
     }
 
     private void AppearanceChanged()
@@ -199,7 +197,7 @@ public partial class FrogCharacter : Character
         LoadAppearance();
     }
 
-    private void LoadBodyColor(GameSaveData game_data)
+    private void LoadBody(GameSaveData game_data)
     {
         var albedo1 = game_data.FrogAppearanceData.BaseColor.Color;
         var albedo2 = game_data.FrogAppearanceData.CoatColor.Color;
@@ -218,22 +216,28 @@ public partial class FrogCharacter : Character
         body_material.SetShaderParameter("texture4", texture4);
     }
 
-    private void LoadHat(GameSaveData game_data)
+    private void LoadAttachments(GameSaveData game_data)
     {
-        var data = game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Hat);
-        HatAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
+        foreach (var att_data in game_data.FrogAppearanceData.Attachments)
+        {
+            LoadAppearanceAttachment(att_data);
+        }
     }
 
-    private void LoadFace(GameSaveData game_data)
+    private AppearanceAttachmentGroup GetAttachmentGroup(ItemCategory category)
     {
-        var data = game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Face);
-        FaceAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
+        return attachment_groups.FirstOrDefault(x => x.Category == category);
     }
 
-    private void LoadParticles(GameSaveData game_data)
+    private void LoadAppearanceAttachment(FrogAppearanceAttachmentData data)
     {
-        var data = game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.Particles);
-        ParticlesAttachments.SetAttachment(data.Type, data.PrimaryColor, data.SecondaryColor);
+        SetAppearanceAttachment(data.Category, data.Type, data.PrimaryColor, data.SecondaryColor);
+    }
+
+    public void SetAppearanceAttachment(ItemCategory category, ItemType type, Color primary, Color secondary)
+    {
+        var group = GetAttachmentGroup(category);
+        group?.SetAttachment(type, primary, secondary);
     }
 
     public void SetMoving(bool moving)

@@ -9,6 +9,9 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
     [Export]
     public RaceTrack RaceTrack;
 
+    [Export]
+    public FrogCharacter Character;
+
     public override void _Ready()
     {
         base._Ready();
@@ -19,6 +22,12 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
     {
         base._ExitTree();
         RaceController.Instance.OnRaceEnd -= RaceEnd;
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        Character.SetAppearanceAttachment(ItemCategory.Hat, ItemType.Hat_Crown, Colors.Red, Colors.Yellow);
     }
 
     public override void Interact()

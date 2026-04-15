@@ -4,6 +4,9 @@ using System.Linq;
 
 public partial class AppearanceAttachmentGroup : Node3D
 {
+    [Export]
+    public ItemCategory Category;
+
     private List<AppearanceAttachment> attachments;
 
     private void InitializeAttachments()
@@ -33,9 +36,6 @@ public partial class AppearanceAttachmentGroup : Node3D
 
         var attachment = attachments.FirstOrDefault(x => x.Info.Type == type);
         if (attachment == null) return;
-
-        var category = attachment.Info.Category;
-        var info = AppearanceController.Instance.GetInfo(type);
 
         var primary_color = color_primary;
         var secondary_color = color_secondary;
