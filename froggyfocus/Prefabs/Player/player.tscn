@@ -29,6 +29,7 @@ height = 1.0
 radius = 1.0
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ThirdPersonCamera", "ExclamationMark", "QuestionMark", "SfxFocusTargetFound", "SfxFocusTargetStarted", "Camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 2
 script = ExtResource("1_hnwp3")
 MoveSpeed = 2.0

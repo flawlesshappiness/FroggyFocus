@@ -13,11 +13,20 @@ public partial class RaceGhost : Node3D
     private RaceGhostData GhostData { get; set; }
     private bool IsJumping { get; set; }
 
+    public static void SetupAppearance(CuteFrogCharacter character)
+    {
+        character.SetBodyBase(new Color(0.2f, 0.7f, 0.9f));
+        character.SetBodyTop(ItemType.BodyTop_Flames, Colors.OrangeRed);
+        character.SetBodyPattern(ItemType.BodyPattern_Flames, new Color(1.0f, 0.75f, 0.05f));
+        character.SetBodyEye(ItemType.BodyEye_Cute, Colors.White);
+    }
+
     public override void _Ready()
     {
         base._Ready();
         Animation_Frog = Character.Animation.Animator;
         PlayIdleAnimation();
+        SetupAppearance(Character);
     }
 
     public override void _Process(double delta)

@@ -422,6 +422,7 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 
 [node name="Tongue" parent="." instance=ExtResource("45_am06j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96047e-08, 0.38217, -0.504603)
+visible = false
 
 [node name="PlayerMoveSoundsGroup" parent="." instance=ExtResource("57_7y2xd")]
 

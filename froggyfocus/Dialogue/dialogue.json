@@ -588,21 +588,33 @@
 		"id": "##DEMO_RACE_FROG_INTRO##",
 		"entries": [
 			"##DEMO_RACE_FROG_INTRO_001##",
-			"##DEMO_RACE_FROG_INTRO_002##"
+			"##DEMO_RACE_FROG_INTRO_002##",
+			"##DEMO_RACE_FROG_INTRO_003##",
+			"##DEMO_RACE_FROG_RACE_001##"
+		]
+	},
+	
+	{
+		"id": "##DEMO_RACE_FROG_RACE##",
+		"entries": [
+			"##DEMO_RACE_FROG_RACE_001##"
 		]
 	},
 	
 	{
 		"id": "##DEMO_RACE_FROG_WIN##",
 		"entries": [
-			"##DEMO_RACE_FROG_WIN_001##"
+			"##DEMO_RACE_FROG_WIN_001##",
+			"##DEMO_RACE_FROG_WIN_002##",
+			"##DEMO_RACE_FROG_WIN_003##"
 		]
 	},
 	
 	{
 		"id": "##DEMO_RACE_FROG_LOSE##",
 		"entries": [
-			"##DEMO_RACE_FROG_LOSE_001##"
+			"##DEMO_RACE_FROG_LOSE_001##",
+			"##DEMO_RACE_FROG_LOSE_002##"
 		]
 	}
 ]

@@ -66,6 +66,8 @@ public enum ItemType
     BodyTop_Noise = 404,
     BodyTop_Robot = 405,
     BodyTop_None = 406,
+    BodyTop_Shirt = 407,
+    BodyTop_Flames = 408,
 
     // Body Pattern
     BodyPattern_Desert = 500,
@@ -74,6 +76,8 @@ public enum ItemType
     BodyPattern_Noise = 503,
     BodyPattern_Stripe = 504,
     BodyPattern_None = 505,
+    BodyPattern_Jeans = 506,
+    BodyPattern_Flames = 507,
 
     // Body Eye
     BodyEye_Cute = 600,

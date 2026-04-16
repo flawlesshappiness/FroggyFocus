@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=4 format=3 uid="uid://cu0ltvr6w6gxq"]
+
+[ext_resource type="PackedScene" uid="uid://bpij6oa5qb4sb" path="res://Appearance/Preview/body_flames.tscn" id="1_vxgwd"]
+[ext_resource type="Texture2D" uid="uid://c4v147sr70jwg" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/top_flames.png" id="2_klppj"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="3_x0dfo"]
+
+[resource]
+script = ExtResource("3_x0dfo")
+Category = 4
+Type = 408
+DefaultPrimaryColor = Color(0, 0, 0, 0)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
+HasSecondaryColor = false
+Texture = ExtResource("2_klppj")
+Prefab = ExtResource("1_vxgwd")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

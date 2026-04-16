@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=4 format=3 uid="uid://cspygr1d13cdt"]
+
+[ext_resource type="PackedScene" uid="uid://dbuuevkb32183" path="res://Appearance/Preview/body_top_shirt.tscn" id="1_vg8g0"]
+[ext_resource type="Texture2D" uid="uid://d4b8spqlvk7wi" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/top_shirt.png" id="2_ykuhs"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="3_72qbc"]
+
+[resource]
+script = ExtResource("3_72qbc")
+Category = 4
+Type = 407
+DefaultPrimaryColor = Color(0, 0, 0, 0)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
+HasSecondaryColor = false
+Texture = ExtResource("2_ykuhs")
+Prefab = ExtResource("1_vg8g0")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

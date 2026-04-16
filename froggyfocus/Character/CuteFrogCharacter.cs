@@ -45,12 +45,10 @@ public partial class CuteFrogCharacter : FrogCharacter
         body_material.SetShaderParameter("albedo3", albedo3);
         body_material.SetShaderParameter("albedo4", albedo4);
 
-        var texture2 = AppearanceController.Instance.GetInfo(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyTop).Type).Texture;
-        var texture3 = AppearanceController.Instance.GetInfo(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyPattern).Type).Texture;
-        var texture4 = AppearanceController.Instance.GetInfo(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyEye).Type).Texture;
-        body_material.SetShaderParameter("texture2", texture2);
-        body_material.SetShaderParameter("texture3", texture3);
-        body_material.SetShaderParameter("texture4", texture4);
+        SetBodyBase(albedo1);
+        SetBodyTop(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyTop).Type, albedo2);
+        SetBodyPattern(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyPattern).Type, albedo3);
+        SetBodyEye(game_data.FrogAppearanceData.GetOrCreateAttachmentData(ItemCategory.BodyEye).Type, albedo4);
     }
 
     protected override void InitializeAnimations()
@@ -101,6 +99,29 @@ public partial class CuteFrogCharacter : FrogCharacter
         Animation.Connect(jump_end, idle, param_jumping.WhenFalse());
 
         Animation.Start(idle.Node);
+    }
+
+    public void SetBodyBase(Color color)
+    {
+        body_material.SetShaderParameter("albedo1", color);
+    }
+
+    public void SetBodyTop(ItemType type, Color color)
+    {
+        body_material.SetShaderParameter("albedo2", color);
+        body_material.SetShaderParameter("texture2", AppearanceController.Instance.GetInfo(type).Texture);
+    }
+
+    public void SetBodyPattern(ItemType type, Color color)
+    {
+        body_material.SetShaderParameter("albedo3", color);
+        body_material.SetShaderParameter("texture3", AppearanceController.Instance.GetInfo(type).Texture);
+    }
+
+    public void SetBodyEye(ItemType type, Color color)
+    {
+        body_material.SetShaderParameter("albedo4", color);
+        body_material.SetShaderParameter("texture4", AppearanceController.Instance.GetInfo(type).Texture);
     }
 
     private void AnimationStarted(StringName animName)

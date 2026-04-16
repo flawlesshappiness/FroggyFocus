@@ -35,6 +35,8 @@ public partial class CharacterNpc : Area3D, IInteractable
         DialogueController.Instance.OnEntryStarted += DialogueNodeStarted;
         DialogueController.Instance.OnDialogueStarted += DialogueStarted;
         DialogueController.Instance.OnDialogueEnded += DialogueEnded;
+        RaceController.Instance.OnRaceStart += RaceStarted;
+        RaceController.Instance.OnRaceEnd += RaceEnded;
 
         InitializeAnimations();
     }
@@ -45,6 +47,8 @@ public partial class CharacterNpc : Area3D, IInteractable
         DialogueController.Instance.OnEntryStarted -= DialogueNodeStarted;
         DialogueController.Instance.OnDialogueStarted -= DialogueStarted;
         DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
+        RaceController.Instance.OnRaceStart -= RaceStarted;
+        RaceController.Instance.OnRaceEnd -= RaceEnded;
     }
 
     public override void _Process(double delta)
@@ -156,5 +160,15 @@ public partial class CharacterNpc : Area3D, IInteractable
                 Player.SetAllLocks(id, false);
             }
         }
+    }
+
+    protected virtual void RaceStarted()
+    {
+        this.Disable();
+    }
+
+    protected virtual void RaceEnded(RaceResult result)
+    {
+        this.Enable();
     }
 }
