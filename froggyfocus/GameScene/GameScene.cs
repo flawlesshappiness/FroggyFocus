@@ -45,6 +45,8 @@ public partial class GameScene : Scene
 
         FocusEventController.Instance.OnFocusEventStarted += FocusEvent_Started;
         FocusEventController.Instance.OnFocusEventEnded += FocusEvent_Ended;
+        RaceController.Instance.OnTransitionToStart += Race_TransitionToStart;
+        RaceController.Instance.OnRaceEnd += Race_Ended;
     }
 
     public override void _ExitTree()
@@ -52,6 +54,8 @@ public partial class GameScene : Scene
         base._ExitTree();
         FocusEventController.Instance.OnFocusEventStarted -= FocusEvent_Started;
         FocusEventController.Instance.OnFocusEventEnded -= FocusEvent_Ended;
+        RaceController.Instance.OnTransitionToStart -= Race_TransitionToStart;
+        RaceController.Instance.OnRaceEnd -= Race_Ended;
     }
 
     protected override void Initialize()
@@ -152,6 +156,22 @@ public partial class GameScene : Scene
         if (BgmFocus != null)
         {
             BgmFocus.FadeOut(1f);
+        }
+    }
+
+    private void Race_TransitionToStart()
+    {
+        if (BgmMain != null)
+        {
+            BgmMain.FadeOut(1f);
+        }
+    }
+
+    private void Race_Ended(RaceResult result)
+    {
+        if (BgmMain != null)
+        {
+            BgmMain.FadeIn(1f, 0f);
         }
     }
 }

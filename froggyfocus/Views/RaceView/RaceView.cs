@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections;
 
 public partial class RaceView : View
 {
@@ -20,6 +21,9 @@ public partial class RaceView : View
     public AudioStreamPlayer SfxGo;
 
     [Export]
+    public AudioStreamPlayer BgmRace;
+
+    [Export]
     public AnimationPlayer Animation_Countdown;
 
     public override void _Ready()
@@ -27,6 +31,8 @@ public partial class RaceView : View
         base._Ready();
         RaceController.Instance.OnCheckpoint += Checkpoint;
         RaceController.Instance.OnCountdown += Countdown;
+        RaceController.Instance.OnCountdownStarted += RaceCountdown_Started;
+        RaceController.Instance.OnTransitionToEnd += Race_TransitionToEnd;
     }
 
     protected override void OnShow()
@@ -60,5 +66,21 @@ public partial class RaceView : View
 
         var sfx = is_go ? SfxGo : SfxCountdown;
         sfx.Play();
+    }
+
+    private void RaceCountdown_Started()
+    {
+        BgmRace.VolumeLinear = 0.9f;
+        BgmRace.Play();
+    }
+
+    private void Race_TransitionToEnd()
+    {
+        this.StartCoroutine(Cr, "stop_bgm");
+        IEnumerator Cr()
+        {
+            yield return BgmRace.FadeOut(1f);
+            BgmRace.Stop();
+        }
     }
 }

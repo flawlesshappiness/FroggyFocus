@@ -19,6 +19,9 @@ public partial class RaceTrack : Node3D
     [Export]
     public Array<RaceCheckpoint> Checkpoints;
 
+    [Export]
+    public Array<Node3D> Objects;
+
     public event Action OnCheckpoint;
 
     public bool RaceCompleted { get; private set; }
@@ -40,6 +43,7 @@ public partial class RaceTrack : Node3D
         }
 
         SetCheckpointsVisible(false);
+        SetObjectsVisible(false);
     }
 
     private void Checkpoint_PlayerEntered(RaceCheckpoint checkpoint)
@@ -80,6 +84,7 @@ public partial class RaceTrack : Node3D
         CheckpointIndex = 0;
 
         SetCheckpointsVisible(true);
+        SetObjectsVisible(true);
         UpdateNextCheckpoint();
     }
 
@@ -96,6 +101,14 @@ public partial class RaceTrack : Node3D
             checkpoint.Visible = visible;
             checkpoint.AnimateHideImmediate();
             checkpoint.SetFinish(false);
+        }
+    }
+
+    public void SetObjectsVisible(bool visible)
+    {
+        foreach (var o in Objects)
+        {
+            o.SetEnabled(visible);
         }
     }
 }

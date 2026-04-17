@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcy54vp2s8wmd"]
+
+[ext_resource type="Material" uid="uid://b6om3ynl6u7pj" path="res://Materials/Wood.tres" id="1_ewmcp"]
+[ext_resource type="PackedScene" uid="uid://hvrp5rqv41wx" path="res://Assets/FlawLizArt/Objects/wood_plank_4m.fbx" id="2_tgcyb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_egf6k"]
+material = ExtResource("1_ewmcp")
+size = Vector3(0.25, 4, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fx78u"]
+size = Vector3(4, 4, 0.5)
+
+[node name="RaceBlockade" type="Node3D"]
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 2, 0)
+mesh = SubResource("BoxMesh_egf6k")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 2, 0)
+mesh = SubResource("BoxMesh_egf6k")
+skeleton = NodePath("../..")
+
+[node name="wood_plank_4m" parent="Model" instance=ExtResource("2_tgcyb")]
+transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 0.30928, 0.117416)
+
+[node name="wood_plank_4m2" parent="Model" instance=ExtResource("2_tgcyb")]
+transform = Transform3D(0.979686, 0.0248156, 0, -0.0248156, 0.979686, 0, 0, 0, 0.98, 0, 0.786221, 0.117416)
+
+[node name="wood_plank_4m3" parent="Model" instance=ExtResource("2_tgcyb")]
+transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 1.29534, 0.117416)
+
+[node name="wood_plank_4m4" parent="Model" instance=ExtResource("2_tgcyb")]
+transform = Transform3D(0.979022, -0.0437723, 0, 0.0437723, 0.979022, 0, 0, 0, 0.98, -0.00288758, 1.8229, 0.117416)
+
+[node name="wood_plank_4m5" parent="Model" instance=ExtResource("2_tgcyb")]
+transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 2.38446, 0.117416)
+
+[node name="wood_plank_4m6" parent="Model" instance=ExtResource("2_tgcyb")]
+transform = Transform3D(0.979811, 0.019241, 0, -0.019241, 0.979811, 0, 0, 0, 0.98, 0.00509493, 2.96531, 0.117416)
+
+[node name="wood_plank_4m7" parent="Model" instance=ExtResource("2_tgcyb")]
+transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 3.53982, 0.117416)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_fx78u")

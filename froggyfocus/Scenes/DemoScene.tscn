@@ -1,7 +1,6 @@
 [gd_scene load_steps=64 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ixab2"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_csmq8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_wf60l"]
@@ -56,6 +55,7 @@
 [ext_resource type="Script" uid="uid://b6ufgjqyhc0wl" path="res://Race/RaceTrack.cs" id="57_ixab2"]
 [ext_resource type="PackedScene" uid="uid://cx8bqg4u53dsn" path="res://Prefabs/Buildings/building_factory.tscn" id="57_n5llf"]
 [ext_resource type="PackedScene" uid="uid://bovnbfopscqpk" path="res://Prefabs/Buildings/lighthouse.tscn" id="58_ixab2"]
+[ext_resource type="PackedScene" uid="uid://dcy54vp2s8wmd" path="res://Prefabs/Race/race_blockade.tscn" id="58_n5llf"]
 [ext_resource type="PackedScene" uid="uid://blvlbd5nsd7qv" path="res://Prefabs/Nature/cave.tscn" id="59_5vqjt"]
 [ext_resource type="PackedScene" uid="uid://darn03h463tff" path="res://Assets/FlawLizArt/Nature/Toon/beach_flat.fbx" id="60_fqf33"]
 
@@ -101,7 +101,7 @@ WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
 BgmMain = NodePath("World/Sounds/BgmMain")
 BgmFocus = NodePath("World/Sounds/BgmFocus")
-Weathers = Array[ExtResource("2_ixab2")]([ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")])
+Weathers = [ExtResource("3_csmq8"), ExtResource("4_rrqgf"), ExtResource("5_70ake"), ExtResource("6_ibcjm"), ExtResource("7_fnfem")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_xetc1")
@@ -1249,13 +1249,14 @@ Camera = NodePath("IntroCamera")
 
 [node name="IntroCamera" type="Camera3D" parent="World/IntroCamera/Path3D/IntroCameraPath"]
 
-[node name="Race" type="Node3D" parent="World" node_paths=PackedStringArray("PlayerStart", "GhostStart", "PlayerEnd", "Checkpoints")]
+[node name="Race" type="Node3D" parent="World" node_paths=PackedStringArray("PlayerStart", "GhostStart", "PlayerEnd", "Checkpoints", "Objects")]
 script = ExtResource("57_ixab2")
 Id = "demo"
 PlayerStart = NodePath("PlayerStart")
 GhostStart = NodePath("GhostStart")
 PlayerEnd = NodePath("PlayerEnd")
 Checkpoints = [NodePath("Checkpoints/CP1"), NodePath("Checkpoints/CP2"), NodePath("Checkpoints/CP3"), NodePath("Checkpoints/CP4"), NodePath("Checkpoints/CP5"), NodePath("Checkpoints/CP6"), NodePath("Checkpoints/CP7"), NodePath("Checkpoints/CP8"), NodePath("Checkpoints/CP1")]
+Objects = [NodePath("Objects")]
 
 [node name="Checkpoints" type="Node3D" parent="World/Race"]
 
@@ -1282,6 +1283,26 @@ transform = Transform3D(-0.866409, 0, 0.499335, 0, 1, 0, -0.499335, 0, -0.866409
 
 [node name="CP8" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
 transform = Transform3D(-0.117936, 0, 0.993021, 0, 1, 0, -0.993021, 0, -0.117936, -4.03526, 2.88484, 23.4036)
+
+[node name="Objects" type="Node3D" parent="World/Race"]
+
+[node name="RaceBlockade" parent="World/Race/Objects" instance=ExtResource("58_n5llf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.22879, -2, -30.4858)
+
+[node name="RaceBlockade5" parent="World/Race/Objects" instance=ExtResource("58_n5llf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.22879, -2, -34.4858)
+
+[node name="RaceBlockade2" parent="World/Race/Objects" instance=ExtResource("58_n5llf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.22879, 2, -30.4858)
+
+[node name="RaceBlockade6" parent="World/Race/Objects" instance=ExtResource("58_n5llf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.22879, 2, -34.4858)
+
+[node name="RaceBlockade3" parent="World/Race/Objects" instance=ExtResource("58_n5llf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.22879, 2, -26.4858)
+
+[node name="RaceBlockade4" parent="World/Race/Objects" instance=ExtResource("58_n5llf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.22879, -2, -26.4858)
 
 [node name="PlayerStart" type="Marker3D" parent="World/Race"]
 transform = Transform3D(0.999681, 0, -0.0252522, 0, 1, 0, 0.0252522, 0, 0.999681, -24.8826, -0.903017, 21.5381)

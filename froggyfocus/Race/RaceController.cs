@@ -8,13 +8,19 @@ public partial class RaceController : SingletonController
     public override string Directory => "Race";
 
     public bool IsWin { get; private set; }
+    public bool IsStarted { get; private set; }
     public RaceSettings CurrentSettings { get; private set; }
     public RaceGhost CurrentGhost { get; private set; }
     public RaceTrack CurrentTrack => CurrentSettings?.Track;
 
+    private bool end_popup_visible = false;
+
     public event Action OnCheckpoint;
     public event Action OnRaceStart;
     public event Action<RaceResult> OnRaceEnd;
+    public event Action OnTransitionToStart;
+    public event Action OnTransitionToEnd;
+    public event Action OnCountdownStarted;
     public event Action<int> OnCountdown;
 
     public override void _Ready()
@@ -43,31 +49,44 @@ public partial class RaceController : SingletonController
 
         void WinRace(DebugView v)
         {
-            if (CurrentGhost != null)
-            {
-                CurrentGhost.IsFinished = false;
-            }
-
-            EndRace();
+            this.WinRace();
             v.Close();
         }
 
         void LoseRace(DebugView v)
         {
-            if (CurrentGhost != null)
-            {
-                CurrentGhost.IsFinished = true;
-            }
-
-            EndRace();
+            this.LoseRace();
             v.Close();
+        }
+    }
+
+    public override void _Input(InputEvent e)
+    {
+        base._Input(e);
+
+        if (IsStarted && PlayerInput.Pause.Pressed && !end_popup_visible)
+        {
+            end_popup_visible = true;
+            GameView.Instance.ShowPopup("##END_RACE##", "##YES##", "##NO##", () =>
+            {
+                end_popup_visible = false;
+                LoseRace();
+            },
+            () =>
+            {
+                end_popup_visible = false;
+            });
         }
     }
 
     public void StartRace(RaceSettings settings)
     {
+        PauseView.ToggleLock.SetLock("race", true);
+
         CurrentSettings = settings;
         settings.Track.OnCheckpoint += RaceTrack_Checkpoint;
+
+        OnTransitionToStart?.Invoke();
 
         Player.SetAllLocks(nameof(RaceController), true);
         TransitionView.Instance.StartTransition(new TransitionSettings
@@ -75,11 +94,11 @@ public partial class RaceController : SingletonController
             Type = TransitionType.Color,
             Color = Colors.Black,
             Duration = 1f,
-            OnTransition = OnTransitionToStart
+            OnTransition = _OnTransitionToStart
         });
     }
 
-    private void OnTransitionToStart()
+    private void _OnTransitionToStart()
     {
         var is_ghost = RaceGhostController.Instance.RecordGhostEnabled;
         var start = is_ghost ? CurrentSettings.Track.GhostStart : CurrentSettings.Track.PlayerStart;
@@ -122,6 +141,8 @@ public partial class RaceController : SingletonController
         this.StartCoroutine(Cr, "countdown");
         IEnumerator Cr()
         {
+            OnCountdownStarted?.Invoke();
+
             yield return new WaitForSeconds(1f);
 
             var count = 3;
@@ -138,30 +159,37 @@ public partial class RaceController : SingletonController
 
             OnCountdown?.Invoke(-1);
             OnRaceStart?.Invoke();
+
+            IsStarted = true;
         }
     }
 
     public void EndRace()
     {
         IsWin = !CurrentGhost?.IsFinished ?? true;
+        IsStarted = false;
 
+        PauseView.ToggleLock.SetLock("race", false);
         Player.SetAllLocks(nameof(RaceController), true);
+
+        OnTransitionToEnd?.Invoke();
 
         TransitionView.Instance.StartTransition(new TransitionSettings
         {
             Type = TransitionType.Color,
             Color = Colors.Black,
             Duration = 1f,
-            OnTransition = OnTransitionToEnd
+            OnTransition = _OnTransitionToEnd
         });
     }
 
-    private void OnTransitionToEnd()
+    private void _OnTransitionToEnd()
     {
         RaceGhostController.Instance.EndRecordingGhost();
         RaceView.Instance.Hide();
 
         CurrentTrack.SetCheckpointsVisible(false);
+        CurrentTrack.SetObjectsVisible(false);
 
         ClearGhost();
 
@@ -183,5 +211,25 @@ public partial class RaceController : SingletonController
     private void RaceTrack_Checkpoint()
     {
         OnCheckpoint?.Invoke();
+    }
+
+    private void WinRace()
+    {
+        if (CurrentGhost != null)
+        {
+            CurrentGhost.IsFinished = false;
+        }
+
+        EndRace();
+    }
+
+    private void LoseRace()
+    {
+        if (CurrentGhost != null)
+        {
+            CurrentGhost.IsFinished = true;
+        }
+
+        EndRace();
     }
 }

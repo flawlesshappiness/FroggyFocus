@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhgrn7prx8bie"]
+[gd_scene load_steps=10 format=3 uid="uid://bhgrn7prx8bie"]
 
 [ext_resource type="Script" uid="uid://c6ce51p2qfg0b" path="res://Views/RaceView/RaceView.cs" id="1_t8q2o"]
 [ext_resource type="AudioStream" uid="uid://ct6xqh3g76eec" path="res://Sounds/Raw/sfx_collect_001.wav" id="2_cr2bh"]
 [ext_resource type="AudioStream" uid="uid://blsf1wmo1ckdw" path="res://Sounds/Raw/sfx_frog_croak_004.wav" id="3_janrr"]
 [ext_resource type="AudioStream" uid="uid://6lw2v4b7kyyu" path="res://Sounds/Raw/sfx_frog_croak_003.wav" id="4_1bsul"]
+[ext_resource type="AudioStream" uid="uid://bkb36j2yhtifr" path="res://Sounds/Raw/bgm_race_001.wav" id="5_1bsul"]
 
 [sub_resource type="Animation" id="Animation_jylyw"]
 length = 0.001
@@ -96,7 +97,7 @@ _data = {
 &"go": SubResource("Animation_janrr")
 }
 
-[node name="RaceView" type="Control" node_paths=PackedStringArray("CheckpointLabel", "CountdownLabel", "SfxCheckpoint", "SfxCountdown", "SfxGo", "Animation_Countdown")]
+[node name="RaceView" type="Control" node_paths=PackedStringArray("CheckpointLabel", "CountdownLabel", "SfxCheckpoint", "SfxCountdown", "SfxGo", "BgmRace", "Animation_Countdown")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,6 +111,7 @@ CountdownLabel = NodePath("Countdown/Anim/CountdownLabel")
 SfxCheckpoint = NodePath("SfxCheckpoint")
 SfxCountdown = NodePath("SfxCountdown")
 SfxGo = NodePath("SfxGo")
+BgmRace = NodePath("BgmRace")
 Animation_Countdown = NodePath("Countdown/Animation_Countdown")
 
 [node name="CheckpointLabel" type="Label" parent="."]
@@ -185,3 +187,7 @@ bus = &"SFX"
 stream = ExtResource("4_1bsul")
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="BgmRace" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1bsul")
+bus = &"BGM"
