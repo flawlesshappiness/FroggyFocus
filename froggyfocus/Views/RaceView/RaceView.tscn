@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhgrn7prx8bie"]
+[gd_scene load_steps=11 format=3 uid="uid://bhgrn7prx8bie"]
 
 [ext_resource type="Script" uid="uid://c6ce51p2qfg0b" path="res://Views/RaceView/RaceView.cs" id="1_t8q2o"]
 [ext_resource type="AudioStream" uid="uid://ct6xqh3g76eec" path="res://Sounds/Raw/sfx_collect_001.wav" id="2_cr2bh"]
 [ext_resource type="AudioStream" uid="uid://blsf1wmo1ckdw" path="res://Sounds/Raw/sfx_frog_croak_004.wav" id="3_janrr"]
 [ext_resource type="AudioStream" uid="uid://6lw2v4b7kyyu" path="res://Sounds/Raw/sfx_frog_croak_003.wav" id="4_1bsul"]
 [ext_resource type="AudioStream" uid="uid://bkb36j2yhtifr" path="res://Sounds/Raw/bgm_race_001.wav" id="5_1bsul"]
+[ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="6_c2r6n"]
 
 [sub_resource type="Animation" id="Animation_jylyw"]
 length = 0.001
@@ -106,7 +107,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_t8q2o")
-CheckpointLabel = NodePath("CheckpointLabel")
+CheckpointLabel = NodePath("MarginContainer/MarginContainer/CheckpointLabel")
 CountdownLabel = NodePath("Countdown/Anim/CountdownLabel")
 SfxCheckpoint = NodePath("SfxCheckpoint")
 SfxCountdown = NodePath("SfxCountdown")
@@ -114,12 +115,30 @@ SfxGo = NodePath("SfxGo")
 BgmRace = NodePath("BgmRace")
 Animation_Countdown = NodePath("Countdown/Animation_Countdown")
 
-[node name="CheckpointLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 952.0
-offset_top = 36.0
-offset_right = 1059.0
-offset_bottom = 91.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -162.0
+offset_top = 27.0
+offset_right = -35.0
+offset_bottom = 87.0
+grow_horizontal = 0
+theme = ExtResource("6_c2r6n")
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="CheckpointLabel" type="Label" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "99/99"
 horizontal_alignment = 1
