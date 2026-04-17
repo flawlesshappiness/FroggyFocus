@@ -19,6 +19,7 @@ public partial class RaceGhost : Node3D
         character.SetBodyTop(ItemType.BodyTop_Flames, Colors.OrangeRed);
         character.SetBodyPattern(ItemType.BodyPattern_Flames, new Color(1.0f, 0.75f, 0.05f));
         character.SetBodyEye(ItemType.BodyEye_Cute, Colors.White);
+        character.SetAppearanceAttachment(ItemCategory.Face, ItemType.Face_RaceGoggles, Colors.Gray, Colors.Cyan);
     }
 
     public override void _Ready()

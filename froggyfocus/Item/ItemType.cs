@@ -32,6 +32,7 @@ public enum ItemType
     Face_Monocle = 104,
     Face_Septum = 105,
     Face_Cigarette = 106,
+    Face_RaceGoggles = 107,
 
     // Colors
     Color_Default = 200,

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://kugwc2drywwr"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_iaaw3"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_ldcme"]
+[ext_resource type="PackedScene" uid="uid://cijk6e10blild" path="res://Assets/FlawLizArt/Face/race_goggles.fbx" id="4_ttmt2"]
+
+[node name="Race_Goggles" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_iaaw3")
+OnlySecondaryMeshes = []
+Type = 107
+
+[node name="race_goggles" parent="." instance=ExtResource("4_ttmt2")]
+transform = Transform3D(1.575, 0, 0, 0, 1.575, 0, 0, 0, 1.575, 0, 0, 0)
+
+[node name="race_goggles" parent="race_goggles" index="0"]
+surface_material_override/0 = ExtResource("3_ldcme")
+surface_material_override/1 = ExtResource("3_ldcme")
+
+[editable path="race_goggles"]
