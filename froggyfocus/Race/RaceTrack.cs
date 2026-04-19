@@ -5,9 +5,6 @@ using System;
 public partial class RaceTrack : Node3D
 {
     [Export]
-    public string Id;
-
-    [Export]
     public Marker3D PlayerStart;
 
     [Export]

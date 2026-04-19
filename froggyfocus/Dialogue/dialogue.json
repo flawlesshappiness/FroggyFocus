@@ -585,11 +585,20 @@
 	},
 	
 	{
-		"id": "##DEMO_RACE_FROG_INTRO##",
+		"id": "##DEMO_RACE_FROG_EASY##",
 		"entries": [
-			"##DEMO_RACE_FROG_INTRO_001##",
-			"##DEMO_RACE_FROG_INTRO_002##",
-			"##DEMO_RACE_FROG_INTRO_003##",
+			"##DEMO_RACE_FROG_EASY_001##",
+			"##DEMO_RACE_FROG_EASY_002##",
+			"##DEMO_RACE_FROG_EASY_003##",
+			"##DEMO_RACE_FROG_RACE_001##"
+		]
+	},
+	
+	{
+		"id": "##DEMO_RACE_FROG_HARD##",
+		"entries": [
+			"##DEMO_RACE_FROG_HARD_001##",
+			"##DEMO_RACE_FROG_HARD_002##",
 			"##DEMO_RACE_FROG_RACE_001##"
 		]
 	},
@@ -602,11 +611,22 @@
 	},
 	
 	{
-		"id": "##DEMO_RACE_FROG_WIN##",
+		"id": "##DEMO_RACE_FROG_WIN_EASY##",
 		"entries": [
-			"##DEMO_RACE_FROG_WIN_001##",
-			"##DEMO_RACE_FROG_WIN_002##",
-			"##DEMO_RACE_FROG_WIN_003##"
+			"##DEMO_RACE_FROG_WIN_EASY_001##",
+			"##DEMO_RACE_FROG_WIN_EASY_002##",
+			"##DEMO_RACE_FROG_WIN_EASY_003##",
+			"##DEMO_RACE_FROG_WIN_EASY_004##"
+		]
+	},
+	
+	{
+		"id": "##DEMO_RACE_FROG_WIN_HARD##",
+		"entries": [
+			"##DEMO_RACE_FROG_WIN_HARD_001##",
+			"##DEMO_RACE_FROG_WIN_HARD_002##",
+			"##DEMO_RACE_FROG_WIN_HARD_003##",
+			"##DEMO_RACE_FROG_WIN_HARD_004##"
 		]
 	},
 	

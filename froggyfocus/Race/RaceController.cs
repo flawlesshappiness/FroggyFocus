@@ -117,7 +117,6 @@ public partial class RaceController : SingletonController
     private void InitializeGhost()
     {
         if (RaceGhostController.Instance.RecordGhostEnabled) return;
-        if (string.IsNullOrEmpty(CurrentTrack.Id)) return;
 
         var start = CurrentSettings.Track.GhostStart;
         var ghost = RaceGhostController.Instance.CreateGhost();
@@ -125,7 +124,7 @@ public partial class RaceController : SingletonController
         ghost.SetTargetPosition(start.GlobalPosition);
         ghost.GlobalRotation = start.GlobalRotation;
         ghost.SetTargetRotation(start.GlobalRotation);
-        ghost.LoadData(CurrentTrack.Id);
+        ghost.LoadData(CurrentSettings.GhostInfo);
         CurrentGhost = ghost;
     }
 

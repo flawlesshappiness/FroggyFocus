@@ -2,10 +2,8 @@ using Godot;
 
 public partial class FrogRaceNpc : CharacterNpc, IInteractable
 {
-    private const string DialogueIntro = "DEMO_RACE_FROG_INTRO";
-    private const string DialogueRace = "DEMO_RACE_FROG_RACE";
-    private const string DialogueWin = "DEMO_RACE_FROG_WIN";
-    private const string DialogueLose = "DEMO_RACE_FROG_LOSE";
+    [Export]
+    public RaceInfo Info;
 
     [Export]
     public RaceTrack RaceTrack;
@@ -13,7 +11,7 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
     [Export]
     public CuteFrogCharacter Character;
 
-    private const string FlagIntro = "race_frog_intro";
+    private bool IsEasy => GameFlags.IsFlag(Info.Id, 1);
 
     public override void _Ready()
     {
@@ -37,14 +35,21 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
     {
         base.Interact();
 
-        if (GameFlags.IsFlag(FlagIntro, 0))
+        if (GameFlags.IsFlag(Info.Id, 0))
         {
-            GameFlags.SetFlag(FlagIntro, 1);
-            DialogueController.Instance.StartDialogue(DialogueIntro);
+            GameFlags.SetFlag(Info.Id, 1);
+            Data.Game.Save();
+            DialogueController.Instance.StartDialogue(Info.DialogueEasy);
+        }
+        else if (GameFlags.IsFlag(Info.Id, 2))
+        {
+            GameFlags.SetFlag(Info.Id, 3);
+            Data.Game.Save();
+            DialogueController.Instance.StartDialogue(Info.DialogueHard);
         }
         else
         {
-            DialogueController.Instance.StartDialogue(DialogueRace);
+            DialogueController.Instance.StartDialogue(Info.DialogueRace);
         }
     }
 
@@ -52,7 +57,7 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
     {
         base.DialogueEnded(id);
 
-        if (id == DialogueIntro || id == DialogueRace)
+        if (id == Info.DialogueEasy || id == Info.DialogueHard || id == Info.DialogueRace)
         {
             GameView.Instance.ShowPopup("##START_RACE##", "##YES##", "##NO##", () =>
             {
@@ -67,8 +72,11 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
 
     private void StartRace()
     {
+        var ghost = IsEasy ? Info.GhostEasy : Info.GhostHard;
+
         var settings = new RaceSettings
         {
+            GhostInfo = ghost,
             Track = RaceTrack
         };
 
@@ -79,11 +87,16 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
     {
         if (result.IsWin)
         {
-            StartDialogue(DialogueWin);
+            var dialogue = IsEasy ? Info.DialogueWinEasy : Info.DialogueWinHard;
+            StartDialogue(dialogue);
+
+            if (GameFlags.IsFlag(Info.Id, 1)) GameFlags.SetFlag(Info.Id, 2);
+            else if (GameFlags.IsFlag(Info.Id, 3)) GameFlags.SetFlag(Info.Id, 4);
+            Data.Game.Save();
         }
         else
         {
-            StartDialogue(DialogueLose);
+            StartDialogue(Info.DialogueLose);
         }
     }
 }

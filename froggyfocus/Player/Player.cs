@@ -65,9 +65,6 @@ public partial class Player : TopDownController
         PlayerInteract.OnHasInteractable += HasInteractables;
         PlayerInteract.OnNoInteractable += NoInteractables;
 
-        FocusEventLock.OnLocked += FocusEventLocked;
-        FocusEventLock.OnFree += FocusEventFree;
-
         InteractLock.OnLocked += InteractLocked;
         InteractLock.OnFree += InteractFree;
     }
@@ -75,9 +72,6 @@ public partial class Player : TopDownController
     public override void _ExitTree()
     {
         base._ExitTree();
-        FocusEventLock.OnLocked -= FocusEventLocked;
-        FocusEventLock.OnFree -= FocusEventFree;
-
         InteractLock.OnLocked -= InteractLocked;
         InteractLock.OnFree -= InteractFree;
     }
@@ -207,16 +201,6 @@ public partial class Player : TopDownController
         {
             interactable?.Interact();
         }
-    }
-
-    private void FocusEventLocked()
-    {
-        //StopWaitForFocusTarget();
-    }
-
-    private void FocusEventFree()
-    {
-        //StartWaitForFocusTarget();
     }
 
     public void SetCameraTarget()
@@ -355,6 +339,7 @@ public partial class Player : TopDownController
         if (FocusEventLock.IsLocked) return;
         if (!GameScene.Instance.HasFocusEvent()) return;
         if (!GameScene.Instance.HasFocusEventTargets()) return;
+        if (RaceController.Instance.IsStarted) return;
 
         Character.SetSearching(true);
 

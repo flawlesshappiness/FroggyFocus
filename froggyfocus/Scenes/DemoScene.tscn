@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=65 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_xetc1"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://db3tbp4x07eca" path="res://Prefabs/Nature/common_tree_dead_2.tscn" id="20_ktv6u"]
 [ext_resource type="PackedScene" uid="uid://d1otght5hc7ca" path="res://Prefabs/NPC/MagpieNPC/magpie_demo_npc.tscn" id="20_xokew"]
 [ext_resource type="PackedScene" uid="uid://dmloypqnkthro" path="res://Prefabs/Nature/common_tree_dead_3.tscn" id="21_o68er"]
+[ext_resource type="Resource" uid="uid://bl47xwaspjkrk" path="res://Race/Resources/Race_Demo.tres" id="22_n5llf"]
 [ext_resource type="PackedScene" uid="uid://2sbww4qcwiye" path="res://Prefabs/Nature/branch_swamp_001.tscn" id="22_o68er"]
 [ext_resource type="PackedScene" uid="uid://1elgfrjbfv2i" path="res://Prefabs/NPC/FrogRaceNPC/frog_race_npc.tscn" id="22_x6pk1"]
 [ext_resource type="PackedScene" uid="uid://cfg4o34c4toh8" path="res://Prefabs/Nature/branch_swamp_002.tscn" id="23_awkdr"]
@@ -264,6 +265,7 @@ transform = Transform3D(-0.0608743, 0, 0.998145, 0, 1, 0, -0.998145, 0, -0.06087
 
 [node name="FrogRaceNPC" parent="World/NPCs" node_paths=PackedStringArray("RaceTrack") instance=ExtResource("22_x6pk1")]
 transform = Transform3D(0.949107, 0, 0.314953, 0, 1, 0, -0.314953, 0, 0.949107, -22.9032, -0.8986, 24.6374)
+Info = ExtResource("22_n5llf")
 RaceTrack = NodePath("../../Race")
 
 [node name="Plants" type="Node3D" parent="World"]
@@ -1251,7 +1253,6 @@ Camera = NodePath("IntroCamera")
 
 [node name="Race" type="Node3D" parent="World" node_paths=PackedStringArray("PlayerStart", "GhostStart", "PlayerEnd", "Checkpoints", "Objects")]
 script = ExtResource("57_ixab2")
-Id = "demo"
 PlayerStart = NodePath("PlayerStart")
 GhostStart = NodePath("GhostStart")
 PlayerEnd = NodePath("PlayerEnd")

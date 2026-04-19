@@ -20,6 +20,7 @@ public partial class RaceGhost : Node3D
         character.SetBodyPattern(ItemType.BodyPattern_Flames, new Color(1.0f, 0.75f, 0.05f));
         character.SetBodyEye(ItemType.BodyEye_Cute, Colors.White);
         character.SetAppearanceAttachment(ItemCategory.Face, ItemType.Face_RaceGoggles, Colors.Gray, Colors.Cyan);
+        character.SetAppearanceAttachment(ItemCategory.Hat, ItemType.Hat_RaceHair, new Color(1f, 0.8f, 0f));
     }
 
     public override void _Ready()
@@ -46,6 +47,11 @@ public partial class RaceGhost : Node3D
     public void LoadData(string id)
     {
         GhostData = RaceGhostController.Instance.GetData(id);
+    }
+
+    public void LoadData(RaceGhostInfo info)
+    {
+        GhostData = RaceGhostController.Instance.GetData(info.Id);
     }
 
     public void PlayGhost()

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://d36jqi4pi417v"]
+
+[ext_resource type="PackedScene" uid="uid://fd0d1obdjx54" path="res://Appearance/Attachments/hair_race.tscn" id="1_47nt4"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_x47ea"]
+
+[resource]
+script = ExtResource("2_x47ea")
+Category = 0
+Type = 22
+DefaultPrimaryColor = Color(1, 0.833333, 0, 1)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
+HasSecondaryColor = false
+Prefab = ExtResource("1_47nt4")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

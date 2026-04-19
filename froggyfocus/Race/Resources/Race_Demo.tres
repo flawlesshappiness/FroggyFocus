@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RaceInfo" load_steps=4 format=3 uid="uid://bl47xwaspjkrk"]
+
+[ext_resource type="Resource" uid="uid://b6c8vio7dig3e" path="res://Race/Resources/Ghost_Demo_Easy.tres" id="1_b05w1"]
+[ext_resource type="Script" uid="uid://cbbfdrffs0t24" path="res://Race/RaceInfo.cs" id="1_uowgp"]
+[ext_resource type="Resource" uid="uid://b1ilr2hy68smb" path="res://Race/Resources/Ghost_Demo_Hard.tres" id="2_oxik1"]
+
+[resource]
+script = ExtResource("1_uowgp")
+Id = "race_demo"
+GhostEasy = ExtResource("1_b05w1")
+GhostHard = ExtResource("2_oxik1")
+DialogueEasy = "DEMO_RACE_FROG_EASY"
+DialogueHard = "DEMO_RACE_FROG_HARD"
+DialogueRace = "DEMO_RACE_FROG_RACE"
+DialogueWinEasy = "DEMO_RACE_FROG_WIN_EASY"
+DialogueWinHard = "DEMO_RACE_FROG_WIN_HARD"
+DialogueLose = "DEMO_RACE_FROG_LOSE"
+metadata/_custom_type_script = "uid://cbbfdrffs0t24"
