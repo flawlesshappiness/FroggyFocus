@@ -121,9 +121,8 @@ public partial class RaceController : SingletonController
         var start = CurrentSettings.Track.GhostStart;
         var ghost = RaceGhostController.Instance.CreateGhost();
         ghost.GlobalPosition = start.GlobalPosition;
-        ghost.SetTargetPosition(start.GlobalPosition);
         ghost.GlobalRotation = start.GlobalRotation;
-        ghost.SetTargetRotation(start.GlobalRotation);
+        ghost.SetTargetTransform(start.GlobalPosition, start.GlobalRotation);
         ghost.LoadData(CurrentSettings.GhostInfo);
         CurrentGhost = ghost;
     }

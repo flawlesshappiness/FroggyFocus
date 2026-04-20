@@ -45,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0242799)
 [node name="StaticBody3D" type="StaticBody3D" parent="Lilypad_Heart/Lilypad_Shaped" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lilypad_Heart/Lilypad_Shaped/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.58047e-05)
 shape = SubResource("ConcavePolygonShape3D_5dldv")
 
 [node name="Lilypad_Flower" parent="." instance=ExtResource("3_5dldv")]

@@ -10,6 +10,7 @@ public partial class RaceGhost : Node3D
     private AnimationPlayer Animation_Frog { get; set; }
     private Vector3 TargetPosition { get; set; }
     private Vector3 TargetRotation { get; set; }
+    private Transform3D TargetTransform { get; set; }
     private RaceGhostData GhostData { get; set; }
     private bool IsJumping { get; set; }
 
@@ -40,8 +41,8 @@ public partial class RaceGhost : Node3D
     private void Process_PositionAndRotation()
     {
         var speed = 10f;
-        GlobalPosition = GlobalPosition.Lerp(TargetPosition, speed * GameTime.DeltaTime);
-        GlobalRotation = GlobalRotation.Lerp(TargetRotation, speed * GameTime.DeltaTime);
+        var t = speed * GameTime.DeltaTime;
+        GlobalTransform = GlobalTransform.InterpolateWith(TargetTransform, t);
     }
 
     public void LoadData(string id)
@@ -51,11 +52,14 @@ public partial class RaceGhost : Node3D
 
     public void LoadData(RaceGhostInfo info)
     {
+        if (info == null) return;
         GhostData = RaceGhostController.Instance.GetData(info.Id);
     }
 
     public void PlayGhost()
     {
+        if (GhostData == null) return;
+
         IsFinished = false;
         this.StartCoroutine(Cr, "ghost");
         IEnumerator Cr()
@@ -67,8 +71,7 @@ public partial class RaceGhost : Node3D
                 while ((GameTime.Time - start) < snapshot.Time)
                     yield return null;
 
-                SetTargetPosition(snapshot.Position);
-                SetTargetRotation(snapshot.Rotation);
+                SetTargetTransform(snapshot.Position, snapshot.Rotation);
                 PlayAnimation(snapshot.Animation);
             }
 
@@ -106,13 +109,12 @@ public partial class RaceGhost : Node3D
         PlayAnimation("Armature|idle");
     }
 
-    public void SetTargetPosition(Vector3 position)
+    public void SetTargetTransform(Vector3 position, Vector3 rotation)
     {
-        TargetPosition = position;
-    }
-
-    public void SetTargetRotation(Vector3 rotation)
-    {
-        TargetRotation = rotation;
+        var offset = position - GlobalPosition;
+        var angle = rotation.Y - GlobalRotation.Y;
+        TargetTransform = GlobalTransform
+            .Translated(offset)
+            .RotatedLocal(Vector3.Up, angle);
     }
 }
