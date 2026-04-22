@@ -18,19 +18,94 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_hyq8d")
 
-[node name="FrogRaceNPC" type="Area3D" node_paths=PackedStringArray("Character", "SfxSpeak")]
+[node name="FrogRaceNPC" type="Area3D" node_paths=PackedStringArray("Character", "Animation", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_8c572")
 Character = NodePath("FrogCute")
+DialogueAnimation = ""
+Animation = NodePath("FrogCute/AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
+SpeakAnimations = Array[String](["Armature|speak_hand", "Armature|speak_nod", "Armature|speak_shake", "Armature|speak_tapping"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.503907, -0.678035)
 shape = SubResource("CylinderShape3D_xrcx1")
 
 [node name="FrogCute" parent="." instance=ExtResource("2_xrcx1")]
+DisableAnimationStates = true
 DisableAppearanceUpdates = true
+
+[node name="Skeleton3D" parent="FrogCute/frog_cute/Armature" index="0"]
+bones/1/position = Vector3(7.7273e-19, -0.00108669, 0.00325941)
+bones/1/rotation = Quaternion(0.0977202, -5.19474e-26, -1.29559e-17, 0.995214)
+bones/2/position = Vector3(-1.36019e-26, 0.00410047, -7.71109e-11)
+bones/2/rotation = Quaternion(-0.0902607, 1.18723e-07, -1.07599e-08, 0.995918)
+bones/2/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(0.00157519, 0.00327447, -0.000587218)
+bones/4/rotation = Quaternion(-0.158293, 0.119332, -0.764176, 0.613791)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(6.70573e-11, 0.00221753, 5.47978e-11)
+bones/5/rotation = Quaternion(-0.105115, -0.10517, 0.180284, 0.972311)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(2.05312e-11, 0.00145645, -4.59079e-12)
+bones/6/rotation = Quaternion(-0.111431, -0.206605, 0.269159, 0.934051)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/position = Vector3(-5.37114e-10, 0.00161082, -3.67525e-10)
+bones/7/rotation = Quaternion(0.350915, -0.0617667, 0.155729, 0.921299)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(0.00157519, -0.00148661, 0.000356866)
+bones/9/rotation = Quaternion(-0.257887, 0.239081, -0.745124, 0.566679)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/position = Vector3(-1.82406e-10, 0.00276832, 4.43171e-10)
+bones/10/rotation = Quaternion(-0.0259568, -0.111161, 0.360256, 0.925843)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/position = Vector3(-5.33894e-12, 0.001809, -2.68339e-10)
+bones/11/rotation = Quaternion(0.0394005, -0.108791, 0.314714, 0.942108)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/position = Vector3(-3.66092e-10, 0.00119806, -1.53666e-10)
+bones/12/rotation = Quaternion(0.0504763, -0.00933314, 0.126859, 0.990592)
+bones/14/position = Vector3(-0.00157519, 0.00327447, -0.000587218)
+bones/14/rotation = Quaternion(-0.158293, -0.119332, 0.764176, 0.613791)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/position = Vector3(-2.57853e-11, 0.00221753, 4.77128e-11)
+bones/15/rotation = Quaternion(-0.105115, 0.10517, -0.180284, 0.972311)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/position = Vector3(-2.05312e-11, 0.00145645, -4.59079e-12)
+bones/16/rotation = Quaternion(-0.111431, 0.206605, -0.269159, 0.934051)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/position = Vector3(5.37114e-10, 0.00161082, -3.67525e-10)
+bones/17/rotation = Quaternion(0.350915, 0.0617667, -0.155729, 0.921299)
+bones/17/scale = Vector3(1, 1, 1)
+bones/19/position = Vector3(-0.00157519, -0.00148661, 0.000356866)
+bones/19/rotation = Quaternion(-0.257887, -0.239081, 0.745124, 0.566679)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/position = Vector3(1.82406e-10, 0.00276832, 4.43171e-10)
+bones/20/rotation = Quaternion(-0.0259568, 0.111161, -0.360256, 0.925843)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/position = Vector3(5.33894e-12, 0.001809, -2.68339e-10)
+bones/21/rotation = Quaternion(0.0394005, 0.108791, -0.314714, 0.942108)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/position = Vector3(3.66092e-10, 0.00119806, -1.53666e-10)
+bones/22/rotation = Quaternion(0.0504763, 0.00933314, -0.126859, 0.990592)
+bones/24/position = Vector3(0.0049072, -0.000721394, 0.000192849)
+bones/24/rotation = Quaternion(0.00431191, 0.232923, -0.0179997, 0.972319)
+bones/24/scale = Vector3(1, 1, 1)
+bones/26/position = Vector3(0.00532999, 0.00326517, 0.000475276)
+bones/26/rotation = Quaternion(0.00884064, 0.0561205, -0.155359, 0.986223)
+bones/26/scale = Vector3(1, 1, 1)
+bones/28/position = Vector3(-0.00532999, 0.00326517, 0.000475276)
+bones/28/rotation = Quaternion(0.00884064, -0.0561205, 0.155359, 0.986223)
+bones/28/scale = Vector3(1, 1, 1)
+bones/30/position = Vector3(-0.0049072, -0.000721394, 0.000192849)
+bones/30/rotation = Quaternion(0.00431191, -0.232923, 0.0179997, 0.972319)
+bones/30/scale = Vector3(1, 1, 1)
+
+[node name="HatAttachmentGroup" parent="FrogCute/frog_cute/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -8.85596e-15, 2.38419e-07, 3.57268e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293548, 0.00405697)
+
+[node name="FaceAttachmentGroup" parent="FrogCute/frog_cute/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -8.85596e-15, 2.38419e-07, 3.57268e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293548, 0.00405697)
 
 [node name="NpcCollisionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.134243)
@@ -47,3 +122,17 @@ stream = SubResource("AudioStreamRandomizer_q6q2x")
 volume_db = -10.0
 bus = &"SFX"
 attenuation_filter_db = 0.0
+
+[editable path="FrogCute"]
+[editable path="FrogCute/frog_cute"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent2"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent4"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent5"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent3"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent6"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent7"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/Lilypad_Flower"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]

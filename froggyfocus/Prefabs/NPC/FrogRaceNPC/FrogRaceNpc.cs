@@ -39,17 +39,17 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
         {
             GameFlags.SetFlag(Info.Id, 1);
             Data.Game.Save();
-            DialogueController.Instance.StartDialogue(Info.DialogueEasy);
+            StartDialogue(Info.DialogueEasy);
         }
         else if (GameFlags.IsFlag(Info.Id, 2))
         {
             GameFlags.SetFlag(Info.Id, 3);
             Data.Game.Save();
-            DialogueController.Instance.StartDialogue(Info.DialogueHard);
+            StartDialogue(Info.DialogueHard);
         }
         else
         {
-            DialogueController.Instance.StartDialogue(Info.DialogueRace);
+            StartDialogue(Info.DialogueRace);
         }
     }
 

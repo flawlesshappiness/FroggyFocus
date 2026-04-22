@@ -41,6 +41,7 @@ RequestCompleteDialogueId = ["MAGPIE_BACKGROUND", "MAGPIE_STEALING", "MAGPIE_FLO
 DialogueAnimation = "Armature|look"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
+SpeakAnimations = Array[String](["Armature|look_tilt", "Armature|nod"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08365, -0.477417)

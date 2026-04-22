@@ -40,6 +40,7 @@ RequestCompleteDialogueId = Array[String](["MUSHROOM_BACKGROUND", "MUSHROOM_LIFE
 DialogueAnimation = "Armature|idle_dialogue"
 Animation = NodePath("AnimationStateMachine")
 SfxSpeak = NodePath("SfxSpeak")
+SpeakAnimations = Array[String](["Armature|speak_shake"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0744629, -1.95496)

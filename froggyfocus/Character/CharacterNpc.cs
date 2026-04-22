@@ -1,6 +1,8 @@
 using FlawLizArt.Animation.StateMachine;
 using Godot;
+using Godot.Collections;
 using System.Collections;
+using System.Collections.Generic;
 
 public partial class CharacterNpc : Area3D, IInteractable
 {
@@ -19,9 +21,13 @@ public partial class CharacterNpc : Area3D, IInteractable
     [Export]
     public Camera3D DialogueCamera;
 
+    [Export]
+    public Array<string> SpeakAnimations;
+
     protected bool HasActiveDialogue { get; set; }
     protected AnimationState IdleState { get; set; }
     protected AnimationState DialogueState { get; set; }
+    protected List<AnimationState> SpeakStates { get; set; } = new();
 
     protected BoolParameter param_dialogue = new BoolParameter("dialogue", false);
 
@@ -67,12 +73,30 @@ public partial class CharacterNpc : Area3D, IInteractable
         if (Animation == null) return;
 
         IdleState = Animation.CreateAnimation(IdleAnimation, true);
-        DialogueState = Animation.CreateAnimation(DialogueAnimation, true);
 
-        Animation.Connect(IdleState, DialogueState, param_dialogue.WhenTrue());
-        Animation.Connect(DialogueState, IdleState, param_dialogue.WhenFalse());
+        if (!string.IsNullOrEmpty(DialogueAnimation))
+        {
+            DialogueState = Animation.CreateAnimation(DialogueAnimation, true);
+            Animation.Connect(IdleState, DialogueState, param_dialogue.WhenTrue());
+            Animation.Connect(DialogueState, IdleState, param_dialogue.WhenFalse());
+        }
+
+        InitializeSpeakAnimations();
 
         Animation.Start(IdleState.Node);
+    }
+
+    private void InitializeSpeakAnimations()
+    {
+        if (SpeakAnimations == null) return;
+        if (SpeakAnimations.Count == 0) return;
+
+        foreach (var anim in SpeakAnimations)
+        {
+            var state = Animation.CreateAnimation(anim, false);
+            Animation.Connect(state, DialogueState ?? IdleState);
+            SpeakStates.Add(state);
+        }
     }
 
     public virtual void Interact()
@@ -92,6 +116,9 @@ public partial class CharacterNpc : Area3D, IInteractable
         if (HasActiveDialogue)
         {
             SfxSpeak?.Play();
+
+            var state = SpeakStates.Random();
+            if (state != null) Animation.SetCurrentState(state.Node);
         }
     }
 
