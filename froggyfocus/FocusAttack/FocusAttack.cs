@@ -82,9 +82,9 @@ public abstract partial class FocusAttack : Node3D
         }
     }
 
-    protected void StopCursorFocus()
+    protected void DisruptCursorFocus()
     {
-        Cursor.EndFocusTarget();
+        Cursor.DisruptFocusTarget();
     }
 
     protected void HurtFocusValue(float perc)

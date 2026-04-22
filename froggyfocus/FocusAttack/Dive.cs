@@ -20,7 +20,7 @@ public partial class Dive : FocusAttack
         {
             StartState();
             HurtFocusValue(0.1f);
-            StopCursorFocus();
+            DisruptCursorFocus();
 
             Target.Animate_Exclamation();
             yield return Target.Animate_DiveDown();

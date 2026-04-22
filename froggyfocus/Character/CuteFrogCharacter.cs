@@ -17,6 +17,7 @@ public partial class CuteFrogCharacter : FrogCharacter
     public event Action<string> OnAnimationStarted;
 
     private AnimationState state_falling;
+    private AnimationState state_surprise;
     private ShaderMaterial body_material;
 
     private BoolParameter param_moving = new BoolParameter("moving", false);
@@ -25,6 +26,9 @@ public partial class CuteFrogCharacter : FrogCharacter
     private BoolParameter param_charging = new BoolParameter("charging", false);
     private BoolParameter param_searching = new BoolParameter("searching", false);
     private BoolParameter param_cover_eyes = new BoolParameter("cover_eyes", false);
+
+    private TriggerParameter param_turn_right = new TriggerParameter("turn_right");
+    private TriggerParameter param_turn_left = new TriggerParameter("turn_left");
 
     protected override void InitializeBody()
     {
@@ -71,8 +75,11 @@ public partial class CuteFrogCharacter : FrogCharacter
         var searching = Animation.CreateAnimation($"{prefix}searching", false);
         var cover_eyes = Animation.CreateAnimation($"{prefix}cover_eyes", false);
         var uncover_eyes = Animation.CreateAnimation($"{prefix}uncover_eyes", false);
+        var turn_right = Animation.CreateAnimation($"{prefix}turn_right", false);
+        var turn_left = Animation.CreateAnimation($"{prefix}turn_left", false);
 
         state_falling = Animation.CreateAnimation($"{prefix}falling", false);
+        state_surprise = Animation.CreateAnimation($"{prefix}surprised", false);
 
         Animation.Connect(idle, walking, param_moving.WhenTrue());
         Animation.Connect(walking, idle, param_moving.WhenFalse());
@@ -97,6 +104,15 @@ public partial class CuteFrogCharacter : FrogCharacter
         Animation.Connect(walking, jump_start, param_jumping.WhenTrue());
         Animation.Connect(jump_start, jump_end);
         Animation.Connect(jump_end, idle, param_jumping.WhenFalse());
+
+        Animation.Connect(idle, turn_left, param_turn_left.WhenTriggered());
+        Animation.Connect(idle, turn_right, param_turn_right.WhenTriggered());
+        Animation.Connect(turn_left, idle);
+        Animation.Connect(turn_right, idle);
+        Animation.Connect(turn_left, tongue_out, param_tongue_out.WhenTrue());
+        Animation.Connect(turn_right, tongue_out, param_tongue_out.WhenTrue());
+
+        Animation.Connect(state_surprise, idle);
 
         Animation.Start(idle.Node);
     }
@@ -169,6 +185,21 @@ public partial class CuteFrogCharacter : FrogCharacter
     {
         base.SetCoveringEyes(cover_eyes);
         param_cover_eyes.Set(cover_eyes);
+    }
+
+    public void SetTurnLeft()
+    {
+        param_turn_left.Trigger();
+    }
+
+    public void SetTurnRight()
+    {
+        param_turn_right.Trigger();
+    }
+
+    public void SetSurprised()
+    {
+        Animation.SetCurrentState(state_surprise.Node);
     }
 
     public void PlayDustStreamPS(float duration)

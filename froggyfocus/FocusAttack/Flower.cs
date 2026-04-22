@@ -27,7 +27,7 @@ public partial class Flower : FocusAttack
         {
             StartState();
             HurtFocusValue(0.1f);
-            StopCursorFocus();
+            DisruptCursorFocus();
             SpawnFlower();
 
             Target.Animate_Exclamation();

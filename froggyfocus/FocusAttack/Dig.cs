@@ -20,7 +20,7 @@ public partial class Dig : FocusAttack
         {
             StartState();
             HurtFocusValue(0.1f);
-            StopCursorFocus();
+            DisruptCursorFocus();
 
             Target.Animate_Exclamation();
             yield return Target.Animate_DigDown();

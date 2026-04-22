@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=62 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://quha7lvsnhk5" path="res://Prefabs/FocusSkillChecks/crystal_moss.tscn" id="22_3otxw"]
 [ext_resource type="PackedScene" uid="uid://bbkdv22tcatiw" path="res://Prefabs/FocusSkillChecks/buzz.tscn" id="24_3q4gb"]
 [ext_resource type="PackedScene" uid="uid://cwlam1attaotg" path="res://Prefabs/FocusSkillChecks/stomp.tscn" id="25_8i2bm"]
+[ext_resource type="Script" uid="uid://4c48npfdwmu3" path="res://FocusEvent/FocusFrog.cs" id="26_0lb7u"]
 [ext_resource type="PackedScene" uid="uid://rum51macbtyh" path="res://Prefabs/FocusSkillChecks/dig.tscn" id="26_rqtj8"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="27_p01lx"]
 [ext_resource type="PackedScene" uid="uid://cb8q4quglh4xu" path="res://Prefabs/FocusEventBackground/swamp_land.tscn" id="30_4nfkp"]
@@ -153,7 +154,7 @@ CursorStart = NodePath("CursorStart")
 CameraIntroMarker = NodePath("IntroCameraMarker")
 MainCameraMarker = NodePath("MainCameraMarker")
 FocusTargetPrefab = ExtResource("3_2i5pb")
-Frog = NodePath("FrogCute")
+Frog = NodePath("FocusFrog")
 SkillCheckParent = NodePath("SkillChecks")
 AnimationPlayer_Frog = NodePath("AnimationPlayer_Frog")
 
@@ -220,7 +221,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 
 
 [node name="Dig" parent="SkillChecks" instance=ExtResource("26_rqtj8")]
 
-[node name="FrogCute" parent="." instance=ExtResource("27_p01lx")]
+[node name="FocusFrog" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
+script = ExtResource("26_0lb7u")
+Character = NodePath("FrogCute")
+
+[node name="FrogCute" parent="FocusFrog" instance=ExtResource("27_p01lx")]
 
 [node name="ParticleSystems" type="Node3D" parent="."]
 

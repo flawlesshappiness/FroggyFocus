@@ -151,7 +151,7 @@ public partial class SkillCheckProjectile : Node3D
         }
         else
         {
-            settings.Cursor.HurtFocusValue(Damage);
+            //settings.Cursor.HurtFocusValue(Damage);
         }
 
         PlayHurtPS();

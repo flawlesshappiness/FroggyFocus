@@ -37,6 +37,7 @@ public partial class FocusCursor : Node3D
 
     public event Action<FocusTarget> OnTarget;
     public event Action<FocusTarget> OnTargetReleased;
+    public event Action OnDisrupt;
 
     public void Initialize(FocusEvent focus_event)
     {
@@ -122,6 +123,14 @@ public partial class FocusCursor : Node3D
         OnTarget?.Invoke(CurrentTarget);
     }
 
+    public void DisruptFocusTarget()
+    {
+        if (CurrentTarget == null) return;
+
+        EndFocusTarget();
+        OnDisrupt?.Invoke();
+    }
+
     public void EndFocusTarget()
     {
         if (CurrentTarget == null) return;
@@ -148,10 +157,6 @@ public partial class FocusCursor : Node3D
     public bool IsNearTarget()
     {
         return GetNearTarget() != null;
-    }
-
-    public void HurtFocusValue(float value)
-    {
     }
 
     public void HurtFocusValuePercentage(float percentage)

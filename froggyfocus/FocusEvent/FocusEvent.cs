@@ -33,7 +33,7 @@ public partial class FocusEvent : Node3D
     public PackedScene FocusTargetPrefab;
 
     [Export]
-    public FrogCharacter Frog;
+    public FocusFrog Frog;
 
     [Export]
     public FocusSkillCheck OverrideSkillCheck;
@@ -115,6 +115,7 @@ public partial class FocusEvent : Node3D
         Cursor.Initialize(this);
         Cursor.OnTarget += Cursor_Target;
         Cursor.OnTargetReleased += Cursor_TargetReleased;
+        Cursor.OnDisrupt += Cursor_Disrupt;
     }
 
     private void InitializeSkillChecks()
@@ -134,7 +135,6 @@ public partial class FocusEvent : Node3D
         base._Process(delta);
 
         Process_Timer();
-        Process_Facing();
         Process_MainCamera();
     }
 
@@ -165,14 +165,6 @@ public partial class FocusEvent : Node3D
         if (GameTime.Time < TimerEnd) return;
 
         EndEvent();
-    }
-
-    private void Process_Facing()
-    {
-        if (!IsRunning) return;
-        if (!Cursor.HasTarget) return;
-
-        Frog.StartFacingPosition(Cursor.CurrentTarget.GlobalPosition);
     }
 
     private void Process_MainCamera()
@@ -388,6 +380,11 @@ public partial class FocusEvent : Node3D
         StopCursor();
         HideTargets();
 
+        if (HasUncaughtTargets())
+        {
+            Frog.Character.SetSurprised();
+        }
+
         TransitionView.Instance.StartTransition(new TransitionSettings
         {
             Type = TransitionType.Lilypads,
@@ -417,13 +414,20 @@ public partial class FocusEvent : Node3D
 
     private void Cursor_Target(FocusTarget target)
     {
-        Frog.StartFacingPosition(target.GlobalPosition);
+        Frog.SetTarget(target);
     }
 
     private void Cursor_TargetReleased(FocusTarget target)
     {
+        Frog.ClearTarget();
+
         if (!target.IsFocusMax) return;
         AnimateCatchTarget(target);
+    }
+
+    private void Cursor_Disrupt()
+    {
+        Frog.Character.SetSurprised();
     }
 
     private void AnimateCatchTarget(FocusTarget target)
@@ -441,10 +445,10 @@ public partial class FocusEvent : Node3D
             target.StopState();
             target.StopMoving();
 
-            Frog.StartFacingPosition(target.GlobalPosition);
+            Frog.TurnToTarget(with_cooldown: false);
 
             yield return new WaitForSeconds(0.2f);
-            yield return Frog.AnimateEatTarget(target);
+            yield return Frog.Character.AnimateEatTarget(target);
 
             Cursor.Show();
             FocusCursor.MoveLock.SetLock("catch", false);
@@ -470,7 +474,7 @@ public partial class FocusEvent : Node3D
     private void SetCoveringEyes(bool is_covering)
     {
         IsCoveringEyes = is_covering;
-        Frog.SetCoveringEyes(is_covering);
+        Frog.Character.SetCoveringEyes(is_covering);
 
         if (is_covering)
         {
@@ -480,5 +484,10 @@ public partial class FocusEvent : Node3D
         {
             GameView.Instance.AnimateVignetteHide(0.5f);
         }
+    }
+
+    private bool HasUncaughtTargets()
+    {
+        return Targets.Any(x => !x.IsCaught && !x.IsFocusMax);
     }
 }
