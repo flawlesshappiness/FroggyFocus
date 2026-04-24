@@ -445,9 +445,10 @@ public partial class FocusEvent : Node3D
             target.StopState();
             target.StopMoving();
 
-            Frog.TurnToTarget(with_cooldown: false);
-
+            Frog.SetTarget(target);
             yield return new WaitForSeconds(0.2f);
+            Frog.ClearTarget();
+
             yield return Frog.Character.AnimateEatTarget(target);
 
             Cursor.Show();

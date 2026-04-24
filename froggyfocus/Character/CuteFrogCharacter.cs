@@ -29,6 +29,7 @@ public partial class CuteFrogCharacter : FrogCharacter
 
     private TriggerParameter param_turn_right = new TriggerParameter("turn_right");
     private TriggerParameter param_turn_left = new TriggerParameter("turn_left");
+    private TriggerParameter param_jump_quick = new TriggerParameter("jump_quick");
 
     protected override void InitializeBody()
     {
@@ -77,6 +78,7 @@ public partial class CuteFrogCharacter : FrogCharacter
         var uncover_eyes = Animation.CreateAnimation($"{prefix}uncover_eyes", false);
         var turn_right = Animation.CreateAnimation($"{prefix}turn_right", false);
         var turn_left = Animation.CreateAnimation($"{prefix}turn_left", false);
+        var jump_quick = Animation.CreateAnimation($"{prefix}jump_quick", false);
 
         state_falling = Animation.CreateAnimation($"{prefix}falling", false);
         state_surprise = Animation.CreateAnimation($"{prefix}surprised", false);
@@ -107,8 +109,10 @@ public partial class CuteFrogCharacter : FrogCharacter
 
         Animation.Connect(idle, turn_left, param_turn_left.WhenTriggered());
         Animation.Connect(idle, turn_right, param_turn_right.WhenTriggered());
+        Animation.Connect(idle, jump_quick, param_jump_quick.WhenTriggered());
         Animation.Connect(turn_left, idle);
         Animation.Connect(turn_right, idle);
+        Animation.Connect(jump_quick, idle);
         Animation.Connect(turn_left, tongue_out, param_tongue_out.WhenTrue());
         Animation.Connect(turn_right, tongue_out, param_tongue_out.WhenTrue());
 
@@ -200,6 +204,11 @@ public partial class CuteFrogCharacter : FrogCharacter
     public void SetSurprised()
     {
         Animation.SetCurrentState(state_surprise.Node);
+    }
+
+    public void SetJumpQuick()
+    {
+        param_jump_quick.Trigger();
     }
 
     public void PlayDustStreamPS(float duration)

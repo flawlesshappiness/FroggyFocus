@@ -7,15 +7,17 @@ public partial class FocusFrog : Node3D
 
     private Node3D Target { get; set; }
 
-    private float angle_big;
+    private float angle_must_turn;
     private float angle_small;
+    private float angle_big;
     private float turn_cooldown;
 
     public override void _Ready()
     {
         base._Ready();
-        angle_big = Mathf.DegToRad(20f);
+        angle_must_turn = Mathf.DegToRad(20f);
         angle_small = Mathf.DegToRad(5f);
+        angle_big = Mathf.DegToRad(100f);
     }
 
     public override void _Process(double delta)
@@ -29,7 +31,7 @@ public partial class FocusFrog : Node3D
         if (Target == null) return;
 
         var angle = GetAngleToTarget();
-        var is_big = Mathf.Abs(angle) > angle_big;
+        var is_big = Mathf.Abs(angle) > angle_must_turn;
 
         if (is_big)
         {
@@ -48,15 +50,16 @@ public partial class FocusFrog : Node3D
         Target = null;
     }
 
-    public void TurnToTarget(bool with_cooldown = true)
+    public void TurnToTarget()
     {
         if (Target == null) return;
-        if (GameTime.Time < turn_cooldown && with_cooldown) return;
+        if (GameTime.Time < turn_cooldown) return;
 
         turn_cooldown = GameTime.Time + 1f;
 
         var angle = GetAngleToTarget();
         var is_small = Mathf.Abs(angle) < angle_small;
+        var is_big = Mathf.Abs(angle) > angle_big;
         var is_right = angle < 0;
 
         Character.StartFacingPosition(Target.GlobalPosition);
@@ -64,6 +67,10 @@ public partial class FocusFrog : Node3D
         if (is_small)
         {
             // Do nothing
+        }
+        else if (is_big)
+        {
+            Character.SetJumpQuick();
         }
         else if (is_right)
         {
