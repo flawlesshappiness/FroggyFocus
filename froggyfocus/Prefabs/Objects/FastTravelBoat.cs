@@ -3,6 +3,20 @@ using System.Collections.Generic;
 
 public partial class FastTravelBoat : Area3D, IInteractable
 {
+    public override void _Ready()
+    {
+        base._Ready();
+        RaceController.Instance.OnCountdownStarted += Race_Start;
+        RaceController.Instance.OnTransitionToEnd += Race_End;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        RaceController.Instance.OnCountdownStarted -= Race_Start;
+        RaceController.Instance.OnTransitionToEnd -= Race_End;
+    }
+
     public void Interact()
     {
         if (HasAnyLocationUnlocked())
@@ -25,5 +39,15 @@ public partial class FastTravelBoat : Area3D, IInteractable
         }
 
         return false;
+    }
+
+    private void Race_Start()
+    {
+        this.Disable();
+    }
+
+    private void Race_End()
+    {
+        this.Enable();
     }
 }

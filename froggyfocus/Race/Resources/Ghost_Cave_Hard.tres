@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RaceGhostInfo" load_steps=2 format=3 uid="uid://diu02plwo2su0"]
+
+[ext_resource type="Script" uid="uid://byy5t84rqg6tp" path="res://Race/RaceGhostInfo.cs" id="1_u41xx"]
+
+[resource]
+script = ExtResource("1_u41xx")
+Id = "cave_hard"
+Path = "res://Race/Data/cave_hard_001.txt"
+metadata/_custom_type_script = "uid://byy5t84rqg6tp"
