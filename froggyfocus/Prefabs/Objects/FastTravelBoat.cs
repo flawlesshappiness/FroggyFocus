@@ -7,14 +7,14 @@ public partial class FastTravelBoat : Area3D, IInteractable
     {
         base._Ready();
         RaceController.Instance.OnCountdownStarted += Race_Start;
-        RaceController.Instance.OnTransitionToEnd += Race_End;
+        RaceController.Instance.OnRaceEnd += Race_End;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
         RaceController.Instance.OnCountdownStarted -= Race_Start;
-        RaceController.Instance.OnTransitionToEnd -= Race_End;
+        RaceController.Instance.OnRaceEnd -= Race_End;
     }
 
     public void Interact()
@@ -46,7 +46,7 @@ public partial class FastTravelBoat : Area3D, IInteractable
         this.Disable();
     }
 
-    private void Race_End()
+    private void Race_End(RaceResult result)
     {
         this.Enable();
     }

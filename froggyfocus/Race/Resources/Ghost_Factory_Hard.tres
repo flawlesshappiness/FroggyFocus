@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RaceGhostInfo" load_steps=2 format=3 uid="uid://csh7f33jx5bhq"]
+
+[ext_resource type="Script" uid="uid://byy5t84rqg6tp" path="res://Race/RaceGhostInfo.cs" id="1_rftyj"]
+
+[resource]
+script = ExtResource("1_rftyj")
+Id = "factory_hard"
+Path = "res://Race/Data/factory_hard_001.txt"
+metadata/_custom_type_script = "uid://byy5t84rqg6tp"

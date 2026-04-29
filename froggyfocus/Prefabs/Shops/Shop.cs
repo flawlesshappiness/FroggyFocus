@@ -22,6 +22,8 @@ public partial class Shop : Area3D, IInteractable
         base._Ready();
         ShopView.Instance.OnClosed += ShopClosed;
         DialogueController.Instance.OnDialogueEnded += DialogueEnded;
+        RaceController.Instance.OnCountdownStarted += Race_Start;
+        RaceController.Instance.OnRaceEnd += Race_End;
     }
 
     public override void _ExitTree()
@@ -29,6 +31,8 @@ public partial class Shop : Area3D, IInteractable
         base._ExitTree();
         ShopView.Instance.OnClosed -= ShopClosed;
         DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
+        RaceController.Instance.OnCountdownStarted -= Race_Start;
+        RaceController.Instance.OnRaceEnd -= Race_End;
     }
 
     public void Interact()
@@ -131,5 +135,15 @@ public partial class Shop : Area3D, IInteractable
         {
             ShowShop();
         }
+    }
+
+    private void Race_Start()
+    {
+        this.Disable();
+    }
+
+    private void Race_End(RaceResult result)
+    {
+        this.Enable();
     }
 }
