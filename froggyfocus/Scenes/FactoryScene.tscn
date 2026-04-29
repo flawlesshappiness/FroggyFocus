@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=63 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -47,6 +47,8 @@
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="47_ix7e4"]
 [ext_resource type="PackedScene" uid="uid://cie8jtojk5lgv" path="res://Prefabs/Construction/scaffolding_bars_4m.tscn" id="49_1xjcp"]
 [ext_resource type="AudioStream" uid="uid://xtqp6ttgarq" path="res://Sounds/Raw/bgm_factory_001.wav" id="50_inr37"]
+[ext_resource type="Script" uid="uid://b6ufgjqyhc0wl" path="res://Race/RaceTrack.cs" id="50_xdgi3"]
+[ext_resource type="PackedScene" uid="uid://1elgfrjbfv2i" path="res://Prefabs/NPC/FrogRaceNPC/frog_race_npc.tscn" id="51_inr37"]
 [ext_resource type="AudioStream" uid="uid://b6c7qts3i5ebq" path="res://Sounds/Raw/bgm_factory_001_focus.wav" id="51_relfh"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="60_12tkq"]
 
@@ -1352,3 +1354,14 @@ bus = &"BGM"
 
 [node name="LeechNPC" parent="World" instance=ExtResource("60_12tkq")]
 transform = Transform3D(-0.995019, 0, -0.0996844, 0, 1, 0, 0.0996844, 0, -0.995019, -53.4572, -1.58764, 37.7762)
+
+[node name="Race" type="Node3D" parent="World" node_paths=PackedStringArray("Checkpoints", "Objects")]
+script = ExtResource("50_xdgi3")
+Checkpoints = []
+Objects = []
+
+[node name="FrogRaceNPC" parent="World/Race" instance=ExtResource("51_inr37")]
+
+[node name="Checkpoints" type="Node3D" parent="World/Race"]
+
+[node name="Objects" type="Node3D" parent="World/Race"]
