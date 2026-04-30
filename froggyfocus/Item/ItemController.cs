@@ -99,7 +99,14 @@ public partial class ItemController : ResourceController<ItemCollection, ItemInf
 
             foreach (var type in types)
             {
-                Item.SetOwned(type, false);
+                if (Item.IsNoneType(type))
+                {
+                    Item.SetOwned(type, true);
+                }
+                else
+                {
+                    Item.SetOwned(type, false);
+                }
             }
 
             v.Close();

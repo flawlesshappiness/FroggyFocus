@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 [GlobalClass]
 public partial class RaceInfo : Resource
@@ -29,4 +30,7 @@ public partial class RaceInfo : Resource
 
     [Export]
     public string DialogueLose;
+
+    [Export]
+    public Array<ItemType> RewardItemTypes;
 }

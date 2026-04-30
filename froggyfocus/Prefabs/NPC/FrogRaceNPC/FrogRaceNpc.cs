@@ -1,4 +1,5 @@
 using Godot;
+using System.Linq;
 
 public partial class FrogRaceNpc : CharacterNpc, IInteractable
 {
@@ -12,6 +13,8 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
     public CuteFrogCharacter Character;
 
     private bool IsEasy => GameFlags.IsFlag(Info.Id, 1);
+    private const string IntroFlag = "race_frog_intro";
+    private const string IntroDialogue = "RACE_FROG_INTRO";
 
     public override void _Ready()
     {
@@ -35,7 +38,13 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
     {
         base.Interact();
 
-        if (GameFlags.IsFlag(Info.Id, 0))
+        if (GameFlags.IsFlag(IntroFlag, 0))
+        {
+            GameFlags.SetFlag(IntroFlag, 1);
+            Data.Game.Save();
+            StartDialogue(IntroDialogue);
+        }
+        else if (GameFlags.IsFlag(Info.Id, 0))
         {
             GameFlags.SetFlag(Info.Id, 1);
             Data.Game.Save();
@@ -67,6 +76,24 @@ public partial class FrogRaceNpc : CharacterNpc, IInteractable
             {
 
             });
+        }
+        else if (id == Info.DialogueWinEasy && !Item.IsNoneType(Info.RewardItemTypes.FirstOrDefault()))
+        {
+            var item_shown = false;
+            foreach (var type in Info.RewardItemTypes)
+            {
+                if (Item.IsNoneType(type)) continue;
+
+                Item.MakeOwned(type);
+
+                if (!item_shown)
+                {
+                    item_shown = true;
+                    UnlockView.Instance.ShowItemUnlock(type);
+                }
+            }
+
+            Data.Game.Save();
         }
     }
 
