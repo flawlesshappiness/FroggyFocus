@@ -59,6 +59,7 @@ public partial class FocusTarget : Node3D
     private Coroutine state_cr;
     private State state;
     private float time_cursor_tick;
+    private bool is_dug_down;
 
     private List<FocusAttack> attacks = new();
 
@@ -520,11 +521,14 @@ public partial class FocusTarget : Node3D
 
     public Coroutine Animate_DigDown()
     {
+        if (is_dug_down) return null;
+        is_dug_down = true;
         return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_down");
     }
 
     public Coroutine Animate_DigUp()
     {
+        is_dug_down = false;
         return AnimationPlayer_Character.PlayAndWaitForAnimation("dig_up");
     }
 
