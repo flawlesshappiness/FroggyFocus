@@ -15,16 +15,13 @@ public partial class FocusEvent : Node3D
     public Camera3D Camera;
 
     [Export]
-    public Camera3D IntroCamera;
+    public FocusIntroCamera IntroCamera;
 
     [Export]
     public FocusCursor Cursor;
 
     [Export]
     public Marker3D CursorStart;
-
-    [Export]
-    public Marker3D CameraIntroMarker;
 
     [Export]
     public Marker3D MainCameraMarker;
@@ -329,7 +326,25 @@ public partial class FocusEvent : Node3D
         IEnumerator Cr()
         {
             CurrentState = State.Starting;
-            yield return AnimateCameraUp();
+
+            var color = WeatherController.Instance.GetFogColor();
+            TransitionView.Instance.StartTransition(new TransitionSettings
+            {
+                Type = TransitionType.Color,
+                Color = color,
+                Duration = 1f,
+                OnTransition = OnTransition
+            });
+
+            IntroCamera.SetColor(color.Lerp(Colors.White, 0.5f));
+            yield return IntroCamera.AnimateUpToFocusEvent();
+            yield return IntroCamera.AnimateDownToFocusEvent(Camera);
+
+            FocusEventTutorialView.Instance.StartCatchTutorial();
+        }
+
+        void OnTransition()
+        {
             Show();
             StartCursor();
             HijackCamera();
@@ -339,35 +354,45 @@ public partial class FocusEvent : Node3D
             FocusEventView.Instance.SetFocusEvent(this);
             FocusEventView.Instance.Show();
             FocusEventController.Instance.FocusEventStarted(this);
-
-            yield return new WaitForSeconds(1.0f);
-
-            FocusEventTutorialView.Instance.StartCatchTutorial();
         }
     }
 
-    private Coroutine AnimateCameraUp()
+    private Coroutine TransitionFromEnd()
     {
-        return this.StartCoroutine(Cr, nameof(AnimateCameraUp));
+        return this.StartCoroutine(Cr, "transition");
         IEnumerator Cr()
         {
+            var color = WeatherController.Instance.GetFogColor();
             TransitionView.Instance.StartTransition(new TransitionSettings
             {
-                Type = TransitionType.Lilypads,
+                Type = TransitionType.Color,
+                Color = color,
                 Duration = 1f,
+                OnTransition = OnTransition
             });
 
-            CameraIntroMarker.GlobalPosition = Player.Instance.GlobalPosition.Add(y: 6f);
-            var start = Player.Instance.Camera.GlobalTransform;
-            var end = CameraIntroMarker.GlobalTransform;
-            var curve = Curves.EaseInOutQuad;
-            IntroCamera.GlobalTransform = start;
-            IntroCamera.Current = true;
-            yield return LerpEnumerator.Lerp01(1f, f =>
-            {
-                var t = curve.Evaluate(f);
-                IntroCamera.GlobalTransform = start.InterpolateWith(end, t);
-            });
+            IntroCamera.SetColor(color.Lerp(Colors.White, 0.5f));
+            yield return IntroCamera.AnimateUpFromFocusEvent(Camera);
+            yield return IntroCamera.AnimateDownFromFocusEvent();
+            Player.Instance.SetCameraTarget();
+        }
+
+        void OnTransition()
+        {
+            CurrentState = State.Idle;
+
+            // View
+            FocusEventView.Instance.Hide();
+
+            // Player
+            Player.SetAllLocks(nameof(FocusEvent), false);
+
+            // Events
+            OnEnded?.Invoke(result);
+            FocusEventController.Instance.FocusEventEnded(result);
+
+            // Save
+            Data.Game.Save();
         }
     }
 
@@ -385,31 +410,7 @@ public partial class FocusEvent : Node3D
             Frog.Character.SetSurprised();
         }
 
-        TransitionView.Instance.StartTransition(new TransitionSettings
-        {
-            Type = TransitionType.Lilypads,
-            Duration = 1.0f,
-            OnTransition = OnTransition
-        });
-
-        void OnTransition()
-        {
-            CurrentState = State.Idle;
-
-            // View
-            FocusEventView.Instance.Hide();
-
-            // Player
-            Player.Instance.SetCameraTarget();
-            Player.SetAllLocks(nameof(FocusEvent), false);
-
-            // Events
-            OnEnded?.Invoke(result);
-            FocusEventController.Instance.FocusEventEnded(result);
-
-            // Save
-            Data.Game.Save();
-        }
+        TransitionFromEnd();
     }
 
     private void Cursor_Target(FocusTarget target)

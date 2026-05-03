@@ -266,4 +266,17 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         env.FogEnabled = current_weather.IsNormalFog && FogLock.IsFree;
         env.VolumetricFogEnabled = current_weather.IsVolumetricFog && FogLock.IsFree;
     }
+
+    public Color GetFogColor()
+    {
+        var env = GameScene.Instance.WorldEnvironment.Environment;
+        if (env.FogEnabled)
+        {
+            return env.FogLightColor;
+        }
+        else
+        {
+            return env.VolumetricFogAlbedo;
+        }
+    }
 }

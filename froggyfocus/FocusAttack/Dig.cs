@@ -18,6 +18,12 @@ public partial class Dig : FocusAttack
         Coroutine.Stop(cr_run);
     }
 
+    protected override void Caught()
+    {
+        base.Caught();
+        Coroutine.Stop(cr_run);
+    }
+
     private void Run()
     {
         this.StartCoroutine(Cr, "run");
@@ -26,9 +32,14 @@ public partial class Dig : FocusAttack
             while (true)
             {
                 yield return new WaitForSeconds(rng.RandfRange(4f, 8f));
+
                 StartState();
-                HurtFocusValue(0.1f);
-                DisruptCursorFocus();
+
+                if (IsFocusTarget)
+                {
+                    HurtFocusValue(0.1f);
+                    DisruptCursorFocus();
+                }
 
                 Target.Animate_Exclamation();
                 yield return Target.Animate_DigDown();

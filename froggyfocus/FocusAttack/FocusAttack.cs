@@ -11,6 +11,7 @@ public abstract partial class FocusAttack : Node3D
 
     protected FocusTarget Target;
     protected FocusCursor Cursor => Target.FocusEvent.Cursor;
+    protected bool IsFocusTarget => Cursor.CurrentTarget == Target;
     protected bool IsActive { get; private set; }
 
     protected RandomNumberGenerator rng = new();

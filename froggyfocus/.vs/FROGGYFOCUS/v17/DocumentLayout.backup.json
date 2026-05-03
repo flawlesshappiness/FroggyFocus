@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusevent\\focusevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusevent\\focusevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusevent\\focustarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusevent\\focustarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusattack\\focusattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusattack\\focusattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusattack\\dive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusattack\\dive.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusattack\\dig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusattack\\dig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusevent\\focusevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusevent\\focusevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\focusevent\\focusintrocamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\focusevent\\focusintrocamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\camera\\thirdpersoncamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:camera\\thirdpersoncamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,40 +43,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FocusEvent.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusEvent\\FocusEvent.cs",
-              "RelativeDocumentMoniker": "FocusEvent\\FocusEvent.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusEvent\\FocusEvent.cs",
-              "RelativeToolTip": "FocusEvent\\FocusEvent.cs",
-              "ViewState": "AgIAAN8AAAAAAAAAAAAlwPMAAAANAAAAAAAAAA==",
+              "Title": "Dive.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusAttack\\Dive.cs",
+              "RelativeDocumentMoniker": "FocusAttack\\Dive.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusAttack\\Dive.cs",
+              "RelativeToolTip": "FocusAttack\\Dive.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T18:48:50.032Z",
+              "WhenOpened": "2026-05-03T00:17:49.485Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FocusTarget.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusEvent\\FocusTarget.cs",
-              "RelativeDocumentMoniker": "FocusEvent\\FocusTarget.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusEvent\\FocusTarget.cs",
-              "RelativeToolTip": "FocusEvent\\FocusTarget.cs",
-              "ViewState": "AgIAAPsBAAAAAAAAAAAlwBYCAAAnAAAAAAAAAA==",
+              "Title": "Dig.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusAttack\\Dig.cs",
+              "RelativeDocumentMoniker": "FocusAttack\\Dig.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusAttack\\Dig.cs",
+              "RelativeToolTip": "FocusAttack\\Dig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T18:40:04.188Z",
+              "WhenOpened": "2026-05-03T00:17:35.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FocusIntroCamera.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\FocusEvent\\FocusIntroCamera.cs",
+              "RelativeDocumentMoniker": "Prefabs\\FocusEvent\\FocusIntroCamera.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\FocusEvent\\FocusIntroCamera.cs",
+              "RelativeToolTip": "Prefabs\\FocusEvent\\FocusIntroCamera.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAIwDEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T23:38:59.406Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FocusAttack.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusAttack\\FocusAttack.cs",
-              "RelativeDocumentMoniker": "FocusAttack\\FocusAttack.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusAttack\\FocusAttack.cs",
-              "RelativeToolTip": "FocusAttack\\FocusAttack.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAwwEkAAAAYAAAAAAAAAA==",
+              "Title": "FocusEvent.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusEvent\\FocusEvent.cs",
+              "RelativeDocumentMoniker": "FocusEvent\\FocusEvent.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusEvent\\FocusEvent.cs",
+              "RelativeToolTip": "FocusEvent\\FocusEvent.cs",
+              "ViewState": "AgIAAF0BAAAAAAAAAAAkwHEBAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T18:38:20.774Z",
+              "WhenOpened": "2026-05-02T21:57:57.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ThirdPersonCamera.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Camera\\ThirdPersonCamera.cs",
+              "RelativeDocumentMoniker": "Camera\\ThirdPersonCamera.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Camera\\ThirdPersonCamera.cs",
+              "RelativeToolTip": "Camera\\ThirdPersonCamera.cs",
+              "ViewState": "AgIAALEAAAAAAAAAAAAxwMQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T21:50:48.994Z",
               "EditorCaption": ""
             },
             {
@@ -81,20 +111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Dig.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusAttack\\Dig.cs",
-              "RelativeDocumentMoniker": "FocusAttack\\Dig.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\FocusAttack\\Dig.cs",
-              "RelativeToolTip": "FocusAttack\\Dig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T18:37:56.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Player\\Player.cs",
@@ -107,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ItemType.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Item\\ItemType.cs",
               "RelativeDocumentMoniker": "Item\\ItemType.cs",
