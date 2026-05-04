@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=89 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -22,7 +22,14 @@
 [ext_resource type="Script" uid="uid://bbt1y7ubc2bqk" path="res://FocusAttack/Wooden.cs" id="11_bmfsg"]
 [ext_resource type="PackedScene" uid="uid://c3ccv31s7nhx0" path="res://Prefabs/FocusAttacks/WoodenStab/wooden_stab.tscn" id="12_fr8uf"]
 [ext_resource type="AudioStream" uid="uid://mvr5nhm1lqiv" path="res://Sounds/Raw/sfx_impact_water_low_003.wav" id="12_pls14"]
+[ext_resource type="Script" uid="uid://bdo5mu21pm8f2" path="res://FocusAttack/Sand.cs" id="13_2wmm3"]
 [ext_resource type="AudioStream" uid="uid://bu3w1t785m70f" path="res://Sounds/Raw/sfx_impact_water_low_004.wav" id="13_665xe"]
+[ext_resource type="Script" uid="uid://b3ra8eu4uksab" path="res://FocusAttack/Moss.cs" id="14_gvgds"]
+[ext_resource type="PackedScene" uid="uid://0vvrgiq1gj0q" path="res://Prefabs/FocusAttacks/MossBush/moss_bush.tscn" id="15_1p0mf"]
+[ext_resource type="AudioStream" uid="uid://c8rg1panv3uxv" path="res://Sounds/Raw/sfx_sand_attack_telegraph.wav" id="17_msvx1"]
+[ext_resource type="AudioStream" uid="uid://cjmnk55mbyi2k" path="res://Sounds/Raw/sfx_sand_attack.wav" id="18_gvgds"]
+[ext_resource type="Material" uid="uid://ddn607sgcif7r" path="res://Materials/ps_smoke.tres" id="24_k6dog"]
+[ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="26_70b0r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ffy"]
 transparency = 1
@@ -195,6 +202,30 @@ tracks/8/path = NodePath("Sounds/SfxDive:playing")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Particles/ps_sand_telegraph:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Particles/ps_sand_attack:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -545,6 +576,101 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_fr8uf"]
+resource_name = "sand_telegraph"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0.174533, 0), Vector3(0, -0.174533, 0), Vector3(0, 0.174533, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particles/ps_sand_telegraph:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.00867958),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_k6dog"]
+resource_name = "sand_attack"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(0.233259, 3.4822, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.436332, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particles/ps_sand_telegraph:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Particles/ps_sand_attack:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.00867958, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u4nem"]
 _data = {
 &"RESET": SubResource("Animation_u4nem"),
@@ -553,6 +679,8 @@ _data = {
 &"disappear": SubResource("Animation_gybk7"),
 &"dive_down": SubResource("Animation_vkbtb"),
 &"dive_up": SubResource("Animation_78t1s"),
+&"sand_attack": SubResource("Animation_k6dog"),
+&"sand_telegraph": SubResource("Animation_fr8uf"),
 &"scared": SubResource("Animation_rfid0"),
 &"unscared": SubResource("Animation_leg0t")
 }
@@ -624,6 +752,16 @@ streams_count = 2
 stream_0/stream = ExtResource("4_mk5ib")
 stream_1/stream = ExtResource("5_v23j6")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1p0mf"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("17_msvx1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_70b0r"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("18_gvgds")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xtdh4"]
 random_pitch = 1.1
 streams_count = 4
@@ -636,6 +774,11 @@ stream_3/stream = ExtResource("13_665xe")
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("6_u4nem")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y0f88"]
+streams_count = 1
+stream_0/stream = ExtResource("26_70b0r")
+stream_0/weight = 1.1
 
 [sub_resource type="Curve" id="Curve_nimdh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -763,6 +906,60 @@ albedo_texture = ExtResource("3_a4ffy")
 material = SubResource("StandardMaterial3D_mfarc")
 orientation = 1
 
+[sub_resource type="Curve" id="Curve_2wmm3"]
+_data = [Vector2(0, 0), 0.0, 7.96504, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.337911, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gpf0e"]
+curve = SubResource("Curve_2wmm3")
+
+[sub_resource type="Curve" id="Curve_msvx1"]
+_data = [Vector2(0, 0.7), 0.0, 0.715183, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gvgds"]
+curve = SubResource("Curve_msvx1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1p0mf"]
+emission_shape = 3
+emission_box_extents = Vector3(0.6, 0, 0.6)
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_gvgds")
+color = Color(0.66, 0.5852, 0.4356, 1)
+alpha_curve = SubResource("CurveTexture_gpf0e")
+
+[sub_resource type="QuadMesh" id="QuadMesh_gpf0e"]
+material = ExtResource("24_k6dog")
+
+[sub_resource type="Curve" id="Curve_k6dog"]
+_data = [Vector2(0, 0), 0.0, 7.96504, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.337911, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2wmm3"]
+curve = SubResource("Curve_k6dog")
+
+[sub_resource type="Curve" id="Curve_gpf0e"]
+_data = [Vector2(0, 0), 0.0, 0.22809, 0, 0, Vector2(1, 1), 2.21178, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_msvx1"]
+curve = SubResource("Curve_gpf0e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gvgds"]
+lifetime_randomness = 0.3
+direction = Vector3(0, 0.1, -1)
+spread = 5.0
+initial_velocity_min = 2.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_msvx1")
+color = Color(0.66, 0.5852, 0.4356, 1)
+alpha_curve = SubResource("CurveTexture_2wmm3")
+
 [node name="FocusTarget" type="Node3D" node_paths=PackedStringArray("NavAgent", "CharacterParent", "FocusCircle", "PsWaterRipples", "AnimationPlayer_Glow", "AnimationPlayer_Character", "AnimationPlayer_Exclamation")]
 script = ExtResource("1_hmctk")
 NavAgent = NodePath("NavigationAgent3D")
@@ -781,6 +978,7 @@ target_desired_distance = 0.1
 [node name="Anim" type="Node3D" parent="."]
 
 [node name="Parent" type="Node3D" parent="Anim"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0)
 
 [node name="Beetle" parent="Anim/Parent" instance=ExtResource("3_leg0t")]
 visible = false
@@ -820,6 +1018,20 @@ script = ExtResource("11_bmfsg")
 WoodPrefab = ExtResource("12_fr8uf")
 Type = 5
 
+[node name="Sand" type="Node3D" parent="Attacks" node_paths=PackedStringArray("PsSandAttack", "SfxTelegraph", "SfxAttack")]
+script = ExtResource("13_2wmm3")
+FlashColor = Color(0.84, 0.7581, 0.5124, 1)
+PsSandAttack = NodePath("../../Particles/ps_sand_attack")
+SfxTelegraph = NodePath("../../Sounds/SfxSandTelegraph")
+SfxAttack = NodePath("../../Sounds/SfxSandAttack")
+Type = 6
+
+[node name="Moss" type="Node3D" parent="Attacks" node_paths=PackedStringArray("SfxCreateBush")]
+script = ExtResource("14_gvgds")
+SfxCreateBush = NodePath("../../Sounds/SfxBush")
+MossBushPrefab = ExtResource("15_1p0mf")
+Type = 8
+
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 mesh = SubResource("QuadMesh_mfarc")
@@ -846,6 +1058,16 @@ libraries = {
 stream = SubResource("AudioStreamRandomizer_u4nem")
 bus = &"SFX"
 
+[node name="SfxSandTelegraph" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_1p0mf")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxSandAttack" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_70b0r")
+volume_db = -5.0
+bus = &"SFX"
+
 [node name="SfxDive" type="AudioStreamPlayer" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_xtdh4")
 volume_db = -10.0
@@ -853,6 +1075,11 @@ bus = &"SFX"
 
 [node name="SfxHide" type="AudioStreamPlayer" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_nimdh")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxBush" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_y0f88")
 volume_db = -10.0
 bus = &"SFX"
 
@@ -890,3 +1117,17 @@ amount = 4
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_a4ffy")
 draw_pass_1 = SubResource("QuadMesh_mk5ib")
+
+[node name="ps_sand_telegraph" type="GPUParticles3D" parent="Particles"]
+emitting = false
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_1p0mf")
+draw_pass_1 = SubResource("QuadMesh_gpf0e")
+
+[node name="ps_sand_attack" type="GPUParticles3D" parent="Particles"]
+emitting = false
+amount = 60
+explosiveness = 0.9
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_gvgds")
+draw_pass_1 = SubResource("QuadMesh_gpf0e")

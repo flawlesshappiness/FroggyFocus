@@ -257,6 +257,7 @@ public partial class FocusTarget : Node3D
     public void Caught()
     {
         IsCaught = true;
+        ResetCharacterAnimation();
         OnCaught?.Invoke();
     }
 
@@ -564,5 +565,15 @@ public partial class FocusTarget : Node3D
     public Coroutine Animate_Exclamation()
     {
         return AnimationPlayer_Exclamation.PlayAndWaitForAnimation("show");
+    }
+
+    public Coroutine Animate_SandTelegraph()
+    {
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("sand_telegraph");
+    }
+
+    public Coroutine Animate_SandAttack()
+    {
+        return AnimationPlayer_Character.PlayAndWaitForAnimation("sand_attack");
     }
 }

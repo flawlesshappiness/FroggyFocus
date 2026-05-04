@@ -26,7 +26,7 @@ public partial class Dive : FocusAttack
 
     private void Run()
     {
-        this.StartCoroutine(Cr, "run");
+        cr_run = this.StartCoroutine(Cr, "run");
         IEnumerator Cr()
         {
             while (true)

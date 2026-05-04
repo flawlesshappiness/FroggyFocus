@@ -12,6 +12,7 @@ public abstract partial class FocusAttack : Node3D
     protected FocusTarget Target;
     protected FocusCursor Cursor => Target.FocusEvent.Cursor;
     protected bool IsFocusTarget => Cursor.CurrentTarget == Target;
+    protected bool IsCoveringEyes => Target.FocusEvent.IsCoveringEyes;
     protected bool IsActive { get; private set; }
 
     protected RandomNumberGenerator rng = new();
@@ -90,6 +91,9 @@ public abstract partial class FocusAttack : Node3D
 
     protected void HurtFocusValue(float perc)
     {
-        Target.HurtFocusValue(perc);
+        if (Cursor.HasTarget)
+        {
+            Cursor.CurrentTarget.HurtFocusValue(perc);
+        }
     }
 }

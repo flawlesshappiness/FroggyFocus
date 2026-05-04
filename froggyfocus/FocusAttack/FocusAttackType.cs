@@ -6,4 +6,7 @@ public enum FocusAttackType
     Flower,
     Mushroom,
     Wooden,
+    Sand,
+    Crystal,
+    Moss,
 }

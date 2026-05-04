@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dd62er1c0gk4t"]
+[gd_scene load_steps=17 format=3 uid="uid://dd62er1c0gk4t"]
 
 [ext_resource type="Script" uid="uid://da7ha716s0346" path="res://FocusSkillCheck/SkillCheckMossBush.cs" id="1_6vv2i"]
 [ext_resource type="Material" uid="uid://cukhg4fyffggk" path="res://Materials/Plant_Dark.tres" id="1_ekc78"]
+[ext_resource type="Material" uid="uid://bh2yt4h1isf13" path="res://Materials/plant_grass_tuft_small.tres" id="3_prjp0"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_01uvx"]
 radius = 0.3
@@ -14,6 +15,9 @@ height = 0.4
 [sub_resource type="SphereMesh" id="SphereMesh_xh3rp"]
 radius = 0.3
 height = 0.6
+
+[sub_resource type="QuadMesh" id="QuadMesh_ij8i3"]
+material = ExtResource("3_prjp0")
 
 [sub_resource type="Animation" id="Animation_prjp0"]
 length = 0.001
@@ -206,6 +210,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0338159, 0.228761, -0.0130
 mesh = SubResource("SphereMesh_xh3rp")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_ekc78")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1.275, 0, 0, 0, 1.08422, -0.670885, 0, 0.670885, 1.08422, 0, 0.179234, 0.319173)
+mesh = SubResource("QuadMesh_ij8i3")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(-1.235, -9.81227e-08, -1.58577e-07, 0, 1.05021, -0.649837, 1.8648e-07, -0.649837, -1.05021, -0.105366, 0.182069, -0.463978)
+mesh = SubResource("QuadMesh_ij8i3")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(-5.85733e-08, 0.705087, 1.1395, 2.11566e-15, 1.1395, -0.705087, -1.34, -3.08203e-08, -4.9809e-08, 0.344372, 0.182069, 0.0573613)
+mesh = SubResource("QuadMesh_ij8i3")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(-5.3765e-08, -0.647207, -1.04596, 1.09222e-15, 1.04596, -0.647207, 1.23, -2.82903e-08, -4.57202e-08, -0.388193, 0.235288, 0.0573613)
+mesh = SubResource("QuadMesh_ij8i3")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(-1.06521, -0.323603, -0.522978, 2.91298e-15, 1.04596, -0.647207, 0.615, -0.560497, -0.905824, -0.260353, 0.351543, -0.19307)
+mesh = SubResource("QuadMesh_ij8i3")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(1.06521, 0.323603, 0.522977, -4.17285e-08, 1.04596, -0.647207, -0.615, 0.560497, 0.905824, 0.0772144, 0.351543, 0.19144)
+mesh = SubResource("QuadMesh_ij8i3")
+
+[node name="MeshInstance3D16" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(-0.869741, 0.457644, 0.739602, -9.87306e-08, 1.04596, -0.647207, -0.869741, -0.457644, -0.739602, 0.230283, 0.351543, -0.188697)
+mesh = SubResource("QuadMesh_ij8i3")
+
+[node name="MeshInstance3D17" type="MeshInstance3D" parent="Anim"]
+transform = Transform3D(0.614999, -0.560497, -0.905824, -9.87306e-08, 1.04596, -0.647207, 1.06521, 0.323603, 0.522977, -0.16555, 0.351543, 0.119907)
+mesh = SubResource("QuadMesh_ij8i3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
