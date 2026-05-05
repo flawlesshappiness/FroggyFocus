@@ -1,0 +1,374 @@
+[gd_scene load_steps=8 format=3 uid="uid://qs1cjfkykhw8"]
+
+[ext_resource type="Script" uid="uid://cv6nfu7v1rufv" path="res://Effect/AnimationEffectGroup.cs" id="1_4xr54"]
+[ext_resource type="PackedScene" uid="uid://bpe76movbdd5s" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_long_piece.fbx" id="2_2ibwd"]
+[ext_resource type="Texture2D" uid="uid://cc1g3dchqsex4" path="res://Assets/KenneyNL/Particles/star_09.png" id="3_0cf3j"]
+[ext_resource type="Texture2D" uid="uid://cdugd1epn2k60" path="res://Assets/KenneyNL/Particles/spark_05.png" id="3_2ibwd"]
+
+[sub_resource type="Animation" id="Animation_0cf3j"]
+resource_name = "play"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("assets/pieces/piece1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-6.28319, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("assets/pieces/piece1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("assets/pieces/piece1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("assets/pieces/piece2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1, 0, -1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("assets/pieces/piece2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -6.28319)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("assets/pieces/piece2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("assets/pieces/piece3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("assets/pieces/piece3:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-6.28319, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("assets/pieces/piece3:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("assets/sparks_sprites/sparks:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("assets/glow:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("assets/glow:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_4xr54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("assets/pieces/piece1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("assets/pieces/piece1:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("assets/pieces/piece1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("assets/pieces/piece2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("assets/pieces/piece2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("assets/pieces/piece2:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("assets/pieces/piece3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("assets/pieces/piece3:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("assets/pieces/piece3:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("assets/sparks_sprites/sparks:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("assets/glow:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("assets/glow:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2jm7"]
+_data = {
+&"RESET": SubResource("Animation_4xr54"),
+&"play": SubResource("Animation_0cf3j")
+}
+
+[node name="crystal_crack_effect" type="Node3D" node_paths=PackedStringArray("AnimationPlayers")]
+script = ExtResource("1_4xr54")
+Animation = "play"
+AnimationPlayers = [NodePath("AnimationPlayer")]
+PlayOnReady = true
+DestroyDelay = 0.5
+RotationRandomness = Vector3(0, 360, 0)
+
+[node name="assets" type="Node3D" parent="."]
+
+[node name="pieces" type="Node3D" parent="assets"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="piece1" type="Node3D" parent="assets/pieces"]
+
+[node name="crystal_long_piece" parent="assets/pieces/piece1" instance=ExtResource("2_2ibwd")]
+transform = Transform3D(0.0961826, 0.110339, -0.136287, 0.0497274, 0.131898, 0.14188, 0.168155, -0.102118, 0.0359972, 0, 0, 0)
+
+[node name="piece2" type="Node3D" parent="assets/pieces"]
+
+[node name="crystal_long_piece" parent="assets/pieces/piece2" instance=ExtResource("2_2ibwd")]
+transform = Transform3D(0.119387, -0.0668249, 0.0614915, 0.087972, 0.110306, -0.0509255, -0.0225321, 0.0765958, 0.126986, 0, 0, 0)
+
+[node name="piece3" type="Node3D" parent="assets/pieces"]
+
+[node name="crystal_long_piece" parent="assets/pieces/piece3" instance=ExtResource("2_2ibwd")]
+transform = Transform3D(0.105217, 0.113898, 0.0696903, -0.0982982, 0.12612, -0.0577156, -0.0903709, -0.00457523, 0.143917, 0, 0, 0)
+
+[node name="glow" type="Sprite3D" parent="assets"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="assets/glow"]
+transform = Transform3D(0.635, 0, 0, 0, 0.635, 2.25597e-15, 0, -2.25597e-15, 0.635, 0, 0, 0)
+modulate = Color(0.57, 0.856667, 1, 0.113725)
+texture = ExtResource("3_0cf3j")
+
+[node name="sparks_sprites" type="Node3D" parent="assets"]
+transform = Transform3D(1.505, 0, 0, 0, 1.505, 0, 0, 0, 1.505, 0, 0, 0)
+
+[node name="sparks" type="Sprite3D" parent="assets/sparks_sprites"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="assets/sparks_sprites/sparks"]
+transform = Transform3D(0.18, 0, 0, 0, -7.86805e-09, 0.18, 0, -0.18, -7.86805e-09, 0.0265217, -5.63121e-09, 0.470917)
+modulate = Color(1, 1, 1, 0.470588)
+texture = ExtResource("3_2ibwd")
+
+[node name="Sprite3D2" type="Sprite3D" parent="assets/sparks_sprites/sparks"]
+transform = Transform3D(-0.128372, 0.126177, 4.44089e-16, 5.51538e-09, 5.61131e-09, 0.18, 0.126177, 0.128372, -7.86805e-09, -0.340661, -5.6312e-09, -0.28831)
+modulate = Color(1, 1, 1, 0.470588)
+texture = ExtResource("3_2ibwd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="assets/sparks_sprites/sparks"]
+transform = Transform3D(-0.0480393, -0.173471, 8.88178e-16, -7.58266e-09, 2.09987e-09, 0.18, -0.173471, 0.0480393, -7.86805e-09, 0.418974, -5.6312e-09, -0.124138)
+modulate = Color(1, 1, 1, 0.470588)
+texture = ExtResource("3_2ibwd")
+
+[node name="Sprite3D4" type="Sprite3D" parent="assets/sparks_sprites/sparks"]
+transform = Transform3D(0.0604898, -0.0666408, -1.93918e-09, -1.23115e-09, -3.73642e-09, 0.09, -0.0666408, -0.0604898, -3.42289e-09, 0.459122, -5.6312e-09, 0.119731)
+modulate = Color(1, 1, 1, 0.470588)
+texture = ExtResource("3_2ibwd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s2jm7")
+}

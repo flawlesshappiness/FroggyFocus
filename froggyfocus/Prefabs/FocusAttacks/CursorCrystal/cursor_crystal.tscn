@@ -1,0 +1,319 @@
+[gd_scene load_steps=24 format=3 uid="uid://bksa31n7n34b4"]
+
+[ext_resource type="Script" uid="uid://c0nok3smsoahp" path="res://Prefabs/FocusAttacks/CursorCrystal/CursorCrystal.cs" id="1_tolvf"]
+[ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="2_0y5dh"]
+[ext_resource type="PackedScene" uid="uid://l3k4jgusadhp" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_pillar.fbx" id="2_l6e45"]
+[ext_resource type="AudioStream" uid="uid://chsmvnuk5ocu2" path="res://Sounds/Raw/sfx_mole_show_001.wav" id="2_lcgwe"]
+[ext_resource type="AudioStream" uid="uid://t6fyf7iejqbk" path="res://Sounds/Raw/sfx_mole_show_002.wav" id="3_icqih"]
+[ext_resource type="PackedScene" uid="uid://qs1cjfkykhw8" path="res://Prefabs/Effects/crystal_crack_effect.tscn" id="3_rgiwi"]
+[ext_resource type="PackedScene" uid="uid://cba33gmpcch6" path="res://Prefabs/Effects/crystal_break_effect.tscn" id="4_agt7k"]
+[ext_resource type="PackedScene" uid="uid://bp03xna72sftw" path="res://Prefabs/Effects/crystal_charge_effect.tscn" id="4_rgiwi"]
+[ext_resource type="AudioStream" uid="uid://cr2jpl86wdybf" path="res://Sounds/Raw/sfx_crystal_crack_001.wav" id="5_gucgt"]
+[ext_resource type="AudioStream" uid="uid://cxemsbt61cpcc" path="res://Sounds/Raw/sfx_crystal_crack_002.wav" id="6_88h06"]
+[ext_resource type="AudioStream" uid="uid://exphoosul3gj" path="res://Sounds/Raw/sfx_crystal_break.wav" id="7_0y5dh"]
+[ext_resource type="AudioStream" uid="uid://btal1o60odylq" path="res://Sounds/Raw/sfx_crystal_break_charge.wav" id="8_gucgt"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l6e45"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("2_lcgwe")
+stream_1/stream = ExtResource("3_icqih")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gucgt"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("5_gucgt")
+stream_1/stream = ExtResource("6_88h06")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rgiwi"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("7_0y5dh")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_88h06"]
+streams_count = 1
+stream_0/stream = ExtResource("8_gucgt")
+
+[sub_resource type="Animation" id="Animation_agt7k"]
+resource_name = "show"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19873),
+"transitions": PackedFloat32Array(0.307786, 1),
+"update": 0,
+"values": [Vector3(0, -1.475, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSpawn:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0130194),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l6e45"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSpawn:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Anim:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gucgt"]
+resource_name = "shake"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_88h06"]
+resource_name = "hide"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.475, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0y5dh"]
+resource_name = "charge"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.9, 0.9, 0.9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_rgiwi"]
+resource_name = "charge_fail"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.9, 0.9, 0.9), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Anim:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6bbb5"]
+_data = {
+&"RESET": SubResource("Animation_l6e45"),
+&"charge": SubResource("Animation_0y5dh"),
+&"charge_fail": SubResource("Animation_rgiwi"),
+&"hide": SubResource("Animation_88h06"),
+&"shake": SubResource("Animation_gucgt"),
+&"show": SubResource("Animation_agt7k")
+}
+
+[node name="cursor_crystal" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "SizeNode", "SfxCharge", "SfxHit", "SfxBreak", "HitEffect", "ChargeEffect", "BreakEffect")]
+script = ExtResource("1_tolvf")
+AnimationPlayer = NodePath("AnimationPlayer")
+SizeNode = NodePath("Anim/Size")
+SfxCharge = NodePath("SfxCharge")
+SfxHit = NodePath("SfxHit")
+SfxBreak = NodePath("SfxBreak")
+HitEffect = NodePath("hit_effect")
+ChargeEffect = NodePath("charge_effect")
+BreakEffect = NodePath("break_effect")
+
+[node name="hit_effect" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274612, 0)
+script = ExtResource("2_0y5dh")
+EffectGroupPrefab = ExtResource("3_rgiwi")
+
+[node name="break_effect" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274612, 0)
+script = ExtResource("2_0y5dh")
+EffectGroupPrefab = ExtResource("4_agt7k")
+
+[node name="charge_effect" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.274612, 0)
+script = ExtResource("2_0y5dh")
+EffectGroupPrefab = ExtResource("4_rgiwi")
+
+[node name="Anim" type="Node3D" parent="."]
+visible = false
+
+[node name="Size" type="Node3D" parent="Anim"]
+
+[node name="crystal_pillar" parent="Anim/Size" instance=ExtResource("2_l6e45")]
+
+[node name="SfxSpawn" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_l6e45")
+bus = &"SFX"
+
+[node name="SfxHit" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_gucgt")
+bus = &"SFX"
+
+[node name="SfxBreak" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_rgiwi")
+bus = &"SFX"
+
+[node name="SfxCharge" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_88h06")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6bbb5")
+}

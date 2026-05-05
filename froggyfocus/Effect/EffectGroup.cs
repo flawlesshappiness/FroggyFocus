@@ -1,8 +1,7 @@
 using Godot;
-using Godot.Collections;
 using System.Collections;
 
-public partial class ParticleEffectGroup : Node3D
+public partial class EffectGroup : Node3D
 {
     [Export]
     public bool PlayOnReady;
@@ -14,11 +13,11 @@ public partial class ParticleEffectGroup : Node3D
     public float DestroyDelay;
 
     [Export]
-    public Array<GpuParticles3D> Particles;
+    public Vector3 RotationRandomness;
 
-    public static ParticleEffectGroup Instantiate(PackedScene prefab, Node3D parent)
+    public static EffectGroup Instantiate(PackedScene prefab, Node3D parent)
     {
-        var ps = prefab.Instantiate<ParticleEffectGroup>();
+        var ps = prefab.Instantiate<EffectGroup>();
         ps.SetParent(parent);
         ps.ClearPositionAndRotation();
         return ps;
@@ -28,6 +27,8 @@ public partial class ParticleEffectGroup : Node3D
     {
         base._Ready();
 
+        RandomizeRotation();
+
         if (PlayOnReady)
         {
             Play();
@@ -36,8 +37,6 @@ public partial class ParticleEffectGroup : Node3D
 
     public Coroutine Play(bool destroy = false)
     {
-        Particles.ForEach(x => x.Emitting = false);
-
         return this.StartCoroutine(Cr, "play");
         IEnumerator Cr()
         {
@@ -46,7 +45,7 @@ public partial class ParticleEffectGroup : Node3D
                 yield return new WaitForSeconds(PlayDelay);
             }
 
-            Particles.ForEach(x => x.Emitting = true);
+            OnPlay();
 
             if (destroy)
             {
@@ -55,10 +54,13 @@ public partial class ParticleEffectGroup : Node3D
         }
     }
 
-    public void Stop(bool destroy = false, bool immediate = false)
+    protected virtual void OnPlay()
     {
-        Particles.ForEach(x => x.Emitting = false);
 
+    }
+
+    public virtual void Stop(bool destroy = false, bool immediate = false)
+    {
         if (destroy)
         {
             Destroy(immediate);
@@ -70,5 +72,14 @@ public partial class ParticleEffectGroup : Node3D
         if (GodotObject.IsInstanceValid(this)) return null;
         if (IsQueuedForDeletion()) return null;
         return this.Destroy(immediate ? 0.0f : DestroyDelay);
+    }
+
+    private void RandomizeRotation()
+    {
+        var rng = new RandomNumberGenerator();
+        var x = rng.RandfRange(0, RotationRandomness.X);
+        var y = rng.RandfRange(0, RotationRandomness.Y);
+        var z = rng.RandfRange(0, RotationRandomness.Z);
+        RotationDegrees = new Vector3(x, y, z);
     }
 }

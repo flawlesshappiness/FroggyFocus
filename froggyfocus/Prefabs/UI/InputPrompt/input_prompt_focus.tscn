@@ -1,10 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://32jwjogrnnmr"]
+[gd_scene load_steps=8 format=3 uid="uid://32jwjogrnnmr"]
 
 [ext_resource type="PackedScene" uid="uid://cp8kbr2tvdecr" path="res://Prefabs/UI/InputPrompt/input_prompt_texture.tscn" id="1_dien6"]
 [ext_resource type="Script" uid="uid://cost6586brl1w" path="res://Prefabs/UI/InputPrompt/InputPromptFocus.cs" id="1_fmgj8"]
 
 [sub_resource type="Animation" id="Animation_pwilq"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/Center/Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fmgj8"]
+resource_name = "idle"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -36,9 +52,11 @@ tracks/0/keys = {
 "values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_fmgj8"]
-resource_name = "idle"
-length = 0.1
+[sub_resource type="Animation" id="Animation_wvw2f"]
+resource_name = "long_press"
+length = 0.8
+loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -46,16 +64,17 @@ tracks/0/path = NodePath("CenterContainer/Center/Anim:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(0.5, -2, 1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pwilq"]
 _data = {
 &"RESET": SubResource("Animation_pwilq"),
 &"idle": SubResource("Animation_fmgj8"),
+&"long_press": SubResource("Animation_wvw2f"),
 &"tapping": SubResource("Animation_wygtd")
 }
 

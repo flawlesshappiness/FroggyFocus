@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dskkwka35lnhm"]
 
-[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="1_wf5e0"]
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_wf5e0"]
 [ext_resource type="Texture2D" uid="uid://cc1g3dchqsex4" path="res://Assets/KenneyNL/Particles/star_09.png" id="2_kiytj"]
 
 [sub_resource type="Curve" id="Curve_o0fwo"]
@@ -43,9 +43,9 @@ material = SubResource("StandardMaterial3D_61g72")
 
 [node name="FocusGainEffect" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_wf5e0")
+Particles = [NodePath("PsFocusGain")]
 PlayOnReady = true
 DestroyDelay = 1.0
-Particles = [NodePath("PsFocusGain")]
 
 [node name="PsFocusGain" type="GPUParticles3D" parent="."]
 emitting = false

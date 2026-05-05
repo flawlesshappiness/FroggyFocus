@@ -95,7 +95,7 @@ public partial class RaceTrack : Node3D
     {
         foreach (var checkpoint in Checkpoints)
         {
-            checkpoint.Visible = visible;
+            checkpoint.SetEnabled(visible);
             checkpoint.AnimateHideImmediate();
             checkpoint.SetFinish(false);
         }

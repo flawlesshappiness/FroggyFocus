@@ -12,6 +12,7 @@ public partial class InputPromptFocus : Control
     {
         None,
         Tapping,
+        LongPress,
     }
 
     public void SetInputAction(string action)
@@ -24,6 +25,7 @@ public partial class InputPromptFocus : Control
         var animation = type switch
         {
             AnimationType.Tapping => "tapping",
+            AnimationType.LongPress => "long_press",
             _ => "idle"
         };
 

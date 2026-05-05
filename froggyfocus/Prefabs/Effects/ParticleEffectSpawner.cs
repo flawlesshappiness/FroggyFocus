@@ -7,8 +7,6 @@ public partial class ParticleEffectSpawner : Node3D
 
     public void Spawn()
     {
-        var node = Effect.Instantiate<ParticleEffectGroup>();
-        node.SetParent(this);
-        node.ClearPositionAndRotation();
+        ParticleEffectGroup.Instantiate(Effect, this);
     }
 }

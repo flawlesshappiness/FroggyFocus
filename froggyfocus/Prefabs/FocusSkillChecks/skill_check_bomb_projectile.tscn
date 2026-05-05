@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://v7ak1ykvbmjp"]
 
 [ext_resource type="Script" uid="uid://538qaywb41gc" path="res://FocusSkillCheck/SkillCheckProjectile.cs" id="1_cloke"]
-[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Prefabs/Effects/ParticleEffectGroup.cs" id="2_cloke"]
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="2_cloke"]
 [ext_resource type="Material" uid="uid://bs7gnasxvanql" path="res://Materials/PS_Yellow.tres" id="3_yemke"]
 [ext_resource type="PackedScene" uid="uid://b1s4wbsn8d1ly" path="res://Prefabs/Effects/ps_mushroom_explode.tscn" id="4_cloke"]
 

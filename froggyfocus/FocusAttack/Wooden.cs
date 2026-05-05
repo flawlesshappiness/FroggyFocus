@@ -65,7 +65,8 @@ public partial class Wooden : FocusAttack
         {
             var duration = 0.25f;
             var start = Target.GlobalPosition;
-            var end = start + (Target.Character.GlobalBasis.Z * Vector3.Forward).Normalized() * 2f;
+            var dir = (Target.Character.GlobalBasis.Z * Vector3.Forward).Normalized() * 2f;
+            var end = Target.GetApproximatePosition(start + dir);
             var curve = Curves.EaseOutQuad;
             yield return LerpEnumerator.Lerp01(duration, f =>
             {

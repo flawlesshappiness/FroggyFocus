@@ -339,6 +339,7 @@ public partial class FocusEvent : Node3D
             IntroCamera.SetColor(color.Lerp(Colors.White, 0.5f));
             yield return IntroCamera.AnimateUpToFocusEvent();
             yield return IntroCamera.AnimateDownToFocusEvent(Camera);
+            Camera.Current = true;
 
             FocusEventTutorialView.Instance.StartCatchTutorial();
         }
@@ -404,6 +405,8 @@ public partial class FocusEvent : Node3D
         StopTargets();
         StopCursor();
         HideTargets();
+
+        SetCoveringEyes(false);
 
         if (HasUncaughtTargets())
         {
