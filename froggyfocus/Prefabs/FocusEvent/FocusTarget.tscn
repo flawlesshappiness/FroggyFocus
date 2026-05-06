@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=101 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -32,8 +32,27 @@
 [ext_resource type="Script" uid="uid://bbkp00d1ri260" path="res://FocusAttack/Oil.cs" id="18_d2t03"]
 [ext_resource type="AudioStream" uid="uid://cjmnk55mbyi2k" path="res://Sounds/Raw/sfx_sand_attack.wav" id="18_gvgds"]
 [ext_resource type="PackedScene" uid="uid://coxlyln5k2gfw" path="res://Prefabs/FocusAttacks/CursorOil/cursor_oil.tscn" id="19_734oi"]
+[ext_resource type="Script" uid="uid://c5df7sgmcgmyw" path="res://FocusAttack/Seaweed.cs" id="20_e1xl2"]
+[ext_resource type="PackedScene" uid="uid://xg6g58uosdoe" path="res://Prefabs/Effects/ps_seaweed_fake_dig.tscn" id="21_saxd3"]
+[ext_resource type="PackedScene" uid="uid://b5gs6qsv648rn" path="res://Prefabs/Effects/ps_seaweed_spout.tscn" id="22_kdpbt"]
 [ext_resource type="Material" uid="uid://ddn607sgcif7r" path="res://Materials/ps_smoke.tres" id="24_k6dog"]
+[ext_resource type="AudioStream" uid="uid://cjujq6hhnkdkf" path="res://Sounds/Raw/sfx_step_water_high_001.wav" id="25_041kl"]
+[ext_resource type="AudioStream" uid="uid://bhlhbpuh6jvtl" path="res://Sounds/Raw/sfx_step_water_high_002.wav" id="26_5ycpc"]
 [ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="26_70b0r"]
+[ext_resource type="AudioStream" uid="uid://dr6lnaq404371" path="res://Sounds/Raw/sfx_step_water_high_003.wav" id="27_dg1gl"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saxd3"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("4_mk5ib")
+stream_1/stream = ExtResource("5_v23j6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0yq4b"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("25_041kl")
+stream_1/stream = ExtResource("26_5ycpc")
+stream_2/stream = ExtResource("27_dg1gl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ffy"]
 transparency = 1
@@ -788,7 +807,7 @@ stream_0/weight = 1.1
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_y1duc"]
+[sub_resource type="CurveTexture" id="CurveTexture_e1xl2"]
 curve = SubResource("Curve_nimdh")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gybk7"]
@@ -804,7 +823,7 @@ initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.2
 scale_max = 0.4
-scale_curve = SubResource("CurveTexture_y1duc")
+scale_curve = SubResource("CurveTexture_e1xl2")
 
 [sub_resource type="SphereMesh" id="SphereMesh_leg0t"]
 material = ExtResource("7_u4nem")
@@ -1048,7 +1067,24 @@ HitCount = Vector2i(6, 10)
 TrapPrefab = ExtResource("19_734oi")
 Type = 9
 
-[node name="Seaweed" type="Node3D" parent="Attacks"]
+[node name="Seaweed" type="Node3D" parent="Attacks" node_paths=PackedStringArray("SfxFakeDig", "SfxSpout")]
+script = ExtResource("20_e1xl2")
+PsFakeDigEffect = ExtResource("21_saxd3")
+PsSpoutEffect = ExtResource("22_kdpbt")
+SfxFakeDig = NodePath("SfxFakeDig")
+SfxSpout = NodePath("SfxSpout")
+Type = 10
+
+[node name="SfxFakeDig" type="AudioStreamPlayer" parent="Attacks/Seaweed"]
+stream = SubResource("AudioStreamRandomizer_saxd3")
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="SfxSpout" type="AudioStreamPlayer" parent="Attacks/Seaweed"]
+stream = SubResource("AudioStreamRandomizer_0yq4b")
+volume_db = -15.0
+pitch_scale = 1.2
+bus = &"SFX"
 
 [node name="Garbage" type="Node3D" parent="Attacks"]
 

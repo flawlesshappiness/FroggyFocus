@@ -49,6 +49,8 @@ public partial class FocusTarget : Node3D
     public Vector2 MoveDelay { get; private set; }
     public int MovePoints { get; private set; }
 
+    public MultiLock FocusLock = new();
+
     public event Action OnCaught;
     public event Action OnCursorEnter;
     public event Action OnCursorExit;

@@ -113,6 +113,7 @@ public partial class FocusCursor : Node3D
 
         var target = GetNearTarget();
         if (target == null) return;
+        if (target.FocusLock.IsLocked) return;
 
         CurrentTarget = target;
         CurrentTarget.SetHasCursor(true);

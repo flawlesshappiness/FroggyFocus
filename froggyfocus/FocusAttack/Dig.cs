@@ -42,15 +42,23 @@ public partial class Dig : FocusAttack
                 }
 
                 Target.Animate_Exclamation();
+                SetLock(true);
                 yield return Target.Animate_DigDown();
 
                 var position = Target.GetNextPosition();
                 Target.GlobalPosition = position;
 
+                SetLock(false);
                 yield return Target.Animate_DigUp();
 
                 EndState();
             }
         }
+    }
+
+    private void SetLock(bool locked)
+    {
+        var id = nameof(Dig);
+        Target.FocusLock.SetLock(id, locked);
     }
 }

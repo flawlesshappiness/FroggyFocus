@@ -12,7 +12,7 @@ Id = "beach_water"
 SoundEffects = [NodePath("AmbWater")]
 
 [node name="Water" parent="." instance=ExtResource("2_mb4y5")]
-transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -1.01789, 0)
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -0.0740644, 0)
 
 [node name="Circle" parent="Water" index="0"]
 surface_material_override/0 = ExtResource("3_ej1tn")

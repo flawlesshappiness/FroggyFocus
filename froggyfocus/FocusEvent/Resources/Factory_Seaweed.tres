@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=6 format=3 uid="uid://cm5mlcegogu6u"]
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=10 format=3 uid="uid://cm5mlcegogu6u"]
 
 [ext_resource type="Resource" uid="uid://b6qp4y2ey8oqk" path="res://FocusCharacter/Resources/TigerBeetle.tres" id="1_h765u"]
 [ext_resource type="Resource" uid="uid://k0kvfyx68fnd" path="res://FocusCharacter/Resources/TigerBeetle_Seaweed.tres" id="2_h514s"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_h765u"]
+[ext_resource type="Resource" uid="uid://cvxeug6l1rgvk" path="res://FocusCharacter/Resources/HorseFly_Seaweed.tres" id="3_3iacj"]
+[ext_resource type="Resource" uid="uid://joxldpuv0xuf" path="res://FocusCharacter/Resources/HorseFly.tres" id="3_h514s"]
 [ext_resource type="Resource" uid="uid://cfk0ktgcciegi" path="res://FocusCharacter/Resources/Maggot.tres" id="7_73jwn"]
+[ext_resource type="Resource" uid="uid://byqr557n1o5br" path="res://FocusCharacter/Resources/Lanternfly.tres" id="7_jug5c"]
 [ext_resource type="Resource" uid="uid://bfoqlq1ax6u82" path="res://FocusCharacter/Resources/Cockroach.tres" id="8_jug5c"]
+[ext_resource type="Resource" uid="uid://buq8htybs04o" path="res://FocusCharacter/Resources/Lanternfly_Seaweed.tres" id="8_ur56d"]
 
 [resource]
 script = ExtResource("2_h765u")
 Id = "factory_seaweed"
 TargetCount = Vector2i(2, 4)
-Characters = Array[Object]([ExtResource("1_h765u"), ExtResource("2_h514s"), ExtResource("7_73jwn"), ExtResource("8_jug5c")])
+Characters = Array[Object]([ExtResource("1_h765u"), ExtResource("2_h514s"), ExtResource("3_h514s"), ExtResource("3_3iacj"), ExtResource("7_73jwn"), ExtResource("8_jug5c"), ExtResource("7_jug5c"), ExtResource("8_ur56d")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"

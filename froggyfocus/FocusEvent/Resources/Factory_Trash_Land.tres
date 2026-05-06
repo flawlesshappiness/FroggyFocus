@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=5 format=3 uid="uid://cnow1gj1m4qfa"]
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=8 format=3 uid="uid://cnow1gj1m4qfa"]
 
 [ext_resource type="Resource" uid="uid://cfk0ktgcciegi" path="res://FocusCharacter/Resources/Maggot.tres" id="1_7nn4c"]
 [ext_resource type="Resource" uid="uid://bfoqlq1ax6u82" path="res://FocusCharacter/Resources/Cockroach.tres" id="2_jpt8j"]
 [ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="2_udhgh"]
 [ext_resource type="Resource" uid="uid://f1g3j3g1vkbl" path="res://FocusCharacter/Resources/CommonFly.tres" id="3_7lb5a"]
+[ext_resource type="Resource" uid="uid://dku4m8pbirgxs" path="res://FocusCharacter/Resources/CommonFly_Garbage.tres" id="4_jpt8j"]
+[ext_resource type="Resource" uid="uid://byqr557n1o5br" path="res://FocusCharacter/Resources/Lanternfly.tres" id="5_hvrbc"]
+[ext_resource type="Resource" uid="uid://dwq60jhimefeo" path="res://FocusCharacter/Resources/Lanternfly_Garbage.tres" id="6_5bmnq"]
 
 [resource]
 script = ExtResource("2_udhgh")
 Id = "factory_trash_land"
 TargetCount = Vector2i(2, 4)
-Characters = Array[Object]([ExtResource("1_7nn4c"), ExtResource("2_jpt8j"), ExtResource("3_7lb5a")])
+Characters = Array[Object]([ExtResource("1_7nn4c"), ExtResource("2_jpt8j"), ExtResource("3_7lb5a"), ExtResource("4_jpt8j"), ExtResource("5_hvrbc"), ExtResource("6_5bmnq")])
 metadata/_custom_type_script = "uid://bodgfn73d1jc6"
