@@ -1,5 +1,6 @@
 using FlawLizArt.FocusEvent;
 using Godot;
+using System.Collections;
 
 public partial class WoodenStab : Node3D
 {
@@ -34,7 +35,12 @@ public partial class WoodenStab : Node3D
 
     public Coroutine AnimateStab()
     {
-        return Animation.PlayAndWaitForAnimation("stab");
+        return this.StartCoroutine(Cr, "animate");
+        IEnumerator Cr()
+        {
+            yield return Animation.PlayAndWaitForAnimation("stab");
+            QueueFree();
+        }
     }
 
     public void Warn()

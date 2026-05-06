@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace FlawLizArt.FocusEvent;
 
-public partial class Wooden : FocusAttack
+public partial class Garbage : FocusAttack
 {
     [Export]
     public PackedScene WoodPrefab;
@@ -55,6 +55,46 @@ public partial class Wooden : FocusAttack
 
             yield return AnimateMoveTargetForward();
             EndState();
+        }
+    }
+
+    private Coroutine AnimateMoveTargetForward()
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateMoveTargetForward));
+        IEnumerator Cr()
+        {
+            var duration = 0.25f;
+            var start = Target.GlobalPosition;
+            var dir = (Target.Character.GlobalBasis.Z * Vector3.Forward).Normalized() * 2f;
+            var end = Target.GetApproximatePosition(start + dir);
+            var curve = Curves.EaseOutQuad;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var t = curve.Evaluate(f);
+                Target.GlobalPosition = start.Lerp(end, t);
+            });
+        }
+    }
+
+    private Coroutine AnimateMoveCursorAway()
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateMoveCursorAway));
+        IEnumerator Cr()
+        {
+            var duration = 0.4f;
+            var start = Target.GlobalPosition;
+            var end = start - (Target.Character.GlobalBasis.Z * Vector3.Forward).Normalized() * 2f;
+            var curve = Curves.EaseOutQuad;
+
+            FocusCursor.MoveLock.SetLock(nameof(Garbage), true);
+
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var t = curve.Evaluate(f);
+                Cursor.GlobalPosition = start.Lerp(end, t);
+            });
+
+            FocusCursor.MoveLock.SetLock(nameof(Garbage), false);
         }
     }
 

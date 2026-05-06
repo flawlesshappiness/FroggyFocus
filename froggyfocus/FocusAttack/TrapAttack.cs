@@ -96,22 +96,4 @@ public partial class TrapAttack<T> : FocusAttack
         node.SetParent(Target.FocusEvent);
         node.Initialize(hit_count, Target.FocusEvent);
     }
-
-    private Coroutine AnimateMoveTargetForward()
-    {
-        return this.StartCoroutine(Cr, nameof(AnimateMoveTargetForward));
-        IEnumerator Cr()
-        {
-            var duration = 0.25f;
-            var start = Target.GlobalPosition;
-            var dir = (Target.Character.GlobalBasis.Z * Vector3.Forward).Normalized() * 2f;
-            var end = Target.GetApproximatePosition(start + dir);
-            var curve = Curves.EaseOutQuad;
-            yield return LerpEnumerator.Lerp01(duration, f =>
-            {
-                var t = curve.Evaluate(f);
-                Target.GlobalPosition = start.Lerp(end, t);
-            });
-        }
-    }
 }

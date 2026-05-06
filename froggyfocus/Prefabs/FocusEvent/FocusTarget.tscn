@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=103 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -40,6 +40,8 @@
 [ext_resource type="AudioStream" uid="uid://bhlhbpuh6jvtl" path="res://Sounds/Raw/sfx_step_water_high_002.wav" id="26_5ycpc"]
 [ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="26_70b0r"]
 [ext_resource type="AudioStream" uid="uid://dr6lnaq404371" path="res://Sounds/Raw/sfx_step_water_high_003.wav" id="27_dg1gl"]
+[ext_resource type="Script" uid="uid://dfxhfhrgysnnt" path="res://FocusAttack/Garbage.cs" id="28_5ycpc"]
+[ext_resource type="PackedScene" uid="uid://8sp12mjyjuvl" path="res://Prefabs/FocusAttacks/GarbageStab/garbage_stab.tscn" id="29_dg1gl"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saxd3"]
 random_pitch = 1.1
@@ -1087,6 +1089,9 @@ pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="Garbage" type="Node3D" parent="Attacks"]
+script = ExtResource("28_5ycpc")
+WoodPrefab = ExtResource("29_dg1gl")
+Type = 11
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
