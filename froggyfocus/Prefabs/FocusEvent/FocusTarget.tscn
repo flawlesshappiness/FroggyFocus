@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=93 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dva886cuu6ksw" path="res://Sounds/Raw/sfx_swish_001.wav" id="6_u4nem"]
 [ext_resource type="Script" uid="uid://b1whxdnnnljv0" path="res://FocusAttack/Flower.cs" id="7_8w7j2"]
 [ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="7_u4nem"]
-[ext_resource type="PackedScene" uid="uid://e22foqo7y4je" path="res://Prefabs/FocusAttacks/CursorFlower/flower.tscn" id="8_pls14"]
+[ext_resource type="PackedScene" uid="uid://e22foqo7y4je" path="res://Prefabs/FocusAttacks/CursorFlower/cursor_flower.tscn" id="8_0oa1v"]
 [ext_resource type="Script" uid="uid://psopyndsf06x" path="res://FocusAttack/Mushroom.cs" id="9_s7jln"]
 [ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="10_78t1s"]
 [ext_resource type="PackedScene" uid="uid://c6qshmoaqjxck" path="res://Prefabs/FocusAttacks/FlashMushroom/mushroom.tscn" id="10_bmfsg"]
@@ -29,7 +29,9 @@
 [ext_resource type="Script" uid="uid://d00a1qru0ti7j" path="res://FocusAttack/Crystal.cs" id="16_y0f88"]
 [ext_resource type="PackedScene" uid="uid://bksa31n7n34b4" path="res://Prefabs/FocusAttacks/CursorCrystal/cursor_crystal.tscn" id="17_0oa1v"]
 [ext_resource type="AudioStream" uid="uid://c8rg1panv3uxv" path="res://Sounds/Raw/sfx_sand_attack_telegraph.wav" id="17_msvx1"]
+[ext_resource type="Script" uid="uid://bbkp00d1ri260" path="res://FocusAttack/Oil.cs" id="18_d2t03"]
 [ext_resource type="AudioStream" uid="uid://cjmnk55mbyi2k" path="res://Sounds/Raw/sfx_sand_attack.wav" id="18_gvgds"]
+[ext_resource type="PackedScene" uid="uid://coxlyln5k2gfw" path="res://Prefabs/FocusAttacks/CursorOil/cursor_oil.tscn" id="19_734oi"]
 [ext_resource type="Material" uid="uid://ddn607sgcif7r" path="res://Materials/ps_smoke.tres" id="24_k6dog"]
 [ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="26_70b0r"]
 
@@ -1007,7 +1009,7 @@ Type = 1
 
 [node name="Flower" type="Node3D" parent="Attacks"]
 script = ExtResource("7_8w7j2")
-FlowerPrefab = ExtResource("8_pls14")
+TrapPrefab = ExtResource("8_0oa1v")
 Type = 3
 
 [node name="Mushroom" type="Node3D" parent="Attacks"]
@@ -1037,8 +1039,18 @@ Type = 8
 [node name="Crystal" type="Node3D" parent="Attacks"]
 script = ExtResource("16_y0f88")
 HitCount = Vector2i(1, 3)
-CrystalPrefab = ExtResource("17_0oa1v")
+TrapPrefab = ExtResource("17_0oa1v")
 Type = 7
+
+[node name="Oil" type="Node3D" parent="Attacks"]
+script = ExtResource("18_d2t03")
+HitCount = Vector2i(6, 10)
+TrapPrefab = ExtResource("19_734oi")
+Type = 9
+
+[node name="Seaweed" type="Node3D" parent="Attacks"]
+
+[node name="Garbage" type="Node3D" parent="Attacks"]
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

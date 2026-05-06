@@ -1,5 +1,6 @@
 using Godot;
 
+[GlobalClass]
 public partial class EffectGroupSpawner : Node3D
 {
     [Export]

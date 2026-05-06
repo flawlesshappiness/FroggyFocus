@@ -1,0 +1,254 @@
+[gd_scene load_steps=18 format=3 uid="uid://coxlyln5k2gfw"]
+
+[ext_resource type="Script" uid="uid://cgidvr1pxn3c3" path="res://Prefabs/FocusAttacks/CursorOil/CursorOil.cs" id="1_hou07"]
+[ext_resource type="Material" uid="uid://bwype3h3t71r7" path="res://Materials/Oil.tres" id="2_3tjw8"]
+[ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="2_8j5kq"]
+[ext_resource type="PackedScene" uid="uid://c4hib2nh7uc4o" path="res://Prefabs/Effects/ps_oil_attack_bubbles.tscn" id="3_oeb1o"]
+[ext_resource type="AudioStream" uid="uid://duovipuu4q1bh" path="res://Sounds/Raw/sfx_balloon_pop_001.wav" id="3_onbau"]
+[ext_resource type="AudioStream" uid="uid://fhdjdefsekl4" path="res://Sounds/Raw/sfx_oil_bubbles_001.wav" id="4_jvxqm"]
+[ext_resource type="PackedScene" uid="uid://cc0jqsr56d57t" path="res://Prefabs/Effects/ps_oil_attack_explosion.tscn" id="4_xno75"]
+[ext_resource type="AudioStream" uid="uid://dtn2kptwn50cm" path="res://Sounds/Raw/sfx_oil_bubbles_002.wav" id="5_8j5kq"]
+[ext_resource type="AudioStream" uid="uid://bhoao7u4t15wf" path="res://Sounds/Raw/sfx_oil_bubbles_003.wav" id="6_oeb1o"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_onbau"]
+material = ExtResource("2_3tjw8")
+
+[sub_resource type="Animation" id="Animation_3tjw8"]
+resource_name = "show"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxBubbles:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0239434),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_onbau"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPop:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SfxBubbles:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_8hlg4"]
+resource_name = "shake"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25, 0.5),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(0.95, 0.95, 0.95), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxBubbles:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0319246),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_aqwk7"]
+resource_name = "hide"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2.2974, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPop:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8hlg4"]
+_data = {
+&"RESET": SubResource("Animation_onbau"),
+&"hide": SubResource("Animation_aqwk7"),
+&"shake": SubResource("Animation_8hlg4"),
+&"show": SubResource("Animation_3tjw8")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8hlg4"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_onbau")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xno75"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("4_jvxqm")
+stream_1/stream = ExtResource("5_8j5kq")
+stream_2/stream = ExtResource("6_oeb1o")
+
+[node name="cursor_oil" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "BubblesEffect", "ExplosionEffect", "SizeNode")]
+script = ExtResource("1_hou07")
+FlashColor = Color(0.05, 0.05, 0.05, 1)
+AnimationPlayer = NodePath("AnimationPlayer")
+BubblesEffect = NodePath("ps_bubbles")
+ExplosionEffect = NodePath("ps_explosion")
+InputPromptAnimationType = 1
+SizeNode = NodePath("Anim/Size")
+SizeRange = Vector2(1.5, 0.9)
+SizeAddition = -0.02
+
+[node name="ps_bubbles" type="Node3D" parent="."]
+script = ExtResource("2_8j5kq")
+EffectGroupPrefab = ExtResource("3_oeb1o")
+metadata/_custom_type_script = "uid://bcoah34psypiv"
+
+[node name="ps_explosion" type="Node3D" parent="."]
+script = ExtResource("2_8j5kq")
+EffectGroupPrefab = ExtResource("4_xno75")
+metadata/_custom_type_script = "uid://bcoah34psypiv"
+
+[node name="Anim" type="Node3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+visible = false
+
+[node name="Size" type="Node3D" parent="Anim"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anim/Size"]
+mesh = SubResource("SphereMesh_onbau")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8hlg4")
+}
+
+[node name="SfxPop" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8hlg4")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="SfxBubbles" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_xno75")
+max_polyphony = 5
+bus = &"SFX"

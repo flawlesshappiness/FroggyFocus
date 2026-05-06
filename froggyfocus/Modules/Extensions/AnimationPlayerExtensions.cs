@@ -30,4 +30,20 @@ public static class AnimationPlayerExtensions
             }
         }
     }
+
+    /// <summary>
+    /// Stops current animation, if same as argument, then plays animation
+    /// </summary>
+    public static void Replay(this AnimationPlayer player, string animation, double custom_blend = -1, float custom_speed = 1f, bool from_end = false, bool keep_state = false)
+    {
+        if (player.CurrentAnimation == animation)
+        {
+            player.Stop(keep_state);
+        }
+
+        player.Play(animation,
+            customBlend: custom_blend,
+            customSpeed: custom_speed,
+            fromEnd: from_end);
+    }
 }

@@ -1,52 +1,17 @@
-using Godot;
 using System.Collections;
 
 namespace FlawLizArt.FocusEvent;
 
-public partial class Flower : FocusAttack
+public partial class Flower : TrapAttack<CursorFlower>
 {
-    [Export]
-    public Vector2I HitCount = new Vector2I(3, 6);
-
-    [Export]
-    public PackedScene FlowerPrefab;
-
-    protected override void CursorEnter()
+    protected override IEnumerator AnimateCharacterTrap()
     {
-        base.CursorEnter();
-        var duration = rng.RandfRange(2, 6);
-        WaitFor(duration, Run);
-    }
+        Target.Animate_Exclamation();
+        yield return Target.Animate_DiveDown();
 
-    private void Run()
-    {
-        if (!Target.HasCursor) return;
+        var position = Target.GetNextPosition();
+        Target.GlobalPosition = position;
 
-        this.StartCoroutine(Cr, "run");
-        IEnumerator Cr()
-        {
-            StartState();
-            HurtFocusValue(0.1f);
-            DisruptCursorFocus();
-            SpawnFlower();
-
-            Target.Animate_Exclamation();
-            yield return Target.Animate_DiveDown();
-
-            var position = Target.GetNextPosition();
-            Target.GlobalPosition = position;
-
-            yield return Target.Animate_DiveUp();
-
-            EndState();
-        }
-    }
-
-    private void SpawnFlower()
-    {
-        var hit_count = HitCount.Range(Target.Difficulty);
-        var flower = FlowerPrefab.Instantiate<CursorFlower>();
-        flower.SetParent(Target.FocusEvent);
-        flower.Initialize(hit_count, Target.FocusEvent);
+        yield return Target.Animate_DiveUp();
     }
 }

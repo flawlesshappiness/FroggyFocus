@@ -15,6 +15,9 @@ public partial class FocusEventView : View
     [Export]
     public AnimatedOverlay Overlay_Flash;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_OilSplat;
+
     private FocusEvent FocusEvent { get; set; }
 
     public override void _Ready()
@@ -82,5 +85,11 @@ public partial class FocusEventView : View
             yield return overlay.AnimateHide(duration, color);
             overlay.QueueFree();
         }
+    }
+
+    public void OilSplat(float duration)
+    {
+        AnimationPlayer_OilSplat.SpeedScale = 1f / duration;
+        AnimationPlayer_OilSplat.Replay("show");
     }
 }

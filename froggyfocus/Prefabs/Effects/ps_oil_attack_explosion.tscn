@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://cc0jqsr56d57t"]
+
+[ext_resource type="Script" uid="uid://cidq1vlnfj5ld" path="res://Effect/EffectGroup.cs" id="1_arlg1"]
+[ext_resource type="Material" uid="uid://bwype3h3t71r7" path="res://Materials/Oil.tres" id="2_kn6fg"]
+
+[sub_resource type="Curve" id="Curve_c1t44"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 0.8), -0.779466, -0.779466, 0, 0, Vector2(1, 0), -5.34382, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fb6o3"]
+curve = SubResource("Curve_c1t44")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cmwh5"]
+lifetime_randomness = 0.5
+spread = 90.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -10, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_fb6o3")
+
+[sub_resource type="SphereMesh" id="SphereMesh_4sy0n"]
+material = ExtResource("2_kn6fg")
+
+[node name="ps_oil_attack_explosion" type="Node3D"]
+script = ExtResource("1_arlg1")
+PlayOnReady = true
+DestroyDelay = 1.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+amount = 50
+explosiveness = 0.9
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_cmwh5")
+draw_pass_1 = SubResource("SphereMesh_4sy0n")

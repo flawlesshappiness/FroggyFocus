@@ -1,14 +1,12 @@
-using FlawLizArt.FocusEvent;
 using Godot;
 using System.Collections;
 
-public partial class CursorCrystal : Node3D
+namespace FlawLizArt.FocusEvent;
+
+public partial class CursorCrystal : TrapObject
 {
     [Export]
     public AnimationPlayer AnimationPlayer;
-
-    [Export]
-    public Node3D SizeNode;
 
     [Export]
     public AudioStreamPlayer SfxCharge;
@@ -28,46 +26,16 @@ public partial class CursorCrystal : Node3D
     [Export]
     public EffectGroupSpawner BreakEffect;
 
-    private bool Completed => HitCount <= 0;
-
-    private int HitCount { get; set; }
-    private int HitCountMax { get; set; }
-    private FocusCursor Cursor { get; set; }
-    private FocusEvent FocusEvent { get; set; }
 
     private RandomNumberGenerator rng = new();
     private bool pressed;
     private float time_press;
 
-    public void Initialize(int hit_count, FocusEvent focus_event)
+    protected override void Started()
     {
-        FocusEvent = focus_event;
-        Cursor = focus_event.Cursor;
-        HitCountMax = hit_count;
-        HitCount = hit_count;
-
-        GlobalPosition = Cursor.GlobalPosition;
-        UpdateSize();
+        base.Started();
         AnimationPlayer.Play("show");
-        FocusCursor.MoveLock.SetLock(nameof(CursorCrystal), true);
-        FocusEventView.Instance.ShowInputPrompt("Interact", GlobalPosition.Add(z: 0.7f), InputPromptFocus.AnimationType.LongPress);
-
-        FocusEvent.OnEnded += FocusEvent_Ended;
-
         pressed = false;
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        FocusEvent.OnEnded -= FocusEvent_Ended;
-        FocusCursor.MoveLock.SetLock(nameof(CursorCrystal), false);
-        FocusEventView.Instance.HideInputPrompt();
-    }
-
-    private void FocusEvent_Ended(FocusEventResult result)
-    {
-        QueueFree();
     }
 
     private void Destroy()
@@ -111,14 +79,13 @@ public partial class CursorCrystal : Node3D
         }
     }
 
-    private void DecreaseCount()
+    protected override void DecreaseCount()
     {
-        HitCount--;
-        UpdateSize();
+        base.DecreaseCount();
 
         if (Completed)
         {
-            FocusCursor.MoveLock.SetLock(nameof(CursorCrystal), false);
+            SetCursorLock(false);
             FocusEventView.Instance.HideInputPrompt();
             SfxBreak.Play();
             BreakEffect.Spawn();
@@ -158,15 +125,5 @@ public partial class CursorCrystal : Node3D
                 SizeNode.GlobalRotationDegrees = start.Lerp(end, t);
             });
         }
-    }
-
-    private void UpdateSize() => UpdateSize(HitCount, HitCountMax);
-    private void UpdateSize(float count, float count_max)
-    {
-        var min = 0.7f;
-        var max = 0.9f + 0.05f * count_max;
-        var t = 1f - (float)count / count_max;
-        var size = Mathf.Lerp(max, min, t);
-        SizeNode.Scale = Vector3.One * size;
     }
 }

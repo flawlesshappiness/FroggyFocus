@@ -9,4 +9,7 @@ public enum FocusAttackType
     Sand,
     Crystal,
     Moss,
+    Oil,
+    Seaweed,
+    Garbage
 }
