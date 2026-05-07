@@ -341,13 +341,16 @@ public partial class Player : TopDownController
         if (!GameScene.Instance.HasFocusEventTargets()) return;
         if (RaceController.Instance.IsStarted) return;
 
+        var id = "focus_target";
+        PauseView.ToggleLock.SetLock(id, true);
         Character.SetSearching(true);
+        StartLowPassFilter();
 
         var rng = new RandomNumberGenerator();
-        cr_look_focus_target = this.StartCoroutine(Cr, "focus_target");
+        cr_look_focus_target = this.StartCoroutine(Cr, id);
         IEnumerator Cr()
         {
-            MovementLock.SetLock("focus_target", true);
+            MovementLock.SetLock(id, true);
 
             if (FocusHotSpotLock.IsFree)
             {
@@ -371,7 +374,10 @@ public partial class Player : TopDownController
 
     private void StopLookForFocusTarget()
     {
-        MovementLock.SetLock("focus_target", false);
+        var id = "focus_target";
+        PauseView.ToggleLock.SetLock(id, false);
+        MovementLock.SetLock(id, false);
+        EndLowPassFilter();
 
         if (cr_look_focus_target == null) return;
         if (!GameScene.Instance.HasFocusEvent()) return;
@@ -450,6 +456,33 @@ public partial class Player : TopDownController
                 var t = curve.Evaluate(f);
                 var value = Mathf.Lerp(start, end, t);
                 ThirdPersonCamera.SetZoomOffset(value);
+            });
+        }
+    }
+
+    private void StartLowPassFilter()
+    {
+        AnimateLowPassFilter(500, 1);
+    }
+
+    private void EndLowPassFilter()
+    {
+        AnimateLowPassFilter(20500, 1);
+    }
+
+    private void AnimateLowPassFilter(float end, float duration)
+    {
+        this.StartCoroutine(Cr, "low_pass_filter");
+        IEnumerator Cr()
+        {
+            var bus = AudioBus.Get(AudioBusNames.Master);
+            var filter = bus.GetEffect<AudioEffectLowPassFilter>();
+            var start = filter.CutoffHz;
+            var curve = Curves.EaseOutQuad;
+            yield return LerpEnumerator.Lerp01(duration, f =>
+            {
+                var t = curve.Evaluate(f);
+                filter.CutoffHz = Mathf.Lerp(start, end, t);
             });
         }
     }

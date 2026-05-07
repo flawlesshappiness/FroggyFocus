@@ -1,4 +1,8 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://cgk57lf1gagwp"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cgk57lf1gagwp"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
+resource_name = "LowPassFilter"
+cutoff_hz = 20500.0
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
@@ -7,6 +11,8 @@ damping = 0.3
 wet = 0.0
 
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectLowPassFilter_j3pel")
+bus/0/effect/0/enabled = true
 bus/1/name = &"Transition"
 bus/1/solo = false
 bus/1/mute = false
