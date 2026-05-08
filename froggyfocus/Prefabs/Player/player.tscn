@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bhuic2i3dy7q5"]
+[gd_scene load_steps=26 format=3 uid="uid://bhuic2i3dy7q5"]
 
 [ext_resource type="Script" uid="uid://c2ko138plrgx1" path="res://Player/Player.cs" id="1_hnwp3"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="2_ine62"]
@@ -10,6 +10,10 @@
 [ext_resource type="Script" uid="uid://t86h1rrv1tss" path="res://Camera/ThirdPersonCamera.cs" id="9_a00l3"]
 [ext_resource type="PackedScene" uid="uid://bgam63hrep021" path="res://Prefabs/Effects/rain_effect.tscn" id="9_dtqie"]
 [ext_resource type="PackedScene" uid="uid://c2g5o2xm6xb3" path="res://Prefabs/Effects/wind_effect.tscn" id="10_dtqie"]
+[ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="11_27c8n"]
+[ext_resource type="PackedScene" uid="uid://c0s282wi067kx" path="res://Prefabs/Effects/jump_charge_effect.tscn" id="12_nad7g"]
+[ext_resource type="AudioStream" uid="uid://de6j1ddliby8k" path="res://Sounds/Raw/sfx_jump_charge.wav" id="13_nad7g"]
+[ext_resource type="Texture2D" uid="uid://c1rui7x2wrl82" path="res://Assets/KenneyNL/Particles/light_03.png" id="14_7m7dm"]
 
 [sub_resource type="Curve" id="Curve_sysjd"]
 _limits = [0.0, 20.0, 0.0, 1.0]
@@ -28,7 +32,38 @@ height = 1.0
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sysjd"]
 radius = 1.0
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ThirdPersonCamera", "ExclamationMark", "QuestionMark", "SfxFocusTargetFound", "SfxFocusTargetStarted", "Camera")]
+[sub_resource type="Curve" id="Curve_4sfrm"]
+_data = [Vector2(0, 0), 0.0, 12.6613, 0, 0, Vector2(0.2, 1), 0.0, -2.34607, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r08wf"]
+curve = SubResource("Curve_4sfrm")
+
+[sub_resource type="Curve" id="Curve_ybo73"]
+_data = [Vector2(0, 0.2), 0.0, 0.949599, 0, 0, Vector2(1, 1), 0.613351, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sf0qn"]
+curve = SubResource("Curve_ybo73")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j7wlx"]
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_sf0qn")
+color = Color(1, 1, 1, 0.588235)
+alpha_curve = SubResource("CurveTexture_r08wf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yi7wc"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("14_7m7dm")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6af3y"]
+material = SubResource("StandardMaterial3D_yi7wc")
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ThirdPersonCamera", "ExclamationMark", "QuestionMark", "JumpChargeEffect", "PsJumpChargeMax", "SfxJumpCharge", "SfxFocusTargetFound", "SfxFocusTargetStarted", "Camera")]
 collision_layer = 2
 script = ExtResource("1_hnwp3")
 MoveSpeed = 2.0
@@ -37,8 +72,11 @@ Character = NodePath("FrogCute")
 ThirdPersonCamera = NodePath("ThirdPersonCamera")
 ExclamationMark = NodePath("FrogCute/ExclamationMark")
 QuestionMark = NodePath("FrogCute/QuestionMark")
-SfxFocusTargetFound = NodePath("SfxFocusTargetFound")
-SfxFocusTargetStarted = NodePath("SfxFocusTargetStarted")
+JumpChargeEffect = NodePath("Effects/JumpChargeEffect")
+PsJumpChargeMax = NodePath("Effects/ps_jump_charge_max")
+SfxJumpCharge = NodePath("Sounds/SfxJumpCharge")
+SfxFocusTargetFound = NodePath("Sounds/SfxFocusTargetFound")
+SfxFocusTargetStarted = NodePath("Sounds/SfxFocusTargetStarted")
 JumpLengthCurve = SubResource("Curve_sysjd")
 JumpHeightCurve = SubResource("Curve_21ygf")
 Camera = NodePath("ThirdPersonCamera/SpringArm3D/Camera3D")
@@ -65,16 +103,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.946484, -0.547889)
 [node name="QuestionMark" parent="FrogCute" instance=ExtResource("6_tt850")]
 transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.894119, -0.435538)
 
-[node name="SfxFocusTargetFound" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("7_ine62")
-bus = &"SFX"
-attenuation_filter_db = 0.0
-
-[node name="SfxFocusTargetStarted" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("8_m5xj4")
-bus = &"SFX"
-attenuation_filter_db = 0.0
-
 [node name="ThirdPersonCamera" type="Node3D" parent="." node_paths=PackedStringArray("Player", "Camera", "SpringArm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.768355, 0)
 script = ExtResource("9_a00l3")
@@ -93,3 +121,36 @@ current = true
 
 [node name="WindEffect" parent="." instance=ExtResource("10_dtqie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Sounds" type="Node3D" parent="."]
+
+[node name="SfxFocusTargetFound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("7_ine62")
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="SfxFocusTargetStarted" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("8_m5xj4")
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="SfxJumpCharge" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("13_nad7g")
+bus = &"SFX"
+
+[node name="Effects" type="Node3D" parent="."]
+
+[node name="JumpChargeEffect" type="Node3D" parent="Effects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+script = ExtResource("11_27c8n")
+EffectGroupPrefab = ExtResource("12_nad7g")
+metadata/_custom_type_script = "uid://bcoah34psypiv"
+
+[node name="ps_jump_charge_max" type="GPUParticles3D" parent="Effects"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.01, 0)
+emitting = false
+amount = 2
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_j7wlx")
+draw_pass_1 = SubResource("QuadMesh_6af3y")

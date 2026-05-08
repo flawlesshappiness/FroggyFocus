@@ -9,4 +9,5 @@ public partial class OptionsData
     public int FadePlantsIndex { get; set; } = 0;
     public bool CatchTutorialEnabled { get; set; } = false;
     public bool CollectBugSoundEnabled { get; set; } = true;
+    public bool JumpChargeEffectEnabled { get; set; } = false;
 }

@@ -31,12 +31,33 @@ public partial class OptionsContainer : ControlScript
     [Export]
     public OptionButton CollectBugSoundOptionButton;
 
+    [Export]
+    public OptionButton JumpChargeEffectOptionButton;
+
     public static Action OnUIScaleChanged;
     public static Action<int> OnGamepadDisplayChanged;
-    public static Action<int> OnCutsceneTypeChanged;
     public event Action BackPressed;
 
     private bool showing;
+    private List<OptionButtonMap> option_buttons = new();
+
+    private class OptionButtonMap
+    {
+        public OptionButton OptionButton { get; set; }
+        public Func<int> Get { get; set; }
+        public Action<int> Set { get; set; }
+
+        public OptionButtonMap(OptionButton button)
+        {
+            OptionButton = button;
+            OptionButton.ItemSelected += SetValue;
+        }
+
+        private void SetValue(long l)
+        {
+            Set((int)l);
+        }
+    }
 
     public override void _Ready()
     {
@@ -45,14 +66,57 @@ public partial class OptionsContainer : ControlScript
         EnvironmentSlider.ValueChanged += EnvironmentVolume_ValueChanged;
         CameraSensitivtySlider.ValueChanged += CameraSensitivity_ValueChanged;
         UIScaleOptions.IndexChanged += UIScaleOptions_IndexChanged;
-        GamepadDisplayOptionButton.ItemSelected += GamepadDisplayOptionButton_ItemSelected;
-        CutsceneTypeOptionButton.ItemSelected += CutsceneTypeOptionButton_ItemSelected;
-        FadePlantsOptionButton.ItemSelected += FadePlantsOptionButton_ItemSelected;
-        CatchBugTutorialOptionButton.ItemSelected += CatchBugTutorialOptionButton_ItemSelected;
-        CollectBugSoundOptionButton.ItemSelected += CollectBugSoundOptionButton_ItemSelected;
 
+        InitializeOptionButtons();
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
-        FadePlantsOptionButton_ItemSelected(Data.Options.FadePlantsIndex);
+        UpdateFadePlantsOption();
+    }
+
+    private void InitializeOptionButtons()
+    {
+        option_buttons.Add(new OptionButtonMap(GamepadDisplayOptionButton)
+        {
+            Get = () => Data.Options.GamepadDisplayIndex,
+            Set = i =>
+            {
+                Data.Options.GamepadDisplayIndex = i;
+                OnGamepadDisplayChanged?.Invoke(i);
+            }
+        });
+
+        option_buttons.Add(new OptionButtonMap(CutsceneTypeOptionButton)
+        {
+            Get = () => Data.Options.CutsceneTypeIndex,
+            Set = i => Data.Options.CutsceneTypeIndex = i
+        });
+
+        option_buttons.Add(new OptionButtonMap(FadePlantsOptionButton)
+        {
+            Get = () => Data.Options.FadePlantsIndex,
+            Set = i =>
+            {
+                Data.Options.FadePlantsIndex = i;
+                UpdateFadePlantsOption();
+            }
+        });
+
+        option_buttons.Add(new OptionButtonMap(CatchBugTutorialOptionButton)
+        {
+            Get = () => Data.Options.CatchTutorialEnabled ? 0 : 1,
+            Set = i => Data.Options.CatchTutorialEnabled = i == 0
+        });
+
+        option_buttons.Add(new OptionButtonMap(CollectBugSoundOptionButton)
+        {
+            Get = () => Data.Options.CollectBugSoundEnabled ? 0 : 1,
+            Set = i => Data.Options.CollectBugSoundEnabled = i == 0
+        });
+
+        option_buttons.Add(new OptionButtonMap(JumpChargeEffectOptionButton)
+        {
+            Get = () => Data.Options.JumpChargeEffectEnabled ? 0 : 1,
+            Set = i => Data.Options.JumpChargeEffectEnabled = i == 0
+        });
     }
 
     protected override void OnShow()
@@ -64,11 +128,11 @@ public partial class OptionsContainer : ControlScript
         EnvironmentSlider.Value = Data.Options.EnvironmentVolume;
         CameraSensitivtySlider.Value = Data.Options.CameraSensitivity;
         UIScaleOptions.SetIndex(Data.Options.UIScaleIndex);
-        GamepadDisplayOptionButton.Selected = Data.Options.GamepadDisplayIndex;
-        CutsceneTypeOptionButton.Selected = Data.Options.CutsceneTypeIndex;
-        FadePlantsOptionButton.Selected = Data.Options.FadePlantsIndex;
-        CatchBugTutorialOptionButton.Selected = Data.Options.CatchTutorialEnabled ? 0 : 1;
-        CollectBugSoundOptionButton.Selected = Data.Options.CollectBugSoundEnabled ? 0 : 1;
+
+        foreach (var map in option_buttons)
+        {
+            map.OptionButton.Selected = map.Get();
+        }
 
         showing = false;
     }
@@ -100,37 +164,10 @@ public partial class OptionsContainer : ControlScript
         OnUIScaleChanged?.Invoke();
     }
 
-    private void GamepadDisplayOptionButton_ItemSelected(long l_index)
+    private void UpdateFadePlantsOption()
     {
-        var index = (int)l_index;
-        Data.Options.GamepadDisplayIndex = index;
-        OnGamepadDisplayChanged?.Invoke(index);
-    }
-
-    private void CutsceneTypeOptionButton_ItemSelected(long l_index)
-    {
-        var index = (int)l_index;
-        Data.Options.CutsceneTypeIndex = index;
-        OnCutsceneTypeChanged?.Invoke(index);
-    }
-
-    private void FadePlantsOptionButton_ItemSelected(long l_index)
-    {
-        var index = (int)l_index;
-        Data.Options.FadePlantsIndex = index;
-        RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_view", index == 0 || index == 2);
-        RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_player", index == 1 || index == 2);
-    }
-
-    private void CatchBugTutorialOptionButton_ItemSelected(long l_index)
-    {
-        var index = (int)l_index;
-        Data.Options.CatchTutorialEnabled = index == 0;
-    }
-
-    private void CollectBugSoundOptionButton_ItemSelected(long l_index)
-    {
-        var index = (int)l_index;
-        Data.Options.CollectBugSoundEnabled = index == 0;
+        var i = Data.Options.FadePlantsIndex;
+        RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_view", i == 0 || i == 2);
+        RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_player", i == 1 || i == 2);
     }
 }

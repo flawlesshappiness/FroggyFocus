@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class Player : TopDownController
@@ -21,6 +22,15 @@ public partial class Player : TopDownController
 
     [Export]
     public QuestionMarkEffect QuestionMark;
+
+    [Export]
+    public EffectGroupSpawner JumpChargeEffect;
+
+    [Export]
+    public GpuParticles3D PsJumpChargeMax;
+
+    [Export]
+    public AudioStreamPlayer3D SfxJumpCharge;
 
     [Export]
     public AudioStreamPlayer3D SfxFocusTargetFound;
@@ -48,6 +58,7 @@ public partial class Player : TopDownController
     private float jump_charge;
     private bool on_stable_ground;
     private Vector3 respawn_position;
+    private int jump_charge_index;
 
     private Coroutine cr_wait_focus_target;
     private Coroutine cr_look_focus_target;
@@ -134,6 +145,7 @@ public partial class Player : TopDownController
             Jump(velocity);
 
             jump_charge = 0;
+            SetJumpChargeIndex(0);
             on_stable_ground = false;
         }
     }
@@ -147,6 +159,32 @@ public partial class Player : TopDownController
         var duration = 2.0f;
         var mul = 1f / duration;
         jump_charge = Mathf.Clamp(jump_charge + GameTime.DeltaTime * mul, 0, 1);
+
+        var t_values = new List<float> { 0.333f, 0.666f, 0.999f };
+        if (jump_charge_index < t_values.Count)
+        {
+            if (jump_charge > t_values[jump_charge_index])
+            {
+                SetJumpChargeIndex(jump_charge_index + 1);
+            }
+        }
+    }
+
+    private void SetJumpChargeIndex(int i)
+    {
+        jump_charge_index = i;
+
+        if (jump_charge_index > 0)
+        {
+            if (Data.Options.JumpChargeEffectEnabled)
+            {
+                JumpChargeEffect.Spawn();
+                SfxJumpCharge.PitchScale = Mathf.Lerp(1.0f, 1.2f, jump_charge);
+                SfxJumpCharge.Play();
+            }
+        }
+
+        PsJumpChargeMax.Emitting = jump_charge_index >= 3 && Data.Options.JumpChargeEffectEnabled;
     }
 
     private void Process_Interact()

@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dfqja0yfvxqyl" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_rt.png" id="17_67nja"]
 [ext_resource type="Texture2D" uid="uid://x5iqlsw4jt5r" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_trigger_r2.png" id="18_nwtii"]
 
-[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton", "CutsceneTypeOptionButton", "FadePlantsOptionButton", "CatchBugTutorialOptionButton", "CollectBugSoundOptionButton")]
+[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton", "CutsceneTypeOptionButton", "FadePlantsOptionButton", "CatchBugTutorialOptionButton", "CollectBugSoundOptionButton", "JumpChargeEffectOptionButton")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -44,9 +44,16 @@ CutsceneTypeOptionButton = NodePath("Options/TabContainer/Gameplay/VBoxContainer
 FadePlantsOptionButton = NodePath("Options/TabContainer/Video/HBoxContainer/HBoxContainer/FadePlantsDropdown")
 CatchBugTutorialOptionButton = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer3/CatchTutorialOptionButton")
 CollectBugSoundOptionButton = NodePath("Options/TabContainer/Audio/VBoxContainer/HBoxContainer/CollectButSoundOptionButton")
+JumpChargeEffectOptionButton = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer4/JumpChargeEffectOptionButton")
 
 [node name="Options" parent="." instance=ExtResource("3_t6453")]
 layout_mode = 2
+
+[node name="TabContainer" parent="Options" index="0"]
+current_tab = 4
+
+[node name="Audio" parent="Options/TabContainer" index="1"]
+visible = false
 
 [node name="EnvironmentLabel" type="Label" parent="Options/TabContainer/Audio/VBoxContainer" index="6"]
 layout_mode = 2
@@ -259,7 +266,6 @@ XboxTexture = ExtResource("17_67nja")
 PlaystationTexture = ExtResource("18_nwtii")
 
 [node name="Gameplay" type="MarginContainer" parent="Options/TabContainer" index="5"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -329,6 +335,27 @@ text = "Catch Bug Tutorial"
 vertical_alignment = 1
 
 [node name="CatchTutorialOptionButton" type="OptionButton" parent="Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 2
+popup/item_0/text = "Enabled"
+popup/item_0/id = 0
+popup/item_1/text = "Disabled"
+popup/item_1/id = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Options/TabContainer/Gameplay/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Jump Charge Effect"
+vertical_alignment = 1
+
+[node name="JumpChargeEffectOptionButton" type="OptionButton" parent="Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
