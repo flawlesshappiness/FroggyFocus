@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_yuhnh")
 Overlay = NodePath("AnimatedOverlay")
 InputBlocker = NodePath("InputBlocker")
@@ -40,9 +41,11 @@ layout_mode = 2
 [node name="Top" type="CenterContainer" parent="MarginContainer/Vertical"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Center" type="Control" parent="MarginContainer/Vertical/Top"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TopButton_AnimatedPanel" parent="MarginContainer/Vertical/Top/Center" instance=ExtResource("3_j1r1i")]
 layout_mode = 1
@@ -50,6 +53,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+mouse_filter = 2
 
 [node name="TopButton" parent="MarginContainer/Vertical/Top/Center/TopButton_AnimatedPanel" instance=ExtResource("3_2q1uv")]
 custom_minimum_size = Vector2(200, 0)
@@ -69,9 +73,11 @@ grow_vertical = 2
 [node name="Bottom" type="CenterContainer" parent="MarginContainer/Vertical"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Center" type="Control" parent="MarginContainer/Vertical/Bottom"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="BottomButton_AnimatedPanel" parent="MarginContainer/Vertical/Bottom/Center" instance=ExtResource("3_j1r1i")]
 layout_mode = 1
@@ -79,6 +85,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+mouse_filter = 2
 
 [node name="BottomButton" parent="MarginContainer/Vertical/Bottom/Center/BottomButton_AnimatedPanel" instance=ExtResource("3_2q1uv")]
 custom_minimum_size = Vector2(200, 0)
@@ -97,14 +104,17 @@ grow_vertical = 2
 
 [node name="Horizontal" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Left" type="CenterContainer" parent="MarginContainer/Horizontal"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Center" type="Control" parent="MarginContainer/Horizontal/Left"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LeftButton_AnimatedPanel" parent="MarginContainer/Horizontal/Left/Center" instance=ExtResource("3_j1r1i")]
 layout_mode = 1
@@ -112,6 +122,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+mouse_filter = 2
 
 [node name="LeftButton" parent="MarginContainer/Horizontal/Left/Center/LeftButton_AnimatedPanel" instance=ExtResource("3_2q1uv")]
 custom_minimum_size = Vector2(200, 0)
@@ -132,9 +143,11 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="Center" type="Control" parent="MarginContainer/Horizontal/Right"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="RightButton_AnimatedPanel" parent="MarginContainer/Horizontal/Right/Center" instance=ExtResource("3_j1r1i")]
 layout_mode = 1
@@ -142,6 +155,7 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+mouse_filter = 2
 
 [node name="RightButton" parent="MarginContainer/Horizontal/Right/Center/RightButton_AnimatedPanel" instance=ExtResource("3_2q1uv")]
 custom_minimum_size = Vector2(200, 0)
