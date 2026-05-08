@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\weather\\weatherarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:weather\\weatherarea.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\weather\\weathercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:weather\\weathercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +19,12 @@
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusevent\\focusevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\focusattacks\\woodenstab\\woodenstab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\focusattacks\\woodenstab\\woodenstab.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusattack\\wooden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusattack\\wooden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusevent\\focustarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusevent\\focustarget.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\item\\itemtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:item\\itemtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\focusattack\\garbage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:focusattack\\garbage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,39 +42,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WoodenStab.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\FocusAttacks\\WoodenStab\\WoodenStab.cs",
-              "RelativeDocumentMoniker": "Prefabs\\FocusAttacks\\WoodenStab\\WoodenStab.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Prefabs\\FocusAttacks\\WoodenStab\\WoodenStab.cs",
-              "RelativeToolTip": "Prefabs\\FocusAttacks\\WoodenStab\\WoodenStab.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "WeatherController.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Weather\\WeatherController.cs",
+              "RelativeDocumentMoniker": "Weather\\WeatherController.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Weather\\WeatherController.cs",
+              "RelativeToolTip": "Weather\\WeatherController.cs",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAvwHUAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T17:13:24.672Z"
+              "WhenOpened": "2026-05-07T11:18:12.403Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Wooden.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusAttack\\Wooden.cs",
-              "RelativeDocumentMoniker": "FocusAttack\\Wooden.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusAttack\\Wooden.cs",
-              "RelativeToolTip": "FocusAttack\\Wooden.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwAkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "WeatherArea.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Weather\\WeatherArea.cs",
+              "RelativeDocumentMoniker": "Weather\\WeatherArea.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Weather\\WeatherArea.cs",
+              "RelativeToolTip": "Weather\\WeatherArea.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T16:42:38.423Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Garbage.cs",
-              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusAttack\\Garbage.cs",
-              "RelativeDocumentMoniker": "FocusAttack\\Garbage.cs",
-              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusAttack\\Garbage.cs",
-              "RelativeToolTip": "FocusAttack\\Garbage.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwB0AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T16:42:14.887Z"
+              "WhenOpened": "2026-05-07T11:11:02.628Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -94,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "FocusEvent.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\FocusEvent\\FocusEvent.cs",
               "RelativeDocumentMoniker": "FocusEvent\\FocusEvent.cs",
@@ -102,21 +88,19 @@
               "RelativeToolTip": "FocusEvent\\FocusEvent.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-02T21:57:57.218Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-02T21:57:57.218Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Player\\Player.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeToolTip": "Player\\Player.cs",
-              "ViewState": "AgIAAMQBAAAAAAAAAAD4v+UBAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAMQBAAAAAAAAAAD4v+EBAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-08T06:54:07.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-08T06:54:07.866Z"
             },
             {
               "$type": "Document",

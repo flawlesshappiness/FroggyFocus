@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class ScreenshotSceneSetup : Node3D
 {
@@ -18,6 +19,13 @@ public partial class ScreenshotSceneSetup : Node3D
         OnShowSetup();
         Show();
         Camera.Current = true;
-        WeatherController.Instance.StartWeather(new Godot.Collections.Array<WeatherInfo> { Weather });
+
+        WeatherController.Instance.StartWeather(new WeatherController.Settings
+        {
+            Weathers = new List<WeatherInfo> { Weather },
+            InitialTransitionDuration = 0.01f,
+            TransitionDuration = 0.01f,
+            WeatherDuration = 999f,
+        });
     }
 }

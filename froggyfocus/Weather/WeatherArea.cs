@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class WeatherArea : Area3D
 {
@@ -17,11 +18,17 @@ public partial class WeatherArea : Area3D
 
     private void PlayerEntered(GodotObject go)
     {
-        WeatherController.Instance.SetNextWeather(WeatherInfo, FadeDuration);
+        WeatherController.Instance.StartWeather(new WeatherController.Settings
+        {
+            Weathers = new List<WeatherInfo> { WeatherInfo },
+            InitialTransitionDuration = FadeDuration,
+            TransitionDuration = FadeDuration,
+            WeatherDuration = 999f,
+        });
     }
 
     private void PlayerExited(GodotObject go)
     {
-        WeatherController.Instance.SetNextWeather(null, FadeDuration);
+        GameScene.Instance.StartWeather();
     }
 }

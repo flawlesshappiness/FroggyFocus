@@ -39,7 +39,7 @@ public partial class GameScene : Scene
 
         world_bugs = this.GetNodesInChildren<WorldBug>() ?? new List<WorldBug>();
 
-        WeatherController.Instance.StartWeather(Weathers);
+        StartWeather();
         //FocusHotSpotController.Instance.Start();
         WorldBugController.Instance.Start();
 
@@ -105,6 +105,16 @@ public partial class GameScene : Scene
         FocusEvent.StartEvent(new FocusEvent.Settings
         {
             Id = CurrentFocusEventId
+        });
+    }
+
+    public void StartWeather()
+    {
+        WeatherController.Instance.StartWeather(new WeatherController.Settings
+        {
+            Weathers = Weathers.ToList(),
+            TransitionDuration = 30f,
+            WeatherDuration = 300f
         });
     }
 

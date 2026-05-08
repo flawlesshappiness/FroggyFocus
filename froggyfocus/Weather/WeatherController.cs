@@ -1,5 +1,4 @@
 using Godot;
-using Godot.Collections;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,14 +14,19 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
     public static MultiLock FogLock = new MultiLock();
 
     private bool skip;
-    private bool quick_transition;
-    private WeatherInfo current_weather;
-    private WeatherInfo next_weather;
-    private float? next_transition_duration;
     private Coroutine cr_weather;
+    private Settings current_settings;
+    private GameScene current_scene;
+    private WeatherInfo current_weather;
+    private RandomNumberGenerator rng = new();
 
-    private const float TRANSITION_DURATION = 30;
-    private const float TRANSITION_DURATION_QUICK = 3;
+    public class Settings
+    {
+        public List<WeatherInfo> Weathers { get; set; }
+        public float? InitialTransitionDuration { get; set; } // 3
+        public float TransitionDuration { get; set; } // 30
+        public float WeatherDuration { get; set; }
+    }
 
     public override void _Ready()
     {
@@ -51,6 +55,13 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
             Action = SelectWeather
         });
 
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Transition to scene weather",
+            Action = SceneWeather
+        });
+
         void SelectWeather(DebugView v)
         {
             v.SetContent_Search();
@@ -67,25 +78,32 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         {
             v.SetContent_Search();
 
-            v.ContentSearch.AddItem("Fade", () => SetWeatherDebug(v, info));
-            v.ContentSearch.AddItem("Fade fast", () => SetWeatherDebugFast(v, info));
+            v.ContentSearch.AddItem("Normal transition", () => SetWeatherDebug(v, info));
+            v.ContentSearch.AddItem("Fast transition", () => SetWeatherDebugFast(v, info));
 
             v.ContentSearch.UpdateButtons();
         }
 
         void SetWeatherDebug(DebugView v, WeatherInfo info)
         {
-            next_weather = info;
-            skip = true;
-            quick_transition = false;
+            StartWeather(new Settings
+            {
+                Weathers = new List<WeatherInfo> { info },
+                TransitionDuration = 30f,
+                WeatherDuration = 300f
+            });
             v.Close();
         }
 
         void SetWeatherDebugFast(DebugView v, WeatherInfo info)
         {
-            next_weather = info;
-            skip = true;
-            quick_transition = true;
+            StartWeather(new Settings
+            {
+                Weathers = new List<WeatherInfo> { info },
+                InitialTransitionDuration = 3f,
+                TransitionDuration = 30f,
+                WeatherDuration = 300f
+            });
             v.Close();
         }
 
@@ -94,13 +112,28 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
             skip = true;
             v.Close();
         }
+
+        void SceneWeather(DebugView v)
+        {
+            GameScene.Instance.StartWeather();
+            v.Close();
+        }
     }
 
-    public void SetNextWeather(WeatherInfo info, float? duration = null)
+    private void InitializeSceneEnvironment()
     {
-        next_weather = info;
-        next_transition_duration = duration;
-        skip = true;
+        if (GameScene.Instance == null) return;
+        if (GameScene.Instance == current_scene) return;
+        current_scene = GameScene.Instance;
+
+        var env = current_scene.WorldEnvironment.Environment.Duplicate() as Godot.Environment;
+        current_scene.WorldEnvironment.Environment = env;
+
+        var sky_material = env.Sky.SkyMaterial.Duplicate() as ShaderMaterial;
+        env.Sky.SkyMaterial = sky_material;
+
+        RainController.Instance.StartRain();
+        WindController.Instance.StartWind();
     }
 
     public void StopWeather()
@@ -111,39 +144,40 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         ThunderController.Instance.StopThunder();
     }
 
-    public void StartWeather(Array<WeatherInfo> weathers)
+    public void StartWeather(Settings settings)
     {
-        var scene = GameScene.Instance;
-        var env = scene.WorldEnvironment.Environment.Duplicate() as Godot.Environment;
-        scene.WorldEnvironment.Environment = env;
+        InitializeSceneEnvironment();
 
-        var sky_material = env.Sky.SkyMaterial.Duplicate() as ShaderMaterial;
-        env.Sky.SkyMaterial = sky_material;
-
-        RainController.Instance.StartRain();
-        WindController.Instance.StartWind();
-
-        current_weather = GetNextWeather(weathers);
-        SetWeatherTransition(current_weather, current_weather, 1);
+        current_settings = settings;
 
         cr_weather = this.StartCoroutine(Cr, "weather");
         IEnumerator Cr()
         {
-            var rng = new RandomNumberGenerator();
+            // First weather
+            if (current_weather == null)
+            {
+                current_weather = GetNextWeather();
+                LerpWeather(current_weather, current_weather, 1);
+            }
+            else
+            {
+                var duration = current_settings.InitialTransitionDuration ?? current_settings.TransitionDuration;
+                var previous_weather = current_weather;
+                current_weather = GetNextWeather();
+                yield return WaitForWeatherTransition(previous_weather, current_weather, duration);
+            }
+
+            // Weather loop
             while (true)
             {
-                yield return WaitForSkip(rng.RandfRange(200, 400));
+                yield return WaitForSkip(current_settings.WeatherDuration);
 
                 var previous_weather = current_weather;
-                current_weather = GetNextWeather(weathers);
+                current_weather = GetNextWeather();
 
                 OnWeatherStart?.Invoke(current_weather);
 
-                var transition_duration = GetTransitionDuration();
-                yield return WaitForWeatherTransition(previous_weather, current_weather, transition_duration);
-
-                next_transition_duration = null;
-                quick_transition = false;
+                yield return WaitForWeatherTransition(previous_weather, current_weather, current_settings.TransitionDuration);
             }
         }
 
@@ -153,7 +187,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
             var end = start + duration;
             while (GameTime.Time < end)
             {
-                if (skip || next_weather != null)
+                if (skip)
                 {
                     skip = false;
                     break;
@@ -177,30 +211,21 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
             }
 
             var t = (GameTime.Time - start) / duration;
-            SetWeatherTransition(from, to, t);
+            LerpWeather(from, to, t);
             yield return null;
         }
 
-        SetWeatherTransition(from, to, 1);
+        LerpWeather(from, to, 1);
     }
 
-    public float GetTransitionDuration()
+    private WeatherInfo GetNextWeather()
     {
-        var duration = quick_transition ? TRANSITION_DURATION_QUICK :
-            next_transition_duration ?? TRANSITION_DURATION;
-
-        return duration;
-    }
-
-    private WeatherInfo GetNextWeather(IEnumerable<WeatherInfo> weathers)
-    {
-        var next = next_weather ?? weathers
+        var next = current_settings.Weathers
             .Where(x => x != current_weather) // Not the same as current weather
             .Where(x => current_weather != null && current_weather.Rain > 0.0f ? x.Rain < 0.01f : true) // No repeat rain
             .ToList()
             .Random();
-        next ??= weathers.ToList().Random();
-        next_weather = null;
+        next ??= current_settings.Weathers.ToList().Random();
         return next;
     }
 
@@ -209,7 +234,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         return current_weather;
     }
 
-    private void SetWeatherTransition(WeatherInfo from, WeatherInfo to, float t)
+    private void LerpWeather(WeatherInfo from, WeatherInfo to, float t)
     {
         var env = GameScene.Instance.WorldEnvironment.Environment;
         var sun = GameScene.Instance.DirectionalLight;
