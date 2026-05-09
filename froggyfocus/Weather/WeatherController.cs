@@ -154,7 +154,7 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
         IEnumerator Cr()
         {
             // First weather
-            if (current_weather == null)
+            if (current_weather == null || current_settings.InitialTransitionDuration == null)
             {
                 current_weather = GetNextWeather();
                 LerpWeather(current_weather, current_weather, 1);
@@ -166,6 +166,8 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
                 current_weather = GetNextWeather();
                 yield return WaitForWeatherTransition(previous_weather, current_weather, duration);
             }
+
+            Debug.Log(current_weather.GetResourceName());
 
             // Weather loop
             while (true)

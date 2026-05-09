@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck1j2yhhjoijb"]
+[gd_scene load_steps=5 format=3 uid="uid://ck1j2yhhjoijb"]
 
 [ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Code_Wireframe_Green.tres" id="1_yx6ih"]
+[ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="2_0usi8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ossgx"]
 material = ExtResource("1_yx6ih")
@@ -20,4 +21,14 @@ skeleton = NodePath("../../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ijwup")
+
+[node name="PlayerGround" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_0usi8")
+Id = "glitch"
+metadata/_custom_type_script = "uid://cnv6mhgukc6u3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerGround"]
 shape = SubResource("BoxShape3D_ijwup")

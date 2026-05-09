@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://1jqtwnd6m5f1"]
+[gd_scene load_steps=9 format=3 uid="uid://1jqtwnd6m5f1"]
 
 [ext_resource type="Script" uid="uid://4hjwti814kr" path="res://Objects/ColorWall.cs" id="1_1j2lb"]
 [ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Code_Wireframe_Red.tres" id="2_apljj"]
 [ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Code_Wireframe_Yellow.tres" id="3_e0d3t"]
 [ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Code_Wireframe_Blue.tres" id="4_q8jbj"]
+[ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="5_apljj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_agrq0"]
 size = Vector3(4, 8, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_agrq0"]
 size = Vector3(4, 8, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e0d3t"]
+size = Vector3(4, 1.19574, 1)
 
 [node name="ColorWall_Block" type="Node3D" node_paths=PackedStringArray("MeshInstance", "Collider")]
 script = ExtResource("1_1j2lb")
@@ -29,3 +33,14 @@ shape = SubResource("BoxShape3D_agrq0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -0.5)
 mesh = SubResource("BoxMesh_agrq0")
 surface_material_override/0 = ExtResource("2_apljj")
+
+[node name="PlayerGround" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_apljj")
+Id = "glitch"
+metadata/_custom_type_script = "uid://cnv6mhgukc6u3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.90878, -0.5)
+shape = SubResource("BoxShape3D_e0d3t")
