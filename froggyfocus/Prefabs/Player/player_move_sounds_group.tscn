@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7xc6fc17fllt"]
+[gd_scene load_steps=6 format=3 uid="uid://b7xc6fc17fllt"]
 
 [ext_resource type="Script" uid="uid://ct7gbneqp883w" path="res://Prefabs/Player/PlayerMoveSoundsGroup.cs" id="1_4xh6g"]
 [ext_resource type="PackedScene" uid="uid://71xaxdckix2y" path="res://Prefabs/Player/player_move_sounds_solid.tscn" id="1_xdd8n"]
 [ext_resource type="PackedScene" uid="uid://cw0fw0asdb7kc" path="res://Prefabs/Player/player_move_sounds_sand.tscn" id="2_lutvh"]
+[ext_resource type="PackedScene" uid="uid://0n0wfnsllma2" path="res://Prefabs/Player/player_move_sounds_crystal.tscn" id="3_jwrcs"]
 [ext_resource type="PackedScene" uid="uid://eldaxlwl16o2" path="res://Prefabs/Player/player_move_sounds_soft.tscn" id="4_x0uwa"]
 
 [node name="PlayerMoveSoundsGroup" type="Node3D" node_paths=PackedStringArray("MoveSounds")]
 script = ExtResource("1_4xh6g")
-MoveSounds = [NodePath("PlayerMoveSounds_Solid"), NodePath("PlayerMoveSounds_Sand"), NodePath("PlayerMoveSounds_Soft")]
+MoveSounds = [NodePath("PlayerMoveSounds_Solid"), NodePath("PlayerMoveSounds_Sand"), NodePath("PlayerMoveSounds_Soft"), NodePath("PlayerMoveSounds_Crystal")]
 
 [node name="PlayerMoveSounds_Solid" parent="." instance=ExtResource("1_xdd8n")]
+
+[node name="PlayerMoveSounds_Crystal" parent="." instance=ExtResource("3_jwrcs")]
 
 [node name="PlayerMoveSounds_Sand" parent="." instance=ExtResource("2_lutvh")]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0osj3jb5aniy"]
+[gd_scene load_steps=14 format=3 uid="uid://b0osj3jb5aniy"]
 
 [ext_resource type="PackedScene" uid="uid://mvfdm3gxsfe1" path="res://Assets/FlawLizArt/Machine/crane_bottom.fbx" id="1_8drng"]
 [ext_resource type="Script" uid="uid://bk0670mb2dpj8" path="res://Prefabs/Machine/CrystalCrane.cs" id="1_lnwip"]
 [ext_resource type="PackedScene" uid="uid://va1lwsbev6ti" path="res://Assets/FlawLizArt/Machine/crane_top.fbx" id="2_lnwip"]
+[ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="4_dnmb0"]
 [ext_resource type="AudioStream" uid="uid://xvlwkd3jlry3" path="res://Sounds/Raw/sfx_crane_move.wav" id="4_ebofv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8drng"]
@@ -13,6 +14,9 @@ size = Vector3(0.952, 0.956469, 0.952)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lnwip"]
 size = Vector3(0.692383, 0.781464, 2.47711)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sfga"]
+size = Vector3(0.952, 0.142682, 0.952)
 
 [sub_resource type="Animation" id="Animation_lnwip"]
 length = 0.001
@@ -129,6 +133,17 @@ shape = SubResource("BoxShape3D_ebofv")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="crane_top/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.67033, -2.05747)
 shape = SubResource("BoxShape3D_lnwip")
+
+[node name="PlayerGround" type="Area3D" parent="crane_top"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_dnmb0")
+Id = "crystal"
+metadata/_custom_type_script = "uid://cnv6mhgukc6u3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="crane_top/PlayerGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38419e-07, 3.23296, -3.12839)
+shape = SubResource("BoxShape3D_8sfga")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
