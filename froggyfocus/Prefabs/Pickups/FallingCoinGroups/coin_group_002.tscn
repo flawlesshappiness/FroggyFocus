@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://jyia0yxhyclr"]
+
+[ext_resource type="PackedScene" uid="uid://delw30nru6jxn" path="res://Prefabs/Pickups/collectable_coin_3d.tscn" id="1_u4mc0"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xybpx"]
+flip_faces = true
+top_radius = 3.0
+bottom_radius = 3.0
+height = 32.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h1cg6"]
+flip_faces = true
+top_radius = 3.0
+bottom_radius = 3.0
+height = 16.0
+
+[node name="CoinGroup" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+visible = false
+mesh = SubResource("CylinderMesh_xybpx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22, 0)
+visible = false
+mesh = SubResource("CylinderMesh_h1cg6")
+
+[node name="rotated_coin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30, 0)
+
+[node name="CollectableCoin3D" parent="rotated_coin" instance=ExtResource("1_u4mc0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)
+
+[node name="rotated_coin2" type="Node3D" parent="."]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0, -28, 0)
+
+[node name="CollectableCoin3D" parent="rotated_coin2" instance=ExtResource("1_u4mc0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)
+
+[node name="rotated_coin3" type="Node3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, -26, 0)
+
+[node name="CollectableCoin3D" parent="rotated_coin3" instance=ExtResource("1_u4mc0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)
+
+[node name="rotated_coin4" type="Node3D" parent="."]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0, -24, 0)
+
+[node name="CollectableCoin3D" parent="rotated_coin4" instance=ExtResource("1_u4mc0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)
+
+[node name="rotated_coin5" type="Node3D" parent="."]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 0, -22, 0)
+
+[node name="CollectableCoin3D" parent="rotated_coin5" instance=ExtResource("1_u4mc0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)
+
+[node name="rotated_coin6" type="Node3D" parent="."]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 0, -20, 0)
+
+[node name="CollectableCoin3D" parent="rotated_coin6" instance=ExtResource("1_u4mc0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)
+
+[node name="rotated_coin7" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, -18, 0)
+
+[node name="CollectableCoin3D" parent="rotated_coin7" instance=ExtResource("1_u4mc0")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2, 0, 0)

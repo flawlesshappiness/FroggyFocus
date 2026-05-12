@@ -78,6 +78,8 @@ public partial class Player : TopDownController
 
         InteractLock.OnLocked += InteractLocked;
         InteractLock.OnFree += InteractFree;
+
+        ThirdPersonCamera.SnapToPosition();
     }
 
     public override void _ExitTree()

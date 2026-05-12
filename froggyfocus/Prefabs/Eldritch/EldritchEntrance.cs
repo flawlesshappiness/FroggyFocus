@@ -20,7 +20,7 @@ public partial class EldritchEntrance : Area3D
     public AnimationPlayer AnimationPlayer;
 
     [Export]
-    public AudioStreamPlayer SfxWakeUp;
+    public WeatherInfo StormyWeather;
 
     private bool IsAwake => GameFlags.IsFlag(EldritchFlower.IsAwakeFlag, 1);
 
@@ -68,8 +68,6 @@ public partial class EldritchEntrance : Area3D
             is_active = true;
             Collider.Disabled = false;
             AnimationPlayer.Play("active");
-            EldritchTentacle.SetAwakeGlobal(true);
-            EldritchEye.SetOpenGlobal(true);
         }
     }
 
@@ -81,8 +79,20 @@ public partial class EldritchEntrance : Area3D
         Collider.Disabled = false;
         AnimationPlayer.Play("show");
 
-        EldritchTentacle.SetAwakeGlobal(true);
-        EldritchEye.SetOpenGlobal(true);
+        Player.Instance.ThirdPersonCamera.StartShake(new ThirdPersonCamera.ShakeSettings
+        {
+            Frequency = 0.01f,
+            Power = 0.2f,
+            FadeInDuration = 10f,
+            Duration = 5f,
+            FadeOutDuration = 10f
+        });
+
+        WeatherController.Instance.StartWeather(new WeatherController.Settings
+        {
+            Weathers = new() { StormyWeather },
+            InitialTransitionDuration = 10f,
+        });
     }
 
     private void PlayerEntered(GodotObject go)
@@ -96,19 +106,29 @@ public partial class EldritchEntrance : Area3D
 
         if (IsEntrance)
         {
-            EldritchTransitionView.Instance.StartTransitionEnter();
+            Scene.Goto<EldritchFallingScene>();
+            //EldritchTransitionView.Instance.StartTransitionEnter();
         }
         else
         {
-            EldritchTransitionView.Instance.StartTransitionExit();
+            //EldritchTransitionView.Instance.StartTransitionExit();
         }
     }
 
     private void GameFlagChanged(string id, int i)
     {
-        if (id != EldritchFlower.IsAwakeFlag) return;
-
-        ValidateAwaken();
+        if (id == EldritchFlower.IsAwakeFlag)
+        {
+            if (i == 0)
+            {
+                AnimationPlayer.Play("RESET");
+                is_active = false;
+            }
+            else
+            {
+                ValidateAwaken();
+            }
+        }
     }
 
     public void ValidateAwaken()
@@ -117,13 +137,7 @@ public partial class EldritchEntrance : Area3D
 
         if (IsAwake)
         {
-            Awaken();
+            Activate();
         }
-    }
-
-    private void Awaken()
-    {
-        SfxWakeUp.Play();
-        Activate();
     }
 }

@@ -24,10 +24,22 @@ public partial class ThirdPersonCamera : Node3D
     private float tilt_max = Mathf.DegToRad(-5);
     private Vector2 zoom_range = new Vector2(1f, 8f);
     private float zoom_value;
+    private Vector3 interpolated_position;
+    private Vector3 shake_position;
 
     public float ZoomOffset { get; private set; }
 
+    private Coroutine cr_shake;
     private Coroutine cr_debug_spin;
+
+    public class ShakeSettings
+    {
+        public float Frequency { get; set; }
+        public float Power { get; set; }
+        public float Duration { get; set; }
+        public float FadeInDuration { get; set; }
+        public float FadeOutDuration { get; set; }
+    }
 
     private Vector3 PivotRotation
     {
@@ -41,6 +53,7 @@ public partial class ThirdPersonCamera : Node3D
         initialized = true;
 
         zoom_value = SpringArm.SpringLength;
+        interpolated_position = GlobalPosition;
         this.SetParent(Scene.Current);
         RegisterDebugActions();
     }
@@ -206,12 +219,14 @@ public partial class ThirdPersonCamera : Node3D
     {
         var speed = 4f * delta;
         var target = GetTargetPosition();
-        GlobalPosition = GlobalPosition.Lerp(target, speed);
+        interpolated_position = interpolated_position.Lerp(target, speed);
+        GlobalPosition = interpolated_position + shake_position;
     }
 
     public void SnapToPosition()
     {
-        GlobalPosition = GetTargetPosition();
+        interpolated_position = GetTargetPosition();
+        GlobalPosition = interpolated_position;
     }
 
     private Vector3 GetTargetPosition()
@@ -233,5 +248,55 @@ public partial class ThirdPersonCamera : Node3D
         {
             return new Vector3(0, 0.7f, 0);
         }
+    }
+
+    public void StartShake(ShakeSettings settings)
+    {
+        var rng = new RandomNumberGenerator();
+        var freq_next = GameTime.Time;
+        var power = 0f;
+        cr_shake = this.StartCoroutine(Cr, "shake");
+
+        IEnumerator Cr()
+        {
+            var next = GameTime.Time;
+
+            yield return LerpEnumerator.Lerp01(settings.FadeInDuration, f =>
+            {
+                power = Mathf.Lerp(0, settings.Power, f);
+                UpdateShake();
+            });
+
+            power = settings.Power;
+            yield return LerpEnumerator.Lerp01(settings.Duration, f =>
+            {
+                UpdateShake();
+            });
+
+            yield return LerpEnumerator.Lerp01(settings.FadeOutDuration, f =>
+            {
+                power = Mathf.Lerp(settings.Power, 0, f);
+                UpdateShake();
+            });
+
+            StopShake();
+        }
+
+        void UpdateShake()
+        {
+            if (GameTime.Time < freq_next) return;
+
+            var x = rng.Randf();
+            var y = rng.Randf();
+            var z = rng.Randf();
+            freq_next = GameTime.Time + settings.Frequency;
+            shake_position = new Vector3(x, y, z) * power;
+        }
+    }
+
+    public void StopShake()
+    {
+        Coroutine.Stop(cr_shake);
+        cr_shake = null;
     }
 }

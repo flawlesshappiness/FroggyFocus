@@ -15,17 +15,24 @@ public partial class EldritchFlower : Area3D, IInteractable
     public const string IsAwakeFlag = "ELDRITCH_FLOWER_AWAKE";
     public const string HasSaltsFlag = "ELDRITCH_FLOWER_HAS_SALTS";
 
+    private const string DialogueSnoring = "ELDRITCH_FLOWER_SNORING";
+    private const string DialogueSalt = "ELDRITCH_FLOWER_USE_SALTS";
+    private const string DialogueNothing = "DO_NOTHING";
+    private const string DialogueRumble = "ELDRITCH_FLOWER_RUMBLE";
+
     public override void _Ready()
     {
         base._Ready();
         Initialize();
         DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
+        GameFlagsController.Instance.OnFlagChanged += GameFlag_Changed;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
         DialogueController.Instance.OnEntryEnded -= DialogueNodeEnded;
+        GameFlagsController.Instance.OnFlagChanged -= GameFlag_Changed;
     }
 
     private void Initialize()
@@ -37,6 +44,7 @@ public partial class EldritchFlower : Area3D, IInteractable
         }
         else
         {
+            Collider.Disabled = false;
             Animation.Play("breathe");
         }
     }
@@ -49,7 +57,7 @@ public partial class EldritchFlower : Area3D, IInteractable
         }
         else
         {
-            DialogueController.Instance.StartDialogue("##ELDRITCH_FLOWER_SNORING##");
+            DialogueController.Instance.StartDialogue(DialogueSnoring);
         }
     }
 
@@ -60,7 +68,7 @@ public partial class EldritchFlower : Area3D, IInteractable
 
     private void DialogueNodeEnded(string id)
     {
-        if (id == "##ELDRITCH_FLOWER_SNORING##")
+        if (id == DialogueSnoring)
         {
             ShowOptions();
         }
@@ -74,14 +82,14 @@ public partial class EldritchFlower : Area3D, IInteractable
         {
             options.Add(new()
             {
-                Text = "##ELDRITCH_FLOWER_USE_SALTS##",
+                Text = DialogueSalt,
                 Action = UseSalts
             });
         }
 
         options.Add(new()
         {
-            Text = "##DO_NOTHING##",
+            Text = DialogueNothing,
         });
 
         DialogueOptionsView.Instance.ShowDialogueOptions(new()
@@ -100,7 +108,18 @@ public partial class EldritchFlower : Area3D, IInteractable
             yield return Animation.PlayAndWaitForAnimation("coughing");
             Animation.Play("hide");
             GameFlags.SetFlag(IsAwakeFlag, 1);
-            DialogueController.Instance.StartDialogue("##ELDRITCH_FLOWER_RUMBLE##");
+            DialogueController.Instance.StartDialogue(DialogueRumble);
+        }
+    }
+
+    private void GameFlag_Changed(string id, int i)
+    {
+        if (id == IsAwakeFlag)
+        {
+            if (i == 0)
+            {
+                Initialize();
+            }
         }
     }
 }

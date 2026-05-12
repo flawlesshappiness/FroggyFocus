@@ -160,6 +160,32 @@ tracks/4/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_bqfjl"]
+resource_name = "coughing"
+length = 2.0
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("flower/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Armature|coughing"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxCough:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.766667, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, true]
+}
+
 [sub_resource type="Animation" id="Animation_cihhf"]
 resource_name = "hide"
 length = 2.0
@@ -227,32 +253,6 @@ tracks/0/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_bqfjl"]
-resource_name = "coughing"
-length = 2.0
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("flower/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Armature|coughing"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SfxCough:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 0.766667, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqfjl"]
 _data = {
 &"RESET": SubResource("Animation_cif2g"),
@@ -276,35 +276,33 @@ shape = SubResource("CylinderShape3D_hjble")
 [node name="flower" parent="." instance=ExtResource("1_u16jr")]
 
 [node name="Skeleton3D" parent="flower/Armature" index="0"]
-bones/1/rotation = Quaternion(0.150156, 0.00729078, -0.155297, 0.976362)
+bones/1/rotation = Quaternion(0.127564, 0.00716929, -0.133037, 0.982841)
 bones/2/position = Vector3(-2.58714e-10, 0.0017185, -5.54336e-10)
-bones/2/rotation = Quaternion(0.125181, -0.000249567, -0.113719, 0.985595)
+bones/2/rotation = Quaternion(-0.0870025, -0.00145263, 0.0936009, 0.9918)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(-6.21155e-10, 0.0016553, -4.59285e-10)
-bones/3/rotation = Quaternion(0.19563, -0.000832554, -0.196085, 0.960874)
+bones/3/rotation = Quaternion(-0.0640543, -0.00173331, 0.0586961, 0.996217)
 bones/3/scale = Vector3(1, 1, 1)
-bones/5/rotation = Quaternion(-0.147771, 0.0550161, -0.157569, 0.974838)
-bones/5/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.109817, 0.0553251, -0.115089, 0.985715)
 bones/6/position = Vector3(1.08507e-11, 0.0017185, 5.29636e-10)
-bones/6/rotation = Quaternion(-0.0845441, 0.113978, -0.146474, 0.978983)
+bones/6/rotation = Quaternion(0.0553223, 0.114064, 0.0766488, 0.988966)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-8.11236e-10, 0.0016553, -6.21769e-10)
-bones/7/rotation = Quaternion(-0.017284, 0.368719, -0.276083, 0.887427)
+bones/7/rotation = Quaternion(0.00270533, 0.380856, 0.111473, 0.917886)
 bones/7/scale = Vector3(1, 1, 1)
-bones/9/rotation = Quaternion(0.150156, -0.00729078, 0.155297, 0.976362)
+bones/9/rotation = Quaternion(0.127564, -0.00716929, 0.133037, 0.982841)
 bones/10/position = Vector3(2.58714e-10, 0.0017185, -5.54336e-10)
-bones/10/rotation = Quaternion(0.125181, 0.000249567, 0.113719, 0.985595)
+bones/10/rotation = Quaternion(-0.0870025, 0.00145263, -0.0936009, 0.9918)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(6.21155e-10, 0.0016553, -4.59285e-10)
-bones/11/rotation = Quaternion(0.19563, 0.000832554, 0.196085, 0.960874)
+bones/11/rotation = Quaternion(-0.0640542, 0.0017333, -0.058696, 0.996217)
 bones/11/scale = Vector3(1, 1, 1)
-bones/13/rotation = Quaternion(-0.147771, -0.0550161, 0.157569, 0.974838)
-bones/13/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.109817, -0.0553251, 0.115089, 0.985715)
 bones/14/position = Vector3(-1.08507e-11, 0.0017185, 5.29636e-10)
-bones/14/rotation = Quaternion(-0.0845441, -0.113978, 0.146474, 0.978983)
+bones/14/rotation = Quaternion(0.0553222, -0.114064, -0.0766488, 0.988966)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(8.11236e-10, 0.0016553, -6.21769e-10)
-bones/15/rotation = Quaternion(-0.017284, -0.368719, 0.276083, 0.887427)
+bones/15/rotation = Quaternion(0.00270534, -0.380856, -0.111473, 0.917886)
 bones/15/scale = Vector3(1, 1, 1)
 
 [node name="AnimationPlayer" parent="flower" index="1"]
@@ -326,7 +324,7 @@ attenuation_filter_db = 0.0
 
 [node name="SfxCough" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_o3jep")
-volume_db = -5.0
+max_db = 6.0
 max_distance = 16.0
 max_polyphony = 5
 bus = &"SFX"

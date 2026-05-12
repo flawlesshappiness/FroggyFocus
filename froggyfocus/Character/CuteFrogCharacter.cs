@@ -80,7 +80,7 @@ public partial class CuteFrogCharacter : FrogCharacter
         var turn_left = Animation.CreateAnimation($"{prefix}turn_left", false);
         var jump_quick = Animation.CreateAnimation($"{prefix}jump_quick", false);
 
-        state_falling = Animation.CreateAnimation($"{prefix}falling", false);
+        state_falling = Animation.CreateAnimation($"{prefix}falling", true);
         state_surprise = Animation.CreateAnimation($"{prefix}surprised", false);
 
         Animation.Connect(idle, walking, param_moving.WhenTrue());

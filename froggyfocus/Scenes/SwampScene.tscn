@@ -1100,7 +1100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1762, -0.175686, 64.9826)
 transform = Transform3D(-0.578365, 0, 0.394327, 0, 0.7, 0, -0.394327, 0, -0.578365, 18.7699, -0.568438, 51.8804)
 
 [node name="EldritchEntrance" parent="World/Forest" instance=ExtResource("35_firk2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.7138, -1, 96.8212)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.124, -1, 99.708)
 IsEntrance = true
 
 [node name="EldritchFlower" parent="World/Forest" instance=ExtResource("41_uapja")]

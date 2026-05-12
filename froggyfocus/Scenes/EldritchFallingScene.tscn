@@ -1,0 +1,310 @@
+[gd_scene load_steps=32 format=3 uid="uid://cqoc6fgifqd3n"]
+
+[ext_resource type="Script" uid="uid://cwxgq1uks0fs4" path="res://Scenes/EldritchFallingScene.cs" id="1_rio3v"]
+[ext_resource type="Material" uid="uid://c25vo2yd2p8pm" path="res://Materials/Sky.tres" id="2_0w38n"]
+[ext_resource type="PackedScene" uid="uid://jyia0yxhyclr" path="res://Prefabs/Pickups/FallingCoinGroups/coin_group_002.tscn" id="3_h5k1x"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="3_lj4j3"]
+[ext_resource type="Script" uid="uid://chfj3r84200ex" path="res://Player/FallingPlayer.cs" id="3_m0xys"]
+[ext_resource type="Material" uid="uid://b6om3ynl6u7pj" path="res://Materials/Wood.tres" id="4_0w38n"]
+[ext_resource type="PackedScene" uid="uid://rbnhby3we05j" path="res://Prefabs/Pickups/FallingCoinGroups/coin_group_003.tscn" id="4_erbkq"]
+[ext_resource type="PackedScene" uid="uid://dmneakwh1b1tw" path="res://Assets/FlawLizArt/Eldritch/tunnel.fbx" id="4_m0xys"]
+[ext_resource type="PackedScene" uid="uid://dovivpues0qp0" path="res://Prefabs/Pickups/FallingCoinGroups/coin_group_004.tscn" id="5_7aqx4"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="5_m0xys"]
+[ext_resource type="Script" uid="uid://bmatbi3vdsd0g" path="res://Camera/FallingCamera.cs" id="8_shrrg"]
+[ext_resource type="PackedScene" uid="uid://h6eg8mfegrk7" path="res://Prefabs/Pickups/FallingCoinGroups/coin_group_001.tscn" id="8_xybpx"]
+[ext_resource type="Material" uid="uid://ddn607sgcif7r" path="res://Materials/ps_smoke.tres" id="12_7aqx4"]
+[ext_resource type="AudioStream" uid="uid://bljjtwxrh052x" path="res://Sounds/Raw/amb_eldritch_002.wav" id="14_gqjb2"]
+[ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="15_sowx2"]
+
+[sub_resource type="Sky" id="Sky_gmxq7"]
+sky_material = ExtResource("2_0w38n")
+
+[sub_resource type="Environment" id="Environment_m0xys"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_gmxq7")
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.06, 0.028, 0, 1)
+fog_density = 1.0
+fog_depth_begin = 5.0
+fog_depth_end = 20.0
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission = Color(0.1, 0.0533333, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_shrrg"]
+material = ExtResource("4_0w38n")
+flip_faces = true
+top_radius = 3.0
+bottom_radius = 3.0
+height = 100.0
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="Animation" id="Animation_shrrg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tube/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xybpx"]
+resource_name = "moving"
+length = 8.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tube/Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 96, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5k1x"]
+_data = {
+&"RESET": SubResource("Animation_shrrg"),
+&"moving": SubResource("Animation_xybpx")
+}
+
+[sub_resource type="Animation" id="Animation_oaysv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h5k1x"]
+resource_name = "play"
+length = 3.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 32, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_erbkq"]
+_data = {
+&"RESET": SubResource("Animation_oaysv"),
+&"moving": SubResource("Animation_h5k1x")
+}
+
+[sub_resource type="Curve" id="Curve_gqjb2"]
+_data = [Vector2(0, 0), 0.0, 4.14709, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.63421, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_sowx2"]
+curve = SubResource("Curve_gqjb2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sxstl"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 1.5
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 4.0
+color = Color(1, 0.9, 0, 0.0392157)
+alpha_curve = SubResource("CurveTexture_sowx2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1i5be"]
+material = ExtResource("12_7aqx4")
+
+[sub_resource type="Animation" id="Animation_7aqx4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_erbkq"]
+resource_name = "move_up"
+length = 2.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(0, 3.5, 0), Vector3(0, 12, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gqjb2"]
+_data = {
+&"RESET": SubResource("Animation_7aqx4"),
+&"move_up": SubResource("Animation_erbkq")
+}
+
+[node name="EldritchFallingScene" type="Node3D" node_paths=PackedStringArray("Player", "CoinGroupParent", "AnimationPlayer_Pickups", "AnimationPlayer_Camera")]
+script = ExtResource("1_rio3v")
+Player = NodePath("World/Player")
+CoinGroupParent = NodePath("World/Pickups/Anim")
+AnimationPlayer_Pickups = NodePath("World/Pickups/AnimationPlayer_Pickups")
+AnimationPlayer_Camera = NodePath("Camera/AnimationPlayer_Camera")
+CoinGroupPrefabs = Array[PackedScene]([ExtResource("8_xybpx"), ExtResource("3_h5k1x"), ExtResource("4_erbkq"), ExtResource("5_7aqx4")])
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m0xys")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 5.72245, 3.27611)
+visible = false
+light_color = Color(0.34, 0.34, 0.34, 1)
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Player" type="Node3D" parent="World" node_paths=PackedStringArray("Frog")]
+script = ExtResource("3_m0xys")
+Frog = NodePath("FrogCute")
+
+[node name="FrogCute" parent="World/Player" instance=ExtResource("3_lj4j3")]
+
+[node name="Tube" type="Node3D" parent="World"]
+
+[node name="Anim" type="Node3D" parent="World/Tube"]
+
+[node name="Scale" type="Node3D" parent="World/Tube/Anim"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="tunnel" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+
+[node name="tunnel2" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+
+[node name="tunnel3" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+
+[node name="tunnel4" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
+
+[node name="tunnel5" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
+
+[node name="tunnel6" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Tube/Anim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
+visible = false
+mesh = SubResource("CylinderMesh_shrrg")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer_Tube" type="AnimationPlayer" parent="World/Tube"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_h5k1x")
+}
+script = ExtResource("5_m0xys")
+Animation = "moving"
+
+[node name="Lights" type="Node3D" parent="World"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="World/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71115, 0)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="World/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.91115, 0)
+light_energy = 0.7
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="World/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.39476, 0)
+light_energy = 0.5
+
+[node name="Pickups" type="Node3D" parent="World"]
+
+[node name="Anim" type="Node3D" parent="World/Pickups"]
+
+[node name="AnimationPlayer_Pickups" type="AnimationPlayer" parent="World/Pickups"]
+libraries = {
+&"": SubResource("AnimationLibrary_erbkq")
+}
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, -13.4143, 0)
+amount = 24
+lifetime = 3.0
+explosiveness = 0.05
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_sxstl")
+draw_pass_1 = SubResource("QuadMesh_1i5be")
+
+[node name="Camera" type="Node3D" parent="." node_paths=PackedStringArray("Camera", "LookMarker", "Target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+script = ExtResource("8_shrrg")
+Camera = NodePath("Camera3D")
+LookMarker = NodePath("LookMarker")
+Target = NodePath("../World/Player")
+
+[node name="Camera3D" type="Camera3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+current = true
+
+[node name="LookMarker" type="Marker3D" parent="Camera"]
+
+[node name="AnimationPlayer_Camera" type="AnimationPlayer" parent="Camera"]
+libraries = {
+&"": SubResource("AnimationLibrary_gqjb2")
+}
+
+[node name="Amb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gqjb2")
+volume_db = -5.0
+autoplay = true
+bus = &"SFX"
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_sowx2")
+volume_db = 10.0
+autoplay = true
+bus = &"SFX"

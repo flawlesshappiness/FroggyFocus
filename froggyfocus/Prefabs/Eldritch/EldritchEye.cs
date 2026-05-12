@@ -1,6 +1,5 @@
 using FlawLizArt.Animation.StateMachine;
 using Godot;
-using System;
 
 public enum EldritchEyeStartState
 {
@@ -21,8 +20,6 @@ public partial class EldritchEye : Node3D
     [Export]
     public AnimationStateMachine Animation;
 
-    private static event Action<bool> OnOpenStateChanged;
-
     private float time_blink;
     private RandomNumberGenerator rng = new();
     private BoolParameter param_open = new BoolParameter("open", false);
@@ -32,15 +29,6 @@ public partial class EldritchEye : Node3D
     {
         base._Ready();
         InitializeAnimations();
-
-        OnOpenStateChanged += OpenStateChanged;
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-
-        OnOpenStateChanged -= OpenStateChanged;
     }
 
     private void InitializeAnimations()
@@ -101,15 +89,5 @@ public partial class EldritchEye : Node3D
     {
         param_open.Set(open);
         ResetBlinkTime();
-    }
-
-    public static void SetOpenGlobal(bool open)
-    {
-        OnOpenStateChanged?.Invoke(open);
-    }
-
-    private void OpenStateChanged(bool open)
-    {
-        SetOpen(open);
     }
 }

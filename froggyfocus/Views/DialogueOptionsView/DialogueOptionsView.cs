@@ -102,7 +102,7 @@ public partial class DialogueOptionsView : View
             if (!valid) continue;
 
             var option = settings.Options[i];
-            map.Button.Text = option.Text;
+            map.Button.Text = Tr($"##{option.Text}##");
         }
     }
 

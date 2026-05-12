@@ -1,7 +1,6 @@
 using FlawLizArt.Animation.StateMachine;
 using Godot;
 using System;
-using System.Collections;
 
 public enum EldritchTentacleStartState
 {
@@ -19,8 +18,6 @@ public partial class EldritchTentacle : Node3D
     [Export]
     public EldritchEye Eye;
 
-    private static event Action<bool> OnAwakeStateChanged;
-
     public Action OnSlapHit;
 
     private TriggerParameter param_awake = new("awake");
@@ -31,14 +28,6 @@ public partial class EldritchTentacle : Node3D
     {
         base._Ready();
         InitializeAnimations();
-
-        OnAwakeStateChanged += AwakeStateChanged;
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        OnAwakeStateChanged -= AwakeStateChanged;
     }
 
     private void InitializeAnimations()
@@ -102,22 +91,6 @@ public partial class EldritchTentacle : Node3D
     public void TriggerSlap()
     {
         param_slap.Trigger();
-    }
-
-    public static void SetAwakeGlobal(bool awake)
-    {
-        OnAwakeStateChanged?.Invoke(awake);
-    }
-
-    private void AwakeStateChanged(bool awake)
-    {
-        this.StartCoroutine(Cr, "awake_state");
-        IEnumerator Cr()
-        {
-            var rng = new RandomNumberGenerator();
-            yield return new WaitForSeconds(rng.RandfRange(0f, 2f));
-            TriggerAwake();
-        }
     }
 
     public void AnimationSlap()

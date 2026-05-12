@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7qruwrt0l5pa"]
+[gd_scene load_steps=43 format=3 uid="uid://c7qruwrt0l5pa"]
 
 [ext_resource type="Script" uid="uid://cnesl4fp5dgqk" path="res://Prefabs/Eldritch/EldritchEntrance.cs" id="1_5dlgc"]
-[ext_resource type="AudioStream" uid="uid://ob1spjrnx72u" path="res://Sounds/Raw/sfx_eldritch_wake_up_001.wav" id="2_7ildm"]
-[ext_resource type="AudioStream" uid="uid://36oy1tgsul0j" path="res://Sounds/Raw/amb_eldritch_mono_001.wav" id="3_x00pb"]
+[ext_resource type="Resource" uid="uid://bl2bg6tn8vsf5" path="res://Weather/Resources/Thunder.tres" id="2_0apxr"]
+[ext_resource type="AudioStream" uid="uid://v6hxs23k5k3m" path="res://Sounds/Raw/sfx_eldritch_wake_up_002.wav" id="2_x00pb"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_x00pb"]
+[ext_resource type="Material" uid="uid://ddn607sgcif7r" path="res://Materials/ps_smoke.tres" id="4_efmmk"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5plrw"]
 height = 1.0
-radius = 5.01416
+radius = 10.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0wg7"]
 shading_mode = 0
@@ -14,8 +16,8 @@ albedo_color = Color(0.00333333, 0, 0.1, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_firk2"]
 material = SubResource("StandardMaterial3D_b0wg7")
-top_radius = 5.0
-bottom_radius = 5.0
+top_radius = 10.0
+bottom_radius = 10.0
 height = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5dlgc"]
@@ -24,8 +26,8 @@ albedo_color = Color(0.3, 0.15, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7ildm"]
 material = SubResource("StandardMaterial3D_5dlgc")
-top_radius = 5.0
-bottom_radius = 5.0
+top_radius = 10.0
+bottom_radius = 10.0
 height = 0.01
 
 [sub_resource type="Animation" id="Animation_5dlgc"]
@@ -45,19 +47,138 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Amb:volume_db")
+tracks/1/path = NodePath("SfxWakeUp:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("particles/ps_bubbles_center:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("particles/ps_bubbles_moving:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("particles/ps_bubbles_geiser1:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("particles/ps_bubbles_geiser2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("particles/ps_bubbles_geiser3:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("particles/ps_bubbles_smallies:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("particles/ps_bubbles_smallies:amount_ratio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-80.0]
+"values": [1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("particles/ps_mist:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("particles/ps_mist:amount_ratio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("particles/ps_steam:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7ildm"]
 resource_name = "active"
-loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -71,11 +192,23 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("particles/ps_steam:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_5plrw"]
 resource_name = "show"
-length = 4.0
-step = 0.05
+length = 20.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,22 +216,142 @@ tracks/0/path = NodePath("Shadow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(0.574349, 1),
+"times": PackedFloat32Array(2, 20),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(0.001, 0.001, 0.001), Vector3(1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Amb:volume_db")
+tracks/1/path = NodePath("SfxWakeUp:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(0.170755, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("particles/ps_bubbles_center:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.72938, 15.6744),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("particles/ps_bubbles_moving:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7.8, 19),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("particles/ps_bubbles_geiser1:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("particles/ps_bubbles_geiser2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 9.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("particles/ps_bubbles_geiser3:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 16.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("particles/ps_bubbles_smallies:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 7.2, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("particles/ps_bubbles_smallies:amount_ratio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 7.1, 17.8, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-80.0, -5.0]
+"values": [0.0, 0.0, 1.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("particles/ps_mist:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 7.4, 19.7399),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("particles/ps_mist:amount_ratio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 7.4, 15.2, 19.7399),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("particles/ps_steam:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 18.2565),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7ildm"]
@@ -108,7 +361,162 @@ _data = {
 &"show": SubResource("Animation_5plrw")
 }
 
-[node name="EldritchEntrance" type="Area3D" node_paths=PackedStringArray("MeshEntrance", "MeshExit", "Collider", "AnimationPlayer", "SfxWakeUp")]
+[sub_resource type="Curve" id="Curve_x00pb"]
+_data = [Vector2(0, 0), 0.0, 3.74011, 0, 0, Vector2(0.6, 0.9), -0.390461, -0.390461, 0, 0, Vector2(0.935345, 0.88764), 0.200519, 0.200519, 0, 0, Vector2(1, 1), 1.73783, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_efmmk"]
+curve = SubResource("Curve_x00pb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_efmmk"]
+lifetime_randomness = 0.1
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_efmmk")
+
+[sub_resource type="SphereMesh" id="SphereMesh_0apxr"]
+material = ExtResource("3_x00pb")
+
+[sub_resource type="Curve" id="Curve_0apxr"]
+_data = [Vector2(0, 0), 0.0, 3.74011, 0, 0, Vector2(0.1, 0.9), -0.262367, -0.262367, 0, 0, Vector2(0.935345, 0.88764), 0.200519, 0.200519, 0, 0, Vector2(1, 1), 1.73783, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ceqtj"]
+curve = SubResource("Curve_0apxr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ww2fw"]
+lifetime_randomness = 0.1
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ceqtj")
+
+[sub_resource type="Curve" id="Curve_efmmk"]
+_data = [Vector2(0, 0), 0.0, 3.74011, 0, 0, Vector2(0.1, 0.9), -0.262367, -0.262367, 0, 0, Vector2(0.935345, 0.88764), 0.200519, 0.200519, 0, 0, Vector2(1, 1), 1.73783, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_0apxr"]
+curve = SubResource("Curve_efmmk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ceqtj"]
+lifetime_randomness = 0.1
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, -1)
+spread = 0.0
+flatness = 1.0
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+scale_min = 0.05
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_0apxr")
+
+[sub_resource type="Curve" id="Curve_xo0nw"]
+_data = [Vector2(0, 0), 0.0, 3.74011, 0, 0, Vector2(0.1, 0.9), -0.262367, -0.262367, 0, 0, Vector2(0.935345, 0.88764), 0.200519, 0.200519, 0, 0, Vector2(1, 1), 1.73783, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ptfrp"]
+curve = SubResource("Curve_xo0nw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7yds8"]
+lifetime_randomness = 0.1
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 2.0
+initial_velocity_max = 15.0
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ptfrp")
+
+[sub_resource type="Curve" id="Curve_ceqtj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ww2fw"]
+curve = SubResource("Curve_ceqtj")
+
+[sub_resource type="Gradient" id="Gradient_xo0nw"]
+colors = PackedColorArray(1, 1, 1, 0.180392, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ptfrp"]
+gradient = SubResource("Gradient_xo0nw")
+
+[sub_resource type="Curve" id="Curve_7yds8"]
+_data = [Vector2(0, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m4buf"]
+curve = SubResource("Curve_7yds8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5543g"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0.005, 0)
+scale_min = 4.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_m4buf")
+color = Color(1, 1, 1, 0.486275)
+color_ramp = SubResource("GradientTexture1D_ptfrp")
+alpha_curve = SubResource("CurveTexture_ww2fw")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w162k"]
+material = ExtResource("4_efmmk")
+
+[sub_resource type="Curve" id="Curve_ww2fw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xo0nw"]
+curve = SubResource("Curve_ww2fw")
+
+[sub_resource type="Gradient" id="Gradient_ptfrp"]
+colors = PackedColorArray(1, 1, 1, 0.180392, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7yds8"]
+gradient = SubResource("Gradient_ptfrp")
+
+[sub_resource type="Curve" id="Curve_m4buf"]
+_data = [Vector2(0, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5543g"]
+curve = SubResource("Curve_m4buf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w162k"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 10.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+gravity = Vector3(0, 0.05, 0)
+scale_min = 4.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_5543g")
+color = Color(1, 0.9675, 0.61, 0.156863)
+color_ramp = SubResource("GradientTexture1D_7yds8")
+alpha_curve = SubResource("CurveTexture_xo0nw")
+
+[node name="EldritchEntrance" type="Area3D" node_paths=PackedStringArray("MeshEntrance", "MeshExit", "Collider", "AnimationPlayer")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_5dlgc")
@@ -116,7 +524,7 @@ MeshEntrance = NodePath("Shadow/MeshEntrance")
 MeshExit = NodePath("Shadow/MeshExit")
 Collider = NodePath("CollisionShape3D")
 AnimationPlayer = NodePath("AnimationPlayer")
-SfxWakeUp = NodePath("SfxWakeUp")
+StormyWeather = ExtResource("2_0apxr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -138,14 +546,89 @@ libraries = {
 &"": SubResource("AnimationLibrary_7ildm")
 }
 
-[node name="SfxWakeUp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_7ildm")
-bus = &"SFX"
-
-[node name="Amb" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_x00pb")
-volume_db = -80.0
-autoplay = true
-max_distance = 60.0
+[node name="SfxWakeUp" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_x00pb")
+volume_db = 10.0
+unit_size = 30.0
+max_distance = 200.0
 bus = &"SFX"
 attenuation_filter_db = 0.0
+
+[node name="particles" type="Node3D" parent="."]
+
+[node name="ps_bubbles_center" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+emitting = false
+amount = 24
+lifetime = 5.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_efmmk")
+draw_pass_1 = SubResource("SphereMesh_0apxr")
+
+[node name="ps_bubbles_moving" type="GPUParticles3D" parent="particles"]
+emitting = false
+amount = 64
+lifetime = 5.0
+explosiveness = 0.05
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ww2fw")
+draw_pass_1 = SubResource("SphereMesh_0apxr")
+
+[node name="ps_bubbles_smallies" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+emitting = false
+amount = 128
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ceqtj")
+draw_pass_1 = SubResource("SphereMesh_0apxr")
+
+[node name="ps_bubbles_geiser1" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8705, 0, -2.46428)
+emitting = false
+amount = 64
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_7yds8")
+draw_pass_1 = SubResource("SphereMesh_0apxr")
+
+[node name="ps_bubbles_geiser2" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99062, 0, 2.47666)
+emitting = false
+amount = 64
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_7yds8")
+draw_pass_1 = SubResource("SphereMesh_0apxr")
+
+[node name="ps_bubbles_geiser3" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8159, 0, -0.375213)
+emitting = false
+amount = 64
+lifetime = 4.0
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_7yds8")
+draw_pass_1 = SubResource("SphereMesh_0apxr")
+
+[node name="ps_mist" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, -4.37114e-08)
+emitting = false
+amount = 64
+lifetime = 6.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_5543g")
+draw_pass_1 = SubResource("QuadMesh_w162k")
+
+[node name="ps_steam" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, -4.37114e-08)
+emitting = false
+amount = 32
+lifetime = 6.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_w162k")
+draw_pass_1 = SubResource("QuadMesh_w162k")

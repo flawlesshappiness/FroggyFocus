@@ -167,8 +167,6 @@ public partial class WeatherController : ResourceController<WeatherCollection, W
                 yield return WaitForWeatherTransition(previous_weather, current_weather, duration);
             }
 
-            Debug.Log(current_weather.GetResourceName());
-
             // Weather loop
             while (true)
             {

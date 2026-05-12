@@ -4,7 +4,6 @@ public partial class EldritchScene : GameScene
     {
         base._Ready();
         FloatingPlatformController.Instance.Start();
-        EldritchEye.SetOpenGlobal(true);
     }
 
     protected override void Initialize()
