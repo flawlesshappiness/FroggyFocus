@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dv5pmpu5grdwf"]
+
+[ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_bqrlb"]
+[ext_resource type="Material" uid="uid://b4s1u05hj225w" path="res://Materials/Color_Purple.tres" id="2_vbwiq"]
+
+[sub_resource type="Curve" id="Curve_bqrlb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.93419, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vbwiq"]
+curve = SubResource("Curve_bqrlb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a6ttn"]
+spread = 80.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.15
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_vbwiq")
+
+[sub_resource type="SphereMesh" id="SphereMesh_kd21j"]
+material = ExtResource("2_vbwiq")
+
+[node name="syringe_explode_effect" type="Node3D" node_paths=PackedStringArray("Particles")]
+script = ExtResource("1_bqrlb")
+Particles = [NodePath("liquid")]
+PlayOnReady = true
+DestroyDelay = 1.0
+
+[node name="liquid" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
+amount = 12
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_a6ttn")
+draw_pass_1 = SubResource("SphereMesh_kd21j")

@@ -11,5 +11,7 @@ public enum FocusAttackType
     Moss,
     Oil,
     Seaweed,
-    Garbage
+    Garbage,
+    SyringeCrack,
+    EldritchEyeFlash,
 }

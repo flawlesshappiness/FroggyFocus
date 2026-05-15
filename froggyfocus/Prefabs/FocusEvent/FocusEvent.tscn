@@ -155,7 +155,7 @@ CursorStart = NodePath("CursorStart")
 MainCameraMarker = NodePath("MainCameraMarker")
 FocusTargetPrefab = ExtResource("3_2i5pb")
 Frog = NodePath("FocusFrog")
-SkillCheckParent = NodePath("SkillChecks")
+SkillCheckParent = NodePath("Skillchecks")
 AnimationPlayer_Frog = NodePath("AnimationPlayer_Frog")
 
 [node name="CursorStart" type="Marker3D" parent="."]
@@ -171,51 +171,51 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 
 
 [node name="FocusCursor" parent="." instance=ExtResource("2_tceec")]
 
-[node name="SkillChecks" type="Node3D" parent="."]
+[node name="Skillchecks" type="Node3D" parent="."]
 
-[node name="Bombs" parent="SkillChecks" instance=ExtResource("6_dbk1m")]
+[node name="Bombs" parent="Skillchecks" instance=ExtResource("6_dbk1m")]
 
-[node name="Dash" parent="SkillChecks" instance=ExtResource("7_xhohg")]
+[node name="Dash" parent="Skillchecks" instance=ExtResource("7_xhohg")]
 
-[node name="Dive" parent="SkillChecks" instance=ExtResource("8_201f2")]
+[node name="Dive" parent="Skillchecks" instance=ExtResource("8_201f2")]
 
-[node name="Constrict" parent="SkillChecks" instance=ExtResource("9_ixd7q")]
+[node name="Constrict" parent="Skillchecks" instance=ExtResource("9_ixd7q")]
 
-[node name="Spike" parent="SkillChecks" instance=ExtResource("10_4atv5")]
+[node name="Spike" parent="Skillchecks" instance=ExtResource("10_4atv5")]
 
-[node name="Crystal" parent="SkillChecks" instance=ExtResource("10_85vk6")]
+[node name="Crystal" parent="Skillchecks" instance=ExtResource("10_85vk6")]
 
-[node name="Moss" parent="SkillChecks" instance=ExtResource("11_85vk6")]
+[node name="Moss" parent="Skillchecks" instance=ExtResource("11_85vk6")]
 
-[node name="Sand" parent="SkillChecks" instance=ExtResource("12_1pin3")]
+[node name="Sand" parent="Skillchecks" instance=ExtResource("12_1pin3")]
 
-[node name="Seaweed" parent="SkillChecks" instance=ExtResource("13_f8plv")]
+[node name="Seaweed" parent="Skillchecks" instance=ExtResource("13_f8plv")]
 
-[node name="Garbage" parent="SkillChecks" instance=ExtResource("14_nmos7")]
+[node name="Garbage" parent="Skillchecks" instance=ExtResource("14_nmos7")]
 
-[node name="Oil" parent="SkillChecks" instance=ExtResource("15_3eqej")]
+[node name="Oil" parent="Skillchecks" instance=ExtResource("15_3eqej")]
 
-[node name="GlitchTeleport" parent="SkillChecks" instance=ExtResource("16_2rtio")]
+[node name="GlitchTeleport" parent="Skillchecks" instance=ExtResource("16_2rtio")]
 
-[node name="GlitchBombs" parent="SkillChecks" instance=ExtResource("17_n8lvd")]
+[node name="GlitchBombs" parent="Skillchecks" instance=ExtResource("17_n8lvd")]
 
-[node name="GlitchDot" parent="SkillChecks" instance=ExtResource("18_kdpbt")]
+[node name="GlitchDot" parent="Skillchecks" instance=ExtResource("18_kdpbt")]
 
-[node name="EldritchWind" parent="SkillChecks" instance=ExtResource("19_otgg6")]
+[node name="EldritchWind" parent="Skillchecks" instance=ExtResource("19_otgg6")]
 
-[node name="EldritchSlap" parent="SkillChecks" instance=ExtResource("20_wi65r")]
+[node name="EldritchSlap" parent="Skillchecks" instance=ExtResource("20_wi65r")]
 
-[node name="EldritchTeleport" parent="SkillChecks" instance=ExtResource("21_ef5u0")]
+[node name="EldritchTeleport" parent="Skillchecks" instance=ExtResource("21_ef5u0")]
 
-[node name="CrystalClones" parent="SkillChecks" instance=ExtResource("21_f3kj3")]
+[node name="CrystalClones" parent="Skillchecks" instance=ExtResource("21_f3kj3")]
 
-[node name="CrystalMoss" parent="SkillChecks" instance=ExtResource("22_3otxw")]
+[node name="CrystalMoss" parent="Skillchecks" instance=ExtResource("22_3otxw")]
 
-[node name="Buzz" parent="SkillChecks" instance=ExtResource("24_3q4gb")]
+[node name="Buzz" parent="Skillchecks" instance=ExtResource("24_3q4gb")]
 
-[node name="Stomp" parent="SkillChecks" instance=ExtResource("25_8i2bm")]
+[node name="Stomp" parent="Skillchecks" instance=ExtResource("25_8i2bm")]
 
-[node name="Dig" parent="SkillChecks" instance=ExtResource("26_rqtj8")]
+[node name="Dig" parent="Skillchecks" instance=ExtResource("26_rqtj8")]
 
 [node name="FocusFrog" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
 script = ExtResource("26_0lb7u")

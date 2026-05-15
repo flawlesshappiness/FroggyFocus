@@ -150,8 +150,8 @@ public partial class FocusCursor : Node3D
     private FocusTarget GetNearTarget()
     {
         return FocusEvent.Targets
-            .Where(x => x.GlobalPosition.DistanceTo(GlobalPosition) < Radius && !x.IsFocusMax)
-            .OrderBy(x => x.GlobalPosition.DistanceTo(GlobalPosition))
+            .Where(x => x.DistanceToCursor < Radius && !x.IsFocusMax)
+            .OrderBy(x => x.DistanceToCursor)
             .FirstOrDefault();
     }
 

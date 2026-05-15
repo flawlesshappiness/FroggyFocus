@@ -87,7 +87,7 @@ public partial class FocusFrog : Node3D
         if (Target == null) return 0;
 
         var forward = Character.Basis * Vector3.Forward;
-        var direction = GlobalPosition.DirectionTo(Target.GlobalPosition);
+        var direction = GlobalPosition.DirectionTo(Target.GlobalPosition.Set(y: GlobalPosition.Y));
         var angle = forward.SignedAngleTo(direction, Vector3.Up);
         return angle;
     }

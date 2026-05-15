@@ -46,10 +46,10 @@ public partial class Wooden : FocusAttack
 
             wood.AnimateStab();
 
-            if (Cursor.CurrentTarget == Target)
+            if (IsFocusTarget)
             {
-                Cursor.HurtFocusValuePercentage(0.1f);
-                Cursor.EndFocusTarget();
+                HurtFocusValue(0.1f);
+                DisruptCursorFocus();
                 AnimateMoveCursorAway();
             }
 

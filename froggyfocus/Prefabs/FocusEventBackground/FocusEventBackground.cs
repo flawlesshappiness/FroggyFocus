@@ -7,6 +7,9 @@ public partial class FocusEventBackground : Node3D
     public string Id;
 
     [Export]
+    public Marker3D TargetStartMarker;
+
+    [Export]
     public Array<string> Aliases;
 
     [Export]

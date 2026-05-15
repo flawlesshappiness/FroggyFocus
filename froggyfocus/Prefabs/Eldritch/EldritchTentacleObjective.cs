@@ -20,6 +20,9 @@ public partial class EldritchTentacleObjective : Node3D
     [Export]
     public FocusEvent FocusEvent;
 
+    [Export]
+    public FocusEventInfo FocusEventInfo;
+
     public bool IsCompleted => GameFlags.IsFlag(GameFlagId, 1);
 
     public event Action OnCompleted;
@@ -71,7 +74,7 @@ public partial class EldritchTentacleObjective : Node3D
         active_event = true;
         FocusEvent.StartEvent(new FocusEvent.Settings
         {
-            Id = "eldritch_syringe"
+            Id = FocusEventInfo.Id,
         });
     }
 

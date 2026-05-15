@@ -1,0 +1,166 @@
+[gd_scene load_steps=13 format=3 uid="uid://caxtcmeu7c6wv"]
+
+[ext_resource type="Script" uid="uid://cog2l72ajovxi" path="res://Prefabs/FocusAttacks/CursorSyringeLiquid/CursorSyringeLiquid.cs" id="1_6axu7"]
+[ext_resource type="PackedScene" uid="uid://dv2y8uno7wxic" path="res://Assets/FlawLizArt/Eldritch/splat.fbx" id="2_p70mi"]
+[ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="3_a36t5"]
+[ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="4_1nbtk"]
+[ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="5_8v2ox"]
+[ext_resource type="PackedScene" uid="uid://buypkqfilrh3j" path="res://Prefabs/Effects/syringe_liquid_trap_effect.tscn" id="6_awrgo"]
+
+[sub_resource type="Animation" id="Animation_vkyur"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSlime:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_a36t5"]
+resource_name = "hide"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSlime:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_1nbtk"]
+resource_name = "shake"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0.8, 0.8, 0.8), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSlime:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p70mi"]
+resource_name = "show"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxSlime:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1nbtk"]
+_data = {
+&"RESET": SubResource("Animation_vkyur"),
+&"hide": SubResource("Animation_a36t5"),
+&"shake": SubResource("Animation_1nbtk"),
+&"show": SubResource("Animation_p70mi")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8v2ox"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("3_a36t5")
+stream_1/stream = ExtResource("4_1nbtk")
+
+[node name="CursorSyringeLiquid" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "ShakeEffect", "SizeNode")]
+script = ExtResource("1_6axu7")
+AnimationPlayer = NodePath("AnimationPlayer")
+ShakeEffect = NodePath("shake_effect")
+InputPromptAnimationType = 1
+SizeNode = NodePath("Anim/Size")
+
+[node name="Anim" type="Node3D" parent="."]
+
+[node name="Size" type="Node3D" parent="Anim"]
+
+[node name="splat" parent="Anim/Size" instance=ExtResource("2_p70mi")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1nbtk")
+}
+playback_default_blend_time = 0.02
+
+[node name="SfxSlime" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_8v2ox")
+pitch_scale = 0.7
+bus = &"SFX"
+
+[node name="shake_effect" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11232, 0)
+script = ExtResource("5_8v2ox")
+EffectGroupPrefab = ExtResource("6_awrgo")
+metadata/_custom_type_script = "uid://bcoah34psypiv"

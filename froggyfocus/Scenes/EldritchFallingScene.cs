@@ -48,6 +48,10 @@ public partial class EldritchFallingScene : Scene
 
         void OnTransition()
         {
+            Data.Game.CurrentScene = nameof(EldritchScene);
+            Data.Game.StartingNode = string.Empty;
+            Data.Game.Save();
+
             Scene.Goto<EldritchScene>();
         }
     }

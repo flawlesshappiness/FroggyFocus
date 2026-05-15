@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=109 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -42,6 +42,12 @@
 [ext_resource type="AudioStream" uid="uid://dr6lnaq404371" path="res://Sounds/Raw/sfx_step_water_high_003.wav" id="27_dg1gl"]
 [ext_resource type="Script" uid="uid://dfxhfhrgysnnt" path="res://FocusAttack/Garbage.cs" id="28_5ycpc"]
 [ext_resource type="PackedScene" uid="uid://8sp12mjyjuvl" path="res://Prefabs/FocusAttacks/GarbageStab/garbage_stab.tscn" id="29_dg1gl"]
+[ext_resource type="Script" uid="uid://bgdvmdkrlntuo" path="res://FocusAttack/SyringeCrack.cs" id="30_0yq4b"]
+[ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="31_dex8i"]
+[ext_resource type="PackedScene" uid="uid://m5f2ausq8fqq" path="res://Prefabs/Effects/syringe_break_effect.tscn" id="32_ryrjj"]
+[ext_resource type="PackedScene" uid="uid://bw7ctjcpdse2m" path="res://Prefabs/Effects/syringe_warn_effect.tscn" id="33_ryrjj"]
+[ext_resource type="PackedScene" uid="uid://dv5pmpu5grdwf" path="res://Prefabs/Effects/syringe_liquid_explode_effect.tscn" id="35_4o5bo"]
+[ext_resource type="PackedScene" uid="uid://caxtcmeu7c6wv" path="res://Prefabs/FocusAttacks/CursorSyringeLiquid/cursor_syringe_liquid.tscn" id="35_s43g5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saxd3"]
 random_pitch = 1.1
@@ -1092,6 +1098,32 @@ bus = &"SFX"
 script = ExtResource("28_5ycpc")
 WoodPrefab = ExtResource("29_dg1gl")
 Type = 11
+
+[node name="SyringeCracks" type="Node3D" parent="Attacks" node_paths=PackedStringArray("WarnEffect", "CrackEffect", "SplatEffect")]
+script = ExtResource("30_0yq4b")
+TrapPrefab = ExtResource("35_s43g5")
+WarnEffect = NodePath("WarnEffect")
+CrackEffect = NodePath("CrackEffect")
+SplatEffect = NodePath("SplatEffect")
+Type = 12
+
+[node name="CrackEffect" type="Node3D" parent="Attacks/SyringeCracks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+script = ExtResource("31_dex8i")
+EffectGroupPrefab = ExtResource("32_ryrjj")
+metadata/_custom_type_script = "uid://bcoah34psypiv"
+
+[node name="WarnEffect" type="Node3D" parent="Attacks/SyringeCracks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+script = ExtResource("31_dex8i")
+EffectGroupPrefab = ExtResource("33_ryrjj")
+metadata/_custom_type_script = "uid://bcoah34psypiv"
+
+[node name="SplatEffect" type="Node3D" parent="Attacks/SyringeCracks"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+script = ExtResource("31_dex8i")
+EffectGroupPrefab = ExtResource("35_4o5bo")
+metadata/_custom_type_script = "uid://bcoah34psypiv"
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

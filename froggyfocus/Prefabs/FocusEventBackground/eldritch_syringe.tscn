@@ -7,9 +7,10 @@
 [ext_resource type="Material" uid="uid://bvh21lkq01ocn" path="res://Materials/Water_Bile.tres" id="5_e2kx8"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="6_0h42o"]
 
-[node name="eldritch_syringe" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+[node name="eldritch_syringe" type="Node3D" node_paths=PackedStringArray("TargetStartMarker", "SoundEffects")]
 script = ExtResource("1_ak17n")
 Id = "eldritch_syringe"
+TargetStartMarker = NodePath("TargetPosition")
 SoundEffects = [NodePath("AmbWater")]
 
 [node name="Island_Start" type="Node3D" parent="."]
@@ -43,5 +44,8 @@ volume_db = -5.0
 pitch_scale = 0.4
 autoplay = true
 bus = &"Environment"
+
+[node name="TargetPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933629, -2.31855)
 
 [editable path="Water"]

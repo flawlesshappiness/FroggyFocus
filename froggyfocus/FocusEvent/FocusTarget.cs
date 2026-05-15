@@ -48,6 +48,7 @@ public partial class FocusTarget : Node3D
     public Vector2 MoveDistance { get; private set; }
     public Vector2 MoveDelay { get; private set; }
     public int MovePoints { get; private set; }
+    public float DistanceToCursor => FocusEvent.Cursor.GlobalPosition.DistanceTo(GlobalPosition.Set(y: FocusEvent.Cursor.GlobalPosition.Y));
 
     public MultiLock FocusLock = new();
 
@@ -125,7 +126,7 @@ public partial class FocusTarget : Node3D
     {
         FocusCircle.SetFill(0);
         FocusValue = 0f;
-        FocusMax = 100f;
+        FocusMax = Info.FocusValueOverride == 0 ? 100f : Info.FocusValueOverride;
         FocusTick = UpgradeController.Instance.GetCurrentValue(UpgradeType.TickAmount);
     }
 
@@ -387,6 +388,12 @@ public partial class FocusTarget : Node3D
     private void Move(Vector3 velocity)
     {
         GlobalPosition += velocity;
+    }
+
+    public Vector3 GetStartPosition()
+    {
+        var marker = FocusEvent.CurrentBackground.TargetStartMarker;
+        return marker?.GlobalPosition ?? GetApproximatePosition(GetRandomPosition());
     }
 
     public Vector3 GetApproximatePosition(Vector3 position)

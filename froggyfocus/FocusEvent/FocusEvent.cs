@@ -55,6 +55,7 @@ public partial class FocusEvent : Node3D
     public float TimerDuration { get; private set; }
     public float TimerStart { get; private set; }
     public float TimerEnd { get; private set; }
+    public FocusEventBackground CurrentBackground { get; private set; }
     public Settings CurrentSettings { get; private set; }
     public List<FocusTarget> Targets { get; private set; } = new();
     public bool IsCoveringEyes { get; private set; }
@@ -194,7 +195,7 @@ public partial class FocusEvent : Node3D
         target.SetData(data);
         target.Show();
         target.Initialize(this);
-        target.GlobalPosition = target.GetApproximatePosition(target.GetRandomPosition());
+        target.GlobalPosition = target.GetStartPosition();
 
         target.OnCaught += () => Target_Caught(target);
 
@@ -315,9 +316,9 @@ public partial class FocusEvent : Node3D
         CurrentSettings = settings;
         result = new FocusEventResult(this);
         Player.SetAllLocks(nameof(FocusEvent), true);
+        SetBackground(settings.Id);
         CreateTargets();
         TransitionToStart();
-        SetBackground(settings.Id);
     }
 
     private Coroutine TransitionToStart()
@@ -472,8 +473,8 @@ public partial class FocusEvent : Node3D
     private void SetBackground(string id)
     {
         HideBackgrounds();
-        var background = backgrounds.FirstOrDefault(x => x.Id == id || (x.Aliases?.Contains(id) ?? false)) ?? backgrounds.First();
-        background.Show();
+        CurrentBackground = backgrounds.FirstOrDefault(x => x.Id == id || (x.Aliases?.Contains(id) ?? false)) ?? backgrounds.First();
+        CurrentBackground.Show();
     }
 
     private void SetCoveringEyes(bool is_covering)

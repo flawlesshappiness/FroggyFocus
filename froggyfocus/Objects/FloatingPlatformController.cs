@@ -21,7 +21,7 @@ public partial class FloatingPlatformController : SingletonController
             while (true)
             {
                 OnTick?.Invoke(tick);
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.75f);
                 tick = (tick + 1) % 100;
             }
         }
