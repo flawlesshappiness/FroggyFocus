@@ -1,0 +1,340 @@
+[gd_scene load_steps=19 format=3 uid="uid://dl03jm3u0wmoq"]
+
+[ext_resource type="PackedScene" uid="uid://0rva644ikge3" path="res://Assets/FlawLizArt/Eldritch/wall.fbx" id="1_ka1uv"]
+[ext_resource type="Script" uid="uid://tvwl81vup874" path="res://Prefabs/Eldritch/EldritchTentacleWall.cs" id="1_uat1h"]
+[ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_w1i6u"]
+[ext_resource type="PackedScene" uid="uid://dkhfqakcxk7tp" path="res://Assets/FlawLizArt/Bones/long.fbx" id="3_0mxgl"]
+[ext_resource type="Script" uid="uid://bbuoo2kykslx" path="res://Modules/Particles/GPUParticles3DParent.cs" id="3_4thfj"]
+[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="3_bahp8"]
+[ext_resource type="AudioStream" uid="uid://buu7pwag7y5w5" path="res://Sounds/Raw/sfx_eldritch_wall_sink.wav" id="6_ual45"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uat1h"]
+height = 7.5
+radius = 3.28906
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w1i6u"]
+height = 7.0
+radius = 3.90771
+
+[sub_resource type="Curve" id="Curve_4thfj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.66542, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uat1h"]
+curve = SubResource("Curve_4thfj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ual45"]
+emission_shape_offset = Vector3(0, -1, 0)
+emission_shape = 3
+emission_box_extents = Vector3(4, 0, 0.1)
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_uat1h")
+
+[sub_resource type="SphereMesh" id="SphereMesh_0mxgl"]
+material = ExtResource("3_bahp8")
+
+[sub_resource type="Animation" id="Animation_uat1h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("effects/sinking/ps_sinking:Emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim/scale/StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SfxSink:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_0mxgl"]
+resource_name = "hidden"
+length = 0.01
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -16.0022, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("effects/sinking/ps_sinking:Emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim/scale/StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ual45"]
+resource_name = "hide"
+length = 5.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -16.0022, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("effects/sinking/ps_sinking:Emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.01, 4.11),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim/scale/StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.64),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SfxSink:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_4thfj"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("effects/sinking/ps_sinking:Emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim/scale/StaticBody3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ual45"]
+_data = {
+&"RESET": SubResource("Animation_uat1h"),
+&"hidden": SubResource("Animation_0mxgl"),
+&"hide": SubResource("Animation_ual45"),
+&"show": SubResource("Animation_4thfj")
+}
+
+[node name="eldritch_wall" type="Area3D" node_paths=PackedStringArray("InteractCollider", "AnimationPlayer", "Eyes", "Objectives")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_uat1h")
+InteractCollider = NodePath("CollisionShape3D")
+AnimationPlayer = NodePath("AnimationPlayer")
+Eyes = [NodePath("anim/Eldritch_Eye"), NodePath("anim/Eldritch_Eye2"), NodePath("anim/Eldritch_Eye3")]
+Objectives = []
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 9.08619)
+shape = SubResource("CylinderShape3D_uat1h")
+
+[node name="anim" type="Node3D" parent="."]
+
+[node name="scale" type="Node3D" parent="anim"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="wall" parent="anim/scale" instance=ExtResource("1_ka1uv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="anim/scale"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="anim/scale/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -1.63836)
+shape = SubResource("CylinderShape3D_w1i6u")
+
+[node name="bones" type="Node3D" parent="anim/scale"]
+
+[node name="long" parent="anim/scale/bones" instance=ExtResource("3_0mxgl")]
+transform = Transform3D(0.990757, -0.135646, 1.73205, 0.271293, 1.98151, -3.17987e-08, -1.71604, 0.234946, 1, -1.49014, -0.666358, 1.78666)
+
+[node name="long4" parent="anim/scale/bones" instance=ExtResource("3_0mxgl")]
+transform = Transform3D(-0.512854, 0.0702158, 1.93185, 0.271293, 1.98151, -3.80708e-08, -1.914, 0.262049, -0.517638, 1.37164, -0.666358, 1.77392)
+
+[node name="long5" parent="anim/scale/bones" instance=ExtResource("3_0mxgl")]
+transform = Transform3D(-0.990757, 0.135646, 1.73205, 0.271293, 1.98151, -3.29614e-08, -1.71604, 0.234946, -1, 2.25952, -0.666358, 1.32312)
+
+[node name="long6" parent="anim/scale/bones" instance=ExtResource("3_0mxgl")]
+transform = Transform3D(-1.40114, 0.191833, 1.41421, 0.271293, 1.98151, -3.26627e-08, -1.40114, 0.191833, -1.41421, 3.04613, -0.666358, 0.448925)
+
+[node name="long7" parent="anim/scale/bones" instance=ExtResource("3_0mxgl")]
+transform = Transform3D(-1.71604, 0.234946, 1, 0.271293, 1.98152, -2.31785e-08, -0.990757, 0.135646, -1.73205, 3.59044, -0.666358, -0.646246)
+
+[node name="long2" parent="anim/scale/bones" instance=ExtResource("3_0mxgl")]
+transform = Transform3D(1.71604, -0.234946, 1, 0.271293, 1.98151, -3.34288e-08, -0.990757, 0.135646, 1.73205, -3.14358, -0.666358, 0.309801)
+
+[node name="long8" parent="anim/scale/bones" instance=ExtResource("3_0mxgl")]
+transform = Transform3D(1.914, -0.262049, 0.517638, 0.271293, 1.98151, -3.35975e-08, -0.512854, 0.0702158, 1.93185, -3.68347, -0.666358, -0.75791)
+
+[node name="long3" parent="anim/scale/bones" instance=ExtResource("3_0mxgl")]
+transform = Transform3D(1.40114, -0.191833, 1.41421, 0.271293, 1.98151, -3.35975e-08, -1.40114, 0.191833, 1.41421, -2.56132, -0.666358, 1.11807)
+
+[node name="Eldritch_Eye" parent="anim" instance=ExtResource("2_w1i6u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.11755e-08, 3.64401, 8.80023)
+StartState = 2
+
+[node name="Eldritch_Eye2" parent="anim" instance=ExtResource("2_w1i6u")]
+transform = Transform3D(-0.796956, 0, 0.0697245, 0, 0.8, 0, -0.0697245, 0, -0.796956, -2.48246, 3.15062, 8.59978)
+StartState = 2
+
+[node name="Eldritch_Eye3" parent="anim" instance=ExtResource("2_w1i6u")]
+transform = Transform3D(-0.697336, 0, -0.0610091, 0, 0.7, 0, 0.0610091, 0, -0.697336, 1.94552, 2.36094, 8.65365)
+StartState = 2
+
+[node name="effects" type="Node3D" parent="."]
+
+[node name="sinking" type="Node3D" parent="effects"]
+
+[node name="ps_sinking" type="Node3D" parent="effects/sinking" node_paths=PackedStringArray("Particles")]
+script = ExtResource("3_4thfj")
+UpdateParticlesCallable = Callable()
+Particles = [NodePath("ps_water_splashing"), NodePath("ps_water_splashing2"), NodePath("ps_water_splashing3")]
+metadata/_custom_type_script = "uid://bbuoo2kykslx"
+
+[node name="ps_water_splashing" type="GPUParticles3D" parent="effects/sinking/ps_sinking"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.83513)
+emitting = false
+amount = 50
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ual45")
+draw_pass_1 = SubResource("SphereMesh_0mxgl")
+
+[node name="ps_water_splashing2" type="GPUParticles3D" parent="effects/sinking/ps_sinking"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -7.06218, 0, 7.06719)
+emitting = false
+amount = 50
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ual45")
+draw_pass_1 = SubResource("SphereMesh_0mxgl")
+
+[node name="ps_water_splashing3" type="GPUParticles3D" parent="effects/sinking/ps_sinking"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 7.08013, 0, 7.56238)
+emitting = false
+amount = 50
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ual45")
+draw_pass_1 = SubResource("SphereMesh_0mxgl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ual45")
+}
+
+[node name="SfxSink" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.19322)
+stream = ExtResource("6_ual45")
+bus = &"SFX"
+attenuation_filter_db = 0.0

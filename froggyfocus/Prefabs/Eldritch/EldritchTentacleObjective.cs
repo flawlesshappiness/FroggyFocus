@@ -1,15 +1,13 @@
 using FlawLizArt.FocusEvent;
 using Godot;
+using Godot.Collections;
 using System;
 using System.Linq;
 
-public partial class EldritchTentacleObjective : Node3D
+public partial class EldritchTentacleObjective : Node3DScript
 {
     [Export]
     public string GameFlagId;
-
-    [Export]
-    public EldritchTentacle Tentacle;
 
     [Export]
     public Interactable Interactable;
@@ -18,61 +16,37 @@ public partial class EldritchTentacleObjective : Node3D
     public Node3D Syringe;
 
     [Export]
-    public FocusEvent FocusEvent;
+    public FocusEventInfo FocusEventInfo;
 
     [Export]
-    public FocusEventInfo FocusEventInfo;
+    public Array<EldritchEye> Eyes;
 
     public bool IsCompleted => GameFlags.IsFlag(GameFlagId, 1);
 
-    public event Action OnCompleted;
-
-    private string DebugId => nameof(EldritchTentacleObjective) + GetInstanceId();
+    public event Action OnCompletedChanged;
 
     private bool active_event;
 
     public override void _Ready()
     {
         base._Ready();
-        FocusEvent.OnEnded += FocusEventEnded;
         Interactable.OnInteract += Interact;
+        GameFlagsController.Instance.OnFlagChanged += GameFlag_Changed;
 
-        if (IsCompleted)
-        {
-            Complete();
-        }
-
-        RegisterDebugActions();
+        UpdateSyringe();
+        UpdateEyes();
     }
 
-    private void RegisterDebugActions()
+    protected override void Initialize()
     {
-        var category = Name;
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = DebugId,
-            Category = category,
-            Text = "Reset GameFlag",
-            Action = v => ResetObjective()
-        });
-    }
-
-    public override void _ExitTree()
-    {
-        base._ExitTree();
-        Debug.RemoveActions(DebugId);
-    }
-
-    public void ResetObjective()
-    {
-        GameFlags.SetFlag(GameFlagId, 0);
+        base.Initialize();
+        GameScene.Instance.FocusEvent.OnEnded += FocusEventEnded;
     }
 
     public void Interact()
     {
         active_event = true;
-        FocusEvent.StartEvent(new FocusEvent.Settings
+        GameScene.Instance.FocusEvent.StartEvent(new FocusEvent.Settings
         {
             Id = FocusEventInfo.Id,
         });
@@ -83,17 +57,33 @@ public partial class EldritchTentacleObjective : Node3D
         if (active_event && result.FocusEvent.Targets.All(x => x.IsCaught))
         {
             GameFlags.SetFlag(GameFlagId, 1);
-            Complete();
-            OnCompleted?.Invoke();
+            Data.Game.Save();
         }
 
         active_event = false;
     }
 
-    private void Complete()
+    private void UpdateSyringe()
     {
-        Tentacle.TriggerAsleep();
-        Syringe.Hide();
-        Interactable.Disable();
+        Syringe.Visible = !IsCompleted;
+        Interactable.SetEnabled(!IsCompleted);
+    }
+
+    private void UpdateEyes()
+    {
+        foreach (var eye in Eyes)
+        {
+            eye.SetOpen(!IsCompleted);
+        }
+    }
+
+    private void GameFlag_Changed(string id, int i)
+    {
+        if (id == GameFlagId)
+        {
+            UpdateSyringe();
+            UpdateEyes();
+            OnCompletedChanged?.Invoke();
+        }
     }
 }

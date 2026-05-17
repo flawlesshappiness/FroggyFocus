@@ -242,6 +242,7 @@ public partial class FocusEvent : Node3D
             {
                 if (target.IsCaught) continue;
                 if (target.IsFocusMax) continue;
+                if (target.Info.SpeedType == FocusCharacterSpeedType.Stationary) continue;
 
                 if (target.Info.Tags.Contains(FocusCharacterTag.Water))
                 {

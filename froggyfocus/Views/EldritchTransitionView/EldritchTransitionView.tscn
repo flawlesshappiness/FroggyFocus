@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cu425iglqq43d" path="res://Views/EldritchTransitionView/EldritchTransitionView.cs" id="1_yigmh"]
 [ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_yigmh"]
 [ext_resource type="AudioStream" uid="uid://bljvgpoc4b32a" path="res://Sounds/Raw/sfx_eldritch_transition_002.wav" id="3_v5f7b"]
-[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="4_v5f7b"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="5_4wy8w"]
 [ext_resource type="PackedScene" uid="uid://dmneakwh1b1tw" path="res://Assets/FlawLizArt/Eldritch/tunnel.fbx" id="5_fpjq7"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="6_kpvq6"]
 [ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="6_x7ufa"]
@@ -529,7 +529,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_yigmh")
 AnimationPlayer = NodePath("AnimationPlayer")
-Frog = NodePath("ItemSubViewport2/Frog/Frog")
+Frog = NodePath("ItemSubViewport2/Frog/FrogCute")
 SplashEffectNode = NodePath("ItemSubViewport4/PsPosition")
 SplashEffect = ExtResource("8_4wy8w")
 
@@ -742,7 +742,7 @@ light_energy = 0.1
 
 [node name="Frog" type="Node3D" parent="ItemSubViewport2"]
 
-[node name="Frog" parent="ItemSubViewport2/Frog" instance=ExtResource("4_v5f7b")]
+[node name="FrogCute" parent="ItemSubViewport2/Frog" instance=ExtResource("5_4wy8w")]
 
 [node name="ItemSubViewport3" type="SubViewport" parent="."]
 own_world_3d = true

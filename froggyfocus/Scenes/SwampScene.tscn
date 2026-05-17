@@ -1106,6 +1106,9 @@ IsEntrance = true
 [node name="EldritchFlower" parent="World/Forest" instance=ExtResource("41_uapja")]
 transform = Transform3D(1.64039, 0, 1.14418, 0, 2, 0, -1.14418, 0, 1.64039, -87.9957, -1.16465, 92.4056)
 
+[node name="StartEldritch" type="Marker3D" parent="World/Forest"]
+transform = Transform3D(-0.54638, 0, 0.837538, 0, 1, 0, -0.837538, 0, -0.54638, -85.5774, 0, 90.4964)
+
 [node name="Islands" type="Node3D" parent="World"]
 
 [node name="PathWaterSFX_Island" type="Path3D" parent="World/Islands"]

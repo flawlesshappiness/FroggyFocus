@@ -8,12 +8,12 @@ public partial class EldritchExit : Area3D, IInteractable
     [Export]
     public string StartNode;
 
-    private const string ExitId = "##ELDRITCH_EXIT_EYE##";
+    private const string ExitId = "ELDRITCH_EXIT_EYE";
 
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnDialogueEnded += DialogueEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueEntry_Ended;
     }
 
     public void Interact()
@@ -21,7 +21,7 @@ public partial class EldritchExit : Area3D, IInteractable
         DialogueController.Instance.StartDialogue(ExitId);
     }
 
-    private void DialogueEnded(string id)
+    private void DialogueEntry_Ended(string id)
     {
         if (id == ExitId)
         {
@@ -38,6 +38,21 @@ public partial class EldritchExit : Area3D, IInteractable
 
     private void Return()
     {
-        EldritchTransitionView.Instance.StartTransitionExit();
+        Data.Game.CurrentScene = nameof(SwampScene);
+        Data.Game.StartingNode = "EldritchStart";
+        Data.Game.Save();
+
+        TransitionView.Instance.StartTransition(new TransitionSettings
+        {
+            Type = TransitionType.Color,
+            Color = Colors.Black,
+            Duration = 0.5f,
+            OnTransition = OnTransition
+        });
+
+        void OnTransition()
+        {
+            EldritchTransitionView.Instance.StartTransitionExit();
+        }
     }
 }

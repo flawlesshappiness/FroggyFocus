@@ -1,7 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://na6ghlg4xx1t"]
 
 [ext_resource type="Script" uid="uid://n10j2kkvmge1" path="res://Scenes/EldritchScene.cs" id="1_vole6"]
-[ext_resource type="Material" uid="uid://71pv1fsup32f" path="res://Materials/Color_Brown.tres" id="2_6bnib"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_d5q5d"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_lfqeu"]
 [ext_resource type="Resource" uid="uid://cjpkpg08em4hs" path="res://Weather/Resources/FoggyBrown.tres" id="3_cvby2"]
@@ -10,17 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://cvmh0jn7gf0a3" path="res://Prefabs/Objects/floating_bone_rib.tscn" id="5_ro7oi"]
 [ext_resource type="Script" uid="uid://byrrdr3mmbsyt" path="res://Prefabs/Eldritch/EldritchExit.cs" id="6_7pl5y"]
 [ext_resource type="PackedScene" uid="uid://c7whvf1sy2d0g" path="res://Prefabs/Eldritch/eldritch_pillar.tscn" id="6_ell4v"]
-[ext_resource type="PackedScene" uid="uid://pxtjfc22pib3" path="res://Prefabs/Eldritch/eldritch_tentacle_wall.tscn" id="6_hulv8"]
 [ext_resource type="PackedScene" uid="uid://b1rkrpd5uvu4o" path="res://Prefabs/Ground/eldritch_island_small_focus.tscn" id="7_5am1p"]
 [ext_resource type="PackedScene" uid="uid://ct33gr4jalld4" path="res://Prefabs/Eldritch/eldritch_tentacle_objective.tscn" id="7_6os4d"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="7_6636b"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="9_7a7gi"]
 [ext_resource type="Script" uid="uid://dmmkas04t7id3" path="res://Prefabs/Eldritch/EldritchReturn.cs" id="9_vmhyt"]
+[ext_resource type="Material" uid="uid://dj8begqtqrrro" path="res://Materials/EldritchTunnel.tres" id="10_7a7gi"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="13_s322q"]
 [ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="15_ki66s"]
 [ext_resource type="Script" uid="uid://upco3uwl2xut" path="res://Audio/ReverbArea.cs" id="17_7a7gi"]
 [ext_resource type="Resource" uid="uid://byovumopjt2bh" path="res://FocusEvent/Resources/Eldritch_Syringe.tres" id="18_7a7gi"]
 [ext_resource type="Resource" uid="uid://jdagk8uthv87" path="res://FocusEvent/Resources/Eldritch_Incubator.tres" id="19_5am1p"]
+[ext_resource type="PackedScene" uid="uid://dl03jm3u0wmoq" path="res://Prefabs/Eldritch/eldritch_wall.tscn" id="19_7pl5y"]
 [ext_resource type="AudioStream" uid="uid://bpbcfle16t2f3" path="res://Sounds/Raw/amb_eldritch_001.wav" id="23_7pl5y"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vole6"]
@@ -33,7 +33,7 @@ height = 3.5
 radius = 2.08936
 
 [sub_resource type="SphereMesh" id="SphereMesh_lfqeu"]
-material = ExtResource("2_6bnib")
+material = ExtResource("10_7a7gi")
 flip_faces = true
 radius = 1000.0
 height = 2000.0
@@ -163,15 +163,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117614, 9.53674e-07, 0.134
 
 [node name="End" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -59.8322)
-
-[node name="EldritchTentacleWall1" parent="NavigationRegion3D/End" instance=ExtResource("6_hulv8")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7, 0, 10.8318)
-
-[node name="EldritchTentacleWall3" parent="NavigationRegion3D/End" instance=ExtResource("6_hulv8")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 0, 22.8318)
-
-[node name="EldritchTentacleWall2" parent="NavigationRegion3D/End" instance=ExtResource("6_hulv8")]
-transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, -8.1, 0, 16.8318)
 
 [node name="Island_End2" type="Node3D" parent="NavigationRegion3D/End"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30.5)
@@ -972,179 +963,6 @@ TickOffset = 4
 [node name="FloatingBoneRib3" parent="World/Platforms_Start" instance=ExtResource("5_ro7oi")]
 transform = Transform3D(1.93695, 0, -0.498225, 0, 2, 0, 0.498225, 0, 1.93695, 0, -1, -20)
 
-[node name="Platforms_Objective1" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.201, 0, -29.218)
-
-[node name="FloatingBoneRib" parent="World/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(0.0122871, 0, 1.99996, 0, 2, 0, -1.99996, 0, 0.0122871, -0.0890393, -1, -0.442989)
-TickUp = 4
-TickWarn = 2
-TickDown = 2
-TickOffset = 4
-
-[node name="FloatingBoneRib2" parent="World/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.675571, 0, 1.88245, 0, 2, 0, -1.88245, 0, -0.675571, -6.13618, -1, 0.364349)
-TickUp = 4
-TickWarn = 2
-TickDown = 2
-
-[node name="FloatingBoneRib3" parent="World/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-1.23352, 0, 1.5743, 0, 2, 0, -1.5743, 0, -1.23352, -11.4067, -1, 3.72877)
-TickUp = 4
-TickWarn = 2
-TickDown = 2
-TickOffset = 4
-
-[node name="FloatingBoneRib4" parent="World/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.262091, 0, 1.98275, 0, 2, 0, -1.98275, 0, -0.262091, -17.1947, -1, 7.04793)
-TickUp = 4
-TickWarn = 2
-TickDown = 2
-
-[node name="FloatingBoneRib5" parent="World/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(0.483675, 0, 1.94063, 0, 2, 0, -1.94063, 0, 0.483675, -24.264, -1, 7.17403)
-TickUp = 4
-TickWarn = 2
-TickDown = 2
-TickOffset = 4
-
-[node name="FloatingBoneRib6" parent="World/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(0.940823, 0, 1.76489, 0, 2, 0, -1.76489, 0, 0.940823, -31.1784, -1, 3.74784)
-TickUp = 4
-TickWarn = 2
-TickDown = 2
-
-[node name="FloatingBoneRib7" parent="World/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(0.542108, 0, 1.92513, 0, 2, 0, -1.92513, 0, 0.542108, -37.8021, -1, 0.505856)
-TickUp = 4
-TickWarn = 2
-TickDown = 2
-TickOffset = 4
-
-[node name="Platforms_Objective2" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48584, -1.90735e-06, 5.5567)
-
-[node name="FloatingBoneRib" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-1.23808, 0, 1.57072, 0, 2, 0, -1.57072, 0, -1.23808, -0.136321, -1, 0.329653)
-TickWarn = 2
-TickDown = 4
-
-[node name="FloatingBoneRib2" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.532827, 0, 1.92772, 0, 2, 0, -1.92772, 0, -0.532827, -4.89726, -1, 2.79608)
-TickWarn = 2
-TickDown = 4
-TickOffset = 6
-
-[node name="FloatingBoneRib3" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.827574, 0, 1.82075, 0, 2, 0, -1.82075, 0, -0.827574, -4.15429, -1, -2.05839)
-TickWarn = 2
-TickDown = 4
-
-[node name="FloatingBoneRib4" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.259182, 0, 1.98314, 0, 2, 0, -1.98314, 0, -0.259182, -9.92619, -1, -1.1825)
-TickWarn = 2
-TickDown = 4
-TickOffset = 6
-
-[node name="FloatingBoneRib5" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.192038, 0, 1.99076, 0, 2, 0, -1.99076, 0, -0.192038, -7.64043, -1, -5.71976)
-TickWarn = 2
-TickDown = 4
-
-[node name="FloatingBoneRib6" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.323137, 0, 1.97372, 0, 2, 0, -1.97372, 0, -0.323137, -13.9805, -1, -5.54377)
-TickWarn = 2
-TickDown = 4
-
-[node name="FloatingBoneRib7" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.948851, 0, 1.76059, 0, 2, 0, -1.76059, 0, -0.948851, -16.6617, -1, -1.12467)
-TickWarn = 2
-TickDown = 4
-TickOffset = 6
-
-[node name="FloatingBoneRib8" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-1.51278, 0, 1.30824, 0, 2, 0, -1.30824, 0, -1.51278, -22.4711, -1, -3.25974)
-TickWarn = 2
-TickDown = 4
-
-[node name="FloatingBoneRib9" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-1.60983, 0, 1.18678, 0, 2, 0, -1.18678, 0, -1.60983, -20.5346, -1, 2.64894)
-TickWarn = 2
-TickDown = 4
-TickOffset = 6
-
-[node name="FloatingBoneRib10" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.876804, 0, 1.79756, 0, 2, 0, -1.79756, 0, -0.876804, -14.9555, -1, 4.82268)
-TickWarn = 2
-TickDown = 4
-
-[node name="FloatingBoneRib11" parent="World/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-1.86365, 0, 0.725821, 0, 2, 0, -0.725821, 0, -1.86365, -19.8976, -1, 7.8806)
-TickWarn = 2
-TickDown = 4
-TickOffset = 6
-
-[node name="Platforms_Objective3" type="Node3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.69869, -1.90735e-06, 0.0435519)
-
-[node name="FloatingBoneRib" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.0354267, 0, 1.99969, 0, 2, 0, -1.99969, 0, -0.0354267, 0, -1, 0)
-TickUp = 5
-TickWarn = 3
-TickDown = 2
-TickOffset = 3
-
-[node name="FloatingBoneRib2" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.581971, 0, 1.91346, 0, 2, 0, -1.91346, 0, -0.581971, 6.07315, -1, -1.82567)
-TickUp = 5
-TickWarn = 3
-TickDown = 2
-TickOffset = 2
-
-[node name="FloatingBoneRib3" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-1.35929, 0, 1.46708, 0, 2, 0, -1.46708, 0, -1.35929, 10.8795, -1, -5.25346)
-TickUp = 5
-TickWarn = 3
-TickDown = 2
-TickOffset = 1
-
-[node name="FloatingBoneRib4" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.571174, 0, 1.91671, 0, 2, 0, -1.91671, 0, -0.571174, 16.0585, -1, -9.50094)
-AlwaysUp = true
-TickUp = 2
-TickWarn = 2
-TickDown = 2
-
-[node name="FloatingBoneRib5" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(0.841313, 0, 1.81444, 0, 2, 0, -1.81444, 0, 0.841313, 21.4619, -1, -2.47154)
-TickWarn = 1
-TickDown = 1
-TickOffset = 3
-
-[node name="FloatingBoneRib6" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(0.500525, 0, 1.93636, 0, 2, 0, -1.93636, 0, 0.500525, 26.5495, -1, -0.0154755)
-TickWarn = 1
-TickDown = 1
-TickOffset = 2
-
-[node name="FloatingBoneRib7" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.0122853, 0, 1.99996, 0, 2, 0, -1.99996, 0, -0.0122853, 32.3972, -1, 0.335391)
-TickWarn = 1
-TickDown = 1
-TickOffset = 1
-
-[node name="FloatingBoneRib8" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(-0.600711, 0, 1.90765, 0, 2, 0, -1.90765, 0, -0.600711, 38.245, -1, -0.541773)
-AlwaysUp = true
-TickUp = 4
-TickWarn = 1
-TickDown = 1
-
-[node name="FloatingBoneRib9" parent="World/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
-transform = Transform3D(0.41702, 0, 1.95604, 0, 2, 0, -1.95604, 0, 0.41702, 45.3718, -1, -8.29777)
-TickUp = 8
-TickWarn = 2
-
 [node name="Platforms_End" type="Node3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45)
 
@@ -1171,22 +989,202 @@ metadata/_custom_type_script = "uid://upco3uwl2xut"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.79924, -22.2858)
 shape = SubResource("BoxShape3D_7pl5y")
 
-[node name="EldritchTentacleObjective1" parent="World" node_paths=PackedStringArray("FocusEvent") instance=ExtResource("7_6os4d")]
-transform = Transform3D(-0.258179, 0, 0.966097, 0, 1, 0, -0.966097, 0, -0.258179, -52.4156, 0, -40.4842)
+[node name="eldritch_wall" parent="World" node_paths=PackedStringArray("Objectives") instance=ExtResource("19_7pl5y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -44.9721)
+Objectives = [NodePath("../Objective1/EldritchTentacleObjective1"), NodePath("../Objective2/EldritchTentacleObjective2"), NodePath("../Objective3/EldritchTentacleObjective3")]
+
+[node name="Objective1" type="Node3D" parent="World"]
+
+[node name="Platforms_Objective1" type="Node3D" parent="World/Objective1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.201, 0, -29.218)
+
+[node name="FloatingBoneRib" parent="World/Objective1/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.0122871, 0, 1.99996, 0, 2, 0, -1.99996, 0, 0.0122871, -0.0890393, -1, -0.442989)
+TickUp = 4
+TickWarn = 2
+TickDown = 2
+TickOffset = 4
+
+[node name="FloatingBoneRib2" parent="World/Objective1/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.675571, 0, 1.88245, 0, 2, 0, -1.88245, 0, -0.675571, -6.13618, -1, 0.364349)
+TickUp = 4
+TickWarn = 2
+TickDown = 2
+
+[node name="FloatingBoneRib3" parent="World/Objective1/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.23352, 0, 1.5743, 0, 2, 0, -1.5743, 0, -1.23352, -11.4067, -1, 3.72877)
+TickUp = 4
+TickWarn = 2
+TickDown = 2
+TickOffset = 4
+
+[node name="FloatingBoneRib4" parent="World/Objective1/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.262091, 0, 1.98275, 0, 2, 0, -1.98275, 0, -0.262091, -17.1947, -1, 7.04793)
+TickUp = 4
+TickWarn = 2
+TickDown = 2
+
+[node name="FloatingBoneRib5" parent="World/Objective1/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.483675, 0, 1.94063, 0, 2, 0, -1.94063, 0, 0.483675, -24.264, -1, 7.17403)
+TickUp = 4
+TickWarn = 2
+TickDown = 2
+TickOffset = 4
+
+[node name="FloatingBoneRib6" parent="World/Objective1/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.940823, 0, 1.76489, 0, 2, 0, -1.76489, 0, 0.940823, -31.1784, -1, 3.74784)
+TickUp = 4
+TickWarn = 2
+TickDown = 2
+
+[node name="FloatingBoneRib7" parent="World/Objective1/Platforms_Objective1" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.542108, 0, 1.92513, 0, 2, 0, -1.92513, 0, 0.542108, -37.8021, -1, 0.505856)
+TickUp = 4
+TickWarn = 2
+TickDown = 2
+TickOffset = 4
+
+[node name="EldritchTentacleObjective1" parent="World/Objective1" instance=ExtResource("7_6os4d")]
+transform = Transform3D(-0.984208, 0, 0.177015, 0, 1, 0, -0.177015, 0, -0.984208, -52.6746, 0, -36.9019)
 GameFlagId = "eldritch_objective_001"
-FocusEvent = NodePath("../../FocusEvent")
 FocusEventInfo = ExtResource("18_7a7gi")
 
-[node name="EldritchTentacleObjective2" parent="World" node_paths=PackedStringArray("FocusEvent") instance=ExtResource("7_6os4d")]
-transform = Transform3D(-0.963574, 0, -0.267441, 0, 1, 0, 0.267441, 0, -0.963574, -36.5764, 0, 20.7139)
+[node name="Objective2" type="Node3D" parent="World"]
+
+[node name="Platforms_Objective2" type="Node3D" parent="World/Objective2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.48584, -1.90735e-06, 5.5567)
+
+[node name="FloatingBoneRib" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.23808, 0, 1.57072, 0, 2, 0, -1.57072, 0, -1.23808, -0.136321, -1, 0.329653)
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib2" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.532827, 0, 1.92772, 0, 2, 0, -1.92772, 0, -0.532827, -4.89726, -1, 2.79608)
+TickWarn = 2
+TickDown = 4
+TickOffset = 6
+
+[node name="FloatingBoneRib3" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.827574, 0, 1.82075, 0, 2, 0, -1.82075, 0, -0.827574, -4.15429, -1, -2.05839)
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib4" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.259182, 0, 1.98314, 0, 2, 0, -1.98314, 0, -0.259182, -9.92619, -1, -1.1825)
+TickWarn = 2
+TickDown = 4
+TickOffset = 6
+
+[node name="FloatingBoneRib5" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.192038, 0, 1.99076, 0, 2, 0, -1.99076, 0, -0.192038, -7.64043, -1, -5.71976)
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib6" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.323137, 0, 1.97372, 0, 2, 0, -1.97372, 0, -0.323137, -13.9805, -1, -5.54377)
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib7" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.948851, 0, 1.76059, 0, 2, 0, -1.76059, 0, -0.948851, -16.6617, -1, -1.12467)
+TickWarn = 2
+TickDown = 4
+TickOffset = 6
+
+[node name="FloatingBoneRib8" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.51278, 0, 1.30824, 0, 2, 0, -1.30824, 0, -1.51278, -22.4711, -1, -3.25974)
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib9" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.60983, 0, 1.18678, 0, 2, 0, -1.18678, 0, -1.60983, -20.5346, -1, 2.64894)
+TickWarn = 2
+TickDown = 4
+TickOffset = 6
+
+[node name="FloatingBoneRib10" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.876804, 0, 1.79756, 0, 2, 0, -1.79756, 0, -0.876804, -14.9555, -1, 4.82268)
+TickWarn = 2
+TickDown = 4
+
+[node name="FloatingBoneRib11" parent="World/Objective2/Platforms_Objective2" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.86365, 0, 0.725821, 0, 2, 0, -0.725821, 0, -1.86365, -19.8976, -1, 7.8806)
+TickWarn = 2
+TickDown = 4
+TickOffset = 6
+
+[node name="EldritchTentacleObjective2" parent="World/Objective2" instance=ExtResource("7_6os4d")]
+transform = Transform3D(-0.0628767, 0, -0.998021, 0, 1, 0, 0.998021, 0, -0.0628767, -33.0251, 0, 20.9071)
 GameFlagId = "eldritch_objective_002"
-FocusEvent = NodePath("../../FocusEvent")
 FocusEventInfo = ExtResource("18_7a7gi")
 
-[node name="EldritchTentacleObjective3" parent="World" node_paths=PackedStringArray("FocusEvent") instance=ExtResource("7_6os4d")]
-transform = Transform3D(0.951846, 0, 0.306576, 0, 1, 0, -0.306576, 0, 0.951846, 71.6617, -3.8147e-06, -0.110287)
+[node name="Objective3" type="Node3D" parent="World"]
+
+[node name="Platforms_Objective3" type="Node3D" parent="World/Objective3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.69869, -1.90735e-06, 0.0435519)
+
+[node name="FloatingBoneRib" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.0354267, 0, 1.99969, 0, 2, 0, -1.99969, 0, -0.0354267, 0, -1, 0)
+TickUp = 5
+TickWarn = 3
+TickDown = 2
+TickOffset = 3
+
+[node name="FloatingBoneRib2" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.581971, 0, 1.91346, 0, 2, 0, -1.91346, 0, -0.581971, 6.07315, -1, -1.82567)
+TickUp = 5
+TickWarn = 3
+TickDown = 2
+TickOffset = 2
+
+[node name="FloatingBoneRib3" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-1.35929, 0, 1.46708, 0, 2, 0, -1.46708, 0, -1.35929, 10.8795, -1, -5.25346)
+TickUp = 5
+TickWarn = 3
+TickDown = 2
+TickOffset = 1
+
+[node name="FloatingBoneRib4" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.571174, 0, 1.91671, 0, 2, 0, -1.91671, 0, -0.571174, 16.0585, -1, -9.50094)
+AlwaysUp = true
+TickUp = 2
+TickWarn = 2
+TickDown = 2
+
+[node name="FloatingBoneRib5" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.841313, 0, 1.81444, 0, 2, 0, -1.81444, 0, 0.841313, 21.4619, -1, -2.47154)
+TickWarn = 1
+TickDown = 1
+TickOffset = 3
+
+[node name="FloatingBoneRib6" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.500525, 0, 1.93636, 0, 2, 0, -1.93636, 0, 0.500525, 26.5495, -1, -0.0154755)
+TickWarn = 1
+TickDown = 1
+TickOffset = 2
+
+[node name="FloatingBoneRib7" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.0122853, 0, 1.99996, 0, 2, 0, -1.99996, 0, -0.0122853, 32.3972, -1, 0.335391)
+TickWarn = 1
+TickDown = 1
+TickOffset = 1
+
+[node name="FloatingBoneRib8" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(-0.600711, 0, 1.90765, 0, 2, 0, -1.90765, 0, -0.600711, 38.245, -1, -0.541773)
+AlwaysUp = true
+TickUp = 4
+TickWarn = 1
+TickDown = 1
+
+[node name="FloatingBoneRib9" parent="World/Objective3/Platforms_Objective3" instance=ExtResource("5_ro7oi")]
+transform = Transform3D(0.41702, 0, 1.95604, 0, 2, 0, -1.95604, 0, 0.41702, 45.3718, -1, -8.29777)
+TickUp = 8
+TickWarn = 2
+
+[node name="EldritchTentacleObjective3" parent="World/Objective3" instance=ExtResource("7_6os4d")]
+transform = Transform3D(-0.00795874, 0, 0.999968, 0, 1, 0, -0.999968, 0, -0.00795874, 68.152, -3.8147e-06, -0.0639308)
 GameFlagId = "eldritch_objective_003"
-FocusEvent = NodePath("../../FocusEvent")
 FocusEventInfo = ExtResource("18_7a7gi")
 
 [node name="FocusEvent" parent="." instance=ExtResource("13_s322q")]

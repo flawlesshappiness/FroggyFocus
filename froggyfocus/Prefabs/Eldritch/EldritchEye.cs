@@ -43,6 +43,7 @@ public partial class EldritchEye : Node3D
         Animation.Connect(idle_closed, open, param_open.WhenTrue());
         Animation.Connect(open, idle_open);
 
+        Animation.Connect(idle_pout, close, param_open.WhenFalse());
         Animation.Connect(idle_open, close, param_open.WhenFalse());
         Animation.Connect(close, idle_closed);
 

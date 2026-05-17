@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://daf05cqj6ms4y"]
+[gd_scene load_steps=6 format=3 uid="uid://daf05cqj6ms4y"]
 
 [ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_ak17n"]
 [ext_resource type="PackedScene" uid="uid://dcfuntqu5frvb" path="res://Prefabs/Ground/eldritch_corner_convex_001.tscn" id="2_8j5fe"]
-[ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="3_b3ae5"]
 [ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="4_l0uwu"]
 [ext_resource type="Material" uid="uid://bvh21lkq01ocn" path="res://Materials/Water_Bile.tres" id="5_e2kx8"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="6_0h42o"]
@@ -28,10 +27,6 @@ transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 4, 0, 
 [node name="pond_corner_convex_004" parent="Island_Start" instance=ExtResource("2_8j5fe")]
 transform = Transform3D(2.62268e-07, 0, -2, 0, 2, 0, 2, 0, 2.62268e-07, 4, 0, -4)
 
-[node name="EldritchTentacle" parent="." instance=ExtResource("3_b3ae5")]
-transform = Transform3D(-1.0537, 0, 0.574212, 0, 1.2, 0, -0.574212, 0, -1.0537, -0.0480003, 0, -7.516)
-StartState = 3
-
 [node name="Water" parent="." instance=ExtResource("4_l0uwu")]
 transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -1.01789, 0)
 
@@ -46,6 +41,6 @@ autoplay = true
 bus = &"Environment"
 
 [node name="TargetPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933629, -2.31855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.319)
 
 [editable path="Water"]

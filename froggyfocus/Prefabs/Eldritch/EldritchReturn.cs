@@ -5,22 +5,22 @@ public partial class EldritchReturn : Area3D, IInteractable
     [Export]
     public Node3D ReturnNode;
 
-    private const string ReturnId = "##ELDRITCH_RETURN_EYE##";
+    private const string DialogueReturn = "ELDRITCH_RETURN_EYE";
 
     public override void _Ready()
     {
         base._Ready();
-        DialogueController.Instance.OnDialogueEnded += DialogueEnded;
+        DialogueController.Instance.OnEntryEnded += DialogueEntry_Ended;
     }
 
     public void Interact()
     {
-        DialogueController.Instance.StartDialogue(ReturnId);
+        DialogueController.Instance.StartDialogue(DialogueReturn);
     }
 
-    private void DialogueEnded(string id)
+    private void DialogueEntry_Ended(string id)
     {
-        if (id == ReturnId)
+        if (id == DialogueReturn)
         {
             GameView.Instance.ShowPopup("##ELDRITCH_RETURN_TEXT##", "##OK##", "##CANCEL##", () =>
             {
