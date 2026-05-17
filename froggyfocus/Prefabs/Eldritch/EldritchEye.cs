@@ -24,6 +24,7 @@ public partial class EldritchEye : Node3D
     private RandomNumberGenerator rng = new();
     private BoolParameter param_open = new BoolParameter("open", false);
     private TriggerParameter param_blink = new TriggerParameter("blink");
+    private TriggerParameter param_open_fast = new TriggerParameter("open_fast");
 
     public override void _Ready()
     {
@@ -37,11 +38,15 @@ public partial class EldritchEye : Node3D
         var idle_open = Animation.CreateAnimation("Armature|idle_open", true);
         var idle_pout = Animation.CreateAnimation("Armature|idle_pout", true);
         var open = Animation.CreateAnimation("Armature|open", false);
+        var open_fast = Animation.CreateAnimation("Armature|open_fast", false);
         var close = Animation.CreateAnimation("Armature|close", false);
         var blink = Animation.CreateAnimation("Armature|blink", false);
 
         Animation.Connect(idle_closed, open, param_open.WhenTrue());
         Animation.Connect(open, idle_open);
+
+        Animation.Connect(idle_closed, open_fast, param_open_fast.WhenTriggered());
+        Animation.Connect(open_fast, idle_open);
 
         Animation.Connect(idle_pout, close, param_open.WhenFalse());
         Animation.Connect(idle_open, close, param_open.WhenFalse());
@@ -90,5 +95,10 @@ public partial class EldritchEye : Node3D
     {
         param_open.Set(open);
         ResetBlinkTime();
+    }
+
+    public void OpenFast()
+    {
+        param_open_fast.Trigger();
     }
 }

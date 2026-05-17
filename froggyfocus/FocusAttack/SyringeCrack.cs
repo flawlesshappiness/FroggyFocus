@@ -62,7 +62,10 @@ public partial class SyringeCrack : FocusAttack
                     SetLock(true);
                     HurtFocusValue(0.25f);
                     DisruptCursorFocus();
-                    yield return AnimateMoveCursorAway();
+
+                    var angle = rng.RandfRange(-60f, 60f);
+                    var dir = Target.BackDirection().Rotated(Vector3.Up, Mathf.DegToRad(angle));
+                    yield return AnimateMoveCursorAway(dir);
                     SpawnTrap();
                     SetLock(false);
                 }

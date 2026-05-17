@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=111 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -48,6 +48,8 @@
 [ext_resource type="PackedScene" uid="uid://bw7ctjcpdse2m" path="res://Prefabs/Effects/syringe_warn_effect.tscn" id="33_ryrjj"]
 [ext_resource type="PackedScene" uid="uid://dv5pmpu5grdwf" path="res://Prefabs/Effects/syringe_liquid_explode_effect.tscn" id="35_4o5bo"]
 [ext_resource type="PackedScene" uid="uid://caxtcmeu7c6wv" path="res://Prefabs/FocusAttacks/CursorSyringeLiquid/cursor_syringe_liquid.tscn" id="35_s43g5"]
+[ext_resource type="Script" uid="uid://bp2flik8hh4qt" path="res://FocusAttack/EldritchEyeFlash.cs" id="36_4o5bo"]
+[ext_resource type="PackedScene" uid="uid://bswh4egokiuji" path="res://Prefabs/FocusAttacks/FlashEldritchEye/flash_eldritch_eye.tscn" id="37_0kvl5"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saxd3"]
 random_pitch = 1.1
@@ -1124,6 +1126,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 script = ExtResource("31_dex8i")
 EffectGroupPrefab = ExtResource("35_4o5bo")
 metadata/_custom_type_script = "uid://bcoah34psypiv"
+
+[node name="EldritchEyeFlash" type="Node3D" parent="Attacks"]
+script = ExtResource("36_4o5bo")
+FlasherPrefab = ExtResource("37_0kvl5")
+Type = 13
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

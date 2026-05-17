@@ -117,12 +117,17 @@ public abstract partial class FocusAttack : Node3D
 
     protected Coroutine AnimateMoveCursorAway()
     {
+        return AnimateMoveCursorAway(-Target.Character.GlobalBasis.Z * Vector3.Forward);
+    }
+
+    protected Coroutine AnimateMoveCursorAway(Vector3 dir)
+    {
         return this.StartCoroutine(Cr, nameof(AnimateMoveCursorAway));
         IEnumerator Cr()
         {
             var duration = 0.4f;
             var start = Target.GlobalPosition;
-            var end = start - (Target.Character.GlobalBasis.Z * Vector3.Forward).Normalized() * 2f;
+            var end = start + dir.Normalized() * 2f;
             var curve = Curves.EaseOutQuad;
 
             FocusCursor.MoveLock.SetLock(nameof(Wooden), true);

@@ -1,0 +1,178 @@
+[gd_scene load_steps=11 format=3 uid="uid://bswh4egokiuji"]
+
+[ext_resource type="Script" uid="uid://dv84coubhatv8" path="res://Prefabs/FocusAttacks/FlashEldritchEye/FlashEldritchEye.cs" id="1_7cgn4"]
+[ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="2_grv5r"]
+[ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="3_grv5r"]
+
+[sub_resource type="Animation" id="Animation_oeom7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7cgn4"]
+resource_name = "hide"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3.24901, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oy0g5"]
+resource_name = "show"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector3(0, -2, 0), Vector3(0, 0, 0), Vector3(0, -0.2, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwd0k"]
+_data = {
+&"RESET": SubResource("Animation_oeom7"),
+&"hide": SubResource("Animation_7cgn4"),
+&"show": SubResource("Animation_oy0g5")
+}
+
+[sub_resource type="Animation" id="Animation_bwd0k"]
+resource_name = "flash"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim/glow_small:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.75, 0, 0), Color(1, 0.75, 0, 0.290196), Color(1, 0.75, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim/glow_big:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(0.5, 0.5, 0.5), Vector3(3, 3, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim/glow_big:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0.75, 0, 0), Color(1, 0.75, 0, 0), Color(1, 0.75, 0, 1), Color(1, 0.75, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6lhcx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim/glow_small:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.75, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim/glow_big:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("anim/glow_big:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.75, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fa3ox"]
+_data = {
+&"RESET": SubResource("Animation_6lhcx"),
+&"flash": SubResource("Animation_bwd0k")
+}
+
+[node name="FlashEldritchEye" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "AnimationPlayer_Flash", "Eye")]
+script = ExtResource("1_7cgn4")
+FlashColor = Color(1, 0.75, 0, 1)
+AnimationPlayer = NodePath("AnimationPlayer")
+AnimationPlayer_Flash = NodePath("AnimationPlayer_Flash")
+Eye = NodePath("anim/Eldritch_Eye")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bwd0k")
+}
+
+[node name="AnimationPlayer_Flash" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fa3ox")
+}
+
+[node name="anim" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="Eldritch_Eye" parent="anim" instance=ExtResource("2_grv5r")]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 0, 0)
+
+[node name="glow_small" type="Sprite3D" parent="anim"]
+transform = Transform3D(0.59, 0, 0, 0, -2.57897e-08, 0.59, 0, -0.59, -2.57897e-08, 0, 0.388237, -1.69704e-08)
+modulate = Color(1, 0.75, 0, 0)
+texture = ExtResource("3_grv5r")
+
+[node name="glow_big" type="Sprite3D" parent="anim"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.388237, -1.69704e-08)
+modulate = Color(1, 0.75, 0, 0)
+texture = ExtResource("3_grv5r")

@@ -378,6 +378,7 @@ public partial class FocusEvent : Node3D
             yield return IntroCamera.AnimateUpFromFocusEvent(Camera);
             yield return IntroCamera.AnimateDownFromFocusEvent();
             Player.Instance.SetCameraTarget();
+            Player.SetAllLocks(nameof(FocusEvent), false);
         }
 
         void OnTransition()
@@ -386,9 +387,6 @@ public partial class FocusEvent : Node3D
 
             // View
             FocusEventView.Instance.Hide();
-
-            // Player
-            Player.SetAllLocks(nameof(FocusEvent), false);
 
             // Events
             OnEnded?.Invoke(result);

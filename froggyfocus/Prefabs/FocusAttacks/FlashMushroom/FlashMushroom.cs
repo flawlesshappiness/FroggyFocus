@@ -18,7 +18,7 @@ public partial class FlashMushroom : Node3D
     public PackedScene ExplodeEffectPrefab;
 
     private FocusCursor Cursor => FocusEvent.Cursor;
-    private FocusEvent FocusEvent { get; set; }
+    private FocusEvent FocusEvent => Target.FocusEvent;
     private FocusTarget Target { get; set; }
 
     private RandomNumberGenerator rng = new();
@@ -27,8 +27,6 @@ public partial class FlashMushroom : Node3D
     public void Initialize(FocusTarget target)
     {
         Target = target;
-
-        FocusEvent = target.FocusEvent;
         FocusEvent.OnEnded += FocusEvent_Ended;
 
         Run();

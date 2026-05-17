@@ -4,6 +4,13 @@ using System.Collections.Generic;
 
 public static class Node3DExtensions
 {
+    public static Vector3 ForwardDirection(this Node3D node) => node.Basis.Z * Vector3.Forward;
+    public static Vector3 BackDirection(this Node3D node) => -node.ForwardDirection();
+    public static Vector3 RightDirection(this Node3D node) => node.Basis.Z * Vector3.Right;
+    public static Vector3 LeftDirection(this Node3D node) => -node.RightDirection();
+    public static Vector3 UpDirection(this Node3D node) => node.Basis.Z * Vector3.Up;
+    public static Vector3 DownDirection(this Node3D node) => -node.UpDirection();
+
     public static void Disable(this Node3D node) => node.SetEnabled(false);
     public static void Enable(this Node3D node) => node.SetEnabled(true);
 
