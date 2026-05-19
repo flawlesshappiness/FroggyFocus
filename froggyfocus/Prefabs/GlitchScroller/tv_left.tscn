@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://dta3qbpcn17pf"]
+
+[ext_resource type="Script" uid="uid://cwgc81tb4bkw0" path="res://Prefabs/GlitchScroller/TvScroller.cs" id="1_kq5g1"]
+[ext_resource type="Texture2D" uid="uid://dcbq6ywh1vvm8" path="res://Assets/FlawLizArt/8Bit/tv_01.png" id="2_23jxw"]
+[ext_resource type="AudioStream" uid="uid://cy0xhj8u51ebl" path="res://Sounds/Raw/sfx_8bit_tv_flash.wav" id="3_yxtqe"]
+[ext_resource type="Texture2D" uid="uid://dm5iuuyv32pjb" path="res://Assets/FlawLizArt/8Bit/tv_02.png" id="4_0wumn"]
+[ext_resource type="Texture2D" uid="uid://62q6bxtwdhvu" path="res://Assets/FlawLizArt/8Bit/tv_03.png" id="5_5v5y4"]
+[ext_resource type="Texture2D" uid="uid://dvppt3l8p0ab0" path="res://Assets/FlawLizArt/8Bit/tv_04.png" id="6_1sawh"]
+[ext_resource type="Texture2D" uid="uid://fnm5w0fxeboy" path="res://Assets/FlawLizArt/8Bit/tv_05.png" id="7_05sn7"]
+[ext_resource type="Texture2D" uid="uid://dxoy8ned6gsnw" path="res://Assets/FlawLizArt/8Bit/tv_06.png" id="8_lu1w6"]
+[ext_resource type="Script" uid="uid://c0dn1cyia4wte" path="res://Modules/Area/TriggerArea2D.cs" id="9_oyi5l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byh41"]
+size = Vector2(128, 162)
+
+[sub_resource type="Animation" id="Animation_pjus3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_23jxw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxFlash:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qef7a"]
+resource_name = "flash"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_0wumn"), ExtResource("5_5v5y4"), ExtResource("6_1sawh"), ExtResource("7_05sn7"), ExtResource("8_lu1w6"), ExtResource("2_23jxw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxFlash:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eojki"]
+_data = {
+&"RESET": SubResource("Animation_pjus3"),
+&"flash": SubResource("Animation_qef7a")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_002yr"]
+size = Vector2(20, 114)
+
+[node name="tv" type="Node2D" node_paths=PackedStringArray("AnimationPlayer", "PlayerArea", "PlayerStartMarker")]
+script = ExtResource("1_kq5g1")
+AnimationPlayer = NodePath("AnimationPlayer")
+PlayerArea = NodePath("PlayerArea")
+PlayerStartMarker = NodePath("Marker2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("2_23jxw")
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_byh41")
+
+[node name="SfxFlash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_yxtqe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eojki")
+}
+
+[node name="PlayerArea" type="Area2D" parent="."]
+position = Vector2(-56, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_oyi5l")
+metadata/_custom_type_script = "uid://c0dn1cyia4wte"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+shape = SubResource("RectangleShape2D_002yr")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-56, 0)
+rotation = -2.96706

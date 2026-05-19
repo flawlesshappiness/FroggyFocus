@@ -11,6 +11,7 @@ public partial class TvTravel : Area3D, IInteractable
 
     public const string HasRemoteFlag = "HAS_TV_REMOTE";
     public const string TvOnFlag = "IS_TV_ON";
+    public const string ScrollerSideFlag = "TV_SCROLLER_SIDE";
 
     private const string DialogueTvOff = "TV_OFF";
     private const string DialogueTvLick = "TV_LICK";
@@ -74,12 +75,23 @@ public partial class TvTravel : Area3D, IInteractable
 
     private void Travel()
     {
-        Data.Game.CurrentScene = IsEntrance ? nameof(GlitchScene) : nameof(FactoryScene);
-        Data.Game.StartingNode = IsEntrance ? string.Empty : "TvStart";
+        Data.Game.CurrentScene = nameof(GlitchScrollerScene);
+        Data.Game.StartingNode = string.Empty;
+        GameFlags.SetFlag(ScrollerSideFlag, IsEntrance ? 0 : 1);
         Data.Game.Save();
 
-        GlitchTransitionView.Instance.IsGoingUp = !IsEntrance;
-        GlitchTransitionView.Instance.StartTransition();
+        TransitionView.Instance.StartTransition(new TransitionSettings
+        {
+            Type = TransitionType.Color,
+            Color = Colors.Black,
+            Duration = 0.5f,
+            OnTransition = OnTransition
+        });
+
+        void OnTransition()
+        {
+            Scene.Goto<GlitchScrollerScene>();
+        }
     }
 
     private void ShowOptions()
@@ -90,7 +102,7 @@ public partial class TvTravel : Area3D, IInteractable
         {
             options.Add(new()
             {
-                Text = "##TV_ENTER_OPTION##",
+                Text = "TV_ENTER_OPTION",
                 Action = Travel
             });
         }
@@ -98,19 +110,19 @@ public partial class TvTravel : Area3D, IInteractable
         {
             options.Add(new()
             {
-                Text = "##TV_REMOTE_OPTION##",
+                Text = "TV_REMOTE_OPTION",
                 Action = RemoteOption
             });
         }
 
         options.Add(new()
         {
-            Text = "##DO_NOTHING##",
+            Text = "DO_NOTHING",
         });
 
         options.Add(new()
         {
-            Text = "##TV_LICK_OPTION##",
+            Text = "TV_LICK_OPTION",
             Action = LickOption
         });
 

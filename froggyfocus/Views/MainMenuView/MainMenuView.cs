@@ -80,7 +80,6 @@ public partial class MainMenuView : View
         PauseView.ToggleLock.SetLock(nameof(MainMenuView), true);
         MouseVisibility.Show(nameof(MainMenuView));
 
-        SaveProfilesContainer.LoadProfiles();
         UpdateContinueButton();
 
         GameView.Instance.Hide();
@@ -88,12 +87,6 @@ public partial class MainMenuView : View
         OnMainMenuEnter?.Invoke();
 
         Open();
-    }
-
-    protected override void Initialize()
-    {
-        base.Initialize();
-        SaveProfilesContainer.LoadProfiles();
     }
 
     private void GameProfileSelected(int profile)
@@ -229,6 +222,7 @@ public partial class MainMenuView : View
 
     private void ClickProfiles()
     {
+        SaveProfilesContainer.LoadProfiles();
         ShowMenu(new MenuSettings
         {
             Panel = AnimatedPanel_Profiles,

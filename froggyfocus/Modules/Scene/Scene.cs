@@ -9,6 +9,7 @@ public partial class Scene : NodeScript
     public static Scene Current { get; set; }
     public static SceneTree Tree { get; set; }
     public static Window Root { get; set; }
+    public static CanvasLayer CanvasLayer { get; set; }
     public static MultiLock PauseLock { get; } = new();
 
     protected virtual void OnDestroy() { }

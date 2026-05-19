@@ -50,15 +50,9 @@ public partial class OptionsController : SingletonController
     public override void _Ready()
     {
         base._Ready();
-        Data.Options.OnBeforeSave += BeforeSave;
-    }
-
-    protected override void Initialize()
-    {
-        base.Initialize();
-
         LoadData();
         InitializeRebinds();
+        Data.Options.OnBeforeSave += BeforeSave;
     }
 
     private void InitializeRebinds()

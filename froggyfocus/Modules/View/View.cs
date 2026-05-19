@@ -18,7 +18,7 @@ public abstract partial class View : ControlScript, IComparable<View>
         }
         else
         {
-            return Singleton.LoadScene($"{Directory}/{GetType().Name}", GetType()) as View;
+            return Singleton.LoadScene($"{Directory}/{GetType().Name}", GetType(), Scene.CanvasLayer) as View;
         }
     }
 
@@ -39,14 +39,14 @@ public abstract partial class View : ControlScript, IComparable<View>
 
         // Order views
         var ordered_views = views.OrderBy(x => x.ChildOrder).ToList();
-        var child_count = Scene.Root.GetChildCount();
+        var child_count = Scene.CanvasLayer.GetChildCount();
         var idx_start = child_count - views.Count - 1;
 
         for (int i = 0; i < ordered_views.Count; i++)
         {
             var idx = idx_start + i;
             var view = ordered_views[i];
-            Scene.Root.MoveChild(view, idx);
+            Scene.CanvasLayer.MoveChild(view, idx);
         }
     }
 

@@ -54,12 +54,12 @@ public static class Singleton
     }
 
     public static T LoadScene<T>(string scene_path) where T : Node => LoadScene(scene_path, typeof(T)) as T;
-    public static Node LoadScene(string scene_path, Type type)
+    public static Node LoadScene(string scene_path, Type type, Node parent = null)
     {
         if (!TryGet(type, out var singleton))
         {
             singleton = GDHelper.Instantiate<Node>(scene_path);
-            singleton.SetParent(Scene.Root);
+            singleton.SetParent(parent ?? Scene.Root);
             _singletons.Add(type.Name, singleton);
         }
 

@@ -50,6 +50,8 @@ public partial class Boot : Node
 
         Scene.Tree = GetTree();
         Scene.Root = Scene.Tree.Root;
+        Scene.CanvasLayer = new CanvasLayer();
+        Scene.CanvasLayer.SetParent(Scene.Root);
         Scene.PauseLock.OnLocked += () => Scene.Tree.Paused = true;
         Scene.PauseLock.OnFree += () => Scene.Tree.Paused = false;
     }

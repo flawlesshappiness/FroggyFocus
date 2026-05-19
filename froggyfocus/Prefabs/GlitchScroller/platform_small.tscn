@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddjctk38415"]
+
+[ext_resource type="Texture2D" uid="uid://b34pjlf6h0iui" path="res://Assets/FlawLizArt/8Bit/platform_small.png" id="1_x8j4d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntygv"]
+size = Vector2(80, 80)
+
+[node name="platform_small" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ntygv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0.0833333, 1)
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("1_x8j4d")

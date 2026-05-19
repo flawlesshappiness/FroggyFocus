@@ -3,6 +3,12 @@ using System.Linq;
 
 public static class Area3DExtensions
 {
+    public static void SetCollidersEnabled(this Area3D area, bool enabled)
+    {
+        var colliders = area.GetNodesInChildren<CollisionShape3D>();
+        colliders.ForEach(x => x.Disabled = !enabled);
+    }
+
     public static Vector3 RandomPoint(this Area3D area)
     {
         var collision_shape = area.GetNodesInChildren<CollisionShape3D>().ToList().Random();
