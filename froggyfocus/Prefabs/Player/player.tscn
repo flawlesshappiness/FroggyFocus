@@ -63,15 +63,16 @@ albedo_texture = ExtResource("14_7m7dm")
 [sub_resource type="QuadMesh" id="QuadMesh_6af3y"]
 material = SubResource("StandardMaterial3D_yi7wc")
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "Character", "ThirdPersonCamera", "ExclamationMark", "QuestionMark", "JumpChargeEffect", "PsJumpChargeMax", "SfxJumpCharge", "SfxFocusTargetFound", "SfxFocusTargetStarted", "Camera")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("PlayerInteract", "CharacterEffects", "ThirdPersonCamera", "ExclamationMark", "QuestionMark", "JumpChargeEffect", "PsJumpChargeMax", "SfxJumpCharge", "SfxFocusTargetFound", "SfxFocusTargetStarted", "Camera")]
 collision_layer = 2
 script = ExtResource("1_hnwp3")
+CharacterPrefab = ExtResource("2_ine62")
 MoveSpeed = 2.0
-PlayerInteract = NodePath("FrogCute/Interact")
-Character = NodePath("FrogCute")
+PlayerInteract = NodePath("CharacterEffects/Interact")
+CharacterEffects = NodePath("CharacterEffects")
 ThirdPersonCamera = NodePath("ThirdPersonCamera")
-ExclamationMark = NodePath("FrogCute/ExclamationMark")
-QuestionMark = NodePath("FrogCute/QuestionMark")
+ExclamationMark = NodePath("CharacterEffects/ExclamationMark")
+QuestionMark = NodePath("CharacterEffects/QuestionMark")
 JumpChargeEffect = NodePath("Effects/JumpChargeEffect")
 PsJumpChargeMax = NodePath("Effects/ps_jump_charge_max")
 SfxJumpCharge = NodePath("Sounds/SfxJumpCharge")
@@ -85,22 +86,22 @@ Camera = NodePath("ThirdPersonCamera/SpringArm3D/Camera3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_hnwp3")
 
-[node name="FrogCute" parent="." instance=ExtResource("2_ine62")]
+[node name="CharacterEffects" type="Node3D" parent="."]
 
-[node name="Interact" type="Area3D" parent="FrogCute"]
+[node name="Interact" type="Area3D" parent="CharacterEffects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.39572)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("3_sysjd")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FrogCute/Interact"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterEffects/Interact"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_sysjd")
 
-[node name="ExclamationMark" parent="FrogCute" instance=ExtResource("6_ucnkw")]
+[node name="ExclamationMark" parent="CharacterEffects" instance=ExtResource("6_ucnkw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.946484, -0.547889)
 
-[node name="QuestionMark" parent="FrogCute" instance=ExtResource("6_tt850")]
+[node name="QuestionMark" parent="CharacterEffects" instance=ExtResource("6_tt850")]
 transform = Transform3D(-2.62268e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62268e-08, 0, 0.894119, -0.435538)
 
 [node name="ThirdPersonCamera" type="Node3D" parent="." node_paths=PackedStringArray("Player", "Camera", "SpringArm")]

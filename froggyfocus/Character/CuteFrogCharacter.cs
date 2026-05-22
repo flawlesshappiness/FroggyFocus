@@ -1,6 +1,5 @@
 using FlawLizArt.Animation.StateMachine;
 using Godot;
-using System;
 using System.Collections;
 
 public partial class CuteFrogCharacter : FrogCharacter
@@ -16,8 +15,6 @@ public partial class CuteFrogCharacter : FrogCharacter
 
     [Export]
     public MeshInstance3D BodyMesh;
-
-    public event Action<string> OnAnimationStarted;
 
     private AnimationState state_falling;
     private AnimationState state_surprise;
@@ -62,8 +59,6 @@ public partial class CuteFrogCharacter : FrogCharacter
     protected override void InitializeAnimations()
     {
         base.InitializeAnimations();
-
-        Animation.Animator.AnimationStarted += AnimationStarted;
 
         if (DisableAnimationStates) return;
 
@@ -147,11 +142,6 @@ public partial class CuteFrogCharacter : FrogCharacter
         body_material.SetShaderParameter("texture4", AppearanceController.Instance.GetInfo(type).Texture);
     }
 
-    private void AnimationStarted(StringName animName)
-    {
-        OnAnimationStarted?.Invoke($"{animName}");
-    }
-
     public override void SetMoving(bool moving)
     {
         base.SetMoving(moving);
@@ -168,6 +158,17 @@ public partial class CuteFrogCharacter : FrogCharacter
     {
         base.SetJumping(jumping);
         param_jumping.Set(jumping);
+
+        if (jumping)
+        {
+            PlayJumpPS();
+            PlayDustStreamPS(0.4f);
+        }
+        else
+        {
+            PlayLandPS();
+            StopDustStreamPS();
+        }
     }
 
     public override void SetFalling()

@@ -44,8 +44,8 @@ public partial class GlitchFrogTongue : FrogTongue
         return this.StartCoroutine(Cr, nameof(AnimateTongueTowards));
         IEnumerator Cr()
         {
-            var steps = 4;
-            var duration = 0.08f;
+            var steps = 3;
+            var duration = 0.15f;
             var duration_step = duration / steps;
             var start = 0.01f;
             var end = dist;
@@ -68,8 +68,8 @@ public partial class GlitchFrogTongue : FrogTongue
         {
             SfxIn.Play();
 
-            var steps = 4;
-            var duration = 0.1f;
+            var steps = 3;
+            var duration = 0.15f;
             var duration_step = duration / steps;
             var start = ScaleNode.Scale.Z;
             var end = 0.01f;

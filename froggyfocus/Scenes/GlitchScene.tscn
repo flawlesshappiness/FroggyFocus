@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
 [ext_resource type="PackedScene" uid="uid://0jmsiis7i0p6" path="res://Prefabs/Glitch/matrix_label.tscn" id="2_cq1bo"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_iviy3"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_mtert"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_bxtix"]
 [ext_resource type="Resource" uid="uid://btdwynpenhki5" path="res://Weather/Resources/Glitch.tres" id="3_ossgx"]
 [ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="4_bxtix"]
 [ext_resource type="PackedScene" uid="uid://d2xrgps5dughf" path="res://Prefabs/Water/water_code.tscn" id="5_ttjhv"]
+[ext_resource type="PackedScene" uid="uid://0pp4bs6q2wml" path="res://Prefabs/Characters/frog_pixel.tscn" id="7_48cxi"]
 [ext_resource type="PackedScene" uid="uid://x1aj06qpdngg" path="res://Prefabs/Objects/color_wall_block.tscn" id="9_ijwup"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="9_qpaxj"]
 [ext_resource type="PackedScene" uid="uid://ck1j2yhhjoijb" path="res://Prefabs/Glitch/glitch_platform_4x4x1.tscn" id="9_xtd18"]
@@ -78,7 +78,7 @@ MatrixLabelPrefab = ExtResource("2_cq1bo")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
-Weathers = Array[ExtResource("2_iviy3")]([ExtResource("3_ossgx")])
+Weathers = [ExtResource("3_ossgx")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_mtert")
@@ -88,6 +88,7 @@ transform = Transform3D(0.965926, -1.13133e-08, 0.258819, -0.258819, -4.2222e-08
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_bxtix")]
+CharacterPrefab = ExtResource("7_48cxi")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_cq1bo")

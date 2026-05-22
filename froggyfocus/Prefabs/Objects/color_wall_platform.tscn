@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dy7rt7h4kmi85"]
 
 [ext_resource type="Script" uid="uid://4hjwti814kr" path="res://Objects/ColorWall.cs" id="1_gk6ij"]
-[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Code_Wireframe_Red.tres" id="2_g2kl1"]
-[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Code_Wireframe_Yellow.tres" id="3_fqo8b"]
-[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Code_Wireframe_Blue.tres" id="4_cpckr"]
+[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Wireframe_Red.tres" id="2_g2kl1"]
+[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Wireframe_Yellow.tres" id="3_fqo8b"]
+[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Wireframe_Blue.tres" id="4_cpckr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_agrq0"]
 size = Vector3(4, 1, 4)

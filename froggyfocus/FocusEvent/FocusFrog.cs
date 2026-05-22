@@ -3,8 +3,12 @@ using Godot;
 public partial class FocusFrog : Node3D
 {
     [Export]
-    public CuteFrogCharacter Character;
+    public CuteFrogCharacter CuteFrogCharacter;
 
+    [Export]
+    public PixelFrogCharacter PixelFrogCharacter;
+
+    private FrogCharacter Frog { get; set; }
     private Node3D Target { get; set; }
 
     private float angle_must_turn;
@@ -62,7 +66,8 @@ public partial class FocusFrog : Node3D
         var is_big = Mathf.Abs(angle) > angle_big;
         var is_right = angle < 0;
 
-        Character.StartFacingPosition(Target.GlobalPosition);
+        CuteFrogCharacter.StartFacingPosition(Target.GlobalPosition);
+        PixelFrogCharacter.RotateToDirectionImmediate(GlobalPosition.DirectionTo(Target.GlobalPosition));
 
         if (is_small)
         {
@@ -70,15 +75,15 @@ public partial class FocusFrog : Node3D
         }
         else if (is_big)
         {
-            Character.SetJumpQuick();
+            CuteFrogCharacter.SetJumpQuick();
         }
         else if (is_right)
         {
-            Character.SetTurnRight();
+            CuteFrogCharacter.SetTurnRight();
         }
         else
         {
-            Character.SetTurnLeft();
+            CuteFrogCharacter.SetTurnLeft();
         }
     }
 
@@ -86,9 +91,27 @@ public partial class FocusFrog : Node3D
     {
         if (Target == null) return 0;
 
-        var forward = Character.Basis * Vector3.Forward;
+        var forward = CuteFrogCharacter.Basis * Vector3.Forward;
         var direction = GlobalPosition.DirectionTo(Target.GlobalPosition.Set(y: GlobalPosition.Y));
         var angle = forward.SignedAngleTo(direction, Vector3.Up);
         return angle;
+    }
+
+    public void SetPixelFrog(bool is_pixel)
+    {
+        CuteFrogCharacter.Hide();
+        PixelFrogCharacter.Hide();
+        Frog = is_pixel ? PixelFrogCharacter : CuteFrogCharacter;
+        Frog.Show();
+    }
+
+    public Coroutine AnimateEatTarget(Node3D target)
+    {
+        return Frog.AnimateEatTarget(target);
+    }
+
+    public void SetCoveringEyes(bool is_covering)
+    {
+        Frog.SetCoveringEyes(is_covering);
     }
 }

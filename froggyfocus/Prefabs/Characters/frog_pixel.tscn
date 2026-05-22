@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://0pp4bs6q2wml"]
+[gd_scene load_steps=14 format=3 uid="uid://0pp4bs6q2wml"]
 
-[ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Code_Wireframe_Green.tres" id="1_poslp"]
+[ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Wireframe_Green.tres" id="1_poslp"]
 [ext_resource type="Script" uid="uid://dxehgrs6fx2m4" path="res://Character/PixelFrogCharacter.cs" id="1_vihcl"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_r0rxl"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="4_4poyb"]
@@ -467,10 +467,99 @@ tracks/7/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_fkssl"]
+resource_name = "cover_eyes"
+length = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mesh/leg_front_L:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [Vector3(0, 0.3, -0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mesh/leg_front_R:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [Vector3(0, 0.3, -0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("mesh/leg_back_L:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("mesh/leg_back_R:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("mesh/head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("mesh/body_idle:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("mesh/body_jump:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vihcl"]
 _data = {
 &"RESET": SubResource("Animation_vihcl"),
 &"charging": SubResource("Animation_4poyb"),
+&"cover_eyes": SubResource("Animation_fkssl"),
 &"idle": SubResource("Animation_poslp"),
 &"jump": SubResource("Animation_q2ysr"),
 &"walking": SubResource("Animation_r0rxl")
@@ -484,6 +573,7 @@ Animation = NodePath("AnimationStateMachine")
 MoveSounds = NodePath("PlayerMoveSoundsGroup")
 
 [node name="mesh" type="Node3D" parent="."]
+transform = Transform3D(1.64, 0, 0, 0, 1.64, 0, 0, 0, 1.64, 0, 0, 0)
 
 [node name="leg_front_L" type="Node3D" parent="mesh"]
 
@@ -883,5 +973,5 @@ metadata/_custom_type_script = "uid://ckv4mr7osps52"
 [node name="PlayerMoveSoundsGroup" parent="." instance=ExtResource("4_4poyb")]
 
 [node name="tongue_glitch" parent="." instance=ExtResource("5_fkssl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.416654, -0.5)
 visible = false

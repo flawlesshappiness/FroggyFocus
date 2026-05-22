@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://1jqtwnd6m5f1"]
 
 [ext_resource type="Script" uid="uid://4hjwti814kr" path="res://Objects/ColorWall.cs" id="1_1j2lb"]
-[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Code_Wireframe_Red.tres" id="2_apljj"]
-[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Code_Wireframe_Yellow.tres" id="3_e0d3t"]
-[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Code_Wireframe_Blue.tres" id="4_q8jbj"]
+[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Wireframe_Red.tres" id="2_apljj"]
+[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Wireframe_Yellow.tres" id="3_e0d3t"]
+[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Wireframe_Blue.tres" id="4_q8jbj"]
 [ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="5_apljj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_agrq0"]

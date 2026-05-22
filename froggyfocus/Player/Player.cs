@@ -6,13 +6,16 @@ using System.Linq;
 public partial class Player : TopDownController
 {
     [Export]
+    public PackedScene CharacterPrefab;
+
+    [Export]
     public float MoveSpeed;
 
     [Export]
     public PlayerInteract PlayerInteract;
 
     [Export]
-    public CuteFrogCharacter Character;
+    public Node3D CharacterEffects;
 
     [Export]
     public ThirdPersonCamera ThirdPersonCamera;
@@ -53,6 +56,7 @@ public partial class Player : TopDownController
     private bool IsCharging { get; set; }
     public bool HasHotspot => FocusHotSpotLock.IsLocked;
     public int MaxRarity { get; set; }
+    public FrogCharacter Character { get; private set; }
 
     private bool has_focus_target;
     private float jump_charge;
@@ -60,13 +64,14 @@ public partial class Player : TopDownController
     private Vector3 respawn_position;
     private int jump_charge_index;
 
-    private Coroutine cr_wait_focus_target;
     private Coroutine cr_look_focus_target;
 
     public override void _Ready()
     {
         base._Ready();
         Instance = this;
+
+        InitializeCharacter();
 
         OnMoveStart += () => MoveChanged(true);
         OnMoveStop += () => MoveChanged(false);
@@ -87,6 +92,15 @@ public partial class Player : TopDownController
         base._ExitTree();
         InteractLock.OnLocked -= InteractLocked;
         InteractLock.OnFree -= InteractFree;
+    }
+
+    private void InitializeCharacter()
+    {
+        Character = CharacterPrefab.Instantiate<FrogCharacter>();
+        Character.SetParent(this);
+        Character.ClearPositionAndRotation();
+        CharacterEffects.SetParent(Character);
+        CharacterEffects.ClearPositionAndRotation();
     }
 
     public override void _Process(double delta)
@@ -288,8 +302,6 @@ public partial class Player : TopDownController
 
         if (jumping)
         {
-            Character.PlayJumpPS();
-            Character.PlayDustStreamPS(0.4f);
             Character.MoveSounds.PlayJump();
         }
         else
@@ -297,8 +309,6 @@ public partial class Player : TopDownController
             UpdateGlobalShaderMoveTime();
 
             FocusEventLock.SetLock("jumping", false);
-            Character.PlayLandPS();
-            Character.StopDustStreamPS();
             Character.MoveSounds.PlayLand();
             EvaluateStableGround();
         }

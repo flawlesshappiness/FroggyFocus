@@ -317,6 +317,7 @@ public partial class FocusEvent : Node3D
         CurrentSettings = settings;
         result = new FocusEventResult(this);
         Player.SetAllLocks(nameof(FocusEvent), true);
+        Frog.SetPixelFrog(settings.Id.Contains("glitch"));
         SetBackground(settings.Id);
         CreateTargets();
         TransitionToStart();
@@ -410,7 +411,7 @@ public partial class FocusEvent : Node3D
 
         if (HasUncaughtTargets())
         {
-            Frog.Character.SetSurprised();
+            Frog.CuteFrogCharacter.SetSurprised();
         }
 
         TransitionFromEnd();
@@ -431,7 +432,7 @@ public partial class FocusEvent : Node3D
 
     private void Cursor_Disrupt()
     {
-        Frog.Character.SetSurprised();
+        Frog.CuteFrogCharacter.SetSurprised();
     }
 
     private void AnimateCatchTarget(FocusTarget target)
@@ -453,7 +454,7 @@ public partial class FocusEvent : Node3D
             yield return new WaitForSeconds(0.2f);
             Frog.ClearTarget();
 
-            yield return Frog.Character.AnimateEatTarget(target);
+            yield return Frog.AnimateEatTarget(target);
 
             Cursor.Show();
             FocusCursor.MoveLock.SetLock("catch", false);
@@ -479,7 +480,7 @@ public partial class FocusEvent : Node3D
     private void SetCoveringEyes(bool is_covering)
     {
         IsCoveringEyes = is_covering;
-        Frog.Character.SetCoveringEyes(is_covering);
+        Frog.SetCoveringEyes(is_covering);
 
         if (is_covering)
         {

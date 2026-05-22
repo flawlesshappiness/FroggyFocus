@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=64 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://4c48npfdwmu3" path="res://FocusEvent/FocusFrog.cs" id="26_0lb7u"]
 [ext_resource type="PackedScene" uid="uid://rum51macbtyh" path="res://Prefabs/FocusSkillChecks/dig.tscn" id="26_rqtj8"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="27_p01lx"]
+[ext_resource type="PackedScene" uid="uid://0pp4bs6q2wml" path="res://Prefabs/Characters/frog_pixel.tscn" id="29_bo0wf"]
 [ext_resource type="PackedScene" uid="uid://cb8q4quglh4xu" path="res://Prefabs/FocusEventBackground/swamp_land.tscn" id="30_4nfkp"]
 [ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="30_p01lx"]
 [ext_resource type="PackedScene" uid="uid://3my6iuqyk6l0" path="res://Prefabs/FocusEventBackground/swamp_lilypads.tscn" id="31_4nfkp"]
@@ -217,11 +218,14 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 
 
 [node name="Dig" parent="Skillchecks" instance=ExtResource("26_rqtj8")]
 
-[node name="FocusFrog" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
+[node name="FocusFrog" type="Node3D" parent="." node_paths=PackedStringArray("CuteFrogCharacter", "PixelFrogCharacter")]
 script = ExtResource("26_0lb7u")
-Character = NodePath("FrogCute")
+CuteFrogCharacter = NodePath("FrogCute")
+PixelFrogCharacter = NodePath("frog_pixel")
 
 [node name="FrogCute" parent="FocusFrog" instance=ExtResource("27_p01lx")]
+
+[node name="frog_pixel" parent="FocusFrog" instance=ExtResource("29_bo0wf")]
 
 [node name="ParticleSystems" type="Node3D" parent="."]
 

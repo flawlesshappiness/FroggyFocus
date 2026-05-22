@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://chcgrn07vcfvv"]
 
-[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Code_Wireframe_Red.tres" id="1_8vutg"]
+[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Wireframe_Red.tres" id="1_8vutg"]
 [ext_resource type="Script" uid="uid://dkgtx1ivpmjs2" path="res://Objects/ColorButton.cs" id="1_lh7pf"]
-[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Code_Wireframe_Yellow.tres" id="3_p02pa"]
-[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Code_Wireframe_Blue.tres" id="4_dclku"]
+[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Wireframe_Yellow.tres" id="3_p02pa"]
+[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Wireframe_Blue.tres" id="4_dclku"]
 [ext_resource type="AudioStream" uid="uid://bvn5xkahdn6tt" path="res://Sounds/Raw/sfx_glitch_button_move_001.wav" id="5_dclku"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lh7pf"]

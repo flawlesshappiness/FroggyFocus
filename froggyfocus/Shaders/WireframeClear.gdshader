@@ -6,7 +6,6 @@ uniform vec4 modelColor : source_color;
 uniform vec4 wireframeColor : source_color;
 
 uniform float width : hint_range(0.0, 15.) = 1.;
-uniform float modelOpacity : hint_range(0.0, 1.0) = 1.;
 
 uniform bool filtered = false;
 
@@ -39,5 +38,5 @@ void fragment() {
 	float closestEdge = min(min(remap.x, remap.y), remap.z);
 
 	ALBEDO = mix(wireframeColor, modelColor, closestEdge).xyz;
-	//ALPHA = mix(1., modelOpacity, closestEdge);
+	ALPHA = mix(1., 0, closestEdge);
 }

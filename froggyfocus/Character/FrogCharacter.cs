@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ public partial class FrogCharacter : Character
 
     [Export]
     public PlayerMoveSoundsGroup MoveSounds;
+
+    public event Action<string> OnAnimationStarted;
 
     private List<AppearanceAttachmentGroup> attachment_groups = new();
 
@@ -44,7 +47,10 @@ public partial class FrogCharacter : Character
         CustomizeAppearanceControl.OnAppearanceChanged -= AppearanceChanged;
     }
 
-    protected virtual void InitializeAnimations() { }
+    protected virtual void InitializeAnimations()
+    {
+        Animation.Animator.AnimationStarted += AnimationStarted;
+    }
     protected virtual void InitializeBody() { }
 
     private void InitializeAttachments()
@@ -121,5 +127,10 @@ public partial class FrogCharacter : Character
             yield return new WaitForSeconds(0.05f);
             yield return Tongue.AnimateTongueBack();
         }
+    }
+
+    private void AnimationStarted(StringName animName)
+    {
+        OnAnimationStarted?.Invoke($"{animName}");
     }
 }
