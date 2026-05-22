@@ -25,3 +25,10 @@ shape = SubResource("CylinderShape3D_3i7ba")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.494141, 0)
 shape = SubResource("BoxShape3D_t5p7e")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96046e-08, 0.699185, 0.0840164)
+modulate = Color(0.12, 0.07592, 0.0504, 0.658824)
+outline_modulate = Color(0.12, 0.07592, 0.0504, 0)
+text = "?"
+font_size = 100

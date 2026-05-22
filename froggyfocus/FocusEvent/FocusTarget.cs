@@ -156,9 +156,9 @@ public partial class FocusTarget : Node3D
     {
         MoveDistance = Info.DistanceType switch
         {
-            FocusCharacterDistanceType.Short => new Vector2(Mathf.Lerp(0.25f, 0.5f, Difficulty), Mathf.Lerp(1.0f, 1.5f, Difficulty)),
-            FocusCharacterDistanceType.Normal => new Vector2(Mathf.Lerp(0.5f, 1.0f, Difficulty), Mathf.Lerp(1.5f, 2.0f, Difficulty)),
-            FocusCharacterDistanceType.Long => new Vector2(Mathf.Lerp(1.0f, 2.0f, Difficulty), Mathf.Lerp(2.0f, 3.0f, Difficulty)),
+            FocusCharacterDistanceType.Short => new Vector2(Mathf.Lerp(0.5f, 1.0f, Difficulty), Mathf.Lerp(1.0f, 1.5f, Difficulty)),
+            FocusCharacterDistanceType.Normal => new Vector2(Mathf.Lerp(1.0f, 1.5f, Difficulty), Mathf.Lerp(1.5f, 2.0f, Difficulty)),
+            FocusCharacterDistanceType.Long => new Vector2(Mathf.Lerp(1.5f, 2.0f, Difficulty), Mathf.Lerp(2.0f, 3.0f, Difficulty)),
         };
     }
 

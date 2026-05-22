@@ -3,6 +3,9 @@ using Godot;
 
 public partial class NormalFrogCharacter : FrogCharacter
 {
+    [Export]
+    public MeshInstance3D BodyMesh;
+
     private AnimationState state_falling;
     private AnimationState state_in_sand;
     private ShaderMaterial body_material;

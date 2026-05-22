@@ -20,9 +20,6 @@ public partial class FrogCharacter : Character
     [Export]
     public PlayerMoveSoundsGroup MoveSounds;
 
-    [Export]
-    public MeshInstance3D BodyMesh;
-
     private List<AppearanceAttachmentGroup> attachment_groups = new();
 
     public override void _Ready()

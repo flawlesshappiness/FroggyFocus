@@ -157,6 +157,9 @@ transform = Transform3D(1.96808, 0, -0.355922, 0, 2, 0, 0.355922, 0, 1.96808, -2
 [node name="lilypad4" parent="World/NavigationRegion3D/Lilypads" instance=ExtResource("12_70ake")]
 transform = Transform3D(1.05507, 0, 1.69907, 0, 2, 0, -1.69907, 0, 1.05507, -7.07275, -0.980001, -30.9873)
 
+[node name="lilypad13" parent="World/NavigationRegion3D/Lilypads" instance=ExtResource("12_70ake")]
+transform = Transform3D(-0.827545, 0, -1.82076, 0, 2, 0, 1.82076, 0, -0.827545, -1.39393, -0.980001, -27.1081)
+
 [node name="lilypad2" parent="World/NavigationRegion3D/Lilypads" instance=ExtResource("12_70ake")]
 transform = Transform3D(-1.57405, 0, -1.94226, 0, 2.5, 0, 1.94226, 0, -1.57405, 1.10803, -0.98, -11.9076)
 
@@ -950,7 +953,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17368, -1, -25.3851)
 Info = ExtResource("42_fpkb8")
 
 [node name="swamp_lilypads10" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35387, -1, -26.745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.360069, -1, -23.2165)
 Info = ExtResource("42_fpkb8")
 
 [node name="swamp_lilypads11" parent="World/WorldBugs/lilypads" instance=ExtResource("41_bmvqj")]
@@ -1266,7 +1269,7 @@ Objects = [NodePath("Objects")]
 transform = Transform3D(0.998337, 0, 0.0576512, 0, 1, 0, -0.0576512, 0, 0.998337, -24.0283, -1, 20.2591)
 
 [node name="CP2" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
-transform = Transform3D(0.999989, 0, -0.00462545, 0, 1, 0, 0.00462545, 0, 0.999989, -30.3343, -1, -2.31408)
+transform = Transform3D(0.999989, 0, -0.00462545, 0, 1, 0, 0.00462545, 0, 0.999989, -30.5942, -1, -2.31528)
 
 [node name="CP3" parent="World/Race/Checkpoints" instance=ExtResource("56_x6pk1")]
 transform = Transform3D(0.864178, 0, -0.503186, 0, 1, 0, 0.503186, 0, 0.864178, -23.404, -1, -23.4582)

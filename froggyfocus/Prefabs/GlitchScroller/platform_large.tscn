@@ -1,19 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4bdoepq10erm"]
+[gd_scene load_steps=5 format=3 uid="uid://d4bdoepq10erm"]
 
 [ext_resource type="Texture2D" uid="uid://6uqhaujofkf8" path="res://Assets/FlawLizArt/8Bit/platform_large.png" id="1_btacq"]
+[ext_resource type="Script" uid="uid://bjj8eg358817a" path="res://Prefabs/GlitchScroller/PlatformScroller.cs" id="1_cg52s"]
+[ext_resource type="Texture2D" uid="uid://dow57wbyet56i" path="res://Assets/FlawLizArt/8Bit/platform_large_open.png" id="3_ishgk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntygv"]
 size = Vector2(240, 80)
 
-[node name="platform_large" type="Node2D"]
+[node name="platform_large" type="Node2D" node_paths=PackedStringArray("Collider", "SpriteSolid", "SpriteClear")]
+script = ExtResource("1_cg52s")
+Collider = NodePath("StaticBody2D/CollisionShape2D")
+SpriteSolid = NodePath("Solid")
+SpriteClear = NodePath("Clear")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_ntygv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Solid" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0.0833333, 1)
 texture_filter = 1
 scale = Vector2(10, 10)
 texture = ExtResource("1_btacq")
+
+[node name="Clear" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0.0833333, 1)
+texture_filter = 1
+scale = Vector2(10, 10)
+texture = ExtResource("3_ishgk")

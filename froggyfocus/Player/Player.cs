@@ -322,58 +322,6 @@ public partial class Player : TopDownController
         ThirdPersonCamera.SnapToPosition();
     }
 
-    private void StopWaitForFocusTarget()
-    {
-        Coroutine.Stop(cr_wait_focus_target);
-
-        if (has_focus_target)
-        {
-            ExclamationMark.AnimateHide();
-            has_focus_target = false;
-        }
-    }
-
-    private void StartWaitForFocusTarget()
-    {
-        if (!GameScene.Instance.HasFocusEvent()) return;
-        if (!GameScene.Instance.HasFocusEventTargets()) return;
-
-        cr_wait_focus_target = this.StartCoroutine(Cr, nameof(StartWaitForFocusTarget));
-        IEnumerator Cr()
-        {
-            var rng = new RandomNumberGenerator();
-
-            while (true)
-            {
-                var wait_duration = rng.RandfRange(1f, 3f);
-                var wait_end = GameTime.Time + wait_duration;
-                while (GameTime.Time < wait_end)
-                {
-                    if (FocusHotSpotLock.IsLocked) break;
-                    yield return null;
-                }
-
-                has_focus_target = true;
-                ExclamationMark.AnimateShow();
-                SfxFocusTargetFound.Play();
-
-                var delay_duration = 2f;
-                var delay_end = GameTime.Time + delay_duration;
-                while (GameTime.Time < delay_end)
-                {
-                    while (FocusHotSpotLock.IsLocked)
-                    {
-                        yield return null;
-                    }
-                    yield return null;
-                }
-
-                ExclamationMark.AnimateHide();
-                has_focus_target = false;
-            }
-        }
-    }
-
     private void StartLookForFocusTarget()
     {
         if (FocusEventLock.IsLocked) return;
@@ -392,19 +340,11 @@ public partial class Player : TopDownController
         {
             MovementLock.SetLock(id, true);
 
-            if (FocusHotSpotLock.IsFree)
-            {
-                var time_wait = rng.RandfRange(2f, 4f);
-                GameView.Instance.AnimateVignetteShow(1f);
-                AnimateZoom(-1f, 5f);
+            var time_wait = rng.RandfRange(0.5f, 1f);
+            GameView.Instance.AnimateVignetteShow(1f);
+            AnimateZoom(-1f, 5f);
 
-                yield return new WaitForSeconds(time_wait);
-            }
-            else
-            {
-                GameView.Instance.AnimateVignetteShow(0.5f);
-                AnimateZoom(-1f, 0.5f);
-            }
+            yield return new WaitForSeconds(time_wait);
 
             has_focus_target = true;
             ExclamationMark.AnimateShow();
@@ -441,8 +381,6 @@ public partial class Player : TopDownController
 
     private void StartFocusEvent()
     {
-        StopWaitForFocusTarget();
-
         var id = nameof(StartFocusEvent);
         this.StartCoroutine(Cr, id);
         IEnumerator Cr()

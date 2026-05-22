@@ -1,26 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8jml0sphang0"]
+[gd_scene load_steps=14 format=3 uid="uid://b8jml0sphang0"]
 
 [ext_resource type="Script" uid="uid://dj06piy035o2l" path="res://Views/TutorialView/TutorialView.cs" id="1_4w7iv"]
 [ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="2_4w7iv"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="2_m4dci"]
 [ext_resource type="PackedScene" uid="uid://cp8kbr2tvdecr" path="res://Prefabs/UI/InputPrompt/input_prompt_texture.tscn" id="2_p2qyr"]
 [ext_resource type="PackedScene" uid="uid://cqiudv26lubpf" path="res://Assets/FlawLizArt/Objects/sign.fbx" id="3_ve78c"]
+[ext_resource type="Texture2D" uid="uid://irr3u2ude5us" path="res://Assets/FlawLizArt/Textures/tutorial_jump_graphic.png" id="4_35v6w"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_kl8r4"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ve78c"]
 viewport_path = NodePath("ItemSubViewport_Sign")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kl8r4"]
-bg_color = Color(0, 0, 0, 0.392157)
-corner_radius_top_left = 2
-corner_radius_top_right = 16
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35v6w"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 16
-corner_radius_bottom_left = 2
 
 [sub_resource type="Animation" id="Animation_m4dci"]
 length = 0.001
@@ -130,7 +119,7 @@ script = ExtResource("1_4w7iv")
 Animation_Sign = NodePath("AnimationPlayer_Sign")
 JumpTutorial = NodePath("Anim_Sign/TutorialJump")
 BugsTutorial = NodePath("Anim_Sign/TutorialBugs")
-ShieldTutorial = NodePath("Anim_Sign/TutorialShield")
+ShieldTutorial = NodePath("Anim_Sign/TutorialCoverEyes")
 ForfeitTutorial = NodePath("Anim_Sign/TutorialForfeit")
 
 [node name="Anim_Sign" type="Control" parent="."]
@@ -177,24 +166,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_m4dci")
 
-[node name="Label" type="Label" parent="Anim_Sign/TutorialJump"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -303.0
-offset_top = -136.0
-offset_right = 307.0
-offset_bottom = -61.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Is walking not good enough for you?"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Label2" type="Label" parent="Anim_Sign/TutorialJump"]
 layout_mode = 1
 anchors_preset = 8
@@ -202,16 +173,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -303.0
-offset_top = -44.0
-offset_right = 307.0
-offset_bottom = 31.0
+offset_left = -321.0
+offset_top = -184.0
+offset_right = 289.0
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "Try jumping with"
+text = "Hold            to jump"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InputPromptTexture" parent="Anim_Sign/TutorialJump/Label2" instance=ExtResource("2_p2qyr")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -37.5
+offset_right = 17.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+StartingAction = "Jump"
 
 [node name="Label3" type="Label" parent="Anim_Sign/TutorialJump"]
 layout_mode = 1
@@ -220,32 +207,80 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -304.0
-offset_top = 51.0
-offset_right = 306.0
-offset_bottom = 126.0
+offset_left = -314.0
+offset_top = -121.0
+offset_right = 296.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "Hold to cross larger gaps."
+text = "Your jump changes the longer you hold"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InputPromptTexture" parent="Anim_Sign/TutorialJump" instance=ExtResource("2_p2qyr")]
-custom_minimum_size = Vector2(80, 80)
+[node name="TextureRect" type="TextureRect" parent="Anim_Sign/TutorialJump"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = 54.0
+offset_right = 670.0
+offset_bottom = 408.0
+texture = ExtResource("4_35v6w")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label4" type="Label" parent="Anim_Sign/TutorialJump/TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 129.0
-offset_top = -44.0
-offset_right = 209.0
-offset_bottom = 36.0
+offset_left = -116.5
+offset_top = 83.0
+offset_right = -66.5
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
-StartingAction = "Jump"
+theme_override_font_sizes/font_size = 30
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Anim_Sign/TutorialJump/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.5
+offset_top = 83.0
+offset_right = 47.5
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Anim_Sign/TutorialJump/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 206.5
+offset_top = 83.0
+offset_right = 256.5
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TutorialBugs" type="Control" parent="Anim_Sign"]
 visible = false
@@ -353,8 +388,7 @@ grow_horizontal = 2
 grow_vertical = 2
 StartingAction = "Focus"
 
-[node name="TutorialShield" type="Control" parent="Anim_Sign"]
-visible = false
+[node name="TutorialCoverEyes" type="Control" parent="Anim_Sign"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -369,7 +403,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_m4dci")
 
-[node name="Label" type="Label" parent="Anim_Sign/TutorialShield"]
+[node name="Label" type="Label" parent="Anim_Sign/TutorialCoverEyes"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -382,49 +416,49 @@ offset_right = 314.0
 offset_bottom = -91.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 30
-text = "Are the bugs fighting back?"
+theme_override_font_sizes/font_size = 50
+text = "Beware!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Anim_Sign/TutorialShield"]
+[node name="Label2" type="Label" parent="Anim_Sign/TutorialCoverEyes"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -305.0
-offset_top = -102.0
-offset_right = 305.0
-offset_bottom = -27.0
+offset_left = -300.0
+offset_top = -84.0
+offset_right = 310.0
+offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "Steel your focus!"
+text = "Some bugs will fight back"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Anim_Sign/TutorialShield"]
+[node name="Label3" type="Label" parent="Anim_Sign/TutorialCoverEyes"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -363.0
-offset_top = -44.0
-offset_right = 247.0
-offset_bottom = 57.0
+offset_left = -341.0
+offset_top = 40.0
+offset_right = 269.0
+offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "When catching a bug, block with"
+text = "cover your eyes with"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="InputPromptTexture" parent="Anim_Sign/TutorialShield" instance=ExtResource("2_p2qyr")]
+[node name="InputPromptTexture" parent="Anim_Sign/TutorialCoverEyes/Label3" instance=ExtResource("2_p2qyr")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 1
 anchors_preset = 8
@@ -432,15 +466,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 188.0
-offset_top = -32.0
-offset_right = 268.0
-offset_bottom = 48.0
+offset_left = 159.0
+offset_top = -40.5
+offset_right = 239.0
+offset_bottom = 39.5
 grow_horizontal = 2
 grow_vertical = 2
 StartingAction = "Interact"
 
-[node name="Label4" type="Label" parent="Anim_Sign/TutorialShield"]
+[node name="Label4" type="Label" parent="Anim_Sign/TutorialCoverEyes"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -448,38 +482,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -316.0
-offset_top = 41.0
+offset_top = -24.0
 offset_right = 294.0
-offset_bottom = 142.0
+offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "But keep an eye on your energy bar!"
+text = "If a bug is about to disrupt your focus"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ShieldBar" type="ProgressBar" parent="Anim_Sign/TutorialShield"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 86.0
-offset_top = 116.0
-offset_right = 256.0
-offset_bottom = 124.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_m4dci")
-theme_override_styles/background = SubResource("StyleBoxFlat_kl8r4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_35v6w")
-max_value = 1.0
-value = 0.6
-show_percentage = false
-
 [node name="TutorialForfeit" type="Control" parent="Anim_Sign"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdhn8mwvqce7s"]
+
+[ext_resource type="Script" uid="uid://li714oduekf1" path="res://Prefabs/Objects/NormalFrogTongue.cs" id="1_y85ju"]
+[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Code_Wireframe_Red.tres" id="2_y85ju"]
+[ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="3_3xnxk"]
+[ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="4_fhyvb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i65c3"]
+material = ExtResource("2_y85ju")
+size = Vector3(0.05, 0.05, 1)
+
+[node name="tongue_glitch" type="Node3D" node_paths=PackedStringArray("ScaleNode", "LookNode", "TongueTargetMarker", "SfxOut", "SfxIn")]
+script = ExtResource("1_y85ju")
+ScaleNode = NodePath("Look/Scale")
+LookNode = NodePath("Look")
+TongueTargetMarker = NodePath("Look/Scale/TongueTargetMarker")
+SfxOut = NodePath("SfxTongueOut")
+SfxIn = NodePath("SfxTongueIn")
+
+[node name="Look" type="Node3D" parent="."]
+
+[node name="Scale" type="Node3D" parent="Look"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Look/Scale"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_i65c3")
+skeleton = NodePath("../..")
+
+[node name="TongueTargetMarker" type="Marker3D" parent="Look/Scale"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="SfxTongueOut" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3xnxk")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxTongueIn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fhyvb")
+volume_db = -10.0
+bus = &"SFX"

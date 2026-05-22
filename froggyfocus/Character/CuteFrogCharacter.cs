@@ -14,6 +14,9 @@ public partial class CuteFrogCharacter : FrogCharacter
     [Export]
     public ParticleEffectSpawner PsLand;
 
+    [Export]
+    public MeshInstance3D BodyMesh;
+
     public event Action<string> OnAnimationStarted;
 
     private AnimationState state_falling;

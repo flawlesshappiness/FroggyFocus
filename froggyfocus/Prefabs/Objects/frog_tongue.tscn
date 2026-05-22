@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8q6cqe5wp2e1"]
 
-[ext_resource type="Script" uid="uid://b57efr67fwbmg" path="res://Prefabs/Objects/FrogTongue.cs" id="1_dm8p6"]
+[ext_resource type="Script" uid="uid://li714oduekf1" path="res://Prefabs/Objects/NormalFrogTongue.cs" id="1_aho1l"]
 [ext_resource type="PackedScene" uid="uid://dmlnvb2o65uy1" path="res://Assets/FlawLizArt/Frog/tongue.fbx" id="1_rfej4"]
 [ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="3_aho1l"]
 [ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="4_yc7kp"]
 
 [node name="Tongue" type="Node3D" node_paths=PackedStringArray("ScaleNode", "LookNode", "TongueTargetMarker", "SfxOut", "SfxIn")]
-script = ExtResource("1_dm8p6")
+script = ExtResource("1_aho1l")
 ScaleNode = NodePath("Look/Scale")
 LookNode = NodePath("Look")
 TongueTargetMarker = NodePath("Look/Scale/TongueTargetMarker")

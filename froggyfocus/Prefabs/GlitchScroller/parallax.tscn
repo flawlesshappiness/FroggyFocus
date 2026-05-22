@@ -1,0 +1,213 @@
+[gd_scene load_steps=5 format=3 uid="uid://56282354412y"]
+
+[ext_resource type="Script" uid="uid://bvyrob1stc27w" path="res://Prefabs/GlitchScroller/ParallaxScroller.cs" id="1_5itj8"]
+[ext_resource type="Script" uid="uid://bk2bnful2bwk4" path="res://Prefabs/GlitchScroller/ParallaxLayerScroller.cs" id="2_24pps"]
+[ext_resource type="Texture2D" uid="uid://bv28yrqi1el3s" path="res://Assets/FlawLizArt/8Bit/parallax_tower_01.png" id="3_uvlav"]
+[ext_resource type="Texture2D" uid="uid://ctdbea2bo4pjb" path="res://Assets/FlawLizArt/8Bit/parallax_tower_02.png" id="4_uvlav"]
+
+[node name="Parallax" type="Node2D"]
+script = ExtResource("1_5itj8")
+
+[node name="Layer1" type="Node2D" parent="."]
+script = ExtResource("2_24pps")
+Z = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(236, -110)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(-124, -50)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(-414, -110)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(-274, 9.53674e-07)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(-814, -120)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(346, -60)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(706, -80)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(1206, 30)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(1326, -80)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(1636, -110)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Layer1"]
+modulate = Color(0, 0.1, 0.00833333, 1)
+z_index = -10
+texture_filter = 1
+position = Vector2(1066, -20)
+scale = Vector2(15, 15)
+texture = ExtResource("3_uvlav")
+
+[node name="Layer2" type="Node2D" parent="."]
+script = ExtResource("2_24pps")
+Z = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer2"]
+modulate = Color(0, 0.07, 0.00583333, 1)
+z_index = -11
+texture_filter = 1
+position = Vector2(-784, -150)
+scale = Vector2(20, 20)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Layer2"]
+modulate = Color(0, 0.07, 0.00583333, 1)
+z_index = -11
+texture_filter = 1
+position = Vector2(-114, -150)
+scale = Vector2(20, 20)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer2"]
+modulate = Color(0, 0.07, 0.00583333, 1)
+z_index = -11
+texture_filter = 1
+position = Vector2(456, -150)
+scale = Vector2(20, 20)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer2"]
+modulate = Color(0, 0.07, 0.00583333, 1)
+z_index = -11
+texture_filter = 1
+position = Vector2(356, -80)
+scale = Vector2(20, 20)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Layer2"]
+modulate = Color(0, 0.07, 0.00583333, 1)
+z_index = -11
+texture_filter = 1
+position = Vector2(1086, -140)
+scale = Vector2(20, 20)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Layer2"]
+modulate = Color(0, 0.07, 0.00583333, 1)
+z_index = -11
+texture_filter = 1
+position = Vector2(1866, -40)
+scale = Vector2(20, 20)
+texture = ExtResource("3_uvlav")
+
+[node name="Layer3" type="Node2D" parent="."]
+script = ExtResource("2_24pps")
+Z = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="Layer3"]
+modulate = Color(0, 0.05, 0.00416666, 1)
+z_index = -12
+texture_filter = 1
+position = Vector2(-574, -170)
+scale = Vector2(25, 25)
+texture = ExtResource("3_uvlav")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Layer3"]
+modulate = Color(0, 0.05, 0.00416666, 1)
+z_index = -12
+texture_filter = 1
+position = Vector2(-4.00024, -190)
+scale = Vector2(25, 25)
+texture = ExtResource("4_uvlav")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Layer3"]
+modulate = Color(0, 0.05, 0.00416666, 1)
+z_index = -12
+texture_filter = 1
+position = Vector2(576, -170)
+scale = Vector2(25, 25)
+texture = ExtResource("4_uvlav")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Layer3"]
+modulate = Color(0, 0.05, 0.00416666, 1)
+z_index = -12
+texture_filter = 1
+position = Vector2(1156, -190)
+scale = Vector2(25, 25)
+texture = ExtResource("4_uvlav")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Layer3"]
+modulate = Color(0, 0.05, 0.00416666, 1)
+z_index = -12
+texture_filter = 1
+position = Vector2(1266, -90)
+scale = Vector2(25, 25)
+texture = ExtResource("4_uvlav")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Layer3"]
+modulate = Color(0, 0.05, 0.00416666, 1)
+z_index = -12
+texture_filter = 1
+position = Vector2(1816, -160)
+scale = Vector2(25, 25)
+texture = ExtResource("4_uvlav")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Layer3"]
+modulate = Color(0, 0.05, 0.00416666, 1)
+z_index = -12
+texture_filter = 1
+position = Vector2(-1114, -180)
+scale = Vector2(25, 25)
+texture = ExtResource("4_uvlav")
