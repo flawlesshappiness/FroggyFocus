@@ -14,4 +14,7 @@ public enum FocusAttackType
     Garbage,
     SyringeCrack,
     EldritchEyeFlash,
+    GlitchTeleport,
+    GlitchTrap,
+    GlitchFlash,
 }

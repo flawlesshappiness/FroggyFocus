@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy7rt7h4kmi85"]
+[gd_scene load_steps=5 format=3 uid="uid://dy7rt7h4kmi85"]
 
 [ext_resource type="Script" uid="uid://4hjwti814kr" path="res://Objects/ColorWall.cs" id="1_gk6ij"]
 [ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Wireframe_Red.tres" id="2_g2kl1"]
-[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Wireframe_Yellow.tres" id="3_fqo8b"]
-[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Wireframe_Blue.tres" id="4_cpckr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_agrq0"]
 size = Vector3(4, 1, 4)
@@ -13,11 +11,8 @@ size = Vector3(4, 1, 4)
 
 [node name="ColorWall_Block" type="Node3D" node_paths=PackedStringArray("MeshInstance", "Collider")]
 script = ExtResource("1_gk6ij")
-RedMaterial = ExtResource("2_g2kl1")
-YellowMaterial = ExtResource("3_fqo8b")
-BlueMaterial = ExtResource("4_cpckr")
 MeshInstance = NodePath("MeshInstance3D")
-Collider = NodePath("StaticBody3D")
+Collider = NodePath("StaticBody3D/CollisionShape3D")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

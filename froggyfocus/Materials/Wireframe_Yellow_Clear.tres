@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dsya6qdu07dbq"]
+
+[ext_resource type="Shader" uid="uid://de6f5ssvc1or" path="res://Shaders/WireframeClear.gdshader" id="1_7hnkj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7hnkj")
+shader_parameter/modelColor = Color(0, 0, 0, 1)
+shader_parameter/wireframeColor = Color(1, 0.833333, 0, 1)
+shader_parameter/width = 2.0
+shader_parameter/filtered = true

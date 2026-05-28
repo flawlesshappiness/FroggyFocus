@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://caubq6xope7lx"]
+
+[ext_resource type="Material" uid="uid://pxlmvkrhdech" path="res://Materials/Wireframe_Green.tres" id="1_sjxxj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ossgx"]
+material = ExtResource("1_sjxxj")
+size = Vector3(3, 4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ud4fb"]
+material = ExtResource("1_sjxxj")
+size = Vector3(1, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qavdx"]
+size = Vector3(3, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sjxxj"]
+size = Vector3(1, 4, 1)
+
+[node name="corner_4x4x1" type="Node3D"]
+
+[node name="Platform3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ossgx")
+skeleton = NodePath("../../../..")
+
+[node name="Platform5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+mesh = SubResource("BoxMesh_ud4fb")
+skeleton = NodePath("../../../..")
+
+[node name="Platform4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, -1.5)
+mesh = SubResource("BoxMesh_ossgx")
+skeleton = NodePath("../../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, 0.5)
+shape = SubResource("BoxShape3D_qavdx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0.5, -1.5)
+shape = SubResource("BoxShape3D_qavdx")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0.5, 0.5)
+shape = SubResource("BoxShape3D_sjxxj")

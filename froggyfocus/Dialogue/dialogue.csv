@@ -17,6 +17,8 @@ keys;en
 ##DO_NOTHING##;Do nothing
 ##START_RACE##;Start race?
 ##END_RACE##;End race?
+##LIFT_QUARANTINE##;Lift quarantine
+##LEAVE##;Leave
 ##LOCATION_NONE##;You don't know any locations to go to.
 ##LOCATION_PICKUP_CAVE##;The document describes directions to a nearby island with a cave.
 ##LOCATION_PICKUP_FACTORY##;The document describes directions to a nearby factory.
@@ -334,3 +336,21 @@ keys;en
 ##RACE_FROG_FACTORY_HARD_WIN_001##;Cough, cough...
 ##RACE_FROG_FACTORY_HARD_WIN_002##;Nevermind. I hate this place.
 ##RACE_FROG_FACTORY_HARD_WIN_003##;I'm going home to the pond.
+##FIREWALL_INTRO_001##;WARNING! Ignore that. Everything is fine. Yup. Nothering to see here.
+##FIREWALL_INTRO_002##;ERROR! Not like I've quarantined an unknown bug or anything. Everything is perfect. Life is good.
+##FIREWALL_INTRO_003##;SEGFAULT! And if management asks, there are NOT a million other bugs crawling around the data structure.
+##FIREWALL_LIFT_QUARANTINE_001##;ERROR! What do you mean, lift the quarantine? I can't do that! Do you not see all the warning lights?
+##FIREWALL_LIFT_QUARANTINE_002##;WARNING! I need to analyze all the other bugs before I could even begin to think about lifting the quarantine.
+##FIREWALL_LIFT_QUARANTINE_003##;Just forget it. I'm a failure and a fraud, and when they find out they're gonna boot me from this system.
+##FIREWALL_ANALYZING_A_001##;Analyzing... 33.33%
+##FIREWALL_ANALYZING_A_002##;Ew, what is this. Get it off of me. This is a bug?
+##FIREWALL_ANALYZING_A_003##;I need someone to squash this STAT!
+##FIREWALL_ANALYZING_B_001##;Analyzing... 66.67%
+##FIREWALL_ANALYZING_B_002##;Ok, yeah, this is another one. Wait, this one is kinda cute.
+##FIREWALL_ANALYZING_C_001##;Analyzing... 100%
+##FIREWALL_ANALYZING_C_002##;I think... that's all of them. I can't believe you did it.
+##FIREWALL_ANALYZING_C_003##;I'm gonna lift the firewall now, ok? You better stick with me, and catch this last one as well, alright?
+##FIREWALL_ANALYZING_C_004##;It's you and me together in this. Frog to firewall. The system saviours. Thank the data-gods you showed up.
+##WORKER_TV_001##;We're trying to get this TV working, but I have no clue how a TV works.
+##WORKER_TV_002##;Hey, don't tell anyone but I lost the remote to the TV somewhere in the swamp.
+##WORKER_TV_003##;No cables. No remote. No buttons. What are we supposed to do with this TV.

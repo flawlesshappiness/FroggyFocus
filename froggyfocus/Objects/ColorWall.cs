@@ -1,31 +1,33 @@
 using Godot;
+using System.Collections;
 
 public partial class ColorWall : Node3D
 {
+    [Export(PropertyHint.Range, "0,2,0.1")]
+    public float Delay = 0.0f;
+
     [Export]
     public ColorButtonType Type;
 
     [Export]
-    public ShaderMaterial RedMaterial;
+    public ShaderMaterial SolidMaterial;
 
     [Export]
-    public ShaderMaterial YellowMaterial;
-
-    [Export]
-    public ShaderMaterial BlueMaterial;
+    public ShaderMaterial ClearMaterial;
 
     [Export]
     public MeshInstance3D MeshInstance;
 
     [Export]
-    public StaticBody3D Collider;
+    public CollisionShape3D Collider;
 
-    private ShaderMaterial material;
+    [Export]
+    public AudioStreamPlayer3D SfxSolid;
 
     public override void _Ready()
     {
         base._Ready();
-        SetMaterial(GetMaterial(Type));
+        SetSolid(false);
         ColorButtonController.Instance.OnTypeChanged += TypeChanged;
     }
 
@@ -37,26 +39,23 @@ public partial class ColorWall : Node3D
 
     private void TypeChanged(ColorButtonType type)
     {
-        SetOpen(type == Type);
+        AnimateSetSolid(type == Type);
     }
 
-    private void SetOpen(bool open)
+    private void SetSolid(bool solid)
     {
-        Collider.ProcessMode = open ? ProcessModeEnum.Disabled : ProcessModeEnum.Inherit;
-        material.SetShaderParameter("modelOpacity", open ? 0.0f : 1.0f);
+        Collider.SetDeferred("disabled", !solid);
+        MeshInstance.SetSurfaceOverrideMaterial(0, solid ? SolidMaterial : ClearMaterial);
     }
 
-    private void SetMaterial(ShaderMaterial mat)
+    private void AnimateSetSolid(bool solid)
     {
-        material = mat.Duplicate() as ShaderMaterial;
-        MeshInstance.SetSurfaceOverrideMaterial(0, material);
+        this.StartCoroutine(Cr, "solid");
+        IEnumerator Cr()
+        {
+            yield return new WaitForSeconds(Delay);
+            SfxSolid.Play();
+            SetSolid(solid);
+        }
     }
-
-    public ShaderMaterial GetMaterial(ColorButtonType type) => type switch
-    {
-        ColorButtonType.Red => RedMaterial,
-        ColorButtonType.Yellow => YellowMaterial,
-        ColorButtonType.Blue => BlueMaterial,
-        _ => RedMaterial
-    };
 }

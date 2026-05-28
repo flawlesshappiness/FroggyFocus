@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvsiuqw5suitd"]
+
+[ext_resource type="Script" uid="uid://4hjwti814kr" path="res://Objects/ColorWall.cs" id="1_btyob"]
+[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Wireframe_Red.tres" id="2_g4d8b"]
+[ext_resource type="Material" uid="uid://dm5s4uwnaded2" path="res://Materials/Wireframe_Red_Clear.tres" id="3_41jos"]
+[ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="5_31yp4"]
+[ext_resource type="AudioStream" uid="uid://ckh1sym7tu23e" path="res://Sounds/Raw/sfx_8bit_frog_land.wav" id="5_btyob"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_avck0"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_agrq0"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_agrq0"]
+size = Vector3(4, 0.841858, 4)
+
+[node name="Block_Red_4x4x4" type="Node3D" node_paths=PackedStringArray("MeshInstance", "Collider", "SfxSolid")]
+script = ExtResource("1_btyob")
+SolidMaterial = ExtResource("2_g4d8b")
+ClearMaterial = ExtResource("3_41jos")
+MeshInstance = NodePath("MeshInstance3D")
+Collider = NodePath("StaticBody3D/CollisionShape3D")
+SfxSolid = NodePath("SfxSolid")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_avck0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_agrq0")
+surface_material_override/0 = ExtResource("2_g4d8b")
+
+[node name="PlayerGround" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_31yp4")
+Id = "glitch"
+metadata/_custom_type_script = "uid://cnv6mhgukc6u3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.29379, 0)
+shape = SubResource("BoxShape3D_agrq0")
+
+[node name="SfxSolid" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+stream = ExtResource("5_btyob")
+pitch_scale = 1.5
+bus = &"SFX"
+emission_angle_filter_attenuation_db = 0.0

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://cfdoyhf03q48w"]
+
+[ext_resource type="Resource" uid="uid://boussnosvemgu" path="res://FocusCharacter/Resources/Error_Legs.tres" id="1_lkij3"]
+[ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="2_qqf4p"]
+
+[resource]
+script = ExtResource("2_qqf4p")
+Count = 3
+TargetTag = 0
+TargetInfo = ExtResource("1_lkij3")
+Money = 200
+metadata/_custom_type_script = "uid://dm1b320n5x14n"

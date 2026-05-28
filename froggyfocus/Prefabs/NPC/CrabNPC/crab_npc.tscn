@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct6yxfuwur3fl"]
+[gd_scene load_steps=14 format=3 uid="uid://ct6yxfuwur3fl"]
 
 [ext_resource type="PackedScene" uid="uid://ccgpgjg58jqqs" path="res://Assets/FlawLizArt/Characters/Crab/crab.fbx" id="1_hm23q"]
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_yw2n1"]
 [ext_resource type="Resource" uid="uid://b3hhun7nmjp8p" path="res://HandIn/Resources/Crab_Cave.tres" id="2_djhky"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="3_gcl2x"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vub6u"]
 [ext_resource type="PackedScene" uid="uid://bmg430dgy8ers" path="res://Appearance/Attachments/septum.tscn" id="4_yv4qu"]
 [ext_resource type="AudioStream" uid="uid://dbtow33lxh7up" path="res://Sounds/Raw/sfx_crab_speak_001.wav" id="4_yw2n1"]
@@ -37,9 +38,13 @@ SfxSpeak = NodePath("SfxSpeak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.338379, -0.982084)
 shape = SubResource("CylinderShape3D_vub6u")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NpcArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_gcl2x")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.300903, -0.235262)
 shape = SubResource("CylinderShape3D_bm3qs")
 

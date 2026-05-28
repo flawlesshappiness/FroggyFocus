@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://jpa4rwfuils2"]
+[gd_scene load_steps=9 format=3 uid="uid://jpa4rwfuils2"]
 
 [ext_resource type="Script" uid="uid://btvutwevobeee" path="res://Prefabs/NPC/FrogPartnerNPC/FrogPartnerNpc.cs" id="1_f1r8i"]
 [ext_resource type="Resource" uid="uid://8suq4f4y855o" path="res://HandIn/Resources/Main_Partner.tres" id="2_s8epy"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_junsv"]
 [ext_resource type="AudioStream" uid="uid://nbfbnx1habkm" path="res://Sounds/Raw/sfx_frog_croak_002.wav" id="4_3khhn"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="4_junsv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rhrvr"]
 height = 0.738281
@@ -33,9 +34,13 @@ shape = SubResource("CylinderShape3D_rhrvr")
 [node name="Frog" parent="." instance=ExtResource("3_junsv")]
 DisableAppearanceUpdates = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NpcArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_junsv")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.326416, 0)
 shape = SubResource("CylinderShape3D_2d5ww")
 

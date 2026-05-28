@@ -1,5 +1,4 @@
 using Godot;
-using System.Collections;
 
 public enum ColorButtonType
 {
@@ -12,27 +11,16 @@ public partial class ColorButton : Area3D
     public ColorButtonType Type;
 
     [Export]
-    public ShaderMaterial RedMaterial;
-
-    [Export]
-    public ShaderMaterial YellowMaterial;
-
-    [Export]
-    public ShaderMaterial BlueMaterial;
-
-    [Export]
-    public MeshInstance3D MeshInstance;
-
-    [Export]
     public AnimationPlayer AnimationPlayer;
+
+    [Export]
+    public AudioStreamPlayer3D SfxPress;
 
     private bool is_down;
 
     public override void _Ready()
     {
         base._Ready();
-        SetMaterial(GetMaterial(Type));
-
         BodyEntered += PlayerEntered;
         ColorButtonController.Instance.OnTypeChanged += TypeChanged;
     }
@@ -47,50 +35,20 @@ public partial class ColorButton : Area3D
     {
         if (is_down) return;
 
-        AnimateDown();
+        SfxPress.Play();
+        SetDown(true);
+        ColorButtonController.Instance.ChangeType(Type);
     }
 
     private void TypeChanged(ColorButtonType type)
     {
-        if (Type != type && is_down)
-        {
-            AnimateUp();
-        }
+        SetDown(type == Type);
     }
 
-    private void SetMaterial(ShaderMaterial material)
+    private void SetDown(bool is_down)
     {
-        MeshInstance.SetSurfaceOverrideMaterial(0, material);
-    }
-
-    public ShaderMaterial GetMaterial(ColorButtonType type) => type switch
-    {
-        ColorButtonType.Red => RedMaterial,
-        ColorButtonType.Yellow => YellowMaterial,
-        ColorButtonType.Blue => BlueMaterial,
-        _ => RedMaterial
-    };
-
-    private void AnimateUp()
-    {
-        is_down = false;
-
-        this.StartCoroutine(Cr, "animate");
-        IEnumerator Cr()
-        {
-            yield return AnimationPlayer.PlayAndWaitForAnimation("up");
-        }
-    }
-
-    private void AnimateDown()
-    {
-        is_down = true;
-
-        this.StartCoroutine(Cr, "animate");
-        IEnumerator Cr()
-        {
-            yield return AnimationPlayer.PlayAndWaitForAnimation("down");
-            ColorButtonController.Instance.ChangeType(Type);
-        }
+        if (this.is_down == is_down) return;
+        this.is_down = is_down;
+        AnimationPlayer.Play(is_down ? "down" : "up");
     }
 }

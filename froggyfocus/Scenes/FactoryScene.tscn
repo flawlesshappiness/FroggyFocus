@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=67 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://cvky4buvmgo3h" path="res://Prefabs/Objects/exhaust_pipe.tscn" id="37_la0tx"]
 [ext_resource type="PackedScene" uid="uid://x6f4qfn4tmgs" path="res://Prefabs/Objects/sign_boat.tscn" id="39_8kavb"]
 [ext_resource type="Resource" uid="uid://cnf7n65pa1ho" path="res://FocusEvent/Resources/Factory_Oil.tres" id="39_v2jd5"]
+[ext_resource type="PackedScene" uid="uid://krhivawcaxef" path="res://Prefabs/NPC/WorkerNPC/frog_worker_npc.tscn" id="39_yhogp"]
 [ext_resource type="PackedScene" uid="uid://bkrqmphtqlmnh" path="res://Prefabs/Shops/Shop.tscn" id="40_xv66q"]
 [ext_resource type="Resource" uid="uid://cm5mlcegogu6u" path="res://FocusEvent/Resources/Factory_Seaweed.tres" id="41_8g76t"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="42_v2jd5"]
@@ -1000,6 +1001,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="scaffolding_bars_4m18" parent="World/Scaffolding/scaffolding_bars_4m31" instance=ExtResource("49_1xjcp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="FrogWorkerNPC_001" parent="World/Scaffolding" instance=ExtResource("39_yhogp")]
+transform = Transform3D(0.968925, 0, 0.247354, 0, 1, 0, -0.247354, 0, 0.968925, -27.1118, 17.9745, 14.8172)
+DialogueFlag = "worker_tv_001"
+DialogueNodes = Array[String](["WORKER_TV_001"])
+
+[node name="FrogWorkerNPC_002" parent="World/Scaffolding" instance=ExtResource("39_yhogp")]
+transform = Transform3D(0.225818, 0, -0.974169, 0, 1, 0, 0.974169, 0, 0.225818, -35.6002, 17.9745, 11.0138)
+DialogueFlag = "worker_tv_002"
+DialogueNodes = Array[String](["WORKER_TV_002"])
+
+[node name="FrogWorkerNPC_003" parent="World/Scaffolding" instance=ExtResource("39_yhogp")]
+transform = Transform3D(-0.99971, 0, -0.0240831, 0, 1, 0, 0.0240831, 0, -0.99971, -31.7432, 17.9745, 1.84826)
+DialogueFlag = "worker_tv_003"
+DialogueNodes = Array[String](["WORKER_TV_003"])
 
 [node name="Lilypad_Boat" parent="World" instance=ExtResource("12_qubeh")]
 transform = Transform3D(-0.356461, 0, -0.93431, 0, 1, 0, 0.93431, 0, -0.356461, 62.9172, -0.95356, 13.7017)

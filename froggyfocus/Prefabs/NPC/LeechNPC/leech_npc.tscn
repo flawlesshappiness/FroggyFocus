@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://h55qgl4v2ro7"]
+[gd_scene load_steps=11 format=3 uid="uid://h55qgl4v2ro7"]
 
 [ext_resource type="PackedScene" uid="uid://og4aje0oop1" path="res://Assets/FlawLizArt/Characters/Leech/leech.fbx" id="1_qeu6n"]
 [ext_resource type="Script" uid="uid://ddkl0kpssgs2u" path="res://Prefabs/NPC/LeechNPC/LeechNpc.cs" id="1_xqrj4"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="2_3qk3k"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_j2bgc"]
 [ext_resource type="AudioStream" uid="uid://dbfg433mht2bs" path="res://Sounds/Raw/sfx_leech_speak_001.wav" id="4_rqa61"]
 [ext_resource type="AudioStream" uid="uid://owd6ox4572cx" path="res://Sounds/Raw/sfx_leech_speak_002.wav" id="5_3qk3k"]
@@ -32,9 +33,13 @@ SfxSpeak = NodePath("SfxSpeak")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3136, -1.50077)
 shape = SubResource("CylinderShape3D_qeu6n")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NpcArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_3qk3k")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.96184, 0.55407)
 shape = SubResource("CapsuleShape3D_qeu6n")
 

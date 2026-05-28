@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bt47rt4wstm5n"]
+[gd_scene load_steps=19 format=3 uid="uid://bt47rt4wstm5n"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_1jh81"]
 [ext_resource type="PackedScene" uid="uid://b35nb5vv80ma7" path="res://Assets/FlawLizArt/Characters/Otter/otter.fbx" id="1_tb71d"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://q8jecixud5c4" path="res://Materials/Color_Blue.tres" id="6_wfibu"]
 [ext_resource type="AudioStream" uid="uid://doxw6cirvavdr" path="res://Sounds/Raw/sfx_otter_speak_003.wav" id="7_aoa5w"]
 [ext_resource type="AudioStream" uid="uid://bi8gydppycy2f" path="res://Sounds/Raw/sfx_otter_speak_004.wav" id="8_0pkqb"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="8_wfibu"]
 [ext_resource type="AudioStream" uid="uid://bkwmkjnmjjen1" path="res://Sounds/Raw/sfx_otter_speak_005.wav" id="9_wfibu"]
 [ext_resource type="AudioStream" uid="uid://d3gwo70mjpjea" path="res://Sounds/Raw/sfx_otter_speak_006.wav" id="10_5hf4i"]
 [ext_resource type="AudioStream" uid="uid://cmphqv45hkw8" path="res://Sounds/Raw/sfx_otter_speak_007.wav" id="11_kmscy"]
@@ -136,9 +137,13 @@ script = ExtResource("2_uqt75")
 Animator = NodePath("../otter/AnimationPlayer")
 metadata/_custom_type_script = "uid://ckv4mr7osps52"
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NpcArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_wfibu")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732044, -0.29866)
 shape = SubResource("CapsuleShape3D_tb71d")
 

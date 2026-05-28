@@ -1,0 +1,397 @@
+[gd_scene load_steps=21 format=3 uid="uid://dchv1jcnk6pto"]
+
+[ext_resource type="Script" uid="uid://bwpv6bxmvdp4v" path="res://Prefabs/Glitch/FirewallDoorNpc.cs" id="1_4hm6f"]
+[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Wireframe_Red.tres" id="1_whnl2"]
+[ext_resource type="Resource" uid="uid://nrulkh5rud8y" path="res://HandIn/Resources/Glitch_Door.tres" id="2_pjj8i"]
+[ext_resource type="Texture2D" uid="uid://can4pphg2bl8o" path="res://Assets/FlawLizArt/Textures/firewall_eye_01.png" id="4_pt0is"]
+[ext_resource type="Texture2D" uid="uid://5l3o1qwec3d4" path="res://Assets/FlawLizArt/Textures/firewall_eye_02.png" id="5_3pe5m"]
+[ext_resource type="Texture2D" uid="uid://b0iuw6hbueb01" path="res://Assets/FlawLizArt/Textures/firewall_mouth_01.png" id="6_qxdrw"]
+[ext_resource type="Texture2D" uid="uid://cmtt1cxlnpid6" path="res://Assets/FlawLizArt/Textures/firewall_mouth_02.png" id="7_m714a"]
+[ext_resource type="Texture2D" uid="uid://baagsnngyos1j" path="res://Assets/FlawLizArt/Textures/firewall_error_01.png" id="8_3wrbn"]
+[ext_resource type="Texture2D" uid="uid://ctsgv8ineb060" path="res://Assets/FlawLizArt/Textures/firewall_error_02.png" id="9_ak6sd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjj8i"]
+size = Vector3(2.8, 2.1, 1)
+
+[sub_resource type="Animation" id="Animation_4hm6f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim_top:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim_bottom:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Error:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_whnl2"]
+resource_name = "closed"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim_top:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim_bottom:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Error:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pjj8i"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim_top:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.001, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim_bottom:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.001, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Error:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pt0is"]
+resource_name = "opened"
+length = 0.01
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("anim_top:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.001, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("anim_bottom:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.001, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Error:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjj8i"]
+_data = {
+&"RESET": SubResource("Animation_4hm6f"),
+&"closed": SubResource("Animation_whnl2"),
+&"open": SubResource("Animation_pjj8i"),
+&"opened": SubResource("Animation_pt0is")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_4hm6f"]
+material = ExtResource("1_whnl2")
+size = Vector3(1, 4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pt0is"]
+size = Vector3(4, 4, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iotiq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pt0is")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3pe5m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3wrbn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qxdrw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m714a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3yh6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3wrbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ak6sd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FirewallDoor" type="Area3D" node_paths=PackedStringArray("AnimationPlayer", "Colliders")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_4hm6f")
+HandInInfo = ExtResource("2_pjj8i")
+AnimationPlayer = NodePath("AnimationPlayer")
+Colliders = [NodePath("CollisionShape3D"), NodePath("StaticBody3D/CollisionShape3D")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, -1)
+shape = SubResource("BoxShape3D_pjj8i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pjj8i")
+}
+
+[node name="anim_top" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="anim_top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2, 0)
+mesh = SubResource("BoxMesh_4hm6f")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="anim_top"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -2, 0)
+mesh = SubResource("BoxMesh_4hm6f")
+
+[node name="anim_bottom" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="anim_bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 2, 0)
+mesh = SubResource("BoxMesh_4hm6f")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="anim_bottom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 0)
+mesh = SubResource("BoxMesh_4hm6f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_pt0is")
+
+[node name="Face" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.5)
+
+[node name="eye_left" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1, 0.75, -0.0156898)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_iotiq")
+autoplay = "default"
+frame_progress = 0.922425
+
+[node name="eye_right" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1, 0.75, -0.0156898)
+flip_h = true
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_iotiq")
+autoplay = "default"
+frame_progress = 0.167267
+
+[node name="mouth" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.608104, -0.016)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_3wrbn")
+autoplay = "default"
+frame_progress = 0.626013
+
+[node name="Error" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Error"]
+transform = Transform3D(-0.985067, 0.17217, 8.61173e-08, 0.17217, 0.985067, -1.50516e-08, -8.74228e-08, 0, -1, 3.50623, 3.12448, -0.0621598)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_3yh6m")
+autoplay = "default"
+frame_progress = 0.795257
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Error"]
+transform = Transform3D(-0.765, 0, 1.15512e-07, 0, 0.765, 0, -1.15512e-07, 0, -0.765, 4.39372, 2.05675, -0.0621593)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_3yh6m")
+autoplay = "default"
+frame_progress = 0.204613
+speed_scale = 1.2
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="Error"]
+transform = Transform3D(-0.484951, -0.237533, 7.32256e-08, -0.237533, 0.484951, 3.58665e-08, -8.15377e-08, 0, -0.54, 3.1329, 0.836732, -0.0621598)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_3yh6m")
+autoplay = "default"
+frame_progress = 0.642057
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="Error"]
+transform = Transform3D(-0.497722, -0.209458, 7.51539e-08, -0.209458, 0.497722, 3.16273e-08, -8.15377e-08, 0, -0.54, -3.11853, 3.32995, -0.0621588)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_3yh6m")
+autoplay = "default"
+frame_progress = 0.167919
+speed_scale = 1.1
+
+[node name="AnimatedSprite3D5" type="AnimatedSprite3D" parent="Error"]
+transform = Transform3D(-0.520732, -0.142964, 7.86283e-08, -0.142964, 0.520732, 2.1587e-08, -8.15377e-08, 0, -0.54, -4.23947, 0.811977, -0.0621588)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_3yh6m")
+autoplay = "default"
+frame_progress = 0.167919
+speed_scale = 0.9
+
+[node name="AnimatedSprite3D6" type="AnimatedSprite3D" parent="Error"]
+transform = Transform3D(-1.19032, 0.243666, 1.79733e-07, 0.243666, 1.19032, -3.67925e-08, -1.8346e-07, 0, -1.215, -4.14431, 2.05614, -0.0621588)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_3yh6m")
+autoplay = "default"
+frame_progress = 0.167919
+speed_scale = 0.7

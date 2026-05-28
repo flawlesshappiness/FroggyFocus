@@ -22,13 +22,22 @@ size = Vector2(10000, 40)
 script = ExtResource("1_jill4")
 ScreenCover = NodePath("Camera2D/ScreenCover")
 Player = NodePath("World/Player")
-StartTv = NodePath("World/Platforms/platform_large/tv_right")
-EndTv = NodePath("World/Platforms/platform_large3/tv_left")
+StartTv = NodePath("World/tv_right")
+EndTv = NodePath("World/tv_left")
 
 [node name="Parallax" parent="." node_paths=PackedStringArray("Camera") instance=ExtResource("11_8tya0")]
 Camera = NodePath("../Camera2D")
 
 [node name="World" type="Node2D" parent="."]
+
+[node name="tv_left" parent="World" instance=ExtResource("3_4lbrn")]
+position = Vector2(2206, -180)
+SceneName = "GlitchScene"
+
+[node name="tv_right" parent="World" instance=ExtResource("6_aa76a")]
+position = Vector2(46, -180)
+SceneName = "FactoryScene"
+StartNode = "TvStart"
 
 [node name="Player" parent="World" instance=ExtResource("2_2njwf")]
 position = Vector2(306, -120)
@@ -41,17 +50,8 @@ position = Vector2(0, -310)
 [node name="platform_large" parent="World/Platforms" instance=ExtResource("3_bhyi0")]
 position = Vector2(46, 250)
 
-[node name="tv_right" parent="World/Platforms/platform_large" instance=ExtResource("6_aa76a")]
-position = Vector2(0, -120)
-SceneName = "FactoryScene"
-StartNode = "TvStart"
-
 [node name="platform_large3" parent="World/Platforms" instance=ExtResource("3_bhyi0")]
 position = Vector2(2206, 250)
-
-[node name="tv_left" parent="World/Platforms/platform_large3" instance=ExtResource("3_4lbrn")]
-position = Vector2(0, -120)
-SceneName = "GlitchScene"
 
 [node name="platform_large2" parent="World/Platforms" instance=ExtResource("3_bhyi0")]
 position = Vector2(366, 250)

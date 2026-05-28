@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=115 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -50,6 +50,10 @@
 [ext_resource type="PackedScene" uid="uid://caxtcmeu7c6wv" path="res://Prefabs/FocusAttacks/CursorSyringeLiquid/cursor_syringe_liquid.tscn" id="35_s43g5"]
 [ext_resource type="Script" uid="uid://bp2flik8hh4qt" path="res://FocusAttack/EldritchEyeFlash.cs" id="36_4o5bo"]
 [ext_resource type="PackedScene" uid="uid://bswh4egokiuji" path="res://Prefabs/FocusAttacks/FlashEldritchEye/flash_eldritch_eye.tscn" id="37_0kvl5"]
+[ext_resource type="Script" uid="uid://batqyg1ufpg0f" path="res://FocusAttack/GlitchTeleport.cs" id="38_477t3"]
+[ext_resource type="AudioStream" uid="uid://dc21j2wi6hioy" path="res://Sounds/Raw/sfx_glitch_freeze_001.wav" id="39_oir8n"]
+[ext_resource type="Script" uid="uid://cx3idqyr82vyn" path="res://FocusAttack/GlitchFlash.cs" id="40_7cgx3"]
+[ext_resource type="PackedScene" uid="uid://dmd65hb6mwxxt" path="res://Prefabs/FocusAttacks/FlashGlitch/flash_glitch.tscn" id="41_knrhb"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saxd3"]
 random_pitch = 1.1
@@ -1131,6 +1135,22 @@ metadata/_custom_type_script = "uid://bcoah34psypiv"
 script = ExtResource("36_4o5bo")
 FlasherPrefab = ExtResource("37_0kvl5")
 Type = 13
+
+[node name="GlitchTeleport" type="Node3D" parent="Attacks" node_paths=PackedStringArray("SfxFreeze")]
+process_mode = 3
+script = ExtResource("38_477t3")
+SfxFreeze = NodePath("SfxFreeze")
+Type = 14
+
+[node name="SfxFreeze" type="AudioStreamPlayer" parent="Attacks/GlitchTeleport"]
+stream = ExtResource("39_oir8n")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="GlitchFlash" type="Node3D" parent="Attacks"]
+script = ExtResource("40_7cgx3")
+FlasherPrefab = ExtResource("41_knrhb")
+Type = 16
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

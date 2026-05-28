@@ -18,6 +18,9 @@ public partial class FocusEventView : View
     [Export]
     public AnimationPlayer AnimationPlayer_OilSplat;
 
+    [Export]
+    public AnimationPlayer AnimationPlayer_FlashGlitch;
+
     private FocusEvent FocusEvent { get; set; }
 
     public override void _Ready()
@@ -84,6 +87,15 @@ public partial class FocusEventView : View
             overlay.SetParent(Overlay_Flash.GetParent());
             yield return overlay.AnimateHide(duration, color);
             overlay.QueueFree();
+        }
+    }
+
+    public Coroutine FlashGlitch(float duration)
+    {
+        return this.StartCoroutine(Cr, "flash_glitch");
+        IEnumerator Cr()
+        {
+            yield return AnimationPlayer_FlashGlitch.PlayAndWaitForAnimation("flash");
         }
     }
 
