@@ -37,7 +37,7 @@ public partial class CrystalElevator : Node3D
         if (!is_powered) return;
 
         var player_is_up = Player.Instance.GlobalPosition.Y > MiddleNode.GlobalPosition.Y;
-        var player_is_platform = player_on_platform && !Player.Instance.IsJumping;
+        var player_is_platform = player_on_platform && !Player.Instance.Controller.IsJumping;
 
         if (player_is_platform)
         {

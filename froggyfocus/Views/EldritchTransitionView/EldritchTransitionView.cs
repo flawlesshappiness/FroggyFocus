@@ -88,7 +88,7 @@ public partial class EldritchTransitionView : View
         IEnumerator Cr()
         {
             Show();
-            Player.SetAllLocks(nameof(EldritchTransitionView), true);
+            Player.SetInputDisabled(nameof(EldritchTransitionView), true);
             yield return AnimationPlayer.PlayAndWaitForAnimation(animation);
         }
     }
@@ -96,7 +96,7 @@ public partial class EldritchTransitionView : View
     public void EndTransition()
     {
         AnimationPlayer.Play("hide");
-        Player.SetAllLocks(nameof(EldritchTransitionView), false);
+        Player.SetInputDisabled(nameof(EldritchTransitionView), false);
     }
 
     public void OnTransition()

@@ -11,5 +11,8 @@ public partial class FocusEventInfo : Resource
     public Vector2I TargetCount;
 
     [Export]
+    public int MaxRarity;
+
+    [Export]
     public Array<FocusCharacterInfo> Characters;
 }

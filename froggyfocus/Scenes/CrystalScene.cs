@@ -12,7 +12,7 @@ public partial class CrystalScene : GameScene
         IEnumerator Cr()
         {
             var id = nameof(CrystalScene);
-            Player.SetAllLocks(id, true);
+            Player.SetInputDisabled(id, true);
             yield return AnimationPlayer_Intro.PlayAndWaitForAnimation("intro");
             TransitionView.Instance.StartTransition(new TransitionSettings
             {
@@ -24,7 +24,7 @@ public partial class CrystalScene : GameScene
                     Player.Instance.SetCameraTarget();
                 }
             });
-            Player.SetAllLocks(id, false);
+            Player.SetInputDisabled(id, false);
 
             MainQuestController.Instance.AdvancePartnerQuest(3);
         }

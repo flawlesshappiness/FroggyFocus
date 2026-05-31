@@ -25,13 +25,13 @@ public partial class TransitionView : View
         IEnumerator Cr()
         {
             Show();
-            Player.SetAllLocks(nameof(TransitionView), true);
+            Player.SetInputDisabled(nameof(TransitionView), true);
             var animation = GetAnimationPlayer(settings.Type);
             animation.SpeedScale = 1f / settings.Duration;
             SetColor(settings.Color);
             yield return animation.PlayAndWaitForAnimation("show");
             settings.OnTransition?.Invoke();
-            Player.SetAllLocks(nameof(TransitionView), false);
+            Player.SetInputDisabled(nameof(TransitionView), false);
             yield return animation.PlayAndWaitForAnimation("hide");
             Hide();
         }

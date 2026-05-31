@@ -108,7 +108,7 @@ public partial class Shop : Area3D, IInteractable
     private void SetLocks(bool locked)
     {
         var id = nameof(Shop);
-        Player.SetAllLocks(id, locked);
+        Player.SetInputDisabled(id, locked);
     }
 
     private void ShowShop()

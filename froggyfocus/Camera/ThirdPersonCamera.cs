@@ -13,8 +13,6 @@ public partial class ThirdPersonCamera : Node3D
     [Export]
     public SpringArm3D SpringArm;
 
-    public static MultiLock InputLock = new();
-
     private string DebugId => nameof(ThirdPersonCamera) + GetInstanceId();
     private float MouseSensitivity => 0.004f * Data.Options.CameraSensitivity;
     private float ControllerSensitivity => 0.09f * Data.Options.CameraSensitivity;
@@ -27,6 +25,7 @@ public partial class ThirdPersonCamera : Node3D
     private Vector3 interpolated_position;
     private Vector3 shake_position;
 
+    public bool IsInputDisabled { get; private set; }
     public float ZoomOffset { get; private set; }
 
     private Coroutine cr_shake;
@@ -82,8 +81,7 @@ public partial class ThirdPersonCamera : Node3D
         {
             v.Close();
 
-            Player.FocusEventLock.AddLock(DebugId);
-            InputLock.AddLock(DebugId);
+            SetInputDisabled(true);
 
             cr_debug_spin = this.StartCoroutine(Cr, "spin");
             IEnumerator Cr()
@@ -101,8 +99,7 @@ public partial class ThirdPersonCamera : Node3D
         void StopSpinAnimation(DebugView v)
         {
             v.Close();
-            Player.FocusEventLock.RemoveLock(DebugId);
-            InputLock.RemoveLock(DebugId);
+            SetInputDisabled(false);
             Coroutine.Stop(cr_debug_spin);
         }
     }
@@ -113,11 +110,16 @@ public partial class ThirdPersonCamera : Node3D
         Debug.RemoveActions(DebugId);
     }
 
+    public void SetInputDisabled(bool disabled)
+    {
+        IsInputDisabled = disabled;
+    }
+
     public override void _Input(InputEvent e)
     {
         base._Input(e);
 
-        if (InputLock.IsLocked) return;
+        if (IsInputDisabled) return;
 
         Input_Rotation(e);
     }
@@ -128,7 +130,7 @@ public partial class ThirdPersonCamera : Node3D
 
         Initialize();
 
-        if (InputLock.IsLocked) return;
+        if (IsInputDisabled) return;
 
         Process_Gamepad();
         Process_Zoom();
@@ -238,7 +240,7 @@ public partial class ThirdPersonCamera : Node3D
 
     private Vector3 GetOffset()
     {
-        if (Player.IsJumping)
+        if (Player.Controller.IsJumping)
         {
             var y = 0.7f + Player.Velocity.Y * 0.15f;
             y = Mathf.Max(y, 0.7f);

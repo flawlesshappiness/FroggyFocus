@@ -1,68 +1,30 @@
 using Godot;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 
-public partial class Player : TopDownController
+public partial class Player : CharacterBody3D
 {
     [Export]
     public PackedScene CharacterPrefab;
 
     [Export]
-    public float MoveSpeed;
+    public FrogPlayerController Controller;
 
     [Export]
-    public PlayerInteract PlayerInteract;
+    public PlayerStableGroundController StableGround;
 
     [Export]
-    public Node3D CharacterEffects;
+    public PlayerCharacterEffects Effects;
 
     [Export]
     public ThirdPersonCamera ThirdPersonCamera;
 
-    [Export]
-    public ExclamationMark ExclamationMark;
-
-    [Export]
-    public QuestionMarkEffect QuestionMark;
-
-    [Export]
-    public EffectGroupSpawner JumpChargeEffect;
-
-    [Export]
-    public GpuParticles3D PsJumpChargeMax;
-
-    [Export]
-    public AudioStreamPlayer3D SfxJumpCharge;
-
-    [Export]
-    public AudioStreamPlayer3D SfxFocusTargetFound;
-
-    [Export]
-    public AudioStreamPlayer3D SfxFocusTargetStarted;
-
-    [Export]
-    public Godot.Curve JumpLengthCurve;
-
-    [Export]
-    public Godot.Curve JumpHeightCurve;
-
     public static Player Instance { get; private set; }
-
-    public static MultiLock MovementLock = new();
-    public static MultiLock InteractLock = new();
-    public static MultiLock FocusEventLock = new();
-    public static MultiLock FocusHotSpotLock = new();
-    private bool IsCharging { get; set; }
-    public bool HasHotspot => FocusHotSpotLock.IsLocked;
-    public int MaxRarity { get; set; }
+    public Camera3D Camera => Controller.CurrentCamera;
     public FrogCharacter Character { get; private set; }
 
+    private static MultiLock input_lock = new();
     private bool has_focus_target;
-    private float jump_charge;
-    private bool on_stable_ground;
-    private Vector3 respawn_position;
-    private int jump_charge_index;
 
     private Coroutine cr_look_focus_target;
 
@@ -73,25 +35,24 @@ public partial class Player : TopDownController
 
         InitializeCharacter();
 
-        OnMoveStart += () => MoveChanged(true);
-        OnMoveStop += () => MoveChanged(false);
-        OnJump += () => JumpChanged(true);
-        OnLand += () => JumpChanged(false);
+        Effects.Interact.OnHasInteractable += HasInteractables;
+        Effects.Interact.OnNoInteractable += NoInteractables;
 
-        PlayerInteract.OnHasInteractable += HasInteractables;
-        PlayerInteract.OnNoInteractable += NoInteractables;
-
-        InteractLock.OnLocked += InteractLocked;
-        InteractLock.OnFree += InteractFree;
+        input_lock.OnLocked += InputLocked;
+        input_lock.OnFree += InputFree;
 
         ThirdPersonCamera.SnapToPosition();
+
+        Controller.OnChargeIndexChanged += Controller_ChargeIndexChanged;
+        Controller.OnJump += Controller_Jump;
+        Controller.OnSearchingChanged += Controller_SearchingChanged;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        InteractLock.OnLocked -= InteractLocked;
-        InteractLock.OnFree -= InteractFree;
+        input_lock.OnLocked -= InputLocked;
+        input_lock.OnFree -= InputFree;
     }
 
     private void InitializeCharacter()
@@ -99,167 +60,15 @@ public partial class Player : TopDownController
         Character = CharacterPrefab.Instantiate<FrogCharacter>();
         Character.SetParent(this);
         Character.ClearPositionAndRotation();
-        CharacterEffects.SetParent(Character);
-        CharacterEffects.ClearPositionAndRotation();
+        Effects.SetParent(Character);
+        Effects.ClearPositionAndRotation();
+        Controller.Character = Character;
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
-        Process_Facing();
-        Process_Move();
-        Process_Interact();
-        Process_Jump();
-        Process_Charge();
         Process_CameraOffset();
-        Process_RespawnPosition();
-        Process_ShaderPosition();
-    }
-
-    private void Process_Move()
-    {
-        var input = PlayerInput.GetMoveInput();
-        if (input.Length() > 0 && !MovementLock.IsLocked && !PlayerInput.Jump.Held)
-        {
-            Move(input, MoveSpeed);
-        }
-        else
-        {
-            Stop();
-        }
-    }
-
-    private void Process_Facing()
-    {
-        if (MovementLock.IsLocked) return;
-        if (IsJumping) return;
-
-        var input = PlayerInput.GetMoveInput().Normalized();
-        var dir = new Vector3(input.X, 0, input.Y);
-        if (dir.Length() < 0.1f) return;
-        if (dir == Vector3.Zero) return;
-
-        Character.StartFacingDirection(CurrentCamera.GlobalBasis * dir);
-    }
-
-    private void Process_Jump()
-    {
-        if (MovementLock.IsLocked) return;
-        if (IsJumping) return;
-
-        if (PlayerInput.Jump.Held)
-        {
-            FocusEventLock.SetLock("jumping", true);
-            ChargeChanged(true);
-        }
-        else if (PlayerInput.Jump.Released)
-        {
-            ChargeChanged(false);
-            var height = JumpHeightCurve.Sample(jump_charge);
-            var length = JumpLengthCurve.Sample(jump_charge);
-            var velocity = Character.Basis * new Vector3(0, height, -length);
-            Jump(velocity);
-
-            jump_charge = 0;
-            SetJumpChargeIndex(0);
-            on_stable_ground = false;
-        }
-    }
-
-    private void Process_Charge()
-    {
-        Character.Animation.Animator.SpeedScale = Mathf.Lerp(1.0f, 4.0f, jump_charge);
-
-        if (!IsCharging) return;
-
-        var duration = 2.0f;
-        var mul = 1f / duration;
-        jump_charge = Mathf.Clamp(jump_charge + GameTime.DeltaTime * mul, 0, 1);
-
-        var t_values = new List<float> { 0.333f, 0.666f, 0.999f };
-        if (jump_charge_index < t_values.Count)
-        {
-            if (jump_charge > t_values[jump_charge_index])
-            {
-                SetJumpChargeIndex(jump_charge_index + 1);
-            }
-        }
-    }
-
-    private void SetJumpChargeIndex(int i)
-    {
-        jump_charge_index = i;
-
-        if (jump_charge_index > 0)
-        {
-            if (Data.Options.JumpChargeEffectEnabled)
-            {
-                JumpChargeEffect.Spawn();
-                SfxJumpCharge.PitchScale = Mathf.Lerp(1.0f, 1.2f, jump_charge);
-                SfxJumpCharge.Play();
-            }
-        }
-
-        PsJumpChargeMax.Emitting = jump_charge_index >= 3 && Data.Options.JumpChargeEffectEnabled;
-    }
-
-    private void Process_Interact()
-    {
-        if (PlayerInput.Interact.Released)
-        {
-            Interact();
-        }
-        else if (PlayerInput.Focus.Pressed)
-        {
-            StartLookForFocusTarget();
-        }
-        else if (PlayerInput.Focus.Released)
-        {
-            StopLookForFocusTarget();
-        }
-    }
-
-    private void Process_RespawnPosition()
-    {
-        if (IsJumping) return;
-        if (!IsOnFloor()) return;
-        if (!on_stable_ground) return;
-
-        respawn_position = GlobalPosition;
-    }
-
-    private void Process_ShaderPosition()
-    {
-        RenderingServer.GlobalShaderParameterSet("global_player_position", GlobalPosition.Add(y: 0.5f));
-
-        if (IsMoving && !IsJumping)
-        {
-            UpdateGlobalShaderMoveTime();
-        }
-    }
-
-    private void UpdateGlobalShaderMoveTime()
-    {
-        RenderingServer.GlobalShaderParameterSet("global_time_player_move", GameTime.Time);
-    }
-
-    private void Interact()
-    {
-        if (InteractLock.IsLocked) return;
-        if (!IsOnFloor()) return;
-        if (PlayerInput.Jump.Held) return;
-
-        var interactable = PlayerInteract.GetInteractable();
-
-        if (interactable != null)
-        {
-            interactable?.Interact();
-        }
-    }
-
-    public void SetCameraTarget()
-    {
-        Camera.Current = true;
     }
 
     private void Process_CameraOffset()
@@ -273,74 +82,131 @@ public partial class Player : TopDownController
         CameraController.Instance.Offset = offset;
     }
 
-    public static void SetAllLocks(string key, bool locked)
+    public override void _UnhandledInput(InputEvent @event)
     {
-        PauseView.ToggleLock.SetLock(key, locked);
-        MovementLock.SetLock(key, locked);
-        InteractLock.SetLock(key, locked);
-        FocusEventLock.SetLock(key, locked);
-        ThirdPersonCamera.InputLock.SetLock(key, locked);
+        base._UnhandledInput(@event);
+        Input_Pause();
+        Input_Interact();
     }
 
-    private void MoveChanged(bool moving)
+    private void Input_Pause()
     {
-        Character.SetMoving(moving);
-        FocusEventLock.SetLock("moving", moving);
-    }
+        if (input_lock.IsLocked) return;
+        if (Controller.IsJumping) return;
+        if (Controller.IsCharging) return;
+        if (Controller.IsSearching) return;
 
-    private void ChargeChanged(bool is_charging)
-    {
-        if (IsCharging == is_charging) return;
-
-        Character.SetCharging(is_charging);
-        IsCharging = is_charging;
-    }
-
-    private void JumpChanged(bool jumping)
-    {
-        Character.SetJumping(jumping);
-
-        if (jumping)
+        if (PlayerInput.Pause.Pressed)
         {
-            Character.MoveSounds.PlayJump();
+            if (RaceController.Instance.IsStarted)
+            {
+                RaceController.Instance.OpenPausePopup();
+                GetViewport().SetInputAsHandled();
+            }
+            else
+            {
+                PauseView.Instance.Open();
+                GetViewport().SetInputAsHandled();
+            }
+        }
+    }
+
+    private void Input_Interact()
+    {
+        if (PlayerInput.Interact.Pressed)
+        {
+            Interact();
+            GetViewport().SetInputAsHandled();
+        }
+    }
+
+    private void Controller_ChargeIndexChanged(int i)
+    {
+        var count_max = 3;
+        var has_effects = Data.Options.JumpChargeEffectEnabled;
+        var t = (float)i / count_max;
+        var is_max = i >= count_max;
+
+        if (i > 0 && has_effects)
+        {
+            Effects.SpawnJumpChargeEffect(t);
+        }
+
+        Effects.PsJumpChargeMax.Emitting = is_max && has_effects;
+    }
+
+    private void Controller_Jump()
+    {
+        Effects.PsJumpChargeMax.Emitting = false;
+    }
+
+    private void Controller_SearchingChanged(bool is_searching)
+    {
+        if (is_searching)
+        {
+            StartLookForFocusTarget();
         }
         else
         {
-            UpdateGlobalShaderMoveTime();
+            StopLookForFocusTarget();
+        }
 
-            FocusEventLock.SetLock("jumping", false);
-            Character.MoveSounds.PlayLand();
-            EvaluateStableGround();
+        UpdateInteractables();
+    }
+
+    private void Interact()
+    {
+        if (input_lock.IsLocked) return;
+
+        if (Controller.IsIdle || Controller.IsMoving)
+        {
+            var interactable = Effects.Interact.GetInteractable();
+            interactable?.Interact();
         }
     }
 
-    private void EvaluateStableGround()
+    public void SetCameraTarget()
     {
-        var closest_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), GlobalPosition);
-        on_stable_ground = GlobalPosition.DistanceTo(closest_position) < 0.5f;
+        Controller.Camera.Current = true;
     }
 
-    public void SetRespawnPosition(Vector3 position)
+    public static void SetInputDisabled(string key, bool locked)
     {
-        respawn_position = position;
+        input_lock.SetLock(key, locked);
     }
 
     public void Respawn()
     {
-        var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), respawn_position);
-        GlobalPosition = nav_position;
-        ThirdPersonCamera.SnapToPosition();
+        Controller.SetRespawning(true);
+
+        TransitionView.Instance.StartTransition(new TransitionSettings
+        {
+            Type = TransitionType.Color,
+            Color = Colors.Black,
+            Duration = 0.5f,
+            OnTransition = OnTransition
+        });
+
+        void OnTransition()
+        {
+            var position = StableGround.LastPosition;
+            var nav_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), position);
+            GlobalPosition = nav_position.Add(y: -0.5f);
+            ThirdPersonCamera.SnapToPosition();
+
+            SetCameraTarget();
+            Velocity = Vector3.Zero;
+            Controller.SetRespawning(false);
+        }
     }
 
     private void StartLookForFocusTarget()
     {
-        if (FocusEventLock.IsLocked) return;
-        if (!GameScene.Instance.HasFocusEvent()) return;
+        if (input_lock.IsLocked) return;
         if (!GameScene.Instance.HasFocusEventTargets()) return;
         if (RaceController.Instance.IsStarted) return;
 
         var id = "focus_target";
-        PauseView.ToggleLock.SetLock(id, true);
         Character.SetSearching(true);
         StartLowPassFilter();
 
@@ -348,8 +214,6 @@ public partial class Player : TopDownController
         cr_look_focus_target = this.StartCoroutine(Cr, id);
         IEnumerator Cr()
         {
-            MovementLock.SetLock(id, true);
-
             var time_wait = rng.RandfRange(0.5f, 1f);
             GameView.Instance.AnimateVignetteShow(1f);
             AnimateZoom(-1f, 5f);
@@ -357,16 +221,13 @@ public partial class Player : TopDownController
             yield return new WaitForSeconds(time_wait);
 
             has_focus_target = true;
-            ExclamationMark.AnimateShow();
-            SfxFocusTargetFound.Play();
+            Effects.ExclamationMark.AnimateShow();
         }
     }
 
     private void StopLookForFocusTarget()
     {
         var id = "focus_target";
-        PauseView.ToggleLock.SetLock(id, false);
-        MovementLock.SetLock(id, false);
         EndLowPassFilter();
 
         if (cr_look_focus_target == null) return;
@@ -382,7 +243,7 @@ public partial class Player : TopDownController
 
         if (has_focus_target)
         {
-            ExclamationMark.AnimateHide();
+            Effects.ExclamationMark.AnimateHide();
             StartFocusEvent();
         }
 
@@ -395,41 +256,54 @@ public partial class Player : TopDownController
         this.StartCoroutine(Cr, id);
         IEnumerator Cr()
         {
-            Player.SetAllLocks(id, true);
-            SfxFocusTargetStarted.Play();
-            yield return ExclamationMark.AnimateBounce();
-            Player.SetAllLocks(id, false);
+            Player.SetInputDisabled(id, true);
+            Effects.PlayFocusStartSfx();
+            yield return Effects.ExclamationMark.AnimateBounce();
+            Player.SetInputDisabled(id, false);
             GameScene.Instance.StartFocusEvent();
         }
     }
 
     private void HasInteractables()
     {
-        QuestionMark.AnimateShow();
-        FocusEventLock.AddLock("interact");
+        Effects.QuestionMark.AnimateShow();
         GameView.Instance.InputPrompt.ShowInteract();
     }
 
     private void NoInteractables()
     {
-        QuestionMark.AnimateHide();
-        FocusEventLock.RemoveLock("interact");
+        Effects.QuestionMark.AnimateHide();
         GameView.Instance.InputPrompt.HidePrompt();
     }
 
-    private void InteractLocked()
+    private void UpdateInteractables()
     {
-        QuestionMark.AnimateHide();
-        GameView.Instance.InputPrompt.HidePrompt();
-    }
+        var has = Effects.Interact.HasInteractables;
+        var search = !Controller.IsSearching;
+        var valid = has && search;
 
-    private void InteractFree()
-    {
-        if (PlayerInteract.HasInteractables)
+        if (valid)
         {
-            QuestionMark.AnimateShow();
-            GameView.Instance.InputPrompt.ShowInteract();
+            HasInteractables();
         }
+        else
+        {
+            NoInteractables();
+        }
+    }
+
+    private void InputLocked()
+    {
+        Controller.SetInputDisabled(true);
+        ThirdPersonCamera.SetInputDisabled(true);
+        UpdateInteractables();
+    }
+
+    private void InputFree()
+    {
+        Controller.SetInputDisabled(false);
+        ThirdPersonCamera.SetInputDisabled(false);
+        UpdateInteractables();
     }
 
     private void AnimateZoom(float end, float duration)

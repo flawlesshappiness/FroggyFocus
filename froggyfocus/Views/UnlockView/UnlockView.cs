@@ -63,13 +63,13 @@ public partial class UnlockView : View
     protected override void OnShow()
     {
         base.OnShow();
-        Player.SetAllLocks(nameof(UnlockView), true);
+        Player.SetInputDisabled(nameof(UnlockView), true);
     }
 
     protected override void OnHide()
     {
         base.OnHide();
-        Player.SetAllLocks(nameof(UnlockView), false);
+        Player.SetInputDisabled(nameof(UnlockView), false);
     }
 
     public Coroutine ShowItemUnlock(ItemType item)

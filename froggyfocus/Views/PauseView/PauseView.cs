@@ -57,8 +57,6 @@ public partial class PauseView : View
     [Export]
     public AnimationPlayer AnimationPlayer_Money;
 
-    public static readonly MultiLock ToggleLock = new();
-
     public event Action OnViewShow;
 
     private bool animating;
@@ -91,9 +89,9 @@ public partial class PauseView : View
     protected override void OnShow()
     {
         base.OnShow();
-        //Scene.PauseLock.AddLock(nameof(PauseView));
-        Player.SetAllLocks(nameof(PauseView), true);
-        MouseVisibility.Show(nameof(PauseView));
+        var id = nameof(PauseView);
+        Player.SetInputDisabled(id, true);
+        MouseVisibility.Show(id);
 
         OnViewShow?.Invoke();
     }
@@ -101,19 +99,23 @@ public partial class PauseView : View
     protected override void OnHide()
     {
         base.OnHide();
-        //Scene.PauseLock.RemoveLock(nameof(PauseView));
-        Player.SetAllLocks(nameof(PauseView), false);
-        MouseVisibility.Hide(nameof(PauseView));
+        var id = nameof(PauseView);
+        Player.SetInputDisabled(id, false);
+        MouseVisibility.Hide(id);
     }
 
     public override void _UnhandledInput(InputEvent @event)
     {
         base._UnhandledInput(@event);
-        if (PlayerInput.Pause.Pressed)
+        if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree() && current_menu == null)
         {
             Toggle();
         }
-        else if (Input.IsActionJustReleased("ui_cancel") && IsVisibleInTree() && current_menu == null)
+    }
+
+    public void Open()
+    {
+        if (!Visible)
         {
             Toggle();
         }
@@ -121,7 +123,6 @@ public partial class PauseView : View
 
     private void Toggle()
     {
-        if (ToggleLock.IsLocked && !Visible) return;
         if (transitioning) return;
         if (animating) return;
         if (current_menu != null) return;
@@ -130,15 +131,15 @@ public partial class PauseView : View
 
         if (Visible)
         {
-            Close();
+            AnimateClose();
         }
         else
         {
-            Open();
+            AnimateOpen();
         }
     }
 
-    private Coroutine Open()
+    private Coroutine AnimateOpen()
     {
         Show();
         transitioning = true;
@@ -164,7 +165,7 @@ public partial class PauseView : View
         }
     }
 
-    private Coroutine Close()
+    private Coroutine AnimateClose()
     {
         transitioning = true;
 
@@ -191,7 +192,7 @@ public partial class PauseView : View
 
     private void ClickResume()
     {
-        Close();
+        AnimateClose();
     }
 
     private void ShowMenu(MenuSettings settings)
@@ -288,7 +289,6 @@ public partial class PauseView : View
 
             WeatherController.Instance.StopWeather();
             WorldBugController.Instance.Stop();
-            FocusHotSpotController.Instance.Stop();
             Scene.Goto<MainMenuScene>();
 
             Hide();

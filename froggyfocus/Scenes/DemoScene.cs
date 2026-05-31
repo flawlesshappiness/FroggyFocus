@@ -59,7 +59,7 @@ public partial class DemoScene : GameScene
         return this.StartCoroutine(Cr, "intro_camera");
         IEnumerator Cr()
         {
-            Player.SetAllLocks(id, true);
+            Player.SetInputDisabled(id, true);
 
             IntroCameraPath.Camera.Current = true;
             yield return IntroCameraPath.Animate();
@@ -75,7 +75,7 @@ public partial class DemoScene : GameScene
 
         void OnTransition()
         {
-            Player.SetAllLocks(id, false);
+            Player.SetInputDisabled(id, false);
             Player.Instance.SetCameraTarget();
         }
     }

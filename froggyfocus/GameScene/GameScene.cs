@@ -29,7 +29,6 @@ public partial class GameScene : Scene
     private string CurrentFocusEventId => focus_event_ids.FirstOrDefault();
 
     private List<string> focus_event_ids = new();
-    private List<FocusHotSpotArea> hotspot_areas;
     private List<WorldBug> world_bugs = new();
 
     public override void _Ready()
@@ -70,7 +69,6 @@ public partial class GameScene : Scene
             if (IsInstanceValid(node))
             {
                 Player.Instance.GlobalPosition = node.GlobalPosition;
-                Player.Instance.SetRespawnPosition(node.GlobalPosition);
             }
         }
     }
@@ -118,16 +116,6 @@ public partial class GameScene : Scene
         });
     }
 
-    public List<FocusHotSpotArea> GetFocusHotSpotAreas()
-    {
-        if (hotspot_areas == null)
-        {
-            hotspot_areas = this.GetNodesInChildren<FocusHotSpotArea>().ToList();
-        }
-
-        return hotspot_areas;
-    }
-
     public WorldBug GetClosestWorldBug()
     {
         if (!IsInstanceValid(Player.Instance)) return null;
@@ -143,6 +131,8 @@ public partial class GameScene : Scene
 
     public bool HasFocusEventTargets()
     {
+        if (!HasFocusEvent()) return false;
+
         var id = CurrentFocusEventId;
         var info = FocusEventController.Instance.GetInfo(id);
         return info != null;

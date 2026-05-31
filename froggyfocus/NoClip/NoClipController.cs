@@ -40,7 +40,7 @@ public partial class NoClipController : SingletonController
         no_clip_player.Camera.Current = true;
         no_clip_player.Enabled = true;
 
-        Player.SetAllLocks(nameof(NoClipController), true);
+        Player.SetInputDisabled(nameof(NoClipController), true);
     }
 
     public void StopNoclip()
@@ -52,6 +52,6 @@ public partial class NoClipController : SingletonController
         Player.Instance.ThirdPersonCamera.SnapToPosition();
         Player.Instance.ThirdPersonCamera.SetRotation(no_clip_player.GlobalRotation);
 
-        Player.SetAllLocks(nameof(NoClipController), false);
+        Player.SetInputDisabled(nameof(NoClipController), false);
     }
 }

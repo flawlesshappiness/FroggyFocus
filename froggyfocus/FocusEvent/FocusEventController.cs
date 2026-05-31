@@ -62,7 +62,7 @@ public partial class FocusEventController : ResourceController<FocusEventCollect
             {
                 Id = info.Id,
                 OverrideTargetInfo = character_info,
-                OverrideTargetStars = stars
+                OverrideTargetRarity = stars
             });
 
             v.Close();

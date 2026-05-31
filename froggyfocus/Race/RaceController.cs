@@ -60,35 +60,30 @@ public partial class RaceController : SingletonController
         }
     }
 
-    public override void _Input(InputEvent e)
+    public void OpenPausePopup()
     {
-        base._Input(e);
+        if (end_popup_visible) return;
 
-        if (IsStarted && PlayerInput.Pause.Pressed && !end_popup_visible)
+        end_popup_visible = true;
+        GameView.Instance.ShowPopup("##END_RACE##", "##YES##", "##NO##", () =>
         {
-            end_popup_visible = true;
-            GameView.Instance.ShowPopup("##END_RACE##", "##YES##", "##NO##", () =>
-            {
-                end_popup_visible = false;
-                LoseRace();
-            },
-            () =>
-            {
-                end_popup_visible = false;
-            });
-        }
+            end_popup_visible = false;
+            LoseRace();
+        },
+        () =>
+        {
+            end_popup_visible = false;
+        });
     }
 
     public void StartRace(RaceSettings settings)
     {
-        PauseView.ToggleLock.SetLock("race", true);
-
         CurrentSettings = settings;
         settings.Track.OnCheckpoint += RaceTrack_Checkpoint;
 
         OnTransitionToStart?.Invoke();
 
-        Player.SetAllLocks(nameof(RaceController), true);
+        Player.SetInputDisabled(nameof(RaceController), true);
         TransitionView.Instance.StartTransition(new TransitionSettings
         {
             Type = TransitionType.Color,
@@ -151,7 +146,7 @@ public partial class RaceController : SingletonController
             }
 
             RaceGhostController.Instance.StartRecordingGhost();
-            Player.SetAllLocks(nameof(RaceController), false);
+            Player.SetInputDisabled(nameof(RaceController), false);
 
             CurrentGhost?.PlayGhost();
 
@@ -167,8 +162,7 @@ public partial class RaceController : SingletonController
         IsWin = !CurrentGhost?.IsFinished ?? true;
         IsStarted = false;
 
-        PauseView.ToggleLock.SetLock("race", false);
-        Player.SetAllLocks(nameof(RaceController), true);
+        Player.SetInputDisabled(nameof(RaceController), true);
 
         OnTransitionToEnd?.Invoke();
 
@@ -191,11 +185,12 @@ public partial class RaceController : SingletonController
 
         ClearGhost();
 
-        Player.SetAllLocks(nameof(RaceController), false);
+        Player.SetInputDisabled(nameof(RaceController), false);
 
         var end = CurrentSettings.Track.PlayerEnd;
         Player.Instance.GlobalPosition = end.GlobalPosition;
         Player.Instance.Character.RotateToDirectionImmediate(end.Basis * Vector3.Forward);
+        Player.Instance.ThirdPersonCamera.SnapToPosition();
         Player.Instance.ThirdPersonCamera.SetRotation(end.GlobalRotation);
 
         var result = new RaceResult

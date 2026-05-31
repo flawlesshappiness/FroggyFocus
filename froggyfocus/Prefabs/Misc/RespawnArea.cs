@@ -15,8 +15,6 @@ public partial class RespawnArea : Area3D
     [Export]
     public PackedScene PsSplashPrefab;
 
-    private bool respawning;
-
     public override void _Ready()
     {
         base._Ready();
@@ -36,49 +34,24 @@ public partial class RespawnArea : Area3D
 
     private void RespawnPlayer()
     {
-        if (respawning) return;
+        if (Player.Instance.Controller.IsRespawning) return;
 
         this.StartCoroutine(Cr, nameof(RespawnPlayer));
         IEnumerator Cr()
         {
-            respawning = true;
             SetCamera(Player.Instance.Camera);
             PlaySplashSFX(Player.Instance.GlobalPosition);
             CreateSplashPS(Player.Instance.GlobalPosition);
 
             yield return new WaitForSeconds(0.5f);
 
-            TransitionView.Instance.StartTransition(new TransitionSettings
-            {
-                Type = TransitionType.Color,
-                Color = Colors.Black,
-                Duration = 0.5f,
-                OnTransition = () =>
-                {
-                    Player.Instance.SetCameraTarget();
-                    Player.Instance.Respawn();
-                    respawning = false;
-                }
-            });
+            Player.Instance.Respawn();
         }
     }
 
     private void RespawnPlayerOutOfBounds()
     {
-        if (respawning) return;
-        respawning = true;
-
-        TransitionView.Instance.StartTransition(new TransitionSettings
-        {
-            Type = TransitionType.Color,
-            Color = Colors.Black,
-            Duration = 0.5f,
-            OnTransition = () =>
-            {
-                Player.Instance.Respawn();
-                respawning = false;
-            }
-        });
+        Player.Instance.Respawn();
     }
 
     private void SetCamera(Camera3D other)
@@ -109,7 +82,7 @@ public partial class RespawnArea : Area3D
     private void CheckPlayerOutOfBounds()
     {
         if (Player.Instance == null) return;
-        if (respawning) return;
+        if (Player.Instance.Controller.IsRespawning) return;
         if (Player.Instance.GlobalPosition.Y < GlobalPosition.Y - 100)
         {
             RespawnPlayerOutOfBounds();

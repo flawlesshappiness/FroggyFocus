@@ -25,14 +25,14 @@ public partial class DemoView : View
     protected override void OnShow()
     {
         base.OnShow();
-        Player.SetAllLocks(nameof(DemoView), true);
+        Player.SetInputDisabled(nameof(DemoView), true);
         MouseVisibility.Show(nameof(DemoView));
     }
 
     protected override void OnHide()
     {
         base.OnHide();
-        Player.SetAllLocks(nameof(DemoView), false);
+        Player.SetInputDisabled(nameof(DemoView), false);
         MouseVisibility.Hide(nameof(DemoView));
     }
 

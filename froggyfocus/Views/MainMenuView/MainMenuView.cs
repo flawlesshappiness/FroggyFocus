@@ -77,7 +77,6 @@ public partial class MainMenuView : View
     protected override void OnShow()
     {
         base.OnShow();
-        PauseView.ToggleLock.SetLock(nameof(MainMenuView), true);
         MouseVisibility.Show(nameof(MainMenuView));
 
         UpdateContinueButton();
@@ -207,7 +206,6 @@ public partial class MainMenuView : View
             yield return Overlay.AnimateFrontShow();
 
             Hide();
-            PauseView.ToggleLock.SetLock(nameof(MainMenuView), false);
             MouseVisibility.Hide(nameof(MainMenuView));
             Scene.Goto(Data.Game.CurrentScene);
             GameView.Instance.Show();

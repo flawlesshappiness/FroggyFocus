@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://pc44e6arpkd7"]
+[gd_scene load_steps=11 format=3 uid="uid://pc44e6arpkd7"]
 
 [ext_resource type="PackedScene" uid="uid://ci1lxqq3u7xaq" path="res://Assets/FlawLizArt/Objects/pipe_low_poly.fbx" id="1_pw0bn"]
 [ext_resource type="PackedScene" uid="uid://bkexm5godcjmr" path="res://Assets/FlawLizArt/Objects/oil_low_poly.fbx" id="2_l2yf6"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_2w8hk"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="3_rughi"]
-[ext_resource type="Script" uid="uid://crb4gwrjb3psl" path="res://FocusHotSpot/FocusHotSpotArea.cs" id="4_c582y"]
 [ext_resource type="AudioStream" uid="uid://i5khoaknvq17" path="res://Sounds/Raw/sfx_oil_flow_001.wav" id="6_pmnnv"]
 [ext_resource type="Script" uid="uid://43lk3cm0igii" path="res://Sounds/AudioAutoPlay.cs" id="7_qnlns"]
 
@@ -17,9 +16,6 @@ radius = 0.009
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c582y"]
 size = Vector3(1.65991, 0.497375, 5.00708)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2w8hk"]
-size = Vector3(0.105469, 0.001, 3.48071)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pmnnv"]
 random_pitch = 1.1
@@ -69,22 +65,13 @@ Delay = Vector2(0, 0.9)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_rughi")
-Id = "oil"
+Id = "factory_oil"
 metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.940592, -1.50012)
 shape = SubResource("BoxShape3D_c582y")
 debug_color = Color(0.7, 0, 0, 0.419608)
-
-[node name="FocusHotSpotArea" type="Area3D" parent="."]
-script = ExtResource("4_c582y")
-metadata/_custom_type_script = "uid://crb4gwrjb3psl"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusHotSpotArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96288, -1.49292)
-shape = SubResource("BoxShape3D_2w8hk")
-debug_color = Color(0, 0.7, 0.0583333, 0.419608)
 
 [node name="SfxOilFlow" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46167, 2.05197)

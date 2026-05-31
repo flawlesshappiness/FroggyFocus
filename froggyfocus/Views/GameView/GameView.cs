@@ -84,7 +84,7 @@ public partial class GameView : View
         IEnumerator Cr()
         {
             var id = nameof(TwoButtonPopup);
-            Player.SetAllLocks(id, true);
+            Player.SetInputDisabled(id, true);
 
             yield return TwoButtonPopup.WaitForPopup();
 
@@ -97,7 +97,7 @@ public partial class GameView : View
                 on_cancel?.Invoke();
             }
 
-            Player.SetAllLocks(id, false);
+            Player.SetInputDisabled(id, false);
         }
     }
 

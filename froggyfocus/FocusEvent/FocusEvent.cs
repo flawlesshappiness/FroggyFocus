@@ -73,7 +73,7 @@ public partial class FocusEvent : Node3D
         public string Id { get; set; }
         public FocusEventInfo EventInfo => event_info ?? (event_info = GetEventInfo());
         public FocusCharacterInfo OverrideTargetInfo { get; set; }
-        public int? OverrideTargetStars { get; set; }
+        public int? OverrideTargetRarity { get; set; }
 
         private FocusEventInfo event_info;
 
@@ -105,7 +105,7 @@ public partial class FocusEvent : Node3D
     public override void _ExitTree()
     {
         base._ExitTree();
-        Player.SetAllLocks(nameof(FocusEvent), false);
+        Player.SetInputDisabled(nameof(FocusEvent), false);
     }
 
     private void InitializeCursor()
@@ -187,9 +187,7 @@ public partial class FocusEvent : Node3D
     private FocusTarget CreateTarget()
     {
         var info = CurrentSettings.GetRandomTargetInfo();
-        var data = InventoryController.Instance.CreateCharacterData(info);
-        data.Stars = CurrentSettings.OverrideTargetStars ?? data.Stars;
-
+        var data = InventoryController.Instance.CreateCharacterData(info, CurrentSettings.OverrideTargetRarity);
         var target = FocusTargetPrefab.Instantiate<FocusTarget>();
         target.SetParent(this);
         target.SetData(data);
@@ -316,7 +314,7 @@ public partial class FocusEvent : Node3D
     {
         CurrentSettings = settings;
         result = new FocusEventResult(this);
-        Player.SetAllLocks(nameof(FocusEvent), true);
+        Player.SetInputDisabled(nameof(FocusEvent), true);
         Frog.SetPixelFrog(settings.Id.Contains("glitch"));
         SetBackground(settings.Id);
         CreateTargets();
@@ -379,7 +377,7 @@ public partial class FocusEvent : Node3D
             yield return IntroCamera.AnimateUpFromFocusEvent(Camera);
             yield return IntroCamera.AnimateDownFromFocusEvent();
             Player.Instance.SetCameraTarget();
-            Player.SetAllLocks(nameof(FocusEvent), false);
+            Player.SetInputDisabled(nameof(FocusEvent), false);
         }
 
         void OnTransition()

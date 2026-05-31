@@ -25,13 +25,13 @@ public partial class TutorialView : View
     protected override void OnShow()
     {
         base.OnShow();
-        Player.SetAllLocks(nameof(TutorialView), true);
+        Player.SetInputDisabled(nameof(TutorialView), true);
     }
 
     protected override void OnHide()
     {
         base.OnHide();
-        Player.SetAllLocks(nameof(TutorialView), false);
+        Player.SetInputDisabled(nameof(TutorialView), false);
     }
 
     public override void _Input(InputEvent @event)

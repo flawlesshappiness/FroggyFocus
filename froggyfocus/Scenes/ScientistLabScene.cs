@@ -12,7 +12,7 @@ public partial class ScientistLabScene : GameScene
     {
         base.Initialize();
         Camera.Current = true;
-        Player.Instance.OverrideCamera = Camera;
+        Player.Instance.Controller.OverrideCamera = Camera;
 
         FactoryDoor.Locked = true;
     }

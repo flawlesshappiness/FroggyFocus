@@ -38,6 +38,6 @@ public partial class TransitionScene : GameScene
     private void SetLocks(bool locked)
     {
         var id = nameof(TransitionScene);
-        Player.SetAllLocks(id, locked);
+        Player.SetInputDisabled(id, locked);
     }
 }

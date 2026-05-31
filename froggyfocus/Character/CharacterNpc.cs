@@ -166,7 +166,7 @@ public partial class CharacterNpc : Area3D, IInteractable
             var id = nameof(AnimateDialogueCamera) + GetInstanceId();
             if (to_dialogue)
             {
-                Player.SetAllLocks(id, true);
+                Player.SetInputDisabled(id, true);
             }
 
             DialogueCamera.GlobalTransform = start;
@@ -183,7 +183,7 @@ public partial class CharacterNpc : Area3D, IInteractable
             if (!to_dialogue)
             {
                 player_camera.Current = true;
-                Player.SetAllLocks(id, false);
+                Player.SetInputDisabled(id, false);
             }
         }
     }

@@ -47,7 +47,7 @@ public partial class InventoryController : SingletonController
         }
     }
 
-    public InventoryCharacterData CreateCharacterData(FocusCharacterInfo info)
+    public InventoryCharacterData CreateCharacterData(FocusCharacterInfo info, int? rarity_override = null, int? rarity_max = null)
     {
         var data = new InventoryCharacterData();
         var rng = new RandomNumberGenerator();
@@ -56,7 +56,7 @@ public partial class InventoryController : SingletonController
         data.InfoPath = info.ResourcePath;
 
         // Stars
-        data.Stars = GetRarity(info, Player.Instance.HasHotspot);
+        data.Stars = rarity_override ?? GetRarity(info, max: rarity_max ?? 0);
         var t_stars = Mathf.Clamp((data.Stars - 1) / 4f, 0, 1);
 
         // Size
@@ -68,38 +68,29 @@ public partial class InventoryController : SingletonController
         return data;
     }
 
-    private int GetRarity(FocusCharacterInfo info, bool is_hotspot)
+    private int GetRarity(FocusCharacterInfo info, int max = 0)
     {
         var wrng = new WeightedRandom<int>();
         if (info.OverrideRarity > 0)
         {
             return info.OverrideRarity;
         }
-        else if (Player.Instance.MaxRarity > 0)
-        {
-            for (int i = 1; i <= Player.Instance.MaxRarity; i++)
-            {
-                wrng.AddElement(i, 1f / i);
-            }
-        }
-        else if (is_hotspot)
-        {
-            wrng.AddElement(1, 5);
-            wrng.AddElement(2, 4);
-            wrng.AddElement(3, 3);
-            wrng.AddElement(4, 2);
-            wrng.AddElement(5, 1);
-        }
         else
         {
-            wrng.AddElement(1, 0);
-            wrng.AddElement(2, 4);
-            wrng.AddElement(3, 3);
-            wrng.AddElement(4, 2);
-            wrng.AddElement(5, 1);
+            AddRarity(1, 1);
+            AddRarity(2, 4);
+            AddRarity(3, 3);
+            AddRarity(4, 2);
+            AddRarity(5, 1);
         }
 
         return wrng.Random();
+
+        void AddRarity(int i, float w)
+        {
+            if (max > 0 && i > max) return;
+            wrng.AddElement(i, w);
+        }
     }
 
     private int GetMoneyValue(FocusCharacterInfo info, InventoryCharacterData data)

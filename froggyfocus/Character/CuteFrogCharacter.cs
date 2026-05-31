@@ -157,17 +157,21 @@ public partial class CuteFrogCharacter : FrogCharacter
     public override void SetJumping(bool jumping)
     {
         base.SetJumping(jumping);
-        param_jumping.Set(jumping);
 
-        if (jumping)
+        if (param_jumping.Value != jumping)
         {
-            PlayJumpPS();
-            PlayDustStreamPS(0.4f);
-        }
-        else
-        {
-            PlayLandPS();
-            StopDustStreamPS();
+            if (jumping)
+            {
+                PlayJumpPS();
+                PlayDustStreamPS(0.4f);
+            }
+            else
+            {
+                PlayLandPS();
+                StopDustStreamPS();
+            }
+
+            param_jumping.Set(jumping);
         }
     }
 

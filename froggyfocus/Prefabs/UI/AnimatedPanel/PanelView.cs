@@ -34,7 +34,7 @@ public partial class PanelView : View
     private void SetLocks(bool locked)
     {
         var id = GetType().Name;
-        Player.SetAllLocks(id, locked);
+        Player.SetInputDisabled(id, locked);
         MouseVisibility.SetVisible(id, locked);
     }
 

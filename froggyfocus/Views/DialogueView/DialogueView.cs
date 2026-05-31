@@ -59,7 +59,7 @@ public partial class DialogueView : View
     private void SetLocks(bool locked)
     {
         var id = nameof(DialogueView);
-        Player.SetAllLocks(id, locked);
+        Player.SetInputDisabled(id, locked);
     }
 
     public override void _Input(InputEvent e)

@@ -74,14 +74,14 @@ public partial class DialogueOptionsView : View
     protected override void OnShow()
     {
         base.OnShow();
-        Player.SetAllLocks(nameof(DialogueOptionsView), true);
+        Player.SetInputDisabled(nameof(DialogueOptionsView), true);
         MouseVisibility.Show(nameof(DialogueOptionsView));
     }
 
     protected override void OnHide()
     {
         base.OnHide();
-        Player.SetAllLocks(nameof(DialogueOptionsView), false);
+        Player.SetInputDisabled(nameof(DialogueOptionsView), false);
         MouseVisibility.Hide(nameof(DialogueOptionsView));
     }
 
