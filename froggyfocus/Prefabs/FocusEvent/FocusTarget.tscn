@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=116 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -54,6 +54,7 @@
 [ext_resource type="AudioStream" uid="uid://dc21j2wi6hioy" path="res://Sounds/Raw/sfx_glitch_freeze_001.wav" id="39_oir8n"]
 [ext_resource type="Script" uid="uid://cx3idqyr82vyn" path="res://FocusAttack/GlitchFlash.cs" id="40_7cgx3"]
 [ext_resource type="PackedScene" uid="uid://dmd65hb6mwxxt" path="res://Prefabs/FocusAttacks/FlashGlitch/flash_glitch.tscn" id="41_knrhb"]
+[ext_resource type="Script" uid="uid://cgqojtp71mmh3" path="res://FocusAttack/GlitchError.cs" id="42_17ick"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saxd3"]
 random_pitch = 1.1
@@ -1151,6 +1152,15 @@ bus = &"SFX"
 script = ExtResource("40_7cgx3")
 FlasherPrefab = ExtResource("41_knrhb")
 Type = 16
+
+[node name="GlitchError" type="Node3D" parent="Attacks" node_paths=PackedStringArray("SfxError")]
+script = ExtResource("42_17ick")
+SfxError = NodePath("SfxError")
+Type = 15
+
+[node name="SfxError" type="AudioStreamPlayer" parent="Attacks/GlitchError"]
+stream = ExtResource("39_oir8n")
+bus = &"SFX"
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

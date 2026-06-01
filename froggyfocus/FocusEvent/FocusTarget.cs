@@ -404,8 +404,8 @@ public partial class FocusTarget : Node3D
     public Vector3 GetRandomPosition()
     {
         var center = FocusEvent.GlobalPosition;
-        var rx = FocusEvent.Size.X;
-        var rz = FocusEvent.Size.Y;
+        var rx = FocusEvent.Size.X * 0.5f;
+        var rz = FocusEvent.Size.Y * 0.5f;
         var x = rng.RandfRange(-rx, rx);
         var z = rng.RandfRange(-rz, rz);
         var position = center + new Vector3(x, 0, z);
