@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class CollectableCoin : Node3D
 {
@@ -7,6 +8,8 @@ public partial class CollectableCoin : Node3D
 
     [Export]
     public AnimationPlayer AnimationPlayer;
+
+    public event Action OnPickup;
 
     private bool is_picked;
     private Node3D player;
@@ -37,5 +40,6 @@ public partial class CollectableCoin : Node3D
     {
         is_picked = true;
         AnimationPlayer.Play("pickup");
+        OnPickup?.Invoke();
     }
 }

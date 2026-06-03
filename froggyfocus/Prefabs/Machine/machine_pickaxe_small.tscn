@@ -1,0 +1,243 @@
+[gd_scene load_steps=24 format=3 uid="uid://dqqfn6i8na00a"]
+
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="1_0nt7y"]
+[ext_resource type="PackedScene" uid="uid://ovwxdjwc4ssw" path="res://Assets/FlawLizArt/Machine/crystal_pickaxe.fbx" id="1_4ip8y"]
+[ext_resource type="PackedScene" uid="uid://dvpx4jardwnmt" path="res://Assets/FlawLizArt/Machine/crystal_pickaxe_joint.fbx" id="2_iftde"]
+[ext_resource type="AudioStream" uid="uid://cr2jpl86wdybf" path="res://Sounds/Raw/sfx_crystal_crack_001.wav" id="3_o5rcn"]
+[ext_resource type="AudioStream" uid="uid://cxemsbt61cpcc" path="res://Sounds/Raw/sfx_crystal_crack_002.wav" id="4_wxgmm"]
+[ext_resource type="PackedScene" uid="uid://ci1jm1ko4nj2b" path="res://Prefabs/Crystal/crystal_decorative_shard_01.tscn" id="5_ivt4y"]
+[ext_resource type="PackedScene" uid="uid://bl8fy72rkuqq5" path="res://Prefabs/Crystal/crystal_decorative_shard_02.tscn" id="6_rlxse"]
+[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="7_rlxse"]
+[ext_resource type="Material" uid="uid://dqix01s7vhtmd" path="res://Materials/Crystal1.tres" id="8_0nt7y"]
+
+[sub_resource type="Animation" id="Animation_wxgmm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scale/offset/anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxHit:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("particles/ps_smoke:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("particles/ps_crystals:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_o5rcn"]
+resource_name = "hit"
+length = 20.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("scale/offset/anim:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1, 4, 16, 20),
+"transitions": PackedFloat32Array(1, 0.5, -2, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-0.0872665, 0, 0), Vector3(1.63565, 0, 0), Vector3(1.63565, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SfxHit:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("particles/ps_smoke:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("particles/ps_crystals:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ivt4y"]
+_data = {
+&"RESET": SubResource("Animation_wxgmm"),
+&"hit": SubResource("Animation_o5rcn")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ivt4y"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("3_o5rcn")
+stream_1/stream = ExtResource("4_wxgmm")
+
+[sub_resource type="Curve" id="Curve_ap2sm"]
+_data = [Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_0nt7y"]
+curve = SubResource("Curve_ap2sm")
+
+[sub_resource type="Curve" id="Curve_q4366"]
+_data = [Vector2(0, 0), 0.0, 23.9681, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.81868, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_rtn84"]
+curve = SubResource("Curve_q4366")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vd5uh"]
+lifetime_randomness = 0.25
+spread = 90.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, -0.01, 0)
+damping_min = 0.6
+damping_max = 0.6
+damping_curve = SubResource("CurveTexture_0nt7y")
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_rtn84")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5pohu"]
+material = ExtResource("7_rlxse")
+
+[sub_resource type="Curve" id="Curve_rtn84"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -8.44912, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vd5uh"]
+curve = SubResource("Curve_rtn84")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5pohu"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+gravity = Vector3(0, -1.5, 0)
+scale_min = 0.03
+scale_max = 0.03
+scale_curve = SubResource("CurveTexture_vd5uh")
+
+[sub_resource type="PrismMesh" id="PrismMesh_anny7"]
+material = ExtResource("8_0nt7y")
+
+[node name="machine_pickaxe_small" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ivt4y")
+}
+script = ExtResource("1_0nt7y")
+Animation = "hit"
+Delay = Vector2(5, 15)
+
+[node name="scale" type="Node3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="offset" type="Node3D" parent="scale"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.97317)
+
+[node name="crystal_pickaxe_joint" parent="scale/offset" instance=ExtResource("2_iftde")]
+
+[node name="anim" type="Node3D" parent="scale/offset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.434663)
+
+[node name="crystal_pickaxe" parent="scale/offset/anim" instance=ExtResource("1_4ip8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.434663)
+
+[node name="crystals" type="Node3D" parent="scale/offset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.97317)
+
+[node name="crystal_decorative_shard_01" parent="scale/offset/crystals" instance=ExtResource("5_ivt4y")]
+transform = Transform3D(0.236902, 0, 0.184058, 0, 0.3, 0, -0.184058, 0, 0.236902, 0, 0.336409, 0)
+
+[node name="crystal_decorative_shard_03" parent="scale/offset/crystals" instance=ExtResource("5_ivt4y")]
+transform = Transform3D(0.246393, 0, -0.171145, 0, 0.3, 0, 0.171145, 0, 0.246393, 0.292903, 0.413237, -1.02163)
+
+[node name="crystal_decorative_shard_02" parent="scale/offset/crystals" instance=ExtResource("6_rlxse")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.222823, 0.362724, -0.445687)
+
+[node name="crystal_decorative_shard_04" parent="scale/offset/crystals" instance=ExtResource("6_rlxse")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0486998, 0.452561, -1.94569)
+
+[node name="SfxHit" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_ivt4y")
+max_distance = 30.0
+bus = &"SFX"
+attenuation_filter_db = 0.0
+
+[node name="particles" type="Node3D" parent="."]
+
+[node name="ps_smoke" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.842344, 0)
+emitting = false
+amount = 20
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_vd5uh")
+draw_pass_1 = SubResource("SphereMesh_5pohu")
+
+[node name="ps_crystals" type="GPUParticles3D" parent="particles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831527, 0)
+emitting = false
+one_shot = true
+explosiveness = 0.25
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_5pohu")
+draw_pass_1 = SubResource("PrismMesh_anny7")

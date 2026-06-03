@@ -21,32 +21,35 @@ public partial class CrystalElevator : Node3D
     public override void _Ready()
     {
         base._Ready();
+        is_powered = EnergyContainer.IsCompleted;
+
         PlatformArea.BodyEntered += PlatformArea_PlayerEntered;
         PlatformArea.BodyExited += PlatformArea_PlayerExited;
+        GameFlagsController.Instance.OnFlagChanged += Flag_Changed;
+    }
 
-        EnergyContainer.OnCompleted += EnergyContainerCompleted;
-        EnergyContainer.OnNotCompleted += EnergyContainerNotCompleted;
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        GameFlagsController.Instance.OnFlagChanged -= Flag_Changed;
+    }
 
-        is_powered = EnergyContainer.IsCompleted;
+    private void Flag_Changed(string id, int i)
+    {
+        if (id == EnergyContainer.HandInInfo.Id)
+        {
+            is_powered = EnergyContainer.IsCompleted;
+        }
     }
 
     public override void _Process(double delta)
     {
         base._Process(delta);
 
-        if (!is_powered) return;
-
         var player_is_up = Player.Instance.GlobalPosition.Y > MiddleNode.GlobalPosition.Y;
         var player_is_platform = player_on_platform && !Player.Instance.Controller.IsJumping;
 
-        if (player_is_platform)
-        {
-            SetUp(true);
-        }
-        else if (is_up != player_is_up)
-        {
-            SetUp(!is_up);
-        }
+        SetUp(is_powered && (player_is_up || player_is_platform));
     }
 
     private void SetUp(bool up)
@@ -66,15 +69,5 @@ public partial class CrystalElevator : Node3D
     private void PlatformArea_PlayerExited(GodotObject go)
     {
         player_on_platform = false;
-    }
-
-    private void EnergyContainerCompleted()
-    {
-        is_powered = true;
-    }
-
-    private void EnergyContainerNotCompleted()
-    {
-        is_powered = false;
     }
 }

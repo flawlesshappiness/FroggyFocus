@@ -1,10 +1,14 @@
 using Godot;
 using System.Collections;
 
+[GlobalClass]
 public partial class AnimatedPathFollow3D : PathFollow3D
 {
     [Export]
-    public float Duration;
+    public float Duration = 1f;
+
+    [Export]
+    public float SmoothingSpeed = 10f;
 
     [Export]
     public EasingFunctions.Ease Ease;
@@ -12,8 +16,14 @@ public partial class AnimatedPathFollow3D : PathFollow3D
     [Export]
     public Camera3D Camera;
 
+    [Export]
+    public Node3D Target;
+
     public Coroutine Animate()
     {
+        ProgressRatio = 0.0f;
+        Camera.GlobalTransform = Target.GlobalTransform;
+
         return this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
@@ -22,7 +32,13 @@ public partial class AnimatedPathFollow3D : PathFollow3D
             {
                 var t = curve(0f, 1f, f);
                 ProgressRatio = t;
+                UpdateCameraTransform();
             });
         }
+    }
+
+    private void UpdateCameraTransform()
+    {
+        Camera.GlobalTransform = Camera.GlobalTransform.InterpolateWith(Target.GlobalTransform, SmoothingSpeed * GameTime.DeltaTime);
     }
 }

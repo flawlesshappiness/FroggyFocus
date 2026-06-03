@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class CrystalEnergyContainer : Area3D, IInteractable
 {
@@ -24,77 +23,31 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
     [Export]
     public Material GreenMaterial;
 
-    public bool IsCompleted => HandInInfo.Data.ClaimCount > 0;
+    [Export]
+    public AudioStreamPlayer3D SfxPlace;
 
-    private string DebugId => $"{nameof(CrystalEnergyContainer)}{GetInstanceId()}";
+    public bool IsCompleted => GameFlags.IsFlag(HandInInfo.Id, 1);
 
-    private bool active_dialogue;
-
-    public event Action OnCompleted;
-    public event Action OnNotCompleted;
+    private const string DialoguePowerSource = "CRYSTAL_POWER_SOURCE";
 
     public override void _Ready()
     {
         base._Ready();
-        RegisterDebugActions();
         InitializeCrystal();
         InitializeMaterials();
         SetInteractive(!IsCompleted);
 
-        HandInController.Instance.OnHandInClaimed += HandInClaimed;
-        DialogueController.Instance.OnEntryEnded += DialogueNodeEnded;
+        HandInController.Instance.OnHandInClaimed += HandIn_Claimed;
+        DialogueController.Instance.OnDialogueEnded += Dialogue_Ended;
+        GameFlagsController.Instance.OnFlagChanged += Flag_Changed;
     }
 
     public override void _ExitTree()
     {
         base._ExitTree();
-        HandInController.Instance.OnHandInClaimed -= HandInClaimed;
-        DialogueController.Instance.OnEntryEnded -= DialogueNodeEnded;
-
-        Debug.RemoveActions(DebugId);
-    }
-
-    private void RegisterDebugActions()
-    {
-        if (HandInInfo == null) return;
-
-        var category = HandInInfo.Id;
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = DebugId,
-            Category = category,
-            Text = "Set On",
-            Action = v => { SetCompleted(true); v.Close(); }
-        });
-
-        Debug.RegisterAction(new DebugAction
-        {
-            Id = DebugId,
-            Category = category,
-            Text = "Set Off",
-            Action = v => { SetCompleted(false); v.Close(); }
-        });
-
-        void SetCompleted(bool completed)
-        {
-            var count = completed ? 1 : 0;
-            HandInInfo.Data.ClaimCount = count;
-            Data.Game.Save();
-
-            SetPowered(completed);
-            SetCrystalEnabled(completed);
-            SetInteractive(!completed);
-
-            if (completed)
-            {
-                OnCompleted?.Invoke();
-            }
-            else
-            {
-                OnNotCompleted?.Invoke();
-            }
-        }
+        HandInController.Instance.OnHandInClaimed -= HandIn_Claimed;
+        DialogueController.Instance.OnDialogueEnded -= Dialogue_Ended;
+        GameFlagsController.Instance.OnFlagChanged -= Flag_Changed;
     }
 
     private void InitializeCrystal()
@@ -115,47 +68,55 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
         }
         else
         {
-            active_dialogue = true;
-            DialogueController.Instance.StartDialogue("##CRYSTAL_POWER_SOURCE##");
+            DialogueController.Instance.StartDialogue(DialoguePowerSource);
         }
     }
 
-    private void SetInteractive(bool interactive)
+    private void HandIn_Claimed(string id)
     {
-        Collider.Disabled = !interactive;
-    }
-
-    private void HandInClaimed(string id)
-    {
-        if (id != HandInInfo.Id) return;
-
-        SetInteractive(false);
-        SetCrystalEnabled(true);
-        SetPowered(true);
-        OnCompleted?.Invoke();
-    }
-
-    private void DialogueNodeEnded(string id)
-    {
-        if (!active_dialogue) return;
-
-        if (id == "##CRYSTAL_POWER_SOURCE##")
+        if (id == HandInInfo.Id)
         {
-            var data = HandIn.GetOrCreateData(HandInInfo.Id);
-            HandInView.Instance.ShowPopup(data);
+            GameFlags.SetFlag(id, 1);
         }
+    }
 
-        active_dialogue = false;
+    private void Flag_Changed(string id, int i)
+    {
+        if (id == HandInInfo.Id)
+        {
+            var is_on = i == 1;
+            SetInteractive(!is_on);
+            SetCrystalEnabled(is_on);
+            SetPowered(is_on);
+        }
+    }
+
+    private void Dialogue_Ended(string id)
+    {
+        if (id == DialoguePowerSource)
+        {
+            HandInView.Instance.ShowPopup(HandInInfo.Id);
+        }
     }
 
     private void SetCrystalEnabled(bool enabled)
     {
         Crystal.Visible = enabled;
+
+        if (enabled)
+        {
+            SfxPlace.Play();
+        }
     }
 
     private void SetPowered(bool powered)
     {
         ButtonMesh.SetSurfaceOverrideMaterial(1, powered ? UnpoweredMaterial : RedMaterial);
         ButtonMesh.SetSurfaceOverrideMaterial(2, powered ? GreenMaterial : UnpoweredMaterial);
+    }
+
+    private void SetInteractive(bool interactive)
+    {
+        Collider.Disabled = !interactive;
     }
 }

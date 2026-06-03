@@ -33,8 +33,8 @@ public partial class ThirdPersonCamera : Node3D
 
     public class ShakeSettings
     {
-        public float Frequency { get; set; }
-        public float Power { get; set; }
+        public float Frequency { get; set; } = 0.01f;
+        public float Power { get; set; } = 0.2f;
         public float Duration { get; set; }
         public float FadeInDuration { get; set; }
         public float FadeOutDuration { get; set; }

@@ -1245,15 +1245,19 @@ RandomStart = true
 [node name="Path3D" type="Path3D" parent="World/IntroCamera"]
 curve = SubResource("Curve3D_haihv")
 
-[node name="IntroCameraPath" type="PathFollow3D" parent="World/IntroCamera/Path3D" node_paths=PackedStringArray("Camera")]
+[node name="IntroCameraPath" type="PathFollow3D" parent="World/IntroCamera/Path3D" node_paths=PackedStringArray("Camera", "Target")]
 transform = Transform3D(-0.236994, 0.0352169, -0.970867, -2.52945e-06, 0.999335, 0.0362503, 0.971504, 0.00859361, -0.236839, -5.13942, 3.62524, -28.8207)
 progress = 53.1001
 script = ExtResource("55_haihv")
 Duration = 10.0
 Ease = 2
-Camera = NodePath("IntroCamera")
+Camera = NodePath("../IntroCamera")
+Target = NodePath("Target")
 
-[node name="IntroCamera" type="Camera3D" parent="World/IntroCamera/Path3D/IntroCameraPath"]
+[node name="Target" type="Node3D" parent="World/IntroCamera/Path3D/IntroCameraPath"]
+
+[node name="IntroCamera" type="Camera3D" parent="World/IntroCamera/Path3D"]
+transform = Transform3D(-0.236996, 0.0352172, -0.970872, -2.52947e-06, 0.999343, 0.0362505, 0.971511, 0.00859368, -0.23684, -5.13942, 3.62524, -28.8207)
 
 [node name="Race" type="Node3D" parent="World" node_paths=PackedStringArray("PlayerStart", "GhostStart", "PlayerEnd", "Checkpoints", "Objects")]
 script = ExtResource("57_ixab2")

@@ -13,13 +13,22 @@ public partial class CrystalCrane : Node3D
     public override void _Ready()
     {
         base._Ready();
-        var is_powered = EnergyContainer == null || EnergyContainer.IsCompleted;
-        SetPowered(is_powered);
+        SetPowered(EnergyContainer.IsCompleted);
 
-        if (EnergyContainer != null)
+        GameFlagsController.Instance.OnFlagChanged += Flag_Changed;
+    }
+
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        GameFlagsController.Instance.OnFlagChanged -= Flag_Changed;
+    }
+
+    private void Flag_Changed(string id, int i)
+    {
+        if (id == EnergyContainer.HandInInfo.Id)
         {
-            EnergyContainer.OnCompleted += EnergyContainerCompleted;
-            EnergyContainer.OnNotCompleted += EnergyContainerNotCompleted;
+            SetPowered(EnergyContainer.IsCompleted);
         }
     }
 
@@ -30,15 +39,5 @@ public partial class CrystalCrane : Node3D
 
         var anim = up ? "rotate_on" : "rotate_off";
         AnimationPlayer.Play(anim);
-    }
-
-    private void EnergyContainerCompleted()
-    {
-        SetPowered(true);
-    }
-
-    private void EnergyContainerNotCompleted()
-    {
-        SetPowered(false);
     }
 }

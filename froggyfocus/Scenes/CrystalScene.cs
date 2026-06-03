@@ -4,29 +4,37 @@ using System.Collections;
 public partial class CrystalScene : GameScene
 {
     [Export]
-    public AnimationPlayer AnimationPlayer_Intro;
+    public AnimatedPathFollow3D IntroCameraPath;
+
+    [Export]
+    public AudioStreamPlayer SfxIntro;
 
     public void StartIntro()
     {
-        this.StartCoroutine(Cr, "intro");
+        var id = "intro";
+        this.StartCoroutine(Cr, "intro_camera");
         IEnumerator Cr()
         {
-            var id = nameof(CrystalScene);
             Player.SetInputDisabled(id, true);
-            yield return AnimationPlayer_Intro.PlayAndWaitForAnimation("intro");
+
+            SfxIntro.Play();
+
+            IntroCameraPath.Camera.Current = true;
+            yield return IntroCameraPath.Animate();
+
             TransitionView.Instance.StartTransition(new TransitionSettings
             {
                 Type = TransitionType.Color,
                 Color = Colors.Black,
-                Duration = 1f,
-                OnTransition = () =>
-                {
-                    Player.Instance.SetCameraTarget();
-                }
+                Duration = 2f,
+                OnTransition = OnTransition
             });
-            Player.SetInputDisabled(id, false);
+        }
 
-            MainQuestController.Instance.AdvancePartnerQuest(3);
+        void OnTransition()
+        {
+            Player.SetInputDisabled(id, false);
+            Player.Instance.SetCameraTarget();
         }
     }
 }

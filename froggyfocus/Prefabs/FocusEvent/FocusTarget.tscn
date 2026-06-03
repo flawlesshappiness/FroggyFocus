@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=121 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -29,9 +29,11 @@
 [ext_resource type="Script" uid="uid://d00a1qru0ti7j" path="res://FocusAttack/Crystal.cs" id="16_y0f88"]
 [ext_resource type="PackedScene" uid="uid://bksa31n7n34b4" path="res://Prefabs/FocusAttacks/CursorCrystal/cursor_crystal.tscn" id="17_0oa1v"]
 [ext_resource type="AudioStream" uid="uid://c8rg1panv3uxv" path="res://Sounds/Raw/sfx_sand_attack_telegraph.wav" id="17_msvx1"]
+[ext_resource type="Script" uid="uid://ckck0fdhtajbw" path="res://FocusAttack/CrystalBush.cs" id="18_7faqx"]
 [ext_resource type="Script" uid="uid://bbkp00d1ri260" path="res://FocusAttack/Oil.cs" id="18_d2t03"]
 [ext_resource type="AudioStream" uid="uid://cjmnk55mbyi2k" path="res://Sounds/Raw/sfx_sand_attack.wav" id="18_gvgds"]
 [ext_resource type="PackedScene" uid="uid://coxlyln5k2gfw" path="res://Prefabs/FocusAttacks/CursorOil/cursor_oil.tscn" id="19_734oi"]
+[ext_resource type="PackedScene" uid="uid://njryvdvts8tj" path="res://Prefabs/FocusAttacks/CrystalBush/crystal_bush.tscn" id="19_ymw46"]
 [ext_resource type="Script" uid="uid://c5df7sgmcgmyw" path="res://FocusAttack/Seaweed.cs" id="20_e1xl2"]
 [ext_resource type="PackedScene" uid="uid://xg6g58uosdoe" path="res://Prefabs/Effects/ps_seaweed_fake_dig.tscn" id="21_saxd3"]
 [ext_resource type="PackedScene" uid="uid://b5gs6qsv648rn" path="res://Prefabs/Effects/ps_seaweed_spout.tscn" id="22_kdpbt"]
@@ -55,19 +57,8 @@
 [ext_resource type="Script" uid="uid://cx3idqyr82vyn" path="res://FocusAttack/GlitchFlash.cs" id="40_7cgx3"]
 [ext_resource type="PackedScene" uid="uid://dmd65hb6mwxxt" path="res://Prefabs/FocusAttacks/FlashGlitch/flash_glitch.tscn" id="41_knrhb"]
 [ext_resource type="Script" uid="uid://cgqojtp71mmh3" path="res://FocusAttack/GlitchError.cs" id="42_17ick"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saxd3"]
-random_pitch = 1.1
-streams_count = 2
-stream_0/stream = ExtResource("4_mk5ib")
-stream_1/stream = ExtResource("5_v23j6")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0yq4b"]
-random_pitch = 1.1
-streams_count = 3
-stream_0/stream = ExtResource("25_041kl")
-stream_1/stream = ExtResource("26_5ycpc")
-stream_2/stream = ExtResource("27_dg1gl")
+[ext_resource type="AudioStream" uid="uid://jl6c61u233gn" path="res://Sounds/Raw/sfx_crystal_manifest.wav" id="52_s5u4q"]
+[ext_resource type="AudioStream" uid="uid://dea3461dg0q8b" path="res://Sounds/Raw/sfx_crystal_manifest_002.wav" id="53_ymw46"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ffy"]
 transparency = 1
@@ -818,6 +809,26 @@ streams_count = 1
 stream_0/stream = ExtResource("26_70b0r")
 stream_0/weight = 1.1
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5ycw3"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("52_s5u4q")
+stream_0/weight = 1.1
+stream_1/stream = ExtResource("53_ymw46")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_saxd3"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("4_mk5ib")
+stream_1/stream = ExtResource("5_v23j6")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0yq4b"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("25_041kl")
+stream_1/stream = ExtResource("26_5ycpc")
+stream_2/stream = ExtResource("27_dg1gl")
+
 [sub_resource type="Curve" id="Curve_nimdh"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -1066,15 +1077,23 @@ Type = 6
 
 [node name="Moss" type="Node3D" parent="Attacks" node_paths=PackedStringArray("SfxCreateBush")]
 script = ExtResource("14_gvgds")
+Delay = Vector2(2, 4)
 SfxCreateBush = NodePath("../../Sounds/SfxBush")
-MossBushPrefab = ExtResource("15_1p0mf")
+BushPrefab = ExtResource("15_1p0mf")
 Type = 8
 
 [node name="Crystal" type="Node3D" parent="Attacks"]
 script = ExtResource("16_y0f88")
-HitCount = Vector2i(1, 3)
+HitCount = Vector2i(1, 2)
 TrapPrefab = ExtResource("17_0oa1v")
 Type = 7
+
+[node name="CrystalBush" type="Node3D" parent="Attacks" node_paths=PackedStringArray("SfxCreateBush")]
+script = ExtResource("18_7faqx")
+Delay = Vector2(3, 6)
+SfxCreateBush = NodePath("../../Sounds/SfxCrystalBush")
+BushPrefab = ExtResource("19_ymw46")
+Type = 17
 
 [node name="Oil" type="Node3D" parent="Attacks"]
 script = ExtResource("18_d2t03")
@@ -1086,20 +1105,9 @@ Type = 9
 script = ExtResource("20_e1xl2")
 PsFakeDigEffect = ExtResource("21_saxd3")
 PsSpoutEffect = ExtResource("22_kdpbt")
-SfxFakeDig = NodePath("SfxFakeDig")
-SfxSpout = NodePath("SfxSpout")
+SfxFakeDig = NodePath("../../Sounds/SfxSeaweedFakeDig")
+SfxSpout = NodePath("../../Sounds/SfxSeaweedSpout")
 Type = 10
-
-[node name="SfxFakeDig" type="AudioStreamPlayer" parent="Attacks/Seaweed"]
-stream = SubResource("AudioStreamRandomizer_saxd3")
-pitch_scale = 1.2
-bus = &"SFX"
-
-[node name="SfxSpout" type="AudioStreamPlayer" parent="Attacks/Seaweed"]
-stream = SubResource("AudioStreamRandomizer_0yq4b")
-volume_db = -15.0
-pitch_scale = 1.2
-bus = &"SFX"
 
 [node name="Garbage" type="Node3D" parent="Attacks"]
 script = ExtResource("28_5ycpc")
@@ -1140,13 +1148,8 @@ Type = 13
 [node name="GlitchTeleport" type="Node3D" parent="Attacks" node_paths=PackedStringArray("SfxFreeze")]
 process_mode = 3
 script = ExtResource("38_477t3")
-SfxFreeze = NodePath("SfxFreeze")
+SfxFreeze = NodePath("../../Sounds/SfxGlitchFreeze")
 Type = 14
-
-[node name="SfxFreeze" type="AudioStreamPlayer" parent="Attacks/GlitchTeleport"]
-stream = ExtResource("39_oir8n")
-volume_db = -10.0
-bus = &"SFX"
 
 [node name="GlitchFlash" type="Node3D" parent="Attacks"]
 script = ExtResource("40_7cgx3")
@@ -1155,12 +1158,8 @@ Type = 16
 
 [node name="GlitchError" type="Node3D" parent="Attacks" node_paths=PackedStringArray("SfxError")]
 script = ExtResource("42_17ick")
-SfxError = NodePath("SfxError")
+SfxError = NodePath("../../Sounds/SfxGlitchError")
 Type = 15
-
-[node name="SfxError" type="AudioStreamPlayer" parent="Attacks/GlitchError"]
-stream = ExtResource("39_oir8n")
-bus = &"SFX"
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
@@ -1211,6 +1210,31 @@ bus = &"SFX"
 [node name="SfxBush" type="AudioStreamPlayer" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_y0f88")
 volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxCrystalBush" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_5ycw3")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxGlitchError" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("39_oir8n")
+bus = &"SFX"
+
+[node name="SfxGlitchFreeze" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("39_oir8n")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="SfxSeaweedFakeDig" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_saxd3")
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="SfxSeaweedSpout" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_0yq4b")
+volume_db = -15.0
+pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="Particles" type="Node3D" parent="."]

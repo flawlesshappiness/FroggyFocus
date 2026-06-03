@@ -112,7 +112,7 @@ public partial class SideScrollerController : CharacterBody2D
         else
         {
             DesiredJumpVelocity = DesiredJumpVelocity.Set(y: 0);
-            velocity.X = Mathf.Max(Velocity.X, DesiredJumpVelocity.X);
+            velocity.X = DesiredJumpVelocity.X;
             velocity.Y += Gravity * (float)delta;
         }
 

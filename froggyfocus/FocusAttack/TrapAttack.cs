@@ -15,8 +15,8 @@ public partial class TrapAttack<T> : FocusAttack
     private Coroutine cr_run;
     private float time_delay;
     private float time_cooldown;
-    private readonly Vector2 DelayMin = new Vector2(3, 2);
-    private readonly Vector2 DelayMax = new Vector2(5, 3);
+    private readonly Vector2 DelayMin = new Vector2(5, 3);
+    private readonly Vector2 DelayMax = new Vector2(10, 5);
     private readonly Vector2 Cooldown = new Vector2(10, 5);
 
     protected override void Started()

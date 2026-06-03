@@ -225,7 +225,8 @@ public partial class FrogPlayerController : Node3D
             }
 
             DesiredJumpVelocity = DesiredJumpVelocity.Set(y: 0);
-            velocity.X = Mathf.Max(Velocity.X, DesiredJumpVelocity.X);
+            velocity.X = DesiredJumpVelocity.X;
+            velocity.Z = DesiredJumpVelocity.Z;
             velocity.Y -= Gravity * delta;
         }
 

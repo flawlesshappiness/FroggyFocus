@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhdil3v3gft7u"]
+
+[ext_resource type="PackedScene" uid="uid://fk83oj3owt40" path="res://Assets/FlawLizArt/Construction/platform_wall.fbx" id="1_n6x65"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bp7cp"]
+size = Vector3(4, 0.5, 4)
+
+[node name="platform_wall" type="Node3D"]
+
+[node name="platform_wall" parent="." instance=ExtResource("1_n6x65")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 2)
+shape = SubResource("BoxShape3D_bp7cp")

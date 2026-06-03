@@ -19,6 +19,7 @@ public partial class EldritchFallingScene : Scene
     [Export]
     public Array<PackedScene> CoinGroupPrefabs;
 
+    private int coins;
     private RandomNumberGenerator rng = new();
 
     public override void _Ready()
@@ -34,6 +35,8 @@ public partial class EldritchFallingScene : Scene
         IEnumerator Cr()
         {
             yield return AnimateCoinGroups();
+
+            Money.Add(coins);
 
             TransitionView.Instance.StartTransition(new TransitionSettings
             {
@@ -82,8 +85,14 @@ public partial class EldritchFallingScene : Scene
         foreach (var coin in group.GetNodesInChildren<CollectableCoin>())
         {
             coin.Initialize(Player);
+            coin.OnPickup += Coin_Pickup;
         }
 
         return group;
+    }
+
+    private void Coin_Pickup()
+    {
+        coins++;
     }
 }

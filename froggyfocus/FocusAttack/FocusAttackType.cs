@@ -17,4 +17,5 @@ public enum FocusAttackType
     GlitchTeleport,
     GlitchError,
     GlitchFlash,
+    CrystalBush,
 }

@@ -17,12 +17,21 @@ public partial class CrystalPickaxe : Node3D
     public override void _Ready()
     {
         base._Ready();
-        is_powered = EnergyContainer == null || EnergyContainer.IsCompleted;
+        is_powered = EnergyContainer.IsCompleted;
+        GameFlagsController.Instance.OnFlagChanged += Flag_Changed;
+    }
 
-        if (EnergyContainer != null)
+    public override void _ExitTree()
+    {
+        base._ExitTree();
+        GameFlagsController.Instance.OnFlagChanged -= Flag_Changed;
+    }
+
+    private void Flag_Changed(string id, int i)
+    {
+        if (id == EnergyContainer.HandInInfo.Id)
         {
-            EnergyContainer.OnCompleted += EnergyContainerCompleted;
-            EnergyContainer.OnNotCompleted += EnergyContainerNotCompleted;
+            is_powered = EnergyContainer.IsCompleted;
         }
     }
 
@@ -30,10 +39,8 @@ public partial class CrystalPickaxe : Node3D
     {
         base._Process(delta);
 
-        if (!is_powered) return;
-
         var player_is_up = Player.Instance.GlobalPosition.Y > MiddleNode.GlobalPosition.Y;
-        SetUp(player_is_up);
+        SetUp(player_is_up && is_powered);
     }
 
     private void SetUp(bool up)
@@ -45,14 +52,11 @@ public partial class CrystalPickaxe : Node3D
         AnimationPlayer.Play(anim);
     }
 
-    private void EnergyContainerCompleted()
+    public void Hit()
     {
-        is_powered = true;
-    }
-
-    private void EnergyContainerNotCompleted()
-    {
-        is_powered = false;
-        SetUp(false);
+        Player.Instance.ThirdPersonCamera.StartShake(new ThirdPersonCamera.ShakeSettings
+        {
+            FadeOutDuration = 3,
+        });
     }
 }
