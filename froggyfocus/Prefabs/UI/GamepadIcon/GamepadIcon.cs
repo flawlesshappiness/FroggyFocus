@@ -11,13 +11,13 @@ public partial class GamepadIcon : TextureRect
     public override void _Ready()
     {
         base._Ready();
-        GamepadDisplayChanged(Data.Options.GamepadDisplayIndex);
+        GamepadDisplayChanged();
         OptionsContainer.OnGamepadDisplayChanged += GamepadDisplayChanged;
     }
 
-    private void GamepadDisplayChanged(int i)
+    private void GamepadDisplayChanged()
     {
-        Texture = GetGamepadTexture(i);
+        Texture = GetGamepadTexture(Data.Options.GamepadDisplayIndex);
     }
 
     private Texture2D GetGamepadTexture(int i)

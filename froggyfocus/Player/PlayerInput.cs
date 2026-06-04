@@ -16,6 +16,22 @@ public partial class PlayerInput : Node
     public static CustomInputAction ZoomIn_Controller = new CustomInputAction("ZoomIn_Controller");
     public static CustomInputAction ZoomOut_Controller = new CustomInputAction("ZoomOut_Controller");
 
+    private static Vector2 GetInputAfterDeadzone(Vector2 input)
+    {
+        if (PlayerInputController.Instance.IsGamepad)
+        {
+            if (input.Length() > Data.Options.GamepadDeadZone)
+            {
+                return input;
+            }
+            return Vector2.Zero;
+        }
+        else
+        {
+            return input;
+        }
+    }
+
     public static Vector2 GetMoveInput()
     {
         return Input.GetVector(
@@ -25,8 +41,14 @@ public partial class PlayerInput : Node
             Back.Name);
     }
 
+    public static Vector2 GetMoveInputAfterDeadzone() =>
+        GetInputAfterDeadzone(GetMoveInput());
+
     public static Vector2 GetLookInput()
     {
         return Input.GetVector("LookLeft", "LookRight", "LookUp", "LookDown");
     }
+
+    public static Vector2 GetLookInputAfterDeadzone() =>
+        GetInputAfterDeadzone(GetLookInput());
 }

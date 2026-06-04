@@ -44,7 +44,7 @@ public partial class SideScrollerController : CharacterBody2D
 
     private void Process_Facing()
     {
-        var input = PlayerInput.GetMoveInput();
+        var input = PlayerInput.GetMoveInputAfterDeadzone();
         if (input.Length() > 0.1f)
         {
             SetFacingRight(input.X >= 0);

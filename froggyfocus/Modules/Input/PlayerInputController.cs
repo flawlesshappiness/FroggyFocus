@@ -5,10 +5,9 @@ public partial class PlayerInputController : SingletonController
 {
     public override string Directory => $"{Paths.Modules}/Input";
     public static PlayerInputController Instance => Singleton.Get<PlayerInputController>();
+    public bool IsGamepad { get; private set; }
 
     public Action<bool> OnDeviceChanged;
-
-    private bool is_gamepad;
 
     public override void _Input(InputEvent e)
     {
@@ -26,16 +25,19 @@ public partial class PlayerInputController : SingletonController
         {
             SetGamepad(true);
         }
-        else if (e is InputEventJoypadMotion)
+        else if (e is InputEventJoypadMotion jmotion)
         {
-            SetGamepad(true);
+            if (Mathf.Abs(jmotion.AxisValue) > Data.Options.GamepadDeadZone)
+            {
+                SetGamepad(true);
+            }
         }
     }
 
     private void SetGamepad(bool gamepad)
     {
-        if (is_gamepad == gamepad) return;
-        is_gamepad = gamepad;
-        OnDeviceChanged?.Invoke(is_gamepad);
+        if (IsGamepad == gamepad) return;
+        IsGamepad = gamepad;
+        OnDeviceChanged?.Invoke(IsGamepad);
     }
 }

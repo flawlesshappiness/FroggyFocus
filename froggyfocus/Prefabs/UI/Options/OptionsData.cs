@@ -10,4 +10,6 @@ public partial class OptionsData
     public bool CatchTutorialEnabled { get; set; } = false;
     public bool CollectBugSoundEnabled { get; set; } = true;
     public bool JumpChargeEffectEnabled { get; set; } = true;
+    public float GamepadDeadZone { get; set; } = 0.1f;
+    public int ForcedInputDisplayIndex { get; set; } = 0;
 }

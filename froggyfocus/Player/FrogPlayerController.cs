@@ -126,7 +126,7 @@ public partial class FrogPlayerController : Node3D
         }
         else
         {
-            var input = PlayerInput.GetMoveInput();
+            var input = PlayerInput.GetMoveInputAfterDeadzone();
             Vector3 direction = CurrentCamera.GlobalBasis * (new Vector3(input.X, 0, input.Y)).Normalized();
             DesiredMoveVelocity = direction * MoveSpeed;
         }

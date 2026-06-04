@@ -21,7 +21,7 @@ public partial class FallingPlayer : Node3D
 
     private void Process_Move()
     {
-        var input = PlayerInput.GetMoveInput();
+        var input = PlayerInput.GetMoveInputAfterDeadzone();
         var input_dir = input.Normalized();
         var dir = new Vector3(input_dir.X, 0, input_dir.Y);
         var acc = 0.1f;

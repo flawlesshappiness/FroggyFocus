@@ -14,6 +14,9 @@ public partial class OptionsContainer : ControlScript
     public Slider CameraSensitivtySlider;
 
     [Export]
+    public Slider DeadzoneSlider;
+
+    [Export]
     public OptionsButtonControl UIScaleOptions;
 
     [Export]
@@ -34,28 +37,74 @@ public partial class OptionsContainer : ControlScript
     [Export]
     public OptionButton JumpChargeEffectOptionButton;
 
+    [Export]
+    public OptionButton ForcedDisplayOptionButton;
+
     public static Action OnUIScaleChanged;
-    public static Action<int> OnGamepadDisplayChanged;
+    public static Action OnGamepadDisplayChanged;
     public event Action BackPressed;
 
     private bool showing;
-    private List<OptionButtonMap> option_buttons = new();
+    private List<ControlMap> control_maps = new();
 
-    private class OptionButtonMap
+    private abstract class ControlMap
+    {
+        public abstract void UpdateControl();
+    }
+
+    private class OptionButtonMap : ControlMap
     {
         public OptionButton OptionButton { get; set; }
         public Func<int> Get { get; set; }
         public Action<int> Set { get; set; }
 
+        private bool updating;
+
         public OptionButtonMap(OptionButton button)
         {
             OptionButton = button;
-            OptionButton.ItemSelected += SetValue;
+            OptionButton.ItemSelected += ItemSelected;
         }
 
-        private void SetValue(long l)
+        private void ItemSelected(long l)
         {
+            if (updating) return;
             Set((int)l);
+        }
+
+        public override void UpdateControl()
+        {
+            updating = true;
+            OptionButton.Selected = Get();
+            updating = false;
+        }
+    }
+
+    private class SliderMap : ControlMap
+    {
+        public Slider Slider { get; set; }
+        public Func<float> Get { get; set; }
+        public Action<float> Set { get; set; }
+
+        private bool updating;
+
+        public SliderMap(Slider slider)
+        {
+            Slider = slider;
+            Slider.ValueChanged += ValueChanged;
+        }
+
+        private void ValueChanged(double d)
+        {
+            if (updating) return;
+            Set((float)d);
+        }
+
+        public override void UpdateControl()
+        {
+            updating = true;
+            Slider.Value = Get();
+            updating = false;
         }
     }
 
@@ -63,59 +112,87 @@ public partial class OptionsContainer : ControlScript
     {
         base._Ready();
 
-        EnvironmentSlider.ValueChanged += EnvironmentVolume_ValueChanged;
-        CameraSensitivtySlider.ValueChanged += CameraSensitivity_ValueChanged;
         UIScaleOptions.IndexChanged += UIScaleOptions_IndexChanged;
 
-        InitializeOptionButtons();
+        InitializeControlMaps();
         OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
         UpdateFadePlantsOption();
     }
 
-    private void InitializeOptionButtons()
+    private void InitializeControlMaps()
     {
-        option_buttons.Add(new OptionButtonMap(GamepadDisplayOptionButton)
+        // OptionButtons
+        control_maps.Add(new OptionButtonMap(GamepadDisplayOptionButton)
         {
             Get = () => Data.Options.GamepadDisplayIndex,
-            Set = i =>
+            Set = v =>
             {
-                Data.Options.GamepadDisplayIndex = i;
-                OnGamepadDisplayChanged?.Invoke(i);
+                Data.Options.GamepadDisplayIndex = v;
+                OnGamepadDisplayChanged?.Invoke();
             }
         });
 
-        option_buttons.Add(new OptionButtonMap(CutsceneTypeOptionButton)
+        control_maps.Add(new OptionButtonMap(CutsceneTypeOptionButton)
         {
             Get = () => Data.Options.CutsceneTypeIndex,
-            Set = i => Data.Options.CutsceneTypeIndex = i
+            Set = v => Data.Options.CutsceneTypeIndex = v
         });
 
-        option_buttons.Add(new OptionButtonMap(FadePlantsOptionButton)
+        control_maps.Add(new OptionButtonMap(FadePlantsOptionButton)
         {
             Get = () => Data.Options.FadePlantsIndex,
-            Set = i =>
+            Set = v =>
             {
-                Data.Options.FadePlantsIndex = i;
+                Data.Options.FadePlantsIndex = v;
                 UpdateFadePlantsOption();
             }
         });
 
-        option_buttons.Add(new OptionButtonMap(CatchBugTutorialOptionButton)
+        control_maps.Add(new OptionButtonMap(CatchBugTutorialOptionButton)
         {
             Get = () => Data.Options.CatchTutorialEnabled ? 0 : 1,
-            Set = i => Data.Options.CatchTutorialEnabled = i == 0
+            Set = v => Data.Options.CatchTutorialEnabled = v == 0
         });
 
-        option_buttons.Add(new OptionButtonMap(CollectBugSoundOptionButton)
+        control_maps.Add(new OptionButtonMap(CollectBugSoundOptionButton)
         {
             Get = () => Data.Options.CollectBugSoundEnabled ? 0 : 1,
-            Set = i => Data.Options.CollectBugSoundEnabled = i == 0
+            Set = v => Data.Options.CollectBugSoundEnabled = v == 0
         });
 
-        option_buttons.Add(new OptionButtonMap(JumpChargeEffectOptionButton)
+        control_maps.Add(new OptionButtonMap(JumpChargeEffectOptionButton)
         {
             Get = () => Data.Options.JumpChargeEffectEnabled ? 0 : 1,
-            Set = i => Data.Options.JumpChargeEffectEnabled = i == 0
+            Set = v => Data.Options.JumpChargeEffectEnabled = v == 0
+        });
+
+        control_maps.Add(new OptionButtonMap(ForcedDisplayOptionButton)
+        {
+            Get = () => Data.Options.ForcedInputDisplayIndex,
+            Set = v =>
+            {
+                Data.Options.ForcedInputDisplayIndex = v;
+                OnGamepadDisplayChanged?.Invoke();
+            }
+        });
+
+        // Sliders
+        control_maps.Add(new SliderMap(EnvironmentSlider)
+        {
+            Get = () => Data.Options.EnvironmentVolume,
+            Set = v => Data.Options.EnvironmentVolume = v
+        });
+
+        control_maps.Add(new SliderMap(CameraSensitivtySlider)
+        {
+            Get = () => Data.Options.CameraSensitivity,
+            Set = v => Data.Options.CameraSensitivity = v
+        });
+
+        control_maps.Add(new SliderMap(DeadzoneSlider)
+        {
+            Get = () => Data.Options.GamepadDeadZone,
+            Set = v => Data.Options.GamepadDeadZone = v
         });
     }
 
@@ -125,33 +202,11 @@ public partial class OptionsContainer : ControlScript
 
         showing = true;
 
-        EnvironmentSlider.Value = Data.Options.EnvironmentVolume;
-        CameraSensitivtySlider.Value = Data.Options.CameraSensitivity;
         UIScaleOptions.SetIndex(Data.Options.UIScaleIndex);
 
-        foreach (var map in option_buttons)
-        {
-            map.OptionButton.Selected = map.Get();
-        }
+        control_maps.ForEach(x => x.UpdateControl());
 
         showing = false;
-    }
-
-    private void EnvironmentVolume_ValueChanged(double value)
-    {
-        if (showing) return;
-
-        var fvalue = Convert.ToSingle(value);
-        Data.Options.EnvironmentVolume = fvalue;
-        OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, Data.Options.EnvironmentVolume);
-    }
-
-    private void CameraSensitivity_ValueChanged(double value)
-    {
-        if (showing) return;
-
-        var fvalue = Convert.ToSingle(value);
-        Data.Options.CameraSensitivity = fvalue;
     }
 
     private void UIScaleOptions_IndexChanged(int index)

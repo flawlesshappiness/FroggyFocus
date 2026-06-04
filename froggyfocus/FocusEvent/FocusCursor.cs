@@ -72,7 +72,7 @@ public partial class FocusCursor : Node3D
 
     private void Process_Input()
     {
-        var input = PlayerInput.GetMoveInput();
+        var input = PlayerInput.GetMoveInputAfterDeadzone();
         DesiredVelocity = new Vector3(input.X, 0, input.Y);
 
         if (PlayerInput.Interact.Pressed)

@@ -155,7 +155,7 @@ public partial class ThirdPersonCamera : Node3D
 
     private void Process_Gamepad()
     {
-        var input = PlayerInput.GetLookInput();
+        var input = PlayerInput.GetLookInputAfterDeadzone();
         if (input.Length() < 0.1f) return;
 
         AdjustRotation(input * ControllerSensitivity);

@@ -12,7 +12,8 @@ public partial class InputPromptTexture : TextureRect
     public override void _Ready()
     {
         base._Ready();
-        PlayerInputController.Instance.OnDeviceChanged += DeviceChanged;
+        PlayerInputController.Instance.OnDeviceChanged += Device_Changed;
+        OptionsContainer.OnGamepadDisplayChanged += GamepadDisplay_Changed;
         VisibilityChanged += OnVisibilityChanged;
 
         if (!string.IsNullOrEmpty(StartingAction))
@@ -77,8 +78,13 @@ public partial class InputPromptTexture : TextureRect
         {
             var kbm = input_events.FirstOrDefault(x => x is InputEventKey || x is InputEventMouseButton);
             var gamepad = input_events.FirstOrDefault(x => x is InputEventJoypadButton);
-            var e = is_gamepad ? gamepad : kbm;
-            return UpdateIcon(e);
+
+            return Data.Options.ForcedInputDisplayIndex switch
+            {
+                1 => UpdateIcon(kbm),
+                2 => UpdateIcon(gamepad),
+                _ => UpdateIcon(is_gamepad ? gamepad : kbm)
+            };
         }
         else
         {
@@ -87,9 +93,14 @@ public partial class InputPromptTexture : TextureRect
         }
     }
 
-    private void DeviceChanged(bool is_gamepad)
+    private void Device_Changed(bool is_gamepad)
     {
         this.is_gamepad = is_gamepad;
+        UpdateIcon(current_action);
+    }
+
+    private void GamepadDisplay_Changed()
+    {
         UpdateIcon(current_action);
     }
 

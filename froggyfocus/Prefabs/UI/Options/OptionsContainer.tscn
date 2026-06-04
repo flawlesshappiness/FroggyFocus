@@ -1,12 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://cydcvbdr705lc"]
+[gd_scene load_steps=26 format=3 uid="uid://cydcvbdr705lc"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_ma85e"]
 [ext_resource type="Script" uid="uid://cenc4k0brpn5a" path="res://Prefabs/UI/Options/OptionsContainer.cs" id="2_3w48p"]
 [ext_resource type="PackedScene" uid="uid://dk5e5unescpcn" path="res://Modules/Options/OptionsControl.tscn" id="3_t6453"]
 [ext_resource type="PackedScene" uid="uid://ddkr2dahi2d8" path="res://Prefabs/UI/OptionsButtonControl/options_button_control.tscn" id="4_3w48p"]
+[ext_resource type="Script" uid="uid://qcx2d6o18ka1" path="res://Modules/Node/HSliderScript.cs" id="4_6m8ks"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="5_lof4m"]
 [ext_resource type="PackedScene" uid="uid://bcs21fjyae67g" path="res://Prefabs/UI/GamepadIcon/gamepad_icon.tscn" id="5_t6453"]
 [ext_resource type="Texture2D" uid="uid://k83g0j5evkui" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_ls.png" id="6_krs6j"]
+[ext_resource type="Script" uid="uid://ckjxcr878qs2o" path="res://Modules/Node/ScrollContainerScript.cs" id="7_nwtii"]
 [ext_resource type="Texture2D" uid="uid://dsrdehj3qvjf" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_stick_top_l.png" id="7_o73c3"]
 [ext_resource type="Texture2D" uid="uid://oj32m6tveh7g" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_button_color_b.png" id="8_bxtoj"]
 [ext_resource type="Texture2D" uid="uid://bwyjjdd5ofq46" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_button_color_circle.png" id="9_lof4m"]
@@ -19,7 +21,17 @@
 [ext_resource type="Texture2D" uid="uid://dfqja0yfvxqyl" path="res://Assets/KenneyNL/Input Icons/XBox/xbox_rt.png" id="17_67nja"]
 [ext_resource type="Texture2D" uid="uid://x5iqlsw4jt5r" path="res://Assets/KenneyNL/Input Icons/Playstation/playstation_trigger_r2.png" id="18_nwtii"]
 
-[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "UIScaleOptions", "GamepadDisplayOptionButton", "CutsceneTypeOptionButton", "FadePlantsOptionButton", "CatchBugTutorialOptionButton", "CollectBugSoundOptionButton", "JumpChargeEffectOptionButton")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6m8ks"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67nja"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwtii"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hwgln"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i7c0d"]
+
+[node name="OptionsContainer" type="VBoxContainer" node_paths=PackedStringArray("Options", "EnvironmentSlider", "CameraSensitivtySlider", "DeadzoneSlider", "UIScaleOptions", "GamepadDisplayOptionButton", "CutsceneTypeOptionButton", "FadePlantsOptionButton", "CatchBugTutorialOptionButton", "CollectBugSoundOptionButton", "JumpChargeEffectOptionButton", "ForcedDisplayOptionButton")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,19 +50,21 @@ script = ExtResource("2_3w48p")
 Options = NodePath("Options")
 EnvironmentSlider = NodePath("Options/TabContainer/Audio/VBoxContainer/EnvironmentSlider")
 CameraSensitivtySlider = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer/HBoxContainer2/CameraSensitivitySlider")
+DeadzoneSlider = NodePath("Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/DeadzoneSlider")
 UIScaleOptions = NodePath("Options/TabContainer/Video/HBoxContainer/UIScale/UIScaleOptions")
-GamepadDisplayOptionButton = NodePath("Options/TabContainer/Gamepad/VBoxContainer/HBoxContainer/GamepadDisplayOptionButton")
+GamepadDisplayOptionButton = NodePath("Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/GamepadDisplayOptionButton")
 CutsceneTypeOptionButton = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer2/CutsceneTypeOptionButton")
 FadePlantsOptionButton = NodePath("Options/TabContainer/Video/HBoxContainer/HBoxContainer/FadePlantsDropdown")
 CatchBugTutorialOptionButton = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer3/CatchTutorialOptionButton")
 CollectBugSoundOptionButton = NodePath("Options/TabContainer/Audio/VBoxContainer/HBoxContainer/CollectButSoundOptionButton")
 JumpChargeEffectOptionButton = NodePath("Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer4/JumpChargeEffectOptionButton")
+ForcedDisplayOptionButton = NodePath("Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2/ForcedDisplayOptionButton")
 
 [node name="Options" parent="." instance=ExtResource("3_t6453")]
 layout_mode = 2
 
 [node name="TabContainer" parent="Options" index="0"]
-current_tab = 4
+current_tab = 3
 
 [node name="Audio" parent="Options/TabContainer" index="1"]
 visible = false
@@ -63,6 +77,8 @@ text = "Environment & Weather"
 layout_mode = 2
 max_value = 1.0
 step = 0.05
+script = ExtResource("4_6m8ks")
+BigStepAmount = 0.2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Audio/VBoxContainer" index="8"]
 layout_mode = 2
@@ -119,7 +135,6 @@ popup/item_3/text = "Never"
 popup/item_3/id = 2
 
 [node name="Gamepad" type="MarginContainer" parent="Options/TabContainer" index="4"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -127,18 +142,32 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 metadata/_tab_index = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Gamepad"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Options/TabContainer/Gamepad"]
 layout_mode = 2
+follow_focus = true
+script = ExtResource("7_nwtii")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Options/TabContainer/Gamepad/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Display:"
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="GamepadDisplayOptionButton" type="OptionButton" parent="Options/TabContainer/Gamepad/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Input display:"
+
+[node name="GamepadDisplayOptionButton" type="OptionButton" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 selected = 0
@@ -148,124 +177,171 @@ popup/item_0/id = 0
 popup/item_1/text = "Playstation"
 popup/item_1/id = 1
 
-[node name="Control" type="Control" parent="Options/TabContainer/Gamepad/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Forced display:"
+
+[node name="ForcedDisplayOptionButton" type="OptionButton" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "Adaptive"
+popup/item_0/id = 0
+popup/item_1/text = "Keyboard & Mouse"
+popup/item_1/id = 1
+popup/item_2/text = "Gamepad"
+popup/item_2/id = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 38)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Stick deadzone:"
+
+[node name="DeadzoneSlider" type="HSlider" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+script = ExtResource("4_6m8ks")
+BigStepAmount = 0.1
+
+[node name="Control" type="Control" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Options/TabContainer/Gamepad/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("5_lof4m")
 
-[node name="MarginContainer" type="MarginContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Move" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Move" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move"]
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Move"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move/HBoxContainer" instance=ExtResource("5_t6453")]
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Move/HBoxContainer" instance=ExtResource("5_t6453")]
 layout_mode = 2
 XboxTexture = ExtResource("6_krs6j")
 PlaystationTexture = ExtResource("7_o73c3")
 
-[node name="Jump" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Jump" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump"]
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Jump"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump/HBoxContainer" instance=ExtResource("5_t6453")]
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Jump/HBoxContainer" instance=ExtResource("5_t6453")]
 layout_mode = 2
 XboxTexture = ExtResource("8_bxtoj")
 PlaystationTexture = ExtResource("9_lof4m")
 
-[node name="Interact" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Interact" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact"]
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Interact / Steel Focus"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact/HBoxContainer" instance=ExtResource("5_t6453")]
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Interact/HBoxContainer" instance=ExtResource("5_t6453")]
 layout_mode = 2
 XboxTexture = ExtResource("10_bxtoj")
 PlaystationTexture = ExtResource("11_lof4m")
 
-[node name="Pause" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Pause" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause"]
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Pause"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause/HBoxContainer" instance=ExtResource("5_t6453")]
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Pause/HBoxContainer" instance=ExtResource("5_t6453")]
 layout_mode = 2
 XboxTexture = ExtResource("12_b2kry")
 PlaystationTexture = ExtResource("11_0un1b")
 
-[node name="Zoom" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Zoom" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom"]
+[node name="Label" type="Label" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Zoom"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom/HBoxContainer" instance=ExtResource("5_t6453")]
+[node name="gamepad_icon" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom/HBoxContainer" instance=ExtResource("5_t6453")]
 layout_mode = 2
 XboxTexture = ExtResource("15_itd67")
 PlaystationTexture = ExtResource("16_6m8ks")
 
-[node name="gamepad_icon2" parent="Options/TabContainer/Gamepad/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom/HBoxContainer" instance=ExtResource("5_t6453")]
+[node name="gamepad_icon2" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Zoom/HBoxContainer" instance=ExtResource("5_t6453")]
 layout_mode = 2
 XboxTexture = ExtResource("17_67nja")
 PlaystationTexture = ExtResource("18_nwtii")
 
+[node name="GamepadInputFocus" type="Button" parent="Options/TabContainer/Gamepad/ScrollContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6m8ks")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_67nja")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nwtii")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hwgln")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i7c0d")
+
 [node name="Gameplay" type="MarginContainer" parent="Options/TabContainer" index="5"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -277,6 +353,7 @@ metadata/_tab_index = 4
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options/TabContainer/Gameplay/VBoxContainer"]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 alignment = 1
 
@@ -298,10 +375,13 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 min_value = 0.05
 max_value = 2.0
 step = 0.01
 value = 1.0
+script = ExtResource("4_6m8ks")
+BigStepAmount = 0.1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Options/TabContainer/Gameplay/VBoxContainer"]
 layout_mode = 2
