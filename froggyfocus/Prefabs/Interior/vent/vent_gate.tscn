@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://du46xqv0n44f8"]
+
+[ext_resource type="PackedScene" uid="uid://c4de40jnper0p" path="res://Assets/FlawLizArt/Interior/Vent/vent_cover.fbx" id="1_dksvl"]
+[ext_resource type="PackedScene" uid="uid://d1q7tc2cyplnl" path="res://Assets/FlawLizArt/Interior/Vent/vent_frame.fbx" id="2_ool1n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eox48"]
+size = Vector3(2, 2, 0.186523)
+
+[node name="vent_gate" type="Node3D"]
+
+[node name="vent_cover" parent="." instance=ExtResource("1_dksvl")]
+
+[node name="vent_frame" parent="." instance=ExtResource("2_ool1n")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0766602)
+shape = SubResource("BoxShape3D_eox48")

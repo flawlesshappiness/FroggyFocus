@@ -92,6 +92,9 @@ affect_navigation_mesh = true
 carve_navigation_mesh = true
 avoidance_enabled = false
 
+[node name="StartFactoryEntrance" type="Marker3D" parent="World"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.66586, 0, -2)
+
 [node name="FrogScientistNPC" parent="World" instance=ExtResource("9_8ophw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.89021, 0, 1.83498)
 

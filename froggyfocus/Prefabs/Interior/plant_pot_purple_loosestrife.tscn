@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmmafs1s6ao6c"]
+
+[ext_resource type="PackedScene" uid="uid://c2hdpk2n83gyy" path="res://Assets/FlawLizArt/Interior/PlantPot.fbx" id="1_la2ir"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="3_0cotl"]
+[ext_resource type="PackedScene" uid="uid://b0y20fo4i3tlh" path="res://Prefabs/Nature/plant_purple_loosestrife_group.tscn" id="3_la2ir"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_chute"]
+height = 4.16406
+radius = 0.986816
+
+[node name="plant_pot_purple_loosestrife" type="Node3D"]
+
+[node name="PlantPot" parent="." instance=ExtResource("1_la2ir")]
+
+[node name="NpcCollisionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_0cotl")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcCollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08203, 0)
+shape = SubResource("CylinderShape3D_chute")
+
+[node name="plant_purple_loosestrife_group" parent="." instance=ExtResource("3_la2ir")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.429505, 0)

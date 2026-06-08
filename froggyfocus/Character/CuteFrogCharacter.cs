@@ -71,7 +71,7 @@ public partial class CuteFrogCharacter : FrogCharacter
         var jump_charge = Animation.CreateAnimation($"{prefix}charging", true);
         var tongue_out = Animation.CreateAnimation($"{prefix}tongue_out", false);
         var tongue_in = Animation.CreateAnimation($"{prefix}tongue_in", false);
-        var searching = Animation.CreateAnimation($"{prefix}searching", false);
+        var searching = Animation.CreateAnimation($"{prefix}searching", true);
         var cover_eyes = Animation.CreateAnimation($"{prefix}cover_eyes", false);
         var uncover_eyes = Animation.CreateAnimation($"{prefix}uncover_eyes", false);
         var turn_right = Animation.CreateAnimation($"{prefix}turn_right", false);

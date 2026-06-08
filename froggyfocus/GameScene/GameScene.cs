@@ -62,13 +62,10 @@ public partial class GameScene : Scene
 
         InitializeMusic();
 
-        if (!string.IsNullOrEmpty(Data.Game.StartingNode))
+        if (!string.IsNullOrEmpty(Data.Game.StartingNode) && Player.Instance != null)
         {
             var node = this.GetNodeInChildren<Node3D>(Data.Game.StartingNode);
-            if (IsInstanceValid(node))
-            {
-                Player.Instance.GlobalPosition = node.GlobalPosition;
-            }
+            Player.Instance.TeleportToNode(node);
         }
     }
 

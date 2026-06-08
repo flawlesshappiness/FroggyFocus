@@ -188,9 +188,7 @@ public partial class RaceController : SingletonController
         Player.SetInputDisabled(nameof(RaceController), false);
 
         var end = CurrentSettings.Track.PlayerEnd;
-        Player.Instance.GlobalPosition = end.GlobalPosition;
-        Player.Instance.Character.RotateToDirectionImmediate(end.Basis * Vector3.Forward);
-        Player.Instance.ThirdPersonCamera.SnapToPosition();
+        Player.Instance.TeleportToNode(end);
         Player.Instance.ThirdPersonCamera.SetRotation(end.GlobalRotation);
 
         var result = new RaceResult

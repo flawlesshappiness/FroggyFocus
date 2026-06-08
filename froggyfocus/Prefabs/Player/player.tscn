@@ -26,6 +26,7 @@ point_count = 5
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Controller", "StableGround", "Effects", "ThirdPersonCamera")]
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_hnwp3")
 CharacterPrefab = ExtResource("2_ine62")
 Controller = NodePath("Controller")

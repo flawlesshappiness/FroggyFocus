@@ -31,6 +31,7 @@ public partial class TransitionView : View
             SetColor(settings.Color);
             yield return animation.PlayAndWaitForAnimation("show");
             settings.OnTransition?.Invoke();
+            yield return new WaitForSeconds(settings.DurationHold);
             Player.SetInputDisabled(nameof(TransitionView), false);
             yield return animation.PlayAndWaitForAnimation("hide");
             Hide();
@@ -58,6 +59,7 @@ public class TransitionSettings
 {
     public TransitionType Type { get; set; } = TransitionType.Color;
     public float Duration { get; set; } = 1f;
+    public float DurationHold { get; set; } = 0f;
     public Color Color { get; set; } = Colors.Black;
     public Action OnTransition { get; set; }
 }

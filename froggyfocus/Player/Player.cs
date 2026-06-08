@@ -348,4 +348,13 @@ public partial class Player : CharacterBody3D
             });
         }
     }
+
+    public void TeleportToNode(Node3D node)
+    {
+        if (!IsInstanceValid(node)) return;
+
+        GlobalPosition = node.GlobalPosition;
+        Character.RotateToNodeDirectionImmediate(node);
+        ThirdPersonCamera.SnapToPosition();
+    }
 }

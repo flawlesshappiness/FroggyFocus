@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6syt0vmofmsw"]
+
+[ext_resource type="Script" uid="uid://cagakn48w4jef" path="res://Prefabs/NPC/ReceptionistNpc/ReceptionistNpc.cs" id="1_t2xs2"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="2_cry3l"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_t2xs2"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="4_cry3l"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wk184"]
+height = 1.0
+radius = 0.651855
+
+[node name="ReceptionistNpc" type="Node3D" node_paths=PackedStringArray("Frog", "Animation")]
+script = ExtResource("1_t2xs2")
+Frog = NodePath("FrogCute")
+Animation = NodePath("AnimationStateMachine")
+PantsColor = Color(0.0996, 0.562187, 0.83, 1)
+
+[node name="FrogCute" parent="." instance=ExtResource("2_cry3l")]
+DisableAnimationStates = true
+DisableAppearanceUpdates = true
+
+[node name="HatAttachmentGroup" parent="FrogCute/frog_cute/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -8.8792e-14, 2.38419e-07, 3.57274e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
+
+[node name="FaceAttachmentGroup" parent="FrogCute/frog_cute/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, -8.8792e-14, 2.38419e-07, 3.57274e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("2_t2xs2")
+Animator = NodePath("../FrogCute/frog_cute/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[node name="NpcCollisionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_cry3l")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcCollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_wk184")
+
+[editable path="FrogCute"]
+[editable path="FrogCute/frog_cute"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent2"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent4"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent5"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent3"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent6"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/InfestedHat/mushroom_bent7"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/Lilypad_Flower"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_001"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_003"]
+[editable path="FrogCute/frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004"]

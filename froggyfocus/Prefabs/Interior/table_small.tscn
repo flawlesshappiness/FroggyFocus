@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbk82yxbrm5jk"]
+
+[ext_resource type="PackedScene" uid="uid://ceehjrini41ua" path="res://Assets/KayLousberg/Furniture/table_small.fbx" id="1_ifffr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_521nc"]
+
+[node name="table_small" type="Node3D"]
+
+[node name="table_small" parent="." instance=ExtResource("1_ifffr")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_521nc")

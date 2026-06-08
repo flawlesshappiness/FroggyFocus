@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://x6hfkuco21p3"]
+
+[ext_resource type="PackedScene" uid="uid://c2hdpk2n83gyy" path="res://Assets/FlawLizArt/Interior/PlantPot.fbx" id="1_of7bw"]
+[ext_resource type="PackedScene" uid="uid://cva4fnfkp5o63" path="res://Prefabs/Nature/plant_monstera.tscn" id="2_lyv33"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="3_qcrg7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_chute"]
+radius = 0.986816
+
+[node name="plant_pot_monstera" type="Node3D"]
+
+[node name="PlantPot" parent="." instance=ExtResource("1_of7bw")]
+
+[node name="Plant_Monstera" parent="." instance=ExtResource("2_lyv33")]
+transform = Transform3D(3.425, 0, 0, 0, 3.41051, 0.314703, 0, -0.314703, 3.41051, 0, 0.603589, 0)
+
+[node name="Plant_Monstera2" parent="." instance=ExtResource("2_lyv33")]
+transform = Transform3D(1.82263, 0, -1.59958, 0.146976, 2.41474, 0.16747, 1.59282, -0.222819, 1.81492, 0.094108, 0.607332, 0.0405564)
+
+[node name="Plant_Monstera3" parent="." instance=ExtResource("2_lyv33")]
+transform = Transform3D(1.86265, 0.075388, 2.29279, 0.0271966, 2.95247, -0.119173, -2.29387, 0.0962211, 1.86036, 0.0598645, 0.614598, 0.1193)
+
+[node name="NpcCollisionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_qcrg7")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcCollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_chute")

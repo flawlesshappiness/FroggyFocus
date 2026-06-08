@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbo3ryc52cwdh"]
+
+[ext_resource type="PackedScene" uid="uid://b4sqri8f1kxk6" path="res://Assets/FlawLizArt/Interior/Vent/vent_corridor_inside_cross_x.fbx" id="1_dxm0f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_12iqw"]
+size = Vector3(2, 0.5, 2)
+
+[node name="vent_corridor_cross_t" type="Node3D"]
+
+[node name="vent_corridor_inside_cross_x" parent="." instance=ExtResource("1_dxm0f")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+shape = SubResource("BoxShape3D_12iqw")
+debug_fill = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_12iqw")
+debug_fill = false

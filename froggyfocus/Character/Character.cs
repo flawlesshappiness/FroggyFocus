@@ -38,6 +38,11 @@ public partial class Character : Node3D
         Rotation = new Vector3(0, ry, 0);
     }
 
+    public void RotateToNodeDirectionImmediate(Node3D node)
+    {
+        RotateToDirectionImmediate(node.Basis * Vector3.Forward);
+    }
+
     private void RotateToDirection(Vector3 direction)
     {
         var rotation_speed = 10f;
