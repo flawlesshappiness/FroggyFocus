@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd6l2drngh7it"]
+
+[ext_resource type="PackedScene" uid="uid://dmneakwh1b1tw" path="res://Assets/FlawLizArt/Eldritch/tunnel.fbx" id="1_3bmhb"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="2_rf7ab"]
+
+[node name="eldritch_tunnel" type="Node3D"]
+
+[node name="tunnel" parent="." instance=ExtResource("1_3bmhb")]
+
+[node name="Circle" parent="tunnel" index="0"]
+surface_material_override/0 = ExtResource("2_rf7ab")
+
+[editable path="tunnel"]

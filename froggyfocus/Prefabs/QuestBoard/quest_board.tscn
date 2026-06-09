@@ -1,15 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://jnh2kdwd3acg"]
+[gd_scene load_steps=12 format=3 uid="uid://jnh2kdwd3acg"]
 
 [ext_resource type="PackedScene" uid="uid://b0prnatdq234e" path="res://Assets/FlawLizArt/Furniture/quest_board.fbx" id="1_euyx5"]
 [ext_resource type="Script" uid="uid://c4rxnr7vq8jd7" path="res://Prefabs/QuestBoard/QuestBoard.cs" id="1_njkut"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="3_of0x8"]
 [ext_resource type="PackedScene" uid="uid://dn2p8y4s4fbam" path="res://Assets/FlawLizArt/Other/ExclamationMark.fbx" id="3_rgob0"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="4_2jisf"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="4_38liw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_euyx5"]
 size = Vector3(4.3623, 3.35339, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_njkut"]
 size = Vector3(4.30957, 3.2356, 0.24707)
+
+[sub_resource type="Animation" id="Animation_rgob0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_of0x8"]
 resource_name = "idle"
@@ -27,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_rgob0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_38liw"]
@@ -62,6 +64,10 @@ shape = SubResource("BoxShape3D_euyx5")
 
 [node name="quest_board" parent="." instance=ExtResource("1_euyx5")]
 
+[node name="QuestBoard" parent="quest_board" index="0"]
+surface_material_override/0 = ExtResource("3_of0x8")
+surface_material_override/1 = ExtResource("4_38liw")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -81,3 +87,5 @@ libraries = {
 }
 script = ExtResource("4_2jisf")
 Animation = "idle"
+
+[editable path="quest_board"]

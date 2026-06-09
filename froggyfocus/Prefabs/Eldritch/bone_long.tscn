@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cww6l4o57b8dn"]
+
+[ext_resource type="PackedScene" uid="uid://dkhfqakcxk7tp" path="res://Assets/FlawLizArt/Bones/long.fbx" id="1_uipj6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lm6q"]
+albedo_color = Color(1, 0.941333, 0.78, 1)
+
+[node name="bone_long" type="Node3D"]
+
+[node name="long" parent="." instance=ExtResource("1_uipj6")]
+
+[node name="long" parent="long" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6lm6q")
+
+[editable path="long"]

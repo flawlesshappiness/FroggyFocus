@@ -1,15 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdn0ulu4iqvsm"]
+[gd_scene load_steps=17 format=3 uid="uid://cdn0ulu4iqvsm"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_pdcxf"]
 [ext_resource type="PackedScene" uid="uid://mg3lbs614k3d" path="res://Assets/FlawLizArt/Characters/Snail/snail.fbx" id="2_pdcxf"]
 [ext_resource type="Resource" uid="uid://buwjkq6ue7rvb" path="res://HandIn/Resources/Snail_Cave.tres" id="2_s8tk2"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_gs18x"]
 [ext_resource type="PackedScene" uid="uid://bibw10cs8fov6" path="res://Appearance/Attachments/top_hat.tscn" id="4_451uh"]
+[ext_resource type="Material" uid="uid://b4sl6vfobdcm0" path="res://Materials/Color_BeigeLight.tres" id="4_m8lql"]
 [ext_resource type="AudioStream" uid="uid://csiclebykw5p4" path="res://Sounds/Raw/sfx_snail_speak_001.wav" id="4_pdcxf"]
-[ext_resource type="Material" uid="uid://cngrguaiyjtgk" path="res://Materials/Color_Black.tres" id="5_05rbx"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="5_05rbx"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="5_kj3kx"]
 [ext_resource type="AudioStream" uid="uid://crw57o2x3cr5q" path="res://Sounds/Raw/sfx_snail_speak_002.wav" id="5_s8tk2"]
 [ext_resource type="AudioStream" uid="uid://wu0g0ihtt6po" path="res://Sounds/Raw/sfx_snail_speak_003.wav" id="6_451uh"]
-[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="6_rfphn"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="6_rfphn"]
 [ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="7_rfphn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gs18x"]
@@ -69,6 +71,18 @@ bones/12/scale = Vector3(1, 1, 1)
 bones/14/position = Vector3(-1.34439e-18, 0.0189568, 0.00629522)
 bones/14/rotation = Quaternion(0.999038, 1.37652e-08, -2.38022e-07, -0.0438479)
 bones/14/scale = Vector3(1, 1, 1.00003)
+
+[node name="Body2" parent="snail/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("4_m8lql")
+
+[node name="Shell2" parent="snail/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("5_kj3kx")
+
+[node name="Feelers_Upper" parent="snail/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("4_m8lql")
+
+[node name="Feelers_Lower" parent="snail/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("4_m8lql")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="snail/Armature/Skeleton3D" index="4"]
 transform = Transform3D(0.994552, -0.0272865, -0.10061, -0.00425211, 0.953712, -0.300691, 0.104158, 0.29948, 0.9484, 0.000671996, 0.0382134, 0.0253146)

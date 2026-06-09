@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://cvmh0jn7gf0a3"]
+[gd_scene load_steps=30 format=3 uid="uid://cvmh0jn7gf0a3"]
 
 [ext_resource type="Script" uid="uid://lxwn2lctyv3r" path="res://Prefabs/Objects/FloatingPlatform.cs" id="1_uywkn"]
 [ext_resource type="PackedScene" uid="uid://mhe48b1m8i2x" path="res://Assets/FlawLizArt/Bones/rib.fbx" id="1_xnyg8"]
+[ext_resource type="Material" uid="uid://b4sl6vfobdcm0" path="res://Materials/Color_BeigeLight.tres" id="3_dhp7y"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_vpqlu"]
 [ext_resource type="AudioStream" uid="uid://cjujq6hhnkdkf" path="res://Sounds/Raw/sfx_step_water_high_001.wav" id="5_udbp0"]
 [ext_resource type="AudioStream" uid="uid://bhlhbpuh6jvtl" path="res://Sounds/Raw/sfx_step_water_high_002.wav" id="6_ya55r"]
@@ -404,6 +405,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252907, 0)
 [node name="rib" parent="Offset/Anim" instance=ExtResource("1_xnyg8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.271924, 0)
 
+[node name="rib" parent="Offset/Anim/rib" index="0"]
+surface_material_override/0 = ExtResource("3_dhp7y")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Offset/Anim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.271924, 0)
 
@@ -458,3 +462,5 @@ max_distance = 16.0
 max_polyphony = 5
 bus = &"SFX"
 attenuation_filter_db = 0.0
+
+[editable path="Offset/Anim/rib"]

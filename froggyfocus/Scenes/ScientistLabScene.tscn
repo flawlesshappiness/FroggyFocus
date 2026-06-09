@@ -6,13 +6,13 @@
 [ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="3_8ophw"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_tqw4r"]
 [ext_resource type="PackedScene" uid="uid://x7nclqu76y7s" path="res://Prefabs/Objects/factory_entry_door.tscn" id="5_tqw4r"]
+[ext_resource type="PackedScene" uid="uid://dor6ep604xfj4" path="res://Prefabs/Interior/factory_tile_2x4.tscn" id="6_bduu1"]
+[ext_resource type="PackedScene" uid="uid://bbs70wxx5su5d" path="res://Prefabs/Interior/factory_tile_2x2.tscn" id="7_fqn58"]
 [ext_resource type="PackedScene" uid="uid://ch71i4r1h8ofk" path="res://Prefabs/NPC/FrogScientistNPC/frog_scientist_npc.tscn" id="9_8ophw"]
-[ext_resource type="PackedScene" uid="uid://b73xd2pio1sq0" path="res://Assets/FlawLizArt/Interior/tile_2x2.fbx" id="9_fk7me"]
 [ext_resource type="PackedScene" uid="uid://cfbpfkqqtbtfh" path="res://Assets/FlawLizArt/Interior/wall_lab.fbx" id="10_bduu1"]
 [ext_resource type="PackedScene" uid="uid://dr5g3ygbk7grl" path="res://Prefabs/Interior/table_lab.tscn" id="10_oherf"]
-[ext_resource type="PackedScene" uid="uid://b4q50qn0su2fg" path="res://Assets/KayLousberg/Dungeon/potionLarge_blue.fbx" id="11_ihra4"]
-[ext_resource type="PackedScene" uid="uid://ov4o6mqhjh8y" path="res://Assets/KayLousberg/Dungeon/potionLarge_red.fbx" id="12_fk7me"]
-[ext_resource type="PackedScene" uid="uid://dwll0vuniex4i" path="res://Assets/FlawLizArt/Interior/chair_lab.fbx" id="14_bduu1"]
+[ext_resource type="PackedScene" uid="uid://b86vrrwweceox" path="res://Prefabs/Objects/potion_blue.tscn" id="12_fqn58"]
+[ext_resource type="PackedScene" uid="uid://bbjjiavxo6cov" path="res://Prefabs/Interior/chair_lab.tscn" id="14_bduu1"]
 [ext_resource type="PackedScene" uid="uid://cxjbfafjxye2c" path="res://Prefabs/Interior/blackboard.tscn" id="15_fqn58"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_nb64n"]
@@ -60,10 +60,6 @@ navigation_mesh = SubResource("NavigationMesh_nb64n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_yinag")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="World/NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
 shape = SubResource("BoxShape3D_yinag")
@@ -92,6 +88,38 @@ affect_navigation_mesh = true
 carve_navigation_mesh = true
 avoidance_enabled = false
 
+[node name="Floor" type="Node3D" parent="World/NavigationRegion3D"]
+
+[node name="factory_tile_2x4" parent="World/NavigationRegion3D/Floor" instance=ExtResource("6_bduu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
+
+[node name="factory_tile_2x5" parent="World/NavigationRegion3D/Floor" instance=ExtResource("6_bduu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="factory_tile_2x6" parent="World/NavigationRegion3D/Floor" instance=ExtResource("6_bduu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="factory_tile_2x7" parent="World/NavigationRegion3D/Floor" instance=ExtResource("6_bduu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+
+[node name="factory_tile_2x8" parent="World/NavigationRegion3D/Floor" instance=ExtResource("6_bduu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+
+[node name="factory_tile_2x2" parent="World/NavigationRegion3D/Floor" instance=ExtResource("7_fqn58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="factory_tile_2x3" parent="World/NavigationRegion3D/Floor" instance=ExtResource("7_fqn58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="factory_tile_2x9" parent="World/NavigationRegion3D/Floor" instance=ExtResource("7_fqn58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="factory_tile_2x10" parent="World/NavigationRegion3D/Floor" instance=ExtResource("7_fqn58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="factory_tile_2x11" parent="World/NavigationRegion3D/Floor" instance=ExtResource("7_fqn58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
 [node name="StartFactoryEntrance" type="Marker3D" parent="World"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.66586, 0, -2)
 
@@ -99,80 +127,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.665
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.89021, 0, 1.83498)
 
 [node name="Building" type="Node3D" parent="World"]
-
-[node name="tile_2x2" parent="World/Building" instance=ExtResource("9_fk7me")]
-
-[node name="tile_2x3" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-
-[node name="tile_2x4" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-
-[node name="tile_2x5" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-
-[node name="tile_2x6" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-
-[node name="tile_2x7" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-
-[node name="tile_2x8" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-
-[node name="tile_2x9" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
-
-[node name="tile_2x10" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
-
-[node name="tile_2x11" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
-
-[node name="tile_2x12" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-
-[node name="tile_2x13" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
-
-[node name="tile_2x14" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
-
-[node name="tile_2x15" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
-
-[node name="tile_2x16" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
-
-[node name="tile_2x17" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-
-[node name="tile_2x18" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-
-[node name="tile_2x19" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
-
-[node name="tile_2x20" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
-
-[node name="tile_2x21" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
-
-[node name="tile_2x22" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-
-[node name="tile_2x23" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
-
-[node name="tile_2x24" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
-
-[node name="tile_2x25" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
-
-[node name="tile_2x26" parent="World/Building" instance=ExtResource("9_fk7me")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
 
 [node name="wall_lab3" parent="World/Building" instance=ExtResource("10_bduu1")]
 transform = Transform3D(-2.5, 0, 8.74228e-08, 0, 1, 0, -2.18557e-07, 0, -1, 0, 0, 5)
@@ -193,16 +147,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.021
 [node name="table_lab" parent="World/Interior" instance=ExtResource("10_oherf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248843, 0, 4.29972)
 
-[node name="potionLarge_blue" parent="World/Interior/table_lab" instance=ExtResource("11_ihra4")]
+[node name="potion_blue" parent="World/Interior/table_lab" instance=ExtResource("12_fqn58")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.164359, 1.13872, 0.105837)
 
-[node name="potionLarge_blue2" parent="World/Interior/table_lab" instance=ExtResource("11_ihra4")]
+[node name="potion_blue2" parent="World/Interior/table_lab" instance=ExtResource("12_fqn58")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.364798, 1.13872, 0.192383)
 
 [node name="table_lab2" parent="World/Interior" instance=ExtResource("10_oherf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.06044, 0, 4.29972)
 
-[node name="potionLarge_red" parent="World/Interior/table_lab2" instance=ExtResource("12_fk7me")]
+[node name="potion_blue" parent="World/Interior/table_lab2" instance=ExtResource("12_fqn58")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.557454, 1.13501, 0.233068)
 
 [node name="table_lab3" parent="World/Interior" instance=ExtResource("10_oherf")]
@@ -214,17 +168,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.03567, 0, -4.2369)
 [node name="Blackboard" parent="World/Interior" instance=ExtResource("15_fqn58")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.24466, 0, 1.93685)
 
-[node name="chair_lab" parent="World/Interior" instance=ExtResource("14_bduu1")]
+[node name="chair_lab6" parent="World/Interior" instance=ExtResource("14_bduu1")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0.410129, 0, 3.24458)
 
-[node name="chair_lab2" parent="World/Interior" instance=ExtResource("14_bduu1")]
+[node name="chair_lab7" parent="World/Interior" instance=ExtResource("14_bduu1")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.4309, 0, 3.28189)
 
-[node name="chair_lab3" parent="World/Interior" instance=ExtResource("14_bduu1")]
+[node name="chair_lab8" parent="World/Interior" instance=ExtResource("14_bduu1")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.73217, 0, -3.23799)
 
-[node name="chair_lab4" parent="World/Interior" instance=ExtResource("14_bduu1")]
+[node name="chair_lab9" parent="World/Interior" instance=ExtResource("14_bduu1")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.468115, 0, -3.23799)
 
-[node name="chair_lab5" parent="World/Interior" instance=ExtResource("14_bduu1")]
+[node name="chair_lab10" parent="World/Interior" instance=ExtResource("14_bduu1")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.33912, -2.38419e-07, -4.3178)

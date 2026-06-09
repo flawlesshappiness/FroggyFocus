@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6lgnsssfiop8"]
+[gd_scene load_steps=9 format=3 uid="uid://b6lgnsssfiop8"]
 
 [ext_resource type="PackedScene" uid="uid://w6oxojkly7mv" path="res://Assets/FlawLizArt/Nature/Bugs/giant_water_bug.fbx" id="1_awdic"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_ctewf"]
-[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="3_d3pmr"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="3_d3pmr"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_qrexy"]
-[ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="4_d3pmr"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="3_wq8pl"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="4_bjn2n"]
+[ext_resource type="PackedScene" uid="uid://bh1tmu2ibeyyj" path="res://Prefabs/Objects/paper_scrap.tscn" id="6_ot4an"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_v4b3a"]
+material = ExtResource("3_d3pmr")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 0.2
@@ -61,6 +64,21 @@ bones/20/position = Vector3(-3.38515e-10, 0.00827834, -4.72977e-11)
 bones/20/rotation = Quaternion(-0.232846, -0.000525319, 0.600333, 0.765103)
 bones/20/scale = Vector3(1, 1, 1)
 
+[node name="body" parent="giant_water_bug/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_wq8pl")
+
+[node name="eyes" parent="giant_water_bug/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("4_bjn2n")
+
+[node name="arms" parent="giant_water_bug/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_wq8pl")
+
+[node name="legs_A" parent="giant_water_bug/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("3_wq8pl")
+
+[node name="legs_B" parent="giant_water_bug/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_wq8pl")
+
 [node name="garbage" type="BoneAttachment3D" parent="giant_water_bug/Armature/Skeleton3D" index="5"]
 transform = Transform3D(1, -1.05079e-16, -2.64371e-17, 1.05079e-16, 0.880938, 0.473232, -2.64371e-17, -0.473232, 0.880938, 1.7448e-18, 0.00921385, 0.000705509)
 bone_name = "Head"
@@ -70,23 +88,22 @@ bone_idx = 2
 transform = Transform3D(0.01, 3.45509e-21, -3.59608e-20, 3.61252e-20, -0.00103734, 0.00994605, -2.93887e-22, -0.00994605, -0.00103734, 1.65108e-18, 0.00103919, 0.00190405)
 mesh = SubResource("CylinderMesh_v4b3a")
 skeleton = NodePath("../../garbage")
-surface_material_override/0 = ExtResource("3_d3pmr")
 
 [node name="garbage2" type="BoneAttachment3D" parent="giant_water_bug/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 4.133e-18, -3.8468e-20, -4.133e-18, 0.999827, -0.0186134, -3.84679e-20, 0.0186134, 0.999827, 1.70087e-18, -0.0014118, 0.000507695)
 bone_name = "Body"
 bone_idx = 1
 
-[node name="trash_paper" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("4_d3pmr")]
+[node name="paper_scrap" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("6_ot4an")]
 transform = Transform3D(0.00132673, -0.00254832, -0.000863648, 0.00269033, 0.00127203, 0.000379567, 4.37757e-05, -0.00094236, 0.00284781, -0.00233796, 0.00803252, 0.00228549)
 
-[node name="trash_paper2" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("4_d3pmr")]
+[node name="paper_scrap2" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("6_ot4an")]
 transform = Transform3D(-0.000941384, -0.00279668, 0.000540716, 0.00280868, -0.00100621, -0.000314394, 0.000474444, 0.000407578, 0.00293407, 0.00281082, 0.00207028, 0.00292024)
 
-[node name="trash_paper3" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("4_d3pmr")]
+[node name="paper_scrap3" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("6_ot4an")]
 transform = Transform3D(0.00104898, -0.00277897, -0.000420718, 0.00155919, 0.000948991, -0.00238083, 0.0023385, 0.000613818, 0.00177613, -0.00199832, -0.00236123, 0.00217693)
 
-[node name="trash_paper4" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("4_d3pmr")]
+[node name="paper_scrap4" parent="giant_water_bug/Armature/Skeleton3D/garbage2" instance=ExtResource("6_ot4an")]
 transform = Transform3D(0.00269126, -0.00111786, 0.000712401, 0.00110141, 0.00278289, 0.000205933, -0.000737579, 7.68098e-05, 0.0029069, 0.0006672, -0.0103721, 0.00175609)
 
 [node name="AnimationPlayer" parent="giant_water_bug" index="1"]

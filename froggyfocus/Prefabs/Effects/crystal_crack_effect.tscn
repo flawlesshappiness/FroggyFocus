@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://qs1cjfkykhw8"]
 
 [ext_resource type="Script" uid="uid://cv6nfu7v1rufv" path="res://Effect/AnimationEffectGroup.cs" id="1_4xr54"]
-[ext_resource type="PackedScene" uid="uid://bpe76movbdd5s" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_long_piece.fbx" id="2_2ibwd"]
+[ext_resource type="PackedScene" uid="uid://ik6fa7q1ukr0" path="res://Prefabs/Crystal/crystal_long_piece.tscn" id="2_0cf3j"]
 [ext_resource type="Texture2D" uid="uid://cc1g3dchqsex4" path="res://Assets/KenneyNL/Particles/star_09.png" id="3_0cf3j"]
 [ext_resource type="Texture2D" uid="uid://cdugd1epn2k60" path="res://Assets/KenneyNL/Particles/spark_05.png" id="3_2ibwd"]
 
@@ -321,17 +321,17 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 
 [node name="piece1" type="Node3D" parent="assets/pieces"]
 
-[node name="crystal_long_piece" parent="assets/pieces/piece1" instance=ExtResource("2_2ibwd")]
+[node name="crystal_long_piece2" parent="assets/pieces/piece1" instance=ExtResource("2_0cf3j")]
 transform = Transform3D(0.0961826, 0.110339, -0.136287, 0.0497274, 0.131898, 0.14188, 0.168155, -0.102118, 0.0359972, 0, 0, 0)
 
 [node name="piece2" type="Node3D" parent="assets/pieces"]
 
-[node name="crystal_long_piece" parent="assets/pieces/piece2" instance=ExtResource("2_2ibwd")]
+[node name="crystal_long_piece2" parent="assets/pieces/piece2" instance=ExtResource("2_0cf3j")]
 transform = Transform3D(0.119387, -0.0668249, 0.0614915, 0.087972, 0.110306, -0.0509255, -0.0225321, 0.0765958, 0.126986, 0, 0, 0)
 
 [node name="piece3" type="Node3D" parent="assets/pieces"]
 
-[node name="crystal_long_piece" parent="assets/pieces/piece3" instance=ExtResource("2_2ibwd")]
+[node name="crystal_long_piece2" parent="assets/pieces/piece3" instance=ExtResource("2_0cf3j")]
 transform = Transform3D(0.105217, 0.113898, 0.0696903, -0.0982982, 0.12612, -0.0577156, -0.0903709, -0.00457523, 0.143917, 0, 0, 0)
 
 [node name="glow" type="Sprite3D" parent="assets"]

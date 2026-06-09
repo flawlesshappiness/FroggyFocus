@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3qra18xe0x7w"]
+[gd_scene load_steps=6 format=3 uid="uid://d3qra18xe0x7w"]
 
 [ext_resource type="PackedScene" uid="uid://cqiudv26lubpf" path="res://Assets/FlawLizArt/Objects/sign.fbx" id="1_3i7ba"]
 [ext_resource type="Script" uid="uid://cjhle7g12o3dw" path="res://Prefabs/Tutorial/TutorialSign.cs" id="1_t5p7e"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="3_qrrdg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3i7ba"]
 height = 1.0
@@ -20,6 +21,12 @@ shape = SubResource("CylinderShape3D_3i7ba")
 
 [node name="sign" parent="." instance=ExtResource("1_3i7ba")]
 
+[node name="small_post" parent="sign" index="0"]
+surface_material_override/0 = ExtResource("3_qrrdg")
+
+[node name="small_board" parent="sign/small_post" index="0"]
+surface_material_override/0 = ExtResource("3_qrrdg")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -32,3 +39,5 @@ modulate = Color(0.12, 0.07592, 0.0504, 0.658824)
 outline_modulate = Color(0.12, 0.07592, 0.0504, 0)
 text = "?"
 font_size = 100
+
+[editable path="sign"]

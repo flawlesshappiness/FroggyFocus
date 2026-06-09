@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45mvr51f23tv"]
+
+[ext_resource type="PackedScene" uid="uid://bbct2gyjk8v8j" path="res://Assets/FlawLizArt/Nature/Rock/rock_decorative_001.fbx" id="1_3gxpa"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="2_2bydg"]
+
+[node name="rock_decorative_001" type="Node3D"]
+
+[node name="rock_decorative_001" parent="." instance=ExtResource("1_3gxpa")]
+
+[node name="rock_decorative_001" parent="rock_decorative_001" index="0"]
+surface_material_override/0 = ExtResource("2_2bydg")
+
+[editable path="rock_decorative_001"]

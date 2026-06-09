@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://2sbww4qcwiye"]
+[gd_scene load_steps=9 format=3 uid="uid://2sbww4qcwiye"]
 
 [ext_resource type="PackedScene" uid="uid://csnopemsak2aa" path="res://Assets/FlawLizArt/Nature/Toon/branch_001.fbx" id="1_8pb2g"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="2_642vf"]
 [ext_resource type="Material" uid="uid://fq7or7gjbtrf" path="res://Materials/plant_branch_001.tres" id="2_ee002"]
 [ext_resource type="Material" uid="uid://b3862jav3536l" path="res://Materials/plant_branch_002.tres" id="3_642vf"]
 [ext_resource type="Material" uid="uid://jv710j7kf6q8" path="res://Materials/plant_branch_003.tres" id="4_opq5k"]
@@ -17,6 +18,9 @@ material = ExtResource("4_opq5k")
 [node name="Branch_Swamp_001" type="Node3D"]
 
 [node name="branch_001" parent="." instance=ExtResource("1_8pb2g")]
+
+[node name="branch_001" parent="branch_001" index="0"]
+surface_material_override/0 = ExtResource("2_642vf")
 
 [node name="Branches" type="Node3D" parent="."]
 
@@ -84,3 +88,5 @@ skeleton = NodePath("../..")
 transform = Transform3D(1.65439, -1.10452, -0.20742, 0.992603, 1.26302, 1.19143, -0.526993, -1.08849, 1.59294, -3.16978, 2.0342, -12.4326)
 mesh = SubResource("QuadMesh_ee002")
 skeleton = NodePath("../..")
+
+[editable path="branch_001"]

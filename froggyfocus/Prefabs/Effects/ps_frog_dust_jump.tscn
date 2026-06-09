@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://svjino32ea6i"]
+[gd_scene load_steps=8 format=3 uid="uid://svjino32ea6i"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_fdb4x"]
-[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="2_t360y"]
+[ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="2_fdb4x"]
 
 [sub_resource type="Curve" id="Curve_fdb4x"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
@@ -31,15 +31,12 @@ scale_min = 0.2
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_ucnkw")
 
-[sub_resource type="SphereMesh" id="SphereMesh_m5xj4"]
-material = ExtResource("2_t360y")
-
 [node name="ps_frog_dust_jump" type="Node3D" node_paths=PackedStringArray("Particles")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 script = ExtResource("1_fdb4x")
+Particles = [NodePath("ps_frog_dust_jump")]
 PlayOnReady = true
 DestroyDelay = 1.0
-Particles = [NodePath("ps_frog_dust_jump")]
 
 [node name="ps_frog_dust_jump" type="GPUParticles3D" parent="."]
 emitting = false
@@ -49,4 +46,4 @@ one_shot = true
 explosiveness = 0.8
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_m5xj4")
-draw_pass_1 = SubResource("SphereMesh_m5xj4")
+draw_pass_1 = ExtResource("2_fdb4x")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://bk64hnox15ryh"]
+[gd_scene load_steps=33 format=3 uid="uid://bk64hnox15ryh"]
 
 [ext_resource type="Script" uid="uid://camow7ewnypvv" path="res://WorldBug/WorldBug.cs" id="1_8y5k1"]
-[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="3_740jo"]
-[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="4_18olb"]
+[ext_resource type="QuadMesh" uid="uid://ubmhliqiiq8" path="res://Prefabs/Effects/Meshes/ripple.tres" id="3_18olb"]
+[ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="4_55e0y"]
 [ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="4_yddj8"]
 [ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="6_il8y8"]
 [ext_resource type="AudioStream" uid="uid://iupdbu38bkq0" path="res://Sounds/Raw/sfx_impact_water_low_002.wav" id="7_18olb"]
@@ -489,16 +489,6 @@ scale_max = 3.0
 scale_curve = SubResource("CurveTexture_qnml8")
 alpha_curve = SubResource("CurveTexture_8d0rl")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ni2hi"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_740jo")
-
-[sub_resource type="QuadMesh" id="QuadMesh_6h18m"]
-material = SubResource("StandardMaterial3D_ni2hi")
-orientation = 1
-
 [sub_resource type="Curve" id="Curve_55e0y"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -520,9 +510,6 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.2
 scale_max = 0.4
 scale_curve = SubResource("CurveTexture_y1duc")
-
-[sub_resource type="SphereMesh" id="SphereMesh_qt5yk"]
-material = ExtResource("4_18olb")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gofdg"]
 random_pitch = 1.1
@@ -571,7 +558,7 @@ amount = 2
 lifetime = 2.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_xd2fp")
-draw_pass_1 = SubResource("QuadMesh_6h18m")
+draw_pass_1 = ExtResource("3_18olb")
 
 [node name="PsDig" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -580,7 +567,7 @@ amount = 10
 lifetime = 0.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_gofdg")
-draw_pass_1 = SubResource("SphereMesh_qt5yk")
+draw_pass_1 = ExtResource("4_55e0y")
 
 [node name="SfxSplash" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_gofdg")

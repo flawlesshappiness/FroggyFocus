@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://c54tflo13asaw" path="res://Race/RaceCheckpoint.cs" id="1_5k60e"]
 [ext_resource type="Texture2D" uid="uid://b0jbd7eu88b6o" path="res://Assets/FlawLizArt/Textures/icon_frog.png" id="2_i6qbt"]
-[ext_resource type="Material" uid="uid://b6om3ynl6u7pj" path="res://Materials/Wood.tres" id="3_55qav"]
-[ext_resource type="PackedScene" uid="uid://hvrp5rqv41wx" path="res://Assets/FlawLizArt/Objects/wood_plank_4m.fbx" id="4_i6qbt"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="4_1j0ho"]
 [ext_resource type="Texture2D" uid="uid://cpptasjb3y4c5" path="res://Assets/FlawLizArt/Textures/tex_race_finish.png" id="5_1j0ho"]
+[ext_resource type="PackedScene" uid="uid://b0lk5512t6aga" path="res://Prefabs/Objects/wood_plank_4m.tscn" id="5_82vc5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_haihv"]
 size = Vector3(4, 4, 1)
@@ -223,7 +223,7 @@ _data = {
 }
 
 [sub_resource type="BoxMesh" id="BoxMesh_i6qbt"]
-material = ExtResource("3_55qav")
+material = ExtResource("4_1j0ho")
 size = Vector3(0.3, 5, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6qbt"]
@@ -269,11 +269,11 @@ mesh = SubResource("BoxMesh_i6qbt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, 0)
 mesh = SubResource("BoxMesh_i6qbt")
 
-[node name="wood_plank_4m" parent="Model" instance=ExtResource("4_i6qbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69644, 0.143923)
+[node name="wood_plank_4m" parent="Model" instance=ExtResource("5_82vc5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.77357, -0.198225)
 
-[node name="wood_plank_4m2" parent="Model" instance=ExtResource("4_i6qbt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.69644, -0.233548)
+[node name="wood_plank_4m2" parent="Model" instance=ExtResource("5_82vc5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.77357, 0.181509)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

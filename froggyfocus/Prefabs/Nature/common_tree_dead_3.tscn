@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmloypqnkthro"]
+[gd_scene load_steps=5 format=3 uid="uid://dmloypqnkthro"]
 
 [ext_resource type="PackedScene" uid="uid://cp3wr6wdum6k2" path="res://Assets/Quaternius/Nature/CommonTree_Dead_3.fbx" id="1_53njm"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="2_e15c0"]
 [ext_resource type="PackedScene" uid="uid://d2vmuxevdfnb" path="res://Prefabs/Nature/mushroom_shelf_cluster_001.tscn" id="3_e15c0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_llb6d"]
@@ -9,6 +10,9 @@ radius = 0.111611
 [node name="CommonTree_Dead_3" type="Node3D"]
 
 [node name="CommonTree_Dead_3" parent="." instance=ExtResource("1_53njm")]
+
+[node name="CommonTree_Dead_3" parent="CommonTree_Dead_3" index="0"]
+surface_material_override/0 = ExtResource("2_e15c0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -29,3 +33,5 @@ transform = Transform3D(-0.104631, 0, 0.0587569, 0, 0.12, 0, -0.0587569, 0, -0.1
 
 [node name="mushroom_shelf_glowing_cluster4" parent="Mushrooms" instance=ExtResource("3_e15c0")]
 transform = Transform3D(0.0243468, 0, 0.117504, 0, 0.12, 0, -0.117504, 0, 0.0243468, 0.0720124, 0.223609, 0.0118543)
+
+[editable path="CommonTree_Dead_3"]

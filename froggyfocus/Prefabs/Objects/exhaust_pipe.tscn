@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvky4buvmgo3h"]
+[gd_scene load_steps=14 format=3 uid="uid://cvky4buvmgo3h"]
 
 [ext_resource type="PackedScene" uid="uid://b0wruikt1837e" path="res://Assets/FlawLizArt/Machine/exhaust.fbx" id="1_j0g1i"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="2_pdlfg"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_0nq0r"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_5o75a"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="3_w3lxt"]
+[ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="4_0nq0r"]
 [ext_resource type="AudioStream" uid="uid://rv02g0stc44y" path="res://Sounds/Raw/sfx_steam_001.wav" id="4_n3j8l"]
 
 [sub_resource type="Curve" id="Curve_5o75a"]
@@ -20,9 +22,6 @@ initial_velocity_min = 2.0
 initial_velocity_max = 2.0
 gravity = Vector3(0, 5, 0)
 scale_curve = SubResource("CurveTexture_n3j8l")
-
-[sub_resource type="SphereMesh" id="SphereMesh_0nq0r"]
-material = ExtResource("2_pdlfg")
 
 [sub_resource type="Animation" id="Animation_5o75a"]
 length = 0.001
@@ -96,6 +95,10 @@ radius = 0.856934
 [node name="exhaust" parent="." instance=ExtResource("1_j0g1i")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
+[node name="exhaust" parent="exhaust" index="0"]
+surface_material_override/0 = ExtResource("2_0nq0r")
+surface_material_override/1 = ExtResource("3_w3lxt")
+
 [node name="PsSteam" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.31992, 0.436531)
 emitting = false
@@ -103,7 +106,7 @@ amount = 40
 lifetime = 2.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_2ds47")
-draw_pass_1 = SubResource("SphereMesh_0nq0r")
+draw_pass_1 = ExtResource("4_0nq0r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -125,3 +128,5 @@ stream = ExtResource("4_n3j8l")
 max_distance = 40.0
 bus = &"SFX"
 attenuation_filter_db = 0.0
+
+[editable path="exhaust"]

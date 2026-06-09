@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccxpurkgtb7y3"]
+[gd_scene load_steps=6 format=3 uid="uid://ccxpurkgtb7y3"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_emc38"]
 [ext_resource type="PackedScene" uid="uid://du1eyxmiptram" path="res://Assets/FlawLizArt/Nature/Bugs/error_bug_cube.fbx" id="2_fom6p"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_66etv"]
+[ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Unshaded_Green.tres" id="3_h2pmc"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="4_ha07d"]
 
 [node name="ErrorBug_Legs" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_emc38")
@@ -35,6 +37,10 @@ bones/15/rotation = Quaternion(0.353553, -0.146446, -0.353553, 0.853554)
 bones/15/scale = Vector3(1, 1, 1)
 bones/17/position = Vector3(0.0035, -0.002, 0.0025)
 bones/17/rotation = Quaternion(0.270598, -0.270597, -0.653281, 0.653282)
+
+[node name="error_cube" parent="error_bug_cube/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_h2pmc")
+surface_material_override/1 = ExtResource("4_ha07d")
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_66etv")

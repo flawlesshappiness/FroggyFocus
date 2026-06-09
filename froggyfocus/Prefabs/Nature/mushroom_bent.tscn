@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://m063yta0m0mc"]
+
+[ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="1_nygfg"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="2_mdk8u"]
+[ext_resource type="Material" uid="uid://b4sl6vfobdcm0" path="res://Materials/Color_BeigeLight.tres" id="3_8b21a"]
+
+[node name="mushroom_bent" type="Node3D"]
+
+[node name="mushroom_bent" parent="." instance=ExtResource("1_nygfg")]
+
+[node name="mushroom_bent" parent="mushroom_bent" index="0"]
+surface_material_override/0 = ExtResource("2_mdk8u")
+surface_material_override/1 = ExtResource("3_8b21a")
+
+[editable path="mushroom_bent"]

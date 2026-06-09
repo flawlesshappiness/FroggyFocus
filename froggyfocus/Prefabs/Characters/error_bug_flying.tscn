@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://drpkac4yk650q"]
+[gd_scene load_steps=6 format=3 uid="uid://drpkac4yk650q"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_pjlow"]
 [ext_resource type="PackedScene" uid="uid://b6w2oarfpl481" path="res://Assets/FlawLizArt/Nature/Bugs/error_bug_flying.fbx" id="2_ali5j"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ali5j"]
+[ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Unshaded_Green.tres" id="3_eu2xs"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="4_1xpb3"]
 
 [node name="ErrorBug_Flying" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_pjlow")
@@ -17,6 +19,14 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.4, 0)
 bones/1/position = Vector3(0, 0, 0.005)
 bones/2/rotation = Quaternion(0.707107, 0, 0, 0.707107)
 bones/4/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+
+[node name="body" parent="error_bug_flying/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_eu2xs")
+surface_material_override/1 = ExtResource("4_1xpb3")
+
+[node name="wings" parent="error_bug_flying/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_eu2xs")
+surface_material_override/1 = ExtResource("4_1xpb3")
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_ali5j")

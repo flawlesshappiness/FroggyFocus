@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbhbo27vieidm"]
+
+[ext_resource type="PackedScene" uid="uid://coc1ipx2s1ljj" path="res://Prefabs/Nature/float_bounce.tscn" id="2_ekbx7"]
+[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_g2ctm"]
+[ext_resource type="PackedScene" uid="uid://cwhxo5dsd7c63" path="res://Prefabs/Nature/lilypad_cut.tscn" id="3_s0k8m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jmkoy"]
+height = 0.280762
+radius = 0.621094
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ky0cl"]
+height = 0.111816
+radius = 0.64502
+
+[node name="lilypad" type="Node3D"]
+
+[node name="FocusEventArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_g2ctm")
+Id = "swamp_lilypads"
+metadata/_custom_type_script = "uid://dt4o28x6fcqym"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140381, 0)
+shape = SubResource("CylinderShape3D_jmkoy")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="FloatBounce" parent="." instance=ExtResource("2_ekbx7")]
+
+[node name="CollisionShape3D" parent="FloatBounce/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0358715, 0)
+
+[node name="lilypad_cut2" parent="FloatBounce/Anim" index="0" instance=ExtResource("3_s0k8m")]
+transform = Transform3D(0.655, 0, 0, 0, 0.655, 0, 0, 0, 0.655, 0, -0.0184766, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FloatBounce/Anim" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatBounce/Anim/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.020014, 0)
+shape = SubResource("CylinderShape3D_ky0cl")
+
+[editable path="FloatBounce"]

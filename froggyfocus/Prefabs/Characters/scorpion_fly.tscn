@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://clftytcba1dij"]
+[gd_scene load_steps=10 format=3 uid="uid://clftytcba1dij"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_6mkhk"]
 [ext_resource type="PackedScene" uid="uid://b23r68piquvcv" path="res://Assets/FlawLizArt/Nature/Bugs/scorpionfly.fbx" id="2_irmex"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_v3wpm"]
-[ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="3_vy2y0"]
-[ext_resource type="Material" uid="uid://cngrguaiyjtgk" path="res://Materials/Color_Black.tres" id="4_e8umg"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="3_wker3"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="4_e8umg"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="5_rype1"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="6_te11d"]
+[ext_resource type="PackedScene" uid="uid://dv8hdn3mar85t" path="res://Prefabs/Appearance/oil_accessory.tscn" id="7_wker3"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_wker3"]
+material = ExtResource("6_te11d")
 
 [node name="ScorpionFly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_6mkhk")
@@ -45,26 +49,51 @@ bones/35/rotation = Quaternion(-0.668675, 4.93601e-08, 0.105538, 0.736027)
 bones/37/rotation = Quaternion(0.838365, 0.406647, -0.281844, 0.228793)
 bones/39/rotation = Quaternion(0.838365, -0.406647, 0.281844, 0.228793)
 
+[node name="body" parent="scorpionfly/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_wker3")
+surface_material_override/1 = ExtResource("4_e8umg")
+surface_material_override/2 = ExtResource("5_rype1")
+
+[node name="eyes" parent="scorpionfly/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("6_te11d")
+
+[node name="antannae" parent="scorpionfly/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("4_e8umg")
+
+[node name="snout" parent="scorpionfly/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("5_rype1")
+
+[node name="legs_A" parent="scorpionfly/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_wker3")
+
+[node name="legs_B" parent="scorpionfly/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("3_wker3")
+
+[node name="legs_C" parent="scorpionfly/Armature/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("3_wker3")
+
+[node name="wings" parent="scorpionfly/Armature/Skeleton3D" index="7"]
+surface_material_override/0 = ExtResource("3_wker3")
+surface_material_override/1 = ExtResource("4_e8umg")
+
 [node name="oil" type="BoneAttachment3D" parent="scorpionfly/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, 1.41567e-18, -4.51286e-21, -1.41567e-18, 0.99998, -0.0063756, -4.51296e-21, 0.0063756, 0.99998, 1.54568e-18, 0.000367434, 0.00742471)
+transform = Transform3D(1, 1.41567e-18, -4.51287e-21, -1.41567e-18, 0.99998, -0.00637561, -4.51296e-21, 0.00637561, 0.99998, 1.54568e-18, 0.00036743, 0.00742472)
 bone_name = "Body"
 bone_idx = 1
 
-[node name="oil_bug_accessory" parent="scorpionfly/Armature/Skeleton3D/oil" instance=ExtResource("3_vy2y0")]
-transform = Transform3D(0.002, 0, 0, 0, -0.000435469, -0.00195202, 0, 0.00195202, -0.000435469, 1.24953e-18, -0.00253612, 0.00065028)
+[node name="oil_accessory" parent="scorpionfly/Armature/Skeleton3D/oil" instance=ExtResource("7_wker3")]
+transform = Transform3D(0.002, -1.00974e-28, -4.03897e-28, -2.01948e-28, -0.000435469, -0.00195202, -1.57772e-30, 0.00195202, -0.000435469, 1.24953e-18, -0.00253612, 0.00065028)
 
-[node name="oil_bug_accessory2" parent="scorpionfly/Armature/Skeleton3D/oil" instance=ExtResource("3_vy2y0")]
-transform = Transform3D(-0.003, 0, 2.62268e-10, 2.61277e-10, -0.000260581, 0.00298866, 2.27807e-11, 0.00298866, 0.000260581, 1.24664e-18, -0.00049483, 0.00121309)
+[node name="oil_accessory2" parent="scorpionfly/Armature/Skeleton3D/oil" instance=ExtResource("7_wker3")]
+transform = Transform3D(-0.003, -5.04871e-29, 2.62268e-10, 2.61277e-10, -0.000260581, 0.00298866, 2.27807e-11, 0.00298866, 0.000260581, 1.24664e-18, -0.00049483, 0.00121309)
 
 [node name="sphere" type="MeshInstance3D" parent="scorpionfly/Armature/Skeleton3D/oil"]
 transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, -1.46431e-21, 0.0010369, 0.000439788)
 mesh = SubResource("SphereMesh_wker3")
-surface_material_override/0 = ExtResource("4_e8umg")
 
 [node name="sphere2" type="MeshInstance3D" parent="scorpionfly/Armature/Skeleton3D/oil"]
 transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, -3.11223e-21, 0.00219967, 0.000391973)
 mesh = SubResource("SphereMesh_wker3")
-surface_material_override/0 = ExtResource("4_e8umg")
 
 [node name="AnimationPlayer" parent="scorpionfly" index="1"]
 playback_default_blend_time = 0.25

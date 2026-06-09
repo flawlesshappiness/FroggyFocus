@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://caxtcmeu7c6wv"]
+[gd_scene load_steps=14 format=3 uid="uid://caxtcmeu7c6wv"]
 
 [ext_resource type="Script" uid="uid://cog2l72ajovxi" path="res://Prefabs/FocusAttacks/CursorSyringeLiquid/CursorSyringeLiquid.cs" id="1_6axu7"]
 [ext_resource type="PackedScene" uid="uid://dv2y8uno7wxic" path="res://Assets/FlawLizArt/Eldritch/splat.fbx" id="2_p70mi"]
 [ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="3_a36t5"]
+[ext_resource type="Material" uid="uid://v3gpnk1n4pc0" path="res://Materials/Color_Purple.tres" id="3_awrgo"]
 [ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="4_1nbtk"]
 [ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="5_8v2ox"]
 [ext_resource type="PackedScene" uid="uid://buypkqfilrh3j" path="res://Prefabs/Effects/syringe_liquid_trap_effect.tscn" id="6_awrgo"]
@@ -148,6 +149,9 @@ SizeNode = NodePath("Anim/Size")
 
 [node name="splat" parent="Anim/Size" instance=ExtResource("2_p70mi")]
 
+[node name="splat" parent="Anim/Size/splat" index="0"]
+surface_material_override/0 = ExtResource("3_awrgo")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1nbtk")
@@ -164,3 +168,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11232, 0)
 script = ExtResource("5_8v2ox")
 EffectGroupPrefab = ExtResource("6_awrgo")
 metadata/_custom_type_script = "uid://bcoah34psypiv"
+
+[editable path="Anim/Size/splat"]

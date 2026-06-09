@@ -94,21 +94,21 @@ public partial class OptionsControl : ControlScript
     private void MasterSlider_ValueChanged(double v)
     {
         var f = Convert.ToSingle(v);
-        OptionsController.Instance.UpdateVolume("Master", f);
+        OptionsController.Instance.UpdateVolume(AudioBusNames.Master, f);
         Data.Options.VolumeMaster = f;
     }
 
     private void SFXSlider_ValueChanged(double v)
     {
         var f = Convert.ToSingle(v);
-        OptionsController.Instance.UpdateVolume("SFX", f);
+        OptionsController.Instance.UpdateVolume(AudioBusNames.SFX, f);
         Data.Options.VolumeSFX = f;
     }
 
     private void BGMSlider_ValueChanged(double v)
     {
         var f = Convert.ToSingle(v);
-        OptionsController.Instance.UpdateVolume("BGM", f);
+        OptionsController.Instance.UpdateVolume(AudioBusNames.BGM, f);
         Data.Options.VolumeBGM = f;
     }
 

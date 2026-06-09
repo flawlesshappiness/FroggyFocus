@@ -45,7 +45,6 @@ public static class Item
             ItemType.BodyTop_None,
             ItemType.Face_None,
             ItemType.Hat_None,
-            ItemType.Particles_None,
         };
         return none_types.Contains(type);
     }

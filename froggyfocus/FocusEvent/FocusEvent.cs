@@ -33,12 +33,6 @@ public partial class FocusEvent : Node3D
     public FocusFrog Frog;
 
     [Export]
-    public FocusSkillCheck OverrideSkillCheck;
-
-    [Export]
-    public Node3D SkillCheckParent;
-
-    [Export]
     public AnimationPlayer AnimationPlayer_Frog;
 
     public event Action<FocusEventResult> OnEnded;
@@ -61,7 +55,6 @@ public partial class FocusEvent : Node3D
     public bool IsCoveringEyes { get; private set; }
     public bool IsEating { get; private set; }
 
-    private List<FocusSkillCheck> skill_checks = new();
     private List<FocusEventBackground> backgrounds = new();
     private RandomNumberGenerator rng = new();
     private FocusEventResult result;
@@ -98,7 +91,6 @@ public partial class FocusEvent : Node3D
     {
         base._Ready();
         InitializeCursor();
-        InitializeSkillChecks();
         InitializeBackgrounds();
     }
 
@@ -114,12 +106,6 @@ public partial class FocusEvent : Node3D
         Cursor.OnTarget += Cursor_Target;
         Cursor.OnTargetReleased += Cursor_TargetReleased;
         Cursor.OnDisrupt += Cursor_Disrupt;
-    }
-
-    private void InitializeSkillChecks()
-    {
-        skill_checks = SkillCheckParent.GetNodesInChildren<FocusSkillCheck>();
-        skill_checks.ForEach(x => x.Initialize(this));
     }
 
     private void InitializeBackgrounds()
@@ -275,15 +261,6 @@ public partial class FocusEvent : Node3D
         {
             EndEvent();
         }
-    }
-
-    private void ResetSkillchecks()
-    {
-        skill_checks.ForEach(x =>
-        {
-            x.Clear();
-            x.ResetCooldown();
-        });
     }
 
     private void HijackCamera()

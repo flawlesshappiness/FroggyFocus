@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dimtq8fo0s1d1"]
+[gd_scene load_steps=5 format=3 uid="uid://dimtq8fo0s1d1"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_thigo"]
 [ext_resource type="PackedScene" uid="uid://4hp26ult2vjo" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_butterfly.fbx" id="2_02uyp"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="3_02uyp"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_cjmwq"]
 
 [node name="CrystalButterfly" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
@@ -20,6 +21,9 @@ bones/3/rotation = Quaternion(0.597142, 0.378711, -0.378711, 0.597142)
 bones/5/rotation = Quaternion(0.327632, 0.626623, -0.626623, 0.327633)
 bones/7/rotation = Quaternion(0.597142, -0.378711, 0.378711, 0.597142)
 bones/9/rotation = Quaternion(-0.327632, 0.626623, -0.626623, -0.327633)
+
+[node name="crystal" parent="crystal_butterfly/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_02uyp")
 
 [node name="AnimationPlayer" parent="crystal_butterfly" index="1"]
 playback_default_blend_time = 0.25

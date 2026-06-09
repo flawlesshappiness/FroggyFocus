@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://djg6cn64c3id2"]
+[gd_scene load_steps=5 format=3 uid="uid://djg6cn64c3id2"]
 
 [ext_resource type="PackedScene" uid="uid://cfbpfkqqtbtfh" path="res://Assets/FlawLizArt/Interior/wall_lab.fbx" id="1_1o386"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="2_denqd"]
+[ext_resource type="Material" uid="uid://cmwnlcmbrnpft" path="res://Materials/Color_Blue.tres" id="3_vny4i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vd4ht"]
 size = Vector3(4, 5, 0.630859)
@@ -9,8 +11,15 @@ size = Vector3(4, 5, 0.630859)
 
 [node name="wall_lab" parent="." instance=ExtResource("1_1o386")]
 
+[node name="Cube" parent="wall_lab" index="0"]
+surface_material_override/0 = ExtResource("2_denqd")
+surface_material_override/1 = ExtResource("3_vny4i")
+surface_material_override/2 = ExtResource("3_vny4i")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.18457)
 shape = SubResource("BoxShape3D_vd4ht")
+
+[editable path="wall_lab"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbs70wxx5su5d"]
+
+[ext_resource type="PackedScene" uid="uid://b73xd2pio1sq0" path="res://Assets/FlawLizArt/Interior/tile_2x2.fbx" id="1_0t7hu"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="2_cm7um"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aueyq"]
+size = Vector3(2, 0.5, 2)
+
+[node name="factory_tile_2x2" type="Node3D"]
+
+[node name="tile_2x2" parent="." instance=ExtResource("1_0t7hu")]
+
+[node name="Tile" parent="tile_2x2" index="0"]
+surface_material_override/0 = ExtResource("2_cm7um")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.249, 0)
+shape = SubResource("BoxShape3D_aueyq")
+
+[editable path="tile_2x2"]

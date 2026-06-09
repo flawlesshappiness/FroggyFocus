@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://scqlqqxli7n"]
+[gd_scene load_steps=8 format=3 uid="uid://scqlqqxli7n"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_6qvif"]
-[ext_resource type="Material" uid="uid://4cns6ftvo7i1" path="res://Materials/PS_Water_Ripple.tres" id="2_6qvif"]
+[ext_resource type="QuadMesh" uid="uid://ubmhliqiiq8" path="res://Prefabs/Effects/Meshes/ripple.tres" id="2_6qvif"]
 
 [sub_resource type="Curve" id="Curve_6v3f5"]
 _data = [Vector2(0, 0), 0.0, 7.95301, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.195775, 0.0, 0, 0]
@@ -25,14 +25,10 @@ scale_curve = SubResource("CurveTexture_wlrwp")
 color = Color(1, 1, 1, 0.313726)
 alpha_curve = SubResource("CurveTexture_o6pkf")
 
-[sub_resource type="QuadMesh" id="QuadMesh_o8ft5"]
-material = ExtResource("2_6qvif")
-orientation = 1
-
 [node name="PsWaterRipple" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_6qvif")
-DestroyDelay = 2.0
 Particles = [NodePath("ripple")]
+DestroyDelay = 2.0
 
 [node name="ripple" type="GPUParticles3D" parent="."]
 emitting = false
@@ -41,4 +37,4 @@ one_shot = true
 explosiveness = 0.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_6v3f5")
-draw_pass_1 = SubResource("QuadMesh_o8ft5")
+draw_pass_1 = ExtResource("2_6qvif")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://delw30nru6jxn"]
 
 [ext_resource type="Script" uid="uid://c3rrdaiq83g4t" path="res://Prefabs/Pickups/CollectableCoin.cs" id="1_825fh"]
-[ext_resource type="PackedScene" uid="uid://db8ulp4y08cum" path="res://Assets/Quaternius/RPG/Coin.fbx" id="2_eyli1"]
+[ext_resource type="PackedScene" uid="uid://brxojl5830crq" path="res://Prefabs/Misc/coin.tscn" id="2_alki3"]
 [ext_resource type="AudioStream" uid="uid://ct6xqh3g76eec" path="res://Sounds/Raw/sfx_collect_001.wav" id="3_eyli1"]
 [ext_resource type="Texture2D" uid="uid://dsehwvcqhe0rq" path="res://Assets/KenneyNL/Particles/star_07.png" id="4_alki3"]
 
@@ -223,7 +223,7 @@ AnimationPlayer = NodePath("AnimationPlayer")
 
 [node name="Anim" type="Node3D" parent="."]
 
-[node name="Coin" parent="Anim" instance=ExtResource("2_eyli1")]
+[node name="coin" parent="Anim" instance=ExtResource("2_alki3")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

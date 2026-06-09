@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfg4o34c4toh8"]
+[gd_scene load_steps=9 format=3 uid="uid://cfg4o34c4toh8"]
 
 [ext_resource type="PackedScene" uid="uid://cj0wol0qe4nq5" path="res://Assets/FlawLizArt/Nature/Toon/branch_002.fbx" id="1_url54"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="2_c1jyv"]
 [ext_resource type="Material" uid="uid://fq7or7gjbtrf" path="res://Materials/plant_branch_001.tres" id="2_knghc"]
 [ext_resource type="Material" uid="uid://b3862jav3536l" path="res://Materials/plant_branch_002.tres" id="4_c1jyv"]
 [ext_resource type="Material" uid="uid://jv710j7kf6q8" path="res://Materials/plant_branch_003.tres" id="5_3i03m"]
@@ -17,6 +18,9 @@ material = ExtResource("5_3i03m")
 [node name="Branch_Swamp_002" type="Node3D"]
 
 [node name="branch_002" parent="." instance=ExtResource("1_url54")]
+
+[node name="branch_002" parent="branch_002" index="0"]
+surface_material_override/0 = ExtResource("2_c1jyv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.204735, -2.35765, 1.84379, -2.29779, 1.30805, 1.41745, -1.91788, -1.31548, -1.89506, -0.617208, 1.18385, 1.75029)
@@ -81,3 +85,5 @@ mesh = SubResource("QuadMesh_024yu")
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.268361, 0.0339726, -0.962719, -0.621186, -0.75774, -0.199897, -0.736282, 0.651672, -0.182244, 0.47972, 3.92787, 5.01949)
 mesh = SubResource("QuadMesh_024yu")
+
+[editable path="branch_002"]

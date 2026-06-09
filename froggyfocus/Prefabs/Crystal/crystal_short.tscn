@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://vuikkdt113j"]
+
+[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="1_y4xke"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="2_50lei"]
+
+[node name="crystal_short" type="Node3D"]
+
+[node name="crystal_short" parent="." instance=ExtResource("1_y4xke")]
+
+[node name="crystal_short" parent="crystal_short" index="0"]
+surface_material_override/0 = ExtResource("2_50lei")
+
+[editable path="crystal_short"]

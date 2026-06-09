@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://pwngct2tt8w"]
+[gd_scene load_steps=7 format=3 uid="uid://pwngct2tt8w"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_4inbj"]
 [ext_resource type="PackedScene" uid="uid://dtmkufbgpcrfh" path="res://Assets/FlawLizArt/Nature/Bugs/beetle.fbx" id="2_4inbj"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_4inbj"]
-[ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="3_jeiot"]
-[ext_resource type="PackedScene" uid="uid://bc1nb7nssehh2" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_straight.fbx" id="4_3bcgl"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="3_35u1c"]
+[ext_resource type="PackedScene" uid="uid://m063yta0m0mc" path="res://Prefabs/Nature/mushroom_bent.tscn" id="4_35u1c"]
+[ext_resource type="PackedScene" uid="uid://b6uinflgwj7vo" path="res://Prefabs/Nature/mushroom_straight.tscn" id="5_35u1c"]
 
 [node name="Beetle" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_4inbj")
@@ -31,27 +32,36 @@ bones/12/rotation = Quaternion(0, 0, 0.655714, 0.755009)
 bones/14/rotation = Quaternion(0, 0, -8.00937e-08, 1)
 bones/16/rotation = Quaternion(0, 0, 7.63685e-08, 1)
 
+[node name="beetle" parent="beetle/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_35u1c")
+
+[node name="legs" parent="beetle/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_35u1c")
+
+[node name="antennae" parent="beetle/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_35u1c")
+
 [node name="mushroom" type="BoneAttachment3D" parent="beetle/Armature/Skeleton3D" index="3"]
 transform = Transform3D(0.999146, -0.0413104, 0, 0.0413104, 0.999146, 0, 0, 0, 1, 0, -0.00490444, 0.00537641)
 bone_name = "Body"
 bone_idx = 1
 
-[node name="mushroom_bent" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("3_jeiot")]
+[node name="mushroom_bent4" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("4_35u1c")]
 transform = Transform3D(-0.0021382, 8.84052e-05, 0.00210245, 0.00210065, -8.68535e-05, 0.00214003, 0.000123931, 0.00299744, 4.09362e-10, -0.00299054, -0.00581265, 0.00666518)
 
-[node name="mushroom_bent2" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("3_jeiot")]
+[node name="mushroom_bent5" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("4_35u1c")]
 transform = Transform3D(-0.00059844, 2.47431e-05, -0.0029396, -0.00293709, 0.000121436, 0.000598951, 0.000123931, 0.00299744, 1.98404e-10, 0.00361247, 0.000677707, 0.00741345)
 
-[node name="mushroom_bent3" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("3_jeiot")]
+[node name="mushroom_bent6" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("4_35u1c")]
 transform = Transform3D(0.000311888, -1.28954e-05, 0.00298372, 0.00298117, -0.000123259, -0.000312154, 0.000123932, 0.00299744, 1.22953e-10, -0.00306473, 0.00869156, 0.00741345)
 
-[node name="mushroom_straight" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("4_3bcgl")]
-transform = Transform3D(0.00194228, -0.000476984, 4.47241e-06, -9.84547e-05, -0.000419222, -0.00195309, 0.000466733, 0.00189651, -0.000430605, -0.00162873, -0.000566611, 0.00830105)
+[node name="mushroom_straight4" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("5_35u1c")]
+transform = Transform3D(0.00194228, -0.000476984, 4.4724e-06, -9.84547e-05, -0.000419222, -0.00195309, 0.000466733, 0.00189651, -0.000430605, -0.00162873, -0.000566611, 0.00830105)
 
-[node name="mushroom_straight2" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("4_3bcgl")]
+[node name="mushroom_straight5" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("5_35u1c")]
 transform = Transform3D(0.00198903, 0.000161291, -0.000133248, -0.000157529, 0.000316359, -0.00196853, -0.000137675, 0.00196822, 0.000327327, 0.00155601, 0.00571318, 0.00852897)
 
-[node name="mushroom_straight3" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("4_3bcgl")]
+[node name="mushroom_straight6" parent="beetle/Armature/Skeleton3D/mushroom" instance=ExtResource("5_35u1c")]
 transform = Transform3D(0.0017353, 0.000994273, 1.27365e-05, -0.000147038, 0.000281919, -0.00197456, -0.000983423, 0.00171229, 0.000317704, 0.0035225, 0.0110811, 0.00826654)
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]

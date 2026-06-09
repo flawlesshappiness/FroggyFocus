@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cntyr6wehqdsp"]
+[gd_scene load_steps=17 format=3 uid="uid://cntyr6wehqdsp"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_agj4u"]
 [ext_resource type="PackedScene" uid="uid://d1by3m7qj52p3" path="res://Assets/FlawLizArt/Nature/Bugs/horsefly.fbx" id="2_4sku3"]
 [ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="3_4sku3"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="3_54xxt"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_almym"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="4_1wpea"]
 [ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="4_almym"]
 [ext_resource type="Material" uid="uid://dd4cr8a3qa3fa" path="res://Materials/Seaweed_003.tres" id="5_i74n7"]
-[ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="6_5r26w"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="5_yjbsj"]
+[ext_resource type="Material" uid="uid://dslk7h31g2ng3" path="res://Materials/Color_BlueLight.tres" id="6_k71kq"]
+[ext_resource type="PackedScene" uid="uid://dv8hdn3mar85t" path="res://Prefabs/Appearance/oil_accessory.tscn" id="10_54xxt"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_almym"]
 
@@ -54,6 +58,28 @@ bones/26/rotation = Quaternion(-0.261386, -0.367952, 0.663592, 0.596602)
 bones/27/rotation = Quaternion(0.626259, -0.000131116, -0.11765, 0.770687)
 bones/28/rotation = Quaternion(-0.85857, -4.05684e-05, 0.160739, 0.486848)
 bones/30/rotation = Quaternion(-0.373968, 0.0921014, 0.895459, 0.223199)
+
+[node name="body" parent="horsefly/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_54xxt")
+
+[node name="eyes" parent="horsefly/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_54xxt")
+surface_material_override/1 = ExtResource("4_1wpea")
+
+[node name="antannae" parent="horsefly/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("5_yjbsj")
+
+[node name="wings" parent="horsefly/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("6_k71kq")
+
+[node name="legs_A" parent="horsefly/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("5_yjbsj")
+
+[node name="legs_B" parent="horsefly/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("5_yjbsj")
+
+[node name="legs_C" parent="horsefly/Armature/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("5_yjbsj")
 
 [node name="seaweed" type="BoneAttachment3D" parent="horsefly/Armature/Skeleton3D" index="7"]
 transform = Transform3D(1, 4.06515e-18, -3.72154e-20, -4.06515e-18, 0.999832, -0.0183079, -3.72151e-20, 0.0183079, 0.999832, 3.70729e-18, -0.00152413, 0.0179563)
@@ -123,16 +149,17 @@ mesh = SubResource("SphereMesh_5r26w")
 
 [node name="oil" type="BoneAttachment3D" parent="horsefly/Armature/Skeleton3D" index="8"]
 transform = Transform3D(1, 4.06515e-18, -3.72154e-20, -4.06515e-18, 0.999832, -0.0183079, -3.72151e-20, 0.0183079, 0.999832, 3.70729e-18, -0.00152413, 0.0179563)
+visible = false
 bone_name = "Body"
 bone_idx = 1
 
-[node name="oil_bug_accessory" parent="horsefly/Armature/Skeleton3D/oil" instance=ExtResource("6_5r26w")]
-transform = Transform3D(0.006, 0, 0, 0, -2.62268e-10, -0.006, 0, 0.006, -2.62268e-10, 1.249e-18, -1.79502e-10, 0.00421306)
+[node name="oil_accessory" parent="horsefly/Armature/Skeleton3D/oil" instance=ExtResource("10_54xxt")]
+transform = Transform3D(0.006, 5.04871e-29, 1.61559e-27, 3.23117e-27, -2.54659e-10, -0.006, -5.04871e-29, 0.006, -2.54659e-10, 1.249e-18, -2.32831e-10, 0.00421306)
 
-[node name="oil_bug_accessory2" parent="horsefly/Armature/Skeleton3D/oil" instance=ExtResource("6_5r26w")]
-transform = Transform3D(-0.005, 0, 4.37114e-10, 4.37114e-10, -2.18557e-10, 0.005, 1.91069e-17, 0.005, 2.18557e-10, 1.52656e-18, -0.00564019, 0.00219391)
+[node name="oil_accessory2" parent="horsefly/Armature/Skeleton3D/oil" instance=ExtResource("10_54xxt")]
+transform = Transform3D(-0.005, 0, 4.37114e-10, 4.37114e-10, -2.11003e-10, 0.005, 1.9082e-17, 0.005, 2.11003e-10, 1.52656e-18, -0.00564019, 0.00219391)
 
-[node name="oil_bug_accessory3" parent="horsefly/Armature/Skeleton3D/oil" instance=ExtResource("6_5r26w")]
+[node name="oil_accessory3" parent="horsefly/Armature/Skeleton3D/oil" instance=ExtResource("10_54xxt")]
 transform = Transform3D(-0.007, -6.0506e-10, 9.16363e-11, -6.93889e-18, 0.0010482, 0.00692108, -6.11959e-10, 0.00692108, -0.0010482, 3.71235e-12, 0.00915276, 0.0036371)
 
 [node name="AnimationPlayer" parent="horsefly" index="1"]

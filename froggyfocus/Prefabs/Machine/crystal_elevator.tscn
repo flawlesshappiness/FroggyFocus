@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://477l5iys7h6y" path="res://Prefabs/Machine/CrystalElevator.cs" id="1_hufqg"]
 [ext_resource type="PackedScene" uid="uid://b3ljnggrpbcwa" path="res://Prefabs/Machine/elevator_wall.tscn" id="1_s4qh5"]
-[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="2_hufqg"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="2_hufqg"]
 [ext_resource type="PackedScene" uid="uid://cab588udroijf" path="res://Prefabs/Machine/drill.tscn" id="3_mvns4"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="5_cgbpv"]
+[ext_resource type="Material" uid="uid://b2xdif40gqnhg" path="res://Materials/Color_White.tres" id="5_cgbpv"]
 [ext_resource type="AudioStream" uid="uid://d2dbwo0egr7ul" path="res://Sounds/Raw/sfx_elevator_loop_001.wav" id="5_mvns4"]
 [ext_resource type="AudioStream" uid="uid://brmu1a77qvyu0" path="res://Sounds/Raw/sfx_elevator_start.wav" id="6_fbmhw"]
 [ext_resource type="AudioStream" uid="uid://pbphtb6bkm8u" path="res://Sounds/Raw/sfx_elevator_end.wav" id="7_o30p6"]

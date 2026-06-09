@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://gxlcyjt8uqdg"]
+[gd_scene load_steps=8 format=3 uid="uid://gxlcyjt8uqdg"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_ud6wg"]
 [ext_resource type="PackedScene" uid="uid://6pkh4xwdn46b" path="res://Assets/FlawLizArt/Nature/Bugs/cave_cricket.fbx" id="1_w0aes"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_ud6wg"]
-[ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="3_ryocn"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="3_dprpn"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="4_luqu7"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="5_6kh4c"]
+[ext_resource type="PackedScene" uid="uid://vuikkdt113j" path="res://Prefabs/Crystal/crystal_short.tscn" id="6_wv53n"]
 
 [node name="CaveCricket" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_ud6wg")
@@ -42,25 +45,43 @@ bones/37/rotation = Quaternion(-0.0468069, 0.705556, 0.705556, -0.0468069)
 bones/39/position = Vector3(-0.0413444, -0.00954854, 0.00200511)
 bones/41/position = Vector3(-0.0358462, 0.0278354, 0.00200511)
 
+[node name="body" parent="cave_cricket/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_dprpn")
+
+[node name="legs_back" parent="cave_cricket/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("4_luqu7")
+
+[node name="legs_middle" parent="cave_cricket/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("4_luqu7")
+
+[node name="legs_front" parent="cave_cricket/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("4_luqu7")
+
+[node name="eyes" parent="cave_cricket/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("5_6kh4c")
+
+[node name="antannae" parent="cave_cricket/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("3_dprpn")
+
 [node name="crystal" type="BoneAttachment3D" parent="cave_cricket/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 5.4916e-18, -6.79193e-20, -5.4916e-18, 0.999694, -0.024732, -6.79193e-20, 0.024732, 0.999694, 1.18039e-18, -0.00426594, 0.0156074)
 bone_name = "Body"
 bone_idx = 1
 
-[node name="crystal_short" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("3_ryocn")]
-transform = Transform3D(0.02, 0, 0, 0, -8.74228e-10, -0.02, 0, 0.02, -8.74228e-10, -6.05845e-29, -1.59816e-10, 0.0036828)
+[node name="crystal_short6" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("6_wv53n")]
+transform = Transform3D(0.02, -2.01948e-28, -1.29247e-26, 0, -9.31323e-10, -0.02, -2.01948e-28, 0.02, -9.31323e-10, 1.03398e-25, 2.32831e-10, 0.0036828)
 
-[node name="crystal_short2" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("3_ryocn")]
-transform = Transform3D(0.02, 0, 0, 0, 0.00119449, -0.0199643, 0, 0.0199643, 0.00119449, 8.21122e-27, 0.0114314, 0.0027146)
+[node name="crystal_short7" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("6_wv53n")]
+transform = Transform3D(0.02, 4.03897e-28, 0, 0, 0.00119449, -0.0199643, -2.01948e-28, 0.0199643, 0.00119449, 0, 0.0114314, 0.0027146)
 
-[node name="crystal_short4" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("3_ryocn")]
-transform = Transform3D(0.02, 0, 0, 0, -0.00152394, -0.0199419, 0, 0.0199419, -0.00152394, 8.21122e-27, -0.0119764, 0.00278235)
+[node name="crystal_short8" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("6_wv53n")]
+transform = Transform3D(0.02, 0, 0, 0, -0.00152394, -0.0199419, -2.01948e-28, 0.0199419, -0.00152394, 0, -0.0119764, 0.00278235)
 
-[node name="crystal_short5" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("3_ryocn")]
-transform = Transform3D(0.02, 0, 0, 0, -0.0031349, -0.0197528, 0, 0.0197528, -0.0031349, 4.07532e-27, -0.0210476, 0.000804024)
+[node name="crystal_short9" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("6_wv53n")]
+transform = Transform3D(0.02, 0, -1.29247e-26, 0, -0.0031349, -0.0197528, -2.01948e-28, 0.0197528, -0.0031349, 0, -0.0210476, 0.000804024)
 
-[node name="crystal_short3" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("3_ryocn")]
-transform = Transform3D(0.02, 0, 0, 0, 0.00119449, -0.0199643, 0, 0.0199643, 0.00119449, 8.21122e-27, 0.0216884, 0.000964537)
+[node name="crystal_short10" parent="cave_cricket/Armature/Skeleton3D/crystal" instance=ExtResource("6_wv53n")]
+transform = Transform3D(0.02, 4.03897e-28, 0, 0, 0.00119449, -0.0199643, -2.01948e-28, 0.0199643, 0.00119449, 0, 0.0216884, 0.000964537)
 
 [node name="AnimationPlayer" parent="cave_cricket" index="1"]
 playback_default_blend_time = 0.25

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxrvhwera8vu"]
+
+[ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="1_1nw1m"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="2_mr0ki"]
+
+[node name="oil_barrel" type="Node3D"]
+
+[node name="oil_barrel" parent="." instance=ExtResource("1_1nw1m")]
+transform = Transform3D(1.2, 0, 0, 0, -1.2, -1.81195e-07, 0, 1.81195e-07, -1.2, 0, -1.11622, -0.13509)
+
+[node name="Barrel" parent="oil_barrel" index="0"]
+surface_material_override/0 = ExtResource("2_mr0ki")
+
+[editable path="oil_barrel"]

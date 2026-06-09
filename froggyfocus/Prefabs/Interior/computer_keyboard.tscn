@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckqhav7fpwp0b"]
+
+[ext_resource type="PackedScene" uid="uid://ch3a7arxk8twh" path="res://Assets/KenneyNL/Furniture/computerKeyboard.fbx" id="1_we45o"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_m1cej"]
+[ext_resource type="Material" uid="uid://dv45qovaasbkx" path="res://Materials/Color_GreyLight.tres" id="3_i6woe"]
+
+[node name="computer_keyboard" type="Node3D"]
+
+[node name="computerKeyboard" parent="." instance=ExtResource("1_we45o")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.709201, -1.19209e-07, -0.301827)
+
+[node name="computerKeyboard" parent="computerKeyboard" index="0"]
+surface_material_override/0 = ExtResource("2_m1cej")
+surface_material_override/1 = ExtResource("3_i6woe")
+
+[editable path="computerKeyboard"]

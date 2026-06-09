@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://brxojl5830crq"]
+
+[ext_resource type="PackedScene" uid="uid://db8ulp4y08cum" path="res://Assets/Quaternius/RPG/Coin.fbx" id="1_p84jy"]
+[ext_resource type="Material" uid="uid://bmavvypsv6dar" path="res://Materials/Color_Gold.tres" id="2_bn44p"]
+
+[node name="coin" type="Node3D"]
+
+[node name="Coin" parent="." instance=ExtResource("1_p84jy")]
+
+[node name="Coin" parent="Coin" index="0"]
+surface_material_override/0 = ExtResource("2_bn44p")
+
+[editable path="Coin"]

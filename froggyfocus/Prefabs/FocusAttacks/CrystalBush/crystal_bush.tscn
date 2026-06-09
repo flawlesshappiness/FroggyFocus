@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://njryvdvts8tj"]
 
 [ext_resource type="Script" uid="uid://drcbudv5bxntp" path="res://FocusAttack/BushObject.cs" id="1_vpok1"]
-[ext_resource type="PackedScene" uid="uid://beec38frmqp4t" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_long.fbx" id="2_vpok1"]
+[ext_resource type="PackedScene" uid="uid://bmi1j67o84i5g" path="res://Prefabs/Crystal/crystal_long.tscn" id="2_vpok1"]
 [ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="5_tlqtd"]
 [ext_resource type="AudioStream" uid="uid://exphoosul3gj" path="res://Sounds/Raw/sfx_crystal_break.wav" id="5_vpok1"]
 [ext_resource type="PackedScene" uid="uid://cba33gmpcch6" path="res://Prefabs/Effects/crystal_break_effect.tscn" id="6_6hoq2"]
@@ -169,31 +169,31 @@ Animation = NodePath("AnimationPlayer")
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 visible = false
 
-[node name="crystal_long" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.460309, 0)
 
-[node name="crystal_long2" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long2" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.377486, -0.327878, 0, 0.327878, 0.377486, -9.93411e-08, -0.0994616, 0.199517)
 
-[node name="crystal_long3" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long3" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(0.322115, 0.250771, 0.288713, 0, 0.377486, -0.327878, -0.382416, 0.211229, 0.243188, 0.153393, -0.00136562, 0.159437)
 
-[node name="crystal_long4" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long4" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(-0.467005, 0.117132, 0.134854, -9.49739e-09, 0.377486, -0.327878, -0.178622, -0.306242, -0.352577, 0.213294, -0.0752574, -0.16667)
 
-[node name="crystal_long5" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long5" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(-0.281612, -0.270927, -0.311919, -6.42426e-09, 0.377486, -0.327878, 0.413152, -0.184668, -0.212609, -0.20675, -0.0752573, -0.172179)
 
-[node name="crystal_long6" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long6" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(0.145685, -0.313651, -0.361107, 5.69636e-10, 0.377486, -0.327878, 0.478305, 0.0955338, 0.109988, -0.194362, -0.16278, 0.13981)
 
-[node name="crystal_long7" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long7" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(-0.0586233, -0.457416, -0.526625, 2.9632e-09, 0.528481, -0.459029, 0.697541, -0.0384426, -0.044259, 0.0983948, -0.0559478, 0.0138249)
 
-[node name="crystal_long8" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long8" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(-0.0958842, 0.454702, 0.5235, 2.7854e-09, 0.528481, -0.459029, -0.693402, -0.0628766, -0.07239, -0.0741631, -0.0559478, 0.0390285)
 
-[node name="crystal_long9" parent="Anim" instance=ExtResource("2_vpok1")]
+[node name="Crystal_Long9" parent="Anim" instance=ExtResource("2_vpok1")]
 transform = Transform3D(-0.699528, 0.0168447, 0.0193933, 1.13958e-08, 0.528481, -0.459029, -0.0256874, -0.45872, -0.528125, -0.0180042, -0.101681, 0.190574)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

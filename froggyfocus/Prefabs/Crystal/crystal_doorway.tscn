@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dptbcsgggi5jt"]
+[gd_scene load_steps=10 format=3 uid="uid://dptbcsgggi5jt"]
 
 [ext_resource type="Script" uid="uid://78gwiv82or78" path="res://Prefabs/Crystal/CrystalDoorway.cs" id="1_nsfgp"]
 [ext_resource type="PackedScene" uid="uid://b54uutheaw4em" path="res://Assets/FlawLizArt/Objects/security_door.fbx" id="2_vrfma"]
 [ext_resource type="AudioStream" uid="uid://dfylhhmi52jlf" path="res://Sounds/Raw/sfx_door_close_001.wav" id="3_nsfgp"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="3_twsxp"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="4_83xio"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="5_vshsj"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="6_vjalo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ub6t5"]
 size = Vector3(2.39868, 2.82062, 1)
@@ -17,6 +21,15 @@ script = ExtResource("1_nsfgp")
 SfxLocked = NodePath("SfxLocked")
 
 [node name="security_door" parent="." instance=ExtResource("2_vrfma")]
+
+[node name="doorway" parent="security_door" index="0"]
+surface_material_override/0 = ExtResource("3_twsxp")
+surface_material_override/1 = ExtResource("4_83xio")
+
+[node name="door" parent="security_door/doorway" index="0"]
+surface_material_override/0 = ExtResource("3_twsxp")
+surface_material_override/1 = ExtResource("5_vshsj")
+surface_material_override/2 = ExtResource("6_vjalo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29074, 0)
@@ -33,3 +46,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.022, 0)
 stream = ExtResource("3_nsfgp")
 bus = &"SFX"
 attenuation_filter_db = 0.0
+
+[editable path="security_door"]

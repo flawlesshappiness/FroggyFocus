@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://77e2txr8y7km"]
+
+[ext_resource type="PackedScene" uid="uid://ciee30ojrjf0r" path="res://Assets/FlawLizArt/Construction/factory_deco_chimney.fbx" id="1_j520v"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_ieco1"]
+
+[node name="factory_chimney" type="Node3D"]
+
+[node name="factory_deco_chimney" parent="." instance=ExtResource("1_j520v")]
+
+[node name="factory_deco_chimney" parent="factory_deco_chimney" index="0"]
+surface_material_override/0 = ExtResource("2_ieco1")
+
+[editable path="factory_deco_chimney"]

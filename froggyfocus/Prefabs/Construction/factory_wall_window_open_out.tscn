@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bh4d7vf2evgcr"]
+[gd_scene load_steps=9 format=3 uid="uid://bh4d7vf2evgcr"]
 
 [ext_resource type="PackedScene" uid="uid://b10b0t25q36j1" path="res://Assets/FlawLizArt/Construction/factory_deco_window.fbx" id="1_clc60"]
 [ext_resource type="PackedScene" uid="uid://db6r511rhkuyn" path="res://Assets/FlawLizArt/Construction/factory_wall_window_open.fbx" id="2_bpwvv"]
+[ext_resource type="Material" uid="uid://cc3a6m6f5y3b" path="res://Materials/Color_Orange.tres" id="2_s0f5d"]
+[ext_resource type="Material" uid="uid://dslk7h31g2ng3" path="res://Materials/Color_BlueLight.tres" id="3_amish"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="5_uvxrk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y6fdd"]
 size = Vector3(1, 4, 1)
@@ -17,7 +20,16 @@ size = Vector3(2, 2, 1)
 [node name="factory_deco_window" parent="." instance=ExtResource("1_clc60")]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 2.21589, 0.225621)
 
+[node name="factory_deco_window" parent="factory_deco_window" index="0"]
+surface_material_override/0 = ExtResource("2_s0f5d")
+surface_material_override/1 = ExtResource("3_amish")
+
 [node name="factory_wall_window_open" parent="." instance=ExtResource("2_bpwvv")]
+
+[node name="factory_wall_window_open" parent="factory_wall_window_open" index="0"]
+surface_material_override/0 = ExtResource("5_uvxrk")
+surface_material_override/1 = ExtResource("2_s0f5d")
+surface_material_override/2 = ExtResource("3_amish")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -40,3 +52,6 @@ shape = SubResource("BoxShape3D_jtjo1")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -1)
 shape = SubResource("BoxShape3D_clc60")
+
+[editable path="factory_deco_window"]
+[editable path="factory_wall_window_open"]

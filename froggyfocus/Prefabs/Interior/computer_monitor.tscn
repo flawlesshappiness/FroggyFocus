@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://tv4gbhgj63hb"]
+[gd_scene load_steps=5 format=3 uid="uid://tv4gbhgj63hb"]
 
 [ext_resource type="PackedScene" uid="uid://c6a5dhuqr5ji3" path="res://Assets/KenneyNL/Furniture/computerScreen.fbx" id="1_g8n5e"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_sjk4h"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="3_v4v4b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nues8"]
 size = Vector3(1.04395, 0.74469, 0.217773)
@@ -12,8 +14,14 @@ size = Vector3(1.04395, 0.74469, 0.217773)
 [node name="computerScreen" parent="Scale" instance=ExtResource("1_g8n5e")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.480397, 0, -0.161122)
 
+[node name="computerScreen" parent="Scale/computerScreen" index="0"]
+surface_material_override/0 = ExtResource("2_sjk4h")
+surface_material_override/1 = ExtResource("3_v4v4b")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.372345, 0)
 shape = SubResource("BoxShape3D_nues8")
+
+[editable path="Scale/computerScreen"]

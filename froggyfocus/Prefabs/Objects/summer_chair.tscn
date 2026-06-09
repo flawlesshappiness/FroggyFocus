@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://6khbeqmqyph1"]
+[gd_scene load_steps=7 format=3 uid="uid://6khbeqmqyph1"]
 
 [ext_resource type="PackedScene" uid="uid://qqm1oay4l2ia" path="res://Assets/FlawLizArt/Objects/summer_chair.fbx" id="1_twjrw"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="2_875or"]
+[ext_resource type="Material" uid="uid://dslk7h31g2ng3" path="res://Materials/Color_BlueLight.tres" id="3_su4ct"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="4_7jntv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o725s"]
 size = Vector3(0.626953, 0.253418, 0.436462)
@@ -12,6 +15,22 @@ size = Vector3(0.626953, 0.708862, 0.314682)
 
 [node name="summer_chair" parent="." instance=ExtResource("1_twjrw")]
 
+[node name="cloth" parent="summer_chair" index="0"]
+surface_material_override/0 = ExtResource("2_875or")
+surface_material_override/1 = ExtResource("3_su4ct")
+
+[node name="pole" parent="summer_chair/cloth" index="0"]
+surface_material_override/0 = ExtResource("4_7jntv")
+
+[node name="pole_001" parent="summer_chair/cloth" index="1"]
+surface_material_override/0 = ExtResource("4_7jntv")
+
+[node name="pole_002" parent="summer_chair/cloth" index="2"]
+surface_material_override/0 = ExtResource("4_7jntv")
+
+[node name="pole_003" parent="summer_chair/cloth" index="3"]
+surface_material_override/0 = ExtResource("4_7jntv")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -21,3 +40,5 @@ shape = SubResource("BoxShape3D_o725s")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344666, 0.214221)
 shape = SubResource("BoxShape3D_e4x3x")
+
+[editable path="summer_chair"]

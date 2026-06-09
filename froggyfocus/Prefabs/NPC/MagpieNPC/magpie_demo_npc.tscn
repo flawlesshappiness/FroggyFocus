@@ -1,15 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1otght5hc7ca"]
+[gd_scene load_steps=22 format=3 uid="uid://d1otght5hc7ca"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_u4r48"]
 [ext_resource type="Resource" uid="uid://jollnsp7sq23" path="res://HandIn/Resources/Demo_Magpie.tres" id="2_u4r48"]
 [ext_resource type="PackedScene" uid="uid://dhsttkfn7e2io" path="res://Assets/FlawLizArt/Characters/Magpie/magpie.fbx" id="3_3qkvf"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="4_32i0s"]
 [ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="4_x1gat"]
-[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="5_32i0s"]
-[ext_resource type="Material" uid="uid://q8jecixud5c4" path="res://Materials/Color_Blue.tres" id="6_iwhvd"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="5_iwhvd"]
+[ext_resource type="Material" uid="uid://dcd4nwuwkrsv6" path="res://Materials/Leech.tres" id="6_mwegg"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="7_mwegg"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="7_qdihm"]
 [ext_resource type="AudioStream" uid="uid://bspgktdfssm0j" path="res://Sounds/Raw/sfx_magpie_speak_001.wav" id="8_qdihm"]
 [ext_resource type="AudioStream" uid="uid://b7a42shuyqvi1" path="res://Sounds/Raw/sfx_magpie_speak_002.wav" id="9_3hb5k"]
+[ext_resource type="Material" uid="uid://bmavvypsv6dar" path="res://Materials/Color_Gold.tres" id="9_32i0s"]
 [ext_resource type="AudioStream" uid="uid://dhhm15ska3tqu" path="res://Sounds/Raw/sfx_magpie_speak_003.wav" id="10_4ahex"]
+[ext_resource type="Material" uid="uid://dslk7h31g2ng3" path="res://Materials/Color_BlueLight.tres" id="10_32i0s"]
 [ext_resource type="AudioStream" uid="uid://bd4x2kg882ldm" path="res://Sounds/Raw/sfx_magpie_speak_004.wav" id="11_ghisk"]
 [ext_resource type="AudioStream" uid="uid://cdom776pb6o07" path="res://Sounds/Raw/sfx_magpie_speak_005.wav" id="12_iwrtv"]
 [ext_resource type="AudioStream" uid="uid://dchselrmxo2m4" path="res://Sounds/Raw/sfx_magpie_speak_006.wav" id="13_1a84a"]
@@ -103,8 +107,22 @@ bones/23/position = Vector3(6.34896e-11, 0.00313047, -1.85046e-10)
 bones/23/rotation = Quaternion(-0.443023, 0.0318843, -0.020698, 0.895704)
 bones/23/scale = Vector3(1, 1, 1)
 
+[node name="body" parent="magpie/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("4_32i0s")
+surface_material_override/1 = ExtResource("5_iwhvd")
+
+[node name="beak" parent="magpie/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("6_mwegg")
+
+[node name="eyes" parent="magpie/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("7_qdihm")
+
 [node name="wings" parent="magpie/Armature/Skeleton3D" index="3"]
 visible = false
+surface_material_override/0 = ExtResource("4_32i0s")
+
+[node name="legs" parent="magpie/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("4_32i0s")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="magpie/Armature/Skeleton3D" index="5"]
 transform = Transform3D(1, 6.05134e-14, 2.38419e-07, 1.97392e-07, 0.560849, -0.827918, -1.33717e-07, 0.827918, 0.560849, 2.33487e-18, 0.0039288, 0.0107259)
@@ -115,8 +133,8 @@ bone_idx = 5
 transform = Transform3D(0.0018572, -3.09164e-05, -0.000741508, -0.000416235, 0.00161101, -0.00110968, 0.000614441, 0.00118478, 0.00148955, 0.00145292, 0.0020416, -0.000217771)
 
 [node name="monocle" parent="magpie/Armature/Skeleton3D/BoneAttachment3D/Glasses_Round/monocle" index="0"]
-surface_material_override/0 = ExtResource("5_32i0s")
-surface_material_override/1 = ExtResource("6_iwhvd")
+surface_material_override/0 = ExtResource("9_32i0s")
+surface_material_override/1 = ExtResource("10_32i0s")
 
 [node name="AnimationPlayer" parent="magpie" index="1"]
 playback_default_blend_time = 0.25

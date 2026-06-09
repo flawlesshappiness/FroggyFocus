@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1jx1i06awdq6"]
+[gd_scene load_steps=6 format=3 uid="uid://b1jx1i06awdq6"]
 
 [ext_resource type="PackedScene" uid="uid://b03fcwv0go5xm" path="res://Assets/FlawLizArt/Nature/Bugs/seahorse.fbx" id="1_5q4r0"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_21syj"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="3_6r7li"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_v7c2q"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="4_ha8iw"]
 
 [node name="Seahorse" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_21syj")
@@ -22,6 +24,15 @@ bones/5/rotation = Quaternion(0.787537, 4.65269e-08, -2.47221e-07, 0.616267)
 bones/6/rotation = Quaternion(-0.259293, -8.01493e-15, 6.18203e-08, 0.965799)
 bones/7/rotation = Quaternion(-0.479215, 7.69751e-15, 1.14254e-07, 0.877697)
 bones/9/rotation = Quaternion(-0.458264, 6.36835e-14, 2.18517e-07, 0.888816)
+
+[node name="body" parent="seahorse/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_6r7li")
+
+[node name="eyes" parent="seahorse/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("4_ha8iw")
+
+[node name="fin" parent="seahorse/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_6r7li")
 
 [node name="AnimationPlayer" parent="seahorse" index="1"]
 playback_default_blend_time = 0.25

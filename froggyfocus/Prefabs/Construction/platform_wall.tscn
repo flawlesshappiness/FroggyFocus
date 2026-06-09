@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhdil3v3gft7u"]
+[gd_scene load_steps=6 format=3 uid="uid://dhdil3v3gft7u"]
 
 [ext_resource type="PackedScene" uid="uid://fk83oj3owt40" path="res://Assets/FlawLizArt/Construction/platform_wall.fbx" id="1_n6x65"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_4qmiq"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="3_wg0s7"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="4_4i47v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bp7cp"]
 size = Vector3(4, 0.5, 4)
@@ -9,8 +12,15 @@ size = Vector3(4, 0.5, 4)
 
 [node name="platform_wall" parent="." instance=ExtResource("1_n6x65")]
 
+[node name="platform_wall" parent="platform_wall" index="0"]
+surface_material_override/0 = ExtResource("2_4qmiq")
+surface_material_override/1 = ExtResource("3_wg0s7")
+surface_material_override/2 = ExtResource("4_4i47v")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 2)
 shape = SubResource("BoxShape3D_bp7cp")
+
+[editable path="platform_wall"]

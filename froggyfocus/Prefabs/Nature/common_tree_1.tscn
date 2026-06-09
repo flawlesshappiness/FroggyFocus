@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqykxm2q6xcgi"]
+[gd_scene load_steps=5 format=3 uid="uid://dqykxm2q6xcgi"]
 
 [ext_resource type="PackedScene" uid="uid://b17gtuweulds" path="res://Assets/Quaternius/Nature/CommonTree_1.fbx" id="1_we1ui"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="2_u1hp7"]
+[ext_resource type="Material" uid="uid://bu0xn6ccwtlfq" path="res://Materials/Color_Green.tres" id="3_8pdif"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vuc05"]
 radius = 0.120657
@@ -9,8 +11,14 @@ radius = 0.120657
 
 [node name="CommonTree_1" parent="." instance=ExtResource("1_we1ui")]
 
+[node name="CommonTree_1" parent="CommonTree_1" index="0"]
+surface_material_override/0 = ExtResource("2_u1hp7")
+surface_material_override/1 = ExtResource("3_8pdif")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.701301, 0)
 shape = SubResource("CapsuleShape3D_vuc05")
+
+[editable path="CommonTree_1"]

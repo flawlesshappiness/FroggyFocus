@@ -1,0 +1,14 @@
+[gd_resource type="QuadMesh" load_steps=3 format=3 uid="uid://c8fi7sdiofyed"]
+
+[ext_resource type="Texture2D" uid="uid://e3hfi2ik23nn" path="res://Assets/KenneyNL/Particles/smoke_07.png" id="1_skfhu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpdta"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_skfhu")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[resource]
+material = SubResource("StandardMaterial3D_lpdta")

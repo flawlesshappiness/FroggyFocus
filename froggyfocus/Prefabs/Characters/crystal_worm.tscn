@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjaubm1ip5h4e"]
+[gd_scene load_steps=5 format=3 uid="uid://bjaubm1ip5h4e"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_ufntu"]
 [ext_resource type="PackedScene" uid="uid://dnirdct56nnpp" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_worm.fbx" id="2_ckjdy"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_2tk1w"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="3_ckjdy"]
 
 [node name="CrystalWorm" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_ufntu")
@@ -12,6 +13,9 @@ Accessories = []
 
 [node name="crystal_worm" parent="." instance=ExtResource("2_ckjdy")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="worm" parent="crystal_worm/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_ckjdy")
 
 [node name="AnimationPlayer" parent="crystal_worm" index="1"]
 playback_default_blend_time = 0.25

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dolo61waqy818"]
+[gd_scene load_steps=7 format=3 uid="uid://dolo61waqy818"]
 
 [ext_resource type="PackedScene" uid="uid://d1q7tc2cyplnl" path="res://Assets/FlawLizArt/Interior/Vent/vent_frame.fbx" id="1_u3yk0"]
 [ext_resource type="Script" uid="uid://d2ahbh8gv4yi" path="res://Prefabs/Interior/vent/VentDoor.cs" id="1_v7fc3"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="3_5531a"]
 [ext_resource type="Script" uid="uid://dsf0eqywgl7lk" path="res://Area/InteractArea.cs" id="3_fiinx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nry2f"]
@@ -15,6 +16,9 @@ script = ExtResource("1_v7fc3")
 InteractArea = NodePath("InteractArea")
 
 [node name="vent_frame" parent="." instance=ExtResource("1_u3yk0")]
+
+[node name="vent_frame" parent="vent_frame" index="0"]
+surface_material_override/0 = ExtResource("3_5531a")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 16
@@ -35,3 +39,5 @@ metadata/_custom_type_script = "uid://dsf0eqywgl7lk"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0577393)
 shape = SubResource("BoxShape3D_5531a")
 debug_fill = false
+
+[editable path="vent_frame"]

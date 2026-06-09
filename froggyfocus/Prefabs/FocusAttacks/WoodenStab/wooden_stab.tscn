@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3ccv31s7nhx0"]
+[gd_scene load_steps=12 format=3 uid="uid://c3ccv31s7nhx0"]
 
 [ext_resource type="Script" uid="uid://b75m7mi5eppwn" path="res://Prefabs/FocusAttacks/WoodenStab/WoodenStab.cs" id="1_jix4h"]
 [ext_resource type="PackedScene" uid="uid://cj0wol0qe4nq5" path="res://Assets/FlawLizArt/Nature/Toon/branch_002.fbx" id="1_pn3fb"]
 [ext_resource type="AudioStream" uid="uid://cjujq6hhnkdkf" path="res://Sounds/Raw/sfx_step_water_high_001.wav" id="3_oi5jl"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="3_s4d4q"]
 [ext_resource type="AudioStream" uid="uid://bhlhbpuh6jvtl" path="res://Sounds/Raw/sfx_step_water_high_002.wav" id="4_iildq"]
 [ext_resource type="AudioStream" uid="uid://dr6lnaq404371" path="res://Sounds/Raw/sfx_step_water_high_003.wav" id="5_s4d4q"]
 [ext_resource type="AudioStream" uid="uid://b2u08d1tpaako" path="res://Sounds/Raw/sfx_creak_001.wav" id="6_iildq"]
@@ -112,6 +113,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.81, 0)
 transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0.132441, 0)
 visible = false
 
+[node name="branch_002" parent="anim/branch_002" index="0"]
+surface_material_override/0 = ExtResource("3_s4d4q")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_6uvrl")
@@ -125,3 +129,5 @@ bus = &"SFX"
 [node name="SfxWarn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_iildq")
 bus = &"SFX"
+
+[editable path="anim/branch_002"]

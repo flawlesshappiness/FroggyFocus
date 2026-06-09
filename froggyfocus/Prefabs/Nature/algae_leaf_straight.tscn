@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4hgtbjub1d8k"]
+
+[ext_resource type="PackedScene" uid="uid://dn267qcf8kx2g" path="res://Assets/FlawLizArt/Nature/Toon/algae_002.fbx" id="1_yye0y"]
+[ext_resource type="Material" uid="uid://deoad4xy1b60l" path="res://Materials/Color_GreenDark.tres" id="2_vdxhd"]
+
+[node name="algae_leaf_straight" type="Node3D"]
+
+[node name="algae_005" parent="." instance=ExtResource("1_yye0y")]
+
+[node name="algae" parent="algae_005" index="0"]
+surface_material_override/0 = ExtResource("2_vdxhd")
+
+[editable path="algae_005"]

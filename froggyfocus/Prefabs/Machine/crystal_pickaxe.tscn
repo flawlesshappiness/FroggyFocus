@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://6lqmpii3xsj0"]
+[gd_scene load_steps=23 format=3 uid="uid://6lqmpii3xsj0"]
 
 [ext_resource type="PackedScene" uid="uid://ovwxdjwc4ssw" path="res://Assets/FlawLizArt/Machine/crystal_pickaxe.fbx" id="1_l2glv"]
 [ext_resource type="Script" uid="uid://bkf0diy1g46pi" path="res://Prefabs/Machine/CrystalPickaxe.cs" id="1_nw7g2"]
 [ext_resource type="PackedScene" uid="uid://dvpx4jardwnmt" path="res://Assets/FlawLizArt/Machine/crystal_pickaxe_joint.fbx" id="2_nw7g2"]
 [ext_resource type="AudioStream" uid="uid://c3x4s2lyeaxjv" path="res://Sounds/Raw/sfx_pickaxe_hit.wav" id="3_pxjy1"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="3_vs670"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="4_8v037"]
 [ext_resource type="AudioStream" uid="uid://cyrfi06rx8njs" path="res://Sounds/Raw/sfx_pickaxe_move_down.wav" id="4_g1u68"]
-[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="6_lajqu"]
+[ext_resource type="Material" uid="uid://b2xdif40gqnhg" path="res://Materials/Color_White.tres" id="6_lajqu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l2glv"]
 size = Vector3(1.13184, 1, 4.13869)
@@ -218,6 +220,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.516059)
 [node name="crystal_pickaxe" parent="scale/Anim" instance=ExtResource("1_l2glv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.516059)
 
+[node name="pickaxe" parent="scale/Anim/crystal_pickaxe" index="0"]
+surface_material_override/0 = ExtResource("3_vs670")
+surface_material_override/1 = ExtResource("4_8v037")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="scale/Anim/crystal_pickaxe"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="scale/Anim/crystal_pickaxe/StaticBody3D"]
@@ -246,6 +252,9 @@ attenuation_filter_db = 0.0
 
 [node name="crystal_pickaxe_joint" parent="scale" instance=ExtResource("2_nw7g2")]
 
+[node name="pickaxe_joint" parent="scale/crystal_pickaxe_joint" index="0"]
+surface_material_override/0 = ExtResource("3_vs670")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="scale/crystal_pickaxe_joint"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="scale/crystal_pickaxe_joint/StaticBody3D"]
@@ -270,3 +279,6 @@ explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_ckdo0")
 draw_pass_1 = SubResource("SphereMesh_54mq6")
+
+[editable path="scale/Anim/crystal_pickaxe"]
+[editable path="scale/crystal_pickaxe_joint"]

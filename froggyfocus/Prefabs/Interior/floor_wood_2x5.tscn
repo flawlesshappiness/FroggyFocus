@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://barr7v13bgfvb"]
+
+[ext_resource type="PackedScene" uid="uid://b0xg55u6iosx7" path="res://Prefabs/Interior/floor_wood_2x2.tscn" id="1_r0knl"]
+
+[node name="floor_wood_2x5" type="Node3D"]
+
+[node name="floor_wood_2x2" parent="." instance=ExtResource("1_r0knl")]
+
+[node name="floor_wood_2x3" parent="." instance=ExtResource("1_r0knl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="floor_wood_2x4" parent="." instance=ExtResource("1_r0knl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="floor_wood_2x5" parent="." instance=ExtResource("1_r0knl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="floor_wood_2x6" parent="." instance=ExtResource("1_r0knl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)

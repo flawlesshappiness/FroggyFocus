@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbo3ryc52cwdh"]
+[gd_scene load_steps=4 format=3 uid="uid://dbo3ryc52cwdh"]
 
 [ext_resource type="PackedScene" uid="uid://b4sqri8f1kxk6" path="res://Assets/FlawLizArt/Interior/Vent/vent_corridor_inside_cross_x.fbx" id="1_dxm0f"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_43f1r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_12iqw"]
 size = Vector3(2, 0.5, 2)
@@ -8,6 +9,9 @@ size = Vector3(2, 0.5, 2)
 [node name="vent_corridor_cross_t" type="Node3D"]
 
 [node name="vent_corridor_inside_cross_x" parent="." instance=ExtResource("1_dxm0f")]
+
+[node name="vent_corridor_cross_x" parent="vent_corridor_inside_cross_x" index="0"]
+surface_material_override/0 = ExtResource("2_43f1r")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 16
@@ -22,3 +26,5 @@ debug_fill = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 shape = SubResource("BoxShape3D_12iqw")
 debug_fill = false
+
+[editable path="vent_corridor_inside_cross_x"]

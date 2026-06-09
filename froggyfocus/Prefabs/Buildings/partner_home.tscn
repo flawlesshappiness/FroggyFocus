@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwgq45nx6dtef"]
+[gd_scene load_steps=8 format=3 uid="uid://dwgq45nx6dtef"]
 
 [ext_resource type="PackedScene" uid="uid://bkqubvttfi6nh" path="res://Assets/FlawLizArt/Building/house_rock.fbx" id="1_oxr77"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_iecjy"]
 [ext_resource type="PackedScene" uid="uid://ckawey6x8v1b3" path="res://Prefabs/Interior/house_door.tscn" id="2_lu1ap"]
 [ext_resource type="PackedScene" uid="uid://cmxm0xr4fjssv" path="res://Assets/FlawLizArt/Interior/window_round.fbx" id="3_lu1ap"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="5_uirvl"]
+[ext_resource type="Material" uid="uid://dslk7h31g2ng3" path="res://Materials/Color_BlueLight.tres" id="6_bwv7g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxr77"]
 size = Vector3(10.0765, 7.23615, 7.62939)
@@ -18,6 +21,9 @@ shape = SubResource("BoxShape3D_oxr77")
 [node name="house_rock" parent="." instance=ExtResource("1_oxr77")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
+[node name="Cube" parent="house_rock" index="0"]
+surface_material_override/0 = ExtResource("2_iecjy")
+
 [node name="HouseDoor" parent="." instance=ExtResource("2_lu1ap")]
 SceneName = "PartnerHomeScene"
 
@@ -26,3 +32,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.66383)
 
 [node name="window_round" parent="." instance=ExtResource("3_lu1ap")]
 transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, -2.12038, 2.73829, 0)
+
+[node name="window_round" parent="window_round" index="0"]
+surface_material_override/0 = ExtResource("5_uirvl")
+surface_material_override/1 = ExtResource("6_bwv7g")
+
+[editable path="house_rock"]
+[editable path="window_round"]

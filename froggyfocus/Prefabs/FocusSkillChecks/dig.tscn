@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://rum51macbtyh"]
-
-[ext_resource type="Script" uid="uid://dgt1a7311slmi" path="res://FocusSkillCheck/FocusSkillCheck_Dig.cs" id="1_dfl6r"]
-
-[node name="Dig" type="Node3D"]
-script = ExtResource("1_dfl6r")
-Type = 21
-Cooldown = Vector2(15, 5)

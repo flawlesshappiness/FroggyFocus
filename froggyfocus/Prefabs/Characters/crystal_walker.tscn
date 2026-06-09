@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://krtf5heg26w5"]
+[gd_scene load_steps=5 format=3 uid="uid://krtf5heg26w5"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_6wcia"]
 [ext_resource type="PackedScene" uid="uid://d2qle4yll3pef" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_walker.fbx" id="1_fbtjp"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_6wcia"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="3_7216s"]
 
 [node name="CrystalWalker" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_6wcia")
@@ -22,6 +23,9 @@ bones/5/rotation = Quaternion(0.707107, -2.10734e-08, 1.89661e-07, 0.707107)
 bones/7/position = Vector3(-0.00351692, 0.00594725, 7.51784e-06)
 bones/7/rotation = Quaternion(0.707107, -1.89661e-07, 2.10734e-08, 0.707107)
 bones/9/rotation = Quaternion(0.707107, -1.89661e-07, 2.10734e-08, 0.707107)
+
+[node name="walker" parent="crystal_walker/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_7216s")
 
 [node name="AnimationPlayer" parent="crystal_walker" index="1"]
 playback_default_blend_time = 0.25

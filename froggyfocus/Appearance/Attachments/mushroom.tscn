@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_tr73j"]
 [ext_resource type="PackedScene" uid="uid://dy3weolguo8pt" path="res://Assets/FlawLizArt/Hats/mushroom.fbx" id="3_e4ho5"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_v6rjt"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="3_v6rjt"]
 
 [node name="AttachmentHat" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_tr73j")

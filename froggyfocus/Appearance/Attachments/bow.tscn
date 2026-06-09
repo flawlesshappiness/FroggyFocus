@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_ufox4"]
 [ext_resource type="PackedScene" uid="uid://bk7crdap8w0rp" path="res://Assets/FlawLizArt/Hats/bow.fbx" id="2_ufox4"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_pnvmm"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="3_pnvmm"]
 
 [node name="Bow" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_ufox4")

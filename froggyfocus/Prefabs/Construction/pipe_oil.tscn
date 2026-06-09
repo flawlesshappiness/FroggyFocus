@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://pc44e6arpkd7"]
+[gd_scene load_steps=14 format=3 uid="uid://pc44e6arpkd7"]
 
 [ext_resource type="PackedScene" uid="uid://ci1lxqq3u7xaq" path="res://Assets/FlawLizArt/Objects/pipe_low_poly.fbx" id="1_pw0bn"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_ishqs"]
 [ext_resource type="PackedScene" uid="uid://bkexm5godcjmr" path="res://Assets/FlawLizArt/Objects/oil_low_poly.fbx" id="2_l2yf6"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_2w8hk"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="3_hwda8"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="3_rughi"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="5_qnlha"]
 [ext_resource type="AudioStream" uid="uid://i5khoaknvq17" path="res://Sounds/Raw/sfx_oil_flow_001.wav" id="6_pmnnv"]
 [ext_resource type="Script" uid="uid://43lk3cm0igii" path="res://Sounds/AudioAutoPlay.cs" id="7_qnlns"]
 
@@ -26,6 +29,10 @@ stream_0/stream = ExtResource("6_pmnnv")
 [node name="Pipe" type="Node3D"]
 
 [node name="pipe_low_poly" parent="." instance=ExtResource("1_pw0bn")]
+
+[node name="Pipe" parent="pipe_low_poly" index="0"]
+surface_material_override/0 = ExtResource("2_ishqs")
+surface_material_override/1 = ExtResource("3_hwda8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="pipe_low_poly/Pipe" index="0"]
 
@@ -54,6 +61,9 @@ bones/5/rotation = Quaternion(0.115148, -3.97442e-15, -2.74534e-08, 0.993348)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/position = Vector3(1.3954e-15, 0.0136292, 3.12723e-09)
 bones/6/rotation = Quaternion(0.0217979, -7.55607e-15, -5.19702e-09, 0.999762)
+
+[node name="Oil" parent="oil_low_poly/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("5_qnlha")
 
 [node name="AnimationPlayer" parent="oil_low_poly" index="1"]
 speed_scale = 0.5

@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://viy4h1h2hav"]
+[gd_scene load_steps=23 format=3 uid="uid://viy4h1h2hav"]
 
 [ext_resource type="Script" uid="uid://c4hmjnuaomx8d" path="res://Prefabs/Effects/ThunderCloudEffect.cs" id="1_1neav"]
-[ext_resource type="Texture2D" uid="uid://e3hfi2ik23nn" path="res://Assets/KenneyNL/Particles/smoke_07.png" id="1_cxeq8"]
+[ext_resource type="QuadMesh" uid="uid://c8fi7sdiofyed" path="res://Prefabs/Effects/Meshes/smoke.tres" id="2_1neav"]
 [ext_resource type="AudioStream" uid="uid://dtal3yucssd7t" path="res://Sounds/Raw/sfx_weather_thunder_001.wav" id="2_tcjac"]
 [ext_resource type="AudioStream" uid="uid://cbr5uaxstqgby" path="res://Sounds/Raw/sfx_weather_thunder_002.wav" id="3_0fj80"]
 [ext_resource type="AudioStream" uid="uid://btus6cms6jg8c" path="res://Sounds/Raw/sfx_weather_thunder_003.wav" id="4_1neav"]
@@ -45,17 +45,6 @@ scale_max = 80.0
 color_ramp = SubResource("GradientTexture1D_tcjac")
 alpha_curve = SubResource("CurveTexture_tcjac")
 emission_curve = SubResource("CurveTexture_1neav")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcjac"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_cxeq8")
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_i6ipu"]
-material = SubResource("StandardMaterial3D_tcjac")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i6ipu"]
 random_pitch = 1.1
@@ -172,7 +161,7 @@ randomness = 1.0
 fixed_fps = 60
 visibility_aabb = AABB(-60, -20, -60, 120, 40, 120)
 process_material = SubResource("ParticleProcessMaterial_cxeq8")
-draw_pass_1 = SubResource("QuadMesh_i6ipu")
+draw_pass_1 = ExtResource("2_1neav")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="thunder_cloud"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

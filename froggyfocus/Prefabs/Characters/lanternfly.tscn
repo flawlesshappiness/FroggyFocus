@@ -1,13 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://clj4w2p24f2go"]
+[gd_scene load_steps=18 format=3 uid="uid://clj4w2p24f2go"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_1e8lu"]
 [ext_resource type="PackedScene" uid="uid://ds64a8rn2cx8t" path="res://Assets/FlawLizArt/Nature/Bugs/lanternfly.fbx" id="1_8opsq"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_oibjn"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="3_2wqaq"]
 [ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="3_balrr"]
 [ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="4_6k8e7"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="4_c3cla"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="5_e540m"]
 [ext_resource type="Material" uid="uid://dd4cr8a3qa3fa" path="res://Materials/Seaweed_003.tres" id="5_ka01s"]
-[ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="6_16327"]
-[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="7_bx8sb"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="7_bx8sb"]
+[ext_resource type="PackedScene" uid="uid://bh1tmu2ibeyyj" path="res://Prefabs/Objects/paper_scrap.tscn" id="10_2wqaq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6k8e7"]
 
@@ -24,6 +27,7 @@ radius = 0.1
 height = 0.2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bx8sb"]
+material = ExtResource("7_bx8sb")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 0.2
@@ -109,6 +113,28 @@ bones/34/position = Vector3(1.97713e-10, 0.0038513, -2.92266e-10)
 bones/34/rotation = Quaternion(-0.780237, -7.26432e-08, -0.167819, 0.602551)
 bones/34/scale = Vector3(1, 1, 1)
 
+[node name="body" parent="lanternfly/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_2wqaq")
+
+[node name="eyes" parent="lanternfly/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("4_c3cla")
+
+[node name="legs_A" parent="lanternfly/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_2wqaq")
+
+[node name="legs_B" parent="lanternfly/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("3_2wqaq")
+
+[node name="legs_C" parent="lanternfly/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_2wqaq")
+
+[node name="wings_top" parent="lanternfly/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("5_e540m")
+
+[node name="wings_bottom" parent="lanternfly/Armature/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("7_bx8sb")
+surface_material_override/1 = ExtResource("3_2wqaq")
+
 [node name="seaweed" type="BoneAttachment3D" parent="lanternfly/Armature/Skeleton3D" index="7"]
 transform = Transform3D(1, -3.61252e-18, -2.93885e-20, 3.61252e-18, 0.999868, 0.0162694, -2.93888e-20, -0.0162694, 0.999868, 1.63395e-18, -2.41178e-05, 0.00812122)
 visible = false
@@ -167,26 +193,28 @@ mesh = SubResource("SphereMesh_16327")
 
 [node name="garbage" type="BoneAttachment3D" parent="lanternfly/Armature/Skeleton3D" index="8"]
 transform = Transform3D(1, -3.61252e-18, -2.93885e-20, 3.61252e-18, 0.999868, 0.0162694, -2.93888e-20, -0.0162694, 0.999868, 1.63395e-18, -2.41178e-05, 0.00812122)
+visible = false
 bone_name = "Body"
 bone_idx = 1
 
-[node name="trash_paper" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("6_16327")]
-transform = Transform3D(0.000884483, -0.00179379, 0, 0.00179355, 0.000884366, -3.25387e-05, 2.91838e-05, 1.439e-05, 0.00199974, 0.000553359, -0.00254791, 0.00257631)
+[node name="paper_scrap" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("10_2wqaq")]
+transform = Transform3D(0.000884483, -0.00179379, 1.90484e-30, 0.00179355, 0.000884366, -3.25387e-05, 2.91838e-05, 1.439e-05, 0.00199974, 0.000553359, -0.00254791, 0.00257631)
 
-[node name="trash_paper2" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("6_16327")]
+[node name="paper_scrap2" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("10_2wqaq")]
 transform = Transform3D(0.000833602, 0.00168617, -0.00067965, -0.0016374, 0.000371471, -0.0010867, -0.00078995, 0.00100937, 0.0015353, -0.00104945, 0.00399054, 0.00263455)
 
-[node name="trash_paper3" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("6_16327")]
+[node name="paper_scrap3" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("10_2wqaq")]
 transform = Transform3D(0.00100286, -0.000885971, 0.00148638, 0.000616477, 0.00178817, 0.00064992, -0.00161686, 0.00013227, 0.00116973, -2.64159e-05, 0.000262388, 0.0022608)
 
-[node name="trash_paper4" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("6_16327")]
+[node name="paper_scrap4" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("10_2wqaq")]
 transform = Transform3D(0.00134739, -0.00143499, 0.000354024, 0.00147536, 0.00133454, -0.00020575, -8.86037e-05, 0.000399769, 0.00195763, -0.000299573, -0.00159018, -0.0013106)
 
-[node name="trash_paper5" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("6_16327")]
+[node name="paper_scrap5" parent="lanternfly/Armature/Skeleton3D/garbage" instance=ExtResource("10_2wqaq")]
 transform = Transform3D(0.00193913, 0.000338319, 0.000354024, -0.00030541, 0.00196581, -0.00020575, -0.000382775, 0.000145427, 0.00195763, -0.000156884, -0.00397913, -0.00167539)
 
 [node name="garbage2" type="BoneAttachment3D" parent="lanternfly/Armature/Skeleton3D" index="9"]
 transform = Transform3D(1, -2.48618e-17, -1.39625e-18, 2.48618e-17, 0.993712, 0.111968, -1.39625e-18, -0.111968, 0.993712, 1.61052e-18, 0.00645966, 0.00801572)
+visible = false
 bone_name = "Head"
 bone_idx = 2
 
@@ -194,7 +222,6 @@ bone_idx = 2
 transform = Transform3D(0.01, 3.45509e-21, -3.59608e-20, 3.61252e-20, -0.00103734, 0.00994605, -2.93887e-22, -0.00994605, -0.00103734, 1.65108e-18, 0.00103919, 0.00190405)
 mesh = SubResource("CylinderMesh_bx8sb")
 skeleton = NodePath("../../garbage")
-surface_material_override/0 = ExtResource("7_bx8sb")
 
 [node name="AnimationPlayer" parent="lanternfly" index="1"]
 playback_default_blend_time = 0.25

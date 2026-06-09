@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxi56icfdug5i"]
+[gd_scene load_steps=7 format=3 uid="uid://bxi56icfdug5i"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_f1o6k"]
-[ext_resource type="Material" uid="uid://yabsdnw7nro6" path="res://Materials/Plant.tres" id="2_t0c5e"]
-[ext_resource type="Material" uid="uid://b4k6ewtih0gy8" path="res://Materials/Flower.tres" id="3_6s556"]
+[ext_resource type="SphereMesh" uid="uid://bxhdvha667hjj" path="res://Prefabs/Effects/Meshes/leaf.tres" id="2_f1o6k"]
+[ext_resource type="SphereMesh" uid="uid://bis3kq5xmbpln" path="res://Prefabs/Effects/Meshes/petal.tres" id="3_f1o6k"]
 
 [sub_resource type="Curve" id="Curve_d7fd7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.95142, 0.0, 0, 0]
@@ -27,17 +27,11 @@ scale_min = 0.1
 scale_max = 0.1
 scale_curve = SubResource("CurveTexture_ent71")
 
-[sub_resource type="SphereMesh" id="SphereMesh_d7fd7"]
-material = ExtResource("2_t0c5e")
-
-[sub_resource type="SphereMesh" id="SphereMesh_iudmh"]
-material = ExtResource("3_6s556")
-
 [node name="PsLeavesAndPetals" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_f1o6k")
+Particles = [NodePath("PsLeaves"), NodePath("PsPetals")]
 PlayOnReady = true
 DestroyDelay = 1.0
-Particles = [NodePath("PsLeaves"), NodePath("PsPetals")]
 
 [node name="PsLeaves" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -48,7 +42,7 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_4lic5")
-draw_pass_1 = SubResource("SphereMesh_d7fd7")
+draw_pass_1 = ExtResource("2_f1o6k")
 
 [node name="PsPetals" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -59,4 +53,4 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_4lic5")
-draw_pass_1 = SubResource("SphereMesh_iudmh")
+draw_pass_1 = ExtResource("3_f1o6k")

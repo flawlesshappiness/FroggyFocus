@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cairit1tqbuqi"]
+
+[ext_resource type="PackedScene" uid="uid://dptay8dphttdl" path="res://Assets/FlawLizArt/Objects/oil_spill.fbx" id="1_qmgdo"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="2_h138y"]
+
+[node name="oil_spill" type="Node3D"]
+
+[node name="oil_spill" parent="." instance=ExtResource("1_qmgdo")]
+
+[node name="Cube" parent="oil_spill" index="0"]
+surface_material_override/0 = ExtResource("2_h138y")
+
+[editable path="oil_spill"]

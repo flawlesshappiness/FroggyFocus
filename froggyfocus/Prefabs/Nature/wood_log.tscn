@@ -1,32 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw7xbxi3rwqgg"]
+[gd_scene load_steps=4 format=3 uid="uid://hi685gsoyflu"]
 
-[ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="1_hjqi4"]
-[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_b80lg"]
+[ext_resource type="PackedScene" uid="uid://c12hgwfx7nfol" path="res://Assets/Quaternius/Nature/WoodLog_NoDetails_Filled_Straight.fbx" id="1_1x3ih"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="2_un07y"]
+[ext_resource type="Material" uid="uid://dlgbygovukcl5" path="res://Materials/Color_BrownLight.tres" id="3_yj5if"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1yv56"]
-size = Vector3(0.510437, 0.523926, 2.70941)
+[node name="wood_log" type="Node3D"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b80lg"]
-size = Vector3(0.505249, 0.408447, 2.65015)
+[node name="WoodLog_NoDetails_Filled_Straight" parent="." instance=ExtResource("1_1x3ih")]
 
-[node name="WoodLog" type="Node3D"]
+[node name="WoodLog" parent="WoodLog_NoDetails_Filled_Straight" index="0"]
+surface_material_override/0 = ExtResource("2_un07y")
+surface_material_override/1 = ExtResource("3_yj5if")
 
-[node name="WoodLog_NoDetails_Filled_Straight" parent="." instance=ExtResource("1_hjqi4")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0401917, 0.264078, -0.171173)
-shape = SubResource("BoxShape3D_1yv56")
-
-[node name="FocusEventArea" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("2_b80lg")
-Id = "swamp_woods"
-metadata/_custom_type_script = "uid://dt4o28x6fcqym"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0237427, 0.702114, -0.190063)
-shape = SubResource("BoxShape3D_b80lg")
-debug_color = Color(0.7, 0, 0, 0.419608)
+[editable path="WoodLog_NoDetails_Filled_Straight"]

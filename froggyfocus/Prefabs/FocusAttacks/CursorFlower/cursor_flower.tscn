@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dydhb6ou5udl5" path="res://Prefabs/FocusAttacks/CursorFlower/CursorFlower.cs" id="1_buo3k"]
 [ext_resource type="PackedScene" uid="uid://bxi56icfdug5i" path="res://Prefabs/Effects/ps_leaves_and_petals.tscn" id="2_kd157"]
 [ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="3_sne2e"]
-[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="4_75oss"]
-[ext_resource type="PackedScene" uid="uid://dn267qcf8kx2g" path="res://Assets/FlawLizArt/Nature/Toon/algae_002.fbx" id="5_xwqit"]
+[ext_resource type="PackedScene" uid="uid://7e2n6lrcm0ek" path="res://Prefabs/Nature/lily_flower.tscn" id="4_rf458"]
+[ext_resource type="PackedScene" uid="uid://d4hgtbjub1d8k" path="res://Prefabs/Nature/algae_leaf_straight.tscn" id="5_gmbxw"]
 [ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="6_j5yqe"]
 
 [sub_resource type="Animation" id="Animation_f8tky"]
@@ -187,25 +187,25 @@ visible = false
 [node name="Models" type="Node3D" parent="Anim_Algae/Size"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="Lilypad_Flower" parent="Anim_Algae/Size/Models" instance=ExtResource("4_75oss")]
+[node name="lily_flower" parent="Anim_Algae/Size/Models" instance=ExtResource("4_rf458")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.0181127, 0)
 
-[node name="algae_002" parent="Anim_Algae/Size/Models" instance=ExtResource("5_xwqit")]
+[node name="algae_leaf_straight" parent="Anim_Algae/Size/Models" instance=ExtResource("5_gmbxw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196651, 0, -0.153973)
 
-[node name="algae_003" parent="Anim_Algae/Size/Models" instance=ExtResource("5_xwqit")]
+[node name="algae_leaf_straight2" parent="Anim_Algae/Size/Models" instance=ExtResource("5_gmbxw")]
 transform = Transform3D(-0.495914, 0, -0.868372, 0, 1, 0, 0.868372, 0, -0.495914, 0.114419, 0, 0.070816)
 
-[node name="algae_004" parent="Anim_Algae/Size/Models" instance=ExtResource("5_xwqit")]
+[node name="algae_leaf_straight3" parent="Anim_Algae/Size/Models" instance=ExtResource("5_gmbxw")]
 transform = Transform3D(-0.471766, 0, 0.881724, 0, 1, 0, -0.881724, 0, -0.471766, -0.110369, 0, 0.0510979)
 
-[node name="algae_005" parent="Anim_Algae/Size/Models" instance=ExtResource("5_xwqit")]
+[node name="algae_leaf_straight4" parent="Anim_Algae/Size/Models" instance=ExtResource("5_gmbxw")]
 transform = Transform3D(0.349016, 0, 0.606785, 0, 0.7, 0, -0.606785, 0, 0.349016, -0.141919, 0, -0.110592)
 
-[node name="algae_006" parent="Anim_Algae/Size/Models" instance=ExtResource("5_xwqit")]
+[node name="algae_leaf_straight5" parent="Anim_Algae/Size/Models" instance=ExtResource("5_gmbxw")]
 transform = Transform3D(0.495122, 0, -0.494828, 0, 0.7, 0, 0.494828, 0, 0.495122, 0.106532, 0, -0.138198)
 
-[node name="algae_007" parent="Anim_Algae/Size/Models" instance=ExtResource("5_xwqit")]
+[node name="algae_leaf_straight6" parent="Anim_Algae/Size/Models" instance=ExtResource("5_gmbxw")]
 transform = Transform3D(-0.698291, 0, -0.0488783, 0, 0.7, 0, 0.0488783, 0, -0.698291, 0.0276589, 0, 0.0550416)
 
 [node name="SfxConstrict" type="AudioStreamPlayer3D" parent="."]

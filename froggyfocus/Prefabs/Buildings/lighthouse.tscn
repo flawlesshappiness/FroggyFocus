@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bovnbfopscqpk"]
+[gd_scene load_steps=7 format=3 uid="uid://bovnbfopscqpk"]
 
 [ext_resource type="PackedScene" uid="uid://bi2an3gue5irw" path="res://Assets/FlawLizArt/Building/light_house.fbx" id="1_23jsf"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="2_kokkl"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="3_ricpi"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="4_1ttqo"]
+[ext_resource type="Material" uid="uid://dslk7h31g2ng3" path="res://Materials/Color_BlueLight.tres" id="5_3273x"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_23jsf"]
 height = 19.25
@@ -10,8 +14,16 @@ radius = 2.40918
 
 [node name="light_house" parent="." instance=ExtResource("1_23jsf")]
 
+[node name="Lighthouse" parent="light_house" index="0"]
+surface_material_override/0 = ExtResource("2_kokkl")
+surface_material_override/1 = ExtResource("3_ricpi")
+surface_material_override/2 = ExtResource("4_1ttqo")
+surface_material_override/3 = ExtResource("5_3273x")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.625, 0)
 shape = SubResource("CylinderShape3D_23jsf")
+
+[editable path="light_house"]

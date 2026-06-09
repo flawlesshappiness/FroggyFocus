@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6uinflgwj7vo"]
+
+[ext_resource type="PackedScene" uid="uid://bc1nb7nssehh2" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_straight.fbx" id="1_gbq5f"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="2_jqbr1"]
+[ext_resource type="Material" uid="uid://b4sl6vfobdcm0" path="res://Materials/Color_BeigeLight.tres" id="3_kruhw"]
+
+[node name="mushroom_straight" type="Node3D"]
+
+[node name="mushroom_straight" parent="." instance=ExtResource("1_gbq5f")]
+
+[node name="mushroom_straight" parent="mushroom_straight" index="0"]
+surface_material_override/0 = ExtResource("2_jqbr1")
+surface_material_override/1 = ExtResource("3_kruhw")
+
+[editable path="mushroom_straight"]

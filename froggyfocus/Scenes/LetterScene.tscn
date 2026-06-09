@@ -4,7 +4,7 @@
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_3ewb5"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_7fvhy"]
 [ext_resource type="Resource" uid="uid://bvknftnsswljy" path="res://Weather/Resources/Sunny.tres" id="3_5km1a"]
-[ext_resource type="Material" uid="uid://c0dwjdrp2kmvd" path="res://Materials/Grass.tres" id="5_5km1a"]
+[ext_resource type="Material" uid="uid://bruhla3ssv8dk" path="res://Materials/Color_GreenLight.tres" id="5_8pg71"]
 [ext_resource type="PackedScene" uid="uid://bp1jbi7x8vkrl" path="res://Prefabs/Objects/letter.tscn" id="6_n8b8l"]
 [ext_resource type="FontFile" uid="uid://cnsoxlxwenjob" path="res://Fonts/times.ttf" id="7_f7hwf"]
 [ext_resource type="FontFile" uid="uid://bdxs8smtu50g1" path="res://Fonts/ITCBLKAD.TTF" id="8_6q7jr"]
@@ -49,7 +49,7 @@ _data = {
 }
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n8b8l"]
-material = ExtResource("5_5km1a")
+material = ExtResource("5_8pg71")
 size = Vector2(10, 10)
 
 [node name="LetterScene" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Letters", "DirectionalLight", "WorldEnvironment")]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b304tcixf2r25"]
+[gd_scene load_steps=11 format=3 uid="uid://b304tcixf2r25"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_b8woc"]
-[ext_resource type="Material" uid="uid://bs7gnasxvanql" path="res://Materials/PS_Yellow.tres" id="2_tvoto"]
+[ext_resource type="SphereMesh" uid="uid://demifqmqj4g8s" path="res://Prefabs/Effects/Meshes/mushroom_spore.tres" id="2_b8woc"]
 
 [sub_resource type="Curve" id="Curve_o5ruh"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0), 0.0, 0.0, 0, 0]
@@ -31,9 +31,6 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_xefh6")
 
-[sub_resource type="SphereMesh" id="SphereMesh_khnpm"]
-material = ExtResource("2_tvoto")
-
 [sub_resource type="Curve" id="Curve_i4lud"]
 _data = [Vector2(0, 0), 0.0, 10.8639, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.85893, 0.0, 0, 0]
 point_count = 3
@@ -54,9 +51,9 @@ scale_curve = SubResource("CurveTexture_khnpm")
 
 [node name="flash_mushroom_explode_effect" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_b8woc")
+Particles = [NodePath("ps_explode"), NodePath("ps_particles")]
 PlayOnReady = true
 DestroyDelay = 5.0
-Particles = [NodePath("ps_explode"), NodePath("ps_particles")]
 
 [node name="ps_explode" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14935, -0.0371058)
@@ -66,7 +63,7 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_i4lud")
-draw_pass_1 = SubResource("SphereMesh_khnpm")
+draw_pass_1 = ExtResource("2_b8woc")
 
 [node name="ps_particles" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14935, -0.0371058)
@@ -76,4 +73,4 @@ one_shot = true
 explosiveness = 0.8
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_xefh6")
-draw_pass_1 = SubResource("SphereMesh_khnpm")
+draw_pass_1 = ExtResource("2_b8woc")

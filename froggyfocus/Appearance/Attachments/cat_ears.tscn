@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_oi7hi"]
 [ext_resource type="PackedScene" uid="uid://cl4p6ip4r8foe" path="res://Assets/FlawLizArt/Hats/cat_ears.fbx" id="2_t3bge"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_w8fs5"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="3_w8fs5"]
 
 [node name="CatEars" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_oi7hi")

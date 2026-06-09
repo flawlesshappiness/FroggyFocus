@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bksa31n7n34b4"]
+[gd_scene load_steps=25 format=3 uid="uid://bksa31n7n34b4"]
 
 [ext_resource type="Script" uid="uid://c0nok3smsoahp" path="res://Prefabs/FocusAttacks/CursorCrystal/CursorCrystal.cs" id="1_tolvf"]
 [ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="2_0y5dh"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cr2jpl86wdybf" path="res://Sounds/Raw/sfx_crystal_crack_001.wav" id="5_gucgt"]
 [ext_resource type="AudioStream" uid="uid://cxemsbt61cpcc" path="res://Sounds/Raw/sfx_crystal_crack_002.wav" id="6_88h06"]
 [ext_resource type="AudioStream" uid="uid://exphoosul3gj" path="res://Sounds/Raw/sfx_crystal_break.wav" id="7_0y5dh"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="7_6bbb5"]
 [ext_resource type="AudioStream" uid="uid://btal1o60odylq" path="res://Sounds/Raw/sfx_crystal_break_charge.wav" id="8_gucgt"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l6e45"]
@@ -299,6 +300,9 @@ visible = false
 
 [node name="crystal_pillar" parent="Anim/Size" instance=ExtResource("2_l6e45")]
 
+[node name="crystal_pillar" parent="Anim/Size/crystal_pillar" index="0"]
+surface_material_override/0 = ExtResource("7_6bbb5")
+
 [node name="SfxSpawn" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_l6e45")
 bus = &"SFX"
@@ -319,3 +323,5 @@ bus = &"SFX"
 libraries = {
 &"": SubResource("AnimationLibrary_6bbb5")
 }
+
+[editable path="Anim/Size/crystal_pillar"]

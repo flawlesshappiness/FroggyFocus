@@ -112,6 +112,7 @@ public partial class OptionsContainer : ControlScript
     {
         base._Ready();
 
+        EnvironmentSlider.ValueChanged += EnvironmentSlider_ValueChanged;
         UIScaleOptions.IndexChanged += UIScaleOptions_IndexChanged;
 
         InitializeControlMaps();
@@ -224,5 +225,12 @@ public partial class OptionsContainer : ControlScript
         var i = Data.Options.FadePlantsIndex;
         RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_view", i == 0 || i == 2);
         RenderingServer.GlobalShaderParameterSet("setting_hide_mesh_near_player", i == 1 || i == 2);
+    }
+
+    private void EnvironmentSlider_ValueChanged(double v)
+    {
+        var f = Convert.ToSingle(v);
+        OptionsController.Instance.UpdateVolume(AudioBusNames.Environment, f);
+        Data.Options.EnvironmentVolume = f;
     }
 }

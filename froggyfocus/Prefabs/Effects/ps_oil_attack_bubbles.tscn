@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4hib2nh7uc4o"]
+[gd_scene load_steps=9 format=3 uid="uid://c4hib2nh7uc4o"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_wqsb5"]
-[ext_resource type="Material" uid="uid://bwype3h3t71r7" path="res://Materials/Oil.tres" id="2_ghlgp"]
+[ext_resource type="SphereMesh" uid="uid://o5o7b4ik8r5d" path="res://Prefabs/Effects/Meshes/oil.tres" id="2_wqsb5"]
 
 [sub_resource type="Curve" id="Curve_wqsb5"]
 _data = [Vector2(0, 0), 0.0, 1.05679, 0, 0, Vector2(0.9, 0.8), 0.602563, 0.602563, 0, 0, Vector2(1, 1), 2.46192, 0.0, 0, 0]
@@ -22,9 +22,6 @@ gravity = Vector3(0, 0, 0)
 scale_min = 0.5
 scale_max = 0.8
 scale_curve = SubResource("CurveTexture_ghlgp")
-
-[sub_resource type="SphereMesh" id="SphereMesh_3n5o1"]
-material = ExtResource("2_ghlgp")
 
 [sub_resource type="Curve" id="Curve_3n5o1"]
 _data = [Vector2(0, 0), 0.0, 1.05679, 0, 0, Vector2(0.9, 0.8), 0.602563, 0.602563, 0, 0, Vector2(1, 1), 2.46192, 0.0, 0, 0]
@@ -60,7 +57,7 @@ one_shot = true
 explosiveness = 0.7
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_wqsb5")
-draw_pass_1 = SubResource("SphereMesh_3n5o1")
+draw_pass_1 = ExtResource("2_wqsb5")
 
 [node name="small" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -71,4 +68,4 @@ one_shot = true
 explosiveness = 0.7
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_kes5k")
-draw_pass_1 = SubResource("SphereMesh_3n5o1")
+draw_pass_1 = ExtResource("2_wqsb5")

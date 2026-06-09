@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cht6wnn8o07ao"]
+[gd_scene load_steps=4 format=3 uid="uid://cht6wnn8o07ao"]
 
 [ext_resource type="PackedScene" uid="uid://drwtidrxwllwm" path="res://Assets/FlawLizArt/Construction/facory_pillar.fbx" id="1_uihbf"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_6emjn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6emjn"]
 size = Vector3(1, 4, 1)
@@ -9,8 +10,13 @@ size = Vector3(1, 4, 1)
 
 [node name="facory_pillar" parent="." instance=ExtResource("1_uihbf")]
 
+[node name="facory_pillar" parent="facory_pillar" index="0"]
+surface_material_override/0 = ExtResource("2_6emjn")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_6emjn")
+
+[editable path="facory_pillar"]

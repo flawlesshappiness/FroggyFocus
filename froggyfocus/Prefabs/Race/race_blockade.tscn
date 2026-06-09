@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcy54vp2s8wmd"]
 
-[ext_resource type="Material" uid="uid://b6om3ynl6u7pj" path="res://Materials/Wood.tres" id="1_ewmcp"]
-[ext_resource type="PackedScene" uid="uid://hvrp5rqv41wx" path="res://Assets/FlawLizArt/Objects/wood_plank_4m.fbx" id="2_tgcyb"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="1_ewmcp"]
+[ext_resource type="PackedScene" uid="uid://b0lk5512t6aga" path="res://Prefabs/Objects/wood_plank_4m.tscn" id="2_ewmcp"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_egf6k"]
 material = ExtResource("1_ewmcp")
@@ -24,26 +24,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 2, 0)
 mesh = SubResource("BoxMesh_egf6k")
 skeleton = NodePath("../..")
 
-[node name="wood_plank_4m" parent="Model" instance=ExtResource("2_tgcyb")]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 0.30928, 0.117416)
+[node name="wood_plank_4m8" parent="Model" instance=ExtResource("2_ewmcp")]
+transform = Transform3D(0.98, 0, 0, 0, -4.28372e-08, -0.98, 0, 0.98, -4.28372e-08, 0, 0.30928, 0.180674)
 
-[node name="wood_plank_4m2" parent="Model" instance=ExtResource("2_tgcyb")]
-transform = Transform3D(0.979686, 0.0248156, 0, -0.0248156, 0.979686, 0, 0, 0, 0.98, 0, 0.786221, 0.117416)
+[node name="wood_plank_4m9" parent="Model" instance=ExtResource("2_ewmcp")]
+transform = Transform3D(0.98, 0, 0, 0, -4.28372e-08, -0.98, 0, 0.98, -4.28372e-08, 0, 0.843877, 0.180674)
 
-[node name="wood_plank_4m3" parent="Model" instance=ExtResource("2_tgcyb")]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 1.29534, 0.117416)
+[node name="wood_plank_4m10" parent="Model" instance=ExtResource("2_ewmcp")]
+transform = Transform3D(0.97966, 0, -0.0258244, -0.0258244, -4.28372e-08, -0.97966, -1.12882e-09, 0.98, -4.28223e-08, 0, 1.31674, 0.180674)
 
-[node name="wood_plank_4m4" parent="Model" instance=ExtResource("2_tgcyb")]
-transform = Transform3D(0.979022, -0.0437723, 0, 0.0437723, 0.979022, 0, 0, 0, 0.98, -0.00288758, 1.8229, 0.117416)
+[node name="wood_plank_4m11" parent="Model" instance=ExtResource("2_ewmcp")]
+transform = Transform3D(0.98, 0, 0, 0, -4.28372e-08, -0.98, 0, 0.98, -4.28372e-08, 0, 1.80822, 0.180674)
 
-[node name="wood_plank_4m5" parent="Model" instance=ExtResource("2_tgcyb")]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 2.38446, 0.117416)
+[node name="wood_plank_4m12" parent="Model" instance=ExtResource("2_ewmcp")]
+transform = Transform3D(0.979939, 0, 0.0109636, 0.0109636, -4.28372e-08, -0.979939, 4.79233e-10, 0.98, -4.28345e-08, 0, 2.33662, 0.180674)
 
-[node name="wood_plank_4m6" parent="Model" instance=ExtResource("2_tgcyb")]
-transform = Transform3D(0.979811, 0.019241, 0, -0.019241, 0.979811, 0, 0, 0, 0.98, 0.00509493, 2.96531, 0.117416)
+[node name="wood_plank_4m13" parent="Model" instance=ExtResource("2_ewmcp")]
+transform = Transform3D(0.98, 0, 0, 0, -4.28372e-08, -0.98, 0, 0.98, -4.28372e-08, 0, 2.88402, 0.180674)
 
-[node name="wood_plank_4m7" parent="Model" instance=ExtResource("2_tgcyb")]
-transform = Transform3D(0.98, 0, 0, 0, 0.98, 0, 0, 0, 0.98, 0, 3.53982, 0.117416)
+[node name="wood_plank_4m14" parent="Model" instance=ExtResource("2_ewmcp")]
+transform = Transform3D(0.979518, 0, -0.0307484, -0.0307484, -4.28372e-08, -0.979518, -1.34405e-09, 0.98, -4.28161e-08, 0, 3.56597, 0.180674)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

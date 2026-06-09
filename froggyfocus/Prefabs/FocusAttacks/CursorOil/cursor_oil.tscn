@@ -1,58 +1,17 @@
 [gd_scene load_steps=18 format=3 uid="uid://coxlyln5k2gfw"]
 
 [ext_resource type="Script" uid="uid://cgidvr1pxn3c3" path="res://Prefabs/FocusAttacks/CursorOil/CursorOil.cs" id="1_hou07"]
-[ext_resource type="Material" uid="uid://bwype3h3t71r7" path="res://Materials/Oil.tres" id="2_3tjw8"]
 [ext_resource type="Script" uid="uid://bcoah34psypiv" path="res://Effect/EffectGroupSpawner.cs" id="2_8j5kq"]
 [ext_resource type="PackedScene" uid="uid://c4hib2nh7uc4o" path="res://Prefabs/Effects/ps_oil_attack_bubbles.tscn" id="3_oeb1o"]
 [ext_resource type="AudioStream" uid="uid://duovipuu4q1bh" path="res://Sounds/Raw/sfx_balloon_pop_001.wav" id="3_onbau"]
 [ext_resource type="AudioStream" uid="uid://fhdjdefsekl4" path="res://Sounds/Raw/sfx_oil_bubbles_001.wav" id="4_jvxqm"]
 [ext_resource type="PackedScene" uid="uid://cc0jqsr56d57t" path="res://Prefabs/Effects/ps_oil_attack_explosion.tscn" id="4_xno75"]
 [ext_resource type="AudioStream" uid="uid://dtn2kptwn50cm" path="res://Sounds/Raw/sfx_oil_bubbles_002.wav" id="5_8j5kq"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="5_xno75"]
 [ext_resource type="AudioStream" uid="uid://bhoao7u4t15wf" path="res://Sounds/Raw/sfx_oil_bubbles_003.wav" id="6_oeb1o"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_onbau"]
-material = ExtResource("2_3tjw8")
-
-[sub_resource type="Animation" id="Animation_3tjw8"]
-resource_name = "show"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Anim:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(0.5, -2, 1),
-"update": 0,
-"values": [Vector3(0.01, 0.01, 0.01), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Anim:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SfxBubbles:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0239434),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+material = ExtResource("5_xno75")
 
 [sub_resource type="Animation" id="Animation_onbau"]
 length = 0.001
@@ -105,6 +64,47 @@ tracks/3/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_aqwk7"]
+resource_name = "hide"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anim:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2.2974, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Anim:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SfxPop:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_8hlg4"]
 resource_name = "shake"
 length = 0.5
@@ -146,8 +146,8 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_aqwk7"]
-resource_name = "hide"
+[sub_resource type="Animation" id="Animation_3tjw8"]
+resource_name = "show"
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -157,10 +157,10 @@ tracks/0/path = NodePath("Anim:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(2.2974, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, -2, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1.5, 1.5, 1.5)]
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -169,19 +169,19 @@ tracks/1/path = NodePath("Anim:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SfxPop:playing")
+tracks/2/path = NodePath("SfxBubbles:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.15),
+"times": PackedFloat32Array(0.0239434),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cugkgsqhc8no7"]
+[gd_scene load_steps=7 format=3 uid="uid://cugkgsqhc8no7"]
 
 [ext_resource type="PackedScene" uid="uid://esqqfyi7r6w0" path="res://Assets/FlawLizArt/Objects/oil_barrel.fbx" id="1_qbotp"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_3e5a3"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_umvde"]
 [ext_resource type="PackedScene" uid="uid://coc1ipx2s1ljj" path="res://Prefabs/Nature/float_bounce.tscn" id="3_3e5a3"]
 
@@ -13,6 +14,9 @@ size = Vector3(1.8252, 2.21487, 1.68848)
 [node name="Barrel_Oil" type="Node3D"]
 
 [node name="oil_barrel" parent="." instance=ExtResource("1_qbotp")]
+
+[node name="Barrel" parent="oil_barrel" index="0"]
+surface_material_override/0 = ExtResource("2_3e5a3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -32,3 +36,5 @@ shape = SubResource("BoxShape3D_5ejwo")
 debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="FloatBounce" parent="." instance=ExtResource("3_3e5a3")]
+
+[editable path="oil_barrel"]

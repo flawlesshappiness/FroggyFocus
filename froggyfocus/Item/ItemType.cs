@@ -35,30 +35,9 @@ public enum ItemType
     Face_Cigarette = 106,
     Face_RaceGoggles = 107,
 
-    // Colors
-    Color_Default = 200,
-    Color_Green = 201,
-    Color_Red = 202,
-    Color_Blue = 203,
-    Color_Yellow = 204,
-    Color_Pink = 205,
-    Color_Brown = 206,
-    Color_Gray = 207,
-    Color_White = 208,
-    Color_Black = 209,
-    Color_Cyan = 210,
+    // 200 - FREE
 
-    // Aura
-    Particles_None = 300,
-    Particles_Debug = 301,
-    Particles_Hearts = 302,
-    Particles_Bubbles = 303,
-    Particles_Eyes = 304,
-    Particles_Water = 305,
-    Particles_Leaves = 306,
-    Particles_Money = 307,
-    Particles_Stars = 308,
-    Particles_Sandy = 309,
+    // 300 - FREE
 
     // Body Top
     BodyTop_Gradient = 400,

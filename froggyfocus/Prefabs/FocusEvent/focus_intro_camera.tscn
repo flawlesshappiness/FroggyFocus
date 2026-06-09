@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cj0g36i0c4t4t"]
+[gd_scene load_steps=9 format=3 uid="uid://cj0g36i0c4t4t"]
 
 [ext_resource type="Script" uid="uid://cgdpu7u7ibw85" path="res://Prefabs/FocusEvent/FocusIntroCamera.cs" id="1_3c2mu"]
-[ext_resource type="Texture2D" uid="uid://e3hfi2ik23nn" path="res://Assets/KenneyNL/Particles/smoke_07.png" id="1_c7epp"]
+[ext_resource type="QuadMesh" uid="uid://c8fi7sdiofyed" path="res://Prefabs/Effects/Meshes/smoke.tres" id="2_3c2mu"]
 
 [sub_resource type="Curve" id="Curve_bo0wf"]
 _data = [Vector2(0, 0), 0.0, 2.51364, 0, 0, Vector2(0.7, 0.7), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.1863, 0.0, 0, 0]
@@ -19,17 +19,6 @@ gravity = Vector3(0, 0, 0)
 scale_min = 4.0
 scale_max = 8.0
 alpha_curve = SubResource("CurveTexture_c4y08")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njexi"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_c7epp")
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_tokwd"]
-material = SubResource("StandardMaterial3D_njexi")
 
 [sub_resource type="Curve" id="Curve_d0loq"]
 _data = [Vector2(0, 0), 0.0, 2.51364, 0, 0, Vector2(0.2, 0.8), 0.0, 0.0, 0, 0, Vector2(0.362069, 0.325843), -1.10787, -1.10787, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -65,7 +54,7 @@ amount = 40
 lifetime = 2.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_pok26")
-draw_pass_1 = SubResource("QuadMesh_tokwd")
+draw_pass_1 = ExtResource("2_3c2mu")
 
 [node name="ps_clouds_out" type="GPUParticles3D" parent="IntroCameraMarker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
@@ -75,7 +64,7 @@ lifetime = 1.1
 explosiveness = 0.8
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_c4y08")
-draw_pass_1 = SubResource("QuadMesh_tokwd")
+draw_pass_1 = ExtResource("2_3c2mu")
 
 [node name="IntroCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)

@@ -1,43 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbhbo27vieidm"]
+[gd_scene load_steps=3 format=3 uid="uid://cwhxo5dsd7c63"]
 
-[ext_resource type="PackedScene" uid="uid://coc1ipx2s1ljj" path="res://Prefabs/Nature/float_bounce.tscn" id="2_ekbx7"]
-[ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_g2ctm"]
-[ext_resource type="PackedScene" uid="uid://bfahjxox55wtl" path="res://Assets/FlawLizArt/Nature/Toon/lilypad_cut.fbx" id="4_s26qj"]
+[ext_resource type="PackedScene" uid="uid://bfahjxox55wtl" path="res://Assets/FlawLizArt/Nature/Toon/lilypad_cut.fbx" id="1_hstjr"]
+[ext_resource type="Material" uid="uid://bu0xn6ccwtlfq" path="res://Materials/Color_Green.tres" id="2_jmkoy"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_jmkoy"]
-height = 0.280762
-radius = 0.621094
+[node name="lilypad_cut" type="Node3D"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ky0cl"]
-height = 0.111816
-radius = 0.64502
+[node name="lilypad_cut" parent="." instance=ExtResource("1_hstjr")]
 
-[node name="lilypad" type="Node3D"]
+[node name="lilypad_cut" parent="lilypad_cut" index="0"]
+surface_material_override/0 = ExtResource("2_jmkoy")
 
-[node name="FocusEventArea" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("2_g2ctm")
-Id = "swamp_lilypads"
-metadata/_custom_type_script = "uid://dt4o28x6fcqym"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusEventArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140381, 0)
-shape = SubResource("CylinderShape3D_jmkoy")
-debug_color = Color(0.7, 0, 0, 0.419608)
-
-[node name="FloatBounce" parent="." instance=ExtResource("2_ekbx7")]
-
-[node name="CollisionShape3D" parent="FloatBounce/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0358715, 0)
-
-[node name="lilypad_cut" parent="FloatBounce/Anim" index="0" instance=ExtResource("4_s26qj")]
-transform = Transform3D(0.655, 0, 0, 0, 0.655, 0, 0, 0, 0.655, 0, -0.0184766, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="FloatBounce/Anim" index="1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FloatBounce/Anim/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.020014, 0)
-shape = SubResource("CylinderShape3D_ky0cl")
-
-[editable path="FloatBounce"]
+[editable path="lilypad_cut"]

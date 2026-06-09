@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://blvlbd5nsd7qv"]
+[gd_scene load_steps=10 format=3 uid="uid://blvlbd5nsd7qv"]
 
 [ext_resource type="PackedScene" uid="uid://buosh27xt8lje" path="res://Assets/FlawLizArt/Nature/Toon/cave.fbx" id="1_6v8q8"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="2_7ec41"]
 [ext_resource type="Script" uid="uid://dlti6l52xwtf6" path="res://Weather/WeatherArea.cs" id="2_byv0c"]
 [ext_resource type="Resource" uid="uid://b01nek1tuxw2u" path="res://Weather/Resources/Cave.tres" id="3_cou8v"]
 [ext_resource type="Script" uid="uid://upco3uwl2xut" path="res://Audio/ReverbArea.cs" id="4_ith5y"]
@@ -16,6 +17,9 @@ radius = 88.0
 [node name="Cave" type="Node3D"]
 
 [node name="cave" parent="." instance=ExtResource("1_6v8q8")]
+
+[node name="Sphere" parent="cave" index="0"]
+surface_material_override/0 = ExtResource("2_7ec41")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="cave/Sphere" index="0"]
 

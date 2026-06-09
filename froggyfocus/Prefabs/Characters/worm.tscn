@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg616q05jikfw"]
+[gd_scene load_steps=5 format=3 uid="uid://bg616q05jikfw"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_4af5p"]
 [ext_resource type="PackedScene" uid="uid://dnt1owd6q6de1" path="res://Assets/FlawLizArt/Nature/Bugs/worm.fbx" id="2_4af5p"]
+[ext_resource type="Material" uid="uid://byyh1f1fy8prk" path="res://Materials/Color_Pink.tres" id="3_eqf2n"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ix3o5"]
 
-[node name="Worm" type="Node3D" node_paths=PackedStringArray("Animation")]
+[node name="Worm" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_4af5p")
 Animation = NodePath("AnimationStateMachine")
+Accessories = []
 
 [node name="worm" parent="." instance=ExtResource("2_4af5p")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -23,6 +25,9 @@ bones/8/rotation = Quaternion(0, 0, 0, 1)
 bones/9/rotation = Quaternion(0, 0, 0, 1)
 bones/10/rotation = Quaternion(0, 0, 0, 1)
 bones/11/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="Worm" parent="worm/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_eqf2n")
 
 [node name="AnimationPlayer" parent="worm" index="1"]
 playback_default_blend_time = 0.25

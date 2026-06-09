@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b82px6inj2esr"]
+[gd_scene load_steps=5 format=3 uid="uid://b82px6inj2esr"]
 
 [ext_resource type="PackedScene" uid="uid://xgwpu3bu10hq" path="res://Assets/FlawLizArt/Exterior/ac_unit.fbx" id="1_jilo3"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_nkcbr"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="3_hch5c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hgl38"]
 size = Vector3(1.59766, 1, 0.5)
@@ -9,8 +11,14 @@ size = Vector3(1.59766, 1, 0.5)
 
 [node name="ac_unit" parent="." instance=ExtResource("1_jilo3")]
 
+[node name="ac_unit" parent="ac_unit" index="0"]
+surface_material_override/0 = ExtResource("2_nkcbr")
+surface_material_override/1 = ExtResource("3_hch5c")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
 shape = SubResource("BoxShape3D_hgl38")
+
+[editable path="ac_unit"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://c64uoyfon4m7v"]
+[gd_scene load_steps=45 format=3 uid="uid://c64uoyfon4m7v"]
 
 [ext_resource type="Script" uid="uid://do0mkt1p3gn0j" path="res://Scenes/CrystalScene.cs" id="1_tv4mp"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_j2xf0"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_wah45"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_fc5gh"]
 [ext_resource type="Resource" uid="uid://fdfm3gjcl7ig" path="res://Weather/Resources/Crystal.tres" id="3_wn760"]
 [ext_resource type="PackedScene" uid="uid://cvrxygu78jcef" path="res://Prefabs/Water/water_crystal.tscn" id="4_fc5gh"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dhdil3v3gft7u" path="res://Prefabs/Construction/platform_wall.tscn" id="7_cwrtm"]
 [ext_resource type="PackedScene" uid="uid://i7pfdqreowiu" path="res://Prefabs/Crystal/crystal_platform_10x200.tscn" id="7_wn760"]
 [ext_resource type="PackedScene" uid="uid://b48i4e1loc8dh" path="res://Prefabs/Machine/crystal_elevator.tscn" id="9_sw13i"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="10_6fftp"]
 [ext_resource type="PackedScene" uid="uid://baokaf45j1173" path="res://Prefabs/Machine/crystal_energy_container.tscn" id="10_rnedj"]
 [ext_resource type="Script" uid="uid://upco3uwl2xut" path="res://Audio/ReverbArea.cs" id="10_tgubo"]
 [ext_resource type="Resource" uid="uid://d183ekl8xur2b" path="res://HandIn/Resources/Crystal_Power_003.tres" id="11_77k4j"]
@@ -106,7 +108,7 @@ WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
 BgmMain = NodePath("Sounds/Bgm")
 BgmFocus = NodePath("Sounds/BgmFocus")
-Weathers = [ExtResource("3_wn760")]
+Weathers = Array[ExtResource("2_wah45")]([ExtResource("3_wn760")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_j2xf0")
@@ -490,6 +492,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 [node name="crystal_sphere" parent="World" instance=ExtResource("5_6kfcw")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
 
+[node name="Sphere" parent="World/crystal_sphere" index="0"]
+surface_material_override/0 = ExtResource("10_6fftp")
+
 [node name="Energy" type="Node3D" parent="World"]
 
 [node name="CrystalElevator" parent="World/Energy" node_paths=PackedStringArray("EnergyContainer") instance=ExtResource("9_sw13i")]
@@ -700,7 +705,7 @@ transform = Transform3D(0.725459, 0, -0.688266, 0, 1, 0, 0.688266, 0, 0.725459, 
 curve = SubResource("Curve3D_hpoj3")
 
 [node name="IntroCameraPath" type="PathFollow3D" parent="World/IntroCamera/Path3D" node_paths=PackedStringArray("Camera", "Target")]
-transform = Transform3D(-0.90357, 0.0048523, -0.428488, -0.0186884, 0.998528, 0.0507368, 0.428023, 0.0538414, -0.902335, 62.9495, 47.7496, -36.4828)
+transform = Transform3D(-0.90357, 0.0048523, -0.428488, -0.0186885, 0.998528, 0.0507368, 0.428023, 0.0538413, -0.902335, 62.9495, 47.7496, -36.4828)
 progress = 341.011
 script = ExtResource("25_cwrtm")
 Duration = 20.0
@@ -738,3 +743,4 @@ bus = &"BGM"
 
 [editable path="World/NavigationRegion3D/Platforms/CrystalPlatform_10x200"]
 [editable path="World/NavigationRegion3D/Platforms/CrystalPlatform_10x200/crystal_platform"]
+[editable path="World/crystal_sphere"]

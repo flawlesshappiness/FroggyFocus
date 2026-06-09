@@ -13,16 +13,16 @@
 [ext_resource type="PackedScene" uid="uid://bou7cw3lnpgvf" path="res://Assets/FlawLizArt/Construction/factory_wall_end_slanted.fbx" id="8_sivil"]
 [ext_resource type="PackedScene" uid="uid://cht6wnn8o07ao" path="res://Prefabs/Construction/factory_pillar.tscn" id="8_uw6in"]
 [ext_resource type="PackedScene" uid="uid://bjgwvvbioh8kn" path="res://Assets/FlawLizArt/Construction/factory_wall_end.fbx" id="9_p54nl"]
-[ext_resource type="PackedScene" uid="uid://ciee30ojrjf0r" path="res://Assets/FlawLizArt/Construction/factory_deco_chimney.fbx" id="10_p54nl"]
 [ext_resource type="PackedScene" uid="uid://d01844d0ocd28" path="res://Assets/FlawLizArt/Construction/facory_pillar_top.fbx" id="11_hm4y8"]
 [ext_resource type="PackedScene" uid="uid://x7nclqu76y7s" path="res://Prefabs/Objects/factory_entry_door.tscn" id="13_hm4y8"]
-[ext_resource type="Material" uid="uid://wog5r0ocenqr" path="res://Materials/Rock.tres" id="14_7ycw3"]
+[ext_resource type="PackedScene" uid="uid://77e2txr8y7km" path="res://Prefabs/Construction/factory_chimney.tscn" id="14_8tq2e"]
 [ext_resource type="PackedScene" uid="uid://pc44e6arpkd7" path="res://Prefabs/Construction/pipe_oil.tscn" id="15_5ovk1"]
 [ext_resource type="PackedScene" uid="uid://cwwnl8eyypjvn" path="res://Prefabs/Construction/pipe.tscn" id="16_8uln8"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="17_gw0fx"]
 [ext_resource type="PackedScene" uid="uid://cie8jtojk5lgv" path="res://Prefabs/Construction/scaffolding_bars_4m.tscn" id="17_u0nhs"]
 [ext_resource type="PackedScene" uid="uid://cd6c641sy8eye" path="res://Prefabs/Construction/scaffolding_platform_4x4.tscn" id="19_thv0k"]
-[ext_resource type="PackedScene" uid="uid://b73xd2pio1sq0" path="res://Assets/FlawLizArt/Interior/tile_2x2.fbx" id="20_q40g6"]
 [ext_resource type="PackedScene" uid="uid://b82px6inj2esr" path="res://Prefabs/Exterior/ac_unit.tscn" id="22_xhj6b"]
+[ext_resource type="PackedScene" uid="uid://dor6ep604xfj4" path="res://Prefabs/Interior/factory_tile_2x4.tscn" id="23_gw0fx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0qf17"]
 size = Vector3(2, 2, 1)
@@ -37,22 +37,22 @@ material = SubResource("StandardMaterial3D_xhj6b")
 size = Vector2(12, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ovk1"]
-material = ExtResource("14_7ycw3")
+material = ExtResource("17_gw0fx")
 size = Vector3(3, 1, 3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8uln8"]
 size = Vector3(3, 1, 3)
 
 [sub_resource type="BoxMesh" id="BoxMesh_thv0k"]
-material = ExtResource("14_7ycw3")
+material = ExtResource("17_gw0fx")
 size = Vector3(1, 6, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q40g6"]
-material = ExtResource("14_7ycw3")
+material = ExtResource("17_gw0fx")
 size = Vector3(12, 4, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0qf17"]
-material = ExtResource("14_7ycw3")
+material = ExtResource("17_gw0fx")
 size = Vector3(13, 1, 7)
 
 [node name="building_factory" type="Node3D"]
@@ -519,10 +519,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -42.5,
 [node name="factory_wall_end6" parent="Deco" instance=ExtResource("9_p54nl")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -42.5, 24, -22.5)
 
-[node name="factory_deco_chimney" parent="Deco" instance=ExtResource("10_p54nl")]
+[node name="factory_chimney" parent="Deco" instance=ExtResource("14_8tq2e")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 21, -25.5863)
 
-[node name="factory_deco_chimney2" parent="Deco" instance=ExtResource("10_p54nl")]
+[node name="factory_chimney2" parent="Deco" instance=ExtResource("14_8tq2e")]
 transform = Transform3D(2.675, 0, 0, 0, 2.675, 0, 0, 0, 2.675, -16.9954, 21, -25.5863)
 
 [node name="Pillars" type="Node3D" parent="."]
@@ -756,95 +756,23 @@ skeleton = NodePath("../..")
 [node name="Floor" type="Node3D" parent="ForemanRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, -6)
 
-[node name="tile_2x2" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+[node name="factory_tile_2x4" parent="ForemanRoom/Floor" instance=ExtResource("23_gw0fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
 
-[node name="tile_2x3" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+[node name="factory_tile_2x5" parent="ForemanRoom/Floor" instance=ExtResource("23_gw0fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
 
-[node name="tile_2x4" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+[node name="factory_tile_2x6" parent="ForemanRoom/Floor" instance=ExtResource("23_gw0fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
-[node name="tile_2x5" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+[node name="factory_tile_2x7" parent="ForemanRoom/Floor" instance=ExtResource("23_gw0fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 
-[node name="tile_2x6" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+[node name="factory_tile_2x8" parent="ForemanRoom/Floor" instance=ExtResource("23_gw0fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
 
-[node name="tile_2x7" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
-
-[node name="tile_2x8" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
-
-[node name="tile_2x9" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-
-[node name="tile_2x10" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
-
-[node name="tile_2x11" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
-
-[node name="tile_2x12" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
-
-[node name="tile_2x13" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
-
-[node name="tile_2x14" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 4)
-
-[node name="tile_2x15" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
-
-[node name="tile_2x16" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
-
-[node name="tile_2x17" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
-
-[node name="tile_2x18" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
-
-[node name="tile_2x19" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
-
-[node name="tile_2x20" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
-
-[node name="tile_2x21" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
-
-[node name="tile_2x22" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
-
-[node name="tile_2x23" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
-
-[node name="tile_2x24" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4)
-
-[node name="tile_2x25" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
-
-[node name="tile_2x26" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
-
-[node name="tile_2x27" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -4)
-
-[node name="tile_2x28" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
-
-[node name="tile_2x29" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-
-[node name="tile_2x30" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
-
-[node name="tile_2x31" parent="ForemanRoom/Floor" instance=ExtResource("20_q40g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 4)
+[node name="factory_tile_2x9" parent="ForemanRoom/Floor" instance=ExtResource("23_gw0fx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
 
 [node name="Exterior" type="Node3D" parent="."]
 

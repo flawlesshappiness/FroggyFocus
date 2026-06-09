@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://mtiuvb6c26ox"]
+[gd_scene load_steps=4 format=3 uid="uid://mtiuvb6c26ox"]
 
 [ext_resource type="PackedScene" uid="uid://ct3k84ek2netj" path="res://Assets/FlawLizArt/Construction/factory_wall_bottom_arch.fbx" id="1_bjwft"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_y6fdd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y6fdd"]
 size = Vector3(4, 4, 1)
@@ -9,8 +10,13 @@ size = Vector3(4, 4, 1)
 
 [node name="factory_wall_bottom_arch" parent="." instance=ExtResource("1_bjwft")]
 
+[node name="factory_wall_bottom_arch" parent="factory_wall_bottom_arch" index="0"]
+surface_material_override/0 = ExtResource("2_y6fdd")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.5)
 shape = SubResource("BoxShape3D_y6fdd")
+
+[editable path="factory_wall_bottom_arch"]

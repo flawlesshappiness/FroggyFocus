@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6qshmoaqjxck"]
+[gd_scene load_steps=20 format=3 uid="uid://c6qshmoaqjxck"]
 
 [ext_resource type="Script" uid="uid://76aubb55p4ml" path="res://Prefabs/FocusAttacks/FlashMushroom/FlashMushroom.cs" id="1_761k1"]
 [ext_resource type="PackedScene" uid="uid://b304tcixf2r25" path="res://Prefabs/FocusAttacks/FlashMushroom/flash_mushroom_explode_effect.tscn" id="2_i4lud"]
-[ext_resource type="Material" uid="uid://bs7gnasxvanql" path="res://Materials/PS_Yellow.tres" id="2_o5ruh"]
 [ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="3_i4lud"]
 [ext_resource type="AudioStream" uid="uid://duovipuu4q1bh" path="res://Sounds/Raw/sfx_balloon_pop_001.wav" id="4_khnpm"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="4_o5ruh"]
@@ -331,11 +330,6 @@ _data = {
 &"telegraph": SubResource("Animation_o5ruh")
 }
 
-[sub_resource type="SphereMesh" id="SphereMesh_msjuc"]
-material = ExtResource("2_o5ruh")
-radius = 0.1
-height = 0.2
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uj3j4"]
 random_pitch = 1.1
 random_volume_offset_db = 1.0
@@ -373,11 +367,6 @@ libraries = {
 [node name="Anim" type="Node3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Anim"]
-visible = false
-mesh = SubResource("SphereMesh_msjuc")
-skeleton = NodePath("../..")
 
 [node name="mushroom_bent" parent="Anim" instance=ExtResource("3_i4lud")]
 transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0, 0, 0)

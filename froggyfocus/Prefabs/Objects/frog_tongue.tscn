@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8q6cqe5wp2e1"]
+[gd_scene load_steps=6 format=3 uid="uid://b8q6cqe5wp2e1"]
 
 [ext_resource type="Script" uid="uid://li714oduekf1" path="res://Prefabs/Objects/NormalFrogTongue.cs" id="1_aho1l"]
 [ext_resource type="PackedScene" uid="uid://dmlnvb2o65uy1" path="res://Assets/FlawLizArt/Frog/tongue.fbx" id="1_rfej4"]
 [ext_resource type="AudioStream" uid="uid://bo8a5vi3i2mn3" path="res://Sounds/Raw/sfx_slime_fast_002.wav" id="3_aho1l"]
+[ext_resource type="Material" uid="uid://byyh1f1fy8prk" path="res://Materials/Color_Pink.tres" id="3_yc7kp"]
 [ext_resource type="AudioStream" uid="uid://byrj14kt6787n" path="res://Sounds/Raw/sfx_slime_fast_001.wav" id="4_yc7kp"]
 
 [node name="Tongue" type="Node3D" node_paths=PackedStringArray("ScaleNode", "LookNode", "TongueTargetMarker", "SfxOut", "SfxIn")]
@@ -20,6 +21,9 @@ SfxIn = NodePath("SfxTongueIn")
 [node name="tongue" parent="Look/Scale" instance=ExtResource("1_rfej4")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.6, 0, 0, -0.5)
 
+[node name="tongue" parent="Look/Scale/tongue" index="0"]
+surface_material_override/0 = ExtResource("3_yc7kp")
+
 [node name="TongueTargetMarker" type="Marker3D" parent="Look/Scale"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
@@ -32,3 +36,5 @@ bus = &"SFX"
 stream = ExtResource("4_yc7kp")
 volume_db = -10.0
 bus = &"SFX"
+
+[editable path="Look/Scale/tongue"]

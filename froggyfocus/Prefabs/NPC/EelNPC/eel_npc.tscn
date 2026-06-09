@@ -1,12 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3hkrtmh6ohnl"]
+[gd_scene load_steps=14 format=3 uid="uid://c3hkrtmh6ohnl"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_f8bht"]
 [ext_resource type="PackedScene" uid="uid://3e5oppo6lmr7" path="res://Assets/FlawLizArt/Characters/Eel/eel.fbx" id="1_h0kul"]
 [ext_resource type="Resource" uid="uid://72vr17ea7883" path="res://HandIn/Resources/Eel_Factory.tres" id="2_f8bht"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_lq58h"]
+[ext_resource type="Material" uid="uid://dg73pff28dbta" path="res://Materials/Eel.tres" id="4_7ucp6"]
 [ext_resource type="PackedScene" uid="uid://igloh2tr434s" path="res://Appearance/Attachments/fishing_cap.tscn" id="4_w8m0d"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="5_4ff10"]
 [ext_resource type="AudioStream" uid="uid://ergbcag2wd4j" path="res://Sounds/Raw/sfx_eel_speak_001.wav" id="5_f8bht"]
-[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="5_gw57y"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="5_gw57y"]
 [ext_resource type="AudioStream" uid="uid://boesilsarb81k" path="res://Sounds/Raw/sfx_eel_speak_002.wav" id="6_w8m0d"]
 [ext_resource type="AudioStream" uid="uid://bvtqyp78h031r" path="res://Sounds/Raw/sfx_eel_speak_003.wav" id="7_gw57y"]
 
@@ -43,6 +45,15 @@ bones/4/rotation = Quaternion(-0.246197, -8.76061e-15, -5.8698e-08, 0.96922)
 bones/5/rotation = Quaternion(-0.157756, -3.3677e-15, -3.76119e-08, 0.987478)
 bones/6/rotation = Quaternion(-0.00268523, -2.22017e-15, -6.4021e-10, 0.999996)
 bones/8/rotation = Quaternion(0.174304, -6.33827e-15, 4.15573e-08, 0.984692)
+
+[node name="body" parent="eel/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("4_7ucp6")
+
+[node name="eyes" parent="eel/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("5_4ff10")
+
+[node name="fins" parent="eel/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("4_7ucp6")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="eel/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 7.10543e-14, 2.38418e-07, -6.81617e-08, 0.958262, 0.285891, -2.28467e-07, -0.285891, 0.958262, -2.90667e-15, 0.0479951, 0.0240232)

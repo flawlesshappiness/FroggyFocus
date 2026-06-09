@@ -1,9 +1,8 @@
-[gd_scene load_steps=121 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=115 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="2_o2l5d"]
-[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="3_a4ffy"]
 [ext_resource type="PackedScene" uid="uid://pwngct2tt8w" path="res://Prefabs/Characters/beetle.tscn" id="3_leg0t"]
 [ext_resource type="AudioStream" uid="uid://chsmvnuk5ocu2" path="res://Sounds/Raw/sfx_mole_show_001.wav" id="4_mk5ib"]
 [ext_resource type="PackedScene" uid="uid://cey3ab7wyq26l" path="res://Prefabs/FocusEvent/focus_circle.tscn" id="4_rfid0"]
@@ -12,12 +11,10 @@
 [ext_resource type="Script" uid="uid://bsudjdpboqcsg" path="res://FocusAttack/Dive.cs" id="6_78t1s"]
 [ext_resource type="AudioStream" uid="uid://dva886cuu6ksw" path="res://Sounds/Raw/sfx_swish_001.wav" id="6_u4nem"]
 [ext_resource type="Script" uid="uid://b1whxdnnnljv0" path="res://FocusAttack/Flower.cs" id="7_8w7j2"]
-[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="7_u4nem"]
 [ext_resource type="PackedScene" uid="uid://e22foqo7y4je" path="res://Prefabs/FocusAttacks/CursorFlower/cursor_flower.tscn" id="8_0oa1v"]
 [ext_resource type="Script" uid="uid://psopyndsf06x" path="res://FocusAttack/Mushroom.cs" id="9_s7jln"]
 [ext_resource type="AudioStream" uid="uid://dwtm2b1y7gxh6" path="res://Sounds/Raw/sfx_impact_water_low_001.wav" id="10_78t1s"]
 [ext_resource type="PackedScene" uid="uid://c6qshmoaqjxck" path="res://Prefabs/FocusAttacks/FlashMushroom/mushroom.tscn" id="10_bmfsg"]
-[ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="10_leg0t"]
 [ext_resource type="AudioStream" uid="uid://iupdbu38bkq0" path="res://Sounds/Raw/sfx_impact_water_low_002.wav" id="11_8w7j2"]
 [ext_resource type="Script" uid="uid://bbt1y7ubc2bqk" path="res://FocusAttack/Wooden.cs" id="11_bmfsg"]
 [ext_resource type="PackedScene" uid="uid://c3ccv31s7nhx0" path="res://Prefabs/FocusAttacks/WoodenStab/wooden_stab.tscn" id="12_fr8uf"]
@@ -37,7 +34,6 @@
 [ext_resource type="Script" uid="uid://c5df7sgmcgmyw" path="res://FocusAttack/Seaweed.cs" id="20_e1xl2"]
 [ext_resource type="PackedScene" uid="uid://xg6g58uosdoe" path="res://Prefabs/Effects/ps_seaweed_fake_dig.tscn" id="21_saxd3"]
 [ext_resource type="PackedScene" uid="uid://b5gs6qsv648rn" path="res://Prefabs/Effects/ps_seaweed_spout.tscn" id="22_kdpbt"]
-[ext_resource type="Material" uid="uid://ddn607sgcif7r" path="res://Materials/ps_smoke.tres" id="24_k6dog"]
 [ext_resource type="AudioStream" uid="uid://cjujq6hhnkdkf" path="res://Sounds/Raw/sfx_step_water_high_001.wav" id="25_041kl"]
 [ext_resource type="AudioStream" uid="uid://bhlhbpuh6jvtl" path="res://Sounds/Raw/sfx_step_water_high_002.wav" id="26_5ycpc"]
 [ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="26_70b0r"]
@@ -59,6 +55,10 @@
 [ext_resource type="Script" uid="uid://cgqojtp71mmh3" path="res://FocusAttack/GlitchError.cs" id="42_17ick"]
 [ext_resource type="AudioStream" uid="uid://jl6c61u233gn" path="res://Sounds/Raw/sfx_crystal_manifest.wav" id="52_s5u4q"]
 [ext_resource type="AudioStream" uid="uid://dea3461dg0q8b" path="res://Sounds/Raw/sfx_crystal_manifest_002.wav" id="53_ymw46"]
+[ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="56_ymw46"]
+[ext_resource type="SphereMesh" uid="uid://2d5fy2kwhuqj" path="res://Prefabs/Effects/Meshes/water.tres" id="57_5ycw3"]
+[ext_resource type="QuadMesh" uid="uid://ubmhliqiiq8" path="res://Prefabs/Effects/Meshes/ripple.tres" id="58_6164l"]
+[ext_resource type="QuadMesh" uid="uid://c8fi7sdiofyed" path="res://Prefabs/Effects/Meshes/smoke.tres" id="59_ymw46"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4ffy"]
 transparency = 1
@@ -851,9 +851,6 @@ scale_min = 0.2
 scale_max = 0.4
 scale_curve = SubResource("CurveTexture_e1xl2")
 
-[sub_resource type="SphereMesh" id="SphereMesh_leg0t"]
-material = ExtResource("7_u4nem")
-
 [sub_resource type="Curve" id="Curve_nrcrx"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -889,31 +886,6 @@ scale_min = 0.05
 scale_max = 0.15
 scale_curve = SubResource("CurveTexture_rfid0")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfid0"]
-render_priority = 0
-shader = ExtResource("10_leg0t")
-shader_parameter/albedo = Color(0, 0.7, 1, 1)
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = false
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
-shader_parameter/apply_wind = false
-shader_parameter/y_multiplier = 1.0
-shader_parameter/local_wind_scale = 1.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_3etrv"]
-material = SubResource("ShaderMaterial_rfid0")
-
 [sub_resource type="Curve" id="Curve_a4ffy"]
 _data = [Vector2(0, 1), 0.0, -2.57303, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -945,16 +917,6 @@ scale_curve = SubResource("CurveTexture_v23j6")
 color = Color(1, 1, 1, 0.52549)
 alpha_curve = SubResource("CurveTexture_mfarc")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfarc"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_a4ffy")
-
-[sub_resource type="QuadMesh" id="QuadMesh_mk5ib"]
-material = SubResource("StandardMaterial3D_mfarc")
-orientation = 1
-
 [sub_resource type="Curve" id="Curve_2wmm3"]
 _data = [Vector2(0, 0), 0.0, 7.96504, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.337911, 0.0, 0, 0]
 point_count = 3
@@ -979,9 +941,6 @@ gravity = Vector3(0, 0, 0)
 scale_curve = SubResource("CurveTexture_gvgds")
 color = Color(0.66, 0.5852, 0.4356, 1)
 alpha_curve = SubResource("CurveTexture_gpf0e")
-
-[sub_resource type="QuadMesh" id="QuadMesh_gpf0e"]
-material = ExtResource("24_k6dog")
 
 [sub_resource type="Curve" id="Curve_k6dog"]
 _data = [Vector2(0, 0), 0.0, 7.96504, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.337911, 0.0, 0, 0]
@@ -1246,7 +1205,7 @@ amount = 10
 lifetime = 0.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_gybk7")
-draw_pass_1 = SubResource("SphereMesh_leg0t")
+draw_pass_1 = ExtResource("56_ymw46")
 
 [node name="PsDive" type="GPUParticles3D" parent="Particles"]
 emitting = false
@@ -1254,7 +1213,7 @@ amount = 50
 lifetime = 2.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_dxlci")
-draw_pass_1 = SubResource("SphereMesh_leg0t")
+draw_pass_1 = ExtResource("56_ymw46")
 
 [node name="PsSweating" type="GPUParticles3D" parent="Particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61163, -2.67352e-08)
@@ -1263,20 +1222,20 @@ amount = 5
 lifetime = 0.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_3etrv")
-draw_pass_1 = SubResource("SphereMesh_3etrv")
+draw_pass_1 = ExtResource("57_5ycw3")
 
 [node name="PsWaterRipple" type="GPUParticles3D" parent="Particles"]
 emitting = false
 amount = 4
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_a4ffy")
-draw_pass_1 = SubResource("QuadMesh_mk5ib")
+draw_pass_1 = ExtResource("58_6164l")
 
 [node name="ps_sand_telegraph" type="GPUParticles3D" parent="Particles"]
 emitting = false
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_1p0mf")
-draw_pass_1 = SubResource("QuadMesh_gpf0e")
+draw_pass_1 = ExtResource("59_ymw46")
 
 [node name="ps_sand_attack" type="GPUParticles3D" parent="Particles"]
 emitting = false
@@ -1284,4 +1243,4 @@ amount = 60
 explosiveness = 0.9
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_gvgds")
-draw_pass_1 = SubResource("QuadMesh_gpf0e")
+draw_pass_1 = ExtResource("59_ymw46")

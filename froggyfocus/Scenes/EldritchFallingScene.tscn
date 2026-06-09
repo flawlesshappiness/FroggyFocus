@@ -1,17 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://cqoc6fgifqd3n"]
+[gd_scene load_steps=30 format=3 uid="uid://cqoc6fgifqd3n"]
 
 [ext_resource type="Script" uid="uid://cwxgq1uks0fs4" path="res://Scenes/EldritchFallingScene.cs" id="1_rio3v"]
 [ext_resource type="Material" uid="uid://c25vo2yd2p8pm" path="res://Materials/Sky.tres" id="2_0w38n"]
 [ext_resource type="PackedScene" uid="uid://jyia0yxhyclr" path="res://Prefabs/Pickups/FallingCoinGroups/coin_group_002.tscn" id="3_h5k1x"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="3_lj4j3"]
 [ext_resource type="Script" uid="uid://chfj3r84200ex" path="res://Player/FallingPlayer.cs" id="3_m0xys"]
-[ext_resource type="Material" uid="uid://b6om3ynl6u7pj" path="res://Materials/Wood.tres" id="4_0w38n"]
 [ext_resource type="PackedScene" uid="uid://rbnhby3we05j" path="res://Prefabs/Pickups/FallingCoinGroups/coin_group_003.tscn" id="4_erbkq"]
-[ext_resource type="PackedScene" uid="uid://dmneakwh1b1tw" path="res://Assets/FlawLizArt/Eldritch/tunnel.fbx" id="4_m0xys"]
 [ext_resource type="PackedScene" uid="uid://dovivpues0qp0" path="res://Prefabs/Pickups/FallingCoinGroups/coin_group_004.tscn" id="5_7aqx4"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="5_m0xys"]
 [ext_resource type="Script" uid="uid://bmatbi3vdsd0g" path="res://Camera/FallingCamera.cs" id="8_shrrg"]
 [ext_resource type="PackedScene" uid="uid://h6eg8mfegrk7" path="res://Prefabs/Pickups/FallingCoinGroups/coin_group_001.tscn" id="8_xybpx"]
+[ext_resource type="PackedScene" uid="uid://dd6l2drngh7it" path="res://Prefabs/Eldritch/eldritch_tunnel.tscn" id="9_sowx2"]
 [ext_resource type="Material" uid="uid://ddn607sgcif7r" path="res://Materials/ps_smoke.tres" id="12_7aqx4"]
 [ext_resource type="AudioStream" uid="uid://bljjtwxrh052x" path="res://Sounds/Raw/amb_eldritch_002.wav" id="14_gqjb2"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="15_sowx2"]
@@ -33,15 +32,6 @@ fog_depth_end = 20.0
 volumetric_fog_density = 0.02
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_emission = Color(0.1, 0.0533333, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_shrrg"]
-material = ExtResource("4_0w38n")
-flip_faces = true
-top_radius = 3.0
-bottom_radius = 3.0
-height = 100.0
-cap_top = false
-cap_bottom = false
 
 [sub_resource type="Animation" id="Animation_shrrg"]
 length = 0.001
@@ -217,28 +207,22 @@ Frog = NodePath("FrogCute")
 [node name="Scale" type="Node3D" parent="World/Tube/Anim"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="tunnel" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+[node name="eldritch_tunnel" parent="World/Tube/Anim/Scale" instance=ExtResource("9_sowx2")]
 
-[node name="tunnel2" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+[node name="eldritch_tunnel2" parent="World/Tube/Anim/Scale" instance=ExtResource("9_sowx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
 
-[node name="tunnel3" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+[node name="eldritch_tunnel3" parent="World/Tube/Anim/Scale" instance=ExtResource("9_sowx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
 
-[node name="tunnel4" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+[node name="eldritch_tunnel4" parent="World/Tube/Anim/Scale" instance=ExtResource("9_sowx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
 
-[node name="tunnel5" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+[node name="eldritch_tunnel5" parent="World/Tube/Anim/Scale" instance=ExtResource("9_sowx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
 
-[node name="tunnel6" parent="World/Tube/Anim/Scale" instance=ExtResource("4_m0xys")]
+[node name="eldritch_tunnel6" parent="World/Tube/Anim/Scale" instance=ExtResource("9_sowx2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Tube/Anim"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -25, 0)
-visible = false
-mesh = SubResource("CylinderMesh_shrrg")
-skeleton = NodePath("../../..")
 
 [node name="AnimationPlayer_Tube" type="AnimationPlayer" parent="World/Tube"]
 root_node = NodePath("../..")

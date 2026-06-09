@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://db5pblf7os2gc"]
+[gd_scene load_steps=5 format=3 uid="uid://db5pblf7os2gc"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_tlc6p"]
 [ext_resource type="PackedScene" uid="uid://chgwuxa7ax3kq" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_serpent.fbx" id="2_2sumq"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="3_2sumq"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_2ubhc"]
 
 [node name="CrystalSerpent" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
@@ -12,6 +13,9 @@ Accessories = []
 
 [node name="crystal_serpent" parent="." instance=ExtResource("2_2sumq")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0.10056)
+
+[node name="serpent" parent="crystal_serpent/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_2sumq")
 
 [node name="AnimationPlayer" parent="crystal_serpent" index="1"]
 playback_default_blend_time = 0.25

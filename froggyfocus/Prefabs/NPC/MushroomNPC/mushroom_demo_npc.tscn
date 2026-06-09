@@ -1,13 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://uvlg3jxf133w"]
+[gd_scene load_steps=19 format=3 uid="uid://uvlg3jxf133w"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_vmtvj"]
 [ext_resource type="Resource" uid="uid://1wt6fplkn8uw" path="res://HandIn/Resources/Demo_Mushroom.tres" id="2_vmtvj"]
 [ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="3_5mesk"]
 [ext_resource type="PackedScene" uid="uid://c7ukmmer4ocw7" path="res://Assets/FlawLizArt/MushroomGuy/mushroom_guy.fbx" id="3_8nc7t"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="4_pquk8"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="5_gxjjv"]
 [ext_resource type="AudioStream" uid="uid://gs33ibo3tgrg" path="res://Sounds/Raw/sfx_mushroom_move_001.wav" id="5_xat8a"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="6_6k3f8"]
 [ext_resource type="AudioStream" uid="uid://coekrfq7dgg7u" path="res://Sounds/Raw/sfx_mushroom_move_003.wav" id="6_gxjjv"]
 [ext_resource type="AudioStream" uid="uid://dswc610roeotq" path="res://Sounds/Raw/sfx_mushroom_move_004.wav" id="7_6k3f8"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="7_sg62r"]
 [ext_resource type="AudioStream" uid="uid://bveb0tfeioss1" path="res://Sounds/Raw/sfx_mushroom_speak_001.wav" id="8_sg62r"]
 [ext_resource type="AudioStream" uid="uid://bhpdwtfgggiat" path="res://Sounds/Raw/sfx_mushroom_speak_002.wav" id="9_pjypb"]
 [ext_resource type="AudioStream" uid="uid://r5vrgq26gbw" path="res://Sounds/Raw/sfx_mushroom_speak_003.wav" id="10_cpj1o"]
@@ -70,6 +73,15 @@ bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-5.88352e-16, 0.00977423, 1.29009e-09)
 bones/4/rotation = Quaternion(-0.156185, 2.23905e-10, -3.9624e-08, 0.987728)
 bones/4/scale = Vector3(1, 1, 1)
+
+[node name="Stem" parent="mushroom_guy/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("5_gxjjv")
+
+[node name="Hat" parent="mushroom_guy/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("6_6k3f8")
+
+[node name="Eyes" parent="mushroom_guy/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("7_sg62r")
 
 [node name="AnimationPlayer" parent="mushroom_guy" index="1"]
 playback_default_blend_time = 0.25

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c11f64krvhuu3"]
+
+[ext_resource type="PackedScene" uid="uid://crkfm1vapfehx" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat.fbx" id="1_je0dm"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="2_rp2ov"]
+
+[node name="stalagmite_flat" type="Node3D"]
+
+[node name="stalagmite_flat" parent="." instance=ExtResource("1_je0dm")]
+
+[node name="stalagmite_platform" parent="stalagmite_flat" index="0"]
+surface_material_override/0 = ExtResource("2_rp2ov")
+
+[editable path="stalagmite_flat"]

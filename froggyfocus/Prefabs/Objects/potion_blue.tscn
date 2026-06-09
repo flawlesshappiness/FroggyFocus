@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://b86vrrwweceox"]
+
+[ext_resource type="PackedScene" uid="uid://b4q50qn0su2fg" path="res://Assets/KayLousberg/Dungeon/potionLarge_blue.fbx" id="1_edqbq"]
+[ext_resource type="Material" uid="uid://c3dj72mkq2o4g" path="res://Materials/Glass.tres" id="2_o6pre"]
+[ext_resource type="Material" uid="uid://b4sl6vfobdcm0" path="res://Materials/Color_BeigeLight.tres" id="3_8pqyj"]
+[ext_resource type="Material" uid="uid://cmwnlcmbrnpft" path="res://Materials/Color_Blue.tres" id="4_pfpk8"]
+
+[node name="potion_blue" type="Node3D"]
+
+[node name="potionLarge_blue" parent="." instance=ExtResource("1_edqbq")]
+
+[node name="potionLarge_blue" parent="potionLarge_blue" index="0"]
+surface_material_override/0 = ExtResource("2_o6pre")
+surface_material_override/1 = ExtResource("3_8pqyj")
+surface_material_override/2 = ExtResource("4_pfpk8")
+
+[editable path="potionLarge_blue"]

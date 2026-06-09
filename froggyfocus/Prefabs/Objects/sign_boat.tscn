@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://x6f4qfn4tmgs"]
+[gd_scene load_steps=5 format=3 uid="uid://x6f4qfn4tmgs"]
 
 [ext_resource type="PackedScene" uid="uid://sx2m2clq3rn7" path="res://Assets/FlawLizArt/Objects/sign_direction_small.fbx" id="1_slbhj"]
 [ext_resource type="Texture2D" uid="uid://cnpeeq8kfu76v" path="res://Assets/FlawLizArt/Textures/icon_boat.png" id="2_deg8x"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="2_ltauq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ltauq"]
 size = Vector3(0.821045, 1.01135, 0.265381)
@@ -9,6 +10,10 @@ size = Vector3(0.821045, 1.01135, 0.265381)
 [node name="sign_boat" type="Node3D"]
 
 [node name="sign_direction_small" parent="." instance=ExtResource("1_slbhj")]
+
+[node name="sign_directional_small" parent="sign_direction_small" index="0"]
+surface_material_override/0 = ExtResource("2_ltauq")
+surface_material_override/1 = ExtResource("2_ltauq")
 
 [node name="Decal" type="Decal" parent="."]
 transform = Transform3D(0.99955, -1.31124e-09, -0.0299977, -0.0299977, -4.36917e-08, -0.99955, 0, 1, -4.37114e-08, 8.95956e-11, 0.70471, 0.119565)
@@ -21,3 +26,5 @@ modulate = Color(0, 0, 0, 0.686275)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0762939, 0.493713, 0)
 shape = SubResource("BoxShape3D_ltauq")
+
+[editable path="sign_direction_small"]

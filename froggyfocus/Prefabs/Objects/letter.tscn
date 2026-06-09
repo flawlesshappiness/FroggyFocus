@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bp1jbi7x8vkrl"]
+[gd_scene load_steps=21 format=3 uid="uid://bp1jbi7x8vkrl"]
 
 [ext_resource type="Script" uid="uid://c0mlhypdqh6es" path="res://Prefabs/Objects/Letter.cs" id="1_53oij"]
 [ext_resource type="AudioStream" uid="uid://boblmgqg5kidk" path="res://Sounds/Raw/sfx_paper_004.wav" id="2_aolhh"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="2_rpplk"]
 [ext_resource type="AudioStream" uid="uid://ch0jtykquyqxt" path="res://Sounds/Raw/sfx_paper_002.wav" id="2_y1nhs"]
 [ext_resource type="AudioStream" uid="uid://cu27gkeq1w46r" path="res://Sounds/Raw/sfx_paper_001.wav" id="3_rpplk"]
 
@@ -12,6 +13,7 @@ size = Vector3(1.42676, 0.131104, 1)
 size = Vector3(1.4, 0.01, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_53oij"]
+material = ExtResource("2_rpplk")
 size = Vector3(1.4, 1, 0.01)
 
 [sub_resource type="Animation" id="Animation_n8b8l"]
@@ -234,6 +236,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
 [node name="Envelope" type="MeshInstance3D" parent="Anim"]
 mesh = SubResource("BoxMesh_5km1a")
 skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("2_rpplk")
 
 [node name="Label3D" type="Label3D" parent="Anim/Envelope"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.00723389, -3.16203e-10)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://1n2ew4h58wg"]
+[gd_scene load_steps=6 format=3 uid="uid://1n2ew4h58wg"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_x0sub"]
-[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="2_mdnhn"]
+[ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="2_x0sub"]
 
 [sub_resource type="Curve" id="Curve_20u2m"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -20,13 +20,10 @@ scale_min = 0.5
 scale_max = 0.5
 scale_curve = SubResource("CurveTexture_6pllg")
 
-[sub_resource type="SphereMesh" id="SphereMesh_08wo2"]
-material = ExtResource("2_mdnhn")
-
 [node name="pickup" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_x0sub")
-DestroyDelay = 1.0
 Particles = [NodePath("smoke")]
+DestroyDelay = 1.0
 
 [node name="smoke" type="GPUParticles3D" parent="."]
 emitting = false
@@ -35,4 +32,4 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_bsfce")
-draw_pass_1 = SubResource("SphereMesh_08wo2")
+draw_pass_1 = ExtResource("2_x0sub")

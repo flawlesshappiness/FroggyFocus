@@ -1,7 +1,8 @@
-[gd_scene load_steps=57 format=3 uid="uid://1fq5vb2vmge2"]
+[gd_scene load_steps=48 format=3 uid="uid://1fq5vb2vmge2"]
 
 [ext_resource type="Script" uid="uid://ckww7miv2hssb" path="res://Character/CuteFrogCharacter.cs" id="1_qloaa"]
 [ext_resource type="PackedScene" uid="uid://kbio5754ibiy" path="res://Assets/FlawLizArt/Characters/Frog_Cute/frog_cute.fbx" id="3_nfx8u"]
+[ext_resource type="Material" uid="uid://fg7gyfek0hwc" path="res://Materials/Frog.tres" id="3_wy7ou"]
 [ext_resource type="Script" uid="uid://bh70kviwhy4x4" path="res://Appearance/AppearanceAttachmentGroup.cs" id="4_6q0t7"]
 [ext_resource type="PackedScene" uid="uid://n068dxjwbk4n" path="res://Appearance/Attachments/crown.tscn" id="5_mjxwm"]
 [ext_resource type="PackedScene" uid="uid://oth00eq3xg17" path="res://Appearance/Attachments/cat_ears.tscn" id="6_heb1e"]
@@ -19,10 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="18_5rxie"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="19_0hwx1"]
 [ext_resource type="PackedScene" uid="uid://btj4ns6ljqmkn" path="res://Appearance/Preview/wooden_hat_preview.tscn" id="21_2sbs3"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="21_am06j"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="21_am06j"]
 [ext_resource type="PackedScene" uid="uid://hvkhlo4u24tl" path="res://Assets/FlawLizArt/Nature/Toon/algae_001.fbx" id="21_b2kwu"]
+[ext_resource type="Material" uid="uid://deoad4xy1b60l" path="res://Materials/Color_GreenDark.tres" id="24_8lrbn"]
 [ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="26_x1wof"]
-[ext_resource type="Material" uid="uid://yabsdnw7nro6" path="res://Materials/Plant.tres" id="27_5ix8s"]
 [ext_resource type="PackedScene" uid="uid://cd10ocopq6k4f" path="res://Appearance/Preview/hat_weeded_preview.tscn" id="27_qloaa"]
 [ext_resource type="PackedScene" uid="uid://fd0d1obdjx54" path="res://Appearance/Attachments/hair_race.tscn" id="28_hh2bw"]
 [ext_resource type="PackedScene" uid="uid://d0q85osej7ji1" path="res://Appearance/Preview/hat_polluted_preview.tscn" id="31_ki8i6"]
@@ -35,24 +36,15 @@
 [ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="38_tlkit"]
 [ext_resource type="PackedScene" uid="uid://bmg430dgy8ers" path="res://Appearance/Attachments/septum.tscn" id="39_67a6f"]
 [ext_resource type="PackedScene" uid="uid://csqg2dp1eigui" path="res://Appearance/Attachments/cigarette.tscn" id="40_o6l1w"]
-[ext_resource type="PackedScene" uid="uid://cunbtykel0nks" path="res://Appearance/Attachments/particles_debug.tscn" id="41_bwalc"]
-[ext_resource type="PackedScene" uid="uid://ddd347yst40yt" path="res://Appearance/Attachments/particles_hearts.tscn" id="42_vgclg"]
-[ext_resource type="PackedScene" uid="uid://cp8mhu2m3u6g4" path="res://Appearance/Attachments/particles_bubbles.tscn" id="43_hhhs5"]
-[ext_resource type="PackedScene" uid="uid://8i1okmguvft2" path="res://Appearance/Attachments/particles_eyes.tscn" id="44_tnjrl"]
 [ext_resource type="PackedScene" uid="uid://b8q6cqe5wp2e1" path="res://Prefabs/Objects/frog_tongue.tscn" id="45_am06j"]
-[ext_resource type="PackedScene" uid="uid://dr0be48ijgwb8" path="res://Appearance/Attachments/particles_water.tscn" id="45_ht4c0"]
-[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="46_am06j"]
-[ext_resource type="PackedScene" uid="uid://8bnblf80wnws" path="res://Appearance/Attachments/particles_leaves.tscn" id="46_gdmi5"]
-[ext_resource type="PackedScene" uid="uid://bj2l6kqa3ibch" path="res://Appearance/Attachments/particles_money.tscn" id="47_gty1n"]
 [ext_resource type="Script" uid="uid://cvxw4w4ebf8um" path="res://Prefabs/Effects/ParticleEffectSpawner.cs" id="47_x7gts"]
 [ext_resource type="PackedScene" uid="uid://bt84kb17fu0fs" path="res://Prefabs/Effects/ps_frog_dust_land.tscn" id="48_qloaa"]
-[ext_resource type="PackedScene" uid="uid://cxtf7ngu24n84" path="res://Appearance/Attachments/particles_stars.tscn" id="48_v21xf"]
 [ext_resource type="PackedScene" uid="uid://svjino32ea6i" path="res://Prefabs/Effects/ps_frog_dust_jump.tscn" id="49_ki8i6"]
-[ext_resource type="PackedScene" uid="uid://dtcsewnq52mof" path="res://Appearance/Attachments/particles_sandy.tscn" id="49_vyagh"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="50_0gbed"]
 [ext_resource type="PackedScene" uid="uid://b7xc6fc17fllt" path="res://Prefabs/Player/player_move_sounds_group.tscn" id="57_7y2xd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_m850p"]
+material = ExtResource("24_8lrbn")
 
 [sub_resource type="Curve" id="Curve_x7gts"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -72,7 +64,7 @@ scale_max = 0.3
 scale_curve = SubResource("CurveTexture_27c8n")
 
 [sub_resource type="SphereMesh" id="SphereMesh_qloaa"]
-material = ExtResource("46_am06j")
+material = ExtResource("21_am06j")
 
 [node name="FrogCute" type="Node3D" node_paths=PackedStringArray("PsDustStream", "PsJump", "PsLand", "BodyMesh", "Tongue", "Animation", "MoveSounds")]
 script = ExtResource("1_qloaa")
@@ -147,8 +139,11 @@ bones/28/rotation = Quaternion(-0.00378005, -0.0566867, -0.0664279, 0.996172)
 bones/30/rotation = Quaternion(-0.0223284, -0.23189, -0.0932081, 0.968009)
 bones/30/scale = Vector3(1, 1, 1)
 
+[node name="body" parent="frog_cute/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_wy7ou")
+
 [node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 3.57854e-15, 2.38419e-07, 3.57267e-09, 0.999888, -0.0149849, -2.38392e-07, 0.0149849, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
+transform = Transform3D(1, -8.8792e-14, 2.38419e-07, 3.57274e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
 bone_name = "Head"
 bone_idx = 2
 script = ExtResource("4_6q0t7")
@@ -299,17 +294,14 @@ Type = 17
 [node name="MeshInstance3D" type="MeshInstance3D" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup/HatMoss"]
 transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 3.65522e-16, -0.00600252, 0.00313837)
 mesh = SubResource("SphereMesh_m850p")
-surface_material_override/0 = ExtResource("27_5ix8s")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup/HatMoss"]
 transform = Transform3D(0.006, 0, 0, 0, 0.006, 0, 0, 0, 0.006, 0.00514695, -0.00250139, 0.000340469)
 mesh = SubResource("SphereMesh_m850p")
-surface_material_override/0 = ExtResource("27_5ix8s")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup/HatMoss"]
 transform = Transform3D(0.006, 0, 0, 0, 0.006, 0, 0, 0, 0.006, -0.00549019, -0.00214907, 0.00034047)
 mesh = SubResource("SphereMesh_m850p")
-surface_material_override/0 = ExtResource("27_5ix8s")
 
 [node name="HatWeededPreview" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("27_qloaa")]
 transform = Transform3D(0.008, -1.19757e-09, 5.20417e-17, -3.46945e-18, -3.56522e-10, -0.008, 1.19757e-09, 0.008, -3.56522e-10, -6.58188e-10, 0.000481683, 0.00276063)
@@ -341,7 +333,7 @@ transform = Transform3D(-0.005, 7.54979e-10, 3.30012e-17, 0, -2.18557e-10, 0.005
 visible = false
 
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 3.57854e-15, 2.38419e-07, 3.57267e-09, 0.999888, -0.0149849, -2.38392e-07, 0.0149849, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
+transform = Transform3D(1, -8.8792e-14, 2.38419e-07, 3.57274e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
 bone_name = "Head"
 bone_idx = 2
 script = ExtResource("4_6q0t7")
@@ -373,48 +365,6 @@ visible = false
 
 [node name="Race_Goggles" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("34_ki8i6")]
 transform = Transform3D(0.006, -1.90987e-11, -3.78848e-10, -3.78848e-10, -0.000603421, -0.00596958, -1.90987e-11, 0.00596958, -0.000603421, 3.46675e-10, 0.000588556, 0.00109377)
-visible = false
-
-[node name="ParticlesAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="3"]
-bone_name = "Root"
-bone_idx = 0
-script = ExtResource("4_6q0t7")
-Category = 3
-
-[node name="ParticlesDebug" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("41_bwalc")]
-transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 0, 0.0191329)
-visible = false
-
-[node name="ParticlesHearts" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("42_vgclg")]
-transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 1.58971e-09, 0.00579745)
-visible = false
-
-[node name="ParticlesBubbles" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("43_hhhs5")]
-transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 1.44835e-09, 0.00698322)
-visible = false
-
-[node name="ParticlesEyes" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("44_tnjrl")]
-transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 2.69569e-09, 0.00763876)
-visible = false
-
-[node name="ParticlesWater" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("45_ht4c0")]
-transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 2.12443e-09, 0.00947239)
-visible = false
-
-[node name="ParticlesLeaves" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("46_gdmi5")]
-transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 7.18932e-10, 0.0250143)
-visible = false
-
-[node name="ParticlesMoney" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("47_gty1n")]
-transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 1.46301e-09, 0.0187725)
-visible = false
-
-[node name="ParticlesStars" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("48_v21xf")]
-transform = Transform3D(1, 0, 0, 0, 1, 1.42109e-14, 0, -1.42109e-14, 1, 0, 1.70558e-09, 0.0048255)
-visible = false
-
-[node name="ParticlesSandy" parent="frog_cute/Armature/Skeleton3D/ParticlesAttachmentGroup" instance=ExtResource("49_vyagh")]
-transform = Transform3D(1, 0, 0, 0, 1, 2.84217e-14, 0, -2.84217e-14, 1, 0, 1.30794e-09, 0.00816113)
 visible = false
 
 [node name="AnimationPlayer" parent="frog_cute" index="1"]

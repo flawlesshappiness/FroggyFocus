@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh1tmu2ibeyyj"]
+
+[ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="1_j245o"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="2_tafc0"]
+
+[node name="paper_scrap" type="Node3D"]
+
+[node name="trash_paper" parent="." instance=ExtResource("1_j245o")]
+
+[node name="paper" parent="trash_paper" index="0"]
+surface_material_override/0 = ExtResource("2_tafc0")
+
+[editable path="trash_paper"]

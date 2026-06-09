@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://erpmejfh3e8c"]
+[gd_scene load_steps=13 format=3 uid="uid://erpmejfh3e8c"]
 
 [ext_resource type="Script" uid="uid://cvckb8ltjqb66" path="res://Prefabs/Effects/QuestionMarkEffect.cs" id="1_xbj04"]
 [ext_resource type="PackedScene" uid="uid://b02jlvmojusij" path="res://Assets/FlawLizArt/Other/QuestionMark.fbx" id="2_bmd65"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="3_bmd65"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="3_pjfi2"]
 [ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="4_4g8ss"]
 
 [sub_resource type="Animation" id="Animation_bmd65"]
@@ -173,6 +174,9 @@ visible = false
 [node name="QuestionMark" parent="Anim/AnimSpin" instance=ExtResource("2_bmd65")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4841, 0)
 
+[node name="QuestionMark" parent="Anim/AnimSpin/QuestionMark" index="0"]
+surface_material_override/0 = ExtResource("3_pjfi2")
+
 [node name="SfxClick" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_4g8ss")
 volume_db = -5.0
@@ -189,3 +193,5 @@ libraries = {
 }
 script = ExtResource("3_bmd65")
 Animation = "spin"
+
+[editable path="Anim/AnimSpin/QuestionMark"]

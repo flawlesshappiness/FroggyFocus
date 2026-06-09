@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdjryvfvwp4dw"]
+[gd_scene load_steps=6 format=3 uid="uid://cdjryvfvwp4dw"]
 
 [ext_resource type="PackedScene" uid="uid://6up6nt7m5fka" path="res://Assets/FlawLizArt/Nature/Bugs/shrimp.fbx" id="1_jvedk"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_o27yr"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_tud0o"]
+[ext_resource type="Material" uid="uid://byyh1f1fy8prk" path="res://Materials/Color_Pink.tres" id="3_vsn6m"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="4_hehq4"]
 
 [node name="Shrimp" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_o27yr")
@@ -26,6 +28,24 @@ bones/13/rotation = Quaternion(-0.0803353, -1.18825e-07, -4.88412e-07, 0.996768)
 bones/15/rotation = Quaternion(-0.654558, -7.29715e-18, 6.31791e-18, 0.756012)
 bones/17/rotation = Quaternion(-0.654558, -9.01236e-08, 7.80294e-08, 0.756012)
 bones/19/rotation = Quaternion(-0.654558, -9.01237e-08, 7.80294e-08, 0.756012)
+
+[node name="body" parent="shrimp/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_vsn6m")
+
+[node name="eye" parent="shrimp/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("4_hehq4")
+
+[node name="legs_middle" parent="shrimp/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_vsn6m")
+
+[node name="legs_front" parent="shrimp/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("3_vsn6m")
+
+[node name="legs_back" parent="shrimp/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_vsn6m")
+
+[node name="feelers" parent="shrimp/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("3_vsn6m")
 
 [node name="AnimationPlayer" parent="shrimp" index="1"]
 playback_default_blend_time = 0.25

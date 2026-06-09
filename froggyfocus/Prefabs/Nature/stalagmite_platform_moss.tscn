@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://clhyieqcjxj30"]
+[gd_scene load_steps=8 format=3 uid="uid://clhyieqcjxj30"]
 
 [ext_resource type="PackedScene" uid="uid://cb7o5dtbges1f" path="res://Assets/FlawLizArt/Nature/Toon/stalagmite_flat_moss.fbx" id="1_rebh7"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_2ujph"]
+[ext_resource type="Material" uid="uid://deoad4xy1b60l" path="res://Materials/Color_GreenDark.tres" id="2_urwli"]
 [ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="5_qe7ms"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_urwli"]
@@ -20,6 +21,9 @@ radius = 0.490234
 
 [node name="stalagmite_flat_moss" parent="." instance=ExtResource("1_rebh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00282964, 0)
+
+[node name="stalagmite_platform_moss" parent="stalagmite_flat_moss" index="0"]
+surface_material_override/0 = ExtResource("2_urwli")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -56,3 +60,5 @@ metadata/_custom_type_script = "uid://cnv6mhgukc6u3"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerGround"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0227207, 0)
 shape = SubResource("CylinderShape3D_rebh7")
+
+[editable path="stalagmite_flat_moss"]

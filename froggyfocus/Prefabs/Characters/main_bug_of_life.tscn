@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://k363eryuxjas"]
+[gd_scene load_steps=6 format=3 uid="uid://k363eryuxjas"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_1egxp"]
 [ext_resource type="PackedScene" uid="uid://bpjb7oarnl8xv" path="res://Assets/FlawLizArt/Nature/Bugs/incubator.fbx" id="2_7cbm2"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_kvguu"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="3_uajki"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="4_m1f8v"]
 
 [node name="Incubator" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_1egxp")
@@ -11,6 +13,12 @@ Accessories = []
 
 [node name="incubator" parent="." instance=ExtResource("2_7cbm2")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="egg" parent="incubator/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_uajki")
+
+[node name="body" parent="incubator/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("4_m1f8v")
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_kvguu")

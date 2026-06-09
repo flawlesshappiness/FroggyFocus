@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cktp3ldl6mja4"]
+[gd_scene load_steps=6 format=3 uid="uid://cktp3ldl6mja4"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_hirrf"]
 [ext_resource type="PackedScene" uid="uid://cscik25svdpiu" path="res://Assets/FlawLizArt/Nature/Bugs/error_bug_mantis.fbx" id="2_f5x2m"]
+[ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Unshaded_Green.tres" id="3_a77u6"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_f5x2m"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="4_aktc7"]
 
 [node name="Main_BugOfData" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_hirrf")
@@ -12,6 +14,24 @@ Accessories = []
 
 [node name="error_bug_mantis" parent="." instance=ExtResource("2_f5x2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.116666)
+
+[node name="body_lower" parent="error_bug_mantis/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_a77u6")
+surface_material_override/1 = ExtResource("4_aktc7")
+
+[node name="arms" parent="error_bug_mantis/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_a77u6")
+
+[node name="head" parent="error_bug_mantis/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_a77u6")
+surface_material_override/1 = ExtResource("4_aktc7")
+
+[node name="body_top" parent="error_bug_mantis/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("3_a77u6")
+surface_material_override/1 = ExtResource("4_aktc7")
+
+[node name="legs" parent="error_bug_mantis/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_a77u6")
 
 [node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
 script = ExtResource("3_f5x2m")

@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl643m7hn5kxg"]
+[gd_scene load_steps=5 format=3 uid="uid://cl643m7hn5kxg"]
 
-[ext_resource type="Texture2D" uid="uid://e3hfi2ik23nn" path="res://Assets/KenneyNL/Particles/smoke_07.png" id="1_gr2jh"]
+[ext_resource type="QuadMesh" uid="uid://c8fi7sdiofyed" path="res://Prefabs/Effects/Meshes/smoke.tres" id="1_gr2jh"]
 
 [sub_resource type="Curve" id="Curve_22co2"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -22,19 +22,8 @@ scale_max = 0.5
 color = Color(0.71, 0.688463, 0.6106, 0.462745)
 alpha_curve = SubResource("CurveTexture_pmia8")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpdta"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_gr2jh")
-billboard_mode = 1
-billboard_keep_scale = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_4f1dh"]
-material = SubResource("StandardMaterial3D_lpdta")
-
 [node name="PsSandAccessory" type="GPUParticles3D"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_mi74b")
-draw_pass_1 = SubResource("QuadMesh_4f1dh")
+draw_pass_1 = ExtResource("1_gr2jh")

@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0osj3jb5aniy"]
+[gd_scene load_steps=17 format=3 uid="uid://b0osj3jb5aniy"]
 
 [ext_resource type="PackedScene" uid="uid://mvfdm3gxsfe1" path="res://Assets/FlawLizArt/Machine/crane_bottom.fbx" id="1_8drng"]
 [ext_resource type="Script" uid="uid://bk0670mb2dpj8" path="res://Prefabs/Machine/CrystalCrane.cs" id="1_lnwip"]
 [ext_resource type="PackedScene" uid="uid://va1lwsbev6ti" path="res://Assets/FlawLizArt/Machine/crane_top.fbx" id="2_lnwip"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="3_ji7ob"]
 [ext_resource type="Script" uid="uid://cnv6mhgukc6u3" path="res://Player/PlayerGround.cs" id="4_dnmb0"]
 [ext_resource type="AudioStream" uid="uid://xvlwkd3jlry3" path="res://Sounds/Raw/sfx_crane_move.wav" id="4_ebofv"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="5_2lvfu"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="6_5lgcs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8drng"]
 size = Vector3(1.9834, 5.20874, 1.96387)
@@ -116,6 +119,9 @@ AnimationPlayer = NodePath("AnimationPlayer")
 
 [node name="crane_bottom" parent="." instance=ExtResource("1_8drng")]
 
+[node name="bottom" parent="crane_bottom" index="0"]
+surface_material_override/0 = ExtResource("3_ji7ob")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="crane_bottom"]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="crane_bottom/StaticBody3D"]
@@ -123,6 +129,11 @@ transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 2.4
 shape = SubResource("BoxShape3D_8drng")
 
 [node name="crane_top" parent="." instance=ExtResource("2_lnwip")]
+
+[node name="top" parent="crane_top" index="0"]
+surface_material_override/0 = ExtResource("3_ji7ob")
+surface_material_override/1 = ExtResource("5_2lvfu")
+surface_material_override/2 = ExtResource("6_5lgcs")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="crane_top"]
 
@@ -159,3 +170,6 @@ stream = ExtResource("4_ebofv")
 max_distance = 800.0
 bus = &"SFX"
 attenuation_filter_db = 0.0
+
+[editable path="crane_bottom"]
+[editable path="crane_top"]

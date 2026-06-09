@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://8sp12mjyjuvl"]
 
 [ext_resource type="Script" uid="uid://b75m7mi5eppwn" path="res://Prefabs/FocusAttacks/WoodenStab/WoodenStab.cs" id="1_4b4kv"]
+[ext_resource type="PackedScene" uid="uid://c8qkdx0bkckx5" path="res://Prefabs/Objects/bottle_cleaning_simple.tscn" id="2_vxqxl"]
 [ext_resource type="AudioStream" uid="uid://cjujq6hhnkdkf" path="res://Sounds/Raw/sfx_step_water_high_001.wav" id="3_vxqxl"]
-[ext_resource type="PackedScene" uid="uid://cwe1qkbg1t6dn" path="res://Assets/FlawLizArt/Bottles/bottle_cleaning_simple.fbx" id="3_xnarx"]
 [ext_resource type="AudioStream" uid="uid://bhlhbpuh6jvtl" path="res://Sounds/Raw/sfx_step_water_high_002.wav" id="4_5fy6w"]
 [ext_resource type="AudioStream" uid="uid://dr6lnaq404371" path="res://Sounds/Raw/sfx_step_water_high_003.wav" id="5_ho101"]
 [ext_resource type="AudioStream" uid="uid://71loq8namabj" path="res://Sounds/Raw/sfx_garbage_warn_001.wav" id="6_vxqxl"]
@@ -118,7 +118,7 @@ SfxWarn = NodePath("SfxWarn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.81, 0)
 visible = false
 
-[node name="bottle_cleaning_simple" parent="anim" instance=ExtResource("3_xnarx")]
+[node name="bottle_cleaning_simple2" parent="anim" instance=ExtResource("2_vxqxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.98848, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

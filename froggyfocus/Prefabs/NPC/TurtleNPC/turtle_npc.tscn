@@ -1,14 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://tg0kj2q60vm6"]
+[gd_scene load_steps=17 format=3 uid="uid://tg0kj2q60vm6"]
 
 [ext_resource type="Script" uid="uid://dsxg4ynkwcwpy" path="res://HandIn/HandInNpc.cs" id="1_i6cp7"]
 [ext_resource type="PackedScene" uid="uid://p4h2xy11rfgg" path="res://Assets/FlawLizArt/Characters/Turtle/turtle.fbx" id="1_lfy8r"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_5nm1e"]
 [ext_resource type="Resource" uid="uid://cjoj1uvuy80p4" path="res://HandIn/Resources/Turtle_Factory.tres" id="2_bd5m3"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="4_6drft"]
 [ext_resource type="PackedScene" uid="uid://csqg2dp1eigui" path="res://Appearance/Attachments/cigarette.tscn" id="4_porhg"]
 [ext_resource type="AudioStream" uid="uid://d1j10627f8dhw" path="res://Sounds/Raw/sfx_turtle_speak_001.wav" id="5_i6cp7"]
-[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="5_peltu"]
+[ext_resource type="Material" uid="uid://b4sl6vfobdcm0" path="res://Materials/Color_BeigeLight.tres" id="5_oh86k"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="5_peltu"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="6_jn75m"]
 [ext_resource type="AudioStream" uid="uid://dv733v2x2ukif" path="res://Sounds/Raw/sfx_turtle_speak_002.wav" id="6_porhg"]
 [ext_resource type="AudioStream" uid="uid://botltipsfjido" path="res://Sounds/Raw/sfx_turtle_speak_003.wav" id="7_peltu"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="7_r6ag3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5nm1e"]
 size = Vector3(8.3103, 2.66919, 10.848)
@@ -78,6 +82,18 @@ bones/18/scale = Vector3(1, 1, 1)
 bones/19/position = Vector3(2.08766e-09, 0.0220988, 2.12225e-10)
 bones/19/rotation = Quaternion(-0.0500848, 0.00470616, -0.0873938, 0.994903)
 bones/19/scale = Vector3(1, 1, 1)
+
+[node name="shell_upper" parent="turtle/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("4_6drft")
+
+[node name="shell_lower" parent="turtle/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("5_oh86k")
+
+[node name="body" parent="turtle/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("6_jn75m")
+
+[node name="eyes" parent="turtle/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("7_r6ag3")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="turtle/Armature/Skeleton3D" index="4"]
 transform = Transform3D(1, 1.26227e-28, -3.23117e-27, 2.643e-26, 1, -9.31322e-10, -3.23117e-27, 9.31322e-10, 1, 3.32399e-19, 0.0857808, 0.0014368)

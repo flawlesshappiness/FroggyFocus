@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://buypkqfilrh3j"]
+[gd_scene load_steps=6 format=3 uid="uid://buypkqfilrh3j"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_wvg7m"]
-[ext_resource type="Material" uid="uid://b4s1u05hj225w" path="res://Materials/Color_Purple.tres" id="2_877dt"]
+[ext_resource type="SphereMesh" uid="uid://q1xw4rkikmjs" path="res://Prefabs/Effects/Meshes/syringe_liquid.tres" id="2_wvg7m"]
 
 [sub_resource type="Curve" id="Curve_2w66u"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.52528, 0.0, 0, 0]
@@ -19,9 +19,6 @@ scale_min = 0.2
 scale_max = 0.4
 scale_curve = SubResource("CurveTexture_6mtf3")
 
-[sub_resource type="SphereMesh" id="SphereMesh_w0tfi"]
-material = ExtResource("2_877dt")
-
 [node name="ps_syringe_liquid_trap" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_wvg7m")
 Particles = [NodePath("ps_liquid")]
@@ -37,4 +34,4 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_0hyrs")
-draw_pass_1 = SubResource("SphereMesh_w0tfi")
+draw_pass_1 = ExtResource("2_wvg7m")

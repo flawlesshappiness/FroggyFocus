@@ -1,9 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://cylpusjkvu6mk"]
+[gd_scene load_steps=24 format=3 uid="uid://cylpusjkvu6mk"]
 
 [ext_resource type="Script" uid="uid://hoaylk4vvjmx" path="res://Prefabs/Eldritch/EldritchFlower.cs" id="1_2up6m"]
 [ext_resource type="PackedScene" uid="uid://cfwlg2jimkbki" path="res://Assets/FlawLizArt/Eldritch/flower.fbx" id="1_u16jr"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="3_y3yyd"]
 [ext_resource type="AudioStream" uid="uid://41sbt3n6iwyl" path="res://Sounds/Raw/sfx_flower_inhale_001.wav" id="4_wk54q"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="4_y83xc"]
 [ext_resource type="AudioStream" uid="uid://d3b0bslq1003v" path="res://Sounds/Raw/sfx_flower_inhale_002.wav" id="5_cif2g"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="5_o3jep"]
 [ext_resource type="AudioStream" uid="uid://cbptpagqlhk4c" path="res://Sounds/Raw/sfx_flower_exhale_001.wav" id="6_pu4wm"]
 [ext_resource type="AudioStream" uid="uid://cwg3re4amkomx" path="res://Sounds/Raw/sfx_flower_exhale_002.wav" id="7_bqfjl"]
 [ext_resource type="AudioStream" uid="uid://rlkcqllb7u1k" path="res://Sounds/Raw/sfx_flower_exhale_003.wav" id="8_myu4q"]
@@ -304,6 +307,11 @@ bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(8.11236e-10, 0.0016553, -6.21769e-10)
 bones/15/rotation = Quaternion(0.00270534, -0.380856, -0.111473, 0.917886)
 bones/15/scale = Vector3(1, 1, 1)
+
+[node name="eldritch_flower" parent="flower/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_y3yyd")
+surface_material_override/1 = ExtResource("4_y83xc")
+surface_material_override/2 = ExtResource("5_o3jep")
 
 [node name="AnimationPlayer" parent="flower" index="1"]
 playback_default_blend_time = 0.1

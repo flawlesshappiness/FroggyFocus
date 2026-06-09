@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b48cueepn0f72"]
+[gd_scene load_steps=5 format=3 uid="uid://b48cueepn0f72"]
 
 [ext_resource type="PackedScene" uid="uid://car8oxh7s0uqh" path="res://Assets/FlawLizArt/Construction/scaffolding_bars_2m.fbx" id="1_xgxep"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_xfxju"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wjfww"]
 size = Vector3(0.2, 4, 0.2)
@@ -11,6 +12,9 @@ size = Vector3(0.16, 0.16, 1.6)
 [node name="scaffolding_bars_2m" type="Node3D"]
 
 [node name="scaffolding_bars_2m" parent="." instance=ExtResource("1_xgxep")]
+
+[node name="scaffolding_bars_2m" parent="scaffolding_bars_2m" index="0"]
+surface_material_override/0 = ExtResource("2_xfxju")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -53,3 +57,5 @@ shape = SubResource("BoxShape3D_lxd3o")
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0.91535, 0)
 shape = SubResource("BoxShape3D_lxd3o")
+
+[editable path="scaffolding_bars_2m"]

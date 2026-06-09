@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckawey6x8v1b3"]
+[gd_scene load_steps=9 format=3 uid="uid://ckawey6x8v1b3"]
 
 [ext_resource type="PackedScene" uid="uid://b5dj4tiflb65m" path="res://Assets/KayLousberg/Dungeon/door.fbx" id="1_5h2ks"]
 [ext_resource type="Script" uid="uid://dk3f8eorl14in" path="res://Prefabs/Interior/HouseDoor.cs" id="1_qkyns"]
 [ext_resource type="Resource" uid="uid://b27hx0twfxeop" path="res://Sounds/Resources/sfx_door.tres" id="2_7mw34"]
 [ext_resource type="AudioStream" uid="uid://c78iu23srhocr" path="res://Sounds/Raw/sfx_door_open_001.wav" id="3_s4hot"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="4_fhvt5"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="5_l7kub"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qkyns"]
 size = Vector3(2.31152, 2.9518, 1)
@@ -23,6 +25,10 @@ shape = SubResource("BoxShape3D_qkyns")
 
 [node name="door" parent="." instance=ExtResource("1_5h2ks")]
 
+[node name="door" parent="door" index="0"]
+surface_material_override/0 = ExtResource("4_fhvt5")
+surface_material_override/1 = ExtResource("5_l7kub")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -33,3 +39,5 @@ shape = SubResource("BoxShape3D_s4hot")
 stream = ExtResource("3_s4hot")
 bus = &"SFX"
 attenuation_filter_db = 0.0
+
+[editable path="door"]

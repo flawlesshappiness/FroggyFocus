@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgam63hrep021"]
+[gd_scene load_steps=12 format=3 uid="uid://bgam63hrep021"]
 
 [ext_resource type="Script" uid="uid://0hwqcgq8ndhg" path="res://Prefabs/Effects/RainEffect.cs" id="1_nm275"]
-[ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="1_rl024"]
+[ext_resource type="QuadMesh" uid="uid://ubmhliqiiq8" path="res://Prefabs/Effects/Meshes/ripple.tres" id="2_nyh5w"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1rxiw"]
 emission_shape_offset = Vector3(0, 20, 0)
@@ -55,15 +55,6 @@ scale_curve = SubResource("CurveTexture_nm275")
 color = Color(0.75, 1, 0.8625, 1)
 alpha_curve = SubResource("CurveTexture_j1en6")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm275"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_rl024")
-
-[sub_resource type="QuadMesh" id="QuadMesh_rl024"]
-material = SubResource("StandardMaterial3D_nm275")
-orientation = 1
-
 [node name="RainEffect" type="GPUParticles3D"]
 emitting = false
 amount = 1000
@@ -85,4 +76,4 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_48qqx")
-draw_pass_1 = SubResource("QuadMesh_rl024")
+draw_pass_1 = ExtResource("2_nyh5w")

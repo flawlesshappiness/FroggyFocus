@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bs6jtqi04ls8t"]
+[gd_scene load_steps=13 format=3 uid="uid://bs6jtqi04ls8t"]
 
 [ext_resource type="Script" uid="uid://bqb54opapks22" path="res://Prefabs/UI/PurchasePopup/PurchasePopup.cs" id="1_rktto"]
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_v5x1g"]
 [ext_resource type="Theme" uid="uid://b77fhi1516cg5" path="res://Themes/Transparent.tres" id="2_rktto"]
-[ext_resource type="PackedScene" uid="uid://clrmdq4h4lojv" path="res://Prefabs/Misc/paint_bucket.tscn" id="2_ry6mq"]
 [ext_resource type="PackedScene" uid="uid://bar1hrgw1dyjh" path="res://Prefabs/UI/AnimatedOverlay/animated_overlay.tscn" id="2_vdyvl"]
 [ext_resource type="PackedScene" uid="uid://cihylxpb5t8tf" path="res://Prefabs/UI/AnimatedPanel/animated_panel.tscn" id="3_ry6mq"]
 [ext_resource type="PackedScene" uid="uid://bp66kpk3jc0x3" path="res://Prefabs/UI/SimpleButton/simple_button.tscn" id="4_snlvk"]
@@ -33,7 +32,6 @@ NameLabel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContain
 PriceControl = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/PriceControl")
 ItemSubViewport = NodePath("ItemSubViewport")
 TextureRect = NodePath("CenterContainer/Center/UIScale/AnimatedPanel/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2/Panel/PreviewTextureRect")
-PaintBucketPrefab = ExtResource("2_ry6mq")
 SfxPurchaseFail = NodePath("SfxPurchaseFail")
 AnimatedOverlay = NodePath("AnimatedOverlay")
 AnimatedPanel = NodePath("CenterContainer/Center/UIScale/AnimatedPanel")

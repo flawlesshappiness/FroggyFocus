@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="7_6636b"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="9_7a7gi"]
 [ext_resource type="Script" uid="uid://dmmkas04t7id3" path="res://Prefabs/Eldritch/EldritchReturn.cs" id="9_vmhyt"]
-[ext_resource type="Material" uid="uid://dj8begqtqrrro" path="res://Materials/EldritchTunnel.tres" id="10_7a7gi"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="10_n6bgm"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="13_s322q"]
 [ext_resource type="PackedScene" uid="uid://2yk827j8q4kd" path="res://Prefabs/Eldritch/eldritch_tentacle.tscn" id="15_ki66s"]
 [ext_resource type="Script" uid="uid://upco3uwl2xut" path="res://Audio/ReverbArea.cs" id="17_7a7gi"]
@@ -35,7 +35,7 @@ height = 3.5
 radius = 2.08936
 
 [sub_resource type="SphereMesh" id="SphereMesh_lfqeu"]
-material = ExtResource("10_7a7gi")
+material = ExtResource("10_n6bgm")
 flip_faces = true
 radius = 1000.0
 height = 2000.0
@@ -75,28 +75,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 StartState = 4
 
 [node name="Skeleton3D" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature" index="0"]
-bones/0/position = Vector3(0, 0, -0.01)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/position = Vector3(0, 0.01, 0)
-bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(0, 0.01, 0)
-bones/4/rotation = Quaternion(0, 0, 0, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(0, 0.01, 0)
-bones/5/rotation = Quaternion(0, 0, 0, 1)
 bones/6/position = Vector3(0, 0.01, 0)
-bones/6/rotation = Quaternion(0, 0, 0, 1)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0, 0.01, 0)
-bones/7/rotation = Quaternion(0, 0, 0, 1)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(0, 0.01, 0)
-bones/8/rotation = Quaternion(0, 0, 0, 1)
 bones/9/position = Vector3(0, 0.01, 0)
-bones/9/rotation = Quaternion(0, 0, 0, 1)
 bones/10/position = Vector3(0, 0.01, 0)
-bones/10/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="BoneAttachment3D" parent="NavigationRegion3D/Exit/EldritchTentacle/tentacle/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.3113e-08, 0.1)
@@ -269,28 +259,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 StartState = 4
 
 [node name="Skeleton3D" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature" index="0"]
-bones/0/position = Vector3(0, 0, -0.01)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/position = Vector3(0, 0.01, 0)
-bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(0, 0.01, 0)
-bones/4/rotation = Quaternion(0, 0, 0, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(0, 0.01, 0)
-bones/5/rotation = Quaternion(0, 0, 0, 1)
 bones/6/position = Vector3(0, 0.01, 0)
-bones/6/rotation = Quaternion(0, 0, 0, 1)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0, 0.01, 0)
-bones/7/rotation = Quaternion(0, 0, 0, 1)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(0, 0.01, 0)
-bones/8/rotation = Quaternion(0, 0, 0, 1)
 bones/9/position = Vector3(0, 0.01, 0)
-bones/9/rotation = Quaternion(0, 0, 0, 1)
 bones/10/position = Vector3(0, 0.01, 0)
-bones/10/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="BoneAttachment3D" parent="NavigationRegion3D/Return1/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.3113e-08, 0.1)
@@ -381,28 +361,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 StartState = 4
 
 [node name="Skeleton3D" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature" index="0"]
-bones/0/position = Vector3(0, 0, -0.01)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/position = Vector3(0, 0.01, 0)
-bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(0, 0.01, 0)
-bones/4/rotation = Quaternion(0, 0, 0, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(0, 0.01, 0)
-bones/5/rotation = Quaternion(0, 0, 0, 1)
 bones/6/position = Vector3(0, 0.01, 0)
-bones/6/rotation = Quaternion(0, 0, 0, 1)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0, 0.01, 0)
-bones/7/rotation = Quaternion(0, 0, 0, 1)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(0, 0.01, 0)
-bones/8/rotation = Quaternion(0, 0, 0, 1)
 bones/9/position = Vector3(0, 0.01, 0)
-bones/9/rotation = Quaternion(0, 0, 0, 1)
 bones/10/position = Vector3(0, 0.01, 0)
-bones/10/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="BoneAttachment3D" parent="NavigationRegion3D/Return2/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.3113e-08, 0.1)
@@ -493,28 +463,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 StartState = 4
 
 [node name="Skeleton3D" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature" index="0"]
-bones/0/position = Vector3(0, 0, -0.01)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/3/position = Vector3(0, 0.01, 0)
-bones/3/rotation = Quaternion(0, 0, 0, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(0, 0.01, 0)
-bones/4/rotation = Quaternion(0, 0, 0, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(0, 0.01, 0)
-bones/5/rotation = Quaternion(0, 0, 0, 1)
 bones/6/position = Vector3(0, 0.01, 0)
-bones/6/rotation = Quaternion(0, 0, 0, 1)
 bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(0, 0.01, 0)
-bones/7/rotation = Quaternion(0, 0, 0, 1)
 bones/7/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(0, 0.01, 0)
-bones/8/rotation = Quaternion(0, 0, 0, 1)
 bones/9/position = Vector3(0, 0.01, 0)
-bones/9/rotation = Quaternion(0, 0, 0, 1)
 bones/10/position = Vector3(0, 0.01, 0)
-bones/10/rotation = Quaternion(0, 0, 0, 1)
 
 [node name="BoneAttachment3D" parent="NavigationRegion3D/Return3/ReturnTentacle/EldritchTentacle/tentacle/Armature/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, -1.19209e-07, -1, 0, 1, -1.19209e-07, 0, -1.3113e-08, 0.1)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://db3tbp4x07eca"]
+[gd_scene load_steps=5 format=3 uid="uid://db3tbp4x07eca"]
 
 [ext_resource type="PackedScene" uid="uid://co7swh50mcpgb" path="res://Assets/Quaternius/Nature/CommonTree_Dead_2.fbx" id="1_8ckw0"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="2_ic4xo"]
 [ext_resource type="PackedScene" uid="uid://dxu4y5kfa1vl8" path="res://Prefabs/Nature/plant_ivy_group_001.tscn" id="3_ic4xo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_llb6d"]
@@ -9,6 +10,9 @@ radius = 0.12976
 [node name="CommonTree_Dead_2" type="Node3D"]
 
 [node name="CommonTree_Dead_2" parent="." instance=ExtResource("1_8ckw0")]
+
+[node name="CommonTree_Dead_2" parent="CommonTree_Dead_2" index="0"]
+surface_material_override/0 = ExtResource("2_ic4xo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -38,3 +42,5 @@ transform = Transform3D(-0.0236686, -0.0320323, -0.00370523, 0.00101386, 0.00385
 
 [node name="plant_ivy_group_005" parent="Ivy" instance=ExtResource("3_ic4xo")]
 transform = Transform3D(-0.0236686, -0.0320323, -0.00370523, 0.00101386, 0.0038547, -0.0398009, 0.0322299, -0.0236447, -0.00146898, -0.0907543, 0.314692, -0.0467736)
+
+[editable path="CommonTree_Dead_2"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://7e2n6lrcm0ek"]
+
+[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="1_kvvoo"]
+[ext_resource type="Material" uid="uid://byyh1f1fy8prk" path="res://Materials/Color_Pink.tres" id="2_jq4ua"]
+
+[node name="lily_flower" type="Node3D"]
+
+[node name="Lilypad_Flower" parent="." instance=ExtResource("1_kvvoo")]
+
+[node name="Flower" parent="Lilypad_Flower" index="0"]
+surface_material_override/0 = ExtResource("2_jq4ua")
+
+[editable path="Lilypad_Flower"]

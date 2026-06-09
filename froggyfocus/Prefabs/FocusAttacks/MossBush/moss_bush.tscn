@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://0vvrgiq1gj0q"]
+[gd_scene load_steps=17 format=3 uid="uid://0vvrgiq1gj0q"]
 
 [ext_resource type="Script" uid="uid://hdwlk4tst0uc" path="res://Prefabs/FocusAttacks/MossBush/MossBush.cs" id="1_faisn"]
-[ext_resource type="Material" uid="uid://yabsdnw7nro6" path="res://Materials/Plant.tres" id="2_scgsm"]
-[ext_resource type="Material" uid="uid://cukhg4fyffggk" path="res://Materials/Plant_Dark.tres" id="2_wkhhg"]
+[ext_resource type="Material" uid="uid://deoad4xy1b60l" path="res://Materials/Color_GreenDark.tres" id="2_scgsm"]
 [ext_resource type="Material" uid="uid://bh2yt4h1isf13" path="res://Materials/plant_grass_tuft_small.tres" id="3_scgsm"]
+[ext_resource type="SphereMesh" uid="uid://bxhdvha667hjj" path="res://Prefabs/Effects/Meshes/leaf.tres" id="4_scgsm"]
 [ext_resource type="AudioStream" uid="uid://c7f8ugtj8ncxq" path="res://Sounds/Raw/sfx_constrict.wav" id="4_wkhhg"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_01uvx"]
@@ -165,9 +165,6 @@ scale_min = 0.3
 scale_max = 0.5
 scale_curve = SubResource("CurveTexture_prjp0")
 
-[sub_resource type="SphereMesh" id="SphereMesh_6cu6a"]
-material = ExtResource("2_wkhhg")
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_scgsm"]
 streams_count = 1
 stream_0/stream = ExtResource("4_wkhhg")
@@ -271,7 +268,7 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_ij8i3")
-draw_pass_1 = SubResource("SphereMesh_6cu6a")
+draw_pass_1 = ExtResource("4_scgsm")
 
 [node name="SfxBush" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_scgsm")

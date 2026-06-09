@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2b5k52cllwso"]
+[gd_scene load_steps=9 format=3 uid="uid://b2b5k52cllwso"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_55ydm"]
 [ext_resource type="PackedScene" uid="uid://dfj1td3i6a4so" path="res://Assets/FlawLizArt/Nature/Bugs/common_fly.fbx" id="2_omklm"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_ngyqj"]
-[ext_resource type="Material" uid="uid://bp4r8hinck686" path="res://Materials/Color_Red.tres" id="3_omklm"]
-[ext_resource type="PackedScene" uid="uid://cgkyv5c16xk1r" path="res://Assets/FlawLizArt/Objects/trash_paper.fbx" id="4_ngyqj"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="3_omklm"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="3_u0wdb"]
+[ext_resource type="Material" uid="uid://dslk7h31g2ng3" path="res://Materials/Color_BlueLight.tres" id="5_ughl0"]
+[ext_resource type="PackedScene" uid="uid://bh1tmu2ibeyyj" path="res://Prefabs/Objects/paper_scrap.tscn" id="6_a7wwe"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ngyqj"]
 top_radius = 0.1
@@ -87,8 +89,26 @@ bones/30/position = Vector3(-5.38475e-11, 0.00422176, 8.6697e-10)
 bones/30/rotation = Quaternion(-0.809019, -0.0170659, -0.0590833, 0.584556)
 bones/30/scale = Vector3(1, 1, 1)
 
+[node name="body" parent="common_fly/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_u0wdb")
+
+[node name="eyes" parent="common_fly/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_omklm")
+
+[node name="wings" parent="common_fly/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("5_ughl0")
+
+[node name="legs_a" parent="common_fly/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("3_u0wdb")
+
+[node name="legs_b" parent="common_fly/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_u0wdb")
+
+[node name="legs_c" parent="common_fly/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("3_u0wdb")
+
 [node name="garbage" type="BoneAttachment3D" parent="common_fly/Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, -7.92499e-18, -1.41468e-19, 7.92499e-18, 0.999363, 0.0356915, -1.41477e-19, -0.0356915, 0.999363, 2.71639e-18, 0.0144412, 0.019074)
+transform = Transform3D(1, -7.92507e-18, -1.41475e-19, 7.92507e-18, 0.999363, 0.0356915, -1.41472e-19, -0.0356915, 0.999363, 2.71638e-18, 0.0144412, 0.019074)
 bone_name = "Head"
 bone_idx = 2
 
@@ -99,20 +119,20 @@ skeleton = NodePath("../../garbage")
 surface_material_override/0 = ExtResource("3_omklm")
 
 [node name="garbage2" type="BoneAttachment3D" parent="common_fly/Armature/Skeleton3D" index="7"]
-transform = Transform3D(1, 2.08318e-17, -1.10943e-18, -2.08318e-17, 0.994344, -0.106212, -1.10943e-18, 0.106212, 0.994344, 2.43355e-18, 0.000940874, 0.0176319)
+transform = Transform3D(1, 2.08317e-17, -1.10942e-18, -2.08317e-17, 0.994344, -0.106212, -1.10942e-18, 0.106212, 0.994344, 2.43355e-18, 0.00094087, 0.017632)
 bone_name = "Body"
 bone_idx = 1
 
-[node name="trash_paper" parent="common_fly/Armature/Skeleton3D/garbage2" instance=ExtResource("4_ngyqj")]
+[node name="paper_scrap" parent="common_fly/Armature/Skeleton3D/garbage2" instance=ExtResource("6_a7wwe")]
 transform = Transform3D(0.00132673, -0.00254832, -0.000863648, 0.00269033, 0.00127203, 0.000379567, 4.37757e-05, -0.00094236, 0.00284781, -0.00235922, 0.00988315, 0.00399689)
 
-[node name="trash_paper2" parent="common_fly/Armature/Skeleton3D/garbage2" instance=ExtResource("4_ngyqj")]
+[node name="paper_scrap2" parent="common_fly/Armature/Skeleton3D/garbage2" instance=ExtResource("6_a7wwe")]
 transform = Transform3D(-0.00159428, -0.00251234, -0.000382618, 0.00241052, -0.00163803, 0.000711523, -0.000804776, 7.06876e-05, 0.00288918, 0.00122857, 0.00752387, 0.00539941)
 
-[node name="trash_paper3" parent="common_fly/Armature/Skeleton3D/garbage2" instance=ExtResource("4_ngyqj")]
+[node name="paper_scrap3" parent="common_fly/Armature/Skeleton3D/garbage2" instance=ExtResource("6_a7wwe")]
 transform = Transform3D(-0.000474834, 0.00293737, -0.000382618, -0.00289024, -0.000374533, 0.000711522, 0.0006489, 0.000481237, 0.00288918, -0.00135873, 0.00235363, 0.00633005)
 
-[node name="trash_paper4" parent="common_fly/Armature/Skeleton3D/garbage2" instance=ExtResource("4_ngyqj")]
+[node name="paper_scrap4" parent="common_fly/Armature/Skeleton3D/garbage2" instance=ExtResource("6_a7wwe")]
 transform = Transform3D(-0.00288551, 0.000726258, -0.000382618, -0.000799721, -0.00280253, 0.000711522, -0.000185183, 0.000786364, 0.00288918, 0.000333791, -0.00261295, 0.00388523)
 
 [node name="AnimationPlayer" parent="common_fly" index="1"]

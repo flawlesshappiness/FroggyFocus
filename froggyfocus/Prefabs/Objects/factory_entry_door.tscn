@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://x7nclqu76y7s"]
+[gd_scene load_steps=15 format=3 uid="uid://x7nclqu76y7s"]
 
 [ext_resource type="Script" uid="uid://cce8dupkk10ay" path="res://Prefabs/Objects/FactoryEntryDoor.cs" id="1_vx0je"]
 [ext_resource type="PackedScene" uid="uid://b54uutheaw4em" path="res://Assets/FlawLizArt/Objects/security_door.fbx" id="1_vxr4f"]
 [ext_resource type="Resource" uid="uid://dsypg1hdmmcim" path="res://Sounds/Resources/sfx_metal_door.tres" id="2_e7g1o"]
 [ext_resource type="AudioStream" uid="uid://dfylhhmi52jlf" path="res://Sounds/Raw/sfx_door_close_001.wav" id="3_do0nf"]
 [ext_resource type="AudioStream" uid="uid://d3ebk3hsx5558" path="res://Sounds/Raw/sfx_door_open_metal_001.wav" id="4_qit5c"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="4_slmcg"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="5_6mhik"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="6_6n6x5"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="7_hvm6v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vx0je"]
 size = Vector3(2.4646, 4.23474, 0.639648)
@@ -59,8 +63,15 @@ DoorSound = ExtResource("2_e7g1o")
 
 [node name="security_door" parent="." instance=ExtResource("1_vxr4f")]
 
+[node name="doorway" parent="security_door" index="0"]
+surface_material_override/0 = ExtResource("4_slmcg")
+surface_material_override/1 = ExtResource("5_6mhik")
+
 [node name="door" parent="security_door/doorway" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("4_slmcg")
+surface_material_override/1 = ExtResource("6_6n6x5")
+surface_material_override/2 = ExtResource("7_hvm6v")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ik6fa7q1ukr0"]
+
+[ext_resource type="PackedScene" uid="uid://bpe76movbdd5s" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_long_piece.fbx" id="1_h4ixk"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="2_sptgx"]
+
+[node name="crystal_long_piece" type="Node3D"]
+
+[node name="crystal_long_piece" parent="." instance=ExtResource("1_h4ixk")]
+
+[node name="crystal_long_piece" parent="crystal_long_piece" index="0"]
+surface_material_override/0 = ExtResource("2_sptgx")
+
+[editable path="crystal_long_piece"]

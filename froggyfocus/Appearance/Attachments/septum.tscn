@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_g8sym"]
 [ext_resource type="PackedScene" uid="uid://ddhgdgl8n18g4" path="res://Assets/FlawLizArt/Face/septum.fbx" id="2_g8sym"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_uvns7"]
+[ext_resource type="Material" uid="uid://u2htn6m0hhi1" path="res://Materials/Metallic.tres" id="3_uvns7"]
 
 [node name="Septum" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_g8sym")

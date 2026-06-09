@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://vnrq0eoxny8w"]
+[gd_scene load_steps=15 format=3 uid="uid://vnrq0eoxny8w"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_1rlba"]
 [ext_resource type="PackedScene" uid="uid://bfibo3cvla66s" path="res://Assets/FlawLizArt/Nature/Bugs/tiger_beetle.fbx" id="1_g7rwj"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_0d2ln"]
+[ext_resource type="Material" uid="uid://bu0xn6ccwtlfq" path="res://Materials/Color_Green.tres" id="3_n7us3"]
 [ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="3_x1lhu"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="4_83htv"]
 [ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="4_ku2op"]
 [ext_resource type="Material" uid="uid://dd4cr8a3qa3fa" path="res://Materials/Seaweed_003.tres" id="5_07ak8"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="5_cxshx"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="9_r6fgk"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ku2op"]
 
@@ -13,11 +17,8 @@
 
 [sub_resource type="QuadMesh" id="QuadMesh_k84km"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm42h"]
-albedo_color = Color(0.6, 0.4944, 0.312, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_ku2op"]
-material = SubResource("StandardMaterial3D_dm42h")
+material = ExtResource("9_r6fgk")
 radius = 0.1
 height = 0.2
 
@@ -114,8 +115,35 @@ bones/42/position = Vector3(-0.00841822, -0.0189224, 0.0038499)
 bones/42/rotation = Quaternion(0.506982, 0.492919, 0.492919, 0.506982)
 bones/42/scale = Vector3(1, 1, 1)
 
+[node name="body_001" parent="tiger_beetle/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_n7us3")
+
+[node name="body_002" parent="tiger_beetle/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("3_n7us3")
+
+[node name="head" parent="tiger_beetle/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("3_n7us3")
+
+[node name="eyes" parent="tiger_beetle/Armature/Skeleton3D" index="3"]
+surface_material_override/0 = ExtResource("4_83htv")
+
+[node name="antannae" parent="tiger_beetle/Armature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("3_n7us3")
+
+[node name="pincers" parent="tiger_beetle/Armature/Skeleton3D" index="5"]
+surface_material_override/0 = ExtResource("5_cxshx")
+
+[node name="legs_001" parent="tiger_beetle/Armature/Skeleton3D" index="6"]
+surface_material_override/0 = ExtResource("3_n7us3")
+
+[node name="legs_002" parent="tiger_beetle/Armature/Skeleton3D" index="7"]
+surface_material_override/0 = ExtResource("3_n7us3")
+
+[node name="legs_003" parent="tiger_beetle/Armature/Skeleton3D" index="8"]
+surface_material_override/0 = ExtResource("3_n7us3")
+
 [node name="seaweed" type="BoneAttachment3D" parent="tiger_beetle/Armature/Skeleton3D" index="9"]
-transform = Transform3D(0.995404, -0.0956676, 0.00439167, 0.0957684, 0.994357, -0.0456464, 2.32831e-10, 0.0458572, 0.998948, 2.64244e-18, -0.0075516, 0.00935168)
+transform = Transform3D(0.995404, -0.0956676, 0.00439166, 0.0957683, 0.994357, -0.0456463, -6.28643e-09, 0.0458571, 0.998948, 2.64244e-18, -0.0075516, 0.00935168)
 bone_name = "Body.001"
 bone_idx = 1
 

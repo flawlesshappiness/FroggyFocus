@@ -1,35 +1,35 @@
-[gd_scene load_steps=52 format=3 uid="uid://b4llhtloesqsw"]
+[gd_scene load_steps=51 format=3 uid="uid://b4llhtloesqsw"]
 
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="1_l3c1f"]
 [ext_resource type="Script" uid="uid://ckpmynrqvhv3k" path="res://Scenes/FactoryEntranceScene.cs" id="1_ng05n"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_ku8yf"]
-[ext_resource type="PackedScene" uid="uid://b73xd2pio1sq0" path="res://Assets/FlawLizArt/Interior/tile_2x2.fbx" id="2_ucjxr"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_c40q0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_y6sem"]
 [ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="2_y7ie4"]
 [ext_resource type="PackedScene" uid="uid://x7nclqu76y7s" path="res://Prefabs/Objects/factory_entry_door.tscn" id="4_vss4v"]
 [ext_resource type="PackedScene" uid="uid://c4de40jnper0p" path="res://Assets/FlawLizArt/Interior/Vent/vent_cover.fbx" id="5_ebhn3"]
-[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Darkness.tres" id="7_u5twr"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="7_u5twr"]
 [ext_resource type="PackedScene" uid="uid://v4vlayt62itx" path="res://Prefabs/Interior/vent/vent_corridor.tscn" id="8_bbrua"]
 [ext_resource type="PackedScene" uid="uid://dolo61waqy818" path="res://Prefabs/Interior/vent/vent_door.tscn" id="9_etkwn"]
 [ext_resource type="PackedScene" uid="uid://du46xqv0n44f8" path="res://Prefabs/Interior/vent/vent_gate.tscn" id="10_ng05n"]
-[ext_resource type="Material" uid="uid://dh1ks5j63h53" path="res://Materials/Whiteness.tres" id="10_s0fmn"]
+[ext_resource type="Material" uid="uid://dh1ks5j63h53" path="res://Materials/Unshaded_White.tres" id="10_s0fmn"]
 [ext_resource type="PackedScene" uid="uid://cle2ycu3xbrea" path="res://Prefabs/Interior/vent/vent_corridor_cross_t.tscn" id="10_tdcru"]
 [ext_resource type="PackedScene" uid="uid://dx1awofqqui2" path="res://Prefabs/Interior/vent/vent_corridor_turn.tscn" id="11_tdcru"]
-[ext_resource type="AudioStream" uid="uid://dtooblynpf23x" path="res://Sounds/Raw/sfx_receptionist_typing.wav" id="14_hx84q"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="14_a2urv"]
 [ext_resource type="PackedScene" uid="uid://djg6cn64c3id2" path="res://Prefabs/Interior/wall_lab.tscn" id="15_4bqxh"]
-[ext_resource type="Material" uid="uid://o7oenp0foklf" path="res://Materials/LabWall.tres" id="15_63al5"]
+[ext_resource type="PackedScene" uid="uid://dor6ep604xfj4" path="res://Prefabs/Interior/factory_tile_2x4.tscn" id="16_a2urv"]
 [ext_resource type="Script" uid="uid://djusneokga6cw" path="res://Scenes/FactoryEntranceScene/ReceptionVent.cs" id="17_0ke5t"]
 [ext_resource type="PackedScene" uid="uid://c6syt0vmofmsw" path="res://Prefabs/NPC/ReceptionistNpc/receptionist_npc.tscn" id="17_khjn7"]
 [ext_resource type="PackedScene" uid="uid://ff70npsac6ah" path="res://Prefabs/Interior/desk.tscn" id="17_ku8yf"]
-[ext_resource type="PackedScene" uid="uid://c6a5dhuqr5ji3" path="res://Assets/KenneyNL/Furniture/computerScreen.fbx" id="18_abimu"]
 [ext_resource type="AudioStream" uid="uid://c7pxd3sxuo3l6" path="res://Sounds/Raw/sfx_vent_unlock.wav" id="18_h8vhv"]
 [ext_resource type="PackedScene" uid="uid://cdhrwkpsysclu" path="res://Prefabs/Interior/file_cabinet.tscn" id="18_khjn7"]
 [ext_resource type="PackedScene" uid="uid://0s1w31s14yve" path="res://Prefabs/Interior/shelf.tscn" id="19_07kcy"]
-[ext_resource type="PackedScene" uid="uid://c1dclo8rkjhfp" path="res://Assets/KenneyNL/Furniture/computerMouse.fbx" id="19_8gnk2"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="19_c40q0"]
 [ext_resource type="PackedScene" uid="uid://o27vfqewrf4x" path="res://Assets/FlawLizArt/Interior/paper_stack.fbx" id="20_ofhcd"]
-[ext_resource type="PackedScene" uid="uid://ch3a7arxk8twh" path="res://Assets/KenneyNL/Furniture/computerKeyboard.fbx" id="20_xdxxl"]
+[ext_resource type="PackedScene" uid="uid://tv4gbhgj63hb" path="res://Prefabs/Interior/computer_monitor.tscn" id="23_c40q0"]
 [ext_resource type="PackedScene" uid="uid://cbk82yxbrm5jk" path="res://Prefabs/Interior/table_small.tscn" id="24_8gnk2"]
+[ext_resource type="PackedScene" uid="uid://clfr3782j3hus" path="res://Prefabs/Interior/computer_mouse.tscn" id="24_c40q0"]
 [ext_resource type="Script" uid="uid://ykktluvoayd2" path="res://Scenes/FactoryEntranceScene/ReceptionTrigger.cs" id="25_15roq"]
+[ext_resource type="PackedScene" uid="uid://ckqhav7fpwp0b" path="res://Prefabs/Interior/computer_keyboard.tscn" id="25_c40q0"]
 [ext_resource type="PackedScene" uid="uid://x6hfkuco21p3" path="res://Prefabs/Interior/plant_pot_monstera.tscn" id="25_qm26m"]
 [ext_resource type="Script" uid="uid://csr7bfcifk3jb" path="res://Modules/Area/TriggerArea3D.cs" id="25_xdxxl"]
 [ext_resource type="AudioStream" uid="uid://d32p5xa3fwgxv" path="res://Sounds/Raw/amb_cave_001.wav" id="30_6ddus"]
@@ -45,9 +45,6 @@
 [sub_resource type="NavigationMesh" id="NavigationMesh_ucjxr"]
 geometry_parsed_geometry_type = 1
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y7ie4"]
-size = Vector3(24, 1, 24)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_tdcru"]
 material = ExtResource("10_s0fmn")
 
@@ -56,7 +53,7 @@ material = ExtResource("10_s0fmn")
 size = Vector2(1.8, 1.8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qm26m"]
-material = ExtResource("15_63al5")
+material = ExtResource("14_a2urv")
 size = Vector3(25, 1, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_63al5"]
@@ -85,7 +82,7 @@ VentDoorEnter = [NodePath("World/Entrance/ReceptionVent/vent_door_enter")]
 VentDoorExit = [NodePath("NavigationRegion3D/Vents/vent_door_exit1"), NodePath("NavigationRegion3D/Vents/vent_door_exit2")]
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-Weathers = Array[ExtResource("2_ku8yf")]([ExtResource("2_y7ie4")])
+Weathers = Array[ExtResource("2_c40q0")]([ExtResource("2_y7ie4")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.965926, 1.13133e-08, -0.258819, 0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 0, -13, 0)
@@ -101,12 +98,67 @@ navigation_mesh = SubResource("NavigationMesh_ucjxr")
 
 [node name="Entrance" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Entrance"]
+[node name="Floor" type="Node3D" parent="NavigationRegion3D/Entrance"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Entrance/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.5, -11)
-shape = SubResource("BoxShape3D_y7ie4")
-debug_color = Color(0, 0.595, 0.7, 1)
+[node name="factory_tile_2x4" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="factory_tile_2x5" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -2)
+
+[node name="factory_tile_2x6" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -4)
+
+[node name="factory_tile_2x7" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -6)
+
+[node name="factory_tile_2x8" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -8)
+
+[node name="factory_tile_2x9" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -10)
+
+[node name="factory_tile_2x10" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -12)
+
+[node name="factory_tile_2x16" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -11)
+
+[node name="factory_tile_2x17" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -11)
+
+[node name="factory_tile_2x18" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -11)
+
+[node name="factory_tile_2x19" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -11)
+
+[node name="factory_tile_2x20" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -11)
+
+[node name="factory_tile_2x21" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -11)
+
+[node name="factory_tile_2x22" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -11)
+
+[node name="factory_tile_2x23" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -11)
+
+[node name="factory_tile_2x11" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -14)
+
+[node name="factory_tile_2x12" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -16)
+
+[node name="factory_tile_2x13" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -18)
+
+[node name="factory_tile_2x14" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -20)
+
+[node name="factory_tile_2x15" parent="NavigationRegion3D/Entrance/Floor" instance=ExtResource("16_a2urv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -22)
 
 [node name="Vents" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, 0)
@@ -351,16 +403,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6, -1,
 [node name="ReceptionistNpc" parent="World/Entrance" instance=ExtResource("17_khjn7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8621, 0.455933, -11)
 
-[node name="SfxTyping" type="AudioStreamPlayer3D" parent="World/Entrance/ReceptionistNpc"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.810868, -0.993302)
-stream = ExtResource("14_hx84q")
-volume_db = -30.0
-unit_size = 30.0
-autoplay = true
-max_distance = 20.0
-bus = &"SFX"
-attenuation_filter_db = 0.0
-
 [node name="Ceiling" type="MeshInstance3D" parent="World/Entrance"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 8, 5.3, -11)
 mesh = SubResource("BoxMesh_qm26m")
@@ -444,248 +486,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -15)
 [node name="wall_lab24" parent="World/Entrance/Walls" instance=ExtResource("15_4bqxh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -15)
 
-[node name="Floor" type="Node3D" parent="World/Entrance"]
-
-[node name="tile_2x2" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-
-[node name="tile_2x3" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-
-[node name="tile_2x4" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
-
-[node name="tile_2x5" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
-
-[node name="tile_2x6" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
-
-[node name="tile_2x7" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
-
-[node name="tile_2x8" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -6)
-
-[node name="tile_2x10" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-
-[node name="tile_2x11" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
-
-[node name="tile_2x12" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
-
-[node name="tile_2x13" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -6)
-
-[node name="tile_2x9" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -6)
-
-[node name="tile_2x14" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-
-[node name="tile_2x15" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
-
-[node name="tile_2x16" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
-
-[node name="tile_2x17" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -6)
-
-[node name="tile_2x18" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -8)
-
-[node name="tile_2x19" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -8)
-
-[node name="tile_2x20" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -8)
-
-[node name="tile_2x21" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
-
-[node name="tile_2x22" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -10)
-
-[node name="tile_2x23" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10)
-
-[node name="tile_2x24" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -10)
-
-[node name="tile_2x25" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -10)
-
-[node name="tile_2x26" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -12)
-
-[node name="tile_2x27" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -12)
-
-[node name="tile_2x28" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -12)
-
-[node name="tile_2x29" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -12)
-
-[node name="tile_2x30" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -14)
-
-[node name="tile_2x31" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -14)
-
-[node name="tile_2x32" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -14)
-
-[node name="tile_2x33" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -14)
-
-[node name="tile_2x66" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -16)
-
-[node name="tile_2x67" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -16)
-
-[node name="tile_2x68" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -16)
-
-[node name="tile_2x69" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -16)
-
-[node name="tile_2x70" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -18)
-
-[node name="tile_2x71" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -18)
-
-[node name="tile_2x72" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -18)
-
-[node name="tile_2x73" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -18)
-
-[node name="tile_2x74" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -20)
-
-[node name="tile_2x75" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -20)
-
-[node name="tile_2x76" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -20)
-
-[node name="tile_2x77" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -20)
-
-[node name="tile_2x78" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -22)
-
-[node name="tile_2x79" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -22)
-
-[node name="tile_2x80" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -22)
-
-[node name="tile_2x81" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -22)
-
-[node name="tile_2x34" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -8)
-
-[node name="tile_2x35" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
-
-[node name="tile_2x36" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -12)
-
-[node name="tile_2x37" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -14)
-
-[node name="tile_2x38" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -8)
-
-[node name="tile_2x39" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10)
-
-[node name="tile_2x40" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -12)
-
-[node name="tile_2x41" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -14)
-
-[node name="tile_2x42" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -8)
-
-[node name="tile_2x43" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -10)
-
-[node name="tile_2x44" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -12)
-
-[node name="tile_2x45" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -14)
-
-[node name="tile_2x46" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -8)
-
-[node name="tile_2x47" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -10)
-
-[node name="tile_2x48" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -12)
-
-[node name="tile_2x49" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -14)
-
-[node name="tile_2x50" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -8)
-
-[node name="tile_2x51" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -10)
-
-[node name="tile_2x52" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -12)
-
-[node name="tile_2x53" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -14)
-
-[node name="tile_2x54" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -8)
-
-[node name="tile_2x55" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -10)
-
-[node name="tile_2x56" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -12)
-
-[node name="tile_2x57" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -14)
-
-[node name="tile_2x58" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -8)
-
-[node name="tile_2x59" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -10)
-
-[node name="tile_2x60" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -12)
-
-[node name="tile_2x61" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -14)
-
-[node name="tile_2x62" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -8)
-
-[node name="tile_2x63" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -10)
-
-[node name="tile_2x64" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -12)
-
-[node name="tile_2x65" parent="World/Entrance/Floor" instance=ExtResource("2_ucjxr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -14)
-
 [node name="Doors" type="Node3D" parent="World/Entrance"]
 
 [node name="ScientlistLabDoor" parent="World/Entrance/Doors" instance=ExtResource("4_vss4v")]
@@ -715,8 +515,14 @@ NodeName = "ExitVent1"
 
 [node name="vent_cover_locked" parent="World/Entrance/ReceptionVent/vent_door_enter" instance=ExtResource("5_ebhn3")]
 
+[node name="vent_cover" parent="World/Entrance/ReceptionVent/vent_door_enter/vent_cover_locked" index="0"]
+surface_material_override/0 = ExtResource("19_c40q0")
+
 [node name="vent_cover_unlocked" parent="World/Entrance/ReceptionVent/vent_door_enter" instance=ExtResource("5_ebhn3")]
 transform = Transform3D(1, 0, 0, 0, 0.956844, 0.290602, 0, -0.290602, 0.956844, 2.13955, -0.404824, 0.172419)
+
+[node name="vent_cover" parent="World/Entrance/ReceptionVent/vent_door_enter/vent_cover_unlocked" index="0"]
+surface_material_override/0 = ExtResource("19_c40q0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/Entrance/ReceptionVent/vent_door_enter"]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 0, 0, 0.0126896)
@@ -735,14 +541,14 @@ bus = &"SFX"
 [node name="desk" parent="World/Entrance/Interior" instance=ExtResource("17_ku8yf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0, -11)
 
-[node name="computerScreen" parent="World/Entrance/Interior/desk" instance=ExtResource("18_abimu")]
-transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 0.393028, 0.960578, 0.219277)
+[node name="computer_monitor" parent="World/Entrance/Interior/desk" instance=ExtResource("23_c40q0")]
+transform = Transform3D(0.765, 0, 0, 0, 0.765, 0, 0, 0, 0.765, 0.0269337, 0.960578, 0.219277)
 
-[node name="computerMouse" parent="World/Entrance/Interior/desk" instance=ExtResource("19_8gnk2")]
-transform = Transform3D(0.217215, 0, 0.0348933, 0, 0.22, 0, -0.0348933, 0, 0.217215, -0.472938, 0.958982, -0.223315)
+[node name="computer_mouse" parent="World/Entrance/Interior/desk" instance=ExtResource("24_c40q0")]
+transform = Transform3D(0.987342, 0, 0.158606, 0, 1, 0, -0.158606, 0, 0.987342, -0.472938, 0.958982, -0.223315)
 
-[node name="computerKeyboard" parent="World/Entrance/Interior/desk" instance=ExtResource("20_xdxxl")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.38857, 0.958814, -0.259114)
+[node name="computer_keyboard" parent="World/Entrance/Interior/desk" instance=ExtResource("25_c40q0")]
+transform = Transform3D(0.49, 0, 0, 0, 0.49, 0, 0, 0, 0.49, 0.0328579, 0.958814, -0.104376)
 
 [node name="file_cabinet" parent="World/Entrance/Interior" instance=ExtResource("18_khjn7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0, -13)
@@ -847,10 +653,10 @@ transform = Transform3D(0.353114, -0.234338, 0.905757, 0.00684796, 0.968745, 0.2
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.74228e-08, 0, -5.87234)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="World/Entrance"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.571991, 2.15686, -11.7205)
-light_energy = 0.15
-omni_range = 72.3079
-omni_attenuation = -0.5
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45584, 2.15686, -11.7205)
+light_energy = 0.02
+omni_range = 20.173
+omni_attenuation = -1.0
 
 [node name="ReverbArea" type="Area3D" parent="World/Entrance"]
 collision_layer = 0
@@ -887,7 +693,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 0, 0)
 [node name="vent_frame" parent="World/Lab1/interior" instance=ExtResource("36_qrpo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 3.99, -10)
 
+[node name="vent_frame" parent="World/Lab1/interior/vent_frame" index="0"]
+surface_material_override/0 = ExtResource("19_c40q0")
+
 [node name="vent_cover" parent="World/Lab1/interior/vent_frame" instance=ExtResource("5_ebhn3")]
+
+[node name="vent_cover" parent="World/Lab1/interior/vent_frame/vent_cover" index="0"]
+surface_material_override/0 = ExtResource("19_c40q0")
 
 [node name="table_lab" parent="World/Lab1/interior" instance=ExtResource("39_n51v6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -8)
@@ -929,10 +741,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 3.
 transform = Transform3D(-0.340235, 0, 0.169235, 0, 0.38, 0, -0.169235, 0, -0.340235, 1.62091, 0.633479, -9.65554)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="World/Lab1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154594, 4.0864, -5.76208)
-light_energy = 0.15
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154594, 2.62469, -5.76208)
+light_energy = 2.0
 omni_range = 72.3079
-omni_attenuation = -0.5
 
 [node name="Camera3D" type="Camera3D" parent="World/Lab1"]
 transform = Transform3D(-0.972133, 0.0388171, -0.231194, 0, 0.986196, 0.165581, 0.23443, 0.160967, -0.958714, -1.29792, 3.83155, -10.6645)
@@ -950,3 +761,8 @@ stream = ExtResource("30_6ddus")
 volume_db = -80.0
 autoplay = true
 bus = &"Environment"
+
+[editable path="World/Entrance/ReceptionVent/vent_door_enter/vent_cover_locked"]
+[editable path="World/Entrance/ReceptionVent/vent_door_enter/vent_cover_unlocked"]
+[editable path="World/Lab1/interior/vent_frame"]
+[editable path="World/Lab1/interior/vent_frame/vent_cover"]

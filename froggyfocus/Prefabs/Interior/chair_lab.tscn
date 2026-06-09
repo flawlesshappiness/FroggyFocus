@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbjjiavxo6cov"]
+
+[ext_resource type="PackedScene" uid="uid://dwll0vuniex4i" path="res://Assets/FlawLizArt/Interior/chair_lab.fbx" id="1_jrtqq"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_pjwii"]
+[ext_resource type="Material" uid="uid://cmwnlcmbrnpft" path="res://Materials/Color_Blue.tres" id="3_ikrm8"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="4_llj5o"]
+
+[node name="chair_lab" type="Node3D"]
+
+[node name="chair_lab4" parent="." instance=ExtResource("1_jrtqq")]
+
+[node name="Cylinder" parent="chair_lab4" index="0"]
+surface_material_override/0 = ExtResource("2_pjwii")
+surface_material_override/1 = ExtResource("3_ikrm8")
+surface_material_override/2 = ExtResource("4_llj5o")
+
+[editable path="chair_lab4"]

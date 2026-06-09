@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dor6ep604xfj4"]
+
+[ext_resource type="PackedScene" uid="uid://bbs70wxx5su5d" path="res://Prefabs/Interior/factory_tile_2x2.tscn" id="1_cb5bu"]
+
+[node name="factory_tile_2x4" type="Node3D"]
+
+[node name="factory_tile_2x2" parent="." instance=ExtResource("1_cb5bu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="factory_tile_2x4" parent="." instance=ExtResource("1_cb5bu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="factory_tile_2x5" parent="." instance=ExtResource("1_cb5bu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+
+[node name="factory_tile_2x3" parent="." instance=ExtResource("1_cb5bu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

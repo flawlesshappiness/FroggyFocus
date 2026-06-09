@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://krhivawcaxef"]
 
 [ext_resource type="Script" uid="uid://b7h8ihcq0rn4f" path="res://Prefabs/NPC/WorkerNPC/FrogWorkerNpc.cs" id="1_e8d2s"]
-[ext_resource type="Material" uid="uid://7x78ed4ywkj3" path="res://Materials/Color_Yellow.tres" id="3_fx2j0"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="3_fx2j0"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_nxnu1"]
 [ext_resource type="AudioStream" uid="uid://blsf1wmo1ckdw" path="res://Sounds/Raw/sfx_frog_croak_004.wav" id="4_0wwsf"]
 [ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="4_dyo24"]

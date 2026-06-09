@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://djbxoq7k1amhp"]
+[gd_scene load_steps=6 format=3 uid="uid://djbxoq7k1amhp"]
 
 [ext_resource type="PackedScene" uid="uid://bu16urfrbhyy2" path="res://Assets/FlawLizArt/Construction/scaffolding_platform_4x2.fbx" id="1_s5gw6"]
+[ext_resource type="Material" uid="uid://cmwnlcmbrnpft" path="res://Materials/Color_Blue.tres" id="2_3k41l"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="2_6dijs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6dijs"]
@@ -12,6 +13,9 @@ size = Vector3(4, 0.5, 2)
 [node name="scaffolding_platform_4x2" type="Node3D"]
 
 [node name="scaffolding_platform_4x2" parent="." instance=ExtResource("1_s5gw6")]
+
+[node name="scaffolding_platform_4x2" parent="scaffolding_platform_4x2" index="0"]
+surface_material_override/0 = ExtResource("2_3k41l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -30,3 +34,5 @@ metadata/_custom_type_script = "uid://dt4o28x6fcqym"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 shape = SubResource("BoxShape3D_3k41l")
 debug_color = Color(0.7, 0, 0, 0.419608)
+
+[editable path="scaffolding_platform_4x2"]

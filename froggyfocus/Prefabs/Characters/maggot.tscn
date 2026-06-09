@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbycfuiikekn5"]
+[gd_scene load_steps=6 format=3 uid="uid://dbycfuiikekn5"]
 
 [ext_resource type="PackedScene" uid="uid://q8e15wpuoqu5" path="res://Assets/FlawLizArt/Nature/Bugs/maggot.fbx" id="1_dm04g"]
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_l7son"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_l7son"]
+[ext_resource type="Material" uid="uid://b4sl6vfobdcm0" path="res://Materials/Color_BeigeLight.tres" id="3_1ek5y"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="4_4din1"]
 
 [node name="Maggot" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_l7son")
@@ -21,6 +23,15 @@ bones/5/position = Vector3(0, 0.000961971, 0.007)
 bones/7/position = Vector3(0, 0.00913803, 0.007)
 bones/9/position = Vector3(0, 0.0176944, 0.007)
 bones/9/rotation = Quaternion(0.707107, 0, 0, 0.707107)
+
+[node name="body" parent="maggot/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_1ek5y")
+
+[node name="head" parent="maggot/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("4_4din1")
+
+[node name="antannae" parent="maggot/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("4_4din1")
 
 [node name="AnimationPlayer" parent="maggot" index="1"]
 playback_default_blend_time = 0.25

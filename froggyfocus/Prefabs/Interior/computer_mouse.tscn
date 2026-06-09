@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://clfr3782j3hus"]
+
+[ext_resource type="PackedScene" uid="uid://c1dclo8rkjhfp" path="res://Assets/KenneyNL/Furniture/computerMouse.fbx" id="1_o5puq"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_xl0kb"]
+
+[node name="computer_mouse" type="Node3D"]
+
+[node name="computerMouse" parent="." instance=ExtResource("1_o5puq")]
+transform = Transform3D(0.22, 0, 0, 0, 0.22, 0, 0, 0, 0.22, 0, 0, -0.087827)
+
+[node name="computerMouse" parent="computerMouse" index="0"]
+surface_material_override/0 = ExtResource("2_xl0kb")
+
+[editable path="computerMouse"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv8hdn3mar85t"]
+
+[ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="1_l2bc1"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="2_d0ja0"]
+
+[node name="oil_accessory" type="Node3D"]
+
+[node name="oil_accessory" parent="." instance=ExtResource("1_l2bc1")]
+
+[node name="oil" parent="oil_accessory" index="0"]
+surface_material_override/0 = ExtResource("2_d0ja0")
+
+[editable path="oil_accessory"]

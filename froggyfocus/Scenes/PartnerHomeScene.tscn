@@ -5,8 +5,8 @@
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_bsfui"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_hpje1"]
 [ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="3_ul0f8"]
-[ext_resource type="Material" uid="uid://wog5r0ocenqr" path="res://Materials/Rock.tres" id="7_36bes"]
-[ext_resource type="PackedScene" uid="uid://b6jeqt11pey36" path="res://Assets/FlawLizArt/Interior/wood_2x2.fbx" id="8_3ttb3"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="7_36bes"]
+[ext_resource type="PackedScene" uid="uid://barr7v13bgfvb" path="res://Prefabs/Interior/floor_wood_2x5.tscn" id="7_cnj5n"]
 [ext_resource type="PackedScene" uid="uid://0s1w31s14yve" path="res://Prefabs/Interior/shelf.tscn" id="10_1t2yw"]
 [ext_resource type="PackedScene" uid="uid://d2gx40b6sseb2" path="res://Prefabs/Interior/couch.tscn" id="10_i37a1"]
 [ext_resource type="PackedScene" uid="uid://cunj8p8hkba1x" path="res://Assets/KayLousberg/Furniture/pictureframe_large_A.fbx" id="11_6turq"]
@@ -112,80 +112,20 @@ skeleton = NodePath("../..")
 
 [node name="Floor" type="Node3D" parent="World/House"]
 
-[node name="wood_2x2" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+[node name="floor_wood_2x5" parent="World/House/Floor" instance=ExtResource("7_cnj5n")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 4, 0, 0)
 
-[node name="wood_2x3" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
+[node name="floor_wood_2x6" parent="World/House/Floor" instance=ExtResource("7_cnj5n")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 2, 0, 0)
 
-[node name="wood_2x4" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 0)
+[node name="floor_wood_2x7" parent="World/House/Floor" instance=ExtResource("7_cnj5n")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 0, 0, 0)
 
-[node name="wood_2x5" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0)
+[node name="floor_wood_2x8" parent="World/House/Floor" instance=ExtResource("7_cnj5n")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -2, 0, 0)
 
-[node name="wood_2x6" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 0)
-
-[node name="wood_2x7" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2)
-
-[node name="wood_2x8" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 2)
-
-[node name="wood_2x9" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 2)
-
-[node name="wood_2x10" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 2)
-
-[node name="wood_2x11" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 2)
-
-[node name="wood_2x12" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 4)
-
-[node name="wood_2x13" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 4)
-
-[node name="wood_2x14" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, 4)
-
-[node name="wood_2x15" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 4)
-
-[node name="wood_2x16" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, 4)
-
-[node name="wood_2x17" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -2)
-
-[node name="wood_2x18" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -2)
-
-[node name="wood_2x19" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -2)
-
-[node name="wood_2x20" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -2)
-
-[node name="wood_2x21" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -2)
-
-[node name="wood_2x22" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -4)
-
-[node name="wood_2x23" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, -4)
-
-[node name="wood_2x24" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4, 0, -4)
-
-[node name="wood_2x25" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -4)
-
-[node name="wood_2x26" parent="World/House/Floor" instance=ExtResource("8_3ttb3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -4)
+[node name="floor_wood_2x9" parent="World/House/Floor" instance=ExtResource("7_cnj5n")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -4, 0, 0)
 
 [node name="Furniture" type="Node3D" parent="World"]
 

@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://nfqan33vj12g"]
+[gd_scene load_steps=9 format=3 uid="uid://nfqan33vj12g"]
 
 [ext_resource type="Script" uid="uid://jcs052bl462" path="res://Effect/ParticleEffectGroup.cs" id="1_r3cg3"]
-[ext_resource type="Material" uid="uid://c3nqeqkfskwjc" path="res://Materials/PS_White.tres" id="2_gm8ei"]
+[ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="2_gm8ei"]
 
 [sub_resource type="Curve" id="Curve_11kg6"]
 _data = [Vector2(0, 0), 0.0, 13.8548, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.60815, 0.0, 0, 0]
@@ -22,9 +22,6 @@ scale_min = 0.5
 scale_max = 0.7
 scale_curve = SubResource("CurveTexture_e4t0f")
 
-[sub_resource type="SphereMesh" id="SphereMesh_6ssq6"]
-material = ExtResource("2_gm8ei")
-
 [sub_resource type="Curve" id="Curve_08551"]
 _data = [Vector2(0, 0), 0.0, 13.8548, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.60815, 0.0, 0, 0]
 point_count = 3
@@ -44,8 +41,8 @@ scale_curve = SubResource("CurveTexture_27yty")
 
 [node name="ps_splash_small" type="Node3D" node_paths=PackedStringArray("Particles")]
 script = ExtResource("1_r3cg3")
-DestroyDelay = 5.0
 Particles = [NodePath("ps_foam_horizontal"), NodePath("ps_foam_vertical")]
+DestroyDelay = 5.0
 
 [node name="ps_foam_horizontal" type="GPUParticles3D" parent="."]
 emitting = false
@@ -55,7 +52,7 @@ one_shot = true
 explosiveness = 0.6
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_hstg3")
-draw_pass_1 = SubResource("SphereMesh_6ssq6")
+draw_pass_1 = ExtResource("2_gm8ei")
 
 [node name="ps_foam_vertical" type="GPUParticles3D" parent="."]
 emitting = false
@@ -64,4 +61,4 @@ one_shot = true
 explosiveness = 0.9
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_v1nmw")
-draw_pass_1 = SubResource("SphereMesh_6ssq6")
+draw_pass_1 = ExtResource("2_gm8ei")

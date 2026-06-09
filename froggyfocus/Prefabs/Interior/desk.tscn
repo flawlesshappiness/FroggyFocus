@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ff70npsac6ah"]
+[gd_scene load_steps=5 format=3 uid="uid://ff70npsac6ah"]
 
 [ext_resource type="PackedScene" uid="uid://xkvc7eivhus5" path="res://Assets/KenneyNL/Furniture/desk.fbx" id="1_dgtkr"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="2_1tbk7"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="3_h54fe"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hlg1g"]
 size = Vector3(1.85352, 1, 1)
@@ -13,8 +15,17 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 [node name="desk" parent="Scale" instance=ExtResource("1_dgtkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.55633, 0, -1.85538)
 
+[node name="desk" parent="Scale/desk" index="0"]
+surface_material_override/0 = ExtResource("2_1tbk7")
+
+[node name="drawer" parent="Scale/desk/desk" index="0"]
+surface_material_override/0 = ExtResource("2_1tbk7")
+surface_material_override/1 = ExtResource("3_h54fe")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_hlg1g")
+
+[editable path="Scale/desk"]

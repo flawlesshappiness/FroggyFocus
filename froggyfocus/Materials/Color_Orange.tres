@@ -1,25 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://boa71ita5hli6"]
-
-[ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="1_ebe6f"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cc3a6m6f5y3b"]
 
 [resource]
-render_priority = 0
-shader = ExtResource("1_ebe6f")
-shader_parameter/albedo = Color(0.79, 0.43055, 0.1738, 1)
-shader_parameter/clamp_diffuse_to_max = false
-shader_parameter/cuts = 3
-shader_parameter/wrap = 0.0
-shader_parameter/steepness = 1.0
-shader_parameter/use_attenuation = true
-shader_parameter/use_specular = false
-shader_parameter/specular_strength = 1.0
-shader_parameter/specular_shininess = 16.0
-shader_parameter/use_rim = false
-shader_parameter/rim_width = 8.0
-shader_parameter/rim_color = Color(1, 1, 1, 1)
-shader_parameter/use_ramp = false
-shader_parameter/use_borders = false
-shader_parameter/border_width = 0.01
-shader_parameter/apply_wind = false
-shader_parameter/y_multiplier = 1.0
-shader_parameter/local_wind_scale = 1.0
+albedo_color = Color(0.79, 0.43055, 0.1738, 1)

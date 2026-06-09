@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_e5s7d"]
 [ext_resource type="PackedScene" uid="uid://bs0vsy7i0giiw" path="res://Assets/FlawLizArt/Hats/fishing_cap.fbx" id="2_qy503"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="3_qy503"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="3_qy503"]
 
 [node name="FishingCap" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 script = ExtResource("1_e5s7d")

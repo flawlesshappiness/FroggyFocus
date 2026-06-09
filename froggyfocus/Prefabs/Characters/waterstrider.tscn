@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://c58rcew34bdig"]
+[gd_scene load_steps=15 format=3 uid="uid://c58rcew34bdig"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_7t4ty"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="2_1t24o"]
 [ext_resource type="PackedScene" uid="uid://cjtrr1m15grqr" path="res://Assets/FlawLizArt/Nature/Bugs/waterstrider.fbx" id="3_7t4ty"]
-[ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="4_1t24o"]
-[ext_resource type="PackedScene" uid="uid://hvkhlo4u24tl" path="res://Assets/FlawLizArt/Nature/Toon/algae_001.fbx" id="5_s76no"]
-[ext_resource type="PackedScene" uid="uid://dn267qcf8kx2g" path="res://Assets/FlawLizArt/Nature/Toon/algae_002.fbx" id="6_6rg18"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="4_timqg"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="5_iwkcx"]
+[ext_resource type="PackedScene" uid="uid://7e2n6lrcm0ek" path="res://Prefabs/Nature/lily_flower.tscn" id="6_ryapm"]
 [ext_resource type="Material" uid="uid://cj44kc16xji4y" path="res://Materials/Branch_003_Texture.tres" id="7_8qhwi"]
+[ext_resource type="PackedScene" uid="uid://d0gd7p5d2r5yl" path="res://Prefabs/Nature/algae_leaf_bent.tscn" id="7_o8aa0"]
 [ext_resource type="Material" uid="uid://db1u1f58aaaky" path="res://Materials/Branch_001_Texture.tres" id="8_4j3x0"]
+[ext_resource type="PackedScene" uid="uid://d4hgtbjub1d8k" path="res://Prefabs/Nature/algae_leaf_straight.tscn" id="8_timqg"]
 [ext_resource type="Material" uid="uid://u2y5v44s2xc3" path="res://Materials/Branch_002_Texture.tres" id="9_timqg"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_iwkcx"]
@@ -49,37 +51,48 @@ bones/24/rotation = Quaternion(-0.0499663, 0.705339, 0.705339, -0.0499663)
 bones/26/position = Vector3(-0.0145568, -0.0176505, 0)
 bones/28/position = Vector3(-0.017337, 0.0130735, 0)
 
+[node name="waterstrider" parent="waterstrider/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("4_timqg")
+
+[node name="eyes" parent="waterstrider/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("5_iwkcx")
+
+[node name="legs" parent="waterstrider/Armature/Skeleton3D" index="2"]
+surface_material_override/0 = ExtResource("4_timqg")
+
 [node name="flower" type="BoneAttachment3D" parent="waterstrider/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0.00303515)
+visible = false
 bone_name = "Body"
 bone_idx = 1
 
-[node name="Lilypad_Flower" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("4_1t24o")]
+[node name="lily_flower" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("6_ryapm")]
 transform = Transform3D(0.00982457, -0.0018649, -1.40796e-10, -2.22313e-10, -4.16201e-10, -0.01, 0.0018649, 0.00982457, -4.50359e-10, -0.00105977, -0.0016979, 2.32831e-10)
 
-[node name="Lilypad_Flower2" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("4_1t24o")]
+[node name="lily_flower2" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("6_ryapm")]
 transform = Transform3D(0.00987359, 0.00158503, 1.19666e-10, 1.8895e-10, -4.22044e-10, -0.01, -0.00158503, 0.00987359, -4.46659e-10, 0.000755878, 0.00516074, 9.31323e-10)
 
-[node name="algae_001" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("5_s76no")]
+[node name="algae_leaf_bent" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("7_o8aa0")]
 transform = Transform3D(-0.00160489, 3.57516e-10, -0.00473544, -0.00473544, -7.17212e-10, 0.00160488, -5.64509e-10, 0.005, 5.68807e-10, -0.000312712, -0.00234979, 0.000314371)
 
-[node name="algae_002" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("5_s76no")]
+[node name="algae_leaf_bent2" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("7_o8aa0")]
 transform = Transform3D(0.000250001, 3.77018e-10, -0.00499375, -0.00499375, -5.77172e-10, -0.000250001, -5.95302e-10, 0.005, 3.47688e-10, -0.00020343, -0.000630296, 0.000278725)
 
-[node name="algae_003" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("5_s76no")]
+[node name="algae_leaf_bent3" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("7_o8aa0")]
 transform = Transform3D(-0.00135032, -3.63463e-10, 0.00481422, 0.00481422, -6.97993e-10, 0.00135031, 5.739e-10, 0.005, 5.3846e-10, 9.90596e-05, 0.00529037, 0.000278726)
 
-[node name="algae_004" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("5_s76no")]
+[node name="algae_leaf_bent4" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("7_o8aa0")]
 transform = Transform3D(0.0024473, -3.29181e-10, 0.00436014, 0.00436014, -4.11281e-10, -0.0024473, 5.19769e-10, 0.005, 8.575e-11, 0.000218679, 0.00642431, 0.000278727)
 
-[node name="algae_005" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("6_6rg18")]
+[node name="algae_leaf_straight" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("8_timqg")]
 transform = Transform3D(0.00299626, -2.71861e-11, -0.000149739, -0.000149739, -1.1181e-10, -0.00299626, 2.15715e-11, 0.003, -1.13028e-10, -0.000805065, 2.0397e-05, 0.00035866)
 
-[node name="algae_006" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("6_6rg18")]
+[node name="algae_leaf_straight2" parent="waterstrider/Armature/Skeleton3D/flower" instance=ExtResource("8_timqg")]
 transform = Transform3D(-0.0029341, 0.000612976, -0.000123797, -0.000126465, -5.92359e-10, 0.00299734, 0.000612431, 0.00293671, 2.58406e-05, 0.000633696, 0.00426871, 0.000255992)
 
 [node name="wooden" type="BoneAttachment3D" parent="waterstrider/Armature/Skeleton3D" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0.00303515)
+visible = false
 bone_name = "Body"
 bone_idx = 1
 

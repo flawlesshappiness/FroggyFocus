@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8y0kfo5jh0t8"]
+[gd_scene load_steps=14 format=3 uid="uid://c8y0kfo5jh0t8"]
 
 [ext_resource type="PackedScene" uid="uid://blgekt80fq2oo" path="res://Assets/FlawLizArt/Objects/tv.fbx" id="1_66g5y"]
 [ext_resource type="Script" uid="uid://bvucsmprvfqph" path="res://Objects/TvTravel.cs" id="1_kik84"]
-[ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Color_Green_Unshaded.tres" id="2_kfs8y"]
+[ext_resource type="Material" uid="uid://pchfuiox8bkf" path="res://Materials/Unshaded_Green.tres" id="2_kfs8y"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="3_s7dnp"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="4_7b115"]
 [ext_resource type="AudioStream" uid="uid://vt5etl4wsr4l" path="res://Sounds/Raw/sfx_glitch_open.wav" id="6_lltxx"]
 [ext_resource type="AudioStream" uid="uid://bygtaj6m8xtgt" path="res://Sounds/Raw/sfx_glitch_static_001.wav" id="6_s7dnp"]
 
@@ -155,11 +157,16 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 [node name="tv_off" parent="Model" instance=ExtResource("1_66g5y")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.5011, 0.465861)
 
+[node name="tv" parent="Model/tv_off" index="0"]
+surface_material_override/0 = ExtResource("3_s7dnp")
+surface_material_override/1 = ExtResource("4_7b115")
+
 [node name="tv_on" parent="Model" instance=ExtResource("1_66g5y")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.5011, 0.465861)
 visible = false
 
 [node name="tv" parent="Model/tv_on" index="0"]
+surface_material_override/0 = ExtResource("3_s7dnp")
 surface_material_override/1 = ExtResource("2_kfs8y")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -183,4 +190,5 @@ volume_db = -15.0
 max_distance = 12.0
 bus = &"SFX"
 
+[editable path="Model/tv_off"]
 [editable path="Model/tv_on"]

@@ -92,9 +92,9 @@ public partial class OptionsController : SingletonController
     private void LoadData()
     {
         LoadActionOverrides();
-        UpdateVolume("Master", Data.Options.VolumeMaster);
-        UpdateVolume("SFX", Data.Options.VolumeSFX);
-        UpdateVolume("BGM", Data.Options.VolumeBGM);
+        UpdateVolume(AudioBusNames.Master, Data.Options.VolumeMaster);
+        UpdateVolume(AudioBusNames.SFX, Data.Options.VolumeSFX);
+        UpdateVolume(AudioBusNames.BGM, Data.Options.VolumeBGM);
         UpdateVsync(Data.Options.VSync);
         UpdateFPSLimit(Data.Options.FPSLimit);
         UpdateBrightness(Data.Options.Brightness);

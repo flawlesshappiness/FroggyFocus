@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=79 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dm7mhx4ojgeg3" path="res://Prefabs/Nature/grass_tuft_small.tscn" id="11_hitnx"]
 [ext_resource type="Script" uid="uid://dt4o28x6fcqym" path="res://FocusEvent/FocusEventArea.cs" id="12_0humr"]
 [ext_resource type="PackedScene" uid="uid://darn03h463tff" path="res://Assets/FlawLizArt/Nature/Toon/beach_flat.fbx" id="12_ift05"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="13_nqkjf"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="14_byi1e"]
 [ext_resource type="PackedScene" uid="uid://cdn0ulu4iqvsm" path="res://Prefabs/NPC/SnailNPC/snail_npc.tscn" id="14_fjshb"]
 [ext_resource type="PackedScene" uid="uid://bd1p385ni06q4" path="res://Prefabs/Objects/pier.tscn" id="17_pteap"]
@@ -37,7 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://cf5uwumydynrl" path="res://Prefabs/Nature/stalagmite_platform_crystal.tscn" id="27_8vus0"]
 [ext_resource type="PackedScene" uid="uid://dh4a2fdmnah0r" path="res://Prefabs/NPC/FrogManagerNPC/frog_manager_npc.tscn" id="27_68c8r"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="27_df6tn"]
-[ext_resource type="PackedScene" uid="uid://db303mjlt45f4" path="res://Prefabs/Crystal/crystal_long.tscn" id="27_lljyu"]
+[ext_resource type="PackedScene" uid="uid://db303mjlt45f4" path="res://Prefabs/Crystal/crystal_long_singing.tscn" id="27_lljyu"]
 [ext_resource type="PackedScene" uid="uid://dovpu07ffsnwv" path="res://Prefabs/Objects/sign_boat_flipped.tscn" id="28_pwhu0"]
 [ext_resource type="PackedScene" uid="uid://bm7kofjv3i0ne" path="res://Prefabs/NPC/SalamanderNPC/salamander_npc.tscn" id="30_hexkd"]
 [ext_resource type="PackedScene" uid="uid://dptbcsgggi5jt" path="res://Prefabs/Crystal/crystal_doorway.tscn" id="32_68c8r"]
@@ -271,7 +272,7 @@ transform = Transform3D(-24.6875, 0, 31.4727, 0, 40, 0, -31.4727, 0, -24.6875, 6
 [node name="Stalagmite_Platform_Crystals13" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
 transform = Transform3D(-34.4861, 0, -20.2661, 0, 40, 0, 20.2661, 0, -34.4861, 22.5831, 59.9434, -75.2433)
 
-[node name="Stalagmite_Platform_Crystals14" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
+[node name="Stalagmite_Platform3" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
 transform = Transform3D(0.790047, 0, -29.9896, 0, 30, 0, 29.9896, 0, 0.790047, 3.89821, 5.59717, -53.1093)
 
 [node name="Stalagmite_Platform_Crystals17" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
@@ -401,6 +402,9 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -62.6939, 0.554071, 83.225
 
 [node name="beach_flat" parent="World/NavigationRegion3D/Beach" instance=ExtResource("12_ift05")]
 transform = Transform3D(-6, 0, -9.05975e-07, 0, 6, 0, 9.05975e-07, 0, -6, 0, -5.34335, 101.544)
+
+[node name="beach_flat" parent="World/NavigationRegion3D/Beach/beach_flat" index="0"]
+surface_material_override/0 = ExtResource("13_nqkjf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Beach/beach_flat/beach_flat" index="0"]
 
@@ -875,10 +879,10 @@ IsEntrance = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.247047, 0, -1.87223)
 
 [node name="Shop2" parent="World/Crystals" instance=ExtResource("22_ns5ic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56375, 5.59224, -43.6807)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34463, 5.59224, -44.3301)
 
 [node name="FrogWorkerNPC" parent="World/Crystals" instance=ExtResource("35_phexc")]
-transform = Transform3D(-0.729721, 0, -0.173225, 0, 0.75, 0, 0.173225, 0, -0.729721, 3.00945, 5.57831, -58.5779)
+transform = Transform3D(-0.729721, 0, -0.173225, 0, 0.75, 0, 0.173225, 0, -0.729721, 1.51689, 5.57831, -58.0876)
 DialogueFlag = "WORKER_CRYSTAL_DOOR"
 DialogueNodes = Array[String](["WORKER_SUSPENDED", "WORKER_ROCK_FACTS"])
 

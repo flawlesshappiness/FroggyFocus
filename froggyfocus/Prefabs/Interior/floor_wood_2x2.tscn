@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0xg55u6iosx7"]
+
+[ext_resource type="PackedScene" uid="uid://b6jeqt11pey36" path="res://Assets/FlawLizArt/Interior/wood_2x2.fbx" id="1_xa116"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="2_nclf3"]
+
+[node name="floor_wood_2x2" type="Node3D"]
+
+[node name="wood_2x2" parent="." instance=ExtResource("1_xa116")]
+
+[node name="boards_2x2" parent="wood_2x2" index="0"]
+surface_material_override/0 = ExtResource("2_nclf3")
+
+[editable path="wood_2x2"]

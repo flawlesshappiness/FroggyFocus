@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0lk5512t6aga"]
+[gd_scene load_steps=4 format=3 uid="uid://b0lk5512t6aga"]
 
 [ext_resource type="PackedScene" uid="uid://hvrp5rqv41wx" path="res://Assets/FlawLizArt/Objects/wood_plank_4m.fbx" id="1_0wqui"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="2_bv4b4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv4b4"]
 size = Vector3(4, 0.102, 0.414)
@@ -10,7 +11,12 @@ size = Vector3(4, 0.102, 0.414)
 [node name="wood_plank_4m" parent="." instance=ExtResource("1_0wqui")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0463667, 2.02675e-09)
 
+[node name="Plank_4m" parent="wood_plank_4m" index="0"]
+surface_material_override/0 = ExtResource("2_bv4b4")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("BoxShape3D_bv4b4")
+
+[editable path="wood_plank_4m"]

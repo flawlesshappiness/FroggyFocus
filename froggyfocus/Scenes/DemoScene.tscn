@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://wapjf7i688py"]
+[gd_scene load_steps=67 format=3 uid="uid://wapjf7i688py"]
 
 [ext_resource type="Script" uid="uid://c1ql3hidc02vy" path="res://Scenes/DemoScene.cs" id="1_lc5f6"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_5vqjt"]
@@ -10,12 +10,12 @@
 [ext_resource type="Resource" uid="uid://do4wv1bddfm6t" path="res://Weather/Resources/Rain.tres" id="6_ibcjm"]
 [ext_resource type="Resource" uid="uid://bl2bg6tn8vsf5" path="res://Weather/Resources/Thunder.tres" id="7_fnfem"]
 [ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="10_csmq8"]
-[ext_resource type="PackedScene" uid="uid://cupubi2omwdbn" path="res://Prefabs/Nature/swamp_platform.tscn" id="11_rrqgf"]
-[ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/lilypad_cut.tscn" id="12_70ake"]
+[ext_resource type="PackedScene" uid="uid://cupubi2omwdbn" path="res://Prefabs/Nature/platform_swamp.tscn" id="11_rrqgf"]
+[ext_resource type="PackedScene" uid="uid://dbhbo27vieidm" path="res://Prefabs/Nature/platform_lilypad_cut.tscn" id="12_70ake"]
 [ext_resource type="PackedScene" uid="uid://d3qra18xe0x7w" path="res://Prefabs/Tutorial/tutorial_sign.tscn" id="13_ibcjm"]
-[ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/lilypad_big_flower.tscn" id="13_y1jgi"]
-[ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/wood_log.tscn" id="14_gf4p4"]
-[ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/wood_stump.tscn" id="15_xpcd3"]
+[ext_resource type="PackedScene" uid="uid://da7e6a524xbj1" path="res://Prefabs/Nature/platform_lilypad_big_flower.tscn" id="13_y1jgi"]
+[ext_resource type="PackedScene" uid="uid://bw7xbxi3rwqgg" path="res://Prefabs/Nature/platform_wood_log.tscn" id="14_gf4p4"]
+[ext_resource type="PackedScene" uid="uid://cmp6kiqfw05i8" path="res://Prefabs/Nature/platform_wood_stump.tscn" id="15_xpcd3"]
 [ext_resource type="PackedScene" uid="uid://cap2fnpuvvefh" path="res://Prefabs/Nature/mushroom_platform.tscn" id="17_ugs8i"]
 [ext_resource type="PackedScene" uid="uid://uvlg3jxf133w" path="res://Prefabs/NPC/MushroomNPC/mushroom_demo_npc.tscn" id="18_ugs8i"]
 [ext_resource type="PackedScene" uid="uid://cstu4xwk8m2au" path="res://Prefabs/Nature/common_tree_dead_1.tscn" id="19_6jk5p"]
@@ -39,6 +39,7 @@
 [ext_resource type="Resource" uid="uid://c8rw7h48k3o4k" path="res://FocusEvent/Resources/Swamp Lilypads.tres" id="42_fpkb8"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="44_2o8dq"]
 [ext_resource type="Script" uid="uid://bkfv11csksi7b" path="res://Sounds/GlobalSoundPath.cs" id="45_3nau4"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="45_fqf33"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="45_y1jgi"]
 [ext_resource type="AudioStream" uid="uid://bptyvdck5m1oc" path="res://Sounds/Raw/bgm_swamp_003.wav" id="46_3nau4"]
 [ext_resource type="AudioStream" uid="uid://cnehdj6b3ol0i" path="res://Sounds/Raw/bgm_swamp_003_focus.wav" id="47_byxdh"]
@@ -909,6 +910,9 @@ transform = Transform3D(0.0181661, 0, -0.239311, 0, 0.24, 0, 0.239311, 0, 0.0181
 [node name="beach_flat" parent="World/Structures/Cave" instance=ExtResource("60_fqf33")]
 transform = Transform3D(-9.27, 0, -1.39973e-06, 0, 9.27, 0, 1.39973e-06, 0, -9.27, -1.7435e-06, -7.65573, 89.5499)
 
+[node name="beach_flat" parent="World/Structures/Cave/beach_flat" index="0"]
+surface_material_override/0 = ExtResource("45_fqf33")
+
 [node name="FocusEvent" parent="World" instance=ExtResource("32_i7ql3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
 
@@ -1321,3 +1325,5 @@ transform = Transform3D(0.996908, 0, 0.0785809, 0, 1, 0, -0.0785809, 0, 0.996908
 
 [node name="PlayerEnd" type="Marker3D" parent="World/Race"]
 transform = Transform3D(-0.997565, 0, -0.0697391, 0, 1, 0, 0.0697391, 0, -0.997565, -23.3763, -0.903017, 23.0115)
+
+[editable path="World/Structures/Cave/beach_flat"]

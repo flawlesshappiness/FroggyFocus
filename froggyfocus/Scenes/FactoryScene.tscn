@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=66 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -9,7 +9,6 @@
 [ext_resource type="Resource" uid="uid://bpacdrq1w1n0k" path="res://Weather/Resources/FoggyWhite.tres" id="6_pkxqc"]
 [ext_resource type="PackedScene" uid="uid://dhc14skbkolxp" path="res://Prefabs/Water/water_factory.tscn" id="9_gihq3"]
 [ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="12_qubeh"]
-[ext_resource type="PackedScene" uid="uid://dptay8dphttdl" path="res://Assets/FlawLizArt/Objects/oil_spill.fbx" id="12_sptoi"]
 [ext_resource type="PackedScene" uid="uid://cugkgsqhc8no7" path="res://Prefabs/Objects/barrel_oil.tscn" id="13_btv2t"]
 [ext_resource type="PackedScene" uid="uid://yw3xxiudtk4f" path="res://Prefabs/Objects/trash_bag_white.tscn" id="15_foaib"]
 [ext_resource type="PackedScene" uid="uid://b4r4ep270r7hp" path="res://Prefabs/Objects/trash_bag_island.tscn" id="15_q52we"]
@@ -17,18 +16,19 @@
 [ext_resource type="PackedScene" uid="uid://dh0g8nwc8a2dv" path="res://Prefabs/Objects/trash_bag_black.tscn" id="16_fivwh"]
 [ext_resource type="PackedScene" uid="uid://tg0kj2q60vm6" path="res://Prefabs/NPC/TurtleNPC/turtle_npc.tscn" id="16_l4num"]
 [ext_resource type="PackedScene" uid="uid://bcfbwifytvr60" path="res://Prefabs/Objects/trash_bag_island_2.tscn" id="17_jeo78"]
-[ext_resource type="PackedScene" uid="uid://dbwq5ouf0ihjq" path="res://Prefabs/Objects/bottle_cleaning_simple.tscn" id="19_ea7wq"]
-[ext_resource type="PackedScene" uid="uid://pndnf2awnmp0" path="res://Prefabs/Objects/bottle_cleaning_dish.tscn" id="20_16r1r"]
-[ext_resource type="PackedScene" uid="uid://c482un0ek3woo" path="res://Prefabs/Objects/bottle_cleaning_soap.tscn" id="21_lxndu"]
-[ext_resource type="PackedScene" uid="uid://cat6wqg4h8oqa" path="res://Prefabs/Objects/bottle_cleaning_toilet.tscn" id="22_01srd"]
+[ext_resource type="PackedScene" uid="uid://dbwq5ouf0ihjq" path="res://Prefabs/Objects/platform_bottle_cleaning_simple.tscn" id="19_ea7wq"]
+[ext_resource type="PackedScene" uid="uid://pndnf2awnmp0" path="res://Prefabs/Objects/platform_bottle_cleaning_dish.tscn" id="20_16r1r"]
+[ext_resource type="PackedScene" uid="uid://c482un0ek3woo" path="res://Prefabs/Objects/platform_bottle_cleaning_soap.tscn" id="21_lxndu"]
+[ext_resource type="PackedScene" uid="uid://cat6wqg4h8oqa" path="res://Prefabs/Objects/platform_bottle_cleaning_toilet.tscn" id="22_01srd"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="24_0lfya"]
-[ext_resource type="Material" uid="uid://bwype3h3t71r7" path="res://Materials/Oil.tres" id="24_gihq3"]
 [ext_resource type="PackedScene" uid="uid://cuc22dure6gn7" path="res://Prefabs/Nature/seaweed_cluster_circle.tscn" id="24_uf1yc"]
 [ext_resource type="PackedScene" uid="uid://bfva58jqvweh5" path="res://Prefabs/NPC/RaccoonNPC/raccoon_npc.tscn" id="24_v2jd5"]
 [ext_resource type="PackedScene" uid="uid://bwc0ley5ipxwr" path="res://Prefabs/Nature/seaweed_cluster_small.tscn" id="25_i5qij"]
+[ext_resource type="SphereMesh" uid="uid://o5o7b4ik8r5d" path="res://Prefabs/Effects/Meshes/oil.tres" id="25_yhogp"]
 [ext_resource type="PackedScene" uid="uid://cp64pfqrxicn2" path="res://Prefabs/Machine/gear_big.tscn" id="26_3yuby"]
 [ext_resource type="PackedScene" uid="uid://b6wxew74nf10j" path="res://Prefabs/Machine/gear_big_seaweed.tscn" id="26_fpcwk"]
 [ext_resource type="PackedScene" uid="uid://cd6c641sy8eye" path="res://Prefabs/Construction/scaffolding_platform_4x4.tscn" id="26_i8uf5"]
+[ext_resource type="PackedScene" uid="uid://cairit1tqbuqi" path="res://Prefabs/Construction/oil_spill.tscn" id="26_yhogp"]
 [ext_resource type="PackedScene" uid="uid://jyb4tasp37gp" path="res://Prefabs/Nature/seaweed_cluster_bridge.tscn" id="27_k0l20"]
 [ext_resource type="PackedScene" uid="uid://c3hkrtmh6ohnl" path="res://Prefabs/NPC/EelNPC/eel_npc.tscn" id="30_8g76t"]
 [ext_resource type="PackedScene" uid="uid://c8y0kfo5jh0t8" path="res://Prefabs/Glitch/tv_travel.tscn" id="30_lajby"]
@@ -108,9 +108,6 @@ emission_ring_cone_angle = 90.0
 gravity = Vector3(0, 0, 0)
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_b7s7t")
-
-[sub_resource type="SphereMesh" id="SphereMesh_b7s7t"]
-material = ExtResource("24_gihq3")
 
 [sub_resource type="Curve3D" id="Curve3D_inr37"]
 _data = {
@@ -526,29 +523,29 @@ transform = Transform3D(-8.74232e-08, 0, 2, 0, 2, 0, -2, 0, -8.74232e-08, -2.935
 [node name="PsOilBubbles" type="GPUParticles3D" parent="World/Building/Particles"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.4784, -0.190364, 4.64832)
 process_material = SubResource("ParticleProcessMaterial_gihq3")
-draw_pass_1 = SubResource("SphereMesh_b7s7t")
+draw_pass_1 = ExtResource("25_yhogp")
 
 [node name="PsOilBubbles2" type="GPUParticles3D" parent="World/Building/Particles"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.63004, -0.190364, -34.5086)
 process_material = SubResource("ParticleProcessMaterial_gihq3")
-draw_pass_1 = SubResource("SphereMesh_b7s7t")
+draw_pass_1 = ExtResource("25_yhogp")
 
 [node name="PsOilBubbles3" type="GPUParticles3D" parent="World/Building/Particles"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.9437, -0.190364, -53.8453)
 process_material = SubResource("ParticleProcessMaterial_gihq3")
-draw_pass_1 = SubResource("SphereMesh_b7s7t")
+draw_pass_1 = ExtResource("25_yhogp")
 
 [node name="PsOilBubbles4" type="GPUParticles3D" parent="World/Building/Particles"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -19.015, -0.190364, -20.1861)
 process_material = SubResource("ParticleProcessMaterial_gihq3")
-draw_pass_1 = SubResource("SphereMesh_b7s7t")
+draw_pass_1 = ExtResource("25_yhogp")
 
 [node name="PsOilBubbles5" type="GPUParticles3D" parent="World/Building/Particles"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.34634, -0.190364, -5.4056)
 process_material = SubResource("ParticleProcessMaterial_gihq3")
-draw_pass_1 = SubResource("SphereMesh_b7s7t")
+draw_pass_1 = ExtResource("25_yhogp")
 
-[node name="oil_spill" parent="World/Building" instance=ExtResource("12_sptoi")]
+[node name="oil_spill2" parent="World/Building" instance=ExtResource("26_yhogp")]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 1, 0, -5, 0, -2.18557e-07, 0, -0.869776, -24.5657)
 
 [node name="Garbage" type="Node3D" parent="World"]

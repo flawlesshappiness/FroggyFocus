@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6wxew74nf10j"]
+[gd_scene load_steps=10 format=3 uid="uid://b6wxew74nf10j"]
 
 [ext_resource type="PackedScene" uid="uid://p21mt1ekca1x" path="res://Assets/FlawLizArt/Machine/gear_big.fbx" id="1_kuffb"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="2_71xie"]
 [ext_resource type="Material" uid="uid://bycuf8xepouss" path="res://Materials/Seaweed_001.tres" id="2_df84m"]
 [ext_resource type="Material" uid="uid://bhu4u4v2hryl0" path="res://Materials/Seaweed_002.tres" id="3_71xie"]
 [ext_resource type="Material" uid="uid://dd4cr8a3qa3fa" path="res://Materials/Seaweed_003.tres" id="4_lwwdg"]
@@ -19,6 +20,9 @@ radius = 0.995605
 
 [node name="gear_big" parent="." instance=ExtResource("1_kuffb")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Gear" parent="gear_big" index="0"]
+surface_material_override/0 = ExtResource("2_71xie")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -83,3 +87,5 @@ height = 1.5
 vertices = PackedVector3Array(-0.311155, 0, -1.05245, 0.330172, 0, -1.04784, 0.297874, 0, 1.0284, -0.324997, 0, 1.02378)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
+
+[editable path="gear_big"]

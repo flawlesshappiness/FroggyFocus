@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://depvd1cgtdpa3"]
+[gd_scene load_steps=10 format=3 uid="uid://depvd1cgtdpa3"]
 
 [ext_resource type="Script" uid="uid://1u3y3h5kflvk" path="res://Prefabs/Effects/ExclamationMark.cs" id="1_asjum"]
 [ext_resource type="PackedScene" uid="uid://dn2p8y4s4fbam" path="res://Assets/FlawLizArt/Other/ExclamationMark.fbx" id="1_sdgah"]
 [ext_resource type="AudioStream" uid="uid://b8mb20fxkc62e" path="res://Sounds/Raw/sfx_click_001.wav" id="3_45csc"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="3_ubew3"]
 
 [sub_resource type="Animation" id="Animation_wutkf"]
 length = 0.001
@@ -211,6 +212,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.610441, 0)
 
 [node name="ExclamationMark" parent="Anim/ExclamationMark" index="0"]
 cast_shadow = 0
+surface_material_override/0 = ExtResource("3_ubew3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

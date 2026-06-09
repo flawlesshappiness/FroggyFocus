@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bndutbdselpmx"]
+
+[ext_resource type="PackedScene" uid="uid://d3c3r4kr07et5" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_platform.fbx" id="1_hia6g"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="2_bfm2y"]
+
+[node name="stalagmite_flat_crystal" type="Node3D"]
+
+[node name="crystal_platform" parent="." instance=ExtResource("1_hia6g")]
+
+[node name="Cylinder" parent="crystal_platform" index="0"]
+surface_material_override/0 = ExtResource("2_bfm2y")
+
+[editable path="crystal_platform"]

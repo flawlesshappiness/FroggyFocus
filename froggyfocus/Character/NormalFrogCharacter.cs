@@ -27,8 +27,8 @@ public partial class NormalFrogCharacter : FrogCharacter
     protected override void LoadBody(GameSaveData game_data)
     {
         base.LoadBody(game_data);
-        var albedo = game_data.FrogAppearanceData.BaseColor.Color;
-        body_material.SetShaderParameter("albedo", albedo);
+        //var albedo = game_data.FrogAppearanceData.BaseColor.Color;
+        //body_material.SetShaderParameter("albedo", albedo);
     }
 
     protected override void InitializeAnimations()

@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://6g12i01jce7m"]
+[gd_scene load_steps=4 format=3 uid="uid://6g12i01jce7m"]
 
 [ext_resource type="PackedScene" uid="uid://bn1belfgy4l0k" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_shelf.fbx" id="1_2v6fc"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="2_4t8ku"]
+[ext_resource type="Material" uid="uid://wixbktr6g6ec" path="res://Materials/Color_BrownDark.tres" id="3_2d0tq"]
 
 [node name="mushroom_shelf" type="Node3D"]
 
 [node name="mushroom_shelf" parent="." instance=ExtResource("1_2v6fc")]
+
+[node name="mushroom_panellus_stipticus" parent="mushroom_shelf" index="0"]
+surface_material_override/0 = ExtResource("2_4t8ku")
+surface_material_override/1 = ExtResource("3_2d0tq")
+
+[editable path="mushroom_shelf"]
