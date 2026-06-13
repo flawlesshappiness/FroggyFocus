@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btvutwevobeee" path="res://Prefabs/NPC/FrogPartnerNPC/FrogPartnerNpc.cs" id="1_f1r8i"]
 [ext_resource type="Resource" uid="uid://8suq4f4y855o" path="res://HandIn/Resources/Main_Partner.tres" id="2_s8epy"]
-[ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_junsv"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="3_junsv"]
 [ext_resource type="AudioStream" uid="uid://nbfbnx1habkm" path="res://Sounds/Raw/sfx_frog_croak_002.wav" id="4_3khhn"]
 [ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="4_junsv"]
 
@@ -24,14 +24,16 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_f1r8i")
 HandInInfo = ExtResource("2_s8epy")
-FrogCharacter = NodePath("Frog")
+FrogCharacter = NodePath("FrogCute")
+BodyColor = Color(0.1734, 0.51, 0.1428, 1)
+TopColor = Color(0.444667, 1, 0.32, 1)
 SfxSpeak = NodePath("SfxSpeak")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369141, -0.396207)
 shape = SubResource("CylinderShape3D_rhrvr")
 
-[node name="Frog" parent="." instance=ExtResource("3_junsv")]
+[node name="FrogCute" parent="." instance=ExtResource("3_junsv")]
 DisableAppearanceUpdates = true
 
 [node name="NpcArea" type="Area3D" parent="."]

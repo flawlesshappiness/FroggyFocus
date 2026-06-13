@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=2 format=3 uid="uid://betd2j6vowrfg"]
+
+[ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="1_5w8ki"]
+
+[resource]
+script = ExtResource("1_5w8ki")
+Count = 3
+TargetTag = 7
+Money = 50
+metadata/_custom_type_script = "uid://dm1b320n5x14n"

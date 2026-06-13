@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://b52txfurf7ryr"]
+
+[ext_resource type="PackedScene" uid="uid://cee2gi0gju0mk" path="res://Assets/FlawLizArt/Interior/lamp_flourescent.fbx" id="1_5tebh"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_p0hh5"]
+[ext_resource type="Material" uid="uid://dh1ks5j63h53" path="res://Materials/Unshaded_White.tres" id="3_m0ufh"]
+
+[node name="lamp_flourescent" type="Node3D"]
+
+[node name="lamp_flourescent" parent="." instance=ExtResource("1_5tebh")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
+
+[node name="lamp" parent="lamp_flourescent" index="0"]
+surface_material_override/0 = ExtResource("2_p0hh5")
+surface_material_override/1 = ExtResource("3_m0ufh")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.390821, 0)
+light_energy = 5.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+spot_range = 12.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.37507, 0)
+light_energy = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+omni_range = 4.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+light_energy = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+omni_range = 12.0
+omni_attenuation = 0.5
+
+[editable path="lamp_flourescent"]

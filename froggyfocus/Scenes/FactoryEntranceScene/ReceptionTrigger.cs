@@ -1,7 +1,11 @@
 using Godot;
+using Godot.Collections;
 
 public partial class ReceptionTrigger : Node3D
 {
+    [Export]
+    public HandInInfo HandInInfo;
+
     [Export]
     public TriggerArea3D ReceptionTriggerArea;
 
@@ -14,6 +18,9 @@ public partial class ReceptionTrigger : Node3D
     [Export]
     public Marker3D ExitMarker;
 
+    [Export]
+    public Array<CollisionShape3D> Colliders;
+
     private const string DialogueBlocked = "RECEPTIONIST_BLOCK";
 
     public override void _Ready()
@@ -21,6 +28,7 @@ public partial class ReceptionTrigger : Node3D
         base._Ready();
         ReceptionTriggerArea.OnNodeEntered += ReceptionTriggerArea_Entered;
         DialogueController.Instance.OnDialogueEnded += Dialogue_Ended;
+        UpdateColliders();
     }
 
     public override void _ExitTree()
@@ -67,5 +75,11 @@ public partial class ReceptionTrigger : Node3D
                 Player.Instance.SetCameraTarget();
             }
         }
+    }
+
+    private void UpdateColliders()
+    {
+        var enabled = HandInInfo.Data.ClaimCount == 0;
+        Colliders.ForEach(x => x.Disabled = !enabled);
     }
 }

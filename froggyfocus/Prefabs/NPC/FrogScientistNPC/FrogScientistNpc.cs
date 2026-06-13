@@ -5,6 +5,12 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     [Export]
     public HandInInfo HandInInfo;
 
+    [Export]
+    public Character Character;
+
+    [Export]
+    public Marker3D DefaultFacingMarker;
+
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
     private const string DialogueIntro = "SCIENTIST_INTRO";
@@ -12,6 +18,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     private const string DialogueRequestFail = "SCIENTIST_REQUEST_FAIL";
     private const string DialogueRequestComplete = "SCIENTIST_REQUEST_COMPLETE";
     private const string DialogueRequestCompleteRepeat = "SCIENTIST_REQUEST_COMPLETE_003";
+    private const string DialogueLockedDoor = "SCIENTIST_DOOR";
 
     private bool show_unlock;
 
@@ -20,6 +27,8 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         base._Ready();
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
+
+        Character.StartFacingPosition(DefaultFacingMarker.GlobalPosition);
     }
 
     public override void Interact()
@@ -41,6 +50,8 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
     protected override void DialogueEnded(string id)
     {
         base.DialogueEnded(id);
+
+        Character.StartFacingPosition(DefaultFacingMarker.GlobalPosition);
 
         if (id == DialogueIntro)
         {
@@ -84,5 +95,11 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         {
             StartDialogue(DialogueRequestFail);
         }
+    }
+
+    public void StartLockedDoorDialogue()
+    {
+        Character.StartFacingPosition(Player.Instance.GlobalPosition);
+        StartDialogue(DialogueLockedDoor);
     }
 }

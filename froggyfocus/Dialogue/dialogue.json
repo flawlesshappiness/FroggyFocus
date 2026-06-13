@@ -396,6 +396,15 @@
 	},
 	
 	{
+		"id": "##PARTNER_TOOLBOX##",
+		"entries": [
+			"##PARTNER_TOOLBOX_001##",
+			"##PARTNER_TOOLBOX_002##",
+			"##PARTNER_TOOLBOX_003##"
+		]
+	},
+	
+	{
 		"id": "##SCIENTIST_INTRO##",
 		"entries": [
 			"##SCIENTIST_INTRO_001##",
@@ -427,6 +436,15 @@
 			"##SCIENTIST_REQUEST_COMPLETE_001##",
 			"##SCIENTIST_REQUEST_COMPLETE_002##",
 			"##SCIENTIST_REQUEST_COMPLETE_003##"
+		]
+	},
+	
+	{
+		"id": "##SCIENTIST_DOOR##",
+		"entries": [
+			"##SCIENTIST_DOOR_001##",
+			"##SCIENTIST_DOOR_002##",
+			"##SCIENTIST_DOOR_003##"
 		]
 	},
 	
@@ -844,6 +862,42 @@
 		"entries": [
 			"##VENT_LOCKED_001##",
 			"##VENT_LOCKED_002##"
+		]
+	},
+	
+	{
+		"id": "##LEECH_LAB1##",
+		"entries": [
+			"##LEECH_LAB1_001##",
+			"##LEECH_LAB1_002##",
+			"##LEECH_LAB1_003##"
+		]
+	},
+	
+	{
+		"id": "##LEECH_LAB2##",
+		"entries": [
+			"##LEECH_LAB2_001##",
+			"##LEECH_LAB2_002##",
+			"##LEECH_LAB2_003##"
+		]
+	},
+	
+	{
+		"id": "##LEECH_LAB3##",
+		"entries": [
+			"##LEECH_LAB3_001##",
+			"##LEECH_LAB3_002##",
+			"##LEECH_LAB3_003##",
+			"##LEECH_LAB3_004##"
+		]
+	},
+	
+	{
+		"id": "##LAB_CONTAINER##",
+		"entries": [
+			"##LAB_CONTAINER_001##",
+			"##LAB_CONTAINER_002##"
 		]
 	}
 ]

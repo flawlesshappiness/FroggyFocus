@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://dknsycvp1qp0k"]
+
+[ext_resource type="Script" uid="uid://c1hjcsa25eq3o" path="res://Scenes/FactoryEntranceScene/FrogDroidPlatform.cs" id="1_2casv"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="1_30unh"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="1_tgs4b"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="4_08xgu"]
+[ext_resource type="Script" uid="uid://dsf0eqywgl7lk" path="res://Area/InteractArea.cs" id="5_ggqm2"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tgs4b"]
+material = ExtResource("1_tgs4b")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2casv"]
+height = 0.1
+radius = 1.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_08xgu"]
+height = 1.0
+radius = 0.887207
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qaott"]
+height = 1.0
+radius = 0.683105
+
+[node name="FrogDroid" type="Node3D" node_paths=PackedStringArray("Character")]
+script = ExtResource("1_2casv")
+Character = NodePath("FrogCute")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("CylinderMesh_tgs4b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("CylinderShape3D_2casv")
+
+[node name="FrogCute" parent="." instance=ExtResource("1_30unh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="NpcCollisionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_08xgu")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcCollisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_08xgu")
+
+[node name="InteractArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_ggqm2")
+metadata/_custom_type_script = "uid://dsf0eqywgl7lk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.292185)
+shape = SubResource("CylinderShape3D_qaott")

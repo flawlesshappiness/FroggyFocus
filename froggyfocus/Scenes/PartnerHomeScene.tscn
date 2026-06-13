@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://jixjssv4ics8"]
+[gd_scene load_steps=27 format=3 uid="uid://jixjssv4ics8"]
 
 [ext_resource type="Script" uid="uid://46tvlnw081rs" path="res://Scenes/PartnerHomeScene.cs" id="1_bew2v"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_bchqc"]
@@ -17,6 +17,10 @@
 [ext_resource type="PackedScene" uid="uid://ujeiug7m32mk" path="res://Prefabs/Interior/lamp_standing.tscn" id="13_mks53"]
 [ext_resource type="PackedScene" uid="uid://02ni1ffa1upd" path="res://Prefabs/Interior/bed_double.tscn" id="14_gh5p7"]
 [ext_resource type="PackedScene" uid="uid://cmxm0xr4fjssv" path="res://Assets/FlawLizArt/Interior/window_round.fbx" id="15_cnj5n"]
+[ext_resource type="PackedScene" uid="uid://cqhfebpyhtw6i" path="res://Prefabs/Objects/toolbox.tscn" id="16_mt5q4"]
+[ext_resource type="Script" uid="uid://t7q8s3anbxnm" path="res://Scenes/PartnerHomeScene/PartnerToolboxInteract.cs" id="19_yr8mm"]
+[ext_resource type="Resource" uid="uid://8suq4f4y855o" path="res://HandIn/Resources/Main_Partner.tres" id="20_4beox"]
+[ext_resource type="Script" uid="uid://dsf0eqywgl7lk" path="res://Area/InteractArea.cs" id="20_q6m2r"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ul0f8"]
 vertices = PackedVector3Array(-4.25, 0.5, -4.25, -4.25, 0.5, 4.5, 4.5, 0.5, 4.5, 4.5, 0.5, -4.25)
@@ -33,6 +37,8 @@ size = Vector3(12, 4, 1)
 material = ExtResource("7_36bes")
 size = Vector2(10, 4)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_4beox"]
+
 [node name="PartnerHomeScene" type="Node3D" node_paths=PackedStringArray("Camera", "DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_bew2v")
 Camera = NodePath("CameraParent/Camera3D")
@@ -44,7 +50,7 @@ Weathers = Array[ExtResource("2_hpje1")]([ExtResource("3_ul0f8")])
 environment = ExtResource("2_bsfui")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.965926, 0.183013, 0.183013, 0, -0.707107, 0.707107, 0.258819, -0.683013, -0.683013, 0, 5.72245, 10.5826)
+transform = Transform3D(0.5, 0.612373, 0.612373, 1.336e-08, -0.707107, 0.707107, 0.866025, -0.353553, -0.353553, 0, 5.72245, 10.5826)
 light_color = Color(1, 1, 0.7, 1)
 shadow_enabled = true
 
@@ -153,10 +159,34 @@ transform = Transform3D(1.39091e-08, 0, -1, 0, 1, 0, 1, 0, 1.39091e-08, 3.42835,
 [node name="window_round" parent="World/Furniture" instance=ExtResource("15_cnj5n")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.62305, 2.31691, 5)
 
-[node name="FrogPartnerNPC" parent="World" instance=ExtResource("12_1t2yw")]
-transform = Transform3D(-0.0874339, 0, -0.99617, 0, 1, 0, 0.99617, 0, -0.0874339, -3.8289, 0, -0.78168)
+[node name="toolbox" parent="World/Furniture" instance=ExtResource("16_mt5q4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.930536, 0, -4.42784)
+
+[node name="FrogPartnerNPC" parent="World" node_paths=PackedStringArray("DefaultFacingMarker") instance=ExtResource("12_1t2yw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8289, 0, -0.78168)
+DefaultFacingMarker = NodePath("DefaultFacingMarker")
+
+[node name="DefaultFacingMarker" type="Marker3D" parent="World/FrogPartnerNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04757, 0, 0)
 
 [node name="HouseDoor" parent="World" instance=ExtResource("12_70kua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 SceneName = "SwampScene"
 StartNode = "HouseStart"
+
+[node name="PartnerToolboxInteract" type="Node3D" parent="World" node_paths=PackedStringArray("InteractArea", "PartnerNpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94359, 0, -4.41904)
+script = ExtResource("19_yr8mm")
+InteractArea = NodePath("InteractArea")
+HandInInfo = ExtResource("20_4beox")
+PartnerNpc = NodePath("../FrogPartnerNPC")
+
+[node name="InteractArea" type="Area3D" parent="World/PartnerToolboxInteract"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("20_q6m2r")
+metadata/_custom_type_script = "uid://dsf0eqywgl7lk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/PartnerToolboxInteract/InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269389, 0)
+shape = SubResource("BoxShape3D_4beox")

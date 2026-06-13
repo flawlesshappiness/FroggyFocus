@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://clx03k1vqd1xx"]
+[gd_scene load_steps=21 format=3 uid="uid://clx03k1vqd1xx"]
 
 [ext_resource type="Script" uid="uid://pw140x2mf78g" path="res://Scenes/ScientistLabScene.cs" id="1_xypfy"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_6dw5m"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_v02wp"]
+[ext_resource type="Resource" uid="uid://bvhdpbv1srgex" path="res://HandIn/Resources/Main_Scientist.tres" id="2_fqn58"]
 [ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="3_8ophw"]
+[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="3_gyelx"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_tqw4r"]
 [ext_resource type="PackedScene" uid="uid://x7nclqu76y7s" path="res://Prefabs/Objects/factory_entry_door.tscn" id="5_tqw4r"]
 [ext_resource type="PackedScene" uid="uid://dor6ep604xfj4" path="res://Prefabs/Interior/factory_tile_2x4.tscn" id="6_bduu1"]
@@ -11,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://ch71i4r1h8ofk" path="res://Prefabs/NPC/FrogScientistNPC/frog_scientist_npc.tscn" id="9_8ophw"]
 [ext_resource type="PackedScene" uid="uid://cfbpfkqqtbtfh" path="res://Assets/FlawLizArt/Interior/wall_lab.fbx" id="10_bduu1"]
 [ext_resource type="PackedScene" uid="uid://dr5g3ygbk7grl" path="res://Prefabs/Interior/table_lab.tscn" id="10_oherf"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="11_5vv37"]
 [ext_resource type="PackedScene" uid="uid://b86vrrwweceox" path="res://Prefabs/Objects/potion_blue.tscn" id="12_fqn58"]
+[ext_resource type="Material" uid="uid://cmwnlcmbrnpft" path="res://Materials/Color_Blue.tres" id="12_pr1hd"]
 [ext_resource type="PackedScene" uid="uid://bbjjiavxo6cov" path="res://Prefabs/Interior/chair_lab.tscn" id="14_bduu1"]
 [ext_resource type="PackedScene" uid="uid://cxjbfafjxye2c" path="res://Prefabs/Interior/blackboard.tscn" id="15_fqn58"]
 
@@ -26,13 +29,15 @@ size = Vector3(12, 1, 12)
 [sub_resource type="BoxShape3D" id="BoxShape3D_v02wp"]
 size = Vector3(12, 4, 1)
 
-[node name="ScientistLabScene" type="Node3D" node_paths=PackedStringArray("Camera", "FactoryDoor", "DirectionalLight", "WorldEnvironment")]
+[node name="ScientistLabScene" type="Node3D" node_paths=PackedStringArray("Camera", "FactoryDoor", "ScientistNpc", "DirectionalLight", "WorldEnvironment")]
 script = ExtResource("1_xypfy")
+HandInInfo = ExtResource("2_fqn58")
 Camera = NodePath("CameraParent/Camera3D")
 FactoryDoor = NodePath("World/Interior/FactoryEntryDoor2")
+ScientistNpc = NodePath("World/FrogScientistNPC")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
-Weathers = Array[ExtResource("2_v02wp")]([ExtResource("3_8ophw")])
+Weathers = Array[ExtResource("3_gyelx")]([ExtResource("3_8ophw")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_6dw5m")
@@ -40,7 +45,6 @@ environment = ExtResource("2_6dw5m")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.965926, 0.183013, 0.183013, 0, -0.707107, 0.707107, 0.258819, -0.683013, -0.683013, 0, 5.72245, 10.5826)
 light_color = Color(1, 1, 0.7, 1)
-shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("3_tqw4r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85207, 0, 3.69703)
@@ -123,16 +127,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
 [node name="StartFactoryEntrance" type="Marker3D" parent="World"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.66586, 0, -2)
 
-[node name="FrogScientistNPC" parent="World" instance=ExtResource("9_8ophw")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.89021, 0, 1.83498)
+[node name="FrogScientistNPC" parent="World" node_paths=PackedStringArray("DefaultFacingMarker") instance=ExtResource("9_8ophw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89021, 0, 1.83498)
+DefaultFacingMarker = NodePath("DefaultFacingMarker")
+
+[node name="DefaultFacingMarker" type="Marker3D" parent="World/FrogScientistNPC"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
 [node name="Building" type="Node3D" parent="World"]
 
 [node name="wall_lab3" parent="World/Building" instance=ExtResource("10_bduu1")]
 transform = Transform3D(-2.5, 0, 8.74228e-08, 0, 1, 0, -2.18557e-07, 0, -1, 0, 0, 5)
 
+[node name="Cube" parent="World/Building/wall_lab3" index="0"]
+surface_material_override/0 = ExtResource("11_5vv37")
+surface_material_override/1 = ExtResource("12_pr1hd")
+surface_material_override/2 = ExtResource("12_pr1hd")
+
 [node name="wall_lab4" parent="World/Building" instance=ExtResource("10_bduu1")]
 transform = Transform3D(3.27835e-07, 0, 1, 0, 1, 0, -2.5, 0, 1.31134e-07, -5, 0, 0)
+
+[node name="Cube" parent="World/Building/wall_lab4" index="0"]
+surface_material_override/0 = ExtResource("11_5vv37")
+surface_material_override/1 = ExtResource("12_pr1hd")
+surface_material_override/2 = ExtResource("12_pr1hd")
 
 [node name="Interior" type="Node3D" parent="World"]
 
@@ -143,6 +161,8 @@ StartNode = "LabStart"
 
 [node name="FactoryEntryDoor2" parent="World/Interior" instance=ExtResource("5_tqw4r")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.0213, 0, -2)
+StartLocked = true
+SceneName = "FactoryEntranceScene"
 
 [node name="table_lab" parent="World/Interior" instance=ExtResource("10_oherf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.248843, 0, 4.29972)
@@ -182,3 +202,6 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.468115, 0, -3.23799)
 
 [node name="chair_lab10" parent="World/Interior" instance=ExtResource("14_bduu1")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.33912, -2.38419e-07, -4.3178)
+
+[editable path="World/Building/wall_lab3"]
+[editable path="World/Building/wall_lab4"]

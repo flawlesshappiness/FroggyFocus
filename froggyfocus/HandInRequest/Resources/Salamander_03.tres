@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://baqevqdhyjnrd"]
+
+[ext_resource type="Resource" uid="uid://boxkpaov1nsvm" path="res://FocusCharacter/Resources/CaveCricket_Crystal.tres" id="1_0yjle"]
+[ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="2_v7iiy"]
+
+[resource]
+script = ExtResource("2_v7iiy")
+Count = 3
+TargetTag = 0
+TargetInfo = ExtResource("1_0yjle")
+Money = 50
+metadata/_custom_type_script = "uid://dm1b320n5x14n"

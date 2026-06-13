@@ -4,8 +4,8 @@
 [ext_resource type="Resource" uid="uid://bvhdpbv1srgex" path="res://HandIn/Resources/Main_Scientist.tres" id="2_5asxe"]
 [ext_resource type="PackedScene" uid="uid://d1fokxnejbet4" path="res://Prefabs/Characters/frog.tscn" id="3_bytrc"]
 [ext_resource type="AudioStream" uid="uid://blsf1wmo1ckdw" path="res://Sounds/Raw/sfx_frog_croak_004.wav" id="4_5asxe"]
-[ext_resource type="Material" uid="uid://rnk6jdfmxtgj" path="res://Materials/Color_GreyDark.tres" id="4_fbd5j"]
-[ext_resource type="Material" uid="uid://q8jecixud5c4" path="res://Materials/Color_Blue.tres" id="5_46kwi"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="4_fbd5j"]
+[ext_resource type="Material" uid="uid://cmwnlcmbrnpft" path="res://Materials/Color_Blue.tres" id="5_46kwi"]
 [ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="6_46kwi"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rhrvr"]
@@ -21,11 +21,12 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_5asxe")
 
-[node name="FrogScientistNPC" type="Area3D" node_paths=PackedStringArray("SfxSpeak")]
+[node name="FrogScientistNPC" type="Area3D" node_paths=PackedStringArray("Character", "SfxSpeak")]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_3h7t5")
 HandInInfo = ExtResource("2_5asxe")
+Character = NodePath("Frog")
 SfxSpeak = NodePath("SfxSpeak")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

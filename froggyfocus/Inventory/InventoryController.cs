@@ -164,10 +164,32 @@ public partial class InventoryController : SingletonController
 
         if (options.ValidTags?.Intersect(info.Tags).Count() == 0) return false;
         if (options.ExcludedDatas?.Contains(data) ?? false) return false;
-        if (!options.ValidCharacters?.Contains(info) ?? false) return false;
+        if (!ValidCharacters()) return false;
         if (options.ExcludedCharacters?.Contains(info) ?? false) return false;
 
         return true;
+
+        bool ValidCharacters()
+        {
+            if (options.ValidCharacters == null) return true;
+            if (options.ValidCharacters.Count == 0) return true;
+
+            foreach (var v in options.ValidCharacters)
+            {
+                if (v.Name == v.Variation) // Is base version
+                {
+                    if (info.Variation == v.Variation)
+                        return true; // Base or variation match
+                }
+                else // Is variation
+                {
+                    if (info == v)
+                        return true; // Variation match
+                }
+            }
+
+            return false;
+        }
     }
 }
 

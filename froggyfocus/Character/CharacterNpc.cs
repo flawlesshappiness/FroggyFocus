@@ -52,6 +52,7 @@ public partial class CharacterNpc : Area3D, IInteractable
         base._ExitTree();
         DialogueController.Instance.OnEntryStarted -= DialogueNodeStarted;
         DialogueController.Instance.OnDialogueStarted -= DialogueStarted;
+        DialogueController.Instance.OnDialogueEnded -= DialogueEnded;
         RaceController.Instance.OnCountdownStarted -= Race_Start;
         RaceController.Instance.OnRaceEnd -= Race_End;
     }

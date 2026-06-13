@@ -6,7 +6,16 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     public HandInInfo HandInInfo;
 
     [Export]
-    public FrogCharacter FrogCharacter;
+    public CuteFrogCharacter FrogCharacter;
+
+    [Export]
+    public Color BodyColor;
+
+    [Export]
+    public Color TopColor;
+
+    [Export]
+    public Marker3D DefaultFacingMarker;
 
     private HandInData HandInData => HandIn.GetOrCreateData(HandInInfo.Id);
 
@@ -16,13 +25,37 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     private const string DialogueRequestComplete = "PARTNER_REQUEST_COMPLETE";
     private const string DialogueRequestCompleteRepeat = "PARTNER_REQUEST_COMPLETE_003";
 
-    private bool show_unlock;
-
     public override void _Ready()
     {
         base._Ready();
         HandInController.Instance.OnHandInClaimed += HandInClaimed;
         HandInController.Instance.OnHandInClosed += HandInClosed;
+
+        ClearFacingDirection();
+        UpdateAppearance();
+    }
+
+    private void UpdateAppearance()
+    {
+        FrogCharacter.ClearAppearance();
+        FrogCharacter.SetBodyBase(BodyColor);
+        FrogCharacter.SetBodyEye(ItemType.BodyEye_Cute, Colors.White);
+        FrogCharacter.SetBodyTop(ItemType.BodyTop_Gradient, TopColor);
+        FrogCharacter.SetBodyPattern(ItemType.BodyPattern_None, Colors.Transparent);
+
+        if (HandInData.ClaimCount == 0)
+        {
+            FrogCharacter.SetAppearanceAttachment(ItemCategory.Hat, ItemType.Hat_Bow, Colors.Red, Colors.DarkRed);
+        }
+        else
+        {
+            FrogCharacter.SetAppearanceAttachment(ItemCategory.Hat, ItemType.Hat_BugOfLove, new Color(0f, 0.5f, 1f), Colors.Red);
+        }
+    }
+
+    private void ClearFacingDirection()
+    {
+        FrogCharacter.StartFacingPosition(DefaultFacingMarker.GlobalPosition);
     }
 
     public override void Interact()
@@ -39,6 +72,8 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         {
             StartDialogue(DialogueRequest);
         }
+
+        FrogCharacter.StartFacingPosition(Player.Instance.GlobalPosition);
     }
 
     protected override void DialogueEnded(string id)
@@ -55,22 +90,16 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         }
         else if (id == DialogueRequestComplete || id == DialogueRequestCompleteRepeat)
         {
-            if (show_unlock)
-            {
-                // TODO: Unlock something
-                // Show unlock
-                //InitializeCharacter();
-                Data.Game.Save();
-                show_unlock = false;
-            }
+            UpdateAppearance();
         }
+
+        ClearFacingDirection();
     }
 
     private void HandInClaimed(string id)
     {
         if (id == HandInInfo.Id)
         {
-            show_unlock = true;
             Data.Game.PartnerQuestCompleted = true;
             MainQuestController.Instance.AdvancePartnerQuest(5);
             StartDialogue(DialogueRequestComplete);
@@ -83,5 +112,11 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         {
             StartDialogue(DialogueRequestFail);
         }
+    }
+
+    public void StartToolboxDialogue()
+    {
+        StartDialogue("PARTNER_TOOLBOX");
+        FrogCharacter.StartFacingPosition(Player.Instance.GlobalPosition);
     }
 }

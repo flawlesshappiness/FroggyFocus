@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=2 format=3 uid="uid://dctv8f6acvcqr"]
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://dctv8f6acvcqr"]
 
 [ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="1_d6xk7"]
+[ext_resource type="Resource" uid="uid://dd5h5376rnp4" path="res://FocusCharacter/Resources/Mosquito_Mushroom.tres" id="1_vvpdf"]
 
 [resource]
 script = ExtResource("1_d6xk7")
-Count = 10
-TargetTag = 1
+Count = 3
+TargetTag = 0
+TargetInfo = ExtResource("1_vvpdf")
 Money = 150
 metadata/_custom_type_script = "uid://dm1b320n5x14n"

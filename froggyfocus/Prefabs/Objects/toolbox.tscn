@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqhfebpyhtw6i"]
+
+[ext_resource type="PackedScene" uid="uid://c8pd0sljkj5lr" path="res://Assets/FlawLizArt/Objects/toolbox.fbx" id="1_1h5nd"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="2_x52rs"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="3_olge3"]
+[ext_resource type="Material" uid="uid://dhj8qb88cw2ye" path="res://Materials/Silver.tres" id="4_osl5g"]
+
+[node name="toolbox" type="Node3D"]
+
+[node name="toolbox" parent="." instance=ExtResource("1_1h5nd")]
+
+[node name="toolbox" parent="toolbox" index="0"]
+surface_material_override/0 = ExtResource("2_x52rs")
+surface_material_override/1 = ExtResource("3_olge3")
+surface_material_override/2 = ExtResource("4_osl5g")
+
+[editable path="toolbox"]

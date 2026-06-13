@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=2 format=3 uid="uid://cgidyciesy53"]
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://cgidyciesy53"]
 
 [ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="1_8rsl2"]
+[ext_resource type="Resource" uid="uid://3objvy6bb7dt" path="res://FocusCharacter/Resources/Beetle_Mushroom.tres" id="1_rovve"]
 
 [resource]
 script = ExtResource("1_8rsl2")
-Count = 3
-TargetTag = 1
+Count = 2
+TargetTag = 0
+TargetInfo = ExtResource("1_rovve")
 Money = 50
 metadata/_custom_type_script = "uid://dm1b320n5x14n"

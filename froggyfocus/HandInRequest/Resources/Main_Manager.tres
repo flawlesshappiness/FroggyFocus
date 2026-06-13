@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://drrnljh1pvy8o"]
+
+[ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="1_ot22p"]
+[ext_resource type="Resource" uid="uid://bn6kwmsp5wc2v" path="res://FocusCharacter/Resources/Main_BugOfData.tres" id="1_xd7tp"]
+
+[resource]
+script = ExtResource("1_ot22p")
+Count = 1
+TargetTag = 0
+TargetInfo = ExtResource("1_xd7tp")
+Money = 0
+metadata/_custom_type_script = "uid://dm1b320n5x14n"

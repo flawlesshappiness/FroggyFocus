@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://bfxm8e0i2pss5"]
+
+[ext_resource type="Resource" uid="uid://dv4rlu765mpyd" path="res://FocusCharacter/Resources/Bloodworm.tres" id="1_3r5x4"]
+[ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="1_vcj1k"]
+
+[resource]
+script = ExtResource("1_vcj1k")
+Count = 3
+TargetTag = 0
+TargetInfo = ExtResource("1_3r5x4")
+Money = 50
+metadata/_custom_type_script = "uid://dm1b320n5x14n"

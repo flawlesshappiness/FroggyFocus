@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpolnbk7cwa7m"]
+
+[ext_resource type="PackedScene" uid="uid://c4de40jnper0p" path="res://Assets/FlawLizArt/Interior/Vent/vent_cover.fbx" id="1_gj1ix"]
+[ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="2_dukth"]
+
+[node name="vent_cover" type="Node3D"]
+
+[node name="vent_cover" parent="." instance=ExtResource("1_gj1ix")]
+
+[node name="vent_cover" parent="vent_cover" index="0"]
+surface_material_override/0 = ExtResource("2_dukth")
+
+[editable path="vent_cover"]
