@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FocusCharacterInfo" load_steps=3 format=3 uid="uid://qesgvx00xv7l"]
+
+[ext_resource type="PackedScene" uid="uid://p2x17wislmeu" path="res://Prefabs/Characters/crystal_heart.tscn" id="1_f5d7e"]
+[ext_resource type="Script" uid="uid://buqirimb2mf5" path="res://FocusCharacter/FocusCharacterInfo.cs" id="2_6j7yd"]
+
+[resource]
+script = ExtResource("2_6j7yd")
+Scene = ExtResource("1_f5d7e")
+Name = "Crystal Heart"
+Variation = "Crystal Heart"
+LocationHint = "???"
+Accessory = ""
+FocusValueOverride = 0.0
+MoneyMultiplier = 1.0
+Lives = 2
+MoveType = 1
+SpeedType = 2
+DistanceType = 2
+DelayType = 1
+OverrideSize = 0.0
+OverrideRarity = 0
+Attacks = null
+Tags = Array[int]([6])
+ExcludeFromBestiary = false
+PreviewOffset = Vector3(0, 0, 0)
+metadata/_custom_type_script = "uid://buqirimb2mf5"

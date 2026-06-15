@@ -48,6 +48,7 @@ public partial class FocusTarget : Node3D
     public Vector2 MoveDistance { get; private set; }
     public Vector2 MoveDelay { get; private set; }
     public int MovePoints { get; private set; }
+    public int Lives { get; private set; }
     public float DistanceToCursor => FocusEvent.Cursor.GlobalPosition.DistanceTo(GlobalPosition.Set(y: FocusEvent.Cursor.GlobalPosition.Y));
 
     public MultiLock FocusLock = new();
@@ -90,8 +91,9 @@ public partial class FocusTarget : Node3D
     {
         CharacterData = data;
         Info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
+        Lives = Info.Lives;
         SetCharacter(Info);
-        UpdateFocusValue();
+        InitializeFocusValue();
         UpdateSwimmer();
         UpdateDifficulty();
         InitializeAttacks();
@@ -122,12 +124,13 @@ public partial class FocusTarget : Node3D
         Scale = Vector3.One * CharacterData.Size;
     }
 
-    private void UpdateFocusValue()
+    public void InitializeFocusValue()
     {
         FocusCircle.SetFill(0);
         FocusValue = 0f;
         FocusMax = Info.FocusValueOverride == 0 ? 100f : Info.FocusValueOverride;
         FocusTick = UpgradeController.Instance.GetCurrentValue(UpgradeType.TickAmount);
+        IsFocusMax = false;
     }
 
     private void UpdateDifficulty()
@@ -513,6 +516,12 @@ public partial class FocusTarget : Node3D
         FocusCharacterDistanceType.Long => 0.25f,
         _ => 0.1f
     };
+
+    public void DecrementLives()
+    {
+        Lives = Mathf.Max(0, Lives - 1);
+        IsCaught = false;
+    }
 
     public void ResetGlow()
     {

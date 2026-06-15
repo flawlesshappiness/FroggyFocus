@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://p2x17wislmeu"]
+
+[ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_k3woh"]
+[ext_resource type="PackedScene" uid="uid://dace4j5yrjm84" path="res://Assets/FlawLizArt/Nature/Bugs/crystal_heart.fbx" id="3_iionh"]
+[ext_resource type="Material" uid="uid://b5djp7nj7jqms" path="res://Materials/Crystal.tres" id="4_36g0m"]
+[ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="6_15ixb"]
+
+[node name="crystal_heart" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
+script = ExtResource("1_k3woh")
+Animation = NodePath("AnimationStateMachine")
+WalkingAnimation = "Armature|idle"
+Accessories = []
+
+[node name="AnimationStateMachine" type="Node" parent="." node_paths=PackedStringArray("Animator")]
+script = ExtResource("6_15ixb")
+Animator = NodePath("../crystal_heart/AnimationPlayer")
+metadata/_custom_type_script = "uid://ckv4mr7osps52"
+
+[node name="crystal_heart" parent="." instance=ExtResource("3_iionh")]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0.17734, 0)
+
+[node name="Skeleton3D" parent="crystal_heart/Armature" index="0"]
+bones/0/scale = Vector3(1, 1, 1)
+
+[node name="heart" parent="crystal_heart/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("4_36g0m")
+
+[editable path="crystal_heart"]

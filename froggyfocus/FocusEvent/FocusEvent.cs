@@ -248,8 +248,11 @@ public partial class FocusEvent : Node3D
 
     private void Target_Caught(FocusTarget target)
     {
-        InventoryController.Instance.AddCharacter(target.CharacterData);
-        Data.Game.Save();
+        if (target.Lives == 0)
+        {
+            InventoryController.Instance.AddCharacter(target.CharacterData);
+            Data.Game.Save();
+        }
 
         ValidateAllCaught();
     }
@@ -257,9 +260,17 @@ public partial class FocusEvent : Node3D
     private void ValidateAllCaught()
     {
         var all_caught = Targets.All(x => x.IsCaught);
+        var has_lives = Targets.Any(x => x.Lives > 0);
         if (all_caught)
         {
-            EndEvent();
+            if (has_lives)
+            {
+                RestartEvent();
+            }
+            else
+            {
+                EndEvent();
+            }
         }
     }
 
@@ -392,6 +403,28 @@ public partial class FocusEvent : Node3D
         TransitionFromEnd();
     }
 
+    private void RestartEvent()
+    {
+        this.StartCoroutine(Cr, "restarting");
+        IEnumerator Cr()
+        {
+            CurrentState = State.Ending;
+            yield return new WaitForSeconds(1.0f);
+            CurrentState = State.Starting;
+            yield return new WaitForSeconds(1.0f);
+
+            foreach (var target in Targets)
+            {
+                target.InitializeFocusValue();
+                target.DecrementLives();
+                target.StartState();
+            }
+
+            StartTimer();
+            CurrentState = State.Running;
+        }
+    }
+
     private void Cursor_Target(FocusTarget target)
     {
         Frog.SetTarget(target);
@@ -429,7 +462,14 @@ public partial class FocusEvent : Node3D
             yield return new WaitForSeconds(0.2f);
             Frog.ClearTarget();
 
-            yield return Frog.AnimateEatTarget(target);
+            if (target.Lives > 0)
+            {
+                yield return Frog.AnimateLickTarget(target);
+            }
+            else
+            {
+                yield return Frog.AnimateEatTarget(target);
+            }
 
             Cursor.Show();
             FocusCursor.MoveLock.SetLock("catch", false);

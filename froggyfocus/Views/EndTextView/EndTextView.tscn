@@ -1,0 +1,155 @@
+[gd_scene load_steps=11 format=3 uid="uid://conaty0u3whdg"]
+
+[ext_resource type="Script" uid="uid://6ljkkldytjuu" path="res://Views/EndTextView/EndTextView.cs" id="1_w0vs8"]
+[ext_resource type="AudioStream" uid="uid://c3ub6d8kjvagg" path="res://Sounds/Raw/sfx_end_text_001.wav" id="2_h023k"]
+[ext_resource type="AudioStream" uid="uid://bx6g1dngrr1n6" path="res://Sounds/Raw/sfx_end_text_002.wav" id="3_1qmun"]
+[ext_resource type="AudioStream" uid="uid://8fhq6ty6sav2" path="res://Sounds/Raw/sfx_end_text_003.wav" id="4_itee5"]
+[ext_resource type="AudioStream" uid="uid://ckd05aj2nbxc0" path="res://Sounds/Raw/sfx_end_text_004.wav" id="5_r8tgy"]
+
+[sub_resource type="Animation" id="Animation_w0vs8"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nxxr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ck7do"]
+resource_name = "show"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nsmsm"]
+_data = {
+&"RESET": SubResource("Animation_nxxr8"),
+&"hide": SubResource("Animation_w0vs8"),
+&"show": SubResource("Animation_ck7do")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vtahj"]
+playback_mode = 2
+streams_count = 4
+stream_0/stream = ExtResource("2_h023k")
+stream_1/stream = ExtResource("3_1qmun")
+stream_2/stream = ExtResource("4_itee5")
+stream_3/stream = ExtResource("5_r8tgy")
+
+[node name="EndTextView" type="Control" node_paths=PackedStringArray("AnimationPlayer", "SfxText", "Labels")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_w0vs8")
+AnimationPlayer = NodePath("AnimationPlayer")
+SfxText = NodePath("SfxText")
+Labels = [NodePath("ColorRect/HeartLabel"), NodePath("ColorRect/CritiqueLabel"), NodePath("ColorRect/FroggyLabel"), NodePath("ColorRect/TheEndLabel")]
+ChildOrder = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HeartLabel" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 41
+text = "Without a heart
+the frog-droid ceased to function."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CritiqueLabel" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 41
+text = "Rib & It received major public backlash
+for hurting the environment."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FroggyLabel" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 41
+text = "Yet Froggy continued living,
+catching bugs and helping friends."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TheEndLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 196
+text = "THE END"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nsmsm")
+}
+
+[node name="SfxText" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_vtahj")
+bus = &"SFX"

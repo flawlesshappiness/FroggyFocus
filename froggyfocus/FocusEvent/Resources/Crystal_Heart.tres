@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FocusEventInfo" load_steps=3 format=3 uid="uid://bfa6flbad03wx"]
+
+[ext_resource type="Resource" uid="uid://qesgvx00xv7l" path="res://FocusCharacter/Resources/Crystal_Heart.tres" id="1_1x8ne"]
+[ext_resource type="Script" uid="uid://bodgfn73d1jc6" path="res://FocusEvent/FocusEventInfo.cs" id="9_t0esf"]
+
+[resource]
+script = ExtResource("9_t0esf")
+Id = "crystal_heart"
+TargetCount = Vector2i(1, 1)
+MaxRarity = 0
+Characters = Array[Object]([ExtResource("1_1x8ne")])
+metadata/_custom_type_script = "uid://bodgfn73d1jc6"

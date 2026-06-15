@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dknsycvp1qp0k"]
+[gd_scene load_steps=11 format=3 uid="uid://dknsycvp1qp0k"]
 
 [ext_resource type="Script" uid="uid://c1hjcsa25eq3o" path="res://Scenes/FactoryEntranceScene/FrogDroidPlatform.cs" id="1_2casv"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="1_30unh"]
 [ext_resource type="Material" uid="uid://c2xjqlekjwswr" path="res://Materials/Color_Grey.tres" id="1_tgs4b"]
+[ext_resource type="Resource" uid="uid://bfa6flbad03wx" path="res://FocusEvent/Resources/Crystal_Heart.tres" id="2_qaott"]
 [ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="4_08xgu"]
 [ext_resource type="Script" uid="uid://dsf0eqywgl7lk" path="res://Area/InteractArea.cs" id="5_ggqm2"]
 
@@ -24,9 +25,11 @@ radius = 0.887207
 height = 1.0
 radius = 0.683105
 
-[node name="FrogDroid" type="Node3D" node_paths=PackedStringArray("Character")]
+[node name="FrogDroid" type="Node3D" node_paths=PackedStringArray("Character", "InteractArea")]
 script = ExtResource("1_2casv")
+FocusEventInfo = ExtResource("2_qaott")
 Character = NodePath("FrogCute")
+InteractArea = NodePath("InteractArea")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
@@ -39,6 +42,8 @@ shape = SubResource("CylinderShape3D_2casv")
 
 [node name="FrogCute" parent="." instance=ExtResource("1_30unh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+DisableAnimationStates = true
+DisableAppearanceUpdates = true
 
 [node name="NpcCollisionArea" type="Area3D" parent="."]
 collision_layer = 0

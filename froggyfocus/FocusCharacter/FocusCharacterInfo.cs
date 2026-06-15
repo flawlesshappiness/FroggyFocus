@@ -26,6 +26,9 @@ public partial class FocusCharacterInfo : Resource
     public float MoneyMultiplier = 1f;
 
     [Export]
+    public int Lives = 0;
+
+    [Export]
     public FocusCharacterMoveType MoveType = FocusCharacterMoveType.Walk;
 
     [Export]

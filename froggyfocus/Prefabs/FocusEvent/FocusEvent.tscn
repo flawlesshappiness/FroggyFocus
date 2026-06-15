@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://byqfa6wymvsj0"]
+[gd_scene load_steps=43 format=3 uid="uid://byqfa6wymvsj0"]
 
 [ext_resource type="Script" uid="uid://cn1ojd3tt0pjm" path="res://FocusEvent/FocusEvent.cs" id="1_p778c"]
 [ext_resource type="PackedScene" uid="uid://cta4lwmtk36u" path="res://Prefabs/FocusEvent/FocusCursor.tscn" id="2_tceec"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://4c48npfdwmu3" path="res://FocusEvent/FocusFrog.cs" id="26_0lb7u"]
 [ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="27_p01lx"]
 [ext_resource type="PackedScene" uid="uid://0pp4bs6q2wml" path="res://Prefabs/Characters/frog_pixel.tscn" id="29_bo0wf"]
+[ext_resource type="PackedScene" uid="uid://bv0wcykjqvsxk" path="res://Prefabs/FocusEventBackground/crystal_heart.tscn" id="29_rqtj8"]
 [ext_resource type="PackedScene" uid="uid://cb8q4quglh4xu" path="res://Prefabs/FocusEventBackground/swamp_land.tscn" id="30_4nfkp"]
 [ext_resource type="Shader" uid="uid://duxoohuy37uxu" path="res://Shaders/Toon.gdshader" id="30_p01lx"]
 [ext_resource type="PackedScene" uid="uid://3my6iuqyk6l0" path="res://Prefabs/FocusEventBackground/swamp_lilypads.tscn" id="31_4nfkp"]
@@ -74,7 +75,7 @@ material = SubResource("ShaderMaterial_rfid0")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bo0wf"]
 material = ExtResource("48_c4y08")
-size = Vector2(30, 30)
+size = Vector2(60, 30)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ef5u0"]
 vertices = PackedVector3Array(0, 0.5, 3.5, 0, 0.5, 1.5, -1.5, 0.5, 1.5, -4.5, 0.5, 3.5, -1.5, 0.5, -1.5, 0, 0.5, -1.5, 0, 0.5, -3.5, -4.5, 0.5, -3.5, 1.5, 0.5, 1.5, 4.5, 0.5, 3.5, 1.5, 0.5, -1.5, 4.5, 0.5, -3.5)
@@ -229,6 +230,9 @@ visible = false
 visible = false
 
 [node name="glitch" parent="Backgrounds" instance=ExtResource("47_bo0wf")]
+visible = false
+
+[node name="crystal_heart" parent="Backgrounds" instance=ExtResource("29_rqtj8")]
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Backgrounds"]

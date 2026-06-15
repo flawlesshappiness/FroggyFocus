@@ -110,6 +110,11 @@ public partial class FocusFrog : Node3D
         return Frog.AnimateEatTarget(target);
     }
 
+    public Coroutine AnimateLickTarget(Node3D target)
+    {
+        return Frog.AnimateLickTarget(target);
+    }
+
     public void SetCoveringEyes(bool is_covering)
     {
         Frog.SetCoveringEyes(is_covering);

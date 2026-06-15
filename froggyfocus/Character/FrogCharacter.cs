@@ -129,6 +129,19 @@ public partial class FrogCharacter : Character
         }
     }
 
+    public Coroutine AnimateLickTarget(Node3D target)
+    {
+        return this.StartCoroutine(Cr, nameof(AnimateEatTarget));
+        IEnumerator Cr()
+        {
+            SetTongueOut(true);
+            yield return Tongue.AnimateTongueTowards(target.GlobalPosition);
+            SetTongueOut(false);
+            yield return new WaitForSeconds(0.05f);
+            yield return Tongue.AnimateTongueBack();
+        }
+    }
+
     private void AnimationStarted(StringName animName)
     {
         OnAnimationStarted?.Invoke($"{animName}");

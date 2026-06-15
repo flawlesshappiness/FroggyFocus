@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://cght03cbcry16"]
+
+[ext_resource type="PackedScene" uid="uid://og4aje0oop1" path="res://Assets/FlawLizArt/Characters/Leech/leech.fbx" id="1_ofoff"]
+[ext_resource type="Material" uid="uid://b8cwavilkfhi4" path="res://Materials/Eyes.tres" id="2_w34o3"]
+[ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="3_lxeqe"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="4_cb0s0"]
+[ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="5_hjn3w"]
+
+[node name="LeechLabNpc" type="Node3D"]
+
+[node name="leech" parent="." instance=ExtResource("1_ofoff")]
+
+[node name="Skeleton3D" parent="leech/Armature" index="0"]
+bones/1/position = Vector3(0, -0.001, 0.001)
+bones/2/position = Vector3(0, 0, 0.001)
+bones/2/rotation = Quaternion(0.74402, -7.96506e-08, -8.86941e-08, 0.668157)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/position = Vector3(-4.27394e-17, 0.015165, -2.15286e-10)
+bones/3/rotation = Quaternion(-0.150049, -2.9642e-14, 3.57744e-08, 0.988679)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/position = Vector3(2.57875e-17, 0.0177298, -1.0797e-09)
+bones/4/rotation = Quaternion(-0.37074, 5.10705e-16, 8.83913e-08, 0.928737)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/position = Vector3(-3.98023e-16, 0.0178002, 1.46055e-09)
+bones/5/rotation = Quaternion(-0.436219, 3.85359e-16, 1.04003e-07, 0.899841)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/position = Vector3(4.98769e-16, 0.0197874, -1.5768e-10)
+bones/6/rotation = Quaternion(-0.142434, 1.27907e-14, 3.3959e-08, 0.989804)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.800119, -7.15067e-08, 9.53816e-08, 0.599841)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/position = Vector3(-1.19225e-19, 0.0153549, 2.14396e-10)
+bones/9/rotation = Quaternion(-0.314736, -1.13151e-07, 1.12558e-07, 0.949179)
+
+[node name="leech" parent="leech/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_w34o3")
+surface_material_override/1 = ExtResource("3_lxeqe")
+
+[node name="teeth" parent="leech/Armature/Skeleton3D" index="1"]
+surface_material_override/0 = ExtResource("4_cb0s0")
+
+[node name="AnimationPlayer" parent="leech" index="1"]
+script = ExtResource("5_hjn3w")
+Animation = "Armature|idle"
+
+[editable path="leech"]

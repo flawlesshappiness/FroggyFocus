@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8jml0sphang0"]
+[gd_scene load_steps=15 format=3 uid="uid://b8jml0sphang0"]
 
 [ext_resource type="Script" uid="uid://dj06piy035o2l" path="res://Views/TutorialView/TutorialView.cs" id="1_4w7iv"]
 [ext_resource type="Script" uid="uid://dj6d4ygcy8ifw" path="res://Prefabs/UI/SubViewport/ItemSubViewport.cs" id="2_4w7iv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cqiudv26lubpf" path="res://Assets/FlawLizArt/Objects/sign.fbx" id="3_ve78c"]
 [ext_resource type="Texture2D" uid="uid://irr3u2ude5us" path="res://Assets/FlawLizArt/Textures/tutorial_jump_graphic.png" id="4_35v6w"]
 [ext_resource type="AudioStream" uid="uid://boisawhq2sm78" path="res://Sounds/Raw/sfx_swipe_001.wav" id="6_kl8r4"]
+[ext_resource type="Material" uid="uid://moareefhh27l" path="res://Materials/Color_Brown.tres" id="7_7ri1q"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ve78c"]
 viewport_path = NodePath("ItemSubViewport_Sign")
@@ -610,6 +611,12 @@ light_energy = 0.1
 [node name="sign" parent="ItemSubViewport_Sign/Anim/Origin" instance=ExtResource("3_ve78c")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.656101, 0)
 
+[node name="small_post" parent="ItemSubViewport_Sign/Anim/Origin/sign" index="0"]
+surface_material_override/0 = ExtResource("7_7ri1q")
+
+[node name="small_board" parent="ItemSubViewport_Sign/Anim/Origin/sign/small_post" index="0"]
+surface_material_override/0 = ExtResource("7_7ri1q")
+
 [node name="AnimationPlayer_Sign" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_kl8r4")
@@ -619,3 +626,5 @@ libraries = {
 stream = SubResource("AudioStreamRandomizer_35v6w")
 volume_db = -10.0
 bus = &"SFX"
+
+[editable path="ItemSubViewport_Sign/Anim/Origin/sign"]

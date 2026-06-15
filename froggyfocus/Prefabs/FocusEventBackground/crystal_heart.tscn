@@ -1,0 +1,159 @@
+[gd_scene load_steps=11 format=3 uid="uid://bv0wcykjqvsxk"]
+
+[ext_resource type="Script" uid="uid://hh6lfstgxgfo" path="res://Prefabs/FocusEventBackground/FocusEventBackground.cs" id="1_8p5xo"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="2_jr728"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="3_lfekt"]
+[ext_resource type="PackedScene" uid="uid://bay3m4dsaes8k" path="res://Assets/FlawLizArt/Construction/cord_focus.fbx" id="4_jbs4y"]
+[ext_resource type="Material" uid="uid://fg7uxumn0htx" path="res://Materials/Color_Red.tres" id="5_dihqc"]
+[ext_resource type="Material" uid="uid://bu0xn6ccwtlfq" path="res://Materials/Color_Green.tres" id="6_uhwy8"]
+[ext_resource type="Material" uid="uid://cmwnlcmbrnpft" path="res://Materials/Color_Blue.tres" id="7_20y2v"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="8_dihqc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8p5xo"]
+material = ExtResource("2_jr728")
+size = Vector3(2, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jr728"]
+material = ExtResource("3_lfekt")
+size = Vector3(3, 0.2, 2)
+
+[node name="crystal_heart" type="Node3D" node_paths=PackedStringArray("SoundEffects")]
+script = ExtResource("1_8p5xo")
+Id = "crystal_heart"
+SoundEffects = []
+
+[node name="plates" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("BoxMesh_8p5xo")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(0.657858, 0.511533, 0.552772, -0.391633, 0.859264, -0.329074, -0.643309, 0, 0.765607, -3.62074, -3.31416, -0.431829)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(0.0528435, -0.336047, -0.940362, -0.391633, 0.859264, -0.329074, 0.918603, 0.385666, -0.0862006, 2.10099, -3.31416, -2.95903)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(-0.847855, -0.198071, 0.491844, -0.391633, 0.859264, -0.329074, -0.357444, -0.471629, -0.806102, 0.667264, -5.89066, 1.91487)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(0.821083, 0.864753, 1.28083, -0.685358, 1.50371, -0.575879, -1.38514, -0.231419, 1.04419, 2.43723, -5.89066, 6.56804)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(-1.22734, -0.0827042, 1.24471, -0.685358, 1.50371, -0.575879, -1.04232, -0.891354, -1.087, -7.28535, -5.89066, 10.9651)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(0.840048, -0.200048, -1.5221, -0.685358, 1.50371, -0.575879, 1.37372, 0.872544, 0.643478, -8.74113, -5.89066, 0.368903)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(-0.876198, -0.873371, -1.23774, -0.685358, 1.50371, -0.575879, 1.35095, 0.196406, -1.09493, -5.3882, -5.89066, -11.201)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(-1.2727, -0.122465, 1.19488, -0.685358, 1.50371, -0.575879, -0.986414, -0.886766, -1.14155, 8.23217, -5.89066, -6.07815)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(-1.18105, -0.89486, -0.931042, -0.685358, 1.50371, -0.575879, 1.09449, -0.0240268, -1.36529, 10.7154, -5.89066, 2.43462)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(1.0723, -0.0406863, -1.38239, -0.685358, 1.50371, -0.575879, 1.20123, 0.894258, 0.905456, 6.38183, -5.89066, 12.7523)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D15" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(1.0723, -0.0406863, -1.38239, -0.685358, 1.50371, -0.575879, 1.20123, 0.894258, 0.905456, 1.17485, -5.89066, -14.1278)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(-0.340967, -0.467707, -0.81547, -0.391633, 0.859263, -0.329074, 0.854614, 0.207162, -0.47615, -3.07279, -5.89066, -3.49394)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(0.919174, 0.381579, -0.0975514, -0.391633, 0.859263, -0.329074, -0.0417454, 0.34068, 0.939252, -4.58273, -8.24526, 4.79743)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="plates"]
+transform = Transform3D(-0.784982, -0.498597, -0.367702, -0.391633, 0.859263, -0.329074, 0.480028, -0.114313, -0.869774, 5.04627, -8.24526, 0.0584002)
+mesh = SubResource("BoxMesh_jr728")
+skeleton = NodePath("../..")
+
+[node name="cords" type="Node3D" parent="."]
+
+[node name="cord_focus" parent="cords" instance=ExtResource("4_jbs4y")]
+transform = Transform3D(3.41377, 0, 0.772143, 0, 3.5, 0, -0.772143, 0, 3.41377, -0.167622, -10.1976, -1.78901)
+
+[node name="Cylinder" parent="cords/cord_focus" index="0"]
+surface_material_override/0 = ExtResource("5_dihqc")
+
+[node name="cord_focus5" parent="cords" instance=ExtResource("4_jbs4y")]
+transform = Transform3D(-2.0924, 0, -1.59335, 0, 2.63, 0, 1.59335, 0, -2.0924, 4.51251, -10.1976, 4.87889)
+
+[node name="Cylinder" parent="cords/cord_focus5" index="0"]
+surface_material_override/0 = ExtResource("5_dihqc")
+
+[node name="cord_focus2" parent="cords" instance=ExtResource("4_jbs4y")]
+transform = Transform3D(-0.863609, 0, 3.39178, 0, 3.5, 0, -3.39178, 0, -0.863609, -2.03535, -10.1976, 1.26077)
+
+[node name="Cylinder" parent="cords/cord_focus2" index="0"]
+surface_material_override/0 = ExtResource("6_uhwy8")
+
+[node name="cord_focus6" parent="cords" instance=ExtResource("4_jbs4y")]
+transform = Transform3D(2.0072, 0, -2.07924, 0, 2.89, 0, 2.07924, 0, 2.0072, 3.11096, -10.1976, -4.12103)
+
+[node name="Cylinder" parent="cords/cord_focus6" index="0"]
+surface_material_override/0 = ExtResource("6_uhwy8")
+
+[node name="cord_focus3" parent="cords" instance=ExtResource("4_jbs4y")]
+transform = Transform3D(-1.29082, 0, -3.25327, 0, 3.5, 0, 3.25327, 0, -1.29082, 0.617527, -10.1976, 0.134153)
+
+[node name="Cylinder" parent="cords/cord_focus3" index="0"]
+surface_material_override/0 = ExtResource("7_20y2v")
+
+[node name="cord_focus7" parent="cords" instance=ExtResource("4_jbs4y")]
+transform = Transform3D(-2.33074, 0, 1.63146, 0, 2.845, 0, -1.63146, 0, -2.33074, -3.32672, -10.1976, 6.10252)
+
+[node name="Cylinder" parent="cords/cord_focus7" index="0"]
+surface_material_override/0 = ExtResource("7_20y2v")
+
+[node name="cord_focus4" parent="cords" instance=ExtResource("4_jbs4y")]
+transform = Transform3D(-3.09335, 0, 1.63743, 0, 3.5, 0, -1.63743, 0, -3.09335, 0.773601, -10.1976, 3.19462)
+
+[node name="Cylinder" parent="cords/cord_focus4" index="0"]
+surface_material_override/0 = ExtResource("8_dihqc")
+
+[node name="cord_focus8" parent="cords" instance=ExtResource("4_jbs4y")]
+transform = Transform3D(1.67918, 0, 2.34597, 0, 2.885, 0, -2.34597, 0, 1.67918, -4.79346, -10.1976, -2.22836)
+
+[node name="Cylinder" parent="cords/cord_focus8" index="0"]
+surface_material_override/0 = ExtResource("8_dihqc")
+
+[editable path="cords/cord_focus"]
+[editable path="cords/cord_focus5"]
+[editable path="cords/cord_focus2"]
+[editable path="cords/cord_focus6"]
+[editable path="cords/cord_focus3"]
+[editable path="cords/cord_focus7"]
+[editable path="cords/cord_focus4"]
+[editable path="cords/cord_focus8"]

@@ -47,19 +47,20 @@ public partial class FocusEventView : View
 
         if (FocusEvent.IsStarting)
         {
-            TimerBar.Value = TimerBar.MaxValue;
+            TimerBar.Value = Mathf.Lerp(TimerBar.Value, TimerBar.MaxValue, GameTime.DeltaTime * 5.0f);
         }
         else if (FocusEvent.IsEnding)
         {
-            TimerBar.Value = TimerBar.MinValue;
+            TimerBar.Value = Mathf.Lerp(TimerBar.Value, TimerBar.MinValue, GameTime.DeltaTime * 5.0f);
         }
         else if (FocusEvent.IsRunning)
         {
             var max = FocusEvent.TimerDuration;
             var value = (GameTime.Time - FocusEvent.TimerStart);
             var t = Mathf.Clamp(value / max, 0, 1);
+            var v = 1.0f - t;
 
-            TimerBar.Value = 1.0f - t;
+            TimerBar.Value = Mathf.Lerp(TimerBar.Value, v, GameTime.DeltaTime * 10.0f);
         }
     }
 
