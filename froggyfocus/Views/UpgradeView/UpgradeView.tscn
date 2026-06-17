@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqp135ifs3p7p"]
+[gd_scene load_steps=10 format=3 uid="uid://bqp135ifs3p7p"]
 
 [ext_resource type="Theme" uid="uid://dnae0f3350jys" path="res://Themes/Blue.tres" id="1_hg4hd"]
 [ext_resource type="Script" uid="uid://c52tbxph6fkse" path="res://Views/UpgradeView/UpgradeView.cs" id="2_n8kem"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwqgcyyplggh4" path="res://Prefabs/UI/Upgrade/upgrade_container.tscn" id="6_cjx6f"]
 [ext_resource type="PackedScene" uid="uid://byjcc0p66y3lu" path="res://Prefabs/UI/MenuIconButton/menu_icon_button.tscn" id="7_n8kem"]
 [ext_resource type="Texture2D" uid="uid://do4elo5hgfbsj" path="res://Assets/KenneyNL/Icons/return.png" id="8_bsdmw"]
+[ext_resource type="PackedScene" uid="uid://dgydt42vrge0g" path="res://Prefabs/UI/MoneyBar/money_bar.tscn" id="9_bsdmw"]
 
 [node name="UpgradeView" type="Control" node_paths=PackedStringArray("BackButton", "Upgrades", "AnimatedPanel", "AnimatedOverlay", "InputBlocker")]
 layout_mode = 3
@@ -138,3 +139,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MoneyBar" parent="." instance=ExtResource("9_bsdmw")]
+layout_mode = 1
+offset_left = -17.285
+offset_top = 20.355
+offset_right = -17.285
+offset_bottom = 20.355
