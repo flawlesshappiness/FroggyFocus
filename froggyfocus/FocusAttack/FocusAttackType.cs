@@ -18,4 +18,6 @@ public enum FocusAttackType
     GlitchError,
     GlitchFlash,
     CrystalBush,
+    RobotFlash,
+    RobotTrap
 }

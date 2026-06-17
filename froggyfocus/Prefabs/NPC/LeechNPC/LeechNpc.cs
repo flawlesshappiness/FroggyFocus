@@ -1,7 +1,12 @@
+using Godot;
+using Godot.Collections;
 using System.Linq;
 
 public partial class LeechNpc : CharacterNpc
 {
+    [Export]
+    public Array<string> Dialogues;
+
     private int idx_dialogue;
     private bool active_dialogue;
 
@@ -13,15 +18,13 @@ public partial class LeechNpc : CharacterNpc
 
     public override void Interact()
     {
-        var nodes = DialogueController.Instance.Collection.Nodes.Values.Where(x => x.id.Contains("LEECH_UPGRADE_START")).ToList();
-        var node = nodes.GetClamped(idx_dialogue);
-        idx_dialogue = (idx_dialogue + 1) % nodes.Count;
-        StartDialogue(node.id);
+        var dialogue = Dialogues.PickRandom();
+        StartDialogue(dialogue);
     }
 
     private void DialogueNodeEnded(string id)
     {
-        if (id.Contains("LEECH_UPGRADE_START"))
+        if (Dialogues.Any(x => x == id))
         {
             UpgradeView.Instance.Show();
         }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://clx03k1vqd1xx"]
+[gd_scene load_steps=22 format=3 uid="uid://clx03k1vqd1xx"]
 
 [ext_resource type="Script" uid="uid://pw140x2mf78g" path="res://Scenes/ScientistLabScene.cs" id="1_xypfy"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_6dw5m"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_tqw4r"]
 [ext_resource type="PackedScene" uid="uid://x7nclqu76y7s" path="res://Prefabs/Objects/factory_entry_door.tscn" id="5_tqw4r"]
 [ext_resource type="PackedScene" uid="uid://dor6ep604xfj4" path="res://Prefabs/Interior/factory_tile_2x4.tscn" id="6_bduu1"]
+[ext_resource type="PackedScene" uid="uid://dhnefrn2nnkxa" path="res://Prefabs/Water/water_black.tscn" id="7_5vv37"]
 [ext_resource type="PackedScene" uid="uid://bbs70wxx5su5d" path="res://Prefabs/Interior/factory_tile_2x2.tscn" id="7_fqn58"]
 [ext_resource type="PackedScene" uid="uid://ch71i4r1h8ofk" path="res://Prefabs/NPC/FrogScientistNPC/frog_scientist_npc.tscn" id="9_8ophw"]
 [ext_resource type="PackedScene" uid="uid://cfbpfkqqtbtfh" path="res://Assets/FlawLizArt/Interior/wall_lab.fbx" id="10_bduu1"]
@@ -58,6 +59,9 @@ projection = 1
 size = 10.6385
 
 [node name="World" type="Node3D" parent="."]
+
+[node name="Water" parent="World" instance=ExtResource("7_5vv37")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.97454, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
 navigation_mesh = SubResource("NavigationMesh_nb64n")

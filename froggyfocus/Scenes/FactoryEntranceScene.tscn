@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://b4llhtloesqsw"]
+[gd_scene load_steps=80 format=3 uid="uid://b4llhtloesqsw"]
 
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="1_l3c1f"]
 [ext_resource type="Script" uid="uid://ckpmynrqvhv3k" path="res://Scenes/FactoryEntranceScene.cs" id="1_ng05n"]
@@ -15,8 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://cle2ycu3xbrea" path="res://Prefabs/Interior/vent/vent_corridor_cross_t.tscn" id="10_tdcru"]
 [ext_resource type="PackedScene" uid="uid://dx1awofqqui2" path="res://Prefabs/Interior/vent/vent_corridor_turn.tscn" id="11_tdcru"]
 [ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="14_a2urv"]
+[ext_resource type="PackedScene" uid="uid://dhnefrn2nnkxa" path="res://Prefabs/Water/water_black.tscn" id="14_lic1f"]
 [ext_resource type="PackedScene" uid="uid://djg6cn64c3id2" path="res://Prefabs/Interior/wall_lab.tscn" id="15_4bqxh"]
 [ext_resource type="PackedScene" uid="uid://dor6ep604xfj4" path="res://Prefabs/Interior/factory_tile_2x4.tscn" id="16_a2urv"]
+[ext_resource type="AudioStream" uid="uid://dtooblynpf23x" path="res://Sounds/Raw/sfx_receptionist_typing.wav" id="16_vxlcl"]
 [ext_resource type="Script" uid="uid://djusneokga6cw" path="res://Scenes/FactoryEntranceScene/ReceptionVent.cs" id="17_0ke5t"]
 [ext_resource type="PackedScene" uid="uid://c6syt0vmofmsw" path="res://Prefabs/NPC/ReceptionistNpc/receptionist_npc.tscn" id="17_khjn7"]
 [ext_resource type="PackedScene" uid="uid://ff70npsac6ah" path="res://Prefabs/Interior/desk.tscn" id="17_ku8yf"]
@@ -40,13 +42,32 @@
 [ext_resource type="PackedScene" uid="uid://m40haurfyoj3" path="res://Prefabs/Room/lab_room.tscn" id="35_c40q0"]
 [ext_resource type="Resource" uid="uid://cjb8fi4fgjlsn" path="res://HandIn/Resources/Main_Manager.tres" id="35_q1ya0"]
 [ext_resource type="PackedScene" uid="uid://d1q7tc2cyplnl" path="res://Assets/FlawLizArt/Interior/Vent/vent_frame.fbx" id="36_qrpo2"]
+[ext_resource type="AudioStream" uid="uid://nbfbnx1habkm" path="res://Sounds/Raw/sfx_frog_croak_002.wav" id="37_2tcqr"]
 [ext_resource type="PackedScene" uid="uid://dr5g3ygbk7grl" path="res://Prefabs/Interior/table_lab.tscn" id="39_n51v6"]
 [ext_resource type="PackedScene" uid="uid://cxjbfafjxye2c" path="res://Prefabs/Interior/blackboard.tscn" id="39_pcu7i"]
+[ext_resource type="Texture2D" uid="uid://cl8motx2vdmrd" path="res://Assets/FlawLizArt/Textures/chalk_lab_liquid.png" id="41_e0yo7"]
 [ext_resource type="Script" uid="uid://8x7nmtbwb0cm" path="res://Scenes/FactoryEntranceScene/LabDialogueRoom.cs" id="41_pcu7i"]
 [ext_resource type="PackedScene" uid="uid://cght03cbcry16" path="res://Prefabs/NPC/LeechNPC/leech_lab_npc.tscn" id="42_pudvx"]
+[ext_resource type="PackedScene" uid="uid://bpjb7oarnl8xv" path="res://Assets/FlawLizArt/Nature/Bugs/incubator.fbx" id="42_ruhjh"]
+[ext_resource type="PackedScene" uid="uid://b4q50qn0su2fg" path="res://Assets/KayLousberg/Dungeon/potionLarge_blue.fbx" id="43_4n2n5"]
 [ext_resource type="PackedScene" uid="uid://dknsycvp1qp0k" path="res://Prefabs/Characters/frog_droid.tscn" id="44_4k413"]
+[ext_resource type="Material" uid="uid://c3dj72mkq2o4g" path="res://Materials/Glass.tres" id="44_e81y1"]
 [ext_resource type="PackedScene" uid="uid://bh21rs7ynofbi" path="res://Prefabs/Interior/lab/lab_container_large.tscn" id="44_k4dhn"]
+[ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="45_d0of8"]
+[ext_resource type="Material" uid="uid://cc3a6m6f5y3b" path="res://Materials/Color_Orange.tres" id="46_e0yo7"]
 [ext_resource type="PackedScene" uid="uid://byqfa6wymvsj0" path="res://Prefabs/FocusEvent/FocusEvent.tscn" id="47_4k413"]
+[ext_resource type="PackedScene" uid="uid://dnn057wjcl7ih" path="res://Assets/FlawLizArt/Eldritch/syringe.fbx" id="48_e0yo7"]
+[ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="49_rs78f"]
+[ext_resource type="Texture2D" uid="uid://5tfwtkxuy2ll" path="res://Assets/FlawLizArt/Textures/chalk_lab_heart.png" id="51_rs78f"]
+[ext_resource type="PackedScene" uid="uid://bopqo8j1a3n8r" path="res://Prefabs/Nature/crystal_decorative_group_002.tscn" id="52_tfglr"]
+[ext_resource type="PackedScene" uid="uid://mgmo21w6fmfl" path="res://Prefabs/Nature/crystal_decorative_group_001.tscn" id="53_m8xj7"]
+[ext_resource type="PackedScene" uid="uid://bmi1j67o84i5g" path="res://Prefabs/Crystal/crystal_long.tscn" id="54_m8xj7"]
+[ext_resource type="Texture2D" uid="uid://ckg4lkcuf5v3j" path="res://Assets/FlawLizArt/Textures/chalk_lab_evil.png" id="56_26qkv"]
+[ext_resource type="Texture2D" uid="uid://7rmvpno80lvb" path="res://Assets/FlawLizArt/Textures/chalk_lab_money.png" id="57_tkr8i"]
+[ext_resource type="PackedScene" uid="uid://xu7vcw8c8y5q" path="res://Prefabs/Misc/coin_stack.tscn" id="58_tkr8i"]
+[ext_resource type="PackedScene" uid="uid://brxojl5830crq" path="res://Prefabs/Misc/coin.tscn" id="59_syb2r"]
+[ext_resource type="AudioStream" uid="uid://c6ceyhby44tbc" path="res://Sounds/Raw/bgm_factory_entrance.wav" id="63_syb2r"]
+[ext_resource type="AudioStream" uid="uid://bmyu185f2v1pc" path="res://Sounds/Raw/bgm_factory_entrance_focus.wav" id="64_2tcqr"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ucjxr"]
 vertices = PackedVector3Array(-56.8643, 2, -29.1143, -56.8643, 2, -34.6143, -59.1143, 2, -34.6143, -59.3643, 2, -31.1143, -59.3643, 2, -28.8643, -67.3643, 2, -25.1143, -64.8643, 2, -22.8643, -64.8643, 2, -28.6143, -67.1143, 2, -31.1143, -73.1143, 2, -22.8643, -72.6143, 2, -25.1143, -84.3643, -0.5, -16.3643, -84.3643, -0.5, -15.6143, -82.3643, -0.5, -15.3643, -82.3643, -0.5, -16.6143, -65.6143, -0.5, -23.6143, -66.6143, -0.5, -24.3643, -73.3643, -0.5, -24.3643, -71.3643, -0.5, -8.36426, -71.6143, -0.5, -10.3643, -72.3643, -0.5, -10.3643, -72.6143, -0.5, -8.36426, -64.6143, -0.5, -7.61426, -60.8643, -0.5, -8.36426, -73.6143, -0.5, -26.3643, -74.3643, -0.5, -26.3643, -74.6143, -0.5, -24.3643, -63.6143, -0.5, -7.36426, -60.8643, -0.5, -7.61426, -58.6143, -0.5, -30.3643, -58.6143, -0.5, -29.6143, -58.3643, -0.5, -25.6143, -57.6143, -0.5, -25.6143, -57.6143, -0.5, -34.3643, -58.3643, -0.5, -34.3643, -81.6143, -0.5, -23.3643, -82.3643, -0.5, -7.61426, -81.6143, -0.5, -8.61426, -82.3643, -0.5, -24.3643, -65.3643, -0.5, -29.6143, -66.3643, -0.5, -30.3643, -64.3643, -0.5, 0.385742, -63.6143, -0.5, 0.385742, -55.1143, 2, -9.36426, -63.1143, 2, -9.11426, -62.6143, 2, -6.86426, -52.8643, 2, -6.86426, -55.1143, 2, -16.6143, -52.8643, 2, -19.1143, -56.8643, 2, -19.3643, -59.1143, 2, -16.8643, -72.8643, 2, -26.6143, -75.1143, 2, -26.6143, -75.3643, 2, -25.1143, -83.1143, 2, -17.3643, -80.8643, 2, -16.8643, -80.6143, 2, -22.8643, -83.1143, 2, -25.1143, -54.3643, -0.5, -8.61426, -59.3643, -0.5, -8.36426, -59.3643, -0.5, -7.61426, -53.6143, -0.5, -7.61426, -54.3643, -0.5, -17.3643, -53.6143, -0.5, -18.3643, -57.6143, -0.5, -18.6143, -58.3643, -0.5, -17.6143, -57.6143, -0.5, -24.1143, -58.3643, -0.5, -24.1143, 3.63574, 0.5, -16.3643, 3.63574, 0.5, -22.6143, -3.61426, 0.5, -22.6143, -3.61426, 0.5, -16.1143, -84.6143, 2, -17.1143, -84.6143, 2, -14.8643, -83.1143, 2, -14.6143, -72.8643, 2, -6.86426, -73.1143, 2, -9.36426, -80.6143, 2, -9.11426, -83.1143, 2, -6.86426, 3.88574, 0.5, -7.36426, 5.63574, 0.5, -7.36426, 5.63574, 0.5, -14.6143, 3.88574, 0.5, -14.6143, -3.61426, 0.5, -5.86426, 3.63574, 0.5, -5.61426, 96.6357, 0.5, -15.3643, 96.6357, 0.5, -0.864258, 103.136, 0.5, -0.864258, 103.136, 0.5, -15.3643, 19.6357, 0.5, -7.36426, 19.6357, 0.5, -14.6143, -70.6143, 2, -9.11426, -70.8643, 2, -10.6143, -73.1143, 2, -10.6143, -65.3643, 2, -6.86426, -65.1143, 2, 0.635742, -62.8643, 2, 0.635742, -3.61426, 0.5, 0.635742, 3.63574, 0.5, 0.635742)
@@ -74,6 +95,11 @@ size = Vector2(2, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xdxxl"]
 size = Vector3(18.7244, 8, 1)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vxlcl"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("37_2tcqr")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_hx84q"]
 size = Vector3(40.5623, 20, 35.5115)
 
@@ -83,7 +109,7 @@ size = Vector3(40.5623, 10.35, 47.8379)
 [sub_resource type="BoxMesh" id="BoxMesh_7ms8t"]
 size = Vector3(8, 1, 16)
 
-[node name="FactoryEntranceScene" type="Node3D" node_paths=PackedStringArray("AmbVents", "AmbRoom", "VentsWorld", "LabWorld", "VentDoorEnter", "VentDoorExit", "DirectionalLight", "WorldEnvironment", "FocusEvent")]
+[node name="FactoryEntranceScene" type="Node3D" node_paths=PackedStringArray("AmbVents", "AmbRoom", "VentsWorld", "LabWorld", "VentDoorEnter", "VentDoorExit", "DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
 script = ExtResource("1_ng05n")
 AmbVents = NodePath("Sounds/AmbVents")
 AmbRoom = NodePath("Sounds/AmbRoom")
@@ -94,6 +120,8 @@ VentDoorExit = [NodePath("NavigationRegion3D/Vents/vent_door_exit1"), NodePath("
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("FocusEvent")
+BgmMain = NodePath("Sounds/Bgm")
+BgmFocus = NodePath("Sounds/BgmFocus")
 Weathers = [ExtResource("2_y7ie4")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -477,6 +505,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="World" type="Node3D" parent="."]
 
+[node name="Water" parent="World" instance=ExtResource("14_lic1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+
 [node name="LabDialogueRoom1" type="Node3D" parent="World" node_paths=PackedStringArray("Vent", "Camera", "LabRoom")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 0, 0)
 script = ExtResource("41_pcu7i")
@@ -505,6 +536,16 @@ LabRoom = NodePath("../Lab3")
 
 [node name="ReceptionistNpc" parent="World/Entrance" instance=ExtResource("17_khjn7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8621, 0.455933, -11)
+
+[node name="SfxTyping" type="AudioStreamPlayer3D" parent="World/Entrance/ReceptionistNpc"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.82028e-08, 0.720596, -0.645205)
+stream = ExtResource("16_vxlcl")
+volume_db = -30.0
+unit_size = 30.0
+autoplay = true
+max_distance = 25.0
+bus = &"SFX"
+attenuation_filter_db = 0.0
 
 [node name="Ceiling" type="MeshInstance3D" parent="World/Entrance"]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 8, 5.5, -11)
@@ -740,13 +781,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.5, 
 [node name="lamp_flourescent3" parent="World/Entrance/Interior" instance=ExtResource("32_n51v6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -19)
 
-[node name="ReceptionTrigger" type="Node3D" parent="World/Entrance" node_paths=PackedStringArray("ReceptionTriggerArea", "Receptionist", "Camera", "ExitMarker", "Colliders")]
+[node name="ReceptionTrigger" type="Node3D" parent="World/Entrance" node_paths=PackedStringArray("ReceptionTriggerArea", "Receptionist", "Camera", "ExitMarker", "SfxSpeak", "Colliders")]
 script = ExtResource("25_15roq")
 HandInInfo = ExtResource("35_q1ya0")
 ReceptionTriggerArea = NodePath("ReceptionTriggerArea")
 Receptionist = NodePath("../ReceptionistNpc")
 Camera = NodePath("Camera3D")
 ExitMarker = NodePath("Exit")
+SfxSpeak = NodePath("SfxSpeak")
 Colliders = [NodePath("ReceptionTriggerArea/CollisionShape3D/StaticBody3D/CollisionShape3D2"), NodePath("ReceptionTriggerArea/CollisionShape3D")]
 
 [node name="ReceptionTriggerArea" type="Area3D" parent="World/Entrance/ReceptionTrigger"]
@@ -771,6 +813,11 @@ transform = Transform3D(0.353114, -0.234338, 0.905757, 0.00684796, 0.968745, 0.2
 
 [node name="Exit" type="Marker3D" parent="World/Entrance/ReceptionTrigger"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.74228e-08, 0, -5.87234)
+
+[node name="SfxSpeak" type="AudioStreamPlayer" parent="World/Entrance/ReceptionTrigger"]
+stream = SubResource("AudioStreamRandomizer_vxlcl")
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="World/Entrance"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45584, 2.15686, -11.7205)
@@ -820,20 +867,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
 [node name="table_lab7" parent="World/Lab1/interior" instance=ExtResource("39_n51v6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
 
-[node name="table_lab3" parent="World/Lab1/interior" instance=ExtResource("39_n51v6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -0.5)
-
-[node name="table_lab4" parent="World/Lab1/interior" instance=ExtResource("39_n51v6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -0.5)
-
-[node name="table_lab5" parent="World/Lab1/interior" instance=ExtResource("39_n51v6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.5)
-
-[node name="table_lab6" parent="World/Lab1/interior" instance=ExtResource("39_n51v6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -0.5)
-
 [node name="Blackboard" parent="World/Lab1/interior" instance=ExtResource("39_pcu7i")]
-transform = Transform3D(0.165306, 0, -0.986242, 0, 1, 0, 0.986242, 0, 0.165306, 2.88017, 0, -6.94415)
+transform = Transform3D(-0.999661, 0, -0.0260376, 0, 1, 0, 0.0260376, 0, -0.999661, -1.07988, 0, -1.01731)
+
+[node name="Decal" type="Decal" parent="World/Lab1/interior/Blackboard"]
+transform = Transform3D(0.998644, -0.0520574, -8.96687e-08, -8.73931e-08, 4.59877e-08, -1, 0.0520574, 0.998644, 4.13757e-08, 0, 1.95961, 0)
+size = Vector3(3, 0.425, 1.5)
+texture_albedo = ExtResource("41_e0yo7")
 
 [node name="vent_corridor" parent="World/Lab1/interior" instance=ExtResource("8_bbrua")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.154427, 3.99, -9.25662)
@@ -855,6 +895,48 @@ transform = Transform3D(0.972133, -0.0388172, 0.231194, 0, 0.986196, 0.165581, -
 [node name="lamp_flourescent" parent="World/Lab1/interior" instance=ExtResource("32_n51v6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -4.5)
 
+[node name="incubator" parent="World/Lab1/interior" instance=ExtResource("42_ruhjh")]
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0.456619, 1.12704, -4.06692)
+
+[node name="egg" parent="World/Lab1/interior/incubator/Armature/Skeleton3D" index="0"]
+visible = false
+
+[node name="potionLarge_blue" parent="World/Lab1/interior" instance=ExtResource("43_4n2n5")]
+transform = Transform3D(0.74, 0, 0, 0, 0.74, 0, 0, 0, 0.74, -2.61226, 1.04956, -3.92673)
+
+[node name="potionLarge_blue" parent="World/Lab1/interior/potionLarge_blue" index="0"]
+surface_material_override/0 = ExtResource("44_e81y1")
+surface_material_override/1 = ExtResource("45_d0of8")
+surface_material_override/2 = ExtResource("46_e0yo7")
+
+[node name="potionLarge_blue2" parent="World/Lab1/interior" instance=ExtResource("43_4n2n5")]
+transform = Transform3D(0.54, 0, 0, 0, 0.54, 0, 0, 0, 0.54, -3.33246, 1.04956, -3.78482)
+
+[node name="potionLarge_blue" parent="World/Lab1/interior/potionLarge_blue2" index="0"]
+surface_material_override/0 = ExtResource("44_e81y1")
+surface_material_override/1 = ExtResource("45_d0of8")
+surface_material_override/2 = ExtResource("46_e0yo7")
+
+[node name="syringe" parent="World/Lab1/interior" instance=ExtResource("48_e0yo7")]
+transform = Transform3D(-2.45694e-08, 0.562083, 0.827081, -1, -4.37114e-08, 0, 3.61528e-08, -0.827081, 0.562083, 1.07847, 1.18648, -3.99845)
+
+[node name="syringe" parent="World/Lab1/interior/syringe" index="0"]
+surface_material_override/0 = ExtResource("49_rs78f")
+surface_material_override/1 = ExtResource("44_e81y1")
+
+[node name="liquid" parent="World/Lab1/interior/syringe/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("46_e0yo7")
+
+[node name="syringe2" parent="World/Lab1/interior" instance=ExtResource("48_e0yo7")]
+transform = Transform3D(-4.03021e-08, 0.922005, 0.387178, -1, -4.37114e-08, 0, 1.69241e-08, -0.387178, 0.922005, 1.28063, 1.18648, -4.08282)
+
+[node name="syringe" parent="World/Lab1/interior/syringe2" index="0"]
+surface_material_override/0 = ExtResource("49_rs78f")
+surface_material_override/1 = ExtResource("44_e81y1")
+
+[node name="liquid" parent="World/Lab1/interior/syringe2/Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("46_e0yo7")
+
 [node name="LeechLabNpc" parent="World/Lab1" instance=ExtResource("42_pudvx")]
 transform = Transform3D(0.311153, 0, 0.218138, 0, 0.38, 0, -0.218138, 0, 0.311153, 1.62091, 0.633479, -2.60929)
 
@@ -866,15 +948,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140, 0, 0)
 [node name="interior" type="Node3D" parent="World/Lab2"]
 
 [node name="tables" type="Node3D" parent="World/Lab2/interior"]
-
-[node name="table_lab" parent="World/Lab2/interior/tables" instance=ExtResource("39_n51v6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 0, -1)
-
-[node name="table_lab2" parent="World/Lab2/interior/tables" instance=ExtResource("39_n51v6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 0, -3)
-
-[node name="table_lab3" parent="World/Lab2/interior/tables" instance=ExtResource("39_n51v6")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.5, 0, -5)
 
 [node name="table_lab4" parent="World/Lab2/interior/tables" instance=ExtResource("39_n51v6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 0, -1)
@@ -898,7 +971,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 0, -5)
 
 [node name="Blackboard" parent="World/Lab2/interior" instance=ExtResource("39_pcu7i")]
-transform = Transform3D(0.165306, 0, -0.986242, 0, 1, 0, 0.986242, 0, 0.165306, 2.88017, 0, -9.29159)
+transform = Transform3D(-0.275469, 0, -0.96131, 0, 1, 0, 0.96131, 0, -0.275469, 2.70044, 0, -2.69217)
+
+[node name="Decal" type="Decal" parent="World/Lab2/interior/Blackboard"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 0)
+size = Vector3(3, 2, 2)
+texture_albedo = ExtResource("51_rs78f")
 
 [node name="vent_corridor" parent="World/Lab2/interior" instance=ExtResource("8_bbrua")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.154427, 3.99, -9.25662)
@@ -919,6 +997,24 @@ transform = Transform3D(0.978376, 0.0342481, -0.20398, -2.56394e-10, 0.986196, 0
 
 [node name="lamp_flourescent" parent="World/Lab2/interior" instance=ExtResource("32_n51v6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -4.5)
+
+[node name="rock_decorative_group_002" parent="World/Lab2/interior" instance=ExtResource("52_tfglr")]
+transform = Transform3D(5.215, 0, 0, 0, 5.215, 0, 0, 0, 5.215, -0.0281067, 1.13626, -5.33414)
+
+[node name="rock_decorative_group_003" parent="World/Lab2/interior" instance=ExtResource("52_tfglr")]
+transform = Transform3D(3.75433, 0, -3.61957, 0, 5.215, 0, 3.61957, 0, 3.75433, -3.30359, 1.13626, -2.61742)
+
+[node name="rock_decorative_group_005" parent="World/Lab2/interior" instance=ExtResource("52_tfglr")]
+transform = Transform3D(-4.49506, 0, -2.64399, 0, 5.215, 0, 2.64399, 0, -4.49506, -3.40685, 1.13626, -3.21294)
+
+[node name="rock_decorative_group_001" parent="World/Lab2/interior" instance=ExtResource("53_m8xj7")]
+transform = Transform3D(5.215, 0, 0, 0, 5.215, 0, 0, 0, 5.215, -0.0281067, 1.13626, -3.03893)
+
+[node name="rock_decorative_group_004" parent="World/Lab2/interior" instance=ExtResource("53_m8xj7")]
+transform = Transform3D(0.269843, 0, -3.98588, 0, 3.995, 0, 3.98588, 0, 0.269843, -3.41393, 1.13626, -4.7055)
+
+[node name="Crystal_Long" parent="World/Lab2/interior" instance=ExtResource("54_m8xj7")]
+transform = Transform3D(0.296136, 0.204349, 0.0120368, -0.0154837, 0.0434688, -0.35703, -0.204116, 0.293176, 0.0445466, -0.155698, 1.21829, -4.37978)
 
 [node name="LeechLabNpc" parent="World/Lab2" instance=ExtResource("42_pudvx")]
 transform = Transform3D(0.287948, 0, -0.247964, 0, 0.38, 0, 0.247964, 0, 0.287948, -1.69273, 0.633479, -3.4191)
@@ -947,8 +1043,18 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.5, 
 [node name="Blackboard" parent="World/Lab3/interior" instance=ExtResource("39_pcu7i")]
 transform = Transform3D(-0.111503, 0, -0.993764, 0, 1, 0, 0.993764, 0, -0.111503, 2.88017, 0, -2.64475)
 
+[node name="Decal" type="Decal" parent="World/Lab3/interior/Blackboard"]
+transform = Transform3D(0.999999, 8.19564e-08, 0, 0, -4.37114e-08, -1, -8.19564e-08, 0.999999, -4.37114e-08, 0.0775547, 1.87666, -0.350647)
+size = Vector3(3, 1.29871, 2)
+texture_albedo = ExtResource("56_26qkv")
+
 [node name="Blackboard2" parent="World/Lab3/interior" instance=ExtResource("39_pcu7i")]
 transform = Transform3D(0.189833, 0, -0.981816, 0, 1, 0, 0.981816, 0, 0.189833, 2.88017, 0, -7.7832)
+
+[node name="Decal" type="Decal" parent="World/Lab3/interior/Blackboard2"]
+transform = Transform3D(1, 0, -8.88178e-16, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, -0.310089)
+size = Vector3(3, 1.37976, 2)
+texture_albedo = ExtResource("57_tkr8i")
 
 [node name="vent_corridor" parent="World/Lab3/interior" instance=ExtResource("8_bbrua")]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -3.4182, 3.99, -5.78202)
@@ -969,6 +1075,24 @@ transform = Transform3D(1, -0.000138804, 0.000826708, 3.06251e-10, 0.986196, 0.1
 
 [node name="lamp_flourescent" parent="World/Lab3/interior" instance=ExtResource("32_n51v6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -4.5)
+
+[node name="CoinStack" parent="World/Lab3/interior" instance=ExtResource("58_tkr8i")]
+transform = Transform3D(0.560119, 0, -0.828412, 0, 1, 0, 0.828412, 0, 0.560119, 0.0866852, 1.37996, -5.89141)
+
+[node name="CoinStack2" parent="World/Lab3/interior" instance=ExtResource("58_tkr8i")]
+transform = Transform3D(-0.954724, 0, 0.297492, 0, 1, 0, -0.297492, 0, -0.954724, 0.126358, 1.37996, -4.10967)
+
+[node name="coin" parent="World/Lab3/interior" instance=ExtResource("59_syb2r")]
+transform = Transform3D(0.497711, -0.0467949, -0.00967599, -0.00883068, 0.00942945, -0.499833, 0.0469618, 0.497716, 0.00855983, 0.58942, 1.17619, -5.24053)
+
+[node name="coin2" parent="World/Lab3/interior" instance=ExtResource("59_syb2r")]
+transform = Transform3D(0.497711, -0.0467949, -0.00967599, -0.00883068, 0.00942945, -0.499833, 0.0469618, 0.497716, 0.00855983, 0.0131262, 1.19387, -4.85919)
+
+[node name="coin3" parent="World/Lab3/interior" instance=ExtResource("59_syb2r")]
+transform = Transform3D(0.497711, -0.0467949, -0.00967599, -0.00883068, 0.00942945, -0.499833, 0.0469618, 0.497716, 0.00855983, -0.67004, 1.18074, -6.3981)
+
+[node name="coin4" parent="World/Lab3/interior" instance=ExtResource("59_syb2r")]
+transform = Transform3D(0.497711, -0.0467949, -0.00967599, -0.00883068, 0.00942945, -0.499833, 0.0469618, 0.497716, 0.00855983, -0.541989, 1.22695, -3.55545)
 
 [node name="LeechLabNpc" parent="World/Lab3" instance=ExtResource("42_pudvx")]
 transform = Transform3D(-0.378897, 0, -0.0289414, 0, 0.38, 0, 0.0289414, 0, -0.378897, 1.8244, 0.633479, -5.25784)
@@ -1018,6 +1142,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.5, 
 [node name="FrogDroid" parent="World/LabRobot" instance=ExtResource("44_4k413")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -14)
 
+[node name="Blackboard2" parent="World/LabRobot" instance=ExtResource("39_pcu7i")]
+transform = Transform3D(0.244834, 0, -0.969565, 0, 1, 0, 0.969565, 0, 0.244834, 3.09238, 0, -13.3319)
+
+[node name="Decal" type="Decal" parent="World/LabRobot/Blackboard2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2, 0)
+size = Vector3(3, 2, 2)
+texture_albedo = ExtResource("51_rs78f")
+
 [node name="Sounds" type="Node3D" parent="."]
 
 [node name="AmbRoom" type="AudioStreamPlayer" parent="Sounds"]
@@ -1032,6 +1164,14 @@ volume_db = -80.0
 autoplay = true
 bus = &"Environment"
 
+[node name="Bgm" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("63_syb2r")
+bus = &"BGM"
+
+[node name="BgmFocus" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("64_2tcqr")
+bus = &"BGM"
+
 [node name="FocusEvent" parent="." instance=ExtResource("47_4k413")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
@@ -1039,6 +1179,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 [editable path="World/Entrance/ReceptionVent/vent_door_enter/vent_cover_unlocked"]
 [editable path="World/Lab1/interior/vent_corridor/vent_frame"]
 [editable path="World/Lab1/interior/vent_corridor/vent_frame/vent_cover"]
+[editable path="World/Lab1/interior/incubator"]
+[editable path="World/Lab1/interior/potionLarge_blue"]
+[editable path="World/Lab1/interior/potionLarge_blue2"]
+[editable path="World/Lab1/interior/syringe"]
+[editable path="World/Lab1/interior/syringe2"]
 [editable path="World/Lab2/interior/vent_corridor/vent_frame"]
 [editable path="World/Lab2/interior/vent_corridor/vent_frame/vent_cover"]
 [editable path="World/Lab3/interior/vent_corridor/vent_frame"]

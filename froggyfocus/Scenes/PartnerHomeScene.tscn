@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://jixjssv4ics8"]
+[gd_scene load_steps=28 format=3 uid="uid://jixjssv4ics8"]
 
 [ext_resource type="Script" uid="uid://46tvlnw081rs" path="res://Scenes/PartnerHomeScene.cs" id="1_bew2v"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="2_bchqc"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_bsfui"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_hpje1"]
 [ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="3_ul0f8"]
+[ext_resource type="PackedScene" uid="uid://dhnefrn2nnkxa" path="res://Prefabs/Water/water_black.tscn" id="6_4beox"]
 [ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="7_36bes"]
 [ext_resource type="PackedScene" uid="uid://barr7v13bgfvb" path="res://Prefabs/Interior/floor_wood_2x5.tscn" id="7_cnj5n"]
 [ext_resource type="PackedScene" uid="uid://0s1w31s14yve" path="res://Prefabs/Interior/shelf.tscn" id="10_1t2yw"]
@@ -66,6 +67,9 @@ projection = 1
 size = 10.6385
 
 [node name="World" type="Node3D" parent="."]
+
+[node name="Water" parent="World" instance=ExtResource("6_4beox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9238, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
 navigation_mesh = SubResource("NavigationMesh_ul0f8")

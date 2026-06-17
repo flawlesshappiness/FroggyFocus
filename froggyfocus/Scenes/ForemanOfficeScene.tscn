@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cviyy8u2qw4yw"]
+[gd_scene load_steps=32 format=3 uid="uid://cviyy8u2qw4yw"]
 
 [ext_resource type="Script" uid="uid://cku2ayw82wpw0" path="res://Scenes/ForemanOfficeScene.cs" id="1_sff8w"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_hs2kd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="3_tc7g8"]
 [ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="3_xk4s1"]
 [ext_resource type="PackedScene" uid="uid://vlk24dutph3u" path="res://Prefabs/Construction/factory_wall_window_right.tscn" id="6_85kdd"]
+[ext_resource type="PackedScene" uid="uid://dhnefrn2nnkxa" path="res://Prefabs/Water/water_black.tscn" id="6_hss3v"]
 [ext_resource type="PackedScene" uid="uid://ccn6113rtibxb" path="res://Prefabs/Construction/factory_wall_window_left.tscn" id="6_vbpp0"]
 [ext_resource type="PackedScene" uid="uid://dor6ep604xfj4" path="res://Prefabs/Interior/factory_tile_2x4.tscn" id="6_xyfqv"]
 [ext_resource type="PackedScene" uid="uid://bbs70wxx5su5d" path="res://Prefabs/Interior/factory_tile_2x2.tscn" id="7_dfe0u"]
@@ -76,6 +77,9 @@ projection = 1
 size = 10.6385
 
 [node name="World" type="Node3D" parent="."]
+
+[node name="Water" parent="World" instance=ExtResource("6_hss3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.3394, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="World"]
 navigation_mesh = SubResource("NavigationMesh_pt7n0")

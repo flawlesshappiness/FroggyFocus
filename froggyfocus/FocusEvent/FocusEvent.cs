@@ -35,6 +35,9 @@ public partial class FocusEvent : Node3D
     [Export]
     public AnimationPlayer AnimationPlayer_Frog;
 
+    [Export]
+    public AudioStreamPlayer SfxRestart;
+
     public event Action<FocusEventResult> OnEnded;
     public event Action OnEnabled;
     public event Action OnDisabled;
@@ -410,6 +413,7 @@ public partial class FocusEvent : Node3D
         {
             CurrentState = State.Ending;
             yield return new WaitForSeconds(1.0f);
+            SfxRestart.Play();
             CurrentState = State.Starting;
             yield return new WaitForSeconds(1.0f);
 

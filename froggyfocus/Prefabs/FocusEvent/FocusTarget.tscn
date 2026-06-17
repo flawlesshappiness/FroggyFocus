@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://c7v778qpl5v6w"]
+[gd_scene load_steps=119 format=3 uid="uid://c7v778qpl5v6w"]
 
 [ext_resource type="Script" uid="uid://bdhd67m2rrrv" path="res://FocusEvent/FocusTarget.cs" id="1_hmctk"]
 [ext_resource type="PackedScene" uid="uid://dq4e8v7mdqpw8" path="res://Prefabs/Effects/ps_target_disappear.tscn" id="2_nimdh"]
@@ -49,10 +49,14 @@
 [ext_resource type="Script" uid="uid://bp2flik8hh4qt" path="res://FocusAttack/EldritchEyeFlash.cs" id="36_4o5bo"]
 [ext_resource type="PackedScene" uid="uid://bswh4egokiuji" path="res://Prefabs/FocusAttacks/FlashEldritchEye/flash_eldritch_eye.tscn" id="37_0kvl5"]
 [ext_resource type="Script" uid="uid://batqyg1ufpg0f" path="res://FocusAttack/GlitchTeleport.cs" id="38_477t3"]
+[ext_resource type="Script" uid="uid://cpf25y3uf3rhd" path="res://FocusAttack/RobotTrap.cs" id="39_6164l"]
 [ext_resource type="AudioStream" uid="uid://dc21j2wi6hioy" path="res://Sounds/Raw/sfx_glitch_freeze_001.wav" id="39_oir8n"]
+[ext_resource type="PackedScene" uid="uid://cvtyse1ry0ew1" path="res://Prefabs/FocusAttacks/CursorCrystal/cursor_crystal_heart.tscn" id="40_1qbre"]
 [ext_resource type="Script" uid="uid://cx3idqyr82vyn" path="res://FocusAttack/GlitchFlash.cs" id="40_7cgx3"]
+[ext_resource type="Script" uid="uid://bux1caxc701sa" path="res://FocusAttack/RobotFlash.cs" id="41_1qbre"]
 [ext_resource type="PackedScene" uid="uid://dmd65hb6mwxxt" path="res://Prefabs/FocusAttacks/FlashGlitch/flash_glitch.tscn" id="41_knrhb"]
 [ext_resource type="Script" uid="uid://cgqojtp71mmh3" path="res://FocusAttack/GlitchError.cs" id="42_17ick"]
+[ext_resource type="PackedScene" uid="uid://dkmq6viqsnure" path="res://Prefabs/FocusAttacks/RobotEyes/robot_eyes.tscn" id="42_bfaf6"]
 [ext_resource type="AudioStream" uid="uid://jl6c61u233gn" path="res://Sounds/Raw/sfx_crystal_manifest.wav" id="52_s5u4q"]
 [ext_resource type="AudioStream" uid="uid://dea3461dg0q8b" path="res://Sounds/Raw/sfx_crystal_manifest_002.wav" id="53_ymw46"]
 [ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="56_ymw46"]
@@ -1119,6 +1123,17 @@ Type = 16
 script = ExtResource("42_17ick")
 SfxError = NodePath("../../Sounds/SfxGlitchError")
 Type = 15
+
+[node name="RobotTrap" type="Node3D" parent="Attacks"]
+script = ExtResource("39_6164l")
+TrapPrefab = ExtResource("40_1qbre")
+HitCount = 6
+Type = 19
+
+[node name="RobotFlash" type="Node3D" parent="Attacks"]
+script = ExtResource("41_1qbre")
+FlashPrefab = ExtResource("42_bfaf6")
+Type = 18
 
 [node name="Glow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

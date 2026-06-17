@@ -15,6 +15,30 @@ public partial class EndTextView : View
     [Export]
     public Array<Label> Labels;
 
+    public override void _Ready()
+    {
+        base._Ready();
+        RegisterDebugActions();
+    }
+
+    private void RegisterDebugActions()
+    {
+        string category = "ENDING";
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Play ending text",
+            Action = DebugShow
+        });
+
+        void DebugShow(DebugView v)
+        {
+            v.Close();
+            Show();
+        }
+    }
+
     protected override void OnShow()
     {
         base.OnShow();
@@ -37,6 +61,8 @@ public partial class EndTextView : View
 
     private void AnimateLabels()
     {
+        GameScene.Instance.FadeOutMusic();
+
         this.StartCoroutine(Cr, "animate");
         IEnumerator Cr()
         {
@@ -50,8 +76,18 @@ public partial class EndTextView : View
                 yield return new WaitForSeconds(1f);
             }
 
+            MainMenu();
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
             Hide();
         }
+    }
+
+    private void MainMenu()
+    {
+        Data.Game.Save();
+
+        WeatherController.Instance.StopWeather();
+        WorldBugController.Instance.Stop();
+        Scene.Goto<MainMenuScene>();
     }
 }

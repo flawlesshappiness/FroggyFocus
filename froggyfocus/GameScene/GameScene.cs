@@ -155,6 +155,12 @@ public partial class GameScene : Scene
         }
     }
 
+    public void FadeOutMusic()
+    {
+        BgmFocus.FadeOut(1f);
+        BgmMain.FadeOut(1f);
+    }
+
     private void Race_TransitionToStart()
     {
         if (BgmMain != null)

@@ -36,7 +36,7 @@ public partial class FrogDroidPlatform : Node3D
         Character.ClearAppearance();
         Character.SetBodyBase(Colors.DarkGray);
         Character.SetBodyTop(ItemType.BodyTop_Robot, Colors.Black);
-        Character.SetBodyPattern(ItemType.BodyPattern_None, Colors.Red);
+        Character.SetBodyPattern(ItemType.BodyPattern_None, Colors.Transparent);
         Character.SetBodyEye(ItemType.BodyEye_Robot, Colors.Red);
     }
 
@@ -48,6 +48,25 @@ public partial class FrogDroidPlatform : Node3D
     private void Dialogue_Ended(string id)
     {
         if (id == DialoguePeer)
+        {
+            DialogueOptionsView.Instance.ShowDialogueOptions(new DialogueOptionsView.Settings
+            {
+                Options = new System.Collections.Generic.List<DialogueOptionsView.Option>
+                {
+                    new DialogueOptionsView.Option
+                    {
+                        Text = "##ROBOT_OPTION_CATCH##",
+                        Action = CatchAction
+                    },
+                    new DialogueOptionsView.Option
+                    {
+                        Text = "##DO_NOTHING##",
+                    }
+                }
+            });
+        }
+
+        void CatchAction()
         {
             GameScene.Instance.FocusEvent.StartEvent(new FocusEvent.Settings
             {
