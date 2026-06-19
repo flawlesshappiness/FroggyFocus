@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=92 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_3og0i"]
@@ -58,6 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="43_8lh35"]
 [ext_resource type="PackedScene" uid="uid://djd1j2ihew3ck" path="res://Prefabs/Car/box.tscn" id="44_jq217"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="45_rw3kn"]
+[ext_resource type="PackedScene" uid="uid://sk43gf360uka" path="res://Prefabs/Objects/billboard_ribit_logo_01.tscn" id="48_ckowb"]
 [ext_resource type="PackedScene" uid="uid://bk64hnox15ryh" path="res://Prefabs/WorldBug/world_bug.tscn" id="49_b0wg7"]
 [ext_resource type="PackedScene" uid="uid://vljga7igf232" path="res://Prefabs/Nature/plant_monstera_group.tscn" id="57_1qynv"]
 [ext_resource type="PackedScene" uid="uid://bqyo5jd18ys25" path="res://Prefabs/Nature/plant_fern_group.tscn" id="58_m070k"]
@@ -1171,6 +1172,20 @@ Delay = Vector2(4, 8)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.8257, -0.322, 32.2433)
 PickupDialogue = "LOCATION_PICKUP_CAVE"
 LocationId = "cave"
+
+[node name="billboards" type="Node3D" parent="World/Construction"]
+
+[node name="Billboard_RibitLogo01" parent="World/Construction/billboards" instance=ExtResource("48_ckowb")]
+transform = Transform3D(4.98233, 0, 0.420042, 0, 5, 0, -0.420042, 0, 4.98233, -76.9366, -3.27509, 23.1512)
+
+[node name="Billboard_RibitLogo02" parent="World/Construction/billboards" instance=ExtResource("48_ckowb")]
+transform = Transform3D(-4.78305, 0, -1.45685, 0, 5, 0, 1.45685, 0, -4.78305, 18.5007, -3.27509, 131.567)
+
+[node name="Billboard_RibitLogo03" parent="World/Construction/billboards" instance=ExtResource("48_ckowb")]
+transform = Transform3D(-0.0120425, 0, -4.99999, 0, 5, 0, 4.99999, 0, -0.0120425, 114.511, -3.27508, 28.2352)
+
+[node name="Billboard_RibitLogo04" parent="World/Construction/billboards" instance=ExtResource("48_ckowb")]
+transform = Transform3D(1.54542, 0, -4.75517, 0, 5, 0, 4.75517, 0, 1.54542, 106.201, -3.27508, -48.9971)
 
 [node name="FocusEvent" parent="World" instance=ExtResource("12_yvk0y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 300, 0)

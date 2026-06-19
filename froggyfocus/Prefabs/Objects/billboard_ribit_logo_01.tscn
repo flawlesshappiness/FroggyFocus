@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://sk43gf360uka"]
+
+[ext_resource type="PackedScene" uid="uid://b0prnatdq234e" path="res://Assets/FlawLizArt/Furniture/quest_board.fbx" id="1_shvjn"]
+[ext_resource type="Script" uid="uid://c5isxlogwr00g" path="res://Prefabs/Objects/BillboardRibit.cs" id="1_vlqyk"]
+[ext_resource type="Material" uid="uid://dhj8qb88cw2ye" path="res://Materials/Silver.tres" id="2_0ir6c"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="3_vlqyk"]
+[ext_resource type="Texture2D" uid="uid://dosy47frq3j2n" path="res://Assets/FlawLizArt/Textures/logo_ribit.png" id="4_7nupw"]
+[ext_resource type="Script" uid="uid://gv60ov5jj760" path="res://Collision/NpcCollisionArea.cs" id="5_0ir6c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vlqyk"]
+size = Vector3(4.46484, 3.50586, 0.210693)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nupw"]
+size = Vector3(4.89282, 1, 1)
+
+[node name="Billboard_RibitLogo01" type="Node3D" node_paths=PackedStringArray("Labels")]
+script = ExtResource("1_vlqyk")
+Labels = [NodePath("Label3D"), NodePath("Label3D2"), NodePath("Label3D3"), NodePath("Label3D4"), NodePath("Label3D5")]
+
+[node name="quest_board" parent="." instance=ExtResource("1_shvjn")]
+
+[node name="QuestBoard" parent="quest_board" index="0"]
+surface_material_override/0 = ExtResource("2_0ir6c")
+surface_material_override/1 = ExtResource("3_vlqyk")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.15138, 0.245605)
+size = Vector3(3.6, 1.50879, 1.8)
+texture_albedo = ExtResource("4_7nupw")
+modulate = Color(0.416667, 1, 0, 1)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53494, 0.0584421)
+modulate = Color(0, 0.49, 0.00816666, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "WE LOVE AUTOMATION"
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53494, 0.0584421)
+modulate = Color(0, 0.49, 0.00816666, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "IT'S JUST BUSINESS"
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53494, 0.0584421)
+modulate = Color(0, 0.49, 0.00816666, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "MAKING LIFE BETTER, ONE ROBOT AT A TIME"
+
+[node name="Label3D4" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53494, 0.0584421)
+modulate = Color(0, 0.49, 0.00816666, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "DON'T DO ANYTHING, WE GOT THIS"
+
+[node name="Label3D5" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53494, 0.0584421)
+modulate = Color(0, 0.49, 0.00816666, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "PAY US, INSTEAD OF DOING IT YOURSELF"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48822, 0)
+shape = SubResource("BoxShape3D_vlqyk")
+
+[node name="NpcCollisionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.57906, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_0ir6c")
+metadata/_custom_type_script = "uid://gv60ov5jj760"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcCollisionArea"]
+shape = SubResource("BoxShape3D_7nupw")
+
+[editable path="quest_board"]

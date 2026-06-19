@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://7quf0a73jvui"]
+[gd_scene load_steps=67 format=3 uid="uid://7quf0a73jvui"]
 
 [ext_resource type="Script" uid="uid://bfp61wfh2xm0x" path="res://Scenes/FactoryScene.cs" id="1_net23"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_jmf1t"]
@@ -54,6 +54,7 @@
 [ext_resource type="PackedScene" uid="uid://cvvv52xadk4j4" path="res://Prefabs/Race/RaceCheckpoint.tscn" id="52_inr37"]
 [ext_resource type="Resource" uid="uid://dhwjgghfuqm21" path="res://Race/Resources/Race_Factory.tres" id="52_relfh"]
 [ext_resource type="PackedScene" uid="uid://dcy54vp2s8wmd" path="res://Prefabs/Race/race_blockade.tscn" id="54_2rx1o"]
+[ext_resource type="PackedScene" uid="uid://sk43gf360uka" path="res://Prefabs/Objects/billboard_ribit_logo_01.tscn" id="56_gihq3"]
 [ext_resource type="PackedScene" uid="uid://h55qgl4v2ro7" path="res://Prefabs/NPC/LeechNPC/leech_npc.tscn" id="60_12tkq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_s3kaw"]
@@ -1495,3 +1496,24 @@ transform = Transform3D(-0.434461, 0, 0.900691, 0, 1, 0, -0.900691, 0, -0.434461
 
 [node name="PlayerEnd" type="Marker3D" parent="World/Race"]
 transform = Transform3D(0.957052, 0, 0.289917, 0, 1, 0, -0.289917, 0, 0.957052, -20.412, 0.832796, -88.0056)
+
+[node name="Billboards" type="Node3D" parent="World"]
+
+[node name="Billboard_RibitLogo01" parent="World/Billboards" instance=ExtResource("56_gihq3")]
+transform = Transform3D(4.72128, 0, 1.64606, 0, 5, 0, -1.64606, 0, 4.72128, -48.0619, -1.49632, -121.31)
+
+[node name="Billboard_RibitLogo02" parent="World/Billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("56_gihq3")]
+transform = Transform3D(-4.99989, 0, 0.0329869, 0, 5, 0, -0.0329869, 0, -4.99989, 9.64986, -1.49631, 83.4453)
+Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
+
+[node name="Billboard_RibitLogo03" parent="World/Billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("56_gihq3")]
+transform = Transform3D(-1.29924, 0, -4.82825, 0, 5, 0, 4.82825, 0, -1.29924, 111.715, -1.4963, -1.86035)
+Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
+
+[node name="Billboard_RibitLogo04" parent="World/Billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("56_gihq3")]
+transform = Transform3D(2.61956, 0, -4.25886, 0, 5, 0, 4.25886, 0, 2.61956, 110.744, -1.4963, -67.4012)
+Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
+
+[node name="Billboard_RibitLogo05" parent="World/Billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("56_gihq3")]
+transform = Transform3D(4.42543, 0, -2.32715, 0, 5, 0, 2.32715, 0, 4.42543, 65.9704, -1.4963, -106.617)
+Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]

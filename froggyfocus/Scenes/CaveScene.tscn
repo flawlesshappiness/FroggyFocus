@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://dfjplat48pw8e"]
+[gd_scene load_steps=80 format=3 uid="uid://dfjplat48pw8e"]
 
 [ext_resource type="Script" uid="uid://d4ei73oh3fma0" path="res://Scenes/CaveScene.cs" id="1_q8md0"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_exe8s"]
@@ -45,6 +45,7 @@
 [ext_resource type="Resource" uid="uid://dapgvgfcw8bk4" path="res://FocusEvent/Resources/Cave_Crystal.tres" id="32_k2kgv"]
 [ext_resource type="PackedScene" uid="uid://djd1j2ihew3ck" path="res://Prefabs/Car/box.tscn" id="34_g6lmy"]
 [ext_resource type="PackedScene" uid="uid://krhivawcaxef" path="res://Prefabs/NPC/WorkerNPC/frog_worker_npc.tscn" id="35_phexc"]
+[ext_resource type="PackedScene" uid="uid://sk43gf360uka" path="res://Prefabs/Objects/billboard_ribit_logo_01.tscn" id="36_ie2cb"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="37_u3jh2"]
 [ext_resource type="Script" uid="uid://byon4u23canqr" path="res://Sounds/SoundPath.cs" id="38_df6tn"]
 [ext_resource type="PackedScene" uid="uid://2euuwanf2rrc" path="res://Prefabs/Nature/plant_wood_sorrel_group.tscn" id="38_ift05"]
@@ -798,6 +799,23 @@ curve = SubResource("Curve3D_hexkd")
 
 [node name="LeechNPC" parent="World/Stalagmites" instance=ExtResource("27_df6tn")]
 transform = Transform3D(0.700125, 0, 0.714021, 0, 1, 0, -0.714021, 0, 0.700125, -43.1491, -0.819721, 63.6642)
+
+[node name="billboards" type="Node3D" parent="World/Stalagmites"]
+
+[node name="Billboard_RibitLogo01" parent="World/Stalagmites/billboards" instance=ExtResource("36_ie2cb")]
+transform = Transform3D(-3.27304, 0, -3.77984, 0, 5, 0, 3.77984, 0, -3.27304, 22.2927, -2.12765, 72.6488)
+
+[node name="Billboard_RibitLogo02" parent="World/Stalagmites/billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("36_ie2cb")]
+transform = Transform3D(-4.19549, 0, 2.7199, 0, 5, 0, -2.7199, 0, -4.19549, -28.457, -2.12765, 73.7004)
+Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
+
+[node name="Billboard_RibitLogo03" parent="World/Stalagmites/billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("36_ie2cb")]
+transform = Transform3D(-14.6594, 0, 13.6052, 0, 20, 0, -13.6052, 0, -14.6594, -153.666, -4.79465, 294.582)
+Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
+
+[node name="Billboard_RibitLogo04" parent="World/Stalagmites/billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("36_ie2cb")]
+transform = Transform3D(-9.05458, 0, -4.24436, 0, 10, 0, 4.24436, 0, -9.05458, 105.858, -4.79464, 261.452)
+Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
 
 [node name="Crystals" type="Node3D" parent="World"]
 

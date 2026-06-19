@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://x7nclqu76y7s"]
+[gd_scene load_steps=16 format=3 uid="uid://x7nclqu76y7s"]
 
 [ext_resource type="Script" uid="uid://cce8dupkk10ay" path="res://Prefabs/Objects/FactoryEntryDoor.cs" id="1_vx0je"]
 [ext_resource type="PackedScene" uid="uid://b54uutheaw4em" path="res://Assets/FlawLizArt/Objects/security_door.fbx" id="1_vxr4f"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://byysddskgruh5" path="res://Materials/Unshaded_Black.tres" id="5_6mhik"]
 [ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="6_6n6x5"]
 [ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="7_hvm6v"]
+[ext_resource type="Texture2D" uid="uid://dosy47frq3j2n" path="res://Assets/FlawLizArt/Textures/logo_ribit.png" id="10_6mhik"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vx0je"]
 size = Vector3(2.4646, 4.23474, 0.639648)
@@ -98,5 +99,17 @@ attenuation_filter_db = 0.0
 stream = ExtResource("4_qit5c")
 bus = &"SFX"
 attenuation_filter_db = 0.0
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.27115, 0.194023)
+size = Vector3(2, 0.327773, 1)
+texture_albedo = ExtResource("10_6mhik")
+modulate = Color(0, 0, 0, 0.654902)
+
+[node name="Decal2" type="Decal" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 3.06125e-08, 2.27115, -0.174798)
+size = Vector3(2, 0.269668, 1)
+texture_albedo = ExtResource("10_6mhik")
+modulate = Color(0, 0, 0, 0.654902)
 
 [editable path="security_door"]
