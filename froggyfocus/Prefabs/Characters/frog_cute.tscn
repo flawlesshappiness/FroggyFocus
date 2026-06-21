@@ -19,13 +19,13 @@
 [ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="17_28nor"]
 [ext_resource type="PackedScene" uid="uid://vcumouy6wb2c" path="res://Assets/FlawLizArt/Nature/Mushroom/mushroom_bent.fbx" id="18_5rxie"]
 [ext_resource type="PackedScene" uid="uid://4evbw7sjay43" path="res://Assets/Quaternius/Nature/Lilypad_Flower.fbx" id="19_0hwx1"]
-[ext_resource type="PackedScene" uid="uid://btj4ns6ljqmkn" path="res://Appearance/Preview/wooden_hat_preview.tscn" id="21_2sbs3"]
 [ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="21_am06j"]
 [ext_resource type="PackedScene" uid="uid://hvkhlo4u24tl" path="res://Assets/FlawLizArt/Nature/Toon/algae_001.fbx" id="21_b2kwu"]
 [ext_resource type="Material" uid="uid://deoad4xy1b60l" path="res://Materials/Color_GreenDark.tres" id="24_8lrbn"]
 [ext_resource type="PackedScene" uid="uid://bv3mqeec4pq04" path="res://Assets/FlawLizArt/Nature/Crystals/crystal_short.fbx" id="26_x1wof"]
 [ext_resource type="PackedScene" uid="uid://cd10ocopq6k4f" path="res://Appearance/Preview/hat_weeded_preview.tscn" id="27_qloaa"]
 [ext_resource type="PackedScene" uid="uid://fd0d1obdjx54" path="res://Appearance/Attachments/hair_race.tscn" id="28_hh2bw"]
+[ext_resource type="PackedScene" uid="uid://bhrtxwdmvl7pm" path="res://Appearance/Attachments/beanie.tscn" id="29_8lrbn"]
 [ext_resource type="PackedScene" uid="uid://d0q85osej7ji1" path="res://Appearance/Preview/hat_polluted_preview.tscn" id="31_ki8i6"]
 [ext_resource type="PackedScene" uid="uid://bcr2cokgtbede" path="res://Assets/FlawLizArt/Objects/oil_bug_accessory.fbx" id="31_mb7fk"]
 [ext_resource type="PackedScene" uid="uid://e7cotww31f4o" path="res://Appearance/Attachments/hard_hat.tscn" id="34_efsub"]
@@ -153,7 +153,7 @@ transform = Transform3D(0.005, -5.5843e-12, -5.24102e-10, -5.24102e-10, -0.00010
 visible = false
 
 [node name="CatEars" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("6_heb1e")]
-transform = Transform3D(0.008, -3.71881e-17, 1.62554e-24, 0, -3.49691e-10, -0.008, 3.71881e-17, 0.008, -3.49691e-10, 1.18071e-10, -5.92615e-05, 0.0024482)
+transform = Transform3D(-0.008, -3.71881e-17, -6.99382e-10, -6.99382e-10, -3.49691e-10, 0.008, -6.77591e-17, 0.008, 3.49691e-10, 1.18071e-10, -5.92615e-05, 0.0024482)
 visible = false
 
 [node name="BucketHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("7_cfbqg")]
@@ -169,7 +169,7 @@ transform = Transform3D(0.006, -1.33194e-11, -2.26514e-10, -2.25113e-10, 0.00040
 visible = false
 
 [node name="Tiara" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("10_5qfyh")]
-transform = Transform3D(0.005, 3.40891e-11, -2.59143e-10, -2.37871e-10, -0.00146111, -0.00478175, -1.08328e-10, 0.00478175, -0.00146111, -6.44746e-11, -0.00149453, 0.00234234)
+transform = Transform3D(-0.005, 3.40891e-11, -1.77971e-10, -1.80164e-10, -0.00146111, 0.00478175, -1.94049e-11, 0.00478175, 0.00146111, 4.50446e-10, 0.000557695, 0.00268261)
 visible = false
 
 [node name="Bow" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("11_50sw0")]
@@ -181,7 +181,7 @@ transform = Transform3D(0.007, -9.97029e-12, -5.03931e-10, -5.03931e-10, -0.0002
 visible = false
 
 [node name="BugOfLove" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("13_ld1e8")]
-transform = Transform3D(4.0893e-11, 2.59222e-10, 0.006, 0.0059557, -0.00072779, -9.1478e-12, 0.00072779, 0.0059557, -2.62268e-10, 1.07605e-09, 0.000627997, 0.00218716)
+transform = Transform3D(0.006, 1.74623e-10, 2.32831e-10, 2.06114e-10, -0.00072779, -0.0059557, -1.74623e-10, 0.0059557, -0.00072779, 1.1064e-09, 0.000501497, 0.00322235)
 visible = false
 
 [node name="Plumbob" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("14_xj466")]
@@ -189,7 +189,7 @@ transform = Transform3D(0.004, 1.61262e-11, 1.23683e-10, -1.24463e-10, 0.0002566
 visible = false
 
 [node name="FishingCap" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("15_a03ps")]
-transform = Transform3D(0.01, -5.56282e-09, -2.25552e-09, -2.14644e-09, 0.000195309, -0.00999809, 5.60582e-09, 0.00999809, 0.000195309, -8.38892e-11, -0.000630767, 0.00197054)
+transform = Transform3D(-0.01, -5.56282e-09, 3.12975e-09, 3.0205e-09, 0.000195309, 0.00999809, -5.62288e-09, 0.00999809, -0.000195309, -7.22965e-10, -0.000608329, 0.00311916)
 visible = false
 
 [node name="DetectiveHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("16_rmq88")]
@@ -254,10 +254,6 @@ transform = Transform3D(0.00409522, 0.00105703, -0.0101544, -0.00979286, -0.0026
 
 [node name="algae" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup/FlowerHat/algae_004" index="0"]
 surface_material_override/0 = ExtResource("21_am06j")
-
-[node name="WoodenHatPreview" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("21_2sbs3")]
-transform = Transform3D(0.008, -1.87084e-09, 2.27877e-09, 1.87084e-09, -0.00155785, -0.00784685, 2.27877e-09, 0.00784685, -0.00155785, -6.51378e-10, 0.000448567, 0.00273207)
-visible = false
 
 [node name="HatCrystallized" type="Node3D" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" node_paths=PackedStringArray("OnlySecondaryMeshes")]
 transform = Transform3D(0.395, 0, -9.4369e-16, 0, 0.395, 0, -9.08995e-16, 0, 0.395, -4.2883e-10, 0.000273908, 0.00179864)
@@ -330,6 +326,10 @@ visible = false
 
 [node name="Hair_Race" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("28_hh2bw")]
 transform = Transform3D(-0.005, 7.54979e-10, 3.30012e-17, 0, -2.18557e-10, 0.005, 7.54979e-10, 0.005, 2.18557e-10, -7.22695e-11, -0.000201634, 0.00196293)
+visible = false
+
+[node name="Beanie" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("29_8lrbn")]
+transform = Transform3D(0.005, 0, 0, 0, -0.000230738, -0.00499467, 0, 0.00499467, -0.000230738, 9.92837e-11, 4.38968e-05, 0.00255269)
 visible = false
 
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="2"]

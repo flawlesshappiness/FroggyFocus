@@ -10,7 +10,7 @@ OnlySecondaryMeshes = []
 Type = 11
 
 [node name="fishing_cap" parent="." instance=ExtResource("2_qy503")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, -0.115736, 0)
 
 [node name="fishing_cap" parent="fishing_cap" index="0"]
 surface_material_override/0 = ExtResource("3_qy503")

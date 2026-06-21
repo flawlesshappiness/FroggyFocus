@@ -18,6 +18,11 @@ public partial class PlayerStableGroundController : Node3D
         Controller.OnLand += Controller_Land;
     }
 
+    public void InitializePosition()
+    {
+        LastPosition = GetClosestPosition();
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
@@ -52,7 +57,12 @@ public partial class PlayerStableGroundController : Node3D
 
     private void EvaluateStableGround()
     {
-        var closest_position = NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), GlobalPosition);
+        var closest_position = GetClosestPosition();
         IsOnStableGround = GlobalPosition.DistanceTo(closest_position) < 0.5f;
+    }
+
+    private Vector3 GetClosestPosition()
+    {
+        return NavigationServer3D.MapGetClosestPoint(NavigationServer3D.GetMaps().First(), GlobalPosition);
     }
 }

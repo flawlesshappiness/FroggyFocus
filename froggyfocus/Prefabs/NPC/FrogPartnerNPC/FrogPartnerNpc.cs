@@ -25,6 +25,8 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     private const string DialogueRequestComplete = "PARTNER_REQUEST_COMPLETE";
     private const string DialogueRequestCompleteRepeat = "PARTNER_REQUEST_COMPLETE_003";
 
+    private bool show_unlock;
+
     public override void _Ready()
     {
         base._Ready();
@@ -91,6 +93,15 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         else if (id == DialogueRequestComplete || id == DialogueRequestCompleteRepeat)
         {
             UpdateAppearance();
+
+            if (show_unlock)
+            {
+                Item.MakeOwned(ItemType.Hat_Bow);
+                Data.Game.Save();
+
+                show_unlock = false;
+                UnlockView.Instance.ShowItemUnlock(ItemType.Hat_Bow);
+            }
         }
 
         ClearFacingDirection();
@@ -100,6 +111,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
     {
         if (id == HandInInfo.Id)
         {
+            show_unlock = true;
             Data.Game.PartnerQuestCompleted = true;
             MainQuestController.Instance.AdvancePartnerQuest(5);
             StartDialogue(DialogueRequestComplete);

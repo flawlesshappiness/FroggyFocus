@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://b65pjstamnokc"]
+
+[ext_resource type="PackedScene" uid="uid://bhrtxwdmvl7pm" path="res://Appearance/Attachments/beanie.tscn" id="1_olvit"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_cyh15"]
+
+[resource]
+script = ExtResource("2_cyh15")
+Category = 0
+Type = 23
+DefaultPrimaryColor = Color(0.1575, 0.22575, 0.45, 1)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
+HasSecondaryColor = true
+Prefab = ExtResource("1_olvit")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

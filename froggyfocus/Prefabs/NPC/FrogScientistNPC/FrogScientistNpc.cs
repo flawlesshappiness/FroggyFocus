@@ -69,11 +69,11 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         {
             if (show_unlock)
             {
-                // TODO: Unlock something
+                Item.MakeOwned(ItemType.Face_Glasses_Scientist);
                 Data.Game.Save();
 
                 show_unlock = false;
-                //UnlockView.Instance.ShowItemUnlock(ItemType.Particles_Bubbles);
+                UnlockView.Instance.ShowItemUnlock(ItemType.Face_Glasses_Scientist);
             }
         }
     }

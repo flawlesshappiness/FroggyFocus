@@ -1502,18 +1502,14 @@ transform = Transform3D(0.957052, 0, 0.289917, 0, 1, 0, -0.289917, 0, 0.957052, 
 [node name="Billboard_RibitLogo01" parent="World/Billboards" instance=ExtResource("56_gihq3")]
 transform = Transform3D(4.72128, 0, 1.64606, 0, 5, 0, -1.64606, 0, 4.72128, -48.0619, -1.49632, -121.31)
 
-[node name="Billboard_RibitLogo02" parent="World/Billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("56_gihq3")]
+[node name="Billboard_RibitLogo02" parent="World/Billboards" instance=ExtResource("56_gihq3")]
 transform = Transform3D(-4.99989, 0, 0.0329869, 0, 5, 0, -0.0329869, 0, -4.99989, 9.64986, -1.49631, 83.4453)
-Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
 
-[node name="Billboard_RibitLogo03" parent="World/Billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("56_gihq3")]
+[node name="Billboard_RibitLogo03" parent="World/Billboards" instance=ExtResource("56_gihq3")]
 transform = Transform3D(-1.29924, 0, -4.82825, 0, 5, 0, 4.82825, 0, -1.29924, 111.715, -1.4963, -1.86035)
-Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
 
-[node name="Billboard_RibitLogo04" parent="World/Billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("56_gihq3")]
+[node name="Billboard_RibitLogo04" parent="World/Billboards" instance=ExtResource("56_gihq3")]
 transform = Transform3D(2.61956, 0, -4.25886, 0, 5, 0, 4.25886, 0, 2.61956, 110.744, -1.4963, -67.4012)
-Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]
 
-[node name="Billboard_RibitLogo05" parent="World/Billboards" node_paths=PackedStringArray("Labels") instance=ExtResource("56_gihq3")]
+[node name="Billboard_RibitLogo05" parent="World/Billboards" instance=ExtResource("56_gihq3")]
 transform = Transform3D(4.42543, 0, -2.32715, 0, 5, 0, 2.32715, 0, 4.42543, 65.9704, -1.4963, -106.617)
-Labels = [NodePath("../Billboard_RibitLogo01/Label3D"), NodePath("../Billboard_RibitLogo01/Label3D2"), NodePath("../Billboard_RibitLogo01/Label3D3"), NodePath("../Billboard_RibitLogo01/Label3D4"), NodePath("../Billboard_RibitLogo01/Label3D5")]

@@ -1,23 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://ir8kqnw2coxy"]
+[gd_scene load_steps=8 format=3 uid="uid://ir8kqnw2coxy"]
 
 [ext_resource type="Script" uid="uid://dwh5p8rrpw670" path="res://FocusCharacter/FocusCharacter.cs" id="1_7p45w"]
 [ext_resource type="PackedScene" uid="uid://b5jn7h8mwasxr" path="res://Assets/FlawLizArt/Nature/Bugs/mosquito.fbx" id="2_kykgb"]
 [ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="3_87hog"]
 [ext_resource type="Script" uid="uid://ckv4mr7osps52" path="res://Modules/Animation/AnimationStateMachine.cs" id="3_fuwuk"]
 [ext_resource type="Material" uid="uid://dslk7h31g2ng3" path="res://Materials/Color_BlueLight.tres" id="4_checb"]
-[ext_resource type="Material" uid="uid://cj44kc16xji4y" path="res://Materials/Branch_003_Texture.tres" id="4_u2w47"]
 [ext_resource type="PackedScene" uid="uid://m063yta0m0mc" path="res://Prefabs/Nature/mushroom_bent.tscn" id="5_checb"]
-[ext_resource type="Material" uid="uid://db1u1f58aaaky" path="res://Materials/Branch_001_Texture.tres" id="5_kgdmx"]
-[ext_resource type="Material" uid="uid://u2y5v44s2xc3" path="res://Materials/Branch_002_Texture.tres" id="6_cgl6p"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_kgdmx"]
-material = ExtResource("4_u2w47")
-
-[sub_resource type="QuadMesh" id="QuadMesh_cgl6p"]
-material = ExtResource("5_kgdmx")
-
-[sub_resource type="QuadMesh" id="QuadMesh_nxddr"]
-material = ExtResource("6_cgl6p")
+[ext_resource type="PackedScene" uid="uid://bwgd2ccf6gb1j" path="res://Prefabs/Nature/stick.tscn" id="6_cgl6p"]
 
 [node name="Mosquito" type="Node3D" node_paths=PackedStringArray("Animation", "Accessories")]
 script = ExtResource("1_7p45w")
@@ -83,6 +72,7 @@ surface_material_override/0 = ExtResource("4_checb")
 
 [node name="mushroom" type="BoneAttachment3D" parent="mosquito/Armature/Skeleton3D" index="7"]
 transform = Transform3D(1, -1.91847e-13, 2.38419e-07, 7.05213e-08, 0.955254, -0.295787, -2.2775e-07, 0.295787, 0.955254, 8.88178e-16, -0.000440418, 0.00133888)
+visible = false
 bone_name = "Body.Front"
 bone_idx = 1
 
@@ -94,6 +84,7 @@ transform = Transform3D(0.000545645, 0.000830448, 0.000112374, 0.00067376, -0.00
 
 [node name="mushroom2" type="BoneAttachment3D" parent="mosquito/Armature/Skeleton3D" index="8"]
 transform = Transform3D(1, -1.04824e-07, 7.17943e-07, -4.93255e-07, -0.823894, 0.566742, 5.32102e-07, -0.566744, -0.823892, 9.22006e-16, -0.000677253, 0.00121034)
+visible = false
 bone_name = "Body.Back"
 bone_idx = 2
 
@@ -108,34 +99,28 @@ transform = Transform3D(1, -1.04824e-07, 7.17943e-07, -4.93255e-07, -0.823894, 0
 bone_name = "Body.Back"
 bone_idx = 2
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="mosquito/Armature/Skeleton3D/wooden"]
-transform = Transform3D(0.000694672, 0.00302565, -0.00391955, 0.00492729, -0.000813421, 0.000245365, -0.000489173, -0.00389664, -0.00309466, 0.00157678, 0.00150353, -0.00185854)
-mesh = SubResource("QuadMesh_kgdmx")
+[node name="stick" parent="mosquito/Armature/Skeleton3D/wooden" instance=ExtResource("6_cgl6p")]
+transform = Transform3D(0.00636582, -0.00764567, 0.00100994, -0.00272033, -0.00100074, 0.0095707, -0.00721638, -0.00636727, -0.00271693, -0.00172057, 0.00177332, -0.00195409)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="mosquito/Armature/Skeleton3D/wooden"]
-transform = Transform3D(-0.00161592, -0.00348975, 0.00319538, -0.00448898, 0.00219818, 0.000130576, -0.00149594, -0.0028266, -0.0038435, -0.00177266, 0.00335477, -0.00130737)
-mesh = SubResource("QuadMesh_cgl6p")
+[node name="stick2" parent="mosquito/Armature/Skeleton3D/wooden" instance=ExtResource("6_cgl6p")]
+transform = Transform3D(0.00819911, 0.00556006, -0.00136382, 0.000363845, 0.00187136, 0.00981659, 0.00571331, -0.00809836, 0.00133206, 0.00213919, 0.0035441, -0.00234424)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="mosquito/Armature/Skeleton3D/wooden"]
-transform = Transform3D(0.000621422, 0.00155427, 0.00471148, -0.00457047, 0.00202645, -6.56845e-05, -0.00192994, -0.00429857, 0.00167261, 0.00071878, 0.0055505, -0.00139723)
-mesh = SubResource("QuadMesh_nxddr")
+[node name="stick3" parent="mosquito/Armature/Skeleton3D/wooden" instance=ExtResource("6_cgl6p")]
+transform = Transform3D(0.00456717, -0.000570048, -0.00384915, 0.00376322, 0.0021564, 0.00414586, 0.000989493, -0.00557001, 0.00199897, -3.13197e-05, 0.00521821, -0.00101392)
 
 [node name="wooden2" type="BoneAttachment3D" parent="mosquito/Armature/Skeleton3D" index="10"]
 transform = Transform3D(1, -1.91847e-13, 2.38419e-07, 7.05213e-08, 0.955254, -0.295787, -2.2775e-07, 0.295787, 0.955254, 8.88178e-16, -0.000440418, 0.00133888)
 bone_name = "Body.Front"
 bone_idx = 1
 
-[node name="MeshInstance3D9" type="MeshInstance3D" parent="mosquito/Armature/Skeleton3D/wooden2"]
-transform = Transform3D(0.000103774, 0.00430363, 0.00254323, 0.00353769, 0.00173401, -0.00307863, -0.00353185, 0.00186333, -0.00300899, 0.00164722, 0.00331841, 0.0013622)
-mesh = SubResource("QuadMesh_kgdmx")
+[node name="stick" parent="mosquito/Armature/Skeleton3D/wooden2" instance=ExtResource("6_cgl6p")]
+transform = Transform3D(-0.00894037, -0.00447994, 5.49971e-07, -0.00176131, 0.00351607, 0.00919429, -0.00411918, 0.00821993, -0.00393255, -0.00131479, 0.00302201, 0.00207862)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="mosquito/Armature/Skeleton3D/wooden2"]
-transform = Transform3D(-0.000324755, -0.0045329, -0.00208503, -0.004935, 0.000599649, -0.000534999, 0.000735076, 0.00202317, -0.00451292, -0.00198, 0.00242228, 0.00195516)
-mesh = SubResource("QuadMesh_cgl6p")
+[node name="stick2" parent="mosquito/Armature/Skeleton3D/wooden2" instance=ExtResource("6_cgl6p")]
+transform = Transform3D(0.00844185, 0.00455903, 0.00281965, 0.00152874, 0.00299407, -0.00941799, -0.00513791, 0.00838157, 0.00183058, 0.00142481, 0.00190079, 0.00242579)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="mosquito/Armature/Skeleton3D/wooden2"]
-transform = Transform3D(0.000249833, -0.000975893, 0.00489747, 0.00496837, 0.00054241, -0.000145367, -0.000502915, 0.00487375, 0.000996821, -0.000595185, 0.000564783, 0.00388971)
-mesh = SubResource("QuadMesh_nxddr")
+[node name="stick3" parent="mosquito/Armature/Skeleton3D/wooden2" instance=ExtResource("6_cgl6p")]
+transform = Transform3D(-0.00116942, -0.00113721, -0.00472644, -0.0047864, -0.000580849, 0.00132401, -0.000850206, 0.00483419, -0.000952779, -0.00043866, 0.000830052, 0.00275734)
 
 [node name="AnimationPlayer" parent="mosquito" index="1"]
 playback_default_blend_time = 0.15

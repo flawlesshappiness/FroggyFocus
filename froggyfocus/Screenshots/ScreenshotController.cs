@@ -121,10 +121,10 @@ public partial class ScreenshotController : SingletonController
         IEnumerator Cr()
         {
             var current_size = Scene.Root.Size;
+            var scale_mode = Scene.Root.ContentScaleMode;
 
             Scene.PauseLock.AddLock(nameof(ScreenshotController));
 
-            var scale_mode = Scene.Root.ContentScaleMode;
             Scene.Root.ContentScaleMode = Window.ContentScaleModeEnum.Disabled;
 
             var file_path_no_ext = image_file_path.RemoveExtension();

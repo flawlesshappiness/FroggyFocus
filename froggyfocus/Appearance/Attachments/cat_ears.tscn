@@ -10,7 +10,7 @@ OnlySecondaryMeshes = []
 Type = 2
 
 [node name="cat_ears" parent="." instance=ExtResource("2_t3bge")]
-transform = Transform3D(0.55, -3.20284e-21, -2.79521e-21, 3.20284e-21, 0.55, 2.04891e-09, 2.79521e-21, -2.04891e-09, 0.55, -3.15538e-23, -0.081107, 3.02148e-10)
+transform = Transform3D(-0.55, 1.79125e-16, -4.80825e-08, 3.20284e-21, 0.55, 2.04891e-09, 4.80825e-08, 2.04891e-09, -0.55, -3.15538e-23, -0.081107, 3.02148e-10)
 
 [node name="ears_002" parent="cat_ears" index="0"]
 surface_material_override/0 = ExtResource("3_w8fs5")

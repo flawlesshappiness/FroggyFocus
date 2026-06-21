@@ -66,6 +66,7 @@ public partial class ScreenshotScene : GameScene
 
         void ShowSetup(DebugView v, ScreenshotSceneSetup setup)
         {
+            v.Close();
             HideAllSetups();
             setup.ShowSetup();
         }

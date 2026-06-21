@@ -64,11 +64,11 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
 
             if (show_unlock)
             {
-                // TODO: Unlock something
-                // Show unlock
+                Item.MakeOwned(ItemType.Face_Moustache);
                 Data.Game.Save();
 
                 show_unlock = false;
+                UnlockView.Instance.ShowItemUnlock(ItemType.Face_Moustache);
             }
         }
     }

@@ -356,5 +356,6 @@ public partial class Player : CharacterBody3D
         GlobalPosition = node.GlobalPosition;
         Character.RotateToNodeDirectionImmediate(node);
         ThirdPersonCamera.SnapToPosition();
+        StableGround.InitializePosition();
     }
 }
