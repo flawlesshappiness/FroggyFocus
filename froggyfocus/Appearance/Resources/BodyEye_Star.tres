@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=4 format=3 uid="uid://defuuyblythd3"]
+
+[ext_resource type="PackedScene" uid="uid://dudupxv813wgo" path="res://Appearance/Preview/body_eye_star.tscn" id="1_y5d7h"]
+[ext_resource type="Texture2D" uid="uid://dt76q0vxtaa2s" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/eye_star.png" id="2_iee54"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="3_blkpi"]
+
+[resource]
+script = ExtResource("3_blkpi")
+Category = 6
+Type = 608
+DefaultPrimaryColor = Color(0, 0, 0, 0)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
+HasSecondaryColor = false
+Texture = ExtResource("2_iee54")
+Prefab = ExtResource("1_y5d7h")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

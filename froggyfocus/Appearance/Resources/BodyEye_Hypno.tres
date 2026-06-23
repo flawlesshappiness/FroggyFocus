@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=4 format=3 uid="uid://v5sntka1xabr"]
+
+[ext_resource type="PackedScene" uid="uid://dvkwien3ki3fx" path="res://Appearance/Preview/body_eye_hypno.tscn" id="1_41tf6"]
+[ext_resource type="Texture2D" uid="uid://nw3qiqru6el6" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/eye_hypno.png" id="2_gtm0e"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="3_ecygf"]
+
+[resource]
+script = ExtResource("3_ecygf")
+Category = 6
+Type = 607
+DefaultPrimaryColor = Color(0, 0, 0, 0)
+DefaultSecondaryColor = Color(0, 0, 0, 0)
+HasSecondaryColor = false
+Texture = ExtResource("2_gtm0e")
+Prefab = ExtResource("1_41tf6")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

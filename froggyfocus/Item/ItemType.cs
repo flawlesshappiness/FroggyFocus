@@ -35,6 +35,7 @@ public enum ItemType
     Face_Septum = 105,
     Face_Cigarette = 106,
     Face_RaceGoggles = 107,
+    Face_TobaccoPipe = 108,
 
     // 200 - FREE
 
@@ -60,6 +61,8 @@ public enum ItemType
     BodyPattern_None = 505,
     BodyPattern_Jeans = 506,
     BodyPattern_Flames = 507,
+    BodyPattern_Oil = 508,
+    BodyPattern_Plush = 509,
 
     // Body Eye
     BodyEye_Cute = 600,
@@ -69,4 +72,6 @@ public enum ItemType
     BodyEye_SlitV = 604,
     BodyEye_Toad = 605,
     BodyEye_None = 606,
+    BodyEye_Hypno = 607,
+    BodyEye_Star = 608,
 }

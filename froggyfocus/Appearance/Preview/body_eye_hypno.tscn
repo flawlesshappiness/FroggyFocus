@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvkwien3ki3fx"]
+
+[ext_resource type="Script" uid="uid://dmrwg3yxgw6jo" path="res://Appearance/FrogMeshAppearanceAttachment.cs" id="1_r5wpx"]
+[ext_resource type="Shader" uid="uid://bk2fnv8pklps8" path="res://Shaders/Frog.gdshader" id="2_yelou"]
+[ext_resource type="Texture2D" uid="uid://cj6gjo1avyxpa" path="res://Assets/FlawLizArt/Textures/preview_body_eye_hypno.png" id="3_r5wpx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_osrt7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okxec"]
+render_priority = 0
+shader = ExtResource("2_yelou")
+shader_parameter/texture1 = ExtResource("3_r5wpx")
+shader_parameter/albedo1 = Color(1, 1, 1, 1)
+shader_parameter/albedo2 = Color(1, 1, 1, 0)
+shader_parameter/albedo3 = Color(1, 1, 1, 0)
+shader_parameter/albedo4 = Color(1, 1, 1, 0)
+
+[node name="body_eye_hypno" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_r5wpx")
+OnlySecondaryMeshes = []
+Type = 604
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_osrt7")
+surface_material_override/0 = SubResource("ShaderMaterial_okxec")

@@ -3,8 +3,8 @@
 [ext_resource type="Shader" uid="uid://bk2fnv8pklps8" path="res://Shaders/Frog.gdshader" id="1_ecnj5"]
 [ext_resource type="Texture2D" uid="uid://cgb5fof02bmel" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/frog_cute_base.png" id="2_f8i0p"]
 [ext_resource type="Texture2D" uid="uid://d4b8spqlvk7wi" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/top_shirt.png" id="3_dtblj"]
-[ext_resource type="Texture2D" uid="uid://ceviw4x146uia" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/pattern_jeans.png" id="4_dtblj"]
-[ext_resource type="Texture2D" uid="uid://c70ampeq4tknx" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/eye_001.png" id="5_omjoj"]
+[ext_resource type="Texture2D" uid="uid://bh5f02hnawcj4" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/pattern_plush.png" id="4_dtblj"]
+[ext_resource type="Texture2D" uid="uid://dt76q0vxtaa2s" path="res://Assets/FlawLizArt/Characters/Frog_Cute/Textures/eye_star.png" id="5_dtblj"]
 
 [resource]
 render_priority = 0
@@ -12,8 +12,8 @@ shader = ExtResource("1_ecnj5")
 shader_parameter/texture1 = ExtResource("2_f8i0p")
 shader_parameter/texture2 = ExtResource("3_dtblj")
 shader_parameter/texture3 = ExtResource("4_dtblj")
-shader_parameter/texture4 = ExtResource("5_omjoj")
+shader_parameter/texture4 = ExtResource("5_dtblj")
 shader_parameter/albedo1 = Color(0.39438, 0.63, 0.2142, 1)
 shader_parameter/albedo2 = Color(1, 1, 1, 1)
-shader_parameter/albedo3 = Color(0.2838, 0.610313, 0.86, 1)
+shader_parameter/albedo3 = Color(0.36, 0.744, 1, 1)
 shader_parameter/albedo4 = Color(1, 1, 1, 1)

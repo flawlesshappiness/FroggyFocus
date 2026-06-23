@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://1fq5vb2vmge2"]
+[gd_scene load_steps=49 format=3 uid="uid://1fq5vb2vmge2"]
 
 [ext_resource type="Script" uid="uid://ckww7miv2hssb" path="res://Character/CuteFrogCharacter.cs" id="1_qloaa"]
 [ext_resource type="PackedScene" uid="uid://kbio5754ibiy" path="res://Assets/FlawLizArt/Characters/Frog_Cute/frog_cute.fbx" id="3_nfx8u"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://kugwc2drywwr" path="res://Appearance/Attachments/goggles_race.tscn" id="34_ki8i6"]
 [ext_resource type="PackedScene" uid="uid://bj017mypcst8m" path="res://Appearance/Attachments/moustache.tscn" id="35_vpi5f"]
 [ext_resource type="PackedScene" uid="uid://bycye7hwagma" path="res://Appearance/Attachments/glasses_scientist.tscn" id="36_fib4k"]
+[ext_resource type="PackedScene" uid="uid://bw0mpfs8eginl" path="res://Appearance/Attachments/tobacco_pipe.tscn" id="37_csvdd"]
 [ext_resource type="PackedScene" uid="uid://ch5ami6o86hlp" path="res://Appearance/Attachments/glasses_round.tscn" id="37_thh0y"]
 [ext_resource type="PackedScene" uid="uid://bwq50x64b18jh" path="res://Appearance/Attachments/monocle.tscn" id="38_tlkit"]
 [ext_resource type="PackedScene" uid="uid://bmg430dgy8ers" path="res://Appearance/Attachments/septum.tscn" id="39_67a6f"]
@@ -365,6 +366,10 @@ visible = false
 
 [node name="Race_Goggles" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("34_ki8i6")]
 transform = Transform3D(0.006, -1.90987e-11, -3.78848e-10, -3.78848e-10, -0.000603421, -0.00596958, -1.90987e-11, 0.00596958, -0.000603421, 3.46675e-10, 0.000588556, 0.00109377)
+visible = false
+
+[node name="tobacco_pipe" parent="frog_cute/Armature/Skeleton3D/FaceAttachmentGroup" instance=ExtResource("37_csvdd")]
+transform = Transform3D(-0.00185148, 8.64856e-12, -0.00236051, -0.00236051, 1.78214e-10, 0.00185148, 1.45563e-10, 0.003, -1.03181e-10, 0.0014327, 0.00385449, -0.000676796)
 visible = false
 
 [node name="AnimationPlayer" parent="frog_cute" index="1"]

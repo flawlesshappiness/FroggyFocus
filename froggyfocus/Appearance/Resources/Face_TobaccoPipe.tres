@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://dr5lxqh24mg0q"]
+
+[ext_resource type="PackedScene" uid="uid://bw0mpfs8eginl" path="res://Appearance/Attachments/tobacco_pipe.tscn" id="1_wbg66"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_2kxwg"]
+
+[resource]
+script = ExtResource("2_2kxwg")
+Category = 1
+Type = 108
+DefaultPrimaryColor = Color(0.43, 0.186333, 0, 1)
+DefaultSecondaryColor = Color(0, 0, 0, 1)
+HasSecondaryColor = true
+Prefab = ExtResource("1_wbg66")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

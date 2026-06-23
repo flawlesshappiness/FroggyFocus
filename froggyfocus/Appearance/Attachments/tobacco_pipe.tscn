@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw0mpfs8eginl"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_dtlk0"]
+[ext_resource type="PackedScene" uid="uid://be3ds08picfx4" path="res://Assets/FlawLizArt/Face/tobacco_pipe.fbx" id="2_txqkd"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="3_nfx26"]
+[ext_resource type="Material" uid="uid://dhj8qb88cw2ye" path="res://Materials/Silver.tres" id="4_6ioh6"]
+[ext_resource type="Material" uid="uid://xjidmxvbl7q3" path="res://Materials/Color_Black.tres" id="5_qsabb"]
+
+[node name="tobacco_pipe" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_dtlk0")
+OnlySecondaryMeshes = []
+Type = 108
+
+[node name="tobacco_pipe" parent="." instance=ExtResource("2_txqkd")]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.406108, -0.203447, 7.72529e-09)
+
+[node name="tobacco_pipe" parent="tobacco_pipe" index="0"]
+surface_material_override/0 = ExtResource("3_nfx26")
+surface_material_override/1 = ExtResource("3_nfx26")
+surface_material_override/2 = ExtResource("4_6ioh6")
+surface_material_override/3 = ExtResource("5_qsabb")
+
+[editable path="tobacco_pipe"]
