@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgxywuaf3wycn"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_utagl"]
+[ext_resource type="PackedScene" uid="uid://ct2hot1ssj03o" path="res://Assets/FlawLizArt/Face/sunglasses.fbx" id="2_c5ouc"]
+[ext_resource type="Material" uid="uid://bsxdpc520lv45" path="res://Materials/Color_White.tres" id="3_i22nx"]
+
+[node name="sunglasses" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_utagl")
+OnlySecondaryMeshes = []
+Type = 110
+
+[node name="sunglasses" parent="." instance=ExtResource("2_c5ouc")]
+
+[node name="sunglasses" parent="sunglasses" index="0"]
+surface_material_override/0 = ExtResource("3_i22nx")
+surface_material_override/1 = ExtResource("3_i22nx")
+
+[editable path="sunglasses"]

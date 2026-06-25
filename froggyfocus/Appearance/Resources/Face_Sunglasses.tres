@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AppearanceInfo" load_steps=3 format=3 uid="uid://50qaw1siedal"]
+
+[ext_resource type="PackedScene" uid="uid://bgxywuaf3wycn" path="res://Appearance/Attachments/sunglasses.tscn" id="1_5u8p8"]
+[ext_resource type="Script" uid="uid://cmxxcum28w14t" path="res://Appearance/AppearanceInfo.cs" id="2_o8gq2"]
+
+[resource]
+script = ExtResource("2_o8gq2")
+Category = 1
+Type = 110
+DefaultPrimaryColor = Color(0.49, 0.267867, 0.0735, 1)
+DefaultSecondaryColor = Color(0, 0, 0, 1)
+HasSecondaryColor = true
+Prefab = ExtResource("1_5u8p8")
+metadata/_custom_type_script = "uid://cmxxcum28w14t"

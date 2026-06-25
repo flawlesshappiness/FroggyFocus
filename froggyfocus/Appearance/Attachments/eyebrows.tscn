@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://chop14jeu6byu"]
+
+[ext_resource type="Script" uid="uid://bb54qcu7iaygd" path="res://Appearance/MeshAppearanceAttachment.cs" id="1_bqghp"]
+[ext_resource type="PackedScene" uid="uid://c16hwpq1u3xsl" path="res://Assets/FlawLizArt/Face/eyebrows.fbx" id="2_ht4ic"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bqghp"]
+
+[node name="eyebrows" type="Node3D" node_paths=PackedStringArray("OnlySecondaryMeshes")]
+script = ExtResource("1_bqghp")
+OnlySecondaryMeshes = []
+Type = 109
+
+[node name="eyebrows" parent="." instance=ExtResource("2_ht4ic")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Cube" parent="eyebrows" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_bqghp")
+
+[editable path="eyebrows"]

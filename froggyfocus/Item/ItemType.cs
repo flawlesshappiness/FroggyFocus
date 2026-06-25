@@ -36,6 +36,8 @@ public enum ItemType
     Face_Cigarette = 106,
     Face_RaceGoggles = 107,
     Face_TobaccoPipe = 108,
+    Face_Eyebrows = 109,
+    Face_Sunglasses = 110,
 
     // 200 - FREE
 
