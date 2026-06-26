@@ -138,7 +138,7 @@ bones/30/scale = Vector3(1, 1, 1)
 surface_material_override/0 = ExtResource("3_wy7ou")
 
 [node name="HatAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 3.57854e-15, 2.38419e-07, 3.57267e-09, 0.999888, -0.0149849, -2.38392e-07, 0.0149849, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
+transform = Transform3D(1, -8.8792e-14, 2.38419e-07, 3.57274e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
 bone_name = "Head"
 bone_idx = 2
 script = ExtResource("4_6q0t7")
@@ -260,7 +260,7 @@ transform = Transform3D(0.005, 0, 0, 0, -0.000230738, -0.00499467, 0, 0.00499467
 visible = false
 
 [node name="FaceAttachmentGroup" type="BoneAttachment3D" parent="frog_cute/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 3.57854e-15, 2.38419e-07, 3.57267e-09, 0.999888, -0.0149849, -2.38392e-07, 0.0149849, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
+transform = Transform3D(1, -8.8792e-14, 2.38419e-07, 3.57274e-09, 0.999888, -0.0149848, -2.38392e-07, 0.0149848, 0.999888, 8.78472e-19, 0.00293547, 0.00405697)
 bone_name = "Head"
 bone_idx = 2
 script = ExtResource("4_6q0t7")

@@ -29,12 +29,14 @@ public static class Item
     {
         var data = GetOrCreateData(type);
         data.Owned = true;
+        AchievementController.Instance.UpdateAchievements();
     }
 
     public static void SetOwned(ItemType type, bool owned)
     {
         var data = GetOrCreateData(type);
         data.Owned = owned;
+        AchievementController.Instance.UpdateAchievements();
     }
 
     public static bool IsNoneType(ItemType type)

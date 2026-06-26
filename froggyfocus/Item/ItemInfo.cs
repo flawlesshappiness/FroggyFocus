@@ -11,4 +11,9 @@ public partial class ItemInfo : Resource
 
     [Export]
     public string Name;
+
+    [Export]
+    public bool HasAchievement;
+
+    public string AchievementId => Type.ToString().ToUpperInvariant();
 }
