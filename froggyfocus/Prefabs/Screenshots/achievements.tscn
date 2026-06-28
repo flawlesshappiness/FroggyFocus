@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bagqnas812avm"]
+[gd_scene load_steps=18 format=3 uid="uid://bagqnas812avm"]
 
 [ext_resource type="Script" uid="uid://c8ix7ywwa4ktv" path="res://Prefabs/Screenshots/AchievementScreenshotSetup.cs" id="1_1dy3v"]
 [ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="2_p2t7j"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="3_ck3h0"]
 [ext_resource type="PackedScene" uid="uid://bhrtxwdmvl7pm" path="res://Appearance/Attachments/beanie.tscn" id="4_boav3"]
+[ext_resource type="Texture2D" uid="uid://p1q0pivauhp0" path="res://Assets/FlawLizArt/Textures/icon_lips.png" id="5_ck3h0"]
+[ext_resource type="Texture2D" uid="uid://db8bvkmkj785j" path="res://Assets/FlawLizArt/Textures/icon_money.png" id="6_boav3"]
+[ext_resource type="Texture2D" uid="uid://j4y34d1ksddw" path="res://Assets/FlawLizArt/Textures/icon_potion.png" id="7_boav3"]
+[ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="8_761be"]
+[ext_resource type="PackedScene" uid="uid://bmi1j67o84i5g" path="res://Prefabs/Crystal/crystal_long.tscn" id="9_cvx2y"]
+[ext_resource type="Material" uid="uid://dbkb3gwb0fky6" path="res://Materials/Wireframe_Red.tres" id="10_7168n"]
+[ext_resource type="Material" uid="uid://8fiewd4r3pfu" path="res://Materials/Wireframe_Blue.tres" id="11_15nay"]
+[ext_resource type="Material" uid="uid://b8eudxq8xtpmk" path="res://Materials/Wireframe_Yellow.tres" id="12_wgnyv"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_cw8fv"]
 flip_faces = true
@@ -14,9 +22,24 @@ height = 10.0
 shading_mode = 0
 albedo_color = Color(0.03, 0.36, 0, 1)
 
-[node name="Achievements" type="Node3D" node_paths=PackedStringArray("ItemParent", "Camera")]
+[sub_resource type="BoxMesh" id="BoxMesh_htxnl"]
+material = ExtResource("10_7168n")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ojxin"]
+material = ExtResource("11_15nay")
+
+[sub_resource type="BoxMesh" id="BoxMesh_nvsjs"]
+material = ExtResource("12_wgnyv")
+
+[node name="Achievements" type="Node3D" node_paths=PackedStringArray("ItemParent", "QuestPartner", "QuestManager", "QuestScientist", "LocationEldritch", "LocationCrystal", "LocationGlitch", "Camera")]
 script = ExtResource("1_1dy3v")
-ItemParent = NodePath("item")
+ItemParent = NodePath("ItemParent")
+QuestPartner = NodePath("QuestPartner")
+QuestManager = NodePath("QuestManager")
+QuestScientist = NodePath("QuestScientist")
+LocationEldritch = NodePath("LocationEldritch")
+LocationCrystal = NodePath("LocationCrystal")
+LocationGlitch = NodePath("LocationGlitch")
 Id = "Achievements"
 Camera = NodePath("Camera3D")
 Weather = ExtResource("2_p2t7j")
@@ -34,11 +57,69 @@ transform = Transform3D(2.32, 0, 0, 0, 2.32, 0, 0, 0, 2.32, 0, 0, -1.77564)
 modulate = Color(0.2945, 1, 0.17, 1)
 texture = ExtResource("3_ck3h0")
 
-[node name="item" type="Node3D" parent="."]
+[node name="ItemParent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0)
 
-[node name="Beanie" parent="item" instance=ExtResource("4_boav3")]
+[node name="Beanie" parent="ItemParent" instance=ExtResource("4_boav3")]
 visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.92546)
+
+[node name="QuestPartner" type="Node3D" parent="."]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="QuestPartner"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+texture = ExtResource("5_ck3h0")
+
+[node name="QuestManager" type="Node3D" parent="."]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="QuestManager"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+texture = ExtResource("6_boav3")
+
+[node name="QuestScientist" type="Node3D" parent="."]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="QuestScientist"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+texture = ExtResource("7_boav3")
+
+[node name="LocationEldritch" type="Node3D" parent="."]
+visible = false
+
+[node name="Eldritch_Eye" parent="LocationEldritch" instance=ExtResource("8_761be")]
+transform = Transform3D(-0.42, 0, -6.34182e-08, 0, 0.42, 0, 6.34182e-08, 0, -0.42, 0, 0, 0)
+StartState = 1
+
+[node name="LocationCrystal" type="Node3D" parent="."]
+visible = false
+
+[node name="Crystal_Long" parent="LocationCrystal" instance=ExtResource("9_cvx2y")]
+transform = Transform3D(0.414928, -0.00709553, 0.0030435, 0.00772074, 0.381329, -0.163564, 6.62785e-09, 0.163592, 0.381395, 0.075397, -0.12404, 0)
+
+[node name="Crystal_Long2" parent="LocationCrystal" instance=ExtResource("9_cvx2y")]
+transform = Transform3D(0.236364, -0.147151, -0.097485, 0.1629, 0.244591, 0.0257659, 0.0679745, -0.074476, 0.277232, -0.0487999, -0.108874, -0.333638)
+
+[node name="Crystal_Long3" parent="LocationCrystal" instance=ExtResource("9_cvx2y")]
+transform = Transform3D(-0.123587, -0.141885, -0.0932466, -0.119484, 0.154622, -0.0769133, 0.120623, 0.00779053, -0.171725, -0.0547118, -0.320344, -0.215737)
+
+[node name="Crystal_Long4" parent="LocationCrystal" instance=ExtResource("9_cvx2y")]
+transform = Transform3D(-0.15167, 0.103563, -0.101838, 0.0809093, 0.182521, 0.0651127, 0.120623, 0.00779053, -0.171725, 0.208359, -0.218168, -0.270952)
+
+[node name="LocationGlitch" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LocationGlitch"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0415363, -0.326736, 0)
+mesh = SubResource("BoxMesh_htxnl")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LocationGlitch"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.295811, -0.119345, 0)
+mesh = SubResource("BoxMesh_ojxin")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LocationGlitch"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.19582, 0.114412, 0)
+mesh = SubResource("BoxMesh_nvsjs")

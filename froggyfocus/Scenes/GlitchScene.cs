@@ -17,6 +17,7 @@ public partial class GlitchScene : GameScene
     protected override void Initialize()
     {
         base.Initialize();
+        Data.Game.GlitchLocationEntered = true;
         MainQuestController.Instance.AdvanceManagerQuest(3);
     }
 

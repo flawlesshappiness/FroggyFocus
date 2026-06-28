@@ -8,6 +8,24 @@ public partial class AchievementScreenshotSetup : ScreenshotSceneSetup
     [Export]
     public Node3D ItemParent;
 
+    [Export]
+    public Node3D QuestPartner;
+
+    [Export]
+    public Node3D QuestManager;
+
+    [Export]
+    public Node3D QuestScientist;
+
+    [Export]
+    public Node3D LocationEldritch;
+
+    [Export]
+    public Node3D LocationCrystal;
+
+    [Export]
+    public Node3D LocationGlitch;
+
     private const string path_screenshots = $"res://Screenshots/Achievements/";
     private List<ItemMap> items = new();
 
@@ -33,7 +51,8 @@ public partial class AchievementScreenshotSetup : ScreenshotSceneSetup
         IEnumerator Cr()
         {
             yield return null;
-            yield return LoadItems();
+            yield return LoadAppearances();
+            yield return LoadOtherAchievements();
             yield return TakeScreenshots();
             yield return GenerateGreyscaleTextures();
             yield return SaveScreenshots();
@@ -41,7 +60,7 @@ public partial class AchievementScreenshotSetup : ScreenshotSceneSetup
         }
     }
 
-    private IEnumerator LoadItems()
+    private IEnumerator LoadAppearances()
     {
         Debug.Log("Loading items...");
 
@@ -61,6 +80,54 @@ public partial class AchievementScreenshotSetup : ScreenshotSceneSetup
 
             items.Add(item);
         }
+
+        yield return null;
+    }
+
+    private IEnumerator LoadOtherAchievements()
+    {
+        items.Add(new ItemMap
+        {
+            Name = Achievement.QuestPartner,
+            Node = QuestPartner
+        });
+
+        items.Add(new ItemMap
+        {
+            Name = Achievement.QuestManager,
+            Node = QuestManager
+        });
+
+        items.Add(new ItemMap
+        {
+            Name = Achievement.QuestScientist,
+            Node = QuestScientist
+        });
+
+        items.Add(new ItemMap
+        {
+            Name = Achievement.LocationEldritch,
+            Node = LocationEldritch
+        });
+
+        items.Add(new ItemMap
+        {
+            Name = Achievement.LocationCrystal,
+            Node = LocationCrystal
+        });
+
+        items.Add(new ItemMap
+        {
+            Name = Achievement.LocationGlitch,
+            Node = LocationGlitch
+        });
+
+        QuestPartner.Hide();
+        QuestManager.Hide();
+        QuestScientist.Hide();
+        LocationEldritch.Hide();
+        LocationCrystal.Hide();
+        LocationGlitch.Hide();
 
         yield return null;
     }

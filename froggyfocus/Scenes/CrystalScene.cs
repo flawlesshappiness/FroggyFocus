@@ -37,4 +37,14 @@ public partial class CrystalScene : GameScene
             Player.Instance.SetCameraTarget();
         }
     }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+
+        Data.Game.CrystalLocationEntered = true;
+        Data.Game.Save();
+
+        AchievementController.Instance.UpdateAchievements();
+    }
 }

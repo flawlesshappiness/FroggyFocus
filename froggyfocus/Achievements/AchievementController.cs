@@ -9,6 +9,7 @@ public partial class AchievementController : SingletonController
     {
         base.Initialize();
         GameProfileController.Instance.OnGameProfileSelected += GameProfile_Selected;
+        MainQuestController.Instance.OnAnyQuestAdvanced += MainQuest_Advanced;
     }
 
     private void GameProfile_Selected(int profile)
@@ -16,9 +17,15 @@ public partial class AchievementController : SingletonController
         UpdateAchievements();
     }
 
+    private void MainQuest_Advanced()
+    {
+        UpdateAchievements();
+    }
+
     public void UpdateAchievements()
     {
         UpdateItemAchievements();
+        UpdateQuestAchievements();
     }
 
     private void UpdateItemAchievements()
@@ -27,6 +34,68 @@ public partial class AchievementController : SingletonController
         foreach (var item in items)
         {
             SetAchievement(item.AchievementId);
+        }
+    }
+
+    private void UpdateQuestAchievements()
+    {
+        UpdatePartnerQuestAchievement();
+        UpdateManagerQuestAchievement();
+        UpdateScientistQuestAchievement();
+    }
+
+    private void UpdatePartnerQuestAchievement()
+    {
+        if (MainQuestController.Instance.GetPartnerStep() >= 5)
+        {
+            SetAchievement(Achievement.QuestPartner);
+        }
+    }
+
+    private void UpdateManagerQuestAchievement()
+    {
+        if (MainQuestController.Instance.GetManagerStep() >= 5)
+        {
+            SetAchievement(Achievement.QuestManager);
+        }
+    }
+
+    private void UpdateScientistQuestAchievement()
+    {
+        if (MainQuestController.Instance.GetScientistStep() >= 4)
+        {
+            SetAchievement(Achievement.QuestScientist);
+        }
+    }
+
+    private void UpdateLocationAchievements()
+    {
+        UpdateEldritchLocationAchievement();
+        UpdateCrystalLocationAchievement();
+        UpdateGlitchLocationAchievement();
+    }
+
+    private void UpdateEldritchLocationAchievement()
+    {
+        if (Data.Game.EldritchLocationEntered)
+        {
+            SetAchievement(Achievement.LocationEldritch);
+        }
+    }
+
+    private void UpdateCrystalLocationAchievement()
+    {
+        if (Data.Game.CrystalLocationEntered)
+        {
+            SetAchievement(Achievement.LocationCrystal);
+        }
+    }
+
+    private void UpdateGlitchLocationAchievement()
+    {
+        if (Data.Game.GlitchLocationEntered)
+        {
+            SetAchievement(Achievement.LocationGlitch);
         }
     }
 

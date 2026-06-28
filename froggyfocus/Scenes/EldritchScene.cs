@@ -9,6 +9,7 @@ public partial class EldritchScene : GameScene
     protected override void Initialize()
     {
         base.Initialize();
+        Data.Game.EldritchLocationEntered = true;
         MainQuestController.Instance.AdvanceScientistQuest(2);
     }
 
