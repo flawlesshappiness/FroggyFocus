@@ -197,6 +197,7 @@ public partial class Player : CharacterBody3D
             SetCameraTarget();
             Velocity = Vector3.Zero;
             Controller.SetRespawning(false);
+            Effects.SetJumpChargeMaxEmitting(false);
         }
     }
 

@@ -11,7 +11,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
     protected override void Initialize()
     {
         base.Initialize();
-        FocusEventController.Instance.OnFocusEventEnded += FocusEventEnded;
+        InventoryController.Instance.OnCharacterAdded += Inventory_CharacterAdded;
         RegisterDebugActions();
     }
 
@@ -119,11 +119,9 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
         return Collection.Resources.FirstOrDefault(x => x.ResourcePath == path);
     }
 
-    private void FocusEventEnded(FocusEventResult result)
+    private void Inventory_CharacterAdded(InventoryCharacterData data)
     {
-        /*
-        var target = result.FocusEvent.Target;
-        var info = result.FocusEvent.Target.Info;
+        var info = FocusCharacterController.Instance.GetInfoFromPath(data.InfoPath);
         var any_complete = false;
 
         foreach (var objective in Collection.Resources)
@@ -131,7 +129,7 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
             if (Objective.IsMaxLevel(objective)) continue;
 
             var valid_tag = !objective.UseTag || info.Tags.Any(x => x == objective.RequirementTag);
-            var valid_rarity = target.CharacterData.Stars >= objective.MinimumStars;
+            var valid_rarity = data.Stars >= objective.MinimumStars;
             var valid = valid_tag && valid_rarity;
             if (valid)
             {
@@ -147,7 +145,6 @@ public partial class ObjectiveController : ResourceController<ObjectiveCollectio
         }
 
         Data.Game.Save();
-        */
     }
 
     public bool IsAnyObjectiveComplete()

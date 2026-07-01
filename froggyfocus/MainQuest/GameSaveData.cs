@@ -6,4 +6,5 @@ public partial class GameSaveData
     public bool EldritchLocationEntered { get; set; }
     public bool CrystalLocationEntered { get; set; }
     public bool GlitchLocationEntered { get; set; }
+    public bool GameCompleted { get; set; }
 }

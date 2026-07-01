@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://bagqnas812avm"]
+[gd_scene load_steps=20 format=3 uid="uid://bagqnas812avm"]
 
 [ext_resource type="Script" uid="uid://c8ix7ywwa4ktv" path="res://Prefabs/Screenshots/AchievementScreenshotSetup.cs" id="1_1dy3v"]
 [ext_resource type="Resource" uid="uid://coywtcmahs5ji" path="res://Weather/Resources/Inside.tres" id="2_p2t7j"]
 [ext_resource type="Texture2D" uid="uid://tpqkbo5v810p" path="res://Assets/KenneyNL/Particles/star_05.png" id="3_ck3h0"]
 [ext_resource type="PackedScene" uid="uid://bhrtxwdmvl7pm" path="res://Appearance/Attachments/beanie.tscn" id="4_boav3"]
 [ext_resource type="Texture2D" uid="uid://p1q0pivauhp0" path="res://Assets/FlawLizArt/Textures/icon_lips.png" id="5_ck3h0"]
+[ext_resource type="PackedScene" uid="uid://6kud8vhtgtes" path="res://Appearance/Preview/body_eye_cute.tscn" id="5_cvx2y"]
 [ext_resource type="Texture2D" uid="uid://db8bvkmkj785j" path="res://Assets/FlawLizArt/Textures/icon_money.png" id="6_boav3"]
+[ext_resource type="Texture2D" uid="uid://b0jbd7eu88b6o" path="res://Assets/FlawLizArt/Textures/icon_frog.png" id="7_7168n"]
 [ext_resource type="Texture2D" uid="uid://j4y34d1ksddw" path="res://Assets/FlawLizArt/Textures/icon_potion.png" id="7_boav3"]
 [ext_resource type="PackedScene" uid="uid://c38eyhbfr54n8" path="res://Prefabs/Eldritch/eldritch_eye.tscn" id="8_761be"]
 [ext_resource type="PackedScene" uid="uid://bmi1j67o84i5g" path="res://Prefabs/Crystal/crystal_long.tscn" id="9_cvx2y"]
@@ -31,7 +33,7 @@ material = ExtResource("11_15nay")
 [sub_resource type="BoxMesh" id="BoxMesh_nvsjs"]
 material = ExtResource("12_wgnyv")
 
-[node name="Achievements" type="Node3D" node_paths=PackedStringArray("ItemParent", "QuestPartner", "QuestManager", "QuestScientist", "LocationEldritch", "LocationCrystal", "LocationGlitch", "Camera")]
+[node name="Achievements" type="Node3D" node_paths=PackedStringArray("ItemParent", "QuestPartner", "QuestManager", "QuestScientist", "LocationEldritch", "LocationCrystal", "LocationGlitch", "GameCompleted", "Camera")]
 script = ExtResource("1_1dy3v")
 ItemParent = NodePath("ItemParent")
 QuestPartner = NodePath("QuestPartner")
@@ -40,6 +42,7 @@ QuestScientist = NodePath("QuestScientist")
 LocationEldritch = NodePath("LocationEldritch")
 LocationCrystal = NodePath("LocationCrystal")
 LocationGlitch = NodePath("LocationGlitch")
+GameCompleted = NodePath("GameCompleted")
 Id = "Achievements"
 Camera = NodePath("Camera3D")
 Weather = ExtResource("2_p2t7j")
@@ -58,9 +61,12 @@ modulate = Color(0.2945, 1, 0.17, 1)
 texture = ExtResource("3_ck3h0")
 
 [node name="ItemParent" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.906308, -0.422618, 0, 0.422618, 0.906308, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 3.69464e-08, 0.906308, 0.422618, -7.9232e-08, 0.422618, -0.906308, 0, 0, 0)
 
 [node name="Beanie" parent="ItemParent" instance=ExtResource("4_boav3")]
+visible = false
+
+[node name="body_eye_cute" parent="ItemParent" instance=ExtResource("5_cvx2y")]
 visible = false
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -72,6 +78,13 @@ visible = false
 [node name="Sprite3D" type="Sprite3D" parent="QuestPartner"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 texture = ExtResource("5_ck3h0")
+
+[node name="GameCompleted" type="Node3D" parent="."]
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="GameCompleted"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+texture = ExtResource("7_7168n")
 
 [node name="QuestManager" type="Node3D" parent="."]
 visible = false

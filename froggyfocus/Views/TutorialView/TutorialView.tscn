@@ -473,7 +473,7 @@ offset_right = 239.0
 offset_bottom = 39.5
 grow_horizontal = 2
 grow_vertical = 2
-StartingAction = "Interact"
+StartingAction = "Focus"
 
 [node name="Label4" type="Label" parent="Anim_Sign/TutorialCoverEyes"]
 layout_mode = 1

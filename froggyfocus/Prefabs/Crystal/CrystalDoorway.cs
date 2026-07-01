@@ -17,6 +17,11 @@ public partial class CrystalDoorway : Area3D, IInteractable
     public const string HasCodeFlag = "CRYSTAL_DOOR_HAS_CODE";
     public const string IsOpenFlag = "CRYSTAL_DOOR_OPEN";
 
+    private const string DialogueLocked = "CRYSTAL_DOOR_LOCKED";
+    private const string DialogueUnlock = "CRYSTAL_DOOR_UNLOCK";
+    private const string DialogueRandom = "CRYSTAL_DOOR_RANDOM_RESULT";
+    private const string DialogueIncorrect = "CRYSTAL_DOOR_INCORRECT";
+
     private readonly List<string> TryCodeDialogueNodes = new()
     {
         "CRYSTAL_DOOR_ATTEMPT_001",
@@ -47,7 +52,7 @@ public partial class CrystalDoorway : Area3D, IInteractable
         else
         {
             SfxLocked.Play();
-            DialogueController.Instance.StartDialogue("##CRYSTAL_DOOR_LOCKED##");
+            DialogueController.Instance.StartDialogue(DialogueLocked);
         }
     }
 
@@ -81,7 +86,7 @@ public partial class CrystalDoorway : Area3D, IInteractable
 
     private void DialogueNodeEnded(string id)
     {
-        if (id == "##CRYSTAL_DOOR_LOCKED##")
+        if (id == DialogueLocked)
         {
             if (GameFlags.IsFlag(HasCodeFlag, 1))
             {
@@ -92,7 +97,7 @@ public partial class CrystalDoorway : Area3D, IInteractable
                 ShowIncorrectCodeOptions();
             }
         }
-        else if (id == "##CRYSTAL_DOOR_UNLOCK##")
+        else if (id == DialogueUnlock)
         {
             ChangeScene();
         }
@@ -102,14 +107,14 @@ public partial class CrystalDoorway : Area3D, IInteractable
     {
         if (GameFlags.GetFlag(TryCodeFlag) >= 4)
         {
-            DialogueController.Instance.StartDialogue("##CRYSTAL_DOOR_RANDOM_RESULT##");
+            DialogueController.Instance.StartDialogue(DialogueRandom);
         }
         else
         {
             GameFlags.IncrementFlag(TryCodeFlag);
             Data.Game.Save();
 
-            DialogueController.Instance.StartDialogue("##CRYSTAL_DOOR_INCORRECT##");
+            DialogueController.Instance.StartDialogue(DialogueIncorrect);
         }
     }
 
@@ -118,7 +123,7 @@ public partial class CrystalDoorway : Area3D, IInteractable
         GameFlags.SetFlag(IsOpenFlag, 1);
         Data.Game.Save();
 
-        DialogueController.Instance.StartDialogue("##CRYSTAL_DOOR_UNLOCK##");
+        DialogueController.Instance.StartDialogue(DialogueUnlock);
     }
 
     private void ShowIncorrectCodeOptions()

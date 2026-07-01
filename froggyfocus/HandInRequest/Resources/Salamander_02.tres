@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HandInRequestInfo" load_steps=3 format=3 uid="uid://c44iks06ca7mj"]
 
-[ext_resource type="Resource" uid="uid://uxx2115b5rbp" path="res://FocusCharacter/Resources/Tick_Crystal.tres" id="1_lfc4t"]
+[ext_resource type="Resource" uid="uid://crjju8hvlknjy" path="res://FocusCharacter/Resources/CaveBeetle_Crystal.tres" id="1_lfc4t"]
 [ext_resource type="Script" uid="uid://dm1b320n5x14n" path="res://HandInRequest/HandInRequestInfo.cs" id="2_uh6im"]
 
 [resource]
@@ -8,5 +8,5 @@ script = ExtResource("2_uh6im")
 Count = 3
 TargetTag = 0
 TargetInfo = ExtResource("1_lfc4t")
-Money = 50
+Money = 150
 metadata/_custom_type_script = "uid://dm1b320n5x14n"

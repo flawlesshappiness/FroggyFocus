@@ -26,6 +26,9 @@ public partial class AchievementScreenshotSetup : ScreenshotSceneSetup
     [Export]
     public Node3D LocationGlitch;
 
+    [Export]
+    public Node3D GameCompleted;
+
     private const string path_screenshots = $"res://Screenshots/Achievements/";
     private List<ItemMap> items = new();
 
@@ -56,6 +59,7 @@ public partial class AchievementScreenshotSetup : ScreenshotSceneSetup
             yield return TakeScreenshots();
             yield return GenerateGreyscaleTextures();
             yield return SaveScreenshots();
+            yield return PrintNames();
             yield return Cleanup();
         }
     }
@@ -122,12 +126,19 @@ public partial class AchievementScreenshotSetup : ScreenshotSceneSetup
             Node = LocationGlitch
         });
 
+        items.Add(new ItemMap
+        {
+            Name = Achievement.GameComplete,
+            Node = GameCompleted
+        });
+
         QuestPartner.Hide();
         QuestManager.Hide();
         QuestScientist.Hide();
         LocationEldritch.Hide();
         LocationCrystal.Hide();
         LocationGlitch.Hide();
+        GameCompleted.Hide();
 
         yield return null;
     }
@@ -200,6 +211,16 @@ public partial class AchievementScreenshotSetup : ScreenshotSceneSetup
             item.Texture.GetImage().SavePng($"{path_screenshots}{item.Name}.png");
             item.TextureGreyscale.GetImage().SavePng($"{path_screenshots}{item.Name}_GREY.png");
         }
+
+        yield return null;
+    }
+
+    private IEnumerator PrintNames()
+    {
+        Debug.Log("Printing names...");
+
+        var ordered = items.OrderBy(x => x.Name);
+        ordered.ForEach(x => Debug.Log(x.Name));
 
         yield return null;
     }

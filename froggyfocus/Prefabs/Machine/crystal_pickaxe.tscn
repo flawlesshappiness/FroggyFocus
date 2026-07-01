@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://6lqmpii3xsj0"]
+[gd_scene load_steps=22 format=3 uid="uid://6lqmpii3xsj0"]
 
 [ext_resource type="PackedScene" uid="uid://ovwxdjwc4ssw" path="res://Assets/FlawLizArt/Machine/crystal_pickaxe.fbx" id="1_l2glv"]
 [ext_resource type="Script" uid="uid://bkf0diy1g46pi" path="res://Prefabs/Machine/CrystalPickaxe.cs" id="1_nw7g2"]
@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://660x5ypljm6p" path="res://Materials/Color_GreyDark.tres" id="3_vs670"]
 [ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="4_8v037"]
 [ext_resource type="AudioStream" uid="uid://cyrfi06rx8njs" path="res://Sounds/Raw/sfx_pickaxe_move_down.wav" id="4_g1u68"]
-[ext_resource type="Material" uid="uid://b2xdif40gqnhg" path="res://Materials/Color_White.tres" id="6_lajqu"]
+[ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="8_vs670"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l2glv"]
 size = Vector3(1.13184, 1, 4.13869)
@@ -203,9 +203,6 @@ scale_min = 2.0
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_absat")
 
-[sub_resource type="SphereMesh" id="SphereMesh_54mq6"]
-material = ExtResource("6_lajqu")
-
 [node name="CrystalPickaxe" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "MiddleNode")]
 script = ExtResource("1_nw7g2")
 AnimationPlayer = NodePath("AnimationPlayer")
@@ -278,7 +275,7 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_ckdo0")
-draw_pass_1 = SubResource("SphereMesh_54mq6")
+draw_pass_1 = ExtResource("8_vs670")
 
 [editable path="scale/Anim/crystal_pickaxe"]
 [editable path="scale/crystal_pickaxe_joint"]

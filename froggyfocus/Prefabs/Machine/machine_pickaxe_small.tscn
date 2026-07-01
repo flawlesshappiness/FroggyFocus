@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqqfn6i8na00a"]
+[gd_scene load_steps=23 format=3 uid="uid://dqqfn6i8na00a"]
 
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="1_0nt7y"]
 [ext_resource type="PackedScene" uid="uid://ovwxdjwc4ssw" path="res://Assets/FlawLizArt/Machine/crystal_pickaxe.fbx" id="1_4ip8y"]
@@ -7,8 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://cxemsbt61cpcc" path="res://Sounds/Raw/sfx_crystal_crack_002.wav" id="4_wxgmm"]
 [ext_resource type="PackedScene" uid="uid://ci1jm1ko4nj2b" path="res://Prefabs/Crystal/crystal_decorative_shard_01.tscn" id="5_ivt4y"]
 [ext_resource type="PackedScene" uid="uid://bl8fy72rkuqq5" path="res://Prefabs/Crystal/crystal_decorative_shard_02.tscn" id="6_rlxse"]
-[ext_resource type="Material" uid="uid://ctdvjlchj56sh" path="res://Materials/Color_White.tres" id="7_rlxse"]
 [ext_resource type="Material" uid="uid://dqix01s7vhtmd" path="res://Materials/Crystal1.tres" id="8_0nt7y"]
+[ext_resource type="SphereMesh" uid="uid://csjenwwpdlvn3" path="res://Prefabs/Effects/Meshes/dust.tres" id="8_q4366"]
 
 [sub_resource type="Animation" id="Animation_wxgmm"]
 length = 0.001
@@ -154,9 +154,6 @@ scale_min = 0.1
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_rtn84")
 
-[sub_resource type="SphereMesh" id="SphereMesh_5pohu"]
-material = ExtResource("7_rlxse")
-
 [sub_resource type="Curve" id="Curve_rtn84"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -8.44912, 0.0, 0, 0]
 point_count = 3
@@ -231,7 +228,7 @@ one_shot = true
 explosiveness = 1.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_vd5uh")
-draw_pass_1 = SubResource("SphereMesh_5pohu")
+draw_pass_1 = ExtResource("8_q4366")
 
 [node name="ps_crystals" type="GPUParticles3D" parent="particles"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.831527, 0)

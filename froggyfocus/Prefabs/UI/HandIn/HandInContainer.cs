@@ -119,8 +119,7 @@ public partial class HandInContainer : ControlScript
 
         if (HasItemUnlock && IsMaxClaim)
         {
-            var data = Item.GetOrCreateData(CurrentInfo.ItemUnlock);
-            data.Owned = true;
+            Item.MakeOwned(CurrentInfo.ItemUnlock);
             IsClaimedItem = true;
         }
 

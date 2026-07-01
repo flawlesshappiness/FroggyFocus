@@ -26,6 +26,7 @@ public partial class AchievementController : SingletonController
     {
         UpdateItemAchievements();
         UpdateQuestAchievements();
+        UpdateGameCompletedAchievement();
     }
 
     private void UpdateItemAchievements()
@@ -96,6 +97,14 @@ public partial class AchievementController : SingletonController
         if (Data.Game.GlitchLocationEntered)
         {
             SetAchievement(Achievement.LocationGlitch);
+        }
+    }
+
+    private void UpdateGameCompletedAchievement()
+    {
+        if (Data.Game.GameCompleted)
+        {
+            SetAchievement(Achievement.GameComplete);
         }
     }
 

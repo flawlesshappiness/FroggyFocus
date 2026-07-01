@@ -654,6 +654,7 @@ transform = Transform3D(-0.458008, -0.0711644, 1.4266, -0.249762, 1.47905, -0.00
 
 [node name="FrogWorkerNPC" parent="World/Beach" instance=ExtResource("35_phexc")]
 transform = Transform3D(-0.729721, 0, -0.173225, 0, 0.75, 0, 0.173225, 0, -0.729721, -63.0815, 0.536023, 77.8461)
+DialogueFlag = "WORKER_SALT"
 DialogueNodes = Array[String](["WORKER_SALT"])
 
 [node name="Stalagmites" type="Node3D" parent="World"]

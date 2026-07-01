@@ -10,7 +10,7 @@ OnlySecondaryMeshes = []
 Type = 6
 
 [node name="tiara" parent="." instance=ExtResource("2_0v8o3")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.0723815, -0.113233)
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, -0.0723815, -0.113233)
 
 [node name="Tiara" parent="tiara" index="0"]
 surface_material_override/0 = ExtResource("3_fe0ri")

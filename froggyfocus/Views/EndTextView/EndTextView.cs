@@ -90,4 +90,12 @@ public partial class EndTextView : View
         WorldBugController.Instance.Stop();
         Scene.Goto<MainMenuScene>();
     }
+
+    private void SetAchievement()
+    {
+        Data.Game.GameCompleted = true;
+        Data.Game.Save();
+
+        AchievementController.Instance.UpdateAchievements();
+    }
 }

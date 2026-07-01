@@ -148,11 +148,11 @@ transform = Transform3D(0.005, -5.5843e-12, -5.24102e-10, -5.24102e-10, -0.00010
 visible = false
 
 [node name="CatEars" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("6_heb1e")]
-transform = Transform3D(-0.008, -3.71881e-17, -6.99382e-10, -6.99382e-10, -3.49691e-10, 0.008, -6.77591e-17, 0.008, 3.49691e-10, 1.18071e-10, -5.92615e-05, 0.0024482)
+transform = Transform3D(0.008, -3.71881e-17, -2.22045e-16, -2.22045e-16, -3.49691e-10, -0.008, 3.7188e-17, 0.008, -3.49691e-10, 1.18071e-10, -5.92615e-05, 0.0024482)
 visible = false
 
 [node name="BucketHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("7_cfbqg")]
-transform = Transform3D(0.008, -1.734e-11, -2.81638e-10, -2.80119e-10, 0.000473202, -0.00798599, 3.39689e-11, 0.00798599, 0.000473202, 1.86051e-10, -0.000499837, 0.00314865)
+transform = Transform3D(-0.008, -1.734e-11, -4.17744e-10, -4.18039e-10, 0.000473202, 0.00798599, 7.40035e-12, 0.00798599, -0.000473202, 1.86051e-10, -0.000499837, 0.00314865)
 visible = false
 
 [node name="CowboyHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("8_l04e1")]
@@ -164,7 +164,7 @@ transform = Transform3D(0.006, -1.33194e-11, -2.26514e-10, -2.25113e-10, 0.00040
 visible = false
 
 [node name="Tiara" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("10_5qfyh")]
-transform = Transform3D(-0.005, 3.40891e-11, -1.77971e-10, -1.80164e-10, -0.00146111, 0.00478175, -1.94049e-11, 0.00478175, 0.00146111, 4.50446e-10, 0.000557695, 0.00268261)
+transform = Transform3D(0.005, 3.40891e-11, -2.59143e-10, -2.37871e-10, -0.00146111, -0.00478175, -1.08328e-10, 0.00478175, -0.00146111, 3.92492e-10, -0.000511682, 0.00235585)
 visible = false
 
 [node name="Bow" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("11_50sw0")]
@@ -184,7 +184,7 @@ transform = Transform3D(0.004, 1.61262e-11, 1.23683e-10, -1.24463e-10, 0.0002566
 visible = false
 
 [node name="FishingCap" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("15_a03ps")]
-transform = Transform3D(-0.01, -5.56282e-09, 3.12975e-09, 3.0205e-09, 0.000195309, 0.00999809, -5.62288e-09, 0.00999809, -0.000195309, -7.22965e-10, -0.000608329, 0.00311916)
+transform = Transform3D(0.01, -5.55883e-09, -2.53789e-09, -2.19137e-09, 0.000195309, -0.00999809, 5.59157e-09, 0.00999809, 0.000195309, -7.22965e-10, -0.000608329, 0.00311916)
 visible = false
 
 [node name="DetectiveHat" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("16_rmq88")]
@@ -252,7 +252,7 @@ transform = Transform3D(0.004, -2.16345e-11, -2.48962e-10, -2.47746e-10, 0.00017
 visible = false
 
 [node name="Hair_Race" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("28_hh2bw")]
-transform = Transform3D(-0.005, 7.54979e-10, 3.30012e-17, 0, -2.18557e-10, 0.005, 7.54979e-10, 0.005, 2.18557e-10, -7.22695e-11, -0.000201634, 0.00196293)
+transform = Transform3D(0.005, 7.54979e-10, -4.37114e-10, -4.37114e-10, -2.18557e-10, -0.005, -7.54979e-10, 0.005, -2.18557e-10, -7.22695e-11, -0.000201634, 0.00196293)
 visible = false
 
 [node name="Beanie" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("29_8lrbn")]

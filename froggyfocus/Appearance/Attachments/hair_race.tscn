@@ -10,7 +10,7 @@ OnlySecondaryMeshes = []
 Type = 22
 
 [node name="hair_race" parent="." instance=ExtResource("2_g0igi")]
-transform = Transform3D(-1.91, 0, 2.88402e-07, 0, 1.91, 0, -2.88402e-07, 0, -1.91, 0, -0.141419, 0)
+transform = Transform3D(1.91, 0, -1.19209e-07, 0, 1.91, 0, 1.19209e-07, 0, 1.91, 0, -0.141419, 0)
 
 [node name="hair" parent="hair_race" index="0"]
 surface_material_override/0 = ExtResource("3_66vh3")

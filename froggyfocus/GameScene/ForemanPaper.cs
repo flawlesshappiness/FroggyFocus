@@ -13,6 +13,7 @@ public partial class ForemanPaper : Area3D, IInteractable
         if (IsForemanCode)
         {
             GameFlags.SetFlag(CrystalDoorway.HasCodeFlag, 1);
+            Data.Game.Save();
         }
 
         DialogueController.Instance.StartDialogue(DialogueNode);

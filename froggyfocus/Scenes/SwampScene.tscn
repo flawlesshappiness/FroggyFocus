@@ -1082,7 +1082,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0434, -3.8147e-06, 72.024
 curve = SubResource("Curve3D_tqykx")
 
 [node name="MagpieNPC" parent="World/Forest" node_paths=PackedStringArray("DialogueCamera") instance=ExtResource("11_hem5p")]
-transform = Transform3D(1.47152, 0, -2.02105, 0, 2.5, 0, 2.02105, 0, 1.47152, -16.7191, -0.184568, 80.698)
+transform = Transform3D(0.882911, 0, -1.21263, 0, 1.5, 0, 1.21263, 0, 0.882911, -16.7191, -0.184568, 80.698)
 DialogueCamera = NodePath("CameraTransform/Camera3D")
 
 [node name="CameraTransform" type="Node3D" parent="World/Forest/MagpieNPC"]
