@@ -65,6 +65,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         if (HandInData.ClaimCount > 0)
         {
             StartDialogue(DialogueRequestCompleteRepeat);
+            MainQuestController.Instance.CompletePartnerQuest();
         }
         else if (MainQuestController.Instance.GetPartnerStep() == 0)
         {
@@ -113,7 +114,7 @@ public partial class FrogPartnerNpc : CharacterNpc, IInteractable
         {
             show_unlock = true;
             Data.Game.PartnerQuestCompleted = true;
-            MainQuestController.Instance.AdvancePartnerQuest(5);
+            MainQuestController.Instance.CompletePartnerQuest();
             StartDialogue(DialogueRequestComplete);
         }
     }

@@ -48,14 +48,41 @@ public partial class MainQuestController : SingletonController
         AdvanceQuest(PARTNER_QUEST_ID, step);
     }
 
+    public void CompletePartnerQuest()
+    {
+        if (GetPartnerStep() < 5)
+        {
+            GameFlags.SetFlag(PARTNER_QUEST_ID, 5);
+            Data.Game.Save();
+        }
+    }
+
     public void AdvanceManagerQuest(int step)
     {
         AdvanceQuest(MANAGER_QUEST_ID, step);
     }
 
+    public void CompleteManagerQuest()
+    {
+        if (GetManagerStep() < 5)
+        {
+            GameFlags.SetFlag(MANAGER_QUEST_ID, 5);
+            Data.Game.Save();
+        }
+    }
+
     public void AdvanceScientistQuest(int step)
     {
         AdvanceQuest(SCIENTIST_QUEST_ID, step);
+    }
+
+    public void CompleteScientistQuest()
+    {
+        if (GetScientistStep() < 4)
+        {
+            GameFlags.SetFlag(SCIENTIST_QUEST_ID, 4);
+            Data.Game.Save();
+        }
     }
 
     private bool AdvanceQuest(string id, int step)

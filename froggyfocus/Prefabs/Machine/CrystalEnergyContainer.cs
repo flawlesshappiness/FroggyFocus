@@ -30,6 +30,8 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
 
     private const string DialoguePowerSource = "CRYSTAL_POWER_SOURCE";
 
+    private bool active_dialogue;
+
     public override void _Ready()
     {
         base._Ready();
@@ -68,8 +70,14 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
         }
         else
         {
-            DialogueController.Instance.StartDialogue(DialoguePowerSource);
+            StartDialogue(DialoguePowerSource);
         }
+    }
+
+    private void StartDialogue(string id)
+    {
+        active_dialogue = true;
+        DialogueController.Instance.StartDialogue(id);
     }
 
     private void HandIn_Claimed(string id)
@@ -93,10 +101,15 @@ public partial class CrystalEnergyContainer : Area3D, IInteractable
 
     private void Dialogue_Ended(string id)
     {
-        if (id == DialoguePowerSource)
+        if (active_dialogue)
         {
-            HandInView.Instance.ShowPopup(HandInInfo.Id);
+            if (id == DialoguePowerSource)
+            {
+                HandInView.Instance.ShowPopup(HandInInfo.Id);
+            }
         }
+
+        active_dialogue = false;
     }
 
     private void SetCrystalEnabled(bool enabled)

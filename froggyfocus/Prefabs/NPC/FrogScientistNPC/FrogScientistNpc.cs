@@ -36,6 +36,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         if (HandInData.ClaimCount > 0)
         {
             StartDialogue(DialogueRequestCompleteRepeat);
+            MainQuestController.Instance.CompleteScientistQuest();
         }
         else if (MainQuestController.Instance.GetScientistStep() == 0)
         {
@@ -84,7 +85,7 @@ public partial class FrogScientistNpc : CharacterNpc, IInteractable
         {
             show_unlock = true;
             Data.Game.ScientistQuestCompleted = true;
-            MainQuestController.Instance.AdvanceScientistQuest(4);
+            MainQuestController.Instance.CompleteScientistQuest();
             StartDialogue(DialogueRequestComplete);
         }
     }

@@ -30,6 +30,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
         if (HandInData.ClaimCount > 0)
         {
             StartDialogue(DialogueRequestCompleteRepeat);
+            MainQuestController.Instance.CompleteManagerQuest();
         }
         else if (MainQuestController.Instance.GetManagerStep() == 0)
         {
@@ -79,7 +80,7 @@ public partial class FrogManagerNpc : CharacterNpc, IInteractable
         {
             show_unlock = true;
             Data.Game.ManagerQuestCompleted = true;
-            MainQuestController.Instance.AdvanceManagerQuest(5);
+            MainQuestController.Instance.CompleteManagerQuest();
             StartDialogue(DialogueRequestComplete);
         }
     }

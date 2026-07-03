@@ -65,10 +65,11 @@ public partial class UpgradeControl : Control
         var price = UpgradeController.Instance.GetCurrentPrice(type);
         PriceControl.SetPrice(price);
 
-        UpgradeButton.Visible = !is_max;
+        UpgradeButton.Disabled = is_max;
+        UpgradeButton.Text = is_max ? "MAX" : "UPGRADE";
         PriceControl.Visible = !is_max;
         CappedLabel.Visible = false;
-        MaxLabel.Visible = is_max;
+        MaxLabel.Visible = false;
     }
 
     private void UpdateLevelNodes(UpgradeData data)

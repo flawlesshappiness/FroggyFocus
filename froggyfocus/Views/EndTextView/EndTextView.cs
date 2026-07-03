@@ -76,6 +76,7 @@ public partial class EndTextView : View
                 yield return new WaitForSeconds(1f);
             }
 
+            SetAchievement();
             MainMenu();
             yield return AnimationPlayer.PlayAndWaitForAnimation("hide");
             Hide();

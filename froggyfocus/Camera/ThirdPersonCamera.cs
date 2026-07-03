@@ -192,8 +192,8 @@ public partial class ThirdPersonCamera : Node3D
 
     private void SetZoom(float value)
     {
-        zoom_value = value;
-        SpringArm.SpringLength = Mathf.Clamp(value, zoom_range.X, zoom_range.Y) + ZoomOffset;
+        zoom_value = Mathf.Clamp(value, zoom_range.X, zoom_range.Y);
+        SpringArm.SpringLength = value + ZoomOffset;
     }
 
     public void SetZoomOffset(float value)

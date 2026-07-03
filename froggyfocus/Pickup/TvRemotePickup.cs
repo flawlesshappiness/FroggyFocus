@@ -14,6 +14,8 @@ public partial class TvRemotePickup : Pickup
     protected override void PickupCollected()
     {
         base.PickupCollected();
+        GameFlags.SetFlag(TvTravel.HasRemoteFlag, 1);
+        Data.Game.Save();
         DialogueController.Instance.StartDialogue(PickupDialogue);
     }
 }
