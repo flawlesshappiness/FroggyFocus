@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dv5luqtp3xbwh"]
+[gd_scene load_steps=94 format=3 uid="uid://dv5luqtp3xbwh"]
 
 [ext_resource type="Script" uid="uid://clriuh67yhb1k" path="res://Scenes/SwampScene.cs" id="1_qfos7"]
 [ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_3og0i"]
@@ -73,6 +73,7 @@
 [ext_resource type="PackedScene" uid="uid://1elgfrjbfv2i" path="res://Prefabs/NPC/FrogRaceNPC/frog_race_npc.tscn" id="66_rw3kn"]
 [ext_resource type="PackedScene" uid="uid://dcy54vp2s8wmd" path="res://Prefabs/Race/race_blockade.tscn" id="67_pg2ls"]
 [ext_resource type="Resource" uid="uid://brxoh5080cwce" path="res://Race/Resources/Race_Swamp.tres" id="68_3og0i"]
+[ext_resource type="Script" uid="uid://kgfhnxrh558q" path="res://Misc/AnimatedPathFollow3D.cs" id="71_dhqp4"]
 [ext_resource type="AudioStream" uid="uid://bptyvdck5m1oc" path="res://Sounds/Raw/bgm_swamp_003.wav" id="73_yq8nf"]
 [ext_resource type="AudioStream" uid="uid://cnehdj6b3ol0i" path="res://Sounds/Raw/bgm_swamp_003_focus.wav" id="74_ckowb"]
 
@@ -214,8 +215,17 @@ _data = {
 &"float": SubResource("Animation_pg2ls")
 }
 
-[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
+[sub_resource type="Curve3D" id="Curve3D_d3bda"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, -3, -5, -4.75561, 15.1633, 26.976, -20.015, 1.615, 0, 4.665, -0.575, 0, 14.2537, 5.06245, 2.7059, 0, 0.91, -4.335, 0, 0, 0, 40.8898, 0.904364, 13.0872),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+up_vector_enabled = false
+
+[node name="SwampScene" type="Node3D" node_paths=PackedStringArray("IntroCameraPath", "DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
 script = ExtResource("1_qfos7")
+IntroCameraPath = NodePath("World/IntroCamera/Path3D/IntroCameraPath")
 DirectionalLight = NodePath("DirectionalLight3D")
 WorldEnvironment = NodePath("WorldEnvironment")
 FocusEvent = NodePath("World/FocusEvent")
@@ -2102,6 +2112,25 @@ transform = Transform3D(-0.451002, 0, -0.892523, 0, 1, 0, 0.892523, 0, -0.451002
 
 [node name="PlayerEnd" type="Marker3D" parent="World/Race"]
 transform = Transform3D(-0.814146, 0, 0.58066, 0, 1, 0, -0.58066, 0, -0.814146, 59.3601, -0.878258, -49.5141)
+
+[node name="IntroCamera" type="Node3D" parent="World"]
+
+[node name="Path3D" type="Path3D" parent="World/IntroCamera"]
+curve = SubResource("Curve3D_d3bda")
+
+[node name="IntroCameraPath" type="PathFollow3D" parent="World/IntroCamera/Path3D" node_paths=PackedStringArray("Camera", "Target")]
+transform = Transform3D(-0.324048, 0.125352, -0.937669, -5.21527e-08, 0.99115, 0.132502, 0.946013, 0.042938, -0.32119, 29.6588, 3.06144, 6.38583)
+progress = 53.1001
+script = ExtResource("71_dhqp4")
+Duration = 10.0
+Ease = 2
+Camera = NodePath("../IntroCamera")
+Target = NodePath("Target")
+
+[node name="Target" type="Node3D" parent="World/IntroCamera/Path3D/IntroCameraPath"]
+
+[node name="IntroCamera" type="Camera3D" parent="World/IntroCamera/Path3D"]
+transform = Transform3D(-0.236996, 0.0352172, -0.970872, -2.52947e-06, 0.999343, 0.0362505, 0.971511, 0.00859368, -0.23684, -5.13942, 3.62524, -28.8207)
 
 [node name="Sounds" type="Node3D" parent="."]
 

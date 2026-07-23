@@ -354,7 +354,8 @@ transform = Transform3D(-0.985067, 0.17217, 8.61173e-08, 0.17217, 0.985067, -1.5
 modulate = Color(1, 0, 0, 1)
 sprite_frames = SubResource("SpriteFrames_3yh6m")
 autoplay = "default"
-frame_progress = 0.795257
+frame = 1
+frame_progress = 0.085721
 
 [node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="Error"]
 transform = Transform3D(-0.765, 0, 1.15512e-07, 0, 0.765, 0, -1.15512e-07, 0, -0.765, 4.39372, 2.05675, -0.0621593)

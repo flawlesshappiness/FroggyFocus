@@ -109,6 +109,11 @@ layout_mode = 2
 text = "Gray"
 horizontal_alignment = 1
 
+[node name="Label4" type="Label" parent="HBoxContainer2/HBoxContainer/VBoxContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Zfih"
+horizontal_alignment = 1
+
 [node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer2/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 

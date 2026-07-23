@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b2gamstk3nwpo"]
+[gd_scene load_steps=39 format=3 uid="uid://b2gamstk3nwpo"]
 
 [ext_resource type="Script" uid="uid://di071toppdae7" path="res://Scenes/GlitchScene.cs" id="1_6t126"]
 [ext_resource type="PackedScene" uid="uid://0jmsiis7i0p6" path="res://Prefabs/Glitch/matrix_label.tscn" id="2_cq1bo"]
@@ -29,7 +29,9 @@
 [ext_resource type="AudioStream" uid="uid://biug0yyfjoxvi" path="res://Sounds/Raw/amb_water_glitch_001.wav" id="25_cq1bo"]
 [ext_resource type="Script" uid="uid://bkfv11csksi7b" path="res://Sounds/GlobalSoundPath.cs" id="26_48cxi"]
 [ext_resource type="PackedScene" uid="uid://dchv1jcnk6pto" path="res://Prefabs/Glitch/firewall_door.tscn" id="29_o5x5n"]
+[ext_resource type="Texture2D" uid="uid://baagsnngyos1j" path="res://Assets/FlawLizArt/Textures/firewall_error_01.png" id="30_ccw1e"]
 [ext_resource type="AudioStream" uid="uid://c88qxc6lkvt11" path="res://Sounds/Raw/bgm_glitch_001.wav" id="30_fcem5"]
+[ext_resource type="Texture2D" uid="uid://ctsgv8ineb060" path="res://Assets/FlawLizArt/Textures/firewall_error_02.png" id="31_w4inj"]
 [ext_resource type="AudioStream" uid="uid://c1eqvmjt6qls3" path="res://Sounds/Raw/bgm_glitch_001_focus.wav" id="31_ywrmg"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_cq1bo"]
@@ -51,6 +53,20 @@ point_count = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qpaxj"]
 size = Vector3(10, 2, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2a5s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_ccw1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_w4inj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="GlitchScene" type="Node3D" node_paths=PackedStringArray("MatrixLabelParent", "DirectionalLight", "WorldEnvironment", "FocusEvent", "BgmMain", "BgmFocus")]
 script = ExtResource("1_6t126")
@@ -636,6 +652,10 @@ Delay = 0.3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 16)
 Delay = 0.4
 
+[node name="Block_Red_4x4x17" parent="World/Red" instance=ExtResource("12_7wvfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+Delay = 0.4
+
 [node name="Block_Red_4x4x11" parent="World/Red" instance=ExtResource("12_7wvfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 16)
 Delay = 0.5
@@ -809,6 +829,155 @@ transform = Transform3D(-0.176989, 0.0931383, -4.07121e-09, 0, -8.74228e-09, -0.
 
 [node name="FirewallDoor" parent="World" instance=ExtResource("29_o5x5n")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5.5)
+
+[node name="Errors" type="Node3D" parent="World"]
+
+[node name="Yellow" type="Node3D" parent="World/Errors"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="World/Errors/Yellow"]
+transform = Transform3D(-0.985067, 0.17217, 8.61173e-08, 0.17217, 0.985067, -1.50516e-08, -8.74228e-08, 0, -1, -29.0173, 10.3998, 4.96869)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+
+[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="World/Errors/Yellow"]
+transform = Transform3D(-0.987463, -0.157848, 8.63268e-08, -0.157848, 0.987463, 1.37995e-08, -8.74228e-08, 0, -1, -35.5528, 10.6647, 4.96869)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="World/Errors/Yellow"]
+transform = Transform3D(-0.574304, 0.0282892, 8.68226e-08, 0.0282892, 0.574304, -2.47313e-09, -8.68391e-08, 1.80143e-09, -0.575, -32.0494, 9.18561, 4.96869)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+
+[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="World/Errors/Yellow"]
+transform = Transform3D(1.11943e-07, -3.03799e-09, 0.575, 0.0282892, 0.574304, -2.47313e-09, -0.574304, 0.0282892, 1.11957e-07, -36.9606, 9.18561, 2.01766)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D5" type="AnimatedSprite3D" parent="World/Errors/Yellow"]
+transform = Transform3D(2.29731e-07, -5.19391e-09, 1.155, -0.211711, 1.13543, 4.72154e-08, -1.13543, -0.211711, 2.24887e-07, -36.9606, 10.062, -1.40382)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 1.2
+
+[node name="AnimatedSprite3D6" type="AnimatedSprite3D" parent="World/Errors/Yellow"]
+transform = Transform3D(1.15166, -0.0877665, -2.78246e-07, 0.0877665, 1.15166, -2.52768e-08, 2.79362e-07, 4.06027e-09, 1.155, -34.041, 10.062, -4.96315)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D7" type="AnimatedSprite3D" parent="World/Errors/Yellow"]
+transform = Transform3D(0.849653, 0.162218, -2.06078e-07, -0.162218, 0.849653, 3.62492e-08, 2.09219e-07, 3.0408e-09, 0.865, -28.8608, 10.1789, -4.96315)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 1.2
+
+[node name="Red" type="Node3D" parent="World/Errors"]
+
+[node name="AnimatedSprite3D8" type="AnimatedSprite3D" parent="World/Errors/Red"]
+transform = Transform3D(1.30481e-07, -7.52579e-09, 1, -0.279276, 0.960211, 4.36666e-08, -0.960211, -0.279276, 1.23188e-07, -4.99102, 10.0023, -30.1054)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+
+[node name="AnimatedSprite3D9" type="AnimatedSprite3D" parent="World/Errors/Red"]
+transform = Transform3D(5.72391e-08, -1.0574e-09, 0.755, 0.0840675, 0.750305, -5.32262e-09, -0.750305, 0.0840675, 5.70009e-08, -4.99102, 10.0892, -34.3808)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D10" type="AnimatedSprite3D" parent="World/Errors/Red"]
+transform = Transform3D(0.743131, 0.133349, -8.77847e-08, -0.133349, 0.743131, 2.05599e-08, 9.0036e-08, -4.73211e-09, 0.755, -2.40882, 9.57171, -36.9651)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+
+[node name="AnimatedSprite3D11" type="AnimatedSprite3D" parent="World/Errors/Red"]
+transform = Transform3D(1.03307, -0.0631494, -1.23593e-07, 0.0631494, 1.03307, -1.05577e-09, 1.23427e-07, -6.48707e-09, 1.035, 0.362455, 10.5421, -36.9651)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D12" type="AnimatedSprite3D" parent="World/Errors/Red"]
+transform = Transform3D(0.483251, -0.205168, -5.8915e-08, 0.205168, 0.483251, -2.1438e-08, 6.26078e-08, -3.29054e-09, 0.525, 2.66561, 9.64005, -36.9651)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 1.2
+
+[node name="AnimatedSprite3D13" type="AnimatedSprite3D" parent="World/Errors/Red"]
+transform = Transform3D(-5.96046e-08, 3.72529e-09, -0.525, -0.0507749, 0.522539, 6.93783e-09, 0.522539, 0.0507749, -4.71185e-08, 4.97332, 10.4599, -34.5352)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D14" type="AnimatedSprite3D" parent="World/Errors/Red"]
+transform = Transform3D(-1.44684e-07, 9.67391e-09, -0.89, 0.0682956, 0.887376, -1.45715e-09, 0.887376, -0.0682956, -1.44999e-07, 4.97332, 9.84811, -30.0354)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 1.2
+
+[node name="Blue" type="Node3D" parent="World/Errors"]
+
+[node name="AnimatedSprite3D8" type="AnimatedSprite3D" parent="World/Errors/Blue"]
+transform = Transform3D(0.992501, -0.122233, -1.70588e-07, 0.122233, 0.992501, -2.57262e-08, 1.72454e-07, 4.68175e-09, 1, 30.5286, 10.0023, -4.9687)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+
+[node name="AnimatedSprite3D9" type="AnimatedSprite3D" parent="World/Errors/Blue"]
+transform = Transform3D(0.844688, 0.0948811, -1.46114e-07, -0.0948811, 0.844688, 1.2408e-08, 1.46586e-07, 3.97948e-09, 0.85, 34.3625, 9.38151, -4.9687)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D10" type="AnimatedSprite3D" parent="World/Errors/Blue"]
+transform = Transform3D(-1.83508e-07, -8.12687e-09, -0.85, 0.202797, 0.825453, -5.16743e-08, 0.825453, -0.202797, -1.7627e-07, 36.9772, 10.5673, -2.34387)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+
+[node name="AnimatedSprite3D11" type="AnimatedSprite3D" parent="World/Errors/Blue"]
+transform = Transform3D(-1.00099e-07, 2.81706e-09, -0.575, -0.18796, 0.543411, 3.53836e-08, 0.543411, 0.18796, -9.36794e-08, 36.9772, 9.3331, 0.337345)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D12" type="AnimatedSprite3D" parent="World/Errors/Blue"]
+transform = Transform3D(-1.54228e-07, 3.72398e-09, -0.945, 0.082921, 0.941355, -9.82346e-09, 0.941355, -0.082921, -1.5396e-07, 36.9772, 10.5125, 2.8796)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 1.2
+
+[node name="AnimatedSprite3D13" type="AnimatedSprite3D" parent="World/Errors/Blue"]
+transform = Transform3D(-0.579118, -0.0827505, 8.83325e-08, -0.0827505, 0.579118, 2.16118e-08, -9.05014e-08, 8.89953e-09, -0.585, 34.1634, 9.57029, 4.96535)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 0.8
+
+[node name="AnimatedSprite3D14" type="AnimatedSprite3D" parent="World/Errors/Blue"]
+transform = Transform3D(-1.11525, 0.18197, 1.70625e-07, 0.18197, 1.11525, -1.11852e-08, -1.702e-07, 1.64375e-08, -1.13, 29.8341, 10.4312, 4.96535)
+modulate = Color(1, 0, 0, 1)
+sprite_frames = SubResource("SpriteFrames_k2a5s")
+autoplay = "default"
+speed_scale = 1.2
 
 [node name="Sounds" type="Node3D" parent="."]
 

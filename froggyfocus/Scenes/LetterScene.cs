@@ -162,7 +162,8 @@ public partial class LetterScene : GameScene
                         Data.Game.StartingNode = "";
                         Data.Game.Save();
 
-                        Scene.Goto<SwampScene>();
+                        var scene = Scene.Goto<SwampScene>();
+                        scene.AnimateIntroCamera();
                     }
                 });
             }
