@@ -1,12 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dn3oktr6fampb"]
+[gd_scene load_steps=24 format=3 uid="uid://dn3oktr6fampb"]
 
 [ext_resource type="Script" uid="uid://bbaduvx32xpxt" path="res://Scenes/TransitionScene.cs" id="1_ng4y5"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_kb1rn"]
-[ext_resource type="Script" uid="uid://br6wmaebrwebg" path="res://Weather/WeatherInfo.cs" id="2_venqk"]
-[ext_resource type="Resource" uid="uid://cr6w4xkj1cp6h" path="res://Weather/Resources/Sunny-Windy.tres" id="3_ynwol"]
-[ext_resource type="PackedScene" uid="uid://cgqanaobw2044" path="res://Prefabs/Water/water.tscn" id="5_fut22"]
+[ext_resource type="PackedScene" uid="uid://bqmjnsaiku3oo" path="res://Assets/FlawLizArt/Other/Circle.fbx" id="3_453po"]
+[ext_resource type="Material" uid="uid://dd3xell82onls" path="res://Materials/Water.tres" id="4_8wy26"]
 [ext_resource type="PackedScene" uid="uid://dpadyrifvpkie" path="res://Prefabs/Objects/lilypad_boat.tscn" id="6_siplh"]
-[ext_resource type="PackedScene" uid="uid://bhuic2i3dy7q5" path="res://Prefabs/Player/player.tscn" id="7_028rw"]
+[ext_resource type="PackedScene" uid="uid://1fq5vb2vmge2" path="res://Prefabs/Characters/frog_cute.tscn" id="7_8wy26"]
 [ext_resource type="Texture2D" uid="uid://djodu0snc2qh6" path="res://Assets/KenneyNL/Particles/circle_02.png" id="8_ynwol"]
 [ext_resource type="AudioStream" uid="uid://cxeuh07qvtvxk" path="res://Sounds/Raw/amb_forest_001.ogg" id="9_1acyu"]
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="10_txb7p"]
@@ -116,14 +115,11 @@ stream_0/stream = ExtResource("11_txb7p")
 stream_1/stream = ExtResource("12_8wy26")
 stream_2/stream = ExtResource("13_kduix")
 
-[node name="TransitionScene" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Camera", "Music", "DirectionalLight", "WorldEnvironment")]
+[node name="TransitionScene" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Camera", "Music")]
 script = ExtResource("1_ng4y5")
 AnimationPlayer = NodePath("World/Anim_Main/AnimationPlayer")
 Camera = NodePath("World/Anim_Main/Camera3D")
 Music = NodePath("Sounds/Music")
-DirectionalLight = NodePath("DirectionalLight3D")
-WorldEnvironment = NodePath("WorldEnvironment")
-Weathers = Array[ExtResource("2_venqk")]([ExtResource("3_ynwol")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_kb1rn")
@@ -135,8 +131,11 @@ shadow_enabled = true
 
 [node name="World" type="Node3D" parent="."]
 
-[node name="Water" parent="World" instance=ExtResource("5_fut22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="Circle2" parent="World" instance=ExtResource("3_453po")]
+transform = Transform3D(750, 0, 0, 0, 750, 0, 0, 0, 750, 0, -1, 0)
+
+[node name="Circle" parent="World/Circle2" index="0"]
+surface_material_override/0 = ExtResource("4_8wy26")
 
 [node name="Anim_Main" type="Node3D" parent="World"]
 
@@ -148,8 +147,8 @@ fov = 40.0
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.948026, 0)
 collision_layer = 0
 
-[node name="Player" parent="World/Anim_Main/Lilypad_Boat" instance=ExtResource("7_028rw")]
-transform = Transform3D(0.349374, 0, -0.936984, 0, 1, 0, 0.936984, 0, 0.349374, 0.134557, 0, -0.200216)
+[node name="FrogCute" parent="World/Anim_Main/Lilypad_Boat" instance=ExtResource("7_8wy26")]
+transform = Transform3D(0.455933, 0, -1.22276, 0, 1.305, 0, 1.22276, 0, 0.455933, 0.134557, 0, -0.200216)
 
 [node name="ripples" type="GPUParticles3D" parent="World/Anim_Main/Lilypad_Boat"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0381402, 0)
@@ -179,3 +178,5 @@ bus = &"Environment"
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_txb7p")
 bus = &"BGM"
+
+[editable path="World/Circle2"]

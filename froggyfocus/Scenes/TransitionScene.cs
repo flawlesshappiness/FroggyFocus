@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections;
 
-public partial class TransitionScene : GameScene
+public partial class TransitionScene : Scene
 {
     [Export]
     public AnimationPlayer AnimationPlayer;
