@@ -36,7 +36,6 @@ public partial class MainQuestsContainer : ControlScript
         base.Initialize();
         GameFlagsController.Instance.OnFlagChanged += FlagChanged;
         GameProfileController.Instance.OnGameProfileSelected += GameProfileSelected;
-        Load();
     }
 
     protected override void OnShow()
@@ -45,6 +44,7 @@ public partial class MainQuestsContainer : ControlScript
         var intro_finished = GameFlags.IsFlag(LetterScene.INTRO_LETTERS_ID, 1);
         var quests_finished = PartnerFinished && ManagerFinished && ScientistFinished;
         MainContainer.Visible = intro_finished && !quests_finished;
+        Load();
     }
 
     private void GameProfileSelected(int profile)

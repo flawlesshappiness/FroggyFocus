@@ -19,7 +19,7 @@ transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 
 transform = Transform3D(6.55671e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, 6.55671e-08, 3.554, -0.607814, -0.306585)
 
 [node name="oil_barrel2" parent="." instance=ExtResource("3_0my2j")]
-transform = Transform3D(1.2, 0, 0, 0, -1.2, -1.81195e-07, 0, 1.81195e-07, -1.2, 0, -1.11622, -0.13509)
+transform = Transform3D(1.2, 0, 0, 0, -1.2, -1.81195e-07, 0, 1.81195e-07, -1.2, 0, -2.71466, -0.13509)
 
 [node name="SfxOil" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_hith6")

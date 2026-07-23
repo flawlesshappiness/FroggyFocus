@@ -176,7 +176,7 @@ transform = Transform3D(0.007, -9.97029e-12, -5.03931e-10, -5.03931e-10, -0.0002
 visible = false
 
 [node name="BugOfLove" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("13_ld1e8")]
-transform = Transform3D(0.006, 1.74623e-10, 2.32831e-10, 2.06114e-10, -0.00072779, -0.0059557, -1.74623e-10, 0.0059557, -0.00072779, 1.1064e-09, 0.000501497, 0.00322235)
+transform = Transform3D(-0.006, 1.74623e-10, 2.91706e-10, 3.20302e-10, -0.00072779, 0.0059557, 1.91175e-10, 0.0059557, 0.00072779, 1.1064e-09, 0.000501497, 0.00322235)
 visible = false
 
 [node name="Plumbob" parent="frog_cute/Armature/Skeleton3D/HatAttachmentGroup" instance=ExtResource("14_xj466")]

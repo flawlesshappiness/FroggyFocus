@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\prefabs\\ui\\quests\\mainquestscontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:prefabs\\ui\\quests\\mainquestscontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|c:\\git\\godot\\froggyfocus\\froggyfocus\\scenes\\swampscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0442FFFA-1483-44FC-88AD-F647AAB8CB36}|FroggyFocus.csproj|solutionrelative:scenes\\swampscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -38,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,59 +50,69 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LetterScene.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Scenes\\LetterScene.cs",
-              "RelativeDocumentMoniker": "Scenes\\LetterScene.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Scenes\\LetterScene.cs",
-              "RelativeToolTip": "Scenes\\LetterScene.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAYwJ4AAAAoAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "MainQuestsContainer.cs",
+              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Prefabs\\UI\\Quests\\MainQuestsContainer.cs",
+              "RelativeDocumentMoniker": "Prefabs\\UI\\Quests\\MainQuestsContainer.cs",
+              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Prefabs\\UI\\Quests\\MainQuestsContainer.cs",
+              "RelativeToolTip": "Prefabs\\UI\\Quests\\MainQuestsContainer.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwC4AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T14:45:16.264Z",
+              "WhenOpened": "2026-07-23T19:51:56.09Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DemoScene.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Scenes\\DemoScene.cs",
-              "RelativeDocumentMoniker": "Scenes\\DemoScene.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Scenes\\DemoScene.cs",
-              "RelativeToolTip": "Scenes\\DemoScene.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Title": "LetterScene.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Scenes\\LetterScene.cs",
+              "RelativeDocumentMoniker": "Scenes\\LetterScene.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Scenes\\LetterScene.cs",
+              "RelativeToolTip": "Scenes\\LetterScene.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAYwJ4AAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T14:43:36.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-11T14:45:16.264Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "DemoScene.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Scenes\\DemoScene.cs",
+              "RelativeDocumentMoniker": "Scenes\\DemoScene.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Scenes\\DemoScene.cs",
+              "RelativeToolTip": "Scenes\\DemoScene.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-11T14:43:36.704Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SwampScene.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Scenes\\SwampScene.cs",
               "RelativeDocumentMoniker": "Scenes\\SwampScene.cs",
               "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Scenes\\SwampScene.cs",
               "RelativeToolTip": "Scenes\\SwampScene.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAwwC4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAwwB0AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-11T14:43:33.388Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "UpgradeController.cs",
-              "DocumentMoniker": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Upgrade\\UpgradeController.cs",
+              "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Upgrade\\UpgradeController.cs",
               "RelativeDocumentMoniker": "Upgrade\\UpgradeController.cs",
-              "ToolTip": "C:\\GIT\\GODOT\\FROGGYFOCUS\\FROGGYFOCUS\\Upgrade\\UpgradeController.cs",
+              "ToolTip": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Upgrade\\UpgradeController.cs",
               "RelativeToolTip": "Upgrade\\UpgradeController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAIwAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-11T13:32:03.802Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-11T13:32:03.802Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AchievementController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Achievements\\AchievementController.cs",
               "RelativeDocumentMoniker": "Achievements\\AchievementController.cs",
@@ -111,7 +125,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Player\\Player.cs",
@@ -123,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "FrogPlayerController.cs",
               "DocumentMoniker": "C:\\Git\\Godot\\FroggyFocus\\froggyfocus\\Player\\FrogPlayerController.cs",
               "RelativeDocumentMoniker": "Player\\FrogPlayerController.cs",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jnh2kdwd3acg"]
+[gd_scene load_steps=13 format=3 uid="uid://jnh2kdwd3acg"]
 
 [ext_resource type="PackedScene" uid="uid://b0prnatdq234e" path="res://Assets/FlawLizArt/Furniture/quest_board.fbx" id="1_euyx5"]
 [ext_resource type="Script" uid="uid://c4rxnr7vq8jd7" path="res://Prefabs/QuestBoard/QuestBoard.cs" id="1_njkut"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dn2p8y4s4fbam" path="res://Assets/FlawLizArt/Other/ExclamationMark.fbx" id="3_rgob0"]
 [ext_resource type="Script" uid="uid://5rex40me7mb2" path="res://Animation/AnimationAutoPlay.cs" id="4_2jisf"]
 [ext_resource type="Material" uid="uid://d1jmnk3b1hv6h" path="res://Materials/Color_Beige.tres" id="4_38liw"]
+[ext_resource type="Material" uid="uid://bmvo86yio563q" path="res://Materials/Color_Yellow.tres" id="6_38liw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_euyx5"]
 size = Vector3(4.3623, 3.35339, 1)
@@ -81,6 +82,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.86108, 0)
 
 [node name="ExclamationMark" parent="Exclamation/Anim" instance=ExtResource("3_rgob0")]
 
+[node name="ExclamationMark" parent="Exclamation/Anim/ExclamationMark" index="0"]
+surface_material_override/0 = ExtResource("6_38liw")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Exclamation"]
 libraries = {
 &"": SubResource("AnimationLibrary_38liw")
@@ -89,3 +93,4 @@ script = ExtResource("4_2jisf")
 Animation = "idle"
 
 [editable path="quest_board"]
+[editable path="Exclamation/Anim/ExclamationMark"]
