@@ -44,7 +44,8 @@ public partial class PurchasePopup : PopupControl
         var item_info = ItemController.Instance.GetInfo(info.Type);
         var shop_info = ShopController.Instance.GetInfo(info.Type);
 
-        ItemSubViewport.SetPrefab(info.Prefab);
+        var att = ItemSubViewport.SetPrefab<AppearanceAttachment>(info.Prefab);
+        att.SetDefaultColors();
 
         NameLabel.Text = item_info.Name;
         PriceControl.SetPrice(shop_info.Price);
