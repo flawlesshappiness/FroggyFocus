@@ -82,7 +82,7 @@ shape = SubResource("BoxShape3D_0qf17")
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.59121, 0)
 height = 50.0
-vertices = PackedVector3Array(24.2854, 0, 0.911563, 24.0969, 0, -28.595, -45.0031, 0, -25.7669, -44.3432, 0, 1.75999)
+vertices = PackedVector3Array(23.651, 0, 0.140071, 24.0969, 0, -28.595, -45.0031, 0, -25.7669, -42.93, 0, 0.0441484)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
