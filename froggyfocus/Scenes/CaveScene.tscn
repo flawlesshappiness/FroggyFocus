@@ -273,7 +273,7 @@ transform = Transform3D(-24.6875, 0, 31.4727, 0, 40, 0, -31.4727, 0, -24.6875, 6
 [node name="Stalagmite_Platform_Crystals13" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
 transform = Transform3D(-34.4861, 0, -20.2661, 0, 40, 0, 20.2661, 0, -34.4861, 22.5831, 59.9434, -75.2433)
 
-[node name="Stalagmite_Platform3" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("6_0d8tv")]
+[node name="Stalagmite_Platform_Crystals" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
 transform = Transform3D(0.790047, 0, -29.9896, 0, 30, 0, 29.9896, 0, 0.790047, 3.89821, 5.59717, -53.1093)
 
 [node name="Stalagmite_Platform_Crystals17" parent="World/NavigationRegion3D/Platforms" instance=ExtResource("27_8vus0")]
