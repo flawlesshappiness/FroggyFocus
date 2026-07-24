@@ -49,16 +49,20 @@ public partial class BushAttack : FocusAttack
 
                 if (IsFocusTarget)
                 {
-                    HurtFocusValue(0.1f);
+                    HurtFocusValue(0.05f);
                     DisruptCursorFocus();
                 }
 
+                SetLock(true);
                 Target.Animate_Exclamation();
+                Target.FocusCircle.SetVisible(false);
                 yield return Target.Animate_DigDown();
 
                 var bush = CreateBushes();
                 Target.GlobalPosition = bush.GlobalPosition;
                 SfxCreateBush.Play();
+
+                SetLock(false);
 
                 while (!bush.Triggered)
                 {
@@ -98,5 +102,11 @@ public partial class BushAttack : FocusAttack
         var node = BushPrefab.Instantiate<BushObject>();
         node.SetParent(Target.FocusEvent);
         return node;
+    }
+
+    private void SetLock(bool locked)
+    {
+        var id = nameof(BushAttack);
+        Target.FocusLock.SetLock(id, locked);
     }
 }

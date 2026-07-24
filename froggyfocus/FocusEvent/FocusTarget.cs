@@ -235,7 +235,7 @@ public partial class FocusTarget : Node3D
             AdjustFocusValue(-1.0f);
         }
 
-        if (!IsFocusMax)
+        if (!IsFocusMax && !is_dug_down)
         {
             var t = Mathf.Clamp(FocusValue / FocusMax, 0f, 1f);
             IsFocusMax = t >= 1.0f;
@@ -553,11 +553,13 @@ public partial class FocusTarget : Node3D
 
     public Coroutine Animate_DiveDown()
     {
+        is_dug_down = true;
         return AnimationPlayer_Character.PlayAndWaitForAnimation("dive_down");
     }
 
     public Coroutine Animate_DiveUp()
     {
+        is_dug_down = false;
         return AnimationPlayer_Character.PlayAndWaitForAnimation("dive_up");
     }
 

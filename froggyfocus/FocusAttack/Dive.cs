@@ -41,16 +41,24 @@ public partial class Dive : FocusAttack
                     DisruptCursorFocus();
                 }
 
+                SetLock(true);
                 Target.Animate_Exclamation();
                 yield return Target.Animate_DiveDown();
 
                 var position = Target.GetNextPosition();
                 Target.GlobalPosition = position;
 
+                SetLock(false);
                 yield return Target.Animate_DiveUp();
 
                 EndState();
             }
         }
+    }
+
+    private void SetLock(bool locked)
+    {
+        var id = nameof(Dive);
+        Target.FocusLock.SetLock(id, locked);
     }
 }
