@@ -19,8 +19,8 @@ public partial class EldritchEyeFlash : FocusAttack
         {
             while (true)
             {
-                var duration_min = Mathf.Lerp(5f, 5f, Target.Difficulty);
-                var duration_max = Mathf.Lerp(8f, 8f, Target.Difficulty);
+                var duration_min = Mathf.Lerp(2f, 2f, Target.Difficulty);
+                var duration_max = Mathf.Lerp(4f, 4f, Target.Difficulty);
                 var duration = rng.RandfRange(duration_min, duration_max);
                 yield return new WaitForSeconds(duration);
                 Spawn();
