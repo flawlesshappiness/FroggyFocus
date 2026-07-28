@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dn3oktr6fampb"]
+[gd_scene load_steps=28 format=3 uid="uid://dn3oktr6fampb"]
 
 [ext_resource type="Script" uid="uid://bbaduvx32xpxt" path="res://Scenes/TransitionScene.cs" id="1_ng4y5"]
 [ext_resource type="Environment" uid="uid://bie4vi82fv6l7" path="res://Environment/Weather.tres" id="2_kb1rn"]
@@ -11,7 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://cxfhyl6gsah47" path="res://Sounds/Raw/amb_water_001.wav" id="10_txb7p"]
 [ext_resource type="AudioStream" uid="uid://beeqoesy3pouy" path="res://Sounds/Raw/bgm_travel_001.wav" id="11_txb7p"]
 [ext_resource type="AudioStream" uid="uid://beebandjuoqg0" path="res://Sounds/Raw/bgm_travel_002.wav" id="12_8wy26"]
+[ext_resource type="AudioStream" uid="uid://b3we57k6co1yk" path="res://Sounds/Raw/sfx_water_wave_001.wav" id="13_kak4r"]
 [ext_resource type="AudioStream" uid="uid://bsuj0ja85agou" path="res://Sounds/Raw/bgm_travel_003.wav" id="13_kduix"]
+[ext_resource type="AudioStream" uid="uid://cr6fmc0807eyf" path="res://Sounds/Raw/sfx_water_wave_002.wav" id="14_bfmyw"]
+[ext_resource type="AudioStream" uid="uid://6urpqaegmi83" path="res://Sounds/Raw/sfx_water_wave_003.wav" id="15_y3ipt"]
 
 [sub_resource type="Curve" id="Curve_ynwol"]
 _data = [Vector2(0, 0), 0.0, 5.0, 0, 1, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.239352, 0.0, 0, 0]
@@ -72,6 +75,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, -0.948026, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Sounds/Waves:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ynwol"]
 resource_name = "sail"
@@ -101,6 +116,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, -0.948026, -1.34731), Vector3(0, -0.948026, 0), Vector3(0, -0.948026, -1.34731), Vector3(0, -0.948026, 8.47858)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Sounds/Waves:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.09, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1acyu"]
 _data = {
@@ -114,6 +141,12 @@ streams_count = 3
 stream_0/stream = ExtResource("11_txb7p")
 stream_1/stream = ExtResource("12_8wy26")
 stream_2/stream = ExtResource("13_kduix")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pn30a"]
+streams_count = 3
+stream_0/stream = ExtResource("13_kak4r")
+stream_1/stream = ExtResource("14_bfmyw")
+stream_2/stream = ExtResource("15_y3ipt")
 
 [node name="TransitionScene" type="Node3D" node_paths=PackedStringArray("AnimationPlayer", "Camera", "Music")]
 script = ExtResource("1_ng4y5")
@@ -178,5 +211,11 @@ bus = &"Environment"
 [node name="Music" type="AudioStreamPlayer" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_txb7p")
 bus = &"BGM"
+
+[node name="Waves" type="AudioStreamPlayer" parent="Sounds"]
+stream = SubResource("AudioStreamRandomizer_pn30a")
+volume_db = -10.0
+max_polyphony = 3
+bus = &"SFX"
 
 [editable path="World/Circle2"]
