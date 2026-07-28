@@ -10,7 +10,6 @@ public abstract class SaveData
     public bool Deleted { get; set; } = false;
 
     public void UpdateVersion() => Version = ApplicationInfo.Instance.Version;
-    public void UpdateApplicationType() => ApplicationType = ApplicationInfo.Instance.Type;
     public void UpdateTimestamp() => TimeUpdated = DateTime.UtcNow.ToString();
 
     [JsonIgnore]
@@ -22,7 +21,6 @@ public abstract class SaveData
     public void Update()
     {
         UpdateVersion();
-        UpdateApplicationType();
         UpdateTimestamp();
     }
 

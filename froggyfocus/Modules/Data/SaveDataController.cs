@@ -40,6 +40,7 @@ public partial class SaveDataController : Node
         var data = new T();
         data.Profile = profile;
         data.Deleted = true;
+        data.ApplicationType = ApplicationInfo.Instance.Type;
         Save(data);
 
         return data;

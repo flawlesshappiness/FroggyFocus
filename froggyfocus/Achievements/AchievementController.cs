@@ -110,13 +110,13 @@ public partial class AchievementController : SingletonController
 
     private void SetAchievement(string id)
     {
-        if (ApplicationInfo.Instance.Type == ApplicationType.Release)
+        if (Data.Game.ApplicationType == ApplicationType.Release)
         {
             SteamController.Instance.SetAchievement(id);
         }
         else
         {
-            Debug.LogMethod(id);
+            Debug.LogMethod($"{Data.Game.ApplicationType}: {id}");
         }
     }
 }
