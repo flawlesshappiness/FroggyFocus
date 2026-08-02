@@ -15,6 +15,7 @@ radius = 1.48291
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_syha2")
+IntroDialogue = "SHOP_MOLE_FIRST"
 Mole = NodePath("MoleNPC")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
