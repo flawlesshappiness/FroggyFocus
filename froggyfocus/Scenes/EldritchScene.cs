@@ -11,6 +11,7 @@ public partial class EldritchScene : GameScene
         base.Initialize();
         Data.Game.EldritchLocationEntered = true;
         MainQuestController.Instance.AdvanceScientistQuest(2);
+        AchievementController.Instance.UpdateLocationAchievements();
     }
 
     public override void _ExitTree()

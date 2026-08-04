@@ -40,6 +40,7 @@ public partial class AchievementController : SingletonController
 
     private void UpdateQuestAchievements()
     {
+        UpdateLocationAchievements();
         UpdatePartnerQuestAchievement();
         UpdateManagerQuestAchievement();
         UpdateScientistQuestAchievement();
@@ -69,7 +70,7 @@ public partial class AchievementController : SingletonController
         }
     }
 
-    private void UpdateLocationAchievements()
+    public void UpdateLocationAchievements()
     {
         UpdateEldritchLocationAchievement();
         UpdateCrystalLocationAchievement();
