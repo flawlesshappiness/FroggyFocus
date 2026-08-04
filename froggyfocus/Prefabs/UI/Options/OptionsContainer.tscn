@@ -64,7 +64,7 @@ ForcedDisplayOptionButton = NodePath("Options/TabContainer/Gamepad/ScrollContain
 layout_mode = 2
 
 [node name="TabContainer" parent="Options" index="0"]
-current_tab = 3
+current_tab = 4
 
 [node name="Audio" parent="Options/TabContainer" index="1"]
 visible = false
@@ -135,6 +135,7 @@ popup/item_3/text = "Never"
 popup/item_3/id = 2
 
 [node name="Gamepad" type="MarginContainer" parent="Options/TabContainer" index="4"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -341,7 +342,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_hwgln")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_i7c0d")
 
 [node name="Gameplay" type="MarginContainer" parent="Options/TabContainer" index="5"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -384,6 +384,7 @@ script = ExtResource("4_6m8ks")
 BigStepAmount = 0.1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Options/TabContainer/Gameplay/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Options/TabContainer/Gameplay/VBoxContainer/HBoxContainer2"]
