@@ -20,6 +20,8 @@ public partial class GlitchScene : GameScene
         Data.Game.GlitchLocationEntered = true;
         MainQuestController.Instance.AdvanceManagerQuest(3);
         AchievementController.Instance.UpdateLocationAchievements();
+        StatsController.Instance.UnlockCrown();
+
     }
 
     private void InitializeMatrixLabels()

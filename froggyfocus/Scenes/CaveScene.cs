@@ -4,5 +4,7 @@ public partial class CaveScene : GameScene
     {
         base.Initialize();
         MainQuestController.Instance.AdvancePartnerQuest(2);
+        StatsController.Instance.UnlockCrown();
+
     }
 }

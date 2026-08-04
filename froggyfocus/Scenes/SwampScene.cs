@@ -23,6 +23,9 @@ public partial class SwampScene : GameScene
             GameFlags.SetFlag(LetterScene.INTRO_LETTERS_ID, 1);
             GameView.Instance.TriggerQuestAdvancedNotification();
         }
+
+        StatsController.Instance.UnlockCrown();
+
     }
 
     public override void _ExitTree()

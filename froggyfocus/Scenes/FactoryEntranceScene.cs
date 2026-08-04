@@ -31,6 +31,13 @@ public partial class FactoryEntranceScene : GameScene
         SetVentsVisible(false);
     }
 
+    protected override void Initialize()
+    {
+        base.Initialize();
+        StatsController.Instance.UnlockCrown();
+
+    }
+
     private void EnterVent()
     {
         AmbVents.FadeIn(2f, 1f);

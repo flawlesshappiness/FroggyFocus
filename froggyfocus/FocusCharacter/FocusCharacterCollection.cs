@@ -11,4 +11,7 @@ public partial class FocusCharacterCollection : ResourceCollection<FocusCharacte
 
     [Export]
     public FocusCharacterInfo BugOfLove;
+
+    [Export]
+    public FocusCharacterInfo CrystalHeart;
 }

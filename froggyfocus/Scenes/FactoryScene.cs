@@ -4,5 +4,7 @@ public partial class FactoryScene : GameScene
     {
         base.Initialize();
         MainQuestController.Instance.AdvanceManagerQuest(2);
+        StatsController.Instance.UnlockCrown();
+
     }
 }

@@ -149,15 +149,19 @@ public partial class StatsController : SingletonController
 
     private void FocusEvent_Ended(FocusEventResult result)
     {
+        var info_heart = FocusCharacterController.Instance.Collection.CrystalHeart;
+        if (result.FocusEvent.Targets.Any(x => x.Info == info_heart)) return;
+
         UnlockCrown();
     }
 
-    private void UnlockCrown()
+    public void UnlockCrown()
     {
         if (Item.IsOwned(ItemType.Hat_Crown)) return;
         if (!HasCaughtAllBugs()) return;
 
         Item.MakeOwned(ItemType.Hat_Crown);
         UnlockView.Instance.ShowItemUnlock(ItemType.Hat_Crown);
+        Data.Game.Save();
     }
 }

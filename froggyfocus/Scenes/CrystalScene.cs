@@ -45,6 +45,8 @@ public partial class CrystalScene : GameScene
         Data.Game.CrystalLocationEntered = true;
         Data.Game.Save();
 
+        StatsController.Instance.UnlockCrown();
         AchievementController.Instance.UpdateAchievements();
+
     }
 }
