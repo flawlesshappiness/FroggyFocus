@@ -10,6 +10,7 @@ public partial class StatsController : SingletonController
     {
         base.Initialize();
         InventoryController.Instance.OnCharacterAdded += InventoryCharacter_Added;
+        FocusEventController.Instance.OnFocusEventEnded += FocusEvent_Ended;
         RegisterDebugActions();
     }
 
@@ -71,6 +72,36 @@ public partial class StatsController : SingletonController
             Data.Game.Save();
             SelectCharacter(v, data);
         }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Set all caught",
+            Action = SetAllCaught
+        });
+
+        void SetAllCaught(DebugView v)
+        {
+            var infos = FocusCharacterController.Instance.Collection.Resources;
+            var datas = infos.Select(x => GetOrCreateCharacterData(x.ResourcePath));
+            datas.ForEach(x => x.CountCaught = 1);
+            Data.Game.Save();
+        }
+
+        Debug.RegisterAction(new DebugAction
+        {
+            Category = category,
+            Text = "Set all uncaught",
+            Action = SetAllUncaught
+        });
+
+        void SetAllUncaught(DebugView v)
+        {
+            var infos = FocusCharacterController.Instance.Collection.Resources;
+            var datas = infos.Select(x => GetOrCreateCharacterData(x.ResourcePath));
+            datas.ForEach(x => x.CountCaught = 0);
+            Data.Game.Save();
+        }
     }
 
     private StatsData GetData()
@@ -106,5 +137,27 @@ public partial class StatsController : SingletonController
         var v_stats = GetOrCreateCharacterData(v_info.ResourcePath);
         v_stats.CountCaught++;
         v_stats.HighestRarity = Mathf.Max(stats.HighestRarity, data.Stars);
+    }
+
+    public bool HasCaughtAllBugs()
+    {
+        var infos = FocusCharacterController.Instance.Collection.Resources.Where(x => !x.ExcludeFromBestiary);
+        var stats = infos.Select(x => GetOrCreateCharacterData(x.ResourcePath));
+        var all_caught = stats.All(x => x.CountCaught > 0);
+        return all_caught;
+    }
+
+    private void FocusEvent_Ended(FocusEventResult result)
+    {
+        UnlockCrown();
+    }
+
+    private void UnlockCrown()
+    {
+        if (Item.IsOwned(ItemType.Hat_Crown)) return;
+        if (!HasCaughtAllBugs()) return;
+
+        Item.MakeOwned(ItemType.Hat_Crown);
+        UnlockView.Instance.ShowItemUnlock(ItemType.Hat_Crown);
     }
 }
