@@ -44,7 +44,7 @@ public partial class SyringeCrack : FocusAttack
         {
             while (true)
             {
-                yield return new WaitForSeconds(rng.RandfRange(3f, 5f));
+                yield return new WaitForSeconds(rng.RandfRange(4f, 6f));
 
                 StartState();
 
