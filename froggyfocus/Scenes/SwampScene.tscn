@@ -882,7 +882,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -26.1084, -0.367675, -21.6655
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42.6318, -0.367675, -12.8582)
 
 [node name="Grass_Tuft" parent="World/Forest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.4433, -4.9184, 5.07318)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 13.4433, -0.572981, 5.07318)
 
 [node name="Grass_Tuft2" parent="World/Forest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 38.6877, -1.41781, 63.3578)
@@ -903,10 +903,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -36.588, -1.76402, 54.9412)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.4571, -2.86302, 39.4421)
 
 [node name="Grass_Tuft8" parent="World/Forest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.35828, -1.98743, 19.8605)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.35828, -0.534655, 19.8605)
 
 [node name="Grass_Tuft9" parent="World/Forest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.45936, -4.9184, 35.0556)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.45936, -1.67821, 35.0556)
 
 [node name="Grass_Tuft10" parent="World/Forest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.99671, -4.9184, 51.9147)
@@ -921,7 +921,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.9383, -4.9184, -9.78529)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -8.74727, -4.9184, -17.5846)
 
 [node name="Grass_Tuft14" parent="World/Forest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.9722, -4.9184, 13.1227)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18.9722, -1.97704, 13.1227)
 
 [node name="Grass_Tuft20" parent="World/Forest/Grass_Tufts/Tall" instance=ExtResource("17_lakbb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -7.85063, -1.6719, 53.5321)
