@@ -57,7 +57,6 @@ public partial class GameScene : Scene
 
         if (CurrentSceneType == SceneType.Main && Data.Game.ApplicationType == ApplicationType.Demo)
         {
-            Debug.Log("WAS DEMO BUT I FIXED IT");
             Data.Game.ApplicationType = ApplicationInfo.Instance.Type;
             AchievementController.Instance.UpdateAchievements();
             Data.Game.Save();
