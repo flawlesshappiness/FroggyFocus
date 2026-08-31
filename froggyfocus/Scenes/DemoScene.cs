@@ -10,6 +10,8 @@ public partial class DemoScene : GameScene
     [Export]
     public AnimatedPathFollow3D IntroCameraPath;
 
+    public override SceneType CurrentSceneType => SceneType.Demo;
+
     public override void _Ready()
     {
         base._Ready();

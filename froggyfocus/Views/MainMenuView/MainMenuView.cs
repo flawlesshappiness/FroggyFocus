@@ -183,6 +183,7 @@ public partial class MainMenuView : View
         if (animating) return;
 
         Data.Game.CurrentScene = "DemoScene";
+        Data.Game.Deleted = false;
         Data.Game.Save();
 
         ClickContinue();

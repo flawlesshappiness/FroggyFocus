@@ -6,6 +6,8 @@ public partial class MainMenuScene : GameScene
     [Export]
     public Camera3D Camera;
 
+    public override SceneType CurrentSceneType => SceneType.Menu;
+
     private List<FrogCharacter> frogs = new();
 
     public override void _Ready()

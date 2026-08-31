@@ -31,6 +31,15 @@ public partial class GameScene : Scene
     private List<string> focus_event_ids = new();
     private List<WorldBug> world_bugs = new();
 
+    public enum SceneType
+    {
+        Main,
+        Demo,
+        Menu,
+    }
+
+    public virtual SceneType CurrentSceneType => SceneType.Main;
+
     public override void _Ready()
     {
         base._Ready();
@@ -45,6 +54,14 @@ public partial class GameScene : Scene
         FocusEventController.Instance.OnFocusEventEnded += FocusEvent_Ended;
         RaceController.Instance.OnTransitionToStart += Race_TransitionToStart;
         RaceController.Instance.OnRaceEnd += Race_Ended;
+
+        if (CurrentSceneType == SceneType.Main && Data.Game.ApplicationType == ApplicationType.Demo)
+        {
+            Debug.Log("WAS DEMO BUT I FIXED IT");
+            Data.Game.ApplicationType = ApplicationInfo.Instance.Type;
+            AchievementController.Instance.UpdateAchievements();
+            Data.Game.Save();
+        }
     }
 
     public override void _ExitTree()
